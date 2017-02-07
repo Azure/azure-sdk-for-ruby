@@ -6,15 +6,14 @@
 module Azure::ARM::Web
   module Models
     #
-    # Note: properties are serialized in JSON format and stored in DB.
-    # if new properties are added they might not be in the previous data rows
-    # so please handle nulls
+    # Database backup settings.
     #
     class DatabaseBackupSetting
 
       include MsRestAzure
 
-      # @return [String] SqlAzure / MySql
+      # @return [DatabaseType] Database type (e.g. SqlAzure / MySql). Possible
+      # values include: 'SqlAzure', 'MySql', 'LocalMySql'
       attr_accessor :database_type
 
       # @return [String]
@@ -26,7 +25,7 @@ module Azure::ARM::Web
       attr_accessor :connection_string_name
 
       # @return [String] Contains a connection string to a database which is
-      # being backed up/restored. If the restore should happen to a new
+      # being backed up or restored. If the restore should happen to a new
       # database, the database name inside is the new one.
       attr_accessor :connection_string
 
@@ -44,7 +43,7 @@ module Azure::ARM::Web
             class_name: 'DatabaseBackupSetting',
             model_properties: {
               database_type: {
-                required: false,
+                required: true,
                 serialized_name: 'databaseType',
                 type: {
                   name: 'String'

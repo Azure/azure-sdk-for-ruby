@@ -6,50 +6,53 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents a custom domain analysis
+    # Custom domain analysis.
     #
     class CustomHostnameAnalysisResult < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Boolean] Is hostname already verified?
+      # @return [Boolean] <code>true</code> if hostname is already verified;
+      # otherwise, <code>false</code>.
       attr_accessor :is_hostname_already_verified
 
-      # @return [DnsVerificationTestResult] Dns verification test result.
+      # @return [DnsVerificationTestResult] DNS verification test result.
       # Possible values include: 'Passed', 'Failed', 'Skipped'
       attr_accessor :custom_domain_verification_test
 
-      # @return [ErrorEntity] Raw failure info if Dns verification fails
+      # @return [ErrorEntity] Raw failure information if DNS verification
+      # fails.
       attr_accessor :custom_domain_verification_failure_info
 
-      # @return [Boolean] Does it have conflict on scale unit?
+      # @return [Boolean] <code>true</code> if there is a conflict on a scale
+      # unit; otherwise, <code>false</code>.
       attr_accessor :has_conflict_on_scale_unit
 
-      # @return [Boolean] Does it have conflict across subscription?
+      # @return [Boolean] <code>true</code> if htere is a conflict across
+      # subscriptions; otherwise, <code>false</code>.
       attr_accessor :has_conflict_across_subscription
 
-      # @return [String] Name of the conflicting App on scale unit if it's
-      # within the same subscription
+      # @return [String] Name of the conflicting app on scale unit if it's
+      # within the same subscription.
       attr_accessor :conflicting_app_resource_id
 
-      # @return [Array<String>] CName records controller could see for this
-      # hostname
+      # @return [Array<String>] CName records controller can see for this
+      # hostname.
       attr_accessor :c_name_records
 
-      # @return [Array<String>] TxT records controller could see for this
-      # hostname
+      # @return [Array<String>] TXT records controller can see for this
+      # hostname.
       attr_accessor :txt_records
 
-      # @return [Array<String>] A records controller could see for this
-      # hostname
+      # @return [Array<String>] A records controller can see for this hostname.
       attr_accessor :a_records
 
-      # @return [Array<String>] Alternate CName records controller could see
-      # for this hostname
+      # @return [Array<String>] Alternate CName records controller can see for
+      # this hostname.
       attr_accessor :alternate_cname_records
 
-      # @return [Array<String>] Alternate TxT records controller could see for
-      # this hostname
+      # @return [Array<String>] Alternate TXT records controller can see for
+      # this hostname.
       attr_accessor :alternate_txt_records
 
 
@@ -74,7 +77,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -117,6 +120,7 @@ module Azure::ARM::Web
               },
               is_hostname_already_verified: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.isHostnameAlreadyVerified',
                 type: {
                   name: 'Boolean'
@@ -124,6 +128,7 @@ module Azure::ARM::Web
               },
               custom_domain_verification_test: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.customDomainVerificationTest',
                 type: {
                   name: 'Enum',
@@ -132,6 +137,7 @@ module Azure::ARM::Web
               },
               custom_domain_verification_failure_info: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.customDomainVerificationFailureInfo',
                 type: {
                   name: 'Composite',
@@ -140,6 +146,7 @@ module Azure::ARM::Web
               },
               has_conflict_on_scale_unit: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.hasConflictOnScaleUnit',
                 type: {
                   name: 'Boolean'
@@ -147,6 +154,7 @@ module Azure::ARM::Web
               },
               has_conflict_across_subscription: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.hasConflictAcrossSubscription',
                 type: {
                   name: 'Boolean'
@@ -154,6 +162,7 @@ module Azure::ARM::Web
               },
               conflicting_app_resource_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.conflictingAppResourceId',
                 type: {
                   name: 'String'

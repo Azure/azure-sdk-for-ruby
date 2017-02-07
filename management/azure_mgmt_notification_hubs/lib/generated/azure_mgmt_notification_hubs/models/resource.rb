@@ -3,46 +3,58 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::NotificationHubs
   module Models
     #
-    # Request representing premier add-on
+    # Model object.
     #
-    class PremierAddOnRequest
+    #
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Geo region resource belongs to e.g. SouthCentralUS,
-      # SouthEastAsia
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Tags associated with resource
-      attr_accessor :tags
-
-      # @return [ArmPlan] Azure resource manager plan
-      attr_accessor :plan
-
-      # @return Resource specific properties
-      attr_accessor :properties
-
-      # @return [SkuDescription] Sku description of the resource
+      # @return [Sku] The sku of the created namespace
       attr_accessor :sku
 
 
       #
-      # Mapper for PremierAddOnRequest class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PremierAddOnRequest',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'PremierAddOnRequest',
+            class_name: 'Resource',
             model_properties: {
-              location: {
+              id: {
                 required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -62,27 +74,12 @@ module Azure::ARM::Web
                   }
                 }
               },
-              plan: {
-                required: false,
-                serialized_name: 'plan',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ArmPlan'
-                }
-              },
-              properties: {
-                required: false,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Object'
-                }
-              },
               sku: {
                 required: false,
                 serialized_name: 'sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'SkuDescription'
+                  class_name: 'Sku'
                 }
               }
             }

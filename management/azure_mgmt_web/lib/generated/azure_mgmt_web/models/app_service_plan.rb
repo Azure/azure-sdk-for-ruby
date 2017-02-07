@@ -6,50 +6,64 @@
 module Azure::ARM::Web
   module Models
     #
-    # App Service Plan Model
+    # App Service plan.
     #
     class AppServicePlan < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name for the App Service Plan
+      # @return [String] Name for the App Service plan.
       attr_accessor :app_service_plan_name
 
-      # @return [String] Target worker tier assigned to the App Service Plan
+      # @return [String] Target worker tier assigned to the App Service plan.
       attr_accessor :worker_tier_name
 
-      # @return [StatusOptions] App Service Plan Status. Possible values
+      # @return [StatusOptions] App Service plan status. Possible values
       # include: 'Ready', 'Pending'
       attr_accessor :status
 
-      # @return [String] App Service Plan Subscription
+      # @return [String] App Service plan subscription.
       attr_accessor :subscription
 
-      # @return [String] App Service Plan administration site
+      # @return [String] App Service plan administration site.
       attr_accessor :admin_site_name
 
-      # @return [HostingEnvironmentProfile] Specification for the hosting
-      # environment (App Service Environment) to use for the App Service Plan
+      # @return [HostingEnvironmentProfile] Specification for the App Service
+      # Environment to use for the App Service plan.
       attr_accessor :hosting_environment_profile
 
       # @return [Integer] Maximum number of instances that can be assigned to
-      # this App Service Plan
+      # this App Service plan.
       attr_accessor :maximum_number_of_workers
 
-      # @return [String] Geographical location for the App Service Plan
+      # @return [String] Geographical location for the App Service plan.
       attr_accessor :geo_region
 
-      # @return [Boolean] If True apps assigned to this App Service Plan can be
-      # scaled independently
-      # If False apps assigned to this App Service Plan will scale to all
-      # instances of the plan
+      # @return [Boolean] If <code>true</code>, apps assigned to this App
+      # Service plan can be scaled independently.
+      # If <code>false</code>, apps assigned to this App Service plan will
+      # scale to all instances of the plan. Default value: false .
       attr_accessor :per_site_scaling
 
-      # @return [Integer] Number of web apps assigned to this App Service Plan
+      # @return [Integer] Number of apps assigned to this App Service plan.
       attr_accessor :number_of_sites
 
-      # @return [String] Resource group of the serverfarm
+      # @return [String] Resource group of the App Service plan.
       attr_accessor :resource_group
+
+      # @return [Boolean] Reserved. Default value: false .
+      attr_accessor :reserved
+
+      # @return [Integer] Scaling worker count.
+      attr_accessor :target_worker_count
+
+      # @return [Integer] Scaling worker size ID.
+      attr_accessor :target_worker_size_id
+
+      # @return [ProvisioningState] Provisioning state of the App Service
+      # Environment. Possible values include: 'Succeeded', 'Failed',
+      # 'Canceled', 'InProgress', 'Deleting'
+      attr_accessor :provisioning_state
 
       # @return [SkuDescription]
       attr_accessor :sku
@@ -76,7 +90,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -133,6 +147,7 @@ module Azure::ARM::Web
               },
               status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
@@ -141,6 +156,7 @@ module Azure::ARM::Web
               },
               subscription: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.subscription',
                 type: {
                   name: 'String'
@@ -163,6 +179,7 @@ module Azure::ARM::Web
               },
               maximum_number_of_workers: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.maximumNumberOfWorkers',
                 type: {
                   name: 'Number'
@@ -170,6 +187,7 @@ module Azure::ARM::Web
               },
               geo_region: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.geoRegion',
                 type: {
                   name: 'String'
@@ -178,12 +196,14 @@ module Azure::ARM::Web
               per_site_scaling: {
                 required: false,
                 serialized_name: 'properties.perSiteScaling',
+                default_value: false,
                 type: {
                   name: 'Boolean'
                 }
               },
               number_of_sites: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.numberOfSites',
                 type: {
                   name: 'Number'
@@ -191,9 +211,41 @@ module Azure::ARM::Web
               },
               resource_group: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
+                }
+              },
+              reserved: {
+                required: false,
+                serialized_name: 'properties.reserved',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              target_worker_count: {
+                required: false,
+                serialized_name: 'properties.targetWorkerCount',
+                type: {
+                  name: 'Number'
+                }
+              },
+              target_worker_size_id: {
+                required: false,
+                serialized_name: 'properties.targetWorkerSizeId',
+                type: {
+                  name: 'Number'
+                }
+              },
+              provisioning_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'Enum',
+                  module: 'ProvisioningState'
                 }
               },
               sku: {

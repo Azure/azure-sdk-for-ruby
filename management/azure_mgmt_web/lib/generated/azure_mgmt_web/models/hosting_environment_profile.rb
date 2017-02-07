@@ -6,23 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Specification for a hostingEnvironment (App Service Environment) to use
-    # for this resource
+    # Specification for an App Service Environment to use for this resource.
     #
     class HostingEnvironmentProfile
 
       include MsRestAzure
 
-      # @return [String] Resource id of the hostingEnvironment (App Service
-      # Environment)
+      # @return [String] Resource ID of the App Service Environment.
       attr_accessor :id
 
-      # @return [String] Name of the hostingEnvironment (App Service
-      # Environment) (read only)
+      # @return [String] Name of the App Service Environment.
       attr_accessor :name
 
-      # @return [String] Resource type of the hostingEnvironment (App Service
-      # Environment) (read only)
+      # @return [String] Resource type of the App Service Environment.
       attr_accessor :type
 
 
@@ -47,6 +43,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -54,6 +51,7 @@ module Azure::ARM::Web
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'

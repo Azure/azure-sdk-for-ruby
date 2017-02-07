@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Http logs to file system configuration
+    # Http logs to file system configuration.
     #
     class FileSystemHttpLogsConfig
 
@@ -23,7 +23,7 @@ module Azure::ARM::Web
       # 0 or lower means no retention.
       attr_accessor :retention_in_days
 
-      # @return [Boolean] Enabled
+      # @return [Boolean] Enabled.
       attr_accessor :enabled
 
 
@@ -42,6 +42,10 @@ module Azure::ARM::Web
               retention_in_mb: {
                 required: false,
                 serialized_name: 'retentionInMb',
+                constraints: {
+                  InclusiveMaximum: 100,
+                  InclusiveMinimum: 25
+                },
                 type: {
                   name: 'Number'
                 }

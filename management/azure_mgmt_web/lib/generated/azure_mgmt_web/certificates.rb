@@ -23,9 +23,9 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,9 +38,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,9 +52,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -112,11 +112,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -128,11 +129,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -143,11 +145,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -205,13 +208,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get a certificate by certificate name for a subscription in the specified
-    # resource group.
+    # Get a certificate.
     #
-    # Get a certificate by certificate name for a subscription in the specified
-    # resource group.
+    # Get a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -224,13 +226,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get a certificate by certificate name for a subscription in the specified
-    # resource group.
+    # Get a certificate.
     #
-    # Get a certificate by certificate name for a subscription in the specified
-    # resource group.
+    # Get a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -242,13 +243,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get a certificate by certificate name for a subscription in the specified
-    # resource group.
+    # Get a certificate.
     #
-    # Get a certificate by certificate name for a subscription in the specified
-    # resource group.
+    # Get a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -308,14 +308,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate if it exists
-    # already.
+    # @param certificate_envelope [Certificate] Details of certificate, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -327,14 +328,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate if it exists
-    # already.
+    # @param certificate_envelope [Certificate] Details of certificate, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -345,14 +347,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate if it exists
-    # already.
+    # @param certificate_envelope [Certificate] Details of certificate, if it
+    # exists already.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -421,29 +424,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    # Delete a certificate.
     #
-    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    # Delete a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate to be deleted.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete(resource_group_name, name, custom_headers = nil)
       response = delete_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    # Delete a certificate.
     #
-    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    # Delete a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate to be deleted.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -454,12 +458,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    # Delete a certificate.
     #
-    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    # Delete a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate to be deleted.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -494,7 +499,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -508,14 +513,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate if it exists
-    # already.
+    # @param certificate_envelope [Certificate] Details of certificate, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -527,14 +533,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate if it exists
-    # already.
+    # @param certificate_envelope [Certificate] Details of certificate, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -545,14 +552,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # Creates or modifies an existing certificate.
+    # Create or update a certificate.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate.
-    # @param certificate_envelope [Certificate] Details of certificate if it exists
-    # already.
+    # @param certificate_envelope [Certificate] Details of certificate, if it
+    # exists already.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -621,54 +629,51 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the certificate signing requests for a subscription in the specified
-    # resource group
+    # Get all certificate signing requests in a resource group.
     #
-    # Gets the certificate signing requests for a subscription in the specified
-    # resource group
+    # Get all certificate signing requests in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [Array<Csr>] operation results.
     #
-    def list_csrs(resource_group_name, custom_headers = nil)
-      response = list_csrs_async(resource_group_name, custom_headers).value!
-      response.body unless response.nil?
+    def list_signing_request_by_resource_group(resource_group_name, custom_headers = nil)
+      first_page = list_signing_request_by_resource_group_as_lazy(resource_group_name, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Gets the certificate signing requests for a subscription in the specified
-    # resource group
+    # Get all certificate signing requests in a resource group.
     #
-    # Gets the certificate signing requests for a subscription in the specified
-    # resource group
+    # Get all certificate signing requests in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_csrs_with_http_info(resource_group_name, custom_headers = nil)
-      list_csrs_async(resource_group_name, custom_headers).value!
+    def list_signing_request_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_signing_request_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
-    # Gets the certificate signing requests for a subscription in the specified
-    # resource group
+    # Get all certificate signing requests in a resource group.
     #
-    # Gets the certificate signing requests for a subscription in the specified
-    # resource group
+    # Get all certificate signing requests in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_csrs_async(resource_group_name, custom_headers = nil)
+    def list_signing_request_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2016-03-01'
@@ -706,21 +711,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    required: false,
-                    serialized_name: 'CsrElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'Csr'
-                    }
-                }
-              }
-            }
+            result_mapper = CsrCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -734,57 +725,54 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a certificate signing request by certificate name for a subscription in
-    # the specified resource group
+    # Get a certificate signing request.
     #
-    # Gets a certificate signing request by certificate name for a subscription in
-    # the specified resource group
+    # Get a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Csr] operation results.
     #
-    def get_csr(resource_group_name, name, custom_headers = nil)
-      response = get_csr_async(resource_group_name, name, custom_headers).value!
+    def get_signing_request(resource_group_name, name, custom_headers = nil)
+      response = get_signing_request_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a certificate signing request by certificate name for a subscription in
-    # the specified resource group
+    # Get a certificate signing request.
     #
-    # Gets a certificate signing request by certificate name for a subscription in
-    # the specified resource group
+    # Get a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_csr_with_http_info(resource_group_name, name, custom_headers = nil)
-      get_csr_async(resource_group_name, name, custom_headers).value!
+    def get_signing_request_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_signing_request_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Gets a certificate signing request by certificate name for a subscription in
-    # the specified resource group
+    # Get a certificate signing request.
     #
-    # Gets a certificate signing request by certificate name for a subscription in
-    # the specified resource group
+    # Get a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_csr_async(resource_group_name, name, custom_headers = nil)
+    def get_signing_request_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -837,57 +825,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
-    # @param csr_envelope [Csr] Details of certificate signing request if it exists
-    # already.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
+    # @param csr_envelope [Csr] Details of certificate signing request, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Csr] operation results.
     #
-    def create_or_update_csr(resource_group_name, name, csr_envelope, custom_headers = nil)
-      response = create_or_update_csr_async(resource_group_name, name, csr_envelope, custom_headers).value!
+    def create_or_update_signing_request(resource_group_name, name, csr_envelope, custom_headers = nil)
+      response = create_or_update_signing_request_async(resource_group_name, name, csr_envelope, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
-    # @param csr_envelope [Csr] Details of certificate signing request if it exists
-    # already.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
+    # @param csr_envelope [Csr] Details of certificate signing request, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_csr_with_http_info(resource_group_name, name, csr_envelope, custom_headers = nil)
-      create_or_update_csr_async(resource_group_name, name, csr_envelope, custom_headers).value!
+    def create_or_update_signing_request_with_http_info(resource_group_name, name, csr_envelope, custom_headers = nil)
+      create_or_update_signing_request_async(resource_group_name, name, csr_envelope, custom_headers).value!
     end
 
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
-    # @param csr_envelope [Csr] Details of certificate signing request if it exists
-    # already.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
+    # @param csr_envelope [Csr] Details of certificate signing request, if it
+    # exists already.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_csr_async(resource_group_name, name, csr_envelope, custom_headers = nil)
+    def create_or_update_signing_request_async(resource_group_name, name, csr_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'csr_envelope is nil' if csr_envelope.nil?
@@ -950,51 +941,53 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the certificate signing request.
+    # Delete a certificate signing request.
     #
-    # Delete the certificate signing request.
+    # Delete a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate signing request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
-    def delete_csr(resource_group_name, name, custom_headers = nil)
-      response = delete_csr_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+    def delete_signing_request(resource_group_name, name, custom_headers = nil)
+      response = delete_signing_request_async(resource_group_name, name, custom_headers).value!
+      nil
     end
 
     #
-    # Delete the certificate signing request.
+    # Delete a certificate signing request.
     #
-    # Delete the certificate signing request.
+    # Delete a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate signing request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_csr_with_http_info(resource_group_name, name, custom_headers = nil)
-      delete_csr_async(resource_group_name, name, custom_headers).value!
+    def delete_signing_request_with_http_info(resource_group_name, name, custom_headers = nil)
+      delete_signing_request_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Delete the certificate signing request.
+    # Delete a certificate signing request.
     #
-    # Delete the certificate signing request.
+    # Delete a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of the certificate signing request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_csr_async(resource_group_name, name, custom_headers = nil)
+    def delete_signing_request_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1023,7 +1016,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1037,57 +1030,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
-    # @param csr_envelope [Csr] Details of certificate signing request if it exists
-    # already.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
+    # @param csr_envelope [Csr] Details of certificate signing request, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Csr] operation results.
     #
-    def update_csr(resource_group_name, name, csr_envelope, custom_headers = nil)
-      response = update_csr_async(resource_group_name, name, csr_envelope, custom_headers).value!
+    def update_signing_request(resource_group_name, name, csr_envelope, custom_headers = nil)
+      response = update_signing_request_async(resource_group_name, name, csr_envelope, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
-    # @param csr_envelope [Csr] Details of certificate signing request if it exists
-    # already.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
+    # @param csr_envelope [Csr] Details of certificate signing request, if it
+    # exists already.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_csr_with_http_info(resource_group_name, name, csr_envelope, custom_headers = nil)
-      update_csr_async(resource_group_name, name, csr_envelope, custom_headers).value!
+    def update_signing_request_with_http_info(resource_group_name, name, csr_envelope, custom_headers = nil)
+      update_signing_request_async(resource_group_name, name, csr_envelope, custom_headers).value!
     end
 
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # Creates or modifies an existing certificate signing request.
+    # Create or update a certificate signing request.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the certificate.
-    # @param csr_envelope [Csr] Details of certificate signing request if it exists
-    # already.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate signing request.
+    # @param csr_envelope [Csr] Details of certificate signing request, if it
+    # exists already.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_csr_async(resource_group_name, name, csr_envelope, custom_headers = nil)
+    def update_signing_request_async(resource_group_name, name, csr_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'csr_envelope is nil' if csr_envelope.nil?
@@ -1150,9 +1146,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1167,9 +1163,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1183,9 +1179,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
-    # Get all certificates for a subscription
+    # Get all certificates for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1243,9 +1239,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1260,9 +1256,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1276,9 +1272,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1336,9 +1332,102 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all certificates for a subscription
+    # Get all certificate signing requests in a resource group.
     #
-    # Get all certificates for a subscription
+    # Get all certificate signing requests in a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CsrCollection] operation results.
+    #
+    def list_signing_request_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_signing_request_by_resource_group_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get all certificate signing requests in a resource group.
+    #
+    # Get all certificate signing requests in a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_signing_request_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_signing_request_by_resource_group_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get all certificate signing requests in a resource group.
+    #
+    # Get all certificate signing requests in a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_signing_request_by_resource_group_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CsrCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get all certificates for a subscription.
+    #
+    # Get all certificates for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1358,11 +1447,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # Get certificates for a subscription in the specified resource group.
+    # Get all certificates in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1375,6 +1465,29 @@ module Azure::ARM::Web
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_by_resource_group_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get all certificate signing requests in a resource group.
+    #
+    # Get all certificate signing requests in a resource group.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CsrCollection] which provide lazy access to pages of the response.
+    #
+    def list_signing_request_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_signing_request_by_resource_group_async(resource_group_name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_signing_request_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end

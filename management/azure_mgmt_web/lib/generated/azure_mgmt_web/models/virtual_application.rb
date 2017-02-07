@@ -6,23 +6,24 @@
 module Azure::ARM::Web
   module Models
     #
-    # Virtual application under web app
+    # Virtual application in an app.
     #
     class VirtualApplication
 
       include MsRestAzure
 
-      # @return [String] Virtual path
+      # @return [String] Virtual path.
       attr_accessor :virtual_path
 
-      # @return [String] Physical path
+      # @return [String] Physical path.
       attr_accessor :physical_path
 
-      # @return [Boolean] Is preload enabled
+      # @return [Boolean] <code>true</code> if preloading is enabled;
+      # otherwise, <code>false</code>.
       attr_accessor :preload_enabled
 
-      # @return [Array<VirtualDirectory>] Virtual Directories for virtual
-      # application
+      # @return [Array<VirtualDirectory>] Virtual directories for virtual
+      # application.
       attr_accessor :virtual_directories
 
 

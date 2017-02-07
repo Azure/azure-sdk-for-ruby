@@ -6,25 +6,26 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of the App Service Plan scale options
+    # Description of the App Service plan scale options.
     #
     class SkuCapacity
 
       include MsRestAzure
 
-      # @return [Integer] Minimum number of Workers for this App Service Plan
-      # SKU
+      # @return [Integer] Minimum number of workers for this App Service plan
+      # SKU.
       attr_accessor :minimum
 
-      # @return [Integer] Maximum number of Workers for this App Service Plan
-      # SKU
+      # @return [Integer] Maximum number of workers for this App Service plan
+      # SKU.
       attr_accessor :maximum
 
-      # @return [Integer] Default number of Workers for this App Service Plan
-      # SKU
+      # @return [Integer] Default number of workers for this App Service plan
+      # SKU.
       attr_accessor :default
 
-      # @return [String] Available scale configurations for an App Service Plan
+      # @return [String] Available scale configurations for an App Service
+      # plan.
       attr_accessor :scale_type
 
 

@@ -6,23 +6,25 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of a backup which will be performed
+    # Options for app content migration.
     #
     class StorageMigrationOptions < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] AzureFiles connection string
+      # @return [String] AzureFiles connection string.
       attr_accessor :azurefiles_connection_string
 
-      # @return [String] AzureFiles share
+      # @return [String] AzureFiles share.
       attr_accessor :azurefiles_share
 
-      # @return [Boolean] Indicate if site should be switched over
+      # @return [Boolean] <code>true</code>if the app should be switched over;
+      # otherwise, <code>false</code>. Default value: false .
       attr_accessor :switch_site_after_migration
 
-      # @return [Boolean] Indicate if the site should be read only during copy
-      # operation
+      # @return [Boolean] <code>true</code> if the app should be read only
+      # during copy operation; otherwise, <code>false</code>. Default value:
+      # false .
       attr_accessor :block_write_access_to_site
 
 
@@ -47,7 +49,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -105,6 +107,7 @@ module Azure::ARM::Web
               switch_site_after_migration: {
                 required: false,
                 serialized_name: 'properties.switchSiteAfterMigration',
+                default_value: false,
                 type: {
                   name: 'Boolean'
                 }
@@ -112,6 +115,7 @@ module Azure::ARM::Web
               block_write_access_to_site: {
                 required: false,
                 serialized_name: 'properties.blockWriteAccessToSite',
+                default_value: false,
                 type: {
                   name: 'Boolean'
                 }

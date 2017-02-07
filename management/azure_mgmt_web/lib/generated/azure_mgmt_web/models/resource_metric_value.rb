@@ -6,31 +6,31 @@
 module Azure::ARM::Web
   module Models
     #
-    # Value of resource metric
+    # Value of resource metric.
     #
     class ResourceMetricValue
 
       include MsRestAzure
 
-      # @return [String] Value timestamp
+      # @return [String] Value timestamp.
       attr_accessor :timestamp
 
-      # @return [Float] Value average
+      # @return [Float] Value average.
       attr_accessor :average
 
-      # @return [Float] Value minimum
+      # @return [Float] Value minimum.
       attr_accessor :minimum
 
-      # @return [Float] Value maximum
+      # @return [Float] Value maximum.
       attr_accessor :maximum
 
-      # @return [Float] Value total
+      # @return [Float] Value total.
       attr_accessor :total
 
-      # @return [Float] Value count
+      # @return [Float] Value count.
       attr_accessor :count
 
-      # @return [Array<ResourceMetricProperty>] Properties
+      # @return [Array<ResourceMetricProperty>] Properties.
       attr_accessor :properties
 
 

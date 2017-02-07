@@ -6,14 +6,14 @@
 module Azure::ARM::Web
   module Models
     #
-    # Http logs to azure blob storage configuration
+    # Http logs to azure blob storage configuration.
     #
     class AzureBlobStorageHttpLogsConfig
 
       include MsRestAzure
 
       # @return [String] SAS url to a azure blob container with
-      # read/write/list/delete permissions
+      # read/write/list/delete permissions.
       attr_accessor :sas_url
 
       # @return [Integer] Retention in days.
@@ -21,7 +21,7 @@ module Azure::ARM::Web
       # 0 or lower means no retention.
       attr_accessor :retention_in_days
 
-      # @return [Boolean] Enabled
+      # @return [Boolean] Enabled.
       attr_accessor :enabled
 
 

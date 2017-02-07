@@ -7,38 +7,39 @@ module Azure::ARM::Web
   module Models
     #
     # Contact information for domain registration. If 'Domain Privacy' option
-    # is not selected then the contact information will be  be made publicly
-    # available through the Whois directories as per ICANN requirements.
+    # is not selected then the contact information is made publicly available
+    # through the Whois
+    # directories as per ICANN requirements.
     #
     class Contact
 
       include MsRestAzure
 
-      # @return [Address] Mailing address
+      # @return [Address] Mailing address.
       attr_accessor :address_mailing
 
-      # @return [String] Email address
+      # @return [String] Email address.
       attr_accessor :email
 
-      # @return [String] Fax number
+      # @return [String] Fax number.
       attr_accessor :fax
 
-      # @return [String] Job title
+      # @return [String] Job title.
       attr_accessor :job_title
 
-      # @return [String] First name
+      # @return [String] First name.
       attr_accessor :name_first
 
-      # @return [String] Last name
+      # @return [String] Last name.
       attr_accessor :name_last
 
-      # @return [String] Middle name
+      # @return [String] Middle name.
       attr_accessor :name_middle
 
-      # @return [String] Organization
+      # @return [String] Organization.
       attr_accessor :organization
 
-      # @return [String] Phone number
+      # @return [String] Phone number.
       attr_accessor :phone
 
 
@@ -63,7 +64,7 @@ module Azure::ARM::Web
                 }
               },
               email: {
-                required: false,
+                required: true,
                 serialized_name: 'email',
                 type: {
                   name: 'String'
@@ -84,14 +85,14 @@ module Azure::ARM::Web
                 }
               },
               name_first: {
-                required: false,
+                required: true,
                 serialized_name: 'nameFirst',
                 type: {
                   name: 'String'
                 }
               },
               name_last: {
-                required: false,
+                required: true,
                 serialized_name: 'nameLast',
                 type: {
                   name: 'String'
@@ -112,7 +113,7 @@ module Azure::ARM::Web
                 }
               },
               phone: {
-                required: false,
+                required: true,
                 serialized_name: 'phone',
                 type: {
                   name: 'String'

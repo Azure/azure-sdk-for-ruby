@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # RequestsBasedTrigger
+    # Trigger based on total requests.
     #
     class RequestsBasedTrigger
 
       include MsRestAzure
 
-      # @return [Integer] Count
+      # @return [Integer] Count.
       attr_accessor :count
 
-      # @return [String] TimeInterval
+      # @return [String] Time interval.
       attr_accessor :time_interval
 
 

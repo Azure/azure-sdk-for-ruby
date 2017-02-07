@@ -6,40 +6,40 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents user crendentials used for publishing activity
+    # User crendentials used for publishing activity.
     #
     class Deployment < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Id
+      # @return [String] ID.
       attr_accessor :deployment_id
 
-      # @return [Integer] Status
+      # @return [Integer] Status.
       attr_accessor :status
 
-      # @return [String] Message
+      # @return [String] Message.
       attr_accessor :message
 
-      # @return [String] Author
+      # @return [String] Author.
       attr_accessor :author
 
-      # @return [String] Deployer
+      # @return [String] Deployer.
       attr_accessor :deployer
 
-      # @return [String] AuthorEmail
+      # @return [String] Author email.
       attr_accessor :author_email
 
-      # @return [DateTime] StartTime
+      # @return [DateTime] Start time.
       attr_accessor :start_time
 
-      # @return [DateTime] EndTime
+      # @return [DateTime] End time.
       attr_accessor :end_time
 
-      # @return [Boolean] Active
+      # @return [Boolean] Active.
       attr_accessor :active
 
-      # @return [String] Detail
+      # @return [String] Detail.
       attr_accessor :details
 
 
@@ -64,7 +64,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

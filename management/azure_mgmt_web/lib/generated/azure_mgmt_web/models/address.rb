@@ -6,28 +6,28 @@
 module Azure::ARM::Web
   module Models
     #
-    # Address information for domain registration
+    # Address information for domain registration.
     #
     class Address
 
       include MsRestAzure
 
-      # @return [String] Address 1
+      # @return [String] Address 1.
       attr_accessor :address1
 
-      # @return [String] Address 2
+      # @return [String] Address 2.
       attr_accessor :address2
 
-      # @return [String] City
+      # @return [String] City.
       attr_accessor :city
 
-      # @return [String] Country
+      # @return [String] Country.
       attr_accessor :country
 
-      # @return [String] Postal code
+      # @return [String] Postal code.
       attr_accessor :postal_code
 
-      # @return [String] State
+      # @return [String] State.
       attr_accessor :state
 
 
@@ -44,7 +44,7 @@ module Azure::ARM::Web
             class_name: 'Address',
             model_properties: {
               address1: {
-                required: false,
+                required: true,
                 serialized_name: 'address1',
                 type: {
                   name: 'String'
@@ -58,28 +58,28 @@ module Azure::ARM::Web
                 }
               },
               city: {
-                required: false,
+                required: true,
                 serialized_name: 'city',
                 type: {
                   name: 'String'
                 }
               },
               country: {
-                required: false,
+                required: true,
                 serialized_name: 'country',
                 type: {
                   name: 'String'
                 }
               },
               postal_code: {
-                required: false,
+                required: true,
                 serialized_name: 'postalCode',
                 type: {
                   name: 'String'
                 }
               },
               state: {
-                required: false,
+                required: true,
                 serialized_name: 'state',
                 type: {
                   name: 'String'

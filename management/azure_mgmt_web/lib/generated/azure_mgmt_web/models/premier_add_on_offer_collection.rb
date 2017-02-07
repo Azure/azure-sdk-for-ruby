@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of metric defintions
+    # Collection of premier add-on offers.
     #
-    class MetricDefinitionCollection
+    class PremierAddOnOfferCollection
 
       include MsRestAzure
 
-      # @return [Array<MetricDefinition>] Collection of resources
+      # @return [Array<PremierAddOnOffer>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -24,7 +24,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<MetricDefinition>] operation results.
+      # @return [Array<PremierAddOnOffer>] operation results.
       #
       def get_all_items
         items = @value
@@ -39,7 +39,7 @@ module Azure::ARM::Web
       #
       # Gets the next page of results.
       #
-      # @return [MetricDefinitionCollection] with next page content.
+      # @return [PremierAddOnOfferCollection] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -51,28 +51,28 @@ module Azure::ARM::Web
       end
 
       #
-      # Mapper for MetricDefinitionCollection class as Ruby Hash.
+      # Mapper for PremierAddOnOfferCollection class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'MetricDefinitionCollection',
+          serialized_name: 'PremierAddOnOfferCollection',
           type: {
             name: 'Composite',
-            class_name: 'MetricDefinitionCollection',
+            class_name: 'PremierAddOnOfferCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'MetricDefinitionElementType',
+                      serialized_name: 'PremierAddOnOfferElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'MetricDefinition'
+                        class_name: 'PremierAddOnOffer'
                       }
                   }
                 }

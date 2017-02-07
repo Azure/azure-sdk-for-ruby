@@ -18,6 +18,11 @@ module Azure::ARM::Web
       OrgNameChange = "OrgNameChange"
       OrgValidationComplete = "OrgValidationComplete"
       SanDrop = "SanDrop"
+      FraudCleared = "FraudCleared"
+      CertificateExpired = "CertificateExpired"
+      CertificateExpirationWarning = "CertificateExpirationWarning"
+      FraudDocumentationRequired = "FraudDocumentationRequired"
+      Unknown = "Unknown"
     end
   end
 end

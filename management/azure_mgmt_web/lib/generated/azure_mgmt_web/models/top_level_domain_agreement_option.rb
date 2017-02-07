@@ -6,14 +6,15 @@
 module Azure::ARM::Web
   module Models
     #
-    # Options for retrieving the list of top level domain legal agreements
+    # Options for retrieving the list of top level domain legal agreements.
     #
     class TopLevelDomainAgreementOption
 
       include MsRestAzure
 
-      # @return [Boolean] If true then the list of agreements will inclue
-      # agreements for domain privacy as well.
+      # @return [Boolean] If <code>true</code>, then the list of agreements
+      # will include agreements for domain privacy as well; otherwise,
+      # <code>false</code>.
       attr_accessor :include_privacy
 
 

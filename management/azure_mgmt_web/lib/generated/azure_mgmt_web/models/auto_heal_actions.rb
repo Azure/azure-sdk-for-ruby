@@ -6,22 +6,20 @@
 module Azure::ARM::Web
   module Models
     #
-    # AutoHealActions - Describes the actions which can be
-    # taken by the auto-heal module when a rule is triggered.
+    # Actions which to take by the auto-heal module when a rule is triggered.
     #
     class AutoHealActions
 
       include MsRestAzure
 
-      # @return [AutoHealActionType] ActionType - predefined action to be
-      # taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
+      # @return [AutoHealActionType] Predefined action to be taken. Possible
+      # values include: 'Recycle', 'LogEvent', 'CustomAction'
       attr_accessor :action_type
 
-      # @return [AutoHealCustomAction] CustomAction - custom action to be taken
+      # @return [AutoHealCustomAction] Custom action to be taken.
       attr_accessor :custom_action
 
-      # @return [String] MinProcessExecutionTime - minimum time the process
-      # must execute
+      # @return [String] Minimum time the process must execute
       # before taking the action
       attr_accessor :min_process_execution_time
 
@@ -39,7 +37,7 @@ module Azure::ARM::Web
             class_name: 'AutoHealActions',
             model_properties: {
               action_type: {
-                required: true,
+                required: false,
                 serialized_name: 'actionType',
                 type: {
                   name: 'Enum',

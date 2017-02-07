@@ -6,14 +6,14 @@
 module Azure::ARM::Web
   module Models
     #
-    # Application logs to file system configuration
+    # Application logs to file system configuration.
     #
     class FileSystemApplicationLogsConfig
 
       include MsRestAzure
 
       # @return [LogLevel] Log level. Possible values include: 'Off',
-      # 'Verbose', 'Information', 'Warning', 'Error'
+      # 'Verbose', 'Information', 'Warning', 'Error'. Default value: 'Off' .
       attr_accessor :level
 
 
@@ -32,6 +32,7 @@ module Azure::ARM::Web
               level: {
                 required: false,
                 serialized_name: 'level',
+                default_value: 'Off',
                 type: {
                   name: 'Enum',
                   module: 'LogLevel'

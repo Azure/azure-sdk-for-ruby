@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Slot Config names azure resource
+    # Slot Config names azure resource.
     #
     class SlotConfigNamesResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Array<String>] List of connection string names
+      # @return [Array<String>] List of connection string names.
       attr_accessor :connection_string_names
 
-      # @return [Array<String>] List of application settings names
+      # @return [Array<String>] List of application settings names.
       attr_accessor :app_setting_names
 
 
@@ -40,7 +40,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

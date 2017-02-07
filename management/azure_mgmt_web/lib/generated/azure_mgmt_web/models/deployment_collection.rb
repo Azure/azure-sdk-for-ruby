@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of app deployments
+    # Collection of app deployments.
     #
     class DeploymentCollection
 
       include MsRestAzure
 
-      # @return [Array<Deployment>] Collection of resources
+      # @return [Array<Deployment>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
             class_name: 'DeploymentCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

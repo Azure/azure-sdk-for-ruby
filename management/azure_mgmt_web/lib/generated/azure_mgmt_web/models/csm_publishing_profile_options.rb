@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Publishing options for requested profile
+    # Publishing options for requested profile.
     #
     class CsmPublishingProfileOptions
 
       include MsRestAzure
 
-      # @return [String] Name of the format. Valid values are:
+      # @return [PublishingProfileFormat] Name of the format. Valid values are:
       # FileZilla3
       # WebDeploy -- default
-      # Ftp
+      # Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
       attr_accessor :format
 
 

@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class that represents a VIP mapping
+    # Virtual IP mapping.
     #
     class VirtualIPMapping
 
       include MsRestAzure
 
-      # @return [String] Virtual IP address
+      # @return [String] Virtual IP address.
       attr_accessor :virtual_ip
 
-      # @return [Integer] Internal HTTP port
+      # @return [Integer] Internal HTTP port.
       attr_accessor :internal_http_port
 
-      # @return [Integer] Internal HTTPS port
+      # @return [Integer] Internal HTTPS port.
       attr_accessor :internal_https_port
 
-      # @return [Boolean] Is VIP mapping in use
+      # @return [Boolean] Is virtual IP mapping in use.
       attr_accessor :in_use
 
 

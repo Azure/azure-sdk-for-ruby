@@ -23,9 +23,9 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,9 +38,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,9 +52,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
     #
     def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -112,29 +112,28 @@ module Azure::ARM::Web
     end
 
     #
-    # Validate certificate purchase information
+    # Validate information for a certificate order.
     #
-    # Validate certificate purchase information
+    # Validate information for a certificate order.
     #
-    # @param app_service_certificate_order [AppServiceCertificateOrder] Certificate
-    # order
+    # @param app_service_certificate_order [AppServiceCertificateOrder] Information
+    # for a certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def validate_purchase_information(app_service_certificate_order, custom_headers = nil)
       response = validate_purchase_information_async(app_service_certificate_order, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Validate certificate purchase information
+    # Validate information for a certificate order.
     #
-    # Validate certificate purchase information
+    # Validate information for a certificate order.
     #
-    # @param app_service_certificate_order [AppServiceCertificateOrder] Certificate
-    # order
+    # @param app_service_certificate_order [AppServiceCertificateOrder] Information
+    # for a certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -145,12 +144,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Validate certificate purchase information
+    # Validate information for a certificate order.
     #
-    # Validate certificate purchase information
+    # Validate information for a certificate order.
     #
-    # @param app_service_certificate_order [AppServiceCertificateOrder] Certificate
-    # order
+    # @param app_service_certificate_order [AppServiceCertificateOrder] Information
+    # for a certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -159,7 +158,7 @@ module Azure::ARM::Web
     def validate_purchase_information_async(app_service_certificate_order, custom_headers = nil)
       fail ArgumentError, 'app_service_certificate_order is nil' if app_service_certificate_order.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -193,7 +192,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -207,11 +206,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -223,11 +223,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,11 +239,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -251,7 +253,7 @@ module Azure::ARM::Web
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -300,14 +302,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -319,14 +320,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -337,14 +337,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -354,7 +353,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -403,13 +402,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate associated with the certificate order
+    # Get the certificate associated with a certificate order.
     #
-    # Get certificate associated with the certificate order
+    # Get the certificate associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -421,13 +421,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate associated with the certificate order
+    # Get the certificate associated with a certificate order.
     #
-    # Get certificate associated with the certificate order
+    # Get the certificate associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -438,13 +439,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate associated with the certificate order
+    # Get the certificate associated with a certificate order.
     #
-    # Get certificate associated with the certificate order
+    # Get the certificate associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -455,7 +457,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -504,16 +506,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
-    # @param key_vault_certificate [AppServiceCertificate] Key Vault secret csm Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
+    # resource Id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -525,10 +527,12 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
-    # @param key_vault_certificate [AppServiceCertificate] Key Vault secret csm Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
+    # resource Id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -554,31 +558,32 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes the certificate associated with the certificate order
+    # Delete the certificate associated with a certificate order.
     #
-    # Deletes the certificate associated with the certificate order
+    # Delete the certificate associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
       response = delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes the certificate associated with the certificate order
+    # Delete the certificate associated with a certificate order.
     #
-    # Deletes the certificate associated with the certificate order
+    # Delete the certificate associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -589,13 +594,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes the certificate associated with the certificate order
+    # Delete the certificate associated with a certificate order.
     #
-    # Deletes the certificate associated with the certificate order
+    # Delete the certificate associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -606,7 +612,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -631,7 +637,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -645,12 +651,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get a certificate order
+    # Get a certificate order.
     #
-    # Get a certificate order
+    # Get a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -662,12 +669,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get a certificate order
+    # Get a certificate order.
     #
-    # Get a certificate order
+    # Get a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -678,12 +686,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get a certificate order
+    # Get a certificate order.
     #
-    # Get a certificate order
+    # Get a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -693,7 +702,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -742,14 +751,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to be used for purchasing certificate
+    # Distinguished name to to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -761,10 +771,11 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to be used for purchasing certificate
+    # Distinguished name to to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -790,29 +801,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete an existing certificate order
+    # Delete an existing certificate order.
     #
-    # Delete an existing certificate order
+    # Delete an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_certificate_order(resource_group_name, name, custom_headers = nil)
       response = delete_certificate_order_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete an existing certificate order
+    # Delete an existing certificate order.
     #
-    # Delete an existing certificate order
+    # Delete an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -823,12 +835,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete an existing certificate order
+    # Delete an existing certificate order.
     #
-    # Delete an existing certificate order
+    # Delete an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -838,7 +851,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -863,7 +876,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -877,33 +890,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Reissue an existing certificate order
+    # Reissue an existing certificate order.
     #
-    # Reissue an existing certificate order
+    # Reissue an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param reissue_certificate_order_request [ReissueCertificateOrderRequest]
-    # Reissue parameters
+    # Parameters for the reissue.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def reissue(resource_group_name, name, reissue_certificate_order_request, custom_headers = nil)
       response = reissue_async(resource_group_name, name, reissue_certificate_order_request, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Reissue an existing certificate order
+    # Reissue an existing certificate order.
     #
-    # Reissue an existing certificate order
+    # Reissue an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param reissue_certificate_order_request [ReissueCertificateOrderRequest]
-    # Reissue parameters
+    # Parameters for the reissue.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -914,14 +928,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Reissue an existing certificate order
+    # Reissue an existing certificate order.
     #
-    # Reissue an existing certificate order
+    # Reissue an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param reissue_certificate_order_request [ReissueCertificateOrderRequest]
-    # Reissue parameters
+    # Parameters for the reissue.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -932,7 +947,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'reissue_certificate_order_request is nil' if reissue_certificate_order_request.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -966,7 +981,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -980,30 +995,31 @@ module Azure::ARM::Web
     end
 
     #
-    # Renew an existing certificate order
+    # Renew an existing certificate order.
     #
-    # Renew an existing certificate order
+    # Renew an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate name
     # @param renew_certificate_order_request [RenewCertificateOrderRequest] Renew
     # parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def renew(resource_group_name, name, renew_certificate_order_request, custom_headers = nil)
       response = renew_async(resource_group_name, name, renew_certificate_order_request, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Renew an existing certificate order
+    # Renew an existing certificate order.
     #
-    # Renew an existing certificate order
+    # Renew an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate name
     # @param renew_certificate_order_request [RenewCertificateOrderRequest] Renew
     # parameters
@@ -1017,11 +1033,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Renew an existing certificate order
+    # Renew an existing certificate order.
     #
-    # Renew an existing certificate order
+    # Renew an existing certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate name
     # @param renew_certificate_order_request [RenewCertificateOrderRequest] Renew
     # parameters
@@ -1035,7 +1052,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'renew_certificate_order_request is nil' if renew_certificate_order_request.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1069,7 +1086,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1083,55 +1100,57 @@ module Azure::ARM::Web
     end
 
     #
-    # Resend certificate email
+    # Resend certificate email.
     #
-    # Resend certificate email
+    # Resend certificate email.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
-    def resend_certificate_email(resource_group_name, name, custom_headers = nil)
-      response = resend_certificate_email_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+    def resend_email(resource_group_name, name, custom_headers = nil)
+      response = resend_email_async(resource_group_name, name, custom_headers).value!
+      nil
     end
 
     #
-    # Resend certificate email
+    # Resend certificate email.
     #
-    # Resend certificate email
+    # Resend certificate email.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def resend_certificate_email_with_http_info(resource_group_name, name, custom_headers = nil)
-      resend_certificate_email_async(resource_group_name, name, custom_headers).value!
+    def resend_email_with_http_info(resource_group_name, name, custom_headers = nil)
+      resend_email_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Resend certificate email
+    # Resend certificate email.
     #
-    # Resend certificate email
+    # Resend certificate email.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def resend_certificate_email_async(resource_group_name, name, custom_headers = nil)
+    def resend_email_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1156,7 +1175,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1170,11 +1189,114 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieve the list of certificate actions
+    # Verify domain ownership for this certificate order.
     #
-    # Retrieve the list of certificate actions
+    # Verify domain ownership for this certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Certificate order name
+    # @param name_identifier [NameIdentifier] Email address
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def resend_request_emails(resource_group_name, name, name_identifier, custom_headers = nil)
+      response = resend_request_emails_async(resource_group_name, name, name_identifier, custom_headers).value!
+      nil
+    end
+
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Certificate order name
+    # @param name_identifier [NameIdentifier] Email address
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def resend_request_emails_with_http_info(resource_group_name, name, name_identifier, custom_headers = nil)
+      resend_request_emails_async(resource_group_name, name, name_identifier, custom_headers).value!
+    end
+
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Certificate order name
+    # @param name_identifier [NameIdentifier] Email address
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def resend_request_emails_async(resource_group_name, name, name_identifier, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'name_identifier is nil' if name_identifier.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = NameIdentifier.mapper()
+      request_content = @client.serialize(request_mapper,  name_identifier, 'name_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/resendRequestEmails'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Retrieve the list of certificate actions.
+    #
+    # Retrieve the list of certificate actions.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1187,11 +1309,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieve the list of certificate actions
+    # Retrieve the list of certificate actions.
     #
-    # Retrieve the list of certificate actions
+    # Retrieve the list of certificate actions.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1203,11 +1326,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieve the list of certificate actions
+    # Retrieve the list of certificate actions.
     #
-    # Retrieve the list of certificate actions
+    # Retrieve the list of certificate actions.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1218,7 +1342,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1281,11 +1405,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrive email history
+    # Retrieve email history.
     #
-    # Retrive email history
+    # Retrieve email history.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1298,11 +1423,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrive email history
+    # Retrieve email history.
     #
-    # Retrive email history
+    # Retrieve email history.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1314,11 +1440,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrive email history
+    # Retrieve email history.
     #
-    # Retrive email history
+    # Retrieve email history.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1329,7 +1456,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1392,28 +1519,142 @@ module Azure::ARM::Web
     end
 
     #
-    # Verify domain ownership for this certificate order
+    # Verify domain ownership for this certificate order.
     #
-    # Verify domain ownership for this certificate order
+    # Verify domain ownership for this certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
+    # @param site_seal_request [SiteSealRequest] Site seal request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [SiteSeal] operation results.
     #
-    def verify_domain_ownership(resource_group_name, name, custom_headers = nil)
-      response = verify_domain_ownership_async(resource_group_name, name, custom_headers).value!
+    def retrieve_site_seal(resource_group_name, name, site_seal_request, custom_headers = nil)
+      response = retrieve_site_seal_async(resource_group_name, name, site_seal_request, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Verify domain ownership for this certificate order
+    # Verify domain ownership for this certificate order.
     #
-    # Verify domain ownership for this certificate order
+    # Verify domain ownership for this certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Certificate order name
+    # @param site_seal_request [SiteSealRequest] Site seal request
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def retrieve_site_seal_with_http_info(resource_group_name, name, site_seal_request, custom_headers = nil)
+      retrieve_site_seal_async(resource_group_name, name, site_seal_request, custom_headers).value!
+    end
+
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Certificate order name
+    # @param site_seal_request [SiteSealRequest] Site seal request
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def retrieve_site_seal_async(resource_group_name, name, site_seal_request, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_seal_request is nil' if site_seal_request.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = SiteSealRequest.mapper()
+      request_content = @client.serialize(request_mapper,  site_seal_request, 'site_seal_request')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveSiteSeal'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteSeal.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Certificate order name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def verify_domain_ownership(resource_group_name, name, custom_headers = nil)
+      response = verify_domain_ownership_async(resource_group_name, name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # Verify domain ownership for this certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1425,11 +1666,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Verify domain ownership for this certificate order
+    # Verify domain ownership for this certificate order.
     #
-    # Verify domain ownership for this certificate order
+    # Verify domain ownership for this certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Certificate order name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1440,7 +1682,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1465,7 +1707,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1479,16 +1721,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
-    # @param key_vault_certificate [AppServiceCertificate] Key Vault secret csm Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
+    # resource Id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1500,16 +1742,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
-    # @param key_vault_certificate [AppServiceCertificate] Key Vault secret csm Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
+    # resource Id.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1520,16 +1762,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # Associates a Key Vault secret to a certificate store that will be used for
-    # storing the certificate once it's ready
+    # Creates or updates a certificate and associates with key vault secret.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
-    # @param name [String] Certificate name
-    # @param key_vault_certificate [AppServiceCertificate] Key Vault secret csm Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
+    # resource Id.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1541,7 +1783,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'key_vault_certificate is nil' if key_vault_certificate.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1575,7 +1817,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1583,6 +1825,16 @@ module Azure::ARM::Web
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = AppServiceCertificate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = AppServiceCertificate.mapper()
@@ -1599,14 +1851,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to be used for purchasing certificate
+    # Distinguished name to to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1618,14 +1871,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to be used for purchasing certificate
+    # Distinguished name to to use for the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1636,14 +1890,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # Create or update a certificate purchase order
+    # Create or update a certificate purchase order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate.
     # @param certificate_distinguished_name [AppServiceCertificateOrder]
-    # Distinguished name to be used for purchasing certificate
+    # Distinguished name to to use for the certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1654,7 +1909,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'certificate_distinguished_name is nil' if certificate_distinguished_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-08-01'
 
 
       request_headers = {}
@@ -1688,7 +1943,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1696,6 +1951,16 @@ module Azure::ARM::Web
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = AppServiceCertificateOrder.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = AppServiceCertificateOrder.mapper()
@@ -1712,9 +1977,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1729,9 +1994,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1745,9 +2010,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1805,9 +2070,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1822,9 +2087,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1838,9 +2103,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1898,11 +2163,9 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1917,11 +2180,9 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1935,11 +2196,9 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1997,9 +2256,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
-    # Lists all domains in a subscription
+    # List all certificate orders in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -2019,11 +2278,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # Get certificate orders in a resource group
+    # Get certificate orders in a resource group.
     #
-    # @param resource_group_name [String] Azure resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2042,14 +2302,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # List all certificates associated with a certificate order (only one
-    # certificate can be associated with an order at a time)
+    # List all certificates associated with a certificate order.
     #
-    # @param resource_group_name [String] Azure resource group name
-    # @param certificate_order_name [String] Certificate name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

@@ -6,47 +6,48 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of a restore request
+    # Description of a restore request.
     #
     class RestoreRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] SAS URL to the container
+      # @return [String] SAS URL to the container.
       attr_accessor :storage_account_url
 
-      # @return [String] Name of a blob which contains the backup
+      # @return [String] Name of a blob which contains the backup.
       attr_accessor :blob_name
 
-      # @return [Boolean] True if the restore operation can overwrite target
-      # site. "True" needed if trying to restore over an existing site.
+      # @return [Boolean] <code>true</code> if the restore operation can
+      # overwrite target app; otherwise, <code>false</code>. <code>true</code>
+      # is needed if trying to restore over an existing app.
       attr_accessor :overwrite
 
-      # @return [String] Name of a site (Web App)
+      # @return [String] Name of an app.
       attr_accessor :site_name
 
-      # @return [Array<DatabaseBackupSetting>] Collection of databses which
+      # @return [Array<DatabaseBackupSetting>] Collection of databases which
       # should be restored. This list has to match the list of databases
       # included in the backup.
       attr_accessor :databases
 
-      # @return [Boolean] Changes a logic when restoring a site with custom
-      # domains. If "true", custom domains are removed automatically. If
-      # "false", custom domains are added to
-      # the site object when it is being restored, but that might fail due to
-      # conflicts during the operation.
+      # @return [Boolean] Changes a logic when restoring an app with custom
+      # domains. <code>true</code> to remove custom domains automatically. If
+      # <code>false</code>, custom domains are added to
+      # the app's object when it is being restored, but that might fail due to
+      # conflicts during the operation. Default value: false .
       attr_accessor :ignore_conflicting_host_names
 
       # @return [BackupRestoreOperationType] Operation type. Possible values
-      # include: 'Default', 'Clone', 'Relocation'
+      # include: 'Default', 'Clone', 'Relocation'. Default value: 'Default' .
       attr_accessor :operation_type
 
-      # @return [Boolean] Gets or sets a flag showing if
-      # SiteConfig.ConnectionStrings should be set in new site
+      # @return [Boolean] <code>true</code> if SiteConfig.ConnectionStrings
+      # should be set in new app; otherwise, <code>false</code>.
       attr_accessor :adjust_connection_strings
 
       # @return [String] App Service Environment name, if needed (only when
-      # restoring a site to an App Service Environment)
+      # restoring an app to an App Service Environment).
       attr_accessor :hosting_environment
 
 
@@ -71,7 +72,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -158,6 +159,7 @@ module Azure::ARM::Web
               ignore_conflicting_host_names: {
                 required: false,
                 serialized_name: 'properties.ignoreConflictingHostNames',
+                default_value: false,
                 type: {
                   name: 'Boolean'
                 }
@@ -165,6 +167,7 @@ module Azure::ARM::Web
               operation_type: {
                 required: false,
                 serialized_name: 'properties.operationType',
+                default_value: 'Default',
                 type: {
                   name: 'Enum',
                   module: 'BackupRestoreOperationType'

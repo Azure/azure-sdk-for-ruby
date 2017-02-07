@@ -6,133 +6,140 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents a web app
+    # A web app, a mobile app backend, or an API app.
     #
     class Site < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] State of the web app
+      # @return [String] Current state of the app.
       attr_accessor :state
 
-      # @return [Array<String>] Hostnames associated with web app
+      # @return [Array<String>] Hostnames associated with the app.
       attr_accessor :host_names
 
-      # @return [String] Name of repository site
+      # @return [String] Name of the repository site.
       attr_accessor :repository_site_name
 
-      # @return [UsageState] State indicating whether web app has exceeded its
-      # quota usage. Possible values include: 'Normal', 'Exceeded'
+      # @return [UsageState] State indicating whether the app has exceeded its
+      # quota usage. Read-only. Possible values include: 'Normal', 'Exceeded'
       attr_accessor :usage_state
 
-      # @return [Boolean] True if the site is enabled; otherwise, false.
-      # Setting this  value to false disables the site (takes the site off
-      # line).
+      # @return [Boolean] <code>true</code> if the app is enabled; otherwise,
+      # <code>false</code>. Setting this value to false disables the app (takes
+      # the app offline).
       attr_accessor :enabled
 
-      # @return [Array<String>] Hostnames for the web app that are enabled.
-      # Hostnames need to be assigned and enabled. If some hostnames are
-      # assigned but not enabled
-      # the app is not served on those hostnames
+      # @return [Array<String>] Enabled hostnames for the app.Hostnames need to
+      # be assigned (see HostNames) AND enabled. Otherwise,
+      # the app is not served on those hostnames.
       attr_accessor :enabled_host_names
 
       # @return [SiteAvailabilityState] Management information availability
-      # state for the web app. Possible values are Normal or Limited.
-      # Normal means that the site is running correctly and that management
-      # information for the site is available.
-      # Limited means that only partial management information for the site is
-      # available and that detailed site information is unavailable. Possible
-      # values include: 'Normal', 'Limited', 'DisasterRecoveryMode'
+      # state for the app. Possible values include: 'Normal', 'Limited',
+      # 'DisasterRecoveryMode'
       attr_accessor :availability_state
 
-      # @return [Array<HostNameSslState>] Hostname SSL states are  used to
-      # manage the SSL bindings for site's hostnames.
+      # @return [Array<HostNameSslState>] Hostname SSL states are used to
+      # manage the SSL bindings for app's hostnames.
       attr_accessor :host_name_ssl_states
 
-      # @return [String]
+      # @return [String] Resource ID of the associated App Service plan,
+      # formatted as:
+      # "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
       attr_accessor :server_farm_id
 
-      # @return [Boolean] Reserved
+      # @return [Boolean] <code>true</code> if reserved; otherwise,
+      # <code>false</code>. Default value: false .
       attr_accessor :reserved
 
-      # @return [DateTime] Last time web app was modified in UTC
+      # @return [DateTime] Last time the app was modified, in UTC. Read-only.
       attr_accessor :last_modified_time_utc
 
-      # @return [SiteConfig] Configuration of web app
+      # @return [SiteConfig] Configuration of the app.
       attr_accessor :site_config
 
-      # @return [Array<String>] Read-only list of Azure Traffic manager
-      # hostnames associated with web app
+      # @return [Array<String>] Azure Traffic Manager hostnames associated with
+      # the app. Read-only.
       attr_accessor :traffic_manager_host_names
 
-      # @return [Boolean] If set indicates whether web app is deployed as a
-      # premium app
+      # @return [Boolean] Indicates whether app is deployed as a premium app.
       attr_accessor :premium_app_deployed
 
-      # @return [Boolean] If set indicates whether to stop SCM (KUDU) site when
-      # the web app is stopped. Default is false.
+      # @return [Boolean] <code>true</code> to stop SCM (KUDU) site when the
+      # app is stopped; otherwise, <code>false</code>. The default is
+      # <code>false</code>. Default value: false .
       attr_accessor :scm_site_also_stopped
 
-      # @return [String] Read-only property that specifies which slot this app
-      # will swap into
+      # @return [String] Specifies which deployment slot this app will swap
+      # into. Read-only.
       attr_accessor :target_swap_slot
 
-      # @return [HostingEnvironmentProfile] Specification for the hosting
-      # environment (App Service Environment) to use for the web app
+      # @return [HostingEnvironmentProfile] App Service Environment to use for
+      # the app.
       attr_accessor :hosting_environment_profile
 
-      # @return [String] Micro services like WebSites, Logic Apps
+      # @return [String] Micro services like apps, logic apps. Default value:
+      # 'false' .
       attr_accessor :micro_service
 
-      # @return [String] Name of gateway app associated with web app
+      # @return [String] Name of gateway app associated with the app.
       attr_accessor :gateway_site_name
 
-      # @return [Boolean] Specifies if the client affinity is enabled when load
-      # balancing http request for multiple instances of the web app
+      # @return [Boolean] <code>true</code> to enable client affinity;
+      # <code>false</code> to stop sending session affinity cookies, which
+      # route client requests in the same session to the same instance. Default
+      # is <code>true</code>.
       attr_accessor :client_affinity_enabled
 
-      # @return [Boolean] Specifies if the client certificate is enabled for
-      # the web app
+      # @return [Boolean] <code>true</code> to enable client certificate
+      # authentication (TLS mutual authentication); otherwise,
+      # <code>false</code>. Default is <code>false</code>.
       attr_accessor :client_cert_enabled
 
-      # @return [Boolean] Specifies if the public hostnames are disabled the
-      # web app.
-      # If set to true the app is only accessible via API Management process
+      # @return [Boolean] <code>true</code> to disable the public hostnames of
+      # the app; otherwise, <code>false</code>.
+      # If <code>true</code>, the app is only accessible via API management
+      # process.
       attr_accessor :host_names_disabled
 
-      # @return [String] List of comma separated IP addresses that this web app
-      # uses for outbound connections. Those can be used when configuring
-      # firewall rules for databases accessed by this web app.
+      # @return [String] List of IP addresses that the app uses for outbound
+      # connections (e.g. database access). Read-only.
       attr_accessor :outbound_ip_addresses
 
-      # @return [Integer] Size of a function container
+      # @return [Integer] Size of the function container.
       attr_accessor :container_size
 
       # @return [Integer] Maximum allowed daily memory-time quota (applicable
-      # on dynamic sites only)
+      # on dynamic apps only).
       attr_accessor :daily_memory_time_quota
 
-      # @return [DateTime] Site suspended till in case memory-time quota is
-      # exceeded
+      # @return [DateTime] App suspended till in case memory-time quota is
+      # exceeded.
       attr_accessor :suspended_till
 
-      # @return [Integer] Maximum number of workers
-      # This only applies to function container
+      # @return [Integer] Maximum number of workers.
+      # This only applies to Functions container.
       attr_accessor :max_number_of_workers
 
-      # @return [CloningInfo] This is only valid for web app creation. If
-      # specified, web app is cloned from
-      # a source web app
+      # @return [CloningInfo] If specified during app creation, the app is
+      # cloned from a source app.
       attr_accessor :cloning_info
 
-      # @return [String] Resource group web app belongs to
+      # @return [String] Name of the resource group the app belongs to.
+      # Read-only.
       attr_accessor :resource_group
 
-      # @return [Boolean] Site is a default container
+      # @return [Boolean] <code>true</code> if the app is a default container;
+      # otherwise, <code>false</code>.
       attr_accessor :is_default_container
 
-      # @return [String] Default hostname of the web app
+      # @return [String] Default hostname of the app. Read-only.
       attr_accessor :default_host_name
+
+      # @return [SlotSwapStatus] Status of the last deployment slot swap
+      # operation.
+      attr_accessor :slot_swap_status
 
 
       #
@@ -156,7 +163,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -199,6 +206,7 @@ module Azure::ARM::Web
               },
               state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.state',
                 type: {
                   name: 'String'
@@ -206,6 +214,7 @@ module Azure::ARM::Web
               },
               host_names: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.hostNames',
                 type: {
                   name: 'Sequence',
@@ -220,6 +229,7 @@ module Azure::ARM::Web
               },
               repository_site_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.repositorySiteName',
                 type: {
                   name: 'String'
@@ -227,6 +237,7 @@ module Azure::ARM::Web
               },
               usage_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.usageState',
                 type: {
                   name: 'Enum',
@@ -242,6 +253,7 @@ module Azure::ARM::Web
               },
               enabled_host_names: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.enabledHostNames',
                 type: {
                   name: 'Sequence',
@@ -256,6 +268,7 @@ module Azure::ARM::Web
               },
               availability_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.availabilityState',
                 type: {
                   name: 'Enum',
@@ -287,12 +300,14 @@ module Azure::ARM::Web
               reserved: {
                 required: false,
                 serialized_name: 'properties.reserved',
+                default_value: false,
                 type: {
                   name: 'Boolean'
                 }
               },
               last_modified_time_utc: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.lastModifiedTimeUtc',
                 type: {
                   name: 'DateTime'
@@ -308,6 +323,7 @@ module Azure::ARM::Web
               },
               traffic_manager_host_names: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.trafficManagerHostNames',
                 type: {
                   name: 'Sequence',
@@ -322,6 +338,7 @@ module Azure::ARM::Web
               },
               premium_app_deployed: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.premiumAppDeployed',
                 type: {
                   name: 'Boolean'
@@ -330,12 +347,14 @@ module Azure::ARM::Web
               scm_site_also_stopped: {
                 required: false,
                 serialized_name: 'properties.scmSiteAlsoStopped',
+                default_value: false,
                 type: {
                   name: 'Boolean'
                 }
               },
               target_swap_slot: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.targetSwapSlot',
                 type: {
                   name: 'String'
@@ -352,6 +371,7 @@ module Azure::ARM::Web
               micro_service: {
                 required: false,
                 serialized_name: 'properties.microService',
+                default_value: 'false',
                 type: {
                   name: 'String'
                 }
@@ -386,6 +406,7 @@ module Azure::ARM::Web
               },
               outbound_ip_addresses: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.outboundIpAddresses',
                 type: {
                   name: 'String'
@@ -407,6 +428,7 @@ module Azure::ARM::Web
               },
               suspended_till: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.suspendedTill',
                 type: {
                   name: 'DateTime'
@@ -414,6 +436,7 @@ module Azure::ARM::Web
               },
               max_number_of_workers: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.maxNumberOfWorkers',
                 type: {
                   name: 'Number'
@@ -429,6 +452,7 @@ module Azure::ARM::Web
               },
               resource_group: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
@@ -436,6 +460,7 @@ module Azure::ARM::Web
               },
               is_default_container: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.isDefaultContainer',
                 type: {
                   name: 'Boolean'
@@ -443,9 +468,19 @@ module Azure::ARM::Web
               },
               default_host_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.defaultHostName',
                 type: {
                   name: 'String'
+                }
+              },
+              slot_swap_status: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.slotSwapStatus',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SlotSwapStatus'
                 }
               }
             }

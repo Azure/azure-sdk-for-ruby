@@ -23,63 +23,66 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Gets a list of recommendations associated with the specified subscription.
+    # List all recommendations for a subscription.
     #
-    # Gets a list of recommendations associated with the specified subscription.
+    # List all recommendations for a subscription.
     #
-    # @param featured [Boolean] If set, this API returns only the most critical
-    # recommendation among the others. Otherwise this API returns all
-    # recommendations available
-    # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
-    # channel eq 'Notification'
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def get(featured = nil, filter = nil, custom_headers = nil)
-      response = get_async(featured, filter, custom_headers).value!
+    def list(featured = nil, filter = nil, custom_headers = nil)
+      response = list_async(featured, filter, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a list of recommendations associated with the specified subscription.
+    # List all recommendations for a subscription.
     #
-    # Gets a list of recommendations associated with the specified subscription.
+    # List all recommendations for a subscription.
     #
-    # @param featured [Boolean] If set, this API returns only the most critical
-    # recommendation among the others. Otherwise this API returns all
-    # recommendations available
-    # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
-    # channel eq 'Notification'
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(featured = nil, filter = nil, custom_headers = nil)
-      get_async(featured, filter, custom_headers).value!
+    def list_with_http_info(featured = nil, filter = nil, custom_headers = nil)
+      list_async(featured, filter, custom_headers).value!
     end
 
     #
-    # Gets a list of recommendations associated with the specified subscription.
+    # List all recommendations for a subscription.
     #
-    # Gets a list of recommendations associated with the specified subscription.
+    # List all recommendations for a subscription.
     #
-    # @param featured [Boolean] If set, this API returns only the most critical
-    # recommendation among the others. Otherwise this API returns all
-    # recommendations available
-    # @param filter [String] Return only channels specified in the filter. Filter
-    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
-    # channel eq 'Notification'
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(featured = nil, filter = nil, custom_headers = nil)
+    def list_async(featured = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2016-03-01'
 
@@ -96,7 +99,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'featured' => featured,'$filter' => filter,'api-version' => api_version},
+          query_params: {'featured' => featured,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -144,69 +148,144 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the list of past recommendations optionally specified by the time range.
+    # Reset all recommendation opt-out settings for a subscription.
     #
-    # Gets the list of past recommendations optionally specified by the time range.
+    # Reset all recommendation opt-out settings for a subscription.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Site name
-    # @param start_time [String] The start time of a time range to query, e.g.
-    # $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
-    # '2015-01-02T00:00:00Z'
-    # @param end_time [String] The end time of a time range to query, e.g.
-    # $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
-    # '2015-01-02T00:00:00Z'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
     #
-    def list_history_for_web_app(resource_group_name, site_name, start_time = nil, end_time = nil, custom_headers = nil)
-      response = list_history_for_web_app_async(resource_group_name, site_name, start_time, end_time, custom_headers).value!
-      response.body unless response.nil?
+    def reset_all_filters(custom_headers = nil)
+      response = reset_all_filters_async(custom_headers).value!
+      nil
     end
 
     #
-    # Gets the list of past recommendations optionally specified by the time range.
+    # Reset all recommendation opt-out settings for a subscription.
     #
-    # Gets the list of past recommendations optionally specified by the time range.
+    # Reset all recommendation opt-out settings for a subscription.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Site name
-    # @param start_time [String] The start time of a time range to query, e.g.
-    # $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
-    # '2015-01-02T00:00:00Z'
-    # @param end_time [String] The end time of a time range to query, e.g.
-    # $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
-    # '2015-01-02T00:00:00Z'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_history_for_web_app_with_http_info(resource_group_name, site_name, start_time = nil, end_time = nil, custom_headers = nil)
-      list_history_for_web_app_async(resource_group_name, site_name, start_time, end_time, custom_headers).value!
+    def reset_all_filters_with_http_info(custom_headers = nil)
+      reset_all_filters_async(custom_headers).value!
     end
 
     #
-    # Gets the list of past recommendations optionally specified by the time range.
+    # Reset all recommendation opt-out settings for a subscription.
     #
-    # Gets the list of past recommendations optionally specified by the time range.
+    # Reset all recommendation opt-out settings for a subscription.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Site name
-    # @param start_time [String] The start time of a time range to query, e.g.
-    # $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
-    # '2015-01-02T00:00:00Z'
-    # @param end_time [String] The end time of a time range to query, e.g.
-    # $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
-    # '2015-01-02T00:00:00Z'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_history_for_web_app_async(resource_group_name, site_name, start_time = nil, end_time = nil, custom_headers = nil)
+    def reset_all_filters_async(custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/recommendations/reset'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def list_history_for_web_app(resource_group_name, site_name, filter = nil, custom_headers = nil)
+      response = list_history_for_web_app_async(resource_group_name, site_name, filter, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_history_for_web_app_with_http_info(resource_group_name, site_name, filter = nil, custom_headers = nil)
+      list_history_for_web_app_async(resource_group_name, site_name, filter, custom_headers).value!
+    end
+
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # Get past recommendations for an app, optionally specified by the time range.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param filter [String] Filter is specified by using OData syntax. Example:
+    # $filter=channels eq 'Api' or channel eq 'Notification' and startTime eq
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[PT1H|PT1M|P1D]
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_history_for_web_app_async(resource_group_name, site_name, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -225,7 +304,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'startTime' => start_time,'endTime' => end_time,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -273,72 +353,72 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a list of recommendations associated with the specified web site.
+    # Get all recommendations for an app.
     #
-    # Gets a list of recommendations associated with the specified web site.
+    # Get all recommendations for an app.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Site name
-    # @param featured [Boolean] If set, this API returns only the most critical
-    # recommendation among the others. Otherwise this API returns all
-    # recommendations available
-    # @param web_app_sku [String] The name of web app SKU.
-    # @param num_slots [Integer] The number of site slots associated to the site
-    # @param live_hours [Integer] If greater than zero, this API scans the last
-    # active live site symptoms, dynamically generate on-the-fly recommendations
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Return only channels specified in the filter. Filter
+    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # channel eq 'Notification'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def list_recommended_rules_for_web_app(resource_group_name, site_name, featured = nil, web_app_sku = nil, num_slots = nil, live_hours = nil, custom_headers = nil)
-      response = list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured, web_app_sku, num_slots, live_hours, custom_headers).value!
+    def list_recommended_rules_for_web_app(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
+      response = list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured, filter, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a list of recommendations associated with the specified web site.
+    # Get all recommendations for an app.
     #
-    # Gets a list of recommendations associated with the specified web site.
+    # Get all recommendations for an app.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Site name
-    # @param featured [Boolean] If set, this API returns only the most critical
-    # recommendation among the others. Otherwise this API returns all
-    # recommendations available
-    # @param web_app_sku [String] The name of web app SKU.
-    # @param num_slots [Integer] The number of site slots associated to the site
-    # @param live_hours [Integer] If greater than zero, this API scans the last
-    # active live site symptoms, dynamically generate on-the-fly recommendations
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Return only channels specified in the filter. Filter
+    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # channel eq 'Notification'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_recommended_rules_for_web_app_with_http_info(resource_group_name, site_name, featured = nil, web_app_sku = nil, num_slots = nil, live_hours = nil, custom_headers = nil)
-      list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured, web_app_sku, num_slots, live_hours, custom_headers).value!
+    def list_recommended_rules_for_web_app_with_http_info(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
+      list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured, filter, custom_headers).value!
     end
 
     #
-    # Gets a list of recommendations associated with the specified web site.
+    # Get all recommendations for an app.
     #
-    # Gets a list of recommendations associated with the specified web site.
+    # Get all recommendations for an app.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Site name
-    # @param featured [Boolean] If set, this API returns only the most critical
-    # recommendation among the others. Otherwise this API returns all
-    # recommendations available
-    # @param web_app_sku [String] The name of web app SKU.
-    # @param num_slots [Integer] The number of site slots associated to the site
-    # @param live_hours [Integer] If greater than zero, this API scans the last
-    # active live site symptoms, dynamically generate on-the-fly recommendations
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param featured [Boolean] Specify <code>true</code> to return only the most
+    # critical recommendations. The default is <code>false</code>, which returns
+    # all recommendations.
+    # @param filter [String] Return only channels specified in the filter. Filter
+    # is specified by using OData syntax. Example: $filter=channels eq 'Api' or
+    # channel eq 'Notification'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured = nil, web_app_sku = nil, num_slots = nil, live_hours = nil, custom_headers = nil)
+    def list_recommended_rules_for_web_app_async(resource_group_name, site_name, featured = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'site_name is nil' if site_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -357,7 +437,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'featured' => featured,'webAppSku' => web_app_sku,'numSlots' => num_slots,'liveHours' => live_hours,'api-version' => api_version},
+          query_params: {'featured' => featured,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -405,17 +486,194 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the detailed properties of the recommendation object for the specified
-    # web site.
+    # Disable all recommendations for an app.
     #
-    # Gets the detailed properties of the recommendation object for the specified
-    # web site.
+    # Disable all recommendations for an app.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Name of web app
-    # @param name [String] Recommendation rule name
-    # @param update_seen [Boolean] If true, the backend updates the last seen
-    # timestamp of the recommendation object.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def disable_all_for_web_app(resource_group_name, site_name, custom_headers = nil)
+      response = disable_all_for_web_app_async(resource_group_name, site_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Disable all recommendations for an app.
+    #
+    # Disable all recommendations for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disable_all_for_web_app_with_http_info(resource_group_name, site_name, custom_headers = nil)
+      disable_all_for_web_app_async(resource_group_name, site_name, custom_headers).value!
+    end
+
+    #
+    # Disable all recommendations for an app.
+    #
+    # Disable all recommendations for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disable_all_for_web_app_async(resource_group_name, site_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/disable'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Reset all recommendation opt-out settings for an app.
+    #
+    # Reset all recommendation opt-out settings for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def reset_all_filters_for_web_app(resource_group_name, site_name, custom_headers = nil)
+      response = reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Reset all recommendation opt-out settings for an app.
+    #
+    # Reset all recommendation opt-out settings for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def reset_all_filters_for_web_app_with_http_info(resource_group_name, site_name, custom_headers = nil)
+      reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers).value!
+    end
+
+    #
+    # Reset all recommendation opt-out settings for an app.
+    #
+    # Reset all recommendation opt-out settings for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def reset_all_filters_for_web_app_async(resource_group_name, site_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'site_name is nil' if site_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/recommendations/reset'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'siteName' => site_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get a recommendation rule for an app.
+    #
+    # Get a recommendation rule for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param name [String] Name of the recommendation.
+    # @param update_seen [Boolean] Specify <code>true</code> to update the
+    # last-seen timestamp of the recommendation object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -427,17 +685,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the detailed properties of the recommendation object for the specified
-    # web site.
+    # Get a recommendation rule for an app.
     #
-    # Gets the detailed properties of the recommendation object for the specified
-    # web site.
+    # Get a recommendation rule for an app.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Name of web app
-    # @param name [String] Recommendation rule name
-    # @param update_seen [Boolean] If true, the backend updates the last seen
-    # timestamp of the recommendation object.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param name [String] Name of the recommendation.
+    # @param update_seen [Boolean] Specify <code>true</code> to update the
+    # last-seen timestamp of the recommendation object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -448,17 +705,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the detailed properties of the recommendation object for the specified
-    # web site.
+    # Get a recommendation rule for an app.
     #
-    # Gets the detailed properties of the recommendation object for the specified
-    # web site.
+    # Get a recommendation rule for an app.
     #
-    # @param resource_group_name [String] Resource group name
-    # @param site_name [String] Name of web app
-    # @param name [String] Recommendation rule name
-    # @param update_seen [Boolean] If true, the backend updates the last seen
-    # timestamp of the recommendation object.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param site_name [String] Name of the app.
+    # @param name [String] Name of the recommendation.
+    # @param update_seen [Boolean] Specify <code>true</code> to update the
+    # last-seen timestamp of the recommendation object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -6,37 +6,37 @@
 module Azure::ARM::Web
   module Models
     #
-    # Object representing a metric for any resource
+    # Object representing a metric for any resource .
     #
     class ResourceMetric
 
       include MsRestAzure
 
-      # @return [ResourceMetricName] Name of metric
+      # @return [ResourceMetricName] Name of metric.
       attr_accessor :name
 
-      # @return [String] Metric unit
+      # @return [String] Metric unit.
       attr_accessor :unit
 
       # @return [String] Metric granularity. E.g PT1H, PT5M, P1D
       attr_accessor :time_grain
 
-      # @return [DateTime] Metric start time
+      # @return [DateTime] Metric start time.
       attr_accessor :start_time
 
-      # @return [DateTime] Metric end time
+      # @return [DateTime] Metric end time.
       attr_accessor :end_time
 
-      # @return [String] Metric resource Id
+      # @return [String] Metric resource Id.
       attr_accessor :resource_id
 
-      # @return [String] Resource Id
+      # @return [String] Resource Id.
       attr_accessor :id
 
-      # @return [Array<ResourceMetricValue>] Metric values
+      # @return [Array<ResourceMetricValue>] Metric values.
       attr_accessor :metric_values
 
-      # @return [Array<ResourceMetricProperty>] Properties
+      # @return [Array<ResourceMetricProperty>] Properties.
       attr_accessor :properties
 
 

@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # The VnetGateway contract. This is used to give the vnet gateway access to
-    # the VPN package.
+    # The Virtual Network gateway contract. This is used to give the Virtual
+    # Network gateway access to the VPN package.
     #
     class VnetGateway < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The VNET name.
+      # @return [String] The Virtual Network name.
       attr_accessor :vnet_name
 
-      # @return [String] The URI where the Vpn package can be downloaded
+      # @return [String] The URI where the VPN package can be downloaded.
       attr_accessor :vpn_package_uri
 
 
@@ -41,7 +41,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

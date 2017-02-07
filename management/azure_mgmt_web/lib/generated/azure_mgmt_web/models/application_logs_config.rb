@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Application logs configuration
+    # Application logs configuration.
     #
     class ApplicationLogsConfig
 
       include MsRestAzure
 
       # @return [FileSystemApplicationLogsConfig] Application logs to file
-      # system configuration
+      # system configuration.
       attr_accessor :file_system
 
       # @return [AzureTableStorageApplicationLogsConfig] Application logs to
-      # azure table storage configuration
+      # azure table storage configuration.
       attr_accessor :azure_table_storage
 
       # @return [AzureBlobStorageApplicationLogsConfig] Application logs to
-      # blob storage configuration
+      # blob storage configuration.
       attr_accessor :azure_blob_storage
 
 

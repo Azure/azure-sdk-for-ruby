@@ -6,21 +6,23 @@
 module Azure::ARM::Web
   module Models
     #
-    # Domain availablility check result
+    # Domain availablility check result.
     #
     class DomainAvailablilityCheckResult
 
       include MsRestAzure
 
-      # @return [String] Name of the domain
+      # @return [String] Name of the domain.
       attr_accessor :name
 
-      # @return [Boolean] If true then domain can be purchased using
-      # CreateDomain Api
+      # @return [Boolean] <code>true</code> if domain can be purchased using
+      # CreateDomain API; otherwise, <code>false</code>.
       attr_accessor :available
 
-      # @return [DomainType] Domain type. Possible values include: 'Regular',
-      # 'SoftDeleted'
+      # @return [DomainType] Valid values are Regular domain: Azure will charge
+      # the full price of domain registration, SoftDeleted: Purchasing this
+      # domain will simply restore it and this operation will not cost
+      # anything. Possible values include: 'Regular', 'SoftDeleted'
       attr_accessor :domain_type
 
 

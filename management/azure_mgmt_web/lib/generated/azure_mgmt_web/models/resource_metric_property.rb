@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Resource metric property
+    # Resource metric property.
     #
     class ResourceMetricProperty
 
       include MsRestAzure
 
-      # @return [String] Key for resource metric property
+      # @return [String] Key for resource metric property.
       attr_accessor :key
 
-      # @return [String] Value of pair
+      # @return [String] Value of pair.
       attr_accessor :value
 
 

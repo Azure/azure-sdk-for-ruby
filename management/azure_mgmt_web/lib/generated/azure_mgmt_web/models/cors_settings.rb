@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Cross-Origin Resource Sharing (CORS) settings for the web app.
+    # Cross-Origin Resource Sharing (CORS) settings for the app.
     #
     class CorsSettings
 

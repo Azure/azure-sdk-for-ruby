@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Domain purchase consent object representing acceptance of applicable
-    # legal agreements
+    # Domain purchase consent object, representing acceptance of applicable
+    # legal agreements.
     #
     class DomainPurchaseConsent
 
       include MsRestAzure
 
       # @return [Array<String>] List of applicable legal agreement keys. This
-      # list can be retrieved using ListLegalAgreements Api under
-      # TopLevelDomain resource
+      # list can be retrieved using ListLegalAgreements API under
+      # <code>TopLevelDomain</code> resource.
       attr_accessor :agreement_keys
 
-      # @return [String] Client IP address
+      # @return [String] Client IP address.
       attr_accessor :agreed_by
 
-      # @return [DateTime] Timestamp when the agreements were accepted
+      # @return [DateTime] Timestamp when the agreements were accepted.
       attr_accessor :agreed_at
 
 

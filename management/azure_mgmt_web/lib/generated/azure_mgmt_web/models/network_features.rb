@@ -6,26 +6,25 @@
 module Azure::ARM::Web
   module Models
     #
-    # This is an object used to store a full view of network features
-    # (presently VNET integration and Hybrid Connections)
-    # for a web app.
+    # Full view of network features for an app (presently VNET integration and
+    # Hybrid Connections).
     #
     class NetworkFeatures < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The Vnet Name
+      # @return [String] The Virtual Network name.
       attr_accessor :virtual_network_name
 
-      # @return [VnetInfo] The Vnet Summary view
+      # @return [VnetInfo] The Virtual Network summary view.
       attr_accessor :virtual_network_connection
 
       # @return [Array<RelayServiceConnectionEntity>] The Hybrid Connections
-      # Summary view
+      # summary view.
       attr_accessor :hybrid_connections
 
-      # @return [Array<HybridConnection>] The Hybrid Connection V2 (service
-      # bus) view
+      # @return [Array<HybridConnection>] The Hybrid Connection V2 (Service
+      # Bus) view.
       attr_accessor :hybrid_connections_v2
 
 
@@ -50,7 +49,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -93,6 +92,7 @@ module Azure::ARM::Web
               },
               virtual_network_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.virtualNetworkName',
                 type: {
                   name: 'String'
@@ -100,6 +100,7 @@ module Azure::ARM::Web
               },
               virtual_network_connection: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.virtualNetworkConnection',
                 type: {
                   name: 'Composite',
@@ -108,6 +109,7 @@ module Azure::ARM::Web
               },
               hybrid_connections: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.hybridConnections',
                 type: {
                   name: 'Sequence',
@@ -123,6 +125,7 @@ module Azure::ARM::Web
               },
               hybrid_connections_v2: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.hybridConnectionsV2',
                 type: {
                   name: 'Sequence',

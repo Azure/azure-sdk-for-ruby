@@ -24,9 +24,10 @@ module Azure::ARM::RecoveryServices
   autoload :RecoveryServicesClient,                             'generated/azure_mgmt_recovery_services/recovery_services_client.rb'
 
   module Models
-    autoload :VaultProperties,                                    'generated/azure_mgmt_recovery_services/models/vault_properties.rb'
-    autoload :Sku,                                                'generated/azure_mgmt_recovery_services/models/sku.rb'
     autoload :VaultList,                                          'generated/azure_mgmt_recovery_services/models/vault_list.rb'
+    autoload :Sku,                                                'generated/azure_mgmt_recovery_services/models/sku.rb'
+    autoload :VaultProperties,                                    'generated/azure_mgmt_recovery_services/models/vault_properties.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_recovery_services/models/resource.rb'
     autoload :Vault,                                              'generated/azure_mgmt_recovery_services/models/vault.rb'
     autoload :SkuName,                                            'generated/azure_mgmt_recovery_services/models/sku_name.rb'
   end

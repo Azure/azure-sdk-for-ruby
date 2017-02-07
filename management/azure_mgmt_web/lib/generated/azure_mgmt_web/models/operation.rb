@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class that represents an operation.
+    # Operation.
     #
     class Operation
 
       include MsRestAzure
 
-      # @return [String] Operation Id
+      # @return [String] Operation ID.
       attr_accessor :id
 
-      # @return [String] Operation Name
+      # @return [String] Operation name.
       attr_accessor :name
 
       # @return [OperationStatus] The current status of the operation. Possible
@@ -23,16 +23,16 @@ module Azure::ARM::Web
       # 'Created'
       attr_accessor :status
 
-      # @return [Array<ErrorEntity>] Any errors associate with the operation
+      # @return [Array<ErrorEntity>] Any errors associate with the operation.
       attr_accessor :errors
 
-      # @return [DateTime] Time when operation has started
+      # @return [DateTime] Time when operation has started.
       attr_accessor :created_time
 
-      # @return [DateTime] Time when operation has been updated
+      # @return [DateTime] Time when operation has been updated.
       attr_accessor :modified_time
 
-      # @return [DateTime] Time when operation will expire
+      # @return [DateTime] Time when operation will expire.
       attr_accessor :expiration_time
 
       # @return [String] Applicable only for stamp operation ids.
@@ -66,7 +66,7 @@ module Azure::ARM::Web
                 }
               },
               status: {
-                required: true,
+                required: false,
                 serialized_name: 'status',
                 type: {
                   name: 'Enum',

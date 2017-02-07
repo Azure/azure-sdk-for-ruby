@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Name value pair
+    # Name value pair.
     #
     class NameValuePair
 
       include MsRestAzure
 
-      # @return [String] Pair name
+      # @return [String] Pair name.
       attr_accessor :name
 
-      # @return [String] Pair value
+      # @return [String] Pair value.
       attr_accessor :value
 
 

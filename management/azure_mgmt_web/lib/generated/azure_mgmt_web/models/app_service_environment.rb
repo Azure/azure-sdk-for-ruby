@@ -6,149 +6,144 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of an hostingEnvironment (App Service Environment)
+    # Description of an App Service Environment.
     #
     class AppServiceEnvironment < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of the hostingEnvironment (App Service
-      # Environment)
+      # @return [String] Name of the App Service Environment.
       attr_accessor :app_service_environment_name
 
-      # @return [String] Location of the hostingEnvironment (App Service
-      # Environment), e.g. "West US"
+      # @return [String] Location of the App Service Environment, e.g. "West
+      # US".
       attr_accessor :app_service_environment_location
 
-      # @return [ProvisioningState] Provisioning state of the
-      # hostingEnvironment (App Service Environment). Possible values include:
-      # 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
+      # @return [ProvisioningState] Provisioning state of the App Service
+      # Environment. Possible values include: 'Succeeded', 'Failed',
+      # 'Canceled', 'InProgress', 'Deleting'
       attr_accessor :provisioning_state
 
-      # @return [HostingEnvironmentStatus] Current status of the
-      # hostingEnvironment (App Service Environment). Possible values include:
-      # 'Preparing', 'Ready', 'Scaling', 'Deleting'
+      # @return [HostingEnvironmentStatus] Current status of the App Service
+      # Environment. Possible values include: 'Preparing', 'Ready', 'Scaling',
+      # 'Deleting'
       attr_accessor :status
 
-      # @return [String] Name of the hostingEnvironment's (App Service
-      # Environment) virtual network
+      # @return [String] Name of the Virtual Network for the App Service
+      # Environment.
       attr_accessor :vnet_name
 
-      # @return [String] Resource group of the hostingEnvironment's (App
-      # Service Environment) virtual network
+      # @return [String] Resource group of the Virtual Network.
       attr_accessor :vnet_resource_group_name
 
-      # @return [String] Subnet of the hostingEnvironment's (App Service
-      # Environment) virtual network
+      # @return [String] Subnet of the Virtual Network.
       attr_accessor :vnet_subnet_name
 
-      # @return [VirtualNetworkProfile] Description of the hostingEnvironment's
-      # (App Service Environment) virtual network
+      # @return [VirtualNetworkProfile] Description of the Virtual Network.
       attr_accessor :virtual_network
 
       # @return [InternalLoadBalancingMode] Specifies which endpoints to serve
-      # internally in the hostingEnvironment's (App Service Environment) VNET.
+      # internally in the Virtual Network for the App Service Environment.
       # Possible values include: 'None', 'Web', 'Publishing'
       attr_accessor :internal_load_balancing_mode
 
-      # @return [String] Front-end VM size, e.g. "Medium", "Large"
+      # @return [String] Front-end VM size, e.g. "Medium", "Large".
       attr_accessor :multi_size
 
-      # @return [Integer] Number of front-end instances
+      # @return [Integer] Number of front-end instances.
       attr_accessor :multi_role_count
 
       # @return [Array<WorkerPool>] Description of worker pools with worker
-      # size ids, VM sizes, and number of workers in each pool
+      # size IDs, VM sizes, and number of workers in each pool.
       attr_accessor :worker_pools
 
-      # @return [Integer] Number of IP SSL addresses reserved for this
-      # hostingEnvironment (App Service Environment)
+      # @return [Integer] Number of IP SSL addresses reserved for the App
+      # Service Environment.
       attr_accessor :ipssl_address_count
 
-      # @return [String] Edition of the metadata database for the
-      # hostingEnvironment (App Service Environment) e.g. "Standard"
+      # @return [String] Edition of the metadata database for the App Service
+      # Environment, e.g. "Standard".
       attr_accessor :database_edition
 
-      # @return [String] Service objective of the metadata database for the
-      # hostingEnvironment (App Service Environment) e.g. "S0"
+      # @return [String] Service objective of the metadata database for the App
+      # Service Environment, e.g. "S0".
       attr_accessor :database_service_objective
 
-      # @return [Integer] Number of upgrade domains of this hostingEnvironment
-      # (App Service Environment)
+      # @return [Integer] Number of upgrade domains of the App Service
+      # Environment.
       attr_accessor :upgrade_domains
 
-      # @return [String] Subscription of the hostingEnvironment (App Service
-      # Environment)
+      # @return [String] Subscription of the App Service Environment.
       attr_accessor :subscription_id
 
-      # @return [String] DNS suffix of the hostingEnvironment (App Service
-      # Environment)
+      # @return [String] DNS suffix of the App Service Environment.
       attr_accessor :dns_suffix
 
-      # @return [String] Last deployment action on this hostingEnvironment (App
-      # Service Environment)
+      # @return [String] Last deployment action on the App Service Environment.
       attr_accessor :last_action
 
-      # @return [String] Result of the last deployment action on this
-      # hostingEnvironment (App Service Environment)
+      # @return [String] Result of the last deployment action on the App
+      # Service Environment.
       attr_accessor :last_action_result
 
       # @return [String] List of comma separated strings describing which VM
-      # sizes are allowed for front-ends
+      # sizes are allowed for front-ends.
       attr_accessor :allowed_multi_sizes
 
       # @return [String] List of comma separated strings describing which VM
-      # sizes are allowed for workers
+      # sizes are allowed for workers.
       attr_accessor :allowed_worker_sizes
 
-      # @return [Integer] Maximum number of VMs in this hostingEnvironment (App
-      # Service Environment)
+      # @return [Integer] Maximum number of VMs in the App Service Environment.
       attr_accessor :maximum_number_of_machines
 
-      # @return [Array<VirtualIPMapping>] Description of IP SSL mapping for
-      # this hostingEnvironment (App Service Environment)
+      # @return [Array<VirtualIPMapping>] Description of IP SSL mapping for the
+      # App Service Environment.
       attr_accessor :vip_mappings
 
       # @return [Array<StampCapacity>] Current total, used, and available
-      # worker capacities
+      # worker capacities.
       attr_accessor :environment_capacities
 
       # @return [Array<NetworkAccessControlEntry>] Access control list for
-      # controlling traffic to the hostingEnvironment (App Service Environment)
+      # controlling traffic to the App Service Environment.
       attr_accessor :network_access_control_list
 
-      # @return [Boolean] True/false indicating whether the hostingEnvironment
-      # (App Service Environment) is healthy
+      # @return [Boolean] True/false indicating whether the App Service
+      # Environment is healthy.
       attr_accessor :environment_is_healthy
 
       # @return [String] Detailed message about with results of the last check
-      # of the hostingEnvironment (App Service Environment)
+      # of the App Service Environment.
       attr_accessor :environment_status
 
-      # @return [String] Resource group of the hostingEnvironment (App Service
-      # Environment)
+      # @return [String] Resource group of the App Service Environment.
       attr_accessor :resource_group
 
-      # @return [Integer] Scale Factor for FrontEnds
+      # @return [Integer] Scale factor for front-ends.
       attr_accessor :front_end_scale_factor
 
-      # @return [String]
+      # @return [Integer] Default Scale Factor for FrontEnds.
+      attr_accessor :default_front_end_scale_factor
+
+      # @return [String] API Management Account associated with the App Service
+      # Environment.
       attr_accessor :api_management_account_id
 
-      # @return [Boolean] True/false indicating whether the hostingEnvironment
-      # is suspended. The environment can be suspended e.g. when the management
-      # endpoint is no longer available
-      # (most likely because NSG blocked the incoming traffic)
+      # @return [Boolean] <code>true</code> if the App Service Environment is
+      # suspended; otherwise, <code>false</code>. The environment can be
+      # suspended, e.g. when the management endpoint is no longer available
+      # (most likely because NSG blocked the incoming traffic).
       attr_accessor :suspended
 
-      # @return [Boolean] True/false indicating whether the hostingEnvironment
-      # is suspended. The environment can be suspended e.g. when the management
-      # endpoint is no longer available
-      # (most likely because NSG blocked the incoming traffic)
+      # @return [Boolean] True/false indicating whether the App Service
+      # Environment is suspended. The environment can be suspended e.g. when
+      # the management endpoint is no longer available
+      # (most likely because NSG blocked the incoming traffic).
       attr_accessor :dynamic_cache_enabled
 
       # @return [Array<NameValuePair>] Custom settings for changing the
-      # behavior of the hosting environment
+      # behavior of the App Service Environment.
       attr_accessor :cluster_settings
 
 
@@ -173,7 +168,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -230,6 +225,7 @@ module Azure::ARM::Web
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',
@@ -238,6 +234,7 @@ module Azure::ARM::Web
               },
               status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
@@ -319,6 +316,7 @@ module Azure::ARM::Web
               },
               database_edition: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.databaseEdition',
                 type: {
                   name: 'String'
@@ -326,6 +324,7 @@ module Azure::ARM::Web
               },
               database_service_objective: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.databaseServiceObjective',
                 type: {
                   name: 'String'
@@ -333,6 +332,7 @@ module Azure::ARM::Web
               },
               upgrade_domains: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.upgradeDomains',
                 type: {
                   name: 'Number'
@@ -340,6 +340,7 @@ module Azure::ARM::Web
               },
               subscription_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.subscriptionId',
                 type: {
                   name: 'String'
@@ -354,6 +355,7 @@ module Azure::ARM::Web
               },
               last_action: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.lastAction',
                 type: {
                   name: 'String'
@@ -361,6 +363,7 @@ module Azure::ARM::Web
               },
               last_action_result: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.lastActionResult',
                 type: {
                   name: 'String'
@@ -368,6 +371,7 @@ module Azure::ARM::Web
               },
               allowed_multi_sizes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.allowedMultiSizes',
                 type: {
                   name: 'String'
@@ -375,6 +379,7 @@ module Azure::ARM::Web
               },
               allowed_worker_sizes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.allowedWorkerSizes',
                 type: {
                   name: 'String'
@@ -382,6 +387,7 @@ module Azure::ARM::Web
               },
               maximum_number_of_machines: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.maximumNumberOfMachines',
                 type: {
                   name: 'Number'
@@ -389,6 +395,7 @@ module Azure::ARM::Web
               },
               vip_mappings: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.vipMappings',
                 type: {
                   name: 'Sequence',
@@ -404,6 +411,7 @@ module Azure::ARM::Web
               },
               environment_capacities: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.environmentCapacities',
                 type: {
                   name: 'Sequence',
@@ -434,6 +442,7 @@ module Azure::ARM::Web
               },
               environment_is_healthy: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.environmentIsHealthy',
                 type: {
                   name: 'Boolean'
@@ -441,6 +450,7 @@ module Azure::ARM::Web
               },
               environment_status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.environmentStatus',
                 type: {
                   name: 'String'
@@ -448,6 +458,7 @@ module Azure::ARM::Web
               },
               resource_group: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
@@ -456,6 +467,14 @@ module Azure::ARM::Web
               front_end_scale_factor: {
                 required: false,
                 serialized_name: 'properties.frontEndScaleFactor',
+                type: {
+                  name: 'Number'
+                }
+              },
+              default_front_end_scale_factor: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.defaultFrontEndScaleFactor',
                 type: {
                   name: 'Number'
                 }

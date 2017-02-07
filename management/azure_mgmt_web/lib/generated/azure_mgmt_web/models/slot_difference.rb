@@ -6,35 +6,33 @@
 module Azure::ARM::Web
   module Models
     #
-    # An object describing the difference in setting values between two web app
-    # slots
+    # A setting difference between two deployment slots of an app.
     #
     class SlotDifference < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Indicates the type of the difference: Information,
-      # Warning or Error.
+      # @return [String] Type of the difference: Information, Warning or Error.
       attr_accessor :slot_difference_type
 
-      # @return [String] The type of the settings: General, AppSetting or
-      # ConnectionString
+      # @return [String] The type of the setting: General, AppSetting or
+      # ConnectionString.
       attr_accessor :setting_type
 
-      # @return [String] Rule that describes how to process the difference in
-      # settings during web app slot swap.
+      # @return [String] Rule that describes how to process the setting
+      # difference during a slot swap.
       attr_accessor :diff_rule
 
-      # @return [String] Name of the setting
+      # @return [String] Name of the setting.
       attr_accessor :setting_name
 
-      # @return [String] Value of the setting in the current web app slot
+      # @return [String] Value of the setting in the current slot.
       attr_accessor :value_in_current_slot
 
-      # @return [String] Value of the setting in the target web app slot
+      # @return [String] Value of the setting in the target slot.
       attr_accessor :value_in_target_slot
 
-      # @return [String] Description of the difference
+      # @return [String] Description of the setting difference.
       attr_accessor :description
 
 
@@ -59,7 +57,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -102,6 +100,7 @@ module Azure::ARM::Web
               },
               slot_difference_type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.type',
                 type: {
                   name: 'String'
@@ -109,6 +108,7 @@ module Azure::ARM::Web
               },
               setting_type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.settingType',
                 type: {
                   name: 'String'
@@ -116,6 +116,7 @@ module Azure::ARM::Web
               },
               diff_rule: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.diffRule',
                 type: {
                   name: 'String'
@@ -123,6 +124,7 @@ module Azure::ARM::Web
               },
               setting_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.settingName',
                 type: {
                   name: 'String'
@@ -130,6 +132,7 @@ module Azure::ARM::Web
               },
               value_in_current_slot: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.valueInCurrentSlot',
                 type: {
                   name: 'String'
@@ -137,6 +140,7 @@ module Azure::ARM::Web
               },
               value_in_target_slot: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.valueInTargetSlot',
                 type: {
                   name: 'String'
@@ -144,6 +148,7 @@ module Azure::ARM::Web
               },
               description: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.description',
                 type: {
                   name: 'String'

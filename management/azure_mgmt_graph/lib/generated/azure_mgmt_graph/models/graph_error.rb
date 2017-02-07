@@ -33,14 +33,14 @@ module Azure::ARM::Graph
             model_properties: {
               code: {
                 required: false,
-                serialized_name: 'odata.error.code',
+                serialized_name: 'odata\\.error.code',
                 type: {
                   name: 'String'
                 }
               },
               message: {
                 required: false,
-                serialized_name: 'odata.error.message.value',
+                serialized_name: 'odata\\.error.message.value',
                 type: {
                   name: 'String'
                 }

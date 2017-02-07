@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of a Sku Capability
+    # Describes the capabilities/features allowed for a specific SKU.
     #
     class Capability
 
       include MsRestAzure
 
-      # @return [String] Name of the sku capability
+      # @return [String] Name of the SKU capability.
       attr_accessor :name
 
-      # @return [String] Value of the sku capability
+      # @return [String] Value of the SKU capability.
       attr_accessor :value
 
-      # @return [String] Reason of the sku capability
+      # @return [String] Reason of the SKU capability.
       attr_accessor :reason
 
 

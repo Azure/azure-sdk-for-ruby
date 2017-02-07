@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # A snapshot of a web app
+    # A snapshot of an app.
     #
     class Snapshot < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [DateTime] The time the snapshot was taken
+      # @return [DateTime] The time the snapshot was taken.
       attr_accessor :time
 
 
@@ -37,7 +37,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -80,6 +80,7 @@ module Azure::ARM::Web
               },
               time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.time',
                 type: {
                   name: 'DateTime'

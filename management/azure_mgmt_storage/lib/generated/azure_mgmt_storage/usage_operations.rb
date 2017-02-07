@@ -5,7 +5,7 @@
 
 module Azure::ARM::Storage
   #
-  # The Storage Management Client.
+  # The Azure Storage Management API.
   #
   class UsageOperations
     include Azure::ARM::Storage::Models

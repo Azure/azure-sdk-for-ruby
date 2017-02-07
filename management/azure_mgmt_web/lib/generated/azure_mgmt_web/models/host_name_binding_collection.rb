@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of host name bindings
+    # Collection of hostname bindings.
     #
     class HostNameBindingCollection
 
       include MsRestAzure
 
-      # @return [Array<HostNameBinding>] Collection of resources
+      # @return [Array<HostNameBinding>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
             class_name: 'HostNameBindingCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

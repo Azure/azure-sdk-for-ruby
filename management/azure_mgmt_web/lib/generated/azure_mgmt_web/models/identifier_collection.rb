@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of site instances
+    # Collection of identifiers.
     #
-    class SiteInstanceCollection
+    class IdentifierCollection
 
       include MsRestAzure
 
-      # @return [Array<SiteInstance>] Collection of resources
+      # @return [Array<Identifier>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -24,7 +24,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<SiteInstance>] operation results.
+      # @return [Array<Identifier>] operation results.
       #
       def get_all_items
         items = @value
@@ -39,7 +39,7 @@ module Azure::ARM::Web
       #
       # Gets the next page of results.
       #
-      # @return [SiteInstanceCollection] with next page content.
+      # @return [IdentifierCollection] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -51,28 +51,28 @@ module Azure::ARM::Web
       end
 
       #
-      # Mapper for SiteInstanceCollection class as Ruby Hash.
+      # Mapper for IdentifierCollection class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SiteInstanceCollection',
+          serialized_name: 'IdentifierCollection',
           type: {
             name: 'Composite',
-            class_name: 'SiteInstanceCollection',
+            class_name: 'IdentifierCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SiteInstanceElementType',
+                      serialized_name: 'IdentifierElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SiteInstance'
+                        class_name: 'Identifier'
                       }
                   }
                 }

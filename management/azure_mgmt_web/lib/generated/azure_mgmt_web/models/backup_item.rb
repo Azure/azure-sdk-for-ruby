@@ -6,23 +6,23 @@
 module Azure::ARM::Web
   module Models
     #
-    # Backup description
+    # Backup description.
     #
     class BackupItem < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [Integer] Id of the backup.
-      attr_accessor :backup_item_id
+      attr_accessor :backup_id
 
       # @return [String] SAS URL for the storage account container which
-      # contains this backup
+      # contains this backup.
       attr_accessor :storage_account_url
 
-      # @return [String] Name of the blob which contains data for this backup
+      # @return [String] Name of the blob which contains data for this backup.
       attr_accessor :blob_name
 
-      # @return [String] Name of this backup
+      # @return [String] Name of this backup.
       attr_accessor :backup_item_name
 
       # @return [BackupItemStatus] Backup status. Possible values include:
@@ -30,10 +30,10 @@ module Azure::ARM::Web
       # 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed', 'Deleted'
       attr_accessor :status
 
-      # @return [Integer] Size of the backup in bytes
+      # @return [Integer] Size of the backup in bytes.
       attr_accessor :size_in_bytes
 
-      # @return [DateTime] Timestamp of the backup creation
+      # @return [DateTime] Timestamp of the backup creation.
       attr_accessor :created
 
       # @return [String] Details regarding this backup. Might contain an error
@@ -41,7 +41,7 @@ module Azure::ARM::Web
       attr_accessor :log
 
       # @return [Array<DatabaseBackupSetting>] List of databases included in
-      # the backup
+      # the backup.
       attr_accessor :databases
 
       # @return [Boolean] True if this backup has been created due to a
@@ -59,7 +59,8 @@ module Azure::ARM::Web
       # with the timestamp while communicating with Azure support.
       attr_accessor :correlation_id
 
-      # @return [Integer] Size of the original web app which has been backed up
+      # @return [Integer] Size of the original web app which has been backed
+      # up.
       attr_accessor :website_size_in_bytes
 
 
@@ -84,7 +85,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -125,8 +126,9 @@ module Azure::ARM::Web
                   }
                 }
               },
-              backup_item_id: {
+              backup_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.id',
                 type: {
                   name: 'Number'
@@ -134,6 +136,7 @@ module Azure::ARM::Web
               },
               storage_account_url: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.storageAccountUrl',
                 type: {
                   name: 'String'
@@ -141,6 +144,7 @@ module Azure::ARM::Web
               },
               blob_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.blobName',
                 type: {
                   name: 'String'
@@ -148,6 +152,7 @@ module Azure::ARM::Web
               },
               backup_item_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.name',
                 type: {
                   name: 'String'
@@ -155,6 +160,7 @@ module Azure::ARM::Web
               },
               status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
@@ -163,6 +169,7 @@ module Azure::ARM::Web
               },
               size_in_bytes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.sizeInBytes',
                 type: {
                   name: 'Number'
@@ -170,6 +177,7 @@ module Azure::ARM::Web
               },
               created: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.created',
                 type: {
                   name: 'DateTime'
@@ -177,6 +185,7 @@ module Azure::ARM::Web
               },
               log: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.log',
                 type: {
                   name: 'String'
@@ -184,6 +193,7 @@ module Azure::ARM::Web
               },
               databases: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.databases',
                 type: {
                   name: 'Sequence',
@@ -199,6 +209,7 @@ module Azure::ARM::Web
               },
               scheduled: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.scheduled',
                 type: {
                   name: 'Boolean'
@@ -206,6 +217,7 @@ module Azure::ARM::Web
               },
               last_restore_time_stamp: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.lastRestoreTimeStamp',
                 type: {
                   name: 'DateTime'
@@ -213,6 +225,7 @@ module Azure::ARM::Web
               },
               finished_time_stamp: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.finishedTimeStamp',
                 type: {
                   name: 'DateTime'
@@ -220,6 +233,7 @@ module Azure::ARM::Web
               },
               correlation_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.correlationId',
                 type: {
                   name: 'String'
@@ -227,6 +241,7 @@ module Azure::ARM::Web
               },
               website_size_in_bytes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.websiteSizeInBytes',
                 type: {
                   name: 'Number'

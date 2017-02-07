@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of Tld Legal Agreements
+    # Collection of top-level domain legal agreements.
     #
     class TldLegalAgreementCollection
 
       include MsRestAzure
 
-      # @return [Array<TldLegalAgreement>] Collection of resources
+      # @return [Array<TldLegalAgreement>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
             class_name: 'TldLegalAgreementCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents an ip security restriction on a web app.
+    # IP security restriction on an app.
     #
     class IpSecurityRestriction
 
       include MsRestAzure
 
-      # @return [String] IP address the security restriction is valid for
+      # @return [String] IP address the security restriction is valid for.
       attr_accessor :ip_address
 
       # @return [String] Subnet mask for the range of IP addresses the
-      # restriction is valid for
+      # restriction is valid for.
       attr_accessor :subnet_mask
 
 

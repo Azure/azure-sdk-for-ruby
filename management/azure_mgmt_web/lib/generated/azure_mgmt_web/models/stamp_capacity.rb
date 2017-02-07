@@ -6,27 +6,27 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class containing stamp capacity information
+    # Stamp capacity information.
     #
     class StampCapacity
 
       include MsRestAzure
 
-      # @return [String] Name of the stamp
+      # @return [String] Name of the stamp.
       attr_accessor :name
 
       # @return [Integer] Available capacity (# of machines, bytes of storage
-      # etc...)
+      # etc...).
       attr_accessor :available_capacity
 
       # @return [Integer] Total capacity (# of machines, bytes of storage
-      # etc...)
+      # etc...).
       attr_accessor :total_capacity
 
-      # @return [String] Name of the unit
+      # @return [String] Name of the unit.
       attr_accessor :unit
 
-      # @return [ComputeModeOptions] Shared/Dedicated workers. Possible values
+      # @return [ComputeModeOptions] Shared/dedicated workers. Possible values
       # include: 'Shared', 'Dedicated', 'Dynamic'
       attr_accessor :compute_mode
 
@@ -34,20 +34,21 @@ module Azure::ARM::Web
       # include: 'Default', 'Small', 'Medium', 'Large'
       attr_accessor :worker_size
 
-      # @return [Integer] Size Id of machines:
+      # @return [Integer] Size ID of machines:
       # 0 - Small
       # 1 - Medium
       # 2 - Large
       attr_accessor :worker_size_id
 
-      # @return [Boolean] If true it includes basic sites
-      # Basic sites are not used for capacity allocation.
+      # @return [Boolean] If <code>true</code>, it includes basic apps.
+      # Basic apps are not used for capacity allocation.
       attr_accessor :exclude_from_capacity_allocation
 
-      # @return [Boolean] Is capacity applicable for all sites?
+      # @return [Boolean] <code>true</code> if capacity is applicable for all
+      # apps; otherwise, <code>false</code>.
       attr_accessor :is_applicable_for_all_compute_modes
 
-      # @return [String] Shared or Dedicated
+      # @return [String] Shared or Dedicated.
       attr_accessor :site_mode
 
 

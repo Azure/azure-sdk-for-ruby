@@ -6,7 +6,8 @@
 module Azure::ARM::Web
   module Models
     #
-    # VnetRoute contract used to pass routing information for a vnet.
+    # Virtual Network route contract used to pass routing information for a
+    # Virtual Network.
     #
     class VnetRoute < MsRestAzure::Resource
 
@@ -25,16 +26,15 @@ module Azure::ARM::Web
       # address is specified in CIDR notation, this must be omitted.
       attr_accessor :end_address
 
-      # @return [String] The type of route this is:
-      # DEFAULT - By default, every web app has routes to the local address
-      # ranges specified by RFC1918
+      # @return [RouteType] The type of route this is:
+      # DEFAULT - By default, every app has routes to the local address ranges
+      # specified by RFC1918
       # INHERITED - Routes inherited from the real Virtual Network routes
-      # STATIC - Static route set on the web app only
-      # 
-      # These values will be used for syncing a Web App's routes with those
-      # from a Virtual Network. This operation will clear all DEFAULT and
-      # INHERITED routes and replace them
-      # with new INHERITED routes.
+      # STATIC - Static route set on the app only
+      #
+      # These values will be used for syncing an app's routes with those from a
+      # Virtual Network. Possible values include: 'DEFAULT', 'INHERITED',
+      # 'STATIC'
       attr_accessor :route_type
 
 
@@ -59,7 +59,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

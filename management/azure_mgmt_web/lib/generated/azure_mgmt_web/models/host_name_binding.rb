@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # A host name binding object
+    # A hostname binding object.
     #
     class HostNameBinding < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Hostname
+      # @return [String] Hostname.
       attr_accessor :host_name_binding_name
 
-      # @return [String] Web app name
+      # @return [String] App Service app name.
       attr_accessor :site_name
 
-      # @return [String] Fully qualified ARM domain resource URI
+      # @return [String] Fully qualified ARM domain resource URI.
       attr_accessor :domain_id
 
-      # @return [String] Azure resource name
+      # @return [String] Azure resource name.
       attr_accessor :azure_resource_name
 
       # @return [AzureResourceType] Azure resource type. Possible values
@@ -32,9 +32,20 @@ module Azure::ARM::Web
       # values include: 'CName', 'A'
       attr_accessor :custom_host_name_dns_record_type
 
-      # @return [HostNameType] Host name type. Possible values include:
+      # @return [HostNameType] Hostname type. Possible values include:
       # 'Verified', 'Managed'
       attr_accessor :host_name_type
+
+      # @return [SslState] SSL type. Possible values include: 'Disabled',
+      # 'SniEnabled', 'IpBasedEnabled'
+      attr_accessor :ssl_state
+
+      # @return [String] SSL certificate thumbprint
+      attr_accessor :thumbprint
+
+      # @return [String] Virtual IP address assigned to the hostname if IP
+      # based SSL is enabled.
+      attr_accessor :virtual_ip
 
 
       #
@@ -58,7 +69,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -149,6 +160,28 @@ module Azure::ARM::Web
                 type: {
                   name: 'Enum',
                   module: 'HostNameType'
+                }
+              },
+              ssl_state: {
+                required: false,
+                serialized_name: 'properties.sslState',
+                type: {
+                  name: 'Enum',
+                  module: 'SslState'
+                }
+              },
+              thumbprint: {
+                required: false,
+                serialized_name: 'properties.thumbprint',
+                type: {
+                  name: 'String'
+                }
+              },
+              virtual_ip: {
+                required: false,
+                serialized_name: 'properties.virtualIP',
+                type: {
+                  name: 'String'
                 }
               }
             }

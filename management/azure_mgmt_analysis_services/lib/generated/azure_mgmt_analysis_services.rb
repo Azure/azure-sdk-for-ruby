@@ -27,6 +27,7 @@ module Azure::ARM::AnalysisServices
     autoload :AnalysisServicesServers,                            'generated/azure_mgmt_analysis_services/models/analysis_services_servers.rb'
     autoload :ResourceSku,                                        'generated/azure_mgmt_analysis_services/models/resource_sku.rb'
     autoload :ServerAdministrators,                               'generated/azure_mgmt_analysis_services/models/server_administrators.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_analysis_services/models/resource.rb'
     autoload :AnalysisServicesServerUpdateParameters,             'generated/azure_mgmt_analysis_services/models/analysis_services_server_update_parameters.rb'
     autoload :AnalysisServicesServer,                             'generated/azure_mgmt_analysis_services/models/analysis_services_server.rb'
     autoload :SkuName,                                            'generated/azure_mgmt_analysis_services/models/sku_name.rb'

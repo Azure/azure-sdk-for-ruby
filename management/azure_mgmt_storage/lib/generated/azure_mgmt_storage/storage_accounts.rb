@@ -5,7 +5,7 @@
 
 module Azure::ARM::Storage
   #
-  # The Storage Management Client.
+  # The Azure Storage Management API.
   #
   class StorageAccounts
     include Azure::ARM::Storage::Models
@@ -135,7 +135,7 @@ module Azure::ARM::Storage
     # issued with the exact same set of properties, the request will succeed.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -153,7 +153,7 @@ module Azure::ARM::Storage
 
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -187,7 +187,7 @@ module Azure::ARM::Storage
     # Deletes a storage account in Microsoft Azure.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -204,7 +204,7 @@ module Azure::ARM::Storage
     # Deletes a storage account in Microsoft Azure.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -221,7 +221,7 @@ module Azure::ARM::Storage
     # Deletes a storage account in Microsoft Azure.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -278,7 +278,7 @@ module Azure::ARM::Storage
     # operation should be used to retrieve storage keys.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -298,7 +298,7 @@ module Azure::ARM::Storage
     # operation should be used to retrieve storage keys.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -317,7 +317,7 @@ module Azure::ARM::Storage
     # operation should be used to retrieve storage keys.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -390,7 +390,7 @@ module Azure::ARM::Storage
     # name of the storage account cannot be changed after creation.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -418,7 +418,7 @@ module Azure::ARM::Storage
     # name of the storage account cannot be changed after creation.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -445,7 +445,7 @@ module Azure::ARM::Storage
     # name of the storage account cannot be changed after creation.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -609,7 +609,7 @@ module Azure::ARM::Storage
     # that storage keys are not returned; use the ListKeys operation for this.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -625,7 +625,7 @@ module Azure::ARM::Storage
     # that storage keys are not returned; use the ListKeys operation for this.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -640,7 +640,7 @@ module Azure::ARM::Storage
     # that storage keys are not returned; use the ListKeys operation for this.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -701,7 +701,7 @@ module Azure::ARM::Storage
     # Lists the access keys for the specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -719,7 +719,7 @@ module Azure::ARM::Storage
     # Lists the access keys for the specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -736,7 +736,7 @@ module Azure::ARM::Storage
     # Lists the access keys for the specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -801,7 +801,7 @@ module Azure::ARM::Storage
     # Regenerates one of the access keys for the specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -821,7 +821,7 @@ module Azure::ARM::Storage
     # Regenerates one of the access keys for the specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -840,7 +840,7 @@ module Azure::ARM::Storage
     # Regenerates one of the access keys for the specified storage account.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -914,6 +914,238 @@ module Azure::ARM::Storage
     end
 
     #
+    # List SAS credentials of a storage account.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param parameters [AccountSasParameters] The parameters to provide to list
+    # SAS credentials for the storage account.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ListAccountSasResponse] operation results.
+    #
+    def list_account_sas(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = list_account_sas_async(resource_group_name, account_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List SAS credentials of a storage account.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param parameters [AccountSasParameters] The parameters to provide to list
+    # SAS credentials for the storage account.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_account_sas_with_http_info(resource_group_name, account_name, parameters, custom_headers = nil)
+      list_account_sas_async(resource_group_name, account_name, parameters, custom_headers).value!
+    end
+
+    #
+    # List SAS credentials of a storage account.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param parameters [AccountSasParameters] The parameters to provide to list
+    # SAS credentials for the storage account.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_account_sas_async(resource_group_name, account_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = AccountSasParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ListAccountSasResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List service SAS credentials of a specific resource.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param parameters [ServiceSasParameters] The parameters to provide to list
+    # service SAS credentials.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ListServiceSasResponse] operation results.
+    #
+    def list_service_sas(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = list_service_sas_async(resource_group_name, account_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List service SAS credentials of a specific resource.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param parameters [ServiceSasParameters] The parameters to provide to list
+    # service SAS credentials.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_service_sas_with_http_info(resource_group_name, account_name, parameters, custom_headers = nil)
+      list_service_sas_async(resource_group_name, account_name, parameters, custom_headers).value!
+    end
+
+    #
+    # List service SAS credentials of a specific resource.
+    #
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription. The name is case insensitive.
+    # @param account_name [String] The name of the storage account within the
+    # specified resource group. Storage account names must be between 3 and 24
+    # characters in length and use numbers and lower-case letters only.
+    # @param parameters [ServiceSasParameters] The parameters to provide to list
+    # service SAS credentials.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_service_sas_async(resource_group_name, account_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = ServiceSasParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ListServiceSasResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Asynchronously creates a new storage account with the specified parameters.
     # If an account is already created and a subsequent create request is issued
     # with different properties, the account properties will be updated. If an
@@ -921,7 +1153,7 @@ module Azure::ARM::Storage
     # issued with the exact same set of properties, the request will succeed.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -945,7 +1177,7 @@ module Azure::ARM::Storage
     # issued with the exact same set of properties, the request will succeed.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -968,7 +1200,7 @@ module Azure::ARM::Storage
     # issued with the exact same set of properties, the request will succeed.
     #
     # @param resource_group_name [String] The name of the resource group within the
-    # user's subscription.
+    # user's subscription. The name is case insensitive.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.

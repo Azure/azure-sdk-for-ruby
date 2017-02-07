@@ -6,8 +6,7 @@
 module Azure::ARM::Storage
   module Models
     #
-    # Model object.
-    # 
+    # The parameters used to regenerate the storage account key.
     #
     class StorageAccountRegenerateKeyParameters
 

@@ -3,30 +3,31 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::RecoveryServices
   module Models
     #
-    # A mobile service
+    # Model object.
     #
-    class ClassicMobileService < MsRestAzure::Resource
+    #
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of the mobile service
-      attr_accessor :classic_mobile_service_name
+      # @return [Sku]
+      attr_accessor :sku
 
 
       #
-      # Mapper for ClassicMobileService class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ClassicMobileService',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'ClassicMobileService',
+            class_name: 'Resource',
             model_properties: {
               id: {
                 required: false,
@@ -37,31 +38,34 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
                 required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
                 }
               },
               tags: {
@@ -76,13 +80,6 @@ module Azure::ARM::Web
                         name: 'String'
                       }
                   }
-                }
-              },
-              classic_mobile_service_name: {
-                required: false,
-                serialized_name: 'properties.name',
-                type: {
-                  name: 'String'
                 }
               }
             }

@@ -26,6 +26,9 @@ module Azure::ARM::Policy
       # @return The policy rule.
       attr_accessor :policy_rule
 
+      # @return Required if a parameter is used in policy rule.
+      attr_accessor :parameters
+
       # @return [String] The ID of the policy definition.
       attr_accessor :id
 
@@ -71,6 +74,13 @@ module Azure::ARM::Policy
               policy_rule: {
                 required: false,
                 serialized_name: 'properties.policyRule',
+                type: {
+                  name: 'Object'
+                }
+              },
+              parameters: {
+                required: false,
+                serialized_name: 'properties.parameters',
                 type: {
                   name: 'Object'
                 }

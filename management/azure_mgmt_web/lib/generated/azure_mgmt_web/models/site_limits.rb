@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents metric limits set on a web app.
+    # Metric limits set on an app.
     #
     class SiteLimits
 
       include MsRestAzure
 
-      # @return [Float] Maximum allowed CPU usage percentage
+      # @return [Float] Maximum allowed CPU usage percentage.
       attr_accessor :max_percentage_cpu
 
-      # @return [Integer] Maximum allowed memory usage in MB
+      # @return [Integer] Maximum allowed memory usage in MB.
       attr_accessor :max_memory_in_mb
 
-      # @return [Integer] Maximum allowed disk size usage in MB
+      # @return [Integer] Maximum allowed disk size usage in MB.
       attr_accessor :max_disk_size_in_mb
 
 

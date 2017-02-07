@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Sku discovery information
+    # SKU discovery information.
     #
     class SkuInfo
 
       include MsRestAzure
 
-      # @return [String] Resource type that this sku applies to
+      # @return [String] Resource type that this SKU applies to.
       attr_accessor :resource_type
 
-      # @return [SkuDescription] Name and tier of the sku
+      # @return [SkuDescription] Name and tier of the SKU.
       attr_accessor :sku
 
-      # @return [SkuCapacity] Min, max, and default scale values of the sku
+      # @return [SkuCapacity] Min, max, and default scale values of the SKU.
       attr_accessor :capacity
 
 

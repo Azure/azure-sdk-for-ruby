@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Certificate Email
+    # SSL certificate email.
     #
     class CertificateEmail < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Email id
+      # @return [String] Email id.
       attr_accessor :email_id
 
-      # @return [DateTime] Time stamp
+      # @return [DateTime] Time stamp.
       attr_accessor :time_stamp
 
 
@@ -40,7 +40,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

@@ -6,25 +6,25 @@
 module Azure::ARM::Web
   module Models
     #
-    # Usage of the quota resource
+    # Usage of the quota resource.
     #
     class CsmUsageQuota
 
       include MsRestAzure
 
-      # @return [String] Units of measurement for the quota resourse
+      # @return [String] Units of measurement for the quota resourse.
       attr_accessor :unit
 
-      # @return [DateTime] Next reset time for the resource counter
+      # @return [DateTime] Next reset time for the resource counter.
       attr_accessor :next_reset_time
 
-      # @return [Integer] The current value of the resource counter
+      # @return [Integer] The current value of the resource counter.
       attr_accessor :current_value
 
-      # @return [Integer] The resource limit
+      # @return [Integer] The resource limit.
       attr_accessor :limit
 
-      # @return [LocalizableString] Quota name
+      # @return [LocalizableString] Quota name.
       attr_accessor :name
 
 

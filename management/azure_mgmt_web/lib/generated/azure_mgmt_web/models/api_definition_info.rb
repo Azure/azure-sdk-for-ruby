@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Information about the formal API definition for the web app.
+    # Information about the formal API definition for the app.
     #
     class ApiDefinitionInfo
 

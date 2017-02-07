@@ -39,14 +39,14 @@ module Azure::ARM::MediaServices
             model_properties: {
               name_available: {
                 required: false,
-                serialized_name: 'nameAvailable',
+                serialized_name: 'NameAvailable',
                 type: {
                   name: 'Boolean'
                 }
               },
               reason: {
                 required: false,
-                serialized_name: 'reason',
+                serialized_name: 'Reason',
                 type: {
                   name: 'Enum',
                   module: 'EntityNameUnavailabilityReason'
@@ -54,7 +54,7 @@ module Azure::ARM::MediaServices
               },
               message: {
                 required: false,
-                serialized_name: 'message',
+                serialized_name: 'Message',
                 type: {
                   name: 'String'
                 }

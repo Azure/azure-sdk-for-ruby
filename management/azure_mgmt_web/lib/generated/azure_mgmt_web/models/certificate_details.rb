@@ -6,37 +6,37 @@
 module Azure::ARM::Web
   module Models
     #
-    # Certificate Details
+    # SSL certificate details.
     #
-    class CertificateDetails < MsRestAzure::Resource
+    class CertificateDetails
 
       include MsRestAzure
 
-      # @return [Integer] Version
+      # @return [Integer] Version.
       attr_accessor :version
 
-      # @return [String] Serial Number
+      # @return [String] Serial Number.
       attr_accessor :serial_number
 
-      # @return [String] Thumbprint
+      # @return [String] Thumbprint.
       attr_accessor :thumbprint
 
-      # @return [String] Subject
+      # @return [String] Subject.
       attr_accessor :subject
 
-      # @return [DateTime] Valid from
+      # @return [DateTime] Valid from.
       attr_accessor :not_before
 
-      # @return [DateTime] Valid to
+      # @return [DateTime] Valid to.
       attr_accessor :not_after
 
-      # @return [String] Signature Algorithm
+      # @return [String] Signature algorithm.
       attr_accessor :signature_algorithm
 
-      # @return [String] Issuer
+      # @return [String] Issuer.
       attr_accessor :issuer
 
-      # @return [String] Raw certificate data
+      # @return [String] Raw certificate data.
       attr_accessor :raw_data
 
 
@@ -52,115 +52,74 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'CertificateDetails',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               version: {
                 required: false,
-                serialized_name: 'properties.version',
+                read_only: true,
+                serialized_name: 'version',
                 type: {
                   name: 'Number'
                 }
               },
               serial_number: {
                 required: false,
-                serialized_name: 'properties.serialNumber',
+                read_only: true,
+                serialized_name: 'serialNumber',
                 type: {
                   name: 'String'
                 }
               },
               thumbprint: {
                 required: false,
-                serialized_name: 'properties.thumbprint',
+                read_only: true,
+                serialized_name: 'thumbprint',
                 type: {
                   name: 'String'
                 }
               },
               subject: {
                 required: false,
-                serialized_name: 'properties.subject',
+                read_only: true,
+                serialized_name: 'subject',
                 type: {
                   name: 'String'
                 }
               },
               not_before: {
                 required: false,
-                serialized_name: 'properties.notBefore',
+                read_only: true,
+                serialized_name: 'notBefore',
                 type: {
                   name: 'DateTime'
                 }
               },
               not_after: {
                 required: false,
-                serialized_name: 'properties.notAfter',
+                read_only: true,
+                serialized_name: 'notAfter',
                 type: {
                   name: 'DateTime'
                 }
               },
               signature_algorithm: {
                 required: false,
-                serialized_name: 'properties.signatureAlgorithm',
+                read_only: true,
+                serialized_name: 'signatureAlgorithm',
                 type: {
                   name: 'String'
                 }
               },
               issuer: {
                 required: false,
-                serialized_name: 'properties.issuer',
+                read_only: true,
+                serialized_name: 'issuer',
                 type: {
                   name: 'String'
                 }
               },
               raw_data: {
                 required: false,
-                serialized_name: 'properties.rawData',
+                read_only: true,
+                serialized_name: 'rawData',
                 type: {
                   name: 'String'
                 }

@@ -23,11 +23,11 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Checks if a domain is available for registration
+    # Check if a domain is available for registration.
     #
-    # Checks if a domain is available for registration
+    # Check if a domain is available for registration.
     #
-    # @param identifier [NameIdentifier] Name of the domain
+    # @param identifier [NameIdentifier] Name of the domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -39,11 +39,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Checks if a domain is available for registration
+    # Check if a domain is available for registration.
     #
-    # Checks if a domain is available for registration
+    # Check if a domain is available for registration.
     #
-    # @param identifier [NameIdentifier] Name of the domain
+    # @param identifier [NameIdentifier] Name of the domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,11 +54,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Checks if a domain is available for registration
+    # Check if a domain is available for registration.
     #
-    # Checks if a domain is available for registration
+    # Check if a domain is available for registration.
     #
-    # @param identifier [NameIdentifier] Name of the domain
+    # @param identifier [NameIdentifier] Name of the domain.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -67,7 +67,7 @@ module Azure::ARM::Web
     def check_availability_async(identifier, custom_headers = nil)
       fail ArgumentError, 'identifier is nil' if identifier.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -125,9 +125,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -140,9 +140,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -154,9 +154,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -165,7 +165,7 @@ module Azure::ARM::Web
     #
     def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -214,9 +214,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates a single sign on request for domain management portal
+    # Generate a single sign-on request for the domain management portal.
     #
-    # Generates a single sign on request for domain management portal
+    # Generate a single sign-on request for the domain management portal.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -229,9 +229,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates a single sign on request for domain management portal
+    # Generate a single sign-on request for the domain management portal.
     #
-    # Generates a single sign on request for domain management portal
+    # Generate a single sign-on request for the domain management portal.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -243,9 +243,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates a single sign on request for domain management portal
+    # Generate a single sign-on request for the domain management portal.
     #
-    # Generates a single sign on request for domain management portal
+    # Generate a single sign-on request for the domain management portal.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -254,7 +254,7 @@ module Azure::ARM::Web
     #
     def get_control_center_sso_request_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -303,12 +303,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # @param parameters [DomainRecommendationSearchParameters] Domain
-    # recommendation search parameters
+    # @param parameters [DomainRecommendationSearchParameters] Search parameters
+    # for domain name recommendations.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -320,12 +320,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # @param parameters [DomainRecommendationSearchParameters] Domain
-    # recommendation search parameters
+    # @param parameters [DomainRecommendationSearchParameters] Search parameters
+    # for domain name recommendations.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -336,12 +336,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # @param parameters [DomainRecommendationSearchParameters] Domain
-    # recommendation search parameters
+    # @param parameters [DomainRecommendationSearchParameters] Search parameters
+    # for domain name recommendations.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -350,7 +350,7 @@ module Azure::ARM::Web
     def list_recommendations_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -408,106 +408,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Validates domain registration information
+    # Get all domains in a resource group.
     #
-    # Validates domain registration information
+    # Get all domains in a resource group.
     #
-    # @param domain_registration_input [DomainRegistrationInput] Domain
-    # registration information
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
-    #
-    def validate_purchase_information(domain_registration_input, custom_headers = nil)
-      response = validate_purchase_information_async(domain_registration_input, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Validates domain registration information
-    #
-    # Validates domain registration information
-    #
-    # @param domain_registration_input [DomainRegistrationInput] Domain
-    # registration information
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def validate_purchase_information_with_http_info(domain_registration_input, custom_headers = nil)
-      validate_purchase_information_async(domain_registration_input, custom_headers).value!
-    end
-
-    #
-    # Validates domain registration information
-    #
-    # Validates domain registration information
-    #
-    # @param domain_registration_input [DomainRegistrationInput] Domain
-    # registration information
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def validate_purchase_information_async(domain_registration_input, custom_headers = nil)
-      fail ArgumentError, 'domain_registration_input is nil' if domain_registration_input.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = DomainRegistrationInput.mapper()
-      request_content = @client.serialize(request_mapper,  domain_registration_input, 'domain_registration_input')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/validateDomainRegistrationInformation'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists domains under a resource group
-    #
-    # Lists domains under a resource group
-    #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -519,11 +425,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -534,11 +441,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -547,7 +455,7 @@ module Azure::ARM::Web
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -596,12 +504,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets details of a domain
+    # Get a domain.
     #
-    # Gets details of a domain
+    # Get a domain.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -613,12 +522,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets details of a domain
+    # Get a domain.
     #
-    # Gets details of a domain
+    # Get a domain.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -629,12 +539,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets details of a domain
+    # Get a domain.
     #
-    # Gets details of a domain
+    # Get a domain.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -644,7 +555,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -693,13 +604,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a domain
+    # Creates or updates a domain.
     #
-    # Creates a domain
+    # Creates or updates a domain.
     #
-    # @param resource_group_name [String] &gt;Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param domain [Domain] Domain registration information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param domain [Domain] Domain registration information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -711,9 +623,10 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] &gt;Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param domain [Domain] Domain registration information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param domain [Domain] Domain registration information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -739,33 +652,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a domain
+    # Delete a domain.
     #
-    # Deletes a domain
+    # Delete a domain.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param force_hard_delete_domain [Boolean] If true then the domain will be
-    # deleted immediately instead of after 24 hours
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param force_hard_delete_domain [Boolean] Specify <code>true</code> to delete
+    # the domain immediately. The default is <code>false</code> which deletes the
+    # domain after 24 hours.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete(resource_group_name, domain_name, force_hard_delete_domain = nil, custom_headers = nil)
       response = delete_async(resource_group_name, domain_name, force_hard_delete_domain, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a domain
+    # Delete a domain.
     #
-    # Deletes a domain
+    # Delete a domain.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param force_hard_delete_domain [Boolean] If true then the domain will be
-    # deleted immediately instead of after 24 hours
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param force_hard_delete_domain [Boolean] Specify <code>true</code> to delete
+    # the domain immediately. The default is <code>false</code> which deletes the
+    # domain after 24 hours.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -776,14 +692,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a domain
+    # Delete a domain.
     #
-    # Deletes a domain
+    # Delete a domain.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param force_hard_delete_domain [Boolean] If true then the domain will be
-    # deleted immediately instead of after 24 hours
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param force_hard_delete_domain [Boolean] Specify <code>true</code> to delete
+    # the domain immediately. The default is <code>false</code> which deletes the
+    # domain after 24 hours.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -793,7 +711,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -818,7 +736,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -832,59 +750,58 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves the latest status of a domain purchase operation
+    # Lists domain ownership identifiers.
     #
-    # Retrieves the latest status of a domain purchase operation
+    # Lists domain ownership identifiers.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param operation_id [String] Domain purchase operation Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Domain] operation results.
+    # @return [Array<DomainOwnershipIdentifier>] operation results.
     #
-    def get_operation(resource_group_name, domain_name, operation_id, custom_headers = nil)
-      response = get_operation_async(resource_group_name, domain_name, operation_id, custom_headers).value!
-      response.body unless response.nil?
+    def list_ownership_identifiers(resource_group_name, domain_name, custom_headers = nil)
+      first_page = list_ownership_identifiers_as_lazy(resource_group_name, domain_name, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Retrieves the latest status of a domain purchase operation
+    # Lists domain ownership identifiers.
     #
-    # Retrieves the latest status of a domain purchase operation
+    # Lists domain ownership identifiers.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param operation_id [String] Domain purchase operation Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_operation_with_http_info(resource_group_name, domain_name, operation_id, custom_headers = nil)
-      get_operation_async(resource_group_name, domain_name, operation_id, custom_headers).value!
+    def list_ownership_identifiers_with_http_info(resource_group_name, domain_name, custom_headers = nil)
+      list_ownership_identifiers_async(resource_group_name, domain_name, custom_headers).value!
     end
 
     #
-    # Retrieves the latest status of a domain purchase operation
+    # Lists domain ownership identifiers.
     #
-    # Retrieves the latest status of a domain purchase operation
+    # Lists domain ownership identifiers.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param operation_id [String] Domain purchase operation Id
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_operation_async(resource_group_name, domain_name, operation_id, custom_headers = nil)
+    def list_ownership_identifiers_async(resource_group_name, domain_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
-      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -892,13 +809,13 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/operationresults/{operationId}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'domainName' => domain_name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'domainName' => domain_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -909,27 +826,17 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 200 || status_code == 500
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 202
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Domain.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Domain.mapper()
+            result_mapper = DomainOwnershipIdentifierCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -943,13 +850,463 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a domain
+    # Get ownership identifier for domain
     #
-    # Creates a domain
+    # Get ownership identifier for domain
     #
-    # @param resource_group_name [String] &gt;Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param domain [Domain] Domain registration information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DomainOwnershipIdentifier] operation results.
+    #
+    def get_ownership_identifier(resource_group_name, domain_name, name, custom_headers = nil)
+      response = get_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get ownership identifier for domain
+    #
+    # Get ownership identifier for domain
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_ownership_identifier_with_http_info(resource_group_name, domain_name, name, custom_headers = nil)
+      get_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers).value!
+    end
+
+    #
+    # Get ownership identifier for domain
+    #
+    # Get ownership identifier for domain
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'domain_name is nil' if domain_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-04-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'domainName' => domain_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = DomainOwnershipIdentifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param domain_ownership_identifier [DomainOwnershipIdentifier] A JSON
+    # representation of the domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DomainOwnershipIdentifier] operation results.
+    #
+    def create_or_update_ownership_identifier(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
+      response = create_or_update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param domain_ownership_identifier [DomainOwnershipIdentifier] A JSON
+    # representation of the domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_ownership_identifier_with_http_info(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
+      create_or_update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers).value!
+    end
+
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param domain_ownership_identifier [DomainOwnershipIdentifier] A JSON
+    # representation of the domain ownership properties.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'domain_name is nil' if domain_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-04-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = DomainOwnershipIdentifier.mapper()
+      request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'domainName' => domain_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = DomainOwnershipIdentifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Delete ownership identifier for domain
+    #
+    # Delete ownership identifier for domain
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_ownership_identifier(resource_group_name, domain_name, name, custom_headers = nil)
+      response = delete_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete ownership identifier for domain
+    #
+    # Delete ownership identifier for domain
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_ownership_identifier_with_http_info(resource_group_name, domain_name, name, custom_headers = nil)
+      delete_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers).value!
+    end
+
+    #
+    # Delete ownership identifier for domain
+    #
+    # Delete ownership identifier for domain
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'domain_name is nil' if domain_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-04-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'domainName' => domain_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param domain_ownership_identifier [DomainOwnershipIdentifier] A JSON
+    # representation of the domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DomainOwnershipIdentifier] operation results.
+    #
+    def update_ownership_identifier(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
+      response = update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param domain_ownership_identifier [DomainOwnershipIdentifier] A JSON
+    # representation of the domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_ownership_identifier_with_http_info(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
+      update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers).value!
+    end
+
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # Creates an ownership identifier for a domain or updates identifier details
+    # for an existing identifer
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param name [String] Name of identifier.
+    # @param domain_ownership_identifier [DomainOwnershipIdentifier] A JSON
+    # representation of the domain ownership properties.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'domain_name is nil' if domain_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-04-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = DomainOwnershipIdentifier.mapper()
+      request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'domainName' => domain_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = DomainOwnershipIdentifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a domain.
+    #
+    # Creates or updates a domain.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param domain [Domain] Domain registration information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -961,13 +1318,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a domain
+    # Creates or updates a domain.
     #
-    # Creates a domain
+    # Creates or updates a domain.
     #
-    # @param resource_group_name [String] &gt;Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param domain [Domain] Domain registration information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param domain [Domain] Domain registration information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -978,13 +1336,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a domain
+    # Creates or updates a domain.
     #
-    # Creates a domain
+    # Creates or updates a domain.
     #
-    # @param resource_group_name [String] &gt;Name of the resource group
-    # @param domain_name [String] Name of the domain
-    # @param domain [Domain] Domain registration information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of the domain.
+    # @param domain [Domain] Domain registration information.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -995,7 +1354,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, 'domain is nil' if domain.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -1063,9 +1422,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1080,9 +1439,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1096,9 +1455,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
-    # Lists all domains in a subscription
+    # Get all domains in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1156,9 +1515,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1173,9 +1532,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1189,9 +1548,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1249,9 +1608,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1266,9 +1625,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1282,9 +1641,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1342,9 +1701,102 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all domains in a subscription
+    # Lists domain ownership identifiers.
     #
-    # Lists all domains in a subscription
+    # Lists domain ownership identifiers.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DomainOwnershipIdentifierCollection] operation results.
+    #
+    def list_ownership_identifiers_next(next_page_link, custom_headers = nil)
+      response = list_ownership_identifiers_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists domain ownership identifiers.
+    #
+    # Lists domain ownership identifiers.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_ownership_identifiers_next_with_http_info(next_page_link, custom_headers = nil)
+      list_ownership_identifiers_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists domain ownership identifiers.
+    #
+    # Lists domain ownership identifiers.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_ownership_identifiers_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = DomainOwnershipIdentifierCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get all domains in a subscription.
+    #
+    # Get all domains in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1364,12 +1816,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # Lists domain recommendations based on keywords
+    # Get domain name recommendations based on keywords.
     #
-    # @param parameters [DomainRecommendationSearchParameters] Domain
-    # recommendation search parameters
+    # @param parameters [DomainRecommendationSearchParameters] Search parameters
+    # for domain name recommendations.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1388,11 +1840,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # Lists domains under a resource group
+    # Get all domains in a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1405,6 +1858,31 @@ module Azure::ARM::Web
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_by_resource_group_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Lists domain ownership identifiers.
+    #
+    # Lists domain ownership identifiers.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param domain_name [String] Name of domain.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DomainOwnershipIdentifierCollection] which provide lazy access to
+    # pages of the response.
+    #
+    def list_ownership_identifiers_as_lazy(resource_group_name, domain_name, custom_headers = nil)
+      response = list_ownership_identifiers_async(resource_group_name, domain_name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_ownership_identifiers_next_async(next_page_link, custom_headers)
         end
         page
       end

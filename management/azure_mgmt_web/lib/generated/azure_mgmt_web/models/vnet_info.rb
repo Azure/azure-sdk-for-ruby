@@ -6,17 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # VNETInfo contract. This contract is public and is a stripped down version
-    # of VNETInfoInternal
+    # Virtual Network information contract.
     #
     class VnetInfo < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The vnet resource id
+      # @return [String] The Virtual Network's resource ID.
       attr_accessor :vnet_resource_id
 
-      # @return [String] The client certificate thumbprint
+      # @return [String] The client certificate thumbprint.
       attr_accessor :cert_thumbprint
 
       # @return [String] A certificate file (.cer) blob containing the public
@@ -24,15 +23,16 @@ module Azure::ARM::Web
       # Point-To-Site VPN connection.
       attr_accessor :cert_blob
 
-      # @return [Array<VnetRoute>] The routes that this virtual network
+      # @return [Array<VnetRoute>] The routes that this Virtual Network
       # connection uses.
       attr_accessor :routes
 
-      # @return [Boolean] Flag to determine if a resync is required
+      # @return [Boolean] <code>true</code> if a resync is required; otherwise,
+      # <code>false</code>.
       attr_accessor :resync_required
 
-      # @return [String] Dns servers to be used by this VNET. This should be a
-      # comma-separated list of IP addresses.
+      # @return [String] DNS servers to be used by this Virtual Network. This
+      # should be a comma-separated list of IP addresses.
       attr_accessor :dns_servers
 
 
@@ -57,7 +57,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -107,6 +107,7 @@ module Azure::ARM::Web
               },
               cert_thumbprint: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.certThumbprint',
                 type: {
                   name: 'String'
@@ -121,6 +122,7 @@ module Azure::ARM::Web
               },
               routes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.routes',
                 type: {
                   name: 'Sequence',
@@ -136,6 +138,7 @@ module Azure::ARM::Web
               },
               resync_required: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.resyncRequired',
                 type: {
                   name: 'Boolean'

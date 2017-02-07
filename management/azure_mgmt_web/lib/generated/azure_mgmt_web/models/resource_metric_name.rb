@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Name of a metric for any resource
+    # Name of a metric for any resource .
     #
     class ResourceMetricName
 
       include MsRestAzure
 
-      # @return [String] metric name value
+      # @return [String] metric name value.
       attr_accessor :value
 
-      # @return [String] Localized metric name value
+      # @return [String] Localized metric name value.
       attr_accessor :localized_value
 
 

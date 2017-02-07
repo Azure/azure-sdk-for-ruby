@@ -6,26 +6,26 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class repesenting metadata for the metrics
+    # Metadata for a metric.
     #
     class MetricDefinition < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of the metric
+      # @return [String] Name of the metric.
       attr_accessor :metric_definition_name
 
-      # @return [String] Unit of the metric
+      # @return [String] Unit of the metric.
       attr_accessor :unit
 
-      # @return [String] Primary aggregation type
+      # @return [String] Primary aggregation type.
       attr_accessor :primary_aggregation_type
 
       # @return [Array<MetricAvailabilily>] List of time grains supported for
-      # the metric together with retention period
+      # the metric together with retention period.
       attr_accessor :metric_availabilities
 
-      # @return [String] Friendly name shown in the UI
+      # @return [String] Friendly name shown in the UI.
       attr_accessor :display_name
 
 
@@ -50,7 +50,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -93,6 +93,7 @@ module Azure::ARM::Web
               },
               metric_definition_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.name',
                 type: {
                   name: 'String'
@@ -100,6 +101,7 @@ module Azure::ARM::Web
               },
               unit: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.unit',
                 type: {
                   name: 'String'
@@ -107,6 +109,7 @@ module Azure::ARM::Web
               },
               primary_aggregation_type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.primaryAggregationType',
                 type: {
                   name: 'String'
@@ -114,6 +117,7 @@ module Azure::ARM::Web
               },
               metric_availabilities: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.metricAvailabilities',
                 type: {
                   name: 'Sequence',
@@ -129,6 +133,7 @@ module Azure::ARM::Web
               },
               display_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.displayName',
                 type: {
                   name: 'String'

@@ -76,12 +76,11 @@ module Azure::ARM::DevTestLabs
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
-    def initialize(credentials, base_url = nil, options = nil)
+    def initialize(credentials = nil, base_url = nil, options = nil)
       super(credentials, options)
       @base_url = base_url || 'https://management.azure.com'
 
-      fail ArgumentError, 'credentials is nil' if credentials.nil?
-      fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
+      fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
       @lab_operations = LabOperations.new(self)
@@ -105,7 +104,7 @@ module Azure::ARM::DevTestLabs
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -166,7 +165,7 @@ module Azure::ARM::DevTestLabs
     def add_telemetry
         sdk_information = 'azure_mgmt_devtestlabs'
         if defined? Azure::ARM::DevTestLabs::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::DevTestLabs::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::DevTestLabs::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

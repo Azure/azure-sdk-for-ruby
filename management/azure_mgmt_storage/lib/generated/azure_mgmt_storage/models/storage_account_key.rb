@@ -19,7 +19,7 @@ module Azure::ARM::Storage
       attr_accessor :value
 
       # @return [KeyPermission] Permissions for the key -- read-only or full
-      # permissions. Possible values include: 'READ', 'FULL'
+      # permissions. Possible values include: 'Read', 'Full'
       attr_accessor :permissions
 
 

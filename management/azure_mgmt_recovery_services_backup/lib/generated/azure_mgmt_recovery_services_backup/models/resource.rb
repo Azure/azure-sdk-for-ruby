@@ -3,43 +3,38 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # The plan object in an ARM, represents a marketplace plan
+    # Base for all resources.
     #
-    class ArmPlan
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The name
-      attr_accessor :name
-
-      # @return [String] The publisher
-      attr_accessor :publisher
-
-      # @return [String] The product
-      attr_accessor :product
-
-      # @return [String] The promotion code
-      attr_accessor :promotion_code
-
-      # @return [String] Version of product
-      attr_accessor :version
+      # @return [String] Optional ETag.
+      attr_accessor :e_tag
 
 
       #
-      # Mapper for ArmPlan class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ArmPlan',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'ArmPlan',
+            class_name: 'Resource',
             model_properties: {
+              id: {
+                required: false,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 serialized_name: 'name',
@@ -47,30 +42,37 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              publisher: {
+              type: {
                 required: false,
-                serialized_name: 'publisher',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              product: {
+              location: {
                 required: false,
-                serialized_name: 'product',
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
-              promotion_code: {
+              tags: {
                 required: false,
-                serialized_name: 'promotionCode',
+                serialized_name: 'tags',
                 type: {
-                  name: 'String'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
-              version: {
+              e_tag: {
                 required: false,
-                serialized_name: 'version',
+                serialized_name: 'eTag',
                 type: {
                   name: 'String'
                 }

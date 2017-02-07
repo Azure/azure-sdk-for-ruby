@@ -6,17 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class representing the Key Vault container for certificate purchased
-    # through Azure
+    # Key Vault container for a certificate that is purchased through Azure.
     #
     class AppServiceCertificate < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Key Vault Csm resource Id
+      # @return [String] Key Vault Csm resource Id.
       attr_accessor :key_vault_id
 
-      # @return [String] Key Vault secret name
+      # @return [String] Key Vault secret name.
       attr_accessor :key_vault_secret_name
 
       # @return [KeyVaultSecretStatus] Status of the Key Vault secret. Possible
@@ -50,7 +49,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -107,6 +106,7 @@ module Azure::ARM::Web
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',

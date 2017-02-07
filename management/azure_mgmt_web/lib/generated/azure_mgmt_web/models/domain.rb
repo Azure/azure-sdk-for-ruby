@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents a domain
+    # Information about a domain.
     #
     class Domain < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Contact] Admin contact information
+      # @return [Contact] Administrative contact.
       attr_accessor :contact_admin
 
-      # @return [Contact] Billing contact information
+      # @return [Contact] Billing contact.
       attr_accessor :contact_billing
 
-      # @return [Contact] Registrant contact information
+      # @return [Contact] Registrant contact.
       attr_accessor :contact_registrant
 
-      # @return [Contact] Technical contact information
+      # @return [Contact] Technical contact.
       attr_accessor :contact_tech
 
       # @return [DomainStatus] Domain registration status. Possible values
@@ -35,38 +35,41 @@ module Azure::ARM::Web
       # include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
       attr_accessor :provisioning_state
 
-      # @return [Array<String>] Name servers
+      # @return [Array<String>] Name servers.
       attr_accessor :name_servers
 
-      # @return [Boolean] If true then domain privacy is enabled for this
-      # domain
+      # @return [Boolean] <code>true</code> if domain privacy is enabled for
+      # this domain; otherwise, <code>false</code>.
       attr_accessor :privacy
 
-      # @return [DateTime] Domain creation timestamp
+      # @return [DateTime] Domain creation timestamp.
       attr_accessor :created_time
 
-      # @return [DateTime] Domain expiration timestamp
+      # @return [DateTime] Domain expiration timestamp.
       attr_accessor :expiration_time
 
-      # @return [DateTime] Timestamp when the domain was renewed last time
+      # @return [DateTime] Timestamp when the domain was renewed last time.
       attr_accessor :last_renewed_time
 
-      # @return [Boolean] If true then domain will renewed automatically
+      # @return [Boolean] <code>true</code> if the domain should be
+      # automatically renewed; otherwise, <code>false</code>. Default value:
+      # true .
       attr_accessor :auto_renew
 
-      # @return [Boolean] If true then Azure can assign this domain to Web
-      # Apps. This value will be true if domain registration status is active
-      # and it is hosted on name servers Azure has programmatic access to
+      # @return [Boolean] <code>true</code> if Azure can assign this domain to
+      # App Service apps; otherwise, <code>false</code>. This value will be
+      # <code>true</code> if domain registration status is active and
+      # it is hosted on name servers Azure has programmatic access to.
       attr_accessor :ready_for_dns_record_management
 
       # @return [Array<HostName>] All hostnames derived from the domain and
-      # assigned to Azure resources
+      # assigned to Azure resources.
       attr_accessor :managed_host_names
 
-      # @return [DomainPurchaseConsent] Legal agreement consent
+      # @return [DomainPurchaseConsent] Legal agreement consent.
       attr_accessor :consent
 
-      # @return Reasons why domain is not renewable
+      # @return [Array<Enum>] Reasons why domain is not renewable.
       attr_accessor :domain_not_renewable_reasons
 
 
@@ -91,7 +94,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -166,6 +169,7 @@ module Azure::ARM::Web
               },
               registration_status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.registrationStatus',
                 type: {
                   name: 'Enum',
@@ -174,6 +178,7 @@ module Azure::ARM::Web
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',
@@ -203,6 +208,7 @@ module Azure::ARM::Web
               },
               created_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdTime',
                 type: {
                   name: 'DateTime'
@@ -210,6 +216,7 @@ module Azure::ARM::Web
               },
               expiration_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.expirationTime',
                 type: {
                   name: 'DateTime'
@@ -217,6 +224,7 @@ module Azure::ARM::Web
               },
               last_renewed_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.lastRenewedTime',
                 type: {
                   name: 'DateTime'
@@ -225,12 +233,14 @@ module Azure::ARM::Web
               auto_renew: {
                 required: false,
                 serialized_name: 'properties.autoRenew',
+                default_value: true,
                 type: {
                   name: 'Boolean'
                 }
               },
               ready_for_dns_record_management: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.readyForDnsRecordManagement',
                 type: {
                   name: 'Boolean'
@@ -266,7 +276,7 @@ module Azure::ARM::Web
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ElementType',
+                      serialized_name: 'enumElementType',
                       type: {
                         name: 'String'
                       }

@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents a site cloneability criterion
+    # An app cloneability criterion.
     #
     class SiteCloneabilityCriterion
 
       include MsRestAzure
 
-      # @return [String] Name of criterion
+      # @return [String] Name of criterion.
       attr_accessor :name
 
-      # @return [String] Description of criterion
+      # @return [String] Description of criterion.
       attr_accessor :description
 
 

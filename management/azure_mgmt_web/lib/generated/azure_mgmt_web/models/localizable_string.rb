@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # LocalizableString object containing the name and a localized value.
+    # Localizable string object containing the name and a localized value.
     #
     class LocalizableString
 
       include MsRestAzure
 
-      # @return [String] Non localized name
+      # @return [String] Non-localized name.
       attr_accessor :value
 
-      # @return [String] Localized name
+      # @return [String] Localized name.
       attr_accessor :localized_value
 
 

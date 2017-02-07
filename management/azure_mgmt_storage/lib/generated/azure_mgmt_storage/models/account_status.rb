@@ -9,8 +9,8 @@ module Azure::ARM::Storage
     # Defines values for AccountStatus
     #
     module AccountStatus
-      Available = "Available"
-      Unavailable = "Unavailable"
+      Available = "available"
+      Unavailable = "unavailable"
     end
   end
 end

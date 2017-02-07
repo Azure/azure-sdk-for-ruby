@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # String dictionary resource
+    # String dictionary resource.
     #
     class StringDictionary < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Hash{String => String}] Settings
+      # @return [Hash{String => String}] Settings.
       attr_accessor :properties
 
 
@@ -37,7 +37,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

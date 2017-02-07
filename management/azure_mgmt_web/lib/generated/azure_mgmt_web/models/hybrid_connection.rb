@@ -13,13 +13,13 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] The name of the Service Bus Namespace.
+      # @return [String] The name of the Service Bus namespace.
       attr_accessor :service_bus_namespace
 
-      # @return [String] The name of the Service Bus Relay.
+      # @return [String] The name of the Service Bus relay.
       attr_accessor :relay_name
 
-      # @return [String] The ARM URI to the Service Bus Relay.
+      # @return [String] The ARM URI to the Service Bus relay.
       attr_accessor :relay_arm_uri
 
       # @return [String] The hostname of the endpoint.
@@ -59,7 +59,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # Describes the result of resource validation
+    # Describes the result of resource validation.
     #
     class ValidateResponse
 
       include MsRestAzure
 
-      # @return [String] Indicates the result of validation
+      # @return [String] Result of validation.
       attr_accessor :status
 
       # @return [ValidateResponseError] Error details for the case when
-      # validation fails
+      # validation fails.
       attr_accessor :error
 
 

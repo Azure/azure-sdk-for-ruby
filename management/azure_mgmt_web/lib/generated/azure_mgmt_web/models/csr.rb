@@ -6,31 +6,31 @@
 module Azure::ARM::Web
   module Models
     #
-    # Certificate signing request object
+    # Certificate signing request.
     #
     class Csr < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name used to locate CSR object
+      # @return [String] Name used to locate CSR object.
       attr_accessor :csr_name
 
-      # @return [String] Distinguished name of certificate to be created
+      # @return [String] Distinguished name of certificate to be created.
       attr_accessor :distinguished_name
 
-      # @return [String] Actual CSR string created
+      # @return [String] Actual CSR string created.
       attr_accessor :csr_string
 
-      # @return [String] PFX certifcate of created certificate
+      # @return [String] PFX certifcate of created certificate.
       attr_accessor :pfx_blob
 
-      # @return [String] PFX password
+      # @return [String] PFX password.
       attr_accessor :password
 
-      # @return [String] Hash of the certificates public key
+      # @return [String] Hash of the certificate's public key.
       attr_accessor :public_key_hash
 
-      # @return [String] Hosting environment
+      # @return [String] App Service Environment.
       attr_accessor :hosting_environment
 
 
@@ -55,7 +55,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

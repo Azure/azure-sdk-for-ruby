@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Application logs to azure table storage configuration
+    # Application logs to Azure table storage configuration.
     #
     class AzureTableStorageApplicationLogsConfig
 
@@ -16,8 +16,8 @@ module Azure::ARM::Web
       # 'Verbose', 'Information', 'Warning', 'Error'
       attr_accessor :level
 
-      # @return [String] SAS url to an azure table with add/query/delete
-      # permissions
+      # @return [String] SAS URL to an Azure table with add/query/delete
+      # permissions.
       attr_accessor :sas_url
 
 
@@ -42,7 +42,7 @@ module Azure::ARM::Web
                 }
               },
               sas_url: {
-                required: false,
+                required: true,
                 serialized_name: 'sasUrl',
                 type: {
                   name: 'String'

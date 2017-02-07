@@ -6,26 +6,27 @@
 module Azure::ARM::Web
   module Models
     #
-    # Certificate purchase order
+    # SSL certificate purchase order.
     #
     class AppServiceCertificateOrder < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [Hash{String => AppServiceCertificate}] State of the Key Vault
-      # secret
+      # secret.
       attr_accessor :certificates
 
-      # @return [String] Certificate distinguished name
+      # @return [String] Certificate distinguished name.
       attr_accessor :distinguished_name
 
-      # @return [String] Domain Verification Token
+      # @return [String] Domain verification token.
       attr_accessor :domain_verification_token
 
-      # @return [Integer] Duration in years (must be between 1 and 3)
+      # @return [Integer] Duration in years (must be between 1 and 3). Default
+      # value: 1 .
       attr_accessor :validity_in_years
 
-      # @return [Integer] Certificate Key Size
+      # @return [Integer] Certificate key size. Default value: 2048 .
       attr_accessor :key_size
 
       # @return [CertificateProductType] Certificate product type. Possible
@@ -33,7 +34,9 @@ module Azure::ARM::Web
       # 'StandardDomainValidatedWildCardSsl'
       attr_accessor :product_type
 
-      # @return [Boolean] Auto renew
+      # @return [Boolean] <code>true</code> if the certificate should be
+      # automatically renewed when it expires; otherwise, <code>false</code>.
+      # Default value: true .
       attr_accessor :auto_renew
 
       # @return [ProvisioningState] Status of certificate order. Possible
@@ -47,28 +50,29 @@ module Azure::ARM::Web
       # 'NotSubmitted'
       attr_accessor :status
 
-      # @return [CertificateDetails] Signed certificate
+      # @return [CertificateDetails] Signed certificate.
       attr_accessor :signed_certificate
 
-      # @return [String] Last CSR that was created for this order
+      # @return [String] Last CSR that was created for this order.
       attr_accessor :csr
 
-      # @return [CertificateDetails] Intermediate certificate
+      # @return [CertificateDetails] Intermediate certificate.
       attr_accessor :intermediate
 
-      # @return [CertificateDetails] Root certificate
+      # @return [CertificateDetails] Root certificate.
       attr_accessor :root
 
-      # @return [String] Current serial number of the certificate
+      # @return [String] Current serial number of the certificate.
       attr_accessor :serial_number
 
-      # @return [DateTime] Certificate last issuance time
+      # @return [DateTime] Certificate last issuance time.
       attr_accessor :last_certificate_issuance_time
 
-      # @return [DateTime] Certificate expiration time
+      # @return [DateTime] Certificate expiration time.
       attr_accessor :expiration_time
 
-      # @return [Boolean] Is Private Key External
+      # @return [Boolean] <code>true</code> if private key is external;
+      # otherwise, <code>false</code>.
       attr_accessor :is_private_key_external
 
 
@@ -93,7 +97,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -158,6 +162,7 @@ module Azure::ARM::Web
               },
               domain_verification_token: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.domainVerificationToken',
                 type: {
                   name: 'String'
@@ -166,6 +171,11 @@ module Azure::ARM::Web
               validity_in_years: {
                 required: false,
                 serialized_name: 'properties.validityInYears',
+                default_value: 1,
+                constraints: {
+                  InclusiveMaximum: 3,
+                  InclusiveMinimum: 1
+                },
                 type: {
                   name: 'Number'
                 }
@@ -173,6 +183,7 @@ module Azure::ARM::Web
               key_size: {
                 required: false,
                 serialized_name: 'properties.keySize',
+                default_value: 2048,
                 type: {
                   name: 'Number'
                 }
@@ -188,12 +199,14 @@ module Azure::ARM::Web
               auto_renew: {
                 required: false,
                 serialized_name: 'properties.autoRenew',
+                default_value: true,
                 type: {
                   name: 'Boolean'
                 }
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',
@@ -202,6 +215,7 @@ module Azure::ARM::Web
               },
               status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
@@ -210,6 +224,7 @@ module Azure::ARM::Web
               },
               signed_certificate: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.signedCertificate',
                 type: {
                   name: 'Composite',
@@ -225,6 +240,7 @@ module Azure::ARM::Web
               },
               intermediate: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.intermediate',
                 type: {
                   name: 'Composite',
@@ -233,6 +249,7 @@ module Azure::ARM::Web
               },
               root: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.root',
                 type: {
                   name: 'Composite',
@@ -241,6 +258,7 @@ module Azure::ARM::Web
               },
               serial_number: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.serialNumber',
                 type: {
                   name: 'String'
@@ -248,6 +266,7 @@ module Azure::ARM::Web
               },
               last_certificate_issuance_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.lastCertificateIssuanceTime',
                 type: {
                   name: 'DateTime'
@@ -255,6 +274,7 @@ module Azure::ARM::Web
               },
               expiration_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.expirationTime',
                 type: {
                   name: 'DateTime'

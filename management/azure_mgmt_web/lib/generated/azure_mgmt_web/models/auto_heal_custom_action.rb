@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # AutoHealCustomAction - Describes the custom action to be executed
+    # Custom action to be executed
     # when an auto heal rule is triggered.
     #
     class AutoHealCustomAction
 
       include MsRestAzure
 
-      # @return [String] Executable to be run
+      # @return [String] Executable to be run.
       attr_accessor :exe
 
-      # @return [String] Parameters for the executable
+      # @return [String] Parameters for the executable.
       attr_accessor :parameters
 
 

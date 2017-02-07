@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Push settings for the Web App.
+    # Push settings for the App.
     #
     class PushSettings
 
@@ -23,6 +23,9 @@ module Azure::ARM::Web
       # @return [String] Gets or sets a JSON string containing a list of tags
       # that require user authentication to be used in the push registration
       # endpoint.
+      # Tags can consist of alphanumeric characters and the following:
+      # '_', '@', '#', '.', ':', '-'.
+      # Validation should be performed at the PushRequestHandler.
       attr_accessor :tags_requiring_auth
 
       # @return [String] Gets or sets a JSON string containing a list of
@@ -44,7 +47,7 @@ module Azure::ARM::Web
             class_name: 'PushSettings',
             model_properties: {
               is_push_enabled: {
-                required: false,
+                required: true,
                 serialized_name: 'isPushEnabled',
                 type: {
                   name: 'Boolean'
