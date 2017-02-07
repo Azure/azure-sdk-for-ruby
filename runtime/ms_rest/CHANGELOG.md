@@ -1,3 +1,8 @@
+##2017.02.06 ms_rest version 0.6.3
+* Adding JSONable mixin module to provide simple serialization / deserialization [PR #599](https://github.com/Azure/azure-sdk-for-ruby/pull/599)
+* Making credentials optional parameter for MsRest::ServiceClient [PR #626](https://github.com/Azure/azure-sdk-for-ruby/pull/626)
+* Bug fix while building path to handle double // [Issue #693](https://github.com/Azure/azure-sdk-for-ruby/issues/639) [PR #640](https://github.com/Azure/azure-sdk-for-ruby/pull/640)
+
 ##2016.11.14 ms_rest version 0.6.2
 * Missing default ca-cert for providing ssl options [#580](https://github.com/Azure/azure-sdk-for-ruby/issues/580)
 
@@ -21,4 +26,3 @@
 
 ##2016.07.14 ms_rest version 0.3.0
 * Moving serialization/deserializaiton code from sdk models to client runtime. [#1106](https://github.com/Azure/autorest/pull/1106)
-

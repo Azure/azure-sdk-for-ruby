@@ -42,7 +42,7 @@ module MsRestAzure
         task = Concurrent::TimerTask.new do
           begin
             if !polling_state.azure_async_operation_header_link.nil?
-              update_state_from_azure_async_operation_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
+              update_state_from_azure_async_operation_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state)
             elsif !polling_state.location_header_link.nil?
               update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
             elsif http_method === :put
@@ -73,9 +73,20 @@ module MsRestAzure
         fail polling_error if polling_error.is_a?(Exception)
       end
 
-      if (http_method === :put || http_method === :patch) && AsyncOperationStatus.is_successful_status(polling_state.status) && polling_state.resource.nil?
-        get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers})
-        update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
+      if AsyncOperationStatus.is_successful_status(polling_state.status)
+        # Process long-running PUT/PATCH
+        if (http_method === :put || http_method === :patch) && polling_state.resource.nil?
+          get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers})
+          update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
+        end
+
+        # Process long-running POST/DELETE operation with schema defined on success status codes
+        if (http_method === :post || http_method === :delete) && custom_deserialization_block && polling_state.response
+          unless polling_state.response.body.to_s.empty?
+            body = JSON.load(polling_state.response.body)
+            polling_state.resource = custom_deserialization_block.call(body)
+          end
+        end
       end
 
       if AsyncOperationStatus.is_failed_status(polling_state.status)
@@ -166,16 +177,10 @@ module MsRestAzure
 
     #
     # Updates polling state from Azure async operation header.
-    # @param request [MsRest::HttpOperationRequest] The url retrieve data from.
     # @param polling_state [MsRestAzure::PollingState] polling state.
-    # @param custom_deserialization_block [Proc] custom deserialization method for parsing response.
     #
-    def update_state_from_azure_async_operation_header(request, polling_state, custom_deserialization_block)
-      if custom_deserialization_block.nil?
-        result = get_async_with_async_operation_deserialization(request)
-      else
-        result = get_async_with_custom_deserialization(request, custom_deserialization_block)
-      end
+    def update_state_from_azure_async_operation_header(request, polling_state)
+      result = get_async_with_async_operation_deserialization(request)
 
       fail AzureOperationError, 'The response from long running operation does not contain a body' if result.body.nil? || result.body.status.nil?
 
@@ -183,7 +188,7 @@ module MsRestAzure
       polling_state.error_data = result.body.error
       polling_state.response = result.response
       polling_state.request = result.request
-      polling_state.resource = result.body
+      polling_state.resource = nil
 
       polling_state
     end

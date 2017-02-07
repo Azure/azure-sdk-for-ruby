@@ -1,3 +1,9 @@
+##2017.02.06 ms_rest_azure version 0.7.0
+* [Breaking Change] Correcting typo in `storage_endpoint_suffix` key for azure environments [Issue #603](https://github.com/Azure/azure-sdk-for-ruby/issues/603) [PR #604](https://github.com/Azure/azure-sdk-for-ruby/pull/604)
+* [Breaking Change] Handling custom deserialization block in `MsRestAzure::AzureServiceClient.update_state_from_azure_async_operation_header` [PR #656](https://github.com/Azure/azure-sdk-for-ruby/pull/656)
+* Adding `resource_group` property on MsRestAzure::Resource to be populated with Azure resource group name when available from `id` [Issue 340](https://github.com/Azure/azure-sdk-for-ruby/issues/340) [PR #620](https://github.com/Azure/azure-sdk-for-ruby/pull/620)
+* Deriving `MsREstAzure::Resource` from `MsRestAzure::SubResource` to share `id` property [PR #663](https://github.com/Azure/azure-sdk-for-ruby/pull/663)
+
 ##2016.11.14 ms_rest_azure version 0.6.2
 * Update to ms_rest v0.6.2 due to fix for missing default ca-cert for providing ssl options [#580](https://github.com/Azure/azure-sdk-for-ruby/issues/580)
 
