@@ -1,17 +1,26 @@
 sudo: false
 language: ruby
 rvm:
-- 2.0.0
-- 2.1.5
-- 2.2.0
-- 2.3.0
+  - 2.0.0
+  - 2.1.5
+  - 2.2.0
+  - 2.3.0
+matrix:
+  include:
+    - rvm: 2.3.0
+      env: LATEST_RUNTIME=true
+  allow_failures:
+    - rvm: 2.3.0
+      env: LATEST_RUNTIME=true
+before_script:
+  - if [ "$LATEST_RUNTIME" == "true" ] ; then ./scripts/latest_runtime.sh ; fi
 script:
-- gem install bundler
-- if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake arm:spec ; fi
-- bundle exec rake arm:build
-- unset BUNDLE_GEMFILE
-- cd $TRAVIS_BUILD_DIR/runtime/ms_rest && bundle install --gemfile=Gemfile && bundle exec rspec
-- cd $TRAVIS_BUILD_DIR/runtime/ms_rest_azure && bundle install --gemfile=Gemfile && bundle exec rspec
+  - gem install bundler
+  - if [ "$INTEG_RECORDED" == "true" ] ; then bundle install --gemfile=Gemfile && bundle exec rake arm:spec ; fi
+  - bundle exec rake arm:build
+  - unset BUNDLE_GEMFILE
+  - cd $TRAVIS_BUILD_DIR/runtime/ms_rest && bundle install --gemfile=Gemfile && bundle exec rspec
+  - cd $TRAVIS_BUILD_DIR/runtime/ms_rest_azure && bundle install --gemfile=Gemfile && bundle exec rspec
 deploy:
   provider: script
   script: ./scripts/release.sh
