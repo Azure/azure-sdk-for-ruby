@@ -12,6 +12,8 @@ matrix:
   allow_failures:
     - rvm: 2.3.0
       env: LATEST_RUNTIME=true
+install:
+  - if [ "LATEST_RUNTIME" != "true" ] ; then bundle install --jobs=3 --retry=3 ; fi
 before_script:
   - if [ "$LATEST_RUNTIME" == "true" ] ; then ./scripts/latest_runtime.sh ; fi
 script:
