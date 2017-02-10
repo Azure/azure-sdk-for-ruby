@@ -4,5 +4,13 @@
 # regenerated.
 
 module Azure::ARM::Network
-    VERSION = '0.8.0'
+  module Models
+    #
+    # Defines values for Protocol
+    #
+    module Protocol
+      TCP = "TCP"
+      UDP = "UDP"
+    end
+  end
 end

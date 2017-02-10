@@ -4,5 +4,13 @@
 # regenerated.
 
 module Azure::ARM::Network
-    VERSION = '0.8.0'
+  module Models
+    #
+    # Defines values for AssociationType
+    #
+    module AssociationType
+      Associated = "Associated"
+      Contains = "Contains"
+    end
+  end
 end

@@ -4,5 +4,14 @@
 # regenerated.
 
 module Azure::ARM::Network
-    VERSION = '0.8.0'
+  module Models
+    #
+    # Defines values for PcProtocol
+    #
+    module PcProtocol
+      TCP = "TCP"
+      UDP = "UDP"
+      Any = "Any"
+    end
+  end
 end

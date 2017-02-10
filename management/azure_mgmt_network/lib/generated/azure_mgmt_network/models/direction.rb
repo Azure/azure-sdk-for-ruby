@@ -4,5 +4,13 @@
 # regenerated.
 
 module Azure::ARM::Network
-    VERSION = '0.8.0'
+  module Models
+    #
+    # Defines values for Direction
+    #
+    module Direction
+      Inbound = "Inbound"
+      Outbound = "Outbound"
+    end
+  end
 end
