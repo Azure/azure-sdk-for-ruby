@@ -51,9 +51,6 @@ module Azure::ARM::Network
       # configuration.
       attr_accessor :microsoft_peering_config
 
-      # @return [RouteFilter] The reference of the RouteFilter resource.
-      attr_accessor :route_filter
-
       # @return [ExpressRouteCircuitStats] Gets peering stats.
       attr_accessor :stats
 
@@ -67,6 +64,9 @@ module Azure::ARM::Network
       # @return [String] Gets whether the provider or the customer last
       # modified the peering.
       attr_accessor :last_modified_by
+
+      # @return [RouteFilter] The reference of the RouteFilter resource.
+      attr_accessor :route_filter
 
       # @return [String] Gets name of the resource that is unique within a
       # resource group. This name can be used to access the resource.
@@ -174,14 +174,6 @@ module Azure::ARM::Network
                   class_name: 'ExpressRouteCircuitPeeringConfig'
                 }
               },
-              route_filter: {
-                required: false,
-                serialized_name: 'properties.routeFilter',
-                type: {
-                  name: 'Composite',
-                  class_name: 'RouteFilter'
-                }
-              },
               stats: {
                 required: false,
                 serialized_name: 'properties.stats',
@@ -209,6 +201,14 @@ module Azure::ARM::Network
                 serialized_name: 'properties.lastModifiedBy',
                 type: {
                   name: 'String'
+                }
+              },
+              route_filter: {
+                required: false,
+                serialized_name: 'properties.routeFilter',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RouteFilter'
                 }
               },
               name: {
