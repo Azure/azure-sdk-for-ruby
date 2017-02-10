@@ -460,6 +460,144 @@ module Azure::ARM::Network
     end
 
     #
+    # The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer to retrieve the status of.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BgpPeerStatusListResult] operation results.
+    #
+    def get_bgp_peer_status(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      response = get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer to retrieve the status of.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      # Send request
+      promise = begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = BgpPeerStatusListResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway has
+    # learned, including routes learned from BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [GatewayRouteListResult] operation results.
+    #
+    def get_learned_routes(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      # Send request
+      promise = begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = GatewayRouteListResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway is
+    # advertising to the specified peer.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [GatewayRouteListResult] operation results.
+    #
+    def get_advertised_routes(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      response = get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      # Send request
+      promise = begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = GatewayRouteListResult.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Creates or updates a virtual network gateway in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -753,6 +891,301 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = VirtualNetworkGateway.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer to retrieve the status of.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [BgpPeerStatusListResult] operation results.
+    #
+    def begin_get_bgp_peer_status(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      response = begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer to retrieve the status of.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_bgp_peer_status_with_http_info(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
+    end
+
+    #
+    # The GetBgpPeerStatus operation retrieves the status of all BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer to retrieve the status of.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
+      api_version = '2016-09-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'peer' => peer,'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = BgpPeerStatusListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway has
+    # learned, including routes learned from BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [GatewayRouteListResult] operation results.
+    #
+    def begin_get_learned_routes(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway has
+    # learned, including routes learned from BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_learned_routes_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway has
+    # learned, including routes learned from BGP peers.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
+      api_version = '2016-09-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = GatewayRouteListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway is
+    # advertising to the specified peer.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [GatewayRouteListResult] operation results.
+    #
+    def begin_get_advertised_routes(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      response = begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway is
+    # advertising to the specified peer.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_get_advertised_routes_with_http_info(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers).value!
+    end
+
+    #
+    # This operation retrieves a list of routes the virtual network gateway is
+    # advertising to the specified peer.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param peer [String] The IP address of the peer
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_get_advertised_routes_async(resource_group_name, virtual_network_gateway_name, peer, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
+      fail ArgumentError, 'peer is nil' if peer.nil?
+      api_version = '2016-09-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'peer' => peer,'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = GatewayRouteListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
