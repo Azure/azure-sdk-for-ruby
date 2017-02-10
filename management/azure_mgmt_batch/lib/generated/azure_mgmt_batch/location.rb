@@ -91,7 +91,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
