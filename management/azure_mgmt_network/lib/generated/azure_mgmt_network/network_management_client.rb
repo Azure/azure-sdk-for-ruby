@@ -79,6 +79,12 @@ module Azure::ARM::Network
     # @return [LocalNetworkGateways] local_network_gateways
     attr_reader :local_network_gateways
 
+    # @return [NetworkWatchers] network_watchers
+    attr_reader :network_watchers
+
+    # @return [PacketCaptures] packet_captures
+    attr_reader :packet_captures
+
     # @return [ExpressRouteCircuitAuthorizations]
     # express_route_circuit_authorizations
     attr_reader :express_route_circuit_authorizations
@@ -129,6 +135,8 @@ module Azure::ARM::Network
       @virtual_network_gateways = VirtualNetworkGateways.new(self)
       @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
       @local_network_gateways = LocalNetworkGateways.new(self)
+      @network_watchers = NetworkWatchers.new(self)
+      @packet_captures = PacketCaptures.new(self)
       @express_route_circuit_authorizations = ExpressRouteCircuitAuthorizations.new(self)
       @express_route_circuit_peerings = ExpressRouteCircuitPeerings.new(self)
       @express_route_circuits = ExpressRouteCircuits.new(self)
