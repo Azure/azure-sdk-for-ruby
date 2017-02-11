@@ -143,6 +143,193 @@ module Azure::ARM::Web
     end
 
     #
+    # Gets publishing user
+    #
+    # Gets publishing user
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [User] operation results.
+    #
+    def get_publishing_user(custom_headers = nil)
+      response = get_publishing_user_async(custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets publishing user
+    #
+    # Gets publishing user
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_publishing_user_with_http_info(custom_headers = nil)
+      get_publishing_user_async(custom_headers).value!
+    end
+
+    #
+    # Gets publishing user
+    #
+    # Gets publishing user
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_publishing_user_async(custom_headers = nil)
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/providers/Microsoft.Web/publishingUsers/web'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = User.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates publishing user
+    #
+    # Updates publishing user
+    #
+    # @param user_details [User] Details of publishing user
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [User] operation results.
+    #
+    def update_publishing_user(user_details, custom_headers = nil)
+      response = update_publishing_user_async(user_details, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates publishing user
+    #
+    # Updates publishing user
+    #
+    # @param user_details [User] Details of publishing user
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_publishing_user_with_http_info(user_details, custom_headers = nil)
+      update_publishing_user_async(user_details, custom_headers).value!
+    end
+
+    #
+    # Updates publishing user
+    #
+    # Updates publishing user
+    #
+    # @param user_details [User] Details of publishing user
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_publishing_user_async(user_details, custom_headers = nil)
+      fail ArgumentError, 'user_details is nil' if user_details.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = User.mapper()
+      request_content = self.serialize(request_mapper,  user_details, 'user_details')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/providers/Microsoft.Web/publishingUsers/web'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = User.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets the source controls available for Azure websites.
     #
     # Gets the source controls available for Azure websites.
@@ -518,7 +705,7 @@ module Azure::ARM::Web
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = self.make_request_async(:post, path_template, options)
+      promise = self.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -624,200 +811,6 @@ module Azure::ARM::Web
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = PremierAddOnOfferCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Get the publishing credentials for the subscription owner.
-    #
-    # Get the publishing credentials for the subscription owner.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [User] operation results.
-    #
-    def get_publishing_credentials(custom_headers = nil)
-      response = get_publishing_credentials_async(custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Get the publishing credentials for the subscription owner.
-    #
-    # Get the publishing credentials for the subscription owner.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_publishing_credentials_with_http_info(custom_headers = nil)
-      get_publishing_credentials_async(custom_headers).value!
-    end
-
-    #
-    # Get the publishing credentials for the subscription owner.
-    #
-    # Get the publishing credentials for the subscription owner.
-    #
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_publishing_credentials_async(custom_headers = nil)
-      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
-      api_version = '2016-03-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/publishingCredentials'
-
-      request_url = @base_url || self.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = User.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Update the publishing credentials for the subscription owner.
-    #
-    # Update the publishing credentials for the subscription owner.
-    #
-    # @param request_message [User] A request message with the new publishing
-    # credentials.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [User] operation results.
-    #
-    def update_publishing_credentials(request_message, custom_headers = nil)
-      response = update_publishing_credentials_async(request_message, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Update the publishing credentials for the subscription owner.
-    #
-    # Update the publishing credentials for the subscription owner.
-    #
-    # @param request_message [User] A request message with the new publishing
-    # credentials.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_publishing_credentials_with_http_info(request_message, custom_headers = nil)
-      update_publishing_credentials_async(request_message, custom_headers).value!
-    end
-
-    #
-    # Update the publishing credentials for the subscription owner.
-    #
-    # Update the publishing credentials for the subscription owner.
-    #
-    # @param request_message [User] A request message with the new publishing
-    # credentials.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def update_publishing_credentials_async(request_message, custom_headers = nil)
-      fail ArgumentError, 'request_message is nil' if request_message.nil?
-      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
-      api_version = '2016-03-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = User.mapper()
-      request_content = self.serialize(request_mapper,  request_message, 'request_message')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/publishingCredentials'
-
-      request_url = @base_url || self.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = User.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1390,7 +1383,7 @@ module Azure::ARM::Web
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = self.make_request_async(:post, path_template, options)
+      promise = self.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -1655,7 +1648,7 @@ module Azure::ARM::Web
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = self.make_request_async(:post, path_template, options)
+      promise = self.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
