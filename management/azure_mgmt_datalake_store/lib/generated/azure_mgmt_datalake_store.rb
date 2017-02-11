@@ -46,8 +46,8 @@ module Azure::ARM::DataLakeStore
     autoload :EncryptionState,                                    'generated/azure_mgmt_datalake_store/models/encryption_state.rb'
     autoload :EncryptionProvisioningState,                        'generated/azure_mgmt_datalake_store/models/encryption_provisioning_state.rb'
     autoload :FirewallState,                                      'generated/azure_mgmt_datalake_store/models/firewall_state.rb'
-    autoload :FirewallAllowAzureIpsState,                         'generated/azure_mgmt_datalake_store/models/firewall_allow_azure_ips_state.rb'
     autoload :TrustedIdProviderState,                             'generated/azure_mgmt_datalake_store/models/trusted_id_provider_state.rb'
     autoload :TierType,                                           'generated/azure_mgmt_datalake_store/models/tier_type.rb'
+    autoload :FirewallAllowAzureIpsState,                         'generated/azure_mgmt_datalake_store/models/firewall_allow_azure_ips_state.rb'
   end
 end
