@@ -23,13 +23,9 @@ module Azure::ARM::Commerce
 
       attr_accessor :Name
 
-      # @return [DateTime] Indicates the date from which the meter rate or
-      # offer term is effective.
+      # @return [DateTime] Indicates the date from which the offer term is
+      # effective.
       attr_accessor :effective_date
-
-      # @return An array of meter ids that are excluded from the given offer
-      # terms.
-      attr_accessor :excluded_meter_ids
 
 
       #
@@ -51,20 +47,6 @@ module Azure::ARM::Commerce
                 serialized_name: 'EffectiveDate',
                 type: {
                   name: 'DateTime'
-                }
-              },
-              excluded_meter_ids: {
-                required: false,
-                serialized_name: 'ExcludedMeterIds',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'UuidElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

@@ -6,8 +6,7 @@
 module Azure::ARM::Commerce
   module Models
     #
-    # Model object.
-    #
+    # Indicates a recurring charge is present for this offer.
     #
     class RecurringCharge < OfferTermInfo
 
@@ -41,20 +40,6 @@ module Azure::ARM::Commerce
                 serialized_name: 'EffectiveDate',
                 type: {
                   name: 'DateTime'
-                }
-              },
-              excluded_meter_ids: {
-                required: false,
-                serialized_name: 'ExcludedMeterIds',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'UuidElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               Name: {
