@@ -22,8 +22,9 @@ module Azure::ARM::Network
       attr_accessor :storage_path
 
       # @return [String] A valid local path on the targeting VM. Must include
-      # the name of the capture file (*.cap). Required if no storage ID is
-      # provided, otherwise optional.
+      # the name of the capture file (*.cap). For linux virtual machine it must
+      # start with /var/captures. Required if no storage ID is provided,
+      # otherwise optional.
       attr_accessor :file_path
 
 

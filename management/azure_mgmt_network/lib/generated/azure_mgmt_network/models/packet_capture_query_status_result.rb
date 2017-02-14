@@ -29,7 +29,7 @@ module Azure::ARM::Network
       # stopped.
       attr_accessor :stop_reason
 
-      # @return [Array<CaptureError>] List of errors of packet capture session.
+      # @return [Array<PcError>] List of errors of packet capture session.
       attr_accessor :packet_capture_error
 
 
@@ -87,10 +87,9 @@ module Azure::ARM::Network
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'CaptureErrorElementType',
+                      serialized_name: 'PcErrorElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'CaptureError'
+                        name: 'String'
                       }
                   }
                 }

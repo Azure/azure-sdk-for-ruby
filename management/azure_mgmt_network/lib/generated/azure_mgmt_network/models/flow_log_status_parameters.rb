@@ -12,7 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] The target resource to capture flow log.
+      # @return [String] The target resource where getting the flow logging
+      # status.
       attr_accessor :target_resource_id
 
 

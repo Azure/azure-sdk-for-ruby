@@ -12,8 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] The resource identifier of the target resource against
-      # which the action is to be performed.
+      # @return [String] The ID of the target resource to perform next-hop on.
       attr_accessor :target_resource_id
 
       # @return [Direction] The direction of the packet represented as a
@@ -24,12 +23,14 @@ module Azure::ARM::Network
       # 'TCP', 'UDP'
       attr_accessor :protocol
 
-      # @return [String] The local port. Acceptable values are single integer
-      # (0-65535) or range.
+      # @return [String] The local port. Acceptable values are a single integer
+      # in the range (0-65535). Support for * for the source port, which
+      # depends on the direction.
       attr_accessor :local_port
 
-      # @return [String] The remote port. Acceptable values are single integer
-      # (0-65535) or range.
+      # @return [String] The remote port. Acceptable values are a single
+      # integer in the range (0-65535). Support for * for the source port,
+      # which depends on the direction.
       attr_accessor :remote_port
 
       # @return [String] The local IP address. Acceptable values are valid IPv4
