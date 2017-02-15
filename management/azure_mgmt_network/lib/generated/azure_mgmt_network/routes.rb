@@ -108,7 +108,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
-      api_version = '2016-09-01'
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -247,7 +247,7 @@ module Azure::ARM::Network
     def list_async(resource_group_name, route_table_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
-      api_version = '2016-09-01'
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -341,7 +341,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
-      api_version = '2016-09-01'
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -433,7 +433,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
       fail ArgumentError, 'route_parameters is nil' if route_parameters.nil?
-      api_version = '2016-09-01'
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

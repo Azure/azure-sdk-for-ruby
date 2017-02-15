@@ -12,7 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Boolean] Whether the web application firewall is enabled.
+      # @return [Boolean] Whether the web application firewall is enabled or
+      # not.
       attr_accessor :enabled
 
       # @return [ApplicationGatewayFirewallMode] Web application firewall mode.

@@ -12,7 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] The name of the target resource group.
+      # @return [String] The name of the target resource group to perform
+      # topology on.
       attr_accessor :target_resource_group_name
 
 
