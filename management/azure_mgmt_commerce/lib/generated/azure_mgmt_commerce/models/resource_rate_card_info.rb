@@ -23,13 +23,6 @@ module Azure::ARM::Commerce
       # as 'false'.
       attr_accessor :is_tax_included
 
-      # @return [String] The region in which the Azure service is available.
-      attr_accessor :meter_region
-
-      # @return [Array<String>] Provides additional meter data. 'Third Party'
-      # indicates a meter with no discount. Blanks indicate First Party.
-      attr_accessor :tags
-
       # @return [Array<OfferTermInfo>] A list of offer terms.
       attr_accessor :offer_terms
 
@@ -68,27 +61,6 @@ module Azure::ARM::Commerce
                 serialized_name: 'IsTaxIncluded',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              meter_region: {
-                required: false,
-                serialized_name: 'MeterRegion',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'Tags',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               offer_terms: {

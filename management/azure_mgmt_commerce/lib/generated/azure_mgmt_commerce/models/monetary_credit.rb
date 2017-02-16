@@ -6,8 +6,7 @@
 module Azure::ARM::Commerce
   module Models
     #
-    # Model object.
-    #
+    # Indicates that this is a monetary credit offer.
     #
     class MonetaryCredit < OfferTermInfo
 
@@ -21,9 +20,12 @@ module Azure::ARM::Commerce
       attr_accessor :Name
 
       # @return The amount of credit provided under the terms of the given
-      # offer level. This field is used only by offer terms of type
-      # 'MonetaryCredit'.
+      # offer level.
       attr_accessor :credit
+
+      # @return An array of meter ids that are excluded from the given offer
+      # terms.
+      attr_accessor :excluded_meter_ids
 
 
       #
@@ -45,20 +47,6 @@ module Azure::ARM::Commerce
                   name: 'DateTime'
                 }
               },
-              excluded_meter_ids: {
-                required: false,
-                serialized_name: 'ExcludedMeterIds',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'UuidElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               Name: {
                 required: true,
                 serialized_name: 'Name',
@@ -71,6 +59,20 @@ module Azure::ARM::Commerce
                 serialized_name: 'Credit',
                 type: {
                   name: 'Number'
+                }
+              },
+              excluded_meter_ids: {
+                required: false,
+                serialized_name: 'ExcludedMeterIds',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'UuidElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }
