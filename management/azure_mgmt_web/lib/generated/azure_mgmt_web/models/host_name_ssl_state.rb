@@ -29,6 +29,10 @@ module Azure::ARM::Web
       # @return [Boolean] Set to <code>true</code> to update existing hostname.
       attr_accessor :to_update
 
+      # @return [HostType] Indicates whether the hostname is a standard or
+      # repository hostname. Possible values include: 'Standard', 'Repository'
+      attr_accessor :host_type
+
 
       #
       # Mapper for HostNameSslState class as Ruby Hash.
@@ -76,6 +80,14 @@ module Azure::ARM::Web
                 serialized_name: 'toUpdate',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              host_type: {
+                required: false,
+                serialized_name: 'hostType',
+                type: {
+                  name: 'Enum',
+                  module: 'HostType'
                 }
               }
             }
