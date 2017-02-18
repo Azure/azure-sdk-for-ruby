@@ -352,6 +352,228 @@ module Azure::ARM::CDN
     end
 
     #
+    # Disable https delivery of the custom domain.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
+    # @param custom_domain_name [String] Name of the custom domain within an
+    # endpoint.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CustomDomain] operation results.
+    #
+    def disable_custom_https(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers = nil)
+      response = disable_custom_https_async(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Disable https delivery of the custom domain.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
+    # @param custom_domain_name [String] Name of the custom domain within an
+    # endpoint.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def disable_custom_https_with_http_info(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers = nil)
+      disable_custom_https_async(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers).value!
+    end
+
+    #
+    # Disable https delivery of the custom domain.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
+    # @param custom_domain_name [String] Name of the custom domain within an
+    # endpoint.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def disable_custom_https_async(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+      fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
+      fail ArgumentError, 'custom_domain_name is nil' if custom_domain_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'endpointName' => endpoint_name,'customDomainName' => custom_domain_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CustomDomain.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Enable https delivery of the custom domain.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
+    # @param custom_domain_name [String] Name of the custom domain within an
+    # endpoint.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CustomDomain] operation results.
+    #
+    def enable_custom_https(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers = nil)
+      response = enable_custom_https_async(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Enable https delivery of the custom domain.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
+    # @param custom_domain_name [String] Name of the custom domain within an
+    # endpoint.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def enable_custom_https_with_http_info(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers = nil)
+      enable_custom_https_async(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers).value!
+    end
+
+    #
+    # Enable https delivery of the custom domain.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
+    # @param custom_domain_name [String] Name of the custom domain within an
+    # endpoint.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def enable_custom_https_async(resource_group_name, profile_name, endpoint_name, custom_domain_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+      fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
+      fail ArgumentError, 'custom_domain_name is nil' if custom_domain_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'endpointName' => endpoint_name,'customDomainName' => custom_domain_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CustomDomain.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Creates a new custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
