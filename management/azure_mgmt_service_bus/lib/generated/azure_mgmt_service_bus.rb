@@ -48,10 +48,8 @@ module Azure::ARM::ServiceBus
     autoload :SubscriptionResource,                               'generated/azure_mgmt_service_bus/models/subscription_resource.rb'
     autoload :SkuName,                                            'generated/azure_mgmt_service_bus/models/sku_name.rb'
     autoload :SkuTier,                                            'generated/azure_mgmt_service_bus/models/sku_tier.rb'
-    autoload :NamespaceState,                                     'generated/azure_mgmt_service_bus/models/namespace_state.rb'
     autoload :AccessRights,                                       'generated/azure_mgmt_service_bus/models/access_rights.rb'
     autoload :Policykey,                                          'generated/azure_mgmt_service_bus/models/policykey.rb'
-    autoload :EntityAvailabilityStatus,                           'generated/azure_mgmt_service_bus/models/entity_availability_status.rb'
     autoload :EntityStatus,                                       'generated/azure_mgmt_service_bus/models/entity_status.rb'
   end
 end
