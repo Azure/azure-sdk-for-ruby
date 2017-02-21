@@ -43,7 +43,6 @@ module Azure::ARM::EventHub
     autoload :ConsumerGroupResource,                              'generated/azure_mgmt_event_hub/models/consumer_group_resource.rb'
     autoload :SkuName,                                            'generated/azure_mgmt_event_hub/models/sku_name.rb'
     autoload :SkuTier,                                            'generated/azure_mgmt_event_hub/models/sku_tier.rb'
-    autoload :NamespaceState,                                     'generated/azure_mgmt_event_hub/models/namespace_state.rb'
     autoload :AccessRights,                                       'generated/azure_mgmt_event_hub/models/access_rights.rb'
     autoload :Policykey,                                          'generated/azure_mgmt_event_hub/models/policykey.rb'
     autoload :EntityStatus,                                       'generated/azure_mgmt_event_hub/models/entity_status.rb'

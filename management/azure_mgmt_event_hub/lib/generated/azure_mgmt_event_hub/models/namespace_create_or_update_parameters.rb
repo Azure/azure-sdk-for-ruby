@@ -24,12 +24,6 @@ module Azure::ARM::EventHub
       # @return [String] Provisioning state of the namespace.
       attr_accessor :provisioning_state
 
-      # @return [NamespaceState] State of the namespace. Possible values
-      # include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
-      # 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
-      # 'Removing', 'Removed', 'Failed'
-      attr_accessor :status
-
       # @return [DateTime] The time the namespace was created.
       attr_accessor :created_at
 
@@ -39,12 +33,6 @@ module Azure::ARM::EventHub
       # @return [String] Endpoint you can use to perform Service Bus
       # operations.
       attr_accessor :service_bus_endpoint
-
-      # @return [Boolean] Indicates whether to create an ACS namespace.
-      attr_accessor :create_acsnamespace
-
-      # @return [Boolean] Specifies whether this instance is enabled.
-      attr_accessor :enabled
 
 
       #
@@ -95,14 +83,6 @@ module Azure::ARM::EventHub
                   name: 'String'
                 }
               },
-              status: {
-                required: false,
-                serialized_name: 'properties.status',
-                type: {
-                  name: 'Enum',
-                  module: 'NamespaceState'
-                }
-              },
               created_at: {
                 required: false,
                 serialized_name: 'properties.createdAt',
@@ -122,20 +102,6 @@ module Azure::ARM::EventHub
                 serialized_name: 'properties.serviceBusEndpoint',
                 type: {
                   name: 'String'
-                }
-              },
-              create_acsnamespace: {
-                required: false,
-                serialized_name: 'properties.createACSNamespace',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              enabled: {
-                required: false,
-                serialized_name: 'properties.enabled',
-                type: {
-                  name: 'Boolean'
                 }
               }
             }
