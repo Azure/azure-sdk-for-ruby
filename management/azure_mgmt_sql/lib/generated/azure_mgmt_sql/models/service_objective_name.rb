@@ -17,6 +17,15 @@ module Azure::ARM::SQL
       P1 = "P1"
       P2 = "P2"
       P3 = "P3"
+      P4 = "P4"
+      P6 = "P6"
+      P11 = "P11"
+      P15 = "P15"
+      System = "System"
+      System1 = "System1"
+      System2 = "System2"
+      System3 = "System3"
+      System4 = "System4"
     end
   end
 end

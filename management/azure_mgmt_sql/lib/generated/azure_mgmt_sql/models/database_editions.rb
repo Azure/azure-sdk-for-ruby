@@ -17,6 +17,7 @@ module Azure::ARM::SQL
       Free = "Free"
       Stretch = "Stretch"
       DataWarehouse = "DataWarehouse"
+      System = "System"
     end
   end
 end
