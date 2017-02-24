@@ -12,6 +12,20 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      # @return [String] Location of the server that contains this firewall
+      # rule.
+      attr_accessor :location
+
+      # @return [String] Type of resource this is.
+      attr_accessor :type
+
+      # @return [Boolean] Legacy value indicating whether termination is
+      # allowed.  Currently always returns true.
+      attr_accessor :is_termination_allowed
+
+      # @return [String] Replication mode of this replication link.
+      attr_accessor :replication_mode
+
       # @return [String] The name of the Azure SQL server hosting the partner
       # Azure SQL Database.
       attr_accessor :partner_server
@@ -32,8 +46,7 @@ module Azure::ARM::SQL
       # 'NonReadableSecondary', 'Source', 'Copy'
       attr_accessor :partner_role
 
-      # @return [DateTime] The start time for the replication link (ISO8601
-      # format).
+      # @return [DateTime] The start time for the replication link.
       attr_accessor :start_time
 
       # @return [Integer] The percentage of seeding complete for the
@@ -70,6 +83,38 @@ module Azure::ARM::SQL
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                read_only: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              is_termination_allowed: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.isTerminationAllowed',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              replication_mode: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.replicationMode',
                 type: {
                   name: 'String'
                 }

@@ -19,12 +19,18 @@ module Azure::ARM::SQL
       # rule.
       attr_accessor :location
 
+      # @return [String] Type of resource this is.
+      attr_accessor :type
+
       # @return [String] The start IP address of the Azure SQL server firewall
-      # rule. Must be IPv4 format.
+      # rule. Must be IPv4 format. Use value '0.0.0.0' to represent all
+      # Azure-internal IP addresses.
       attr_accessor :start_ip_address
 
       # @return [String] The end IP address of the Azure SQL server firewall
-      # rule. Must be IPv4 format.
+      # rule. Must be IPv4 format. Must be greater than or equal to
+      # startIpAddress. Use value '0.0.0.0' to represent all Azure-internal IP
+      # addresses.
       attr_accessor :end_ip_address
 
 
@@ -72,15 +78,23 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              start_ip_address: {
+              type: {
                 required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              start_ip_address: {
+                required: true,
                 serialized_name: 'properties.startIpAddress',
                 type: {
                   name: 'String'
                 }
               },
               end_ip_address: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.endIpAddress',
                 type: {
                   name: 'String'

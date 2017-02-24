@@ -62,6 +62,18 @@ module Azure::ARM::SQL
       # @return [String] The current state of the operation.
       attr_accessor :state
 
+      # @return [Integer] The requested storage limit in MB.
+      attr_accessor :requested_storage_limit_in_mb
+
+      # @return [Integer] The requested per Database DTU guarantee.
+      attr_accessor :requested_database_dtu_guarantee
+
+      # @return [Integer] The requested per Database DTU cap.
+      attr_accessor :requested_database_dtu_cap
+
+      # @return [Integer] The requested DTU guarantee.
+      attr_accessor :requested_dtu_guarantee
+
 
       #
       # Mapper for ElasticPoolActivity class as Ruby Hash.
@@ -246,6 +258,38 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.state',
                 type: {
                   name: 'String'
+                }
+              },
+              requested_storage_limit_in_mb: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.requestedStorageLimitInMB',
+                type: {
+                  name: 'Number'
+                }
+              },
+              requested_database_dtu_guarantee: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.requestedDatabaseDtuGuarantee',
+                type: {
+                  name: 'Number'
+                }
+              },
+              requested_database_dtu_cap: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.requestedDatabaseDtuCap',
+                type: {
+                  name: 'Number'
+                }
+              },
+              requested_dtu_guarantee: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.requestedDtuGuarantee',
+                type: {
+                  name: 'Number'
                 }
               }
             }
