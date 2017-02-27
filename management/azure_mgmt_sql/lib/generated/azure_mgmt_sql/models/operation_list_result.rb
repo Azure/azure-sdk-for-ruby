@@ -6,42 +6,54 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a list recommended elastic pool request.
+    # Result of the request to list SQL operations. It contains a list of
+    # operations and a URL link to get the next set of results.
     #
-    class RecommendedElasticPoolListResult
+    class OperationListResult
 
       include MsRestAzure
 
-      # @return [Array<RecommendedElasticPool>] The list of recommended elastic
-      # pools hosted in the server.
+      # @return [Array<Operation>] List of SQL operations supported by the SQL
+      # resource provider.
       attr_accessor :value
+
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
+      attr_accessor :next_link
 
 
       #
-      # Mapper for RecommendedElasticPoolListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RecommendedElasticPoolListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'RecommendedElasticPoolListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'RecommendedElasticPoolElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'RecommendedElasticPool'
+                        class_name: 'Operation'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

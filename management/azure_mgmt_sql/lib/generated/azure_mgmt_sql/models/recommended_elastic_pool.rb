@@ -6,18 +6,18 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Recommended Elastic Pool.
+    # Represents a recommented elastic pool.
     #
     class RecommendedElasticPool < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [ElasticPoolEditions] The edition of the Azure SQL Recommended
-      # Elastic Pool. The ElasticPoolEditions enumeration contains all the
-      # valid editions. Possible values include: 'Basic', 'Standard', 'Premium'
+      # @return [ElasticPoolEditions] The edition of the recommended elastic
+      # pool. The ElasticPoolEditions enumeration contains all the valid
+      # editions. Possible values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :database_edition
 
-      # @return [Float] The DTU for the SQL Azure Recommended Elastic Pool.
+      # @return [Float] The DTU for the recommended elastic pool.
       attr_accessor :dtu
 
       # @return [Float] The minimum DTU for the database.
@@ -41,12 +41,12 @@ module Azure::ARM::SQL
       # @return [Float] Gets maximum observed storage in megabytes.
       attr_accessor :max_observed_storage_mb
 
-      # @return [Array<Database>] The list of Azure SQL Databases in this pool.
-      # Expanded property
+      # @return [Array<Database>] The list of databases in this pool. Expanded
+      # property
       attr_accessor :databases
 
-      # @return [Array<RecommendedElasticPoolMetric>] The list of Azure SQL
-      # Databases housed in the server. Expanded property
+      # @return [Array<RecommendedElasticPoolMetric>] The list of databases
+      # housed in the server. Expanded property
       attr_accessor :metrics
 
 

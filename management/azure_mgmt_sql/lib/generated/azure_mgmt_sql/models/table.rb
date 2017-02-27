@@ -6,14 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database table.
+    # Represents a database table.
     #
     class Table < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [TableType] The type of Azure SQL Database table. Possible
-      # values include: 'BaseTable', 'View'
+      # @return [TableType] The type of database table. Possible values
+      # include: 'BaseTable', 'View'
       attr_accessor :table_type
 
       # @return [Array<Column>] The columns from this table.

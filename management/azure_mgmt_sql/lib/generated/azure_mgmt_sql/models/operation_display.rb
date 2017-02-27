@@ -6,52 +6,54 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database transparent data encryption .
+    # Display metadata associated with the operation.
     #
-    class TransparentDataEncryption < SqlSubResource
+    class OperationDisplay
 
       include MsRestAzure
 
-      # @return [TransparentDataEncryptionStates] The status of the database
-      # transparent data encryption. Possible values include: 'Enabled',
-      # 'Disabled'
-      attr_accessor :status
+      # @return [String] Service provider: Microsoft SQL Database.
+      attr_accessor :provider
+
+      # @return [String] Resource on which the operation is performed: Server,
+      # Database, etc.
+      attr_accessor :resource
+
+      # @return [String] Type of operation: get, read, delete, etc.
+      attr_accessor :operation
 
 
       #
-      # Mapper for TransparentDataEncryption class as Ruby Hash.
+      # Mapper for OperationDisplay class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TransparentDataEncryption',
+          serialized_name: 'Operation_display',
           type: {
             name: 'Composite',
-            class_name: 'TransparentDataEncryption',
+            class_name: 'OperationDisplay',
             model_properties: {
-              name: {
+              provider: {
                 required: false,
-                read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'provider',
                 type: {
                   name: 'String'
                 }
               },
-              id: {
+              resource: {
                 required: false,
-                read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'resource',
                 type: {
                   name: 'String'
                 }
               },
-              status: {
+              operation: {
                 required: false,
-                serialized_name: 'properties.status',
+                serialized_name: 'operation',
                 type: {
-                  name: 'Enum',
-                  module: 'TransparentDataEncryptionStates'
+                  name: 'String'
                 }
               }
             }

@@ -6,15 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Elastic Pool Database
-    # Activity request.
+    # Represents the response to a list elastic pool database activity request.
     #
     class ElasticPoolDatabaseActivityListResult
 
       include MsRestAzure
 
-      # @return [Array<ElasticPoolDatabaseActivity>] The list of Azure SQL
-      # Elastic Pool Database Activities.
+      # @return [Array<ElasticPoolDatabaseActivity>] The list of elastic pool
+      # database activities.
       attr_accessor :value
 
 

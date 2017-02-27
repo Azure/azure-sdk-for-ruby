@@ -6,14 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Database metrics request.
+    # Represents the response to a list database metrics request.
     #
     class DatabaseMetricListResult
 
       include MsRestAzure
 
-      # @return [Array<DatabaseMetric>] The list of Azure SQL Database metrics
-      # for the database.
+      # @return [Array<DatabaseMetric>] The list of database metrics for the
+      # database.
       attr_accessor :value
 
 
