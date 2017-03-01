@@ -20,6 +20,11 @@ module Azure::ARM::CDN
       # domain. Possible values include: 'Creating', 'Active', 'Deleting'
       attr_accessor :resource_state
 
+      # @return [CustomHttpsProvisioningState] Provisioning state of Custom
+      # Https of the custom domain. Possible values include: 'Enabling',
+      # 'Enabled', 'Disabling', 'Disabled', 'Failed'
+      attr_accessor :custom_https_provisioning_state
+
       # @return [String] Special validation or data may be required when
       # delivering CDN to some regions due to local compliance reasons. E.g.
       # ICP license number of a custom domain is required to deliver content in
@@ -98,6 +103,14 @@ module Azure::ARM::CDN
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',
+                type: {
+                  name: 'String'
+                }
+              },
+              custom_https_provisioning_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.CustomHttpsProvisioningState',
                 type: {
                   name: 'String'
                 }
