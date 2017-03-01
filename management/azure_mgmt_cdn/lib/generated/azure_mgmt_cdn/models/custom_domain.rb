@@ -110,7 +110,7 @@ module Azure::ARM::CDN
               custom_https_provisioning_state: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.CustomHttpsProvisioningState',
+                serialized_name: 'properties.customHttpsProvisioningState',
                 type: {
                   name: 'String'
                 }
