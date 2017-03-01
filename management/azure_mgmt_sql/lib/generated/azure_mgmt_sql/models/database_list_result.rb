@@ -6,14 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Database request.
+    # Represents the response to a list database request.
     #
     class DatabaseListResult
 
       include MsRestAzure
 
-      # @return [Array<Database>] The list of Azure SQL Databases housed in the
-      # server.
+      # @return [Array<Database>] The list of databases housed in the server.
       attr_accessor :value
 
 

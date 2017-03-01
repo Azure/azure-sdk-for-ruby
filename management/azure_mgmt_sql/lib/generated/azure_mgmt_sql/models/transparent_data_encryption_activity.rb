@@ -6,18 +6,18 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database Transparent Data Encryption Scan.
+    # Represents a database transparent data encryption Scan.
     #
     class TransparentDataEncryptionActivity < SqlSubResource
 
       include MsRestAzure
 
       # @return [TransparentDataEncryptionActivityStates] The status of the
-      # Azure SQL database. Possible values include: 'Encrypting', 'Decrypting'
+      # database. Possible values include: 'Encrypting', 'Decrypting'
       attr_accessor :status
 
       # @return [Float] The percent complete of the transparent data encryption
-      # scan for a Azure SQL Database.
+      # scan for a database.
       attr_accessor :percent_complete
 
 

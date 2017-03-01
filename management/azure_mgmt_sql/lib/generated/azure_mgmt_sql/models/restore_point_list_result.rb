@@ -6,15 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Database restore points
-    # request.
+    # Represents the response to a list database restore points request.
     #
     class RestorePointListResult
 
       include MsRestAzure
 
-      # @return [Array<RestorePoint>] The list of a given Azure SQL Database
-      # restore points.
+      # @return [Array<RestorePoint>] The list of a given database restore
+      # points.
       attr_accessor :value
 
 
