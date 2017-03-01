@@ -11,7 +11,6 @@ module Azure::ARM::EventHub
     module SkuName
       Basic = "Basic"
       Standard = "Standard"
-      Premium = "Premium"
     end
   end
 end
