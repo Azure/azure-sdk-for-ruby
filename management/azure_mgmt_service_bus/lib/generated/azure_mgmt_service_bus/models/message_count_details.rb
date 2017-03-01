@@ -44,6 +44,7 @@ module Azure::ARM::ServiceBus
             model_properties: {
               active_message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'activeMessageCount',
                 type: {
                   name: 'Number'
@@ -51,6 +52,7 @@ module Azure::ARM::ServiceBus
               },
               dead_letter_message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'deadLetterMessageCount',
                 type: {
                   name: 'Number'
@@ -58,6 +60,7 @@ module Azure::ARM::ServiceBus
               },
               scheduled_message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'scheduledMessageCount',
                 type: {
                   name: 'Number'
@@ -65,6 +68,7 @@ module Azure::ARM::ServiceBus
               },
               transfer_dead_letter_message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'transferDeadLetterMessageCount',
                 type: {
                   name: 'Number'
@@ -72,6 +76,7 @@ module Azure::ARM::ServiceBus
               },
               transfer_message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'transferMessageCount',
                 type: {
                   name: 'Number'

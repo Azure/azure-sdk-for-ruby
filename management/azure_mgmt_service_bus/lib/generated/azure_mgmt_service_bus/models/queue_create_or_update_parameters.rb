@@ -31,11 +31,6 @@ module Azure::ARM::ServiceBus
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
-      # @return [EntityAvailabilityStatus] Entity availability status for the
-      # queue. Possible values include: 'Available', 'Limited', 'Renaming',
-      # 'Restoring', 'Unknown'
-      attr_accessor :entity_availability_status
-
       # @return [DateTime] The exact time the message was created.
       attr_accessor :created_at
 
@@ -65,10 +60,6 @@ module Azure::ARM::ServiceBus
       # @return [Boolean] A value that indicates whether the queue is to be
       # partitioned across multiple message brokers.
       attr_accessor :enable_partitioning
-
-      # @return [Boolean] A value that indicates whether the message is
-      # accessible anonymously.
-      attr_accessor :is_anonymous_accessible
 
       # @return [Integer] The maximum delivery count. A message is
       # automatically deadlettered after this number of deliveries.
@@ -144,6 +135,7 @@ module Azure::ARM::ServiceBus
               },
               accessed_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.accessedAt',
                 type: {
                   name: 'DateTime'
@@ -156,16 +148,9 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
-              entity_availability_status: {
-                required: false,
-                serialized_name: 'properties.entityAvailabilityStatus',
-                type: {
-                  name: 'Enum',
-                  module: 'EntityAvailabilityStatus'
-                }
-              },
               created_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
@@ -213,13 +198,6 @@ module Azure::ARM::ServiceBus
                   name: 'Boolean'
                 }
               },
-              is_anonymous_accessible: {
-                required: false,
-                serialized_name: 'properties.isAnonymousAccessible',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               max_delivery_count: {
                 required: false,
                 serialized_name: 'properties.maxDeliveryCount',
@@ -236,6 +214,7 @@ module Azure::ARM::ServiceBus
               },
               message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.messageCount',
                 type: {
                   name: 'Number'
@@ -243,6 +222,7 @@ module Azure::ARM::ServiceBus
               },
               count_details: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.countDetails',
                 type: {
                   name: 'Composite',
@@ -265,6 +245,7 @@ module Azure::ARM::ServiceBus
               },
               size_in_bytes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.sizeInBytes',
                 type: {
                   name: 'Number'
@@ -287,6 +268,7 @@ module Azure::ARM::ServiceBus
               },
               updated_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'

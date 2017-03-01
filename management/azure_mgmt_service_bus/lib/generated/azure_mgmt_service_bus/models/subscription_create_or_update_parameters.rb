@@ -50,15 +50,6 @@ module Azure::ARM::ServiceBus
       # operations are enabled.
       attr_accessor :enable_batched_operations
 
-      # @return [EntityAvailabilityStatus] Entity availability status for the
-      # topic. Possible values include: 'Available', 'Limited', 'Renaming',
-      # 'Restoring', 'Unknown'
-      attr_accessor :entity_availability_status
-
-      # @return [Boolean] Value that indicates whether the entity description
-      # is read-only.
-      attr_accessor :is_read_only
-
       # @return [String] The lock duration time span for the subscription.
       attr_accessor :lock_duration
 
@@ -110,6 +101,7 @@ module Azure::ARM::ServiceBus
               },
               accessed_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.accessedAt',
                 type: {
                   name: 'DateTime'
@@ -124,6 +116,7 @@ module Azure::ARM::ServiceBus
               },
               count_details: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.countDetails',
                 type: {
                   name: 'Composite',
@@ -132,6 +125,7 @@ module Azure::ARM::ServiceBus
               },
               created_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
@@ -165,21 +159,6 @@ module Azure::ARM::ServiceBus
                   name: 'Boolean'
                 }
               },
-              entity_availability_status: {
-                required: false,
-                serialized_name: 'properties.entityAvailabilityStatus',
-                type: {
-                  name: 'Enum',
-                  module: 'EntityAvailabilityStatus'
-                }
-              },
-              is_read_only: {
-                required: false,
-                serialized_name: 'properties.isReadOnly',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               lock_duration: {
                 required: false,
                 serialized_name: 'properties.lockDuration',
@@ -196,6 +175,7 @@ module Azure::ARM::ServiceBus
               },
               message_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.messageCount',
                 type: {
                   name: 'Number'
@@ -218,6 +198,7 @@ module Azure::ARM::ServiceBus
               },
               updated_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'

@@ -189,8 +189,7 @@ module Azure::ARM::Insights
     # Create or update a log profile in Azure Monitoring REST API.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileProperties] Parameters supplied to the
-    # operation.
+    # @param parameters [LogProfileResource] Parameters supplied to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -205,8 +204,7 @@ module Azure::ARM::Insights
     # Create or update a log profile in Azure Monitoring REST API.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileProperties] Parameters supplied to the
-    # operation.
+    # @param parameters [LogProfileResource] Parameters supplied to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -220,8 +218,7 @@ module Azure::ARM::Insights
     # Create or update a log profile in Azure Monitoring REST API.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileProperties] Parameters supplied to the
-    # operation.
+    # @param parameters [LogProfileResource] Parameters supplied to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -243,7 +240,7 @@ module Azure::ARM::Insights
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = LogProfileProperties.mapper()
+      request_mapper = LogProfileResource.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
