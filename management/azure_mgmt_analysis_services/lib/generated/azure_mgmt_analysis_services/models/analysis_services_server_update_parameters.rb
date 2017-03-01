@@ -22,6 +22,9 @@ module Azure::ARM::AnalysisServices
       # @return [ServerAdministrators]
       attr_accessor :as_administrators
 
+      # @return [BackupConfiguration]
+      attr_accessor :backup_configuration
+
 
       #
       # Mapper for AnalysisServicesServerUpdateParameters class as Ruby Hash.
@@ -63,6 +66,14 @@ module Azure::ARM::AnalysisServices
                 type: {
                   name: 'Composite',
                   class_name: 'ServerAdministrators'
+                }
+              },
+              backup_configuration: {
+                required: false,
+                serialized_name: 'properties.backupConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BackupConfiguration'
                 }
               }
             }
