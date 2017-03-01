@@ -26,14 +26,14 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Gets information about an Azure SQL Recommended Elastic Pool.
+    # Gets a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45,14 +45,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Recommended Elastic Pool.
+    # Gets a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -63,14 +63,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Recommended Elastic Pool.
+    # Gets a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -130,17 +130,15 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database inside of an Azure SQL
-    # Recommended Elastic Pool.
+    # Gets a database inside of a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Elastic Pool to be retrieved.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the elastic pool to
+    # be retrieved.
+    # @param database_name [String] The name of the database to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -152,17 +150,15 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database inside of an Azure SQL
-    # Recommended Elastic Pool.
+    # Gets a database inside of a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Elastic Pool to be retrieved.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the elastic pool to
+    # be retrieved.
+    # @param database_name [String] The name of the database to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -173,17 +169,15 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database inside of an Azure SQL
-    # Recommended Elastic Pool.
+    # Gets a database inside of a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Elastic Pool to be retrieved.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the elastic pool to
+    # be retrieved.
+    # @param database_name [String] The name of the database to be retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -244,12 +238,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Recommended Elastic Pools.
+    # Returns recommended elastic pools.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -261,12 +255,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Recommended Elastic Pools.
+    # Returns recommended elastic pools.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -277,12 +271,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Recommended Elastic Pools.
+    # Returns recommended elastic pools.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -341,15 +335,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL database inside of an Azure SQL
-    # Recommended Elastic Pool.
+    # Returns a database inside of a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -361,15 +354,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL database inside of an Azure SQL
-    # Recommended Elastic Pool.
+    # Returns a database inside of a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -380,15 +372,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL database inside of an Azure SQL
-    # Recommended Elastic Pool.
+    # Returns a database inside of a recommented elastic pool.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -448,14 +439,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an recommended elastic pool metrics.
+    # Returns a recommented elastic pool metrics.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -467,14 +458,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an recommended elastic pool metrics.
+    # Returns a recommented elastic pool metrics.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -485,14 +476,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an recommended elastic pool metrics.
+    # Returns a recommented elastic pool metrics.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param recommended_elastic_pool_name [String] The name of the Azure SQL
-    # Recommended Elastic Pool to be retrieved.
+    # @param server_name [String] The name of the server.
+    # @param recommended_elastic_pool_name [String] The name of the recommended
+    # elastic pool to be retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

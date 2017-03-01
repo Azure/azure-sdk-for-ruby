@@ -6,15 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database restore point.
+    # Represents a database restore point.
     #
     class RestorePoint < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [RestorePointTypes] The restore point type of the Azure SQL
-      # database restore point. Possible values include: 'DISCRETE',
-      # 'CONTINUOUS'
+      # @return [RestorePointTypes] The restore point type of the database
+      # restore point. Possible values include: 'DISCRETE', 'CONTINUOUS'
       attr_accessor :restore_point_type
 
       # @return [DateTime] Restore point creation time (ISO8601 format).

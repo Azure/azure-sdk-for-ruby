@@ -6,11 +6,15 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL server.
+    # Represents a server.
     #
     class Server < MsRestAzure::Resource
 
       include MsRestAzure
+
+      # @return [String] Kind of sql server.  This is metadata used for the
+      # Azure portal experience.
+      attr_accessor :kind
 
       # @return [String] The fully qualified domain name of the server.
       attr_accessor :fully_qualified_domain_name
@@ -27,6 +31,21 @@ module Azure::ARM::SQL
       # @return [String] The administrator login password (required for server
       # creation).
       attr_accessor :administrator_login_password
+
+      # @return The ID of the Active Azure Directory object with admin
+      # permissions on this server. Legacy parameter, always null. To check for
+      # Active Directory admin, query .../servers/{serverName}/administrators.
+      attr_accessor :external_administrator_sid
+
+      # @return [String] The display name of the Azure Active Directory object
+      # with admin permissions on this server. Legacy parameter, always null.
+      # To check for Active Directory admin, query
+      # .../servers/{serverName}/administrators
+      attr_accessor :external_administrator_login
+
+      # @return [ServerState] The state of the server. Possible values include:
+      # 'Ready', 'Disabled'
+      attr_accessor :state
 
 
       #
@@ -86,6 +105,14 @@ module Azure::ARM::SQL
                   }
                 }
               },
+              kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
               fully_qualified_domain_name: {
                 required: false,
                 read_only: true,
@@ -113,6 +140,31 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.administratorLoginPassword',
                 type: {
                   name: 'String'
+                }
+              },
+              external_administrator_sid: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.externalAdministratorSid',
+                type: {
+                  name: 'String'
+                }
+              },
+              external_administrator_login: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.externalAdministratorLogin',
+                type: {
+                  name: 'String'
+                }
+              },
+              state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.state',
+                type: {
+                  name: 'Enum',
+                  module: 'ServerState'
                 }
               }
             }

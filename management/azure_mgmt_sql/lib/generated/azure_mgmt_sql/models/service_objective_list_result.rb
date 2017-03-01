@@ -6,15 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a Get Azure SQL Database Service Objectives
-    # request.
+    # Represents the response to a get database service objectives request.
     #
     class ServiceObjectiveListResult
 
       include MsRestAzure
 
-      # @return [Array<ServiceObjective>] The list of Azure SQL Database
-      # Service Objectives.
+      # @return [Array<ServiceObjective>] The list of database service
+      # objectives.
       attr_accessor :value
 
 

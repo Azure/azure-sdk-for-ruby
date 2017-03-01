@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database recommended index.
+    # Represents a database recommended index.
     #
     class RecommendedIndex < MsRestAzure::Resource
 
@@ -14,16 +14,14 @@ module Azure::ARM::SQL
 
       # @return [RecommendedIndexActions] The proposed index action. You can
       # create a missing index, drop an unused index, or rebuild an existing
-      # index to improve its performance. Possible values are 'Create', 'Drop',
-      # 'Rebuild'. Possible values include: 'Create', 'Drop', 'Rebuild'
+      # index to improve its performance. Possible values include: 'Create',
+      # 'Drop', 'Rebuild'
       attr_accessor :action
 
       # @return [RecommendedIndexStates] The current recommendation state.
-      # Current options are: 'Active', 'Pending', 'Executing', 'Verifying',
+      # Possible values include: 'Active', 'Pending', 'Executing', 'Verifying',
       # 'Pending Revert', 'Reverting', 'Reverted', 'Ignored', 'Expired',
-      # 'Blocked', 'Success'. Possible values include: 'Active', 'Pending',
-      # 'Executing', 'Verifying', 'Pending Revert', 'Reverting', 'Reverted',
-      # 'Ignored', 'Expired', 'Blocked', 'Success'
+      # 'Blocked', 'Success'
       attr_accessor :state
 
       # @return [DateTime] The UTC datetime showing when this resource was

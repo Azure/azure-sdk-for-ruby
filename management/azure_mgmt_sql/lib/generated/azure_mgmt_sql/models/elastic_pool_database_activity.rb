@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the activity on an Azure SQL Elastic Pool.
+    # Represents the activity on an elastic pool.
     #
     class ElasticPoolDatabaseActivity < MsRestAzure::Resource
 
@@ -36,11 +36,11 @@ module Azure::ARM::SQL
       # @return [Integer] The percentage complete if available.
       attr_accessor :percent_complete
 
-      # @return [String] The name for the Elastic Pool the database is moving
+      # @return [String] The name for the elastic pool the database is moving
       # into if available.
       attr_accessor :requested_elastic_pool_name
 
-      # @return [String] The name of the current Elastic Pool the database is
+      # @return [String] The name of the current elastic pool the database is
       # in if available.
       attr_accessor :current_elastic_pool_name
 
@@ -52,8 +52,7 @@ module Azure::ARM::SQL
       # available.
       attr_accessor :requested_service_objective
 
-      # @return [String] The name of the Azure SQL server the Elastic Pool is
-      # in.
+      # @return [String] The name of the server the elastic pool is in.
       attr_accessor :server_name
 
       # @return [DateTime] The time the operation started (ISO8601 format).

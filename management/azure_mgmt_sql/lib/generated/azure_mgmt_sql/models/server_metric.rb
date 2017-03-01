@@ -6,11 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents Azure SQL server metrics.
+    # Represents server metrics.
     #
     class ServerMetric
 
       include MsRestAzure
+
+      # @return [String] Name of the server usage metric.
+      attr_accessor :name
 
       # @return [String] The name of the resource.
       attr_accessor :resource_name
@@ -43,6 +46,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ServerMetric',
             model_properties: {
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
               resource_name: {
                 required: false,
                 read_only: true,

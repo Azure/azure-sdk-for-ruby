@@ -6,15 +6,15 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Database Transparent Data
-    # Encryption Activity request.
+    # Represents the response to a list database transparent data encryption
+    # activity request.
     #
     class TransparentDataEncryptionActivityListResult
 
       include MsRestAzure
 
-      # @return [Array<TransparentDataEncryptionActivity>] The list of Azure
-      # SQL Database Transparent Data Encryption Activities.
+      # @return [Array<TransparentDataEncryptionActivity>] The list of database
+      # transparent data encryption activities.
       attr_accessor :value
 
 

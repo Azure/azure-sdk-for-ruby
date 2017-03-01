@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database Service Objective.
+    # Represents a database service objective.
     #
     class ServiceObjective < SqlSubResource
 

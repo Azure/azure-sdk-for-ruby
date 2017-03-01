@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents Azure SQL recommended elastic pool metric.
+    # Represents recommended elastic pool metric.
     #
     class RecommendedElasticPoolMetric
 
