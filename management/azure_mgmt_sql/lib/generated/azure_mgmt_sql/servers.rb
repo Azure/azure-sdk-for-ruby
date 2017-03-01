@@ -533,7 +533,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL server.
+    # Creates or updates a new Azure SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -552,7 +552,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL server.
+    # Creates or updates a new Azure SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -570,7 +570,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL server.
+    # Creates or updates a new Azure SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource

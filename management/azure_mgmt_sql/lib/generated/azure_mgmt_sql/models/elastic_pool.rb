@@ -24,21 +24,25 @@ module Azure::ARM::SQL
       # Pool. Possible values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :edition
 
-      # @return [Integer] The total shared DTU for the SQL Azure Database
+      # @return [Integer] The total shared DTU for the Azure Sql Database
       # Elastic Pool.
       attr_accessor :dtu
 
-      # @return [Integer] The maximum DTU any one SQL Azure Database can
+      # @return [Integer] The maximum DTU any one Azure Sql Database can
       # consume.
       attr_accessor :database_dtu_max
 
-      # @return [Integer] The minimum DTU all SQL Azure Databases are
+      # @return [Integer] The minimum DTU all Azure Sql Databases are
       # guaranteed.
       attr_accessor :database_dtu_min
 
-      # @return [Integer] Gets storage limit for the SQL Azure Database Elastic
+      # @return [Integer] Gets storage limit for the Azure Sql Database Elastic
       # Pool in MB.
       attr_accessor :storage_mb
+
+      # @return [String] Kind of elastic pool.  This is metadata used for the
+      # Azure portal experience.
+      attr_accessor :kind
 
 
       #
@@ -147,6 +151,14 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.storageMB',
                 type: {
                   name: 'Number'
+                }
+              },
+              kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -17,7 +17,7 @@ module Azure::ARM::SQL
       # valid editions. Possible values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :database_edition
 
-      # @return [Float] The DTU for the SQL Azure Recommended Elastic Pool.
+      # @return [Float] The DTU for the Azure Sql Recommended Elastic Pool.
       attr_accessor :dtu
 
       # @return [Float] The minimum DTU for the database.
