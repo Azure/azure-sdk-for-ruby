@@ -67,6 +67,7 @@ module Azure::ARM::CDN
     autoload :GeoFilterActions,                                   'generated/azure_mgmt_cdn/models/geo_filter_actions.rb'
     autoload :OriginResourceState,                                'generated/azure_mgmt_cdn/models/origin_resource_state.rb'
     autoload :CustomDomainResourceState,                          'generated/azure_mgmt_cdn/models/custom_domain_resource_state.rb'
+    autoload :CustomHttpsProvisioningState,                       'generated/azure_mgmt_cdn/models/custom_https_provisioning_state.rb'
     autoload :ResourceType,                                       'generated/azure_mgmt_cdn/models/resource_type.rb'
   end
 end

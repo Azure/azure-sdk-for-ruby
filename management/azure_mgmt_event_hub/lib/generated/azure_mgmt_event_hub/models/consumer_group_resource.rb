@@ -84,6 +84,7 @@ module Azure::ARM::EventHub
               },
               created_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
@@ -91,6 +92,7 @@ module Azure::ARM::EventHub
               },
               event_hub_path: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.eventHubPath',
                 type: {
                   name: 'String'
@@ -98,6 +100,7 @@ module Azure::ARM::EventHub
               },
               updated_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'

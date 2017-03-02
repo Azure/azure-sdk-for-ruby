@@ -46,6 +46,7 @@ module Azure::ARM::EventHub
             model_properties: {
               primary_connection_string: {
                 required: false,
+                read_only: true,
                 serialized_name: 'primaryConnectionString',
                 type: {
                   name: 'String'
@@ -53,6 +54,7 @@ module Azure::ARM::EventHub
               },
               secondary_connection_string: {
                 required: false,
+                read_only: true,
                 serialized_name: 'secondaryConnectionString',
                 type: {
                   name: 'String'
@@ -60,6 +62,7 @@ module Azure::ARM::EventHub
               },
               primary_key: {
                 required: false,
+                read_only: true,
                 serialized_name: 'primaryKey',
                 type: {
                   name: 'String'
@@ -67,6 +70,7 @@ module Azure::ARM::EventHub
               },
               secondary_key: {
                 required: false,
+                read_only: true,
                 serialized_name: 'secondaryKey',
                 type: {
                   name: 'String'
@@ -74,6 +78,7 @@ module Azure::ARM::EventHub
               },
               key_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'keyName',
                 type: {
                   name: 'String'

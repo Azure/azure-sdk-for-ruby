@@ -225,11 +225,10 @@
       ]
     },
     "azure_mgmt_logic": {
-      "swagger": "arm-logic/CompositeLogicClient.json",
+      "swagger": "arm-logic/2016-06-01/swagger/logic.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Logic",
         "PackageName": "azure_mgmt_logic",
-        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.9.0"
       },
       "output_dir": "management/azure_mgmt_logic/lib",

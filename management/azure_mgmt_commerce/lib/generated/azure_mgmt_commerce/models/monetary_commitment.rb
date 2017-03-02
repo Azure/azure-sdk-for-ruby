@@ -6,8 +6,7 @@
 module Azure::ARM::Commerce
   module Models
     #
-    # Model object.
-    #
+    # Indicates that a monetary commitment is required for this offer
     #
     class MonetaryCommitment < OfferTermInfo
 
@@ -25,6 +24,10 @@ module Azure::ARM::Commerce
       # discount percentage. This field is used only by offer terms of type
       # 'Monetary Commitment'.
       attr_accessor :tiered_discount
+
+      # @return An array of meter ids that are excluded from the given offer
+      # terms.
+      attr_accessor :excluded_meter_ids
 
 
       #
@@ -46,20 +49,6 @@ module Azure::ARM::Commerce
                   name: 'DateTime'
                 }
               },
-              excluded_meter_ids: {
-                required: false,
-                serialized_name: 'ExcludedMeterIds',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'UuidElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               Name: {
                 required: true,
                 serialized_name: 'Name',
@@ -77,6 +66,20 @@ module Azure::ARM::Commerce
                       serialized_name: 'FloatElementType',
                       type: {
                         name: 'Number'
+                      }
+                  }
+                }
+              },
+              excluded_meter_ids: {
+                required: false,
+                serialized_name: 'ExcludedMeterIds',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'UuidElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

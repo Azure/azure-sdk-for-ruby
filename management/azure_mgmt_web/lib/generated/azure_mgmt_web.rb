@@ -222,6 +222,7 @@ module Azure::ARM::Web
     autoload :AutoHealActionType,                                 'generated/azure_mgmt_web/models/auto_heal_action_type.rb'
     autoload :ConnectionStringType,                               'generated/azure_mgmt_web/models/connection_string_type.rb'
     autoload :SslState,                                           'generated/azure_mgmt_web/models/ssl_state.rb'
+    autoload :HostType,                                           'generated/azure_mgmt_web/models/host_type.rb'
     autoload :OperationStatus,                                    'generated/azure_mgmt_web/models/operation_status.rb'
     autoload :UsageState,                                         'generated/azure_mgmt_web/models/usage_state.rb'
     autoload :SiteAvailabilityState,                              'generated/azure_mgmt_web/models/site_availability_state.rb'

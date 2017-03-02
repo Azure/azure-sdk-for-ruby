@@ -3,14 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventHub
+module Azure::ARM::SQL
   module Models
     #
-    # Defines values for SkuName
+    # Defines values for ServerState
     #
-    module SkuName
-      Basic = "Basic"
-      Standard = "Standard"
+    module ServerState
+      Ready = "Ready"
+      Disabled = "Disabled"
     end
   end
 end

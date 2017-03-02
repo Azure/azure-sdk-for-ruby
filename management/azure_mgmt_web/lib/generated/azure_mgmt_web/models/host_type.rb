@@ -3,18 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::SQL
+module Azure::ARM::Web
   module Models
     #
-    # Defines values for TargetDatabaseEditions
+    # Defines values for HostType
     #
-    module TargetDatabaseEditions
-      Basic = "Basic"
+    module HostType
       Standard = "Standard"
-      Premium = "Premium"
-      Free = "Free"
-      Stretch = "Stretch"
-      DataWarehouse = "DataWarehouse"
+      Repository = "Repository"
     end
   end
 end

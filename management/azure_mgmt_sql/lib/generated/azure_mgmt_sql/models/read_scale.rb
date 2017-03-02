@@ -3,14 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventHub
+module Azure::ARM::SQL
   module Models
     #
-    # Defines values for SkuName
+    # Defines values for ReadScale
     #
-    module SkuName
-      Basic = "Basic"
-      Standard = "Standard"
+    module ReadScale
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

@@ -94,7 +94,7 @@ module Azure::ARM::Insights
                 }
               },
               storage_account_id: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.storageAccountId',
                 type: {
                   name: 'String'

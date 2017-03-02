@@ -30,13 +30,20 @@ module Azure::ARM::Commerce
       # e.g., 'Hours', 'GB', etc.
       attr_accessor :unit
 
+      # @return [Array<String>] Provides additional meter data. 'Third Party'
+      # indicates a meter with no discount. Blanks indicate First Party.
+      attr_accessor :meter_tags
+
+      # @return [String] The region in which the Azure service is available.
+      attr_accessor :meter_region
+
       # @return [Hash{String => Float}] The list of key/value pairs for the
       # meter rates, in the format 'key':'value' where key = the meter
       # quantity, and value = the corresponding price
       attr_accessor :meter_rates
 
-      # @return [DateTime] Indicates the date from which the meter rate or
-      # offer term is effective.
+      # @return [DateTime] Indicates the date from which the meter rate is
+      # effective.
       attr_accessor :effective_date
 
       # @return [Float] The resource quantity that is included in the offer at
@@ -87,6 +94,27 @@ module Azure::ARM::Commerce
               unit: {
                 required: false,
                 serialized_name: 'Unit',
+                type: {
+                  name: 'String'
+                }
+              },
+              meter_tags: {
+                required: false,
+                serialized_name: 'MeterTags',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              meter_region: {
+                required: false,
+                serialized_name: 'MeterRegion',
                 type: {
                   name: 'String'
                 }
