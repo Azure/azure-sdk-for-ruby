@@ -1,3 +1,12 @@
+## 2017.03.10 - Azure ARM version 0.10.0
+
+All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.10.0-arm%20).
+
+* Regened all azure_mgmt_* sdks using AutoRest.1.0.1-20170301-2300-nightly for release of ARM version 0.10.0
+* Updated [azure_mgmt_network](https://rubygems.org/gems/azure_mgmt_network) with (Network Watchers API)(https://github.com/Azure/azure-rest-api-specs/blob/master/arm-network/2016-09-01/swagger/networkWatcher.json)
+* Updated [azure_mgmt_batch](https://rubygems.org/gems/azure_mgmt_batch) to latest API version [2017-01-01](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-batch/2017-01-01/swagger/BatchManagement.json)
+* Bug fixes and updated swagger specs
+
 ## 2017.02.07 - Azure ARM version 0.9.0
 
 All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.9.0-arm).
