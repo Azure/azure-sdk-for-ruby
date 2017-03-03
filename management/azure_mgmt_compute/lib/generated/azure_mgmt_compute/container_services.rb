@@ -68,7 +68,7 @@ module Azure::ARM::Compute
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers = nil)
-      api_version = '2016-09-30'
+      api_version = '2017-01-31'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -228,7 +228,7 @@ module Azure::ARM::Compute
     def get_async(resource_group_name, container_service_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'container_service_name is nil' if container_service_name.nil?
-      api_version = '2016-09-30'
+      api_version = '2017-01-31'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -376,7 +376,7 @@ module Azure::ARM::Compute
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2016-09-30'
+      api_version = '2017-01-31'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -486,7 +486,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'container_service_name is nil' if container_service_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-09-30'
+      api_version = '2017-01-31'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -626,7 +626,7 @@ module Azure::ARM::Compute
     def begin_delete_async(resource_group_name, container_service_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'container_service_name is nil' if container_service_name.nil?
-      api_version = '2016-09-30'
+      api_version = '2017-01-31'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
