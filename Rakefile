@@ -147,7 +147,7 @@ REGEN_METADATA = {
         tag: 'arm_auth'
     },
     azure_mgmt_batch: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-batch/2015-12-01/swagger/BatchManagement.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-batch/2017-01-01/swagger/BatchManagement.json',
         ns: 'Azure::ARM::Batch',
         version: version,
         tag: 'arm_batch'
