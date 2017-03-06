@@ -6,13 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for RecommendedIndexTypes
+    # Defines values for AuthenticationType
     #
-    module RecommendedIndexTypes
-      CLUSTERED = "CLUSTERED"
-      NONCLUSTERED = "NONCLUSTERED"
-      COLUMNSTORE = "COLUMNSTORE"
-      CLUSTEREDCOLUMNSTORE = "CLUSTERED COLUMNSTORE"
+    module AuthenticationType
+      SQL = "SQL"
+      ADPassword = "ADPassword"
     end
   end
 end
