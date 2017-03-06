@@ -9,6 +9,7 @@ All issues associated with this milestone can be found using this [filter](https
 * Updated [azure_mgmt_commerce](https://rubygems.org/gems/azure_mgmt_commerce). Updated [MeterInfo and Offerterms](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-commerce/2015-06-01-preview/swagger/commerce.json)
 * Updated [azure_mgmt_event_hub](https://rubygems.org/gems/azure_mgmt_event_hub) with new [properties](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-eventhub/2015-08-01/swagger/EventHub.json)
 * Updated [azure_mgmt_service_bus](https://rubygems.org/gems/azure_mgmt_service_bus) with new [properties](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-servicebus/2015-08-01/swagger/servicebus.json)
+* Updated [azure_mgmt_sql](https://rubygems.org/gems/azure_mgmt_sql) with new $filter param to [list databases](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-sql/2014-04-01/swagger/sql.core.json)
 * Updated [azure_mgm_web](https://rubygems.org/gems/azure_mgmt_web). Removed the publishingcredentials API and re-added the publishingUsers API.
 * Updated [azure_mgmt_insights](https://rubygems.org/gems/azure_mgmt_insights). Generated package to monitor.
 * Updated [azure_mgmt_redis](https://rubygems.org/gems/azure_mgmt_redis) with new responses.
