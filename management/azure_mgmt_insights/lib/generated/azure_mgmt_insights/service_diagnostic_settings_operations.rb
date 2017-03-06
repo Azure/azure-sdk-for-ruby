@@ -61,7 +61,6 @@ module Azure::ARM::Insights
     def get_async(resource_uri, custom_headers = nil)
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       api_version = '2015-07-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -75,7 +74,7 @@ module Azure::ARM::Insights
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -113,8 +112,8 @@ module Azure::ARM::Insights
     # Create or update new diagnostic settings for the specified resource.
     #
     # @param resource_uri [String] The identifier of the resource.
-    # @param parameters [ServiceDiagnosticSettings] Parameters supplied to the
-    # operation.
+    # @param parameters [ServiceDiagnosticSettingsResource] Parameters supplied to
+    # the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -129,8 +128,8 @@ module Azure::ARM::Insights
     # Create or update new diagnostic settings for the specified resource.
     #
     # @param resource_uri [String] The identifier of the resource.
-    # @param parameters [ServiceDiagnosticSettings] Parameters supplied to the
-    # operation.
+    # @param parameters [ServiceDiagnosticSettingsResource] Parameters supplied to
+    # the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,8 +143,8 @@ module Azure::ARM::Insights
     # Create or update new diagnostic settings for the specified resource.
     #
     # @param resource_uri [String] The identifier of the resource.
-    # @param parameters [ServiceDiagnosticSettings] Parameters supplied to the
-    # operation.
+    # @param parameters [ServiceDiagnosticSettingsResource] Parameters supplied to
+    # the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -155,7 +154,6 @@ module Azure::ARM::Insights
       fail ArgumentError, 'resource_uri is nil' if resource_uri.nil?
       api_version = '2015-07-01'
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -167,7 +165,7 @@ module Azure::ARM::Insights
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ServiceDiagnosticSettings.mapper()
+      request_mapper = ServiceDiagnosticSettingsResource.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -177,7 +175,7 @@ module Azure::ARM::Insights
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceUri' => resource_uri,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceUri' => resource_uri},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

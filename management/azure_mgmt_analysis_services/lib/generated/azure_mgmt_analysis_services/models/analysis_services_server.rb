@@ -15,6 +15,9 @@ module Azure::ARM::AnalysisServices
       # @return [ServerAdministrators]
       attr_accessor :as_administrators
 
+      # @return [BackupConfiguration]
+      attr_accessor :backup_configuration
+
       # @return [State] The current state of Analysis Services resource. The
       # state is to indicate more states outside of resource provisioning.
       # Possible values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
@@ -104,6 +107,14 @@ module Azure::ARM::AnalysisServices
                 type: {
                   name: 'Composite',
                   class_name: 'ServerAdministrators'
+                }
+              },
+              backup_configuration: {
+                required: false,
+                serialized_name: 'properties.backupConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BackupConfiguration'
                 }
               },
               state: {

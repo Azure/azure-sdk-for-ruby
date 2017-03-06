@@ -239,8 +239,8 @@ module Azure::ARM::CDN
     #
     # @return [Array<ResourceUsage>] operation results.
     #
-    def check_resource_usage(custom_headers = nil)
-      first_page = check_resource_usage_as_lazy(custom_headers)
+    def list_resource_usage(custom_headers = nil)
+      first_page = list_resource_usage_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -253,8 +253,8 @@ module Azure::ARM::CDN
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_resource_usage_with_http_info(custom_headers = nil)
-      check_resource_usage_async(custom_headers).value!
+    def list_resource_usage_with_http_info(custom_headers = nil)
+      list_resource_usage_async(custom_headers).value!
     end
 
     #
@@ -266,7 +266,7 @@ module Azure::ARM::CDN
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_resource_usage_async(custom_headers = nil)
+    def list_resource_usage_async(custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
 
@@ -408,8 +408,8 @@ module Azure::ARM::CDN
     #
     # @return [ResourceUsageListResult] operation results.
     #
-    def check_resource_usage_next(next_page_link, custom_headers = nil)
-      response = check_resource_usage_next_async(next_page_link, custom_headers).value!
+    def list_resource_usage_next(next_page_link, custom_headers = nil)
+      response = list_resource_usage_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -424,8 +424,8 @@ module Azure::ARM::CDN
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_resource_usage_next_with_http_info(next_page_link, custom_headers = nil)
-      check_resource_usage_next_async(next_page_link, custom_headers).value!
+    def list_resource_usage_next_with_http_info(next_page_link, custom_headers = nil)
+      list_resource_usage_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -439,7 +439,7 @@ module Azure::ARM::CDN
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_resource_usage_next_async(next_page_link, custom_headers = nil)
+    def list_resource_usage_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -583,8 +583,8 @@ module Azure::ARM::CDN
     #
     # @return [ResourceUsageListResult] operation results.
     #
-    def check_resource_usage_as_lazy(custom_headers = nil)
-      first_page = check_resource_usage_as_lazy_as_lazy(custom_headers)
+    def list_resource_usage_as_lazy(custom_headers = nil)
+      first_page = list_resource_usage_as_lazy_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -597,8 +597,8 @@ module Azure::ARM::CDN
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_resource_usage_as_lazy_with_http_info(custom_headers = nil)
-      check_resource_usage_as_lazy_async(custom_headers).value!
+    def list_resource_usage_as_lazy_with_http_info(custom_headers = nil)
+      list_resource_usage_as_lazy_async(custom_headers).value!
     end
 
     #
@@ -610,7 +610,7 @@ module Azure::ARM::CDN
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_resource_usage_as_lazy_async(custom_headers = nil)
+    def list_resource_usage_as_lazy_async(custom_headers = nil)
 
 
       request_headers = {}
