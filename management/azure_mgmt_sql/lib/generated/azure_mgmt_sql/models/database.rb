@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database.
+    # Represents a database.
     #
     class Database < MsRestAzure::Resource
 
@@ -16,27 +16,25 @@ module Azure::ARM::SQL
       # portal experience.
       attr_accessor :kind
 
-      # @return [String] The collation of the Azure SQL database. If createMode
-      # is not Default, this value is ignored.
+      # @return [String] The collation of the database. If createMode is not
+      # Default, this value is ignored.
       attr_accessor :collation
 
-      # @return [DateTime] The creation date of the Azure SQL database (ISO8601
-      # format).
+      # @return [DateTime] The creation date of the database (ISO8601 format).
       attr_accessor :creation_date
 
-      # @return [Integer] The containment state of the Azure SQL database.
+      # @return [Integer] The containment state of the database.
       attr_accessor :containment_state
 
-      # @return The current Service Level Objective ID of the Azure SQL
-      # database. This is the ID of the Service Level Objective that is
-      # currently active.
+      # @return The current service level objective ID of the database. This is
+      # the ID of the service level objective that is currently active.
       attr_accessor :current_service_objective_id
 
-      # @return [String] The ID of the Azure SQL database.
+      # @return [String] The ID of the database.
       attr_accessor :database_id
 
       # @return [DateTime] This records the earliest start date and time that
-      # restore is available for this Azure SQL Database (ISO8601 format).
+      # restore is available for this database (ISO8601 format).
       attr_accessor :earliest_restore_date
 
       # @return [CreateMode] Specifies the type of database to create. If
@@ -61,46 +59,48 @@ module Azure::ARM::SQL
       # the source database's earliestRestoreDate value.
       attr_accessor :restore_point_in_time
 
-      # @return [DatabaseEditions] The edition of the Azure SQL database. The
+      # @return [DatabaseEditions] The edition of the database. The
       # DatabaseEditions enumeration contains all the valid editions. If
       # createMode is NonReadableSecondary or OnlineSecondary, this value is
       # ignored. Possible values include: 'Web', 'Business', 'Basic',
       # 'Standard', 'Premium', 'Free', 'Stretch', 'DataWarehouse', 'System'
       attr_accessor :edition
 
-      # @return [String] The max size of the Azure SQL database expressed in
-      # bytes. If createMode is not Default, this value is ignored. Note: Only
-      # the following sizes are supported (in addition to limitations being
-      # placed on each edition): { 100 MB | 500 MB |1 GB | 5 GB | 10 GB | 20 GB
-      # | 30 GB … 150 GB | 200 GB … 500 GB }
+      # @return [String] The max size of the database expressed in bytes. If
+      # createMode is not Default, this value is ignored. Note: Only the
+      # following sizes are supported (in addition to limitations being placed
+      # on each edition): { 100 MB | 500 MB |1 GB | 5 GB | 10 GB | 20 GB | 30
+      # GB … 150 GB | 200 GB … 500 GB }
       attr_accessor :max_size_bytes
 
-      # @return The configured Service Level Objective ID of the Azure SQL
-      # database. This is the Service Level Objective that is in the process of
-      # being applied to the Azure SQL database. Once successfully updated, it
-      # will match the value of currentServiceObjectiveId property.
+      # @return The configured service level objective ID of the database. This
+      # is the service level objective that is in the process of being applied
+      # to the database. Once successfully updated, it will match the value of
+      # currentServiceObjectiveId property. If requestedServiceObjectiveId and
+      # requestedServiceObjectiveName are both updated, the value of
+      # requestedServiceObjectiveId overrides the value of
+      # requestedServiceObjectiveName.
       attr_accessor :requested_service_objective_id
 
-      # @return [ServiceObjectiveName] The name of the configured Service Level
-      # Objective of the Azure SQL database. This is the Service Level
-      # Objective that is in the process of being applied to the Azure SQL
-      # database. Once successfully updated, it will match the value of
-      # serviceLevelObjective property. Possible values include: 'Basic', 'S0',
-      # 'S1', 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System',
-      # 'System1', 'System2', 'System3', 'System4'
+      # @return [ServiceObjectiveName] The name of the configured service level
+      # objective of the database. This is the service level objective that is
+      # in the process of being applied to the database. Once successfully
+      # updated, it will match the value of serviceLevelObjective property.
+      # Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2',
+      # 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'ElasticPool'
       attr_accessor :requested_service_objective_name
 
-      # @return [ServiceObjectiveName] The current Service Level Objective of
-      # the Azure SQL database. Possible values include: 'Basic', 'S0', 'S1',
-      # 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System',
-      # 'System1', 'System2', 'System3', 'System4'
+      # @return [ServiceObjectiveName] The current service level objective of
+      # the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
+      # 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'ElasticPool'
       attr_accessor :service_level_objective
 
-      # @return [String] The status of the Azure SQL database.
+      # @return [String] The status of the database.
       attr_accessor :status
 
-      # @return [String] The name of the Azure SQL Elastic Pool the database is
-      # in.
+      # @return [String] The name of the elastic pool the database is in. If
+      # elasticPoolName and requestedServiceObjectiveName are both updated, the
+      # value of requestedServiceObjectiveName is ignored.
       attr_accessor :elastic_pool_name
 
       # @return [String] The default secondary region for this database.

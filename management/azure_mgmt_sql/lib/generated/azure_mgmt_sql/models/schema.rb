@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database schema.
+    # Represents a database schema.
     #
     class Schema < MsRestAzure::Resource
 

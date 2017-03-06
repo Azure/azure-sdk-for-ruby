@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents Azure SQL server metrics.
+    # Represents server metrics.
     #
     class ServerMetric
 

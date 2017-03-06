@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the activity on an Azure SQL Elastic Pool.
+    # Represents the activity on an elastic pool.
     #
     class ElasticPoolActivity < MsRestAzure::Resource
 
@@ -42,18 +42,17 @@ module Azure::ARM::SQL
       # @return [Integer] The requested DTU for the pool if available.
       attr_accessor :requested_dtu
 
-      # @return [String] The requested name for the Elastic Pool if available.
+      # @return [String] The requested name for the elastic pool if available.
       attr_accessor :requested_elastic_pool_name
 
       # @return [Integer] The requested storage limit for the pool in GB if
       # available.
       attr_accessor :requested_storage_limit_in_gb
 
-      # @return [String] The name of the Elastic Pool.
+      # @return [String] The name of the elastic pool.
       attr_accessor :elastic_pool_name
 
-      # @return [String] The name of the Azure SQL server the Elastic Pool is
-      # in.
+      # @return [String] The name of the server the elastic pool is in.
       attr_accessor :server_name
 
       # @return [DateTime] The time the operation started (ISO8601 format).
@@ -65,10 +64,10 @@ module Azure::ARM::SQL
       # @return [Integer] The requested storage limit in MB.
       attr_accessor :requested_storage_limit_in_mb
 
-      # @return [Integer] The requested per Database DTU guarantee.
+      # @return [Integer] The requested per database DTU guarantee.
       attr_accessor :requested_database_dtu_guarantee
 
-      # @return [Integer] The requested per Database DTU cap.
+      # @return [Integer] The requested per database DTU cap.
       attr_accessor :requested_database_dtu_cap
 
       # @return [Integer] The requested DTU guarantee.

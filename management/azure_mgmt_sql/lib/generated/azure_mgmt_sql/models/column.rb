@@ -6,13 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database table column.
+    # Represents a database table column.
     #
     class Column < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The type of Azure SQL Database table column.
+      # @return [String] The type of database table column.
       attr_accessor :column_type
 
 

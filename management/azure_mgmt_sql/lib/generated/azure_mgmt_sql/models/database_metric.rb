@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents Azure SQL Database metrics.
+    # Represents database metrics.
     #
     class DatabaseMetric < SqlSubResource
 

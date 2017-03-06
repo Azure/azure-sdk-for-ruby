@@ -6,38 +6,35 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database elastic pool.
+    # Represents a database elastic pool.
     #
     class ElasticPool < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [DateTime] The creation date of the Azure SQL Elastic Pool
-      # (ISO8601 format).
+      # @return [DateTime] The creation date of the elastic pool (ISO8601
+      # format).
       attr_accessor :creation_date
 
-      # @return [ElasticPoolState] The state of the Azure SQL Elastic Pool.
-      # Possible values include: 'Creating', 'Ready', 'Disabled'
+      # @return [ElasticPoolState] The state of the elastic pool. Possible
+      # values include: 'Creating', 'Ready', 'Disabled'
       attr_accessor :state
 
-      # @return [ElasticPoolEditions] The edition of the Azure SQL Elastic
-      # Pool. Possible values include: 'Basic', 'Standard', 'Premium'
+      # @return [ElasticPoolEditions] The edition of the elastic pool. Possible
+      # values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :edition
 
-      # @return [Integer] The total shared DTU for the Azure Sql Database
-      # Elastic Pool.
+      # @return [Integer] The total shared DTU for the database elastic pool.
       attr_accessor :dtu
 
-      # @return [Integer] The maximum DTU any one Azure Sql Database can
-      # consume.
+      # @return [Integer] The maximum DTU any one database can consume.
       attr_accessor :database_dtu_max
 
-      # @return [Integer] The minimum DTU all Azure Sql Databases are
-      # guaranteed.
+      # @return [Integer] The minimum DTU all databases are guaranteed.
       attr_accessor :database_dtu_min
 
-      # @return [Integer] Gets storage limit for the Azure Sql Database Elastic
-      # Pool in MB.
+      # @return [Integer] Gets storage limit for the database elastic pool in
+      # MB.
       attr_accessor :storage_mb
 
       # @return [String] Kind of elastic pool.  This is metadata used for the

@@ -6,13 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a Get Azure SQL server request.
+    # Represents the response to a get server request.
     #
     class ServerListResult
 
       include MsRestAzure
 
-      # @return [Array<Server>] The list of Azure SQL servers.
+      # @return [Array<Server>] The list of servers.
       attr_accessor :value
 
 

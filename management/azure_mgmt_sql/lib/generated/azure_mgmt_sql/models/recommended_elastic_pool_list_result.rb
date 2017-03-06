@@ -6,15 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Recommended Elastic Pool
-    # request.
+    # Represents the response to a list recommended elastic pool request.
     #
     class RecommendedElasticPoolListResult
 
       include MsRestAzure
 
-      # @return [Array<RecommendedElasticPool>] The list of Azure SQL
-      # Recommended Elastic Pools hosted in the server.
+      # @return [Array<RecommendedElasticPool>] The list of recommended elastic
+      # pools hosted in the server.
       attr_accessor :value
 
 

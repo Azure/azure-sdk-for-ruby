@@ -26,14 +26,13 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Deletes the Azure SQL database replication link with the given ID. Cannot be
-    # done during failover.
+    # Deletes a database replication link. Cannot be done during failover.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be dropped.
     # @param link_id [String] The ID of the replication link to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -46,14 +45,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Deletes the Azure SQL database replication link with the given ID. Cannot be
-    # done during failover.
+    # Deletes a database replication link. Cannot be done during failover.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be dropped.
     # @param link_id [String] The ID of the replication link to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -66,14 +64,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Deletes the Azure SQL database replication link with the given ID. Cannot be
-    # done during failover.
+    # Deletes a database replication link. Cannot be done during failover.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be dropped.
     # @param link_id [String] The ID of the replication link to be deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -126,14 +123,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database replication link.
+    # Gets a database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to get the
-    # link for.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to get the link for.
     # @param link_id [String] The replication link ID to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -146,14 +142,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database replication link.
+    # Gets a database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to get the
-    # link for.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to get the link for.
     # @param link_id [String] The replication link ID to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -165,14 +160,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database replication link.
+    # Gets a database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to get the
-    # link for.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to get the link for.
     # @param link_id [String] The replication link ID to be retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -234,13 +228,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the Azure SQL database replication link with the given ID.
+    # Failover the database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -255,8 +249,8 @@ module Azure::ARM::SQL
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -282,14 +276,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the Azure SQL database replication link with the given ID
-    # which may result in data loss.
+    # Force failover the database replication link, which may result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -304,8 +297,8 @@ module Azure::ARM::SQL
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -331,14 +324,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about Azure SQL database replication links.
+    # Lists a database's replication links.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to retrieve
-    # links for.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to retrieve links for.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -350,14 +342,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about Azure SQL database replication links.
+    # Lists a database's replication links.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to retrieve
-    # links for.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to retrieve links for.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -368,14 +359,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about Azure SQL database replication links.
+    # Lists a database's replication links.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to retrieve
-    # links for.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to retrieve links for.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -435,14 +425,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Pause an Azure SQL Data Warehouse database.
+    # Pauses a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to pause.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to pause.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -455,9 +444,8 @@ module Azure::ARM::SQL
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to pause.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to pause.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -481,14 +469,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Resume an Azure SQL Data Warehouse database.
+    # Resumes a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to resume.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to resume.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -501,9 +488,8 @@ module Azure::ARM::SQL
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to resume.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to resume.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -527,14 +513,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of Azure SQL database restore points.
+    # Returns a list of database restore points.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database from which
-    # to retrieve available restore points.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database from which to retrieve
+    # available restore points.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -546,14 +532,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of Azure SQL database restore points.
+    # Returns a list of database restore points.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database from which
-    # to retrieve available restore points.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database from which to retrieve
+    # available restore points.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -564,14 +550,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of Azure SQL database restore points.
+    # Returns a list of database restore points.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database from which
-    # to retrieve available restore points.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database from which to retrieve
+    # available restore points.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -631,16 +617,16 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL database or updates an existing Azure SQL database.
-    # Location is a required property in the request body, and it must be the same
-    # as the location of the SQL server.
+    # Creates a new database or updates an existing database. Location is a
+    # required property in the request body, and it must be the same as the
+    # location of the SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # operated on (updated or created).
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be operated on
+    # (updated or created).
     # @param parameters [Database] The required parameters for creating or updating
     # a database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -657,9 +643,9 @@ module Azure::ARM::SQL
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # operated on (updated or created).
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be operated on
+    # (updated or created).
     # @param parameters [Database] The required parameters for creating or updating
     # a database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -687,14 +673,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Deletes an Azure SQL database.
+    # Deletes a database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # deleted.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -705,14 +690,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Deletes an Azure SQL database.
+    # Deletes a database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # deleted.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -723,14 +707,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Deletes an Azure SQL database.
+    # Deletes a database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # deleted.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -780,15 +763,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database.
+    # Gets a database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # retrieved.
-    # @param expand [String] The comma separated list of child objects to expand in
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be retrieved.
+    # @param expand [String] A comma separated list of child objects to expand in
     # the response. Possible properties: serviceTierAdvisors, upgradeHint,
     # transparentDataEncryption.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -802,15 +784,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database.
+    # Gets a database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # retrieved.
-    # @param expand [String] The comma separated list of child objects to expand in
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be retrieved.
+    # @param expand [String] A comma separated list of child objects to expand in
     # the response. Possible properties: serviceTierAdvisors, upgradeHint,
     # transparentDataEncryption.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -823,15 +804,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL database.
+    # Gets a database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # retrieved.
-    # @param expand [String] The comma separated list of child objects to expand in
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be retrieved.
+    # @param expand [String] A comma separated list of child objects to expand in
     # the response. Possible properties: serviceTierAdvisors, upgradeHint,
     # transparentDataEncryption.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -893,51 +873,57 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL database.
+    # Returns a list of databases in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
+    # @param filter [String] An OData filter expression that describes a subset of
+    # databases to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DatabaseListResult] operation results.
     #
-    def list_by_server(resource_group_name, server_name, custom_headers = nil)
-      response = list_by_server_async(resource_group_name, server_name, custom_headers).value!
+    def list_by_server(resource_group_name, server_name, filter = nil, custom_headers = nil)
+      response = list_by_server_async(resource_group_name, server_name, filter, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns information about an Azure SQL database.
+    # Returns a list of databases in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
+    # @param filter [String] An OData filter expression that describes a subset of
+    # databases to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_server_with_http_info(resource_group_name, server_name, custom_headers = nil)
-      list_by_server_async(resource_group_name, server_name, custom_headers).value!
+    def list_by_server_with_http_info(resource_group_name, server_name, filter = nil, custom_headers = nil)
+      list_by_server_async(resource_group_name, server_name, filter, custom_headers).value!
     end
 
     #
-    # Returns information about an Azure SQL database.
+    # Returns a list of databases in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
+    # @param filter [String] An OData filter expression that describes a subset of
+    # databases to return.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_server_async(resource_group_name, server_name, custom_headers = nil)
+    def list_by_server_async(resource_group_name, server_name, filter = nil, custom_headers = nil)
       api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -956,7 +942,7 @@ module Azure::ARM::SQL
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -990,13 +976,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL database usages.
+    # Returns database usages.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1008,13 +994,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL database usages.
+    # Returns database usages.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1025,13 +1011,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL database usages.
+    # Returns database usages.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1091,12 +1077,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about a service tier advisor.
+    # Gets a service tier advisor.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param database_name [String] The name of database.
     # @param service_tier_advisor_name [String] The name of service tier advisor.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1110,12 +1096,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about a service tier advisor.
+    # Gets a service tier advisor.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param database_name [String] The name of database.
     # @param service_tier_advisor_name [String] The name of service tier advisor.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1128,12 +1114,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about a service tier advisor.
+    # Gets a service tier advisor.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param database_name [String] The name of database.
     # @param service_tier_advisor_name [String] The name of service tier advisor.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1196,12 +1182,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about service tier advisors for specified database.
+    # Returns service tier advisors for specified database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param database_name [String] The name of database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1214,12 +1200,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about service tier advisors for specified database.
+    # Returns service tier advisors for specified database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param database_name [String] The name of database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1231,12 +1217,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about service tier advisors for specified database.
+    # Returns service tier advisors for specified database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
+    # @param server_name [String] The name of the server.
     # @param database_name [String] The name of database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1297,15 +1283,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates or updates an Azure SQL Database Transparent Data Encryption
-    # Operation.
+    # Creates or updates a database's transparent data encryption configuration.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # setting the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which setting the
+    # transparent data encryption applies.
     # @param parameters [TransparentDataEncryption] The required parameters for
     # creating or updating transparent data encryption.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1319,15 +1304,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates or updates an Azure SQL Database Transparent Data Encryption
-    # Operation.
+    # Creates or updates a database's transparent data encryption configuration.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # setting the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which setting the
+    # transparent data encryption applies.
     # @param parameters [TransparentDataEncryption] The required parameters for
     # creating or updating transparent data encryption.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1340,15 +1324,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates or updates an Azure SQL Database Transparent Data Encryption
-    # Operation.
+    # Creates or updates a database's transparent data encryption configuration.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # setting the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which setting the
+    # transparent data encryption applies.
     # @param parameters [TransparentDataEncryption] The required parameters for
     # creating or updating transparent data encryption.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1430,14 +1413,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets an Azure SQL Database Transparent Data Encryption Response.
+    # Gets a database's transparent data encryption configuration.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which the
+    # transparent data encryption applies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1449,14 +1432,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets an Azure SQL Database Transparent Data Encryption Response.
+    # Gets a database's transparent data encryption configuration.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which the
+    # transparent data encryption applies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1467,14 +1450,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets an Azure SQL Database Transparent Data Encryption Response.
+    # Gets a database's transparent data encryption configuration.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which the
+    # transparent data encryption applies.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1534,14 +1517,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns an Azure SQL Database Transparent Data Encryption Activity Response.
+    # Returns a database's transparent data encryption operation result.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which the
+    # transparent data encryption applies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1553,14 +1536,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns an Azure SQL Database Transparent Data Encryption Activity Response.
+    # Returns a database's transparent data encryption operation result.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which the
+    # transparent data encryption applies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1571,14 +1554,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns an Azure SQL Database Transparent Data Encryption Activity Response.
+    # Returns a database's transparent data encryption operation result.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database for which
-    # the Transparent Data Encryption applies.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which the
+    # transparent data encryption applies.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1638,13 +1621,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the Azure SQL database replication link with the given ID.
+    # Failover the database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1657,13 +1640,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the Azure SQL database replication link with the given ID.
+    # Failover the database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1676,13 +1659,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the Azure SQL database replication link with the given ID.
+    # Failover the database replication link.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1735,14 +1718,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the Azure SQL database replication link with the given ID
-    # which may result in data loss.
+    # Force failover the database replication link, which may result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1755,14 +1737,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the Azure SQL database replication link with the given ID
-    # which may result in data loss.
+    # Force failover the database replication link, which may result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1775,14 +1756,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the Azure SQL database replication link with the given ID
-    # which may result in data loss.
+    # Force failover the database replication link, which may result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database that has the
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database that has the
     # replication link to be failed over.
     # @param link_id [String] The ID of the replication link to be failed over.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1835,14 +1815,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Pause an Azure SQL Data Warehouse database.
+    # Pauses a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to pause.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to pause.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1853,14 +1832,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Pause an Azure SQL Data Warehouse database.
+    # Pauses a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to pause.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to pause.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1871,14 +1849,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Pause an Azure SQL Data Warehouse database.
+    # Pauses a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to pause.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to pause.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1928,14 +1905,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Resume an Azure SQL Data Warehouse database.
+    # Resumes a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to resume.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to resume.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1946,14 +1922,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Resume an Azure SQL Data Warehouse database.
+    # Resumes a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to resume.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to resume.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1964,14 +1939,13 @@ module Azure::ARM::SQL
     end
 
     #
-    # Resume an Azure SQL Data Warehouse database.
+    # Resumes a data warehouse.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL Data Warehouse
-    # database to resume.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the data warehouse to resume.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2021,16 +1995,16 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL database or updates an existing Azure SQL database.
-    # Location is a required property in the request body, and it must be the same
-    # as the location of the SQL server.
+    # Creates a new database or updates an existing database. Location is a
+    # required property in the request body, and it must be the same as the
+    # location of the SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # operated on (updated or created).
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be operated on
+    # (updated or created).
     # @param parameters [Database] The required parameters for creating or updating
     # a database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2044,16 +2018,16 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL database or updates an existing Azure SQL database.
-    # Location is a required property in the request body, and it must be the same
-    # as the location of the SQL server.
+    # Creates a new database or updates an existing database. Location is a
+    # required property in the request body, and it must be the same as the
+    # location of the SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # operated on (updated or created).
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be operated on
+    # (updated or created).
     # @param parameters [Database] The required parameters for creating or updating
     # a database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2066,16 +2040,16 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL database or updates an existing Azure SQL database.
-    # Location is a required property in the request body, and it must be the same
-    # as the location of the SQL server.
+    # Creates a new database or updates an existing database. Location is a
+    # required property in the request body, and it must be the same as the
+    # location of the SQL server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
-    # @param server_name [String] The name of the Azure SQL server.
-    # @param database_name [String] The name of the Azure SQL database to be
-    # operated on (updated or created).
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to be operated on
+    # (updated or created).
     # @param parameters [Database] The required parameters for creating or updating
     # a database.
     # @param [Hash{String => String}] A hash of custom headers that will be added

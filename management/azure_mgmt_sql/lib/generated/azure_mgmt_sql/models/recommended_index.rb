@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database recommended index.
+    # Represents a database recommended index.
     #
     class RecommendedIndex < MsRestAzure::Resource
 

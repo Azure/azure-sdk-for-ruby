@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL server firewall rule.
+    # Represents a server firewall rule.
     #
     class ServerFirewallRule < SqlSubResource
 
@@ -22,15 +22,14 @@ module Azure::ARM::SQL
       # @return [String] Type of resource this is.
       attr_accessor :type
 
-      # @return [String] The start IP address of the Azure SQL server firewall
-      # rule. Must be IPv4 format. Use value '0.0.0.0' to represent all
-      # Azure-internal IP addresses.
+      # @return [String] The start IP address of the firewall rule. Must be
+      # IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP
+      # addresses.
       attr_accessor :start_ip_address
 
-      # @return [String] The end IP address of the Azure SQL server firewall
-      # rule. Must be IPv4 format. Must be greater than or equal to
-      # startIpAddress. Use value '0.0.0.0' to represent all Azure-internal IP
-      # addresses.
+      # @return [String] The end IP address of the firewall rule. Must be IPv4
+      # format. Must be greater than or equal to startIpAddress. Use value
+      # '0.0.0.0' to represent all Azure-internal IP addresses.
       attr_accessor :end_ip_address
 
 

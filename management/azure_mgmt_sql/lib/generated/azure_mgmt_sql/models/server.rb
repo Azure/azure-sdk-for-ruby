@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL server.
+    # Represents a server.
     #
     class Server < MsRestAzure::Resource
 
