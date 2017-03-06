@@ -13,7 +13,7 @@ module Azure::ARM::EventHub
       include MsRestAzure
 
       # @return [SkuName] Name of this SKU. Possible values include: 'Basic',
-      # 'Standard', 'Premium'
+      # 'Standard'
       attr_accessor :name
 
       # @return [SkuTier] The billing tier of this particular SKU. Possible

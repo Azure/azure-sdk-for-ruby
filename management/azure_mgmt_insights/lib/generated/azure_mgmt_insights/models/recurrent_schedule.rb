@@ -12,8 +12,8 @@ module Azure::ARM::Insights
 
       include MsRestAzure
 
-      # @return [String] the time zone for the hours of the profile. See
-      # examples of valid timezone are: Dateline Standard Time, UTC-11,
+      # @return [String] the timezone for the hours of the profile. Some
+      # examples of valid timezones are: Dateline Standard Time, UTC-11,
       # Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time
       # (Mexico), Pacific Standard Time, US Mountain Standard Time, Mountain
       # Standard Time (Mexico), Mountain Standard Time, Central America

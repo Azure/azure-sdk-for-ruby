@@ -20,11 +20,6 @@ module Azure::ARM::ServiceBus
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
-      # @return [EntityAvailabilityStatus] Entity availability status for the
-      # topic. Possible values include: 'Available', 'Limited', 'Renaming',
-      # 'Restoring', 'Unknown'
-      attr_accessor :entity_availability_status
-
       # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
 
@@ -53,21 +48,6 @@ module Azure::ARM::ServiceBus
       # @return [Boolean] Value that indicates whether the topic to be
       # partitioned across multiple message brokers is enabled.
       attr_accessor :enable_partitioning
-
-      # @return [Boolean] Value that indicates whether partitioning is enabled
-      # or disabled.
-      attr_accessor :enable_subscription_partitioning
-
-      # @return [Boolean] Whether messages should be filtered before
-      # publishing.
-      attr_accessor :filtering_messages_before_publishing
-
-      # @return [Boolean] Value that indicates whether the message is
-      # accessible anonymously.
-      attr_accessor :is_anonymous_accessible
-
-      # @return [Boolean]
-      attr_accessor :is_express
 
       # @return [Integer] Maximum size of the topic in megabytes, which is the
       # size of the memory allocated for the topic.
@@ -156,6 +136,7 @@ module Azure::ARM::ServiceBus
               },
               accessed_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.accessedAt',
                 type: {
                   name: 'DateTime'
@@ -168,16 +149,9 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
-              entity_availability_status: {
-                required: false,
-                serialized_name: 'properties.entityAvailabilityStatus',
-                type: {
-                  name: 'Enum',
-                  module: 'EntityAvailabilityStatus'
-                }
-              },
               created_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
@@ -185,6 +159,7 @@ module Azure::ARM::ServiceBus
               },
               count_details: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.countDetails',
                 type: {
                   name: 'Composite',
@@ -226,34 +201,6 @@ module Azure::ARM::ServiceBus
                   name: 'Boolean'
                 }
               },
-              enable_subscription_partitioning: {
-                required: false,
-                serialized_name: 'properties.enableSubscriptionPartitioning',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              filtering_messages_before_publishing: {
-                required: false,
-                serialized_name: 'properties.filteringMessagesBeforePublishing',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              is_anonymous_accessible: {
-                required: false,
-                serialized_name: 'properties.isAnonymousAccessible',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              is_express: {
-                required: false,
-                serialized_name: 'properties.isExpress',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               max_size_in_megabytes: {
                 required: false,
                 serialized_name: 'properties.maxSizeInMegabytes',
@@ -270,6 +217,7 @@ module Azure::ARM::ServiceBus
               },
               size_in_bytes: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.sizeInBytes',
                 type: {
                   name: 'Number'
@@ -285,6 +233,7 @@ module Azure::ARM::ServiceBus
               },
               subscription_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.subscriptionCount',
                 type: {
                   name: 'Number'
@@ -299,6 +248,7 @@ module Azure::ARM::ServiceBus
               },
               updated_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'

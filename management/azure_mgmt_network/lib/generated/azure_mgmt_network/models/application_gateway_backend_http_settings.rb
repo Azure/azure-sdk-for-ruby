@@ -40,6 +40,10 @@ module Azure::ARM::Network
       # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
+      # @return [ApplicationGatewayConnectionDraining] Connection draining of
+      # the backend http settings resource.
+      attr_accessor :connection_draining
+
       # @return [String] Name of the resource that is unique within a resource
       # group. This name can be used to access the resource.
       attr_accessor :name
@@ -124,6 +128,14 @@ module Azure::ARM::Network
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              connection_draining: {
+                required: false,
+                serialized_name: 'properties.connectionDraining',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ApplicationGatewayConnectionDraining'
                 }
               },
               name: {

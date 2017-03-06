@@ -55,6 +55,10 @@ module Azure::ARM::Redis
       # @return [Integer] Redis SSL port.
       attr_accessor :ssl_port
 
+      # @return [RedisAccessKeys] The keys of the Redis cache - not set if this
+      # object is not the response to Create or Update redis cache
+      attr_accessor :access_keys
+
 
       #
       # Mapper for RedisResource class as Ruby Hash.
@@ -221,6 +225,15 @@ module Azure::ARM::Redis
                 serialized_name: 'properties.sslPort',
                 type: {
                   name: 'Number'
+                }
+              },
+              access_keys: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.accessKeys',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RedisAccessKeys'
                 }
               }
             }

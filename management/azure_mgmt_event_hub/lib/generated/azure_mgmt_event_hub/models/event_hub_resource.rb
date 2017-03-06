@@ -94,6 +94,7 @@ module Azure::ARM::EventHub
               },
               created_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
@@ -115,6 +116,7 @@ module Azure::ARM::EventHub
               },
               partition_ids: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.partitionIds',
                 type: {
                   name: 'Sequence',
@@ -137,6 +139,7 @@ module Azure::ARM::EventHub
               },
               updated_at: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'
