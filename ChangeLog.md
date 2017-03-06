@@ -1,3 +1,20 @@
+## 2017.03.06 - Azure ARM version 0.10.0
+
+All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.10.0-arm%20).
+
+* Regened all azure_mgmt_* sdks using AutoRest.1.0.1-20170301-2300-nightly for release of ARM version 0.10.0
+* Updated [azure_mgmt_network](https://rubygems.org/gems/azure_mgmt_network) with (Network Watchers API)(https://github.com/Azure/azure-rest-api-specs/blob/master/arm-network/2016-09-01/swagger/networkWatcher.json)
+* Updated [azure_mgmt_batch](https://rubygems.org/gems/azure_mgmt_batch) to latest API version [2017-01-01](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-batch/2017-01-01/swagger/BatchManagement.json) and changed error object from ErrorBody to CloudError.
+* Updated [azure_mgmt_cdn](https://rubygems.org/gems/azure_mgmt_cdn) by adding pageable to [CDN Edgenode List](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-cdn/2016-10-02/swagger/cdn.json) and added new release of enable/disable CDN.
+* Updated [azure_mgmt_commerce](https://rubygems.org/gems/azure_mgmt_commerce). Updated [MeterInfo and Offerterms](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-commerce/2015-06-01-preview/swagger/commerce.json)
+* Updated [azure_mgmt_event_hub](https://rubygems.org/gems/azure_mgmt_event_hub) with new [properties](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-eventhub/2015-08-01/swagger/EventHub.json)
+* Updated [azure_mgmt_service_bus](https://rubygems.org/gems/azure_mgmt_service_bus) with new [properties](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-servicebus/2015-08-01/swagger/servicebus.json)
+* Updated [azure_mgmt_sql](https://rubygems.org/gems/azure_mgmt_sql) with new $filter param to [list databases](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-sql/2014-04-01/swagger/sql.core.json)
+* Updated [azure_mgm_web](https://rubygems.org/gems/azure_mgmt_web). Removed the publishingcredentials API and re-added the publishingUsers API.
+* Updated [azure_mgmt_insights](https://rubygems.org/gems/azure_mgmt_insights). Generated package to monitor.
+* Updated [azure_mgmt_redis](https://rubygems.org/gems/azure_mgmt_redis) with new responses.
+* Bug fixes and updated swagger specs
+
 ## 2017.02.07 - Azure ARM version 0.9.0
 
 All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.9.0-arm).
