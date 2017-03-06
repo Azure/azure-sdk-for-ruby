@@ -21,10 +21,10 @@ module Azure::ARM::Logic
       attr_accessor :enforce_character_set
 
       # @return [Boolean] The value indicating whether to validate EDI types.
-      attr_accessor :validate_editypes
+      attr_accessor :validate_edi_types
 
       # @return [Boolean] The value indicating whether to validate XSD types.
-      attr_accessor :validate_xsdtypes
+      attr_accessor :validate_xsd_types
 
       # @return [Boolean] The value indicating whether to allow leading and
       # trailing spaces and zeroes.
@@ -66,16 +66,16 @@ module Azure::ARM::Logic
                   name: 'Boolean'
                 }
               },
-              validate_editypes: {
+              validate_edi_types: {
                 required: true,
-                serialized_name: 'validateEDITypes',
+                serialized_name: 'validateEdiTypes',
                 type: {
                   name: 'Boolean'
                 }
               },
-              validate_xsdtypes: {
+              validate_xsd_types: {
                 required: true,
-                serialized_name: 'validateXSDTypes',
+                serialized_name: 'validateXsdTypes',
                 type: {
                   name: 'Boolean'
                 }
