@@ -85,7 +85,7 @@ module MsRestAzure
     end
 
     Azure = AzureEnvironments::AzureEnvironment.new({
-                                                        :name => 'Azure',
+                                                        :name => 'AzureCloud',
                                                         :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=254433',
                                                         :publishing_profile_url => 'http://go.microsoft.com/fwlink/?LinkId=254432',
                                                         :management_endpoint_url => 'https://management.core.windows.net',
@@ -103,7 +103,7 @@ module MsRestAzure
                                                         :datalake_analytics_catalog_and_job_endpoint_suffix => 'azuredatalakeanalytics.net'
                                                     })
     AzureChina = AzureEnvironments::AzureEnvironment.new({
-                                                             :name => 'AzureChina',
+                                                             :name => 'AzureChinaCloud',
                                                              :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=301902',
                                                              :publishing_profile_url => 'http://go.microsoft.com/fwlink/?LinkID=301774',
                                                              :management_endpoint_url => 'https://management.core.chinacloudapi.cn',
