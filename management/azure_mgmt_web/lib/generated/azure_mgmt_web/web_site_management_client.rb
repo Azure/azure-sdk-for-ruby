@@ -646,13 +646,15 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
+    # only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<GeoRegion>] operation results.
     #
-    def list_geo_regions(sku = nil, custom_headers = nil)
-      first_page = list_geo_regions_as_lazy(sku, custom_headers)
+    def list_geo_regions(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      first_page = list_geo_regions_as_lazy(sku, linux_workers_enabled, custom_headers)
       first_page.get_all_items
     end
 
@@ -663,13 +665,15 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
+    # only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_with_http_info(sku = nil, custom_headers = nil)
-      list_geo_regions_async(sku, custom_headers).value!
+    def list_geo_regions_with_http_info(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      list_geo_regions_async(sku, linux_workers_enabled, custom_headers).value!
     end
 
     #
@@ -679,12 +683,14 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
+    # only regions that support Linux workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_async(sku = nil, custom_headers = nil)
+    def list_geo_regions_async(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       api_version = '2016-03-01'
 
@@ -701,7 +707,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => subscription_id},
-          query_params: {'sku' => sku,'api-version' => api_version},
+          query_params: {'sku' => sku,'linuxWorkersEnabled' => linux_workers_enabled,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1595,13 +1601,15 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
+    # only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GeoRegionCollection] operation results.
     #
-    def list_geo_regions_as_lazy(sku = nil, custom_headers = nil)
-      first_page = list_geo_regions_as_lazy_as_lazy(sku, custom_headers)
+    def list_geo_regions_as_lazy(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      first_page = list_geo_regions_as_lazy_as_lazy(sku, linux_workers_enabled, custom_headers)
       first_page.get_all_items
     end
 
@@ -1612,13 +1620,15 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
+    # only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_geo_regions_as_lazy_with_http_info(sku = nil, custom_headers = nil)
-      list_geo_regions_as_lazy_async(sku, custom_headers).value!
+    def list_geo_regions_as_lazy_with_http_info(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
+      list_geo_regions_as_lazy_async(sku, linux_workers_enabled, custom_headers).value!
     end
 
     #
@@ -1628,12 +1638,14 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
+    # only regions that support Linux workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_geo_regions_as_lazy_async(sku = nil, custom_headers = nil)
+    def list_geo_regions_as_lazy_async(sku = nil, linux_workers_enabled = nil, custom_headers = nil)
       api_version = '2016-03-01'
 
 
@@ -1644,7 +1656,7 @@ module Azure::ARM::Web
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'sku' => sku,'api-version' => api_version},
+          query_params: {'sku' => sku,'linuxWorkersEnabled' => linux_workers_enabled,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
