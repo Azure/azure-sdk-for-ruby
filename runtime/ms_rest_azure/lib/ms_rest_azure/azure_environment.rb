@@ -103,61 +103,61 @@ module MsRestAzure
                                                         :datalake_analytics_catalog_and_job_endpoint_suffix => 'azuredatalakeanalytics.net'
                                                     })
     AzureChinaCloud = AzureEnvironments::AzureEnvironment.new({
-                                                             :name => 'AzureChinaCloud',
-                                                             :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=301902',
-                                                             :publishing_profile_url => 'http://go.microsoft.com/fwlink/?LinkID=301774',
-                                                             :management_endpoint_url => 'https://management.core.chinacloudapi.cn',
-                                                             :resource_manager_endpoint_url => 'https://management.chinacloudapi.cn',
-                                                             :sql_management_endpoint_url => 'https://management.core.chinacloudapi.cn:8443/',
-                                                             :sql_server_hostname_suffix => '.database.chinacloudapi.cn',
-                                                             :gallery_endpoint_url => 'https://gallery.chinacloudapi.cn/',
-                                                             :active_directory_endpoint_url => 'https://login.chinacloudapi.cn/',
-                                                             :active_directory_resource_id => 'https://management.core.chinacloudapi.cn/',
-                                                             :active_directory_graph_resource_id => 'https://graph.chinacloudapi.cn/',
-                                                             :active_directory_graph_api_version => '2013-04-05',
-                                                             :storage_endpoint_suffix => '.core.chinacloudapi.cn',
-                                                             :key_vault_dns_suffix => '.vault.azure.cn',
-                                                             # TODO: add dns suffixes for the china cloud for datalake store and datalake analytics once they are defined.
-                                                             :datalake_store_filesystem_endpoint_suffix => 'N/A',
-                                                             :datalake_analytics_catalog_and_job_endpoint_suffix => 'N/A'
-                                                         })
+                                                        :name => 'AzureChinaCloud',
+                                                        :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=301902',
+                                                        :publishing_profile_url => 'http://go.microsoft.com/fwlink/?LinkID=301774',
+                                                        :management_endpoint_url => 'https://management.core.chinacloudapi.cn',
+                                                        :resource_manager_endpoint_url => 'https://management.chinacloudapi.cn',
+                                                        :sql_management_endpoint_url => 'https://management.core.chinacloudapi.cn:8443/',
+                                                        :sql_server_hostname_suffix => '.database.chinacloudapi.cn',
+                                                        :gallery_endpoint_url => 'https://gallery.chinacloudapi.cn/',
+                                                        :active_directory_endpoint_url => 'https://login.chinacloudapi.cn/',
+                                                        :active_directory_resource_id => 'https://management.core.chinacloudapi.cn/',
+                                                        :active_directory_graph_resource_id => 'https://graph.chinacloudapi.cn/',
+                                                        :active_directory_graph_api_version => '2013-04-05',
+                                                        :storage_endpoint_suffix => '.core.chinacloudapi.cn',
+                                                        :key_vault_dns_suffix => '.vault.azure.cn',
+                                                        # TODO: add dns suffixes for the china cloud for datalake store and datalake analytics once they are defined.
+                                                        :datalake_store_filesystem_endpoint_suffix => 'N/A',
+                                                        :datalake_analytics_catalog_and_job_endpoint_suffix => 'N/A'
+                                                    })
     AzureUSGovernment = AzureEnvironments::AzureEnvironment.new({
-                                                                    :name => 'AzureUSGovernment',
-                                                                    :portal_url => 'https://manage.windowsazure.us',
-                                                                    :publishing_profile_url => 'https://manage.windowsazure.us/publishsettings/index',
-                                                                    :management_endpoint_url => 'https://management.core.usgovcloudapi.net',
-                                                                    :resource_manager_endpoint_url => 'https://management.usgovcloudapi.net',
-                                                                    :sql_management_endpoint_url => 'https://management.core.usgovcloudapi.net:8443/',
-                                                                    :sql_server_hostname_suffix => '.database.usgovcloudapi.net',
-                                                                    :gallery_endpoint_url => 'https://gallery.usgovcloudapi.net/',
-                                                                    :active_directory_endpoint_url => 'https://login.microsoftonline.com/',
-                                                                    :active_directory_resource_id => 'https://management.core.usgovcloudapi.net/',
-                                                                    :active_directory_graph_resource_id => 'https://graph.windows.net/',
-                                                                    :active_directory_graph_api_version => '2013-04-05',
-                                                                    :storage_endpoint_suffix => '.core.usgovcloudapi.net',
-                                                                    :key_vault_dns_suffix => '.vault.usgovcloudapi.net',
-                                                                    # TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
-                                                                    :datalake_store_filesystem_endpoint_suffix => 'N/A',
-                                                                    :datalake_analytics_catalog_and_job_endpoint_suffix => 'N/A'
-                                                                })
+                                                        :name => 'AzureUSGovernment',
+                                                        :portal_url => 'https://manage.windowsazure.us',
+                                                        :publishing_profile_url => 'https://manage.windowsazure.us/publishsettings/index',
+                                                        :management_endpoint_url => 'https://management.core.usgovcloudapi.net',
+                                                        :resource_manager_endpoint_url => 'https://management.usgovcloudapi.net',
+                                                        :sql_management_endpoint_url => 'https://management.core.usgovcloudapi.net:8443/',
+                                                        :sql_server_hostname_suffix => '.database.usgovcloudapi.net',
+                                                        :gallery_endpoint_url => 'https://gallery.usgovcloudapi.net/',
+                                                        :active_directory_endpoint_url => 'https://login.microsoftonline.com/',
+                                                        :active_directory_resource_id => 'https://management.core.usgovcloudapi.net/',
+                                                        :active_directory_graph_resource_id => 'https://graph.windows.net/',
+                                                        :active_directory_graph_api_version => '2013-04-05',
+                                                        :storage_endpoint_suffix => '.core.usgovcloudapi.net',
+                                                        :key_vault_dns_suffix => '.vault.usgovcloudapi.net',
+                                                        # TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
+                                                        :datalake_store_filesystem_endpoint_suffix => 'N/A',
+                                                        :datalake_analytics_catalog_and_job_endpoint_suffix => 'N/A'
+                                                    })
     AzureGermanCloud = AzureEnvironments::AzureEnvironment.new({
-                                                                   :name => 'AzureGermanCloud',
-                                                                   :portal_url => 'http://portal.microsoftazure.de/',
-                                                                   :publishing_profile_url => 'https://manage.microsoftazure.de/publishsettings/index',
-                                                                   :management_endpoint_url => 'https://management.core.cloudapi.de',
-                                                                   :resource_manager_endpoint_url => 'https://management.microsoftazure.de',
-                                                                   :sql_management_endpoint_url => 'https://management.core.cloudapi.de:8443/',
-                                                                   :sql_server_hostname_suffix => '.database.cloudapi.de',
-                                                                   :gallery_endpoint_url => 'https://gallery.cloudapi.de/',
-                                                                   :active_directory_endpoint_url => 'https://login.microsoftonline.de/',
-                                                                   :active_directory_resource_id => 'https://management.core.cloudapi.de/',
-                                                                   :active_directory_graph_resource_id => 'https://graph.cloudapi.de/',
-                                                                   :active_directory_graph_api_version => '2013-04-05',
-                                                                   :storage_endpoint_suffix => '.core.cloudapi.de',
-                                                                   :key_vault_dns_suffix => '.vault.microsoftazure.de',
-                                                                   # TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
-                                                                   :datalake_store_filesystem_endpoint_suffix => 'N/A',
-                                                                   :datalake_analytics_catalog_and_job_endpoint_suffix => 'N/A'
-                                                               })
+                                                        :name => 'AzureGermanCloud',
+                                                        :portal_url => 'http://portal.microsoftazure.de/',
+                                                        :publishing_profile_url => 'https://manage.microsoftazure.de/publishsettings/index',
+                                                        :management_endpoint_url => 'https://management.core.cloudapi.de',
+                                                        :resource_manager_endpoint_url => 'https://management.microsoftazure.de',
+                                                        :sql_management_endpoint_url => 'https://management.core.cloudapi.de:8443/',
+                                                        :sql_server_hostname_suffix => '.database.cloudapi.de',
+                                                        :gallery_endpoint_url => 'https://gallery.cloudapi.de/',
+                                                        :active_directory_endpoint_url => 'https://login.microsoftonline.de/',
+                                                        :active_directory_resource_id => 'https://management.core.cloudapi.de/',
+                                                        :active_directory_graph_resource_id => 'https://graph.cloudapi.de/',
+                                                        :active_directory_graph_api_version => '2013-04-05',
+                                                        :storage_endpoint_suffix => '.core.cloudapi.de',
+                                                        :key_vault_dns_suffix => '.vault.microsoftazure.de',
+                                                        # TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
+                                                        :datalake_store_filesystem_endpoint_suffix => 'N/A',
+                                                        :datalake_analytics_catalog_and_job_endpoint_suffix => 'N/A'
+                                                    })
   end
 end
