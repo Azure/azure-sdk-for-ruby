@@ -56,8 +56,8 @@ module MsRestAzure
     end
 
     it 'should contain pre-defined environments' do
-      expect(MsRestAzure::AzureEnvironments::Azure).to be_a(AzureEnvironments::AzureEnvironment)
-      expect(MsRestAzure::AzureEnvironments::AzureChina).to be_a(AzureEnvironments::AzureEnvironment)
+      expect(MsRestAzure::AzureEnvironments::AzureCloud).to be_a(AzureEnvironments::AzureEnvironment)
+      expect(MsRestAzure::AzureEnvironments::AzureChinaCloud).to be_a(AzureEnvironments::AzureEnvironment)
       expect(MsRestAzure::AzureEnvironments::AzureUSGovernment).to be_a(AzureEnvironments::AzureEnvironment)
       expect(MsRestAzure::AzureEnvironments::AzureGermanCloud).to be_a(AzureEnvironments::AzureEnvironment)
     end
