@@ -15,19 +15,19 @@ module MsRestAzure
     attr_accessor :token_audience
 
     #
-    # Returns a set of properties required to login into regular Azure.
+    # Returns a set of properties required to login into regular Azure cloud.
     #
     # @return [ActiveDirectoryServiceSettings] settings required for authentication.
     def self.get_azure_settings
-      get_settings(MsRestAzure::AzureEnvironments::Azure)
+      get_settings(MsRestAzure::AzureEnvironments::AzureCloud)
     end
 
     #
-    # Returns a set of properties required to login into Azure China.
+    # Returns a set of properties required to login into Azure China cloud.
     #
     # @return [ActiveDirectoryServiceSettings] settings required for authentication.
     def self.get_azure_china_settings
-      get_settings(MsRestAzure::AzureEnvironments::AzureChina)
+      get_settings(MsRestAzure::AzureEnvironments::AzureChinaCloud)
     end
 
     #
