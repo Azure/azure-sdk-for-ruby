@@ -37,29 +37,74 @@ module Azure::ARM::SQL
       # restore is available for this database (ISO8601 format).
       attr_accessor :earliest_restore_date
 
-      # @return [CreateMode] Specifies the type of database to create. If
-      # createMode is not set to Default, sourceDatabaseId must be specified.
-      # If createMode is set to PointInTimeRestore, then restorePointInTime
-      # must be specified. If createMode is set to Restore, then
-      # sourceDatabaseDeletionDate must be specified. Copy,
-      # NonReadableSecondary, and OnlineSecondary are not supported for
-      # DataWarehouse edition. Possible values include: 'Copy', 'Default',
+      # @return [CreateMode] Specifies the mode of database creation.
+      #
+      # Default: regular database creation.
+      #
+      # Copy: creates a database as a copy of an existing database.
+      # sourceDatabaseId must be specified as the resource ID of the source
+      # database.
+      #
+      # OnlineSecondary/NonReadableSecondary: creates a database as a (readable
+      # or nonreadable) secondary replica of an existing database.
+      # sourceDatabaseId must be specified as the resource ID of the existing
+      # primary database.
+      #
+      # PointInTimeRestore: Creates a database by restoring a point in time
+      # backup of an existing database. sourceDatabaseId must be specified as
+      # the resource ID of the existing database, and restorePointInTime must
+      # be specified.
+      #
+      # Recovery: Creates a database by restoring a geo-replicated backup.
+      # sourceDatabaseId must be specified as the recoverable database resource
+      # ID to restore.
+      #
+      # Restore: Creates a database by restoring a backup of a deleted
+      # database. sourceDatabaseId must be specified. If sourceDatabaseId is
+      # the database's original resource ID, then sourceDatabaseDeletionDate
+      # must be specified. Otherwise sourceDatabaseId must be the restorable
+      # dropped database resource ID and sourceDatabaseDeletionDate is ignored.
+      # restorePointInTime may also be specified to restore from an earlier
+      # point in time.
+      #
+      # RestoreLongTermRetentionBackup: Creates a database by restoring from a
+      # long term retention vault. recoveryServicesRecoveryPointResourceId must
+      # be specified as the recovery point resource ID.
+      #
+      # Copy, NonReadableSecondary, OnlineSecondary and
+      # RestoreLongTermRetentionBackup are not supported for DataWarehouse
+      # edition. Possible values include: 'Copy', 'Default',
       # 'NonReadableSecondary', 'OnlineSecondary', 'PointInTimeRestore',
-      # 'Recovery', 'Restore'
+      # 'Recovery', 'Restore', 'RestoreLongTermRetentionBackup'
       attr_accessor :create_mode
 
-      # @return [String] Conditional. If createMode is not set to Default, then
-      # this value must be specified. Specifies the resource ID of the source
-      # database. If createMode is NonReadableSecondary or OnlineSecondary, the
-      # name of the source database must be the same as this new database.
+      # @return [String] Conditional. If createMode is Copy,
+      # NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery, or
+      # Restore, then this value is required. Specifies the resource ID of the
+      # source database. If createMode is NonReadableSecondary or
+      # OnlineSecondary, the name of the source database must be the same as
+      # the new database being created.
       attr_accessor :source_database_id
 
-      # @return [DateTime] Conditional. If createMode is set to
-      # PointInTimeRestore, then this value must be specified. Specifies the
-      # point in time (ISO8601 format) of the source database that will be
-      # restored to create the new database. Must be greater than or equal to
-      # the source database's earliestRestoreDate value.
+      # @return [DateTime] Conditional. If createMode is Restore and
+      # sourceDatabaseId is the deleted database's original resource id when it
+      # existed (as opposed to its current restorable dropped database id),
+      # then this value is required. Specifies the time that the database was
+      # deleted.
+      attr_accessor :source_database_deletion_date
+
+      # @return [DateTime] Conditional. If createMode is PointInTimeRestore,
+      # this value is required. If createMode is Restore, this value is
+      # optional. Specifies the point in time (ISO8601 format) of the source
+      # database that will be restored to create the new database. Must be
+      # greater than or equal to the source database's earliestRestoreDate
+      # value.
       attr_accessor :restore_point_in_time
+
+      # @return [DateTime] Conditional. If createMode is
+      # RestoreLongTermRetentionBackup, then this value is required. Specifies
+      # the resource ID of the recovery point to restore from.
+      attr_accessor :recovery_services_recovery_point_resource_id
 
       # @return [DatabaseEditions] The edition of the database. The
       # DatabaseEditions enumeration contains all the valid editions. If
@@ -266,9 +311,23 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
+              source_database_deletion_date: {
+                required: false,
+                serialized_name: 'properties.sourceDatabaseDeletionDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               restore_point_in_time: {
                 required: false,
                 serialized_name: 'properties.restorePointInTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              recovery_services_recovery_point_resource_id: {
+                required: false,
+                serialized_name: 'properties.recoveryServicesRecoveryPointResourceId',
                 type: {
                   name: 'DateTime'
                 }
