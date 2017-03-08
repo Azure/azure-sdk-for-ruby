@@ -16,6 +16,7 @@ module Azure::ARM::SQL
       PointInTimeRestore = "PointInTimeRestore"
       Recovery = "Recovery"
       Restore = "Restore"
+      RestoreLongTermRetentionBackup = "RestoreLongTermRetentionBackup"
     end
   end
 end
