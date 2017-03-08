@@ -30,7 +30,7 @@
       ]
     },
     "azure_mgmt_batch": {
-      "swagger": "arm-batch/2015-12-01/swagger/BatchManagement.json",
+      "swagger": "arm-batch/2017-01-01/swagger/BatchManagement.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Batch",
         "PackageName": "azure_mgmt_batch",
