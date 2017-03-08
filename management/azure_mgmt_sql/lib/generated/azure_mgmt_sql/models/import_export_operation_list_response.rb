@@ -6,28 +6,27 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a list service tier advisor request.
+    # Response for Import/Export List operation.
     #
-    class ServiceTierAdvisorListResult
+    class ImportExportOperationListResponse
 
       include MsRestAzure
 
-      # @return [Array<ServiceTierAdvisor>] The list of service tier advisors
-      # for specified database.
+      # @return [Array<ImportExportOperationResponse>]
       attr_accessor :value
 
 
       #
-      # Mapper for ServiceTierAdvisorListResult class as Ruby Hash.
+      # Mapper for ImportExportOperationListResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServiceTierAdvisorListResult',
+          serialized_name: 'ImportExportOperationListResponse',
           type: {
             name: 'Composite',
-            class_name: 'ServiceTierAdvisorListResult',
+            class_name: 'ImportExportOperationListResponse',
             model_properties: {
               value: {
                 required: true,
@@ -36,10 +35,10 @@ module Azure::ARM::SQL
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ServiceTierAdvisorElementType',
+                      serialized_name: 'ImportExportOperationResponseElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ServiceTierAdvisor'
+                        class_name: 'ImportExportOperationResponse'
                       }
                   }
                 }

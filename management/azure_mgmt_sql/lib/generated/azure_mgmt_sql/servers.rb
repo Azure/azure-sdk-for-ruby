@@ -441,6 +441,56 @@ module Azure::ARM::SQL
     end
 
     #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequestParameters] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportOperationResponse] operation results.
+    #
+    def import_database(resource_group_name, server_name, parameters, custom_headers = nil)
+      response = import_database_async(resource_group_name, server_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequestParameters] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def import_database_async(resource_group_name, server_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_import_database_async(resource_group_name, server_name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = ImportExportOperationResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
     # Returns a list of servers.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1208,6 +1258,119 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = ServiceObjectiveListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequestParameters] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportOperationResponse] operation results.
+    #
+    def begin_import_database(resource_group_name, server_name, parameters, custom_headers = nil)
+      response = begin_import_database_async(resource_group_name, server_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequestParameters] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_import_database_with_http_info(resource_group_name, server_name, parameters, custom_headers = nil)
+      begin_import_database_async(resource_group_name, server_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequestParameters] The required parameters for
+    # importing a Bacpac into a database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_import_database_async(resource_group_name, server_name, parameters, custom_headers = nil)
+      api_version = '2014-04-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = ImportRequestParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ImportExportOperationResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
