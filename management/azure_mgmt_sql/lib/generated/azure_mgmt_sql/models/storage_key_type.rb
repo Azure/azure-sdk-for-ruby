@@ -6,13 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for RecommendedIndexTypes
+    # Defines values for StorageKeyType
     #
-    module RecommendedIndexTypes
-      CLUSTERED = "CLUSTERED"
-      NONCLUSTERED = "NONCLUSTERED"
-      COLUMNSTORE = "COLUMNSTORE"
-      CLUSTEREDCOLUMNSTORE = "CLUSTERED COLUMNSTORE"
+    module StorageKeyType
+      StorageAccessKey = "StorageAccessKey"
+      SharedAccessKey = "SharedAccessKey"
     end
   end
 end
