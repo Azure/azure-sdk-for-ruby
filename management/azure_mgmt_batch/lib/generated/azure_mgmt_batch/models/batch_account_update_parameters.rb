@@ -20,19 +20,6 @@ module Azure::ARM::Batch
       # storage account.
       attr_accessor :auto_storage
 
-      # @return [PoolAllocationMode] The allocation mode to use for creating
-      # pools in the Batch account. The pool allocation mode also affects how
-      # clients may authenticate to the Batch Service API. If the mode is
-      # BatchService, clients may authenticate using access keys or Azure
-      # Active Directory. If the mode is UserSubscription, clients must use
-      # Azure Active Directory. The default is BatchService. Possible values
-      # include: 'BatchService', 'UserSubscription'
-      attr_accessor :pool_allocation_mode
-
-      # @return [KeyVaultReference] A reference to the Azure key vault
-      # associated with the Batch account.
-      attr_accessor :key_vault_reference
-
 
       #
       # Mapper for BatchAccountUpdateParameters class as Ruby Hash.
@@ -66,22 +53,6 @@ module Azure::ARM::Batch
                 type: {
                   name: 'Composite',
                   class_name: 'AutoStorageBaseProperties'
-                }
-              },
-              pool_allocation_mode: {
-                required: false,
-                serialized_name: 'properties.poolAllocationMode',
-                type: {
-                  name: 'Enum',
-                  module: 'PoolAllocationMode'
-                }
-              },
-              key_vault_reference: {
-                required: false,
-                serialized_name: 'properties.keyVaultReference',
-                type: {
-                  name: 'Composite',
-                  class_name: 'KeyVaultReference'
                 }
               }
             }

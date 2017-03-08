@@ -38,6 +38,9 @@ module Azure::ARM::SQL
     # @return [Databases] databases
     attr_reader :databases
 
+    # @return [ImportExportOperations] import_export_operations
+    attr_reader :import_export_operations
+
     # @return [ElasticPools] elastic_pools
     attr_reader :elastic_pools
 
@@ -59,6 +62,7 @@ module Azure::ARM::SQL
 
       @servers = Servers.new(self)
       @databases = Databases.new(self)
+      @import_export_operations = ImportExportOperations.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @accept_language = 'en-US'

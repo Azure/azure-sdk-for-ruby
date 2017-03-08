@@ -11,16 +11,16 @@ module MsRestAzure
       aad_settings = ActiveDirectoryServiceSettings.get_azure_settings
 
       expect(aad_settings).to be_a(ActiveDirectoryServiceSettings)
-      expect(aad_settings.authentication_endpoint).to eq(MsRestAzure::AzureEnvironments::Azure.active_directory_endpoint_url)
-      expect(aad_settings.token_audience).to eq(MsRestAzure::AzureEnvironments::Azure.active_directory_resource_id)
+      expect(aad_settings.authentication_endpoint).to eq(MsRestAzure::AzureEnvironments::AzureCloud.active_directory_endpoint_url)
+      expect(aad_settings.token_audience).to eq(MsRestAzure::AzureEnvironments::AzureCloud.active_directory_resource_id)
     end
 
     it 'should initialize with Azure China Cloud properties' do
       aad_settings = ActiveDirectoryServiceSettings.get_azure_china_settings
 
       expect(aad_settings).to be_a(ActiveDirectoryServiceSettings)
-      expect(aad_settings.authentication_endpoint).to eq(MsRestAzure::AzureEnvironments::AzureChina.active_directory_endpoint_url)
-      expect(aad_settings.token_audience).to eq(MsRestAzure::AzureEnvironments::AzureChina.active_directory_resource_id)
+      expect(aad_settings.authentication_endpoint).to eq(MsRestAzure::AzureEnvironments::AzureChinaCloud.active_directory_endpoint_url)
+      expect(aad_settings.token_audience).to eq(MsRestAzure::AzureEnvironments::AzureChinaCloud.active_directory_resource_id)
     end
 
     it 'should initialize with Azure US Government Cloud properties' do
