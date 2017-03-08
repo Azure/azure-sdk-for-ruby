@@ -13,7 +13,7 @@ module Azure::ARM::Logic
       include MsRestAzure
 
       # @return [AS2AgreementContent] The AS2 agreement content.
-      attr_accessor :as2
+      attr_accessor :a_s2
 
       # @return [X12AgreementContent] The X12 agreement content.
       attr_accessor :x12
@@ -34,9 +34,9 @@ module Azure::ARM::Logic
             name: 'Composite',
             class_name: 'AgreementContent',
             model_properties: {
-              as2: {
+              a_s2: {
                 required: false,
-                serialized_name: 'AS2',
+                serialized_name: 'aS2',
                 type: {
                   name: 'Composite',
                   class_name: 'AS2AgreementContent'
@@ -44,7 +44,7 @@ module Azure::ARM::Logic
               },
               x12: {
                 required: false,
-                serialized_name: 'X12',
+                serialized_name: 'x12',
                 type: {
                   name: 'Composite',
                   class_name: 'X12AgreementContent'
@@ -52,7 +52,7 @@ module Azure::ARM::Logic
               },
               edifact: {
                 required: false,
-                serialized_name: 'Edifact',
+                serialized_name: 'edifact',
                 type: {
                   name: 'Composite',
                   class_name: 'EdifactAgreementContent'
