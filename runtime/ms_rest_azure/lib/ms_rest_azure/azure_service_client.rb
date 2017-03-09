@@ -16,8 +16,11 @@ module MsRestAzure
 
     def initialize(credentials, options = nil)
       super(credentials, options)
+      # This is the current default for Azure services, and content-type
+      # and accept supported by Autorest
       @request_headers =  {
-          'Content-Type' => 'application/json;charset=utf-8' # This is the current default for Azure services, and content-type supported by Autorest
+          'Content-Type' => 'application/json;charset=utf-8',
+          'Accept' => 'application/json'
       }
       add_user_agent_information("ms_rest_azure/#{MsRestAzure::VERSION}")
       add_user_agent_information("Azure-SDK-For-Ruby")
