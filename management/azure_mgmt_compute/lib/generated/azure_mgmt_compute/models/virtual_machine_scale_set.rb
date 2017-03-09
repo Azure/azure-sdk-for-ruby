@@ -37,6 +37,10 @@ module Azure::ARM::Compute
       # placement group, of max size 100 virtual machines.
       attr_accessor :single_placement_group
 
+      # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
+      # machine scale set, if configured.
+      attr_accessor :identity
+
 
       #
       # Mapper for VirtualMachineScaleSet class as Ruby Hash.
@@ -147,6 +151,14 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.singlePlacementGroup',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VirtualMachineScaleSetIdentity'
                 }
               }
             }
