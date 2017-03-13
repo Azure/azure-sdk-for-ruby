@@ -6,11 +6,10 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for ProtocolTypes
+    # Defines values for ResourceIdentityType
     #
-    module ProtocolTypes
-      Http = "Http"
-      Https = "Https"
+    module ResourceIdentityType
+      SystemAssigned = "SystemAssigned"
     end
   end
 end

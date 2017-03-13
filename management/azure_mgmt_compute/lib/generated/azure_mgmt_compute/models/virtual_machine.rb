@@ -56,6 +56,10 @@ module Azure::ARM::Compute
       # extension resources.
       attr_accessor :resources
 
+      # @return [VirtualMachineIdentity] The identity of the virtual machine,
+      # if configured.
+      attr_accessor :identity
+
 
       #
       # Mapper for VirtualMachine class as Ruby Hash.
@@ -216,6 +220,14 @@ module Azure::ARM::Compute
                         class_name: 'VirtualMachineExtension'
                       }
                   }
+                }
+              },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VirtualMachineIdentity'
                 }
               }
             }
