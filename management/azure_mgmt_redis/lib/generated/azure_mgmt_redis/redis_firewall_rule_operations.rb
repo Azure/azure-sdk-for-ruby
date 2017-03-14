@@ -7,12 +7,12 @@ module Azure::ARM::Redis
   #
   # REST API for Azure Redis Cache Service.
   #
-  class PatchSchedules
+  class RedisFirewallRuleOperations
     include Azure::ARM::Redis::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the PatchSchedules class.
+    # Creates and initializes a new instance of the RedisFirewallRuleOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,56 +23,57 @@ module Azure::ARM::Redis
     attr_reader :client
 
     #
-    # Create or replace the patching schedule for Redis cache (requires Premium
-    # SKU).
+    # Create or update a redis cache firewall rule
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
-    # @param parameters [RedisPatchSchedule] Parameters to set the patching
-    # schedule for Redis cache.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
+    # @param parameters [RedisFirewallRule] Parameters supplied to the create or
+    # update redis firewall rule operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RedisPatchSchedule] operation results.
+    # @return [RedisFirewallRule] operation results.
     #
-    def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create or replace the patching schedule for Redis cache (requires Premium
-    # SKU).
+    # Create or update a redis cache firewall rule
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
-    # @param parameters [RedisPatchSchedule] Parameters to set the patching
-    # schedule for Redis cache.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
+    # @param parameters [RedisFirewallRule] Parameters supplied to the create or
+    # update redis firewall rule operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers).value!
     end
 
     #
-    # Create or replace the patching schedule for Redis cache (requires Premium
-    # SKU).
+    # Create or update a redis cache firewall rule
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
-    # @param parameters [RedisPatchSchedule] Parameters to set the patching
-    # schedule for Redis cache.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
+    # @param parameters [RedisFirewallRule] Parameters supplied to the create or
+    # update redis firewall rule operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, cache_name, rule_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'cache_name is nil' if cache_name.nil?
+      fail ArgumentError, 'rule_name is nil' if rule_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -87,17 +88,17 @@ module Azure::ARM::Redis
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RedisPatchSchedule.mapper()
+      request_mapper = RedisFirewallRule.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/patchSchedules/default'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{cacheName}/firewallRules/{ruleName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'cacheName' => cache_name,'ruleName' => rule_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -119,7 +120,7 @@ module Azure::ARM::Redis
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisPatchSchedule.mapper()
+            result_mapper = RedisFirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -129,7 +130,7 @@ module Azure::ARM::Redis
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisPatchSchedule.mapper()
+            result_mapper = RedisFirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -143,127 +144,51 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule of a redis cache (requires Premium SKU).
+    # Gets a single firewall rule in a specified redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [RedisFirewallRule] operation results.
     #
-    def delete(resource_group_name, name, custom_headers = nil)
-      response = delete_async(resource_group_name, name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the patching schedule of a redis cache (requires Premium SKU).
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(resource_group_name, name, custom_headers = nil)
-      delete_async(resource_group_name, name, custom_headers).value!
-    end
-
-    #
-    # Deletes the patching schedule of a redis cache (requires Premium SKU).
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_async(resource_group_name, name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/patchSchedules/default'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the patching schedule of a redis cache (requires Premium SKU).
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RedisPatchSchedule] operation results.
-    #
-    def get(resource_group_name, name, custom_headers = nil)
-      response = get_async(resource_group_name, name, custom_headers).value!
+    def get(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      response = get_async(resource_group_name, cache_name, rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the patching schedule of a redis cache (requires Premium SKU).
+    # Gets a single firewall rule in a specified redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, name, custom_headers = nil)
-      get_async(resource_group_name, name, custom_headers).value!
+    def get_with_http_info(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      get_async(resource_group_name, cache_name, rule_name, custom_headers).value!
     end
 
     #
-    # Gets the patching schedule of a redis cache (requires Premium SKU).
+    # Gets a single firewall rule in a specified redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, name, custom_headers = nil)
+    def get_async(resource_group_name, cache_name, rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'cache_name is nil' if cache_name.nil?
+      fail ArgumentError, 'rule_name is nil' if rule_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -273,13 +198,13 @@ module Azure::ARM::Redis
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/patchSchedules/default'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{cacheName}/firewallRules/{ruleName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'cacheName' => cache_name,'ruleName' => rule_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -300,12 +225,96 @@ module Azure::ARM::Redis
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisPatchSchedule.mapper()
+            result_mapper = RedisFirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a single firewall rule in a specified redis cache.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      response = delete_async(resource_group_name, cache_name, rule_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a single firewall rule in a specified redis cache.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      delete_async(resource_group_name, cache_name, rule_name, custom_headers).value!
+    end
+
+    #
+    # Deletes a single firewall rule in a specified redis cache.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param cache_name [String] The name of the Redis cache.
+    # @param rule_name [String] The name of the firewall rule.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_async(resource_group_name, cache_name, rule_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'cache_name is nil' if cache_name.nil?
+      fail ArgumentError, 'rule_name is nil' if rule_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{cacheName}/firewallRules/{ruleName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'cacheName' => cache_name,'ruleName' => rule_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
       end
