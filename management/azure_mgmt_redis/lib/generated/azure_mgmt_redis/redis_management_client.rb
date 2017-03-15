@@ -36,8 +36,17 @@ module Azure::ARM::Redis
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Redis] redis
     attr_reader :redis
+
+    # @return [FirewallRules] firewall_rules
+    attr_reader :firewall_rules
+
+    # @return [RedisFirewallRuleOperations] redis_firewall_rule_operations
+    attr_reader :redis_firewall_rule_operations
 
     # @return [PatchSchedules] patch_schedules
     attr_reader :patch_schedules
@@ -55,7 +64,10 @@ module Azure::ARM::Redis
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @redis = Redis.new(self)
+      @firewall_rules = FirewallRules.new(self)
+      @redis_firewall_rule_operations = RedisFirewallRuleOperations.new(self)
       @patch_schedules = PatchSchedules.new(self)
       @api_version = '2016-04-01'
       @accept_language = 'en-US'
