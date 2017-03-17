@@ -109,15 +109,18 @@ module Azure::ARM::SQL
       # @return [DatabaseEditions] The edition of the database. The
       # DatabaseEditions enumeration contains all the valid editions. If
       # createMode is NonReadableSecondary or OnlineSecondary, this value is
-      # ignored. Possible values include: 'Web', 'Business', 'Basic',
-      # 'Standard', 'Premium', 'Free', 'Stretch', 'DataWarehouse', 'System'
+      # ignored. To see possible values, query the capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_List.". Possible values
+      # include: 'Web', 'Business', 'Basic', 'Standard', 'Premium', 'Free',
+      # 'Stretch', 'DataWarehouse', 'System'
       attr_accessor :edition
 
       # @return [String] The max size of the database expressed in bytes. If
-      # createMode is not Default, this value is ignored. Note: Only the
-      # following sizes are supported (in addition to limitations being placed
-      # on each edition): { 100 MB | 500 MB |1 GB | 5 GB | 10 GB | 20 GB | 30
-      # GB … 150 GB | 200 GB … 500 GB }
+      # createMode is not Default, this value is ignored. To see possible
+      # values, query the capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_List."
       attr_accessor :max_size_bytes
 
       # @return The configured service level objective ID of the database. This
@@ -126,15 +129,21 @@ module Azure::ARM::SQL
       # currentServiceObjectiveId property. If requestedServiceObjectiveId and
       # requestedServiceObjectiveName are both updated, the value of
       # requestedServiceObjectiveId overrides the value of
-      # requestedServiceObjectiveName.
+      # requestedServiceObjectiveName. To see possible values, query the
+      # capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_List."
       attr_accessor :requested_service_objective_id
 
       # @return [ServiceObjectiveName] The name of the configured service level
       # objective of the database. This is the service level objective that is
       # in the process of being applied to the database. Once successfully
-      # updated, it will match the value of serviceLevelObjective property.
-      # Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2',
-      # 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'ElasticPool'
+      # updated, it will match the value of serviceLevelObjective property. To
+      # see possible values, query the capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_List.". Possible values
+      # include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6',
+      # 'P11', 'P15', 'System', 'ElasticPool'
       attr_accessor :requested_service_objective_name
 
       # @return [ServiceObjectiveName] The current service level objective of
