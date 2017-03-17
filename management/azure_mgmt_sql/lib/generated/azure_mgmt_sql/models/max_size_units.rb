@@ -6,12 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for RecommendedIndexActions
+    # Defines values for MaxSizeUnits
     #
-    module RecommendedIndexActions
-      Create = "Create"
-      Drop = "Drop"
-      Rebuild = "Rebuild"
+    module MaxSizeUnits
+      Megabytes = "Megabytes"
+      Gigabytes = "Gigabytes"
+      Terabytes = "Terabytes"
+      Petabytes = "Petabytes"
     end
   end
 end

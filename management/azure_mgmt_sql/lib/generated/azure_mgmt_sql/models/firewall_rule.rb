@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a server firewall rule.
     #
-    class ServerFirewallRule < SqlSubResource
+    class FirewallRule < SubResource
 
       include MsRestAzure
 
@@ -34,16 +34,16 @@ module Azure::ARM::SQL
 
 
       #
-      # Mapper for ServerFirewallRule class as Ruby Hash.
+      # Mapper for FirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerFirewallRule',
+          serialized_name: 'FirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'ServerFirewallRule',
+            class_name: 'FirewallRule',
             model_properties: {
               name: {
                 required: false,

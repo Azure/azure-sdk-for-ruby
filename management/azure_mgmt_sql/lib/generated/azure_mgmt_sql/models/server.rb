@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a server.
     #
-    class Server < MsRestAzure::Resource
+    class Server < TrackedResource
 
       include MsRestAzure
 
@@ -60,14 +60,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'Server',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -76,17 +68,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              type: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -103,6 +96,13 @@ module Azure::ARM::SQL
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               kind: {
