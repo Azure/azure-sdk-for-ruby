@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database.
     #
-    class Database < MsRestAzure::Resource
+    class Database < TrackedResource
 
       include MsRestAzure
 
@@ -106,18 +106,21 @@ module Azure::ARM::SQL
       # the resource ID of the recovery point to restore from.
       attr_accessor :recovery_services_recovery_point_resource_id
 
-      # @return [DatabaseEditions] The edition of the database. The
+      # @return [DatabaseEdition] The edition of the database. The
       # DatabaseEditions enumeration contains all the valid editions. If
       # createMode is NonReadableSecondary or OnlineSecondary, this value is
-      # ignored. Possible values include: 'Web', 'Business', 'Basic',
-      # 'Standard', 'Premium', 'Free', 'Stretch', 'DataWarehouse', 'System'
+      # ignored. To see possible values, query the capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_ListByLocation.". Possible
+      # values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
+      # 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
       attr_accessor :edition
 
       # @return [String] The max size of the database expressed in bytes. If
-      # createMode is not Default, this value is ignored. Note: Only the
-      # following sizes are supported (in addition to limitations being placed
-      # on each edition): { 100 MB | 500 MB |1 GB | 5 GB | 10 GB | 20 GB | 30
-      # GB … 150 GB | 200 GB … 500 GB }
+      # createMode is not Default, this value is ignored. To see possible
+      # values, query the capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_ListByLocation."
       attr_accessor :max_size_bytes
 
       # @return The configured service level objective ID of the database. This
@@ -126,20 +129,27 @@ module Azure::ARM::SQL
       # currentServiceObjectiveId property. If requestedServiceObjectiveId and
       # requestedServiceObjectiveName are both updated, the value of
       # requestedServiceObjectiveId overrides the value of
-      # requestedServiceObjectiveName.
+      # requestedServiceObjectiveName. To see possible values, query the
+      # capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_ListByLocation."
       attr_accessor :requested_service_objective_id
 
       # @return [ServiceObjectiveName] The name of the configured service level
       # objective of the database. This is the service level objective that is
       # in the process of being applied to the database. Once successfully
-      # updated, it will match the value of serviceLevelObjective property.
-      # Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2',
-      # 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'ElasticPool'
+      # updated, it will match the value of serviceLevelObjective property. To
+      # see possible values, query the capabilities API
+      # (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
+      # referred to by operationId: "Capabilities_ListByLocation.". Possible
+      # values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1', 'P2', 'P3',
+      # 'P4', 'P6', 'P11', 'P15', 'System', 'System2', 'ElasticPool'
       attr_accessor :requested_service_objective_name
 
       # @return [ServiceObjectiveName] The current service level objective of
       # the database. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
-      # 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'ElasticPool'
+      # 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System', 'System2',
+      # 'ElasticPool'
       attr_accessor :service_level_objective
 
       # @return [String] The status of the database.
@@ -157,9 +167,6 @@ module Azure::ARM::SQL
       # @return [Array<ServiceTierAdvisor>] The list of service tier advisors
       # for this database. Expanded property
       attr_accessor :service_tier_advisors
-
-      # @return [Array<Schema>] The schemas from this database.
-      attr_accessor :schemas
 
       # @return [Array<TransparentDataEncryption>] The transparent data
       # encryption info for this database.
@@ -197,14 +204,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'Database',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -213,17 +212,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              type: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -240,6 +240,13 @@ module Azure::ARM::SQL
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               kind: {
@@ -403,22 +410,6 @@ module Azure::ARM::SQL
                       type: {
                         name: 'Composite',
                         class_name: 'ServiceTierAdvisor'
-                      }
-                  }
-                }
-              },
-              schemas: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.schemas',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'SchemaElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'Schema'
                       }
                   }
                 }

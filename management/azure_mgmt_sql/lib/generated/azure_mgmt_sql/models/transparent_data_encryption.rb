@@ -8,11 +8,11 @@ module Azure::ARM::SQL
     #
     # Represents a database transparent data encryption .
     #
-    class TransparentDataEncryption < SqlSubResource
+    class TransparentDataEncryption < SubResource
 
       include MsRestAzure
 
-      # @return [TransparentDataEncryptionStates] The status of the database
+      # @return [TransparentDataEncryptionStatus] The status of the database
       # transparent data encryption. Possible values include: 'Enabled',
       # 'Disabled'
       attr_accessor :status
@@ -51,7 +51,7 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
-                  module: 'TransparentDataEncryptionStates'
+                  module: 'TransparentDataEncryptionStatus'
                 }
               }
             }

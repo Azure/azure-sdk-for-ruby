@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a Service Tier Advisor.
     #
-    class ServiceTierAdvisor < SqlSubResource
+    class ServiceTierAdvisor < SubResource
 
       include MsRestAzure
 

@@ -6,11 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TableType
+    # Defines values for CapabilityStatus
     #
-    module TableType
-      BaseTable = "BaseTable"
-      View = "View"
+    module CapabilityStatus
+      Visible = "Visible"
+      Available = "Available"
+      Default = "Default"
+      Disabled = "Disabled"
     end
   end
 end
