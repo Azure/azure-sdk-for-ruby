@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # VpnClientParameters
+    # Vpn Client Parameters for package generation
     #
     class VpnClientParameters
 
@@ -32,7 +32,7 @@ module Azure::ARM::Network
             model_properties: {
               processor_architecture: {
                 required: true,
-                serialized_name: 'ProcessorArchitecture',
+                serialized_name: 'processorArchitecture',
                 type: {
                   name: 'String'
                 }

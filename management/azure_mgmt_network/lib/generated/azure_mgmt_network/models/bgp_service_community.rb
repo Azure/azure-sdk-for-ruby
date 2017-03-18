@@ -12,8 +12,11 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      # @return [String] The name of the bgp community. e.g. Skype.
+      attr_accessor :service_name
+
       # @return [Array<BGPCommunity>] Get a list of bgp communities.
-      attr_accessor :communities
+      attr_accessor :bgp_communities
 
 
       #
@@ -72,9 +75,16 @@ module Azure::ARM::Network
                   }
                 }
               },
-              communities: {
+              service_name: {
                 required: false,
-                serialized_name: 'properties.communities',
+                serialized_name: 'properties.serviceName',
+                type: {
+                  name: 'String'
+                }
+              },
+              bgp_communities: {
+                required: false,
+                serialized_name: 'properties.bgpCommunities',
                 type: {
                   name: 'Sequence',
                   element: {

@@ -15,7 +15,7 @@ module Azure::ARM::Network
 
       # @return [String] The region which the service support. e.g. For O365,
       # region is Global.
-      attr_accessor :region
+      attr_accessor :service_supported_region
 
       # @return [String] The name of the bgp community. e.g. Skype.
       attr_accessor :community_name
@@ -40,9 +40,9 @@ module Azure::ARM::Network
             name: 'Composite',
             class_name: 'BGPCommunity',
             model_properties: {
-              region: {
+              service_supported_region: {
                 required: false,
-                serialized_name: 'region',
+                serialized_name: 'serviceSupportedRegion',
                 type: {
                   name: 'String'
                 }

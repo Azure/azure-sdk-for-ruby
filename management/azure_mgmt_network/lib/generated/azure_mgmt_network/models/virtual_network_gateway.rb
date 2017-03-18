@@ -143,7 +143,7 @@ module Azure::ARM::Network
                 }
               },
               vpn_type: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.vpnType',
                 type: {
                   name: 'String'
