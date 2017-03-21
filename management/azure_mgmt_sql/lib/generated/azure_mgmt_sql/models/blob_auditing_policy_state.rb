@@ -6,11 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TransparentDataEncryptionActivityStates
+    # Defines values for BlobAuditingPolicyState
     #
-    module TransparentDataEncryptionActivityStates
-      Encrypting = "Encrypting"
-      Decrypting = "Decrypting"
+    module BlobAuditingPolicyState
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

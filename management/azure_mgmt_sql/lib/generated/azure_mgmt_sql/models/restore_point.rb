@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database restore point.
     #
-    class RestorePoint < MsRestAzure::Resource
+    class RestorePoint < ProxyResource
 
       include MsRestAzure
 
@@ -37,18 +37,18 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'RestorePoint',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -59,27 +59,6 @@ module Azure::ARM::SQL
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               restore_point_type: {

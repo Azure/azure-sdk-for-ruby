@@ -8,25 +8,25 @@ module Azure::ARM::SQL
     #
     # Represents the response to a List Firewall Rules request.
     #
-    class ServerFirewallRuleListResult
+    class FirewallRuleListResult
 
       include MsRestAzure
 
-      # @return [Array<ServerFirewallRule>] The list of server firewall rules.
+      # @return [Array<FirewallRule>] The list of server firewall rules.
       attr_accessor :value
 
 
       #
-      # Mapper for ServerFirewallRuleListResult class as Ruby Hash.
+      # Mapper for FirewallRuleListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerFirewallRuleListResult',
+          serialized_name: 'FirewallRuleListResult',
           type: {
             name: 'Composite',
-            class_name: 'ServerFirewallRuleListResult',
+            class_name: 'FirewallRuleListResult',
             model_properties: {
               value: {
                 required: false,
@@ -35,10 +35,10 @@ module Azure::ARM::SQL
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ServerFirewallRuleElementType',
+                      serialized_name: 'FirewallRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ServerFirewallRule'
+                        class_name: 'FirewallRule'
                       }
                   }
                 }
