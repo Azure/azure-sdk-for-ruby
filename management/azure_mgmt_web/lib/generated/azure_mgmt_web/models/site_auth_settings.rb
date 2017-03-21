@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Configuration settings for the Azure App Service Authentication /
     # Authorization feature.
     #
-    class SiteAuthSettings
+    class SiteAuthSettings < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -186,23 +186,73 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'SiteAuthSettings',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               enabled: {
                 required: false,
-                serialized_name: 'enabled',
+                serialized_name: 'properties.enabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               runtime_version: {
                 required: false,
-                serialized_name: 'runtimeVersion',
+                serialized_name: 'properties.runtimeVersion',
                 type: {
                   name: 'String'
                 }
               },
               unauthenticated_client_action: {
                 required: false,
-                serialized_name: 'unauthenticatedClientAction',
+                serialized_name: 'properties.unauthenticatedClientAction',
                 type: {
                   name: 'Enum',
                   module: 'UnauthenticatedClientAction'
@@ -210,14 +260,14 @@ module Azure::ARM::Web
               },
               token_store_enabled: {
                 required: false,
-                serialized_name: 'tokenStoreEnabled',
+                serialized_name: 'properties.tokenStoreEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               allowed_external_redirect_urls: {
                 required: false,
-                serialized_name: 'allowedExternalRedirectUrls',
+                serialized_name: 'properties.allowedExternalRedirectUrls',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -231,7 +281,7 @@ module Azure::ARM::Web
               },
               default_provider: {
                 required: false,
-                serialized_name: 'defaultProvider',
+                serialized_name: 'properties.defaultProvider',
                 type: {
                   name: 'Enum',
                   module: 'BuiltInAuthenticationProvider'
@@ -239,35 +289,35 @@ module Azure::ARM::Web
               },
               token_refresh_extension_hours: {
                 required: false,
-                serialized_name: 'tokenRefreshExtensionHours',
+                serialized_name: 'properties.tokenRefreshExtensionHours',
                 type: {
                   name: 'Double'
                 }
               },
               client_id: {
                 required: false,
-                serialized_name: 'clientId',
+                serialized_name: 'properties.clientId',
                 type: {
                   name: 'String'
                 }
               },
               client_secret: {
                 required: false,
-                serialized_name: 'clientSecret',
+                serialized_name: 'properties.clientSecret',
                 type: {
                   name: 'String'
                 }
               },
               issuer: {
                 required: false,
-                serialized_name: 'issuer',
+                serialized_name: 'properties.issuer',
                 type: {
                   name: 'String'
                 }
               },
               allowed_audiences: {
                 required: false,
-                serialized_name: 'allowedAudiences',
+                serialized_name: 'properties.allowedAudiences',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -281,7 +331,7 @@ module Azure::ARM::Web
               },
               additional_login_params: {
                 required: false,
-                serialized_name: 'additionalLoginParams',
+                serialized_name: 'properties.additionalLoginParams',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -295,21 +345,21 @@ module Azure::ARM::Web
               },
               google_client_id: {
                 required: false,
-                serialized_name: 'googleClientId',
+                serialized_name: 'properties.googleClientId',
                 type: {
                   name: 'String'
                 }
               },
               google_client_secret: {
                 required: false,
-                serialized_name: 'googleClientSecret',
+                serialized_name: 'properties.googleClientSecret',
                 type: {
                   name: 'String'
                 }
               },
               google_oauth_scopes: {
                 required: false,
-                serialized_name: 'googleOAuthScopes',
+                serialized_name: 'properties.googleOAuthScopes',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -323,21 +373,21 @@ module Azure::ARM::Web
               },
               facebook_app_id: {
                 required: false,
-                serialized_name: 'facebookAppId',
+                serialized_name: 'properties.facebookAppId',
                 type: {
                   name: 'String'
                 }
               },
               facebook_app_secret: {
                 required: false,
-                serialized_name: 'facebookAppSecret',
+                serialized_name: 'properties.facebookAppSecret',
                 type: {
                   name: 'String'
                 }
               },
               facebook_oauth_scopes: {
                 required: false,
-                serialized_name: 'facebookOAuthScopes',
+                serialized_name: 'properties.facebookOAuthScopes',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -351,35 +401,35 @@ module Azure::ARM::Web
               },
               twitter_consumer_key: {
                 required: false,
-                serialized_name: 'twitterConsumerKey',
+                serialized_name: 'properties.twitterConsumerKey',
                 type: {
                   name: 'String'
                 }
               },
               twitter_consumer_secret: {
                 required: false,
-                serialized_name: 'twitterConsumerSecret',
+                serialized_name: 'properties.twitterConsumerSecret',
                 type: {
                   name: 'String'
                 }
               },
               microsoft_account_client_id: {
                 required: false,
-                serialized_name: 'microsoftAccountClientId',
+                serialized_name: 'properties.microsoftAccountClientId',
                 type: {
                   name: 'String'
                 }
               },
               microsoft_account_client_secret: {
                 required: false,
-                serialized_name: 'microsoftAccountClientSecret',
+                serialized_name: 'properties.microsoftAccountClientSecret',
                 type: {
                   name: 'String'
                 }
               },
               microsoft_account_oauth_scopes: {
                 required: false,
-                serialized_name: 'microsoftAccountOAuthScopes',
+                serialized_name: 'properties.microsoftAccountOAuthScopes',
                 type: {
                   name: 'Sequence',
                   element: {

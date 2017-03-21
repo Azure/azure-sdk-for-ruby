@@ -12,12 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] Basic error code.
-      attr_accessor :code
-
-      # @return [String] Any details of the error.
-      attr_accessor :message
-
       # @return [String] Type of error.
       attr_accessor :extended_code
 
@@ -29,6 +23,12 @@ module Azure::ARM::Web
 
       # @return [Array<ErrorEntity>] Inner errors.
       attr_accessor :inner_errors
+
+      # @return [String] Basic error code.
+      attr_accessor :code
+
+      # @return [String] Any details of the error.
+      attr_accessor :message
 
 
       #
@@ -43,20 +43,6 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'ErrorEntity',
             model_properties: {
-              code: {
-                required: false,
-                serialized_name: 'code',
-                type: {
-                  name: 'String'
-                }
-              },
-              message: {
-                required: false,
-                serialized_name: 'message',
-                type: {
-                  name: 'String'
-                }
-              },
               extended_code: {
                 required: false,
                 serialized_name: 'extendedCode',
@@ -98,6 +84,20 @@ module Azure::ARM::Web
                         class_name: 'ErrorEntity'
                       }
                   }
+                }
+              },
+              code: {
+                required: false,
+                serialized_name: 'code',
+                type: {
+                  name: 'String'
+                }
+              },
+              message: {
+                required: false,
+                serialized_name: 'message',
+                type: {
+                  name: 'String'
                 }
               }
             }

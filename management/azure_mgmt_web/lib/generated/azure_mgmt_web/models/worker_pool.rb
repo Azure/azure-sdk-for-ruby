@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Worker pool of an App Service Environment.
     #
-    class WorkerPool < MsRestAzure::Resource
+    class WorkerPool
 
       include MsRestAzure
 
@@ -29,9 +29,6 @@ module Azure::ARM::Web
       # only).
       attr_accessor :instance_names
 
-      # @return [SkuDescription]
-      attr_accessor :sku
-
 
       #
       # Mapper for WorkerPool class as Ruby Hash.
@@ -45,66 +42,16 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'WorkerPool',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               worker_size_id: {
                 required: false,
-                serialized_name: 'properties.workerSizeId',
+                serialized_name: 'workerSizeId',
                 type: {
                   name: 'Number'
                 }
               },
               compute_mode: {
                 required: false,
-                serialized_name: 'properties.computeMode',
+                serialized_name: 'computeMode',
                 type: {
                   name: 'Enum',
                   module: 'ComputeModeOptions'
@@ -112,14 +59,14 @@ module Azure::ARM::Web
               },
               worker_size: {
                 required: false,
-                serialized_name: 'properties.workerSize',
+                serialized_name: 'workerSize',
                 type: {
                   name: 'String'
                 }
               },
               worker_count: {
                 required: false,
-                serialized_name: 'properties.workerCount',
+                serialized_name: 'workerCount',
                 type: {
                   name: 'Number'
                 }
@@ -127,7 +74,7 @@ module Azure::ARM::Web
               instance_names: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.instanceNames',
+                serialized_name: 'instanceNames',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -137,14 +84,6 @@ module Azure::ARM::Web
                         name: 'String'
                       }
                   }
-                }
-              },
-              sku: {
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'SkuDescription'
                 }
               }
             }
