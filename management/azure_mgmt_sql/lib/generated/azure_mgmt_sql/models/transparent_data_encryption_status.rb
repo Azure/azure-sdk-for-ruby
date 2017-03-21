@@ -6,9 +6,9 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TransparentDataEncryptionStates
+    # Defines values for TransparentDataEncryptionStatus
     #
-    module TransparentDataEncryptionStates
+    module TransparentDataEncryptionStatus
       Enabled = "Enabled"
       Disabled = "Disabled"
     end
