@@ -6,8 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Model object.
-    #
+    # BGP peer status details
     #
     class BgpPeerStatus
 

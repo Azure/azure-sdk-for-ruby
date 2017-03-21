@@ -113,7 +113,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
       fail ArgumentError, 'virtual_network_peering_name is nil' if virtual_network_peering_name.nil?
-      api_version = '2016-12-01'
+      api_version = '2017-03-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -252,7 +252,7 @@ module Azure::ARM::Network
     def list_async(resource_group_name, virtual_network_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      api_version = '2016-12-01'
+      api_version = '2017-03-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -349,7 +349,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
       fail ArgumentError, 'virtual_network_peering_name is nil' if virtual_network_peering_name.nil?
-      api_version = '2016-12-01'
+      api_version = '2017-03-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -441,7 +441,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
       fail ArgumentError, 'virtual_network_peering_name is nil' if virtual_network_peering_name.nil?
       fail ArgumentError, 'virtual_network_peering_parameters is nil' if virtual_network_peering_parameters.nil?
-      api_version = '2016-12-01'
+      api_version = '2017-03-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

@@ -58,6 +58,13 @@ module Azure::ARM::Network
       # @return [Boolean] EnableBgp flag
       attr_accessor :enable_bgp
 
+      # @return [Boolean] Enable policy-based traffic selectors.
+      attr_accessor :use_policy_based_traffic_selectors
+
+      # @return [Array<IpsecPolicy>] The IPSec Policies to be considered by
+      # this connection.
+      attr_accessor :ipsec_policies
+
       # @return [String] The resource GUID property of the
       # VirtualNetworkGatewayConnection resource.
       attr_accessor :resource_guid
@@ -233,6 +240,28 @@ module Azure::ARM::Network
                 serialized_name: 'properties.enableBgp',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              use_policy_based_traffic_selectors: {
+                required: false,
+                serialized_name: 'properties.usePolicyBasedTrafficSelectors',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              ipsec_policies: {
+                required: false,
+                serialized_name: 'properties.ipsecPolicies',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'IpsecPolicyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IpsecPolicy'
+                      }
+                  }
                 }
               },
               resource_guid: {

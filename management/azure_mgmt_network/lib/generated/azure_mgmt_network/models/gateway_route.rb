@@ -6,8 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Model object.
-    #
+    # Gateway routing details
     #
     class GatewayRoute
 

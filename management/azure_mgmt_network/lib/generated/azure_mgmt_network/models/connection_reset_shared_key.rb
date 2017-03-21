@@ -6,8 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Model object.
-    #
+    # The virtual network connection reset shared key
     #
     class ConnectionResetSharedKey
 

@@ -6,8 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Model object.
-    #
+    # BGP settings details
     #
     class BgpSettings
 
