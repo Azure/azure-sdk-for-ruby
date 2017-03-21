@@ -83,7 +83,7 @@ module Azure::ARM::Web
       attr_accessor :hosting_environment_profile
 
       # @return [String] Micro services like apps, logic apps. Default value:
-      # 'false' .
+      # 'WebSites' .
       attr_accessor :micro_service
 
       # @return [String] Name of gateway app associated with the app.
@@ -382,7 +382,7 @@ module Azure::ARM::Web
               micro_service: {
                 required: false,
                 serialized_name: 'properties.microService',
-                default_value: 'false',
+                default_value: 'WebSites',
                 type: {
                   name: 'String'
                 }

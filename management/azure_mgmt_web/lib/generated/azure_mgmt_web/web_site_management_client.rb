@@ -646,8 +646,8 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
-    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
-    # only regions that support Linux workers.
+    # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
+    # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -665,8 +665,8 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
-    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
-    # only regions that support Linux workers.
+    # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
+    # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -683,8 +683,8 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
-    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
-    # only regions that support Linux workers.
+    # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
+    # to filter to only regions that support Linux workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1601,8 +1601,8 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
-    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
-    # only regions that support Linux workers.
+    # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
+    # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1620,8 +1620,8 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
-    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
-    # only regions that support Linux workers.
+    # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
+    # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1638,8 +1638,8 @@ module Azure::ARM::Web
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
     # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
-    # @param linux_workers_enabled [Boolean] Specify true if you want to filter to
-    # only regions that support Linux workers.
+    # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
+    # to filter to only regions that support Linux workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

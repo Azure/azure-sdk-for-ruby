@@ -75,6 +75,10 @@ module Azure::ARM::Web
       # otherwise, <code>false</code>.
       attr_accessor :is_private_key_external
 
+      # @return [Array<Enum>] Reasons why App Service Certificate is not
+      # renewable at the current moment.
+      attr_accessor :app_service_certificate_not_renewable_reasons
+
 
       #
       # Mapper for AppServiceCertificateOrder class as Ruby Hash.
@@ -285,6 +289,20 @@ module Azure::ARM::Web
                 serialized_name: 'properties.isPrivateKeyExternal',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              app_service_certificate_not_renewable_reasons: {
+                required: false,
+                serialized_name: 'properties.appServiceCertificateNotRenewableReasons',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'enumElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

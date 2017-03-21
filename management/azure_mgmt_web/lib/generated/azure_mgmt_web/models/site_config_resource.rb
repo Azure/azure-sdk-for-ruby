@@ -6,9 +6,9 @@
 module Azure::ARM::Web
   module Models
     #
-    # Configuration of an App Service app.
+    # Web app configuration ARM resource.
     #
-    class SiteConfig
+    class SiteConfigResource < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -159,27 +159,77 @@ module Azure::ARM::Web
 
 
       #
-      # Mapper for SiteConfig class as Ruby Hash.
+      # Mapper for SiteConfigResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SiteConfig',
+          serialized_name: 'SiteConfigResource',
           type: {
             name: 'Composite',
-            class_name: 'SiteConfig',
+            class_name: 'SiteConfigResource',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               number_of_workers: {
                 required: false,
-                serialized_name: 'numberOfWorkers',
+                serialized_name: 'properties.numberOfWorkers',
                 type: {
                   name: 'Number'
                 }
               },
               default_documents: {
                 required: false,
-                serialized_name: 'defaultDocuments',
+                serialized_name: 'properties.defaultDocuments',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -193,7 +243,7 @@ module Azure::ARM::Web
               },
               net_framework_version: {
                 required: false,
-                serialized_name: 'netFrameworkVersion',
+                serialized_name: 'properties.netFrameworkVersion',
                 default_value: 'v4.6',
                 type: {
                   name: 'String'
@@ -201,91 +251,91 @@ module Azure::ARM::Web
               },
               php_version: {
                 required: false,
-                serialized_name: 'phpVersion',
+                serialized_name: 'properties.phpVersion',
                 type: {
                   name: 'String'
                 }
               },
               python_version: {
                 required: false,
-                serialized_name: 'pythonVersion',
+                serialized_name: 'properties.pythonVersion',
                 type: {
                   name: 'String'
                 }
               },
               node_version: {
                 required: false,
-                serialized_name: 'nodeVersion',
+                serialized_name: 'properties.nodeVersion',
                 type: {
                   name: 'String'
                 }
               },
               linux_fx_version: {
                 required: false,
-                serialized_name: 'linuxFxVersion',
+                serialized_name: 'properties.linuxFxVersion',
                 type: {
                   name: 'String'
                 }
               },
               request_tracing_enabled: {
                 required: false,
-                serialized_name: 'requestTracingEnabled',
+                serialized_name: 'properties.requestTracingEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               request_tracing_expiration_time: {
                 required: false,
-                serialized_name: 'requestTracingExpirationTime',
+                serialized_name: 'properties.requestTracingExpirationTime',
                 type: {
                   name: 'DateTime'
                 }
               },
               remote_debugging_enabled: {
                 required: false,
-                serialized_name: 'remoteDebuggingEnabled',
+                serialized_name: 'properties.remoteDebuggingEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               remote_debugging_version: {
                 required: false,
-                serialized_name: 'remoteDebuggingVersion',
+                serialized_name: 'properties.remoteDebuggingVersion',
                 type: {
                   name: 'String'
                 }
               },
               http_logging_enabled: {
                 required: false,
-                serialized_name: 'httpLoggingEnabled',
+                serialized_name: 'properties.httpLoggingEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               logs_directory_size_limit: {
                 required: false,
-                serialized_name: 'logsDirectorySizeLimit',
+                serialized_name: 'properties.logsDirectorySizeLimit',
                 type: {
                   name: 'Number'
                 }
               },
               detailed_error_logging_enabled: {
                 required: false,
-                serialized_name: 'detailedErrorLoggingEnabled',
+                serialized_name: 'properties.detailedErrorLoggingEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               publishing_username: {
                 required: false,
-                serialized_name: 'publishingUsername',
+                serialized_name: 'properties.publishingUsername',
                 type: {
                   name: 'String'
                 }
               },
               app_settings: {
                 required: false,
-                serialized_name: 'appSettings',
+                serialized_name: 'properties.appSettings',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -300,7 +350,7 @@ module Azure::ARM::Web
               },
               connection_strings: {
                 required: false,
-                serialized_name: 'connectionStrings',
+                serialized_name: 'properties.connectionStrings',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -316,7 +366,7 @@ module Azure::ARM::Web
               machine_key: {
                 required: false,
                 read_only: true,
-                serialized_name: 'machineKey',
+                serialized_name: 'properties.machineKey',
                 type: {
                   name: 'Composite',
                   class_name: 'SiteMachineKey'
@@ -324,7 +374,7 @@ module Azure::ARM::Web
               },
               handler_mappings: {
                 required: false,
-                serialized_name: 'handlerMappings',
+                serialized_name: 'properties.handlerMappings',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -339,70 +389,70 @@ module Azure::ARM::Web
               },
               document_root: {
                 required: false,
-                serialized_name: 'documentRoot',
+                serialized_name: 'properties.documentRoot',
                 type: {
                   name: 'String'
                 }
               },
               scm_type: {
                 required: false,
-                serialized_name: 'scmType',
+                serialized_name: 'properties.scmType',
                 type: {
                   name: 'String'
                 }
               },
               use32bit_worker_process: {
                 required: false,
-                serialized_name: 'use32BitWorkerProcess',
+                serialized_name: 'properties.use32BitWorkerProcess',
                 type: {
                   name: 'Boolean'
                 }
               },
               web_sockets_enabled: {
                 required: false,
-                serialized_name: 'webSocketsEnabled',
+                serialized_name: 'properties.webSocketsEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               always_on: {
                 required: false,
-                serialized_name: 'alwaysOn',
+                serialized_name: 'properties.alwaysOn',
                 type: {
                   name: 'Boolean'
                 }
               },
               java_version: {
                 required: false,
-                serialized_name: 'javaVersion',
+                serialized_name: 'properties.javaVersion',
                 type: {
                   name: 'String'
                 }
               },
               java_container: {
                 required: false,
-                serialized_name: 'javaContainer',
+                serialized_name: 'properties.javaContainer',
                 type: {
                   name: 'String'
                 }
               },
               java_container_version: {
                 required: false,
-                serialized_name: 'javaContainerVersion',
+                serialized_name: 'properties.javaContainerVersion',
                 type: {
                   name: 'String'
                 }
               },
               app_command_line: {
                 required: false,
-                serialized_name: 'appCommandLine',
+                serialized_name: 'properties.appCommandLine',
                 type: {
                   name: 'String'
                 }
               },
               managed_pipeline_mode: {
                 required: false,
-                serialized_name: 'managedPipelineMode',
+                serialized_name: 'properties.managedPipelineMode',
                 type: {
                   name: 'Enum',
                   module: 'ManagedPipelineMode'
@@ -410,7 +460,7 @@ module Azure::ARM::Web
               },
               virtual_applications: {
                 required: false,
-                serialized_name: 'virtualApplications',
+                serialized_name: 'properties.virtualApplications',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -425,7 +475,7 @@ module Azure::ARM::Web
               },
               load_balancing: {
                 required: false,
-                serialized_name: 'loadBalancing',
+                serialized_name: 'properties.loadBalancing',
                 type: {
                   name: 'Enum',
                   module: 'SiteLoadBalancing'
@@ -433,7 +483,7 @@ module Azure::ARM::Web
               },
               experiments: {
                 required: false,
-                serialized_name: 'experiments',
+                serialized_name: 'properties.experiments',
                 type: {
                   name: 'Composite',
                   class_name: 'Experiments'
@@ -441,7 +491,7 @@ module Azure::ARM::Web
               },
               limits: {
                 required: false,
-                serialized_name: 'limits',
+                serialized_name: 'properties.limits',
                 type: {
                   name: 'Composite',
                   class_name: 'SiteLimits'
@@ -449,14 +499,14 @@ module Azure::ARM::Web
               },
               auto_heal_enabled: {
                 required: false,
-                serialized_name: 'autoHealEnabled',
+                serialized_name: 'properties.autoHealEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               auto_heal_rules: {
                 required: false,
-                serialized_name: 'autoHealRules',
+                serialized_name: 'properties.autoHealRules',
                 type: {
                   name: 'Composite',
                   class_name: 'AutoHealRules'
@@ -464,21 +514,21 @@ module Azure::ARM::Web
               },
               tracing_options: {
                 required: false,
-                serialized_name: 'tracingOptions',
+                serialized_name: 'properties.tracingOptions',
                 type: {
                   name: 'String'
                 }
               },
               vnet_name: {
                 required: false,
-                serialized_name: 'vnetName',
+                serialized_name: 'properties.vnetName',
                 type: {
                   name: 'String'
                 }
               },
               cors: {
                 required: false,
-                serialized_name: 'cors',
+                serialized_name: 'properties.cors',
                 type: {
                   name: 'Composite',
                   class_name: 'CorsSettings'
@@ -486,7 +536,7 @@ module Azure::ARM::Web
               },
               push: {
                 required: false,
-                serialized_name: 'push',
+                serialized_name: 'properties.push',
                 type: {
                   name: 'Composite',
                   class_name: 'PushSettings'
@@ -494,7 +544,7 @@ module Azure::ARM::Web
               },
               api_definition: {
                 required: false,
-                serialized_name: 'apiDefinition',
+                serialized_name: 'properties.apiDefinition',
                 type: {
                   name: 'Composite',
                   class_name: 'ApiDefinitionInfo'
@@ -502,14 +552,14 @@ module Azure::ARM::Web
               },
               auto_swap_slot_name: {
                 required: false,
-                serialized_name: 'autoSwapSlotName',
+                serialized_name: 'properties.autoSwapSlotName',
                 type: {
                   name: 'String'
                 }
               },
               local_my_sql_enabled: {
                 required: false,
-                serialized_name: 'localMySqlEnabled',
+                serialized_name: 'properties.localMySqlEnabled',
                 default_value: false,
                 type: {
                   name: 'Boolean'
@@ -517,7 +567,7 @@ module Azure::ARM::Web
               },
               ip_security_restrictions: {
                 required: false,
-                serialized_name: 'ipSecurityRestrictions',
+                serialized_name: 'properties.ipSecurityRestrictions',
                 type: {
                   name: 'Sequence',
                   element: {

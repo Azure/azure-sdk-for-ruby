@@ -12,7 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [Array<WorkerPool>] Collection of resources.
+      # @return [Array<WorkerPoolResource>] Collection of resources.
       attr_accessor :value
 
       # @return [String] Link to next page of resources.
@@ -24,7 +24,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<WorkerPool>] operation results.
+      # @return [Array<WorkerPoolResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -69,10 +69,10 @@ module Azure::ARM::Web
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'WorkerPoolElementType',
+                      serialized_name: 'WorkerPoolResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'WorkerPool'
+                        class_name: 'WorkerPoolResource'
                       }
                   }
                 }
