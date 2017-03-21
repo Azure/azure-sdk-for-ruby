@@ -32,6 +32,9 @@ module Azure::ARM::SQL
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Capabilities] capabilities
+    attr_reader :capabilities
+
     # @return [Servers] servers
     attr_reader :servers
 
@@ -47,6 +50,13 @@ module Azure::ARM::SQL
     # @return [RecommendedElasticPools] recommended_elastic_pools
     attr_reader :recommended_elastic_pools
 
+    # @return [DatabaseThreatDetectionPolicies]
+    # database_threat_detection_policies
+    attr_reader :database_threat_detection_policies
+
+    # @return [DatabaseBlobAuditingPolicies] database_blob_auditing_policies
+    attr_reader :database_blob_auditing_policies
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -60,11 +70,14 @@ module Azure::ARM::SQL
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @capabilities = Capabilities.new(self)
       @servers = Servers.new(self)
       @databases = Databases.new(self)
       @import_export_operations = ImportExportOperations.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
+      @database_threat_detection_policies = DatabaseThreatDetectionPolicies.new(self)
+      @database_blob_auditing_policies = DatabaseBlobAuditingPolicies.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
