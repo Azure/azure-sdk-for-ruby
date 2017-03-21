@@ -6,18 +6,18 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of an App Service Environment.
+    # App Service Environment ARM resource.
     #
-    class AppServiceEnvironment
+    class AppServiceEnvironmentResource < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [String] Name of the App Service Environment.
-      attr_accessor :name
+      attr_accessor :app_service_environment_resource_name
 
       # @return [String] Location of the App Service Environment, e.g. "West
       # US".
-      attr_accessor :location
+      attr_accessor :app_service_environment_resource_location
 
       # @return [ProvisioningState] Provisioning state of the App Service
       # Environment. Possible values include: 'Succeeded', 'Failed',
@@ -118,7 +118,7 @@ module Azure::ARM::Web
       attr_accessor :environment_status
 
       # @return [String] Kind of the app service environment
-      attr_accessor :kind
+      attr_accessor :app_service_environment_resource_kind
 
       # @return [String] Resource group of the App Service Environment.
       attr_accessor :resource_group
@@ -151,20 +151,35 @@ module Azure::ARM::Web
 
 
       #
-      # Mapper for AppServiceEnvironment class as Ruby Hash.
+      # Mapper for AppServiceEnvironmentResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AppServiceEnvironment',
+          serialized_name: 'AppServiceEnvironmentResource',
           type: {
             name: 'Composite',
-            class_name: 'AppServiceEnvironment',
+            class_name: 'AppServiceEnvironmentResource',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }
@@ -176,10 +191,45 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              type: {
+                required: false,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              app_service_environment_resource_name: {
+                required: true,
+                serialized_name: 'properties.name',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_service_environment_resource_location: {
+                required: true,
+                serialized_name: 'properties.location',
+                type: {
+                  name: 'String'
+                }
+              },
               provisioning_state: {
                 required: false,
                 read_only: true,
-                serialized_name: 'provisioningState',
+                serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',
                   module: 'ProvisioningState'
@@ -188,7 +238,7 @@ module Azure::ARM::Web
               status: {
                 required: false,
                 read_only: true,
-                serialized_name: 'status',
+                serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
                   module: 'HostingEnvironmentStatus'
@@ -196,28 +246,28 @@ module Azure::ARM::Web
               },
               vnet_name: {
                 required: false,
-                serialized_name: 'vnetName',
+                serialized_name: 'properties.vnetName',
                 type: {
                   name: 'String'
                 }
               },
               vnet_resource_group_name: {
                 required: false,
-                serialized_name: 'vnetResourceGroupName',
+                serialized_name: 'properties.vnetResourceGroupName',
                 type: {
                   name: 'String'
                 }
               },
               vnet_subnet_name: {
                 required: false,
-                serialized_name: 'vnetSubnetName',
+                serialized_name: 'properties.vnetSubnetName',
                 type: {
                   name: 'String'
                 }
               },
               virtual_network: {
                 required: true,
-                serialized_name: 'virtualNetwork',
+                serialized_name: 'properties.virtualNetwork',
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualNetworkProfile'
@@ -225,7 +275,7 @@ module Azure::ARM::Web
               },
               internal_load_balancing_mode: {
                 required: false,
-                serialized_name: 'internalLoadBalancingMode',
+                serialized_name: 'properties.internalLoadBalancingMode',
                 type: {
                   name: 'Enum',
                   module: 'InternalLoadBalancingMode'
@@ -233,21 +283,21 @@ module Azure::ARM::Web
               },
               multi_size: {
                 required: false,
-                serialized_name: 'multiSize',
+                serialized_name: 'properties.multiSize',
                 type: {
                   name: 'String'
                 }
               },
               multi_role_count: {
                 required: false,
-                serialized_name: 'multiRoleCount',
+                serialized_name: 'properties.multiRoleCount',
                 type: {
                   name: 'Number'
                 }
               },
               worker_pools: {
                 required: true,
-                serialized_name: 'workerPools',
+                serialized_name: 'properties.workerPools',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -262,7 +312,7 @@ module Azure::ARM::Web
               },
               ipssl_address_count: {
                 required: false,
-                serialized_name: 'ipsslAddressCount',
+                serialized_name: 'properties.ipsslAddressCount',
                 type: {
                   name: 'Number'
                 }
@@ -270,7 +320,7 @@ module Azure::ARM::Web
               database_edition: {
                 required: false,
                 read_only: true,
-                serialized_name: 'databaseEdition',
+                serialized_name: 'properties.databaseEdition',
                 type: {
                   name: 'String'
                 }
@@ -278,7 +328,7 @@ module Azure::ARM::Web
               database_service_objective: {
                 required: false,
                 read_only: true,
-                serialized_name: 'databaseServiceObjective',
+                serialized_name: 'properties.databaseServiceObjective',
                 type: {
                   name: 'String'
                 }
@@ -286,7 +336,7 @@ module Azure::ARM::Web
               upgrade_domains: {
                 required: false,
                 read_only: true,
-                serialized_name: 'upgradeDomains',
+                serialized_name: 'properties.upgradeDomains',
                 type: {
                   name: 'Number'
                 }
@@ -294,14 +344,14 @@ module Azure::ARM::Web
               subscription_id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'subscriptionId',
+                serialized_name: 'properties.subscriptionId',
                 type: {
                   name: 'String'
                 }
               },
               dns_suffix: {
                 required: false,
-                serialized_name: 'dnsSuffix',
+                serialized_name: 'properties.dnsSuffix',
                 type: {
                   name: 'String'
                 }
@@ -309,7 +359,7 @@ module Azure::ARM::Web
               last_action: {
                 required: false,
                 read_only: true,
-                serialized_name: 'lastAction',
+                serialized_name: 'properties.lastAction',
                 type: {
                   name: 'String'
                 }
@@ -317,7 +367,7 @@ module Azure::ARM::Web
               last_action_result: {
                 required: false,
                 read_only: true,
-                serialized_name: 'lastActionResult',
+                serialized_name: 'properties.lastActionResult',
                 type: {
                   name: 'String'
                 }
@@ -325,7 +375,7 @@ module Azure::ARM::Web
               allowed_multi_sizes: {
                 required: false,
                 read_only: true,
-                serialized_name: 'allowedMultiSizes',
+                serialized_name: 'properties.allowedMultiSizes',
                 type: {
                   name: 'String'
                 }
@@ -333,7 +383,7 @@ module Azure::ARM::Web
               allowed_worker_sizes: {
                 required: false,
                 read_only: true,
-                serialized_name: 'allowedWorkerSizes',
+                serialized_name: 'properties.allowedWorkerSizes',
                 type: {
                   name: 'String'
                 }
@@ -341,7 +391,7 @@ module Azure::ARM::Web
               maximum_number_of_machines: {
                 required: false,
                 read_only: true,
-                serialized_name: 'maximumNumberOfMachines',
+                serialized_name: 'properties.maximumNumberOfMachines',
                 type: {
                   name: 'Number'
                 }
@@ -349,7 +399,7 @@ module Azure::ARM::Web
               vip_mappings: {
                 required: false,
                 read_only: true,
-                serialized_name: 'vipMappings',
+                serialized_name: 'properties.vipMappings',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -365,7 +415,7 @@ module Azure::ARM::Web
               environment_capacities: {
                 required: false,
                 read_only: true,
-                serialized_name: 'environmentCapacities',
+                serialized_name: 'properties.environmentCapacities',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -380,7 +430,7 @@ module Azure::ARM::Web
               },
               network_access_control_list: {
                 required: false,
-                serialized_name: 'networkAccessControlList',
+                serialized_name: 'properties.networkAccessControlList',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -396,7 +446,7 @@ module Azure::ARM::Web
               environment_is_healthy: {
                 required: false,
                 read_only: true,
-                serialized_name: 'environmentIsHealthy',
+                serialized_name: 'properties.environmentIsHealthy',
                 type: {
                   name: 'Boolean'
                 }
@@ -404,14 +454,14 @@ module Azure::ARM::Web
               environment_status: {
                 required: false,
                 read_only: true,
-                serialized_name: 'environmentStatus',
+                serialized_name: 'properties.environmentStatus',
                 type: {
                   name: 'String'
                 }
               },
-              kind: {
+              app_service_environment_resource_kind: {
                 required: false,
-                serialized_name: 'kind',
+                serialized_name: 'properties.kind',
                 type: {
                   name: 'String'
                 }
@@ -419,14 +469,14 @@ module Azure::ARM::Web
               resource_group: {
                 required: false,
                 read_only: true,
-                serialized_name: 'resourceGroup',
+                serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
                 }
               },
               front_end_scale_factor: {
                 required: false,
-                serialized_name: 'frontEndScaleFactor',
+                serialized_name: 'properties.frontEndScaleFactor',
                 type: {
                   name: 'Number'
                 }
@@ -434,35 +484,35 @@ module Azure::ARM::Web
               default_front_end_scale_factor: {
                 required: false,
                 read_only: true,
-                serialized_name: 'defaultFrontEndScaleFactor',
+                serialized_name: 'properties.defaultFrontEndScaleFactor',
                 type: {
                   name: 'Number'
                 }
               },
               api_management_account_id: {
                 required: false,
-                serialized_name: 'apiManagementAccountId',
+                serialized_name: 'properties.apiManagementAccountId',
                 type: {
                   name: 'String'
                 }
               },
               suspended: {
                 required: false,
-                serialized_name: 'suspended',
+                serialized_name: 'properties.suspended',
                 type: {
                   name: 'Boolean'
                 }
               },
               dynamic_cache_enabled: {
                 required: false,
-                serialized_name: 'dynamicCacheEnabled',
+                serialized_name: 'properties.dynamicCacheEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               cluster_settings: {
                 required: false,
-                serialized_name: 'clusterSettings',
+                serialized_name: 'properties.clusterSettings',
                 type: {
                   name: 'Sequence',
                   element: {

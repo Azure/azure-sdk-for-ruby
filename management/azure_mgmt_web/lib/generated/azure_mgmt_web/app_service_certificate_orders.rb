@@ -302,362 +302,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all certificates associated with a certificate order.
-    #
-    # List all certificates associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<AppServiceCertificate>] operation results.
-    #
-    def list_certificates(resource_group_name, certificate_order_name, custom_headers = nil)
-      first_page = list_certificates_as_lazy(resource_group_name, certificate_order_name, custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # List all certificates associated with a certificate order.
-    #
-    # List all certificates associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_certificates_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      list_certificates_async(resource_group_name, certificate_order_name, custom_headers).value!
-    end
-
-    #
-    # List all certificates associated with a certificate order.
-    #
-    # List all certificates associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_certificates_async(resource_group_name, certificate_order_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2015-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceCertificateCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Get the certificate associated with a certificate order.
-    #
-    # Get the certificate associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AppServiceCertificate] operation results.
-    #
-    def get_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      response = get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Get the certificate associated with a certificate order.
-    #
-    # Get the certificate associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
-    end
-
-    #
-    # Get the certificate associated with a certificate order.
-    #
-    # Get the certificate associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2015-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceCertificate.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates or updates a certificate and associates with key vault secret.
-    #
-    # Creates or updates a certificate and associates with key vault secret.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
-    # resource Id.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AppServiceCertificate] operation results.
-    #
-    def create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      response = create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
-    # resource Id.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      # Send request
-      promise = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = AppServiceCertificate.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Delete the certificate associated with a certificate order.
-    #
-    # Delete the certificate associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def delete_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      response = delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Delete the certificate associated with a certificate order.
-    #
-    # Delete the certificate associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
-    end
-
-    #
-    # Delete the certificate associated with a certificate order.
-    #
-    # Delete the certificate associated with a certificate order.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2015-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Get a certificate order.
     #
     # Get a certificate order.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
+    # @param certificate_order_name [String] Name of the certificate order..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -675,7 +326,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
+    # @param certificate_order_name [String] Name of the certificate order..
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -692,7 +343,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
+    # @param certificate_order_name [String] Name of the certificate order..
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -812,8 +463,8 @@ module Azure::ARM::Web
     # will be added to the HTTP request.
     #
     #
-    def delete_certificate_order(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = delete_certificate_order_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def delete(resource_group_name, certificate_order_name, custom_headers = nil)
+      response = delete_async(resource_group_name, certificate_order_name, custom_headers).value!
       nil
     end
 
@@ -830,8 +481,8 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_certificate_order_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      delete_certificate_order_async(resource_group_name, certificate_order_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
+      delete_async(resource_group_name, certificate_order_name, custom_headers).value!
     end
 
     #
@@ -847,7 +498,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_certificate_order_async(resource_group_name, certificate_order_name, custom_headers = nil)
+    def delete_async(resource_group_name, certificate_order_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -866,6 +517,355 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List all certificates associated with a certificate order.
+    #
+    # List all certificates associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<AppServiceCertificateResource>] operation results.
+    #
+    def list_certificates(resource_group_name, certificate_order_name, custom_headers = nil)
+      first_page = list_certificates_as_lazy(resource_group_name, certificate_order_name, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # List all certificates associated with a certificate order.
+    #
+    # List all certificates associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_certificates_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
+      list_certificates_async(resource_group_name, certificate_order_name, custom_headers).value!
+    end
+
+    #
+    # List all certificates associated with a certificate order.
+    #
+    # List all certificates associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_certificates_async(resource_group_name, certificate_order_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = AppServiceCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the certificate associated with a certificate order.
+    #
+    # Get the certificate associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AppServiceCertificateResource] operation results.
+    #
+    def get_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
+      response = get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the certificate associated with a certificate order.
+    #
+    # Get the certificate associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers = nil)
+      get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+    end
+
+    #
+    # Get the certificate associated with a certificate order.
+    #
+    # Get the certificate associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_certificate_async(resource_group_name, certificate_order_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = AppServiceCertificateResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificateResource] Key vault
+    # certificate resource Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AppServiceCertificateResource] operation results.
+    #
+    def create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+      response = create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificateResource] Key vault
+    # certificate resource Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+      # Send request
+      promise = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = AppServiceCertificateResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Delete the certificate associated with a certificate order.
+    #
+    # Delete the certificate associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_certificate(resource_group_name, certificate_order_name, name, custom_headers = nil)
+      response = delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete the certificate associated with a certificate order.
+    #
+    # Delete the certificate associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_certificate_with_http_info(resource_group_name, certificate_order_name, name, custom_headers = nil)
+      delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers).value!
+    end
+
+    #
+    # Delete the certificate associated with a certificate order.
+    #
+    # Delete the certificate associated with a certificate order.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_certificate_async(resource_group_name, certificate_order_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1106,7 +1106,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1123,7 +1123,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1140,7 +1140,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order
+    # @param certificate_order_name [String] Name of the certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1291,234 +1291,6 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieve the list of certificate actions.
-    #
-    # Retrieve the list of certificate actions.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array] operation results.
-    #
-    def retrieve_certificate_actions(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = retrieve_certificate_actions_async(resource_group_name, certificate_order_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Retrieve the list of certificate actions.
-    #
-    # Retrieve the list of certificate actions.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def retrieve_certificate_actions_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      retrieve_certificate_actions_async(resource_group_name, certificate_order_name, custom_headers).value!
-    end
-
-    #
-    # Retrieve the list of certificate actions.
-    #
-    # Retrieve the list of certificate actions.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def retrieve_certificate_actions_async(resource_group_name, certificate_order_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2015-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/retrieveCertificateActions'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    required: false,
-                    serialized_name: 'CertificateOrderActionElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'CertificateOrderAction'
-                    }
-                }
-              }
-            }
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Retrieve email history.
-    #
-    # Retrieve email history.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array] operation results.
-    #
-    def retrieve_certificate_email_history(resource_group_name, certificate_order_name, custom_headers = nil)
-      response = retrieve_certificate_email_history_async(resource_group_name, certificate_order_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Retrieve email history.
-    #
-    # Retrieve email history.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def retrieve_certificate_email_history_with_http_info(resource_group_name, certificate_order_name, custom_headers = nil)
-      retrieve_certificate_email_history_async(resource_group_name, certificate_order_name, custom_headers).value!
-    end
-
-    #
-    # Retrieve email history.
-    #
-    # Retrieve email history.
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def retrieve_certificate_email_history_async(resource_group_name, certificate_order_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2015-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/retrieveEmailHistory'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    required: false,
-                    serialized_name: 'CertificateEmailElementType',
-                    type: {
-                      name: 'Composite',
-                      class_name: 'CertificateEmail'
-                    }
-                }
-              }
-            }
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
     # Verify domain ownership for this certificate order.
     #
     # Verify domain ownership for this certificate order.
@@ -1526,7 +1298,7 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
-    # @param site_seal_request [SiteSealRequest] Site seal request
+    # @param site_seal_request [SiteSealRequest] Site seal request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1545,7 +1317,7 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
-    # @param site_seal_request [SiteSealRequest] Site seal request
+    # @param site_seal_request [SiteSealRequest] Site seal request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1563,7 +1335,7 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param certificate_order_name [String] Name of the certificate order.
-    # @param site_seal_request [SiteSealRequest] Site seal request
+    # @param site_seal_request [SiteSealRequest] Site seal request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1721,67 +1493,56 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or updates a certificate and associates with key vault secret.
+    # Retrieve the list of certificate actions.
     #
-    # Creates or updates a certificate and associates with key vault secret.
+    # Retrieve the list of certificate actions.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
-    # resource Id.
+    # @param name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppServiceCertificate] operation results.
+    # @return [Array] operation results.
     #
-    def begin_create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      response = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+    def retrieve_certificate_actions(resource_group_name, name, custom_headers = nil)
+      response = retrieve_certificate_actions_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or updates a certificate and associates with key vault secret.
+    # Retrieve the list of certificate actions.
     #
-    # Creates or updates a certificate and associates with key vault secret.
+    # Retrieve the list of certificate actions.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
-    # resource Id.
+    # @param name [String] Name of the certificate order.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_certificate_with_http_info(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
-      begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+    def retrieve_certificate_actions_with_http_info(resource_group_name, name, custom_headers = nil)
+      retrieve_certificate_actions_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Creates or updates a certificate and associates with key vault secret.
+    # Retrieve the list of certificate actions.
     #
-    # Creates or updates a certificate and associates with key vault secret.
+    # Retrieve the list of certificate actions.
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param certificate_order_name [String] Name of the certificate order.
-    # @param name [String] Name of the certificate.
-    # @param key_vault_certificate [AppServiceCertificate] Key vault certificate
-    # resource Id.
+    # @param name [String] Name of the certificate order.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+    def retrieve_certificate_actions_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'key_vault_certificate is nil' if key_vault_certificate.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2015-08-01'
 
@@ -1791,33 +1552,24 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = AppServiceCertificate.mapper()
-      request_content = @client.serialize(request_mapper,  key_vault_certificate, 'key_vault_certificate')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveCertificateActions'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:put, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1827,17 +1579,135 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceCertificate.mapper()
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    required: false,
+                    serialized_name: 'CertificateOrderActionElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'CertificateOrderAction'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Retrieve email history.
+    #
+    # Retrieve email history.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate order.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def retrieve_certificate_email_history(resource_group_name, name, custom_headers = nil)
+      response = retrieve_certificate_email_history_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Retrieve email history.
+    #
+    # Retrieve email history.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate order.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def retrieve_certificate_email_history_with_http_info(resource_group_name, name, custom_headers = nil)
+      retrieve_certificate_email_history_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Retrieve email history.
+    #
+    # Retrieve email history.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the certificate order.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def retrieve_certificate_email_history_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveEmailHistory'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 201
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceCertificate.mapper()
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    required: false,
+                    serialized_name: 'CertificateEmailElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'CertificateEmail'
+                    }
+                }
+              }
+            }
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1964,6 +1834,136 @@ module Azure::ARM::Web
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = AppServiceCertificateOrder.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificateResource] Key vault
+    # certificate resource Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AppServiceCertificateResource] operation results.
+    #
+    def begin_create_or_update_certificate(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+      response = begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificateResource] Key vault
+    # certificate resource Id.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_certificate_with_http_info(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+      begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # Creates or updates a certificate and associates with key vault secret.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param certificate_order_name [String] Name of the certificate order.
+    # @param name [String] Name of the certificate.
+    # @param key_vault_certificate [AppServiceCertificateResource] Key vault
+    # certificate resource Id.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_certificate_async(resource_group_name, certificate_order_name, name, key_vault_certificate, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'certificate_order_name is nil' if certificate_order_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'key_vault_certificate is nil' if key_vault_certificate.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2015-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = AppServiceCertificateResource.mapper()
+      request_content = @client.serialize(request_mapper,  key_vault_certificate, 'key_vault_certificate')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'certificateOrderName' => certificate_order_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = AppServiceCertificateResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = AppServiceCertificateResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

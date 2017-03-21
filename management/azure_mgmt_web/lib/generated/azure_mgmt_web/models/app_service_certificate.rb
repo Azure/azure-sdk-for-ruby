@@ -8,11 +8,11 @@ module Azure::ARM::Web
     #
     # Key Vault container for a certificate that is purchased through Azure.
     #
-    class AppServiceCertificate < MsRestAzure::Resource
+    class AppServiceCertificate
 
       include MsRestAzure
 
-      # @return [String] Key Vault Csm resource Id.
+      # @return [String] Key Vault resource Id.
       attr_accessor :key_vault_id
 
       # @return [String] Key Vault secret name.
@@ -40,66 +40,16 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'AppServiceCertificate',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               key_vault_id: {
                 required: false,
-                serialized_name: 'properties.keyVaultId',
+                serialized_name: 'keyVaultId',
                 type: {
                   name: 'String'
                 }
               },
               key_vault_secret_name: {
                 required: false,
-                serialized_name: 'properties.keyVaultSecretName',
+                serialized_name: 'keyVaultSecretName',
                 type: {
                   name: 'String'
                 }
@@ -107,7 +57,7 @@ module Azure::ARM::Web
               provisioning_state: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.provisioningState',
+                serialized_name: 'provisioningState',
                 type: {
                   name: 'Enum',
                   module: 'KeyVaultSecretStatus'

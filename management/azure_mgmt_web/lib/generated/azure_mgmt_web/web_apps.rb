@@ -3305,7 +3305,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def get_configuration(resource_group_name, name, custom_headers = nil)
       response = get_configuration_async(resource_group_name, name, custom_headers).value!
@@ -3385,7 +3385,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3406,12 +3406,12 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def create_or_update_configuration(resource_group_name, name, site_config, custom_headers = nil)
       response = create_or_update_configuration_async(resource_group_name, name, site_config, custom_headers).value!
@@ -3426,8 +3426,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3445,8 +3445,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3469,7 +3469,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SiteConfig.mapper()
+      request_mapper = SiteConfigResource.mapper()
       request_content = @client.serialize(request_mapper,  site_config, 'site_config')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -3501,7 +3501,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3522,12 +3522,12 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def update_configuration(resource_group_name, name, site_config, custom_headers = nil)
       response = update_configuration_async(resource_group_name, name, site_config, custom_headers).value!
@@ -3542,8 +3542,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3561,8 +3561,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3585,7 +3585,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SiteConfig.mapper()
+      request_mapper = SiteConfigResource.mapper()
       request_content = @client.serialize(request_mapper,  site_config, 'site_config')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -3617,7 +3617,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3762,7 +3762,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def get_configuration_snapshot(resource_group_name, name, snapshot_id, custom_headers = nil)
       response = get_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers).value!
@@ -3841,7 +3841,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -7577,6 +7577,112 @@ module Azure::ARM::Web
     end
 
     #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MigrateMySqlStatus] operation results.
+    #
+    def get_migrate_my_sql_status(resource_group_name, name, custom_headers = nil)
+      response = get_migrate_my_sql_status_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_migrate_my_sql_status_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_migrate_my_sql_status_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_migrate_my_sql_status_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = MigrateMySqlStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets all network features used by the app (or deployment slot, if specified).
     #
     # Gets all network features used by the app (or deployment slot, if specified).
@@ -7690,16 +7796,19 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
-    # seconds
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [String] operation results.
     #
-    def start_web_site_network_trace(resource_group_name, name, duration_in_seconds = nil, custom_headers = nil)
-      response = start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds, custom_headers).value!
+    def start_web_site_network_trace(resource_group_name, name, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
+      response = start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds, max_frame_length, sas_url, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -7710,16 +7819,19 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
-    # seconds
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def start_web_site_network_trace_with_http_info(resource_group_name, name, duration_in_seconds = nil, custom_headers = nil)
-      start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds, custom_headers).value!
+    def start_web_site_network_trace_with_http_info(resource_group_name, name, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
+      start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds, max_frame_length, sas_url, custom_headers).value!
     end
 
     #
@@ -7729,15 +7841,18 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
-    # seconds
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds = nil, custom_headers = nil)
+    def start_web_site_network_trace_async(resource_group_name, name, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -7756,7 +7871,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'durationInSeconds' => duration_in_seconds,'api-version' => api_version},
+          query_params: {'durationInSeconds' => duration_in_seconds,'maxFrameLength' => max_frame_length,'sasUrl' => sas_url,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -7802,7 +7917,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7820,7 +7935,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7837,7 +7952,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -12155,7 +12270,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def get_configuration_slot(resource_group_name, name, slot, custom_headers = nil)
       response = get_configuration_slot_async(resource_group_name, name, slot, custom_headers).value!
@@ -12240,7 +12355,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -12261,14 +12376,14 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def create_or_update_configuration_slot(resource_group_name, name, site_config, slot, custom_headers = nil)
       response = create_or_update_configuration_slot_async(resource_group_name, name, site_config, slot, custom_headers).value!
@@ -12283,8 +12398,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -12304,8 +12419,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API will update configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -12331,7 +12446,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SiteConfig.mapper()
+      request_mapper = SiteConfigResource.mapper()
       request_content = @client.serialize(request_mapper,  site_config, 'site_config')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -12363,7 +12478,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -12384,14 +12499,14 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def update_configuration_slot(resource_group_name, name, site_config, slot, custom_headers = nil)
       response = update_configuration_slot_async(resource_group_name, name, site_config, slot, custom_headers).value!
@@ -12406,8 +12521,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -12427,8 +12542,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the app.
-    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
-    # See example.
+    # @param site_config [SiteConfigResource] JSON representation of a SiteConfig
+    # object. See example.
     # @param slot [String] Name of the deployment slot. If a slot is not specified,
     # the API will update configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -12454,7 +12569,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SiteConfig.mapper()
+      request_mapper = SiteConfigResource.mapper()
       request_content = @client.serialize(request_mapper,  site_config, 'site_config')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -12486,7 +12601,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -12640,7 +12755,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteConfig] operation results.
+    # @return [SiteConfigResource] operation results.
     #
     def get_configuration_snapshot_slot(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
       response = get_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers).value!
@@ -12724,7 +12839,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteConfig.mapper()
+            result_mapper = SiteConfigResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -16573,6 +16688,116 @@ module Azure::ARM::Web
     end
 
     #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of the deployment slot
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MigrateMySqlStatus] operation results.
+    #
+    def get_migrate_my_sql_status_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_migrate_my_sql_status_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of the deployment slot
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_migrate_my_sql_status_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_migrate_my_sql_status_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # Returns the status of MySql in app migration, if one is active, and whether
+    # or not MySql in app is enabled
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of the deployment slot
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_migrate_my_sql_status_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/migratemysql/status'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = MigrateMySqlStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets all network features used by the app (or deployment slot, if specified).
     #
     # Gets all network features used by the app (or deployment slot, if specified).
@@ -16693,17 +16918,20 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param slot [String] The name of the slot for this web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
-    # seconds
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [String] operation results.
     #
-    def start_web_site_network_trace_slot(resource_group_name, name, slot, duration_in_seconds = nil, custom_headers = nil)
-      response = start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds, custom_headers).value!
+    def start_web_site_network_trace_slot(resource_group_name, name, slot, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
+      response = start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds, max_frame_length, sas_url, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -16714,17 +16942,20 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param slot [String] The name of the slot for this web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
-    # seconds
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def start_web_site_network_trace_slot_with_http_info(resource_group_name, name, slot, duration_in_seconds = nil, custom_headers = nil)
-      start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds, custom_headers).value!
+    def start_web_site_network_trace_slot_with_http_info(resource_group_name, name, slot, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
+      start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds, max_frame_length, sas_url, custom_headers).value!
     end
 
     #
@@ -16734,16 +16965,19 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param slot [String] The name of the slot for this web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
-    # seconds
+    # seconds.
+    # @param max_frame_length [Integer] The maximum frame length in bytes
+    # (Optional).
+    # @param sas_url [String] The Blob URL to store capture file.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds = nil, custom_headers = nil)
+    def start_web_site_network_trace_slot_async(resource_group_name, name, slot, duration_in_seconds = nil, max_frame_length = nil, sas_url = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -16763,7 +16997,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'durationInSeconds' => duration_in_seconds,'api-version' => api_version},
+          query_params: {'durationInSeconds' => duration_in_seconds,'maxFrameLength' => max_frame_length,'sasUrl' => sas_url,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -16809,7 +17043,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param slot [String] The name of the slot for this web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -16828,7 +17062,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param slot [String] The name of the slot for this web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -16846,7 +17080,7 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
-    # @param name [String] The name of the web app
+    # @param name [String] The name of the web app.
     # @param slot [String] The name of the slot for this web app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -18107,8 +18341,8 @@ module Azure::ARM::Web
     #
     # @return [Array<SlotDifference>] operation results.
     #
-    def get_slots_differences_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
-      first_page = get_slots_differences_slot_as_lazy(resource_group_name, name, slot_swap_entity, slot, custom_headers)
+    def list_slot_differences_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+      first_page = list_slot_differences_slot_as_lazy(resource_group_name, name, slot_swap_entity, slot, custom_headers)
       first_page.get_all_items
     end
 
@@ -18129,8 +18363,8 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_slots_differences_slot_with_http_info(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
-      get_slots_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
+    def list_slot_differences_slot_with_http_info(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+      list_slot_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
     end
 
     #
@@ -18150,7 +18384,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_slots_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+    def list_slot_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
@@ -20049,8 +20283,8 @@ module Azure::ARM::Web
     #
     # @return [Array<SlotDifference>] operation results.
     #
-    def get_slots_differences_from_production(resource_group_name, name, slot_swap_entity, custom_headers = nil)
-      first_page = get_slots_differences_from_production_as_lazy(resource_group_name, name, slot_swap_entity, custom_headers)
+    def list_slot_differences_from_production(resource_group_name, name, slot_swap_entity, custom_headers = nil)
+      first_page = list_slot_differences_from_production_as_lazy(resource_group_name, name, slot_swap_entity, custom_headers)
       first_page.get_all_items
     end
 
@@ -20069,8 +20303,8 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_slots_differences_from_production_with_http_info(resource_group_name, name, slot_swap_entity, custom_headers = nil)
-      get_slots_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
+    def list_slot_differences_from_production_with_http_info(resource_group_name, name, slot_swap_entity, custom_headers = nil)
+      list_slot_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
     end
 
     #
@@ -20088,7 +20322,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_slots_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers = nil)
+    def list_slot_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
@@ -25577,8 +25811,8 @@ module Azure::ARM::Web
     #
     # @return [SlotDifferenceCollection] operation results.
     #
-    def get_slots_differences_slot_next(next_page_link, custom_headers = nil)
-      response = get_slots_differences_slot_next_async(next_page_link, custom_headers).value!
+    def list_slot_differences_slot_next(next_page_link, custom_headers = nil)
+      response = list_slot_differences_slot_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -25594,8 +25828,8 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_slots_differences_slot_next_with_http_info(next_page_link, custom_headers = nil)
-      get_slots_differences_slot_next_async(next_page_link, custom_headers).value!
+    def list_slot_differences_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_slot_differences_slot_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -25610,7 +25844,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_slots_differences_slot_next_async(next_page_link, custom_headers = nil)
+    def list_slot_differences_slot_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -25862,8 +26096,8 @@ module Azure::ARM::Web
     #
     # @return [SlotDifferenceCollection] operation results.
     #
-    def get_slots_differences_from_production_next(next_page_link, custom_headers = nil)
-      response = get_slots_differences_from_production_next_async(next_page_link, custom_headers).value!
+    def list_slot_differences_from_production_next(next_page_link, custom_headers = nil)
+      response = list_slot_differences_from_production_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -25879,8 +26113,8 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_slots_differences_from_production_next_with_http_info(next_page_link, custom_headers = nil)
-      get_slots_differences_from_production_next_async(next_page_link, custom_headers).value!
+    def list_slot_differences_from_production_next_with_http_info(next_page_link, custom_headers = nil)
+      list_slot_differences_from_production_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -25895,7 +26129,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_slots_differences_from_production_next_async(next_page_link, custom_headers = nil)
+    def list_slot_differences_from_production_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -26729,12 +26963,12 @@ module Azure::ARM::Web
     # @return [SlotDifferenceCollection] which provide lazy access to pages of the
     # response.
     #
-    def get_slots_differences_slot_as_lazy(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
-      response = get_slots_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
+    def list_slot_differences_slot_as_lazy(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+      response = list_slot_differences_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_slots_differences_slot_next_async(next_page_link, custom_headers)
+          list_slot_differences_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -26815,12 +27049,12 @@ module Azure::ARM::Web
     # @return [SlotDifferenceCollection] which provide lazy access to pages of the
     # response.
     #
-    def get_slots_differences_from_production_as_lazy(resource_group_name, name, slot_swap_entity, custom_headers = nil)
-      response = get_slots_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
+    def list_slot_differences_from_production_as_lazy(resource_group_name, name, slot_swap_entity, custom_headers = nil)
+      response = list_slot_differences_from_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_slots_differences_from_production_next_async(next_page_link, custom_headers)
+          list_slot_differences_from_production_next_async(next_page_link, custom_headers)
         end
         page
       end

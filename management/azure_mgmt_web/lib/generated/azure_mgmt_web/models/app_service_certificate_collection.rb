@@ -12,7 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [Array<AppServiceCertificate>] Collection of resources.
+      # @return [Array<AppServiceCertificateResource>] Collection of resources.
       attr_accessor :value
 
       # @return [String] Link to next page of resources.
@@ -24,7 +24,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<AppServiceCertificate>] operation results.
+      # @return [Array<AppServiceCertificateResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -69,10 +69,10 @@ module Azure::ARM::Web
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'AppServiceCertificateElementType',
+                      serialized_name: 'AppServiceCertificateResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'AppServiceCertificate'
+                        class_name: 'AppServiceCertificateResource'
                       }
                   }
                 }

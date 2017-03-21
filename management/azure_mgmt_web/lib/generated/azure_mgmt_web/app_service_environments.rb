@@ -218,7 +218,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppServiceEnvironment] operation results.
+    # @return [AppServiceEnvironmentResource] operation results.
     #
     def get(resource_group_name, name, custom_headers = nil)
       response = get_async(resource_group_name, name, custom_headers).value!
@@ -294,7 +294,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceEnvironment.mapper()
+            result_mapper = AppServiceEnvironmentResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -315,12 +315,12 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
-    # details of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentResource]
+    # Configuration details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppServiceEnvironment] operation results.
+    # @return [AppServiceEnvironmentResource] operation results.
     #
     def create_or_update(resource_group_name, name, hosting_environment_envelope, custom_headers = nil)
       response = create_or_update_async(resource_group_name, name, hosting_environment_envelope, custom_headers).value!
@@ -331,8 +331,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
-    # details of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentResource]
+    # Configuration details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -346,7 +346,7 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = AppServiceEnvironment.mapper()
+          result_mapper = AppServiceEnvironmentResource.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -1059,7 +1059,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<WorkerPool>] operation results.
+    # @return [Array<WorkerPoolResource>] operation results.
     #
     def list_multi_role_pools(resource_group_name, name, custom_headers = nil)
       first_page = list_multi_role_pools_as_lazy(resource_group_name, name, custom_headers)
@@ -1159,7 +1159,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkerPool] operation results.
+    # @return [WorkerPoolResource] operation results.
     #
     def get_multi_role_pool(resource_group_name, name, custom_headers = nil)
       response = get_multi_role_pool_async(resource_group_name, name, custom_headers).value!
@@ -1235,7 +1235,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkerPool.mapper()
+            result_mapper = WorkerPoolResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1256,12 +1256,12 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
-    # pool.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkerPool] operation results.
+    # @return [WorkerPoolResource] operation results.
     #
     def create_or_update_multi_role_pool(resource_group_name, name, multi_role_pool_envelope, custom_headers = nil)
       response = create_or_update_multi_role_pool_async(resource_group_name, name, multi_role_pool_envelope, custom_headers).value!
@@ -1272,8 +1272,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
-    # pool.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1287,7 +1287,7 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = WorkerPool.mapper()
+          result_mapper = WorkerPoolResource.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -2623,7 +2623,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<WorkerPool>] operation results.
+    # @return [Array<WorkerPoolResource>] operation results.
     #
     def list_worker_pools(resource_group_name, name, custom_headers = nil)
       first_page = list_worker_pools_as_lazy(resource_group_name, name, custom_headers)
@@ -2724,7 +2724,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkerPool] operation results.
+    # @return [WorkerPoolResource] operation results.
     #
     def get_worker_pool(resource_group_name, name, worker_pool_name, custom_headers = nil)
       response = get_worker_pool_async(resource_group_name, name, worker_pool_name, custom_headers).value!
@@ -2803,7 +2803,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkerPool.mapper()
+            result_mapper = WorkerPoolResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2825,11 +2825,12 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of the worker pool.
-    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkerPool] operation results.
+    # @return [WorkerPoolResource] operation results.
     #
     def create_or_update_worker_pool(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers = nil)
       response = create_or_update_worker_pool_async(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers).value!
@@ -2841,7 +2842,8 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of the worker pool.
-    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2855,7 +2857,7 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = WorkerPool.mapper()
+          result_mapper = WorkerPoolResource.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -3562,12 +3564,12 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
-    # details of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentResource]
+    # Configuration details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AppServiceEnvironment] operation results.
+    # @return [AppServiceEnvironmentResource] operation results.
     #
     def begin_create_or_update(resource_group_name, name, hosting_environment_envelope, custom_headers = nil)
       response = begin_create_or_update_async(resource_group_name, name, hosting_environment_envelope, custom_headers).value!
@@ -3582,8 +3584,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
-    # details of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentResource]
+    # Configuration details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3601,8 +3603,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
-    # details of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironmentResource]
+    # Configuration details of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3625,7 +3627,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = AppServiceEnvironment.mapper()
+      request_mapper = AppServiceEnvironmentResource.mapper()
       request_content = @client.serialize(request_mapper,  hosting_environment_envelope, 'hosting_environment_envelope')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -3657,7 +3659,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceEnvironment.mapper()
+            result_mapper = AppServiceEnvironmentResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3667,7 +3669,7 @@ module Azure::ARM::Web
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServiceEnvironment.mapper()
+            result_mapper = AppServiceEnvironmentResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3786,12 +3788,12 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
-    # pool.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkerPool] operation results.
+    # @return [WorkerPoolResource] operation results.
     #
     def begin_create_or_update_multi_role_pool(resource_group_name, name, multi_role_pool_envelope, custom_headers = nil)
       response = begin_create_or_update_multi_role_pool_async(resource_group_name, name, multi_role_pool_envelope, custom_headers).value!
@@ -3806,8 +3808,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
-    # pool.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3825,8 +3827,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
-    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
-    # pool.
+    # @param multi_role_pool_envelope [WorkerPoolResource] Properties of the
+    # multi-role pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3849,7 +3851,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = WorkerPool.mapper()
+      request_mapper = WorkerPoolResource.mapper()
       request_content = @client.serialize(request_mapper,  multi_role_pool_envelope, 'multi_role_pool_envelope')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -3881,7 +3883,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkerPool.mapper()
+            result_mapper = WorkerPoolResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3891,7 +3893,7 @@ module Azure::ARM::Web
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkerPool.mapper()
+            result_mapper = WorkerPoolResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -4133,11 +4135,12 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of the worker pool.
-    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkerPool] operation results.
+    # @return [WorkerPoolResource] operation results.
     #
     def begin_create_or_update_worker_pool(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers = nil)
       response = begin_create_or_update_worker_pool_async(resource_group_name, name, worker_pool_name, worker_pool_envelope, custom_headers).value!
@@ -4153,7 +4156,8 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of the worker pool.
-    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4172,7 +4176,8 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of the worker pool.
-    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
+    # @param worker_pool_envelope [WorkerPoolResource] Properties of the worker
+    # pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4196,7 +4201,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = WorkerPool.mapper()
+      request_mapper = WorkerPoolResource.mapper()
       request_content = @client.serialize(request_mapper,  worker_pool_envelope, 'worker_pool_envelope')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -4228,7 +4233,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkerPool.mapper()
+            result_mapper = WorkerPoolResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -4238,7 +4243,7 @@ module Azure::ARM::Web
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkerPool.mapper()
+            result_mapper = WorkerPoolResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
