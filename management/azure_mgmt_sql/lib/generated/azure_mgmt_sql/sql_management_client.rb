@@ -32,14 +32,17 @@ module Azure::ARM::SQL
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Servers] servers
-    attr_reader :servers
+    # @return [Capabilities] capabilities
+    attr_reader :capabilities
+
+    # @return [FirewallRules] firewall_rules
+    attr_reader :firewall_rules
 
     # @return [Databases] databases
     attr_reader :databases
 
-    # @return [ImportExportOperations] import_export_operations
-    attr_reader :import_export_operations
+    # @return [Servers] servers
+    attr_reader :servers
 
     # @return [ElasticPools] elastic_pools
     attr_reader :elastic_pools
@@ -60,9 +63,10 @@ module Azure::ARM::SQL
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @servers = Servers.new(self)
+      @capabilities = Capabilities.new(self)
+      @firewall_rules = FirewallRules.new(self)
       @databases = Databases.new(self)
-      @import_export_operations = ImportExportOperations.new(self)
+      @servers = Servers.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @accept_language = 'en-US'

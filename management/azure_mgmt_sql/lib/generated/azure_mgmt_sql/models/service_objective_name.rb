@@ -22,6 +22,7 @@ module Azure::ARM::SQL
       P11 = "P11"
       P15 = "P15"
       System = "System"
+      System2 = "System2"
       ElasticPool = "ElasticPool"
     end
   end

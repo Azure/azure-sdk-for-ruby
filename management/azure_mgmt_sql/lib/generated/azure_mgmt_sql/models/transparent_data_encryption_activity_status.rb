@@ -6,12 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for ElasticPoolEditions
+    # Defines values for TransparentDataEncryptionActivityStatus
     #
-    module ElasticPoolEditions
-      Basic = "Basic"
-      Standard = "Standard"
-      Premium = "Premium"
+    module TransparentDataEncryptionActivityStatus
+      Encrypting = "Encrypting"
+      Decrypting = "Decrypting"
     end
   end
 end
