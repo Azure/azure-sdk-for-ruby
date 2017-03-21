@@ -29,7 +29,7 @@ module Azure::ARM::Resources
             class_name: 'Deployment',
             model_properties: {
               properties: {
-                required: false,
+                required: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Composite',
