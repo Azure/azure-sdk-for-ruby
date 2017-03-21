@@ -12,8 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [Array<NamespaceResource>] Result of the List Namespace
-      # operation.
+      # @return [Array<Namespace>] Result of the List Namespace operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
@@ -26,7 +25,7 @@ module Azure::ARM::ServiceBus
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<NamespaceResource>] operation results.
+      # @return [Array<Namespace>] operation results.
       #
       def get_all_items
         items = @value
@@ -71,10 +70,10 @@ module Azure::ARM::ServiceBus
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'NamespaceResourceElementType',
+                      serialized_name: 'NamespaceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'NamespaceResource'
+                        class_name: 'Namespace'
                       }
                   }
                 }

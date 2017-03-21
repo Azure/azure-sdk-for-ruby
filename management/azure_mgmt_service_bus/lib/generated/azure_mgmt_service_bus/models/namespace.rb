@@ -8,7 +8,7 @@ module Azure::ARM::ServiceBus
     #
     # Description of a namespace resource.
     #
-    class NamespaceResource < MsRestAzure::Resource
+    class Namespace < TrackedResource
 
       include MsRestAzure
 
@@ -28,18 +28,21 @@ module Azure::ARM::ServiceBus
       # operations.
       attr_accessor :service_bus_endpoint
 
+      # @return [String] Identifier for Azure Insights metrics
+      attr_accessor :metric_id
+
 
       #
-      # Mapper for NamespaceResource class as Ruby Hash.
+      # Mapper for Namespace class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'NamespaceResource',
+          serialized_name: 'Namespace',
           type: {
             name: 'Composite',
-            class_name: 'NamespaceResource',
+            class_name: 'Namespace',
             model_properties: {
               id: {
                 required: false,
@@ -122,6 +125,14 @@ module Azure::ARM::ServiceBus
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceBusEndpoint',
+                type: {
+                  name: 'String'
+                }
+              },
+              metric_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.metricId',
                 type: {
                   name: 'String'
                 }

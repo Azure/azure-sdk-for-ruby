@@ -6,18 +6,19 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response to the List Subscriptions operation.
+    # Result of the request to list ServiceBus operations. It contains a list
+    # of operations and a URL link to get the next set of results.
     #
-    class SubscriptionListResult
+    class OperationListResult
 
       include MsRestAzure
 
-      # @return [Array<Subscription>] Result of the List Subscriptions
-      # operation.
+      # @return [Array<Operation>] List of ServiceBus operations supported by
+      # the Microsoft.ServiceBus resource provider.
       attr_accessor :value
 
-      # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of subscriptions.
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +27,7 @@ module Azure::ARM::ServiceBus
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Subscription>] operation results.
+      # @return [Array<Operation>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +42,7 @@ module Azure::ARM::ServiceBus
       #
       # Gets the next page of results.
       #
-      # @return [SubscriptionListResult] with next page content.
+      # @return [OperationListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,34 +54,36 @@ module Azure::ARM::ServiceBus
       end
 
       #
-      # Mapper for SubscriptionListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SubscriptionListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'SubscriptionListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SubscriptionElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Subscription'
+                        class_name: 'Operation'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

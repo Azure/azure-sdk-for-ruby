@@ -12,8 +12,8 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [Array<SharedAccessAuthorizationRuleResource>] Result of the
-      # List Authorization Rules operation.
+      # @return [Array<SharedAccessAuthorizationRule>] Result of the List
+      # Authorization Rules operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
@@ -26,8 +26,7 @@ module Azure::ARM::ServiceBus
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<SharedAccessAuthorizationRuleResource>] operation
-      # results.
+      # @return [Array<SharedAccessAuthorizationRule>] operation results.
       #
       def get_all_items
         items = @value
@@ -73,10 +72,10 @@ module Azure::ARM::ServiceBus
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SharedAccessAuthorizationRuleResourceElementType',
+                      serialized_name: 'SharedAccessAuthorizationRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SharedAccessAuthorizationRuleResource'
+                        class_name: 'SharedAccessAuthorizationRule'
                       }
                   }
                 }

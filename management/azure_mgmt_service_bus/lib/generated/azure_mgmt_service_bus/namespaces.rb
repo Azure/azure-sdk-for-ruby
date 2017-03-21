@@ -23,16 +23,115 @@ module Azure::ARM::ServiceBus
     attr_reader :client
 
     #
+    # Check the give namespace name availability.
+    #
+    # @param parameters [CheckNameAvailability] Parameters to check availability of
+    # the given namespace name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckNameAvailabilityResult] operation results.
+    #
+    def check_name_availability_method(parameters, custom_headers = nil)
+      response = check_name_availability_method_async(parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check the give namespace name availability.
+    #
+    # @param parameters [CheckNameAvailability] Parameters to check availability of
+    # the given namespace name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_method_with_http_info(parameters, custom_headers = nil)
+      check_name_availability_method_async(parameters, custom_headers).value!
+    end
+
+    #
+    # Check the give namespace name availability.
+    #
+    # @param parameters [CheckNameAvailability] Parameters to check availability of
+    # the given namespace name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_method_async(parameters, custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = CheckNameAvailability.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/CheckNameAvailability'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CheckNameAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets all the available namespaces within the subscription, irrespective of
     # the resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<NamespaceResource>] operation results.
+    # @return [Array<Namespace>] operation results.
     #
-    def list_by_subscription(custom_headers = nil)
-      first_page = list_by_subscription_as_lazy(custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -45,8 +144,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_with_http_info(custom_headers = nil)
-      list_by_subscription_async(custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
@@ -58,7 +157,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_async(custom_headers = nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -111,11 +210,12 @@ module Azure::ARM::ServiceBus
     #
     # Gets the available namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<NamespaceResource>] operation results.
+    # @return [Array<Namespace>] operation results.
     #
     def list_by_resource_group(resource_group_name, custom_headers = nil)
       first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
@@ -125,7 +225,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets the available namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -138,7 +239,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets the available namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -199,14 +301,15 @@ module Azure::ARM::ServiceBus
     # Creates or updates a service namespace. Once created, this namespace's
     # resource manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
-    # create a namespace resource.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [Namespace] Parameters supplied to create a namespace
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [NamespaceResource] operation results.
+    # @return [Namespace] operation results.
     #
     def create_or_update(resource_group_name, namespace_name, parameters, custom_headers = nil)
       response = create_or_update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
@@ -214,10 +317,11 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
-    # create a namespace resource.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [Namespace] Parameters supplied to create a namespace
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -231,7 +335,7 @@ module Azure::ARM::ServiceBus
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = NamespaceResource.mapper()
+          result_mapper = Namespace.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -246,8 +350,9 @@ module Azure::ARM::ServiceBus
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -257,8 +362,9 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -284,12 +390,13 @@ module Azure::ARM::ServiceBus
     #
     # Gets a description for the specified namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [NamespaceResource] operation results.
+    # @return [Namespace] operation results.
     #
     def get(resource_group_name, namespace_name, custom_headers = nil)
       response = get_async(resource_group_name, namespace_name, custom_headers).value!
@@ -299,8 +406,9 @@ module Azure::ARM::ServiceBus
     #
     # Gets a description for the specified namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -313,8 +421,9 @@ module Azure::ARM::ServiceBus
     #
     # Gets a description for the specified namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -359,7 +468,130 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceResource.mapper()
+            result_mapper = Namespace.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates a service namespace. Once created, this namespace's resource manifest
+    # is immutable. This operation is idempotent.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [NamespaceUpdateParameters] Parameters supplied to update a
+    # namespace resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Namespace] operation results.
+    #
+    def update(resource_group_name, namespace_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates a service namespace. Once created, this namespace's resource manifest
+    # is immutable. This operation is idempotent.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [NamespaceUpdateParameters] Parameters supplied to update a
+    # namespace resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, namespace_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Updates a service namespace. Once created, this namespace's resource manifest
+    # is immutable. This operation is idempotent.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [NamespaceUpdateParameters] Parameters supplied to update a
+    # namespace resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, namespace_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = NamespaceUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Namespace.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Namespace.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -375,12 +607,13 @@ module Azure::ARM::ServiceBus
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<SharedAccessAuthorizationRuleResource>] operation results.
+    # @return [Array<SharedAccessAuthorizationRule>] operation results.
     #
     def list_authorization_rules(resource_group_name, namespace_name, custom_headers = nil)
       first_page = list_authorization_rules_as_lazy(resource_group_name, namespace_name, custom_headers)
@@ -390,8 +623,9 @@ module Azure::ARM::ServiceBus
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -404,8 +638,9 @@ module Azure::ARM::ServiceBus
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -466,15 +701,16 @@ module Azure::ARM::ServiceBus
     #
     # Creates or updates an authorization rule for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Namespace authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param parameters [SharedAccessAuthorizationRule] The shared access
+    # authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SharedAccessAuthorizationRuleResource] operation results.
+    # @return [SharedAccessAuthorizationRule] operation results.
     #
     def create_or_update_authorization_rule(resource_group_name, namespace_name, authorization_rule_name, parameters, custom_headers = nil)
       response = create_or_update_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, parameters, custom_headers).value!
@@ -484,11 +720,12 @@ module Azure::ARM::ServiceBus
     #
     # Creates or updates an authorization rule for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Namespace authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param parameters [SharedAccessAuthorizationRule] The shared access
+    # authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -501,11 +738,12 @@ module Azure::ARM::ServiceBus
     #
     # Creates or updates an authorization rule for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Namespace authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
+    # @param parameters [SharedAccessAuthorizationRule] The shared access
+    # authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -529,7 +767,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SharedAccessAuthorizationRuleCreateOrUpdateParameters.mapper()
+      request_mapper = SharedAccessAuthorizationRule.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -561,7 +799,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SharedAccessAuthorizationRuleResource.mapper()
+            result_mapper = SharedAccessAuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -577,9 +815,10 @@ module Azure::ARM::ServiceBus
     #
     # Deletes a namespace authorization rule.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -592,9 +831,10 @@ module Azure::ARM::ServiceBus
     #
     # Deletes a namespace authorization rule.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -607,9 +847,10 @@ module Azure::ARM::ServiceBus
     #
     # Deletes a namespace authorization rule.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -661,13 +902,14 @@ module Azure::ARM::ServiceBus
     #
     # Gets an authorization rule for a namespace by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SharedAccessAuthorizationRuleResource] operation results.
+    # @return [SharedAccessAuthorizationRule] operation results.
     #
     def get_authorization_rule(resource_group_name, namespace_name, authorization_rule_name, custom_headers = nil)
       response = get_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, custom_headers).value!
@@ -677,9 +919,10 @@ module Azure::ARM::ServiceBus
     #
     # Gets an authorization rule for a namespace by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -692,9 +935,10 @@ module Azure::ARM::ServiceBus
     #
     # Gets an authorization rule for a namespace by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -740,7 +984,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SharedAccessAuthorizationRuleResource.mapper()
+            result_mapper = SharedAccessAuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -756,9 +1000,10 @@ module Azure::ARM::ServiceBus
     #
     # Gets the primary and secondary connection strings for the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] The authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -772,9 +1017,10 @@ module Azure::ARM::ServiceBus
     #
     # Gets the primary and secondary connection strings for the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] The authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -787,9 +1033,10 @@ module Azure::ARM::ServiceBus
     #
     # Gets the primary and secondary connection strings for the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] The authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -851,9 +1098,10 @@ module Azure::ARM::ServiceBus
     #
     # Regenerates the primary or secondary connection strings for the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] The authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
     # regenerate the authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -869,9 +1117,10 @@ module Azure::ARM::ServiceBus
     #
     # Regenerates the primary or secondary connection strings for the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] The authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
     # regenerate the authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -886,9 +1135,10 @@ module Azure::ARM::ServiceBus
     #
     # Regenerates the primary or secondary connection strings for the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] The authorization rule name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param authorization_rule_name [String] The authorizationrule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
     # regenerate the authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -963,14 +1213,15 @@ module Azure::ARM::ServiceBus
     # Creates or updates a service namespace. Once created, this namespace's
     # resource manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
-    # create a namespace resource.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [Namespace] Parameters supplied to create a namespace
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [NamespaceResource] operation results.
+    # @return [Namespace] operation results.
     #
     def begin_create_or_update(resource_group_name, namespace_name, parameters, custom_headers = nil)
       response = begin_create_or_update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
@@ -981,10 +1232,11 @@ module Azure::ARM::ServiceBus
     # Creates or updates a service namespace. Once created, this namespace's
     # resource manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
-    # create a namespace resource.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [Namespace] Parameters supplied to create a namespace
+    # resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -998,10 +1250,11 @@ module Azure::ARM::ServiceBus
     # Creates or updates a service namespace. Once created, this namespace's
     # resource manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
-    # create a namespace resource.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
+    # @param parameters [Namespace] Parameters supplied to create a namespace
+    # resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1024,7 +1277,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = NamespaceCreateOrUpdateParameters.mapper()
+      request_mapper = Namespace.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1056,7 +1309,7 @@ module Azure::ARM::ServiceBus
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceResource.mapper()
+            result_mapper = Namespace.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1066,7 +1319,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceResource.mapper()
+            result_mapper = Namespace.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1083,8 +1336,9 @@ module Azure::ARM::ServiceBus
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1098,8 +1352,9 @@ module Azure::ARM::ServiceBus
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1113,8 +1368,9 @@ module Azure::ARM::ServiceBus
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1173,8 +1429,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [NamespaceListResult] operation results.
     #
-    def list_by_subscription_next(next_page_link, custom_headers = nil)
-      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1189,8 +1445,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_subscription_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1204,7 +1460,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -1436,12 +1692,12 @@ module Azure::ARM::ServiceBus
     # @return [NamespaceListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_subscription_as_lazy(custom_headers = nil)
-      response = list_by_subscription_async(custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_subscription_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1450,7 +1706,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets the available namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1471,8 +1728,9 @@ module Azure::ARM::ServiceBus
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param namespace_name [String] The namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
