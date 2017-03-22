@@ -6,65 +6,66 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Parameters supplied to the Create Or Update Topic operation.
+    # Description of subscription resource.
     #
-    class TopicCreateOrUpdateParameters
+    class Subscription < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Topic name.
-      attr_accessor :name
-
-      # @return [String] Location of the resource.
-      attr_accessor :location
-
-      # @return [DateTime] Last time the message was sent, or a request was
-      # received, for this topic.
+      # @return [DateTime] Last time there was a receive request to this
+      # subscription.
       attr_accessor :accessed_at
 
       # @return [String] TimeSpan idle interval after which the topic is
-      # automatically deleted. The minimum duration is 5 minutes.
+      # automatically deleted. The minimum duration is 5 minutes. The service
+      # accepts a C# Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx.
+      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
+      # days
       attr_accessor :auto_delete_on_idle
-
-      # @return [DateTime] Exact time the message was created.
-      attr_accessor :created_at
 
       # @return [MessageCountDetails]
       attr_accessor :count_details
 
+      # @return [DateTime] Exact time the Subscription was created.
+      attr_accessor :created_at
+
       # @return [String] Default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
-      # TimeToLive is not set on a message itself.
+      # TimeToLive is not set on a message itself. The service accepts a C#
+      # Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx .
+      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
+      # days
       attr_accessor :default_message_time_to_live
 
-      # @return [String] TimeSpan structure that defines the duration of the
-      # duplicate detection history. The default value is 10 minutes.
-      attr_accessor :duplicate_detection_history_time_window
+      # @return [Boolean] Value that indicates whether a subscription has dead
+      # letter support on filter evaluation exceptions.
+      attr_accessor :dead_lettering_on_filter_evaluation_exceptions
+
+      # @return [Boolean] Value that indicates whether a subscription has dead
+      # letter support when a message expires.
+      attr_accessor :dead_lettering_on_message_expiration
 
       # @return [Boolean] Value that indicates whether server-side batched
       # operations are enabled.
       attr_accessor :enable_batched_operations
 
-      # @return [Boolean] Value that indicates whether Express Entities are
-      # enabled. An express topic holds a message in memory temporarily before
-      # writing it to persistent storage.
-      attr_accessor :enable_express
+      # @return [String] The lock duration time span for the subscription. The
+      # service accepts a C# Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx
+      attr_accessor :lock_duration
 
-      # @return [Boolean] Value that indicates whether the topic to be
-      # partitioned across multiple message brokers is enabled.
-      attr_accessor :enable_partitioning
+      # @return [Integer] Number of maximum deliveries.
+      attr_accessor :max_delivery_count
 
-      # @return [Integer] Maximum size of the topic in megabytes, which is the
-      # size of the memory allocated for the topic.
-      attr_accessor :max_size_in_megabytes
+      # @return [Integer] Number of messages.
+      attr_accessor :message_count
 
-      # @return [Boolean] Value indicating if this topic requires duplicate
-      # detection.
-      attr_accessor :requires_duplicate_detection
-
-      # @return [Integer] Size of the topic, in bytes.
-      attr_accessor :size_in_bytes
+      # @return [Boolean] Value indicating if a subscription supports the
+      # concept of sessions.
+      attr_accessor :requires_session
 
       # @return [EntityStatus] Enumerates the possible values for the status of
       # a messaging entity. Possible values include: 'Active', 'Creating',
@@ -72,39 +73,42 @@ module Azure::ARM::ServiceBus
       # 'SendDisabled', 'Unknown'
       attr_accessor :status
 
-      # @return [Integer] Number of subscriptions.
-      attr_accessor :subscription_count
-
-      # @return [Boolean] Value that indicates whether the topic supports
-      # ordering.
-      attr_accessor :support_ordering
-
-      # @return [DateTime] The exact time the message was updated.
+      # @return [DateTime] The exact time the subscription was updated.
       attr_accessor :updated_at
 
 
       #
-      # Mapper for TopicCreateOrUpdateParameters class as Ruby Hash.
+      # Mapper for Subscription class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TopicCreateOrUpdateParameters',
+          serialized_name: 'Subscription',
           type: {
             name: 'Composite',
-            class_name: 'TopicCreateOrUpdateParameters',
+            class_name: 'Subscription',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -124,14 +128,6 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
-              created_at: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.createdAt',
-                type: {
-                  name: 'DateTime'
-                }
-              },
               count_details: {
                 required: false,
                 read_only: true,
@@ -141,6 +137,14 @@ module Azure::ARM::ServiceBus
                   class_name: 'MessageCountDetails'
                 }
               },
+              created_at: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.createdAt',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               default_message_time_to_live: {
                 required: false,
                 serialized_name: 'properties.defaultMessageTimeToLive',
@@ -148,11 +152,18 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
-              duplicate_detection_history_time_window: {
+              dead_lettering_on_filter_evaluation_exceptions: {
                 required: false,
-                serialized_name: 'properties.duplicateDetectionHistoryTimeWindow',
+                serialized_name: 'properties.deadLetteringOnFilterEvaluationExceptions',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
+                }
+              },
+              dead_lettering_on_message_expiration: {
+                required: false,
+                serialized_name: 'properties.deadLetteringOnMessageExpiration',
+                type: {
+                  name: 'Boolean'
                 }
               },
               enable_batched_operations: {
@@ -162,40 +173,33 @@ module Azure::ARM::ServiceBus
                   name: 'Boolean'
                 }
               },
-              enable_express: {
+              lock_duration: {
                 required: false,
-                serialized_name: 'properties.enableExpress',
+                serialized_name: 'properties.lockDuration',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
                 }
               },
-              enable_partitioning: {
+              max_delivery_count: {
                 required: false,
-                serialized_name: 'properties.enablePartitioning',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              max_size_in_megabytes: {
-                required: false,
-                serialized_name: 'properties.maxSizeInMegabytes',
+                serialized_name: 'properties.maxDeliveryCount',
                 type: {
                   name: 'Number'
                 }
               },
-              requires_duplicate_detection: {
-                required: false,
-                serialized_name: 'properties.requiresDuplicateDetection',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              size_in_bytes: {
+              message_count: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.sizeInBytes',
+                serialized_name: 'properties.messageCount',
                 type: {
                   name: 'Number'
+                }
+              },
+              requires_session: {
+                required: false,
+                serialized_name: 'properties.requiresSession',
+                type: {
+                  name: 'Boolean'
                 }
               },
               status: {
@@ -204,21 +208,6 @@ module Azure::ARM::ServiceBus
                 type: {
                   name: 'Enum',
                   module: 'EntityStatus'
-                }
-              },
-              subscription_count: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.subscriptionCount',
-                type: {
-                  name: 'Number'
-                }
-              },
-              support_ordering: {
-                required: false,
-                serialized_name: 'properties.supportOrdering',
-                type: {
-                  name: 'Boolean'
                 }
               },
               updated_at: {

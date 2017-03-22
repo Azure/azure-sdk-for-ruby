@@ -8,13 +8,15 @@ module Azure::ARM::ServiceBus
     #
     # Description of queue Resource.
     #
-    class QueueResource < MsRestAzure::Resource
+    class Queue < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [String] The duration of a peek-lock; that is, the amount of
       # time that the message is locked for other receivers. The maximum value
-      # for LockDuration is 5 minutes; the default value is 1 minute.
+      # for LockDuration is 5 minutes; the default value is 1 minute. The
+      # service accepts a C# Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx
       attr_accessor :lock_duration
 
       # @return [DateTime] Last time a message was sent, or the last time there
@@ -22,20 +24,31 @@ module Azure::ARM::ServiceBus
       attr_accessor :accessed_at
 
       # @return [String] the TimeSpan idle interval after which the queue is
-      # automatically deleted. The minimum duration is 5 minutes.
+      # automatically deleted. The minimum duration is 5 minutes. The service
+      # accepts a C# Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx.
+      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
+      # days.
       attr_accessor :auto_delete_on_idle
 
-      # @return [DateTime] The exact time the message was created.
+      # @return [DateTime] The exact time the Queue was created.
       attr_accessor :created_at
 
       # @return [String] The default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
-      # TimeToLive is not set on a message itself.
+      # TimeToLive is not set on a message itself. Format is 'DD.HH:MM:SS' and
+      # default value of this property is 10675199 days. The service accepts a
+      # C# Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx
       attr_accessor :default_message_time_to_live
 
       # @return [String] TimeSpan structure that defines the duration of the
-      # duplicate detection history. The default value is 10 minutes.
+      # duplicate detection history. The default value is 10 minutes. The
+      # service accepts a C# Standard TimeSpan Format for loc duration
+      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx .
+      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
+      # days
       attr_accessor :duplicate_detection_history_time_window
 
       # @return [Boolean] A value that indicates whether server-side batched
@@ -90,21 +103,21 @@ module Azure::ARM::ServiceBus
       # ordering.
       attr_accessor :support_ordering
 
-      # @return [DateTime] The exact time the message was updated.
+      # @return [DateTime] The exact time the Queue was updated.
       attr_accessor :updated_at
 
 
       #
-      # Mapper for QueueResource class as Ruby Hash.
+      # Mapper for Queue class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'QueueResource',
+          serialized_name: 'Queue',
           type: {
             name: 'Composite',
-            class_name: 'QueueResource',
+            class_name: 'Queue',
             model_properties: {
               id: {
                 required: false,
@@ -128,27 +141,6 @@ module Azure::ARM::ServiceBus
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               lock_duration: {
@@ -278,6 +270,7 @@ module Azure::ARM::ServiceBus
               },
               status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',

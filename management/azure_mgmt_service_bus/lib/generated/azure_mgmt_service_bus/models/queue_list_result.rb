@@ -12,7 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [Array<QueueResource>] Result of the List Queues operation.
+      # @return [Array<Queue>] Result of the List Queues operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
@@ -25,7 +25,7 @@ module Azure::ARM::ServiceBus
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<QueueResource>] operation results.
+      # @return [Array<Queue>] operation results.
       #
       def get_all_items
         items = @value
@@ -70,10 +70,10 @@ module Azure::ARM::ServiceBus
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'QueueResourceElementType',
+                      serialized_name: 'QueueElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'QueueResource'
+                        class_name: 'Queue'
                       }
                   }
                 }

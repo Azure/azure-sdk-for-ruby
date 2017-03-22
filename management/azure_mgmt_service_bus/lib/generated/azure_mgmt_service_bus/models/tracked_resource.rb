@@ -6,27 +6,30 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Description of a namespace authorization rule.
+    # The Resource definition.
     #
-    class SharedAccessAuthorizationRuleResource < MsRestAzure::Resource
+    class TrackedResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Array<AccessRights>] The rights associated with the rule.
-      attr_accessor :rights
+      # @return [String] Resource location
+      attr_accessor :location
+
+      # @return [Hash{String => String}] Resource tags
+      attr_accessor :tags
 
 
       #
-      # Mapper for SharedAccessAuthorizationRuleResource class as Ruby Hash.
+      # Mapper for TrackedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SharedAccessAuthorizationRuleResource',
+          serialized_name: 'TrackedResource',
           type: {
             name: 'Composite',
-            class_name: 'SharedAccessAuthorizationRuleResource',
+            class_name: 'TrackedResource',
             model_properties: {
               id: {
                 required: false,
@@ -69,21 +72,6 @@ module Azure::ARM::ServiceBus
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
-                      }
-                  }
-                }
-              },
-              rights: {
-                required: true,
-                serialized_name: 'properties.rights',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'AccessRightsElementType',
-                      type: {
-                        name: 'Enum',
-                        module: 'AccessRights'
                       }
                   }
                 }

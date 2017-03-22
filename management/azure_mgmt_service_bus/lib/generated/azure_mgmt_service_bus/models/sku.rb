@@ -20,7 +20,8 @@ module Azure::ARM::ServiceBus
       # values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :tier
 
-      # @return [Integer] The specified messaging units for the tier.
+      # @return [Integer] The specified messaging units for the tier. For
+      # Premium tier, capacity are 1,2 and 4.
       attr_accessor :capacity
 
 

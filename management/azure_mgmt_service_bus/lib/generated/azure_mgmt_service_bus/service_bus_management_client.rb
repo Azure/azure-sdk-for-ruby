@@ -36,6 +36,9 @@ module Azure::ARM::ServiceBus
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
@@ -61,6 +64,7 @@ module Azure::ARM::ServiceBus
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
       @queues = Queues.new(self)
       @topics = Topics.new(self)
