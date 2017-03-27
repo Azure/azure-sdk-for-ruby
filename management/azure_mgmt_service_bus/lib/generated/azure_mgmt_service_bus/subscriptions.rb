@@ -8,7 +8,6 @@ module Azure::ARM::ServiceBus
   # Azure Service Bus client
   #
   class Subscriptions
-    include Azure::ARM::ServiceBus::Models
     include MsRestAzure
 
     #
@@ -32,10 +31,10 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Subscription>] operation results.
+    # @return [Array<SubscriptionResource>] operation results.
     #
-    def list_by_topic(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      first_page = list_by_topic_as_lazy(resource_group_name, namespace_name, topic_name, custom_headers)
+    def list_all(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+      first_page = list_all_as_lazy(resource_group_name, namespace_name, topic_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -51,8 +50,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_topic_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      list_by_topic_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
+    def list_all_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+      list_all_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
     end
 
     #
@@ -67,7 +66,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_topic_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+    def list_all_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -107,7 +106,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SubscriptionListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SubscriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -128,12 +127,12 @@ module Azure::ARM::ServiceBus
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
-    # @param parameters [Subscription] Parameters supplied to create a subscription
-    # resource.
+    # @param parameters [SubscriptionCreateOrUpdateParameters] Parameters supplied
+    # to create a subscription resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Subscription] operation results.
+    # @return [SubscriptionResource] operation results.
     #
     def create_or_update(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers = nil)
       response = create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers).value!
@@ -148,8 +147,8 @@ module Azure::ARM::ServiceBus
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
-    # @param parameters [Subscription] Parameters supplied to create a subscription
-    # resource.
+    # @param parameters [SubscriptionCreateOrUpdateParameters] Parameters supplied
+    # to create a subscription resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -167,8 +166,8 @@ module Azure::ARM::ServiceBus
     # @param namespace_name [String] The namespace name
     # @param topic_name [String] The topic name.
     # @param subscription_name [String] The subscription name.
-    # @param parameters [Subscription] Parameters supplied to create a subscription
-    # resource.
+    # @param parameters [SubscriptionCreateOrUpdateParameters] Parameters supplied
+    # to create a subscription resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -193,7 +192,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Subscription.mapper()
+      request_mapper = Azure::ARM::ServiceBus::Models::SubscriptionCreateOrUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -225,7 +224,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Subscription.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SubscriptionResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -340,7 +339,7 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Subscription] operation results.
+    # @return [SubscriptionResource] operation results.
     #
     def get(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
       response = get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers).value!
@@ -418,7 +417,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Subscription.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SubscriptionResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -441,8 +440,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [SubscriptionListResult] operation results.
     #
-    def list_by_topic_next(next_page_link, custom_headers = nil)
-      response = list_by_topic_next_async(next_page_link, custom_headers).value!
+    def list_all_next(next_page_link, custom_headers = nil)
+      response = list_all_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -456,8 +455,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_topic_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_topic_next_async(next_page_link, custom_headers).value!
+    def list_all_next_with_http_info(next_page_link, custom_headers = nil)
+      list_all_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -470,7 +469,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_topic_next_async(next_page_link, custom_headers = nil)
+    def list_all_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -505,7 +504,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SubscriptionListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SubscriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -531,12 +530,12 @@ module Azure::ARM::ServiceBus
     # @return [SubscriptionListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_topic_as_lazy(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      response = list_by_topic_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
+    def list_all_as_lazy(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+      response = list_all_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_by_topic_next_async(next_page_link, custom_headers)
+          list_all_next_async(next_page_link, custom_headers)
         end
         page
       end

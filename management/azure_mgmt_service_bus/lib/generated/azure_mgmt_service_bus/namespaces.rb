@@ -8,7 +8,6 @@ module Azure::ARM::ServiceBus
   # Azure Service Bus client
   #
   class Namespaces
-    include Azure::ARM::ServiceBus::Models
     include MsRestAzure
 
     #
@@ -76,7 +75,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = CheckNameAvailability.mapper()
+      request_mapper = Azure::ARM::ServiceBus::Models::CheckNameAvailability.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -108,7 +107,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = CheckNameAvailabilityResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::CheckNameAvailabilityResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -128,10 +127,10 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Namespace>] operation results.
+    # @return [Array<NamespaceResource>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def list_by_subscription(custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -144,8 +143,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_by_subscription_with_http_info(custom_headers = nil)
+      list_by_subscription_async(custom_headers).value!
     end
 
     #
@@ -157,7 +156,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_by_subscription_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -194,7 +193,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -215,7 +214,7 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Namespace>] operation results.
+    # @return [Array<NamespaceResource>] operation results.
     #
     def list_by_resource_group(resource_group_name, custom_headers = nil)
       first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
@@ -284,7 +283,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -303,13 +302,13 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
-    # @param namespace_name [String] The namespace name
-    # @param parameters [Namespace] Parameters supplied to create a namespace
-    # resource.
+    # @param namespace_name [String] The namespace name.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
+    # create a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Namespace] operation results.
+    # @return [NamespaceResource] operation results.
     #
     def create_or_update(resource_group_name, namespace_name, parameters, custom_headers = nil)
       response = create_or_update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
@@ -319,9 +318,9 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
-    # @param namespace_name [String] The namespace name
-    # @param parameters [Namespace] Parameters supplied to create a namespace
-    # resource.
+    # @param namespace_name [String] The namespace name.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
+    # create a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -335,7 +334,7 @@ module Azure::ARM::ServiceBus
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Namespace.mapper()
+          result_mapper = Azure::ARM::ServiceBus::Models::NamespaceResource.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -396,7 +395,7 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Namespace] operation results.
+    # @return [NamespaceResource] operation results.
     #
     def get(resource_group_name, namespace_name, custom_headers = nil)
       response = get_async(resource_group_name, namespace_name, custom_headers).value!
@@ -468,7 +467,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Namespace.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -493,7 +492,7 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Namespace] operation results.
+    # @return [NamespaceResource] operation results.
     #
     def update(resource_group_name, namespace_name, parameters, custom_headers = nil)
       response = update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
@@ -549,7 +548,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = NamespaceUpdateParameters.mapper()
+      request_mapper = Azure::ARM::ServiceBus::Models::NamespaceUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -581,7 +580,7 @@ module Azure::ARM::ServiceBus
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Namespace.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -591,7 +590,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Namespace.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -613,7 +612,7 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<SharedAccessAuthorizationRule>] operation results.
+    # @return [Array<SharedAccessAuthorizationRuleResource>] operation results.
     #
     def list_authorization_rules(resource_group_name, namespace_name, custom_headers = nil)
       first_page = list_authorization_rules_as_lazy(resource_group_name, namespace_name, custom_headers)
@@ -685,7 +684,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SharedAccessAuthorizationRuleListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SharedAccessAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -705,12 +704,12 @@ module Azure::ARM::ServiceBus
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param authorization_rule_name [String] The authorizationrule name.
-    # @param parameters [SharedAccessAuthorizationRule] The shared access
-    # authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SharedAccessAuthorizationRule] operation results.
+    # @return [SharedAccessAuthorizationRuleResource] operation results.
     #
     def create_or_update_authorization_rule(resource_group_name, namespace_name, authorization_rule_name, parameters, custom_headers = nil)
       response = create_or_update_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, parameters, custom_headers).value!
@@ -724,8 +723,8 @@ module Azure::ARM::ServiceBus
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param authorization_rule_name [String] The authorizationrule name.
-    # @param parameters [SharedAccessAuthorizationRule] The shared access
-    # authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -742,8 +741,8 @@ module Azure::ARM::ServiceBus
     # Azure subscription.
     # @param namespace_name [String] The namespace name
     # @param authorization_rule_name [String] The authorizationrule name.
-    # @param parameters [SharedAccessAuthorizationRule] The shared access
-    # authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -767,7 +766,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SharedAccessAuthorizationRule.mapper()
+      request_mapper = Azure::ARM::ServiceBus::Models::SharedAccessAuthorizationRuleCreateOrUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -799,7 +798,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SharedAccessAuthorizationRule.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SharedAccessAuthorizationRuleResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -909,7 +908,7 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SharedAccessAuthorizationRule] operation results.
+    # @return [SharedAccessAuthorizationRuleResource] operation results.
     #
     def get_authorization_rule(resource_group_name, namespace_name, authorization_rule_name, custom_headers = nil)
       response = get_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, custom_headers).value!
@@ -984,7 +983,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SharedAccessAuthorizationRule.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SharedAccessAuthorizationRuleResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1082,7 +1081,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ResourceListKeys.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::ResourceListKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1164,7 +1163,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RegenerateKeysParameters.mapper()
+      request_mapper = Azure::ARM::ServiceBus::Models::RegenerateKeysParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1196,7 +1195,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ResourceListKeys.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::ResourceListKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1215,13 +1214,13 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
-    # @param namespace_name [String] The namespace name
-    # @param parameters [Namespace] Parameters supplied to create a namespace
-    # resource.
+    # @param namespace_name [String] The namespace name.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
+    # create a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Namespace] operation results.
+    # @return [NamespaceResource] operation results.
     #
     def begin_create_or_update(resource_group_name, namespace_name, parameters, custom_headers = nil)
       response = begin_create_or_update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
@@ -1234,9 +1233,9 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
-    # @param namespace_name [String] The namespace name
-    # @param parameters [Namespace] Parameters supplied to create a namespace
-    # resource.
+    # @param namespace_name [String] The namespace name.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
+    # create a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1252,9 +1251,9 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
-    # @param namespace_name [String] The namespace name
-    # @param parameters [Namespace] Parameters supplied to create a namespace
-    # resource.
+    # @param namespace_name [String] The namespace name.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters supplied to
+    # create a namespace resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1277,7 +1276,7 @@ module Azure::ARM::ServiceBus
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Namespace.mapper()
+      request_mapper = Azure::ARM::ServiceBus::Models::NamespaceCreateOrUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1309,7 +1308,7 @@ module Azure::ARM::ServiceBus
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Namespace.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1319,7 +1318,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Namespace.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1429,8 +1428,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [NamespaceListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1445,8 +1444,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -1460,7 +1459,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -1495,7 +1494,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1582,7 +1581,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NamespaceListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::NamespaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1669,7 +1668,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SharedAccessAuthorizationRuleListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::SharedAccessAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1692,12 +1691,12 @@ module Azure::ARM::ServiceBus
     # @return [NamespaceListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_by_subscription_as_lazy(custom_headers = nil)
+      response = list_by_subscription_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end

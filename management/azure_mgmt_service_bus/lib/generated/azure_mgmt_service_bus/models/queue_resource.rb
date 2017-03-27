@@ -8,15 +8,13 @@ module Azure::ARM::ServiceBus
     #
     # Description of queue Resource.
     #
-    class Queue < MsRestAzure::Resource
+    class QueueResource < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [String] The duration of a peek-lock; that is, the amount of
       # time that the message is locked for other receivers. The maximum value
-      # for LockDuration is 5 minutes; the default value is 1 minute. The
-      # service accepts a C# Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx
+      # for LockDuration is 5 minutes; the default value is 1 minute.
       attr_accessor :lock_duration
 
       # @return [DateTime] Last time a message was sent, or the last time there
@@ -24,31 +22,25 @@ module Azure::ARM::ServiceBus
       attr_accessor :accessed_at
 
       # @return [String] the TimeSpan idle interval after which the queue is
-      # automatically deleted. The minimum duration is 5 minutes. The service
-      # accepts a C# Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx.
-      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
-      # days.
+      # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
-      # @return [DateTime] The exact time the Queue was created.
+      # @return [EntityAvailabilityStatus] Entity availability status for the
+      # queue. Possible values include: 'Available', 'Limited', 'Renaming',
+      # 'Restoring', 'Unknown'
+      attr_accessor :entity_availability_status
+
+      # @return [DateTime] The exact time the message was created.
       attr_accessor :created_at
 
       # @return [String] The default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
-      # TimeToLive is not set on a message itself. Format is 'DD.HH:MM:SS' and
-      # default value of this property is 10675199 days. The service accepts a
-      # C# Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx
+      # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
       # @return [String] TimeSpan structure that defines the duration of the
-      # duplicate detection history. The default value is 10 minutes. The
-      # service accepts a C# Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx .
-      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
-      # days
+      # duplicate detection history. The default value is 10 minutes.
       attr_accessor :duplicate_detection_history_time_window
 
       # @return [Boolean] A value that indicates whether server-side batched
@@ -67,6 +59,10 @@ module Azure::ARM::ServiceBus
       # @return [Boolean] A value that indicates whether the queue is to be
       # partitioned across multiple message brokers.
       attr_accessor :enable_partitioning
+
+      # @return [Boolean] A value that indicates whether the message is
+      # accessible anonymously.
+      attr_accessor :is_anonymous_accessible
 
       # @return [Integer] The maximum delivery count. A message is
       # automatically deadlettered after this number of deliveries.
@@ -103,21 +99,21 @@ module Azure::ARM::ServiceBus
       # ordering.
       attr_accessor :support_ordering
 
-      # @return [DateTime] The exact time the Queue was updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
 
       #
-      # Mapper for Queue class as Ruby Hash.
+      # Mapper for QueueResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Queue',
+          serialized_name: 'QueueResource',
           type: {
             name: 'Composite',
-            class_name: 'Queue',
+            class_name: 'QueueResource',
             model_properties: {
               id: {
                 required: false,
@@ -163,6 +159,14 @@ module Azure::ARM::ServiceBus
                 serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
                   name: 'String'
+                }
+              },
+              entity_availability_status: {
+                required: false,
+                serialized_name: 'properties.entityAvailabilityStatus',
+                type: {
+                  name: 'Enum',
+                  module: 'EntityAvailabilityStatus'
                 }
               },
               created_at: {
@@ -211,6 +215,13 @@ module Azure::ARM::ServiceBus
               enable_partitioning: {
                 required: false,
                 serialized_name: 'properties.enablePartitioning',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_anonymous_accessible: {
+                required: false,
+                serialized_name: 'properties.isAnonymousAccessible',
                 type: {
                   name: 'Boolean'
                 }
@@ -270,7 +281,6 @@ module Azure::ARM::ServiceBus
               },
               status: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',

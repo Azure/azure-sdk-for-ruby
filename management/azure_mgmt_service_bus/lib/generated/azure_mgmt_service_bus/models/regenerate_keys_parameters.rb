@@ -31,7 +31,7 @@ module Azure::ARM::ServiceBus
             model_properties: {
               policykey: {
                 required: false,
-                serialized_name: 'policykey',
+                serialized_name: 'Policykey',
                 type: {
                   name: 'Enum',
                   module: 'Policykey'

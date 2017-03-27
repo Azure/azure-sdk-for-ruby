@@ -6,48 +6,46 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Description of a namespace authorization rule.
+    # Parameters supplied to the Create Or Update Authorization Rules
+    # operation.
     #
-    class SharedAccessAuthorizationRule < MsRestAzure::Resource
+    class SharedAccessAuthorizationRuleCreateOrUpdateParameters
 
       include MsRestAzure
+
+      # @return [String] data center location.
+      attr_accessor :location
+
+      # @return [String] Name of the authorization rule.
+      attr_accessor :name
 
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 
 
       #
-      # Mapper for SharedAccessAuthorizationRule class as Ruby Hash.
+      # Mapper for SharedAccessAuthorizationRuleCreateOrUpdateParameters class
+      # as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SharedAccessAuthorizationRule',
+          serialized_name: 'SharedAccessAuthorizationRuleCreateOrUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'SharedAccessAuthorizationRule',
+            class_name: 'SharedAccessAuthorizationRuleCreateOrUpdateParameters',
             model_properties: {
-              id: {
+              location: {
                 required: false,
-                read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
