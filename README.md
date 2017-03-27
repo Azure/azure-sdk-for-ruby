@@ -149,10 +149,6 @@ Running the command ``yard`` will generate the API documentation in the `./doc` 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project. Please make sure to label the
 issues with either arm or asm to help us expedite the process.
 
-# Maintainers
-
-* [David Justice](https://github.com/devigned)
-
 # Azure CLI Tooling
 
 For documentation on [Azure PowerShell](http://github.com/azure/azure-powershell).
