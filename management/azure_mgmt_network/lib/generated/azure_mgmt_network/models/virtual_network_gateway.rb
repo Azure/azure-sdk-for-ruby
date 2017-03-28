@@ -121,7 +121,7 @@ module Azure::ARM::Network
                 }
               },
               ip_configurations: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
@@ -136,7 +136,7 @@ module Azure::ARM::Network
                 }
               },
               gateway_type: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.gatewayType',
                 type: {
                   name: 'String'

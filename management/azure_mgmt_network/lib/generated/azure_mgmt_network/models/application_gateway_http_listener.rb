@@ -19,8 +19,8 @@ module Azure::ARM::Network
       # @return [SubResource] Frontend port resource of an application gateway.
       attr_accessor :frontend_port
 
-      # @return [ApplicationGatewayProtocol] Protocol. Possible values are:
-      # 'Http' and 'Https'. Possible values include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values include:
+      # 'Http', 'Https'
       attr_accessor :protocol
 
       # @return [String] Host name of HTTP listener.

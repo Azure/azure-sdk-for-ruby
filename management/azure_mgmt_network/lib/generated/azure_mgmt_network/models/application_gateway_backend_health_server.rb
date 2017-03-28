@@ -19,8 +19,8 @@ module Azure::ARM::Network
       attr_accessor :ip_configuration
 
       # @return [ApplicationGatewayBackendHealthServerHealth] Health of backend
-      # server. Possible values are: 'Unknown', 'Up', 'Down', and 'Partial'.
-      # Possible values include: 'Unknown', 'Up', 'Down', 'Partial'
+      # server. Possible values include: 'Unknown', 'Up', 'Down', 'Partial',
+      # 'Draining'
       attr_accessor :health
 
 

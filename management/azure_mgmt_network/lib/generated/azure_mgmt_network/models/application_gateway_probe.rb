@@ -12,8 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [ApplicationGatewayProtocol] Protocol. Possible values are:
-      # 'Http' and 'Https'. Possible values include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values include:
+      # 'Http', 'Https'
       attr_accessor :protocol
 
       # @return [String] Host name to send the probe to.

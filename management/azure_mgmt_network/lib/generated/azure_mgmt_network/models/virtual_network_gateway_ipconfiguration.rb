@@ -63,7 +63,7 @@ module Azure::ARM::Network
                 }
               },
               subnet: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.subnet',
                 type: {
                   name: 'Composite',
@@ -71,7 +71,7 @@ module Azure::ARM::Network
                 }
               },
               public_ipaddress: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.publicIPAddress',
                 type: {
                   name: 'Composite',
