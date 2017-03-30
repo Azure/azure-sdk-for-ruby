@@ -6,12 +6,19 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TargetElasticPoolEditions
+    # Defines values for DatabaseEdition
     #
-    module TargetElasticPoolEditions
+    module DatabaseEdition
+      Web = "Web"
+      Business = "Business"
       Basic = "Basic"
       Standard = "Standard"
       Premium = "Premium"
+      Free = "Free"
+      Stretch = "Stretch"
+      DataWarehouse = "DataWarehouse"
+      System = "System"
+      System2 = "System2"
     end
   end
 end

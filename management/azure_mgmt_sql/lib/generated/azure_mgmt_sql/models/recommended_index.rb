@@ -8,17 +8,17 @@ module Azure::ARM::SQL
     #
     # Represents a database recommended index.
     #
-    class RecommendedIndex < MsRestAzure::Resource
+    class RecommendedIndex < ProxyResource
 
       include MsRestAzure
 
-      # @return [RecommendedIndexActions] The proposed index action. You can
+      # @return [RecommendedIndexAction] The proposed index action. You can
       # create a missing index, drop an unused index, or rebuild an existing
       # index to improve its performance. Possible values include: 'Create',
       # 'Drop', 'Rebuild'
       attr_accessor :action
 
-      # @return [RecommendedIndexStates] The current recommendation state.
+      # @return [RecommendedIndexState] The current recommendation state.
       # Possible values include: 'Active', 'Pending', 'Executing', 'Verifying',
       # 'Pending Revert', 'Reverting', 'Reverted', 'Ignored', 'Expired',
       # 'Blocked', 'Success'
@@ -32,7 +32,7 @@ module Azure::ARM::SQL
       # changed (ISO8601 format).
       attr_accessor :last_modified
 
-      # @return [RecommendedIndexTypes] The type of index (CLUSTERED,
+      # @return [RecommendedIndexType] The type of index (CLUSTERED,
       # NONCLUSTERED, COLUMNSTORE, CLUSTERED COLUMNSTORE). Possible values
       # include: 'CLUSTERED', 'NONCLUSTERED', 'COLUMNSTORE', 'CLUSTERED
       # COLUMNSTORE'
@@ -75,18 +75,18 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'RecommendedIndex',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -99,34 +99,13 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               action: {
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.action',
                 type: {
                   name: 'Enum',
-                  module: 'RecommendedIndexActions'
+                  module: 'RecommendedIndexAction'
                 }
               },
               state: {
@@ -135,7 +114,7 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.state',
                 type: {
                   name: 'Enum',
-                  module: 'RecommendedIndexStates'
+                  module: 'RecommendedIndexState'
                 }
               },
               created: {
@@ -160,7 +139,7 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.indexType',
                 type: {
                   name: 'Enum',
-                  module: 'RecommendedIndexTypes'
+                  module: 'RecommendedIndexType'
                 }
               },
               schema: {

@@ -8,9 +8,15 @@ module Azure::ARM::SQL
     #
     # Contains information about a database Blob Auditing policy.
     #
-    class DatabaseBlobAuditingPolicy < SqlTypedSubResource
+    class DatabaseBlobAuditingPolicy < ProxyResource
 
       include MsRestAzure
+
+      # @return [String] The geo-location where the resource lives
+      attr_accessor :location
+
+      # @return [String] Resource kind.
+      attr_accessor :kind
 
       # @return [BlobAuditingPolicyState] Specifies the state of the policy. If
       # state is Enabled, storageEndpoint and storageAccountAccessKey are
@@ -54,14 +60,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'DatabaseBlobAuditingPolicy',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -70,10 +68,33 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }

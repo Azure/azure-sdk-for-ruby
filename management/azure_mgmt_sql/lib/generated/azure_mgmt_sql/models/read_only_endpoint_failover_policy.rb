@@ -6,11 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TableType
+    # Defines values for ReadOnlyEndpointFailoverPolicy
     #
-    module TableType
-      BaseTable = "BaseTable"
-      View = "View"
+    module ReadOnlyEndpointFailoverPolicy
+      Disabled = "Disabled"
+      Enabled = "Enabled"
     end
   end
 end

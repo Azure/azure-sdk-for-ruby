@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database service objective.
     #
-    class ServiceObjective < SqlSubResource
+    class ServiceObjective < SubResource
 
       include MsRestAzure
 

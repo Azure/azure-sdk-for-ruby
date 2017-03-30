@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Import database parameters.
     #
-    class ImportExtensionRequestParameters
+    class ImportExtensionRequest
 
       include MsRestAzure
 
@@ -18,12 +18,12 @@ module Azure::ARM::SQL
       # @return [String] The type of the extension.
       attr_accessor :type
 
-      # @return [StorageKeyType] The type of the storage key to use. Valid
-      # values are StorageAccessKey and SharedAccessKey. Possible values
-      # include: 'StorageAccessKey', 'SharedAccessKey'
+      # @return [StorageKeyType] The type of the storage key to use. Possible
+      # values include: 'StorageAccessKey', 'SharedAccessKey'
       attr_accessor :storage_key_type
 
-      # @return [String] The storage key to use.
+      # @return [String] The storage key to use.  If storage key type is
+      # SharedAccessKey, it must be preceded with a "?."
       attr_accessor :storage_key
 
       # @return [String] The storage uri to use.
@@ -35,27 +35,26 @@ module Azure::ARM::SQL
       # @return [String] The password of the SQL administrator.
       attr_accessor :administrator_login_password
 
-      # @return [AuthenticationType] The authentication type - if not
-      # specified, will default to SQL. Possible values include: 'SQL',
-      # 'ADPassword'
+      # @return [AuthenticationType] The authentication type. Possible values
+      # include: 'SQL', 'ADPassword'. Default value: 'SQL' .
       attr_accessor :authentication_type
 
-      # @return [String] The type of Import/Export operation being performed.
-      # This is always Import. Default value: 'Import' .
+      # @return [String] The type of import operation being performed. This is
+      # always Import. Default value: 'Import' .
       attr_accessor :operation_mode
 
 
       #
-      # Mapper for ImportExtensionRequestParameters class as Ruby Hash.
+      # Mapper for ImportExtensionRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ImportExtensionRequestParameters',
+          serialized_name: 'ImportExtensionRequest',
           type: {
             name: 'Composite',
-            class_name: 'ImportExtensionRequestParameters',
+            class_name: 'ImportExtensionRequest',
             model_properties: {
               name: {
                 required: false,
@@ -110,6 +109,7 @@ module Azure::ARM::SQL
               authentication_type: {
                 required: false,
                 serialized_name: 'properties.authenticationType',
+                default_value: 'SQL',
                 type: {
                   name: 'Enum',
                   module: 'AuthenticationType'
