@@ -6,41 +6,40 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a Upgrade Hint.
+    # Subresource properties
     #
-    class UpgradeHint
+    class SubResource < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] TargetServiceLevelObjective for upgrade hint.
-      attr_accessor :target_service_level_objective
-
-      # @return TargetServiceLevelObjectiveId for upgrade hint.
-      attr_accessor :target_service_level_objective_id
+      # @return [String] Resource name
+      attr_accessor :name
 
 
       #
-      # Mapper for UpgradeHint class as Ruby Hash.
+      # Mapper for SubResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'UpgradeHint',
+          serialized_name: 'SubResource',
           type: {
             name: 'Composite',
-            class_name: 'UpgradeHint',
+            class_name: 'SubResource',
             model_properties: {
-              target_service_level_objective: {
+              name: {
                 required: false,
-                serialized_name: 'targetServiceLevelObjective',
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              target_service_level_objective_id: {
+              id: {
                 required: false,
-                serialized_name: 'targetServiceLevelObjectiveId',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }

@@ -10,11 +10,11 @@ module Azure::ARM::SQL
   # databases. The API enables you to create, retrieve, update, and delete
   # databases.
   #
-  class ElasticPools
+  class FailoverGroups
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the ElasticPools class.
+    # Creates and initializes a new instance of the FailoverGroups class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -25,112 +25,59 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Creates a new elastic pool or updates an existing elastic pool.
+    # Gets a failover group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be operated
-    # on (updated or created).
-    # @param parameters [ElasticPool] The required parameters for creating or
-    # updating an elastic pool.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ElasticPool] operation results.
+    # @return [FailoverGroupResource] operation results.
     #
-    def create_or_update(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers).value!
+    def get(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = get_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be operated
-    # on (updated or created).
-    # @param parameters [ElasticPool] The required parameters for creating or
-    # updating an elastic pool.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def create_or_update_async(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_create_or_update_async(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::SQL::Models::ElasticPool.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Deletes the elastic pool.
+    # Gets a failover group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be deleted.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def delete(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      response = delete_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be deleted.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      delete_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      get_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
     end
 
     #
-    # Deletes the elastic pool.
+    # Gets a failover group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be deleted.
+    # @param failover_group_name [String] The name of the failover group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
+    def get_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      api_version = '2015-05-01-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
+      fail ArgumentError, 'failover_group_name is nil' if failover_group_name.nil?
 
 
       request_headers = {}
@@ -138,107 +85,13 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ElasticPool] operation results.
-    #
-    def get(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      response = get_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_with_http_info(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      get_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-    end
-
-    #
-    # Gets an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_async(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'failoverGroupName' => failover_group_name},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -259,7 +112,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::ElasticPool.mapper()
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -273,7 +126,147 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of elastic pools in a server.
+    # Creates or updates a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [FailoverGroupResource] operation results.
+    #
+    def create_or_update(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, server_name, failover_group_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Deletes a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def delete(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = delete_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def delete_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, server_name, failover_group_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Updates a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [FailoverGroupResource] operation results.
+    #
+    def update(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = update_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      # Send request
+      promise = begin_update_async(resource_group_name, server_name, failover_group_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Lists the failover groups in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -282,7 +275,7 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ElasticPoolListResult] operation results.
+    # @return [FailoverGroupResourceList] operation results.
     #
     def list_by_server(resource_group_name, server_name, custom_headers = nil)
       response = list_by_server_async(resource_group_name, server_name, custom_headers).value!
@@ -290,7 +283,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of elastic pools in a server.
+    # Lists the failover groups in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -306,7 +299,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of elastic pools in a server.
+    # Lists the failover groups in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -318,7 +311,7 @@ module Azure::ARM::SQL
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_server_async(resource_group_name, server_name, custom_headers = nil)
-      api_version = '2014-04-01'
+      api_version = '2015-05-01-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
@@ -329,7 +322,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups'
 
       request_url = @base_url || @client.base_url
 
@@ -356,7 +349,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::ElasticPoolListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResourceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -370,486 +363,157 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns elastic pool activities.
+    # Sets which server is primary by failing over from the current primary server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool for which to
-    # get the current activity.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ElasticPoolActivityListResult] operation results.
+    # @return [FailoverGroupResource] operation results.
     #
-    def list_activity(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      response = list_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
+    def failover(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = failover_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns elastic pool activities.
-    #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool for which to
-    # get the current activity.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
-    def list_activity_with_http_info(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      list_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-    end
+    def failover_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      # Send request
+      promise = begin_failover_async(resource_group_name, server_name, failover_group_name, custom_headers)
 
-    #
-    # Returns elastic pool activities.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool for which to
-    # get the current activity.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/elasticPoolActivity'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::ElasticPoolActivityListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
-    # Returns activity on databases inside of an elastic pool.
+    # Sets which server is primary by failing over from the current primary server.
+    # This operation might result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ElasticPoolDatabaseActivityListResult] operation results.
+    # @return [FailoverGroupResource] operation results.
     #
-    def list_database_activity(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      response = list_database_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
+    def force_failover_allow_data_loss(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = force_failover_allow_data_loss_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns activity on databases inside of an elastic pool.
-    #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
-    def list_database_activity_with_http_info(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      list_database_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-    end
+    def force_failover_allow_data_loss_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      # Send request
+      promise = begin_force_failover_allow_data_loss_async(resource_group_name, server_name, failover_group_name, custom_headers)
 
-    #
-    # Returns activity on databases inside of an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_database_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/elasticPoolDatabaseActivity'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::ElasticPoolDatabaseActivityListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
-    # Gets a database inside of an elastic pool.
+    # Creates or updates a failover group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param database_name [String] The name of the database to be retrieved.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Database] operation results.
+    # @return [FailoverGroupResource] operation results.
     #
-    def get_database(resource_group_name, server_name, elastic_pool_name, database_name, custom_headers = nil)
-      response = get_database_async(resource_group_name, server_name, elastic_pool_name, database_name, custom_headers).value!
+    def begin_create_or_update(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a database inside of an elastic pool.
+    # Creates or updates a failover group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param database_name [String] The name of the database to be retrieved.
+    # @param failover_group_name [String] The name of the failover group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_database_with_http_info(resource_group_name, server_name, elastic_pool_name, database_name, custom_headers = nil)
-      get_database_async(resource_group_name, server_name, elastic_pool_name, database_name, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
     end
 
     #
-    # Gets a database inside of an elastic pool.
+    # Creates or updates a failover group.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param database_name [String] The name of the database to be retrieved.
+    # @param failover_group_name [String] The name of the failover group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_database_async(resource_group_name, server_name, elastic_pool_name, database_name, custom_headers = nil)
-      api_version = '2014-04-01'
+    def begin_create_or_update_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      api_version = '2015-05-01-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/databases/{databaseName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name,'databaseName' => database_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::Database.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Returns a list of databases in an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DatabaseListResult] operation results.
-    #
-    def list_databases(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      response = list_databases_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Returns a list of databases in an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_databases_with_http_info(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      list_databases_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
-    end
-
-    #
-    # Returns a list of databases in an elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be
-    # retrieved.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_databases_async(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/databases'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::DatabaseListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates a new elastic pool or updates an existing elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be operated
-    # on (updated or created).
-    # @param parameters [ElasticPool] The required parameters for creating or
-    # updating an elastic pool.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ElasticPool] operation results.
-    #
-    def begin_create_or_update(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates a new elastic pool or updates an existing elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be operated
-    # on (updated or created).
-    # @param parameters [ElasticPool] The required parameters for creating or
-    # updating an elastic pool.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_create_or_update_with_http_info(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers).value!
-    end
-
-    #
-    # Creates a new elastic pool or updates an existing elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param elastic_pool_name [String] The name of the elastic pool to be operated
-    # on (updated or created).
-    # @param parameters [ElasticPool] The required parameters for creating or
-    # updating an elastic pool.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_create_or_update_async(resource_group_name, server_name, elastic_pool_name, parameters, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, 'failover_group_name is nil' if failover_group_name.nil?
+      fail ArgumentError, '@client.failover_group is nil' if @client.failover_group.nil?
 
 
       request_headers = {}
@@ -861,17 +525,17 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::SQL::Models::ElasticPool.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+      request_content = @client.serialize(request_mapper,  @client.failover_group, '@client.failover_group')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'failoverGroupName' => failover_group_name},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -883,7 +547,7 @@ module Azure::ARM::SQL
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201 || status_code == 202
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -893,7 +557,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::ElasticPool.mapper()
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -903,7 +567,413 @@ module Azure::ARM::SQL
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::ElasticPool.mapper()
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_delete_with_http_info(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+    end
+
+    #
+    # Deletes a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      api_version = '2015-05-01-preview'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'failover_group_name is nil' if failover_group_name.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'failoverGroupName' => failover_group_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [FailoverGroupResource] operation results.
+    #
+    def begin_update(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = begin_update_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_with_http_info(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      begin_update_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+    end
+
+    #
+    # Updates a failover group.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      api_version = '2015-05-01-preview'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'failover_group_name is nil' if failover_group_name.nil?
+      fail ArgumentError, '@client.failover_group is nil' if @client.failover_group.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+      request_content = @client.serialize(request_mapper,  @client.failover_group, '@client.failover_group')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'failoverGroupName' => failover_group_name},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Sets which server is primary by failing over from the current primary server.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [FailoverGroupResource] operation results.
+    #
+    def begin_failover(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = begin_failover_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Sets which server is primary by failing over from the current primary server.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_failover_with_http_info(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      begin_failover_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+    end
+
+    #
+    # Sets which server is primary by failing over from the current primary server.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_failover_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      api_version = '2015-05-01-preview'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'failover_group_name is nil' if failover_group_name.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/failover'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'failoverGroupName' => failover_group_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Sets which server is primary by failing over from the current primary server.
+    # This operation might result in data loss.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [FailoverGroupResource] operation results.
+    #
+    def begin_force_failover_allow_data_loss(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      response = begin_force_failover_allow_data_loss_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Sets which server is primary by failing over from the current primary server.
+    # This operation might result in data loss.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_force_failover_allow_data_loss_with_http_info(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      begin_force_failover_allow_data_loss_async(resource_group_name, server_name, failover_group_name, custom_headers).value!
+    end
+
+    #
+    # Sets which server is primary by failing over from the current primary server.
+    # This operation might result in data loss.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param failover_group_name [String] The name of the failover group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_force_failover_allow_data_loss_async(resource_group_name, server_name, failover_group_name, custom_headers = nil)
+      api_version = '2015-05-01-preview'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'failover_group_name is nil' if failover_group_name.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}/forceFailoverAllowDataLoss'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'failoverGroupName' => failover_group_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::FailoverGroupResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

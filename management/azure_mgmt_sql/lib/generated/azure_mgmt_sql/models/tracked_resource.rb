@@ -6,36 +6,31 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database schema.
+    # ARM tracked top level resource.
     #
-    class Schema < MsRestAzure::Resource
+    class TrackedResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Array<Table>] The tables from this database.
-      attr_accessor :tables
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
+
+      # @return [String] Resource location.
+      attr_accessor :location
 
 
       #
-      # Mapper for Schema class as Ruby Hash.
+      # Mapper for TrackedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Schema',
+          serialized_name: 'TrackedResource',
           type: {
             name: 'Composite',
-            class_name: 'Schema',
+            class_name: 'TrackedResource',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -44,17 +39,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              type: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -73,20 +69,11 @@ module Azure::ARM::SQL
                   }
                 }
               },
-              tables: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.tables',
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'TableElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'Table'
-                      }
-                  }
+                  name: 'String'
                 }
               }
             }

@@ -8,12 +8,12 @@ module Azure::ARM::SQL
     #
     # Represents a recommented elastic pool.
     #
-    class RecommendedElasticPool < MsRestAzure::Resource
+    class RecommendedElasticPool < ProxyResource
 
       include MsRestAzure
 
-      # @return [ElasticPoolEditions] The edition of the recommended elastic
-      # pool. The ElasticPoolEditions enumeration contains all the valid
+      # @return [ElasticPoolEdition] The edition of the recommended elastic
+      # pool. The ElasticPoolEdition enumeration contains all the valid
       # editions. Possible values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :database_edition
 
@@ -62,18 +62,18 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'RecommendedElasticPool',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -84,27 +84,6 @@ module Azure::ARM::SQL
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               database_edition: {

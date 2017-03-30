@@ -8,19 +8,25 @@ module Azure::ARM::SQL
     #
     # Contains information about a database Threat Detection policy.
     #
-    class DatabaseSecurityAlertPolicy < SqlTypedSubResource
+    class DatabaseSecurityAlertPolicy < ProxyResource
 
       include MsRestAzure
+
+      # @return [String] The geo-location where the resource lives
+      attr_accessor :location
+
+      # @return [String] Resource kind.
+      attr_accessor :kind
 
       # @return [SecurityAlertPolicyState] Specifies the state of the policy.
       # If state is Enabled, storageEndpoint and storageAccountAccessKey are
       # required. Possible values include: 'New', 'Enabled', 'Disabled'
       attr_accessor :state
 
-      # @return [SecurityAlert] Specifies the comma-separated list of alerts
-      # that are disabled, or empty string to disable no alerts. Possible
-      # values include: 'Sql_Injection', 'Sql_Injection_Vulnerability',
-      # 'Access_Anomaly', 'Usage_Anomaly', 'Preview'
+      # @return [String] Specifies the semicolon-separated list of alerts that
+      # are disabled, or empty string to disable no alerts. Possible values:
+      # Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
+      # Usage_Anomaly.
       attr_accessor :disabled_alerts
 
       # @return [String] Specifies the semicolon-separated list of e-mail
@@ -65,14 +71,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'DatabaseSecurityAlertPolicy',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -81,10 +79,33 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }

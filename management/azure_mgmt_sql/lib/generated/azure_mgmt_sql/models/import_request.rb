@@ -6,46 +6,41 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Export database parameters.
+    # Import database parameters.
     #
-    class ExportRequestParameters
+    class ImportRequest < ExportRequest
 
       include MsRestAzure
 
-      # @return [StorageKeyType] The type of the storage key to use. Valid
-      # values are StorageAccessKey and SharedAccessKey. Possible values
-      # include: 'StorageAccessKey', 'SharedAccessKey'
-      attr_accessor :storage_key_type
+      # @return [String] The name of the database to import.
+      attr_accessor :database_name
 
-      # @return [String] The storage key to use.
-      attr_accessor :storage_key
+      # @return [DatabaseEdition] The edition for the database being created.
+      # Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+      # 'Premium', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
+      attr_accessor :edition
 
-      # @return [String] The storage uri to use.
-      attr_accessor :storage_uri
+      # @return [ServiceObjectiveName] The name of the service objective to
+      # assign to the database. Possible values include: 'Basic', 'S0', 'S1',
+      # 'S2', 'S3', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'System',
+      # 'System2', 'ElasticPool'
+      attr_accessor :service_objective_name
 
-      # @return [String] The name of the SQL administrator.
-      attr_accessor :administrator_login
-
-      # @return [String] The password of the SQL administrator.
-      attr_accessor :administrator_login_password
-
-      # @return [AuthenticationType] The authentication type - if not
-      # specified, will default to SQL. Possible values include: 'SQL',
-      # 'ADPassword'
-      attr_accessor :authentication_type
+      # @return [String] The maximum size for the newly imported database.
+      attr_accessor :max_size_bytes
 
 
       #
-      # Mapper for ExportRequestParameters class as Ruby Hash.
+      # Mapper for ImportRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ExportRequestParameters',
+          serialized_name: 'ImportRequest',
           type: {
             name: 'Composite',
-            class_name: 'ExportRequestParameters',
+            class_name: 'ImportRequest',
             model_properties: {
               storage_key_type: {
                 required: true,
@@ -86,9 +81,38 @@ module Azure::ARM::SQL
               authentication_type: {
                 required: false,
                 serialized_name: 'authenticationType',
+                default_value: 'SQL',
                 type: {
                   name: 'Enum',
                   module: 'AuthenticationType'
+                }
+              },
+              database_name: {
+                required: true,
+                serialized_name: 'databaseName',
+                type: {
+                  name: 'String'
+                }
+              },
+              edition: {
+                required: true,
+                serialized_name: 'edition',
+                type: {
+                  name: 'String'
+                }
+              },
+              service_objective_name: {
+                required: true,
+                serialized_name: 'serviceObjectiveName',
+                type: {
+                  name: 'String'
+                }
+              },
+              max_size_bytes: {
+                required: true,
+                serialized_name: 'maxSizeBytes',
+                type: {
+                  name: 'String'
                 }
               }
             }

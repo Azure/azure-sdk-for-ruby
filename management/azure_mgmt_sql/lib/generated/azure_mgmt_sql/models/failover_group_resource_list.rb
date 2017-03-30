@@ -6,27 +6,30 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Firewall Rules request.
+    # A list of failover groups.
     #
-    class ServerFirewallRuleListResult
+    class FailoverGroupResourceList
 
       include MsRestAzure
 
-      # @return [Array<ServerFirewallRule>] The list of server firewall rules.
+      # @return [Array<FailoverGroupResource>]
       attr_accessor :value
+
+      # @return [String]
+      attr_accessor :next_link
 
 
       #
-      # Mapper for ServerFirewallRuleListResult class as Ruby Hash.
+      # Mapper for FailoverGroupResourceList class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerFirewallRuleListResult',
+          serialized_name: 'FailoverGroupResourceList',
           type: {
             name: 'Composite',
-            class_name: 'ServerFirewallRuleListResult',
+            class_name: 'FailoverGroupResourceList',
             model_properties: {
               value: {
                 required: false,
@@ -35,12 +38,19 @@ module Azure::ARM::SQL
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ServerFirewallRuleElementType',
+                      serialized_name: 'FailoverGroupResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ServerFirewallRule'
+                        class_name: 'FailoverGroupResource'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

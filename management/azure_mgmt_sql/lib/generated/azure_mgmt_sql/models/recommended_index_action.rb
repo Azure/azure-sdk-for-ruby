@@ -6,9 +6,9 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for RecommendedIndexActions
+    # Defines values for RecommendedIndexAction
     #
-    module RecommendedIndexActions
+    module RecommendedIndexAction
       Create = "Create"
       Drop = "Drop"
       Rebuild = "Rebuild"
