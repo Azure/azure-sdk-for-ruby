@@ -322,10 +322,11 @@
       ]
     },
     "azure_mgmt_recovery_services": {
-      "swagger": "arm-recoveryservices/2016-06-01/swagger/recoveryservices.json",
+      "swagger": "arm-recoveryservices/compositeRecoveryServicesClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::RecoveryServices",
         "PackageName": "azure_mgmt_recovery_services",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_recovery_services/lib",

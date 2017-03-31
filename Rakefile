@@ -302,9 +302,10 @@ REGEN_METADATA = {
         tag: 'arm_powerbi'
     },
     azure_mgmt_recovery_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservices/2016-06-01/swagger/recoveryservices.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservices/compositeRecoveryServicesClient.json',
         ns: 'Azure::ARM::RecoveryServices',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_recovery'
     },
     azure_mgmt_recovery_services_backup: {
