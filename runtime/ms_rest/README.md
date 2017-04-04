@@ -48,7 +48,7 @@ To start working on the gem the only additional dev dependency is required - rsp
 Reference it in the gemfile and also add this line to your client's gemspec file:
 
 ```ruby
-spec.add_runtime_dependency 'ms_rest', '~> 0.6.3'
+spec.add_runtime_dependency 'ms_rest', '~> 0.6.4'
 ```
 Don't forget to correct the version.
 
