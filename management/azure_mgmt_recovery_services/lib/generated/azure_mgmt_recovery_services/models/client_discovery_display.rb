@@ -6,55 +6,65 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # ARM Resource.
+    # Localized display information of an operation.
     #
-    class Resource < MsRestAzure::Resource
+    class ClientDiscoveryDisplay
 
       include MsRestAzure
 
-      # @return [String] Optional ETag.
-      attr_accessor :e_tag
+      # @return [String] Name of the resource provider.
+      attr_accessor :provider
+
+      # @return [String] Type of the resource.
+      attr_accessor :resource
+
+      # @return [String] Name of the operation.
+      attr_accessor :operation
+
+      # @return [String] Operation description.
+      attr_accessor :description
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for ClientDiscoveryDisplay class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'ClientDiscoveryDisplay',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'ClientDiscoveryDisplay',
             model_properties: {
-              id: {
+              provider: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'Provider',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              resource: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'Resource',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              operation: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'Operation',
                 type: {
                   name: 'String'
                 }
               },
-              e_tag: {
+              description: {
                 required: false,
-                serialized_name: 'eTag',
+                read_only: true,
+                serialized_name: 'Description',
                 type: {
                   name: 'String'
                 }

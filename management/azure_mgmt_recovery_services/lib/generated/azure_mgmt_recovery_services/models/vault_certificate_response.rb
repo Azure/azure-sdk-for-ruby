@@ -6,39 +6,40 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # ARM Resource.
+    # Certificate corresponding to a vault that can be used by clients to
+    # register themselves with the vault.
     #
-    class Resource < MsRestAzure::Resource
+    class VaultCertificateResponse
 
       include MsRestAzure
 
-      # @return [String] Optional ETag.
-      attr_accessor :e_tag
+      # @return [String]
+      attr_accessor :name
+
+      # @return [String]
+      attr_accessor :type
+
+      # @return [String]
+      attr_accessor :id
+
+      # @return [ResourceCertificateDetails]
+      attr_accessor :properties
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for VaultCertificateResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'VaultCertificateResponse',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'VaultCertificateResponse',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -46,17 +47,26 @@ module Azure::ARM::RecoveryServices
               },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              e_tag: {
+              id: {
                 required: false,
-                serialized_name: 'eTag',
+                serialized_name: 'id',
                 type: {
                   name: 'String'
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  polymorphic_discriminator: 'authType',
+                  uber_parent: 'ResourceCertificateDetails',
+                  class_name: 'ResourceCertificateDetails'
                 }
               }
             }
