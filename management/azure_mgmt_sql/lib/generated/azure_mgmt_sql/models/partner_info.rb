@@ -6,48 +6,55 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Subresource properties
+    # Model object.
     #
-    class SqlTypedSubResource < SqlSubResource
+    #
+    class PartnerInfo
 
       include MsRestAzure
 
-      # @return [String] Resource type
-      attr_accessor :type
+      # @return [String] Resource identifier of the partner server.
+      attr_accessor :id
+
+      # @return [String] Geo location of the partner server.
+      attr_accessor :location
+
+      # @return [FailoverGroupReplicationRole] Replication role of the partner
+      # server. Possible values include: 'Primary', 'Secondary'
+      attr_accessor :replication_role
 
 
       #
-      # Mapper for SqlTypedSubResource class as Ruby Hash.
+      # Mapper for PartnerInfo class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SqlTypedSubResource',
+          serialized_name: 'PartnerInfo',
           type: {
             name: 'Composite',
-            class_name: 'SqlTypedSubResource',
+            class_name: 'PartnerInfo',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
-                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              type: {
+              location: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              replication_role: {
+                required: false,
+                read_only: true,
+                serialized_name: 'replicationRole',
                 type: {
                   name: 'String'
                 }

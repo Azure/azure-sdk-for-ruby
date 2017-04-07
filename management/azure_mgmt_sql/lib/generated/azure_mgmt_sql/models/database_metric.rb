@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents database metrics.
     #
-    class DatabaseMetric < SqlSubResource
+    class DatabaseMetric < SubResource
 
       include MsRestAzure
 

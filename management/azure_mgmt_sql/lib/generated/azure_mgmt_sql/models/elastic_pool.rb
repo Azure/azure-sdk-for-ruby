@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database elastic pool.
     #
-    class ElasticPool < MsRestAzure::Resource
+    class ElasticPool < TrackedResource
 
       include MsRestAzure
 
@@ -20,7 +20,7 @@ module Azure::ARM::SQL
       # values include: 'Creating', 'Ready', 'Disabled'
       attr_accessor :state
 
-      # @return [ElasticPoolEditions] The edition of the elastic pool. Possible
+      # @return [ElasticPoolEdition] The edition of the elastic pool. Possible
       # values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :edition
 
@@ -54,14 +54,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ElasticPool',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -70,17 +62,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              type: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -97,6 +90,13 @@ module Azure::ARM::SQL
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               creation_date: {

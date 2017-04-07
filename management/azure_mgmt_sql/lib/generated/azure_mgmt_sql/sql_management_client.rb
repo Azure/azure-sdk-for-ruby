@@ -21,6 +21,9 @@ module Azure::ARM::SQL
     # subscription.
     attr_accessor :subscription_id
 
+    # @return [FailoverGroupResource] The failover group.
+    attr_accessor :failover_group
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -35,14 +38,14 @@ module Azure::ARM::SQL
     # @return [Capabilities] capabilities
     attr_reader :capabilities
 
-    # @return [Servers] servers
-    attr_reader :servers
+    # @return [FirewallRules] firewall_rules
+    attr_reader :firewall_rules
 
     # @return [Databases] databases
     attr_reader :databases
 
-    # @return [ImportExportOperations] import_export_operations
-    attr_reader :import_export_operations
+    # @return [Servers] servers
+    attr_reader :servers
 
     # @return [ElasticPools] elastic_pools
     attr_reader :elastic_pools
@@ -50,12 +53,11 @@ module Azure::ARM::SQL
     # @return [RecommendedElasticPools] recommended_elastic_pools
     attr_reader :recommended_elastic_pools
 
-    # @return [DatabaseThreatDetectionPolicies]
-    # database_threat_detection_policies
-    attr_reader :database_threat_detection_policies
+    # @return [FailoverGroups] failover_groups
+    attr_reader :failover_groups
 
-    # @return [DatabaseBlobAuditingPolicies] database_blob_auditing_policies
-    attr_reader :database_blob_auditing_policies
+    # @return [VnetFirewallRules] vnet_firewall_rules
+    attr_reader :vnet_firewall_rules
 
     #
     # Creates initializes a new instance of the SqlManagementClient class.
@@ -71,13 +73,13 @@ module Azure::ARM::SQL
       @credentials = credentials
 
       @capabilities = Capabilities.new(self)
-      @servers = Servers.new(self)
+      @firewall_rules = FirewallRules.new(self)
       @databases = Databases.new(self)
-      @import_export_operations = ImportExportOperations.new(self)
+      @servers = Servers.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
-      @database_threat_detection_policies = DatabaseThreatDetectionPolicies.new(self)
-      @database_blob_auditing_policies = DatabaseBlobAuditingPolicies.new(self)
+      @failover_groups = FailoverGroups.new(self)
+      @vnet_firewall_rules = VnetFirewallRules.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -181,7 +183,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/providers/Microsoft.Sql/operations'
+      path_template = 'providers/Microsoft.Sql/operations'
 
       request_url = @base_url || self.base_url
 
@@ -207,7 +209,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::OperationListResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
