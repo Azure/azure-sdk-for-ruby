@@ -8,7 +8,7 @@ module Azure::ARM::ServiceBus
     #
     # Description of subscription resource.
     #
-    class Subscription < MsRestAzure::Resource
+    class SubscriptionResource < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -17,27 +17,19 @@ module Azure::ARM::ServiceBus
       attr_accessor :accessed_at
 
       # @return [String] TimeSpan idle interval after which the topic is
-      # automatically deleted. The minimum duration is 5 minutes. The service
-      # accepts a C# Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx.
-      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
-      # days
+      # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
       # @return [MessageCountDetails]
       attr_accessor :count_details
 
-      # @return [DateTime] Exact time the Subscription was created.
+      # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
 
       # @return [String] Default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
-      # TimeToLive is not set on a message itself. The service accepts a C#
-      # Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx .
-      # Format is 'DD.HH:MM:SS' and default value of this property is 10675199
-      # days
+      # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
       # @return [Boolean] Value that indicates whether a subscription has dead
@@ -52,9 +44,16 @@ module Azure::ARM::ServiceBus
       # operations are enabled.
       attr_accessor :enable_batched_operations
 
-      # @return [String] The lock duration time span for the subscription. The
-      # service accepts a C# Standard TimeSpan Format for loc duration
-      # https://msdn.microsoft.com/en-us/library/ee372286(v=vs.110).aspx
+      # @return [EntityAvailabilityStatus] Entity availability status for the
+      # topic. Possible values include: 'Available', 'Limited', 'Renaming',
+      # 'Restoring', 'Unknown'
+      attr_accessor :entity_availability_status
+
+      # @return [Boolean] Value that indicates whether the entity description
+      # is read-only.
+      attr_accessor :is_read_only
+
+      # @return [String] The lock duration time span for the subscription.
       attr_accessor :lock_duration
 
       # @return [Integer] Number of maximum deliveries.
@@ -73,21 +72,21 @@ module Azure::ARM::ServiceBus
       # 'SendDisabled', 'Unknown'
       attr_accessor :status
 
-      # @return [DateTime] The exact time the subscription was updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
 
       #
-      # Mapper for Subscription class as Ruby Hash.
+      # Mapper for SubscriptionResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Subscription',
+          serialized_name: 'SubscriptionResource',
           type: {
             name: 'Composite',
-            class_name: 'Subscription',
+            class_name: 'SubscriptionResource',
             model_properties: {
               id: {
                 required: false,
@@ -169,6 +168,21 @@ module Azure::ARM::ServiceBus
               enable_batched_operations: {
                 required: false,
                 serialized_name: 'properties.enableBatchedOperations',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              entity_availability_status: {
+                required: false,
+                serialized_name: 'properties.entityAvailabilityStatus',
+                type: {
+                  name: 'Enum',
+                  module: 'EntityAvailabilityStatus'
+                }
+              },
+              is_read_only: {
+                required: false,
+                serialized_name: 'properties.isReadOnly',
                 type: {
                   name: 'Boolean'
                 }

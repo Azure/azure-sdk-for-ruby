@@ -8,7 +8,7 @@ module Azure::ARM::ServiceBus
     #
     # Description of a namespace resource.
     #
-    class Namespace < TrackedResource
+    class NamespaceResource < TrackedResource
 
       include MsRestAzure
 
@@ -17,6 +17,12 @@ module Azure::ARM::ServiceBus
 
       # @return [String] Provisioning state of the namespace.
       attr_accessor :provisioning_state
+
+      # @return [NamespaceState] State of the namespace. Possible values
+      # include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
+      # 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
+      # 'Removing', 'Removed', 'Failed'
+      attr_accessor :status
 
       # @return [DateTime] The time the namespace was created.
       attr_accessor :created_at
@@ -28,21 +34,24 @@ module Azure::ARM::ServiceBus
       # operations.
       attr_accessor :service_bus_endpoint
 
-      # @return [String] Identifier for Azure Insights metrics
-      attr_accessor :metric_id
+      # @return [Boolean] Indicates whether to create an ACS namespace.
+      attr_accessor :create_acsnamespace
+
+      # @return [Boolean] Specifies whether this instance is enabled.
+      attr_accessor :enabled
 
 
       #
-      # Mapper for Namespace class as Ruby Hash.
+      # Mapper for NamespaceResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Namespace',
+          serialized_name: 'NamespaceResource',
           type: {
             name: 'Composite',
-            class_name: 'Namespace',
+            class_name: 'NamespaceResource',
             model_properties: {
               id: {
                 required: false,
@@ -105,6 +114,14 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
+              status: {
+                required: false,
+                serialized_name: 'properties.status',
+                type: {
+                  name: 'Enum',
+                  module: 'NamespaceState'
+                }
+              },
               created_at: {
                 required: false,
                 read_only: true,
@@ -129,12 +146,18 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
-              metric_id: {
+              create_acsnamespace: {
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.metricId',
+                serialized_name: 'properties.createACSNamespace',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
+                }
+              },
+              enabled: {
+                required: false,
+                serialized_name: 'properties.enabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
