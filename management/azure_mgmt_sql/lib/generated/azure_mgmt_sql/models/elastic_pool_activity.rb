@@ -8,9 +8,12 @@ module Azure::ARM::SQL
     #
     # Represents the activity on an elastic pool.
     #
-    class ElasticPoolActivity < MsRestAzure::Resource
+    class ElasticPoolActivity < ProxyResource
 
       include MsRestAzure
+
+      # @return [String] The geo-location where the resource lives
+      attr_accessor :location
 
       # @return [DateTime] The time the operation finished (ISO8601 format).
       attr_accessor :end_time
@@ -86,18 +89,18 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ElasticPoolActivity',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -111,24 +114,10 @@ module Azure::ARM::SQL
                 }
               },
               location: {
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               end_time: {

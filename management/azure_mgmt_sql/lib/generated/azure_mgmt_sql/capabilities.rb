@@ -11,7 +11,6 @@ module Azure::ARM::SQL
   # databases.
   #
   class Capabilities
-    include Azure::ARM::SQL::Models
     include MsRestAzure
 
     #
@@ -72,7 +71,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationId}/capabilities'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationId}/capabilities'
 
       request_url = @base_url || @client.base_url
 
@@ -99,7 +98,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = LocationCapabilities.mapper()
+            result_mapper = Azure::ARM::SQL::Models::LocationCapabilities.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
