@@ -21,9 +21,8 @@ module Azure::ARM::Network
       attr_accessor :ssl_policy
 
       # @return [ApplicationGatewayOperationalState] Operational state of the
-      # application gateway resource. Possible values are: 'Stopped',
-      # 'Started', 'Running', and 'Stopping'. Possible values include:
-      # 'Stopped', 'Starting', 'Running', 'Stopping'
+      # application gateway resource. Possible values include: 'Stopped',
+      # 'Starting', 'Running', 'Stopping'
       attr_accessor :operational_state
 
       # @return [Array<ApplicationGatewayIPConfiguration>] Subnets of

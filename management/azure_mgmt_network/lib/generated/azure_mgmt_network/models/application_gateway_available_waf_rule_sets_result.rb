@@ -6,39 +6,41 @@
 module Azure::ARM::Network
   module Models
     #
-    # Application gateway SSL policy.
+    # Response for ApplicationGatewayAvailableWafRuleSets API service call.
     #
-    class ApplicationGatewaySslPolicy
+    class ApplicationGatewayAvailableWafRuleSetsResult
 
       include MsRestAzure
 
-      # @return [Array<ApplicationGatewaySslProtocol>] SSL protocols to be
-      # disabled on application gateway.
-      attr_accessor :disabled_ssl_protocols
+      # @return [Array<ApplicationGatewayFirewallRuleSet>] The list of
+      # application gateway rule sets.
+      attr_accessor :value
 
 
       #
-      # Mapper for ApplicationGatewaySslPolicy class as Ruby Hash.
+      # Mapper for ApplicationGatewayAvailableWafRuleSetsResult class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ApplicationGatewaySslPolicy',
+          serialized_name: 'ApplicationGatewayAvailableWafRuleSetsResult',
           type: {
             name: 'Composite',
-            class_name: 'ApplicationGatewaySslPolicy',
+            class_name: 'ApplicationGatewayAvailableWafRuleSetsResult',
             model_properties: {
-              disabled_ssl_protocols: {
+              value: {
                 required: false,
-                serialized_name: 'disabledSslProtocols',
+                serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ApplicationGatewaySslProtocolElementType',
+                      serialized_name: 'ApplicationGatewayFirewallRuleSetElementType',
                       type: {
-                        name: 'String'
+                        name: 'Composite',
+                        class_name: 'ApplicationGatewayFirewallRuleSet'
                       }
                   }
                 }

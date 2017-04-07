@@ -17,8 +17,7 @@ module Azure::ARM::Network
       attr_accessor :private_ipaddress
 
       # @return [IPAllocationMethod] PrivateIP allocation method. Possible
-      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
-      # 'Dynamic'
+      # values include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
       # @return [SubResource] Reference of the subnet resource.

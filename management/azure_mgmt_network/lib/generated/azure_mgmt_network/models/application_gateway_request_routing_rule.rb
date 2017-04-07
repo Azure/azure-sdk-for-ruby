@@ -13,8 +13,7 @@ module Azure::ARM::Network
       include MsRestAzure
 
       # @return [ApplicationGatewayRequestRoutingRuleType] Rule type. Possible
-      # values are: 'Basic' and 'PathBasedRouting'. Possible values include:
-      # 'Basic', 'PathBasedRouting'
+      # values include: 'Basic', 'PathBasedRouting'
       attr_accessor :rule_type
 
       # @return [SubResource] Backend address pool resource of the application
