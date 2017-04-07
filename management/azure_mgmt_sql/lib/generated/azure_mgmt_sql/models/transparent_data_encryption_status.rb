@@ -6,13 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for RecommendedIndexTypes
+    # Defines values for TransparentDataEncryptionStatus
     #
-    module RecommendedIndexTypes
-      CLUSTERED = "CLUSTERED"
-      NONCLUSTERED = "NONCLUSTERED"
-      COLUMNSTORE = "COLUMNSTORE"
-      CLUSTEREDCOLUMNSTORE = "CLUSTERED COLUMNSTORE"
+    module TransparentDataEncryptionStatus
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

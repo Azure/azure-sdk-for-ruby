@@ -6,11 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TransparentDataEncryptionStates
+    # Defines values for ReadWriteEndpointFailoverPolicy
     #
-    module TransparentDataEncryptionStates
-      Enabled = "Enabled"
-      Disabled = "Disabled"
+    module ReadWriteEndpointFailoverPolicy
+      Manual = "Manual"
+      Automatic = "Automatic"
     end
   end
 end

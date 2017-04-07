@@ -6,38 +6,25 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database transparent data encryption .
+    # ARM proxy resource.
     #
-    class TransparentDataEncryption < SubResource
+    class ProxyResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [TransparentDataEncryptionStatus] The status of the database
-      # transparent data encryption. Possible values include: 'Enabled',
-      # 'Disabled'
-      attr_accessor :status
-
 
       #
-      # Mapper for TransparentDataEncryption class as Ruby Hash.
+      # Mapper for ProxyResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TransparentDataEncryption',
+          serialized_name: 'ProxyResource',
           type: {
             name: 'Composite',
-            class_name: 'TransparentDataEncryption',
+            class_name: 'ProxyResource',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -46,12 +33,20 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              status: {
+              name: {
                 required: false,
-                serialized_name: 'properties.status',
+                read_only: true,
+                serialized_name: 'name',
                 type: {
-                  name: 'Enum',
-                  module: 'TransparentDataEncryptionStatus'
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -8,9 +8,12 @@ module Azure::ARM::SQL
     #
     # Represents the activity on an elastic pool.
     #
-    class ElasticPoolDatabaseActivity < MsRestAzure::Resource
+    class ElasticPoolDatabaseActivity < ProxyResource
 
       include MsRestAzure
+
+      # @return [String] The geo-location where the resource lives
+      attr_accessor :location
 
       # @return [String] The database name.
       attr_accessor :database_name
@@ -30,7 +33,7 @@ module Azure::ARM::SQL
       # @return [String] The operation name.
       attr_accessor :operation
 
-      # @return [String] The unique operation ID.
+      # @return The unique operation ID.
       attr_accessor :operation_id
 
       # @return [Integer] The percentage complete if available.
@@ -74,18 +77,18 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ElasticPoolDatabaseActivity',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -99,24 +102,10 @@ module Azure::ARM::SQL
                 }
               },
               location: {
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               database_name: {
