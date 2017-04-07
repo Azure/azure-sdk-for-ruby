@@ -8,7 +8,6 @@ module Azure::ARM::Logic
   # REST API for Azure Logic Apps.
   #
   class WorkflowVersions
-    include Azure::ARM::Logic::Models
     include MsRestAzure
 
     #
@@ -76,7 +75,7 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions'
 
       request_url = @base_url || @client.base_url
 
@@ -103,7 +102,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowVersionListResult.mapper()
+            result_mapper = Azure::ARM::Logic::Models::WorkflowVersionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -171,7 +170,7 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions/{versionId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions/{versionId}'
 
       request_url = @base_url || @client.base_url
 
@@ -198,7 +197,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowVersion.mapper()
+            result_mapper = Azure::ARM::Logic::Models::WorkflowVersion.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -285,7 +284,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowVersionListResult.mapper()
+            result_mapper = Azure::ARM::Logic::Models::WorkflowVersionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

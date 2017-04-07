@@ -49,6 +49,11 @@ module Azure::ARM::Logic
       # 'AES256'
       attr_accessor :encryption_algorithm
 
+      # @return [SigningAlgorithm] The signing algorithm. Possible values
+      # include: 'NotSpecified', 'Default', 'SHA1', 'SHA2256', 'SHA2384',
+      # 'SHA2512'
+      attr_accessor :signing_algorithm
+
 
       #
       # Mapper for AS2ValidationSettings class as Ruby Hash.
@@ -124,6 +129,13 @@ module Azure::ARM::Logic
                 type: {
                   name: 'Enum',
                   module: 'EncryptionAlgorithm'
+                }
+              },
+              signing_algorithm: {
+                required: false,
+                serialized_name: 'signingAlgorithm',
+                type: {
+                  name: 'String'
                 }
               }
             }

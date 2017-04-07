@@ -46,6 +46,10 @@ module Azure::ARM::Logic
       # inbound MDN.
       attr_accessor :enable_nrr_for_inbound_mdn
 
+      # @return [String] The Sha2 algorithm format. Valid values are Sha2,
+      # ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
+      attr_accessor :sha2algorithm_format
+
 
       #
       # Mapper for AS2SecuritySettings class as Ruby Hash.
@@ -120,6 +124,13 @@ module Azure::ARM::Logic
                 serialized_name: 'enableNrrForInboundMdn',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              sha2algorithm_format: {
+                required: false,
+                serialized_name: 'sha2AlgorithmFormat',
+                type: {
+                  name: 'String'
                 }
               }
             }

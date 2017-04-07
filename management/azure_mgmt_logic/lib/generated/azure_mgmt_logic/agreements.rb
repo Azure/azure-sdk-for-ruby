@@ -8,7 +8,6 @@ module Azure::ARM::Logic
   # REST API for Azure Logic Apps.
   #
   class Agreements
-    include Azure::ARM::Logic::Models
     include MsRestAzure
 
     #
@@ -79,7 +78,7 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements'
 
       request_url = @base_url || @client.base_url
 
@@ -106,7 +105,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = IntegrationAccountAgreementListResult.mapper()
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountAgreementListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -174,7 +173,7 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}'
 
       request_url = @base_url || @client.base_url
 
@@ -201,7 +200,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = IntegrationAccountAgreement.mapper()
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountAgreement.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -280,11 +279,11 @@ module Azure::ARM::Logic
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = IntegrationAccountAgreement.mapper()
+      request_mapper = Azure::ARM::Logic::Models::IntegrationAccountAgreement.mapper()
       request_content = @client.serialize(request_mapper,  agreement, 'agreement')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}'
 
       request_url = @base_url || @client.base_url
 
@@ -312,7 +311,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = IntegrationAccountAgreement.mapper()
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountAgreement.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -322,7 +321,7 @@ module Azure::ARM::Logic
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = IntegrationAccountAgreement.mapper()
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountAgreement.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -389,7 +388,7 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements/{agreementName}'
 
       request_url = @base_url || @client.base_url
 
@@ -493,7 +492,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = IntegrationAccountAgreementListResult.mapper()
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountAgreementListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
