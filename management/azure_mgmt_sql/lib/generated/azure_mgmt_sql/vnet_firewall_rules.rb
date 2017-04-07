@@ -10,11 +10,11 @@ module Azure::ARM::SQL
   # databases. The API enables you to create, retrieve, update, and delete
   # databases.
   #
-  class RecommendedElasticPools
+  class VnetFirewallRules
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the RecommendedElasticPools class.
+    # Creates and initializes a new instance of the VnetFirewallRules class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -25,62 +25,59 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Gets a recommented elastic pool.
+    # Gets a virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RecommendedElasticPool] operation results.
+    # @return [VnetFirewallRule] operation results.
     #
-    def get(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      response = get_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers).value!
+    def get(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      response = get_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a recommented elastic pool.
+    # Gets a virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      get_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      get_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers).value!
     end
 
     #
-    # Gets a recommented elastic pool.
+    # Gets a virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
+    def get_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'recommended_elastic_pool_name is nil' if recommended_elastic_pool_name.nil?
+      fail ArgumentError, 'vnet_firewall_rule_name is nil' if vnet_firewall_rule_name.nil?
+      api_version = '2015-05-01-preview'
 
 
       request_headers = {}
@@ -88,13 +85,13 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{vnetFirewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'recommendedElasticPoolName' => recommended_elastic_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'vnetFirewallRuleName' => vnet_firewall_rule_name},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -115,7 +112,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::RecommendedElasticPool.mapper()
+            result_mapper = Azure::ARM::SQL::Models::VnetFirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -129,115 +126,103 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets a database inside of a recommented elastic pool.
+    # Creates or updates an existing virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the elastic pool to
-    # be retrieved.
-    # @param database_name [String] The name of the database to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param parameters [VnetFirewallRule] The requested vnetFirewall Resource
+    # state.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Database] operation results.
+    # @return [VnetFirewallRule] operation results.
     #
-    def get_databases(resource_group_name, server_name, recommended_elastic_pool_name, database_name, custom_headers = nil)
-      response = get_databases_async(resource_group_name, server_name, recommended_elastic_pool_name, database_name, custom_headers).value!
+    def create_or_update(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a database inside of a recommented elastic pool.
-    #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the elastic pool to
-    # be retrieved.
-    # @param database_name [String] The name of the database to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param parameters [VnetFirewallRule] The requested vnetFirewall Resource
+    # state.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
-    def get_databases_with_http_info(resource_group_name, server_name, recommended_elastic_pool_name, database_name, custom_headers = nil)
-      get_databases_async(resource_group_name, server_name, recommended_elastic_pool_name, database_name, custom_headers).value!
-    end
+    def create_or_update_async(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers)
 
-    #
-    # Gets a database inside of a recommented elastic pool.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the elastic pool to
-    # be retrieved.
-    # @param database_name [String] The name of the database to be retrieved.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_databases_async(resource_group_name, server_name, recommended_elastic_pool_name, database_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'recommended_elastic_pool_name is nil' if recommended_elastic_pool_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/databases/{databaseName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'recommendedElasticPoolName' => recommended_elastic_pool_name,'databaseName' => database_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::SQL::Models::VnetFirewallRule.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::Database.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
-    # Returns recommended elastic pools.
+    # Deletes the virtual network rule with the given name.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def delete(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      response = delete_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def delete_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Gets a list of virtual network rules in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -246,15 +231,15 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RecommendedElasticPoolListResult] operation results.
+    # @return [Array<VnetFirewallRule>] operation results.
     #
     def list_by_server(resource_group_name, server_name, custom_headers = nil)
-      response = list_by_server_async(resource_group_name, server_name, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_by_server_as_lazy(resource_group_name, server_name, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Returns recommended elastic pools.
+    # Gets a list of virtual network rules in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -270,7 +255,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns recommended elastic pools.
+    # Gets a list of virtual network rules in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -282,10 +267,10 @@ module Azure::ARM::SQL
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_by_server_async(resource_group_name, server_name, custom_headers = nil)
-      api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      api_version = '2015-05-01-preview'
 
 
       request_headers = {}
@@ -293,7 +278,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules'
 
       request_url = @base_url || @client.base_url
 
@@ -320,7 +305,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::RecommendedElasticPoolListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::VnetFirewallRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -334,62 +319,66 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of databases inside a recommented elastic pool.
+    # Creates or updates an existing virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param parameters [VnetFirewallRule] The requested vnetFirewall Resource
+    # state.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DatabaseListResult] operation results.
+    # @return [VnetFirewallRule] operation results.
     #
-    def list_databases(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      response = list_databases_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers).value!
+    def begin_create_or_update(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns a list of databases inside a recommented elastic pool.
+    # Creates or updates an existing virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param parameters [VnetFirewallRule] The requested vnetFirewall Resource
+    # state.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_databases_with_http_info(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      list_databases_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers).value!
     end
 
     #
-    # Returns a list of databases inside a recommented elastic pool.
+    # Creates or updates an existing virtual network rule.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param parameters [VnetFirewallRule] The requested vnetFirewall Resource
+    # state.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_databases_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
+    def begin_create_or_update_async(resource_group_name, server_name, vnet_firewall_rule_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'recommended_elastic_pool_name is nil' if recommended_elastic_pool_name.nil?
+      fail ArgumentError, 'vnet_firewall_rule_name is nil' if vnet_firewall_rule_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2015-05-01-preview'
 
 
       request_headers = {}
@@ -397,14 +386,210 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/databases'
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::SQL::Models::VnetFirewallRule.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{vnetFirewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'recommendedElasticPoolName' => recommended_elastic_pool_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'vnetFirewallRuleName' => vnet_firewall_rule_name},
           query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::VnetFirewallRule.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::VnetFirewallRule.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes the virtual network rule with the given name.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes the virtual network rule with the given name.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_delete_with_http_info(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers).value!
+    end
+
+    #
+    # Deletes the virtual network rule with the given name.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param vnet_firewall_rule_name [String] The name of the virtual network rule.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_async(resource_group_name, server_name, vnet_firewall_rule_name, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'vnet_firewall_rule_name is nil' if vnet_firewall_rule_name.nil?
+      api_version = '2015-05-01-preview'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules/{vnetFirewallRuleName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'vnetFirewallRuleName' => vnet_firewall_rule_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a list of virtual network rules in a server.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [VnetFirewallRuleListResult] operation results.
+    #
+    def list_by_server_next(next_page_link, custom_headers = nil)
+      response = list_by_server_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a list of virtual network rules in a server.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_server_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_server_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets a list of virtual network rules in a server.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_server_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -424,7 +609,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::DatabaseListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::VnetFirewallRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -438,107 +623,27 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a recommented elastic pool metrics.
+    # Gets a list of virtual network rules in a server.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RecommendedElasticPoolListMetricsResult] operation results.
+    # @return [VnetFirewallRuleListResult] which provide lazy access to pages of
+    # the response.
     #
-    def list_metrics(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      response = list_metrics_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Returns a recommented elastic pool metrics.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_metrics_with_http_info(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      list_metrics_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers).value!
-    end
-
-    #
-    # Returns a recommented elastic pool metrics.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param recommended_elastic_pool_name [String] The name of the recommended
-    # elastic pool to be retrieved.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_metrics_async(resource_group_name, server_name, recommended_elastic_pool_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'recommended_elastic_pool_name is nil' if recommended_elastic_pool_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/metrics'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'recommendedElasticPoolName' => recommended_elastic_pool_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+    def list_by_server_as_lazy(resource_group_name, server_name, custom_headers = nil)
+      response = list_by_server_async(resource_group_name, server_name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_server_next_async(next_page_link, custom_headers)
         end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::RecommendedElasticPoolListMetricsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        page
       end
-
-      promise.execute
     end
 
   end

@@ -6,39 +6,39 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Response for Import/Export List operation.
+    # Represents the response to a List Firewall Rules request.
     #
-    class ImportExportOperationListResponse
+    class FirewallRuleListResult
 
       include MsRestAzure
 
-      # @return [Array<ImportExportOperationResponse>]
+      # @return [Array<FirewallRule>] The list of server firewall rules.
       attr_accessor :value
 
 
       #
-      # Mapper for ImportExportOperationListResponse class as Ruby Hash.
+      # Mapper for FirewallRuleListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ImportExportOperationListResponse',
+          serialized_name: 'FirewallRuleListResult',
           type: {
             name: 'Composite',
-            class_name: 'ImportExportOperationListResponse',
+            class_name: 'FirewallRuleListResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ImportExportOperationResponseElementType',
+                      serialized_name: 'FirewallRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ImportExportOperationResponse'
+                        class_name: 'FirewallRule'
                       }
                   }
                 }

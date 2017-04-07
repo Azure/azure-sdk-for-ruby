@@ -6,9 +6,9 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for RecommendedIndexStates
+    # Defines values for RecommendedIndexState
     #
-    module RecommendedIndexStates
+    module RecommendedIndexState
       Active = "Active"
       Pending = "Pending"
       Executing = "Executing"

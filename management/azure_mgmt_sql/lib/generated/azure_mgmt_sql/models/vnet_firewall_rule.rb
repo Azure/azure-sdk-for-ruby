@@ -6,31 +6,36 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Subresource properties
+    # A Vnet Firewall Rule Resource.
     #
-    class SqlSubResource
+    class VnetFirewallRule < ProxyResource
 
       include MsRestAzure
 
-      # @return [String] Resource name
-      attr_accessor :name
-
-      # @return [String] The resource ID.
-      attr_accessor :id
+      # @return [String] The VnetSubnetId
+      attr_accessor :virtual_network_subnet_id
 
 
       #
-      # Mapper for SqlSubResource class as Ruby Hash.
+      # Mapper for VnetFirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SqlSubResource',
+          serialized_name: 'VnetFirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'SqlSubResource',
+            class_name: 'VnetFirewallRule',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -39,10 +44,17 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              virtual_network_subnet_id: {
+                required: false,
+                serialized_name: 'properties.virtualNetworkSubnetId',
                 type: {
                   name: 'String'
                 }

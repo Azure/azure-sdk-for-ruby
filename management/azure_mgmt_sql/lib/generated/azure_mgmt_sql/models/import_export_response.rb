@@ -8,18 +8,9 @@ module Azure::ARM::SQL
     #
     # Response for Import/Export Get operation.
     #
-    class ImportExportOperationResponse
+    class ImportExportResponse < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] The id returned from the server.
-      attr_accessor :id
-
-      # @return [String] The name returned from the server.
-      attr_accessor :name
-
-      # @return [String] The type returned from the server.
-      attr_accessor :type
 
       # @return [String] The request type of the operation.
       attr_accessor :request_type
@@ -50,16 +41,16 @@ module Azure::ARM::SQL
 
 
       #
-      # Mapper for ImportExportOperationResponse class as Ruby Hash.
+      # Mapper for ImportExportResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ImportExportOperationResponse',
+          serialized_name: 'ImportExportResponse',
           type: {
             name: 'Composite',
-            class_name: 'ImportExportOperationResponse',
+            class_name: 'ImportExportResponse',
             model_properties: {
               id: {
                 required: false,
