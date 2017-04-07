@@ -91,7 +91,7 @@ module Azure::ARM::Network
                 }
               },
               local_network_address_space: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.localNetworkAddressSpace',
                 type: {
                   name: 'Composite',
