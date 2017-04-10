@@ -9,7 +9,6 @@ module Azure::ARM::Graph
   # management client.
   #
   class Objects
-    include Azure::ARM::Graph::Models
     include MsRestAzure
 
     #
@@ -66,7 +65,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/me'
+      path_template = '{tenantID}/me'
 
       request_url = @base_url || @client.base_url
 
@@ -93,7 +92,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AADObject.mapper()
+            result_mapper = Azure::ARM::Graph::Models::AADObject.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -144,7 +143,7 @@ module Azure::ARM::Graph
     #
     def get_objects_by_object_ids_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '1.6-internal'
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -157,11 +156,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = GetObjectsParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::GetObjectsParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/getObjectsByObjectIds'
+      path_template = '{tenantID}/getObjectsByObjectIds'
 
       request_url = @base_url || @client.base_url
 
@@ -189,7 +188,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GetObjectsResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GetObjectsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -240,7 +239,7 @@ module Azure::ARM::Graph
     #
     def get_objects_by_object_ids_next_async(next_link, custom_headers = nil)
       fail ArgumentError, 'next_link is nil' if next_link.nil?
-      api_version = '1.6-internal'
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -249,7 +248,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/{nextLink}'
+      path_template = '{tenantID}/{nextLink}'
 
       request_url = @base_url || @client.base_url
 
@@ -277,7 +276,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GetObjectsResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GetObjectsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

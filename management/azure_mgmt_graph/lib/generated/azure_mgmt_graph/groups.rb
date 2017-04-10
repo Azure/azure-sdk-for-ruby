@@ -9,7 +9,6 @@ module Azure::ARM::Graph
   # management client.
   #
   class Groups
-    include Azure::ARM::Graph::Models
     include MsRestAzure
 
     #
@@ -80,11 +79,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = CheckGroupMembershipParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::CheckGroupMembershipParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/isMemberOf'
+      path_template = '{tenantID}/isMemberOf'
 
       request_url = @base_url || @client.base_url
 
@@ -112,7 +111,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = CheckGroupMembershipResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::CheckGroupMembershipResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -178,7 +177,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}'
+      path_template = '{tenantID}/groups/{groupObjectId}/$links/members/{memberObjectId}'
 
       request_url = @base_url || @client.base_url
 
@@ -272,11 +271,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = GroupAddMemberParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::GroupAddMemberParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/groups/{groupObjectId}/$links/members'
+      path_template = '{tenantID}/groups/{groupObjectId}/$links/members'
 
       request_url = @base_url || @client.base_url
 
@@ -354,7 +353,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/groups/{groupObjectId}'
+      path_template = '{tenantID}/groups/{groupObjectId}'
 
       request_url = @base_url || @client.base_url
 
@@ -439,11 +438,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = GroupCreateParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::GroupCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/groups'
+      path_template = '{tenantID}/groups'
 
       request_url = @base_url || @client.base_url
 
@@ -471,7 +470,7 @@ module Azure::ARM::Graph
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ADGroup.mapper()
+            result_mapper = Azure::ARM::Graph::Models::ADGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -530,7 +529,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/groups'
+      path_template = '{tenantID}/groups'
 
       request_url = @base_url || @client.base_url
 
@@ -557,7 +556,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GroupListResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GroupListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -620,7 +619,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/groups/{objectId}/members'
+      path_template = '{tenantID}/groups/{objectId}/members'
 
       request_url = @base_url || @client.base_url
 
@@ -648,7 +647,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GetObjectsResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GetObjectsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -711,7 +710,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/groups/{objectId}'
+      path_template = '{tenantID}/groups/{objectId}'
 
       request_url = @base_url || @client.base_url
 
@@ -739,7 +738,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ADGroup.mapper()
+            result_mapper = Azure::ARM::Graph::Models::ADGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -816,11 +815,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = GroupGetMemberGroupsParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::GroupGetMemberGroupsParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/groups/{objectId}/getMemberGroups'
+      path_template = '{tenantID}/groups/{objectId}/getMemberGroups'
 
       request_url = @base_url || @client.base_url
 
@@ -849,7 +848,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GroupGetMemberGroupsResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GroupGetMemberGroupsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -909,7 +908,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/{nextLink}'
+      path_template = '{tenantID}/{nextLink}'
 
       request_url = @base_url || @client.base_url
 
@@ -937,7 +936,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GroupListResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GroupListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -997,7 +996,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/{nextLink}'
+      path_template = '{tenantID}/{nextLink}'
 
       request_url = @base_url || @client.base_url
 
@@ -1025,7 +1024,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GetObjectsResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::GetObjectsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
