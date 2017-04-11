@@ -9,6 +9,9 @@ module Azure::ARM::AnalysisServices
     # Defines values for SkuName
     #
     module SkuName
+      B1 = "B1"
+      B2 = "B2"
+      S0 = "S0"
       S1 = "S1"
       S2 = "S2"
       S4 = "S4"

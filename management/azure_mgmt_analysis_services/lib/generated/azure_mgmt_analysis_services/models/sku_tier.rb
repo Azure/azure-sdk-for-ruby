@@ -10,6 +10,7 @@ module Azure::ARM::AnalysisServices
     #
     module SkuTier
       Development = "Development"
+      Basic = "Basic"
       Standard = "Standard"
     end
   end
