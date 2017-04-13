@@ -45,6 +45,9 @@ module Azure::ARM::Logic
       # @return Gets the tracked properties.
       attr_accessor :tracked_properties
 
+      # @return [Array<RetryHistory>] Gets the retry histories.
+      attr_accessor :retry_history
+
       # @return [String] Gets the workflow run action name.
       attr_accessor :name
 
@@ -153,6 +156,21 @@ module Azure::ARM::Logic
                 serialized_name: 'properties.trackedProperties',
                 type: {
                   name: 'Object'
+                }
+              },
+              retry_history: {
+                required: false,
+                serialized_name: 'properties.retryHistory',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RetryHistoryElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'RetryHistory'
+                      }
+                  }
                 }
               },
               name: {
