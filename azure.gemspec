@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('faraday',                 '~> 0.9')
   s.add_runtime_dependency('faraday_middleware',      '~> 0.10')
   s.add_runtime_dependency('mime-types',              ['>= 1', '< 4.0'])  # vagrant-share and other stuff relies on 1
-  if RUBY_VERSION.match(/(^1\.9.*)|(^2\.0.*)/)
+  if RUBY_VERSION < "2.1.0"
     s.add_runtime_dependency('nokogiri',              '~> 1.6.0')
   else
     s.add_runtime_dependency('nokogiri',              '~> 1.7')
