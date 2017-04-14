@@ -6,8 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Model object.
-    #
+    # Read-write endpoint of the failover group instance.
     #
     class FailoverGroupReadWriteEndpoint
 

@@ -6,54 +6,55 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Partner server information for the failover group.
+    # A Vnet Firewall Rule Resource.
     #
-    class PartnerInfo
+    class VnetFirewallRule < ProxyResource
 
       include MsRestAzure
 
-      # @return [String] Resource identifier of the partner server.
-      attr_accessor :id
-
-      # @return [String] Geo location of the partner server.
-      attr_accessor :location
-
-      # @return [FailoverGroupReplicationRole] Replication role of the partner
-      # server. Possible values include: 'Primary', 'Secondary'
-      attr_accessor :replication_role
+      # @return [String] The VnetSubnetId
+      attr_accessor :virtual_network_subnet_id
 
 
       #
-      # Mapper for PartnerInfo class as Ruby Hash.
+      # Mapper for VnetFirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PartnerInfo',
+          serialized_name: 'VnetFirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'PartnerInfo',
+            class_name: 'VnetFirewallRule',
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'location',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              replication_role: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'replicationRole',
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              virtual_network_subnet_id: {
+                required: false,
+                serialized_name: 'properties.virtualNetworkSubnetId',
                 type: {
                   name: 'String'
                 }
