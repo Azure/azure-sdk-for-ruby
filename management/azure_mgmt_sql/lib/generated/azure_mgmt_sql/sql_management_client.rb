@@ -21,9 +21,6 @@ module Azure::ARM::SQL
     # subscription.
     attr_accessor :subscription_id
 
-    # @return [FailoverGroupResource] The failover group.
-    attr_accessor :failover_group
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -53,8 +50,14 @@ module Azure::ARM::SQL
     # @return [RecommendedElasticPools] recommended_elastic_pools
     attr_reader :recommended_elastic_pools
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [FailoverGroups] failover_groups
     attr_reader :failover_groups
+
+    # @return [VnetFirewallRules] vnet_firewall_rules
+    attr_reader :vnet_firewall_rules
 
     #
     # Creates initializes a new instance of the SqlManagementClient class.
@@ -75,7 +78,9 @@ module Azure::ARM::SQL
       @servers = Servers.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
+      @operations = Operations.new(self)
       @failover_groups = FailoverGroups.new(self)
+      @vnet_firewall_rules = VnetFirewallRules.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -135,87 +140,6 @@ module Azure::ARM::SQL
       options.merge!({credentials: @credentials}) unless @credentials.nil?
 
       super(request_url, method, path, options)
-    end
-
-    #
-    # Lists all of the available SQL Rest API operations.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationListResult] operation results.
-    #
-    def list_operations(custom_headers = nil)
-      response = list_operations_async(custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists all of the available SQL Rest API operations.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_operations_with_http_info(custom_headers = nil)
-      list_operations_async(custom_headers).value!
-    end
-
-    #
-    # Lists all of the available SQL Rest API operations.
-    #
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_operations_async(custom_headers = nil)
-      api_version = '2014-04-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = 'providers/Microsoft.Sql/operations'
-
-      request_url = @base_url || self.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = self.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Models::OperationListResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
     end
 
 

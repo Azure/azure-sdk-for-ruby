@@ -6,13 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Contains information about failover group.
+    # A failover group.
     #
-    class FailoverGroupResource < ProxyResource
+    class FailoverGroup < ProxyResource
 
       include MsRestAzure
 
-      # @return [String] The geo-location where the resource lives.
+      # @return [String] Resource location.
       attr_accessor :location
 
       # @return [Hash{String => String}] Resource tags.
@@ -43,16 +43,16 @@ module Azure::ARM::SQL
 
 
       #
-      # Mapper for FailoverGroupResource class as Ruby Hash.
+      # Mapper for FailoverGroup class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'FailoverGroupResource',
+          serialized_name: 'FailoverGroup',
           type: {
             name: 'Composite',
-            class_name: 'FailoverGroupResource',
+            class_name: 'FailoverGroup',
             model_properties: {
               id: {
                 required: false,
@@ -80,6 +80,7 @@ module Azure::ARM::SQL
               },
               location: {
                 required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
