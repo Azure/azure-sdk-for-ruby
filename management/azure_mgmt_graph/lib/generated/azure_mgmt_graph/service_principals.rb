@@ -9,7 +9,6 @@ module Azure::ARM::Graph
   # management client.
   #
   class ServicePrincipals
-    include Azure::ARM::Graph::Models
     include MsRestAzure
 
     #
@@ -77,11 +76,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ServicePrincipalCreateParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::ServicePrincipalCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/servicePrincipals'
+      path_template = '{tenantID}/servicePrincipals'
 
       request_url = @base_url || @client.base_url
 
@@ -109,7 +108,7 @@ module Azure::ARM::Graph
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServicePrincipal.mapper()
+            result_mapper = Azure::ARM::Graph::Models::ServicePrincipal.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -168,7 +167,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/servicePrincipals'
+      path_template = '{tenantID}/servicePrincipals'
 
       request_url = @base_url || @client.base_url
 
@@ -195,7 +194,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServicePrincipalListResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::ServicePrincipalListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -254,7 +253,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/servicePrincipals/{objectId}'
+      path_template = '{tenantID}/servicePrincipals/{objectId}'
 
       request_url = @base_url || @client.base_url
 
@@ -332,7 +331,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/servicePrincipals/{objectId}'
+      path_template = '{tenantID}/servicePrincipals/{objectId}'
 
       request_url = @base_url || @client.base_url
 
@@ -360,7 +359,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServicePrincipal.mapper()
+            result_mapper = Azure::ARM::Graph::Models::ServicePrincipal.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -423,7 +422,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/servicePrincipals/{objectId}/keyCredentials'
+      path_template = '{tenantID}/servicePrincipals/{objectId}/keyCredentials'
 
       request_url = @base_url || @client.base_url
 
@@ -451,7 +450,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = KeyCredentialListResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::KeyCredentialListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -524,11 +523,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = KeyCredentialsUpdateParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::KeyCredentialsUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/servicePrincipals/{objectId}/keyCredentials'
+      path_template = '{tenantID}/servicePrincipals/{objectId}/keyCredentials'
 
       request_url = @base_url || @client.base_url
 
@@ -607,7 +606,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/servicePrincipals/{objectId}/passwordCredentials'
+      path_template = '{tenantID}/servicePrincipals/{objectId}/passwordCredentials'
 
       request_url = @base_url || @client.base_url
 
@@ -635,7 +634,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = PasswordCredentialListResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::PasswordCredentialListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -705,11 +704,11 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = PasswordCredentialsUpdateParameters.mapper()
+      request_mapper = Azure::ARM::Graph::Models::PasswordCredentialsUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{tenantID}/servicePrincipals/{objectId}/passwordCredentials'
+      path_template = '{tenantID}/servicePrincipals/{objectId}/passwordCredentials'
 
       request_url = @base_url || @client.base_url
 
@@ -788,7 +787,7 @@ module Azure::ARM::Graph
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{tenantID}/{nextLink}'
+      path_template = '{tenantID}/{nextLink}'
 
       request_url = @base_url || @client.base_url
 
@@ -816,7 +815,7 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServicePrincipalListResult.mapper()
+            result_mapper = Azure::ARM::Graph::Models::ServicePrincipalListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

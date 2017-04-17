@@ -3,20 +3,20 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Graph
+module Azure::ARM::SQL
   module Models
     #
-    # Application list operation result.
+    # A list of Vnet Firewall Rule Resource.
     #
-    class ApplicationListResult
+    class VnetFirewallRuleListResult
 
       include MsRestAzure
 
-      # @return [Array<Application>] A collection of applications.
-      attr_accessor :value
+      # @return [String] Link to retrieve next page of results.
+      attr_accessor :next_link
 
-      # @return [String] The URL to get the next set of results.
-      attr_accessor :odatanext_link
+      # @return [Array<VnetFirewallRule>] Array of results.
+      attr_accessor :value
 
       # return [Proc] with next page method call.
       attr_accessor :next_method
@@ -24,12 +24,12 @@ module Azure::ARM::Graph
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Application>] operation results.
+      # @return [Array<VnetFirewallRule>] operation results.
       #
       def get_all_items
         items = @value
         page = self
-        while page.odatanext_link != nil do
+        while page.next_link != nil do
           page = page.get_next_page
           items.concat(page.value)
         end
@@ -39,29 +39,37 @@ module Azure::ARM::Graph
       #
       # Gets the next page of results.
       #
-      # @return [ApplicationListResult] with next page content.
+      # @return [VnetFirewallRuleListResult] with next page content.
       #
       def get_next_page
-        response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
+        response = @next_method.call(@next_link).value! unless @next_method.nil?
         unless response.nil?
-          @odatanext_link = response.body.odatanext_link
+          @next_link = response.body.next_link
           @value = response.body.value
           self
         end
       end
 
       #
-      # Mapper for ApplicationListResult class as Ruby Hash.
+      # Mapper for VnetFirewallRuleListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ApplicationListResult',
+          serialized_name: 'VnetFirewallRuleListResult',
           type: {
             name: 'Composite',
-            class_name: 'ApplicationListResult',
+            class_name: 'VnetFirewallRuleListResult',
             model_properties: {
+              next_link: {
+                required: false,
+                read_only: true,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
+                }
+              },
               value: {
                 required: false,
                 serialized_name: 'value',
@@ -69,19 +77,12 @@ module Azure::ARM::Graph
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ApplicationElementType',
+                      serialized_name: 'VnetFirewallRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Application'
+                        class_name: 'VnetFirewallRule'
                       }
                   }
-                }
-              },
-              odatanext_link: {
-                required: false,
-                serialized_name: 'odata\\.nextLink',
-                type: {
-                  name: 'String'
                 }
               }
             }

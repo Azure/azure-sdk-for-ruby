@@ -113,7 +113,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -242,7 +242,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces'
 
       request_url = @base_url || @client.base_url
 
@@ -329,7 +329,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces'
 
       request_url = @base_url || @client.base_url
 
@@ -514,7 +514,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces'
 
       request_url = @base_url || @client.base_url
 
@@ -608,7 +608,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces'
 
       request_url = @base_url || @client.base_url
 
@@ -713,7 +713,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -803,7 +803,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -899,7 +899,7 @@ module Azure::ARM::Network
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1001,7 +1001,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable'
 
       request_url = @base_url || @client.base_url
 
@@ -1092,7 +1092,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups'
 
       request_url = @base_url || @client.base_url
 

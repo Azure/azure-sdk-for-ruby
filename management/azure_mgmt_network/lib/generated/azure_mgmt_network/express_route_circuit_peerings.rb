@@ -116,7 +116,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
 
       request_url = @base_url || @client.base_url
 
@@ -255,7 +255,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings'
 
       request_url = @base_url || @client.base_url
 
@@ -349,7 +349,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
 
       request_url = @base_url || @client.base_url
 
@@ -449,7 +449,7 @@ module Azure::ARM::Network
       request_content = @client.serialize(request_mapper,  peering_parameters, 'peering_parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}'
 
       request_url = @base_url || @client.base_url
 
