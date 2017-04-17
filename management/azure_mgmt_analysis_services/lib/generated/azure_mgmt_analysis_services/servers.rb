@@ -10,7 +10,6 @@ module Azure::ARM::AnalysisServices
   # Services servers
   #
   class Servers
-    include Azure::ARM::AnalysisServices::Models
     include MsRestAzure
 
     #
@@ -84,7 +83,7 @@ module Azure::ARM::AnalysisServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
 
       request_url = @base_url || @client.base_url
 
@@ -111,7 +110,7 @@ module Azure::ARM::AnalysisServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AnalysisServicesServer.mapper()
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -166,7 +165,7 @@ module Azure::ARM::AnalysisServices
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = AnalysisServicesServer.mapper()
+          result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -292,11 +291,11 @@ module Azure::ARM::AnalysisServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = AnalysisServicesServerUpdateParameters.mapper()
+      request_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServerUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  server_update_parameters, 'server_update_parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
 
       request_url = @base_url || @client.base_url
 
@@ -324,7 +323,7 @@ module Azure::ARM::AnalysisServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AnalysisServicesServer.mapper()
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -478,7 +477,7 @@ module Azure::ARM::AnalysisServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers'
 
       request_url = @base_url || @client.base_url
 
@@ -505,7 +504,7 @@ module Azure::ARM::AnalysisServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AnalysisServicesServers.mapper()
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServers.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -561,7 +560,7 @@ module Azure::ARM::AnalysisServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers'
 
       request_url = @base_url || @client.base_url
 
@@ -588,7 +587,7 @@ module Azure::ARM::AnalysisServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AnalysisServicesServers.mapper()
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServers.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -675,11 +674,11 @@ module Azure::ARM::AnalysisServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = AnalysisServicesServer.mapper()
+      request_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
       request_content = @client.serialize(request_mapper,  server_parameters, 'server_parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
 
       request_url = @base_url || @client.base_url
 
@@ -707,7 +706,7 @@ module Azure::ARM::AnalysisServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AnalysisServicesServer.mapper()
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -717,7 +716,7 @@ module Azure::ARM::AnalysisServices
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AnalysisServicesServer.mapper()
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -789,7 +788,7 @@ module Azure::ARM::AnalysisServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
 
       request_url = @base_url || @client.base_url
 
@@ -878,7 +877,7 @@ module Azure::ARM::AnalysisServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend'
 
       request_url = @base_url || @client.base_url
 
@@ -967,7 +966,7 @@ module Azure::ARM::AnalysisServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume'
 
       request_url = @base_url || @client.base_url
 
