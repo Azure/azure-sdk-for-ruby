@@ -850,6 +850,180 @@ module Azure::ARM::Logic
     end
 
     #
+    # Gets an OpenAPI definition for the workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def list_swagger(resource_group_name, workflow_name, custom_headers = nil)
+      response = list_swagger_async(resource_group_name, workflow_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets an OpenAPI definition for the workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_swagger_with_http_info(resource_group_name, workflow_name, custom_headers = nil)
+      list_swagger_async(resource_group_name, workflow_name, custom_headers).value!
+    end
+
+    #
+    # Gets an OpenAPI definition for the workflow.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_swagger_async(resource_group_name, workflow_name, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/listSwagger'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Regenerates the callback URL access key for request triggers.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param key_type [RegenerateActionParameter] The access key type.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def regenerate_access_key(resource_group_name, workflow_name, key_type, custom_headers = nil)
+      response = regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers).value!
+      nil
+    end
+
+    #
+    # Regenerates the callback URL access key for request triggers.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param key_type [RegenerateActionParameter] The access key type.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def regenerate_access_key_with_http_info(resource_group_name, workflow_name, key_type, custom_headers = nil)
+      regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers).value!
+    end
+
+    #
+    # Regenerates the callback URL access key for request triggers.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param workflow_name [String] The workflow name.
+    # @param key_type [RegenerateActionParameter] The access key type.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def regenerate_access_key_async(resource_group_name, workflow_name, key_type, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
+      fail ArgumentError, 'key_type is nil' if key_type.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Logic::Models::RegenerateActionParameter.mapper()
+      request_content = @client.serialize(request_mapper,  key_type, 'key_type')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/regenerateAccessKey'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Validates the workflow definition.
     #
     # @param resource_group_name [String] The resource group name.
