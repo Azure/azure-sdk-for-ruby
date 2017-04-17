@@ -6,52 +6,43 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # The response model for a list of Vaults.
+    # Operation properties.
     #
-    class VaultList
+    class ClientDiscoveryForServiceSpecification
 
       include MsRestAzure
 
-      # @return [Array<Vault>]
-      attr_accessor :value
-
-      # @return [String]
-      attr_accessor :next_link
+      # @return [Array<ClientDiscoveryForLogSpecification>] List of log
+      # specifications of this operation.
+      attr_accessor :log_specifications
 
 
       #
-      # Mapper for VaultList class as Ruby Hash.
+      # Mapper for ClientDiscoveryForServiceSpecification class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultList',
+          serialized_name: 'ClientDiscoveryForServiceSpecification',
           type: {
             name: 'Composite',
-            class_name: 'VaultList',
+            class_name: 'ClientDiscoveryForServiceSpecification',
             model_properties: {
-              value: {
+              log_specifications: {
                 required: false,
-                serialized_name: 'value',
+                read_only: true,
+                serialized_name: 'logSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'VaultElementType',
+                      serialized_name: 'ClientDiscoveryForLogSpecificationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Vault'
+                        class_name: 'ClientDiscoveryForLogSpecification'
                       }
                   }
-                }
-              },
-              next_link: {
-                required: false,
-                read_only: true,
-                serialized_name: 'nextLink',
-                type: {
-                  name: 'String'
                 }
               }
             }

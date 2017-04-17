@@ -6,36 +6,34 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # ARM Resource.
+    # Log specification for the operation.
     #
-    class Resource < MsRestAzure::Resource
+    class ClientDiscoveryForLogSpecification
 
       include MsRestAzure
 
-      # @return [String] Optional ETag.
-      attr_accessor :e_tag
+      # @return [String] Name of the log.
+      attr_accessor :name
+
+      # @return [String] Localized display name.
+      attr_accessor :display_name
+
+      # @return [DateTime] Blob duration.
+      attr_accessor :blob_duration
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for ClientDiscoveryForLogSpecification class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'ClientDiscoveryForLogSpecification',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'ClientDiscoveryForLogSpecification',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
               name: {
                 required: false,
                 read_only: true,
@@ -44,19 +42,20 @@ module Azure::ARM::RecoveryServices
                   name: 'String'
                 }
               },
-              type: {
+              display_name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'displayName',
                 type: {
                   name: 'String'
                 }
               },
-              e_tag: {
+              blob_duration: {
                 required: false,
-                serialized_name: 'eTag',
+                read_only: true,
+                serialized_name: 'blobDuration',
                 type: {
-                  name: 'String'
+                  name: 'DateTime'
                 }
               }
             }

@@ -6,30 +6,30 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Resource information, as returned by the resource provider.
+    # Tracked resource with location.
     #
-    class Vault < TrackedResource
+    class TrackedResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [VaultProperties]
-      attr_accessor :properties
+      # @return [String] Resource location.
+      attr_accessor :location
 
-      # @return [Sku]
-      attr_accessor :sku
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
 
 
       #
-      # Mapper for Vault class as Ruby Hash.
+      # Mapper for TrackedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Vault',
+          serialized_name: 'TrackedResource',
           type: {
             name: 'Composite',
-            class_name: 'Vault',
+            class_name: 'TrackedResource',
             model_properties: {
               id: {
                 required: false,
@@ -81,22 +81,6 @@ module Azure::ARM::RecoveryServices
                         name: 'String'
                       }
                   }
-                }
-              },
-              properties: {
-                required: false,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Composite',
-                  class_name: 'VaultProperties'
-                }
-              },
-              sku: {
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
                 }
               }
             }

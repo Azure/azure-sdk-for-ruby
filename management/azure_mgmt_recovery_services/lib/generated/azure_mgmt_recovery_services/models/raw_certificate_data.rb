@@ -6,45 +6,45 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Properties of the vault.
+    # Raw certificate data.
     #
-    class VaultProperties
+    class RawCertificateData
 
       include MsRestAzure
 
-      # @return [String] Provisioning State.
-      attr_accessor :provisioning_state
+      # @return [AuthType] Specifies the authentication type. Possible values
+      # include: 'Invalid', 'ACS', 'AAD', 'AccessControlService',
+      # 'AzureActiveDirectory'
+      attr_accessor :auth_type
 
-      # @return [UpgradeDetails]
-      attr_accessor :upgrade_details
+      # @return [Array<Integer>] The base64 encoded certificate raw data string
+      attr_accessor :certificate
 
 
       #
-      # Mapper for VaultProperties class as Ruby Hash.
+      # Mapper for RawCertificateData class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultProperties',
+          serialized_name: 'RawCertificateData',
           type: {
             name: 'Composite',
-            class_name: 'VaultProperties',
+            class_name: 'RawCertificateData',
             model_properties: {
-              provisioning_state: {
+              auth_type: {
                 required: false,
-                read_only: true,
-                serialized_name: 'provisioningState',
+                serialized_name: 'authType',
                 type: {
                   name: 'String'
                 }
               },
-              upgrade_details: {
+              certificate: {
                 required: false,
-                serialized_name: 'upgradeDetails',
+                serialized_name: 'certificate',
                 type: {
-                  name: 'Composite',
-                  class_name: 'UpgradeDetails'
+                  name: 'ByteArray'
                 }
               }
             }

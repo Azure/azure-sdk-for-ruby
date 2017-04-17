@@ -6,30 +6,27 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # The response model for a list of Vaults.
+    # Usage for vault.
     #
-    class VaultList
+    class VaultUsageList
 
       include MsRestAzure
 
-      # @return [Array<Vault>]
+      # @return [Array<VaultUsage>] The list of usages for the given vault.
       attr_accessor :value
-
-      # @return [String]
-      attr_accessor :next_link
 
 
       #
-      # Mapper for VaultList class as Ruby Hash.
+      # Mapper for VaultUsageList class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultList',
+          serialized_name: 'VaultUsageList',
           type: {
             name: 'Composite',
-            class_name: 'VaultList',
+            class_name: 'VaultUsageList',
             model_properties: {
               value: {
                 required: false,
@@ -38,20 +35,12 @@ module Azure::ARM::RecoveryServices
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'VaultElementType',
+                      serialized_name: 'VaultUsageElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Vault'
+                        class_name: 'VaultUsage'
                       }
                   }
-                }
-              },
-              next_link: {
-                required: false,
-                read_only: true,
-                serialized_name: 'nextLink',
-                type: {
-                  name: 'String'
                 }
               }
             }

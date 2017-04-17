@@ -6,30 +6,36 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Resource information, as returned by the resource provider.
+    # Vault extended information.
     #
-    class Vault < TrackedResource
+    class VaultExtendedInfoResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [VaultProperties]
-      attr_accessor :properties
+      # @return [String] Integrity key.
+      attr_accessor :integrity_key
 
-      # @return [Sku]
-      attr_accessor :sku
+      # @return [String] Encryption key.
+      attr_accessor :encryption_key
+
+      # @return [String] Encryption key thumbprint.
+      attr_accessor :encryption_key_thumbprint
+
+      # @return [String] Algorithm.
+      attr_accessor :algorithm
 
 
       #
-      # Mapper for Vault class as Ruby Hash.
+      # Mapper for VaultExtendedInfoResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Vault',
+          serialized_name: 'VaultExtendedInfoResource',
           type: {
             name: 'Composite',
-            class_name: 'Vault',
+            class_name: 'VaultExtendedInfoResource',
             model_properties: {
               id: {
                 required: false,
@@ -62,41 +68,32 @@ module Azure::ARM::RecoveryServices
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              integrity_key: {
+                required: false,
+                serialized_name: 'properties.integrityKey',
                 type: {
                   name: 'String'
                 }
               },
-              tags: {
+              encryption_key: {
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'properties.encryptionKey',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'String'
                 }
               },
-              properties: {
+              encryption_key_thumbprint: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.encryptionKeyThumbprint',
                 type: {
-                  name: 'Composite',
-                  class_name: 'VaultProperties'
+                  name: 'String'
                 }
               },
-              sku: {
+              algorithm: {
                 required: false,
-                serialized_name: 'sku',
+                serialized_name: 'properties.algorithm',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
+                  name: 'String'
                 }
               }
             }

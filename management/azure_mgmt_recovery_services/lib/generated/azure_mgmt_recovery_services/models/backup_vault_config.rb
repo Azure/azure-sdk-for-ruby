@@ -6,30 +6,37 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Resource information, as returned by the resource provider.
+    # Backup vault config details.
     #
-    class Vault < TrackedResource
+    class BackupVaultConfig < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [VaultProperties]
-      attr_accessor :properties
+      # @return [StorageType] Storage type. Possible values include: 'Invalid',
+      # 'GeoRedundant', 'LocallyRedundant'
+      attr_accessor :storage_type
 
-      # @return [Sku]
-      attr_accessor :sku
+      # @return [StorageTypeState] Locked or Unlocked. Once a machine is
+      # registered against a resource, the storageTypeState is always Locked.
+      # Possible values include: 'Invalid', 'Locked', 'Unlocked'
+      attr_accessor :storage_type_state
+
+      # @return [EnhancedSecurityState] Enabled or Disabled. Possible values
+      # include: 'Invalid', 'Enabled', 'Disabled'
+      attr_accessor :enhanced_security_state
 
 
       #
-      # Mapper for Vault class as Ruby Hash.
+      # Mapper for BackupVaultConfig class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Vault',
+          serialized_name: 'BackupVaultConfig',
           type: {
             name: 'Composite',
-            class_name: 'Vault',
+            class_name: 'BackupVaultConfig',
             model_properties: {
               id: {
                 required: false,
@@ -62,41 +69,25 @@ module Azure::ARM::RecoveryServices
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
+              storage_type: {
+                required: false,
+                serialized_name: 'properties.storageType',
                 type: {
                   name: 'String'
                 }
               },
-              tags: {
+              storage_type_state: {
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'properties.storageTypeState',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'String'
                 }
               },
-              properties: {
+              enhanced_security_state: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.enhancedSecurityState',
                 type: {
-                  name: 'Composite',
-                  class_name: 'VaultProperties'
-                }
-              },
-              sku: {
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
+                  name: 'String'
                 }
               }
             }

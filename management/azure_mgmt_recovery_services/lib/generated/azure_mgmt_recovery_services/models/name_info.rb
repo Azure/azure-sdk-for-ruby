@@ -6,45 +6,43 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Properties of the vault.
+    # The name of usage.
     #
-    class VaultProperties
+    class NameInfo
 
       include MsRestAzure
 
-      # @return [String] Provisioning State.
-      attr_accessor :provisioning_state
+      # @return [String] Value of usage.
+      attr_accessor :value
 
-      # @return [UpgradeDetails]
-      attr_accessor :upgrade_details
+      # @return [String] Localized value of usage.
+      attr_accessor :localized_value
 
 
       #
-      # Mapper for VaultProperties class as Ruby Hash.
+      # Mapper for NameInfo class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VaultProperties',
+          serialized_name: 'NameInfo',
           type: {
             name: 'Composite',
-            class_name: 'VaultProperties',
+            class_name: 'NameInfo',
             model_properties: {
-              provisioning_state: {
+              value: {
                 required: false,
-                read_only: true,
-                serialized_name: 'provisioningState',
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }
               },
-              upgrade_details: {
+              localized_value: {
                 required: false,
-                serialized_name: 'upgradeDetails',
+                serialized_name: 'localizedValue',
                 type: {
-                  name: 'Composite',
-                  class_name: 'UpgradeDetails'
+                  name: 'String'
                 }
               }
             }

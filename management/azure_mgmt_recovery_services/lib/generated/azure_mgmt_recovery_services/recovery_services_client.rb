@@ -20,9 +20,6 @@ module Azure::ARM::RecoveryServices
     # @return [String] The subscription Id.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -34,8 +31,32 @@ module Azure::ARM::RecoveryServices
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
+    # @return [BackupVaultConfigs] backup_vault_configs
+    attr_reader :backup_vault_configs
+
+    # @return [BackupStorageConfigs] backup_storage_configs
+    attr_reader :backup_storage_configs
+
+    # @return [VaultCertificates] vault_certificates
+    attr_reader :vault_certificates
+
+    # @return [RegisteredIdentities] registered_identities
+    attr_reader :registered_identities
+
+    # @return [ReplicationUsages] replication_usages
+    attr_reader :replication_usages
+
     # @return [Vaults] vaults
     attr_reader :vaults
+
+    # @return [VaultExtendedInfoOperations] vault_extended_info_operations
+    attr_reader :vault_extended_info_operations
+
+    # @return [Usages] usages
+    attr_reader :usages
 
     #
     # Creates initializes a new instance of the RecoveryServicesClient class.
@@ -50,8 +71,15 @@ module Azure::ARM::RecoveryServices
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
+      @backup_vault_configs = BackupVaultConfigs.new(self)
+      @backup_storage_configs = BackupStorageConfigs.new(self)
+      @vault_certificates = VaultCertificates.new(self)
+      @registered_identities = RegisteredIdentities.new(self)
+      @replication_usages = ReplicationUsages.new(self)
       @vaults = Vaults.new(self)
-      @api_version = '2016-06-01'
+      @vault_extended_info_operations = VaultExtendedInfoOperations.new(self)
+      @usages = Usages.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
