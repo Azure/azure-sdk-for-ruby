@@ -24,7 +24,7 @@ module Azure::ARM::ServiceBus
       # validating the SAS token.
       attr_accessor :primary_key
 
-      # @return [String] A base64-encoded 256-bit secondary key for signing and
+      # @return [String] A base64-encoded 256-bit primary key for signing and
       # validating the SAS token.
       attr_accessor :secondary_key
 

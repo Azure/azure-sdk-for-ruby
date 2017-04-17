@@ -11,7 +11,6 @@ module Azure::ARM::SQL
   # databases.
   #
   class Databases
-    include Azure::ARM::SQL::Models
     include MsRestAzure
 
     #
@@ -26,23 +25,177 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Imports a bacpac into an existing database. The existing database must be
-    # empty.
+    # Returns a list of database restore points.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database from which to retrieve
+    # available restore points.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RestorePointListResult] operation results.
+    #
+    def list_restore_points(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = list_restore_points_async(resource_group_name, server_name, database_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Returns a list of database restore points.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database from which to retrieve
+    # available restore points.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_restore_points_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
+      list_restore_points_async(resource_group_name, server_name, database_name, custom_headers).value!
+    end
+
+    #
+    # Returns a list of database restore points.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database from which to retrieve
+    # available restore points.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_restore_points_async(resource_group_name, server_name, database_name, custom_headers = nil)
+      api_version = '2014-04-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::RestorePointListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def import(resource_group_name, server_name, parameters, custom_headers = nil)
+      response = import_async(resource_group_name, server_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def import_async(resource_group_name, server_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_import_async(resource_group_name, server_name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::SQL::Models::ImportExportResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequestParameters] The required parameters
-    # for importing a Bacpac into a database.
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImportExportOperationResponse] operation results.
+    # @return [ImportExportResponse] operation results.
     #
-    def import(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
-      response = import_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+    def create_import_operation(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      response = create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -52,22 +205,22 @@ module Azure::ARM::SQL
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequestParameters] The required parameters
-    # for importing a Bacpac into a database.
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def import_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+    def create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_import_async(resource_group_name, server_name, database_name, parameters, custom_headers)
+      promise = begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = ImportExportOperationResponse.mapper()
+          result_mapper = Azure::ARM::SQL::Models::ImportExportResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -86,12 +239,12 @@ module Azure::ARM::SQL
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequestParameters] The required parameters for
-    # exporting a database.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImportExportOperationResponse] operation results.
+    # @return [ImportExportResponse] operation results.
     #
     def export(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
       response = export_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
@@ -104,8 +257,8 @@ module Azure::ARM::SQL
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequestParameters] The required parameters for
-    # exporting a database.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -119,7 +272,7 @@ module Azure::ARM::SQL
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = ImportExportOperationResponse.mapper()
+          result_mapper = Azure::ARM::SQL::Models::ImportExportResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -197,7 +350,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}'
 
       request_url = @base_url || @client.base_url
 
@@ -292,7 +445,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}'
 
       request_url = @base_url || @client.base_url
 
@@ -319,7 +472,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ReplicationLink.mapper()
+            result_mapper = Azure::ARM::SQL::Models::ReplicationLink.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -333,7 +486,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the database replication link.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -381,7 +535,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the database replication link, which may result in data loss.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database. This operation might result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -489,7 +644,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks'
 
       request_url = @base_url || @client.base_url
 
@@ -516,7 +671,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ReplicationLinkListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::ReplicationLinkListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -540,8 +695,8 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def pause_data_warehouse(resource_group_name, server_name, database_name, custom_headers = nil)
-      response = pause_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def pause(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = pause_async(resource_group_name, server_name, database_name, custom_headers).value!
       nil
     end
 
@@ -557,9 +712,9 @@ module Azure::ARM::SQL
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def pause_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers = nil)
+    def pause_async(resource_group_name, server_name, database_name, custom_headers = nil)
       # Send request
-      promise = begin_pause_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers)
+      promise = begin_pause_async(resource_group_name, server_name, database_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -584,8 +739,8 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def resume_data_warehouse(resource_group_name, server_name, database_name, custom_headers = nil)
-      response = resume_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def resume(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = resume_async(resource_group_name, server_name, database_name, custom_headers).value!
       nil
     end
 
@@ -601,9 +756,9 @@ module Azure::ARM::SQL
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def resume_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers = nil)
+    def resume_async(resource_group_name, server_name, database_name, custom_headers = nil)
       # Send request
-      promise = begin_resume_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers)
+      promise = begin_resume_async(resource_group_name, server_name, database_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -615,110 +770,6 @@ module Azure::ARM::SQL
       end
 
       promise
-    end
-
-    #
-    # Returns a list of database restore points.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database from which to retrieve
-    # available restore points.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [RestorePointListResult] operation results.
-    #
-    def list_restore_points(resource_group_name, server_name, database_name, custom_headers = nil)
-      response = list_restore_points_async(resource_group_name, server_name, database_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Returns a list of database restore points.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database from which to retrieve
-    # available restore points.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_restore_points_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
-      list_restore_points_async(resource_group_name, server_name, database_name, custom_headers).value!
-    end
-
-    #
-    # Returns a list of database restore points.
-    #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the resource. You can obtain this value from the Azure Resource
-    # Manager API or the portal.
-    # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database from which to retrieve
-    # available restore points.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_restore_points_async(resource_group_name, server_name, database_name, custom_headers = nil)
-      api_version = '2014-04-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'database_name is nil' if database_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RestorePointListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
     end
 
     #
@@ -766,7 +817,7 @@ module Azure::ARM::SQL
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Database.mapper()
+          result_mapper = Azure::ARM::SQL::Models::Database.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -837,7 +888,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}'
 
       request_url = @base_url || @client.base_url
 
@@ -876,7 +927,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be retrieved.
     # @param expand [String] A comma separated list of child objects to expand in
-    # the response. Possible properties: serviceTierAdvisors, upgradeHint,
+    # the response. Possible properties: serviceTierAdvisors,
     # transparentDataEncryption.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -897,7 +948,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be retrieved.
     # @param expand [String] A comma separated list of child objects to expand in
-    # the response. Possible properties: serviceTierAdvisors, upgradeHint,
+    # the response. Possible properties: serviceTierAdvisors,
     # transparentDataEncryption.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -917,7 +968,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be retrieved.
     # @param expand [String] A comma separated list of child objects to expand in
-    # the response. Possible properties: serviceTierAdvisors, upgradeHint,
+    # the response. Possible properties: serviceTierAdvisors,
     # transparentDataEncryption.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -937,7 +988,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}'
 
       request_url = @base_url || @client.base_url
 
@@ -964,7 +1015,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Database.mapper()
+            result_mapper = Azure::ARM::SQL::Models::Database.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -984,6 +1035,9 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
+    # @param expand [String] A comma separated list of child objects to expand in
+    # the response. Possible properties: serviceTierAdvisors,
+    # transparentDataEncryption.
     # @param filter [String] An OData filter expression that describes a subset of
     # databases to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -991,8 +1045,8 @@ module Azure::ARM::SQL
     #
     # @return [DatabaseListResult] operation results.
     #
-    def list_by_server(resource_group_name, server_name, filter = nil, custom_headers = nil)
-      response = list_by_server_async(resource_group_name, server_name, filter, custom_headers).value!
+    def list_by_server(resource_group_name, server_name, expand = nil, filter = nil, custom_headers = nil)
+      response = list_by_server_async(resource_group_name, server_name, expand, filter, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1003,6 +1057,9 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
+    # @param expand [String] A comma separated list of child objects to expand in
+    # the response. Possible properties: serviceTierAdvisors,
+    # transparentDataEncryption.
     # @param filter [String] An OData filter expression that describes a subset of
     # databases to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1010,8 +1067,8 @@ module Azure::ARM::SQL
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_server_with_http_info(resource_group_name, server_name, filter = nil, custom_headers = nil)
-      list_by_server_async(resource_group_name, server_name, filter, custom_headers).value!
+    def list_by_server_with_http_info(resource_group_name, server_name, expand = nil, filter = nil, custom_headers = nil)
+      list_by_server_async(resource_group_name, server_name, expand, filter, custom_headers).value!
     end
 
     #
@@ -1021,6 +1078,9 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
+    # @param expand [String] A comma separated list of child objects to expand in
+    # the response. Possible properties: serviceTierAdvisors,
+    # transparentDataEncryption.
     # @param filter [String] An OData filter expression that describes a subset of
     # databases to return.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1028,7 +1088,7 @@ module Azure::ARM::SQL
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_server_async(resource_group_name, server_name, filter = nil, custom_headers = nil)
+    def list_by_server_async(resource_group_name, server_name, expand = nil, filter = nil, custom_headers = nil)
       api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -1040,14 +1100,14 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
-          query_params: {'api-version' => api_version,'$filter' => filter},
+          query_params: {'api-version' => api_version,'$expand' => expand,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1067,7 +1127,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DatabaseListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::DatabaseListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1141,7 +1201,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages'
 
       request_url = @base_url || @client.base_url
 
@@ -1168,7 +1228,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DatabaseMetricListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::DatabaseMetricListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1246,7 +1306,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors/{serviceTierAdvisorName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors/{serviceTierAdvisorName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1273,7 +1333,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServiceTierAdvisor.mapper()
+            result_mapper = Azure::ARM::SQL::Models::ServiceTierAdvisor.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1347,7 +1407,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors'
 
       request_url = @base_url || @client.base_url
 
@@ -1374,7 +1434,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServiceTierAdvisorListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::ServiceTierAdvisorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1462,11 +1522,11 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = TransparentDataEncryption.mapper()
+      request_mapper = Azure::ARM::SQL::Models::TransparentDataEncryption.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current'
 
       request_url = @base_url || @client.base_url
 
@@ -1494,7 +1554,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TransparentDataEncryption.mapper()
+            result_mapper = Azure::ARM::SQL::Models::TransparentDataEncryption.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1504,7 +1564,7 @@ module Azure::ARM::SQL
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TransparentDataEncryption.mapper()
+            result_mapper = Azure::ARM::SQL::Models::TransparentDataEncryption.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1581,7 +1641,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current'
 
       request_url = @base_url || @client.base_url
 
@@ -1608,7 +1668,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TransparentDataEncryption.mapper()
+            result_mapper = Azure::ARM::SQL::Models::TransparentDataEncryption.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1685,7 +1745,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current/operationResults'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current/operationResults'
 
       request_url = @base_url || @client.base_url
 
@@ -1712,7 +1772,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TransparentDataEncryptionActivityListResult.mapper()
+            result_mapper = Azure::ARM::SQL::Models::TransparentDataEncryptionActivityListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1726,69 +1786,173 @@ module Azure::ARM::SQL
     end
 
     #
-    # Imports a bacpac into an existing database. The existing database must be
-    # empty.
+    # Gets a database's threat detection policy.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequestParameters] The required parameters
-    # for importing a Bacpac into a database.
+    # @param database_name [String] The name of the database for which database
+    # Threat Detection policy is defined.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImportExportOperationResponse] operation results.
+    # @return [DatabaseSecurityAlertPolicy] operation results.
     #
-    def begin_import(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
-      response = begin_import_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+    def get_threat_detection_policy(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = get_threat_detection_policy_async(resource_group_name, server_name, database_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Imports a bacpac into an existing database. The existing database must be
-    # empty.
+    # Gets a database's threat detection policy.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequestParameters] The required parameters
-    # for importing a Bacpac into a database.
+    # @param database_name [String] The name of the database for which database
+    # Threat Detection policy is defined.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_import_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
-      begin_import_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+    def get_threat_detection_policy_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
+      get_threat_detection_policy_async(resource_group_name, server_name, database_name, custom_headers).value!
     end
 
     #
-    # Imports a bacpac into an existing database. The existing database must be
-    # empty.
+    # Gets a database's threat detection policy.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database to import into
-    # @param parameters [ImportExtensionRequestParameters] The required parameters
-    # for importing a Bacpac into a database.
+    # @param database_name [String] The name of the database for which database
+    # Threat Detection policy is defined.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_import_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+    def get_threat_detection_policy_async(resource_group_name, server_name, database_name, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
       api_version = '2014-04-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/default'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::DatabaseSecurityAlertPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a database's threat detection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # Threat Detection policy is defined.
+    # @param parameters [DatabaseSecurityAlertPolicy] The database Threat Detection
+    # policy.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DatabaseSecurityAlertPolicy] operation results.
+    #
+    def create_or_update_threat_detection_policy(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      response = create_or_update_threat_detection_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a database's threat detection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # Threat Detection policy is defined.
+    # @param parameters [DatabaseSecurityAlertPolicy] The database Threat Detection
+    # policy.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_threat_detection_policy_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      create_or_update_threat_detection_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a database's threat detection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # Threat Detection policy is defined.
+    # @param parameters [DatabaseSecurityAlertPolicy] The database Threat Detection
+    # policy.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_threat_detection_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2014-04-01'
 
 
       request_headers = {}
@@ -1800,11 +1964,11 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ImportExtensionRequestParameters.mapper()
+      request_mapper = Azure::ARM::SQL::Models::DatabaseSecurityAlertPolicy.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/import'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/default'
 
       request_url = @base_url || @client.base_url
 
@@ -1822,7 +1986,7 @@ module Azure::ARM::SQL
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1832,7 +1996,484 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ImportExportOperationResponse.mapper()
+            result_mapper = Azure::ARM::SQL::Models::DatabaseSecurityAlertPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::DatabaseSecurityAlertPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a database's blob auditing policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # blob audit policy is defined.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DatabaseBlobAuditingPolicy] operation results.
+    #
+    def get_blob_auditing_policy(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = get_blob_auditing_policy_async(resource_group_name, server_name, database_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a database's blob auditing policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # blob audit policy is defined.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_blob_auditing_policy_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
+      get_blob_auditing_policy_async(resource_group_name, server_name, database_name, custom_headers).value!
+    end
+
+    #
+    # Gets a database's blob auditing policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # blob audit policy is defined.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_blob_auditing_policy_async(resource_group_name, server_name, database_name, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      api_version = '2015-05-01-preview'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/default'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::DatabaseBlobAuditingPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a database's blob auditing policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # blob audit policy will be defined.
+    # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
+    # policy.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [DatabaseBlobAuditingPolicy] operation results.
+    #
+    def create_or_update_blob_auditing_policy(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      response = create_or_update_blob_auditing_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a database's blob auditing policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # blob audit policy will be defined.
+    # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
+    # policy.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_blob_auditing_policy_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      create_or_update_blob_auditing_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a database's blob auditing policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database for which database
+    # blob audit policy will be defined.
+    # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
+    # policy.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_blob_auditing_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2015-05-01-preview'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::SQL::Models::DatabaseBlobAuditingPolicy.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/default'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::DatabaseBlobAuditingPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::DatabaseBlobAuditingPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def begin_import(resource_group_name, server_name, parameters, custom_headers = nil)
+      response = begin_import_async(resource_group_name, server_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_import_with_http_info(resource_group_name, server_name, parameters, custom_headers = nil)
+      begin_import_async(resource_group_name, server_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Imports a bacpac into a new database.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ImportRequest] The required parameters for importing a
+    # Bacpac into a database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_import_async(resource_group_name, server_name, parameters, custom_headers = nil)
+      api_version = '2014-04-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::SQL::Models::ImportRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::ImportExportResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ImportExportResponse] operation results.
+    #
+    def begin_create_import_operation(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      response = begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_import_operation_with_http_info(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates an import operation that imports a bacpac into an existing database.
+    # The existing database must be empty.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param database_name [String] The name of the database to import into
+    # @param parameters [ImportExtensionRequest] The required parameters for
+    # importing a Bacpac into a database.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_import_operation_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
+      api_version = '2014-04-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'database_name is nil' if database_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::SQL::Models::ImportExtensionRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/import'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::ImportExportResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1853,12 +2494,12 @@ module Azure::ARM::SQL
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequestParameters] The required parameters for
-    # exporting a database.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImportExportOperationResponse] operation results.
+    # @return [ImportExportResponse] operation results.
     #
     def begin_export(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
       response = begin_export_async(resource_group_name, server_name, database_name, parameters, custom_headers).value!
@@ -1873,8 +2514,8 @@ module Azure::ARM::SQL
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequestParameters] The required parameters for
-    # exporting a database.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1892,8 +2533,8 @@ module Azure::ARM::SQL
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
     # @param database_name [String] The name of the database to be exported.
-    # @param parameters [ExportRequestParameters] The required parameters for
-    # exporting a database.
+    # @param parameters [ExportRequest] The required parameters for exporting a
+    # database.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1917,11 +2558,11 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ExportRequestParameters.mapper()
+      request_mapper = Azure::ARM::SQL::Models::ExportRequest.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export'
 
       request_url = @base_url || @client.base_url
 
@@ -1949,7 +2590,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ImportExportOperationResponse.mapper()
+            result_mapper = Azure::ARM::SQL::Models::ImportExportResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1963,7 +2604,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the database replication link.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -1982,7 +2624,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the database replication link.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -2001,7 +2644,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Failover the database replication link.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -2029,7 +2673,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/failover'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/failover'
 
       request_url = @base_url || @client.base_url
 
@@ -2060,7 +2704,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the database replication link, which may result in data loss.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database. This operation might result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -2079,7 +2724,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the database replication link, which may result in data loss.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database. This operation might result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -2098,7 +2744,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Force failover the database replication link, which may result in data loss.
+    # Sets which replica database is primary by failing over from the current
+    # primary replica database. This operation might result in data loss.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -2126,7 +2773,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss'
 
       request_url = @base_url || @client.base_url
 
@@ -2168,8 +2815,8 @@ module Azure::ARM::SQL
     # will be added to the HTTP request.
     #
     #
-    def begin_pause_data_warehouse(resource_group_name, server_name, database_name, custom_headers = nil)
-      response = begin_pause_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def begin_pause(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = begin_pause_async(resource_group_name, server_name, database_name, custom_headers).value!
       nil
     end
 
@@ -2186,8 +2833,8 @@ module Azure::ARM::SQL
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_pause_data_warehouse_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
-      begin_pause_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def begin_pause_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
+      begin_pause_async(resource_group_name, server_name, database_name, custom_headers).value!
     end
 
     #
@@ -2203,7 +2850,7 @@ module Azure::ARM::SQL
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_pause_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers = nil)
+    def begin_pause_async(resource_group_name, server_name, database_name, custom_headers = nil)
       api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -2216,7 +2863,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause'
 
       request_url = @base_url || @client.base_url
 
@@ -2258,8 +2905,8 @@ module Azure::ARM::SQL
     # will be added to the HTTP request.
     #
     #
-    def begin_resume_data_warehouse(resource_group_name, server_name, database_name, custom_headers = nil)
-      response = begin_resume_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def begin_resume(resource_group_name, server_name, database_name, custom_headers = nil)
+      response = begin_resume_async(resource_group_name, server_name, database_name, custom_headers).value!
       nil
     end
 
@@ -2276,8 +2923,8 @@ module Azure::ARM::SQL
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_resume_data_warehouse_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
-      begin_resume_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers).value!
+    def begin_resume_with_http_info(resource_group_name, server_name, database_name, custom_headers = nil)
+      begin_resume_async(resource_group_name, server_name, database_name, custom_headers).value!
     end
 
     #
@@ -2293,7 +2940,7 @@ module Azure::ARM::SQL
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_resume_data_warehouse_async(resource_group_name, server_name, database_name, custom_headers = nil)
+    def begin_resume_async(resource_group_name, server_name, database_name, custom_headers = nil)
       api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -2306,7 +2953,7 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/resume'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/resume'
 
       request_url = @base_url || @client.base_url
 
@@ -2417,11 +3064,11 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Database.mapper()
+      request_mapper = Azure::ARM::SQL::Models::Database.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}'
 
       request_url = @base_url || @client.base_url
 
@@ -2449,7 +3096,7 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Database.mapper()
+            result_mapper = Azure::ARM::SQL::Models::Database.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2459,7 +3106,7 @@ module Azure::ARM::SQL
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Database.mapper()
+            result_mapper = Azure::ARM::SQL::Models::Database.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

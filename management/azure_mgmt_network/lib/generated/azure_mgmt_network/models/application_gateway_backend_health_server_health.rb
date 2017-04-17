@@ -13,6 +13,7 @@ module Azure::ARM::Network
       Up = "Up"
       Down = "Down"
       Partial = "Partial"
+      Draining = "Draining"
     end
   end
 end

@@ -1,3 +1,6 @@
+##2017.04.04 ms_rest version 0.6.4
+* Bug fix to handle new faraday version. [Issue #182](https://github.com/Azure/vagrant-azure/issues/182)
+
 ##2017.02.06 ms_rest version 0.6.3
 * Adding JSONable mixin module to provide simple serialization / deserialization [PR #599](https://github.com/Azure/azure-sdk-for-ruby/pull/599)
 * Making credentials optional parameter for MsRest::ServiceClient [PR #626](https://github.com/Azure/azure-sdk-for-ruby/pull/626)

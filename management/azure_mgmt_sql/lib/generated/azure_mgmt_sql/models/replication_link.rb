@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database replication link.
     #
-    class ReplicationLink < SqlSubResource
+    class ReplicationLink < SubResource
 
       include MsRestAzure
 

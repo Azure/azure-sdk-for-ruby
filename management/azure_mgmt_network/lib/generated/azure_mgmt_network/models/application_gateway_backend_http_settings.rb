@@ -15,13 +15,12 @@ module Azure::ARM::Network
       # @return [Integer] Port
       attr_accessor :port
 
-      # @return [ApplicationGatewayProtocol] Protocol. Possible values are:
-      # 'Http' and 'Https'. Possible values include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values include:
+      # 'Http', 'Https'
       attr_accessor :protocol
 
       # @return [ApplicationGatewayCookieBasedAffinity] Cookie based affinity.
-      # Possible values are: 'Enabled' and 'Disabled'. Possible values include:
-      # 'Enabled', 'Disabled'
+      # Possible values include: 'Enabled', 'Disabled'
       attr_accessor :cookie_based_affinity
 
       # @return [Integer] Request timeout in seconds. Application Gateway will

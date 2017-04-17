@@ -88,7 +88,7 @@ module MsRest
   #
   # Hash of SSL options for Faraday connection. Default is nil.
   #
-  @@ssl_options = nil
+  @@ssl_options = {}
 
   #
   # Stores the SSL options to be used for Faraday connections.

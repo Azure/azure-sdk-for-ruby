@@ -14,13 +14,12 @@ module Azure::ARM::AnalysisServices
       include MsRestAzure
 
       # @return [SkuName] Name of the SKU level for the server being
-      # provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'. Possible
-      # values include: 'S1', 'S2', 'S4', 'D1'
+      # provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2',
+      # 'S4', 'D1'
       attr_accessor :name
 
       # @return [SkuTier] The name of the Azure pricing tier to which the SKU
-      # applies. Possible values are: 'Development' and 'Standard'. Possible
-      # values include: 'Development', 'Standard'
+      # applies. Possible values include: 'Development', 'Basic', 'Standard'
       attr_accessor :tier
 
 

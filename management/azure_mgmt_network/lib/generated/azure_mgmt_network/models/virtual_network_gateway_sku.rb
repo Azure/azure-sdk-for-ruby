@@ -41,14 +41,14 @@ module Azure::ARM::Network
             class_name: 'VirtualNetworkGatewaySku',
             model_properties: {
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               tier: {
-                required: true,
+                required: false,
                 serialized_name: 'tier',
                 type: {
                   name: 'String'

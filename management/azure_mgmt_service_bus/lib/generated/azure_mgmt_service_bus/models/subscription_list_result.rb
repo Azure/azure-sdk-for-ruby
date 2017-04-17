@@ -12,7 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [Array<Subscription>] Result of the List Subscriptions
+      # @return [Array<SubscriptionResource>] Result of the List Subscriptions
       # operation.
       attr_accessor :value
 
@@ -26,7 +26,7 @@ module Azure::ARM::ServiceBus
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Subscription>] operation results.
+      # @return [Array<SubscriptionResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -71,10 +71,10 @@ module Azure::ARM::ServiceBus
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SubscriptionElementType',
+                      serialized_name: 'SubscriptionResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Subscription'
+                        class_name: 'SubscriptionResource'
                       }
                   }
                 }

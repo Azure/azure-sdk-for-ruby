@@ -8,7 +8,7 @@ require 'ms_rest'
 module MsRest
   describe 'Ms Rest' do
     it 'should not use any ssl options by default' do
-      expect(MsRest.ssl_options).to be_nil
+      expect(MsRest.ssl_options).to eq({})
     end
 
     it 'should use bundled ssl certificate' do

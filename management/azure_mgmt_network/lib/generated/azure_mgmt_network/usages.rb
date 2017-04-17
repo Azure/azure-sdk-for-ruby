@@ -8,7 +8,6 @@ module Azure::ARM::Network
   # Composite Swagger for Network Client
   #
   class Usages
-    include Azure::ARM::Network::Models
     include MsRestAzure
 
     #
@@ -69,7 +68,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages'
 
       request_url = @base_url || @client.base_url
 
@@ -96,7 +95,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = UsagesListResult.mapper()
+            result_mapper = Azure::ARM::Network::Models::UsagesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -183,7 +182,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = UsagesListResult.mapper()
+            result_mapper = Azure::ARM::Network::Models::UsagesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
