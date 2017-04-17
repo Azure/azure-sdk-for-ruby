@@ -26,7 +26,7 @@ module Azure::ARM::Logic
       # @return [DateTime] The changed time.
       attr_accessor :changed_time
 
-      # @return The content.
+      # @return [String] The content.
       attr_accessor :content
 
       # @return [String] The content type.
@@ -132,7 +132,7 @@ module Azure::ARM::Logic
                 required: false,
                 serialized_name: 'properties.content',
                 type: {
-                  name: 'Object'
+                  name: 'String'
                 }
               },
               content_type: {

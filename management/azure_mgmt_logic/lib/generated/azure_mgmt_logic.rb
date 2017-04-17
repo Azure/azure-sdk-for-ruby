@@ -156,6 +156,7 @@ module Azure::ARM::Logic
     autoload :AgreementType,                                      'generated/azure_mgmt_logic/models/agreement_type.rb'
     autoload :HashingAlgorithm,                                   'generated/azure_mgmt_logic/models/hashing_algorithm.rb'
     autoload :EncryptionAlgorithm,                                'generated/azure_mgmt_logic/models/encryption_algorithm.rb'
+    autoload :SigningAlgorithm,                                   'generated/azure_mgmt_logic/models/signing_algorithm.rb'
     autoload :TrailingSeparatorPolicy,                            'generated/azure_mgmt_logic/models/trailing_separator_policy.rb'
     autoload :X12CharacterSet,                                    'generated/azure_mgmt_logic/models/x12character_set.rb'
     autoload :SegmentTerminatorSuffix,                            'generated/azure_mgmt_logic/models/segment_terminator_suffix.rb'
