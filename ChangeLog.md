@@ -1,3 +1,6 @@
+## 2017.04.17 - Azure Gems @version 0.7.8
+* Code changes to install nokogiri based on the ruby version. [#749](https://github.com/Azure/azure-sdk-for-ruby/pull/749)
+
 ## 2016.11.14 - Azure Gems @version 0.7.7
 * Fixing Relax mime-types gem pinning Issue [#482](https://github.com/Azure/azure-sdk-for-ruby/issues/482) PR [#518](https://github.com/Azure/azure-sdk-for-ruby/pull/518)
 * Fixing Azure gem has hard dependency on JSON 1.8 and fails with newer ruby versions [#482](https://github.com/Azure/azure-sdk-for-ruby/issues/490) PR [#518](https://github.com/Azure/azure-sdk-for-ruby/pull/518)
