@@ -6,42 +6,42 @@
 module Azure::ARM::SQL
   module Models
     #
-    # The database edition capabilities.
+    # The max per-database DTU capability.
     #
-    class EditionCapability
+    class ElasticPoolPerDatabaseMaxDtuCapability
 
       include MsRestAzure
 
-      # @return [String] The edition name.
-      attr_accessor :name
+      # @return [Integer] The maximum DTUs per database.
+      attr_accessor :limit
 
-      # @return [CapabilityStatus] The status of the edition. Possible values
-      # include: 'Visible', 'Available', 'Default', 'Disabled'
+      # @return [CapabilityStatus] The status of the capability. Possible
+      # values include: 'Visible', 'Available', 'Default', 'Disabled'
       attr_accessor :status
 
-      # @return [Array<ServiceObjectiveCapability>] The list of supported
-      # service objectives for the edition.
-      attr_accessor :supported_service_level_objectives
+      # @return [Array<ElasticPoolPerDatabaseMinDtuCapability>] The list of
+      # supported min database DTUs.
+      attr_accessor :supported_per_database_min_dtus
 
 
       #
-      # Mapper for EditionCapability class as Ruby Hash.
+      # Mapper for ElasticPoolPerDatabaseMaxDtuCapability class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EditionCapability',
+          serialized_name: 'ElasticPoolPerDatabaseMaxDtuCapability',
           type: {
             name: 'Composite',
-            class_name: 'EditionCapability',
+            class_name: 'ElasticPoolPerDatabaseMaxDtuCapability',
             model_properties: {
-              name: {
+              limit: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'limit',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               },
               status: {
@@ -53,18 +53,18 @@ module Azure::ARM::SQL
                   module: 'CapabilityStatus'
                 }
               },
-              supported_service_level_objectives: {
+              supported_per_database_min_dtus: {
                 required: false,
                 read_only: true,
-                serialized_name: 'supportedServiceLevelObjectives',
+                serialized_name: 'supportedPerDatabaseMinDtus',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ServiceObjectiveCapabilityElementType',
+                      serialized_name: 'ElasticPoolPerDatabaseMinDtuCapabilityElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ServiceObjectiveCapability'
+                        class_name: 'ElasticPoolPerDatabaseMinDtuCapability'
                       }
                   }
                 }

@@ -19,9 +19,13 @@ module Azure::ARM::SQL
       # values include: 'Visible', 'Available', 'Default', 'Disabled'
       attr_accessor :status
 
-      # @return [Array<EditionCapability>] The list of supported server
+      # @return [Array<EditionCapability>] The list of supported database
       # editions.
       attr_accessor :supported_editions
+
+      # @return [Array<ElasticPoolEditionCapability>] The list of supported
+      # elastic pool editions.
+      attr_accessor :supported_elastic_pool_editions
 
 
       #
@@ -65,6 +69,22 @@ module Azure::ARM::SQL
                       type: {
                         name: 'Composite',
                         class_name: 'EditionCapability'
+                      }
+                  }
+                }
+              },
+              supported_elastic_pool_editions: {
+                required: false,
+                read_only: true,
+                serialized_name: 'supportedElasticPoolEditions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ElasticPoolEditionCapabilityElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ElasticPoolEditionCapability'
                       }
                   }
                 }
