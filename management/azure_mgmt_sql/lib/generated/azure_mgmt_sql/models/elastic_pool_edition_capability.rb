@@ -6,35 +6,35 @@
 module Azure::ARM::SQL
   module Models
     #
-    # The database edition capabilities.
+    # The elastic pool edition capabilities.
     #
-    class EditionCapability
+    class ElasticPoolEditionCapability
 
       include MsRestAzure
 
-      # @return [String] The edition name.
+      # @return [String] The elastic pool edition name.
       attr_accessor :name
 
-      # @return [CapabilityStatus] The status of the edition. Possible values
-      # include: 'Visible', 'Available', 'Default', 'Disabled'
+      # @return [CapabilityStatus] The status of the elastic pool edition.
+      # Possible values include: 'Visible', 'Available', 'Default', 'Disabled'
       attr_accessor :status
 
-      # @return [Array<ServiceObjectiveCapability>] The list of supported
-      # service objectives for the edition.
-      attr_accessor :supported_service_level_objectives
+      # @return [Array<ElasticPoolDtuCapability>] The list of supported elastic
+      # pool DTU levels for the edition.
+      attr_accessor :supported_elastic_pool_dtus
 
 
       #
-      # Mapper for EditionCapability class as Ruby Hash.
+      # Mapper for ElasticPoolEditionCapability class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EditionCapability',
+          serialized_name: 'ElasticPoolEditionCapability',
           type: {
             name: 'Composite',
-            class_name: 'EditionCapability',
+            class_name: 'ElasticPoolEditionCapability',
             model_properties: {
               name: {
                 required: false,
@@ -53,18 +53,18 @@ module Azure::ARM::SQL
                   module: 'CapabilityStatus'
                 }
               },
-              supported_service_level_objectives: {
+              supported_elastic_pool_dtus: {
                 required: false,
                 read_only: true,
-                serialized_name: 'supportedServiceLevelObjectives',
+                serialized_name: 'supportedElasticPoolDtus',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ServiceObjectiveCapabilityElementType',
+                      serialized_name: 'ElasticPoolDtuCapabilityElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ServiceObjectiveCapability'
+                        class_name: 'ElasticPoolDtuCapability'
                       }
                   }
                 }
