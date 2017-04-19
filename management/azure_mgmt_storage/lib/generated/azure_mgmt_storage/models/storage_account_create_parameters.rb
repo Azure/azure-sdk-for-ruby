@@ -50,6 +50,10 @@ module Azure::ARM::Storage
       # 'Hot', 'Cool'
       attr_accessor :access_tier
 
+      # @return [Boolean] Allows https traffic only to storage service if sets
+      # to true. Default value: false .
+      attr_accessor :enable_https_traffic_only
+
 
       #
       # Mapper for StorageAccountCreateParameters class as Ruby Hash.
@@ -122,6 +126,14 @@ module Azure::ARM::Storage
                 type: {
                   name: 'Enum',
                   module: 'AccessTier'
+                }
+              },
+              enable_https_traffic_only: {
+                required: false,
+                serialized_name: 'properties.supportsHttpsTrafficOnly',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
