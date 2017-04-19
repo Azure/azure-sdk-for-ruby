@@ -26,7 +26,7 @@ module Azure::ARM::SQL
       # @return [Integer] Performance level value.
       attr_accessor :value
 
-      # @return [String] The unique ID of the service objective.
+      # @return The unique ID of the service objective.
       attr_accessor :id
 
       # @return [Array<MaxSizeCapability>] The list of supported maximum

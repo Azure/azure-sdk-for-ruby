@@ -39,6 +39,7 @@ module Azure::ARM::SQL
             model_properties: {
               service_level_objective: {
                 required: false,
+                read_only: true,
                 serialized_name: 'serviceLevelObjective',
                 type: {
                   name: 'String'
@@ -46,6 +47,7 @@ module Azure::ARM::SQL
               },
               service_level_objective_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'serviceLevelObjectiveId',
                 type: {
                   name: 'String'
@@ -53,6 +55,7 @@ module Azure::ARM::SQL
               },
               in_range_time_ratio: {
                 required: false,
+                read_only: true,
                 serialized_name: 'inRangeTimeRatio',
                 type: {
                   name: 'Double'

@@ -30,7 +30,7 @@ module Azure::ARM::SQL
       # the ID of the service level objective that is currently active.
       attr_accessor :current_service_objective_id
 
-      # @return [String] The ID of the database.
+      # @return The ID of the database.
       attr_accessor :database_id
 
       # @return [DateTime] This records the earliest start date and time that
@@ -101,7 +101,7 @@ module Azure::ARM::SQL
       # value.
       attr_accessor :restore_point_in_time
 
-      # @return [DateTime] Conditional. If createMode is
+      # @return [String] Conditional. If createMode is
       # RestoreLongTermRetentionBackup, then this value is required. Specifies
       # the resource ID of the recovery point to restore from.
       attr_accessor :recovery_services_recovery_point_resource_id
@@ -336,7 +336,7 @@ module Azure::ARM::SQL
                 required: false,
                 serialized_name: 'properties.recoveryServicesRecoveryPointResourceId',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
               edition: {
