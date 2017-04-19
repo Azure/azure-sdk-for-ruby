@@ -13,6 +13,9 @@ module Azure::ARM::Network
       HighPerformance = "HighPerformance"
       Standard = "Standard"
       UltraPerformance = "UltraPerformance"
+      VpnGw1 = "VpnGw1"
+      VpnGw2 = "VpnGw2"
+      VpnGw3 = "VpnGw3"
     end
   end
 end
