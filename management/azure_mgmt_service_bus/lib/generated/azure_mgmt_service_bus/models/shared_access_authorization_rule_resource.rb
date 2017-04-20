@@ -44,6 +44,13 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
                 read_only: true,
