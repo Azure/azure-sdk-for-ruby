@@ -22,7 +22,106 @@ module Azure::ARM::EventHub
     attr_reader :client
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Check the give Namespace name availability.
+    #
+    # @param parameters [CheckNameAvailabilityParameter] Parameters to check
+    # availability of the given Namespace name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckNameAvailabilityResult] operation results.
+    #
+    def check_name_availability(parameters, custom_headers = nil)
+      response = check_name_availability_async(parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check the give Namespace name availability.
+    #
+    # @param parameters [CheckNameAvailabilityParameter] Parameters to check
+    # availability of the given Namespace name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_http_info(parameters, custom_headers = nil)
+      check_name_availability_async(parameters, custom_headers).value!
+    end
+
+    #
+    # Check the give Namespace name availability.
+    #
+    # @param parameters [CheckNameAvailabilityParameter] Parameters to check
+    # availability of the given Namespace name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_async(parameters, custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::EventHub::Models::CheckNameAvailabilityParameter.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.EventHub/CheckNameAvailability'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::EventHub::Models::CheckNameAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -36,7 +135,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -49,7 +148,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -108,9 +207,10 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -122,9 +222,10 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -135,9 +236,10 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -198,8 +300,9 @@ module Azure::ARM::EventHub
     # Creates or updates a namespace. Once created, this namespace's resource
     # manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
     # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -213,8 +316,9 @@ module Azure::ARM::EventHub
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
     # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -245,9 +349,9 @@ module Azure::ARM::EventHub
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the namespace to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -257,9 +361,9 @@ module Azure::ARM::EventHub
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the namespace to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -285,9 +389,9 @@ module Azure::ARM::EventHub
     #
     # Gets the description of the specified namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the specified namespace.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -301,9 +405,9 @@ module Azure::ARM::EventHub
     #
     # Gets the description of the specified namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the specified namespace.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -316,9 +420,9 @@ module Azure::ARM::EventHub
     #
     # Gets the description of the specified namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the specified namespace.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -353,12 +457,145 @@ module Azure::ARM::EventHub
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a namespace. Once created, this namespace's resource
+    # manifest is immutable. This operation is idempotent.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param parameters [NamespaceUpdateParameter] Parameters for updating a
+    # namespace resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [NamespaceResource] operation results.
+    #
+    def update(resource_group_name, namespace_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a namespace. Once created, this namespace's resource
+    # manifest is immutable. This operation is idempotent.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param parameters [NamespaceUpdateParameter] Parameters for updating a
+    # namespace resource.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, namespace_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, namespace_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a namespace. Once created, this namespace's resource
+    # manifest is immutable. This operation is idempotent.
+    #
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param parameters [NamespaceUpdateParameter] Parameters for updating a
+    # namespace resource.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_async(resource_group_name, namespace_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::EventHub::Models::NamespaceUpdateParameter.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
         # Deserialize Response
         if status_code == 200
           begin
@@ -377,11 +614,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -393,11 +630,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -408,11 +645,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -471,14 +708,14 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an authorization rule for a namespace.
+    # Creates or updates an AuthorizationRule for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Namespace authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # shared access AuthorizationRule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -490,14 +727,14 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an authorization rule for a namespace.
+    # Creates or updates an AuthorizationRule for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Namespace authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # shared access AuthorizationRule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -508,14 +745,14 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an authorization rule for a namespace.
+    # Creates or updates an AuthorizationRule for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Namespace authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # shared access AuthorizationRule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -585,12 +822,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an authorization rule for a namespace.
+    # Deletes an AuthorizationRule for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -601,12 +838,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an authorization rule for a namespace.
+    # Deletes an AuthorizationRule for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -617,12 +854,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an authorization rule for a namespace.
+    # Deletes an AuthorizationRule for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -672,12 +909,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets an authorization rule for a namespace by rule name.
+    # Gets an AuthorizationRule for a Namespace by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -689,12 +926,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets an authorization rule for a namespace by rule name.
+    # Gets an AuthorizationRule for a Namespace by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -705,12 +942,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets an authorization rule for a namespace by rule name.
+    # Gets an AuthorizationRule for a Namespace by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
-    # @param authorization_rule_name [String] Authorization rule name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -770,11 +1007,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets the primary and secondary connection strings for the namespace.
+    # Gets the primary and secondary connection strings for the Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -787,11 +1024,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets the primary and secondary connection strings for the namespace.
+    # Gets the primary and secondary connection strings for the Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -803,11 +1040,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets the primary and secondary connection strings for the namespace.
+    # Gets the primary and secondary connection strings for the Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -869,11 +1106,11 @@ module Azure::ARM::EventHub
 
     #
     # Regenerates the primary or secondary connection strings for the specified
-    # namespace.
+    # Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters required to
     # regenerate the connection string.
@@ -889,11 +1126,11 @@ module Azure::ARM::EventHub
 
     #
     # Regenerates the primary or secondary connection strings for the specified
-    # namespace.
+    # Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters required to
     # regenerate the connection string.
@@ -908,11 +1145,11 @@ module Azure::ARM::EventHub
 
     #
     # Regenerates the primary or secondary connection strings for the specified
-    # namespace.
+    # Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters required to
     # regenerate the connection string.
@@ -988,8 +1225,9 @@ module Azure::ARM::EventHub
     # Creates or updates a namespace. Once created, this namespace's resource
     # manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
     # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1006,8 +1244,9 @@ module Azure::ARM::EventHub
     # Creates or updates a namespace. Once created, this namespace's resource
     # manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
     # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1023,8 +1262,9 @@ module Azure::ARM::EventHub
     # Creates or updates a namespace. Once created, this namespace's resource
     # manifest is immutable. This operation is idempotent.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
     # a namespace resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1108,9 +1348,9 @@ module Azure::ARM::EventHub
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the namespace to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1124,9 +1364,9 @@ module Azure::ARM::EventHub
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the namespace to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1140,9 +1380,9 @@ module Azure::ARM::EventHub
     # Deletes an existing namespace. This operation also removes all associated
     # resources under the namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The name of the namespace to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1191,7 +1431,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1207,7 +1447,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1222,7 +1462,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
@@ -1281,7 +1521,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1296,7 +1536,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1310,7 +1550,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1368,7 +1608,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1383,7 +1623,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1397,7 +1637,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1455,7 +1695,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of the
+    # Lists all the available Namespaces within a subscription, irrespective of the
     # resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1476,9 +1716,10 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists the available namespaces within a resource group.
+    # Lists the available Namespaces within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1497,11 +1738,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets a list of authorization rules for a namespace.
+    # Gets a list of authorization rules for a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group in which
-    # the namespace lives.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

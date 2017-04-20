@@ -6,18 +6,19 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # The result of the List EventHubs operation.
+    # Result of the request to list Event Hub operations. It contains a list of
+    # operations and a URL link to get the next set of results.
     #
-    class EventHubListResult
+    class OperationListResult
 
       include MsRestAzure
 
-      # @return [Array<EventHubResource>] Result of the List EventHubs
-      # operation.
+      # @return [Array<Operation>] List of Event Hub operations supported by
+      # the Microsoft.EventHub resource provider.
       attr_accessor :value
 
-      # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of EventHubs.
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +27,7 @@ module Azure::ARM::EventHub
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<EventHubResource>] operation results.
+      # @return [Array<Operation>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +42,7 @@ module Azure::ARM::EventHub
       #
       # Gets the next page of results.
       #
-      # @return [EventHubListResult] with next page content.
+      # @return [OperationListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,34 +54,36 @@ module Azure::ARM::EventHub
       end
 
       #
-      # Mapper for EventHubListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EventHubListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'EventHubListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'EventHubResourceElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'EventHubResource'
+                        class_name: 'Operation'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

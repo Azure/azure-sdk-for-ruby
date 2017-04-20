@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # The response to the List Consumer Group operation.
+    # The result to the List Consumer Group operation.
     #
     class ConsumerGroupListResult
 

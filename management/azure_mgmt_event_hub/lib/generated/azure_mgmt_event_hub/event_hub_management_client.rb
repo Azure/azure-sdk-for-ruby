@@ -36,6 +36,9 @@ module Azure::ARM::EventHub
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
@@ -58,6 +61,7 @@ module Azure::ARM::EventHub
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
       @event_hubs = EventHubs.new(self)
       @consumer_groups = ConsumerGroups.new(self)

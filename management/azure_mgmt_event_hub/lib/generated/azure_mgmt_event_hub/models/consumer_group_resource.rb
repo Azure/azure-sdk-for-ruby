@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Description of the consumer group resource.
+    # Single item in List or Get Consumer group operation
     #
     class ConsumerGroupResource < MsRestAzure::Resource
 
@@ -59,27 +59,6 @@ module Azure::ARM::EventHub
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               created_at: {
