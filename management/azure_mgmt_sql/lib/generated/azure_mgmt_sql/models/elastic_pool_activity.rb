@@ -30,7 +30,7 @@ module Azure::ARM::SQL
       # @return [String] The operation name.
       attr_accessor :operation
 
-      # @return [String] The unique operation ID.
+      # @return The unique operation ID.
       attr_accessor :operation_id
 
       # @return [Integer] The percentage complete if available.
