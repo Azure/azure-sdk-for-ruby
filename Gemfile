@@ -12,9 +12,6 @@ group :development, :test do
   gem 'vcr'
 end
 
-puts "Debugging Code Change."
-puts RUBY_VERSION
-
 gem 'azure_mgmt_analysis_services',         path: 'management/azure_mgmt_analysis_services'
 gem 'azure_mgmt_authorization',             path: 'management/azure_mgmt_authorization'
 gem 'azure_mgmt_batch',                     path: 'management/azure_mgmt_batch'
