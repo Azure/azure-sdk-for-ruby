@@ -19,6 +19,19 @@ module Azure::ARM::DevTestLabs
       # artifact.
       attr_accessor :parameters
 
+      # @return [String] The status of the artifact.
+      attr_accessor :status
+
+      # @return [String] The status message from the deployment.
+      attr_accessor :deployment_status_message
+
+      # @return [String] The status message from the virtual machine extension.
+      attr_accessor :vm_extension_status_message
+
+      # @return [DateTime] The time that the artifact starts to install on the
+      # virtual machine.
+      attr_accessor :install_time
+
 
       #
       # Mapper for ArtifactInstallProperties class as Ruby Hash.
@@ -52,6 +65,34 @@ module Azure::ARM::DevTestLabs
                         class_name: 'ArtifactParameterProperties'
                       }
                   }
+                }
+              },
+              status: {
+                required: false,
+                serialized_name: 'status',
+                type: {
+                  name: 'String'
+                }
+              },
+              deployment_status_message: {
+                required: false,
+                serialized_name: 'deploymentStatusMessage',
+                type: {
+                  name: 'String'
+                }
+              },
+              vm_extension_status_message: {
+                required: false,
+                serialized_name: 'vmExtensionStatusMessage',
+                type: {
+                  name: 'String'
+                }
+              },
+              install_time: {
+                required: false,
+                serialized_name: 'installTime',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

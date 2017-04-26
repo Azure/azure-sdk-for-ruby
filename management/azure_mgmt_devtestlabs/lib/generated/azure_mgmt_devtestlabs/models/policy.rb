@@ -8,7 +8,7 @@ module Azure::ARM::DevTestLabs
     #
     # A Policy.
     #
-    class Policy
+    class Policy < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -19,41 +19,33 @@ module Azure::ARM::DevTestLabs
       # include: 'Enabled', 'Disabled'
       attr_accessor :status
 
-      # @return [PolicyFactName] The fact name of the policy. Possible values
-      # include: 'UserOwnedLabVmCount', 'LabVmCount', 'LabVmSize',
-      # 'GalleryImage', 'UserOwnedLabVmCountInSubnet'
+      # @return [PolicyFactName] The fact name of the policy (e.g. LabVmCount,
+      # LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
+      # 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
+      # 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
+      # 'UserOwnedLabVmCountInSubnet', 'LabTargetCost'
       attr_accessor :fact_name
 
       # @return [String] The fact data of the policy.
       attr_accessor :fact_data
 
-      # @return [String] The threshold of the policy.
+      # @return [String] The threshold of the policy (i.e. a number for
+      # MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
       attr_accessor :threshold
 
-      # @return [PolicyEvaluatorType] The evaluator type of the policy.
-      # Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'
+      # @return [PolicyEvaluatorType] The evaluator type of the policy (i.e.
+      # AllowedValuesPolicy, MaxValuePolicy). Possible values include:
+      # 'AllowedValuesPolicy', 'MaxValuePolicy'
       attr_accessor :evaluator_type
+
+      # @return [DateTime] The creation date of the policy.
+      attr_accessor :created_date
 
       # @return [String] The provisioning status of the resource.
       attr_accessor :provisioning_state
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -68,6 +60,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'Policy',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               description: {
                 required: false,
                 serialized_name: 'properties.description',
@@ -110,6 +147,14 @@ module Azure::ARM::DevTestLabs
                   name: 'String'
                 }
               },
+              created_date: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.createdDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -122,48 +167,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {
                   name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

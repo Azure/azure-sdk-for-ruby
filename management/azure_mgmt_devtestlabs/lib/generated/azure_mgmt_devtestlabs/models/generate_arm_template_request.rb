@@ -21,6 +21,11 @@ module Azure::ARM::DevTestLabs
       # @return [String] The location of the virtual machine.
       attr_accessor :location
 
+      # @return [FileUploadOptions] Options for uploading the files for the
+      # artifact. UploadFilesAndGenerateSasTokens is the default value.
+      # Possible values include: 'UploadFilesAndGenerateSasTokens', 'None'
+      attr_accessor :file_upload_options
+
 
       #
       # Mapper for GenerateArmTemplateRequest class as Ruby Hash.
@@ -59,6 +64,13 @@ module Azure::ARM::DevTestLabs
               location: {
                 required: false,
                 serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              file_upload_options: {
+                required: false,
+                serialized_name: 'fileUploadOptions',
                 type: {
                   name: 'String'
                 }

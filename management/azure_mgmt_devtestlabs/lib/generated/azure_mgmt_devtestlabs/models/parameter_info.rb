@@ -6,17 +6,16 @@
 module Azure::ARM::DevTestLabs
   module Models
     #
-    # Model object.
-    #
+    # Information about an artifact's parameter.
     #
     class ParameterInfo
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] The name of the artifact parameter.
       attr_accessor :name
 
-      # @return [String]
+      # @return [String] The value of the artifact parameter.
       attr_accessor :value
 
 

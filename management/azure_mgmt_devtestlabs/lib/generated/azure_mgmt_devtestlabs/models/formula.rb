@@ -6,9 +6,10 @@
 module Azure::ARM::DevTestLabs
   module Models
     #
-    # A formula.
+    # A formula for creating a VM, specifying an image base and other
+    # parameters
     #
-    class Formula
+    class Formula < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -24,7 +25,8 @@ module Azure::ARM::DevTestLabs
       # @return [DateTime] The creation date of the formula.
       attr_accessor :creation_date
 
-      # @return [LabVirtualMachine] The content of the formula.
+      # @return [LabVirtualMachineCreationParameter] The content of the
+      # formula.
       attr_accessor :formula_content
 
       # @return [FormulaPropertiesFromVm] Information about a VM from which a
@@ -36,21 +38,6 @@ module Azure::ARM::DevTestLabs
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -65,66 +52,9 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'Formula',
             model_properties: {
-              description: {
-                required: false,
-                serialized_name: 'properties.description',
-                type: {
-                  name: 'String'
-                }
-              },
-              author: {
-                required: false,
-                serialized_name: 'properties.author',
-                type: {
-                  name: 'String'
-                }
-              },
-              os_type: {
-                required: false,
-                serialized_name: 'properties.osType',
-                type: {
-                  name: 'String'
-                }
-              },
-              creation_date: {
-                required: false,
-                serialized_name: 'properties.creationDate',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              formula_content: {
-                required: false,
-                serialized_name: 'properties.formulaContent',
-                type: {
-                  name: 'Composite',
-                  class_name: 'LabVirtualMachine'
-                }
-              },
-              vm: {
-                required: false,
-                serialized_name: 'properties.vm',
-                type: {
-                  name: 'Composite',
-                  class_name: 'FormulaPropertiesFromVm'
-                }
-              },
-              provisioning_state: {
-                required: false,
-                serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
-                }
-              },
-              unique_identifier: {
-                required: false,
-                serialized_name: 'properties.uniqueIdentifier',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -132,6 +62,7 @@ module Azure::ARM::DevTestLabs
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -139,6 +70,7 @@ module Azure::ARM::DevTestLabs
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -163,6 +95,65 @@ module Azure::ARM::DevTestLabs
                         name: 'String'
                       }
                   }
+                }
+              },
+              description: {
+                required: false,
+                serialized_name: 'properties.description',
+                type: {
+                  name: 'String'
+                }
+              },
+              author: {
+                required: false,
+                serialized_name: 'properties.author',
+                type: {
+                  name: 'String'
+                }
+              },
+              os_type: {
+                required: false,
+                serialized_name: 'properties.osType',
+                type: {
+                  name: 'String'
+                }
+              },
+              creation_date: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.creationDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              formula_content: {
+                required: false,
+                serialized_name: 'properties.formulaContent',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LabVirtualMachineCreationParameter'
+                }
+              },
+              vm: {
+                required: false,
+                serialized_name: 'properties.vm',
+                type: {
+                  name: 'Composite',
+                  class_name: 'FormulaPropertiesFromVm'
+                }
+              },
+              provisioning_state: {
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              unique_identifier: {
+                required: false,
+                serialized_name: 'properties.uniqueIdentifier',
+                type: {
+                  name: 'String'
                 }
               }
             }

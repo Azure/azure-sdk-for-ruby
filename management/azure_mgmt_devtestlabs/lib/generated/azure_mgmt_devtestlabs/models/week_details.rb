@@ -12,10 +12,11 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [Array<String>] The days of the week.
+      # @return [Array<String>] The days of the week for which the schedule is
+      # set (e.g. Sunday, Monday, Tuesday, etc.).
       attr_accessor :weekdays
 
-      # @return [String] The time of the day.
+      # @return [String] The time of the day the schedule will occur.
       attr_accessor :time
 
 

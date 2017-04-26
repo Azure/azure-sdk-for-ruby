@@ -8,11 +8,12 @@ module Azure::ARM::DevTestLabs
     #
     # A custom image.
     #
-    class CustomImage
+    class CustomImage < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [CustomImagePropertiesFromVm]
+      # @return [CustomImagePropertiesFromVm] The virtual machine from which
+      # the image is to be created.
       attr_accessor :vm
 
       # @return [CustomImagePropertiesCustom] The VHD from which the image is
@@ -28,26 +29,14 @@ module Azure::ARM::DevTestLabs
       # @return [DateTime] The creation date of the custom image.
       attr_accessor :creation_date
 
+      # @return [String] The Managed Image Id backing the custom image.
+      attr_accessor :managed_image_id
+
       # @return [String] The provisioning status of the resource.
       attr_accessor :provisioning_state
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -62,6 +51,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'CustomImage',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               vm: {
                 required: false,
                 serialized_name: 'properties.vm',
@@ -94,9 +128,17 @@ module Azure::ARM::DevTestLabs
               },
               creation_date: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.creationDate',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              managed_image_id: {
+                required: false,
+                serialized_name: 'properties.managedImageId',
+                type: {
+                  name: 'String'
                 }
               },
               provisioning_state: {
@@ -111,48 +153,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {
                   name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

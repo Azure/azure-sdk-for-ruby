@@ -8,7 +8,7 @@ module Azure::ARM::DevTestLabs
     #
     # A virtual machine.
     #
-    class LabVirtualMachine
+    class LabVirtualMachine < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -19,12 +19,18 @@ module Azure::ARM::DevTestLabs
       # machine.
       attr_accessor :owner_object_id
 
+      # @return [String] The user principal name of the virtual machine owner.
+      attr_accessor :owner_user_principal_name
+
       # @return [String] The object identifier of the creator of the virtual
       # machine.
       attr_accessor :created_by_user_id
 
       # @return [String] The email address of creator of the virtual machine.
       attr_accessor :created_by_user
+
+      # @return [DateTime] The creation date of the virtual machine.
+      attr_accessor :created_date
 
       # @return [String] The resource identifier (Microsoft.Compute) of the
       # virtual machine.
@@ -48,8 +54,8 @@ module Azure::ARM::DevTestLabs
       # @return [String] The SSH key of the virtual machine administrator.
       attr_accessor :ssh_key
 
-      # @return [Boolean] A value indicating whether this virtual machine uses
-      # an SSH key for authentication.
+      # @return [Boolean] Indicates whether this virtual machine uses an SSH
+      # key for authentication.
       attr_accessor :is_authentication_with_ssh_key
 
       # @return [String] The fully-qualified domain name of the virtual
@@ -79,26 +85,41 @@ module Azure::ARM::DevTestLabs
       # reference of the virtual machine.
       attr_accessor :gallery_image_reference
 
+      # @return [ComputeVmProperties] The compute virtual machine properties.
+      attr_accessor :compute_vm
+
+      # @return [NetworkInterfaceProperties] The network interface properties.
+      attr_accessor :network_interface
+
+      # @return [ApplicableSchedule] The applicable schedule for the virtual
+      # machine.
+      attr_accessor :applicable_schedule
+
+      # @return [DateTime] The expiration date for VM.
+      attr_accessor :expiration_date
+
+      # @return [Boolean] Indicates whether another user can take ownership of
+      # the virtual machine
+      attr_accessor :allow_claim
+
+      # @return [String] Storage type to use for virtual machine (i.e.
+      # Standard, Premium).
+      attr_accessor :storage_type
+
+      # @return [VirtualMachineCreationSource] Tells source of creation of lab
+      # virtual machine. Output property only. Possible values include:
+      # 'FromCustomImage', 'FromGalleryImage'
+      attr_accessor :virtual_machine_creation_source
+
+      # @return [String] The resource ID of the environment that contains this
+      # virtual machine, if any.
+      attr_accessor :environment_id
+
       # @return [String] The provisioning status of the resource.
       attr_accessor :provisioning_state
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -113,6 +134,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'LabVirtualMachine',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               notes: {
                 required: false,
                 serialized_name: 'properties.notes',
@@ -123,6 +189,13 @@ module Azure::ARM::DevTestLabs
               owner_object_id: {
                 required: false,
                 serialized_name: 'properties.ownerObjectId',
+                type: {
+                  name: 'String'
+                }
+              },
+              owner_user_principal_name: {
+                required: false,
+                serialized_name: 'properties.ownerUserPrincipalName',
                 type: {
                   name: 'String'
                 }
@@ -141,8 +214,16 @@ module Azure::ARM::DevTestLabs
                   name: 'String'
                 }
               },
+              created_date: {
+                required: false,
+                serialized_name: 'properties.createdDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               compute_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.computeId',
                 type: {
                   name: 'String'
@@ -256,6 +337,65 @@ module Azure::ARM::DevTestLabs
                   class_name: 'GalleryImageReference'
                 }
               },
+              compute_vm: {
+                required: false,
+                serialized_name: 'properties.computeVm',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ComputeVmProperties'
+                }
+              },
+              network_interface: {
+                required: false,
+                serialized_name: 'properties.networkInterface',
+                type: {
+                  name: 'Composite',
+                  class_name: 'NetworkInterfaceProperties'
+                }
+              },
+              applicable_schedule: {
+                required: false,
+                serialized_name: 'properties.applicableSchedule',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ApplicableSchedule'
+                }
+              },
+              expiration_date: {
+                required: false,
+                serialized_name: 'properties.expirationDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              allow_claim: {
+                required: false,
+                serialized_name: 'properties.allowClaim',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              storage_type: {
+                required: false,
+                serialized_name: 'properties.storageType',
+                type: {
+                  name: 'String'
+                }
+              },
+              virtual_machine_creation_source: {
+                required: false,
+                serialized_name: 'properties.virtualMachineCreationSource',
+                type: {
+                  name: 'String'
+                }
+              },
+              environment_id: {
+                required: false,
+                serialized_name: 'properties.environmentId',
+                type: {
+                  name: 'String'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -268,48 +408,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {
                   name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }
