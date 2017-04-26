@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of CSRs.
+    # Collection of site configurations.
     #
-    class CsrCollection
+    class SiteConfigResourceCollection
 
       include MsRestAzure
 
-      # @return [Array<Csr>] Collection of resources.
+      # @return [Array<SiteConfigResource>] Collection of resources.
       attr_accessor :value
 
       # @return [String] Link to next page of resources.
@@ -24,7 +24,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Csr>] operation results.
+      # @return [Array<SiteConfigResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -39,7 +39,7 @@ module Azure::ARM::Web
       #
       # Gets the next page of results.
       #
-      # @return [CsrCollection] with next page content.
+      # @return [SiteConfigResourceCollection] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -51,16 +51,16 @@ module Azure::ARM::Web
       end
 
       #
-      # Mapper for CsrCollection class as Ruby Hash.
+      # Mapper for SiteConfigResourceCollection class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CsrCollection',
+          serialized_name: 'SiteConfigResourceCollection',
           type: {
             name: 'Composite',
-            class_name: 'CsrCollection',
+            class_name: 'SiteConfigResourceCollection',
             model_properties: {
               value: {
                 required: true,
@@ -69,10 +69,10 @@ module Azure::ARM::Web
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'CsrElementType',
+                      serialized_name: 'SiteConfigResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Csr'
+                        class_name: 'SiteConfigResource'
                       }
                   }
                 }

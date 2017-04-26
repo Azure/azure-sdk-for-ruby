@@ -8,7 +8,6 @@ module Azure::ARM::Web
   # Composite Swagger for WebSite Management Client
   #
   class TopLevelDomains
-    include Azure::ARM::Web::Models
     include MsRestAzure
 
     #
@@ -71,7 +70,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains'
 
       request_url = @base_url || @client.base_url
 
@@ -98,7 +97,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TopLevelDomainCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::TopLevelDomainCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -164,7 +163,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}'
 
       request_url = @base_url || @client.base_url
 
@@ -191,7 +190,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TopLevelDomain.mapper()
+            result_mapper = Azure::ARM::Web::Models::TopLevelDomain.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -274,11 +273,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = TopLevelDomainAgreementOption.mapper()
+      request_mapper = Azure::ARM::Web::Models::TopLevelDomainAgreementOption.mapper()
       request_content = @client.serialize(request_mapper,  agreement_option, 'agreement_option')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements'
 
       request_url = @base_url || @client.base_url
 
@@ -306,7 +305,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TldLegalAgreementCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::TldLegalAgreementCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -399,7 +398,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TopLevelDomainCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::TopLevelDomainCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -498,7 +497,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TldLegalAgreementCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::TldLegalAgreementCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

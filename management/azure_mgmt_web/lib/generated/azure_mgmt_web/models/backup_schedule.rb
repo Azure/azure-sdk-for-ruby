@@ -13,15 +13,15 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [Integer] How often should be the backup executed (e.g. for
+      # @return [Integer] How often the backup should be executed (e.g. for
       # weekly backup, this should be set to 7 and FrequencyUnit should be set
       # to Day). Default value: 7 .
       attr_accessor :frequency_interval
 
-      # @return [FrequencyUnit] The unit of time for how often should be the
-      # backup executed (e.g. for weekly backup, this should be set to Day and
-      # FrequencyInterval should be set to 7). Possible values include: 'Day',
-      # 'Hour'. Default value: 'Day' .
+      # @return [FrequencyUnit] The unit of time for how often the backup
+      # should be executed (e.g. for weekly backup, this should be set to Day
+      # and FrequencyInterval should be set to 7). Possible values include:
+      # 'Day', 'Hour'. Default value: 'Day' .
       attr_accessor :frequency_unit
 
       # @return [Boolean] True if the retention policy should always keep at
@@ -30,7 +30,7 @@ module Azure::ARM::Web
       attr_accessor :keep_at_least_one_backup
 
       # @return [Integer] After how many days backups should be deleted.
-      # Default value: 90 .
+      # Default value: 30 .
       attr_accessor :retention_period_in_days
 
       # @return [DateTime] When the schedule should start working.
@@ -80,7 +80,7 @@ module Azure::ARM::Web
               retention_period_in_days: {
                 required: true,
                 serialized_name: 'retentionPeriodInDays',
-                default_value: 90,
+                default_value: 30,
                 type: {
                   name: 'Number'
                 }

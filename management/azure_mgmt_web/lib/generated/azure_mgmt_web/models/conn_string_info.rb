@@ -20,7 +20,7 @@ module Azure::ARM::Web
 
       # @return [ConnectionStringType] Type of database. Possible values
       # include: 'MySql', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub',
-      # 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb', 'RedisCache'
+      # 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
       attr_accessor :type
 
 

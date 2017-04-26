@@ -73,6 +73,12 @@ module Azure::ARM::Web
       # 'Unknown'
       attr_accessor :key_vault_secret_status
 
+      # @return [String] Region of the certificate.
+      attr_accessor :geo_region
+
+      # @return [String] Resource name of the certificate.
+      attr_accessor :certificate_name
+
       # @return [String] Resource ID of the associated App Service plan,
       # formatted as:
       # "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
@@ -243,6 +249,7 @@ module Azure::ARM::Web
               },
               cer_blob: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.cerBlob',
                 type: {
                   name: 'String'
@@ -286,6 +293,22 @@ module Azure::ARM::Web
                 type: {
                   name: 'Enum',
                   module: 'KeyVaultSecretStatus'
+                }
+              },
+              geo_region: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.geoRegion',
+                type: {
+                  name: 'String'
+                }
+              },
+              certificate_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.name',
+                type: {
+                  name: 'String'
                 }
               },
               server_farm_id: {

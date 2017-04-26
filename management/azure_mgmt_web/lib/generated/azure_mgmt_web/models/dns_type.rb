@@ -6,16 +6,11 @@
 module Azure::ARM::Web
   module Models
     #
-    # Defines values for SkuName
+    # Defines values for DnsType
     #
-    module SkuName
-      Free = "Free"
-      Shared = "Shared"
-      Basic = "Basic"
-      Standard = "Standard"
-      Premium = "Premium"
-      Dynamic = "Dynamic"
-      Isolated = "Isolated"
+    module DnsType
+      AzureDns = "AzureDns"
+      DefaultDomainRegistrarDns = "DefaultDomainRegistrarDns"
     end
   end
 end
