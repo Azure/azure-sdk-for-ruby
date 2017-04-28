@@ -12,7 +12,6 @@ module Azure::ARM::Authorization
   # resources. A role assignment grants access to Azure Active Directory users.
   #
   class RoleAssignments
-    include Azure::ARM::Authorization::Models
     include MsRestAzure
 
     #
@@ -107,7 +106,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}providers/Microsoft.Authorization/roleAssignments'
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/roleAssignments'
 
       request_url = @base_url || @client.base_url
 
@@ -135,7 +134,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -207,7 +206,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments'
 
       request_url = @base_url || @client.base_url
 
@@ -234,7 +233,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -300,7 +299,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
+      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
 
       request_url = @base_url || @client.base_url
 
@@ -328,7 +327,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignment.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -423,11 +422,11 @@ module Azure::ARM::Authorization
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RoleAssignmentCreateParameters.mapper()
+      request_mapper = Azure::ARM::Authorization::Models::RoleAssignmentCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
+      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
 
       request_url = @base_url || @client.base_url
 
@@ -456,7 +455,7 @@ module Azure::ARM::Authorization
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignment.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -519,7 +518,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
+      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}'
 
       request_url = @base_url || @client.base_url
 
@@ -547,7 +546,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignment.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -606,7 +605,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{roleAssignmentId}'
+      path_template = '{roleAssignmentId}'
 
       request_url = @base_url || @client.base_url
 
@@ -633,7 +632,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignment.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -703,11 +702,11 @@ module Azure::ARM::Authorization
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RoleAssignmentCreateParameters.mapper()
+      request_mapper = Azure::ARM::Authorization::Models::RoleAssignmentCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/{roleAssignmentId}'
+      path_template = '{roleAssignmentId}'
 
       request_url = @base_url || @client.base_url
 
@@ -735,7 +734,7 @@ module Azure::ARM::Authorization
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignment.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -794,7 +793,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{roleAssignmentId}'
+      path_template = '{roleAssignmentId}'
 
       request_url = @base_url || @client.base_url
 
@@ -821,7 +820,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignment.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -889,7 +888,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments'
 
       request_url = @base_url || @client.base_url
 
@@ -916,7 +915,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -987,7 +986,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/{scope}/providers/Microsoft.Authorization/roleAssignments'
+      path_template = '{scope}/providers/Microsoft.Authorization/roleAssignments'
 
       request_url = @base_url || @client.base_url
 
@@ -1014,7 +1013,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1101,7 +1100,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1188,7 +1187,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1275,7 +1274,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1362,7 +1361,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RoleAssignmentListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::RoleAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

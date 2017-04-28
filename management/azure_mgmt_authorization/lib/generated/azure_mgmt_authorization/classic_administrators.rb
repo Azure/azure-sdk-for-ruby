@@ -12,7 +12,6 @@ module Azure::ARM::Authorization
   # resources. A role assignment grants access to Azure Active Directory users.
   #
   class ClassicAdministrators
-    include Azure::ARM::Authorization::Models
     include MsRestAzure
 
     #
@@ -75,7 +74,7 @@ module Azure::ARM::Authorization
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/classicAdministrators'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/classicAdministrators'
 
       request_url = @base_url || @client.base_url
 
@@ -102,7 +101,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ClassicAdministratorListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::ClassicAdministratorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -192,7 +191,7 @@ module Azure::ARM::Authorization
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ClassicAdministratorListResult.mapper()
+            result_mapper = Azure::ARM::Authorization::Models::ClassicAdministratorListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
