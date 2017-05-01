@@ -15,7 +15,7 @@ module Azure::ARM::IotHub
       # @return [String] The job identifier.
       attr_accessor :job_id
 
-      # @return [DateTime] The start time of the Job.
+      # @return [DateTime] The start time of the job.
       attr_accessor :start_time_utc
 
       # @return [DateTime] The time the job stopped processing.
