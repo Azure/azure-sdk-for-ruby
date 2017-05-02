@@ -176,7 +176,8 @@ module Azure::ARM::SQL
       # database.
       attr_accessor :recommended_index
 
-      # @return The id indicating the failover group containing this database.
+      # @return [String] The resource identifier of the failover group
+      # containing this database.
       attr_accessor :failover_group_id
 
       # @return [ReadScale] Conditional. If the database is a geo-secondary,
