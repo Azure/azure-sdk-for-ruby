@@ -3,91 +3,94 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeStore
+module Azure::ARM::DataLakeAnalytics
   #
-  # Creates an Azure Data Lake Store account management client.
+  # Creates an Azure Data Lake Analytics account management client.
   #
-  class TrustedIdProviders
+  class ComputePolicyOperations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the TrustedIdProviders class.
+    # Creates and initializes a new instance of the ComputePolicyOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
       @client = client
     end
 
-    # @return [DataLakeStoreAccountManagementClient] reference to the DataLakeStoreAccountManagementClient
+    # @return [DataLakeAnalyticsAccountManagementClient] reference to the DataLakeAnalyticsAccountManagementClient
     attr_reader :client
 
     #
-    # Creates or updates the specified trusted identity provider. During update,
-    # the trusted identity provider with the specified name will be replaced with
-    # this new provider
+    # Creates or updates the specified compute policy. During update, the compute
+    # policy with the specified name will be replaced with this new compute policy.
+    # An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider. This is used for differentiation of providers in the account.
-    # @param parameters [TrustedIdProvider] Parameters supplied to create or
-    # replace the trusted identity provider.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # add or replace the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to create
+    # or update.
+    # @param parameters [ComputePolicyCreateOrUpdateParameters] Parameters supplied
+    # to create or update the compute policy. The max degree of parallelism per job
+    # property, min priority per job property, or both must be present.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [TrustedIdProvider] operation results.
+    # @return [ComputePolicy] operation results.
     #
-    def create_or_update(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, account_name, compute_policy_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, account_name, compute_policy_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or updates the specified trusted identity provider. During update,
-    # the trusted identity provider with the specified name will be replaced with
-    # this new provider
+    # Creates or updates the specified compute policy. During update, the compute
+    # policy with the specified name will be replaced with this new compute policy.
+    # An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider. This is used for differentiation of providers in the account.
-    # @param parameters [TrustedIdProvider] Parameters supplied to create or
-    # replace the trusted identity provider.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # add or replace the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to create
+    # or update.
+    # @param parameters [ComputePolicyCreateOrUpdateParameters] Parameters supplied
+    # to create or update the compute policy. The max degree of parallelism per job
+    # property, min priority per job property, or both must be present.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, account_name, compute_policy_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, account_name, compute_policy_name, parameters, custom_headers).value!
     end
 
     #
-    # Creates or updates the specified trusted identity provider. During update,
-    # the trusted identity provider with the specified name will be replaced with
-    # this new provider
+    # Creates or updates the specified compute policy. During update, the compute
+    # policy with the specified name will be replaced with this new compute policy.
+    # An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider. This is used for differentiation of providers in the account.
-    # @param parameters [TrustedIdProvider] Parameters supplied to create or
-    # replace the trusted identity provider.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # add or replace the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to create
+    # or update.
+    # @param parameters [ComputePolicyCreateOrUpdateParameters] Parameters supplied
+    # to create or update the compute policy. The max degree of parallelism per job
+    # property, min priority per job property, or both must be present.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, account_name, compute_policy_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
+      fail ArgumentError, 'compute_policy_name is nil' if compute_policy_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -102,17 +105,17 @@ module Azure::ARM::DataLakeStore
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
+      request_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicyCreateOrUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'computePolicyName' => compute_policy_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -134,7 +137,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -148,66 +151,63 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Updates the specified trusted identity provider.
+    # Updates the specified compute policy.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider. This is used for differentiation of providers in the account.
-    # @param parameters [UpdateTrustedIdProviderParameters] Parameters supplied to
-    # update the trusted identity provider.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # which to update the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to update.
+    # @param parameters [ComputePolicy] Parameters supplied to update the compute
+    # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [TrustedIdProvider] operation results.
+    # @return [ComputePolicy] operation results.
     #
-    def update(resource_group_name, account_name, trusted_id_provider_name, parameters = nil, custom_headers = nil)
-      response = update_async(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers).value!
+    def update(resource_group_name, account_name, compute_policy_name, parameters = nil, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, compute_policy_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Updates the specified trusted identity provider.
+    # Updates the specified compute policy.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider. This is used for differentiation of providers in the account.
-    # @param parameters [UpdateTrustedIdProviderParameters] Parameters supplied to
-    # update the trusted identity provider.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # which to update the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to update.
+    # @param parameters [ComputePolicy] Parameters supplied to update the compute
+    # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, account_name, trusted_id_provider_name, parameters = nil, custom_headers = nil)
-      update_async(resource_group_name, account_name, trusted_id_provider_name, parameters, custom_headers).value!
+    def update_with_http_info(resource_group_name, account_name, compute_policy_name, parameters = nil, custom_headers = nil)
+      update_async(resource_group_name, account_name, compute_policy_name, parameters, custom_headers).value!
     end
 
     #
-    # Updates the specified trusted identity provider.
+    # Updates the specified compute policy.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider. This is used for differentiation of providers in the account.
-    # @param parameters [UpdateTrustedIdProviderParameters] Parameters supplied to
-    # update the trusted identity provider.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # which to update the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to update.
+    # @param parameters [ComputePolicy] Parameters supplied to update the compute
+    # policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, account_name, trusted_id_provider_name, parameters = nil, custom_headers = nil)
+    def update_async(resource_group_name, account_name, compute_policy_name, parameters = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
+      fail ArgumentError, 'compute_policy_name is nil' if compute_policy_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -221,17 +221,17 @@ module Azure::ARM::DataLakeStore
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeStore::Models::UpdateTrustedIdProviderParameters.mapper()
+      request_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicy.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'computePolicyName' => compute_policy_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -253,7 +253,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -267,62 +267,59 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Deletes the specified trusted identity provider from the specified Data Lake
-    # Store account
+    # Deletes the specified compute policy from the specified Data Lake Analytics
+    # account
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to delete the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to delete.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to delete the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, account_name, trusted_id_provider_name, custom_headers = nil)
-      response = delete_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers).value!
+    def delete(resource_group_name, account_name, compute_policy_name, custom_headers = nil)
+      response = delete_async(resource_group_name, account_name, compute_policy_name, custom_headers).value!
       nil
     end
 
     #
-    # Deletes the specified trusted identity provider from the specified Data Lake
-    # Store account
+    # Deletes the specified compute policy from the specified Data Lake Analytics
+    # account
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to delete the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to delete.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to delete the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, account_name, trusted_id_provider_name, custom_headers = nil)
-      delete_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, account_name, compute_policy_name, custom_headers = nil)
+      delete_async(resource_group_name, account_name, compute_policy_name, custom_headers).value!
     end
 
     #
-    # Deletes the specified trusted identity provider from the specified Data Lake
-    # Store account
+    # Deletes the specified compute policy from the specified Data Lake Analytics
+    # account
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to delete the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to delete.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to delete the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers = nil)
+    def delete_async(resource_group_name, account_name, compute_policy_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
+      fail ArgumentError, 'compute_policy_name is nil' if compute_policy_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -332,13 +329,13 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'computePolicyName' => compute_policy_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -363,60 +360,60 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Gets the specified Data Lake Store trusted identity provider.
+    # Gets the specified Data Lake Analytics compute policy.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to retrieve.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to
+    # retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [TrustedIdProvider] operation results.
+    # @return [ComputePolicy] operation results.
     #
-    def get(resource_group_name, account_name, trusted_id_provider_name, custom_headers = nil)
-      response = get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers).value!
+    def get(resource_group_name, account_name, compute_policy_name, custom_headers = nil)
+      response = get_async(resource_group_name, account_name, compute_policy_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the specified Data Lake Store trusted identity provider.
+    # Gets the specified Data Lake Analytics compute policy.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to retrieve.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to
+    # retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, trusted_id_provider_name, custom_headers = nil)
-      get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, account_name, compute_policy_name, custom_headers = nil)
+      get_async(resource_group_name, account_name, compute_policy_name, custom_headers).value!
     end
 
     #
-    # Gets the specified Data Lake Store trusted identity provider.
+    # Gets the specified Data Lake Analytics compute policy.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity provider.
-    # @param trusted_id_provider_name [String] The name of the trusted identity
-    # provider to retrieve.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policy.
+    # @param compute_policy_name [String] The name of the compute policy to
+    # retrieve.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, trusted_id_provider_name, custom_headers = nil)
+    def get_async(resource_group_name, account_name, compute_policy_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
-      fail ArgumentError, 'trusted_id_provider_name is nil' if trusted_id_provider_name.nil?
+      fail ArgumentError, 'compute_policy_name is nil' if compute_policy_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -426,13 +423,13 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'trustedIdProviderName' => trusted_id_provider_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'computePolicyName' => compute_policy_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -453,7 +450,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -467,17 +464,17 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<TrustedIdProvider>] operation results.
+    # @return [Array<ComputePolicy>] operation results.
     #
     def list_by_account(resource_group_name, account_name, custom_headers = nil)
       first_page = list_by_account_as_lazy(resource_group_name, account_name, custom_headers)
@@ -485,13 +482,13 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -502,13 +499,13 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policies.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -526,7 +523,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies'
 
       request_url = @base_url || @client.base_url
 
@@ -553,7 +550,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreTrustedIdProviderListResult.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicyListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -567,15 +564,15 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeStoreTrustedIdProviderListResult] operation results.
+    # @return [ComputePolicyListResult] operation results.
     #
     def list_by_account_next(next_page_link, custom_headers = nil)
       response = list_by_account_next_async(next_page_link, custom_headers).value!
@@ -583,8 +580,8 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -598,8 +595,8 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -643,7 +640,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreTrustedIdProviderListResult.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::ComputePolicyListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -657,18 +654,18 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store trusted identity providers within the specified
-    # Data Lake Store account.
+    # Lists the Data Lake Analytics compute policies within the specified Data Lake
+    # Analytics account. An account supports, at most, 50 policies
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
-    # which to get the trusted identity providers.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
+    # which to get the compute policies.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeStoreTrustedIdProviderListResult] which provide lazy access
-    # to pages of the response.
+    # @return [ComputePolicyListResult] which provide lazy access to pages of the
+    # response.
     #
     def list_by_account_as_lazy(resource_group_name, account_name, custom_headers = nil)
       response = list_by_account_async(resource_group_name, account_name, custom_headers).value!

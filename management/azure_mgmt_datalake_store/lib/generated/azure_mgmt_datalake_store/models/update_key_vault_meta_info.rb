@@ -3,34 +3,35 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeAnalytics
+module Azure::ARM::DataLakeStore
   module Models
     #
-    # Additional Data Lake Store parameters.
+    # The Key Vault update information used for user managed key rotation.
     #
-    class AddDataLakeStoreParameters
+    class UpdateKeyVaultMetaInfo
 
       include MsRestAzure
 
-      # @return [String] the optional suffix for the Data Lake Store account.
-      attr_accessor :suffix
+      # @return [String] The version of the user managed encryption key to
+      # update through a key rotation.
+      attr_accessor :encryption_key_version
 
 
       #
-      # Mapper for AddDataLakeStoreParameters class as Ruby Hash.
+      # Mapper for UpdateKeyVaultMetaInfo class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AddDataLakeStoreParameters',
+          serialized_name: 'UpdateKeyVaultMetaInfo',
           type: {
             name: 'Composite',
-            class_name: 'AddDataLakeStoreParameters',
+            class_name: 'UpdateKeyVaultMetaInfo',
             model_properties: {
-              suffix: {
+              encryption_key_version: {
                 required: false,
-                serialized_name: 'properties.suffix',
+                serialized_name: 'encryptionKeyVersion',
                 type: {
                   name: 'String'
                 }
