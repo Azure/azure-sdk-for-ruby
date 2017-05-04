@@ -241,8 +241,6 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Updates the current state of the specified Analysis Services server.
-    #
     # @param resource_group_name [String] The name of the Azure Resource group of
     # which a given Analysis Services server is part. This name must be at least 1
     # character in length, and no more than 90.
@@ -253,87 +251,25 @@ module Azure::ARM::AnalysisServices
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_with_http_info(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
-      update_async(resource_group_name, server_name, server_update_parameters, custom_headers).value!
-    end
-
-    #
-    # Updates the current state of the specified Analysis Services server.
-    #
-    # @param resource_group_name [String] The name of the Azure Resource group of
-    # which a given Analysis Services server is part. This name must be at least 1
-    # character in length, and no more than 90.
-    # @param server_name [String] The name of the Analysis Services server. It must
-    # be at least 3 characters in length, and no more than 63.
-    # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
-    # Request object that contains the updated information for the server.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def update_async(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'server_name is nil' if server_name.nil?
-      fail ArgumentError, 'server_update_parameters is nil' if server_update_parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      # Send request
+      promise = begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers)
 
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServerUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  server_update_parameters, 'server_update_parameters')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:patch, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
@@ -811,6 +747,132 @@ module Azure::ARM::AnalysisServices
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates the current state of the specified Analysis Services server.
+    #
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
+    # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
+    # Request object that contains the updated information for the server.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [AnalysisServicesServer] operation results.
+    #
+    def begin_update(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
+      response = begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates the current state of the specified Analysis Services server.
+    #
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
+    # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
+    # Request object that contains the updated information for the server.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_with_http_info(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
+      begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers).value!
+    end
+
+    #
+    # Updates the current state of the specified Analysis Services server.
+    #
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
+    # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
+    # Request object that contains the updated information for the server.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'server_update_parameters is nil' if server_update_parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServerUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  server_update_parameters, 'server_update_parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::AnalysisServices::Models::AnalysisServicesServer.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
