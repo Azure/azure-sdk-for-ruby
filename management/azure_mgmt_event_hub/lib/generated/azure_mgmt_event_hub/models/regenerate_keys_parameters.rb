@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Parameters supplied to the Regenerate Authorization Rule operation.
+    # Parameters supplied to the Regenerate Authorization Rule keys operation.
     #
     class RegenerateKeysParameters
 
@@ -31,7 +31,7 @@ module Azure::ARM::EventHub
             model_properties: {
               policykey: {
                 required: false,
-                serialized_name: 'Policykey',
+                serialized_name: 'policykey',
                 type: {
                   name: 'Enum',
                   module: 'Policykey'

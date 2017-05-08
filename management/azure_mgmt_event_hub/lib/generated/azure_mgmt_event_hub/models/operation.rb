@@ -6,55 +6,45 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # SKU parameters supplied to the create Namespace operation
+    # A Event Hub REST API operation
     #
-    class Sku
+    class Operation
 
       include MsRestAzure
 
-      # @return [SkuName] Name of this SKU. Possible values include: 'Basic',
-      # 'Standard'
+      # @return [String] Operation name: {provider}/{resource}/{operation}
       attr_accessor :name
 
-      # @return [SkuTier] The billing tier of this particular SKU. Possible
-      # values include: 'Basic', 'Standard', 'Premium'
-      attr_accessor :tier
-
-      # @return [Integer] The Event Hubs throughput units.
-      attr_accessor :capacity
+      # @return [OperationDisplay] The object that represents the operation.
+      attr_accessor :display
 
 
       #
-      # Mapper for Sku class as Ruby Hash.
+      # Mapper for Operation class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Sku',
+          serialized_name: 'Operation',
           type: {
             name: 'Composite',
-            class_name: 'Sku',
+            class_name: 'Operation',
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              tier: {
-                required: true,
-                serialized_name: 'tier',
-                type: {
-                  name: 'String'
-                }
-              },
-              capacity: {
+              display: {
                 required: false,
-                serialized_name: 'capacity',
+                serialized_name: 'display',
                 type: {
-                  name: 'Number'
+                  name: 'Composite',
+                  class_name: 'OperationDisplay'
                 }
               }
             }

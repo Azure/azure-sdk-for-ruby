@@ -16,7 +16,7 @@ module Azure::ARM::EventHub
       # @return [String] Data center location.
       attr_accessor :location
 
-      # @return [String] Name of the authorization rule.
+      # @return [String] Name of the AuthorizationRule.
       attr_accessor :name
 
       # @return [Array<AccessRights>] The rights associated with the rule.

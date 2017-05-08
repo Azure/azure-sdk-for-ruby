@@ -15,7 +15,7 @@ module Azure::ARM::EventHub
       # @return [String] Location of the resource.
       attr_accessor :location
 
-      # @return [String] ARM type of the namespace.
+      # @return [String] ARM type of the Namespace.
       attr_accessor :type
 
       # @return [String] Name of the Event Hub.
