@@ -24,6 +24,8 @@ module Azure::ARM::KeyVault
       Delete = "delete"
       Backup = "backup"
       Restore = "restore"
+      Recover = "recover"
+      Purge = "purge"
     end
   end
 end
