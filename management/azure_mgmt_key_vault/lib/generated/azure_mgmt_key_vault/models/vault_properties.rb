@@ -41,6 +41,10 @@ module Azure::ARM::KeyVault
       # permitted to retrieve secrets from the key vault.
       attr_accessor :enabled_for_template_deployment
 
+      # @return [Boolean] Property to specify whether the 'soft delete'
+      # functionality is enabled for this key vault.
+      attr_accessor :enable_soft_delete
+
 
       #
       # Mapper for VaultProperties class as Ruby Hash.
@@ -112,6 +116,13 @@ module Azure::ARM::KeyVault
               enabled_for_template_deployment: {
                 required: false,
                 serialized_name: 'enabledForTemplateDeployment',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_soft_delete: {
+                required: false,
+                serialized_name: 'enableSoftDelete',
                 type: {
                   name: 'Boolean'
                 }

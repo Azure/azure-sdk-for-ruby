@@ -22,6 +22,8 @@ module Azure::ARM::KeyVault
       Setissuers = "setissuers"
       Deleteissuers = "deleteissuers"
       Manageissuers = "manageissuers"
+      Recover = "recover"
+      Purge = "purge"
     end
   end
 end
