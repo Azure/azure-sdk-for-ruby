@@ -6,33 +6,35 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Data Lake Store Trusted Identity Provider update parameters
+    # The encryption configuration used to update a user managed Key Vault key.
     #
-    class UpdateTrustedIdProviderParameters
+    class UpdateEncryptionConfig
 
       include MsRestAzure
 
-      # @return [String] The URL of this trusted identity provider
-      attr_accessor :id_provider
+      # @return [UpdateKeyVaultMetaInfo] The updated Key Vault key to use in
+      # user managed key rotation.
+      attr_accessor :key_vault_meta_info
 
 
       #
-      # Mapper for UpdateTrustedIdProviderParameters class as Ruby Hash.
+      # Mapper for UpdateEncryptionConfig class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'UpdateTrustedIdProviderParameters',
+          serialized_name: 'UpdateEncryptionConfig',
           type: {
             name: 'Composite',
-            class_name: 'UpdateTrustedIdProviderParameters',
+            class_name: 'UpdateEncryptionConfig',
             model_properties: {
-              id_provider: {
+              key_vault_meta_info: {
                 required: false,
-                serialized_name: 'properties.idProvider',
+                serialized_name: 'keyVaultMetaInfo',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'UpdateKeyVaultMetaInfo'
                 }
               }
             }

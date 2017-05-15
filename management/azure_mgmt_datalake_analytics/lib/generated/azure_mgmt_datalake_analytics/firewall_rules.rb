@@ -8,7 +8,6 @@ module Azure::ARM::DataLakeAnalytics
   # Creates an Azure Data Lake Analytics account management client.
   #
   class FirewallRules
-    include Azure::ARM::DataLakeAnalytics::Models
     include MsRestAzure
 
     #
@@ -100,11 +99,11 @@ module Azure::ARM::DataLakeAnalytics
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = FirewallRule.mapper()
+      request_mapper = Azure::ARM::DataLakeAnalytics::Models::FirewallRule.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -132,7 +131,7 @@ module Azure::ARM::DataLakeAnalytics
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = FirewallRule.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::FirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -216,11 +215,11 @@ module Azure::ARM::DataLakeAnalytics
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = UpdateFirewallRuleParameters.mapper()
+      request_mapper = Azure::ARM::DataLakeAnalytics::Models::UpdateFirewallRuleParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -248,7 +247,7 @@ module Azure::ARM::DataLakeAnalytics
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = FirewallRule.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::FirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -324,7 +323,7 @@ module Azure::ARM::DataLakeAnalytics
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -415,7 +414,7 @@ module Azure::ARM::DataLakeAnalytics
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -442,7 +441,7 @@ module Azure::ARM::DataLakeAnalytics
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = FirewallRule.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::FirewallRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -515,7 +514,7 @@ module Azure::ARM::DataLakeAnalytics
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules'
 
       request_url = @base_url || @client.base_url
 
@@ -542,7 +541,7 @@ module Azure::ARM::DataLakeAnalytics
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DataLakeAnalyticsFirewallRuleListResult.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::DataLakeAnalyticsFirewallRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -632,7 +631,7 @@ module Azure::ARM::DataLakeAnalytics
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DataLakeAnalyticsFirewallRuleListResult.mapper()
+            result_mapper = Azure::ARM::DataLakeAnalytics::Models::DataLakeAnalyticsFirewallRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

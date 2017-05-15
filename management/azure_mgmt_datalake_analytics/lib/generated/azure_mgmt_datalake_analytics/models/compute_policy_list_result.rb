@@ -6,14 +6,13 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # The SAS response that contains the storage account, container and
-    # associated SAS token for connection use.
+    # The list of compute policies in the account.
     #
-    class ListSasTokensResult
+    class ComputePolicyListResult
 
       include MsRestAzure
 
-      # @return [Array<SasTokenInfo>]
+      # @return [Array<ComputePolicy>] the results of the list operation
       attr_accessor :value
 
       # @return [String] the link (url) to the next page of results.
@@ -25,7 +24,7 @@ module Azure::ARM::DataLakeAnalytics
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<SasTokenInfo>] operation results.
+      # @return [Array<ComputePolicy>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +39,7 @@ module Azure::ARM::DataLakeAnalytics
       #
       # Gets the next page of results.
       #
-      # @return [ListSasTokensResult] with next page content.
+      # @return [ComputePolicyListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +51,16 @@ module Azure::ARM::DataLakeAnalytics
       end
 
       #
-      # Mapper for ListSasTokensResult class as Ruby Hash.
+      # Mapper for ComputePolicyListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ListSasTokensResult',
+          serialized_name: 'ComputePolicyListResult',
           type: {
             name: 'Composite',
-            class_name: 'ListSasTokensResult',
+            class_name: 'ComputePolicyListResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,10 +70,10 @@ module Azure::ARM::DataLakeAnalytics
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SasTokenInfoElementType',
+                      serialized_name: 'ComputePolicyElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SasTokenInfo'
+                        class_name: 'ComputePolicy'
                       }
                   }
                 }

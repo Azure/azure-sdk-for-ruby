@@ -18,7 +18,7 @@ module Azure::ARM::DataLakeStore
       # 'ServiceManaged'
       attr_accessor :type
 
-      # @return [KeyVaultMetaInfo] The Key vault information for connecting to
+      # @return [KeyVaultMetaInfo] The Key Vault information for connecting to
       # user managed encryption keys.
       attr_accessor :key_vault_meta_info
 

@@ -44,6 +44,11 @@ module Azure::ARM::DataLakeStore
       # 'Enabled', 'Disabled'
       attr_accessor :firewall_allow_azure_ips
 
+      # @return [UpdateEncryptionConfig] Used for rotation of user managed Key
+      # Vault keys. Can only be used to rotate a user managed encryption Key
+      # Vault key.
+      attr_accessor :encryption_config
+
 
       #
       # Mapper for DataLakeStoreAccountUpdateParameters class as Ruby Hash.
@@ -108,6 +113,14 @@ module Azure::ARM::DataLakeStore
                 type: {
                   name: 'Enum',
                   module: 'FirewallAllowAzureIpsState'
+                }
+              },
+              encryption_config: {
+                required: false,
+                serialized_name: 'properties.encryptionConfig',
+                type: {
+                  name: 'Composite',
+                  class_name: 'UpdateEncryptionConfig'
                 }
               }
             }

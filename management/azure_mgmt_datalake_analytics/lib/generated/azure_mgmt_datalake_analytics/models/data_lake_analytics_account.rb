@@ -97,6 +97,18 @@ module Azure::ARM::DataLakeAnalytics
       # with this Data Lake Analytics account.
       attr_accessor :firewall_rules
 
+      # @return [Integer] the maximum supported degree of parallelism per job
+      # for this account.
+      attr_accessor :max_degree_of_parallelism_per_job
+
+      # @return [Integer] the minimum supported priority per job for this
+      # account.
+      attr_accessor :min_priority_per_job
+
+      # @return [Array<ComputePolicyAccountCreateParameters>] the list of
+      # compute policies to create in this account.
+      attr_accessor :compute_policies
+
 
       #
       # Mapper for DataLakeAnalyticsAccount class as Ruby Hash.
@@ -328,6 +340,41 @@ module Azure::ARM::DataLakeAnalytics
                       type: {
                         name: 'Composite',
                         class_name: 'FirewallRule'
+                      }
+                  }
+                }
+              },
+              max_degree_of_parallelism_per_job: {
+                required: false,
+                serialized_name: 'properties.maxDegreeOfParallelismPerJob',
+                constraints: {
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              min_priority_per_job: {
+                required: false,
+                serialized_name: 'properties.minPriorityPerJob',
+                constraints: {
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              compute_policies: {
+                required: false,
+                serialized_name: 'properties.computePolicies',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ComputePolicyAccountCreateParametersElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ComputePolicyAccountCreateParameters'
                       }
                   }
                 }

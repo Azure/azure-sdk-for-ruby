@@ -36,6 +36,9 @@ module Azure::ARM::DataLakeAnalytics
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ComputePolicyOperations] compute_policy_operations
+    attr_reader :compute_policy_operations
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
@@ -61,6 +64,7 @@ module Azure::ARM::DataLakeAnalytics
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @compute_policy_operations = ComputePolicyOperations.new(self)
       @firewall_rules = FirewallRules.new(self)
       @storage_accounts = StorageAccounts.new(self)
       @data_lake_store_accounts = DataLakeStoreAccounts.new(self)

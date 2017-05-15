@@ -6,11 +6,12 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Defines values for FirewallAllowAzureIpsState
+    # Defines values for AADObjectType
     #
-    module FirewallAllowAzureIpsState
-      Enabled = "Enabled"
-      Disabled = "Disabled"
+    module AADObjectType
+      User = "User"
+      Group = "Group"
+      ServicePrincipal = "ServicePrincipal"
     end
   end
 end

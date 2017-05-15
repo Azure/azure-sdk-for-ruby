@@ -12,7 +12,7 @@ module Azure::ARM::DataLakeStore
 
       include MsRestAzure
 
-      # @return [EncryptionIdentity] The Key vault encryption identity, if any.
+      # @return [EncryptionIdentity] The Key Vault encryption identity, if any.
       attr_accessor :identity
 
       # @return [DataLakeStoreAccountStatus] the status of the Data Lake Store
@@ -38,7 +38,7 @@ module Azure::ARM::DataLakeStore
       # 'Creating', 'Succeeded'
       attr_accessor :encryption_provisioning_state
 
-      # @return [EncryptionConfig] The Key vault encryption configuration.
+      # @return [EncryptionConfig] The Key Vault encryption configuration.
       attr_accessor :encryption_config
 
       # @return [FirewallState] The current state of the IP address firewall
