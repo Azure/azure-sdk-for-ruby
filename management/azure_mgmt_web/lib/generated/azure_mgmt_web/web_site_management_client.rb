@@ -59,6 +59,9 @@ module Azure::ARM::Web
     # @return [DeletedWebApps] deleted_web_apps
     attr_reader :deleted_web_apps
 
+    # @return [Provider] provider
+    attr_reader :provider
+
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -81,6 +84,7 @@ module Azure::ARM::Web
       @top_level_domains = TopLevelDomains.new(self)
       @web_apps = WebApps.new(self)
       @deleted_web_apps = DeletedWebApps.new(self)
+      @provider = Provider.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -190,7 +194,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/providers/Microsoft.Web/publishingUsers/web'
+      path_template = 'providers/Microsoft.Web/publishingUsers/web'
 
       request_url = @base_url || self.base_url
 
@@ -216,7 +220,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = User.mapper()
+            result_mapper = Azure::ARM::Web::Models::User.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -285,11 +289,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = User.mapper()
+      request_mapper = Azure::ARM::Web::Models::User.mapper()
       request_content = self.serialize(request_mapper,  user_details, 'user_details')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/providers/Microsoft.Web/publishingUsers/web'
+      path_template = 'providers/Microsoft.Web/publishingUsers/web'
 
       request_url = @base_url || self.base_url
 
@@ -316,7 +320,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = User.mapper()
+            result_mapper = Azure::ARM::Web::Models::User.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -377,7 +381,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/providers/Microsoft.Web/sourcecontrols'
+      path_template = 'providers/Microsoft.Web/sourcecontrols'
 
       request_url = @base_url || self.base_url
 
@@ -403,7 +407,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SourceControlCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::SourceControlCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -476,11 +480,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SourceControl.mapper()
+      request_mapper = Azure::ARM::Web::Models::SourceControl.mapper()
       request_content = self.serialize(request_mapper,  request_message, 'request_message')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/providers/Microsoft.Web/sourcecontrols/{sourceControlType}'
+      path_template = 'providers/Microsoft.Web/sourcecontrols/{sourceControlType}'
 
       request_url = @base_url || self.base_url
 
@@ -508,7 +512,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SourceControl.mapper()
+            result_mapper = Azure::ARM::Web::Models::SourceControl.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -594,11 +598,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ResourceNameAvailabilityRequest.mapper()
+      request_mapper = Azure::ARM::Web::Models::ResourceNameAvailabilityRequest.mapper()
       request_content = self.serialize(request_mapper,  request, 'request')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability'
 
       request_url = @base_url || self.base_url
 
@@ -626,7 +630,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ResourceNameAvailability.mapper()
+            result_mapper = Azure::ARM::Web::Models::ResourceNameAvailability.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -645,7 +649,8 @@ module Azure::ARM::Web
     # Get a list of available geographical regions.
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
-    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+    # 'Isolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -664,7 +669,8 @@ module Azure::ARM::Web
     # Get a list of available geographical regions.
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
-    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+    # 'Isolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -682,7 +688,8 @@ module Azure::ARM::Web
     # Get a list of available geographical regions.
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
-    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+    # 'Isolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -700,7 +707,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
 
       request_url = @base_url || self.base_url
 
@@ -727,7 +734,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GeoRegionCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::GeoRegionCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -789,7 +796,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers'
 
       request_url = @base_url || self.base_url
 
@@ -816,7 +823,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = PremierAddOnOfferCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::PremierAddOnOfferCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -878,7 +885,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/skus'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/skus'
 
       request_url = @base_url || self.base_url
 
@@ -905,7 +912,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SkuInfos.mapper()
+            result_mapper = Azure::ARM::Web::Models::SkuInfos.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -984,11 +991,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = CsmMoveResourceEnvelope.mapper()
+      request_mapper = Azure::ARM::Web::Models::CsmMoveResourceEnvelope.mapper()
       request_content = self.serialize(request_mapper,  move_resource_envelope, 'move_resource_envelope')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources'
 
       request_url = @base_url || self.base_url
 
@@ -1086,11 +1093,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ValidateRequest.mapper()
+      request_mapper = Azure::ARM::Web::Models::ValidateRequest.mapper()
       request_content = self.serialize(request_mapper,  validate_request, 'validate_request')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate'
 
       request_url = @base_url || self.base_url
 
@@ -1118,7 +1125,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ValidateResponse.mapper()
+            result_mapper = Azure::ARM::Web::Models::ValidateResponse.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1197,11 +1204,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = CsmMoveResourceEnvelope.mapper()
+      request_mapper = Azure::ARM::Web::Models::CsmMoveResourceEnvelope.mapper()
       request_content = self.serialize(request_mapper,  move_resource_envelope, 'move_resource_envelope')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources'
 
       request_url = @base_url || self.base_url
 
@@ -1312,7 +1319,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SourceControlCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::SourceControlCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1405,7 +1412,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GeoRegionCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::GeoRegionCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1498,7 +1505,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = PremierAddOnOfferCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::PremierAddOnOfferCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1555,7 +1562,7 @@ module Azure::ARM::Web
 
 
       request_headers = {}
-      path_template = '/providers/Microsoft.Web/sourcecontrols'
+      path_template = 'providers/Microsoft.Web/sourcecontrols'
 
       request_url = @base_url || self.base_url
 
@@ -1581,7 +1588,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SourceControlCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::SourceControlCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1600,7 +1607,8 @@ module Azure::ARM::Web
     # Get a list of available geographical regions.
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
-    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+    # 'Isolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1619,7 +1627,8 @@ module Azure::ARM::Web
     # Get a list of available geographical regions.
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
-    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+    # 'Isolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1637,7 +1646,8 @@ module Azure::ARM::Web
     # Get a list of available geographical regions.
     #
     # @param sku [SkuName] Name of SKU used to filter the regions. Possible values
-    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic'
+    # include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+    # 'Isolated'
     # @param linux_workers_enabled [Boolean] Specify <code>true</code> if you want
     # to filter to only regions that support Linux workers.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1650,7 +1660,7 @@ module Azure::ARM::Web
 
 
       request_headers = {}
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
 
       request_url = @base_url || self.base_url
 
@@ -1676,7 +1686,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = GeoRegionCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::GeoRegionCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1733,7 +1743,7 @@ module Azure::ARM::Web
 
 
       request_headers = {}
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers'
 
       request_url = @base_url || self.base_url
 
@@ -1759,7 +1769,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = PremierAddOnOfferCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::PremierAddOnOfferCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

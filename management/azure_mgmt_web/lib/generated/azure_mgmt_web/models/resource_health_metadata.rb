@@ -6,45 +6,34 @@
 module Azure::ARM::Web
   module Models
     #
-    # Certificate signing request.
+    # Used for getting ResourceHealthCheck settings.
     #
-    class Csr < MsRestAzure::Resource
+    class ResourceHealthMetadata < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name used to locate CSR object.
-      attr_accessor :csr_name
+      # @return [String] ARM Resource Id
+      attr_accessor :resource_health_metadata_id
 
-      # @return [String] Distinguished name of certificate to be created.
-      attr_accessor :distinguished_name
+      # @return [String] The category that the resource matches in the RHC
+      # Policy File
+      attr_accessor :category
 
-      # @return [String] Actual CSR string created.
-      attr_accessor :csr_string
-
-      # @return [String] PFX certifcate of created certificate.
-      attr_accessor :pfx_blob
-
-      # @return [String] PFX password.
-      attr_accessor :password
-
-      # @return [String] Hash of the certificate's public key.
-      attr_accessor :public_key_hash
-
-      # @return [String] App Service Environment.
-      attr_accessor :hosting_environment
+      # @return [Boolean] Is there a health signal for the resource
+      attr_accessor :signal_availability
 
 
       #
-      # Mapper for Csr class as Ruby Hash.
+      # Mapper for ResourceHealthMetadata class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Csr',
+          serialized_name: 'ResourceHealthMetadata',
           type: {
             name: 'Composite',
-            class_name: 'Csr',
+            class_name: 'ResourceHealthMetadata',
             model_properties: {
               id: {
                 required: false,
@@ -96,53 +85,25 @@ module Azure::ARM::Web
                   }
                 }
               },
-              csr_name: {
+              resource_health_metadata_id: {
                 required: false,
-                serialized_name: 'properties.name',
+                serialized_name: 'properties.id',
                 type: {
                   name: 'String'
                 }
               },
-              distinguished_name: {
+              category: {
                 required: false,
-                serialized_name: 'properties.distinguishedName',
+                serialized_name: 'properties.category',
                 type: {
                   name: 'String'
                 }
               },
-              csr_string: {
+              signal_availability: {
                 required: false,
-                serialized_name: 'properties.csrString',
+                serialized_name: 'properties.signalAvailability',
                 type: {
-                  name: 'String'
-                }
-              },
-              pfx_blob: {
-                required: false,
-                serialized_name: 'properties.pfxBlob',
-                type: {
-                  name: 'String'
-                }
-              },
-              password: {
-                required: false,
-                serialized_name: 'properties.password',
-                type: {
-                  name: 'String'
-                }
-              },
-              public_key_hash: {
-                required: false,
-                serialized_name: 'properties.publicKeyHash',
-                type: {
-                  name: 'String'
-                }
-              },
-              hosting_environment: {
-                required: false,
-                serialized_name: 'properties.hostingEnvironment',
-                type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               }
             }

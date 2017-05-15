@@ -12,6 +12,7 @@ module Azure::ARM::Web
       SqlAzure = "SqlAzure"
       MySql = "MySql"
       LocalMySql = "LocalMySql"
+      PostgreSql = "PostgreSql"
     end
   end
 end

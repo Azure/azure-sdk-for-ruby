@@ -72,6 +72,20 @@ module Azure::ARM::Web
       # @return [Array<Enum>] Reasons why domain is not renewable.
       attr_accessor :domain_not_renewable_reasons
 
+      # @return [DnsType] Current DNS type. Possible values include:
+      # 'AzureDns', 'DefaultDomainRegistrarDns'
+      attr_accessor :dns_type
+
+      # @return [String] Azure DNS Zone to use
+      attr_accessor :dns_zone_id
+
+      # @return [DnsType] Target DNS type (would be used for migration).
+      # Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+      attr_accessor :target_dns_type
+
+      # @return [String]
+      attr_accessor :auth_code
+
 
       #
       # Mapper for Domain class as Ruby Hash.
@@ -187,6 +201,7 @@ module Azure::ARM::Web
               },
               name_servers: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.nameServers',
                 type: {
                   name: 'Sequence',
@@ -248,6 +263,7 @@ module Azure::ARM::Web
               },
               managed_host_names: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.managedHostNames',
                 type: {
                   name: 'Sequence',
@@ -271,6 +287,7 @@ module Azure::ARM::Web
               },
               domain_not_renewable_reasons: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.domainNotRenewableReasons',
                 type: {
                   name: 'Sequence',
@@ -281,6 +298,37 @@ module Azure::ARM::Web
                         name: 'String'
                       }
                   }
+                }
+              },
+              dns_type: {
+                required: false,
+                serialized_name: 'properties.dnsType',
+                type: {
+                  name: 'Enum',
+                  module: 'DnsType'
+                }
+              },
+              dns_zone_id: {
+                required: false,
+                serialized_name: 'properties.dnsZoneId',
+                type: {
+                  name: 'String'
+                }
+              },
+              target_dns_type: {
+                required: false,
+                serialized_name: 'properties.targetDnsType',
+                type: {
+                  name: 'Enum',
+                  module: 'DnsType'
+                }
+              },
+              auth_code: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.authCode',
+                type: {
+                  name: 'String'
                 }
               }
             }

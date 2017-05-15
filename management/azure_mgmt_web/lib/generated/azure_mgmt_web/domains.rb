@@ -8,7 +8,6 @@ module Azure::ARM::Web
   # Composite Swagger for WebSite Management Client
   #
   class Domains
-    include Azure::ARM::Web::Models
     include MsRestAzure
 
     #
@@ -79,11 +78,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = NameIdentifier.mapper()
+      request_mapper = Azure::ARM::Web::Models::NameIdentifier.mapper()
       request_content = @client.serialize(request_mapper,  identifier, 'identifier')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/checkDomainAvailability'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/checkDomainAvailability'
 
       request_url = @base_url || @client.base_url
 
@@ -111,7 +110,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainAvailablilityCheckResult.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainAvailablilityCheckResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -173,7 +172,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/domains'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/domains'
 
       request_url = @base_url || @client.base_url
 
@@ -200,7 +199,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -262,7 +261,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/generateSsoRequest'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/generateSsoRequest'
 
       request_url = @base_url || @client.base_url
 
@@ -289,7 +288,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainControlCenterSsoRequest.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainControlCenterSsoRequest.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -362,11 +361,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = DomainRecommendationSearchParameters.mapper()
+      request_mapper = Azure::ARM::Web::Models::DomainRecommendationSearchParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations'
 
       request_url = @base_url || @client.base_url
 
@@ -394,7 +393,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NameIdentifierCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::NameIdentifierCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -463,7 +462,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains'
 
       request_url = @base_url || @client.base_url
 
@@ -490,7 +489,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -563,7 +562,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}'
 
       request_url = @base_url || @client.base_url
 
@@ -590,7 +589,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Domain.mapper()
+            result_mapper = Azure::ARM::Web::Models::Domain.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -640,7 +639,7 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Domain.mapper()
+          result_mapper = Azure::ARM::Web::Models::Domain.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -719,7 +718,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}'
 
       request_url = @base_url || @client.base_url
 
@@ -809,7 +808,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers'
 
       request_url = @base_url || @client.base_url
 
@@ -836,7 +835,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainOwnershipIdentifierCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifierCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -913,7 +912,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
 
       request_url = @base_url || @client.base_url
 
@@ -940,7 +939,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainOwnershipIdentifier.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifier.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1034,11 +1033,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = DomainOwnershipIdentifier.mapper()
+      request_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifier.mapper()
       request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
 
       request_url = @base_url || @client.base_url
 
@@ -1066,7 +1065,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainOwnershipIdentifier.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifier.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1142,7 +1141,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
 
       request_url = @base_url || @client.base_url
 
@@ -1253,11 +1252,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = DomainOwnershipIdentifier.mapper()
+      request_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifier.mapper()
       request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}'
 
       request_url = @base_url || @client.base_url
 
@@ -1285,7 +1284,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainOwnershipIdentifier.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifier.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1366,11 +1365,11 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Domain.mapper()
+      request_mapper = Azure::ARM::Web::Models::Domain.mapper()
       request_content = @client.serialize(request_mapper,  domain, 'domain')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1398,7 +1397,7 @@ module Azure::ARM::Web
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Domain.mapper()
+            result_mapper = Azure::ARM::Web::Models::Domain.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1408,7 +1407,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Domain.mapper()
+            result_mapper = Azure::ARM::Web::Models::Domain.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1501,7 +1500,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1594,7 +1593,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = NameIdentifierCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::NameIdentifierCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1687,7 +1686,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1780,7 +1779,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DomainOwnershipIdentifierCollection.mapper()
+            result_mapper = Azure::ARM::Web::Models::DomainOwnershipIdentifierCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

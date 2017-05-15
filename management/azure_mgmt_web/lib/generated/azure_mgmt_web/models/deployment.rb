@@ -142,21 +142,21 @@ module Azure::ARM::Web
               },
               author_email: {
                 required: false,
-                serialized_name: 'properties.author_email',
+                serialized_name: 'properties.authorEmail',
                 type: {
                   name: 'String'
                 }
               },
               start_time: {
                 required: false,
-                serialized_name: 'properties.start_time',
+                serialized_name: 'properties.startTime',
                 type: {
                   name: 'DateTime'
                 }
               },
               end_time: {
                 required: false,
-                serialized_name: 'properties.end_time',
+                serialized_name: 'properties.endTime',
                 type: {
                   name: 'DateTime'
                 }

@@ -77,6 +77,20 @@ module Azure::ARM::Web
       # @return [Float] A metric value measured by the rule.
       attr_accessor :score
 
+      # @return [Boolean] True if this is associated with a dynamically added
+      # rule
+      attr_accessor :is_dynamic
+
+      # @return [String] Extension name of the portal if exists.
+      attr_accessor :extension_name
+
+      # @return [String] Deep link to a blade on the portal.
+      attr_accessor :blade_name
+
+      # @return [String] Forward link to an external document associated with
+      # the rule.
+      attr_accessor :forward_link
+
 
       #
       # Mapper for Recommendation class as Ruby Hash.
@@ -216,6 +230,34 @@ module Azure::ARM::Web
                 serialized_name: 'score',
                 type: {
                   name: 'Double'
+                }
+              },
+              is_dynamic: {
+                required: false,
+                serialized_name: 'isDynamic',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              extension_name: {
+                required: false,
+                serialized_name: 'extensionName',
+                type: {
+                  name: 'String'
+                }
+              },
+              blade_name: {
+                required: false,
+                serialized_name: 'bladeName',
+                type: {
+                  name: 'String'
+                }
+              },
+              forward_link: {
+                required: false,
+                serialized_name: 'forwardLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
