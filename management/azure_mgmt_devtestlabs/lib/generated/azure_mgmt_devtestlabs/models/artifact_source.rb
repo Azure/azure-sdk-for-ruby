@@ -8,53 +8,47 @@ module Azure::ARM::DevTestLabs
     #
     # Properties of an artifact source.
     #
-    class ArtifactSource
+    class ArtifactSource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The display name of the artifact source.
+      # @return [String] The artifact source's display name.
       attr_accessor :display_name
 
-      # @return [String] The URI of the artifact source.
+      # @return [String] The artifact source's URI.
       attr_accessor :uri
 
-      # @return [SourceControlType] The type of the artifact source. Possible
-      # values include: 'VsoGit', 'GitHub'
+      # @return [SourceControlType] The artifact source's type. Possible values
+      # include: 'VsoGit', 'GitHub'
       attr_accessor :source_type
 
-      # @return [String] The folder path of the artifact source.
+      # @return [String] The folder containing artifacts.
       attr_accessor :folder_path
 
-      # @return [String] The branch reference of the artifact source.
+      # @return [String] The folder containing Azure Resource Manager
+      # templates.
+      attr_accessor :arm_template_folder_path
+
+      # @return [String] The artifact source's branch reference.
       attr_accessor :branch_ref
 
-      # @return [String] The security token of the artifact source.
+      # @return [String] The security token to authenticate to the artifact
+      # source.
       attr_accessor :security_token
 
-      # @return [EnableStatus] The status of the artifact source. Possible
-      # values include: 'Enabled', 'Disabled'
+      # @return [EnableStatus] Indicates if the artifact source is enabled
+      # (values: Enabled, Disabled). Possible values include: 'Enabled',
+      # 'Disabled'
       attr_accessor :status
+
+      # @return [DateTime] The artifact source's creation date.
+      attr_accessor :created_date
 
       # @return [String] The provisioning status of the resource.
       attr_accessor :provisioning_state
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -69,6 +63,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'ArtifactSource',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               display_name: {
                 required: false,
                 serialized_name: 'properties.displayName',
@@ -97,6 +136,13 @@ module Azure::ARM::DevTestLabs
                   name: 'String'
                 }
               },
+              arm_template_folder_path: {
+                required: false,
+                serialized_name: 'properties.armTemplateFolderPath',
+                type: {
+                  name: 'String'
+                }
+              },
               branch_ref: {
                 required: false,
                 serialized_name: 'properties.branchRef',
@@ -118,6 +164,14 @@ module Azure::ARM::DevTestLabs
                   name: 'String'
                 }
               },
+              created_date: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.createdDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -130,48 +184,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {
                   name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

@@ -10,10 +10,13 @@ module Azure::ARM::DevTestLabs
     #
     module PolicyFactName
       UserOwnedLabVmCount = "UserOwnedLabVmCount"
+      UserOwnedLabPremiumVmCount = "UserOwnedLabPremiumVmCount"
       LabVmCount = "LabVmCount"
+      LabPremiumVmCount = "LabPremiumVmCount"
       LabVmSize = "LabVmSize"
       GalleryImage = "GalleryImage"
       UserOwnedLabVmCountInSubnet = "UserOwnedLabVmCountInSubnet"
+      LabTargetCost = "LabTargetCost"
     end
   end
 end

@@ -8,7 +8,7 @@ module Azure::ARM::DevTestLabs
     #
     # A virtual network.
     #
-    class VirtualNetwork
+    class VirtualNetwork < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -22,30 +22,21 @@ module Azure::ARM::DevTestLabs
       # virtual network.
       attr_accessor :external_provider_resource_id
 
+      # @return [Array<ExternalSubnet>] The external subnet properties.
+      attr_accessor :external_subnets
+
       # @return [Array<SubnetOverride>] The subnet overrides of the virtual
       # network.
       attr_accessor :subnet_overrides
+
+      # @return [DateTime] The creation date of the virtual network.
+      attr_accessor :created_date
 
       # @return [String] The provisioning status of the resource.
       attr_accessor :provisioning_state
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -60,6 +51,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'VirtualNetwork',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               allowed_subnets: {
                 required: false,
                 serialized_name: 'properties.allowedSubnets',
@@ -89,6 +125,21 @@ module Azure::ARM::DevTestLabs
                   name: 'String'
                 }
               },
+              external_subnets: {
+                required: false,
+                serialized_name: 'properties.externalSubnets',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ExternalSubnetElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ExternalSubnet'
+                      }
+                  }
+                }
+              },
               subnet_overrides: {
                 required: false,
                 serialized_name: 'properties.subnetOverrides',
@@ -104,6 +155,14 @@ module Azure::ARM::DevTestLabs
                   }
                 }
               },
+              created_date: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.createdDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -116,48 +175,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {
                   name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

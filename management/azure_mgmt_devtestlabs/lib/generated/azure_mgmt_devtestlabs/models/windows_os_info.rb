@@ -12,7 +12,8 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [WindowsOsState] The state of the Windows OS. Possible values
+      # @return [WindowsOsState] The state of the Windows OS (i.e.
+      # NonSysprepped, SysprepRequested, SysprepApplied). Possible values
       # include: 'NonSysprepped', 'SysprepRequested', 'SysprepApplied'
       attr_accessor :windows_os_state
 

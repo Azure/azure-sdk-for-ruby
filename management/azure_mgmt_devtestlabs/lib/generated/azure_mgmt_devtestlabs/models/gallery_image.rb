@@ -8,7 +8,7 @@ module Azure::ARM::DevTestLabs
     #
     # A gallery image.
     #
-    class GalleryImage
+    class GalleryImage < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -31,21 +31,6 @@ module Azure::ARM::DevTestLabs
       # @return [Boolean] Indicates whether this gallery image is enabled.
       attr_accessor :enabled
 
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
-
 
       #
       # Mapper for GalleryImage class as Ruby Hash.
@@ -59,6 +44,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'GalleryImage',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               author: {
                 required: false,
                 serialized_name: 'properties.author',
@@ -68,6 +98,7 @@ module Azure::ARM::DevTestLabs
               },
               created_date: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.createdDate',
                 type: {
                   name: 'DateTime'
@@ -100,48 +131,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.enabled',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

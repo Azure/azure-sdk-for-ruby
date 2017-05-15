@@ -18,8 +18,8 @@ module Azure::ARM::DevTestLabs
       # @return [Boolean] Indicates whether sysprep has been run on the VHD.
       attr_accessor :sys_prep
 
-      # @return [CustomImageOsType] The OS type of the custom image. Possible
-      # values include: 'Windows', 'Linux', 'None'
+      # @return [CustomImageOsType] The OS type of the custom image (i.e.
+      # Windows, Linux). Possible values include: 'Windows', 'Linux', 'None'
       attr_accessor :os_type
 
 
@@ -50,7 +50,7 @@ module Azure::ARM::DevTestLabs
                 }
               },
               os_type: {
-                required: false,
+                required: true,
                 serialized_name: 'osType',
                 type: {
                   name: 'String'
