@@ -6,21 +6,21 @@
 module Azure::ARM::DevTestLabs
   module Models
     #
-    # Model object.
-    #
+    # Subnet information.
     #
     class Subnet
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] The resource ID of the subnet.
       attr_accessor :resource_id
 
-      # @return [String]
+      # @return [String] The name of the subnet as seen in the lab.
       attr_accessor :lab_subnet_name
 
-      # @return [UsagePermissionType] Possible values include: 'Default',
-      # 'Deny', 'Allow'
+      # @return [UsagePermissionType] The permission policy of the subnet for
+      # allowing public IP addresses (i.e. Allow, Deny)). Possible values
+      # include: 'Default', 'Deny', 'Allow'
       attr_accessor :allow_public_ip
 
 

@@ -12,7 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] The time of day the schedule will occur.
       attr_accessor :time
 
 

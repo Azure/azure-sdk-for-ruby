@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Description of a namespace authorization rule.
+    # Single item in a List or Get AuthorizationRule operation
     #
     class SharedAccessAuthorizationRuleResource < MsRestAzure::Resource
 
@@ -50,27 +50,6 @@ module Azure::ARM::EventHub
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               rights: {

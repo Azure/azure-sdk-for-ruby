@@ -13,7 +13,7 @@ module Azure::ARM::Web
       include MsRestAzure
 
       # @return [DatabaseType] Database type (e.g. SqlAzure / MySql). Possible
-      # values include: 'SqlAzure', 'MySql', 'LocalMySql'
+      # values include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
       attr_accessor :database_type
 
       # @return [String]

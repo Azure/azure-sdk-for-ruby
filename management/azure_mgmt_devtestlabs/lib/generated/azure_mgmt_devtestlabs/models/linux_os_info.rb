@@ -12,8 +12,9 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [LinuxOsState] The state of the Linux OS. Possible values
-      # include: 'NonDeprovisioned', 'DeprovisionRequested',
+      # @return [LinuxOsState] The state of the Linux OS (i.e.
+      # NonDeprovisioned, DeprovisionRequested, DeprovisionApplied). Possible
+      # values include: 'NonDeprovisioned', 'DeprovisionRequested',
       # 'DeprovisionApplied'
       attr_accessor :linux_os_state
 

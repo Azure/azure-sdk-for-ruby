@@ -53,6 +53,9 @@ module Azure::ARM::SQL
     # @return [RecommendedElasticPools] recommended_elastic_pools
     attr_reader :recommended_elastic_pools
 
+    # @return [FailoverGroups] failover_groups
+    attr_reader :failover_groups
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -73,6 +76,7 @@ module Azure::ARM::SQL
       @servers = Servers.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
+      @failover_groups = FailoverGroups.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

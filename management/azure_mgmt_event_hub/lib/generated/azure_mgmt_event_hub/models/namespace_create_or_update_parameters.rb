@@ -21,18 +21,30 @@ module Azure::ARM::EventHub
       # @return [Hash{String => String}] Namespace tags.
       attr_accessor :tags
 
-      # @return [String] Provisioning state of the namespace.
+      # @return [NamespaceState] State of the Namespace. Possible values
+      # include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
+      # 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
+      # 'Removing', 'Removed', 'Failed'
+      attr_accessor :status
+
+      # @return [String] Provisioning state of the Namespace.
       attr_accessor :provisioning_state
 
-      # @return [DateTime] The time the namespace was created.
+      # @return [DateTime] The time the Namespace was created.
       attr_accessor :created_at
 
-      # @return [DateTime] The time the namespace was updated.
+      # @return [DateTime] The time the Namespace was updated.
       attr_accessor :updated_at
 
       # @return [String] Endpoint you can use to perform Service Bus
       # operations.
       attr_accessor :service_bus_endpoint
+
+      # @return [String] Identifier for Azure Insights metrics
+      attr_accessor :metric_id
+
+      # @return [Boolean] Specifies whether this instance is enabled.
+      attr_accessor :enabled
 
 
       #
@@ -76,6 +88,14 @@ module Azure::ARM::EventHub
                   }
                 }
               },
+              status: {
+                required: false,
+                serialized_name: 'properties.status',
+                type: {
+                  name: 'Enum',
+                  module: 'NamespaceState'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -102,6 +122,21 @@ module Azure::ARM::EventHub
                 serialized_name: 'properties.serviceBusEndpoint',
                 type: {
                   name: 'String'
+                }
+              },
+              metric_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.metricId',
+                type: {
+                  name: 'String'
+                }
+              },
+              enabled: {
+                required: false,
+                serialized_name: 'properties.enabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

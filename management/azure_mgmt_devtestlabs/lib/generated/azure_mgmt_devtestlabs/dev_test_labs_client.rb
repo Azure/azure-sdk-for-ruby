@@ -34,41 +34,68 @@ module Azure::ARM::DevTestLabs
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [LabOperations] lab_operations
-    attr_reader :lab_operations
+    # @return [Labs] labs
+    attr_reader :labs
 
-    # @return [ArtifactSourceOperations] artifact_source_operations
-    attr_reader :artifact_source_operations
+    # @return [GlobalSchedules] global_schedules
+    attr_reader :global_schedules
 
-    # @return [ArtifactOperations] artifact_operations
-    attr_reader :artifact_operations
+    # @return [ArtifactSources] artifact_sources
+    attr_reader :artifact_sources
 
-    # @return [CostOperations] cost_operations
-    attr_reader :cost_operations
+    # @return [ArmTemplates] arm_templates
+    attr_reader :arm_templates
 
-    # @return [CustomImageOperations] custom_image_operations
-    attr_reader :custom_image_operations
+    # @return [Artifacts] artifacts
+    attr_reader :artifacts
 
-    # @return [FormulaOperations] formula_operations
-    attr_reader :formula_operations
+    # @return [Costs] costs
+    attr_reader :costs
 
-    # @return [GalleryImageOperations] gallery_image_operations
-    attr_reader :gallery_image_operations
+    # @return [CustomImages] custom_images
+    attr_reader :custom_images
 
-    # @return [PolicySet] policy_set
-    attr_reader :policy_set
+    # @return [Formulas] formulas
+    attr_reader :formulas
 
-    # @return [PolicyOperations] policy_operations
-    attr_reader :policy_operations
+    # @return [GalleryImages] gallery_images
+    attr_reader :gallery_images
 
-    # @return [ScheduleOperations] schedule_operations
-    attr_reader :schedule_operations
+    # @return [NotificationChannels] notification_channels
+    attr_reader :notification_channels
 
-    # @return [VirtualMachine] virtual_machine
-    attr_reader :virtual_machine
+    # @return [PolicySets] policy_sets
+    attr_reader :policy_sets
 
-    # @return [VirtualNetworkOperations] virtual_network_operations
-    attr_reader :virtual_network_operations
+    # @return [Policies] policies
+    attr_reader :policies
+
+    # @return [Schedules] schedules
+    attr_reader :schedules
+
+    # @return [ServiceRunners] service_runners
+    attr_reader :service_runners
+
+    # @return [Users] users
+    attr_reader :users
+
+    # @return [Disks] disks
+    attr_reader :disks
+
+    # @return [Environments] environments
+    attr_reader :environments
+
+    # @return [Secrets] secrets
+    attr_reader :secrets
+
+    # @return [VirtualMachines] virtual_machines
+    attr_reader :virtual_machines
+
+    # @return [VirtualMachineSchedules] virtual_machine_schedules
+    attr_reader :virtual_machine_schedules
+
+    # @return [VirtualNetworks] virtual_networks
+    attr_reader :virtual_networks
 
     #
     # Creates initializes a new instance of the DevTestLabsClient class.
@@ -83,18 +110,27 @@ module Azure::ARM::DevTestLabs
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @lab_operations = LabOperations.new(self)
-      @artifact_source_operations = ArtifactSourceOperations.new(self)
-      @artifact_operations = ArtifactOperations.new(self)
-      @cost_operations = CostOperations.new(self)
-      @custom_image_operations = CustomImageOperations.new(self)
-      @formula_operations = FormulaOperations.new(self)
-      @gallery_image_operations = GalleryImageOperations.new(self)
-      @policy_set = PolicySet.new(self)
-      @policy_operations = PolicyOperations.new(self)
-      @schedule_operations = ScheduleOperations.new(self)
-      @virtual_machine = VirtualMachine.new(self)
-      @virtual_network_operations = VirtualNetworkOperations.new(self)
+      @labs = Labs.new(self)
+      @global_schedules = GlobalSchedules.new(self)
+      @artifact_sources = ArtifactSources.new(self)
+      @arm_templates = ArmTemplates.new(self)
+      @artifacts = Artifacts.new(self)
+      @costs = Costs.new(self)
+      @custom_images = CustomImages.new(self)
+      @formulas = Formulas.new(self)
+      @gallery_images = GalleryImages.new(self)
+      @notification_channels = NotificationChannels.new(self)
+      @policy_sets = PolicySets.new(self)
+      @policies = Policies.new(self)
+      @schedules = Schedules.new(self)
+      @service_runners = ServiceRunners.new(self)
+      @users = Users.new(self)
+      @disks = Disks.new(self)
+      @environments = Environments.new(self)
+      @secrets = Secrets.new(self)
+      @virtual_machines = VirtualMachines.new(self)
+      @virtual_machine_schedules = VirtualMachineSchedules.new(self)
+      @virtual_networks = VirtualNetworks.new(self)
       @api_version = '2016-05-15'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

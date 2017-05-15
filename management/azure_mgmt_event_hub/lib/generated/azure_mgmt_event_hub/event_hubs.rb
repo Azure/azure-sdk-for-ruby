@@ -22,10 +22,11 @@ module Azure::ARM::EventHub
     attr_reader :client
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,10 +38,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -51,10 +53,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -113,11 +116,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates a new Event Hub as a nested resource within a namespace.
+    # Creates or updates a new Event Hub as a nested resource within a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param parameters [EventHubCreateOrUpdateParameters] Parameters supplied to
     # create an Event Hub resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -131,11 +135,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates a new Event Hub as a nested resource within a namespace.
+    # Creates or updates a new Event Hub as a nested resource within a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param parameters [EventHubCreateOrUpdateParameters] Parameters supplied to
     # create an Event Hub resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -148,11 +153,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates a new Event Hub as a nested resource within a namespace.
+    # Creates or updates a new Event Hub as a nested resource within a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param parameters [EventHubCreateOrUpdateParameters] Parameters supplied to
     # create an Event Hub resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -224,11 +230,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an Event Hub from the specified namespace and resource group.
+    # Deletes an Event Hub from the specified Namespace and resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The name of the Event Hub to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -239,11 +246,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an Event Hub from the specified namespace and resource group.
+    # Deletes an Event Hub from the specified Namespace and resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The name of the Event Hub to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -254,11 +262,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an Event Hub from the specified namespace and resource group.
+    # Deletes an Event Hub from the specified Namespace and resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The name of the Event Hub to delete.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -310,9 +319,10 @@ module Azure::ARM::EventHub
     #
     # Gets an Event Hubs description for the specified Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -326,9 +336,10 @@ module Azure::ARM::EventHub
     #
     # Gets an Event Hubs description for the specified Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -341,9 +352,10 @@ module Azure::ARM::EventHub
     #
     # Gets an Event Hubs description for the specified Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -405,9 +417,10 @@ module Azure::ARM::EventHub
     #
     # Gets the authorization rules for an Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -421,9 +434,10 @@ module Azure::ARM::EventHub
     #
     # Gets the authorization rules for an Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -436,9 +450,10 @@ module Azure::ARM::EventHub
     #
     # Gets the authorization rules for an Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -498,14 +513,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an authorization rule for the specified Event Hub.
+    # Creates or updates an AuthorizationRule for the specified Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # shared access AuthorizationRule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -517,14 +533,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an authorization rule for the specified Event Hub.
+    # Creates or updates an AuthorizationRule for the specified Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # shared access AuthorizationRule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -535,14 +552,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an authorization rule for the specified Event Hub.
+    # Creates or updates an AuthorizationRule for the specified Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
-    # shared access authorization rule.
+    # shared access AuthorizationRule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -613,11 +631,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets an authorization rule for an Event Hub by rule name.
+    # Gets an AuthorizationRule for an Event Hub by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -630,11 +649,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets an authorization rule for an Event Hub by rule name.
+    # Gets an AuthorizationRule for an Event Hub by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -646,11 +666,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets an authorization rule for an Event Hub by rule name.
+    # Gets an AuthorizationRule for an Event Hub by rule name.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -712,11 +733,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an Event Hubs authorization rule.
+    # Deletes an Event Hub AuthorizationRule.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -728,11 +750,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an Event Hubs authorization rule.
+    # Deletes an Event Hub AuthorizationRule.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -744,11 +767,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an Event Hubs authorization rule.
+    # Deletes an Event Hub AuthorizationRule.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -802,11 +826,11 @@ module Azure::ARM::EventHub
     #
     # Gets the ACS and SAS connection strings for the Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
-    # @param authorization_rule_name [String] The connection string of the
-    # namespace for the specified authorization rule.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -820,11 +844,11 @@ module Azure::ARM::EventHub
     #
     # Gets the ACS and SAS connection strings for the Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
-    # @param authorization_rule_name [String] The connection string of the
-    # namespace for the specified authorization rule.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -837,11 +861,11 @@ module Azure::ARM::EventHub
     #
     # Gets the ACS and SAS connection strings for the Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
-    # @param authorization_rule_name [String] The connection string of the
-    # namespace for the specified authorization rule.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -904,13 +928,13 @@ module Azure::ARM::EventHub
     #
     # Regenerates the ACS and SAS connection strings for the Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
-    # @param authorization_rule_name [String] The connection string of the Event
-    # Hub for the specified authorization rule.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
-    # regenerate the authorization rule.
+    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -924,13 +948,13 @@ module Azure::ARM::EventHub
     #
     # Regenerates the ACS and SAS connection strings for the Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
-    # @param authorization_rule_name [String] The connection string of the Event
-    # Hub for the specified authorization rule.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
-    # regenerate the authorization rule.
+    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -943,13 +967,13 @@ module Azure::ARM::EventHub
     #
     # Regenerates the ACS and SAS connection strings for the Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The Event Hub name.
-    # @param authorization_rule_name [String] The connection string of the Event
-    # Hub for the specified authorization rule.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
-    # regenerate the authorization rule.
+    # regenerate the AuthorizationRule Keys (PrimaryKey/SecondaryKey).
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1020,7 +1044,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1035,7 +1059,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1049,7 +1073,7 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1194,10 +1218,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Gets all the Event Hubs in a namespace.
+    # Gets all the Event Hubs in a Namespace.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1218,9 +1243,10 @@ module Azure::ARM::EventHub
     #
     # Gets the authorization rules for an Event Hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
-    # @param event_hub_name [String] The Event Hub name.
+    # @param resource_group_name [String] Name of the resource group within the
+    # azure subscription.
+    # @param namespace_name [String] The Namespace name
+    # @param event_hub_name [String] The Event Hub name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

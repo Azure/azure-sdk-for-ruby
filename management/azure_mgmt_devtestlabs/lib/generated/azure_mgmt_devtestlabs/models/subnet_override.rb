@@ -12,21 +12,28 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [String] The resource identifier of the subnet.
+      # @return [String] The resource ID of the subnet.
       attr_accessor :resource_id
 
       # @return [String] The name given to the subnet within the lab.
       attr_accessor :lab_subnet_name
 
       # @return [UsagePermissionType] Indicates whether this subnet can be used
-      # during virtual machine creation. Possible values include: 'Default',
-      # 'Deny', 'Allow'
+      # during virtual machine creation (i.e. Allow, Deny). Possible values
+      # include: 'Default', 'Deny', 'Allow'
       attr_accessor :use_in_vm_creation_permission
 
       # @return [UsagePermissionType] Indicates whether public IP addresses can
-      # be assigned to virtual machines on this subnet. Possible values
-      # include: 'Default', 'Deny', 'Allow'
+      # be assigned to virtual machines on this subnet (i.e. Allow, Deny).
+      # Possible values include: 'Default', 'Deny', 'Allow'
       attr_accessor :use_public_ip_address_permission
+
+      # @return [SubnetSharedPublicIpAddressConfiguration] Properties that
+      # virtual machines on this subnet will share.
+      attr_accessor :shared_public_ip_address_configuration
+
+      # @return [String] The virtual network pool associated with this subnet.
+      attr_accessor :virtual_network_pool_name
 
 
       #
@@ -65,6 +72,21 @@ module Azure::ARM::DevTestLabs
               use_public_ip_address_permission: {
                 required: false,
                 serialized_name: 'usePublicIpAddressPermission',
+                type: {
+                  name: 'String'
+                }
+              },
+              shared_public_ip_address_configuration: {
+                required: false,
+                serialized_name: 'sharedPublicIpAddressConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubnetSharedPublicIpAddressConfiguration'
+                }
+              },
+              virtual_network_pool_name: {
+                required: false,
+                serialized_name: 'virtualNetworkPoolName',
                 type: {
                   name: 'String'
                 }

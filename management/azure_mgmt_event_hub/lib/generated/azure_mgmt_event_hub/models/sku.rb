@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # SKU of the namespace.
+    # SKU parameters supplied to the create Namespace operation
     #
     class Sku
 

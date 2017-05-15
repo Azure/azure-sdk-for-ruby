@@ -59,6 +59,10 @@ module Azure::ARM::Web
       # only needed if Traffic Manager profile does not already exist.
       attr_accessor :traffic_manager_profile_name
 
+      # @return [Boolean] <code>true</code> if quotas should be ignored;
+      # otherwise, <code>false</code>.
+      attr_accessor :ignore_quotas
+
 
       #
       # Mapper for CloningInfo class as Ruby Hash.
@@ -147,6 +151,13 @@ module Azure::ARM::Web
                 serialized_name: 'trafficManagerProfileName',
                 type: {
                   name: 'String'
+                }
+              },
+              ignore_quotas: {
+                required: false,
+                serialized_name: 'ignoreQuotas',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

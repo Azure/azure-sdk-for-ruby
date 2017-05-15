@@ -17,6 +17,11 @@ module Azure::ARM::Web
       # <code>false</code>.
       attr_accessor :include_privacy
 
+      # @return [Boolean] If <code>true</code>, then the list of agreements
+      # will include agreements for domain transfer as well; otherwise,
+      # <code>false</code>.
+      attr_accessor :for_transfer
+
 
       #
       # Mapper for TopLevelDomainAgreementOption class as Ruby Hash.
@@ -33,6 +38,13 @@ module Azure::ARM::Web
               include_privacy: {
                 required: false,
                 serialized_name: 'includePrivacy',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              for_transfer: {
+                required: false,
+                serialized_name: 'forTransfer',
                 type: {
                   name: 'Boolean'
                 }

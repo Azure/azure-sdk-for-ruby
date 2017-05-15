@@ -19,6 +19,7 @@ module Azure::ARM::Web
       ApiHub = "ApiHub"
       DocDb = "DocDb"
       RedisCache = "RedisCache"
+      PostgreSQL = "PostgreSQL"
     end
   end
 end

@@ -117,9 +117,6 @@ module Azure::ARM::Web
       # of the App Service Environment.
       attr_accessor :environment_status
 
-      # @return [String] Kind of the app service environment
-      attr_accessor :kind
-
       # @return [String] Resource group of the App Service Environment.
       attr_accessor :resource_group
 
@@ -405,13 +402,6 @@ module Azure::ARM::Web
                 required: false,
                 read_only: true,
                 serialized_name: 'environmentStatus',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }

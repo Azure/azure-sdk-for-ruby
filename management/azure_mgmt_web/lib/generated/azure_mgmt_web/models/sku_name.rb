@@ -15,6 +15,7 @@ module Azure::ARM::Web
       Standard = "Standard"
       Premium = "Premium"
       Dynamic = "Dynamic"
+      Isolated = "Isolated"
     end
   end
 end

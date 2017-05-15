@@ -12,7 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [String] The absolute URI of the VHD.
+      # @return [String] The URI to the VHD.
       attr_accessor :id
 
 

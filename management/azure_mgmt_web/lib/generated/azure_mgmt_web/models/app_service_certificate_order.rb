@@ -79,6 +79,10 @@ module Azure::ARM::Web
       # renewable at the current moment.
       attr_accessor :app_service_certificate_not_renewable_reasons
 
+      # @return [DateTime] Time stamp when the certificate would be auto
+      # renewed next
+      attr_accessor :next_auto_renewal_time_stamp
+
 
       #
       # Mapper for AppServiceCertificateOrder class as Ruby Hash.
@@ -286,6 +290,7 @@ module Azure::ARM::Web
               },
               is_private_key_external: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.isPrivateKeyExternal',
                 type: {
                   name: 'Boolean'
@@ -293,6 +298,7 @@ module Azure::ARM::Web
               },
               app_service_certificate_not_renewable_reasons: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.appServiceCertificateNotRenewableReasons',
                 type: {
                   name: 'Sequence',
@@ -303,6 +309,14 @@ module Azure::ARM::Web
                         name: 'String'
                       }
                   }
+                }
+              },
+              next_auto_renewal_time_stamp: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.nextAutoRenewalTimeStamp',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

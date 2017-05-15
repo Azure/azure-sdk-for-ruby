@@ -8,7 +8,6 @@ module Azure::ARM::DataLakeStore
   # Creates an Azure Data Lake Store account management client.
   #
   class TrustedIdProviders
-    include Azure::ARM::DataLakeStore::Models
     include MsRestAzure
 
     #
@@ -103,11 +102,11 @@ module Azure::ARM::DataLakeStore
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = TrustedIdProvider.mapper()
+      request_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
 
       request_url = @base_url || @client.base_url
 
@@ -135,7 +134,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TrustedIdProvider.mapper()
+            result_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -222,11 +221,11 @@ module Azure::ARM::DataLakeStore
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = UpdateTrustedIdProviderParameters.mapper()
+      request_mapper = Azure::ARM::DataLakeStore::Models::UpdateTrustedIdProviderParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
 
       request_url = @base_url || @client.base_url
 
@@ -254,7 +253,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TrustedIdProvider.mapper()
+            result_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -333,7 +332,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
 
       request_url = @base_url || @client.base_url
 
@@ -427,7 +426,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}'
 
       request_url = @base_url || @client.base_url
 
@@ -454,7 +453,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TrustedIdProvider.mapper()
+            result_mapper = Azure::ARM::DataLakeStore::Models::TrustedIdProvider.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -527,7 +526,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders'
 
       request_url = @base_url || @client.base_url
 
@@ -554,7 +553,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DataLakeStoreTrustedIdProviderListResult.mapper()
+            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreTrustedIdProviderListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -644,7 +643,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DataLakeStoreTrustedIdProviderListResult.mapper()
+            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreTrustedIdProviderListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

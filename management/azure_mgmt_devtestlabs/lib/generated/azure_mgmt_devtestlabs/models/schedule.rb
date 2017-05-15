@@ -8,49 +8,47 @@ module Azure::ARM::DevTestLabs
     #
     # A schedule.
     #
-    class Schedule
+    class Schedule < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [EnableStatus] The status of the schedule. Possible values
-      # include: 'Enabled', 'Disabled'
+      # @return [EnableStatus] The status of the schedule (i.e. Enabled,
+      # Disabled). Possible values include: 'Enabled', 'Disabled'
       attr_accessor :status
 
-      # @return [String] The task type of the schedule.
+      # @return [String] The task type of the schedule (e.g.
+      # LabVmsShutdownTask, LabVmAutoStart).
       attr_accessor :task_type
 
-      # @return [WeekDetails] The weekly recurrence of the schedule.
+      # @return [WeekDetails] If the schedule will occur only some days of the
+      # week, specify the weekly recurrence.
       attr_accessor :weekly_recurrence
 
-      # @return [DayDetails] The daily recurrence of the schedule.
+      # @return [DayDetails] If the schedule will occur once each day of the
+      # week, specify the daily recurrence.
       attr_accessor :daily_recurrence
 
-      # @return [HourDetails] The hourly recurrence of the schedule.
+      # @return [HourDetails] If the schedule will occur multiple times a day,
+      # specify the hourly recurrence.
       attr_accessor :hourly_recurrence
 
-      # @return [String] The time zone id.
+      # @return [String] The time zone ID (e.g. Pacific Standard time).
       attr_accessor :time_zone_id
+
+      # @return [NotificationSettings] Notification settings.
+      attr_accessor :notification_settings
+
+      # @return [DateTime] The creation date of the schedule.
+      attr_accessor :created_date
+
+      # @return [String] The resource ID to which the schedule belongs
+      attr_accessor :target_resource_id
 
       # @return [String] The provisioning status of the resource.
       attr_accessor :provisioning_state
 
       # @return [String] The unique immutable identifier of a resource (Guid).
       attr_accessor :unique_identifier
-
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
 
 
       #
@@ -65,6 +63,51 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'Schedule',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               status: {
                 required: false,
                 serialized_name: 'properties.status',
@@ -110,6 +153,29 @@ module Azure::ARM::DevTestLabs
                   name: 'String'
                 }
               },
+              notification_settings: {
+                required: false,
+                serialized_name: 'properties.notificationSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'NotificationSettings'
+                }
+              },
+              created_date: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.createdDate',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              target_resource_id: {
+                required: false,
+                serialized_name: 'properties.targetResourceId',
+                type: {
+                  name: 'String'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -122,48 +188,6 @@ module Azure::ARM::DevTestLabs
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {
                   name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }

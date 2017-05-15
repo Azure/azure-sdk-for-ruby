@@ -11,7 +11,6 @@ module Azure::ARM::Subscriptions
   # your organization.
   #
   class Tenants
-    include Azure::ARM::Subscriptions::Models
     include MsRestAzure
 
     #
@@ -67,7 +66,7 @@ module Azure::ARM::Subscriptions
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/tenants'
+      path_template = 'tenants'
 
       request_url = @base_url || @client.base_url
 
@@ -93,7 +92,7 @@ module Azure::ARM::Subscriptions
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TenantListResult.mapper()
+            result_mapper = Azure::ARM::Subscriptions::Models::TenantListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -180,7 +179,7 @@ module Azure::ARM::Subscriptions
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TenantListResult.mapper()
+            result_mapper = Azure::ARM::Subscriptions::Models::TenantListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

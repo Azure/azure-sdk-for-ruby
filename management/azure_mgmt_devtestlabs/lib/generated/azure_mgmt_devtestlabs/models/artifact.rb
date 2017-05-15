@@ -8,42 +8,33 @@ module Azure::ARM::DevTestLabs
     #
     # An artifact.
     #
-    class Artifact
+    class Artifact < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The title of the artifact.
+      # @return [String] The artifact's title.
       attr_accessor :title
 
-      # @return [String] The description of the artifact.
+      # @return [String] The artifact's description.
       attr_accessor :description
 
-      # @return [String] The file path of the artifact.
+      # @return [String] The artifact's publisher.
+      attr_accessor :publisher
+
+      # @return [String] The file path to the artifact.
       attr_accessor :file_path
 
-      # @return [String] The icon of the artifact.
+      # @return [String] The URI to the artifact icon.
       attr_accessor :icon
 
-      # @return [String] Gets or sets the type of the target os.
+      # @return [String] The artifact's target OS.
       attr_accessor :target_os_type
 
-      # @return The parameters of the artifact.
+      # @return The artifact's parameters.
       attr_accessor :parameters
 
-      # @return [String] The identifier of the resource.
-      attr_accessor :id
-
-      # @return [String] The name of the resource.
-      attr_accessor :name
-
-      # @return [String] The type of the resource.
-      attr_accessor :type
-
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
+      # @return [DateTime] The artifact's creation date.
+      attr_accessor :created_date
 
 
       #
@@ -58,50 +49,9 @@ module Azure::ARM::DevTestLabs
             name: 'Composite',
             class_name: 'Artifact',
             model_properties: {
-              title: {
-                required: false,
-                serialized_name: 'properties.title',
-                type: {
-                  name: 'String'
-                }
-              },
-              description: {
-                required: false,
-                serialized_name: 'properties.description',
-                type: {
-                  name: 'String'
-                }
-              },
-              file_path: {
-                required: false,
-                serialized_name: 'properties.filePath',
-                type: {
-                  name: 'String'
-                }
-              },
-              icon: {
-                required: false,
-                serialized_name: 'properties.icon',
-                type: {
-                  name: 'String'
-                }
-              },
-              target_os_type: {
-                required: false,
-                serialized_name: 'properties.targetOsType',
-                type: {
-                  name: 'String'
-                }
-              },
-              parameters: {
-                required: false,
-                serialized_name: 'properties.parameters',
-                type: {
-                  name: 'Object'
-                }
-              },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -109,6 +59,7 @@ module Azure::ARM::DevTestLabs
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -116,6 +67,7 @@ module Azure::ARM::DevTestLabs
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -140,6 +92,70 @@ module Azure::ARM::DevTestLabs
                         name: 'String'
                       }
                   }
+                }
+              },
+              title: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.title',
+                type: {
+                  name: 'String'
+                }
+              },
+              description: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.description',
+                type: {
+                  name: 'String'
+                }
+              },
+              publisher: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.publisher',
+                type: {
+                  name: 'String'
+                }
+              },
+              file_path: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.filePath',
+                type: {
+                  name: 'String'
+                }
+              },
+              icon: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.icon',
+                type: {
+                  name: 'String'
+                }
+              },
+              target_os_type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.targetOsType',
+                type: {
+                  name: 'String'
+                }
+              },
+              parameters: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.parameters',
+                type: {
+                  name: 'Object'
+                }
+              },
+              created_date: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.createdDate',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }

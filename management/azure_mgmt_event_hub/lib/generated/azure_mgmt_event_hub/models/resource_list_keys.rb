@@ -12,12 +12,12 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
-      # @return [String] Primary connection string of the created namespace
-      # authorization rule.
+      # @return [String] Primary connection string of the created Namespace
+      # AuthorizationRule.
       attr_accessor :primary_connection_string
 
-      # @return [String] Secondary connection string of the created namespace
-      # authorization rule.
+      # @return [String] Secondary connection string of the created Namespace
+      # AuthorizationRule.
       attr_accessor :secondary_connection_string
 
       # @return [String] A base64-encoded 256-bit primary key for signing and
@@ -28,7 +28,7 @@ module Azure::ARM::EventHub
       # validating the SAS token.
       attr_accessor :secondary_key
 
-      # @return [String] A string that describes the authorization rule.
+      # @return [String] A string that describes the AuthorizationRule.
       attr_accessor :key_name
 
 
