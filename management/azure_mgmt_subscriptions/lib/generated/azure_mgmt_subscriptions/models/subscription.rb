@@ -19,9 +19,6 @@ module Azure::ARM::Subscriptions
       # @return [String] The subscription ID.
       attr_accessor :subscription_id
 
-      # @return [String] The tenant ID.
-      attr_accessor :tenant_id
-
       # @return [String] The subscription display name.
       attr_accessor :display_name
 
@@ -63,14 +60,6 @@ module Azure::ARM::Subscriptions
                 required: false,
                 read_only: true,
                 serialized_name: 'subscriptionId',
-                type: {
-                  name: 'String'
-                }
-              },
-              tenant_id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }
