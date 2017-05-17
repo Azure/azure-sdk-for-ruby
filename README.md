@@ -20,6 +20,7 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [DNS](https://rubygems.org/gems/azure_mgmt_dns) Azure DNS Record Set and Zone management
 * [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
 * [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
+* [Insights](https://rubygems.org/gems/azure_mgmt_insights) Azure Insights management
 * [IoTHub](https://rubygems.org/gems/azure_mgmt_iot_hub) Azure IoTHub's Resource Management
 * [Key Vault](https://rubygems.org/gems/azure_mgmt_key_vault) Azure Key Vault's vault management
 * [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
