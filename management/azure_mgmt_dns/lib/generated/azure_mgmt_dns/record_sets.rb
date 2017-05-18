@@ -8,7 +8,6 @@ module Azure::ARM::Dns
   # The DNS Management Client.
   #
   class RecordSets
-    include Azure::ARM::Dns::Models
     include MsRestAzure
 
     #
@@ -111,11 +110,11 @@ module Azure::ARM::Dns
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RecordSet.mapper()
+      request_mapper = Azure::ARM::Dns::Models::RecordSet.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
 
       request_url = @base_url || @client.base_url
 
@@ -144,7 +143,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSet.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSet.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -262,11 +261,11 @@ module Azure::ARM::Dns
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RecordSet.mapper()
+      request_mapper = Azure::ARM::Dns::Models::RecordSet.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
 
       request_url = @base_url || @client.base_url
 
@@ -295,7 +294,7 @@ module Azure::ARM::Dns
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSet.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSet.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -305,7 +304,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSet.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSet.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -401,7 +400,7 @@ module Azure::ARM::Dns
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
 
       request_url = @base_url || @client.base_url
 
@@ -503,7 +502,7 @@ module Azure::ARM::Dns
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
 
       request_url = @base_url || @client.base_url
 
@@ -531,7 +530,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSet.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSet.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -555,13 +554,17 @@ module Azure::ARM::Dns
     # 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_by_type(resource_group_name, zone_name, record_type, top = nil, custom_headers = nil)
-      first_page = list_by_type_as_lazy(resource_group_name, zone_name, record_type, top, custom_headers)
+    def list_by_type(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      first_page = list_by_type_as_lazy(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers)
       first_page.get_all_items
     end
 
@@ -576,13 +579,17 @@ module Azure::ARM::Dns
     # 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_type_with_http_info(resource_group_name, zone_name, record_type, top = nil, custom_headers = nil)
-      list_by_type_async(resource_group_name, zone_name, record_type, top, custom_headers).value!
+    def list_by_type_with_http_info(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      list_by_type_async(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers).value!
     end
 
     #
@@ -596,12 +603,16 @@ module Azure::ARM::Dns
     # 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_type_async(resource_group_name, zone_name, record_type, top = nil, custom_headers = nil)
+    def list_by_type_async(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, 'record_type is nil' if record_type.nil?
@@ -614,14 +625,14 @@ module Azure::ARM::Dns
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'zoneName' => zone_name,'recordType' => record_type,'subscriptionId' => @client.subscription_id},
-          query_params: {'$top' => top,'api-version' => @client.api_version},
+          query_params: {'$top' => top,'$recordsetnamesuffix' => recordsetnamesuffix,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -641,7 +652,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSetListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSetListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -662,13 +673,17 @@ module Azure::ARM::Dns
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_by_dns_zone(resource_group_name, zone_name, top = nil, custom_headers = nil)
-      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top, custom_headers)
+    def list_by_dns_zone(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers)
       first_page.get_all_items
     end
 
@@ -680,13 +695,17 @@ module Azure::ARM::Dns
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top = nil, custom_headers = nil)
-      list_by_dns_zone_async(resource_group_name, zone_name, top, custom_headers).value!
+    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      list_by_dns_zone_async(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers).value!
     end
 
     #
@@ -697,12 +716,16 @@ module Azure::ARM::Dns
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_dns_zone_async(resource_group_name, zone_name, top = nil, custom_headers = nil)
+    def list_by_dns_zone_async(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -714,14 +737,14 @@ module Azure::ARM::Dns
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'zoneName' => zone_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$top' => top,'api-version' => @client.api_version},
+          query_params: {'$top' => top,'$recordsetnamesuffix' => recordsetnamesuffix,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -741,7 +764,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSetListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSetListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -828,7 +851,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSetListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSetListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -915,7 +938,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RecordSetListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::RecordSetListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -939,14 +962,18 @@ module Azure::ARM::Dns
     # 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_type_as_lazy(resource_group_name, zone_name, record_type, top = nil, custom_headers = nil)
-      response = list_by_type_async(resource_group_name, zone_name, record_type, top, custom_headers).value!
+    def list_by_type_as_lazy(resource_group_name, zone_name, record_type, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      response = list_by_type_async(resource_group_name, zone_name, record_type, top, recordsetnamesuffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -964,14 +991,18 @@ module Azure::ARM::Dns
     # dot).
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
+    # @param recordsetnamesuffix [String] The suffix label of the record set name
+    # that has to be used to filter the record set enumerations. If this parameter
+    # is specified, Enumeration will return only records that end with
+    # .<recordSetNameSuffix>
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top = nil, custom_headers = nil)
-      response = list_by_dns_zone_async(resource_group_name, zone_name, top, custom_headers).value!
+    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top = nil, recordsetnamesuffix = nil, custom_headers = nil)
+      response = list_by_dns_zone_async(resource_group_name, zone_name, top, recordsetnamesuffix, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
