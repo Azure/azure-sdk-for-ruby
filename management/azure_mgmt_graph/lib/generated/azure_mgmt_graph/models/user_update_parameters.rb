@@ -24,6 +24,12 @@ module Azure::ARM::Graph
       # @return [String] The mail alias for the user.
       attr_accessor :mail_nickname
 
+      # @return [String] A two letter country code (ISO standard 3166).
+      # Required for users that will be assigned licenses due to legal
+      # requirement to check for availability of services in countries.
+      # Examples include: "US", "JP", and "GB".
+      attr_accessor :usage_location
+
 
       #
       # Mapper for UserUpdateParameters class as Ruby Hash.
@@ -62,6 +68,13 @@ module Azure::ARM::Graph
               mail_nickname: {
                 required: false,
                 serialized_name: 'mailNickname',
+                type: {
+                  name: 'String'
+                }
+              },
+              usage_location: {
+                required: false,
+                serialized_name: 'usageLocation',
                 type: {
                   name: 'String'
                 }
