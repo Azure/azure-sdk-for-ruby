@@ -8,7 +8,6 @@ module Azure::ARM::Dns
   # The DNS Management Client.
   #
   class Zones
-    include Azure::ARM::Dns::Models
     include MsRestAzure
 
     #
@@ -104,11 +103,11 @@ module Azure::ARM::Dns
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Zone.mapper()
+      request_mapper = Azure::ARM::Dns::Models::Zone.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'
 
       request_url = @base_url || @client.base_url
 
@@ -136,7 +135,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Zone.mapper()
+            result_mapper = Azure::ARM::Dns::Models::Zone.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -146,7 +145,7 @@ module Azure::ARM::Dns
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Zone.mapper()
+            result_mapper = Azure::ARM::Dns::Models::Zone.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -199,7 +198,7 @@ module Azure::ARM::Dns
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = ZoneDeleteResult.mapper()
+          result_mapper = Azure::ARM::Dns::Models::ZoneDeleteResult.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -267,7 +266,7 @@ module Azure::ARM::Dns
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'
 
       request_url = @base_url || @client.base_url
 
@@ -294,7 +293,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Zone.mapper()
+            result_mapper = Azure::ARM::Dns::Models::Zone.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -360,7 +359,7 @@ module Azure::ARM::Dns
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones'
 
       request_url = @base_url || @client.base_url
 
@@ -387,7 +386,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ZoneListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::ZoneListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -449,7 +448,7 @@ module Azure::ARM::Dns
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones'
 
       request_url = @base_url || @client.base_url
 
@@ -476,7 +475,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ZoneListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::ZoneListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -556,7 +555,7 @@ module Azure::ARM::Dns
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}'
 
       request_url = @base_url || @client.base_url
 
@@ -583,7 +582,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ZoneDeleteResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::ZoneDeleteResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -670,7 +669,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ZoneListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::ZoneListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -757,7 +756,7 @@ module Azure::ARM::Dns
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ZoneListResult.mapper()
+            result_mapper = Azure::ARM::Dns::Models::ZoneListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
