@@ -269,6 +269,20 @@ module MsRestAzure
       result
     end
 
+    #
+    # Converts the absolute path to relative path, by removing the '/' at the beginning (if existing)
+    # and calls the method in the super class
+    # @param base_url [String] the base url for the request.
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
+    # @param path [String] the path, relative to {base_url}.
+    # @param options [Hash{String=>String}] specifying any request options like :credentials, :body, etc.
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def make_request_async(base_url, method, path, options = {})
+      path[0] = '' if path[0] == '/'
+      super(base_url, method, path, options)
+    end
+
     private
       #
       # Retrieves a new instance of the AzureOperationResponse class.
