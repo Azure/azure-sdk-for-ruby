@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Composite Swagger for Compute Client
   #
   class VirtualMachines
-    include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
@@ -58,7 +57,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = VirtualMachineCaptureResult.mapper()
+          result_mapper = Azure::ARM::Compute::Models::VirtualMachineCaptureResult.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -104,7 +103,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = VirtualMachine.mapper()
+          result_mapper = Azure::ARM::Compute::Models::VirtualMachine.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -146,7 +145,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -208,7 +207,7 @@ module Azure::ARM::Compute
     def get_async(resource_group_name, vm_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -217,7 +216,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}'
 
       request_url = @base_url || @client.base_url
 
@@ -244,7 +243,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachine.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -289,7 +288,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -332,7 +331,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -385,7 +384,7 @@ module Azure::ARM::Compute
     def generalize_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -394,7 +393,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize'
 
       request_url = @base_url || @client.base_url
 
@@ -421,7 +420,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -475,7 +474,7 @@ module Azure::ARM::Compute
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -484,7 +483,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines'
 
       request_url = @base_url || @client.base_url
 
@@ -511,7 +510,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -561,7 +560,7 @@ module Azure::ARM::Compute
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_all_async(custom_headers = nil)
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -570,7 +569,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines'
 
       request_url = @base_url || @client.base_url
 
@@ -597,7 +596,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -655,7 +654,7 @@ module Azure::ARM::Compute
     def list_available_sizes_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -664,7 +663,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes'
 
       request_url = @base_url || @client.base_url
 
@@ -691,7 +690,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineSizeListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineSizeListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -737,7 +736,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -779,7 +778,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -821,7 +820,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -863,7 +862,95 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # The operation to perform maintenance on a virtual machine.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [OperationStatusResponse] operation results.
+    #
+    def perform_maintenance(resource_group_name, vm_name, custom_headers = nil)
+      response = perform_maintenance_async(resource_group_name, vm_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def perform_maintenance_async(resource_group_name, vm_name, custom_headers = nil)
+      # Send request
+      promise = begin_perform_maintenance_async(resource_group_name, vm_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Run command on the VM.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param parameters [RunCommandInput] Parameters supplied to the Run command
+    # operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RunCommandResult] operation results.
+    #
+    def run_command(resource_group_name, vm_name, parameters, custom_headers = nil)
+      response = run_command_async(resource_group_name, vm_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param parameters [RunCommandInput] Parameters supplied to the Run command
+    # operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def run_command_async(resource_group_name, vm_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_run_command_async(resource_group_name, vm_name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Compute::Models::RunCommandResult.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -926,7 +1013,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -939,11 +1026,11 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = VirtualMachineCaptureParameters.mapper()
+      request_mapper = Azure::ARM::Compute::Models::VirtualMachineCaptureParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture'
 
       request_url = @base_url || @client.base_url
 
@@ -971,7 +1058,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineCaptureResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineCaptureResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1033,7 +1120,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1046,11 +1133,11 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = VirtualMachine.mapper()
+      request_mapper = Azure::ARM::Compute::Models::VirtualMachine.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1078,7 +1165,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachine.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1088,7 +1175,7 @@ module Azure::ARM::Compute
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachine.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1143,7 +1230,7 @@ module Azure::ARM::Compute
     def begin_delete_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1152,7 +1239,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}'
 
       request_url = @base_url || @client.base_url
 
@@ -1179,7 +1266,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1237,7 +1324,7 @@ module Azure::ARM::Compute
     def begin_convert_to_managed_disks_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1246,7 +1333,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/convertToManagedDisks'
 
       request_url = @base_url || @client.base_url
 
@@ -1273,7 +1360,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1331,7 +1418,7 @@ module Azure::ARM::Compute
     def begin_deallocate_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1340,7 +1427,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate'
 
       request_url = @base_url || @client.base_url
 
@@ -1367,7 +1454,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1428,7 +1515,7 @@ module Azure::ARM::Compute
     def begin_power_off_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1437,7 +1524,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff'
 
       request_url = @base_url || @client.base_url
 
@@ -1464,7 +1551,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1519,7 +1606,7 @@ module Azure::ARM::Compute
     def begin_restart_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1528,7 +1615,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart'
 
       request_url = @base_url || @client.base_url
 
@@ -1555,7 +1642,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1610,7 +1697,7 @@ module Azure::ARM::Compute
     def begin_start_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1619,7 +1706,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start'
 
       request_url = @base_url || @client.base_url
 
@@ -1646,7 +1733,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1701,7 +1788,7 @@ module Azure::ARM::Compute
     def begin_redeploy_async(resource_group_name, vm_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1710,7 +1797,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy'
 
       request_url = @base_url || @client.base_url
 
@@ -1737,7 +1824,205 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The operation to perform maintenance on a virtual machine.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [OperationStatusResponse] operation results.
+    #
+    def begin_perform_maintenance(resource_group_name, vm_name, custom_headers = nil)
+      response = begin_perform_maintenance_async(resource_group_name, vm_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The operation to perform maintenance on a virtual machine.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_perform_maintenance_with_http_info(resource_group_name, vm_name, custom_headers = nil)
+      begin_perform_maintenance_async(resource_group_name, vm_name, custom_headers).value!
+    end
+
+    #
+    # The operation to perform maintenance on a virtual machine.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_perform_maintenance_async(resource_group_name, vm_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      api_version = '2017-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Run command on the VM.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param parameters [RunCommandInput] Parameters supplied to the Run command
+    # operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RunCommandResult] operation results.
+    #
+    def begin_run_command(resource_group_name, vm_name, parameters, custom_headers = nil)
+      response = begin_run_command_async(resource_group_name, vm_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Run command on the VM.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param parameters [RunCommandInput] Parameters supplied to the Run command
+    # operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_run_command_with_http_info(resource_group_name, vm_name, parameters, custom_headers = nil)
+      begin_run_command_async(resource_group_name, vm_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Run command on the VM.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine.
+    # @param parameters [RunCommandInput] Parameters supplied to the Run command
+    # operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_run_command_async(resource_group_name, vm_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2017-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Compute::Models::RunCommandInput.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Compute::Models::RunCommandResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1827,7 +2112,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1917,7 +2202,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

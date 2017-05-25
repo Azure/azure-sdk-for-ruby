@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Composite Swagger for Compute Client
   #
   class VirtualMachineSizes
-    include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
@@ -63,7 +62,7 @@ module Azure::ARM::Compute
     #
     def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -72,7 +71,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes'
 
       request_url = @base_url || @client.base_url
 
@@ -99,7 +98,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineSizeListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineSizeListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

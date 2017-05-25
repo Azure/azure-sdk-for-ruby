@@ -12,9 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [StorageAccountTypes] the storage account type of the disk.
-      # Possible values include: 'Standard_LRS', 'Premium_LRS'
-      attr_accessor :account_type
+      # @return [DiskSku]
+      attr_accessor :sku
 
       # @return [DateTime] The time when the disk was created.
       attr_accessor :time_created
@@ -36,10 +35,6 @@ module Azure::ARM::Compute
 
       # @return [EncryptionSettings] Encryption settings for disk or snapshot
       attr_accessor :encryption_settings
-
-      # @return [String] A relative URI containing the VM id that has the disk
-      # attached.
-      attr_accessor :owner_id
 
       # @return [String] The disk provisioning state.
       attr_accessor :provisioning_state
@@ -102,12 +97,12 @@ module Azure::ARM::Compute
                   }
                 }
               },
-              account_type: {
+              sku: {
                 required: false,
-                serialized_name: 'properties.accountType',
+                serialized_name: 'sku',
                 type: {
-                  name: 'Enum',
-                  module: 'StorageAccountTypes'
+                  name: 'Composite',
+                  class_name: 'DiskSku'
                 }
               },
               time_created: {
@@ -147,14 +142,6 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'EncryptionSettings'
-                }
-              },
-              owner_id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.ownerId',
-                type: {
-                  name: 'String'
                 }
               },
               provisioning_state: {

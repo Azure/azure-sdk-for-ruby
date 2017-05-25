@@ -7,11 +7,11 @@ module Azure::ARM::Compute
   #
   # Composite Swagger for Compute Client
   #
-  class UsageOperations
+  class ResourceSkus
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the UsageOperations class.
+    # Creates and initializes a new instance of the ResourceSkus class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,49 +22,39 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param location [String] The location for which resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Usage>] operation results.
+    # @return [Array<ResourceSku>] operation results.
     #
-    def list(location, custom_headers = nil)
-      first_page = list_as_lazy(location, custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param location [String] The location for which resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, custom_headers = nil)
-      list_async(location, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param location [String] The location for which resource usage is queried.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, custom_headers = nil)
-      fail ArgumentError, 'location is nil' if location.nil?
+    def list_async(custom_headers = nil)
       api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -74,13 +64,13 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/skus'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'location' => location,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -101,7 +91,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::ListUsagesResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::ResourceSkusResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -115,16 +105,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ListUsagesResult] operation results.
+    # @return [ResourceSkusResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -132,9 +120,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -148,9 +134,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -194,7 +178,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::ListUsagesResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::ResourceSkusResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -208,19 +192,16 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets, for the specified location, the current compute resource usage
-    # information as well as the limits for compute resources under the
-    # subscription.
+    # Gets the list of Microsoft.Compute SKUs available for your Subscription.
     #
-    # @param location [String] The location for which resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ListUsagesResult] which provide lazy access to pages of the
+    # @return [ResourceSkusResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(location, custom_headers = nil)
-      response = list_async(location, custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

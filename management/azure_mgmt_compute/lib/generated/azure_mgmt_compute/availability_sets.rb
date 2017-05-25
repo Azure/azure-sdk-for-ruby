@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Composite Swagger for Compute Client
   #
   class AvailabilitySets
-    include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
@@ -26,7 +25,7 @@ module Azure::ARM::Compute
     # Create or update an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the availability set.
+    # @param availability_set_name [String] The name of the availability set.
     # @param parameters [AvailabilitySet] Parameters supplied to the Create
     # Availability Set operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -34,8 +33,8 @@ module Azure::ARM::Compute
     #
     # @return [AvailabilitySet] operation results.
     #
-    def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, availability_set_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, availability_set_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -43,7 +42,7 @@ module Azure::ARM::Compute
     # Create or update an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the availability set.
+    # @param availability_set_name [String] The name of the availability set.
     # @param parameters [AvailabilitySet] Parameters supplied to the Create
     # Availability Set operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -51,15 +50,15 @@ module Azure::ARM::Compute
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, availability_set_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, availability_set_name, parameters, custom_headers).value!
     end
 
     #
     # Create or update an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the availability set.
+    # @param availability_set_name [String] The name of the availability set.
     # @param parameters [AvailabilitySet] Parameters supplied to the Create
     # Availability Set operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -67,11 +66,11 @@ module Azure::ARM::Compute
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, availability_set_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -84,17 +83,17 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = AvailabilitySet.mapper()
+      request_mapper = Azure::ARM::Compute::Models::AvailabilitySet.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{name}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'availabilitySetName' => availability_set_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -116,7 +115,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AvailabilitySet.mapper()
+            result_mapper = Azure::ARM::Compute::Models::AvailabilitySet.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -171,7 +170,7 @@ module Azure::ARM::Compute
     def delete_async(resource_group_name, availability_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -180,7 +179,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
 
       request_url = @base_url || @client.base_url
 
@@ -207,7 +206,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -262,7 +261,7 @@ module Azure::ARM::Compute
     def get_async(resource_group_name, availability_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -271,7 +270,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
 
       request_url = @base_url || @client.base_url
 
@@ -298,7 +297,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AvailabilitySet.mapper()
+            result_mapper = Azure::ARM::Compute::Models::AvailabilitySet.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -349,7 +348,7 @@ module Azure::ARM::Compute
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -358,7 +357,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets'
 
       request_url = @base_url || @client.base_url
 
@@ -385,7 +384,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AvailabilitySetListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::AvailabilitySetListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -443,7 +442,7 @@ module Azure::ARM::Compute
     def list_available_sizes_async(resource_group_name, availability_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -452,7 +451,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes'
 
       request_url = @base_url || @client.base_url
 
@@ -479,7 +478,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineSizeListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineSizeListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

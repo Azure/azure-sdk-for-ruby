@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Composite Swagger for Compute Client
   #
   class Disks
-    include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
@@ -59,7 +58,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Disk.mapper()
+          result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -107,7 +106,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Disk.mapper()
+          result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -164,7 +163,7 @@ module Azure::ARM::Compute
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'disk_name is nil' if disk_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
 
 
       request_headers = {}
@@ -172,7 +171,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
 
       request_url = @base_url || @client.base_url
 
@@ -199,7 +198,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -245,7 +244,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -295,7 +294,7 @@ module Azure::ARM::Compute
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
 
 
       request_headers = {}
@@ -303,7 +302,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks'
 
       request_url = @base_url || @client.base_url
 
@@ -330,7 +329,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -378,7 +377,7 @@ module Azure::ARM::Compute
     #
     def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
 
 
       request_headers = {}
@@ -386,7 +385,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks'
 
       request_url = @base_url || @client.base_url
 
@@ -413,7 +412,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -463,7 +462,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = AccessUri.mapper()
+          result_mapper = Azure::ARM::Compute::Models::AccessUri.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -507,7 +506,7 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -570,7 +569,7 @@ module Azure::ARM::Compute
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'disk_name is nil' if disk_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, 'disk is nil' if disk.nil?
 
 
@@ -583,11 +582,11 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Disk.mapper()
+      request_mapper = Azure::ARM::Compute::Models::Disk.mapper()
       request_content = @client.serialize(request_mapper,  disk, 'disk')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
 
       request_url = @base_url || @client.base_url
 
@@ -615,7 +614,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -625,7 +624,7 @@ module Azure::ARM::Compute
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -690,7 +689,7 @@ module Azure::ARM::Compute
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'disk_name is nil' if disk_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, 'disk is nil' if disk.nil?
 
 
@@ -703,11 +702,11 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = DiskUpdate.mapper()
+      request_mapper = Azure::ARM::Compute::Models::DiskUpdate.mapper()
       request_content = @client.serialize(request_mapper,  disk, 'disk')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
 
       request_url = @base_url || @client.base_url
 
@@ -735,7 +734,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -745,7 +744,7 @@ module Azure::ARM::Compute
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -804,7 +803,7 @@ module Azure::ARM::Compute
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'disk_name is nil' if disk_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
 
 
       request_headers = {}
@@ -812,7 +811,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
 
       request_url = @base_url || @client.base_url
 
@@ -839,7 +838,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -904,7 +903,7 @@ module Azure::ARM::Compute
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'disk_name is nil' if disk_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, 'grant_access_data is nil' if grant_access_data.nil?
 
 
@@ -917,11 +916,11 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = GrantAccessData.mapper()
+      request_mapper = Azure::ARM::Compute::Models::GrantAccessData.mapper()
       request_content = @client.serialize(request_mapper,  grant_access_data, 'grant_access_data')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess'
 
       request_url = @base_url || @client.base_url
 
@@ -949,7 +948,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AccessUri.mapper()
+            result_mapper = Azure::ARM::Compute::Models::AccessUri.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1008,7 +1007,7 @@ module Azure::ARM::Compute
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'disk_name is nil' if disk_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
 
 
       request_headers = {}
@@ -1016,7 +1015,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess'
 
       request_url = @base_url || @client.base_url
 
@@ -1043,7 +1042,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1130,7 +1129,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1217,7 +1216,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

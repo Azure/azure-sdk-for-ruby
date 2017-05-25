@@ -22,6 +22,9 @@ module Azure::ARM::Compute
       # @return [UpgradePolicy] The upgrade policy.
       attr_accessor :upgrade_policy
 
+      # @return [RecoveryPolicy] The recovery policy.
+      attr_accessor :recovery_policy
+
       # @return [VirtualMachineScaleSetVMProfile] The virtual machine profile.
       attr_accessor :virtual_machine_profile
 
@@ -32,6 +35,10 @@ module Azure::ARM::Compute
       # @return [Boolean] Specifies whether the Virtual Machine Scale Set
       # should be overprovisioned.
       attr_accessor :overprovision
+
+      # @return [String] Specifies the ID which uniquely identifies a Virtual
+      # Machine Scale Set.
+      attr_accessor :unique_id
 
       # @return [Boolean] When true this limits the scale set to a single
       # placement group, of max size 100 virtual machines.
@@ -123,6 +130,14 @@ module Azure::ARM::Compute
                   class_name: 'UpgradePolicy'
                 }
               },
+              recovery_policy: {
+                required: false,
+                serialized_name: 'properties.recoveryPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RecoveryPolicy'
+                }
+              },
               virtual_machine_profile: {
                 required: false,
                 serialized_name: 'properties.virtualMachineProfile',
@@ -144,6 +159,13 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.overprovision',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              unique_id: {
+                required: false,
+                serialized_name: 'properties.uniqueId',
+                type: {
+                  name: 'String'
                 }
               },
               single_placement_group: {

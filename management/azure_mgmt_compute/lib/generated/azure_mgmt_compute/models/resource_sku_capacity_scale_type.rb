@@ -6,14 +6,12 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for DiskCreateOption
+    # Defines values for ResourceSkuCapacityScaleType
     #
-    module DiskCreateOption
-      Empty = "Empty"
-      Attach = "Attach"
-      FromImage = "FromImage"
-      Import = "Import"
-      Copy = "Copy"
+    module ResourceSkuCapacityScaleType
+      Automatic = "Automatic"
+      Manual = "Manual"
+      None = "None"
     end
   end
 end

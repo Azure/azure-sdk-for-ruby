@@ -18,6 +18,16 @@ module Azure::ARM::Compute
       # @return [ApiEntityReference] The subnet.
       attr_accessor :subnet
 
+      # @return [VirtualMachineScaleSetPublicIPAddressConfiguration] The
+      # publicIPAddressConfiguration.
+      attr_accessor :public_ipaddress_configuration
+
+      # @return [IPVersion] Available from Api-Version 2017-03-30 onwards, it
+      # represents whether the specific ipconfiguration is IPv4 or IPv6.
+      # Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+      # Possible values include: 'IPv4', 'IPv6'
+      attr_accessor :private_ipaddress_version
+
       # @return [Array<SubResource>] The application gateway backend address
       # pools.
       attr_accessor :application_gateway_backend_address_pools
@@ -56,11 +66,26 @@ module Azure::ARM::Compute
                 }
               },
               subnet: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.subnet',
                 type: {
                   name: 'Composite',
                   class_name: 'ApiEntityReference'
+                }
+              },
+              public_ipaddress_configuration: {
+                required: false,
+                serialized_name: 'properties.publicIPAddressConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VirtualMachineScaleSetPublicIPAddressConfiguration'
+                }
+              },
+              private_ipaddress_version: {
+                required: false,
+                serialized_name: 'properties.privateIPAddressVersion',
+                type: {
+                  name: 'String'
                 }
               },
               application_gateway_backend_address_pools: {

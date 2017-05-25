@@ -32,6 +32,10 @@ module Azure::ARM::Compute
       # the new desired size for existing OS and Data disks.
       attr_accessor :disk_size_gb
 
+      # @return [StorageAccountTypes] The Storage Account type. Possible values
+      # include: 'Standard_LRS', 'Premium_LRS'
+      attr_accessor :storage_account_type
+
 
       #
       # Mapper for ImageDataDisk class as Ruby Hash.
@@ -88,6 +92,14 @@ module Azure::ARM::Compute
                 serialized_name: 'diskSizeGB',
                 type: {
                   name: 'Number'
+                }
+              },
+              storage_account_type: {
+                required: false,
+                serialized_name: 'storageAccountType',
+                type: {
+                  name: 'Enum',
+                  module: 'StorageAccountTypes'
                 }
               }
             }
