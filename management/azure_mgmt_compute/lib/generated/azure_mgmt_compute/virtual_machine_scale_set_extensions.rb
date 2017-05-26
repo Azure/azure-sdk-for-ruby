@@ -7,11 +7,11 @@ module Azure::ARM::Compute
   #
   # Composite Swagger for Compute Client
   #
-  class Images
+  class VirtualMachineScaleSetExtensions
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Images class.
+    # Creates and initializes a new instance of the VirtualMachineScaleSetExtensions class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,39 +22,45 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # Create or update an image.
+    # The operation to create or update an extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
-    # @param parameters [Image] Parameters supplied to the Create Image operation.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be create or updated.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
+    # @param extension_parameters [VirtualMachineScaleSetExtension] Parameters
+    # supplied to the Create VM scale set Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Image] operation results.
+    # @return [VirtualMachineScaleSetExtension] operation results.
     #
-    def create_or_update(resource_group_name, image_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, image_name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
-    # @param parameters [Image] Parameters supplied to the Create Image operation.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be create or updated.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
+    # @param extension_parameters [VirtualMachineScaleSetExtension] Parameters
+    # supplied to the Create VM scale set Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, image_name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, image_name, parameters, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::Image.mapper()
+          result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtension.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -66,32 +72,36 @@ module Azure::ARM::Compute
     end
 
     #
-    # Deletes an Image.
+    # The operation to delete the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be deleted.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def delete(resource_group_name, image_name, custom_headers = nil)
-      response = delete_async(resource_group_name, image_name, custom_headers).value!
+    def delete(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers = nil)
+      response = delete_async(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be deleted.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, image_name, custom_headers = nil)
+    def delete_async(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, image_name, custom_headers)
+      promise = begin_delete_async(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -108,50 +118,57 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets an image.
+    # The operation to get the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param expand [String] The expand expression to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Image] operation results.
+    # @return [VirtualMachineScaleSetExtension] operation results.
     #
-    def get(resource_group_name, image_name, expand = nil, custom_headers = nil)
-      response = get_async(resource_group_name, image_name, expand, custom_headers).value!
+    def get(resource_group_name, vm_scale_set_name, vmss_extension_name, expand = nil, custom_headers = nil)
+      response = get_async(resource_group_name, vm_scale_set_name, vmss_extension_name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets an image.
+    # The operation to get the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param expand [String] The expand expression to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, image_name, expand = nil, custom_headers = nil)
-      get_async(resource_group_name, image_name, expand, custom_headers).value!
+    def get_with_http_info(resource_group_name, vm_scale_set_name, vmss_extension_name, expand = nil, custom_headers = nil)
+      get_async(resource_group_name, vm_scale_set_name, vmss_extension_name, expand, custom_headers).value!
     end
 
     #
-    # Gets an image.
+    # The operation to get the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param expand [String] The expand expression to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, image_name, expand = nil, custom_headers = nil)
+    def get_async(resource_group_name, vm_scale_set_name, vmss_extension_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'image_name is nil' if image_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'vmss_extension_name is nil' if vmss_extension_name.nil?
       api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -161,13 +178,13 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'imageName' => image_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'vmssExtensionName' => vmss_extension_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$expand' => expand,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -188,7 +205,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::Image.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -202,43 +219,50 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of images under a resource group.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Image>] operation results.
+    # @return [Array<VirtualMachineScaleSetExtension>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, vm_scale_set_name, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets the list of images under a resource group.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_with_http_info(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      list_async(resource_group_name, vm_scale_set_name, custom_headers).value!
     end
 
     #
-    # Gets the list of images under a resource group.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -248,13 +272,13 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -275,7 +299,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::ImageListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtensionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -289,140 +313,61 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<Image>] operation results.
-    #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
-    end
-
-    #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
-    #
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_async(custom_headers = nil)
-      api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/images'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::ImageListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Create or update an image.
+    # The operation to create or update an extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
-    # @param parameters [Image] Parameters supplied to the Create Image operation.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be create or updated.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
+    # @param extension_parameters [VirtualMachineScaleSetExtension] Parameters
+    # supplied to the Create VM scale set Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Image] operation results.
+    # @return [VirtualMachineScaleSetExtension] operation results.
     #
-    def begin_create_or_update(resource_group_name, image_name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, image_name, parameters, custom_headers).value!
+    def begin_create_or_update(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create or update an image.
+    # The operation to create or update an extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
-    # @param parameters [Image] Parameters supplied to the Create Image operation.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be create or updated.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
+    # @param extension_parameters [VirtualMachineScaleSetExtension] Parameters
+    # supplied to the Create VM scale set Extension operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, image_name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, image_name, parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers).value!
     end
 
     #
-    # Create or update an image.
+    # The operation to create or update an extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
-    # @param parameters [Image] Parameters supplied to the Create Image operation.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be create or updated.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
+    # @param extension_parameters [VirtualMachineScaleSetExtension] Parameters
+    # supplied to the Create VM scale set Extension operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, image_name, parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, vm_scale_set_name, vmss_extension_name, extension_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'image_name is nil' if image_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'vmss_extension_name is nil' if vmss_extension_name.nil?
+      fail ArgumentError, 'extension_parameters is nil' if extension_parameters.nil?
       api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -436,17 +381,17 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Models::Image.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtension.mapper()
+      request_content = @client.serialize(request_mapper,  extension_parameters, 'extension_parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'imageName' => image_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'vmssExtensionName' => vmss_extension_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -468,7 +413,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::Image.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -478,7 +423,7 @@ module Azure::ARM::Compute
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::Image.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtension.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -492,47 +437,54 @@ module Azure::ARM::Compute
     end
 
     #
-    # Deletes an Image.
+    # The operation to delete the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be deleted.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_delete(resource_group_name, image_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, image_name, custom_headers).value!
+    def begin_delete(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Deletes an Image.
+    # The operation to delete the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be deleted.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, image_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, image_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers).value!
     end
 
     #
-    # Deletes an Image.
+    # The operation to delete the extension.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param image_name [String] The name of the image.
+    # @param vm_scale_set_name [String] The name of the VM scale set where the
+    # extension should be deleted.
+    # @param vmss_extension_name [String] The name of the VM scale set extension.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, image_name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, vm_scale_set_name, vmss_extension_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'image_name is nil' if image_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'vmss_extension_name is nil' if vmss_extension_name.nil?
       api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -542,13 +494,13 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'imageName' => image_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'vmssExtensionName' => vmss_extension_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -583,103 +535,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of images under a resource group.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImageListResult] operation results.
-    #
-    def list_by_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the list of images under a resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Gets the list of images under a resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::ImageListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ImageListResult] operation results.
+    # @return [VirtualMachineScaleSetExtensionListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -687,9 +550,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -703,9 +564,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -749,7 +608,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::ImageListResult.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetExtensionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -763,37 +622,19 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of images under a resource group.
+    # Gets a list of all extensions in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set containing the
+    # extension.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ImageListResult] which provide lazy access to pages of the response.
+    # @return [VirtualMachineScaleSetExtensionListResult] which provide lazy access
+    # to pages of the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # Gets the list of Images in the subscription. Use nextLink property in the
-    # response to get the next page of Images. Do this till nextLink is not null to
-    # fetch all the Images.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ImageListResult] which provide lazy access to pages of the response.
-    #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_as_lazy(resource_group_name, vm_scale_set_name, custom_headers = nil)
+      response = list_async(resource_group_name, vm_scale_set_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

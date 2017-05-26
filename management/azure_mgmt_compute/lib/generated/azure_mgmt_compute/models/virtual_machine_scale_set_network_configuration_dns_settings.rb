@@ -6,51 +6,42 @@
 module Azure::ARM::Compute
   module Models
     #
-    # The Resource model definition.
+    # Describes a virtual machines scale sets network configuration's DNS
+    # settings.
     #
-    class ResourceUpdate
+    class VirtualMachineScaleSetNetworkConfigurationDnsSettings
 
       include MsRestAzure
 
-      # @return [Hash{String => String}] Resource tags
-      attr_accessor :tags
-
-      # @return [DiskSku]
-      attr_accessor :sku
+      # @return [Array<String>] List of DNS servers IP addresses
+      attr_accessor :dns_servers
 
 
       #
-      # Mapper for ResourceUpdate class as Ruby Hash.
+      # Mapper for VirtualMachineScaleSetNetworkConfigurationDnsSettings class
+      # as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceUpdate',
+          serialized_name: 'VirtualMachineScaleSetNetworkConfigurationDnsSettings',
           type: {
             name: 'Composite',
-            class_name: 'ResourceUpdate',
+            class_name: 'VirtualMachineScaleSetNetworkConfigurationDnsSettings',
             model_properties: {
-              tags: {
+              dns_servers: {
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'dnsServers',
                 type: {
-                  name: 'Dictionary',
-                  value: {
+                  name: 'Sequence',
+                  element: {
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
                       }
                   }
-                }
-              },
-              sku: {
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'DiskSku'
                 }
               }
             }

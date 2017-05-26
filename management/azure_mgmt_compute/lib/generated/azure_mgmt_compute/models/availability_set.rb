@@ -25,9 +25,6 @@ module Azure::ARM::Compute
       # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
-      # @return [Boolean] If the availability set supports managed disks.
-      attr_accessor :managed
-
       # @return [Sku] Sku of the availability set
       attr_accessor :sku
 
@@ -132,13 +129,6 @@ module Azure::ARM::Compute
                         class_name: 'InstanceViewStatus'
                       }
                   }
-                }
-              },
-              managed: {
-                required: false,
-                serialized_name: 'properties.managed',
-                type: {
-                  name: 'Boolean'
                 }
               },
               sku: {

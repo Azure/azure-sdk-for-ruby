@@ -6,14 +6,11 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for DiskCreateOption
+    # Defines values for ResourceSkuRestrictionsReasonCode
     #
-    module DiskCreateOption
-      Empty = "Empty"
-      Attach = "Attach"
-      FromImage = "FromImage"
-      Import = "Import"
-      Copy = "Copy"
+    module ResourceSkuRestrictionsReasonCode
+      QuotaId = "QuotaId"
+      NotAvailableForSubscription = "NotAvailableForSubscription"
     end
   end
 end

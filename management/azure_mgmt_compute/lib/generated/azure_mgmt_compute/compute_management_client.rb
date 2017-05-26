@@ -33,6 +33,9 @@ module Azure::ARM::Compute
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [ContainerServices] container_services
+    attr_reader :container_services
+
     # @return [AvailabilitySets] availability_sets
     attr_reader :availability_sets
 
@@ -54,23 +57,30 @@ module Azure::ARM::Compute
     # @return [Images] images
     attr_reader :images
 
+    # @return [ResourceSkus] resource_skus
+    attr_reader :resource_skus
+
     # @return [VirtualMachines] virtual_machines
     attr_reader :virtual_machines
 
     # @return [VirtualMachineScaleSets] virtual_machine_scale_sets
     attr_reader :virtual_machine_scale_sets
 
+    # @return [VirtualMachineScaleSetExtensions]
+    # virtual_machine_scale_set_extensions
+    attr_reader :virtual_machine_scale_set_extensions
+
     # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
     attr_reader :virtual_machine_scale_set_vms
-
-    # @return [ContainerServices] container_services
-    attr_reader :container_services
 
     # @return [Disks] disks
     attr_reader :disks
 
     # @return [Snapshots] snapshots
     attr_reader :snapshots
+
+    # @return [VirtualMachineRunCommands] virtual_machine_run_commands
+    attr_reader :virtual_machine_run_commands
 
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
@@ -85,6 +95,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @container_services = ContainerServices.new(self)
       @availability_sets = AvailabilitySets.new(self)
       @virtual_machine_extension_images = VirtualMachineExtensionImages.new(self)
       @virtual_machine_extensions = VirtualMachineExtensions.new(self)
@@ -92,12 +103,14 @@ module Azure::ARM::Compute
       @usage_operations = UsageOperations.new(self)
       @virtual_machine_sizes = VirtualMachineSizes.new(self)
       @images = Images.new(self)
+      @resource_skus = ResourceSkus.new(self)
       @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
+      @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
-      @container_services = ContainerServices.new(self)
       @disks = Disks.new(self)
       @snapshots = Snapshots.new(self)
+      @virtual_machine_run_commands = VirtualMachineRunCommands.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

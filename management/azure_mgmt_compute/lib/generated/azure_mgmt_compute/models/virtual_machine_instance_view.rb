@@ -25,6 +25,10 @@ module Azure::ARM::Compute
       # virtual machine.
       attr_accessor :vm_agent
 
+      # @return [MaintenanceRedeployStatus] The Maintenance Operation status on
+      # the virtual machine.
+      attr_accessor :maintenance_redeploy_status
+
       # @return [Array<DiskInstanceView>] The virtual machine disk information.
       attr_accessor :disks
 
@@ -78,6 +82,14 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineAgentInstanceView'
+                }
+              },
+              maintenance_redeploy_status: {
+                required: false,
+                serialized_name: 'maintenanceRedeployStatus',
+                type: {
+                  name: 'Composite',
+                  class_name: 'MaintenanceRedeployStatus'
                 }
               },
               disks: {

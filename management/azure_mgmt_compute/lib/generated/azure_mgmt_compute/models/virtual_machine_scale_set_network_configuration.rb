@@ -19,6 +19,13 @@ module Azure::ARM::Compute
       # @return [Boolean] Whether this is a primary NIC on a virtual machine.
       attr_accessor :primary
 
+      # @return [SubResource] The network security group.
+      attr_accessor :network_security_group
+
+      # @return [VirtualMachineScaleSetNetworkConfigurationDnsSettings] The dns
+      # settings to be applied on the network interfaces.
+      attr_accessor :dns_settings
+
       # @return [Array<VirtualMachineScaleSetIPConfiguration>] The virtual
       # machine scale set IP Configuration.
       attr_accessor :ip_configurations
@@ -56,6 +63,22 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.primary',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              network_security_group: {
+                required: false,
+                serialized_name: 'properties.networkSecurityGroup',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              dns_settings: {
+                required: false,
+                serialized_name: 'properties.dnsSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VirtualMachineScaleSetNetworkConfigurationDnsSettings'
                 }
               },
               ip_configurations: {

@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Composite Swagger for Compute Client
   #
   class VirtualMachineImages
-    include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
@@ -76,7 +75,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'offer is nil' if offer.nil?
       fail ArgumentError, 'skus is nil' if skus.nil?
       fail ArgumentError, 'version is nil' if version.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -85,7 +84,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}'
 
       request_url = @base_url || @client.base_url
 
@@ -112,7 +111,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineImage.mapper()
+            result_mapper = Azure::ARM::Compute::Models::VirtualMachineImage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -187,7 +186,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'offer is nil' if offer.nil?
       fail ArgumentError, 'skus is nil' if skus.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -196,7 +195,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions'
 
       request_url = @base_url || @client.base_url
 
@@ -295,7 +294,7 @@ module Azure::ARM::Compute
     def list_offers_async(location, publisher_name, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -304,7 +303,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers'
 
       request_url = @base_url || @client.base_url
 
@@ -399,7 +398,7 @@ module Azure::ARM::Compute
     #
     def list_publishers_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -408,7 +407,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers'
 
       request_url = @base_url || @client.base_url
 
@@ -511,7 +510,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'offer is nil' if offer.nil?
-      api_version = '2016-04-30-preview'
+      api_version = '2017-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -520,7 +519,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus'
 
       request_url = @base_url || @client.base_url
 

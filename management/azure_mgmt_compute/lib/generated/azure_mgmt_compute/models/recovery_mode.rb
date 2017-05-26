@@ -6,14 +6,12 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for DiskCreateOption
+    # Defines values for RecoveryMode
     #
-    module DiskCreateOption
-      Empty = "Empty"
-      Attach = "Attach"
-      FromImage = "FromImage"
-      Import = "Import"
-      Copy = "Copy"
+    module RecoveryMode
+      None = "None"
+      OverProvision = "OverProvision"
+      Reprovision = "Reprovision"
     end
   end
 end

@@ -6,14 +6,13 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for DiskCreateOption
+    # Defines values for ContainerServiceOrchestratorTypes
     #
-    module DiskCreateOption
-      Empty = "Empty"
-      Attach = "Attach"
-      FromImage = "FromImage"
-      Import = "Import"
-      Copy = "Copy"
+    module ContainerServiceOrchestratorTypes
+      Swarm = "Swarm"
+      DCOS = "DCOS"
+      Custom = "Custom"
+      Kubernetes = "Kubernetes"
     end
   end
 end

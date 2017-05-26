@@ -12,17 +12,9 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [StorageAccountTypes] the storage account type of the disk.
-      # Possible values include: 'Standard_LRS', 'Premium_LRS'
-      attr_accessor :account_type
-
       # @return [OperatingSystemTypes] the Operating System type. Possible
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type
-
-      # @return [CreationData] disk source information. CreationData
-      # information cannot be changed after the disk has been created.
-      attr_accessor :creation_data
 
       # @return [Integer] If creationData.createOption is Empty, this field is
       # mandatory and it indicates the size of the VHD to create. If this field
@@ -61,12 +53,12 @@ module Azure::ARM::Compute
                   }
                 }
               },
-              account_type: {
+              sku: {
                 required: false,
-                serialized_name: 'properties.accountType',
+                serialized_name: 'sku',
                 type: {
-                  name: 'Enum',
-                  module: 'StorageAccountTypes'
+                  name: 'Composite',
+                  class_name: 'DiskSku'
                 }
               },
               os_type: {
@@ -75,14 +67,6 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Enum',
                   module: 'OperatingSystemTypes'
-                }
-              },
-              creation_data: {
-                required: false,
-                serialized_name: 'properties.creationData',
-                type: {
-                  name: 'Composite',
-                  class_name: 'CreationData'
                 }
               },
               disk_size_gb: {

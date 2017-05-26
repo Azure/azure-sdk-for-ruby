@@ -6,14 +6,11 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for DiskCreateOption
+    # Defines values for IPVersion
     #
-    module DiskCreateOption
-      Empty = "Empty"
-      Attach = "Attach"
-      FromImage = "FromImage"
-      Import = "Import"
-      Copy = "Copy"
+    module IPVersion
+      IPv4 = "IPv4"
+      IPv6 = "IPv6"
     end
   end
 end
