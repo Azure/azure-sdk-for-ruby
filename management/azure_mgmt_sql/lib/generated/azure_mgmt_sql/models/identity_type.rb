@@ -6,11 +6,10 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for ServerState
+    # Defines values for IdentityType
     #
-    module ServerState
-      Ready = "Ready"
-      Disabled = "Disabled"
+    module IdentityType
+      SystemAssigned = "SystemAssigned"
     end
   end
 end

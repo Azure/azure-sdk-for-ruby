@@ -6,11 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for ServerVersion
+    # Defines values for ServerKeyType
     #
-    module ServerVersion
-      TwoFullStopZero = "2.0"
-      OneTwoFullStopZero = "12.0"
+    module ServerKeyType
+      ServiceManaged = "ServiceManaged"
+      AzureKeyVault = "AzureKeyVault"
     end
   end
 end
