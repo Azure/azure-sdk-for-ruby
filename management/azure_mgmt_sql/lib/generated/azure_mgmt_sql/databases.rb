@@ -2026,8 +2026,8 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which database
-    # blob audit policy is defined.
+    # @param database_name [String] The name of the database for which the blob
+    # audit policy is defined.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2045,8 +2045,8 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which database
-    # blob audit policy is defined.
+    # @param database_name [String] The name of the database for which the blob
+    # audit policy is defined.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2063,18 +2063,19 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which database
-    # blob audit policy is defined.
+    # @param database_name [String] The name of the database for which the blob
+    # audit policy is defined.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_blob_auditing_policy_async(resource_group_name, server_name, database_name, custom_headers = nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
+      blob_auditing_policy_name = 'default'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2015-05-01-preview'
 
 
@@ -2083,13 +2084,13 @@ module Azure::ARM::SQL
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/default'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/{blobAuditingPolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'blobAuditingPolicyName' => blob_auditing_policy_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -2130,8 +2131,8 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which database
-    # blob audit policy will be defined.
+    # @param database_name [String] The name of the database for which the blob
+    # auditing policy will be defined.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2151,8 +2152,8 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which database
-    # blob audit policy will be defined.
+    # @param database_name [String] The name of the database for which the blob
+    # auditing policy will be defined.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2171,8 +2172,8 @@ module Azure::ARM::SQL
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the server.
-    # @param database_name [String] The name of the database for which database
-    # blob audit policy will be defined.
+    # @param database_name [String] The name of the database for which the blob
+    # auditing policy will be defined.
     # @param parameters [DatabaseBlobAuditingPolicy] The database blob auditing
     # policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -2181,11 +2182,12 @@ module Azure::ARM::SQL
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_or_update_blob_auditing_policy_async(resource_group_name, server_name, database_name, parameters, custom_headers = nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
       fail ArgumentError, 'database_name is nil' if database_name.nil?
+      blob_auditing_policy_name = 'default'
       fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2015-05-01-preview'
 
 
@@ -2202,13 +2204,13 @@ module Azure::ARM::SQL
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/default'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings/{blobAuditingPolicyName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name},
+          path_params: {'resourceGroupName' => resource_group_name,'serverName' => server_name,'databaseName' => database_name,'blobAuditingPolicyName' => blob_auditing_policy_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

@@ -6,14 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Contains information about a database Blob Auditing policy.
+    # A database blob auditing policy.
     #
     class DatabaseBlobAuditingPolicy < ProxyResource
 
       include MsRestAzure
-
-      # @return [String] The geo-location where the resource lives
-      attr_accessor :location
 
       # @return [String] Resource kind.
       attr_accessor :kind
@@ -40,7 +37,7 @@ module Azure::ARM::SQL
       # audit.
       attr_accessor :audit_actions_and_groups
 
-      # @return [String] Specifies the blob storage subscription Id.
+      # @return Specifies the blob storage subscription Id.
       attr_accessor :storage_account_subscription_id
 
       # @return [Boolean] Specifies whether storageAccountAccessKey value is
@@ -84,13 +81,6 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               kind: {
                 required: false,
                 read_only: true,
@@ -100,7 +90,7 @@ module Azure::ARM::SQL
                 }
               },
               state: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.state',
                 type: {
                   name: 'Enum',
