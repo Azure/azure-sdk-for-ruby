@@ -6,17 +6,19 @@
 module Azure::ARM::Compute
   module Models
     #
-    # The List Disks operation response.
+    # The List VM scale set extension operation response.
     #
-    class DiskList
+    class VirtualMachineScaleSetExtensionListResult
 
       include MsRestAzure
 
-      # @return [Array<Disk>] A list of disks.
+      # @return [Array<VirtualMachineScaleSetExtension>] The list of VM scale
+      # set extensions.
       attr_accessor :value
 
-      # @return [String] The uri to fetch the next page of disks. Call
-      # ListNext() with this to fetch the next page of disks.
+      # @return [String] The uri to fetch the next page of VM scale set
+      # extensions. Call ListNext() with this to fetch the next page of VM
+      # scale set extensions.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +27,7 @@ module Azure::ARM::Compute
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Disk>] operation results.
+      # @return [Array<VirtualMachineScaleSetExtension>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +42,8 @@ module Azure::ARM::Compute
       #
       # Gets the next page of results.
       #
-      # @return [DiskList] with next page content.
+      # @return [VirtualMachineScaleSetExtensionListResult] with next page
+      # content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +55,17 @@ module Azure::ARM::Compute
       end
 
       #
-      # Mapper for DiskList class as Ruby Hash.
+      # Mapper for VirtualMachineScaleSetExtensionListResult class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DiskList',
+          serialized_name: 'VirtualMachineScaleSetExtensionListResult',
           type: {
             name: 'Composite',
-            class_name: 'DiskList',
+            class_name: 'VirtualMachineScaleSetExtensionListResult',
             model_properties: {
               value: {
                 required: true,
@@ -70,10 +74,10 @@ module Azure::ARM::Compute
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'DiskElementType',
+                      serialized_name: 'VirtualMachineScaleSetExtensionElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Disk'
+                        class_name: 'VirtualMachineScaleSetExtension'
                       }
                   }
                 }

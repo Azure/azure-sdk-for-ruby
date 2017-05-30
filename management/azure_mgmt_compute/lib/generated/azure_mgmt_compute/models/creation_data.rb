@@ -12,8 +12,9 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [DiskCreateOption] Possible values include: 'Empty', 'Attach',
-      # 'FromImage', 'Import', 'Copy', 'Restore'
+      # @return [DiskCreateOption] This enumerates the possible sources of a
+      # disk's creation. Possible values include: 'Empty', 'Attach',
+      # 'FromImage', 'Import', 'Copy'
       attr_accessor :create_option
 
       # @return [String] If createOption is Import, the Azure Resource Manager
@@ -24,15 +25,12 @@ module Azure::ARM::Compute
       # @return [ImageDiskReference] Disk source information.
       attr_accessor :image_reference
 
-      # @return [String] If creationOption is Import, this is a SAS URI to a
-      # blob to be imported into a managed disk. If creationOption is Copy,
-      # this is a relative Uri containing the id of the source snapshot to be
-      # copied into a managed disk.
+      # @return [String] If creationOption is Import, this is the URI of a blob
+      # to be imported into a managed disk.
       attr_accessor :source_uri
 
       # @return [String] If createOption is Copy, this is the ARM id of the
-      # source snapshot or disk. If creationOption is Restore, this is the
-      # ARM-like id of the source disk restore point.
+      # source snapshot or disk.
       attr_accessor :source_resource_id
 
 

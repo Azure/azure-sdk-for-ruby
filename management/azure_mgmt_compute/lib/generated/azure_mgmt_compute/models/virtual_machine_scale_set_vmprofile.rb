@@ -24,9 +24,17 @@ module Azure::ARM::Compute
       # scale set network profile.
       attr_accessor :network_profile
 
+      # @return [DiagnosticsProfile] The virtual machine scale set diagnostics
+      # profile.
+      attr_accessor :diagnostics_profile
+
       # @return [VirtualMachineScaleSetExtensionProfile] The virtual machine
       # scale set extension profile.
       attr_accessor :extension_profile
+
+      # @return [String] The license type, which is for bring your own license
+      # scenario.
+      attr_accessor :license_type
 
 
       #
@@ -65,12 +73,27 @@ module Azure::ARM::Compute
                   class_name: 'VirtualMachineScaleSetNetworkProfile'
                 }
               },
+              diagnostics_profile: {
+                required: false,
+                serialized_name: 'diagnosticsProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'DiagnosticsProfile'
+                }
+              },
               extension_profile: {
                 required: false,
                 serialized_name: 'extensionProfile',
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineScaleSetExtensionProfile'
+                }
+              },
+              license_type: {
+                required: false,
+                serialized_name: 'licenseType',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [ContainerServiceOchestratorTypes] The orchestrator to use to
+      # @return [ContainerServiceOrchestratorTypes] The orchestrator to use to
       # manage container service cluster resources. Valid values are Swarm,
       # DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom',
       # 'Kubernetes'
@@ -36,7 +36,7 @@ module Azure::ARM::Compute
                 serialized_name: 'orchestratorType',
                 type: {
                   name: 'Enum',
-                  module: 'ContainerServiceOchestratorTypes'
+                  module: 'ContainerServiceOrchestratorTypes'
                 }
               }
             }

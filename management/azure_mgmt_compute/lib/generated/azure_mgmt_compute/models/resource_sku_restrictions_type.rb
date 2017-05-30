@@ -6,13 +6,10 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for ContainerServiceOchestratorTypes
+    # Defines values for ResourceSkuRestrictionsType
     #
-    module ContainerServiceOchestratorTypes
-      Swarm = "Swarm"
-      DCOS = "DCOS"
-      Custom = "Custom"
-      Kubernetes = "Kubernetes"
+    module ResourceSkuRestrictionsType
+      Location = "location"
     end
   end
 end
