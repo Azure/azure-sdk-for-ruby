@@ -6,13 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # A list of servers.
+    # A list of server encryption protectors.
     #
-    class ServerListResult
+    class EncryptionProtectorListResult
 
       include MsRestAzure
 
-      # @return [Array<Server>] Array of results.
+      # @return [Array<EncryptionProtector>] Array of results.
       attr_accessor :value
 
       # @return [String] Link to retrieve next page of results.
@@ -24,7 +24,7 @@ module Azure::ARM::SQL
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Server>] operation results.
+      # @return [Array<EncryptionProtector>] operation results.
       #
       def get_all_items
         items = @value
@@ -39,7 +39,7 @@ module Azure::ARM::SQL
       #
       # Gets the next page of results.
       #
-      # @return [ServerListResult] with next page content.
+      # @return [EncryptionProtectorListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -51,16 +51,16 @@ module Azure::ARM::SQL
       end
 
       #
-      # Mapper for ServerListResult class as Ruby Hash.
+      # Mapper for EncryptionProtectorListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerListResult',
+          serialized_name: 'EncryptionProtectorListResult',
           type: {
             name: 'Composite',
-            class_name: 'ServerListResult',
+            class_name: 'EncryptionProtectorListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,10 +70,10 @@ module Azure::ARM::SQL
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ServerElementType',
+                      serialized_name: 'EncryptionProtectorElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'Server'
+                        class_name: 'EncryptionProtector'
                       }
                   }
                 }

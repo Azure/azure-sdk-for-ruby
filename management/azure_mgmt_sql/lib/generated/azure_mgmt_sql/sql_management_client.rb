@@ -44,9 +44,6 @@ module Azure::ARM::SQL
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [Servers] servers
-    attr_reader :servers
-
     # @return [ElasticPools] elastic_pools
     attr_reader :elastic_pools
 
@@ -56,11 +53,17 @@ module Azure::ARM::SQL
     # @return [ServerAzureADAdministrators] server_azure_adadministrators
     attr_reader :server_azure_adadministrators
 
+    # @return [Servers] servers
+    attr_reader :servers
+
     # @return [FailoverGroups] failover_groups
     attr_reader :failover_groups
 
     # @return [VnetFirewallRules] vnet_firewall_rules
     attr_reader :vnet_firewall_rules
+
+    # @return [ServerKeys] server_keys
+    attr_reader :server_keys
 
     #
     # Creates initializes a new instance of the SqlManagementClient class.
@@ -79,12 +82,13 @@ module Azure::ARM::SQL
       @capabilities = Capabilities.new(self)
       @firewall_rules = FirewallRules.new(self)
       @operations = Operations.new(self)
-      @servers = Servers.new(self)
       @elastic_pools = ElasticPools.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @server_azure_adadministrators = ServerAzureADAdministrators.new(self)
+      @servers = Servers.new(self)
       @failover_groups = FailoverGroups.new(self)
       @vnet_firewall_rules = VnetFirewallRules.new(self)
+      @server_keys = ServerKeys.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

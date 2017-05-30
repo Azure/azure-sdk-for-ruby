@@ -6,46 +6,37 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a server.
+    # An Azure SQL Database server.
     #
     class Server < TrackedResource
 
       include MsRestAzure
 
-      # @return [String] Kind of sql server.  This is metadata used for the
-      # Azure portal experience.
+      # @return [ResourceIdentity] The Azure Active Directory identity of the
+      # server.
+      attr_accessor :identity
+
+      # @return [Enum] Kind of sql server. This is metadata used for the Azure
+      # portal experience. Possible values include: '', 'v2.0', 'v12.0',
+      # 'user', 'system', 'datawarehouse'
       attr_accessor :kind
 
-      # @return [String] The fully qualified domain name of the server.
-      attr_accessor :fully_qualified_domain_name
-
-      # @return [ServerVersion] The version of the server. Possible values
-      # include: '2.0', '12.0'
-      attr_accessor :version
-
-      # @return [String] Administrator username for the server. Can only be
-      # specified when the server is being created (and is required for
-      # creation).
+      # @return [String] Administrator username for the server. Once created it
+      # cannot be changed.
       attr_accessor :administrator_login
 
       # @return [String] The administrator login password (required for server
       # creation).
       attr_accessor :administrator_login_password
 
-      # @return The ID of the Active Azure Directory object with admin
-      # permissions on this server. Legacy parameter, always null. To check for
-      # Active Directory admin, query .../servers/{serverName}/administrators.
-      attr_accessor :external_administrator_sid
+      # @return [String] The version of the server.
+      attr_accessor :version
 
-      # @return [String] The display name of the Azure Active Directory object
-      # with admin permissions on this server. Legacy parameter, always null.
-      # To check for Active Directory admin, query
-      # .../servers/{serverName}/administrators
-      attr_accessor :external_administrator_login
-
-      # @return [ServerState] The state of the server. Possible values include:
-      # 'Ready', 'Disabled'
+      # @return [String] The state of the server.
       attr_accessor :state
+
+      # @return [String] The fully qualified domain name of the server.
+      attr_accessor :fully_qualified_domain_name
 
 
       #
@@ -105,25 +96,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceIdentity'
+                }
+              },
               kind: {
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
-              fully_qualified_domain_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.fullyQualifiedDomainName',
-                type: {
-                  name: 'String'
-                }
-              },
-              version: {
-                required: false,
-                serialized_name: 'properties.version',
                 type: {
                   name: 'String'
                 }
@@ -142,18 +126,9 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              external_administrator_sid: {
+              version: {
                 required: false,
-                read_only: true,
-                serialized_name: 'properties.externalAdministratorSid',
-                type: {
-                  name: 'String'
-                }
-              },
-              external_administrator_login: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.externalAdministratorLogin',
+                serialized_name: 'properties.version',
                 type: {
                   name: 'String'
                 }
@@ -163,8 +138,15 @@ module Azure::ARM::SQL
                 read_only: true,
                 serialized_name: 'properties.state',
                 type: {
-                  name: 'Enum',
-                  module: 'ServerState'
+                  name: 'String'
+                }
+              },
+              fully_qualified_domain_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.fullyQualifiedDomainName',
+                type: {
+                  name: 'String'
                 }
               }
             }
