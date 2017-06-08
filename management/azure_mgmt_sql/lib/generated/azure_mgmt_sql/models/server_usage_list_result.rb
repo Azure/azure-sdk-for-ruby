@@ -6,28 +6,27 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a list database metrics request.
+    # Represents the response to a list server metrics request.
     #
-    class DatabaseMetricListResult
+    class ServerUsageListResult
 
       include MsRestAzure
 
-      # @return [Array<DatabaseMetric>] The list of database metrics for the
-      # database.
+      # @return [Array<ServerUsage>] The list of server metrics for the server.
       attr_accessor :value
 
 
       #
-      # Mapper for DatabaseMetricListResult class as Ruby Hash.
+      # Mapper for ServerUsageListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DatabaseMetricListResult',
+          serialized_name: 'ServerUsageListResult',
           type: {
             name: 'Composite',
-            class_name: 'DatabaseMetricListResult',
+            class_name: 'ServerUsageListResult',
             model_properties: {
               value: {
                 required: true,
@@ -36,10 +35,10 @@ module Azure::ARM::SQL
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'DatabaseMetricElementType',
+                      serialized_name: 'ServerUsageElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'DatabaseMetric'
+                        class_name: 'ServerUsage'
                       }
                   }
                 }

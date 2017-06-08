@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents impact of an operation, both in absolute and relative terms.
+    # The impact of an operation, both in absolute and relative terms.
     #
     class OperationImpact
 

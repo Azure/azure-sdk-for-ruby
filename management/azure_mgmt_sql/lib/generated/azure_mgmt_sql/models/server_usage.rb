@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents server metrics.
     #
-    class ServerMetric
+    class ServerUsage
 
       include MsRestAzure
 
@@ -35,16 +35,16 @@ module Azure::ARM::SQL
 
 
       #
-      # Mapper for ServerMetric class as Ruby Hash.
+      # Mapper for ServerUsage class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerMetric',
+          serialized_name: 'ServerUsage',
           type: {
             name: 'Composite',
-            class_name: 'ServerMetric',
+            class_name: 'ServerUsage',
             model_properties: {
               name: {
                 required: false,
