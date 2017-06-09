@@ -8,7 +8,6 @@ module Azure::ARM::TrafficManager
   # Profiles
   #
   class Profiles
-    include Azure::ARM::TrafficManager::Models
     include MsRestAzure
 
     #
@@ -67,7 +66,6 @@ module Azure::ARM::TrafficManager
     def check_traffic_manager_relative_dns_name_availability_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -79,17 +77,16 @@ module Azure::ARM::TrafficManager
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = CheckTrafficManagerRelativeDnsNameAvailabilityParameters.mapper()
+      request_mapper = Azure::ARM::TrafficManager::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/providers/Microsoft.Network/checkTrafficManagerNameAvailability'
+      path_template = 'providers/Microsoft.Network/checkTrafficManagerNameAvailability'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -111,7 +108,7 @@ module Azure::ARM::TrafficManager
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = TrafficManagerNameAvailability.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::TrafficManagerNameAvailability.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -174,7 +171,7 @@ module Azure::ARM::TrafficManager
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles'
 
       request_url = @base_url || @client.base_url
 
@@ -201,7 +198,7 @@ module Azure::ARM::TrafficManager
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ProfileListResult.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::ProfileListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -257,7 +254,7 @@ module Azure::ARM::TrafficManager
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles'
 
       request_url = @base_url || @client.base_url
 
@@ -284,7 +281,7 @@ module Azure::ARM::TrafficManager
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ProfileListResult.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::ProfileListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -351,7 +348,7 @@ module Azure::ARM::TrafficManager
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
 
       request_url = @base_url || @client.base_url
 
@@ -378,7 +375,7 @@ module Azure::ARM::TrafficManager
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Profile.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::Profile.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -456,11 +453,11 @@ module Azure::ARM::TrafficManager
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Profile.mapper()
+      request_mapper = Azure::ARM::TrafficManager::Models::Profile.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
 
       request_url = @base_url || @client.base_url
 
@@ -488,7 +485,7 @@ module Azure::ARM::TrafficManager
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Profile.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::Profile.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -498,7 +495,7 @@ module Azure::ARM::TrafficManager
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Profile.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::Profile.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -567,7 +564,7 @@ module Azure::ARM::TrafficManager
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
 
       request_url = @base_url || @client.base_url
 
@@ -662,11 +659,11 @@ module Azure::ARM::TrafficManager
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Profile.mapper()
+      request_mapper = Azure::ARM::TrafficManager::Models::Profile.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}'
 
       request_url = @base_url || @client.base_url
 
@@ -694,7 +691,7 @@ module Azure::ARM::TrafficManager
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Profile.mapper()
+            result_mapper = Azure::ARM::TrafficManager::Models::Profile.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
