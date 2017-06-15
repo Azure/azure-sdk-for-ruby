@@ -15,8 +15,8 @@ module MsRest
     # @param response_body [Hash] Ruby Hash object to deserialize.
     # @param object_name [String] Name of the deserialized object.
     #
-    def deserialize(mapper, response_body, object_name = nil)
-      build_serializer.deserialize(mapper, response_body, object_name)
+    def deserialize(mapper, response_body)
+      build_serializer.deserialize(mapper, response_body)
     end
 
     #
@@ -26,8 +26,8 @@ module MsRest
     # @param object [Object] Ruby object to serialize.
     # @param object_name [String] Name of the serialized object.
     #
-    def serialize(mapper, object, object_name = nil)
-      build_serializer.serialize(mapper, object, object_name)
+    def serialize(mapper, object)
+      build_serializer.serialize(mapper, object)
     end
 
     private
@@ -54,10 +54,10 @@ module MsRest
       # @param response_body [Hash] Ruby Hash object to deserialize.
       # @param object_name [String] Name of the deserialized object.
       #
-      def deserialize(mapper, response_body, object_name)
+      def deserialize(mapper, response_body)
         return response_body if response_body.nil?
 
-        object_name = mapper[:serialized_name] unless object_name.nil?
+        object_name = mapper[:serialized_name]
         mapper_type = mapper[:type][:name]
 
         if !mapper_type.match(/^(Number|Double|ByteArray|Boolean|Date|DateTime|DateTimeRfc1123|UnixTime|Enum|String|Object|Stream)$/i).nil?
@@ -131,7 +131,7 @@ module MsRest
 
         result = Hash.new
         response_body.each do |key, val|
-          result[key] = deserialize(mapper[:type][:value], val, object_name)
+          result[key] = deserialize(mapper[:type][:value], val)
         end
         result
       end
@@ -177,7 +177,7 @@ module MsRest
               levels.each { |level| sub_response_body = sub_response_body.nil? ? nil : sub_response_body[level.to_s] }
             end
 
-            result.instance_variable_set("@#{key}", deserialize(val, sub_response_body, object_name)) unless sub_response_body.nil?
+            result.instance_variable_set("@#{key}", deserialize(val, sub_response_body)) unless sub_response_body.nil?
           end
         end
         result
@@ -199,7 +199,7 @@ module MsRest
 
         result = []
         response_body.each do |element|
-          result.push(deserialize(mapper[:type][:element], element, object_name))
+          result.push(deserialize(mapper[:type][:element], element))
         end
 
         result
@@ -212,8 +212,8 @@ module MsRest
       # @param object [Object] Ruby object to serialize.
       # @param object_name [String] Name of the serialized object.
       #
-      def serialize(mapper, object, object_name)
-        object_name = mapper[:serialized_name] unless object_name.nil?
+      def serialize(mapper, object)
+        object_name = mapper[:serialized_name]
 
         # Set defaults
         unless mapper[:default_value].nil?
@@ -297,7 +297,7 @@ module MsRest
             value.validate
           end
 
-          payload[key] = serialize(mapper[:type][:value], value, object_name)
+          payload[key] = serialize(mapper[:type][:value], value)
         end
         payload
       end
@@ -339,7 +339,7 @@ module MsRest
               next
             end
 
-            sub_payload = serialize(value, instance_variable, object_name)
+            sub_payload = serialize(value, instance_variable)
 
             unless value[:serialized_name].to_s.include? '.'
               payload[value[:serialized_name].to_s] = sub_payload unless sub_payload.nil?
@@ -380,7 +380,7 @@ module MsRest
           if !element.nil? && element.respond_to?(:validate)
             element.validate
           end
-          payload.push(serialize(mapper[:type][:element], element, object_name))
+          payload.push(serialize(mapper[:type][:element], element))
         end
         payload
       end
@@ -391,13 +391,19 @@ module MsRest
       # @param model_name [String] Name of the model to retrieve.
       #
       def get_model(model_name)
-        consts = @context.class.to_s.split('::')
-        if consts.any?{ |const| const == 'Models' }
-          # context is a model class
-          @context.class
-        else
-          # context is a service, so find the model class
-          Object.const_get(consts[0...-1].join('::') + "::Models::#{model_name}")
+        begin
+          consts = @context.class.to_s.split('::')
+          end_index = 0
+          if consts.any?{ |const| const == 'Models' }
+            # context is a model class
+            end_index = -2
+          else
+            # context is a service, so find the model class
+            end_index = -1
+          end
+          Object.const_get(consts[0...end_index].join('::') + "::Models::#{model_name}")
+        rescue
+          Object.const_get("MsRestAzure::#{model_name}")
         end
       end
 

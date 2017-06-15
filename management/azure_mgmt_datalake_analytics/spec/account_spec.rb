@@ -43,15 +43,14 @@ describe 'DataLakeAnalyticsClient Account' do
     expect(result.body.tags.count).to eq(2)
 
     # Update
-    analytics_acc_update = Models::DataLakeAnalyticsAccount.new
-    analytics_acc_update.name = @datalake_analytics_acc_name
-    analytics_acc_update.tags = {
+    analytics_acc_update_parameters = Models::DataLakeAnalyticsAccountUpdateParameters.new
+    analytics_acc_update_parameters.tags = {
         :testtag1 => :testtag1,
         :testtag2 => :testtag2,
         :testtag3 => :testtag3,
     }
 
-    result = @client.update_async(@resource_group.name, @datalake_analytics_acc_name, analytics_acc_update).value!
+    result = @client.update_async(@resource_group.name, @datalake_analytics_acc_name, analytics_acc_update_parameters).value!
     expect(result.body).to be_an_instance_of(Models::DataLakeAnalyticsAccount)
     expect(result.body.name).to eq(@datalake_analytics_acc_name)
     expect(result.body.tags.count).to eq(3)
