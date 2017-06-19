@@ -13,7 +13,7 @@ module MsRest
     # @return [String] JSON serialized version of the object
     #
     def to_json(options = nil)
-      mapper = self.class.mapper if options.nil || !options.key?(:mapper)
+      mapper = self.class.mapper if options.nil? || !options.key?(:mapper)
       serialize(mapper, self)
     end
 
