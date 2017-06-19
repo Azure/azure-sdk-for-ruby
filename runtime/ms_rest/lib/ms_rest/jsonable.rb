@@ -9,10 +9,11 @@ module MsRest
 
     #
     # Serialize the object to JSON
+    # @param options [Hash] hash map contains options to convert to json.
     # @return [String] JSON serialized version of the object
     #
-    def to_json(mapper = nil)
-      mapper = self.class.mapper if mapper.nil?
+    def to_json(options = nil)
+      mapper = self.class.mapper if options.nil || !options.key?(:mapper)
       serialize(mapper, self)
     end
 
