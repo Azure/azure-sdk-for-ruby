@@ -27,6 +27,12 @@ module Azure::ARM::Network
       # @return [Array<String>] The prefixes that the bgp community contains.
       attr_accessor :community_prefixes
 
+      # @return [Boolean] Customer is authorized to use bgp community or not.
+      attr_accessor :is_authorized_to_use
+
+      # @return [String] The service group of the bgp community contains.
+      attr_accessor :service_group
+
 
       #
       # Mapper for BGPCommunity class as Ruby Hash.
@@ -73,6 +79,20 @@ module Azure::ARM::Network
                         name: 'String'
                       }
                   }
+                }
+              },
+              is_authorized_to_use: {
+                required: false,
+                serialized_name: 'isAuthorizedToUse',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              service_group: {
+                required: false,
+                serialized_name: 'serviceGroup',
+                type: {
+                  name: 'String'
                 }
               }
             }

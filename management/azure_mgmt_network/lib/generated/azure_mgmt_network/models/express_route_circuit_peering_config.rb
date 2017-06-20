@@ -15,6 +15,10 @@ module Azure::ARM::Network
       # @return [Array<String>] The reference of AdvertisedPublicPrefixes.
       attr_accessor :advertised_public_prefixes
 
+      # @return [Array<String>] The communities of bgp peering. Spepcified for
+      # microsoft peering
+      attr_accessor :advertised_communities
+
       # @return [ExpressRouteCircuitPeeringAdvertisedPublicPrefixState]
       # AdvertisedPublicPrefixState of the Peering resource. Possible values
       # are 'NotConfigured', 'Configuring', 'Configured', and
@@ -24,6 +28,9 @@ module Azure::ARM::Network
 
       # @return [Integer] The CustomerASN of the peering.
       attr_accessor :customer_asn
+
+      # @return [Integer] The legacy mode of the peering.
+      attr_accessor :legacy_mode
 
       # @return [String] The RoutingRegistryName of the configuration.
       attr_accessor :routing_registry_name
@@ -55,6 +62,20 @@ module Azure::ARM::Network
                   }
                 }
               },
+              advertised_communities: {
+                required: false,
+                serialized_name: 'advertisedCommunities',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               advertised_public_prefixes_state: {
                 required: false,
                 serialized_name: 'advertisedPublicPrefixesState',
@@ -65,6 +86,13 @@ module Azure::ARM::Network
               customer_asn: {
                 required: false,
                 serialized_name: 'customerASN',
+                type: {
+                  name: 'Number'
+                }
+              },
+              legacy_mode: {
+                required: false,
+                serialized_name: 'legacyMode',
                 type: {
                   name: 'Number'
                 }

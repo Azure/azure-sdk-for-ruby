@@ -107,7 +107,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'circuit_name is nil' if circuit_name.nil?
       fail ArgumentError, 'authorization_name is nil' if authorization_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -248,7 +248,7 @@ module Azure::ARM::Network
     def list_async(resource_group_name, circuit_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'circuit_name is nil' if circuit_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -342,7 +342,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'circuit_name is nil' if circuit_name.nil?
       fail ArgumentError, 'authorization_name is nil' if authorization_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -437,7 +437,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'circuit_name is nil' if circuit_name.nil?
       fail ArgumentError, 'authorization_name is nil' if authorization_name.nil?
       fail ArgumentError, 'authorization_parameters is nil' if authorization_parameters.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
