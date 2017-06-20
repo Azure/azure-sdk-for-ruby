@@ -114,7 +114,7 @@ module Azure::ARM::Network
     def get_async(resource_group_name, local_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'local_network_gateway_name is nil' if local_network_gateway_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -241,7 +241,7 @@ module Azure::ARM::Network
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -342,7 +342,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'local_network_gateway_name is nil' if local_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -454,7 +454,7 @@ module Azure::ARM::Network
     def begin_delete_async(resource_group_name, local_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'local_network_gateway_name is nil' if local_network_gateway_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

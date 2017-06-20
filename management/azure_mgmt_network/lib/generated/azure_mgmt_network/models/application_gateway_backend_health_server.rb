@@ -15,7 +15,8 @@ module Azure::ARM::Network
       # @return [String] IP address or FQDN of backend server.
       attr_accessor :address
 
-      # @return [SubResource] Reference of IP configuration of backend server.
+      # @return [NetworkInterfaceIPConfiguration] Reference of IP configuration
+      # of backend server.
       attr_accessor :ip_configuration
 
       # @return [ApplicationGatewayBackendHealthServerHealth] Health of backend
@@ -48,7 +49,7 @@ module Azure::ARM::Network
                 serialized_name: 'ipConfiguration',
                 type: {
                   name: 'Composite',
-                  class_name: 'SubResource'
+                  class_name: 'NetworkInterfaceIPConfiguration'
                 }
               },
               health: {

@@ -69,6 +69,10 @@ module Azure::ARM::Network
       # rules of the application gateway resource.
       attr_accessor :request_routing_rules
 
+      # @return [Array<ApplicationGatewayRedirectConfiguration>] Redirect
+      # configurations of the application gateway resource.
+      attr_accessor :redirect_configurations
+
       # @return [ApplicationGatewayWebApplicationFirewallConfiguration] Web
       # application firewall configuration.
       attr_accessor :web_application_firewall_configuration
@@ -327,6 +331,21 @@ module Azure::ARM::Network
                       type: {
                         name: 'Composite',
                         class_name: 'ApplicationGatewayRequestRoutingRule'
+                      }
+                  }
+                }
+              },
+              redirect_configurations: {
+                required: false,
+                serialized_name: 'properties.redirectConfigurations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ApplicationGatewayRedirectConfigurationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationGatewayRedirectConfiguration'
                       }
                   }
                 }

@@ -21,6 +21,10 @@ module Azure::ARM::Network
       # path map.
       attr_accessor :default_backend_http_settings
 
+      # @return [SubResource] Default redirect configuration resource of URL
+      # path map.
+      attr_accessor :default_redirect_configuration
+
       # @return [Array<ApplicationGatewayPathRule>] Path rule of URL path map
       # resource.
       attr_accessor :path_rules
@@ -36,6 +40,9 @@ module Azure::ARM::Network
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
+
+      # @return [String] Type of the resource.
+      attr_accessor :type
 
 
       #
@@ -73,6 +80,14 @@ module Azure::ARM::Network
                   class_name: 'SubResource'
                 }
               },
+              default_redirect_configuration: {
+                required: false,
+                serialized_name: 'properties.defaultRedirectConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
               path_rules: {
                 required: false,
                 serialized_name: 'properties.pathRules',
@@ -105,6 +120,13 @@ module Azure::ARM::Network
               etag: {
                 required: false,
                 serialized_name: 'etag',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

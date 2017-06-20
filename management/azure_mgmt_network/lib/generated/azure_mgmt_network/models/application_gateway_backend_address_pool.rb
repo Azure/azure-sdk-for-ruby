@@ -31,6 +31,9 @@ module Azure::ARM::Network
       # resource is updated.
       attr_accessor :etag
 
+      # @return [String] Type of the resource.
+      attr_accessor :type
+
 
       #
       # Mapper for ApplicationGatewayBackendAddressPool class as Ruby Hash.
@@ -98,6 +101,13 @@ module Azure::ARM::Network
               etag: {
                 required: false,
                 serialized_name: 'etag',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

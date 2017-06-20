@@ -15,11 +15,17 @@ module Azure::ARM::Network
       # @return [Array<String>] Path rules of URL path map.
       attr_accessor :paths
 
-      # @return [SubResource] Backend address pool resource of URL path map.
+      # @return [SubResource] Backend address pool resource of URL path map
+      # path rule.
       attr_accessor :backend_address_pool
 
-      # @return [SubResource] Backend http settings resource of URL path map.
+      # @return [SubResource] Backend http settings resource of URL path map
+      # path rule.
       attr_accessor :backend_http_settings
+
+      # @return [SubResource] Redirect configuration resource of URL path map
+      # path rule.
+      attr_accessor :redirect_configuration
 
       # @return [String] Path rule of URL path map resource. Possible values
       # are: 'Updating', 'Deleting', and 'Failed'.
@@ -32,6 +38,9 @@ module Azure::ARM::Network
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
+
+      # @return [String] Type of the resource.
+      attr_accessor :type
 
 
       #
@@ -83,6 +92,14 @@ module Azure::ARM::Network
                   class_name: 'SubResource'
                 }
               },
+              redirect_configuration: {
+                required: false,
+                serialized_name: 'properties.redirectConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
@@ -100,6 +117,13 @@ module Azure::ARM::Network
               etag: {
                 required: false,
                 serialized_name: 'etag',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

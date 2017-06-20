@@ -104,7 +104,7 @@ module Azure::ARM::Network
     def get_async(resource_group_name, virtual_network_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -233,7 +233,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_all_async(custom_headers = nil)
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -320,7 +320,7 @@ module Azure::ARM::Network
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -414,7 +414,7 @@ module Azure::ARM::Network
     def check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -505,7 +505,7 @@ module Azure::ARM::Network
     def list_usage_async(resource_group_name, virtual_network_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -595,7 +595,7 @@ module Azure::ARM::Network
     def begin_delete_async(resource_group_name, virtual_network_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -683,7 +683,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
