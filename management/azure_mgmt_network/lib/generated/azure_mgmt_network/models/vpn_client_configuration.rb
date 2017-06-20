@@ -24,6 +24,10 @@ module Azure::ARM::Network
       # VpnClientRevokedCertificate for Virtual network gateway.
       attr_accessor :vpn_client_revoked_certificates
 
+      # @return [Array<VpnClientProtocol>] VpnClientProtocols for Virtual
+      # network gateway.
+      attr_accessor :vpn_client_protocols
+
 
       #
       # Mapper for VpnClientConfiguration class as Ruby Hash.
@@ -71,6 +75,20 @@ module Azure::ARM::Network
                       type: {
                         name: 'Composite',
                         class_name: 'VpnClientRevokedCertificate'
+                      }
+                  }
+                }
+              },
+              vpn_client_protocols: {
+                required: false,
+                serialized_name: 'vpnClientProtocols',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'VpnClientProtocolElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

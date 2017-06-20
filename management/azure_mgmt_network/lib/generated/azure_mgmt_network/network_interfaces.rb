@@ -505,7 +505,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
-      api_version = '2017-03-30'
+      api_version = '2016-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -599,7 +599,7 @@ module Azure::ARM::Network
     def list_virtual_machine_scale_set_network_interfaces_async(resource_group_name, virtual_machine_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
-      api_version = '2017-03-30'
+      api_version = '2016-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -704,7 +704,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'virtual_machine_scale_set_name is nil' if virtual_machine_scale_set_name.nil?
       fail ArgumentError, 'virtualmachine_index is nil' if virtualmachine_index.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
-      api_version = '2017-03-30'
+      api_version = '2016-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
