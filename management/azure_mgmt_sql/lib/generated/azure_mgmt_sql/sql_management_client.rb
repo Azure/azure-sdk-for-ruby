@@ -41,20 +41,20 @@ module Azure::ARM::SQL
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
+    # @return [ElasticPools] elastic_pools
+    attr_reader :elastic_pools
+
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [ElasticPools] elastic_pools
-    attr_reader :elastic_pools
+    # @return [Servers] servers
+    attr_reader :servers
 
     # @return [RecommendedElasticPools] recommended_elastic_pools
     attr_reader :recommended_elastic_pools
 
     # @return [ServerAzureADAdministrators] server_azure_adadministrators
     attr_reader :server_azure_adadministrators
-
-    # @return [Servers] servers
-    attr_reader :servers
 
     # @return [FailoverGroups] failover_groups
     attr_reader :failover_groups
@@ -81,11 +81,11 @@ module Azure::ARM::SQL
       @databases = Databases.new(self)
       @capabilities = Capabilities.new(self)
       @firewall_rules = FirewallRules.new(self)
-      @operations = Operations.new(self)
       @elastic_pools = ElasticPools.new(self)
+      @operations = Operations.new(self)
+      @servers = Servers.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @server_azure_adadministrators = ServerAzureADAdministrators.new(self)
-      @servers = Servers.new(self)
       @failover_groups = FailoverGroups.new(self)
       @vnet_firewall_rules = VnetFirewallRules.new(self)
       @server_keys = ServerKeys.new(self)
