@@ -59,8 +59,12 @@ namespace :arm do
         md = REGEN_METADATA[dir.to_sym]
         ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
 
-        command = "#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib"
-        command += " -m #{md[:modeler]}" unless md[:modeler].nil?
+        if md[:spec_uri].end_with?('.json')
+          command = "#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib"
+          command += " -m #{md[:modeler]}" unless md[:modeler].nil?
+        else
+          command = "#{ar_base_command} #{md[:spec_uri]} --package-version=#{md[:version]} --namespace=#{md[:ns]} --package-name=#{md[:pn].nil? ? dir : md[:pn]} --output-folder=#{File.join(Dir.pwd, 'lib')} --ruby --azure-arm"
+        end
 
         execute_and_stream(command)
       end
@@ -309,10 +313,9 @@ REGEN_METADATA = {
         tag: 'arm_recovery'
     },
     azure_mgmt_recovery_services_backup: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservicesbackup/compositeRecoveryServicesBackupClient.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservicesbackup/readme.md',
         ns: 'Azure::ARM::RecoveryServicesBackup',
         version: version,
-        modeler: "CompositeSwagger",
         tag: 'arm_recovery_backup'
     },
     azure_mgmt_redis: {
