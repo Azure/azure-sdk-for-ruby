@@ -267,6 +267,7 @@ module Azure::ARM::Network
     autoload :VpnType,                                            'generated/azure_mgmt_network/models/vpn_type.rb'
     autoload :VirtualNetworkGatewaySkuName,                       'generated/azure_mgmt_network/models/virtual_network_gateway_sku_name.rb'
     autoload :VirtualNetworkGatewaySkuTier,                       'generated/azure_mgmt_network/models/virtual_network_gateway_sku_tier.rb'
+    autoload :VpnClientProtocol,                                  'generated/azure_mgmt_network/models/vpn_client_protocol.rb'
     autoload :BgpPeerState,                                       'generated/azure_mgmt_network/models/bgp_peer_state.rb'
     autoload :ProcessorArchitecture,                              'generated/azure_mgmt_network/models/processor_architecture.rb'
     autoload :VirtualNetworkGatewayConnectionStatus,              'generated/azure_mgmt_network/models/virtual_network_gateway_connection_status.rb'
