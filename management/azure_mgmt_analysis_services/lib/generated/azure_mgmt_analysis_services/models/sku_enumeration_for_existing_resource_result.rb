@@ -6,40 +6,40 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An array of Analysis Services resources.
+    # An object that represents enumerating SKUs for existing resources
     #
-    class AnalysisServicesServers
+    class SkuEnumerationForExistingResourceResult
 
       include MsRestAzure
 
-      # @return [Array<AnalysisServicesServer>] An array of Analysis Services
-      # resources.
+      # @return [Array<SkuDetailsForExistingResource>] The collection of
+      # available SKUs for existing resources
       attr_accessor :value
 
 
       #
-      # Mapper for AnalysisServicesServers class as Ruby Hash.
+      # Mapper for SkuEnumerationForExistingResourceResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AnalysisServicesServers',
+          serialized_name: 'SkuEnumerationForExistingResourceResult',
           type: {
             name: 'Composite',
-            class_name: 'AnalysisServicesServers',
+            class_name: 'SkuEnumerationForExistingResourceResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'AnalysisServicesServerElementType',
+                      serialized_name: 'SkuDetailsForExistingResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'AnalysisServicesServer'
+                        class_name: 'SkuDetailsForExistingResource'
                       }
                   }
                 }
