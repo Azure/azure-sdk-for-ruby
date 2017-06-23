@@ -17,6 +17,22 @@ module Azure::ARM::Network
       # 'Amd64', 'X86'
       attr_accessor :processor_architecture
 
+      # @return [AuthenticationMethod] VPN client Authentication Method.
+      # Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+      # include: 'EAPTLS', 'EAPMSCHAPv2'
+      attr_accessor :authentication_method
+
+      # @return [String] The public certificate data for the radius server
+      # authentication certificate as a Base-64 encoded string. Required only
+      # if external radius authentication has been configured with EAPTLS
+      # authentication.
+      attr_accessor :radius_server_auth_certificate
+
+      # @return [Array<String>] A list of client root certificates public
+      # certificate data encoded as Base-64 strings. Optional parameter for
+      # external radius based authentication with EAPTLS.
+      attr_accessor :client_root_certificates
+
 
       #
       # Mapper for VpnClientParameters class as Ruby Hash.
@@ -31,10 +47,38 @@ module Azure::ARM::Network
             class_name: 'VpnClientParameters',
             model_properties: {
               processor_architecture: {
-                required: true,
+                required: false,
                 serialized_name: 'processorArchitecture',
                 type: {
                   name: 'String'
+                }
+              },
+              authentication_method: {
+                required: false,
+                serialized_name: 'authenticationMethod',
+                type: {
+                  name: 'String'
+                }
+              },
+              radius_server_auth_certificate: {
+                required: false,
+                serialized_name: 'radiusServerAuthCertificate',
+                type: {
+                  name: 'String'
+                }
+              },
+              client_root_certificates: {
+                required: false,
+                serialized_name: 'clientRootCertificates',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }
