@@ -22,9 +22,6 @@ module Azure::ARM::Network
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Name of Ssl predefined policy.
-    attr_accessor :predefined_policy_name
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
