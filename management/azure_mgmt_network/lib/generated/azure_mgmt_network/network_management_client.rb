@@ -22,9 +22,6 @@ module Azure::ARM::Network
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Name of Ssl predefined policy.
-    attr_accessor :predefined_policy_name
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -252,7 +249,7 @@ module Azure::ARM::Network
     #
     def check_dns_name_availability_async(location, domain_name_label = nil, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 
