@@ -16,6 +16,9 @@ module Azure::ARM::Network
       # available Ssl predefined policy.
       attr_accessor :value
 
+      # @return [String] URL to get the next set of results.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -76,6 +79,13 @@ module Azure::ARM::Network
                         class_name: 'ApplicationGatewaySslPredefinedPolicy'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

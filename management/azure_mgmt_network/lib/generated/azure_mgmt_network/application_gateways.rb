@@ -580,8 +580,8 @@ module Azure::ARM::Network
     #
     # @return [ApplicationGatewayAvailableSslOptions] operation results.
     #
-    def available_ssl_options(custom_headers = nil)
-      response = available_ssl_options_async(custom_headers).value!
+    def list_available_ssl_options(custom_headers = nil)
+      response = list_available_ssl_options_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -593,8 +593,8 @@ module Azure::ARM::Network
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def available_ssl_options_with_http_info(custom_headers = nil)
-      available_ssl_options_async(custom_headers).value!
+    def list_available_ssl_options_with_http_info(custom_headers = nil)
+      list_available_ssl_options_async(custom_headers).value!
     end
 
     #
@@ -605,7 +605,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def available_ssl_options_async(custom_headers = nil)
+    def list_available_ssl_options_async(custom_headers = nil)
       api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -741,40 +741,43 @@ module Azure::ARM::Network
     #
     # Gets Ssl predefined policy with the specified policy name.
     #
+    # @param predefined_policy_name [String] Name of Ssl predefined policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ApplicationGatewaySslPredefinedPolicy] operation results.
     #
-    def get_ssl_predefined_policy(custom_headers = nil)
-      response = get_ssl_predefined_policy_async(custom_headers).value!
+    def get_ssl_predefined_policy(predefined_policy_name, custom_headers = nil)
+      response = get_ssl_predefined_policy_async(predefined_policy_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Gets Ssl predefined policy with the specified policy name.
     #
+    # @param predefined_policy_name [String] Name of Ssl predefined policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_ssl_predefined_policy_with_http_info(custom_headers = nil)
-      get_ssl_predefined_policy_async(custom_headers).value!
+    def get_ssl_predefined_policy_with_http_info(predefined_policy_name, custom_headers = nil)
+      get_ssl_predefined_policy_async(predefined_policy_name, custom_headers).value!
     end
 
     #
     # Gets Ssl predefined policy with the specified policy name.
     #
+    # @param predefined_policy_name [String] Name of Ssl predefined policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_ssl_predefined_policy_async(custom_headers = nil)
+    def get_ssl_predefined_policy_async(predefined_policy_name, custom_headers = nil)
       api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.predefined_policy_name is nil' if @client.predefined_policy_name.nil?
+      fail ArgumentError, 'predefined_policy_name is nil' if predefined_policy_name.nil?
 
 
       request_headers = {}
@@ -788,7 +791,7 @@ module Azure::ARM::Network
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'predefinedPolicyName' => @client.predefined_policy_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'predefinedPolicyName' => predefined_policy_name},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
