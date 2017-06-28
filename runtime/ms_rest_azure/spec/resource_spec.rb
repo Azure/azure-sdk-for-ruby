@@ -26,7 +26,7 @@ module MsRestAzureTest
         'tag2' => 'tag2_value'
       }
 
-      res = @helper.serialize(MsRestAzure::Resource.mapper(), resource, 'resource')
+      res = @helper.serialize(MsRestAzure::Resource.mapper(), resource)
 
       expect(res).to be_a(Hash)
       expect(res['id']).to eq('id')
@@ -46,7 +46,7 @@ module MsRestAzureTest
         }
       }
 
-      res = @helper.deserialize(MsRestAzure::Resource.mapper(), resource_hash, 'resource_hash')
+      res = @helper.deserialize(MsRestAzure::Resource.mapper(), resource_hash)
 
       expect(res).to be_a(MsRestAzure::Resource)
       expect(res.id).to eq('id')
