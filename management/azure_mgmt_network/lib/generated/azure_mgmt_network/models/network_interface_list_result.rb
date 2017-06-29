@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<NetworkInterface>] A list of network interfaces in a
       # resource group.
       attr_accessor :value

@@ -13,6 +13,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] Reference of the subnet resource. A subnet from
       # where application gateway gets its private address.
       attr_accessor :subnet

@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ClientDiscoveryValueForSingleApi>] List of available
       # operationss.
       attr_accessor :value

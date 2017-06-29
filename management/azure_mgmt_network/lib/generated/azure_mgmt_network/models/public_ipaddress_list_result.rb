@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<PublicIPAddress>] A list of public IP addresses that
       # exists in a resource group.
       attr_accessor :value

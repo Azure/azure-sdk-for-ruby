@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubResource>] Read only. Inbound rules URIs that use
       # this frontend IP.
       attr_accessor :inbound_nat_rules

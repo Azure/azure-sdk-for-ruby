@@ -14,6 +14,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Whether connection draining is enabled or not.
       attr_accessor :enabled
 

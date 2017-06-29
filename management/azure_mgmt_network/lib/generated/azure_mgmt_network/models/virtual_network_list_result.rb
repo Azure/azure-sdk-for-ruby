@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualNetwork>] Gets a list of VirtualNetwork resources
       # in a resource group.
       attr_accessor :value

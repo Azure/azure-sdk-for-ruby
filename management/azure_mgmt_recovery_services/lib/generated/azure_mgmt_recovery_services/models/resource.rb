@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Optional ETag.
       attr_accessor :e_tag
 

@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<FrontendIPConfiguration>] Object representing the
       # frontend IPs to be used for the load balancer
       attr_accessor :frontend_ipconfigurations

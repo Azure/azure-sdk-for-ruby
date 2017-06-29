@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AddressSpace] The reference of the address space resource
       # which represents Address space for P2S VpnClient.
       attr_accessor :vpn_client_address_pool
@@ -23,6 +24,10 @@ module Azure::ARM::Network
       # @return [Array<VpnClientRevokedCertificate>]
       # VpnClientRevokedCertificate for Virtual network gateway.
       attr_accessor :vpn_client_revoked_certificates
+
+      # @return [Array<VpnClientProtocol>] VpnClientProtocols for Virtual
+      # network gateway.
+      attr_accessor :vpn_client_protocols
 
 
       #
@@ -71,6 +76,20 @@ module Azure::ARM::Network
                       type: {
                         name: 'Composite',
                         class_name: 'VpnClientRevokedCertificate'
+                      }
+                  }
+                }
+              },
+              vpn_client_protocols: {
+                required: false,
+                serialized_name: 'vpnClientProtocols',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'VpnClientProtocolElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

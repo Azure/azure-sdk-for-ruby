@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewayRequestRoutingRuleType] Rule type. Possible
       # values include: 'Basic', 'PathBasedRouting'
       attr_accessor :rule_type

@@ -22,9 +22,6 @@ module Azure::ARM::Network
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Name of Ssl predefined policy.
-    attr_accessor :predefined_policy_name
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -252,7 +249,7 @@ module Azure::ARM::Network
     #
     def check_dns_name_availability_async(location, domain_name_label = nil, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 
@@ -288,8 +285,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::DnsNameAvailabilityResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::DnsNameAvailabilityResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

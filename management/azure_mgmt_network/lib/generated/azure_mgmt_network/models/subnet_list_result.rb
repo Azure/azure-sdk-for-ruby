@@ -13,6 +13,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Subnet>] The subnets in a virtual network.
       attr_accessor :value
 

@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Count of failed jobs.
       attr_accessor :failed_jobs
 

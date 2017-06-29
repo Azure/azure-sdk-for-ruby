@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the web application firewall rule group.
       attr_accessor :rule_group_name
 

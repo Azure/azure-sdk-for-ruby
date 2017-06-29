@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] The ID of the subnet if assigned.
       attr_accessor :subnet
 

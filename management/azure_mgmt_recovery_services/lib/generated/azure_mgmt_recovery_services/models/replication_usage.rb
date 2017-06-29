@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MonitoringSummary] Summary of the replication monitoring data
       # for this vault.
       attr_accessor :monitoring_summary

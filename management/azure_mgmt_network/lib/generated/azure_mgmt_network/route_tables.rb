@@ -104,7 +104,7 @@ module Azure::ARM::Network
     def get_async(resource_group_name, route_table_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -140,8 +140,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTable.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTable.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -188,8 +187,7 @@ module Azure::ARM::Network
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::RouteTable.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+          parsed_response = Azure::ARM::Network::Models::RouteTable.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -237,7 +235,7 @@ module Azure::ARM::Network
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -273,8 +271,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTableListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTableListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -320,7 +317,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_all_async(custom_headers = nil)
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -356,8 +353,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTableListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTableListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -410,7 +406,7 @@ module Azure::ARM::Network
     def begin_delete_async(resource_group_name, route_table_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -498,7 +494,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'route_table_name is nil' if route_table_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-03-01'
+      api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -511,8 +507,7 @@ module Azure::ARM::Network
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Network::Models::RouteTable.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}'
@@ -543,8 +538,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTable.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTable.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -553,8 +547,7 @@ module Azure::ARM::Network
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTable.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTable.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -640,8 +633,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTableListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTableListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -727,8 +719,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::RouteTableListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::RouteTableListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

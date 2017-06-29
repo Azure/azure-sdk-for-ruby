@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The authorizationKey.
       attr_accessor :authorization_key
 

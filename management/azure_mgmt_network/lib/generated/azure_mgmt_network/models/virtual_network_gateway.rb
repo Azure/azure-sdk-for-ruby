@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualNetworkGatewayIPConfiguration>] IP configurations
       # for virtual network gateway.
       attr_accessor :ip_configurations

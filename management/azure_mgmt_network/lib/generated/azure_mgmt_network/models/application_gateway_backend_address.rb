@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Fully qualified domain name (FQDN).
       attr_accessor :fqdn
 

@@ -137,8 +137,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -185,8 +184,7 @@ module Azure::ARM::Network
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::ApplicationGateway.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+          parsed_response = Azure::ARM::Network::Models::ApplicationGateway.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -270,8 +268,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -353,8 +350,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -478,8 +474,7 @@ module Azure::ARM::Network
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::ApplicationGatewayBackendHealth.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+          parsed_response = Azure::ARM::Network::Models::ApplicationGatewayBackendHealth.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -559,8 +554,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayAvailableWafRuleSetsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayAvailableWafRuleSetsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -580,8 +574,8 @@ module Azure::ARM::Network
     #
     # @return [ApplicationGatewayAvailableSslOptions] operation results.
     #
-    def available_ssl_options(custom_headers = nil)
-      response = available_ssl_options_async(custom_headers).value!
+    def list_available_ssl_options(custom_headers = nil)
+      response = list_available_ssl_options_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -593,8 +587,8 @@ module Azure::ARM::Network
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def available_ssl_options_with_http_info(custom_headers = nil)
-      available_ssl_options_async(custom_headers).value!
+    def list_available_ssl_options_with_http_info(custom_headers = nil)
+      list_available_ssl_options_async(custom_headers).value!
     end
 
     #
@@ -605,7 +599,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def available_ssl_options_async(custom_headers = nil)
+    def list_available_ssl_options_async(custom_headers = nil)
       api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -642,8 +636,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayAvailableSslOptions.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayAvailableSslOptions.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -725,8 +718,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayAvailableSslPredefinedPolicies.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayAvailableSslPredefinedPolicies.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -741,40 +733,43 @@ module Azure::ARM::Network
     #
     # Gets Ssl predefined policy with the specified policy name.
     #
+    # @param predefined_policy_name [String] Name of Ssl predefined policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ApplicationGatewaySslPredefinedPolicy] operation results.
     #
-    def get_ssl_predefined_policy(custom_headers = nil)
-      response = get_ssl_predefined_policy_async(custom_headers).value!
+    def get_ssl_predefined_policy(predefined_policy_name, custom_headers = nil)
+      response = get_ssl_predefined_policy_async(predefined_policy_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Gets Ssl predefined policy with the specified policy name.
     #
+    # @param predefined_policy_name [String] Name of Ssl predefined policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_ssl_predefined_policy_with_http_info(custom_headers = nil)
-      get_ssl_predefined_policy_async(custom_headers).value!
+    def get_ssl_predefined_policy_with_http_info(predefined_policy_name, custom_headers = nil)
+      get_ssl_predefined_policy_async(predefined_policy_name, custom_headers).value!
     end
 
     #
     # Gets Ssl predefined policy with the specified policy name.
     #
+    # @param predefined_policy_name [String] Name of Ssl predefined policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_ssl_predefined_policy_async(custom_headers = nil)
+    def get_ssl_predefined_policy_async(predefined_policy_name, custom_headers = nil)
       api_version = '2017-06-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.predefined_policy_name is nil' if @client.predefined_policy_name.nil?
+      fail ArgumentError, 'predefined_policy_name is nil' if predefined_policy_name.nil?
 
 
       request_headers = {}
@@ -788,7 +783,7 @@ module Azure::ARM::Network
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'predefinedPolicyName' => @client.predefined_policy_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'predefinedPolicyName' => predefined_policy_name},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -809,8 +804,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewaySslPredefinedPolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewaySslPredefinedPolicy.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -964,8 +958,7 @@ module Azure::ARM::Network
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Network::Models::ApplicationGateway.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}'
@@ -996,8 +989,7 @@ module Azure::ARM::Network
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1006,8 +998,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1266,8 +1257,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayBackendHealth.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayBackendHealth.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1353,8 +1343,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1440,8 +1429,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1527,8 +1515,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ApplicationGatewayAvailableSslPredefinedPolicies.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::Network::Models::ApplicationGatewayAvailableSslPredefinedPolicies.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

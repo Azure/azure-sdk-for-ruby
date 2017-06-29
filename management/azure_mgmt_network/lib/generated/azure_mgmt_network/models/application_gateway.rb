@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewaySku] SKU of the application gateway
       # resource.
       attr_accessor :sku

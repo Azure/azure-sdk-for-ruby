@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @authType = "AccessControlService"

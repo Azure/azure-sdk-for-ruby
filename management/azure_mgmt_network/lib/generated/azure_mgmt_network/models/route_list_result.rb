@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Route>] Gets a list of routes in a resource group.
       attr_accessor :value
 
