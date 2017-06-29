@@ -113,11 +113,11 @@ describe 'Virtual machine api' do
     ni = network_client.make_request(:get, ni_path, options)
     expect(ni).not_to be_nil
     # user NetworkInterface mapper to deserialize object
-    ni_instance  = network_client.deserialize(NetworkInterface.mapper(), ni, 'ni_instance')
+    ni_instance  = NetworkInterface.new.from_json(ni)
     # retrieve first IP address for first IP configuration
     ip_address_path = ni_instance.ip_configurations[0].public_ipaddress.id
     ip_address = network_client.make_request(:get, ip_address_path, options)
-    ip_address_instance = network_client.deserialize(PublicIPAddress.mapper(), ip_address, 'ip_address_instance')
+    ip_address_instance = PublicIPAddress.new.from_json(ip_address)
     expect(ip_address_instance.dns_settings.fqdn).to eq("testdomain53464.westus.cloudapp.azure.com")
   end
 

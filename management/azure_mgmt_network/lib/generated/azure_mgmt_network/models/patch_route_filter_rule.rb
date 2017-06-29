@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Access] The access type of the rule. Valid values are:
       # 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
       attr_accessor :access

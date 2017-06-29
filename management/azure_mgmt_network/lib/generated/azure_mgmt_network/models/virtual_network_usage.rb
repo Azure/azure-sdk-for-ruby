@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Float] Indicates number of IPs used from the Subnet.
       attr_accessor :current_value
 

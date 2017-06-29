@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the target resource group to perform
       # topology on.
       attr_accessor :target_resource_group_name

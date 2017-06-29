@@ -102,8 +102,7 @@ module Azure::ARM::RecoveryServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -180,8 +179,7 @@ module Azure::ARM::RecoveryServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.mapper()
-      request_content = @client.serialize(request_mapper,  resource_resource_extended_info_details, 'resource_resource_extended_info_details')
+      request_content = resource_resource_extended_info_details.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo'
@@ -212,8 +210,7 @@ module Azure::ARM::RecoveryServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -290,8 +287,7 @@ module Azure::ARM::RecoveryServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.mapper()
-      request_content = @client.serialize(request_mapper,  resource_resource_extended_info_details, 'resource_resource_extended_info_details')
+      request_content = resource_resource_extended_info_details.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo'
@@ -322,8 +318,7 @@ module Azure::ARM::RecoveryServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+            result.body = Azure::ARM::RecoveryServices::Models::VaultExtendedInfoResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

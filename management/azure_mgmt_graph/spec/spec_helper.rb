@@ -20,8 +20,8 @@ class ResourceHelper
 
     # Create ActiveDirectoryServiceSettings for graphs token audience
     settings = MsRestAzure::ActiveDirectoryServiceSettings.new
-    settings.authentication_endpoint = MsRestAzure::AzureEnvironments::Azure.active_directory_endpoint_url
-    settings.token_audience = MsRestAzure::AzureEnvironments::Azure.active_directory_graph_resource_id
+    settings.authentication_endpoint = MsRestAzure::AzureEnvironments::AzureCloud.active_directory_endpoint_url
+    settings.token_audience = MsRestAzure::AzureEnvironments::AzureCloud.active_directory_graph_resource_id
 
     token_provider = MsRestAzure::ApplicationTokenProvider.new(tenant_id, client_id, secret, settings)
     @credentials = MsRest::TokenCredentials.new(token_provider)

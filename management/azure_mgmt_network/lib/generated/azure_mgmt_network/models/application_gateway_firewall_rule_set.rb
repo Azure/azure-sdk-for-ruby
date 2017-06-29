@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The provisioning state of the web application firewall
       # rule set.
       attr_accessor :provisioning_state

@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Route>] Collection of routes contained within a route
       # table.
       attr_accessor :routes

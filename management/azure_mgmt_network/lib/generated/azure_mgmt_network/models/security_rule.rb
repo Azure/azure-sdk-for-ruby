@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A description for this rule. Restricted to 140 chars.
       attr_accessor :description
 

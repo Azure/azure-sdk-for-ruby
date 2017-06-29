@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The number of outbound ports to be used for NAT.
       attr_accessor :allocated_outbound_ports
 

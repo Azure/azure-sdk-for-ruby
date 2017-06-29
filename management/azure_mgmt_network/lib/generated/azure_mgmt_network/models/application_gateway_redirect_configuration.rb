@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewayRedirectType] Supported http redirection
       # types - Permanent, Temporary, Found, SeeOther. Possible values include:
       # 'Permanent', 'Found', 'SeeOther', 'Temporary'

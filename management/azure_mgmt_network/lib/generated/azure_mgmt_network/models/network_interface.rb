@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] The reference of a virtual machine.
       attr_accessor :virtual_machine
 

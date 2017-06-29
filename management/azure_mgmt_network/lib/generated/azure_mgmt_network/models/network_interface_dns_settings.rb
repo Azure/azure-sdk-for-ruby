@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] List of DNS servers IP addresses. Use
       # 'AzureProvidedDNS' to switch to azure provided DNS resolution.
       # 'AzureProvidedDNS' value cannot be combined with other IPs, it must be

@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubResource>] The load balancer rules that use this
       # probe.
       attr_accessor :load_balancing_rules

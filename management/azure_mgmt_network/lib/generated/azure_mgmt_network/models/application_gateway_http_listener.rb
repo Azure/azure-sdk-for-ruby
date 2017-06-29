@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] Frontend IP configuration resource of an
       # application gateway.
       attr_accessor :frontend_ipconfiguration

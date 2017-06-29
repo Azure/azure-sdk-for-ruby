@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuitArpTable>] Gets list of the ARP
       # table.
       attr_accessor :value

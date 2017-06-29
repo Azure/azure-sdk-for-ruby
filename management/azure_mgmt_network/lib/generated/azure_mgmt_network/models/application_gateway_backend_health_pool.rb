@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewayBackendAddressPool] Reference of an
       # ApplicationGatewayBackendAddressPool resource.
       attr_accessor :backend_address_pool

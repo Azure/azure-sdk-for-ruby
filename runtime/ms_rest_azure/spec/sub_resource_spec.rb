@@ -19,7 +19,7 @@ module MsRestAzureTest
       sub_resource = MsRestAzure::SubResource.new
       sub_resource.id = 'the_id'
 
-      sub_resource_serialized = @helper.serialize(MsRestAzure::SubResource.mapper(), sub_resource, 'sub_resource')
+      sub_resource_serialized = @helper.serialize(MsRestAzure::SubResource.mapper(), sub_resource)
 
       expect(sub_resource_serialized).to be_a(Hash)
       expect(sub_resource_serialized['id']).to eq('the_id')
@@ -29,7 +29,7 @@ module MsRestAzureTest
       sub_resource_hash = {
           'id' => 'the_id'
       }
-      sub_resource = @helper.deserialize(MsRestAzure::SubResource.mapper(), sub_resource_hash, 'sub_resource_hash')
+      sub_resource = @helper.deserialize(MsRestAzure::SubResource.mapper(), sub_resource_hash)
 
       expect(sub_resource).to be_a(MsRestAzure::SubResource)
       expect(sub_resource.id).to eq('the_id')

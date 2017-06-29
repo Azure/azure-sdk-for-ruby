@@ -13,6 +13,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuitPeering>] The peerings in an express
       # route circuit.
       attr_accessor :value
