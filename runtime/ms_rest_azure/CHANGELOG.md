@@ -1,3 +1,7 @@
+##2017.06.30 ms_rest_azure version 0.8.0
+* [Breaking Change] Changed the name of the azure environments from 'Azure' to 'AzureCloud' and 'AzureChina' to 'AzureChinaCloud'.[Issue #600](https://github.com/Azure/azure-sdk-for-ruby/issues/600) [PR #711](https://github.com/Azure/azure-sdk-for-ruby/pull/711)
+* Added 'Accept' header with the value 'application/json'.[Issue #701](https://github.com/Azure/azure-sdk-for-ruby/issues/701) [PR #710](https://github.com/Azure/azure-sdk-for-ruby/pull/710)
+
 ##2017.02.06 ms_rest_azure version 0.7.0
 * [Breaking Change] Correcting typo in `storage_endpoint_suffix` key for azure environments [Issue #603](https://github.com/Azure/azure-sdk-for-ruby/issues/603) [PR #604](https://github.com/Azure/azure-sdk-for-ruby/pull/604)
 * [Breaking Change] Handling custom deserialization block in `MsRestAzure::AzureServiceClient.update_state_from_azure_async_operation_header` [PR #656](https://github.com/Azure/azure-sdk-for-ruby/pull/656)
