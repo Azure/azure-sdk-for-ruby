@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a Slo Usage Metric.
+    # A Slo Usage Metric.
     #
     class SloUsageMetric
 

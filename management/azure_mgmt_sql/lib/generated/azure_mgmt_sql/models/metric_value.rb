@@ -8,40 +8,40 @@ module Azure::ARM::SQL
     #
     # Represents database metrics.
     #
-    class DatabaseMetric < SubResource
+    class MetricValue < SubResource
 
       include MsRestAzure
 
-      # @return [String] The name of the resource.
-      attr_accessor :resource_name
+      # @return [Float] The number of values for the metric.
+      attr_accessor :count
 
-      # @return [String] The metric display name.
-      attr_accessor :display_name
+      # @return [Float] The average value of the metric.
+      attr_accessor :average
 
-      # @return [Float] The current value of the metric.
-      attr_accessor :current_value
+      # @return [Float] The max value of the metric.
+      attr_accessor :maximum
 
-      # @return [Float] The current limit of the metric.
-      attr_accessor :limit
+      # @return [Float] The min value of the metric.
+      attr_accessor :minimum
 
-      # @return [String] The units of the metric.
-      attr_accessor :unit
+      # @return [DateTime] The metric timestamp (ISO-8601 format).
+      attr_accessor :timestamp
 
-      # @return [DateTime] The next reset time for the metric (ISO8601 format).
-      attr_accessor :next_reset_time
+      # @return [Float] The total value of the metric.
+      attr_accessor :total
 
 
       #
-      # Mapper for DatabaseMetric class as Ruby Hash.
+      # Mapper for MetricValue class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DatabaseMetric',
+          serialized_name: 'MetricValue',
           type: {
             name: 'Composite',
-            class_name: 'DatabaseMetric',
+            class_name: 'MetricValue',
             model_properties: {
               name: {
                 required: false,
@@ -59,52 +59,52 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              resource_name: {
+              count: {
                 required: false,
                 read_only: true,
-                serialized_name: 'resourceName',
-                type: {
-                  name: 'String'
-                }
-              },
-              display_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'displayName',
-                type: {
-                  name: 'String'
-                }
-              },
-              current_value: {
-                required: false,
-                read_only: true,
-                serialized_name: 'currentValue',
+                serialized_name: 'count',
                 type: {
                   name: 'Double'
                 }
               },
-              limit: {
+              average: {
                 required: false,
                 read_only: true,
-                serialized_name: 'limit',
+                serialized_name: 'average',
                 type: {
                   name: 'Double'
                 }
               },
-              unit: {
+              maximum: {
                 required: false,
                 read_only: true,
-                serialized_name: 'unit',
+                serialized_name: 'maximum',
                 type: {
-                  name: 'String'
+                  name: 'Double'
                 }
               },
-              next_reset_time: {
+              minimum: {
                 required: false,
                 read_only: true,
-                serialized_name: 'nextResetTime',
+                serialized_name: 'minimum',
+                type: {
+                  name: 'Double'
+                }
+              },
+              timestamp: {
+                required: false,
+                read_only: true,
+                serialized_name: 'timestamp',
                 type: {
                   name: 'DateTime'
+                }
+              },
+              total: {
+                required: false,
+                read_only: true,
+                serialized_name: 'total',
+                type: {
+                  name: 'Double'
                 }
               }
             }
