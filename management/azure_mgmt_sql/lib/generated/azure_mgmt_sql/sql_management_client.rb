@@ -44,6 +44,9 @@ module Azure::ARM::SQL
     # @return [Capabilities] capabilities
     attr_reader :capabilities
 
+    # @return [Servers] servers
+    attr_reader :servers
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
@@ -52,9 +55,6 @@ module Azure::ARM::SQL
 
     # @return [Operations] operations
     attr_reader :operations
-
-    # @return [Servers] servers
-    attr_reader :servers
 
     # @return [RecommendedElasticPools] recommended_elastic_pools
     attr_reader :recommended_elastic_pools
@@ -91,10 +91,10 @@ module Azure::ARM::SQL
       @recoverable_databases = RecoverableDatabases.new(self)
       @restorable_dropped_databases = RestorableDroppedDatabases.new(self)
       @capabilities = Capabilities.new(self)
+      @servers = Servers.new(self)
       @firewall_rules = FirewallRules.new(self)
       @elastic_pools = ElasticPools.new(self)
       @operations = Operations.new(self)
-      @servers = Servers.new(self)
       @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @server_azure_adadministrators = ServerAzureADAdministrators.new(self)
       @server_communication_links = ServerCommunicationLinks.new(self)

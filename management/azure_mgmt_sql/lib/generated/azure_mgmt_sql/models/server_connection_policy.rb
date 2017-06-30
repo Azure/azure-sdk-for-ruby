@@ -6,30 +6,34 @@
 module Azure::ARM::SQL
   module Models
     #
-    # A backup long term retention vault
+    # A server secure connection policy.
     #
-    class BackupLongTermRetentionVault < ProxyResource
+    class ServerConnectionPolicy < ProxyResource
 
       include MsRestAzure
 
-      # @return [String] The geo-location where the resource lives
+      # @return [String] Metadata used for the Azure portal experience.
+      attr_accessor :kind
+
+      # @return [String] Resource location.
       attr_accessor :location
 
-      # @return [String] The azure recovery services vault resource id
-      attr_accessor :recovery_services_vault_resource_id
+      # @return [ServerConnectionType] The server connection type. Possible
+      # values include: 'Default', 'Proxy', 'Redirect'
+      attr_accessor :connection_type
 
 
       #
-      # Mapper for BackupLongTermRetentionVault class as Ruby Hash.
+      # Mapper for ServerConnectionPolicy class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'BackupLongTermRetentionVault',
+          serialized_name: 'ServerConnectionPolicy',
           type: {
             name: 'Composite',
-            class_name: 'BackupLongTermRetentionVault',
+            class_name: 'ServerConnectionPolicy',
             model_properties: {
               id: {
                 required: false,
@@ -55,6 +59,14 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
+              kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
               location: {
                 required: false,
                 read_only: true,
@@ -63,11 +75,12 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              recovery_services_vault_resource_id: {
+              connection_type: {
                 required: true,
-                serialized_name: 'properties.recoveryServicesVaultResourceId',
+                serialized_name: 'properties.connectionType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ServerConnectionType'
                 }
               }
             }

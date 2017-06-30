@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TransparentDataEncryptionStatus] The status of the database
       # transparent data encryption. Possible values include: 'Enabled',
       # 'Disabled'
