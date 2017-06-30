@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Body that must be contained in the health response.
       # Default value is empty.
       attr_accessor :body

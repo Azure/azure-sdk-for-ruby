@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The revoked VPN client certificate thumbprint.
       attr_accessor :thumbprint
 

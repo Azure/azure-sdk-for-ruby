@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ExpressRouteCircuitPeeringType] The PeeringType. Possible
       # values are: 'AzurePublicPeering', 'AzurePrivatePeering', and
       # 'MicrosoftPeering'. Possible values include: 'AzurePublicPeering',
@@ -68,6 +67,10 @@ module Azure::ARM::Network
 
       # @return [RouteFilter] The reference of the RouteFilter resource.
       attr_accessor :route_filter
+
+      # @return [Ipv6ExpressRouteCircuitPeeringConfig] The IPv6 peering
+      # configuration.
+      attr_accessor :ipv6peering_config
 
       # @return [String] Gets name of the resource that is unique within a
       # resource group. This name can be used to access the resource.
@@ -210,6 +213,14 @@ module Azure::ARM::Network
                 type: {
                   name: 'Composite',
                   class_name: 'RouteFilter'
+                }
+              },
+              ipv6peering_config: {
+                required: false,
+                serialized_name: 'properties.ipv6PeeringConfig',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Ipv6ExpressRouteCircuitPeeringConfig'
                 }
               },
               name: {
