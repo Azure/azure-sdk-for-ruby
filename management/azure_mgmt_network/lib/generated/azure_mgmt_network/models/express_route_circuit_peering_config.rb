@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The reference of AdvertisedPublicPrefixes.
       attr_accessor :advertised_public_prefixes
 
@@ -27,11 +26,11 @@ module Azure::ARM::Network
       # 'Configuring', 'Configured', 'ValidationNeeded'
       attr_accessor :advertised_public_prefixes_state
 
-      # @return [Integer] The CustomerASN of the peering.
-      attr_accessor :customer_asn
-
       # @return [Integer] The legacy mode of the peering.
       attr_accessor :legacy_mode
+
+      # @return [Integer] The CustomerASN of the peering.
+      attr_accessor :customer_asn
 
       # @return [String] The RoutingRegistryName of the configuration.
       attr_accessor :routing_registry_name
@@ -84,16 +83,16 @@ module Azure::ARM::Network
                   name: 'String'
                 }
               },
-              customer_asn: {
+              legacy_mode: {
                 required: false,
-                serialized_name: 'customerASN',
+                serialized_name: 'legacyMode',
                 type: {
                   name: 'Number'
                 }
               },
-              legacy_mode: {
+              customer_asn: {
                 required: false,
-                serialized_name: 'legacyMode',
+                serialized_name: 'customerASN',
                 type: {
                   name: 'Number'
                 }

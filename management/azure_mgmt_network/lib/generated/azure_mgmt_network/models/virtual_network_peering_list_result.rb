@@ -13,7 +13,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VirtualNetworkPeering>] The peerings in a virtual
       # network.
       attr_accessor :value

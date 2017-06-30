@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuit>] A list of ExpressRouteCircuits in
       # a resource group.
       attr_accessor :value
