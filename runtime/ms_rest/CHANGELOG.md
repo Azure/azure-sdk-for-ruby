@@ -1,3 +1,6 @@
+##2017.06.30 ms_rest version 0.7.0
+* [Breaking Change] Refactored serialization & deserialization logic to remove client from the process.[Issue #610](https://github.com/Azure/azure-sdk-for-ruby/issues/610) [PR #799](https://github.com/Azure/azure-sdk-for-ruby/pull/799)
+
 ##2017.04.04 ms_rest version 0.6.4
 * Bug fix to handle new faraday version. [Issue #182](https://github.com/Azure/vagrant-azure/issues/182)
 
