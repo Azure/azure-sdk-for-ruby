@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The start time for the metric (ISO-8601 format).
       attr_accessor :start_time
 
