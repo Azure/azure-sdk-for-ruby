@@ -6,13 +6,12 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a recoverable database
+    # A recoverable database
     #
     class RecoverableDatabase < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The edition of the database
       attr_accessor :edition
 

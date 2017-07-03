@@ -6,13 +6,12 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database restore point.
+    # A database restore point.
     #
     class RestorePoint < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RestorePointType] The restore point type of the database
       # restore point. Possible values include: 'DISCRETE', 'CONTINUOUS'
       attr_accessor :restore_point_type
