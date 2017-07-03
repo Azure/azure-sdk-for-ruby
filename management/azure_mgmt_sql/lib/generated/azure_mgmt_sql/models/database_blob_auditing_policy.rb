@@ -91,7 +91,7 @@ module Azure::ARM::SQL
                 }
               },
               state: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.state',
                 type: {
                   name: 'Enum',

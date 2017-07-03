@@ -114,7 +114,8 @@ module Azure::ARM::CDN
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::CDN::Models::OriginListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::CDN::Models::OriginListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -224,7 +225,8 @@ module Azure::ARM::CDN
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::CDN::Models::Origin.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::CDN::Models::Origin.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -281,7 +283,8 @@ module Azure::ARM::CDN
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::CDN::Models::Origin.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::CDN::Models::Origin.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -370,7 +373,8 @@ module Azure::ARM::CDN
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = origin_update_properties.to_json
+      request_mapper = Azure::ARM::CDN::Models::OriginUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  origin_update_properties)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}'
@@ -401,7 +405,8 @@ module Azure::ARM::CDN
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::CDN::Models::Origin.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::CDN::Models::Origin.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -410,7 +415,8 @@ module Azure::ARM::CDN
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::CDN::Models::Origin.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::CDN::Models::Origin.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -496,7 +502,8 @@ module Azure::ARM::CDN
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::CDN::Models::OriginListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::CDN::Models::OriginListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

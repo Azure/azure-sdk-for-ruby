@@ -13,7 +13,7 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<RecoverableDatabase>] A list of Recoverable Databases
+      # @return [Array<RecoverableDatabase>] A list of recoverable databases
       attr_accessor :value
 
 

@@ -6,7 +6,7 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a recoverable database
+    # A recoverable database
     #
     class RecoverableDatabase < ProxyResource
 

@@ -173,7 +173,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignsListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignsListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -258,7 +259,8 @@ module Azure::ARM::MobileEngagement
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::MobileEngagement::Models::Campaign.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/campaigns/{kind}'
@@ -289,7 +291,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStateResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -397,7 +400,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -489,7 +493,8 @@ module Azure::ARM::MobileEngagement
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::MobileEngagement::Models::Campaign.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/campaigns/{kind}/{id}'
@@ -520,7 +525,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStateResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -723,7 +729,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -812,7 +819,8 @@ module Azure::ARM::MobileEngagement
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::MobileEngagement::Models::CampaignTestSavedParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/campaigns/{kind}/{id}/test'
@@ -843,7 +851,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStateResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -928,7 +937,8 @@ module Azure::ARM::MobileEngagement
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::MobileEngagement::Models::CampaignTestNewParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/campaigns/{kind}/test'
@@ -959,7 +969,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignState.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignState.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1064,7 +1075,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStateResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1169,7 +1181,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStateResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1261,7 +1274,8 @@ module Azure::ARM::MobileEngagement
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::MobileEngagement::Models::CampaignPushParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/campaigns/{kind}/{id}/push'
@@ -1292,7 +1306,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignPushResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignPushResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1397,7 +1412,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStatisticsResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStatisticsResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1502,7 +1518,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignStateResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignStateResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1588,7 +1605,8 @@ module Azure::ARM::MobileEngagement
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MobileEngagement::Models::CampaignsListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MobileEngagement::Models::CampaignsListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

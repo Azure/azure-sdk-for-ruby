@@ -6,37 +6,35 @@
 module Azure::ARM::SQL
   module Models
     #
-    # A database restore point.
+    # A server secure connection policy.
     #
-    class RestorePoint < ProxyResource
+    class ServerConnectionPolicy < ProxyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [RestorePointType] The restore point type of the database
-      # restore point. Possible values include: 'DISCRETE', 'CONTINUOUS'
-      attr_accessor :restore_point_type
+      # @return [String] Metadata used for the Azure portal experience.
+      attr_accessor :kind
 
-      # @return [DateTime] Restore point creation time (ISO8601 format).
-      # Populated when restorePointType = CONTINUOUS. Null otherwise.
-      attr_accessor :restore_point_creation_date
+      # @return [String] Resource location.
+      attr_accessor :location
 
-      # @return [DateTime] Earliest restore time (ISO8601 format). Populated
-      # when restorePointType = DISCRETE. Null otherwise.
-      attr_accessor :earliest_restore_date
+      # @return [ServerConnectionType] The server connection type. Possible
+      # values include: 'Default', 'Proxy', 'Redirect'
+      attr_accessor :connection_type
 
 
       #
-      # Mapper for RestorePoint class as Ruby Hash.
+      # Mapper for ServerConnectionPolicy class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RestorePoint',
+          serialized_name: 'ServerConnectionPolicy',
           type: {
             name: 'Composite',
-            class_name: 'RestorePoint',
+            class_name: 'ServerConnectionPolicy',
             model_properties: {
               id: {
                 required: false,
@@ -62,29 +60,28 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              restore_point_type: {
+              kind: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.restorePointType',
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                read_only: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              connection_type: {
+                required: true,
+                serialized_name: 'properties.connectionType',
                 type: {
                   name: 'Enum',
-                  module: 'RestorePointType'
-                }
-              },
-              restore_point_creation_date: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.restorePointCreationDate',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              earliest_restore_date: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.earliestRestoreDate',
-                type: {
-                  name: 'DateTime'
+                  module: 'ServerConnectionType'
                 }
               }
             }

@@ -58,7 +58,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -105,7 +106,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -196,7 +198,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -241,7 +244,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Compute::Models::OperationStatusResponse.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -325,7 +329,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::DiskList.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -407,7 +412,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::DiskList.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -456,7 +462,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Compute::Models::AccessUri.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Compute::Models::AccessUri.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -499,7 +506,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Compute::Models::OperationStatusResponse.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -574,7 +582,8 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = disk.to_json
+      request_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+      request_content = @client.serialize(request_mapper,  disk)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
@@ -605,7 +614,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -614,7 +624,8 @@ module Azure::ARM::Compute
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -691,7 +702,8 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = disk.to_json
+      request_mapper = Azure::ARM::Compute::Models::DiskUpdate.mapper()
+      request_content = @client.serialize(request_mapper,  disk)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}'
@@ -722,7 +734,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -731,7 +744,8 @@ module Azure::ARM::Compute
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -824,7 +838,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::OperationStatusResponse.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -901,7 +916,8 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = grant_access_data.to_json
+      request_mapper = Azure::ARM::Compute::Models::GrantAccessData.mapper()
+      request_content = @client.serialize(request_mapper,  grant_access_data)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess'
@@ -932,7 +948,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::AccessUri.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::AccessUri.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1025,7 +1042,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::OperationStatusResponse.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1111,7 +1129,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::DiskList.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1197,7 +1216,8 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Compute::Models::DiskList.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Compute::Models::DiskList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

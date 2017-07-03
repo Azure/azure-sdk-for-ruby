@@ -97,7 +97,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -168,7 +169,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = app_service_certificate_order.to_json
+      request_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrder.mapper()
+      request_content = @client.serialize(request_mapper,  app_service_certificate_order)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/validateCertificateRegistrationInformation'
@@ -285,7 +287,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -384,7 +387,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrder.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrder.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -435,7 +439,8 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Web::Models::AppServiceCertificateOrder.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrder.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -621,7 +626,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -724,7 +730,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -777,7 +784,8 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Web::Models::AppServiceCertificateResource.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Web::Models::AppServiceCertificateResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -950,7 +958,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = reissue_certificate_order_request.to_json
+      request_mapper = Azure::ARM::Web::Models::ReissueCertificateOrderRequest.mapper()
+      request_content = @client.serialize(request_mapper,  reissue_certificate_order_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/reissue'
@@ -1054,7 +1063,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = renew_certificate_order_request.to_json
+      request_mapper = Azure::ARM::Web::Models::RenewCertificateOrderRequest.mapper()
+      request_content = @client.serialize(request_mapper,  renew_certificate_order_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/renew'
@@ -1244,7 +1254,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = name_identifier.to_json
+      request_mapper = Azure::ARM::Web::Models::NameIdentifier.mapper()
+      request_content = @client.serialize(request_mapper,  name_identifier)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendRequestEmails'
@@ -1346,7 +1357,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = site_seal_request.to_json
+      request_mapper = Azure::ARM::Web::Models::SiteSealRequest.mapper()
+      request_content = @client.serialize(request_mapper,  site_seal_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/retrieveSiteSeal'
@@ -1377,7 +1389,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::SiteSeal.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::SiteSeal.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1580,7 +1593,7 @@ module Azure::ARM::Web
                 }
               }
             }
-            result.body = Class.new.extend(MsRest::JSONable).from_json(parsed_response, result_mapper)
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1694,7 +1707,7 @@ module Azure::ARM::Web
                 }
               }
             }
-            result.body = Class.new.extend(MsRest::JSONable).from_json(parsed_response, result_mapper)
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1777,7 +1790,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = certificate_distinguished_name.to_json
+      request_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrder.mapper()
+      request_content = @client.serialize(request_mapper,  certificate_distinguished_name)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}'
@@ -1808,7 +1822,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrder.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrder.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1817,7 +1832,8 @@ module Azure::ARM::Web
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrder.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrder.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1904,7 +1920,8 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = key_vault_certificate.to_json
+      request_mapper = Azure::ARM::Web::Models::AppServiceCertificateResource.mapper()
+      request_content = @client.serialize(request_mapper,  key_vault_certificate)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}'
@@ -1935,7 +1952,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1944,7 +1962,8 @@ module Azure::ARM::Web
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2036,7 +2055,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2128,7 +2148,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateOrderCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2220,7 +2241,8 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Web::Models::AppServiceCertificateCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Web::Models::AppServiceCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -87,7 +87,8 @@ module Azure::ARM::KeyVault
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::KeyVault::Models::VaultCreateOrUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}'
@@ -118,7 +119,8 @@ module Azure::ARM::KeyVault
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::Vault.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::Vault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -127,7 +129,8 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::Vault.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::Vault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -303,7 +306,8 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::Vault.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::Vault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -398,7 +402,8 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::VaultListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::VaultListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -487,7 +492,8 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::ResourceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::ResourceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -576,7 +582,8 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::VaultListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::VaultListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -665,7 +672,8 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::KeyVault::Models::ResourceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::KeyVault::Models::ResourceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

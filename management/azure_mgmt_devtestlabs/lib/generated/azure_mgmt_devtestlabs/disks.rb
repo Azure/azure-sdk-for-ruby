@@ -124,7 +124,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationDisk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationDisk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -228,7 +229,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -278,7 +280,8 @@ module Azure::ARM::DevTestLabs
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::DevTestLabs::Models::Disk.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::DevTestLabs::Models::Disk.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -494,7 +497,8 @@ module Azure::ARM::DevTestLabs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = disk.to_json
+      request_mapper = Azure::ARM::DevTestLabs::Models::Disk.mapper()
+      request_content = @client.serialize(request_mapper,  disk)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}'
@@ -525,7 +529,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -534,7 +539,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::Disk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::Disk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -706,7 +712,8 @@ module Azure::ARM::DevTestLabs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = attach_disk_properties.to_json
+      request_mapper = Azure::ARM::DevTestLabs::Models::AttachDiskProperties.mapper()
+      request_content = @client.serialize(request_mapper,  attach_disk_properties)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/attach'
@@ -812,7 +819,8 @@ module Azure::ARM::DevTestLabs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = detach_disk_properties.to_json
+      request_mapper = Azure::ARM::DevTestLabs::Models::DetachDiskProperties.mapper()
+      request_content = @client.serialize(request_mapper,  detach_disk_properties)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/detach'
@@ -920,7 +928,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationDisk.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationDisk.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

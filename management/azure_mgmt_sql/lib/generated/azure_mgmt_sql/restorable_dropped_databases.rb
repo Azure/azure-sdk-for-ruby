@@ -115,7 +115,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::RestorableDroppedDatabase.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::RestorableDroppedDatabase.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -128,7 +129,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Get a list of deleted database that can be restored
+    # Gets a list of deleted databases that can be restored
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -145,7 +146,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Get a list of deleted database that can be restored
+    # Gets a list of deleted databases that can be restored
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -161,7 +162,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Get a list of deleted database that can be restored
+    # Gets a list of deleted databases that can be restored
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -211,7 +212,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::RestorableDroppedDatabaseListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::RestorableDroppedDatabaseListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

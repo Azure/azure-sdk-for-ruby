@@ -78,7 +78,8 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = check_name_availability_input.to_json
+      request_mapper = Azure::ARM::MediaServices::Models::CheckNameAvailabilityInput.mapper()
+      request_content = @client.serialize(request_mapper,  check_name_availability_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Media/CheckNameAvailability'
@@ -109,7 +110,8 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::CheckNameAvailabilityOutput.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::CheckNameAvailabilityOutput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -198,7 +200,8 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::MediaServiceCollection.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::MediaServiceCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -291,7 +294,8 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::MediaService.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -368,7 +372,8 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = media_service.to_json
+      request_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
+      request_content = @client.serialize(request_mapper,  media_service)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
@@ -399,7 +404,8 @@ module Azure::ARM::MediaServices
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::MediaService.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -559,7 +565,8 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = media_service.to_json
+      request_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
+      request_content = @client.serialize(request_mapper,  media_service)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
@@ -590,7 +597,8 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::MediaService.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -667,7 +675,8 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = regenerate_key_input.to_json
+      request_mapper = Azure::ARM::MediaServices::Models::RegenerateKeyInput.mapper()
+      request_content = @client.serialize(request_mapper,  regenerate_key_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/regenerateKey'
@@ -698,7 +707,8 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::RegenerateKeyOutput.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::RegenerateKeyOutput.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -791,7 +801,8 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::MediaServices::Models::ServiceKeys.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::MediaServices::Models::ServiceKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -870,7 +881,8 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = sync_storage_keys_input.to_json
+      request_mapper = Azure::ARM::MediaServices::Models::SyncStorageKeysInput.mapper()
+      request_content = @client.serialize(request_mapper,  sync_storage_keys_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/syncStorageKeys'

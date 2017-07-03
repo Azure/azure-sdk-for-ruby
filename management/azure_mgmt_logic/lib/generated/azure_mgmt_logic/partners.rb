@@ -105,7 +105,8 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Logic::Models::IntegrationAccountPartnerListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountPartnerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -199,7 +200,8 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Logic::Models::IntegrationAccountPartner.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountPartner.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -274,7 +276,8 @@ module Azure::ARM::Logic
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = partner.to_json
+      request_mapper = Azure::ARM::Logic::Models::IntegrationAccountPartner.mapper()
+      request_content = @client.serialize(request_mapper,  partner)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}'
@@ -305,7 +308,8 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Logic::Models::IntegrationAccountPartner.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountPartner.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -314,7 +318,8 @@ module Azure::ARM::Logic
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Logic::Models::IntegrationAccountPartner.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountPartner.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -484,7 +489,8 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Logic::Models::IntegrationAccountPartnerListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Logic::Models::IntegrationAccountPartnerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

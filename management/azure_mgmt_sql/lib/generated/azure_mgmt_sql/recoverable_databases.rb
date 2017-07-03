@@ -25,8 +25,8 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Gets a Recoverable Database, which is a resource representing a database's
-    # Geo backup
+    # Gets a recoverable database, which is a resource representing a database's
+    # geo backup
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -44,8 +44,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets a Recoverable Database, which is a resource representing a database's
-    # Geo backup
+    # Gets a recoverable database, which is a resource representing a database's
+    # geo backup
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -62,8 +62,8 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets a Recoverable Database, which is a resource representing a database's
-    # Geo backup
+    # Gets a recoverable database, which is a resource representing a database's
+    # geo backup
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -115,7 +115,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::RecoverableDatabase.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::RecoverableDatabase.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -128,7 +129,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of Recoverable Databases
+    # Gets a list of recoverable databases
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -145,7 +146,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of Recoverable Databases
+    # Gets a list of recoverable databases
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -161,7 +162,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of Recoverable Databases
+    # Gets a list of recoverable databases
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -211,7 +212,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::RecoverableDatabaseListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::RecoverableDatabaseListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

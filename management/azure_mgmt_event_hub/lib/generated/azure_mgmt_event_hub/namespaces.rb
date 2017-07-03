@@ -75,7 +75,8 @@ module Azure::ARM::EventHub
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::EventHub::Models::CheckNameAvailabilityParameter.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.EventHub/CheckNameAvailability'
@@ -106,7 +107,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::CheckNameAvailabilityResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::CheckNameAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -191,7 +193,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -280,7 +283,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -330,7 +334,8 @@ module Azure::ARM::EventHub
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -462,7 +467,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -471,7 +477,8 @@ module Azure::ARM::EventHub
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -551,7 +558,8 @@ module Azure::ARM::EventHub
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::EventHub::Models::NamespaceUpdateParameter.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}'
@@ -582,7 +590,8 @@ module Azure::ARM::EventHub
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -591,7 +600,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -684,7 +694,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -765,7 +776,8 @@ module Azure::ARM::EventHub
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleCreateOrUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}'
@@ -796,7 +808,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -980,7 +993,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1077,7 +1091,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::ResourceListKeys.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::ResourceListKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1161,7 +1176,8 @@ module Azure::ARM::EventHub
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::EventHub::Models::RegenerateKeysParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys'
@@ -1192,7 +1208,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::ResourceListKeys.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::ResourceListKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1272,7 +1289,8 @@ module Azure::ARM::EventHub
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::EventHub::Models::NamespaceCreateOrUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}'
@@ -1303,7 +1321,8 @@ module Azure::ARM::EventHub
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1312,7 +1331,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1487,7 +1507,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1573,7 +1594,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1659,7 +1681,8 @@ module Azure::ARM::EventHub
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::EventHub::Models::SharedAccessAuthorizationRuleListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
