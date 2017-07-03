@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ElasticPoolEdition] The edition of the recommended elastic
       # pool. The ElasticPoolEdition enumeration contains all the valid
       # editions. Possible values include: 'Basic', 'Standard', 'Premium'

@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource kind.
       attr_accessor :kind
 
@@ -91,7 +90,7 @@ module Azure::ARM::SQL
                 }
               },
               state: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.state',
                 type: {
                   name: 'Enum',

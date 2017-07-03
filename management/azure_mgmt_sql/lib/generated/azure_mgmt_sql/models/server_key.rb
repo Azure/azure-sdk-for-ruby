@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Enum] Kind of encryption protector. This is metadata used for
       # the Azure portal experience. Possible values include: '',
       # 'azurekeyvault', 'servicemanaged'
