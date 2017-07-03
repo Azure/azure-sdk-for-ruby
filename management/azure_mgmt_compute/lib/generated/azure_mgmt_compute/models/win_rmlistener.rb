@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProtocolTypes] The Protocol used by the WinRM listener. Http
       # and Https are supported. Possible values include: 'Http', 'Https'
       attr_accessor :protocol

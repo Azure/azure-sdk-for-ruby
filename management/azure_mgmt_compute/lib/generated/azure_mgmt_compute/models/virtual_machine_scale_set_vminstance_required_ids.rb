@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The virtual machine scale set instance ids.
       attr_accessor :instance_ids
 

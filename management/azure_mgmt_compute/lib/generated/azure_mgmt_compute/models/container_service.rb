@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the current deployment or provisioning state, which
       # only appears in the response.
       attr_accessor :provisioning_state
