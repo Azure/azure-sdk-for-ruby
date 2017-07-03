@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Metric>] The list of metrics for the database.
       attr_accessor :value
 
