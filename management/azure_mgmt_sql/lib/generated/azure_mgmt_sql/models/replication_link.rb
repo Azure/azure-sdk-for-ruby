@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Location of the server that contains this firewall
       # rule.
       attr_accessor :location

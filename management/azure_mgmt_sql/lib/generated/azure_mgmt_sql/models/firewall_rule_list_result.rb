@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<FirewallRule>] The list of server firewall rules.
       attr_accessor :value
 
