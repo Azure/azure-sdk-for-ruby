@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ImageReference] The image reference.
       attr_accessor :image_reference
 

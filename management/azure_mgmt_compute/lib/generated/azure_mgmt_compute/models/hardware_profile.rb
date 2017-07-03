@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VirtualMachineSizeTypes] The virtual machine size name.
       # Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
       # 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
