@@ -81,7 +81,8 @@ module Azure::ARM::Storage
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = account_name.to_json
+      request_mapper = Azure::ARM::Storage::Models::StorageAccountCheckNameAvailabilityParameters.mapper()
+      request_content = @client.serialize(request_mapper,  account_name)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability'
@@ -112,7 +113,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::CheckNameAvailabilityResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::CheckNameAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -169,7 +171,8 @@ module Azure::ARM::Storage
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::Storage::Models::StorageAccount.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::Storage::Models::StorageAccount.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -361,7 +364,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccount.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -468,7 +472,8 @@ module Azure::ARM::Storage
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Storage::Models::StorageAccountUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}'
@@ -499,7 +504,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccount.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -584,7 +590,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccountListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccountListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -676,7 +683,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccountListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccountListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -775,7 +783,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccountListKeysResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccountListKeysResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -858,7 +867,8 @@ module Azure::ARM::Storage
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = regenerate_key.to_json
+      request_mapper = Azure::ARM::Storage::Models::StorageAccountRegenerateKeyParameters.mapper()
+      request_content = @client.serialize(request_mapper,  regenerate_key)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey'
@@ -889,7 +899,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccountListKeysResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccountListKeysResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -972,7 +983,8 @@ module Azure::ARM::Storage
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Storage::Models::AccountSasParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas'
@@ -1003,7 +1015,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::ListAccountSasResponse.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::ListAccountSasResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1086,7 +1099,8 @@ module Azure::ARM::Storage
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Storage::Models::ServiceSasParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListServiceSas'
@@ -1117,7 +1131,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::ListServiceSasResponse.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::ListServiceSasResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1212,7 +1227,8 @@ module Azure::ARM::Storage
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Storage::Models::StorageAccountCreateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}'
@@ -1243,7 +1259,8 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Storage::Models::StorageAccount.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Storage::Models::StorageAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -124,7 +124,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationArmTemplate.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationArmTemplate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -228,7 +229,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::ArmTemplate.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::ArmTemplate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -314,7 +316,8 @@ module Azure::ARM::DevTestLabs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationArmTemplate.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::DevTestLabs::Models::ResponseWithContinuationArmTemplate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

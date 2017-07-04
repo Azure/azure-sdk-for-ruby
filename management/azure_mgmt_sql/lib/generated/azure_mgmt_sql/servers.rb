@@ -25,6 +25,228 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
+    # Creates or updates the server's connection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ServerConnectionPolicy] The required parameters for
+    # updating a secure connection policy.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ServerConnectionPolicy] operation results.
+    #
+    def create_or_update_connection_policy(resource_group_name, server_name, parameters, custom_headers = nil)
+      response = create_or_update_connection_policy_async(resource_group_name, server_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates the server's connection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ServerConnectionPolicy] The required parameters for
+    # updating a secure connection policy.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_connection_policy_with_http_info(resource_group_name, server_name, parameters, custom_headers = nil)
+      create_or_update_connection_policy_async(resource_group_name, server_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates the server's connection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param parameters [ServerConnectionPolicy] The required parameters for
+    # updating a secure connection policy.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_connection_policy_async(resource_group_name, server_name, parameters, custom_headers = nil)
+      api_version = '2014-04-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      connection_policy_name = 'default'
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'connectionPolicyName' => connection_policy_name},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the server's secure connection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ServerConnectionPolicy] operation results.
+    #
+    def get_connection_policy(resource_group_name, server_name, custom_headers = nil)
+      response = get_connection_policy_async(resource_group_name, server_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the server's secure connection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_connection_policy_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      get_connection_policy_async(resource_group_name, server_name, custom_headers).value!
+    end
+
+    #
+    # Gets the server's secure connection policy.
+    #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the server.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_connection_policy_async(resource_group_name, server_name, custom_headers = nil)
+      api_version = '2014-04-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'server_name is nil' if server_name.nil?
+      connection_policy_name = 'default'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'connectionPolicyName' => connection_policy_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Determines whether a resource can be created with the specified name.
     #
     # @param parameters [CheckNameAvailabilityRequest] The parameters to request
@@ -78,7 +300,8 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::SQL::Models::CheckNameAvailabilityRequest.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Sql/checkNameAvailability'
@@ -109,7 +332,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::CheckNameAvailabilityResponse.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::CheckNameAvailabilityResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -206,7 +430,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -257,7 +482,8 @@ module Azure::ARM::SQL
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -358,7 +584,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServiceObjective.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServiceObjective.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -454,7 +681,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServiceObjectiveListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServiceObjectiveListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -550,7 +778,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServerUsageListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServerUsageListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -632,7 +861,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServerListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -724,7 +954,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServerListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -820,7 +1051,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::Server.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::Server.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -869,7 +1101,8 @@ module Azure::ARM::SQL
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::SQL::Models::Server.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::SQL::Models::Server.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -958,7 +1191,8 @@ module Azure::ARM::SQL
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::SQL::Models::Server.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::SQL::Models::Server.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -1052,7 +1286,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::EncryptionProtectorListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::EncryptionProtectorListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1149,7 +1384,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::EncryptionProtector.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1200,7 +1436,8 @@ module Azure::ARM::SQL
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          parsed_response = Azure::ARM::SQL::Models::EncryptionProtector.new.from_json(parsed_response)
+          result_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -1279,7 +1516,8 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/backupLongTermRetentionVaults/{backupLongTermRetentionVaultName}'
@@ -1310,7 +1548,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1319,7 +1558,8 @@ module Azure::ARM::SQL
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1396,7 +1636,8 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::SQL::Models::Server.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}'
@@ -1427,7 +1668,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::Server.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::Server.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1436,7 +1678,8 @@ module Azure::ARM::SQL
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::Server.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::Server.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1599,7 +1842,8 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::SQL::Models::Server.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}'
@@ -1630,7 +1874,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::Server.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::Server.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1711,7 +1956,8 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}'
@@ -1742,7 +1988,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::EncryptionProtector.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1828,7 +2075,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServerListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1914,7 +2162,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::ServerListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2000,7 +2249,8 @@ module Azure::ARM::SQL
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::SQL::Models::EncryptionProtectorListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::SQL::Models::EncryptionProtectorListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

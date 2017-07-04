@@ -116,7 +116,8 @@ module Azure::ARM::RecoveryServicesBackup
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::RecoveryServicesBackup::Models::ProtectionPolicyResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::RecoveryServicesBackup::Models::ProtectionPolicyResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -197,7 +198,8 @@ module Azure::ARM::RecoveryServicesBackup
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::RecoveryServicesBackup::Models::ProtectionPolicyResource.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}'
@@ -228,7 +230,8 @@ module Azure::ARM::RecoveryServicesBackup
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::RecoveryServicesBackup::Models::ProtectionPolicyResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::RecoveryServicesBackup::Models::ProtectionPolicyResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

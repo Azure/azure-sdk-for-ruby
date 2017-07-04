@@ -73,7 +73,8 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Graph::Models::UserCreateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/users'
@@ -104,7 +105,8 @@ module Azure::ARM::Graph
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Graph::Models::User.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Graph::Models::User.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -189,7 +191,8 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Graph::Models::UserListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Graph::Models::UserListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -279,7 +282,8 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Graph::Models::User.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Graph::Models::User.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -351,7 +355,8 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Graph::Models::UserUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/users/{upnOrObjectId}'
@@ -527,7 +532,8 @@ module Azure::ARM::Graph
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::Graph::Models::UserGetMemberGroupsParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/users/{objectId}/getMemberGroups'
@@ -559,7 +565,8 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Graph::Models::UserGetMemberGroupsResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Graph::Models::UserGetMemberGroupsResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -646,7 +653,8 @@ module Azure::ARM::Graph
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::Graph::Models::UserListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::Graph::Models::UserListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

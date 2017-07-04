@@ -78,7 +78,8 @@ module Azure::ARM::NotificationHubs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::NotificationHubs::Models::CheckAvailabilityParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.NotificationHubs/checkNamespaceAvailability'
@@ -109,7 +110,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::CheckAvailabilityResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::CheckAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -186,7 +188,8 @@ module Azure::ARM::NotificationHubs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::NotificationHubs::Models::NamespaceCreateOrUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}'
@@ -217,7 +220,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -226,7 +230,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -300,7 +305,8 @@ module Azure::ARM::NotificationHubs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::NotificationHubs::Models::NamespacePatchParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}'
@@ -331,7 +337,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -460,7 +467,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -538,7 +546,8 @@ module Azure::ARM::NotificationHubs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleCreateOrUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}'
@@ -569,7 +578,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -747,7 +757,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleResource.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -839,7 +850,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -924,7 +936,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1014,7 +1027,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1111,7 +1125,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::ResourceListKeys.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::ResourceListKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1192,7 +1207,8 @@ module Azure::ARM::NotificationHubs
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_content = parameters.to_json
+      request_mapper = Azure::ARM::NotificationHubs::Models::PolicykeyResource.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys'
@@ -1223,7 +1239,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::ResourceListKeys.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::ResourceListKeys.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1392,7 +1409,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1481,7 +1499,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::NamespaceListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::NamespaceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1567,7 +1586,8 @@ module Azure::ARM::NotificationHubs
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleListResult.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::NotificationHubs::Models::SharedAccessAuthorizationRuleListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -102,7 +102,8 @@ module Azure::ARM::RecoveryServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result.body = Azure::ARM::RecoveryServices::Models::ReplicationUsageList.new.from_json(parsed_response)
+            result_mapper = Azure::ARM::RecoveryServices::Models::ReplicationUsageList.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
