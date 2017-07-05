@@ -13,7 +13,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuitAuthorization>] The authorizations in
       # an ExpressRoute Circuit.
       attr_accessor :value

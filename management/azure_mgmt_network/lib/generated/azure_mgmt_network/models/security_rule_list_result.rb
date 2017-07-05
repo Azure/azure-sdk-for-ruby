@@ -13,7 +13,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SecurityRule>] The security rules in a network security
       # group.
       attr_accessor :value

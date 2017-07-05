@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Base-64 encoded pfx certificate. Only applicable in
       # PUT Request.
       attr_accessor :data

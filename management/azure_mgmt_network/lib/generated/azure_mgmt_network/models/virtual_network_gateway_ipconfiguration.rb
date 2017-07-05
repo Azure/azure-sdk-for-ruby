@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [IPAllocationMethod] The private IP allocation method. Possible
       # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
       # 'Dynamic'
