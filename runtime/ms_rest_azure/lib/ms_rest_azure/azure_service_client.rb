@@ -41,7 +41,7 @@ module MsRestAzure
       polling_state = PollingState.new(azure_response, @long_running_operation_retry_timeout)
       request = azure_response.request
 
-      if !AsyncOperationStatus.is_terminal_status(polling_state.status)
+      while !AsyncOperationStatus.is_terminal_status(polling_state.status)
         task = Concurrent::TimerTask.new do
           begin
             if !polling_state.azure_async_operation_header_link.nil?
