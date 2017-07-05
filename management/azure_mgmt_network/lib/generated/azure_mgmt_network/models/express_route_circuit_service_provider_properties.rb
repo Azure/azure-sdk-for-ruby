@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The serviceProviderName.
       attr_accessor :service_provider_name
 

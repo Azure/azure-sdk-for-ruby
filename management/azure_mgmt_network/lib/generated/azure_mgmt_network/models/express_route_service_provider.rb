@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Get a list of peering locations.
       attr_accessor :peering_locations
 

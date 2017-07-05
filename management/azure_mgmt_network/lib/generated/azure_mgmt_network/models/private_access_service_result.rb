@@ -6,43 +6,50 @@
 module Azure::ARM::Network
   module Models
     #
-    # Usage strings container.
+    # Private access service.
     #
-    class VirtualNetworkUsageName
+    class PrivateAccessServiceResult < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] Localized subnet size and usage string.
-      attr_accessor :localized_value
+      # @return [String] Name of the private access value.
+      attr_accessor :name
 
-      # @return [String] Subnet size and usage string.
-      attr_accessor :value
+      # @return [String] Type of the private access value.
+      attr_accessor :type
 
 
       #
-      # Mapper for VirtualNetworkUsageName class as Ruby Hash.
+      # Mapper for PrivateAccessServiceResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualNetworkUsageName',
+          serialized_name: 'PrivateAccessServiceResult',
           type: {
             name: 'Composite',
-            class_name: 'VirtualNetworkUsageName',
+            class_name: 'PrivateAccessServiceResult',
             model_properties: {
-              localized_value: {
+              id: {
                 required: false,
-                read_only: true,
-                serialized_name: 'localizedValue',
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              value: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'value',
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

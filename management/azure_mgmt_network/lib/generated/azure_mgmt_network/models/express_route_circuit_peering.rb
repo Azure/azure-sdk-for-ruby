@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ExpressRouteCircuitPeeringType] The PeeringType. Possible
       # values are: 'AzurePublicPeering', 'AzurePrivatePeering', and
       # 'MicrosoftPeering'. Possible values include: 'AzurePublicPeering',
