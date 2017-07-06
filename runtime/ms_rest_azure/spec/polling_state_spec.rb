@@ -10,12 +10,15 @@ module MsRestAzure
   describe PollingState do
     it 'should initialize status from flattened response body' do
       response_body = double('response_body', :provisioning_state => 'InProgress')
-      response = double('response',
+      response = double('response', :status => 201, :headers =>
+          { 'Azure-AsyncOperation' => 'async_operation_header',
+            'Location' => 'location_header'})
+      azure_response = double('response',
                         :request => nil,
-                        :response => nil,
+                        :response => response,
                         :body => response_body)
 
-      polling_state = PollingState.new response, 0
+      polling_state = PollingState.new azure_response, 0
 
       expect(polling_state.status).to eq('InProgress')
     end
@@ -23,12 +26,15 @@ module MsRestAzure
     it 'should initialize status from non-flattened response body' do
       provisioning_state = double('provisioning_state', :provisioning_state => 'Succeeded')
       response_body = double('response_body', :properties => provisioning_state)
-      response = double('response',
+      response = double('response', :status => 201, :headers =>
+          { 'Azure-AsyncOperation' => 'async_operation_header',
+            'Location' => 'location_header'})
+      azure_response = double('response',
                         :request => nil,
-                        :response => nil,
+                        :response => response,
                         :body => response_body)
 
-      polling_state = PollingState.new response, 0
+      polling_state = PollingState.new azure_response, 0
 
       expect(polling_state.status).to eq('Succeeded')
     end
@@ -92,6 +98,35 @@ module MsRestAzure
 
       expect(polling_state.get_delay).to eq(5)
     end
+
+    it 'should return succeeded status for a 200 response and no provisioning status' do
+      response = double('response', :status => 200, :headers =>
+          { 'Azure-AsyncOperation' => 'async_operation_header',
+            'Location' => 'location_header'})
+      azure_response = double('response',
+                              :request => nil,
+                              :response => response,
+                              :body => nil)
+
+      polling_state = PollingState.new azure_response, 0
+
+      expect(polling_state.status).to eq(AsyncOperationStatus::SUCCESS_STATUS)
+    end
+
+    it 'should return in progress status for a 201 response and no provisioning status' do
+      response = double('response', :status => 201, :headers =>
+          { 'Azure-AsyncOperation' => 'async_operation_header',
+            'Location' => 'location_header'})
+      azure_response = double('response',
+                              :request => nil,
+                              :response => response,
+                              :body => nil)
+
+      polling_state = PollingState.new azure_response, 0
+
+      expect(polling_state.status).to eq(AsyncOperationStatus::IN_PROGRESS_STATUS)
+    end
+
   end
 
 end

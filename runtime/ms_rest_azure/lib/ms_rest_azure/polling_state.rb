@@ -35,21 +35,35 @@ module MsRestAzure
       update_response(azure_response.response)
       @resource = azure_response.body
 
+      case @response.status
+        when 200
+          provisioning_state = get_provisioning_state
+          @status = provisioning_state.nil?? (AsyncOperationStatus::SUCCESS_STATUS):provisioning_state
+        when 201
+          provisioning_state = get_provisioning_state
+          @status = provisioning_state.nil?? (AsyncOperationStatus::IN_PROGRESS_STATUS):provisioning_state
+        when 202
+          @status = AsyncOperationStatus::IN_PROGRESS_STATUS
+        when 204
+          @status = AsyncOperationStatus::SUCCESS_STATUS
+        else
+          @status = AsyncOperationStatus::FAILED_STATUS
+      end
+    end
+
+    #
+    # Returns the provisioning status of the resource
+    #
+    # @return [String] provisioning status of the resource
+    def get_provisioning_state
       # On non flattened resource, we should find provisioning_state inside 'properties'
       if (!@resource.nil? && @resource.respond_to?(:properties) && @resource.properties.respond_to?(:provisioning_state) && !@resource.properties.provisioning_state.nil?)
-        @status = @resource.properties.provisioning_state
-      # On flattened resource, we should find provisioning_state at the top level
+        @resource.properties.provisioning_state
+        # On flattened resource, we should find provisioning_state at the top level
       elsif !@resource.nil? && @resource.respond_to?(:provisioning_state) && !@resource.provisioning_state.nil?
-        @status = @resource.provisioning_state
+        @resource.provisioning_state
       else
-        case @response.status
-          when 202
-            @status = AsyncOperationStatus::IN_PROGRESS_STATUS
-          when 200, 201, 204
-            @status = AsyncOperationStatus::SUCCESS_STATUS
-          else
-            @status = AsyncOperationStatus::FAILED_STATUS
-          end
+        nil
       end
     end
 
