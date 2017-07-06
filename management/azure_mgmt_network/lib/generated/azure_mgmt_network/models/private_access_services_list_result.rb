@@ -6,14 +6,14 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListExpressRouteCircuit API service call.
+    # Response for the ListAvailablePrivateAccessServices API service call.
     #
-    class ExpressRouteCircuitListResult
+    class PrivateAccessServicesListResult
 
       include MsRestAzure
 
-      # @return [Array<ExpressRouteCircuit>] A list of ExpressRouteCircuits in
-      # a resource group.
+      # @return [Array<PrivateAccessServiceResult>] List of available private
+      # access service values in a region.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.
@@ -25,7 +25,7 @@ module Azure::ARM::Network
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ExpressRouteCircuit>] operation results.
+      # @return [Array<PrivateAccessServiceResult>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +40,7 @@ module Azure::ARM::Network
       #
       # Gets the next page of results.
       #
-      # @return [ExpressRouteCircuitListResult] with next page content.
+      # @return [PrivateAccessServicesListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +52,16 @@ module Azure::ARM::Network
       end
 
       #
-      # Mapper for ExpressRouteCircuitListResult class as Ruby Hash.
+      # Mapper for PrivateAccessServicesListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ExpressRouteCircuitListResult',
+          serialized_name: 'PrivateAccessServicesListResult',
           type: {
             name: 'Composite',
-            class_name: 'ExpressRouteCircuitListResult',
+            class_name: 'PrivateAccessServicesListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,10 +70,10 @@ module Azure::ARM::Network
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ExpressRouteCircuitElementType',
+                      serialized_name: 'PrivateAccessServiceResultElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ExpressRouteCircuit'
+                        class_name: 'PrivateAccessServiceResult'
                       }
                   }
                 }

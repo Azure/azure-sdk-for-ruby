@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the resource that is associated with the
       # parent resource.
       attr_accessor :name
