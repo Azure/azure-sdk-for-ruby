@@ -6,13 +6,12 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database transparent data encryption .
+    # Represents a database transparent data encryption configuration.
     #
     class TransparentDataEncryption < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TransparentDataEncryptionStatus] The status of the database
       # transparent data encryption. Possible values include: 'Enabled',
       # 'Disabled'

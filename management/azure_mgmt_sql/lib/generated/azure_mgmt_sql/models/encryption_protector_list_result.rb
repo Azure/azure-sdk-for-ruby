@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<EncryptionProtector>] Array of results.
       attr_accessor :value
 

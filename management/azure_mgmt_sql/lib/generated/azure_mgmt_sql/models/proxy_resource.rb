@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       #
       # Mapper for ProxyResource class as Ruby Hash.

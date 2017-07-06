@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ReplicationLink>] The list of database replication links
       # housed in the database.
       attr_accessor :value
