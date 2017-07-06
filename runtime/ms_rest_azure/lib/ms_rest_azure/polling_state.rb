@@ -36,14 +36,14 @@ module MsRestAzure
       @resource = azure_response.body
 
       case @response.status
-        when 202
-          @status = AsyncOperationStatus::IN_PROGRESS_STATUS
         when 200
           provisioning_state = get_provisioning_state
           @status = provisioning_state.nil?? (AsyncOperationStatus::SUCCESS_STATUS):provisioning_state
         when 201
           provisioning_state = get_provisioning_state
           @status = provisioning_state.nil?? (AsyncOperationStatus::IN_PROGRESS_STATUS):provisioning_state
+        when 202
+          @status = AsyncOperationStatus::IN_PROGRESS_STATUS
         when 204
           @status = AsyncOperationStatus::SUCCESS_STATUS
         else
