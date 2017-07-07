@@ -39,6 +39,7 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [Server Management](https://rubygems.org/gems/azure_mgmt_server_management) Azure Server Management Service like node, gateway, powershell etc..
 * [SQL](https://rubygems.org/gems/azure_mgmt_sql) Manage Azure SQL resources
 * [Storage](https://rubygems.org/gems/azure_mgmt_storage) Account Creation, Usage Operations, etc...
+* [Stream Analytics](https://rubygems.org/gems/azure_mgmt_stream_analytics) Create, update, start, stop streaming jobs etc...
 * [Subscriptions](https://rubygems.org/gems/azure_mgmt_subscriptions) Manage Azure subscriptions
 * [Traffic Manager](https://rubygems.org/gems/azure_mgmt_traffic_manager) Azure Traffic Manager's profile & endpoint management
 * [WebApps](https://rubygems.org/gems/azure_mgmt_web) Manage WebApps, formally known as WebSites

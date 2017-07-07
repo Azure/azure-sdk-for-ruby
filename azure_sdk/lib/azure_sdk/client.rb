@@ -33,6 +33,7 @@ require 'azure_mgmt_server_management'
 require 'azure_mgmt_service_bus'
 require 'azure_mgmt_sql'
 require 'azure_mgmt_storage'
+require 'azure_mgmt_stream_analytics'
 require 'azure_mgmt_subscriptions'
 require 'azure_mgmt_traffic_manager'
 require 'azure_mgmt_web'
@@ -77,6 +78,7 @@ module Azure::ARM
         :service_bus => 'Azure::ARM::ServiceBus::ServiceBusManagementClient',
         :sql => 'Azure::ARM::SQL::SqlManagementClient',
         :storage => 'Azure::ARM::Storage::StorageManagementClient',
+        :stream_analytics => 'Azure::ARM::StreamAnalytics::StreamAnalyticsManagementClient',
         :subscription => 'Azure::ARM::Subscriptions::SubscriptionClient',
         :traffic_manager => 'Azure::ARM::TrafficManager::TrafficManagerManagementClient',
         :web => 'Azure::ARM::Web::WebSiteManagementClient'
