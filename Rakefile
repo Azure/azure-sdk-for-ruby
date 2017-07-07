@@ -367,6 +367,13 @@ REGEN_METADATA = {
         version: version,
         tag: 'arm_stor'
     },
+    azure_mgmt_stream_analytics: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-streamanalytics/compositeStreamAnalytics.json',
+        ns: 'Azure::ARM::StreamAnalytics',
+        version: version,
+        modeler: 'CompositeSwagger',
+        tag: 'arm_stranalytics'
+    },
     azure_mgmt_subscriptions: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json',
         ns: 'Azure::ARM::Subscriptions',
@@ -386,11 +393,4 @@ REGEN_METADATA = {
         modeler: "CompositeSwagger",
         tag: 'arm_web'
     },
-    azure_mgmt_stream_analytics: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-streamanalytics/compositeStreamAnalytics.json',
-        ns: 'Azure::ARM::StreamAnalytics',
-        version: version,
-        modeler: 'CompositeSwagger',
-        tag: 'arm_stranalytics'
-    }
 }

@@ -444,6 +444,19 @@
         "azure_mgmt_storage.rb"
       ]
     },
+    "azure_mgmt_stream_analytics": {
+        "swagger": "arm-streamanalytics/compositeStreamAnalytics.json",
+        "autorest_options": {
+          "Namespace": "Azure::ARM::StreamAnalytics",
+          "PackageName": "azure_mgmt_stream_analytics",
+          "Modeler": "CompositeSwagger",
+          "PackageVersion": "0.10.0"
+        },
+        "output_dir": "management/azure_mgmt_stream_analytics/lib",
+        "wrapper_filesOrDirs": [
+          "azure_mgmt_stream_analytics.rb"
+        ]
+    },
     "azure_mgmt_subscriptions": {
       "swagger": "arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json",
       "autorest_options": {
