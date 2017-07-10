@@ -1,3 +1,6 @@
+##2017.07.10 ms_rest_azure version 0.8.1
+* [Bug Fix] Fixed the issue with the polling status object to handle the response code and provisioning status correctly.[Issue #817](https://github.com/Azure/azure-sdk-for-ruby/issues/817) [PR #828](https://github.com/Azure/azure-sdk-for-ruby/pull/828)
+
 ##2017.06.30 ms_rest_azure version 0.8.0
 * [Breaking Change] Changed the name of the azure environments from 'Azure' to 'AzureCloud' and 'AzureChina' to 'AzureChinaCloud'.[Issue #600](https://github.com/Azure/azure-sdk-for-ruby/issues/600) [PR #711](https://github.com/Azure/azure-sdk-for-ruby/pull/711)
 * Added 'Accept' header with the value 'application/json'.[Issue #701](https://github.com/Azure/azure-sdk-for-ruby/issues/701) [PR #710](https://github.com/Azure/azure-sdk-for-ruby/pull/710)
