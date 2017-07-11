@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RouteTable>] Gets a list of route tables in a resource
       # group.
       attr_accessor :value

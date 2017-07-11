@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The destination CIDR to which the route applies.
       attr_accessor :address_prefix
 

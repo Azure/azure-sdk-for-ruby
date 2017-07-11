@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NextHopType] Next hop type. Possible values include:
       # 'Internet', 'VirtualAppliance', 'VirtualNetworkGateway', 'VnetLocal',
       # 'HyperNetGateway', 'None'

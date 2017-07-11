@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VirtualNetworkGatewayIPConfiguration>] IP configurations
       # for virtual network gateway.
       attr_accessor :ip_configurations
@@ -51,6 +50,14 @@ module Azure::ARM::Network
 
       # @return [BgpSettings] Virtual network gateway's BGP speaker settings.
       attr_accessor :bgp_settings
+
+      # @return [String] The radius server address property of the
+      # VirtualNetworkGateway resource for vpn client connection.
+      attr_accessor :radius_server
+
+      # @return [String] The radius secret property of the
+      # VirtualNetworkGateway resource for vpn client connection.
+      attr_accessor :radius_secret
 
       # @return [String] The resource GUID property of the
       # VirtualNetworkGateway resource.
@@ -194,6 +201,20 @@ module Azure::ARM::Network
                 type: {
                   name: 'Composite',
                   class_name: 'BgpSettings'
+                }
+              },
+              radius_server: {
+                required: false,
+                serialized_name: 'properties.radiusServer',
+                type: {
+                  name: 'String'
+                }
+              },
+              radius_secret: {
+                required: false,
+                serialized_name: 'properties.radiusSecret',
+                type: {
+                  name: 'String'
                 }
               },
               resource_guid: {

@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplicationGatewayProtocol] Protocol. Possible values include:
       # 'Http', 'Https'
       attr_accessor :protocol
