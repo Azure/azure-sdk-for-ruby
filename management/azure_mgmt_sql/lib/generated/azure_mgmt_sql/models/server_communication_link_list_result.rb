@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ServerCommunicationLink>] The list of server
       # communication links.
       attr_accessor :value

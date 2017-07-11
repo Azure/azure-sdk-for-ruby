@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [GeoBackupPolicyState] The state of the geo backup policy.
       # Possible values include: 'Disabled', 'Enabled'
       attr_accessor :state
