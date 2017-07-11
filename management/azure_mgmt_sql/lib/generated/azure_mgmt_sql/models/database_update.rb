@@ -6,15 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database.
+    # Represents a database update.
     #
-    class Database < TrackedResource
+    class DatabaseUpdate < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Kind of database.  This is metadata used for the Azure
-      # portal experience.
-      attr_accessor :kind
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
 
       # @return [String] The collation of the database. If createMode is not
       # Default, this value is ignored.
@@ -194,16 +193,16 @@ module Azure::ARM::SQL
 
 
       #
-      # Mapper for Database class as Ruby Hash.
+      # Mapper for DatabaseUpdate class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Database',
+          serialized_name: 'DatabaseUpdate',
           type: {
             name: 'Composite',
-            class_name: 'Database',
+            class_name: 'DatabaseUpdate',
             model_properties: {
               id: {
                 required: false,
@@ -241,21 +240,6 @@ module Azure::ARM::SQL
                         name: 'String'
                       }
                   }
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              kind: {
-                required: false,
-                read_only: true,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
                 }
               },
               collation: {

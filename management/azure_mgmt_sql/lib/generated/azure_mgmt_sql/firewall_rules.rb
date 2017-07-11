@@ -97,7 +97,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::FirewallRule.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}'
@@ -129,7 +129,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::FirewallRule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -139,7 +139,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::FirewallRule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -330,7 +330,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::FirewallRule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -427,7 +427,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::FirewallRuleListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

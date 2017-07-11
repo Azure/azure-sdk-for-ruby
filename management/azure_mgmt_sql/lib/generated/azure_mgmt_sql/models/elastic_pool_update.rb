@@ -6,11 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents a database elastic pool.
+    # Represents an elastic pool update.
     #
-    class ElasticPool < TrackedResource
+    class ElasticPoolUpdate < MsRestAzure::Resource
 
       include MsRestAzure
+
+      # @return [Hash{String => String}] Resource tags.
+      attr_accessor :tags
 
       # @return [DateTime] The creation date of the elastic pool (ISO8601
       # format).
@@ -37,22 +40,18 @@ module Azure::ARM::SQL
       # MB.
       attr_accessor :storage_mb
 
-      # @return [String] Kind of elastic pool.  This is metadata used for the
-      # Azure portal experience.
-      attr_accessor :kind
-
 
       #
-      # Mapper for ElasticPool class as Ruby Hash.
+      # Mapper for ElasticPoolUpdate class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ElasticPool',
+          serialized_name: 'ElasticPoolUpdate',
           type: {
             name: 'Composite',
-            class_name: 'ElasticPool',
+            class_name: 'ElasticPoolUpdate',
             model_properties: {
               id: {
                 required: false,
@@ -90,13 +89,6 @@ module Azure::ARM::SQL
                         name: 'String'
                       }
                   }
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
                 }
               },
               creation_date: {
@@ -148,14 +140,6 @@ module Azure::ARM::SQL
                 serialized_name: 'properties.storageMB',
                 type: {
                   name: 'Number'
-                }
-              },
-              kind: {
-                required: false,
-                read_only: true,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
                 }
               }
             }
