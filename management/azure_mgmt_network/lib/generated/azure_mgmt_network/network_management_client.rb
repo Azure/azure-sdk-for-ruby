@@ -107,6 +107,10 @@ module Azure::ARM::Network
     # @return [LocalNetworkGateways] local_network_gateways
     attr_reader :local_network_gateways
 
+    # @return [AvailablePrivateAccessServices]
+    # available_private_access_services
+    attr_reader :available_private_access_services
+
     #
     # Creates initializes a new instance of the NetworkManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -144,6 +148,7 @@ module Azure::ARM::Network
       @virtual_network_gateways = VirtualNetworkGateways.new(self)
       @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
       @local_network_gateways = LocalNetworkGateways.new(self)
+      @available_private_access_services = AvailablePrivateAccessServices.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -286,7 +291,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::DnsNameAvailabilityResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

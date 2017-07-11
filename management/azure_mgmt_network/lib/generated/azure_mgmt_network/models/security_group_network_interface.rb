@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] ID of the network interface.
       attr_accessor :id
 
