@@ -94,7 +94,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies/{connectionPolicyName}'
@@ -126,7 +126,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -136,7 +136,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -234,7 +234,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerConnectionPolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -301,7 +301,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::CheckNameAvailabilityRequest.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Sql/checkNameAvailability'
@@ -333,7 +333,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::CheckNameAvailabilityResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -431,7 +431,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -483,7 +483,7 @@ module Azure::ARM::SQL
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -585,7 +585,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServiceObjective.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -682,7 +682,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServiceObjectiveListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -779,7 +779,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerUsageListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -862,7 +862,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -955,7 +955,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1052,7 +1052,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::Server.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1102,7 +1102,7 @@ module Azure::ARM::SQL
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::SQL::Models::Server.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -1192,7 +1192,7 @@ module Azure::ARM::SQL
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::SQL::Models::Server.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -1287,7 +1287,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::EncryptionProtectorListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1385,7 +1385,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1437,7 +1437,7 @@ module Azure::ARM::SQL
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -1517,7 +1517,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/backupLongTermRetentionVaults/{backupLongTermRetentionVaultName}'
@@ -1549,7 +1549,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1559,7 +1559,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::BackupLongTermRetentionVault.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1637,7 +1637,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::Server.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}'
@@ -1669,7 +1669,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::Server.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1679,7 +1679,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::Server.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1843,7 +1843,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::Server.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}'
@@ -1875,7 +1875,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::Server.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1957,7 +1957,7 @@ module Azure::ARM::SQL
 
       # Serialize Request
       request_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector/{encryptionProtectorName}'
@@ -1989,7 +1989,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::EncryptionProtector.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2076,7 +2076,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2163,7 +2163,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::ServerListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2250,7 +2250,7 @@ module Azure::ARM::SQL
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::SQL::Models::EncryptionProtectorListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

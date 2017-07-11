@@ -6,41 +6,41 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a list recommended elastic pool metrics
-    # request.
+    # Represents the response to a list transparent data encryption
+    # configurations request.
     #
-    class RecommendedElasticPoolListMetricsResult
+    class TransparentDataEncryptionListResult
 
       include MsRestAzure
 
-      # @return [Array<RecommendedElasticPoolMetric>] The list of recommended
-      # elastic pools metrics.
+      # @return [Array<TransparentDataEncryption>] The list of transparent data
+      # encryption configurations.
       attr_accessor :value
 
 
       #
-      # Mapper for RecommendedElasticPoolListMetricsResult class as Ruby Hash.
+      # Mapper for TransparentDataEncryptionListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RecommendedElasticPoolListMetricsResult',
+          serialized_name: 'TransparentDataEncryptionListResult',
           type: {
             name: 'Composite',
-            class_name: 'RecommendedElasticPoolListMetricsResult',
+            class_name: 'TransparentDataEncryptionListResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'RecommendedElasticPoolMetricElementType',
+                      serialized_name: 'TransparentDataEncryptionElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'RecommendedElasticPoolMetric'
+                        class_name: 'TransparentDataEncryption'
                       }
                   }
                 }

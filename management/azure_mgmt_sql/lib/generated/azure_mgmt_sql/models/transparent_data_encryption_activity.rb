@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TransparentDataEncryptionActivityStatus] The status of the
       # database. Possible values include: 'Encrypting', 'Decrypting'
       attr_accessor :status

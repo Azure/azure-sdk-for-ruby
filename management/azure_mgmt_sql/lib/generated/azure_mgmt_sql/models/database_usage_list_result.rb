@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<DatabaseUsage>] The list of database usages for the
       # database.
       attr_accessor :value
