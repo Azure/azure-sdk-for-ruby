@@ -5,16 +5,16 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'generated/azure_mgmt_insights/module_definition'
-require 'generated/azure_mgmt_insights/version'
+require 'generated/azure_mgmt_monitor/module_definition'
+require 'generated/azure_mgmt_monitor/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'azure_mgmt_insights'
-  spec.version       = Azure::ARM::Insights::VERSION
+  spec.name          = 'azure_mgmt_monitor'
+  spec.version       = Azure::ARM::Monitor::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
-  spec.description   = 'Microsoft Azure Insights Library for Ruby'
-  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Insights services.'
+  spec.description   = 'Microsoft Azure Monitor Library for Ruby'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Monitor services.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
 

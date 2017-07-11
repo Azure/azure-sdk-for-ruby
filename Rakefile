@@ -64,6 +64,7 @@ namespace :arm do
           command += " -m #{md[:modeler]}" unless md[:modeler].nil?
         else
           command = "#{ar_base_command} #{md[:spec_uri]} --package-version=#{md[:version]} --namespace=#{md[:ns]} --package-name=#{md[:pn].nil? ? dir : md[:pn]} --output-folder=#{File.join(Dir.pwd, 'lib')} --ruby --azure-arm"
+          command += " --tag=#{md[:tag]}" unless md[:tag].nil?
         end
 
         execute_and_stream(command)
@@ -135,101 +136,78 @@ end
 REGEN_METADATA = {
     autorest_loc: ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
     azure_sdk: {
-        version: version,
-        tag: 'azure_sdk'
+        version: version
     },
     azure_mgmt_analysis_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-analysisservices/2016-05-16/swagger/analysisservices.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/analysisservices/resource-manager/readme.md',
         ns: 'Azure::ARM::AnalysisServices',
-        version: version,
-        tag: 'arm_as'
+        version: version
     },
     azure_mgmt_authorization: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-authorization/2015-07-01/swagger/authorization.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/authorization/resource-manager/readme.md',
         ns: 'Azure::ARM::Authorization',
-        version: version,
-        tag: 'arm_auth'
+        version: version
     },
     azure_mgmt_batch: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-batch/2017-01-01/swagger/BatchManagement.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/batch/resource-manager/readme.md',
         ns: 'Azure::ARM::Batch',
-        version: version,
-        tag: 'arm_batch'
+        version: version
     },
     azure_mgmt_cdn: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cdn/2016-10-02/swagger/cdn.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/cdn/resource-manager/readme.md',
         ns: 'Azure::ARM::CDN',
-        version: version,
-        tag: 'arm_cdn'
+        version: version
     },
     azure_mgmt_cognitive_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/cognitiveservices/resource-manager/readme.md',
         ns: 'Azure::ARM::CognitiveServices',
-        version: version,
-        tag: 'arm_cogn'
+        version: version
     },
     azure_mgmt_commerce: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-commerce/2015-06-01-preview/swagger/commerce.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/commerce/resource-manager/readme.md',
         ns: 'Azure::ARM::Commerce',
-        version: version,
-        tag: 'arm_commerce'
+        version: version
     },
     azure_mgmt_compute: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/compositeComputeClient.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/readme.md',
         ns: 'Azure::ARM::Compute',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_comp'
+        version: version
     },
     azure_mgmt_datalake_analytics: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/account/2016-11-01/swagger/account.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/datalake-analytics/resource-manager/readme.md',
         ns: 'Azure::ARM::DataLakeAnalytics',
-        version: version,
-        tag: 'arm_datalake_analytics'
+        version: version
     },
     azure_mgmt_datalake_store: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/account/2016-11-01/swagger/account.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/datalake-store/resource-manager/readme.md',
         ns: 'Azure::ARM::DataLakeStore',
-        version: version,
-        tag: 'arm_datalake_store'
+        version: version
     },
     azure_mgmt_devtestlabs: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-devtestlabs/2016-05-15/swagger/DTL.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/devtestlabs/resource-manager/readme.md',
         ns: 'Azure::ARM::DevTestLabs',
-        version: version,
-        tag: 'arm_dtl'
+        version: version
     },
     azure_mgmt_dns: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-dns/2016-04-01/swagger/dns.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/dns/resource-manager/readme.md',
         ns: 'Azure::ARM::Dns',
-        version: version,
-        tag: 'arm_dns'
+        version: version
     },
     azure_mgmt_event_hub: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-eventhub/2015-08-01/swagger/EventHub.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/eventhub/resource-manager/readme.md',
         ns: 'Azure::ARM::EventHub',
-        version: version,
-        tag: 'arm_event_hub'
+        version: version
     },
     azure_mgmt_features: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/features/2015-12-01/swagger/features.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Features',
         version: version,
-        tag: 'arm_feat'
+        tag: 'package-features-2015-12'
     },
     azure_mgmt_graph: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-graphrbac/compositeGraphRbacManagementClient.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/graphrbac/data-plane/readme.md',
         ns: 'Azure::ARM::Graph',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_grap'
-    },
-    azure_mgmt_insights: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-insights/compositeInsightsManagementClient.json',
-        ns: 'Azure::ARM::Insights',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_insights'
+        version: version
     },
     # Not generating this gem due to known issue in swagger
     # azure_mgmt_intune: {
@@ -239,151 +217,132 @@ REGEN_METADATA = {
     #     tag: 'arm_intune'
     # },
     azure_mgmt_iot_hub: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-iothub/2016-02-03/swagger/iothub.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/iothub/resource-manager/readme.md',
         ns: 'Azure::ARM::IotHub',
-        version: version,
-        tag: 'arm_iothub'
+        version: version
     },
     azure_mgmt_key_vault: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-keyvault/2015-06-01/swagger/keyvault.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/keyvault/resource-manager/readme.md',
         ns: 'Azure::ARM::KeyVault',
-        version: version,
-        tag: 'arm_key_vault'
+        version: version
     },
     azure_mgmt_locks: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/locks/2016-09-01/swagger/locks.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Locks',
         version: version,
-        tag: 'arm_lock'
+        tag: 'package-locks-2016-09'
     },
     azure_mgmt_logic: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2016-06-01/swagger/logic.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/logic/resource-manager/readme.md',
         ns: 'Azure::ARM::Logic',
-        version: version,
-        tag: 'arm_logic'
+        version: version
     },
     azure_mgmt_machine_learning: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/readme.md',
         ns: 'Azure::ARM::MachineLearning',
-        version: version,
-        tag: 'arm_mach'
+        version: version
     },
     azure_mgmt_media_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mediaservices/2015-10-01/swagger/media.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/mediaservices/resource-manager/readme.md',
         ns: 'Azure::ARM::MediaServices',
-        version: version,
-        tag: 'arm_media'
+        version: version
     },
     azure_mgmt_mobile_engagement: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/mobileengagement/resource-manager/readme.md',
         ns: 'Azure::ARM::MobileEngagement',
-        version: version,
-        tag: 'arm_mobile'
+        version: version
+    },
+    azure_mgmt_monitor: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/monitor/resource-manager/readme.md',
+        ns: 'Azure::ARM::Monitor',
+        version: version
     },
     azure_mgmt_network: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/compositeNetworkClient.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/readme.md',
         ns: 'Azure::ARM::Network',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_netw'
+        version: version
     },
     azure_mgmt_notification_hubs: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-notificationhubs/2016-03-01/swagger/notificationhubs.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/notificationhubs/resource-manager/readme.md',
         ns: 'Azure::ARM::NotificationHubs',
-        version: version,
-        tag: 'arm_noti'
+        version: version
     },
     azure_mgmt_policy: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/policy/2016-12-01/swagger/policy.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Policy',
         version: version,
-        tag: 'arm_policy'
+        tag: 'package-policy-2016-12'
     },
     azure_mgmt_powerbi_embedded: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/powerbiembedded/resource-manager/readme.md',
         ns: 'Azure::ARM::PowerBiEmbedded',
-        version: version,
-        tag: 'arm_powerbi'
+        version: version
     },
     azure_mgmt_recovery_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservices/compositeRecoveryServicesClient.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/recoveryservices/resource-manager/readme.md',
         ns: 'Azure::ARM::RecoveryServices',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_recovery'
+        version: version
     },
     azure_mgmt_recovery_services_backup: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservicesbackup/readme.md',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/recoveryservicesbackup/resource-manager/readme.md',
         ns: 'Azure::ARM::RecoveryServicesBackup',
-        version: version,
-        tag: 'arm_recovery_backup'
+        version: version
     },
     azure_mgmt_redis: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-redis/2016-04-01/swagger/redis.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/redis/resource-manager/readme.md',
         ns: 'Azure::ARM::Redis',
-        version: version,
-        tag: 'arm_redi'
+        version: version
     },
     azure_mgmt_resources: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2016-09-01/swagger/resources.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Resources',
         version: version,
-        tag: 'arm_reso'
+        tag: 'package-resources-2017-05'
     },
     azure_mgmt_scheduler: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-scheduler/2016-03-01/swagger/scheduler.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/scheduler/resource-manager/readme.md',
         ns: 'Azure::ARM::Scheduler',
-        version: version,
-        tag: 'arm_sche'
+        version: version
     },
     azure_mgmt_search: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-search/2015-08-19/swagger/search.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/search/resource-manager/readme.md',
         ns: 'Azure::ARM::Search',
-        version: version,
-        tag: 'arm_sear'
+        version: version
     },
     azure_mgmt_server_management: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/servermanagement/resource-manager/readme.md',
         ns: 'Azure::ARM::ServerManagement',
-        version: version,
-        tag: 'arm_server'
+        version: version
     },
     azure_mgmt_service_bus: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2015-08-01/swagger/servicebus.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/servicebus/resource-manager/readme.md',
         ns: 'Azure::ARM::ServiceBus',
-        version: version,
-        tag: 'arm_servicebus'
+        version: version
     },
     azure_mgmt_sql: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-sql/compositeSql.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/sql/resource-manager/readme.md',
         ns: 'Azure::ARM::SQL',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_sql'
+        version: version
     },
     azure_mgmt_storage: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-storage/2016-12-01/swagger/storage.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/storage/resource-manager/readme.md',
         ns: 'Azure::ARM::Storage',
-        version: version,
-        tag: 'arm_stor'
+        version: version
     },
     azure_mgmt_subscriptions: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Subscriptions',
         version: version,
-        tag: 'arm_subs'
+        tag: 'package-subscriptions-2016-06'
     },
     azure_mgmt_traffic_manager: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-trafficmanager/2015-11-01/swagger/trafficmanager.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/trafficmanager/resource-manager/readme.md',
         ns: 'Azure::ARM::TrafficManager',
-        version: version,
-        tag: 'arm_trafficmgr'
+        version: version
     },
     azure_mgmt_web: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-web/compositeWebAppClient.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/web/resource-manager/readme.md',
         ns: 'Azure::ARM::Web',
-        version: version,
-        modeler: "CompositeSwagger",
-        tag: 'arm_web'
+        version: version
     },
 }

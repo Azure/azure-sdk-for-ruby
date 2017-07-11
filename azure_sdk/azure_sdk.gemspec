@@ -44,7 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_event_hub', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_features', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_graph', "~>#{version}"
-  spec.add_runtime_dependency 'azure_mgmt_insights', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_monitor', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_key_vault', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_locks', "~>#{version}"
