@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<NetworkSecurityGroup>] A list of NetworkSecurityGroup
       # resources.
       attr_accessor :value

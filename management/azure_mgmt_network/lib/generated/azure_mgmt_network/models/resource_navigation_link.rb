@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource type of the linked resource.
       attr_accessor :linked_resource_type
 

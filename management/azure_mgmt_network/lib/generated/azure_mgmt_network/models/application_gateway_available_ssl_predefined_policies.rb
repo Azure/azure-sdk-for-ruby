@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ApplicationGatewaySslPredefinedPolicy>] List of
       # available Ssl predefined policy.
       attr_accessor :value
