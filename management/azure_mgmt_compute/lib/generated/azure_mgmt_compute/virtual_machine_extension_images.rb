@@ -24,7 +24,7 @@ module Azure::ARM::Compute
     #
     # Gets a virtual machine extension image.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param version [String]
@@ -41,7 +41,7 @@ module Azure::ARM::Compute
     #
     # Gets a virtual machine extension image.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param version [String]
@@ -57,7 +57,7 @@ module Azure::ARM::Compute
     #
     # Gets a virtual machine extension image.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param version [String]
@@ -108,7 +108,7 @@ module Azure::ARM::Compute
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Compute::Models::VirtualMachineExtensionImage.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -123,7 +123,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of virtual machine extension image types.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -138,7 +138,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of virtual machine extension image types.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -152,7 +152,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of virtual machine extension image types.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -213,7 +213,7 @@ module Azure::ARM::Compute
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -228,7 +228,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of virtual machine extension image versions.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param filter [String] The filter to apply on the operation.
@@ -247,7 +247,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of virtual machine extension image versions.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param filter [String] The filter to apply on the operation.
@@ -265,7 +265,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of virtual machine extension image versions.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String]
     # @param type [String]
     # @param filter [String] The filter to apply on the operation.
@@ -331,7 +331,7 @@ module Azure::ARM::Compute
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

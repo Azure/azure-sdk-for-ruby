@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] The source virtual machine from which Image is
       # created.
       attr_accessor :source_virtual_machine

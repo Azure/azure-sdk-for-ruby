@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The computer name prefix.
       attr_accessor :computer_name_prefix
 

@@ -12,12 +12,15 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The IP configuration name.
       attr_accessor :name
 
       # @return [ApiEntityReference] The subnet.
       attr_accessor :subnet
+
+      # @return [Boolean] Specifies the primary IP Configuration in case the
+      # network interface has more than one IP Configuration.
+      attr_accessor :primary
 
       # @return [VirtualMachineScaleSetPublicIPAddressConfiguration] The
       # publicIPAddressConfiguration.
@@ -72,6 +75,13 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'ApiEntityReference'
+                }
+              },
+              primary: {
+                required: false,
+                serialized_name: 'properties.primary',
+                type: {
+                  name: 'Boolean'
                 }
               },
               public_ipaddress_configuration: {

@@ -13,12 +13,15 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The network configuration name.
       attr_accessor :name
 
       # @return [Boolean] Whether this is a primary NIC on a virtual machine.
       attr_accessor :primary
+
+      # @return [Boolean] Specifies whether the network interface is
+      # accelerated networking-enabled.
+      attr_accessor :enable_accelerated_networking
 
       # @return [SubResource] The network security group.
       attr_accessor :network_security_group
@@ -62,6 +65,13 @@ module Azure::ARM::Compute
               primary: {
                 required: false,
                 serialized_name: 'properties.primary',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_accelerated_networking: {
+                required: false,
+                serialized_name: 'properties.enableAcceleratedNetworking',
                 type: {
                   name: 'Boolean'
                 }

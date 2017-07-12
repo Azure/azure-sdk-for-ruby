@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Usage>] The list of compute resource usages.
       attr_accessor :value
 

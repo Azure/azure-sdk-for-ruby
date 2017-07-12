@@ -12,9 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The run command id.
       attr_accessor :command_id
+
+      # @return [Array<String>] Optional. The script to be executed.  When this
+      # value is given, the given script will override the default script of
+      # the command.
+      attr_accessor :script
 
       # @return [Array<RunCommandInputParameter>] The run command parameters.
       attr_accessor :parameters
@@ -37,6 +41,20 @@ module Azure::ARM::Compute
                 serialized_name: 'commandId',
                 type: {
                   name: 'String'
+                }
+              },
+              script: {
+                required: false,
+                serialized_name: 'script',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               parameters: {
