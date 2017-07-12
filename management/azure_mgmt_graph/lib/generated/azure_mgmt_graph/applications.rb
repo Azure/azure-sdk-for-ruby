@@ -77,7 +77,7 @@ module Azure::ARM::Graph
 
       # Serialize Request
       request_mapper = Azure::ARM::Graph::Models::ApplicationCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/applications'
@@ -109,7 +109,7 @@ module Azure::ARM::Graph
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Graph::Models::Application.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -195,7 +195,7 @@ module Azure::ARM::Graph
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Graph::Models::ApplicationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -360,7 +360,7 @@ module Azure::ARM::Graph
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Graph::Models::Application.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -430,7 +430,7 @@ module Azure::ARM::Graph
 
       # Serialize Request
       request_mapper = Azure::ARM::Graph::Models::ApplicationUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/applications/{applicationObjectId}'
@@ -541,7 +541,7 @@ module Azure::ARM::Graph
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Graph::Models::KeyCredentialListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -611,7 +611,7 @@ module Azure::ARM::Graph
 
       # Serialize Request
       request_mapper = Azure::ARM::Graph::Models::KeyCredentialsUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/applications/{applicationObjectId}/keyCredentials'
@@ -722,7 +722,7 @@ module Azure::ARM::Graph
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Graph::Models::PasswordCredentialListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -792,7 +792,7 @@ module Azure::ARM::Graph
 
       # Serialize Request
       request_mapper = Azure::ARM::Graph::Models::PasswordCredentialsUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/applications/{applicationObjectId}/passwordCredentials'
@@ -903,7 +903,7 @@ module Azure::ARM::Graph
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Graph::Models::ApplicationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

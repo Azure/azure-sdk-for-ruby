@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the object.
       attr_accessor :object_id
 
@@ -31,6 +30,9 @@ module Azure::ARM::Graph
       # @return [Boolean] Whether the AAD object is mail-enabled.
       attr_accessor :mail_enabled
 
+      # @return [String] The mail alias for the user.
+      attr_accessor :mail_nickname
+
       # @return [Boolean] Whether the AAD object is security-enabled.
       attr_accessor :security_enabled
 
@@ -43,6 +45,31 @@ module Azure::ARM::Graph
 
       # @return [String] The user type of the object.
       attr_accessor :user_type
+
+      # @return [String] A two letter country code (ISO standard 3166).
+      # Required for users that will be assigned licenses due to legal
+      # requirement to check for availability of services in countries.
+      # Examples include: "US", "JP", and "GB".
+      attr_accessor :usage_location
+
+      # @return [String] The application ID.
+      attr_accessor :app_id
+
+      # @return [Array<String>] The application permissions.
+      attr_accessor :app_permissions
+
+      # @return [Boolean] Whether the application is be available to other
+      # tenants.
+      attr_accessor :available_to_other_tenants
+
+      # @return [Array<String>] A collection of URIs for the application.
+      attr_accessor :identifier_uris
+
+      # @return [Array<String>] A collection of reply URLs for the application.
+      attr_accessor :reply_urls
+
+      # @return [String] The home page of the application.
+      attr_accessor :homepage
 
 
       #
@@ -99,6 +126,14 @@ module Azure::ARM::Graph
                   name: 'Boolean'
                 }
               },
+              mail_nickname: {
+                required: false,
+                read_only: true,
+                serialized_name: 'mailNickname',
+                type: {
+                  name: 'String'
+                }
+              },
               security_enabled: {
                 required: false,
                 serialized_name: 'securityEnabled',
@@ -130,6 +165,83 @@ module Azure::ARM::Graph
               user_type: {
                 required: false,
                 serialized_name: 'userType',
+                type: {
+                  name: 'String'
+                }
+              },
+              usage_location: {
+                required: false,
+                read_only: true,
+                serialized_name: 'usageLocation',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'appId',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_permissions: {
+                required: false,
+                read_only: true,
+                serialized_name: 'appPermissions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              available_to_other_tenants: {
+                required: false,
+                read_only: true,
+                serialized_name: 'availableToOtherTenants',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              identifier_uris: {
+                required: false,
+                read_only: true,
+                serialized_name: 'identifierUris',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              reply_urls: {
+                required: false,
+                read_only: true,
+                serialized_name: 'replyUrls',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              homepage: {
+                required: false,
+                read_only: true,
+                serialized_name: 'homepage',
                 type: {
                   name: 'String'
                 }

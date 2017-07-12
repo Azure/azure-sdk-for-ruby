@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<KeyCredential>] A collection of KeyCredentials.
       attr_accessor :value
 

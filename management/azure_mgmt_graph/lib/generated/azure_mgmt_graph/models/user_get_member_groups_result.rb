@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] A collection of group IDs of which the user is
       # a member.
       attr_accessor :value

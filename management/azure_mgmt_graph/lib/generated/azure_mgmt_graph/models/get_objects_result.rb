@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AADObject>] A collection of Active Directory objects.
       attr_accessor :value
 

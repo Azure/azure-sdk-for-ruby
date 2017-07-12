@@ -46,6 +46,9 @@ module Azure::ARM::Graph
     # @return [Users] users
     attr_reader :users
 
+    # @return [Domains] domains
+    attr_reader :domains
+
     #
     # Creates initializes a new instance of the GraphRbacManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -64,6 +67,7 @@ module Azure::ARM::Graph
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)
+      @domains = Domains.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

@@ -6,28 +6,27 @@
 module Azure::ARM::Graph
   module Models
     #
-    # PasswordCredential list operation result.
+    # Server response for Get tenant domains API call.
     #
-    class PasswordCredentialListResult
+    class DomainListResult
 
       include MsRestAzure
 
-      # @return [Array<PasswordCredential>] A collection of
-      # PasswordCredentials.
+      # @return [Array<Domain>] the list of domains.
       attr_accessor :value
 
 
       #
-      # Mapper for PasswordCredentialListResult class as Ruby Hash.
+      # Mapper for DomainListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PasswordCredentialListResult',
+          serialized_name: 'DomainListResult',
           type: {
             name: 'Composite',
-            class_name: 'PasswordCredentialListResult',
+            class_name: 'DomainListResult',
             model_properties: {
               value: {
                 required: false,
@@ -36,10 +35,10 @@ module Azure::ARM::Graph
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'PasswordCredentialElementType',
+                      serialized_name: 'DomainElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'PasswordCredential'
+                        class_name: 'Domain'
                       }
                   }
                 }
