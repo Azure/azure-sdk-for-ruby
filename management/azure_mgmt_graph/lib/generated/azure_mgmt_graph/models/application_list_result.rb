@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Application>] A collection of applications.
       attr_accessor :value
 

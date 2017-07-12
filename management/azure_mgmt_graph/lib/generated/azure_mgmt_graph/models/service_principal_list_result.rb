@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ServicePrincipal>] the list of service principals.
       attr_accessor :value
 
