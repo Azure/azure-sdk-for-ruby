@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RouteFilterRule>] Gets a list of RouteFilterRules in a
       # resource group.
       attr_accessor :value

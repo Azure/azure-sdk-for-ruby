@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VirtualNetworkUsage>] VirtualNetwork usage stats.
       attr_accessor :value
 
