@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<LocalNetworkGateway>] A list of local network gateways
       # that exists in a resource group.
       attr_accessor :value

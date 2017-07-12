@@ -6,42 +6,44 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for CheckIPAddressAvailability API service call
+    # The private access service properties.
     #
-    class IPAddressAvailabilityResult
+    class PrivateAccessServicePropertiesFormat
 
       include MsRestAzure
 
-      # @return [Boolean] Private IP address availability.
-      attr_accessor :available
+      # @return [String] The type of the private access.
+      attr_accessor :service
 
-      # @return [Array<String>] Contains other available private IP addresses
-      # if the asked for address is taken.
-      attr_accessor :available_ipaddresses
+      # @return [Array<String>] A list of locations.
+      attr_accessor :locations
+
+      # @return [String] The provisioning state of the resource.
+      attr_accessor :provisioning_state
 
 
       #
-      # Mapper for IPAddressAvailabilityResult class as Ruby Hash.
+      # Mapper for PrivateAccessServicePropertiesFormat class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'IPAddressAvailabilityResult',
+          serialized_name: 'PrivateAccessServicePropertiesFormat',
           type: {
             name: 'Composite',
-            class_name: 'IPAddressAvailabilityResult',
+            class_name: 'PrivateAccessServicePropertiesFormat',
             model_properties: {
-              available: {
+              service: {
                 required: false,
-                serialized_name: 'available',
+                serialized_name: 'service',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
                 }
               },
-              available_ipaddresses: {
+              locations: {
                 required: false,
-                serialized_name: 'availableIPAddresses',
+                serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -51,6 +53,13 @@ module Azure::ARM::Network
                         name: 'String'
                       }
                   }
+                }
+              },
+              provisioning_state: {
+                required: false,
+                serialized_name: 'provisioningState',
+                type: {
+                  name: 'String'
                 }
               }
             }

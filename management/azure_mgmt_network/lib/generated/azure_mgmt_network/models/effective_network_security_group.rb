@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] The ID of network security group that is applied.
       attr_accessor :network_security_group
 
@@ -22,6 +21,10 @@ module Azure::ARM::Network
       # @return [Array<EffectiveNetworkSecurityRule>] A collection of effective
       # security rules.
       attr_accessor :effective_security_rules
+
+      # @return [Hash{String => Array<String>}] Mapping of tags to list of IP
+      # Addresses included within the tag.
+      attr_accessor :tag_map
 
 
       #
@@ -63,6 +66,27 @@ module Azure::ARM::Network
                       type: {
                         name: 'Composite',
                         class_name: 'EffectiveNetworkSecurityRule'
+                      }
+                  }
+                }
+              },
+              tag_map: {
+                required: false,
+                serialized_name: 'tagMap',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ArrayElementType',
+                      type: {
+                        name: 'Sequence',
+                        element: {
+                            required: false,
+                            serialized_name: 'StringElementType',
+                            type: {
+                              name: 'String'
+                            }
+                        }
                       }
                   }
                 }

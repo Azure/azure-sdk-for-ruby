@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ExpressRouteServiceProvider>] A list of
       # ExpressRouteResourceProvider resources.
       attr_accessor :value

@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<BgpServiceCommunity>] A list of service community
       # resources.
       attr_accessor :value

@@ -84,7 +84,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::NetworkWatcher.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}'
@@ -116,7 +116,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NetworkWatcher.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -126,7 +126,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NetworkWatcher.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -217,7 +217,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NetworkWatcher.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -342,7 +342,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NetworkWatcherListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -425,7 +425,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NetworkWatcherListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -500,7 +500,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::TopologyParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/topology'
@@ -532,7 +532,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::Topology.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -581,7 +581,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::VerificationIPFlowResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -627,7 +627,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::NextHopResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -673,7 +673,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::SecurityGroupViewResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -721,7 +721,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -769,7 +769,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -819,7 +819,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -869,7 +869,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -921,7 +921,7 @@ module Azure::ARM::Network
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = Azure::ARM::Network::Models::ConnectivityInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -1077,7 +1077,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::VerificationIPFlowParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify'
@@ -1109,7 +1109,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::VerificationIPFlowResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1119,7 +1119,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::VerificationIPFlowResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1194,7 +1194,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::NextHopParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/nextHop'
@@ -1226,7 +1226,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NextHopResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1236,7 +1236,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::NextHopResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1311,7 +1311,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::SecurityGroupViewParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView'
@@ -1343,7 +1343,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::SecurityGroupViewResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1353,7 +1353,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::SecurityGroupViewResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1431,7 +1431,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::TroubleshootingParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/troubleshoot'
@@ -1463,7 +1463,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1473,7 +1473,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1551,7 +1551,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::QueryTroubleshootingParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryTroubleshootResult'
@@ -1583,7 +1583,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1593,7 +1593,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1674,7 +1674,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog'
@@ -1706,7 +1706,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1716,7 +1716,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1797,7 +1797,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::FlowLogStatusParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus'
@@ -1829,7 +1829,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1839,7 +1839,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1926,7 +1926,7 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_mapper = Azure::ARM::Network::Models::ConnectivityParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectivityCheck'
@@ -1958,7 +1958,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::ConnectivityInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1968,7 +1968,7 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = Azure::ARM::Network::Models::ConnectivityInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

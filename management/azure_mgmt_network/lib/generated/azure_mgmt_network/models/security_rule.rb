@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A description for this rule. Restricted to 140 chars.
       attr_accessor :description
 
@@ -35,11 +34,18 @@ module Azure::ARM::Network
       # ingress rule, specifies where network traffic originates from.
       attr_accessor :source_address_prefix
 
-      # @return [String] The destination address prefix. CIDR or source IP
+      # @return [Array<String>] The CIDR or source IP ranges.
+      attr_accessor :source_address_prefixes
+
+      # @return [String] The destination address prefix. CIDR or destination IP
       # range. Asterix '*' can also be used to match all source IPs. Default
       # tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can
       # also be used.
       attr_accessor :destination_address_prefix
+
+      # @return [Array<String>] The destination address prefixes. CIDR or
+      # destination IP rangees.
+      attr_accessor :destination_address_prefixes
 
       # @return [SecurityRuleAccess] The network traffic is allowed or denied.
       # Possible values are: 'Allow' and 'Deny'. Possible values include:
@@ -125,11 +131,39 @@ module Azure::ARM::Network
                   name: 'String'
                 }
               },
+              source_address_prefixes: {
+                required: false,
+                serialized_name: 'properties.sourceAddressPrefixes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               destination_address_prefix: {
                 required: true,
                 serialized_name: 'properties.destinationAddressPrefix',
                 type: {
                   name: 'String'
+                }
+              },
+              destination_address_prefixes: {
+                required: false,
+                serialized_name: 'properties.destinationAddressPrefixes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               access: {
