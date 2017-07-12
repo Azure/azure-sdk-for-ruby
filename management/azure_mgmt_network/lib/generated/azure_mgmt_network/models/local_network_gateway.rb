@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AddressSpace] Local network site address space.
       attr_accessor :local_network_address_space
 

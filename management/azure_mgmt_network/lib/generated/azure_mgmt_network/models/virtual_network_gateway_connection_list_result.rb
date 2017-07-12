@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VirtualNetworkGatewayConnection>] Gets a list of
       # VirtualNetworkGatewayConnection resources that exists in a resource
       # group.

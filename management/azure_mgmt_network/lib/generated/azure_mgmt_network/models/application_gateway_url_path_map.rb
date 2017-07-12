@@ -13,7 +13,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Default backend address pool resource of URL path
       # map.
       attr_accessor :default_backend_address_pool

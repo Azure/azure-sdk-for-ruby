@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the security rule specified by the user
       # (if created by the user).
       attr_accessor :name
@@ -28,11 +27,31 @@ module Azure::ARM::Network
       # @return [String] The destination port or range.
       attr_accessor :destination_port_range
 
+      # @return [Array<String>] The source port ranges. Expected values include
+      # a single integer between 0 and 65535, a range using '-' as seperator
+      # (e.g. 100-400), or an asterix (*)
+      attr_accessor :source_port_ranges
+
+      # @return [Array<String>] The destination port ranges. Expected values
+      # include a single integer between 0 and 65535, a range using '-' as
+      # seperator (e.g. 100-400), or an asterix (*)
+      attr_accessor :destination_port_ranges
+
       # @return [String] The source address prefix.
       attr_accessor :source_address_prefix
 
       # @return [String] The destination address prefix.
       attr_accessor :destination_address_prefix
+
+      # @return [Array<String>] The source address prefixes. Expected values
+      # include CIDR IP ranges, Default Tags (VirtualNetwork, AureLoadBalancer,
+      # Internet), System Tags, and the asterix (*).
+      attr_accessor :source_address_prefixes
+
+      # @return [Array<String>] The destination address prefixes. Expected
+      # values include CIDR IP ranges, Default Tags (VirtualNetwork,
+      # AureLoadBalancer, Internet), System Tags, and the asterix (*).
+      attr_accessor :destination_address_prefixes
 
       # @return [Array<String>] The expanded source address prefix.
       attr_accessor :expanded_source_address_prefix
@@ -94,6 +113,34 @@ module Azure::ARM::Network
                   name: 'String'
                 }
               },
+              source_port_ranges: {
+                required: false,
+                serialized_name: 'sourcePortRanges',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              destination_port_ranges: {
+                required: false,
+                serialized_name: 'destinationPortRanges',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               source_address_prefix: {
                 required: false,
                 serialized_name: 'sourceAddressPrefix',
@@ -106,6 +153,34 @@ module Azure::ARM::Network
                 serialized_name: 'destinationAddressPrefix',
                 type: {
                   name: 'String'
+                }
+              },
+              source_address_prefixes: {
+                required: false,
+                serialized_name: 'sourceAddressPrefixes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              destination_address_prefixes: {
+                required: false,
+                serialized_name: 'destinationAddressPrefixes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               expanded_source_address_prefix: {

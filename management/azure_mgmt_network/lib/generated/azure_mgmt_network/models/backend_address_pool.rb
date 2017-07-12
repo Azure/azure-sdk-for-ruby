@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<NetworkInterfaceIPConfiguration>] Gets collection of
       # references to IP addresses defined in network interfaces.
       attr_accessor :backend_ipconfigurations

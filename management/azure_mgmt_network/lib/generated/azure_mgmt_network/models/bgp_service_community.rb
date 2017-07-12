@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the bgp community. e.g. Skype.
       attr_accessor :service_name
 

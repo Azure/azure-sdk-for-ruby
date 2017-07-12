@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RouteFilterRule>] Collection of RouteFilterRules
       # contained within a route filter.
       attr_accessor :rules
@@ -103,7 +102,6 @@ module Azure::ARM::Network
               },
               peerings: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.peerings',
                 type: {
                   name: 'Sequence',
