@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag
