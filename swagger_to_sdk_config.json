@@ -6,7 +6,7 @@
   },
   "projects": {
     "azure_mgmt_analysis_services": {
-      "swagger": "specification/analysisservices/resource-manager/readme.md",
+      "input-file": "specification/analysisservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::AnalysisServices",
         "package-name": "azure_mgmt_analysis_services",
@@ -18,7 +18,7 @@
       ]
     },
     "azure_mgmt_authorization": {
-      "swagger": "specification/authorization/resource-manager/readme.md",
+      "input-file": "specification/authorization/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Authorization",
         "package-name": "azure_mgmt_authorization",
@@ -30,7 +30,7 @@
       ]
     },
     "azure_mgmt_batch": {
-      "swagger": "specification/batch/resource-manager/readme.md",
+      "input-file": "specification/batch/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Batch",
         "package-name": "azure_mgmt_batch",
@@ -42,7 +42,7 @@
       ]
     },
     "azure_mgmt_cdn": {
-      "swagger": "specification/cdn/resource-manager/readme.md",
+      "input-file": "specification/cdn/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CDN",
         "package-name": "azure_mgmt_cdn",
@@ -54,7 +54,7 @@
       ]
     },
     "azure_mgmt_cognitive_services": {
-      "swagger": "specification/cognitiveservices/resource-manager/readme.md",
+      "input-file": "specification/cognitiveservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CognitiveServices",
         "package-name": "azure_mgmt_cognitive_services",
@@ -66,7 +66,7 @@
       ]
     },
     "azure_mgmt_commerce": {
-      "swagger": "specification/commerce/resource-manager/readme.md",
+      "input-file": "specification/commerce/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Commerce",
         "package-name": "azure_mgmt_commerce",
@@ -78,7 +78,7 @@
       ]
     },
     "azure_mgmt_compute": {
-      "swagger": "specification/compute/resource-manager/readme.md",
+      "input-file": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Compute",
         "package-name": "azure_mgmt_compute",
@@ -90,7 +90,7 @@
       ]
     },
     "azure_mgmt_datalake_analytics": {
-      "swagger": "specification/datalake-analytics/resource-manager/readme.md",
+      "input-file": "specification/datalake-analytics/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DataLakeAnalytics",
         "package-name": "azure_mgmt_datalake_analytics",
@@ -102,7 +102,7 @@
       ]
     },
     "azure_mgmt_datalake_store": {
-      "swagger": "specification/datalake-store/resource-manager/readme.md",
+      "input-file": "specification/datalake-store/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DataLakeStore",
         "package-name": "azure_mgmt_datalake_store",
@@ -114,7 +114,7 @@
       ]
     },
     "azure_mgmt_devtestlabs": {
-      "swagger": "specification/devtestlabs/resource-manager/readme.md",
+      "input-file": "specification/devtestlabs/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DevTestLabs",
         "package-name": "azure_mgmt_devtestlabs",
@@ -126,7 +126,7 @@
       ]
     },
     "azure_mgmt_dns": {
-      "swagger": "specification/dns/resource-manager/readme.md",
+      "input-file": "specification/dns/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Dns",
         "package-name": "azure_mgmt_dns",
@@ -138,7 +138,7 @@
       ]
     },
     "azure_mgmt_event_hub": {
-      "swagger": "specification/eventhub/resource-manager/readme.md",
+      "input-file": "specification/eventhub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::EventHub",
         "package-name": "azure_mgmt_event_hub",
@@ -150,7 +150,7 @@
       ]
     },
     "azure_mgmt_features": {
-      "swagger": "specification/resources/resource-manager/readme.md",
+      "input-file": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Features",
         "package-name": "azure_mgmt_features",
@@ -163,7 +163,7 @@
       ]
     },
     "azure_mgmt_graph": {
-      "swagger": "specification/graphrbac/data-plane/readme.md",
+      "input-file": "specification/graphrbac/data-plane/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Graph",
         "package-name": "azure_mgmt_graph",
@@ -175,7 +175,7 @@
       ]
     },
     "azure_mgmt_iot_hub": {
-      "swagger": "specification/iothub/resource-manager/readme.md",
+      "input-file": "specification/iothub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::IotHub",
         "package-name": "azure_mgmt_iot_hub",
@@ -187,7 +187,7 @@
       ]
     },
     "azure_mgmt_key_vault": {
-      "swagger": "specification/keyvault/resource-manager/readme.md",
+      "input-file": "specification/keyvault/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::KeyVault",
         "package-name": "azure_mgmt_key_vault",
@@ -199,7 +199,7 @@
       ]
     },
     "azure_mgmt_locks": {
-      "swagger": "specification/resources/resource-manager/readme.md",
+      "input-file": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Locks",
         "package-name": "azure_mgmt_locks",
@@ -212,7 +212,7 @@
       ]
     },
     "azure_mgmt_logic": {
-      "swagger": "specification/logic/resource-manager/readme.md",
+      "input-file": "specification/logic/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Logic",
         "package-name": "azure_mgmt_logic",
@@ -224,7 +224,7 @@
       ]
     },
     "azure_mgmt_machine_learning": {
-      "swagger": "specification/machinelearning/resource-manager/readme.md",
+      "input-file": "specification/machinelearning/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MachineLearning",
         "package-name": "azure_mgmt_machine_learning",
@@ -236,7 +236,7 @@
       ]
     },
     "azure_mgmt_media_services": {
-      "swagger": "specification/mediaservices/resource-manager/readme.md",
+      "input-file": "specification/mediaservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MediaServices",
         "package-name": "azure_mgmt_media_services",
@@ -248,7 +248,7 @@
       ]
     },
     "azure_mgmt_mobile_engagement": {
-      "swagger": "specification/mobileengagement/resource-manager/readme.md",
+      "input-file": "specification/mobileengagement/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MobileEngagement",
         "package-name": "azure_mgmt_mobile_engagement",
@@ -260,7 +260,7 @@
       ]
     },
     "azure_mgmt_monitor": {
-      "swagger": "specification/monitor/resource-manager/readme.md",
+      "input-file": "specification/monitor/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Monitor",
         "package-name": "azure_mgmt_monitor",
@@ -272,7 +272,7 @@
       ]
     },
     "azure_mgmt_network": {
-      "swagger": "specification/network/resource-manager/readme.md",
+      "input-file": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network",
         "package-name": "azure_mgmt_network",
@@ -284,7 +284,7 @@
       ]
     },
     "azure_mgmt_notification_hubs": {
-      "swagger": "specification/notificationhubs/resource-manager/readme.md",
+      "input-file": "specification/notificationhubs/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::NotificationHubs",
         "package-name": "azure_mgmt_notification_hubs",
@@ -296,7 +296,7 @@
       ]
     },
     "azure_mgmt_policy": {
-      "swagger": "specification/resources/resource-manager/readme.md",
+      "input-file": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Policy",
         "package-name": "azure_mgmt_policy",
@@ -309,7 +309,7 @@
       ]
     },
     "azure_mgmt_powerbi_embedded": {
-      "swagger": "specification/powerbiembedded/resource-manager/readme.md",
+      "input-file": "specification/powerbiembedded/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::PowerBiEmbedded",
         "package-name": "azure_mgmt_powerbi_embedded",
@@ -321,7 +321,7 @@
       ]
     },
     "azure_mgmt_recovery_services": {
-      "swagger": "specification/recoveryservices/resource-manager/readme.md",
+      "input-file": "specification/recoveryservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServices",
         "package-name": "azure_mgmt_recovery_services",
@@ -333,7 +333,7 @@
       ]
     },
     "azure_mgmt_recovery_services_backup": {
-      "swagger": "specification/recoveryservicesbackup/resource-manager/readme.md",
+      "input-file": "specification/recoveryservicesbackup/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServicesBackup",
         "package-name": "azure_mgmt_recovery_services_backup",
@@ -345,7 +345,7 @@
       ]
     },
     "azure_mgmt_redis": {
-      "swagger": "specification/redis/resource-manager/readme.md",
+      "input-file": "specification/redis/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Redis",
         "package-name": "azure_mgmt_redis",
@@ -357,7 +357,7 @@
       ]
     },
     "azure_mgmt_resources": {
-      "swagger": "specification/resources/resource-manager/readme.md",
+      "input-file": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Resources",
         "package-name": "azure_mgmt_resources",
@@ -370,7 +370,7 @@
       ]
     },
     "azure_mgmt_scheduler": {
-      "swagger": "specification/scheduler/resource-manager/readme.md",
+      "input-file": "specification/scheduler/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Scheduler",
         "package-name": "azure_mgmt_scheduler",
@@ -382,7 +382,7 @@
       ]
     },
     "azure_mgmt_search": {
-      "swagger": "specification/search/resource-manager/readme.md",
+      "input-file": "specification/search/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Search",
         "package-name": "azure_mgmt_search",
@@ -394,7 +394,7 @@
       ]
     },
     "azure_mgmt_server_management": {
-      "swagger": "specification/servermanagement/resource-manager/readme.md",
+      "input-file": "specification/servermanagement/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ServerManagement",
         "package-name": "azure_mgmt_server_management",
@@ -406,7 +406,7 @@
       ]
     },
     "azure_mgmt_service_bus": {
-      "swagger": "specification/servicebus/resource-manager/readme.md",
+      "input-file": "specification/servicebus/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ServiceBus",
         "package-name": "azure_mgmt_service_bus",
@@ -418,7 +418,7 @@
       ]
     },
     "azure_mgmt_sql": {
-      "swagger": "specification/sql/resource-manager/readme.md",
+      "input-file": "specification/sql/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::SQL",
         "package-name": "azure_mgmt_sql",
@@ -430,7 +430,7 @@
       ]
     },
     "azure_mgmt_storage": {
-      "swagger": "specification/storage/resource-manager/readme.md",
+      "input-file": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Storage",
         "package-name": "azure_mgmt_storage",
@@ -442,7 +442,7 @@
       ]
     },
     "azure_mgmt_subscriptions": {
-      "swagger": "specification/resources/resource-manager/readme.md",
+      "input-file": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Subscriptions",
         "package-name": "azure_mgmt_subscriptions",
@@ -455,7 +455,7 @@
       ]
     },
     "azure_mgmt_traffic_manager": {
-      "swagger": "specification/trafficmanager/resource-manager/readme.md",
+      "input-file": "specification/trafficmanager/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::TrafficManager",
         "package-name": "azure_mgmt_traffic_manager",
@@ -467,7 +467,7 @@
       ]
     },
     "azure_mgmt_web": {
-      "swagger": "specification/web/resource-manager/readme.md",
+      "input-file": "specification/web/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Web",
         "package-name": "azure_mgmt_web",
