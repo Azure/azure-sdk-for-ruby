@@ -201,7 +201,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Features',
         version: version,
-        tag: 'package-features-2015-12'
+        tag: 'package-features'
     },
     azure_mgmt_graph: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/graphrbac/data-plane/readme.md',
@@ -229,7 +229,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Locks',
         version: version,
-        tag: 'package-locks-2016-09'
+        tag: 'package-locks'
     },
     azure_mgmt_logic: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/logic/resource-manager/readme.md',
@@ -270,7 +270,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Policy',
         version: version,
-        tag: 'package-policy-2016-12'
+        tag: 'package-policy'
     },
     azure_mgmt_powerbi_embedded: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/powerbiembedded/resource-manager/readme.md',
@@ -296,7 +296,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Resources',
         version: version,
-        tag: 'package-resources-2017-05'
+        tag: 'package-resources'
     },
     azure_mgmt_scheduler: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/scheduler/resource-manager/readme.md',
@@ -332,7 +332,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Subscriptions',
         version: version,
-        tag: 'package-subscriptions-2016-06'
+        tag: 'package-subscriptions'
     },
     azure_mgmt_traffic_manager: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/trafficmanager/resource-manager/readme.md',
