@@ -1,0 +1,40 @@
+# encoding: utf-8
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'generated/azure_mgmt_insights/module_definition'
+require 'generated/azure_mgmt_insights/version'
+
+Gem::Specification.new do |spec|
+  spec.name          = 'azure_mgmt_insights'
+  spec.version       = Azure::ARM::Insights::VERSION
+  spec.authors       = 'Microsoft Corporation'
+  spec.email         = 'azrubyteam@microsoft.com'
+  spec.description   = 'Microsoft Azure Insights Library for Ruby. Starting July 2017, this gem will no longer be updated. For latest updates, use azure_mgmt_monitor gem.'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Insights services.'
+  spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
+  spec.license       = 'MIT'
+
+  spec.files         = Dir["LICENSE.txt", "lib/**/*"]
+  spec.bindir        = 'bin'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ['lib']
+
+  spec.required_ruby_version = '>= 2.0.0'
+
+  spec.add_development_dependency 'bundler', '~> 1.9'
+  spec.add_development_dependency 'rake', '~> 10'
+  spec.add_development_dependency 'rspec', '~> 3'
+  spec.add_development_dependency 'dotenv', '~> 2'
+
+  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.7.0'
+
+  spec.post_install_message = <<-MESSAGE
+!    The 'azure_mgmt_insights' gem has been deprecated and has been replaced by 'azure_mgmt_monitor'.
+!    See: https://rubygems.org/gems/azure_mgmt_monitor
+!    And: https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_monitor
+MESSAGE
+end
