@@ -68,7 +68,7 @@ describe 'Resource Groups' do
     params = Models::ResourceGroup.new
     expect{@client.update(nil, params)}.to raise_error(ArgumentError)
     expect{@client.update('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.update('~`123', params).value!}.to raise_error
+    expect{@client.update('~`123', params).value!}.to raise_error(MsRestAzure::AzureOperationError)
   end
 
   it 'should raise errors when attempting get resource group' do
