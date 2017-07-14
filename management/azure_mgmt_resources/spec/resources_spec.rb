@@ -9,7 +9,6 @@ include Azure::ARM::Resources
 
 describe 'Resources' do
   before(:each) do
-    MsRest.use_ssl_cert
     @resource_helper = ResourceHelper.new()
     @client = @resource_helper.resource_client.resources
     @resource_group = @resource_helper.create_resource_group
