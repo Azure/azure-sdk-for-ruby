@@ -61,7 +61,6 @@ namespace :arm do
 
         if md[:spec_uri].end_with?('.json')
           command = "#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib"
-          command += " -m #{md[:modeler]}" unless md[:modeler].nil?
         else
           command = "#{ar_base_command} #{md[:spec_uri]} --package-version=#{md[:version]} --namespace=#{md[:ns]} --package-name=#{md[:pn].nil? ? dir : md[:pn]} --output-folder=#{File.join(Dir.pwd, 'lib')} --ruby --azure-arm"
           command += " --tag=#{md[:tag]}" unless md[:tag].nil?
