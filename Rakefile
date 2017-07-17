@@ -60,6 +60,7 @@ namespace :arm do
         ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
 
         command = "#{ar_base_command} #{md[:spec_uri]} --package-version=#{md[:version]} --namespace=#{md[:ns]} --package-name=#{md[:pn].nil? ? dir : md[:pn]} --output-folder=#{File.join(Dir.pwd, 'lib')} --ruby --azure-arm"
+        command += " --#{md[:options]}" unless md[:options].nil?
         command += " --tag=#{md[:tag]}" unless md[:tag].nil?
 
         execute_and_stream(command)
@@ -197,7 +198,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Features',
         version: version,
-        tag: 'package-features'
+        options: 'package-features'
     },
     azure_mgmt_graph: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/graphrbac/data-plane/readme.md',
@@ -225,7 +226,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Locks',
         version: version,
-        tag: 'package-locks'
+        options: 'package-locks'
     },
     azure_mgmt_logic: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/logic/resource-manager/readme.md',
@@ -235,7 +236,8 @@ REGEN_METADATA = {
     azure_mgmt_machine_learning: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/readme.md',
         ns: 'Azure::ARM::MachineLearning',
-        version: version
+        version: version,
+        options: 'package-webservices'
     },
     azure_mgmt_media_services: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/mediaservices/resource-manager/readme.md',
@@ -266,7 +268,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Policy',
         version: version,
-        tag: 'package-policy'
+        options: 'package-policy'
     },
     azure_mgmt_powerbi_embedded: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/powerbiembedded/resource-manager/readme.md',
@@ -292,7 +294,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Resources',
         version: version,
-        tag: 'package-resources'
+        options: 'package-resources'
     },
     azure_mgmt_scheduler: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/scheduler/resource-manager/readme.md',
@@ -328,7 +330,7 @@ REGEN_METADATA = {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Subscriptions',
         version: version,
-        tag: 'package-subscriptions'
+        options: 'package-subscriptions'
     },
     azure_mgmt_traffic_manager: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/trafficmanager/resource-manager/readme.md',
