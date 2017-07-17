@@ -128,6 +128,31 @@ describe 'Resources' do
     end
   end
 
+  it 'should list resources of resource group' do
+    result = @client.list_by_resource_group_async(@resource_group.name).value!
+    expect(result.body.value).not_to be_nil
+    expect(result.body.value).to be_a(Array)
+
+    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+      result = @client.list_by_resource_group_next(result.body.next_link).value!
+      expect(result.body.value).not_to be_nil
+      expect(result.body.value).to be_a(Array)
+    end
+  end
+
+  it 'should list list resources in resource group with tag_name and value filter and top parameter' do
+    filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
+    result = @client.list_by_resource_group_async(@resource_group.name, filter, 1).value!
+    expect(result.body.value).not_to be_nil
+    expect(result.body.value).to be_a(Array)
+
+    while !result.body.next_link.nil? && !result.body.next_link.empty? do
+      result = @client.list_by_resource_group_next(result.body.next_link).value!
+      expect(result.body.value).not_to be_nil
+      expect(result.body.value).to be_a(Array)
+    end
+  end
+
   it 'should filter resources and work with top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
 

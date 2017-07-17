@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.version       = Azure::ARM::Insights::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
-  spec.description   = 'Microsoft Azure Insights Library for Ruby'
+  spec.description   = 'Microsoft Azure Insights Library for Ruby. Starting July 2017, this gem will no longer be updated. For latest updates, use azure_mgmt_monitor gem.'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure Insights services.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
@@ -30,5 +30,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'dotenv', '~> 2'
 
-  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.8.0'
+  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.7.0'
+
+  spec.post_install_message = <<-MESSAGE
+!    The 'azure_mgmt_insights' gem has been deprecated and has been replaced by 'azure_mgmt_monitor'.
+!    See: https://rubygems.org/gems/azure_mgmt_monitor
+!    And: https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_monitor
+MESSAGE
 end
