@@ -327,11 +327,9 @@ REGEN_METADATA = {
         version: version
     },
     azure_mgmt_stream_analytics: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-streamanalytics/compositeStreamAnalytics.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/streamanalytics/resource-manager/readme.md',
         ns: 'Azure::ARM::StreamAnalytics',
-        version: version,
-        modeler: 'CompositeSwagger',
-        tag: 'arm_stream_analytics'
+        version: version
     },
     azure_mgmt_subscriptions: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
