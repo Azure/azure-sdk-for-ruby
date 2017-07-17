@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the custom orchestrator to use.
       attr_accessor :orchestrator
 

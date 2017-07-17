@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Number of masters (VMs) in the container service
       # cluster. Allowed values are 1, 3, and 5. The default value is 1.
       # Default value: 1 .

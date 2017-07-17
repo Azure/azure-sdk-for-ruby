@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Specifies the primary network interface in case the
       # virtual machine has more than 1 network interface.
       attr_accessor :primary

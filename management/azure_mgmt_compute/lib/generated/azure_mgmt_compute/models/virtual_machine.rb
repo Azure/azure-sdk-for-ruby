@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Plan] The purchase plan when deploying virtual machine from VM
       # Marketplace images.
       attr_accessor :plan

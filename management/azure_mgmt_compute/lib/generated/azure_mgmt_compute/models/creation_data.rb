@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DiskCreateOption] This enumerates the possible sources of a
       # disk's creation. Possible values include: 'Empty', 'Attach',
       # 'FromImage', 'Import', 'Copy'

@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VirtualMachineScaleSetOSProfile] The virtual machine scale set
       # OS profile.
       attr_accessor :os_profile

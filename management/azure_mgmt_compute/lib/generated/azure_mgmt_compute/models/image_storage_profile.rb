@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ImageOSDisk] The OS disk.
       attr_accessor :os_disk
 

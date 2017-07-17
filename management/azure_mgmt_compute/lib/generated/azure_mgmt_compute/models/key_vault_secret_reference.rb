@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URL referencing a secret in a Key Vault.
       attr_accessor :secret_url
 

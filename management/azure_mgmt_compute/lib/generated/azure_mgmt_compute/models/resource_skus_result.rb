@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ResourceSku>] The list of skus available for the
       # subscription.
       attr_accessor :value

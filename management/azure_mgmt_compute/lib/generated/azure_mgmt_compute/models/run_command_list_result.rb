@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RunCommandDocumentBase>] The list of virtual machine run
       # commands.
       attr_accessor :value

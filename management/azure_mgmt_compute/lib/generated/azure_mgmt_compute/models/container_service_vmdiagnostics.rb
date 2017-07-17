@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Whether the VM diagnostic agent is provisioned on the
       # VM.
       attr_accessor :enabled
