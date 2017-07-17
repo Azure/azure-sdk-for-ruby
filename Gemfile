@@ -48,6 +48,7 @@ gem 'azure_mgmt_server_management',         path: 'management/azure_mgmt_server_
 gem 'azure_mgmt_service_bus',               path: 'management/azure_mgmt_service_bus'
 gem 'azure_mgmt_sql',                       path: 'management/azure_mgmt_sql'
 gem 'azure_mgmt_storage',                   path: 'management/azure_mgmt_storage'
+gem 'azure_mgmt_stream_analytics',          path: 'management/azure_mgmt_stream_analytics'
 gem 'azure_mgmt_subscriptions',             path: 'management/azure_mgmt_subscriptions'
 gem 'azure_mgmt_traffic_manager',           path: 'management/azure_mgmt_traffic_manager'
 gem 'azure_mgmt_web',                       path: 'management/azure_mgmt_web'

@@ -326,6 +326,11 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::Storage',
         version: version
     },
+    azure_mgmt_stream_analytics: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/streamanalytics/resource-manager/readme.md',
+        ns: 'Azure::ARM::StreamAnalytics',
+        version: version
+    },
     azure_mgmt_subscriptions: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Subscriptions',

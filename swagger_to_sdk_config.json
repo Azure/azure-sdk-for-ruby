@@ -441,6 +441,18 @@
         "azure_mgmt_storage.rb"
       ]
     },
+    "azure_mgmt_stream_analytics": {
+        "markdown": "specification/streamanalytics/resource-manager/readme.md",
+        "autorest_options": {
+          "Namespace": "Azure::ARM::StreamAnalytics",
+          "PackageName": "azure_mgmt_stream_analytics",
+          "PackageVersion": "0.10.0"
+        },
+        "output_dir": "management/azure_mgmt_stream_analytics/lib",
+        "wrapper_filesOrDirs": [
+          "azure_mgmt_stream_analytics.rb"
+        ]
+    },
     "azure_mgmt_subscriptions": {
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
