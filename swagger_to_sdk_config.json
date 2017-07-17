@@ -1,16 +1,16 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "language": "Ruby",
     "autorest": "latest"
   },
   "projects": {
     "azure_mgmt_analysis_services": {
-      "swagger": "arm-analysisservices/2016-05-16/swagger/analysisservices.json",
+      "markdown": "specification/analysisservices/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::AnalysisServices",
-        "PackageName": "azure_mgmt_analysis_services",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::AnalysisServices",
+        "package-name": "azure_mgmt_analysis_services",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_analysis_services/lib",
       "wrapper_filesOrDirs": [
@@ -18,11 +18,11 @@
       ]
     },
     "azure_mgmt_authorization": {
-      "swagger": "arm-authorization/2015-07-01/swagger/authorization.json",
+      "markdown": "specification/authorization/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Authorization",
-        "PackageName": "azure_mgmt_authorization",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Authorization",
+        "package-name": "azure_mgmt_authorization",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_authorization/lib",
       "wrapper_filesOrDirs": [
@@ -30,11 +30,11 @@
       ]
     },
     "azure_mgmt_batch": {
-      "swagger": "arm-batch/2017-01-01/swagger/BatchManagement.json",
+      "markdown": "specification/batch/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Batch",
-        "PackageName": "azure_mgmt_batch",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Batch",
+        "package-name": "azure_mgmt_batch",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_batch/lib",
       "wrapper_filesOrDirs": [
@@ -42,11 +42,11 @@
       ]
     },
     "azure_mgmt_cdn": {
-      "swagger": "arm-cdn/2016-10-02/swagger/cdn.json",
+      "markdown": "specification/cdn/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::CDN",
-        "PackageName": "azure_mgmt_cdn",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::CDN",
+        "package-name": "azure_mgmt_cdn",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_cdn/lib",
       "wrapper_filesOrDirs": [
@@ -54,11 +54,11 @@
       ]
     },
     "azure_mgmt_cognitive_services": {
-      "swagger": "arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json",
+      "markdown": "specification/cognitiveservices/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::CognitiveServices",
-        "PackageName": "azure_mgmt_cognitive_services",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::CognitiveServices",
+        "package-name": "azure_mgmt_cognitive_services",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_cognitive_services/lib",
       "wrapper_filesOrDirs": [
@@ -66,11 +66,11 @@
       ]
     },
     "azure_mgmt_commerce": {
-      "swagger": "arm-commerce/2015-06-01-preview/swagger/commerce.json",
+      "markdown": "specification/commerce/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Commerce",
-        "PackageName": "azure_mgmt_commerce",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Commerce",
+        "package-name": "azure_mgmt_commerce",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_commerce/lib",
       "wrapper_filesOrDirs": [
@@ -78,12 +78,11 @@
       ]
     },
     "azure_mgmt_compute": {
-      "swagger": "arm-compute/compositeComputeClient.json",
+      "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Compute",
-        "PackageName": "azure_mgmt_compute",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Compute",
+        "package-name": "azure_mgmt_compute",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_compute/lib",
       "wrapper_filesOrDirs": [
@@ -91,11 +90,11 @@
       ]
     },
     "azure_mgmt_datalake_analytics": {
-      "swagger": "arm-datalake-analytics/account/2016-11-01/swagger/account.json",
+      "markdown": "specification/datalake-analytics/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::DataLakeAnalytics",
-        "PackageName": "azure_mgmt_datalake_analytics",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::DataLakeAnalytics",
+        "package-name": "azure_mgmt_datalake_analytics",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_datalake_analytics/lib",
       "wrapper_filesOrDirs": [
@@ -103,11 +102,11 @@
       ]
     },
     "azure_mgmt_datalake_store": {
-      "swagger": "arm-datalake-store/account/2016-11-01/swagger/account.json",
+      "markdown": "specification/datalake-store/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::DataLakeStore",
-        "PackageName": "azure_mgmt_datalake_store",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::DataLakeStore",
+        "package-name": "azure_mgmt_datalake_store",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_datalake_store/lib",
       "wrapper_filesOrDirs": [
@@ -115,11 +114,11 @@
       ]
     },
     "azure_mgmt_devtestlabs": {
-      "swagger": "arm-devtestlabs/2016-05-15/swagger/DTL.json",
+      "markdown": "specification/devtestlabs/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::DevTestLabs",
-        "PackageName": "azure_mgmt_devtestlabs",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::DevTestLabs",
+        "package-name": "azure_mgmt_devtestlabs",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_devtestlabs/lib",
       "wrapper_filesOrDirs": [
@@ -127,11 +126,11 @@
       ]
     },
     "azure_mgmt_dns": {
-      "swagger": "arm-dns/2016-04-01/swagger/dns.json",
+      "markdown": "specification/dns/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Dns",
-        "PackageName": "azure_mgmt_dns",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Dns",
+        "package-name": "azure_mgmt_dns",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_dns/lib",
       "wrapper_filesOrDirs": [
@@ -139,11 +138,11 @@
       ]
     },
     "azure_mgmt_event_hub": {
-      "swagger": "arm-eventhub/2015-08-01/swagger/EventHub.json",
+      "markdown": "specification/eventhub/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::EventHub",
-        "PackageName": "azure_mgmt_event_hub",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::EventHub",
+        "package-name": "azure_mgmt_event_hub",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_event_hub/lib",
       "wrapper_filesOrDirs": [
@@ -151,11 +150,12 @@
       ]
     },
     "azure_mgmt_features": {
-      "swagger": "arm-resources/features/2015-12-01/swagger/features.json",
+      "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Features",
-        "PackageName": "azure_mgmt_features",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Features",
+        "package-name": "azure_mgmt_features",
+        "package-version": "0.10.0",
+        "tag": "package-features"
       },
       "output_dir": "management/azure_mgmt_features/lib",
       "wrapper_filesOrDirs": [
@@ -163,37 +163,23 @@
       ]
     },
     "azure_mgmt_graph": {
-      "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
+      "markdown": "specification/graphrbac/data-plane/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Graph",
-        "PackageName": "azure_mgmt_graph",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Graph",
+        "package-name": "azure_mgmt_graph",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_graph/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_graph.rb"
       ]
     },
-    "azure_mgmt_insights": {
-      "swagger": "arm-insights/compositeInsightsManagementClient.json",
-      "autorest_options": {
-        "Namespace": "Azure::ARM::Insights",
-        "PackageName": "azure_mgmt_insights",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
-      },
-      "output_dir": "management/azure_mgmt_insights/lib",
-      "wrapper_filesOrDirs": [
-        "azure_mgmt_insights.rb"
-      ]
-    },
     "azure_mgmt_iot_hub": {
-      "swagger": "arm-iothub/2016-02-03/swagger/iothub.json",
+      "markdown": "specification/iothub/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::IotHub",
-        "PackageName": "azure_mgmt_iot_hub",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::IotHub",
+        "package-name": "azure_mgmt_iot_hub",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_iot_hub/lib",
       "wrapper_filesOrDirs": [
@@ -201,11 +187,11 @@
       ]
     },
     "azure_mgmt_key_vault": {
-      "swagger": "arm-keyvault/2015-06-01/swagger/keyvault.json",
+      "markdown": "specification/keyvault/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::KeyVault",
-        "PackageName": "azure_mgmt_key_vault",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::KeyVault",
+        "package-name": "azure_mgmt_key_vault",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_key_vault/lib",
       "wrapper_filesOrDirs": [
@@ -213,11 +199,12 @@
       ]
     },
     "azure_mgmt_locks": {
-      "swagger": "arm-resources/locks/2016-09-01/swagger/locks.json",
+      "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Locks",
-        "PackageName": "azure_mgmt_locks",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Locks",
+        "package-name": "azure_mgmt_locks",
+        "package-version": "0.10.0",
+        "tag": "package-locks"
       },
       "output_dir": "management/azure_mgmt_locks/lib",
       "wrapper_filesOrDirs": [
@@ -225,11 +212,11 @@
       ]
     },
     "azure_mgmt_logic": {
-      "swagger": "arm-logic/2016-06-01/swagger/logic.json",
+      "markdown": "specification/logic/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Logic",
-        "PackageName": "azure_mgmt_logic",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Logic",
+        "package-name": "azure_mgmt_logic",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_logic/lib",
       "wrapper_filesOrDirs": [
@@ -237,11 +224,11 @@
       ]
     },
     "azure_mgmt_machine_learning": {
-      "swagger": "arm-machinelearning/2016-05-01-preview/swagger/webservices.json",
+      "markdown": "specification/machinelearning/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::MachineLearning",
-        "PackageName": "azure_mgmt_machine_learning",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::MachineLearning",
+        "package-name": "azure_mgmt_machine_learning",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_machine_learning/lib",
       "wrapper_filesOrDirs": [
@@ -249,11 +236,11 @@
       ]
     },
     "azure_mgmt_media_services": {
-      "swagger": "arm-mediaservices/2015-10-01/swagger/media.json",
+      "markdown": "specification/mediaservices/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::MediaServices",
-        "PackageName": "azure_mgmt_media_services",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::MediaServices",
+        "package-name": "azure_mgmt_media_services",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_media_services/lib",
       "wrapper_filesOrDirs": [
@@ -261,24 +248,35 @@
       ]
     },
     "azure_mgmt_mobile_engagement": {
-      "swagger": "arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json",
+      "markdown": "specification/mobileengagement/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::MobileEngagement",
-        "PackageName": "azure_mgmt_mobile_engagement",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::MobileEngagement",
+        "package-name": "azure_mgmt_mobile_engagement",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_mobile_engagement/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_mobile_engagement.rb"
       ]
     },
-    "azure_mgmt_network": {
-      "swagger": "arm-network/compositeNetworkClient.json",
+    "azure_mgmt_monitor": {
+      "markdown": "specification/monitor/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Network",
-        "PackageName": "azure_mgmt_network",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Monitor",
+        "package-name": "azure_mgmt_monitor",
+        "package-version": "0.10.0"
+      },
+      "output_dir": "management/azure_mgmt_monitor/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_monitor.rb"
+      ]
+    },
+    "azure_mgmt_network": {
+      "markdown": "specification/network/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::Network",
+        "package-name": "azure_mgmt_network",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_network/lib",
       "wrapper_filesOrDirs": [
@@ -286,11 +284,11 @@
       ]
     },
     "azure_mgmt_notification_hubs": {
-      "swagger": "arm-notificationhubs/2016-03-01/swagger/notificationhubs.json",
+      "markdown": "specification/notificationhubs/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::NotificationHubs",
-        "PackageName": "azure_mgmt_notification_hubs",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::NotificationHubs",
+        "package-name": "azure_mgmt_notification_hubs",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_notification_hubs/lib",
       "wrapper_filesOrDirs": [
@@ -298,11 +296,12 @@
       ]
     },
     "azure_mgmt_policy": {
-      "swagger": "arm-resources/policy/2016-12-01/swagger/policy.json",
+      "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Policy",
-        "PackageName": "azure_mgmt_policy",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Policy",
+        "package-name": "azure_mgmt_policy",
+        "package-version": "0.10.0",
+        "tag": "package-policy"
       },
       "output_dir": "management/azure_mgmt_policy/lib",
       "wrapper_filesOrDirs": [
@@ -310,11 +309,11 @@
       ]
     },
     "azure_mgmt_powerbi_embedded": {
-      "swagger": "arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json",
+      "markdown": "specification/powerbiembedded/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::PowerBiEmbedded",
-        "PackageName": "azure_mgmt_powerbi_embedded",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::PowerBiEmbedded",
+        "package-name": "azure_mgmt_powerbi_embedded",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_powerbi_embedded/lib",
       "wrapper_filesOrDirs": [
@@ -322,12 +321,11 @@
       ]
     },
     "azure_mgmt_recovery_services": {
-      "swagger": "arm-recoveryservices/compositeRecoveryServicesClient.json",
+      "markdown": "specification/recoveryservices/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::RecoveryServices",
-        "PackageName": "azure_mgmt_recovery_services",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::RecoveryServices",
+        "package-name": "azure_mgmt_recovery_services",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_recovery_services/lib",
       "wrapper_filesOrDirs": [
@@ -335,12 +333,11 @@
       ]
     },
     "azure_mgmt_recovery_services_backup": {
-      "swagger": "arm-recoveryservicesbackup/compositeRecoveryServicesBackupClient.json",
+      "markdown": "specification/recoveryservicesbackup/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::RecoveryServicesBackup",
-        "PackageName": "azure_mgmt_recovery_services_backup",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::RecoveryServicesBackup",
+        "package-name": "azure_mgmt_recovery_services_backup",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_recovery_services_backup/lib",
       "wrapper_filesOrDirs": [
@@ -348,11 +345,11 @@
       ]
     },
     "azure_mgmt_redis": {
-      "swagger": "arm-redis/2016-04-01/swagger/redis.json",
+      "markdown": "specification/redis/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Redis",
-        "PackageName": "azure_mgmt_redis",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Redis",
+        "package-name": "azure_mgmt_redis",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_redis/lib",
       "wrapper_filesOrDirs": [
@@ -360,11 +357,12 @@
       ]
     },
     "azure_mgmt_resources": {
-      "swagger": "arm-resources/resources/2016-09-01/swagger/resources.json",
+      "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Resources",
-        "PackageName": "azure_mgmt_resources",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Resources",
+        "package-name": "azure_mgmt_resources",
+        "package-version": "0.10.0",
+        "tag": "package-resources"
       },
       "output_dir": "management/azure_mgmt_resources/lib",
       "wrapper_filesOrDirs": [
@@ -372,11 +370,11 @@
       ]
     },
     "azure_mgmt_scheduler": {
-      "swagger": "arm-scheduler/2016-03-01/swagger/scheduler.json",
+      "markdown": "specification/scheduler/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Scheduler",
-        "PackageName": "azure_mgmt_scheduler",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Scheduler",
+        "package-name": "azure_mgmt_scheduler",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_scheduler/lib",
       "wrapper_filesOrDirs": [
@@ -384,11 +382,11 @@
       ]
     },
     "azure_mgmt_search": {
-      "swagger": "arm-search/2015-08-19/swagger/search.json",
+      "markdown": "specification/search/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Search",
-        "PackageName": "azure_mgmt_search",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Search",
+        "package-name": "azure_mgmt_search",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_search/lib",
       "wrapper_filesOrDirs": [
@@ -396,11 +394,11 @@
       ]
     },
     "azure_mgmt_server_management": {
-      "swagger": "arm-servermanagement/2016-07-01-preview/servermanagement.json",
+      "markdown": "specification/servermanagement/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::ServerManagement",
-        "PackageName": "azure_mgmt_server_management",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::ServerManagement",
+        "package-name": "azure_mgmt_server_management",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_server_management/lib",
       "wrapper_filesOrDirs": [
@@ -408,11 +406,11 @@
       ]
     },
     "azure_mgmt_service_bus": {
-      "swagger": "arm-servicebus/2015-08-01/swagger/servicebus.json",
+      "markdown": "specification/servicebus/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::ServiceBus",
-        "PackageName": "azure_mgmt_service_bus",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::ServiceBus",
+        "package-name": "azure_mgmt_service_bus",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_service_bus/lib",
       "wrapper_filesOrDirs": [
@@ -420,12 +418,11 @@
       ]
     },
     "azure_mgmt_sql": {
-      "swagger": "arm-sql/compositeSql.json",
+      "markdown": "specification/sql/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::SQL",
-        "PackageName": "azure_mgmt_sql",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::SQL",
+        "package-name": "azure_mgmt_sql",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_sql/lib",
       "wrapper_filesOrDirs": [
@@ -433,11 +430,11 @@
       ]
     },
     "azure_mgmt_storage": {
-      "swagger": "arm-storage/2016-12-01/swagger/storage.json",
+      "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Storage",
-        "PackageName": "azure_mgmt_storage",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Storage",
+        "package-name": "azure_mgmt_storage",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_storage/lib",
       "wrapper_filesOrDirs": [
@@ -458,11 +455,12 @@
         ]
     },
     "azure_mgmt_subscriptions": {
-      "swagger": "arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json",
+      "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Subscriptions",
-        "PackageName": "azure_mgmt_subscriptions",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Subscriptions",
+        "package-name": "azure_mgmt_subscriptions",
+        "package-version": "0.10.0",
+        "tag": "package-subscriptions"
       },
       "output_dir": "management/azure_mgmt_subscriptions/lib",
       "wrapper_filesOrDirs": [
@@ -470,11 +468,11 @@
       ]
     },
     "azure_mgmt_traffic_manager": {
-      "swagger": "arm-trafficmanager/2015-11-01/swagger/trafficmanager.json",
+      "markdown": "specification/trafficmanager/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::TrafficManager",
-        "PackageName": "azure_mgmt_traffic_manager",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::TrafficManager",
+        "package-name": "azure_mgmt_traffic_manager",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_traffic_manager/lib",
       "wrapper_filesOrDirs": [
@@ -482,12 +480,11 @@
       ]
     },
     "azure_mgmt_web": {
-      "swagger": "arm-web/compositeWebAppClient.json",
+      "markdown": "specification/web/resource-manager/readme.md",
       "autorest_options": {
-        "Namespace": "Azure::ARM::Web",
-        "PackageName": "azure_mgmt_web",
-        "Modeler": "CompositeSwagger",
-        "PackageVersion": "0.10.0"
+        "namespace": "Azure::ARM::Web",
+        "package-name": "azure_mgmt_web",
+        "package-version": "0.10.0"
       },
       "output_dir": "management/azure_mgmt_web/lib",
       "wrapper_filesOrDirs": [

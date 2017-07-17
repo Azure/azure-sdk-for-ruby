@@ -66,9 +66,9 @@ describe 'Resource Groups' do
 
   it 'should raise exception when attempt to update without required parameters' do
     params = Models::ResourceGroup.new
-    expect{@client.patch(nil, params)}.to raise_error(ArgumentError)
-    expect{@client.patch('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.patch('~`123', params).value!}.to raise_error(MsRest::ValidationError)
+    expect{@client.update(nil, params)}.to raise_error(ArgumentError)
+    expect{@client.update('foo', nil)}.to raise_error(ArgumentError)
+    expect{@client.update('~`123', params).value!}.to raise_error(MsRestAzure::AzureOperationError)
   end
 
   it 'should raise errors when attempting get resource group' do
@@ -126,34 +126,9 @@ describe 'Resource Groups' do
     end
   end
 
-  it 'should list resources of resource group' do
-    result = @client.list_resources_async(@resource_group.name).value!
-    expect(result.body.value).not_to be_nil
-    expect(result.body.value).to be_a(Array)
-
-    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
-      result = @client.list_resources_next(result.body.next_link).value!
-      expect(result.body.value).not_to be_nil
-      expect(result.body.value).to be_a(Array)
-    end
-  end
-
   it 'should check resource group exists' do
     result = @client.check_existence_async(@resource_group.name).value!.body
     expect(result).to be_truthy
-  end
-
-  it 'should list list resources in resource group with tag_name and value filter and top parameter' do
-    filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
-    result = @client.list_resources_async(@resource_group.name, filter, 1).value!
-    expect(result.body.value).not_to be_nil
-    expect(result.body.value).to be_a(Array)
-
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
-      result = @client.list_resources_next_async(result.body.next_link).value!
-      expect(result.body.value).not_to be_nil
-      expect(result.body.value).to be_a(Array)
-    end
   end
 
   it 'should list resource groups with tag_name and value filter and top parameter' do
