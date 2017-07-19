@@ -1,3 +1,33 @@
+## 2017.07.19 - Azure ARM version 0.11.0
+
+* Regened all azure_mgmt_* sdks using [AutoRest.1.2.2.0](https://github.com/Azure/autorest/tree/v1.2.2) for release of ARM version 0.11.0
+* Updated [azure_mgmt_analysis_services](https://rubygems.org/gems/azure_mgmt_analysis_services) 
+  * Replaced configuration object with uri string 
+  * Added new endpoint to read skus and removed hard coded sku values.Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/analysisservices/resource-manager/readme.md)
+* Updated [azure_mgmt_batch] (https://rubygems.org/gems/azure_mgmt_batch) to latest API version 2017-05-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/batch/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_cognitive_services](https://rubygems.org/gems/azure_mgmt_cognitive_services) to latest API version 2017-04-18. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/cognitiveservices/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_compute](https://rubygems.org/gems/azure_mgmt_compute) to latest API version 2017-03-30. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/compute/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_devtestlabs](https://rubygems.org/gems/azure_mgmt_devtestlabs) with new properties for virtual machine creation, introduced new resource models, removed existing resource models. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/devtestlabs/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_event_hub](https://rubygems.org/gems/azure_mgmt_event_hub) to latest API version 2017-04-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/eventhub/resource-manager/readme.md) for further details.
+* Replaced [azure_mgmt_insights](https://rubygems.org/gems/azure_mgmt_insights) with new gem [azure_mgmt_monitor](https://rubygems.org/gems/azure_mgmt_monitor)
+* Updated [azure_mgmt_iot_hub](https://rubygems.org/gems/azure_mgmt_iot_hub) to latest API version 2017-01-19.  Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/iothub/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_key_vault](https://rubygems.org/gems/azure_mgmt_key_vault) to latest API version 2016-10-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/keyvault/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_logic](https://rubygems.org/gems/azure_mgmt_logic) that several model names have been modified. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/logic/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_machine_learning](https://rubygems.org/gems/azure_mgmt_machine_learning) to latest API version 2017-01-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/machinelearning/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_network](https://rubygems.org/gems/azure_mgmt_network) to latest API version 2017-06-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/network/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_notification_hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) to latest API version 2017-04-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/notificationhubs/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_recovery_services](https://rubygems.org/gems/azure_mgmt_recovery_services) to latest API version 2016-12-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/recoveryservices/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_redis](https://rubygems.org/gems/azure_mgmt_redis) to latest API version 2017-02-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/redis/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_resources](https://rubygems.org/gems/azure_mgmt_resources) to latest API version 2017-05-10. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/resources/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_service_bus](https://rubygems.org/gems/azure_mgmt_service_bus) to latest API version 2017-04-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/servicebus/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_sql](https://rubygems.org/gems/azure_mgmt_sql). Removed blob auditing policies, threat detection policies, etc. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/sql/resource-manager/readme.md) for full list of changes.
+* Updated [azure_mgmt_storage](https://rubygems.org/gems/azure_mgmt_storage) to latest API version 2017-06-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/storage/resource-manager/readme.md) for further details.
+* Released [azure_mgmt_stream_analytics](https://rubygems.org/gems/azure_mgmt_stream_analytics) gem.
+* Updated [azure_mgmt_subscriptions](https://rubygems.org/gems/azure_mgmt_subscriptions) and removed tenant id from the subscriptions model. Refer [PR #1147](https://github.com/Azure/azure-rest-api-specs/pull/1147) for further details.
+* Updated [azure_mgmt_traffic_manager](https://rubygems.org/gems/azure_mgmt_traffic_manager) to latest API version 2017-05-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/trafficmanager/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_web](/azure_mgmt_web) and renamed several models and properties, updated webapps API to latest version and modified operation IDs. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/web/resource-manager/readme.md) for further details.
+
+
 ## 2017.03.06 - Azure ARM version 0.10.0
 
 All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.10.0-arm%20).
