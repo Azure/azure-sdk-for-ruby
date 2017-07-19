@@ -1,6 +1,6 @@
 ## 2017.07.19 - Azure ARM version 0.11.0
 
-* Regened all azure_mgmt_* sdks using AutoRest.1.2.0.0 for release of ARM version 0.11.0
+* Regened all azure_mgmt_* sdks using [AutoRest.1.2.0.0](https://www.npmjs.com/package/autorest) for release of ARM version 0.11.0
 * Updated [azure_mgmt_analysis_services](https://rubygems.org/gems/azure_mgmt_analysis_services) 
   * Replaced configuration object with uri string 
   * Added new endpoint to read skus and removed hard coded sku values.Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/analysisservices/resource-manager/readme.md)
