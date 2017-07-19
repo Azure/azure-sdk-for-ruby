@@ -1,11 +1,13 @@
 ## 2017.07.19 - Azure ARM version 0.11.0
 
 * Regened all azure_mgmt_* sdks using AutoRest.1.2.0.0 for release of ARM version 0.11.0
-* Updated [azure_mgmt_analysis_services](https://rubygems.org/gems/azure_mgmt_analysis_services) and replaced configuration object with uri string and added new endpoint to read skus and removed hard coded sku values.(https://github.com/Azure/azure-rest-api-specs/blob/current/specification/analysisservices/resource-manager/readme.md)
+* Updated [azure_mgmt_analysis_services](https://rubygems.org/gems/azure_mgmt_analysis_services) 
+  * Replaced configuration object with uri string 
+  * Added new endpoint to read skus and removed hard coded sku values.Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/analysisservices/resource-manager/readme.md)
 * Updated [azure_mgmt_batch] (https://rubygems.org/gems/azure_mgmt_batch) to latest API version 2017-05-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/batch/resource-manager/readme.md) for further details.
 * Updated [azure_mgmt_cognitive_services](https://rubygems.org/gems/azure_mgmt_cognitive_services) to latest API version 2017-04-18. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/cognitiveservices/resource-manager/readme.md) for further details.
 * Updated [azure_mgmt_compute](https://rubygems.org/gems/azure_mgmt_compute) to latest API version 2017-03-30. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/compute/resource-manager/readme.md) for further details.
-* Updated [azure_mgmt_devtestlabs](https://rubygems.org/gems/azure_mgmt_devtestlabs) with new properties for virtual machine creation, introduced new resource models, removed existing resource models. Refere latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/devtestlabs/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_devtestlabs](https://rubygems.org/gems/azure_mgmt_devtestlabs) with new properties for virtual machine creation, introduced new resource models, removed existing resource models. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/devtestlabs/resource-manager/readme.md) for further details.
 * Updated [azure_mgmt_event_hub](https://rubygems.org/gems/azure_mgmt_event_hub) to latest API version 2017-04-01. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/eventhub/resource-manager/readme.md) for further details.
 * Replaced [azure_mgmt_insights](https://rubygems.org/gems/azure_mgmt_insights) with new gem [azure_mgmt_monitor](https://rubygems.org/gems/azure_mgmt_monitor)
 * Updated [azure_mgmt_iot_hub](https://rubygems.org/gems/azure_mgmt_iot_hub) to latest API version 2017-01-19.  Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/iothub/resource-manager/readme.md) for further details.
