@@ -2,7 +2,10 @@
   "meta": {
     "version": "0.2.0",
     "language": "Ruby",
-    "autorest": "latest"
+    "autorest": "latest",
+    "autorest_options": {
+      "ruby": ""
+    }
   },
   "projects": {
     "azure_mgmt_analysis_services": {
