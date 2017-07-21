@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Application gateway web application firewall configuration.
     #
     class ApplicationGatewayWebApplicationFirewallConfiguration
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Boolean] Whether the web application firewall is enabled or
       # not.
       attr_accessor :enabled

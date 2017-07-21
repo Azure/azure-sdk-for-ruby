@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # A web application firewall rule.
     #
     class ApplicationGatewayFirewallRule
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The identifier of the web application firewall rule.
       attr_accessor :rule_id
 

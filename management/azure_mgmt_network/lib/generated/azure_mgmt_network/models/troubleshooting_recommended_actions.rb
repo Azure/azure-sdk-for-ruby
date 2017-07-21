@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Recommended actions based on discovered issues.
     #
     class TroubleshootingRecommendedActions
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] ID of the recommended action.
       attr_accessor :action_id
 

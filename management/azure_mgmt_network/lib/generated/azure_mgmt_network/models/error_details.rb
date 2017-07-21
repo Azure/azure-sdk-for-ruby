@@ -10,10 +10,6 @@ module Azure::ARM::Network
     #
     #
     class ErrorDetails
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String]
       attr_accessor :code
 

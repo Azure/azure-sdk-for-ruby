@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the resource to troubleshoot.
     #
     class TroubleshootingParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The target resource to troubleshoot.
       attr_accessor :target_resource_id
 

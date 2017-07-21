@@ -11,10 +11,6 @@ module Azure::ARM::Network
     # DHCP options.
     #
     class DhcpOptions
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<String>] The list of DNS servers IP addresses.
       attr_accessor :dns_servers
 

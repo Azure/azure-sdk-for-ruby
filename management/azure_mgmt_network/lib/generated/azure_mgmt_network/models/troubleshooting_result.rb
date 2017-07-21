@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Troubleshooting information gained from specified resource.
     #
     class TroubleshootingResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [DateTime] The start time of the troubleshooting.
       attr_accessor :start_time
 

@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # VirtualNetworkGatewaySku details
     #
     class VirtualNetworkGatewaySku
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [VirtualNetworkGatewaySkuName] Gateway SKU name. Possible
       # values include: 'Basic', 'HighPerformance', 'Standard',
       # 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3'

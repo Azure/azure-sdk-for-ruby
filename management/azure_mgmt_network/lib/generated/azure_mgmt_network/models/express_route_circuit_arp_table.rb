@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The ARP table associated with the ExpressRouteCircuit.
     #
     class ExpressRouteCircuitArpTable
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] Age
       attr_accessor :age
 

@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Information on the configuration of flow log.
     #
     class FlowLogInformation
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The ID of the resource to configure for flow logging.
       attr_accessor :target_resource_id
 

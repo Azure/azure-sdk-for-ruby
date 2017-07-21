@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # LoadBalancer resource
     #
-    class LoadBalancer < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class LoadBalancer < Resource
       # @return [Array<FrontendIPConfiguration>] Object representing the
       # frontend IPs to be used for the load balancer
       attr_accessor :frontend_ipconfigurations

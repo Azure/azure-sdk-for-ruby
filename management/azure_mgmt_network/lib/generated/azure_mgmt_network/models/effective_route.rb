@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Effective Route
     #
     class EffectiveRoute
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the user defined route. This is optional.
       attr_accessor :name
 

@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Usage details for subnet.
     #
     class VirtualNetworkUsage
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Float] Indicates number of IPs used from the Subnet.
       attr_accessor :current_value
 

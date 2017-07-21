@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for CheckIPAddressAvailability API service call
     #
     class IPAddressAvailabilityResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Boolean] Private IP address availability.
       attr_accessor :available
 

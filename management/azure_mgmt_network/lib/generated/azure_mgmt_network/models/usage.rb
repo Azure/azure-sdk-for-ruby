@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Describes network resource usage.
     #
     class Usage
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] An enum describing the unit of measurement. Default
       # value: 'Count' .
       attr_accessor :unit

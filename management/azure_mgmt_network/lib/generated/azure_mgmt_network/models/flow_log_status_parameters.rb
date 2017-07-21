@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define a resource to query flow log status.
     #
     class FlowLogStatusParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The target resource where getting the flow logging
       # status.
       attr_accessor :target_resource_id

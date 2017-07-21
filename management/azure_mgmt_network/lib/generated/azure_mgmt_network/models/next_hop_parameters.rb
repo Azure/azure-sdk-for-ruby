@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the source and destination endpoint.
     #
     class NextHopParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The resource identifier of the target resource against
       # which the action is to be performed.
       attr_accessor :target_resource_id

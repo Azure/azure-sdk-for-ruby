@@ -10,10 +10,6 @@ module Azure::ARM::Network
     # subnets of the virtual network.
     #
     class AddressSpace
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<String>] A list of address blocks reserved for this
       # virtual network in CIDR notation.
       attr_accessor :address_prefixes

@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # List of ApplicationGatewayBackendHealthPool resources.
     #
     class ApplicationGatewayBackendHealth
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ApplicationGatewayBackendHealthPool>]
       attr_accessor :backend_address_pools
 

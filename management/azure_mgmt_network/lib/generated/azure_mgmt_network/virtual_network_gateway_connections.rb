@@ -8,7 +8,6 @@ module Azure::ARM::Network
   # Network Client
   #
   class VirtualNetworkGatewayConnections
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the VirtualNetworkGatewayConnections class.
@@ -41,6 +40,9 @@ module Azure::ARM::Network
     end
 
     #
+    # Creates or updates a virtual network gateway connection in the specified
+    # resource group.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
     # virtual network gateway connection.
@@ -49,25 +51,91 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def create_or_update_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a virtual network gateway connection in the specified
+    # resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
+    # virtual network gateway connection.
+    # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
+    # the create or update virtual network gateway connection operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_or_update_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_create_or_update_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2017-06-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -95,7 +163,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_with_http_info(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
       get_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
@@ -120,10 +188,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}'
 
       request_url = @base_url || @client.base_url
@@ -143,10 +207,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -173,11 +236,14 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    #
     def delete(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
       response = delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
       nil
     end
 
+    #
+    # Deletes the specified virtual network Gateway connection.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
@@ -185,23 +251,58 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
+    end
+
+    #
+    # Deletes the specified virtual network Gateway connection.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
+    # virtual network gateway connection.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      api_version = '2017-06-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -226,6 +327,10 @@ module Azure::ARM::Network
     end
 
     #
+    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+    # network gateway connection shared key for passed virtual network gateway
+    # connection in the specified resource group through Network resource provider.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
@@ -235,25 +340,93 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def set_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
+    end
+
+    #
+    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+    # network gateway connection shared key for passed virtual network gateway
+    # connection in the specified resource group through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection name.
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway connection Shared key operation throughNetwork
+    # resource provider.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2017-06-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -285,7 +458,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
       get_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
@@ -312,10 +485,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey'
 
       request_url = @base_url || @client.base_url
@@ -335,10 +504,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -364,11 +532,11 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VirtualNetworkGatewayConnection>] operation results.
+    # @return [VirtualNetworkGatewayConnectionListResult] operation results.
     #
     def list(resource_group_name, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers)
-      first_page.get_all_items
+      response = list_async(resource_group_name, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -379,7 +547,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_with_http_info(resource_group_name, custom_headers = nil)
       list_async(resource_group_name, custom_headers).value!
@@ -402,10 +570,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections'
 
       request_url = @base_url || @client.base_url
@@ -425,10 +589,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -469,6 +632,11 @@ module Azure::ARM::Network
     end
 
     #
+    # The VirtualNetworkGatewayConnectionResetSharedKey operation resets the
+    # virtual network gateway connection shared key for passed virtual network
+    # gateway connection in the specified resource group through Network resource
+    # provider.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
@@ -478,79 +646,30 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def reset_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      reset_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
+    end
+
+    #
+    # The VirtualNetworkGatewayConnectionResetSharedKey operation resets the
+    # virtual network gateway connection shared key for passed virtual network
+    # gateway connection in the specified resource group through Network resource
+    # provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection reset shared key Name.
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
+    # reset virtual network gateway connection shared key operation through network
+    # resource provider.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def reset_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_reset_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::ConnectionResetSharedKey.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Creates or updates a virtual network gateway connection in the specified
-    # resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway connection.
-    # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
-    # the create or update virtual network gateway connection operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkGatewayConnection] operation results.
-    #
-    def begin_create_or_update(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates or updates a virtual network gateway connection in the specified
-    # resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway connection.
-    # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
-    # the create or update virtual network gateway connection operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_create_or_update_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-    end
-
-    #
-    # Creates or updates a virtual network gateway connection in the specified
-    # resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway connection.
-    # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
-    # the create or update virtual network gateway connection operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_create_or_update_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -559,354 +678,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deletes the specified virtual network Gateway connection.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway connection.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_delete(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the specified virtual network Gateway connection.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway connection.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_delete_with_http_info(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
-    end
-
-    #
-    # Deletes the specified virtual network Gateway connection.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway connection.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_delete_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
-      api_version = '2017-06-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ConnectionSharedKey] operation results.
-    #
-    def begin_set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      response = begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_set_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-06-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::ConnectionSharedKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The VirtualNetworkGatewayConnectionResetSharedKey operation resets the
-    # virtual network gateway connection shared key for passed virtual network
-    # gateway connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
-    # reset virtual network gateway connection shared key operation through network
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ConnectionResetSharedKey] operation results.
-    #
-    def begin_reset_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      response = begin_reset_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The VirtualNetworkGatewayConnectionResetSharedKey operation resets the
-    # virtual network gateway connection shared key for passed virtual network
-    # gateway connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
-    # reset virtual network gateway connection shared key operation through network
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_reset_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      begin_reset_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-    end
-
-    #
-    # The VirtualNetworkGatewayConnectionResetSharedKey operation resets the
-    # virtual network gateway connection shared key for passed virtual network
-    # gateway connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
-    # reset virtual network gateway connection shared key operation through network
-    # resource provider.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_reset_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-06-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -935,10 +706,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -954,118 +724,6 @@ module Azure::ARM::Network
       end
 
       promise.execute
-    end
-
-    #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
-    # network gateways connections created.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkGatewayConnectionListResult] operation results.
-    #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
-    # network gateways connections created.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
-    # network gateways connections created.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetworkGatewayConnectionListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
-    # network gateways connections created.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkGatewayConnectionListResult] which provide lazy access
-    # to pages of the response.
-    #
-    def list_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_async(resource_group_name, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
     end
 
   end

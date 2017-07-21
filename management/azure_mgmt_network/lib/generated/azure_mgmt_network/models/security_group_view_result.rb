@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The information about security rules applied to the specified VM.
     #
     class SecurityGroupViewResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<SecurityGroupNetworkInterface>] List of network
       # interfaces on the specified VM.
       attr_accessor :network_interfaces
