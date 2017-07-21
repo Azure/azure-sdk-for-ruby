@@ -8,11 +8,7 @@ module Azure::ARM::ServiceBus
     #
     # Description of topic resource.
     #
-    class SBTopic < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class SBTopic < Resource
       # @return [Integer] Size of the topic, in bytes.
       attr_accessor :size_in_bytes
 

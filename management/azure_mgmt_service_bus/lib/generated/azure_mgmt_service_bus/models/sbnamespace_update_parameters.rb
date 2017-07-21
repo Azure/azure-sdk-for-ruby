@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # Description of a namespace resource.
     #
     class SBNamespaceUpdateParameters < ResourceNamespacePatch
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [SBSku] Porperties of Sku
       attr_accessor :sku
 

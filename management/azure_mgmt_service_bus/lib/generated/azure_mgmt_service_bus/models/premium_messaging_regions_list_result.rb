@@ -6,28 +6,29 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response to the List Queues operation.
+    # The response of the List PremiumMessagingRegions operation.
     #
-    class SBQueueListResult
-      # @return [Array<SBQueue>] Result of the List Queues operation.
+    class PremiumMessagingRegionsListResult
+      # @return [Array<PremiumMessagingRegions>] Result of the List
+      # PremiumMessagingRegions type.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of queues.
+      # contains incomplete list of PremiumMessagingRegions.
       attr_accessor :next_link
 
 
       #
-      # Mapper for SBQueueListResult class as Ruby Hash.
+      # Mapper for PremiumMessagingRegionsListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SBQueueListResult',
+          serialized_name: 'PremiumMessagingRegionsListResult',
           type: {
             name: 'Composite',
-            class_name: 'SBQueueListResult',
+            class_name: 'PremiumMessagingRegionsListResult',
             model_properties: {
               value: {
                 required: false,
@@ -36,16 +37,17 @@ module Azure::ARM::ServiceBus
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SBQueueElementType',
+                      serialized_name: 'PremiumMessagingRegionsElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SBQueue'
+                        class_name: 'PremiumMessagingRegions'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

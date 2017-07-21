@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # Description of a Check Name availability request properties.
     #
     class CheckNameAvailabilityResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The detailed info regarding the reason associated with
       # the namespace.
       attr_accessor :message

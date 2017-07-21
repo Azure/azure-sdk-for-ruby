@@ -7,10 +7,10 @@ module Azure::ARM::ServiceBus
   #
   # Azure Service Bus client
   #
-  class Operations
+  class Regions
 
     #
-    # Creates and initializes a new instance of the Operations class.
+    # Creates and initializes a new instance of the Regions class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -21,49 +21,55 @@ module Azure::ARM::ServiceBus
     attr_reader :client
 
     #
-    # Lists all of the available ServiceBus REST API operations.
+    # Gets the available Regions for a given sku
     #
+    # @param sku [String] The sku type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationListResult] operation results.
+    # @return [PremiumMessagingRegionsListResult] operation results.
     #
-    def list(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_by_sku(sku, custom_headers = nil)
+      response = list_by_sku_async(sku, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists all of the available ServiceBus REST API operations.
+    # Gets the available Regions for a given sku
     #
+    # @param sku [String] The sku type.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_by_sku_with_http_info(sku, custom_headers = nil)
+      list_by_sku_async(sku, custom_headers).value!
     end
 
     #
-    # Lists all of the available ServiceBus REST API operations.
+    # Gets the available Regions for a given sku
     #
+    # @param sku [String] The sku type.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_by_sku_async(sku, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'sku is nil' if sku.nil?
 
 
       request_headers = {}
-      path_template = 'providers/Microsoft.ServiceBus/operations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/sku/{sku}/regions'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'sku' => sku},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -83,7 +89,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Models::OperationListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::PremiumMessagingRegionsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

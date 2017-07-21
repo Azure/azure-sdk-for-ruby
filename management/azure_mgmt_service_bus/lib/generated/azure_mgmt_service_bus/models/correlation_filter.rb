@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # Represents the correlation filter expression.
     #
     class CorrelationFilter
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Identifier of the correlation.
       attr_accessor :correlation_id
 

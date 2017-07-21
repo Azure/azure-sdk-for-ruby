@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # SKU of the namespace.
     #
     class SBSku
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [SkuName] Name of this SKU. Possible values include: 'Basic',
       # 'Standard', 'Premium'
       attr_accessor :name

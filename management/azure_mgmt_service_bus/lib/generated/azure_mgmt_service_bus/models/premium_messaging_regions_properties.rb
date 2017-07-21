@@ -6,39 +6,41 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Error reponse indicates ServiceBus service is not able to process the
-    # incoming request. The reason is provided in the error message.
+    # Model object.
     #
-    class ErrorResponse
-      # @return [String] Error code.
+    #
+    class PremiumMessagingRegionsProperties
+      # @return [String] Region code
       attr_accessor :code
 
-      # @return [String] Error message indicating why the operation failed.
-      attr_accessor :message
+      # @return [String] Full name of the region
+      attr_accessor :full_name
 
 
       #
-      # Mapper for ErrorResponse class as Ruby Hash.
+      # Mapper for PremiumMessagingRegionsProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ErrorResponse',
+          serialized_name: 'PremiumMessagingRegions_properties',
           type: {
             name: 'Composite',
-            class_name: 'ErrorResponse',
+            class_name: 'PremiumMessagingRegionsProperties',
             model_properties: {
               code: {
                 required: false,
+                read_only: true,
                 serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              full_name: {
                 required: false,
-                serialized_name: 'message',
+                read_only: true,
+                serialized_name: 'fullName',
                 type: {
                   name: 'String'
                 }
