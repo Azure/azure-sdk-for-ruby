@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Partner server information for the failover group.
     #
     class PartnerInfo
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource identifier of the partner server.
       attr_accessor :id
 

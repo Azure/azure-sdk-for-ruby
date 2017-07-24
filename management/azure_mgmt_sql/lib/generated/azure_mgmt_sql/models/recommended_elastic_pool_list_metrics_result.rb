@@ -10,10 +10,6 @@ module Azure::ARM::SQL
     # request.
     #
     class RecommendedElasticPoolListMetricsResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<RecommendedElasticPoolMetric>] The list of recommended
       # elastic pools metrics.
       attr_accessor :value

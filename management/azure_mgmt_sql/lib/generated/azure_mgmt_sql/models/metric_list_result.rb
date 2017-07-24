@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list database metrics request.
     #
     class MetricListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<Metric>] The list of metrics for the database.
       attr_accessor :value
 

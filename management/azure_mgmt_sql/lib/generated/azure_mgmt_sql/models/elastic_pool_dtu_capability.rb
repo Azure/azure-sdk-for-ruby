@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The Elastic Pool DTU capability.
     #
     class ElasticPoolDtuCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The maximum size of the database (see 'unit' for the
       # units).
       attr_accessor :limit

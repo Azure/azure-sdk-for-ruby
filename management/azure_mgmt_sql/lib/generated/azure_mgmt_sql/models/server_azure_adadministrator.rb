@@ -8,11 +8,7 @@ module Azure::ARM::SQL
     #
     # An server Active Directory Administrator.
     #
-    class ServerAzureADAdministrator < SqlSubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class ServerAzureADAdministrator < ProxyResource
       # @return [String] The type of administrator. Default value:
       # 'ActiveDirectory' .
       attr_accessor :administrator_type
@@ -39,6 +35,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ServerAzureADAdministrator',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -47,10 +51,10 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

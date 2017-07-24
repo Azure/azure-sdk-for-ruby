@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list database metrics request.
     #
     class DatabaseUsageListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<DatabaseUsage>] The list of database usages for the
       # database.
       attr_accessor :value

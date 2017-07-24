@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents a database data masking policy.
     #
     class DataMaskingPolicy < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [DataMaskingState] The state of the data masking policy.
       # Possible values include: 'Disabled', 'Enabled'
       attr_accessor :data_masking_state

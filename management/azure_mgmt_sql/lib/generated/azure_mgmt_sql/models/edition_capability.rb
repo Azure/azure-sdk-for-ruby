@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The database edition capabilities.
     #
     class EditionCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The edition name.
       attr_accessor :name
 

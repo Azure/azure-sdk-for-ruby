@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents server metrics.
     #
     class ServerUsage
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Name of the server usage metric.
       attr_accessor :name
 

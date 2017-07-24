@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a list server metrics request.
     #
     class ServerUsageListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ServerUsage>] The list of server metrics for the server.
       attr_accessor :value
 

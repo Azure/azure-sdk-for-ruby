@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A failover group.
     #
     class FailoverGroup < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource location.
       attr_accessor :location
 

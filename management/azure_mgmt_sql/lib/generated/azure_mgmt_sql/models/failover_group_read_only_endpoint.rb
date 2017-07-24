@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Read-only endpoint of the failover group instance.
     #
     class FailoverGroupReadOnlyEndpoint
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ReadOnlyEndpointFailoverPolicy] Failover policy of the
       # read-only endpoint for the failover group. Possible values include:
       # 'Disabled', 'Enabled'

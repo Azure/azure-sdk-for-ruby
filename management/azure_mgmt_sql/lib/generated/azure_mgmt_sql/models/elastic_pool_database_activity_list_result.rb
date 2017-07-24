@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a list elastic pool database activity request.
     #
     class ElasticPoolDatabaseActivityListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ElasticPoolDatabaseActivity>] The list of elastic pool
       # database activities.
       attr_accessor :value
