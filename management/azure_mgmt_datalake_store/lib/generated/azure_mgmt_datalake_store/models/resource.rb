@@ -6,24 +6,36 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Data Lake Store Trusted Identity Provider information
+    # The Resource model definition.
     #
-    class TrustedIdProvider < SubResource
-      # @return [String] The URL of this trusted identity provider
-      attr_accessor :id_provider
+    class Resource
+      # @return [String] Resource Id
+      attr_accessor :id
+
+      # @return [String] Resource name
+      attr_accessor :name
+
+      # @return [String] Resource type
+      attr_accessor :type
+
+      # @return [String] Resource location
+      attr_accessor :location
+
+      # @return [Hash{String => String}] Resource tags
+      attr_accessor :tags
 
 
       #
-      # Mapper for TrustedIdProvider class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TrustedIdProvider',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'TrustedIdProvider',
+            class_name: 'Resource',
             model_properties: {
               id: {
                 required: false,
@@ -35,6 +47,7 @@ module Azure::ARM::DataLakeStore
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -48,11 +61,25 @@ module Azure::ARM::DataLakeStore
                   name: 'String'
                 }
               },
-              id_provider: {
+              location: {
                 required: true,
-                serialized_name: 'properties.idProvider',
+                serialized_name: 'location',
                 type: {
                   name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

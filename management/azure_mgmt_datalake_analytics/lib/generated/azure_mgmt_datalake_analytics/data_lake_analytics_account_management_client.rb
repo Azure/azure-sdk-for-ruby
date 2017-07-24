@@ -7,15 +7,11 @@ module Azure::ARM::DataLakeAnalytics
   #
   # A service client - single point of access to the REST API.
   #
-  class DataLakeAnalyticsAccountManagementClient < MsRestAzure::AzureServiceClient
-    include MsRestAzure
-    include MsRestAzure::Serialization
+  class DataLakeAnalyticsAccountManagementClient < MsRest::ServiceClient
+    include MsRest::Serialization
 
     # @return [String] the base URI of the service.
     attr_accessor :base_url
-
-    # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
 
     # @return [String] Get subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
@@ -23,18 +19,7 @@ module Azure::ARM::DataLakeAnalytics
     attr_accessor :subscription_id
 
     # @return [String] Client Api Version.
-    attr_reader :api_version
-
-    # @return [String] Gets or sets the preferred language for the response.
-    attr_accessor :accept_language
-
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
-    attr_accessor :long_running_operation_retry_timeout
-
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
-    attr_accessor :generate_client_request_id
+    attr_accessor :api_version
 
     # @return [ComputePolicies] compute_policies
     attr_reader :compute_policies
@@ -69,10 +54,6 @@ module Azure::ARM::DataLakeAnalytics
       @storage_accounts = StorageAccounts.new(self)
       @data_lake_store_accounts = DataLakeStoreAccounts.new(self)
       @account = Account.new(self)
-      @api_version = '2016-11-01'
-      @accept_language = 'en-US'
-      @long_running_operation_retry_timeout = 30
-      @generate_client_request_id = true
       add_telemetry
     end
 
@@ -102,7 +83,7 @@ module Azure::ARM::DataLakeAnalytics
     # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
-    # @return [MsRestAzure::AzureOperationResponse] Operation response containing the request, response and status.
+    # @return [MsRest::HttpOperationResponse] Operation response containing the request, response and status.
     #
     def make_request_with_http_info(method, path, options = {})
       result = make_request_async(method, path, options).value!
@@ -124,7 +105,6 @@ module Azure::ARM::DataLakeAnalytics
       request_url = options[:base_url] || @base_url
 
       request_headers = @request_headers
-      request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
       options.merge!({headers: request_headers.merge(options[:headers] || {})})
       options.merge!({credentials: @credentials}) unless @credentials.nil?
 

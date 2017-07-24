@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeAnalytics
     # Data Lake Analytics firewall rule information
     #
     class FirewallRule < OptionalSubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] the start IP address for the firewall rule. This can
       # be either ipv4 or ipv6. Start and End should be in the same protocol.
       attr_accessor :start_ip_address

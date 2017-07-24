@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeStore
     # Data Lake Store account list information response.
     #
     class DataLakeStoreAccountListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<DataLakeStoreAccountBasic>] the results of the list
       # operation
       attr_accessor :value
@@ -20,37 +16,6 @@ module Azure::ARM::DataLakeStore
       # @return [String] the link (url) to the next page of results.
       attr_accessor :next_link
 
-      # return [Proc] with next page method call.
-      attr_accessor :next_method
-
-      #
-      # Gets the rest of the items for the request, enabling auto-pagination.
-      #
-      # @return [Array<DataLakeStoreAccountBasic>] operation results.
-      #
-      def get_all_items
-        items = @value
-        page = self
-        while page.next_link != nil do
-          page = page.get_next_page
-          items.concat(page.value)
-        end
-        items
-      end
-
-      #
-      # Gets the next page of results.
-      #
-      # @return [DataLakeStoreAccountListResult] with next page content.
-      #
-      def get_next_page
-        response = @next_method.call(@next_link).value! unless @next_method.nil?
-        unless response.nil?
-          @next_link = response.body.next_link
-          @value = response.body.value
-          self
-        end
-      end
 
       #
       # Mapper for DataLakeStoreAccountListResult class as Ruby Hash.

@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeStore
     # The encryption identity properties.
     #
     class EncryptionIdentity
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The type of encryption being used. Currently the only
       # supported type is 'SystemAssigned'. Default value: 'SystemAssigned' .
       attr_accessor :type
