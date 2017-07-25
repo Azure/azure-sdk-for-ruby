@@ -17,7 +17,6 @@ require 'faraday-cookie_jar'
 require 'concurrent'
 require 'ms_rest'
 require 'generated/azure_mgmt_analysis_services/module_definition'
-require 'ms_rest_azure'
 
 module Azure::ARM::AnalysisServices
   autoload :Servers,                                            'generated/azure_mgmt_analysis_services/servers.rb'
@@ -25,16 +24,17 @@ module Azure::ARM::AnalysisServices
 
   module Models
     autoload :ServerAdministrators,                               'generated/azure_mgmt_analysis_services/models/server_administrators.rb'
-    autoload :AnalysisServicesServerUpdateParameters,             'generated/azure_mgmt_analysis_services/models/analysis_services_server_update_parameters.rb'
-    autoload :Resource,                                           'generated/azure_mgmt_analysis_services/models/resource.rb'
-    autoload :SkuEnumerationForNewResourceResult,                 'generated/azure_mgmt_analysis_services/models/sku_enumeration_for_new_resource_result.rb'
-    autoload :AnalysisServicesServers,                            'generated/azure_mgmt_analysis_services/models/analysis_services_servers.rb'
-    autoload :SkuDetailsForExistingResource,                      'generated/azure_mgmt_analysis_services/models/sku_details_for_existing_resource.rb'
     autoload :ResourceSku,                                        'generated/azure_mgmt_analysis_services/models/resource_sku.rb'
+    autoload :AnalysisServicesServerUpdateParameters,             'generated/azure_mgmt_analysis_services/models/analysis_services_server_update_parameters.rb'
     autoload :SkuEnumerationForExistingResourceResult,            'generated/azure_mgmt_analysis_services/models/sku_enumeration_for_existing_resource_result.rb'
+    autoload :AnalysisServicesServers,                            'generated/azure_mgmt_analysis_services/models/analysis_services_servers.rb'
+    autoload :SkuEnumerationForNewResourceResult,                 'generated/azure_mgmt_analysis_services/models/sku_enumeration_for_new_resource_result.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_analysis_services/models/resource.rb'
+    autoload :SkuDetailsForExistingResource,                      'generated/azure_mgmt_analysis_services/models/sku_details_for_existing_resource.rb'
     autoload :AnalysisServicesServer,                             'generated/azure_mgmt_analysis_services/models/analysis_services_server.rb'
     autoload :SkuTier,                                            'generated/azure_mgmt_analysis_services/models/sku_tier.rb'
     autoload :State,                                              'generated/azure_mgmt_analysis_services/models/state.rb'
     autoload :ProvisioningState,                                  'generated/azure_mgmt_analysis_services/models/provisioning_state.rb'
+    autoload :ConnectionMode,                                     'generated/azure_mgmt_analysis_services/models/connection_mode.rb'
   end
 end

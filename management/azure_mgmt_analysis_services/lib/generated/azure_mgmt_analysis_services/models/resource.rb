@@ -8,13 +8,26 @@ module Azure::ARM::AnalysisServices
     #
     # Represents an instance of an Analysis Services resource.
     #
-    class Resource < MsRestAzure::Resource
+    class Resource
+      # @return [String] An identifier that represents the Analysis Services
+      # resource.
+      attr_accessor :id
 
-      include MsRestAzure
+      # @return [String] The name of the Analysis Services resource.
+      attr_accessor :name
 
-      include MsRest::JSONable
+      # @return [String] The type of the Analysis Services resource.
+      attr_accessor :type
+
+      # @return [String] Location of the Analysis Services resource.
+      attr_accessor :location
+
       # @return [ResourceSku] The SKU of the Analysis Services resource.
       attr_accessor :sku
+
+      # @return [Hash{String => String}] Key-value pairs of additional resource
+      # provisioning properties.
+      attr_accessor :tags
 
 
       #

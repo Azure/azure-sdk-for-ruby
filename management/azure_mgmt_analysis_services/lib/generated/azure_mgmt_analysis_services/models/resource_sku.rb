@@ -10,16 +10,16 @@ module Azure::ARM::AnalysisServices
     # resource.
     #
     class ResourceSku
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Name of the SKU level.
       attr_accessor :name
 
       # @return [SkuTier] The name of the Azure pricing tier to which the SKU
       # applies. Possible values include: 'Development', 'Basic', 'Standard'
       attr_accessor :tier
+
+      # @return [Integer] The number of instances in the read only query pool.
+      # Default value: 1 .
+      attr_accessor :capacity
 
 
       #
@@ -46,6 +46,18 @@ module Azure::ARM::AnalysisServices
                 serialized_name: 'tier',
                 type: {
                   name: 'String'
+                }
+              },
+              capacity: {
+                required: false,
+                serialized_name: 'capacity',
+                default_value: 1,
+                constraints: {
+                  InclusiveMaximum: 8,
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
                 }
               }
             }
