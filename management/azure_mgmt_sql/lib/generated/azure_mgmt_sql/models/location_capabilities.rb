@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The capabilities for a location.
     #
     class LocationCapabilities
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The location name.
       attr_accessor :name
 

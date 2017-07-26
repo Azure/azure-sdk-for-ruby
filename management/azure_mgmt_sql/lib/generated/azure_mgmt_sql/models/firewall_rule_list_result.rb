@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a List Firewall Rules request.
     #
     class FirewallRuleListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<FirewallRule>] The list of server firewall rules.
       attr_accessor :value
 

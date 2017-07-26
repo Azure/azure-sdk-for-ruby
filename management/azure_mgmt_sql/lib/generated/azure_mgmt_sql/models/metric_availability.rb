@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A metric availability value.
     #
     class MetricAvailability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The length of retention for the database metric.
       attr_accessor :retention
 

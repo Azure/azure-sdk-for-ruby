@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The elastic pool edition capabilities.
     #
     class ElasticPoolEditionCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The elastic pool edition name.
       attr_accessor :name
 

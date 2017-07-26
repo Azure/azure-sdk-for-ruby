@@ -9,13 +9,8 @@ module Azure::ARM::SQL
     # The server encryption protector.
     #
     class EncryptionProtector < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
-      # @return [Enum] Kind of encryption protector. This is metadata used for
-      # the Azure portal experience. Possible values include: '',
-      # 'azurekeyvault', 'servicemanaged'
+      # @return [String] Kind of encryption protector. This is metadata used
+      # for the Azure portal experience.
       attr_accessor :kind
 
       # @return [String] Resource location.
@@ -106,7 +101,7 @@ module Azure::ARM::SQL
                 }
               },
               server_key_type: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.serverKeyType',
                 type: {
                   name: 'String'

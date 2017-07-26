@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Import database parameters.
     #
     class ImportRequest < ExportRequest
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the database to import.
       attr_accessor :database_name
 

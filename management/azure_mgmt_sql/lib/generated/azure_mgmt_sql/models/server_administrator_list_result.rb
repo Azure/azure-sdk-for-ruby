@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list Active Directory Administrators request.
     #
     class ServerAdministratorListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ServerAzureADAdministrator>] The list of server Active
       # Directory Administrators for the server.
       attr_accessor :value
