@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a list database request.
     #
     class DatabaseListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<Database>] The list of databases housed in the server.
       attr_accessor :value
 

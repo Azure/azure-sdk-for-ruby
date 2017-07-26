@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A database blob auditing policy.
     #
     class DatabaseBlobAuditingPolicy < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource kind.
       attr_accessor :kind
 

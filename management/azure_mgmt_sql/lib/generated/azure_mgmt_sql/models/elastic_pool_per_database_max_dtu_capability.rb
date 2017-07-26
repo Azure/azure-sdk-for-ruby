@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The max per-database DTU capability.
     #
     class ElasticPoolPerDatabaseMaxDtuCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The maximum DTUs per database.
       attr_accessor :limit
 

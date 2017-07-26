@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list data masking rules request.
     #
     class DataMaskingRuleListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<DataMaskingRule>] The list of database data masking
       # rules.
       attr_accessor :value

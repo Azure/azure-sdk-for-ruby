@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list recoverable databases request
     #
     class RecoverableDatabaseListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<RecoverableDatabase>] A list of recoverable databases
       attr_accessor :value
 

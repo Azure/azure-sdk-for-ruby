@@ -10,10 +10,6 @@ module Azure::ARM::SQL
     # operations and a URL link to get the next set of results.
     #
     class OperationListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<Operation>] List of SQL operations supported by the SQL
       # resource provider.
       attr_accessor :value

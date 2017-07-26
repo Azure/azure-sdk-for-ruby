@@ -11,7 +11,6 @@ module Azure::ARM::SQL
   # databases.
   #
   class FirewallRules
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the FirewallRules class.
@@ -57,7 +56,7 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def create_or_update_with_http_info(resource_group_name, server_name, firewall_rule_name, parameters, custom_headers = nil)
       create_or_update_async(resource_group_name, server_name, firewall_rule_name, parameters, custom_headers).value!
@@ -89,10 +88,6 @@ module Azure::ARM::SQL
 
       request_headers = {}
 
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
@@ -120,10 +115,9 @@ module Azure::ARM::SQL
         response_content = http_response.body
         unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -179,7 +173,7 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def delete_with_http_info(resource_group_name, server_name, firewall_rule_name, custom_headers = nil)
       delete_async(resource_group_name, server_name, firewall_rule_name, custom_headers).value!
@@ -207,10 +201,6 @@ module Azure::ARM::SQL
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
@@ -230,10 +220,9 @@ module Azure::ARM::SQL
         response_content = http_response.body
         unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
       end
@@ -270,7 +259,7 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_with_http_info(resource_group_name, server_name, firewall_rule_name, custom_headers = nil)
       get_async(resource_group_name, server_name, firewall_rule_name, custom_headers).value!
@@ -298,10 +287,6 @@ module Azure::ARM::SQL
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
@@ -321,10 +306,9 @@ module Azure::ARM::SQL
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -369,7 +353,7 @@ module Azure::ARM::SQL
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_by_server_with_http_info(resource_group_name, server_name, custom_headers = nil)
       list_by_server_async(resource_group_name, server_name, custom_headers).value!
@@ -395,10 +379,6 @@ module Azure::ARM::SQL
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules'
 
       request_url = @base_url || @client.base_url
@@ -418,10 +398,9 @@ module Azure::ARM::SQL
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

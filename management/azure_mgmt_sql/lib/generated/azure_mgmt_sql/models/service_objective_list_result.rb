@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a get database service objectives request.
     #
     class ServiceObjectiveListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ServiceObjective>] The list of database service
       # objectives.
       attr_accessor :value

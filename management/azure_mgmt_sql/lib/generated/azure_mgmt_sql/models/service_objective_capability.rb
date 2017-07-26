@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The service objectives capability.
     #
     class ServiceObjectiveCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The service objective name.
       attr_accessor :name
 
