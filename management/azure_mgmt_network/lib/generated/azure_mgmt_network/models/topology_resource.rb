@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The network resource topology information for the given resource group.
     #
     class TopologyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Name of the resource.
       attr_accessor :name
 

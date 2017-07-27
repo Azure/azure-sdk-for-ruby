@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Resources that have an association with the parent resource.
     #
     class TopologyAssociation
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the resource that is associated with the
       # parent resource.
       attr_accessor :name

@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for list effective route API service call.
     #
     class EffectiveRouteListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<EffectiveRoute>] A list of effective routes.
       attr_accessor :value
 

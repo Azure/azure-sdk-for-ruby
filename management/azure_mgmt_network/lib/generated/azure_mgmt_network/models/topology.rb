@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Topology of the specified resource group.
     #
     class Topology
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] GUID representing the operation id.
       attr_accessor :id
 

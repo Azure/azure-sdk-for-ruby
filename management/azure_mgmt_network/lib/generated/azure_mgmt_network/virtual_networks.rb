@@ -8,7 +8,6 @@ module Azure::ARM::Network
   # Network Client
   #
   class VirtualNetworks
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the VirtualNetworks class.
@@ -29,34 +28,71 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    #
     def delete(resource_group_name, virtual_network_name, custom_headers = nil)
       response = delete_async(resource_group_name, virtual_network_name, custom_headers).value!
       nil
     end
 
     #
+    # Deletes the specified virtual network.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, virtual_network_name, custom_headers = nil)
+      delete_async(resource_group_name, virtual_network_name, custom_headers).value!
+    end
+
+    #
+    # Deletes the specified virtual network.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, virtual_network_name, custom_headers = nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, virtual_network_name, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      api_version = '2017-06-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkName' => virtual_network_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -84,7 +120,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_with_http_info(resource_group_name, virtual_network_name, expand = nil, custom_headers = nil)
       get_async(resource_group_name, virtual_network_name, expand, custom_headers).value!
@@ -109,10 +145,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'
 
       request_url = @base_url || @client.base_url
@@ -132,10 +164,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -171,6 +202,8 @@ module Azure::ARM::Network
     end
 
     #
+    # Creates or updates a virtual network in the specified resource group.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param parameters [VirtualNetwork] Parameters supplied to the create or
@@ -178,25 +211,89 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def create_or_update_with_http_info(resource_group_name, virtual_network_name, parameters, custom_headers = nil)
+      create_or_update_async(resource_group_name, virtual_network_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a virtual network in the specified resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param parameters [VirtualNetwork] Parameters supplied to the create or
+    # update virtual network operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_or_update_async(resource_group_name, virtual_network_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_create_or_update_async(resource_group_name, virtual_network_name, parameters, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2017-06-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkName' => virtual_network_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -205,11 +302,11 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VirtualNetwork>] operation results.
+    # @return [VirtualNetworkListResult] operation results.
     #
     def list_all(custom_headers = nil)
-      first_page = list_all_as_lazy(custom_headers)
-      first_page.get_all_items
+      response = list_all_async(custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -218,7 +315,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_all_with_http_info(custom_headers = nil)
       list_all_async(custom_headers).value!
@@ -238,10 +335,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworks'
 
       request_url = @base_url || @client.base_url
@@ -261,10 +354,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -289,11 +381,11 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VirtualNetwork>] operation results.
+    # @return [VirtualNetworkListResult] operation results.
     #
     def list(resource_group_name, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers)
-      first_page.get_all_items
+      response = list_async(resource_group_name, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -303,7 +395,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_with_http_info(resource_group_name, custom_headers = nil)
       list_async(resource_group_name, custom_headers).value!
@@ -325,10 +417,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks'
 
       request_url = @base_url || @client.base_url
@@ -348,10 +436,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -394,7 +481,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def check_ipaddress_availability_with_http_info(resource_group_name, virtual_network_name, ip_address = nil, custom_headers = nil)
       check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address, custom_headers).value!
@@ -419,10 +506,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability'
 
       request_url = @base_url || @client.base_url
@@ -442,10 +525,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -471,11 +553,11 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VirtualNetworkUsage>] operation results.
+    # @return [VirtualNetworkListUsageResult] operation results.
     #
     def list_usage(resource_group_name, virtual_network_name, custom_headers = nil)
-      first_page = list_usage_as_lazy(resource_group_name, virtual_network_name, custom_headers)
-      first_page.get_all_items
+      response = list_usage_async(resource_group_name, virtual_network_name, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -486,7 +568,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_usage_with_http_info(resource_group_name, virtual_network_name, custom_headers = nil)
       list_usage_async(resource_group_name, virtual_network_name, custom_headers).value!
@@ -510,10 +592,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/usages'
 
       request_url = @base_url || @client.base_url
@@ -533,10 +611,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -552,527 +629,6 @@ module Azure::ARM::Network
       end
 
       promise.execute
-    end
-
-    #
-    # Deletes the specified virtual network.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_delete(resource_group_name, virtual_network_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, virtual_network_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the specified virtual network.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_delete_with_http_info(resource_group_name, virtual_network_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, virtual_network_name, custom_headers).value!
-    end
-
-    #
-    # Deletes the specified virtual network.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_delete_async(resource_group_name, virtual_network_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      api_version = '2017-06-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkName' => virtual_network_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 202 || status_code == 204 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Creates or updates a virtual network in the specified resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param parameters [VirtualNetwork] Parameters supplied to the create or
-    # update virtual network operation
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetwork] operation results.
-    #
-    def begin_create_or_update(resource_group_name, virtual_network_name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, virtual_network_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates or updates a virtual network in the specified resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param parameters [VirtualNetwork] Parameters supplied to the create or
-    # update virtual network operation
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_create_or_update_with_http_info(resource_group_name, virtual_network_name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, virtual_network_name, parameters, custom_headers).value!
-    end
-
-    #
-    # Creates or updates a virtual network in the specified resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param parameters [VirtualNetwork] Parameters supplied to the create or
-    # update virtual network operation
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_create_or_update_async(resource_group_name, virtual_network_name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-06-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkName' => virtual_network_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetwork.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets all virtual networks in a subscription.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkListResult] operation results.
-    #
-    def list_all_next(next_page_link, custom_headers = nil)
-      response = list_all_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets all virtual networks in a subscription.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_all_next_with_http_info(next_page_link, custom_headers = nil)
-      list_all_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Gets all virtual networks in a subscription.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_all_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetworkListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets all virtual networks in a resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkListResult] operation results.
-    #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets all virtual networks in a resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Gets all virtual networks in a resource group.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetworkListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists usage stats.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkListUsageResult] operation results.
-    #
-    def list_usage_next(next_page_link, custom_headers = nil)
-      response = list_usage_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists usage stats.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_usage_next_with_http_info(next_page_link, custom_headers = nil)
-      list_usage_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Lists usage stats.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_usage_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::VirtualNetworkListUsageResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets all virtual networks in a subscription.
-    #
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkListResult] which provide lazy access to pages of the
-    # response.
-    #
-    def list_all_as_lazy(custom_headers = nil)
-      response = list_all_async(custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_all_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # Gets all virtual networks in a resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkListResult] which provide lazy access to pages of the
-    # response.
-    #
-    def list_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_async(resource_group_name, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # Lists usage stats.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_name [String] The name of the virtual network.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkListUsageResult] which provide lazy access to pages of
-    # the response.
-    #
-    def list_usage_as_lazy(resource_group_name, virtual_network_name, custom_headers = nil)
-      response = list_usage_async(resource_group_name, virtual_network_name, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_usage_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
     end
 
   end

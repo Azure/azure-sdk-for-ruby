@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Contains SKU in an ExpressRouteCircuit.
     #
     class ExpressRouteCircuitSku
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the SKU.
       attr_accessor :name
 

@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # IPConfiguration
     #
-    class IPConfiguration < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class IPConfiguration < SubResource
       # @return [String] The private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 

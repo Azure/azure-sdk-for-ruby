@@ -7,31 +7,16 @@ module Azure::ARM::Network
   #
   # A service client - single point of access to the REST API.
   #
-  class NetworkManagementClient < MsRestAzure::AzureServiceClient
-    include MsRestAzure
-    include MsRestAzure::Serialization
+  class NetworkManagementClient < MsRest::ServiceClient
+    include MsRest::Serialization
 
     # @return [String] the base URI of the service.
     attr_accessor :base_url
-
-    # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
 
     # @return [String] The subscription credentials which uniquely identify the
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
-
-    # @return [String] Gets or sets the preferred language for the response.
-    attr_accessor :accept_language
-
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
-    attr_accessor :long_running_operation_retry_timeout
-
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
-    attr_accessor :generate_client_request_id
 
     # @return [ApplicationGateways] application_gateways
     attr_reader :application_gateways
@@ -52,6 +37,9 @@ module Azure::ARM::Network
     # @return [LoadBalancers] load_balancers
     attr_reader :load_balancers
 
+    # @return [InboundNatRules] inbound_nat_rules
+    attr_reader :inbound_nat_rules
+
     # @return [NetworkInterfaces] network_interfaces
     attr_reader :network_interfaces
 
@@ -60,6 +48,9 @@ module Azure::ARM::Network
 
     # @return [SecurityRules] security_rules
     attr_reader :security_rules
+
+    # @return [DefaultSecurityRules] default_security_rules
+    attr_reader :default_security_rules
 
     # @return [NetworkWatchers] network_watchers
     attr_reader :network_watchers
@@ -130,9 +121,11 @@ module Azure::ARM::Network
       @express_route_circuits = ExpressRouteCircuits.new(self)
       @express_route_service_providers = ExpressRouteServiceProviders.new(self)
       @load_balancers = LoadBalancers.new(self)
+      @inbound_nat_rules = InboundNatRules.new(self)
       @network_interfaces = NetworkInterfaces.new(self)
       @network_security_groups = NetworkSecurityGroups.new(self)
       @security_rules = SecurityRules.new(self)
+      @default_security_rules = DefaultSecurityRules.new(self)
       @network_watchers = NetworkWatchers.new(self)
       @packet_captures = PacketCaptures.new(self)
       @available_private_access_services = AvailablePrivateAccessServices.new(self)
@@ -149,9 +142,6 @@ module Azure::ARM::Network
       @virtual_network_gateways = VirtualNetworkGateways.new(self)
       @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
       @local_network_gateways = LocalNetworkGateways.new(self)
-      @accept_language = 'en-US'
-      @long_running_operation_retry_timeout = 30
-      @generate_client_request_id = true
       add_telemetry
     end
 
@@ -181,7 +171,7 @@ module Azure::ARM::Network
     # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
-    # @return [MsRestAzure::AzureOperationResponse] Operation response containing the request, response and status.
+    # @return [MsRest::HttpOperationResponse] Operation response containing the request, response and status.
     #
     def make_request_with_http_info(method, path, options = {})
       result = make_request_async(method, path, options).value!
@@ -203,7 +193,6 @@ module Azure::ARM::Network
       request_url = options[:base_url] || @base_url
 
       request_headers = @request_headers
-      request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
       options.merge!({headers: request_headers.merge(options[:headers] || {})})
       options.merge!({credentials: @credentials}) unless @credentials.nil?
 
@@ -235,7 +224,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def check_dns_name_availability_with_http_info(location, domain_name_label = nil, custom_headers = nil)
       check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
@@ -259,10 +248,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = accept_language unless accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability'
 
       request_url = @base_url || self.base_url
@@ -282,10 +267,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

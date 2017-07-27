@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # A network interface in a resource group.
     #
-    class NetworkInterface < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class NetworkInterface < Resource
       # @return [SubResource] The reference of a virtual machine.
       attr_accessor :virtual_machine
 

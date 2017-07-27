@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # List of network watcher resources.
     #
     class NetworkWatcherListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<NetworkWatcher>]
       attr_accessor :value
 

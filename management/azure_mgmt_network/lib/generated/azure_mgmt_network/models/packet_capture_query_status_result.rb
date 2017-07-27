@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Status of packet capture session.
     #
     class PacketCaptureQueryStatusResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the packet capture resource.
       attr_accessor :name
 

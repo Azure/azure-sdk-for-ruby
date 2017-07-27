@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for ApplicationGatewayAvailableWafRuleSets API service call.
     #
     class ApplicationGatewayAvailableWafRuleSetsResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ApplicationGatewayFirewallRuleSet>] The list of
       # application gateway rule sets.
       attr_accessor :value

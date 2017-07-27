@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for GetConnectionSharedKey API service call
     #
     class ConnectionSharedKey
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The virtual network connection shared key value.
       attr_accessor :value
 

@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for list effective network security groups API service call.
     #
     class EffectiveNetworkSecurityGroupListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<EffectiveNetworkSecurityGroup>] A list of effective
       # network security groups.
       attr_accessor :value

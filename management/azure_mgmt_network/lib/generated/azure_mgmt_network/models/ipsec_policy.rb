@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # An IPSec Policy configuration for a virtual network gateway connection
     #
     class IpsecPolicy
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The IPSec Security Association (also called Quick
       # Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
       attr_accessor :sa_life_time_seconds

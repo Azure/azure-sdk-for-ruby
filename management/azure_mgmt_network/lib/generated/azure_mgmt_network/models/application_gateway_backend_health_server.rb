@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Application gateway backendhealth http settings.
     #
     class ApplicationGatewayBackendHealthServer
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] IP address or FQDN of backend server.
       attr_accessor :address
 

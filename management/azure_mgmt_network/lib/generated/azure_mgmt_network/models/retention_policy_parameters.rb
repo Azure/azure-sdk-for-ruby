@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the retention policy for flow log.
     #
     class RetentionPolicyParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] Number of days to retain flow log records. Default
       # value: 0 .
       attr_accessor :days

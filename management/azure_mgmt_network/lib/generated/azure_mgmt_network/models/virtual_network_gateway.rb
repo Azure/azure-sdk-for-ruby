@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # A common class for general resource information
     #
-    class VirtualNetworkGateway < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualNetworkGateway < Resource
       # @return [Array<VirtualNetworkGatewayIPConfiguration>] IP configurations
       # for virtual network gateway.
       attr_accessor :ip_configurations

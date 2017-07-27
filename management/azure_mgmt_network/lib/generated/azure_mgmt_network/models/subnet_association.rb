@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Network interface and its custom security rules.
     #
     class SubnetAssociation
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Subnet ID.
       attr_accessor :id
 

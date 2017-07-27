@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Information gained from troubleshooting of specified resource.
     #
     class TroubleshootingDetails
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The id of the get troubleshoot operation.
       attr_accessor :id
 

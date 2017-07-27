@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for list BGP peer status API service call
     #
     class BgpPeerStatusListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<BgpPeerStatus>] List of BGP peers
       attr_accessor :value
 

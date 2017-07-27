@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Application gateway probe health response match
     #
     class ApplicationGatewayProbeHealthResponseMatch
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Body that must be contained in the health response.
       # Default value is empty.
       attr_accessor :body
