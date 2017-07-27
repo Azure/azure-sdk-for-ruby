@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes an Image.
     #
-    class Image < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class Image < Resource
       # @return [SubResource] The source virtual machine from which Image is
       # created.
       attr_accessor :source_virtual_machine

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Capture Virtual Machine parameters.
     #
     class VirtualMachineCaptureParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The captured virtual hard disk's name prefix.
       attr_accessor :vhd_prefix
 

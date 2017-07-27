@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # is used to unwrap the encryptionKey
     #
     class KeyVaultAndKeyReference
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [SourceVault] Resource id of the KeyVault containing the key or
       # secret
       attr_accessor :source_vault

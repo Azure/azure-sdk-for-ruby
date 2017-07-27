@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a virtual machine scale set network profile.
     #
     class VirtualMachineScaleSetNetworkProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<VirtualMachineScaleSetNetworkConfiguration>] The list of
       # network configurations.
       attr_accessor :network_interface_configurations

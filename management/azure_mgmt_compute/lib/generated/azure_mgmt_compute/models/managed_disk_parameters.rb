@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # The parameters of a managed disk.
     #
-    class ManagedDiskParameters < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class ManagedDiskParameters < SubResource
       # @return [StorageAccountTypes] The Storage Account type. Possible values
       # include: 'Standard_LRS', 'Premium_LRS'
       attr_accessor :storage_account_type

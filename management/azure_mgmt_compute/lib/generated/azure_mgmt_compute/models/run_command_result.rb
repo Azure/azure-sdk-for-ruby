@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Run command operation response.
     #
     class RunCommandResult < OperationStatusResponse
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return Operation output data (raw JSON)
       attr_accessor :output
 

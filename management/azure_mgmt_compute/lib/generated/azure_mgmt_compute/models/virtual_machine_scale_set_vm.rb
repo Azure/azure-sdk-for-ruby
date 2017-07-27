@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a virtual machine scale set virtual machine.
     #
-    class VirtualMachineScaleSetVM < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualMachineScaleSetVM < Resource
       # @return [String] The virtual machine instance ID.
       attr_accessor :instance_id
 

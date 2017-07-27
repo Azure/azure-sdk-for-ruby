@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Identity for the virtual machine.
     #
     class VirtualMachineIdentity
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The principal id of virtual machine identity.
       attr_accessor :principal_id
 

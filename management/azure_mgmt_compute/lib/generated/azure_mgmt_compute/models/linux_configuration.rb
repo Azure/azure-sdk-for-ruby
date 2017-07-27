@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes Windows configuration of the OS Profile.
     #
     class LinuxConfiguration
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Boolean] Specifies whether password authentication should be
       # disabled.
       attr_accessor :disable_password_authentication

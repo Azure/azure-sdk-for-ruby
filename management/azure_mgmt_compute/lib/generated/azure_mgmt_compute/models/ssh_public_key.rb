@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # Linux VM where the public key is placed.
     #
     class SshPublicKey
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Specifies the full path on the created VM where SSH
       # public key is stored. If the file already exists, the specified key is
       # appended to the file.

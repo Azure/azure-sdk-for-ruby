@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Maintenance Operation Status.
     #
     class MaintenanceRedeployStatus
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Boolean] True, if customer is allowed to perform Maintenance.
       attr_accessor :is_customer_initiated_maintenance_allowed
 

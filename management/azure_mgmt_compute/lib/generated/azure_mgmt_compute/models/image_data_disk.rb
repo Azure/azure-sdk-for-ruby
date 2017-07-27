@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a data disk.
     #
     class ImageDataDisk
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The logical unit number.
       attr_accessor :lun
 

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a Virtual Machine Image.
     #
     class VirtualMachineImage < VirtualMachineImageResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [PurchasePlan]
       attr_accessor :plan
 

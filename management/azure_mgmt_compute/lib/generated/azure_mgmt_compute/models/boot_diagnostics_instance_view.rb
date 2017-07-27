@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The instance view of a virtual machine boot diagnostics.
     #
     class BootDiagnosticsInstanceView
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The console screenshot blob URI.
       attr_accessor :console_screenshot_blob_uri
 

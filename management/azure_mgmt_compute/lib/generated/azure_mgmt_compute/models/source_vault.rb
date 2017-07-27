@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
     #
     class SourceVault
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 

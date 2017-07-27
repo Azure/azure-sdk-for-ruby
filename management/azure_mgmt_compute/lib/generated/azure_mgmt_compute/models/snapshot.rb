@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Snapshot resource.
     #
-    class Snapshot < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class Snapshot < Resource
       # @return [String] A relative URI containing the ID of the VM that has
       # the disk attached.
       attr_accessor :managed_by

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The List Availability Set operation response.
     #
     class AvailabilitySetListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<AvailabilitySet>] The list of availability sets
       attr_accessor :value
 

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Instance view status.
     #
     class InstanceViewStatus
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The status code.
       attr_accessor :code
 

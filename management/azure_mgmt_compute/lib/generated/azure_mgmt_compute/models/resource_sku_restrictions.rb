@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes scaling information of a SKU.
     #
     class ResourceSkuRestrictions
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ResourceSkuRestrictionsType] The type of restrictions.
       # Possible values include: 'location'
       attr_accessor :type

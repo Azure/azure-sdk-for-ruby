@@ -12,10 +12,6 @@ module Azure::ARM::Compute
     # applied.
     #
     class AdditionalUnattendContent
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [PassNames] The pass name. Currently, the only allowable value
       # is oobeSystem. Possible values include: 'oobeSystem'
       attr_accessor :pass_name

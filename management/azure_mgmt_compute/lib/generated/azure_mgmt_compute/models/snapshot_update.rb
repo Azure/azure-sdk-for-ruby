@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Snapshot update resource.
     #
-    class SnapshotUpdate < MsRestAzure::ResourceUpdate
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class SnapshotUpdate < ResourceUpdate
       # @return [OperatingSystemTypes] the Operating System type. Possible
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type

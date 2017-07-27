@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The source image used for creating the disk.
     #
     class ImageDiskReference
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] A relative uri containing either a Platform Imgage
       # Repository or user image reference.
       attr_accessor :id

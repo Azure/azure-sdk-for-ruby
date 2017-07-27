@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # configuration
     #
     class VirtualMachineScaleSetPublicIPAddressConfiguration
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The publicIP address configuration name.
       attr_accessor :name
 

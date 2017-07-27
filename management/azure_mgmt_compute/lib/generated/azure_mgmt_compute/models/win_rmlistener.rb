@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes Protocol and thumbprint of Windows Remote Management listener
     #
     class WinRMListener
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ProtocolTypes] The Protocol used by the WinRM listener. Http
       # and Https are supported. Possible values include: 'Http', 'Https'
       attr_accessor :protocol

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The API entity reference.
     #
     class ApiEntityReference
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The ARM resource id in the form of
       # /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
       attr_accessor :id

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Data used when creating a disk.
     #
     class CreationData
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [DiskCreateOption] This enumerates the possible sources of a
       # disk's creation. Possible values include: 'Empty', 'Attach',
       # 'FromImage', 'Import', 'Copy'

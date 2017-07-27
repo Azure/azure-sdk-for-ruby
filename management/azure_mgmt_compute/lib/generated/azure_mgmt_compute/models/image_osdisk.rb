@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes an Operating System disk.
     #
     class ImageOSDisk
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [OperatingSystemTypes] The Operating System type. Possible
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type

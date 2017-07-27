@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Capture Virtual Machine parameters.
     #
     class RunCommandInput
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The run command id.
       attr_accessor :command_id
 

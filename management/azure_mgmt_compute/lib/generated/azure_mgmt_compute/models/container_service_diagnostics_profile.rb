@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     #
     #
     class ContainerServiceDiagnosticsProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ContainerServiceVMDiagnostics] Profile for the container
       # service VM diagnostic agent.
       attr_accessor :vm_diagnostics

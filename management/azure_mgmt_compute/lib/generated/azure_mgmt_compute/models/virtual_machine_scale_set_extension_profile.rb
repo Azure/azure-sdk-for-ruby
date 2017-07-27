@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a virtual machine scale set extension profile.
     #
     class VirtualMachineScaleSetExtensionProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<VirtualMachineScaleSetExtension>] The virtual machine
       # scale set child extension resources.
       attr_accessor :extensions

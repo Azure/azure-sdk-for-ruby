@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a virtual machine scale set sku.
     #
     class Sku
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The sku name.
       attr_accessor :name
 

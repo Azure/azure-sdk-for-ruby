@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Profile for Linux VMs in the container service cluster.
     #
     class ContainerServiceLinuxProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The administrator username to use for Linux VMs.
       attr_accessor :admin_username
 

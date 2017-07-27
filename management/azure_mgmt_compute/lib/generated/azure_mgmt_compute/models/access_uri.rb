@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # A disk access SAS uri.
     #
     class AccessUri
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] A SAS uri for accessing a disk.
       attr_accessor :access_sas
 

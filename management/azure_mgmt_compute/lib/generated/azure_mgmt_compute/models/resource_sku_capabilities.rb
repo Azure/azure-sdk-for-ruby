@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes The SKU capabilites object.
     #
     class ResourceSkuCapabilities
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] An invariant to describe the feature.
       attr_accessor :name
 

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the properties of a run command parameter.
     #
     class RunCommandParameterDefinition
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The run command parameter name.
       attr_accessor :name
 

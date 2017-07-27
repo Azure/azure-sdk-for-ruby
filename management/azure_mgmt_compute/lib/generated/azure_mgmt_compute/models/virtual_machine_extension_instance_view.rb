@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The instance view of a virtual machine extension.
     #
     class VirtualMachineExtensionInstanceView
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The virtual machine extension name.
       attr_accessor :name
 

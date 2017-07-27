@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Specifies a list of virtual machine instance IDs from the VM scale set.
     #
     class VirtualMachineScaleSetVMInstanceRequiredIDs
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<String>] The virtual machine scale set instance ids.
       attr_accessor :instance_ids
 

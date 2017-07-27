@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # status summary.
     #
     class VirtualMachineStatusCodeCount
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The instance view status code.
       attr_accessor :code
 

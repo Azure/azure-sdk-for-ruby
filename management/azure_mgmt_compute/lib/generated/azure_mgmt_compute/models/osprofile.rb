@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes an OS profile.
     #
     class OSProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Specifies the host OS name of the virtual machine.
       attr_accessor :computer_name
 

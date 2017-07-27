@@ -6,32 +6,31 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Contains the os disk image information.
+    # Model object.
     #
-    class OSDiskImage
-      # @return [OperatingSystemTypes] The operating system of the osDiskImage.
-      # Possible values include: 'Windows', 'Linux'
-      attr_accessor :operating_system
+    #
+    class SubResource
+      # @return [String] Resource Id
+      attr_accessor :id
 
 
       #
-      # Mapper for OSDiskImage class as Ruby Hash.
+      # Mapper for SubResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'OSDiskImage',
+          serialized_name: 'SubResource',
           type: {
             name: 'Composite',
-            class_name: 'OSDiskImage',
+            class_name: 'SubResource',
             model_properties: {
-              operating_system: {
-                required: true,
-                serialized_name: 'operatingSystem',
+              id: {
+                required: false,
+                serialized_name: 'id',
                 type: {
-                  name: 'Enum',
-                  module: 'OperatingSystemTypes'
+                  name: 'String'
                 }
               }
             }

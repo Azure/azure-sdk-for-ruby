@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # through MarketPlace.
     #
     class PurchasePlan
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The publisher ID.
       attr_accessor :publisher
 

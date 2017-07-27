@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Api error base.
     #
     class ApiErrorBase
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The error code.
       attr_accessor :code
 

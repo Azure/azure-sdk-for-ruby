@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine Scale Set Extension.
     #
-    class VirtualMachineScaleSetExtension < MsRestAzure::SubResourceReadOnly
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualMachineScaleSetExtension < SubResourceReadOnly
       # @return [String] The name of the extension.
       attr_accessor :name
 

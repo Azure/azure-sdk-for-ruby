@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a network profile.
     #
     class NetworkProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<NetworkInterfaceReference>] Specifies the list of
       # resource IDs for the network interfaces associated with the virtual
       # machine.

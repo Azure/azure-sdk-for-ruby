@@ -6,41 +6,57 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Virtual machine image resource information.
+    # The Resource model definition.
     #
-    class VirtualMachineImageResource < SubResource
-      # @return [String] The name of the resource.
+    class Resource
+      # @return [String] Resource Id
+      attr_accessor :id
+
+      # @return [String] Resource name
       attr_accessor :name
 
-      # @return [String] The supported Azure location of the resource.
+      # @return [String] Resource type
+      attr_accessor :type
+
+      # @return [String] Resource location
       attr_accessor :location
 
-      # @return [Hash{String => String}] The tags attached to the resource.
+      # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
 
       #
-      # Mapper for VirtualMachineImageResource class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualMachineImageResource',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'VirtualMachineImageResource',
+            class_name: 'Resource',
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

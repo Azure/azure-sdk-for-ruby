@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The List Virtual Machine operation response.
     #
     class VirtualMachineSizeListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<VirtualMachineSize>] The list of virtual machine sizes.
       attr_accessor :value
 

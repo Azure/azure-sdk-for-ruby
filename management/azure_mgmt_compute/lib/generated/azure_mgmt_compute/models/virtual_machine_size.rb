@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the properties of a VM size.
     #
     class VirtualMachineSize
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the virtual machine size.
       attr_accessor :name
 

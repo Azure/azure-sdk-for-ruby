@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Properties to configure a custom container service cluster.
     #
     class ContainerServiceCustomProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the custom orchestrator to use.
       attr_accessor :orchestrator
 

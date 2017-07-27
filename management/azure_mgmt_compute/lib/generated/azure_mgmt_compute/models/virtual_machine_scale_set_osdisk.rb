@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a virtual machine scale set operating system disk.
     #
     class VirtualMachineScaleSetOSDisk
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The disk name.
       attr_accessor :name
 
