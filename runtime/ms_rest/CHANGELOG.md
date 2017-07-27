@@ -1,3 +1,6 @@
+##2017.07.27 ms_rest version 0.7.1
+* [Bug Fix] Modified to_json logic in JSONable module to handle 'mapper' & 'object' options.[PR #860](https://github.com/Azure/azure-sdk-for-ruby/pull/860)
+
 ##2017.06.30 ms_rest version 0.7.0
 * [Breaking Change] Refactored serialization & deserialization logic to remove client from the process.[Issue #610](https://github.com/Azure/azure-sdk-for-ruby/issues/610) [PR #799](https://github.com/Azure/azure-sdk-for-ruby/pull/799)
 
