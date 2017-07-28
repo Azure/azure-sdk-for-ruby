@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Server communication link.
     #
     class ServerCommunicationLink < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The state.
       attr_accessor :state
 

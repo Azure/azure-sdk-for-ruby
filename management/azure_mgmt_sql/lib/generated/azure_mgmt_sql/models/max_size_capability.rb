@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The maximum size limits for a database.
     #
     class MaxSizeCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The maximum size of the database (see 'unit' for the
       # units).
       attr_accessor :limit

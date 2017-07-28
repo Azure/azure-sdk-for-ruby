@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents a recommented elastic pool.
     #
     class RecommendedElasticPool < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ElasticPoolEdition] The edition of the recommended elastic
       # pool. The ElasticPoolEdition enumeration contains all the valid
       # editions. Possible values include: 'Basic', 'Standard', 'Premium'

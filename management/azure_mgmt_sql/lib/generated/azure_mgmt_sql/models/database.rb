@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents a database.
     #
     class Database < TrackedResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Kind of database.  This is metadata used for the Azure
       # portal experience.
       attr_accessor :kind

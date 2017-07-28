@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A virtual network rule.
     #
     class VirtualNetworkRule < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The resource ID of the virtual network subnet
       attr_accessor :virtual_network_subnet_id
 

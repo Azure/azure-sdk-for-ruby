@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a list recommended elastic pool request.
     #
     class RecommendedElasticPoolListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<RecommendedElasticPool>] The list of recommended elastic
       # pools hosted in the server.
       attr_accessor :value

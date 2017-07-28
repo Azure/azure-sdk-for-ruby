@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Contains information about a database Threat Detection policy.
     #
     class DatabaseSecurityAlertPolicy < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The geo-location where the resource lives
       attr_accessor :location
 

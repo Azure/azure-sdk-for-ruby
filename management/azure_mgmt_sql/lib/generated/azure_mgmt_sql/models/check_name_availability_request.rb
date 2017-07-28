@@ -10,10 +10,6 @@ module Azure::ARM::SQL
     # available.
     #
     class CheckNameAvailabilityRequest
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name whose availability is to be checked.
       attr_accessor :name
 
