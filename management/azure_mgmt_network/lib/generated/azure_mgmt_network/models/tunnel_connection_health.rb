@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # VirtualNetworkGatewayConnection properties
     #
     class TunnelConnectionHealth
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Tunnel name.
       attr_accessor :tunnel
 

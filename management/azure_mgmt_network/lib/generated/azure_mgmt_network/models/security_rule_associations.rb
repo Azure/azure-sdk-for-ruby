@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # All security rules associated with the network interface.
     #
     class SecurityRuleAssociations
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [NetworkInterfaceAssociation]
       attr_accessor :network_interface_association
 

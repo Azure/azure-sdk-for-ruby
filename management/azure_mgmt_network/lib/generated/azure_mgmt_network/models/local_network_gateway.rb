@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # A common class for general resource information
     #
-    class LocalNetworkGateway < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class LocalNetworkGateway < Resource
       # @return [AddressSpace] Local network site address space.
       attr_accessor :local_network_address_space
 

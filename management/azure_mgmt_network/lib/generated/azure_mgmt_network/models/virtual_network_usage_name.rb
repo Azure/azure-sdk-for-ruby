@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Usage strings container.
     #
     class VirtualNetworkUsageName
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Localized subnet size and usage string.
       attr_accessor :localized_value
 

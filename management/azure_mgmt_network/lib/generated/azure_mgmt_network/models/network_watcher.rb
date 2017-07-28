@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # Network watcher in a resource group.
     #
-    class NetworkWatcher < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class NetworkWatcher < Resource
       # @return [String] A unique read-only string that changes whenever the
       # resource is updated.
       attr_accessor :etag

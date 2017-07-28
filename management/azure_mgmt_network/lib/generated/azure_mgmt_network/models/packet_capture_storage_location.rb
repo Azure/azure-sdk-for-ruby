@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Describes the storage location for a packet capture session.
     #
     class PacketCaptureStorageLocation
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The ID of the storage account to save the packet
       # capture session. Required if no local file path is provided.
       attr_accessor :storage_id

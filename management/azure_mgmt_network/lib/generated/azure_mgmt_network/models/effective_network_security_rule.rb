@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Effective network security rules.
     #
     class EffectiveNetworkSecurityRule
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the security rule specified by the user
       # (if created by the user).
       attr_accessor :name

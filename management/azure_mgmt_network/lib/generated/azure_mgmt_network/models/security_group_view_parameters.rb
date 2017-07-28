@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the VM to check security groups for.
     #
     class SecurityGroupViewParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] ID of the target VM.
       attr_accessor :target_resource_id
 

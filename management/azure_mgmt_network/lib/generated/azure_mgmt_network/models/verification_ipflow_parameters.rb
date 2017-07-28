@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the IP flow to be verified.
     #
     class VerificationIPFlowParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The ID of the target resource to perform next-hop on.
       attr_accessor :target_resource_id
 

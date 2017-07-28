@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that determine how the connectivity check will be performed.
     #
     class ConnectivityParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ConnectivitySource]
       attr_accessor :source
 

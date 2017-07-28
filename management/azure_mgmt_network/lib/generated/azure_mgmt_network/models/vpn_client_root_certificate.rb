@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # VPN client root certificate of virtual network gateway
     #
-    class VpnClientRootCertificate < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VpnClientRootCertificate < SubResource
       # @return [String] The certificate public data.
       attr_accessor :public_cert_data
 

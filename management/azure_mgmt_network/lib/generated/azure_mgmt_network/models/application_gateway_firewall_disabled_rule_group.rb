@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Allows to disable rules within a rule group or an entire rule group.
     #
     class ApplicationGatewayFirewallDisabledRuleGroup
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the rule group that will be disabled.
       attr_accessor :rule_group_name
 

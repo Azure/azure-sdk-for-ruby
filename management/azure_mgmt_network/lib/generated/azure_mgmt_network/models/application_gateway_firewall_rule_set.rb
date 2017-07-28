@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # A web application firewall rule set.
     #
-    class ApplicationGatewayFirewallRuleSet < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class ApplicationGatewayFirewallRuleSet < Resource
       # @return [String] The provisioning state of the web application firewall
       # rule set.
       attr_accessor :provisioning_state

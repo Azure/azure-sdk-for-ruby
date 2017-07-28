@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The effective network security group association.
     #
     class EffectiveNetworkSecurityGroupAssociation
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [SubResource] The ID of the subnet if assigned.
       attr_accessor :subnet
 

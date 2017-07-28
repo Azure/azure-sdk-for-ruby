@@ -11,10 +11,6 @@ module Azure::ARM::Network
     # configuration.
     #
     class ApplicationGatewayConnectionDraining
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Boolean] Whether connection draining is enabled or not.
       attr_accessor :enabled
 

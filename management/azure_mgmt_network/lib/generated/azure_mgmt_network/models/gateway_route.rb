@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Gateway routing details
     #
     class GatewayRoute
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The gateway's local address
       attr_accessor :local_address
 
