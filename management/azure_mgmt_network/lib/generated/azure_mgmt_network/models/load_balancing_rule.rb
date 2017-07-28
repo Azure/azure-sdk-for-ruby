@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # A loag balancing rule for a load balancer.
+    # A load balancing rule for a load balancer.
     #
     class LoadBalancingRule < MsRestAzure::SubResource
 
