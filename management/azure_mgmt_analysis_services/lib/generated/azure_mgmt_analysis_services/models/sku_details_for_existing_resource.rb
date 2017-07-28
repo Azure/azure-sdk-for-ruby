@@ -9,10 +9,6 @@ module Azure::ARM::AnalysisServices
     # An object that represents SKU details for existing resources
     #
     class SkuDetailsForExistingResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ResourceSku] The SKU in SKU details for existing resources.
       attr_accessor :sku
 

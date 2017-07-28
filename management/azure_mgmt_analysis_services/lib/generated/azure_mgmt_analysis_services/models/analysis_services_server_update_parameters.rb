@@ -9,10 +9,6 @@ module Azure::ARM::AnalysisServices
     # Provision request specification
     #
     class AnalysisServicesServerUpdateParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ResourceSku] The SKU of the Analysis Services resource.
       attr_accessor :sku
 
@@ -25,6 +21,16 @@ module Azure::ARM::AnalysisServices
 
       # @return [String] The container URI of backup blob.
       attr_accessor :backup_blob_container_uri
+
+      # @return [ConnectionMode] How the read-write server's participation in
+      # the query pool is controlled.<br/>It can have the following values:
+      # <ul><li>readOnly - indicates that the read-write server is intended not
+      # to participate in query operations</li><li>all - indicates that the
+      # read-write server can participate in query
+      # operations</li></ul>Specifying readOnly when capacity is 1 results in
+      # error. Possible values include: 'all', 'readOnly'. Default value: 'all'
+      # .
+      attr_accessor :default_connection_mode
 
 
       #
@@ -74,6 +80,15 @@ module Azure::ARM::AnalysisServices
                 serialized_name: 'properties.backupBlobContainerUri',
                 type: {
                   name: 'String'
+                }
+              },
+              default_connection_mode: {
+                required: false,
+                serialized_name: 'properties.defaultConnectionMode',
+                default_value: 'all',
+                type: {
+                  name: 'Enum',
+                  module: 'ConnectionMode'
                 }
               }
             }
