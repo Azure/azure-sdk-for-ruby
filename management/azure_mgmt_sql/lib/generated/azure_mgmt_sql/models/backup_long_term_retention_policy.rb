@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A backup long term retention policy
     #
     class BackupLongTermRetentionPolicy < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The geo-location where the resource lives
       attr_accessor :location
 

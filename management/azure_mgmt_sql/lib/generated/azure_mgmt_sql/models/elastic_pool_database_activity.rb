@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the activity on an elastic pool.
     #
     class ElasticPoolDatabaseActivity < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The geo-location where the resource lives
       attr_accessor :location
 

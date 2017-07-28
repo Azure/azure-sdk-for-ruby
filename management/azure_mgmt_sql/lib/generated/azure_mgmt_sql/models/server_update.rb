@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # An update request for an Azure SQL Database server.
     #
     class ServerUpdate
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Administrator username for the server. Once created it
       # cannot be changed.
       attr_accessor :administrator_login

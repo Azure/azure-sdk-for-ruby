@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents a database data masking rule.
     #
     class DataMaskingRule < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The rule Id.
       attr_accessor :data_masking_rule_id
 

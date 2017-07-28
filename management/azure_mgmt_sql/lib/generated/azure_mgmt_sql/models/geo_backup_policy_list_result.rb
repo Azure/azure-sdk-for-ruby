@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list geo backup policies request.
     #
     class GeoBackupPolicyListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<GeoBackupPolicy>] The list of geo backup policies.
       attr_accessor :value
 

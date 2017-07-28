@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Read-write endpoint of the failover group instance.
     #
     class FailoverGroupReadWriteEndpoint
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ReadWriteEndpointFailoverPolicy] Failover policy of the
       # read-write endpoint for the failover group. Possible values include:
       # 'Manual', 'Automatic'

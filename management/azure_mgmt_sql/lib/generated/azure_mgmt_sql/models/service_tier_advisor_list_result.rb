@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents the response to a list service tier advisor request.
     #
     class ServiceTierAdvisorListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ServiceTierAdvisor>] The list of service tier advisors
       # for specified database.
       attr_accessor :value
