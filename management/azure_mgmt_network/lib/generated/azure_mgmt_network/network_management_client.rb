@@ -52,6 +52,9 @@ module Azure::ARM::Network
     # @return [LoadBalancers] load_balancers
     attr_reader :load_balancers
 
+    # @return [InboundNatRules] inbound_nat_rules
+    attr_reader :inbound_nat_rules
+
     # @return [NetworkInterfaces] network_interfaces
     attr_reader :network_interfaces
 
@@ -60,6 +63,9 @@ module Azure::ARM::Network
 
     # @return [SecurityRules] security_rules
     attr_reader :security_rules
+
+    # @return [DefaultSecurityRules] default_security_rules
+    attr_reader :default_security_rules
 
     # @return [NetworkWatchers] network_watchers
     attr_reader :network_watchers
@@ -130,9 +136,11 @@ module Azure::ARM::Network
       @express_route_circuits = ExpressRouteCircuits.new(self)
       @express_route_service_providers = ExpressRouteServiceProviders.new(self)
       @load_balancers = LoadBalancers.new(self)
+      @inbound_nat_rules = InboundNatRules.new(self)
       @network_interfaces = NetworkInterfaces.new(self)
       @network_security_groups = NetworkSecurityGroups.new(self)
       @security_rules = SecurityRules.new(self)
+      @default_security_rules = DefaultSecurityRules.new(self)
       @network_watchers = NetworkWatchers.new(self)
       @packet_captures = PacketCaptures.new(self)
       @available_private_access_services = AvailablePrivateAccessServices.new(self)
