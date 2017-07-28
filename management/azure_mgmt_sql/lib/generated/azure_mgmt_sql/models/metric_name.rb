@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A database metric name.
     #
     class MetricName
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the database metric.
       attr_accessor :value
 

@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Partner server information for the failover group.
     #
     class PartnerInfo
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource identifier of the partner server.
       attr_accessor :id
 
@@ -37,7 +33,7 @@ module Azure::ARM::SQL
             class_name: 'PartnerInfo',
             model_properties: {
               id: {
-                required: false,
+                required: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

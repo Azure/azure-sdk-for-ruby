@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The impact of an operation, both in absolute and relative terms.
     #
     class OperationImpact
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the impact dimension.
       attr_accessor :name
 

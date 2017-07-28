@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A server secure connection policy.
     #
     class ServerConnectionPolicy < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Metadata used for the Azure portal experience.
       attr_accessor :kind
 

@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Azure Active Directory identity configuration for a resource.
     #
     class ResourceIdentity
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return The Azure Active Directory principal id.
       attr_accessor :principal_id
 

@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # A failover group.
     #
     class FailoverGroup < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource location.
       attr_accessor :location
 
@@ -102,7 +98,7 @@ module Azure::ARM::SQL
                 }
               },
               read_write_endpoint: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.readWriteEndpoint',
                 type: {
                   name: 'Composite',
@@ -134,7 +130,7 @@ module Azure::ARM::SQL
                 }
               },
               partner_servers: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.partnerServers',
                 type: {
                   name: 'Sequence',

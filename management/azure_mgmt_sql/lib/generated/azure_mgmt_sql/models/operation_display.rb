@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Display metadata associated with the operation.
     #
     class OperationDisplay
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft SQL Database.
       attr_accessor :provider
 

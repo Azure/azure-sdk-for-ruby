@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The response to a list restorable dropped databases request
     #
     class RestorableDroppedDatabaseListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<RestorableDroppedDatabase>] A list of restorable dropped
       # databases
       attr_accessor :value

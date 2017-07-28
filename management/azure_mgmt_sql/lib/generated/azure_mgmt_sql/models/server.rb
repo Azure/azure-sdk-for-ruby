@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # An Azure SQL Database server.
     #
     class Server < TrackedResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ResourceIdentity] The Azure Active Directory identity of the
       # server.
       attr_accessor :identity

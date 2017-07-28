@@ -8,11 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a Service Tier Advisor.
     #
-    class ServiceTierAdvisor < SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class ServiceTierAdvisor < ProxyResource
       # @return [DateTime] The observation period start (ISO8601 format).
       attr_accessor :observation_period_start
 
@@ -98,6 +94,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ServiceTierAdvisor',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -106,10 +110,10 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # The server capabilities.
     #
     class ServerVersionCapability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The server version name.
       attr_accessor :name
 

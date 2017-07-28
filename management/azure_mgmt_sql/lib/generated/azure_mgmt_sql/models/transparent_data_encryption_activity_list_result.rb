@@ -10,10 +10,6 @@ module Azure::ARM::SQL
     # activity request.
     #
     class TransparentDataEncryptionActivityListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<TransparentDataEncryptionActivity>] The list of database
       # transparent data encryption activities.
       attr_accessor :value

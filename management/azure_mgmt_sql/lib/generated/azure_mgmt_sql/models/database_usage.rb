@@ -8,11 +8,10 @@ module Azure::ARM::SQL
     #
     # The database usages.
     #
-    class DatabaseUsage < SubResource
+    class DatabaseUsage
+      # @return [String] The name of the usage metric.
+      attr_accessor :name
 
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the resource.
       attr_accessor :resource_name
 
@@ -49,14 +48,6 @@ module Azure::ARM::SQL
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }

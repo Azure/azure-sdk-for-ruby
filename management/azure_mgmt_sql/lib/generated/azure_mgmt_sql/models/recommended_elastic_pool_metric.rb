@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Represents recommended elastic pool metric.
     #
     class RecommendedElasticPoolMetric
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [DateTime] The time of metric (ISO8601 format).
       attr_accessor :date_time
 

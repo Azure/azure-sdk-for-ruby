@@ -9,10 +9,6 @@ module Azure::ARM::SQL
     # Response for Import/Export Get operation.
     #
     class ImportExportResponse < ProxyResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The request type of the operation.
       attr_accessor :request_type
 
