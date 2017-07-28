@@ -6,15 +6,15 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for the ListVirtualNetworkGateways API service call.
+    # Response for ListBackendAddressPool API service call.
     #
-    class VirtualNetworkGatewayListResult
+    class LoadBalancerBackendAddressPoolListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<VirtualNetworkGateway>] Gets a list of
-      # VirtualNetworkGateway resources that exists in a resource group.
+      # @return [Array<BackendAddressPool>] A list of backend address pools in
+      # a load balancer.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.
@@ -26,7 +26,7 @@ module Azure::ARM::Network
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<VirtualNetworkGateway>] operation results.
+      # @return [Array<BackendAddressPool>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +41,8 @@ module Azure::ARM::Network
       #
       # Gets the next page of results.
       #
-      # @return [VirtualNetworkGatewayListResult] with next page content.
+      # @return [LoadBalancerBackendAddressPoolListResult] with next page
+      # content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,16 +54,16 @@ module Azure::ARM::Network
       end
 
       #
-      # Mapper for VirtualNetworkGatewayListResult class as Ruby Hash.
+      # Mapper for LoadBalancerBackendAddressPoolListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualNetworkGatewayListResult',
+          serialized_name: 'LoadBalancerBackendAddressPoolListResult',
           type: {
             name: 'Composite',
-            class_name: 'VirtualNetworkGatewayListResult',
+            class_name: 'LoadBalancerBackendAddressPoolListResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,10 +72,10 @@ module Azure::ARM::Network
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'VirtualNetworkGatewayElementType',
+                      serialized_name: 'BackendAddressPoolElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'VirtualNetworkGateway'
+                        class_name: 'BackendAddressPool'
                       }
                   }
                 }

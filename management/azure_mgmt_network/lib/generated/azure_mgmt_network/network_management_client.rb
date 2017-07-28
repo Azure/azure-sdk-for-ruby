@@ -52,14 +52,45 @@ module Azure::ARM::Network
     # @return [LoadBalancers] load_balancers
     attr_reader :load_balancers
 
+    # @return [LoadBalancerBackendAddressPools]
+    # load_balancer_backend_address_pools
+    attr_reader :load_balancer_backend_address_pools
+
+    # @return [LoadBalancerFrontendIPConfigurations]
+    # load_balancer_frontend_ipconfigurations
+    attr_reader :load_balancer_frontend_ipconfigurations
+
+    # @return [InboundNatRules] inbound_nat_rules
+    attr_reader :inbound_nat_rules
+
+    # @return [LoadBalancerLoadBalancingRules]
+    # load_balancer_load_balancing_rules
+    attr_reader :load_balancer_load_balancing_rules
+
+    # @return [LoadBalancerNetworkInterfaces] load_balancer_network_interfaces
+    attr_reader :load_balancer_network_interfaces
+
+    # @return [LoadBalancerProbes] load_balancer_probes
+    attr_reader :load_balancer_probes
+
     # @return [NetworkInterfaces] network_interfaces
     attr_reader :network_interfaces
+
+    # @return [NetworkInterfaceIPConfigurations]
+    # network_interface_ipconfigurations
+    attr_reader :network_interface_ipconfigurations
+
+    # @return [NetworkInterfaceLoadBalancers] network_interface_load_balancers
+    attr_reader :network_interface_load_balancers
 
     # @return [NetworkSecurityGroups] network_security_groups
     attr_reader :network_security_groups
 
     # @return [SecurityRules] security_rules
     attr_reader :security_rules
+
+    # @return [DefaultSecurityRules] default_security_rules
+    attr_reader :default_security_rules
 
     # @return [NetworkWatchers] network_watchers
     attr_reader :network_watchers
@@ -130,9 +161,18 @@ module Azure::ARM::Network
       @express_route_circuits = ExpressRouteCircuits.new(self)
       @express_route_service_providers = ExpressRouteServiceProviders.new(self)
       @load_balancers = LoadBalancers.new(self)
+      @load_balancer_backend_address_pools = LoadBalancerBackendAddressPools.new(self)
+      @load_balancer_frontend_ipconfigurations = LoadBalancerFrontendIPConfigurations.new(self)
+      @inbound_nat_rules = InboundNatRules.new(self)
+      @load_balancer_load_balancing_rules = LoadBalancerLoadBalancingRules.new(self)
+      @load_balancer_network_interfaces = LoadBalancerNetworkInterfaces.new(self)
+      @load_balancer_probes = LoadBalancerProbes.new(self)
       @network_interfaces = NetworkInterfaces.new(self)
+      @network_interface_ipconfigurations = NetworkInterfaceIPConfigurations.new(self)
+      @network_interface_load_balancers = NetworkInterfaceLoadBalancers.new(self)
       @network_security_groups = NetworkSecurityGroups.new(self)
       @security_rules = SecurityRules.new(self)
+      @default_security_rules = DefaultSecurityRules.new(self)
       @network_watchers = NetworkWatchers.new(self)
       @packet_captures = PacketCaptures.new(self)
       @available_private_access_services = AvailablePrivateAccessServices.new(self)
