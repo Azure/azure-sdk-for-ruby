@@ -9,11 +9,7 @@ module Azure::ARM::DataLakeAnalytics
     # A Data Lake Analytics account object, containing all information
     # associated with the named Data Lake Analytics account.
     #
-    class DataLakeAnalyticsAccount < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class DataLakeAnalyticsAccount < Resource
       # @return [DataLakeAnalyticsAccountStatus] the provisioning status of the
       # Data Lake Analytics account. Possible values include: 'Failed',
       # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',

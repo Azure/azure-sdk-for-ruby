@@ -10,10 +10,6 @@ module Azure::ARM::DataLakeAnalytics
     # properties.
     #
     class OptionalSubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 

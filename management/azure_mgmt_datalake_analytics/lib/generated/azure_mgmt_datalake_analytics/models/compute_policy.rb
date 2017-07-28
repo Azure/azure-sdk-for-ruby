@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeAnalytics
     # The parameters used to create a new compute policy.
     #
     class ComputePolicy
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the compute policy
       attr_accessor :name
 

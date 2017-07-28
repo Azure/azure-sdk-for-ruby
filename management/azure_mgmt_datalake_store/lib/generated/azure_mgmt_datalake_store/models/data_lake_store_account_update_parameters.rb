@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeStore
     # Data Lake Store account information to update
     #
     class DataLakeStoreAccountUpdateParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

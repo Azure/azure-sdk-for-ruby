@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeStore
     # Data Lake Store Trusted Identity Provider update parameters
     #
     class UpdateTrustedIdProviderParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The URL of this trusted identity provider
       attr_accessor :id_provider
 

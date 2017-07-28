@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeStore
     # The encryption configuration used to update a user managed Key Vault key.
     #
     class UpdateEncryptionConfig
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [UpdateKeyVaultMetaInfo] The updated Key Vault key to use in
       # user managed key rotation.
       attr_accessor :key_vault_meta_info

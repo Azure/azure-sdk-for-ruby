@@ -10,10 +10,6 @@ module Azure::ARM::DataLakeAnalytics
     # account.
     #
     class DataLakeAnalyticsAccountUpdateParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

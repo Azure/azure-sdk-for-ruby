@@ -8,11 +8,7 @@ module Azure::ARM::DataLakeStore
     #
     # Data Lake Store account information
     #
-    class DataLakeStoreAccount < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class DataLakeStoreAccount < Resource
       # @return [EncryptionIdentity] The Key Vault encryption identity, if any.
       attr_accessor :identity
 

@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeAnalytics
     # Azure Storage blob container information.
     #
     class StorageContainer
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] the unique identifier of the blob container.
       attr_accessor :id
 

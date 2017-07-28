@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeAnalytics
     # Additional Data Lake Store parameters.
     #
     class AddDataLakeStoreParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] the optional suffix for the Data Lake Store account.
       attr_accessor :suffix
 

@@ -8,7 +8,6 @@ module Azure::ARM::DataLakeStore
   # Creates an Azure Data Lake Store account management client.
   #
   class Account
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the Account class.
@@ -40,6 +39,8 @@ module Azure::ARM::DataLakeStore
     end
 
     #
+    # Creates the specified Data Lake Store account.
+    #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
     # @param name [String] The name of the Data Lake Store account to create.
@@ -48,25 +49,90 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def create_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
+      create_async(resource_group_name, name, parameters, custom_headers).value!
+    end
+
+    #
+    # Creates the specified Data Lake Store account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group that
+    # contains the Data Lake Store account.
+    # @param name [String] The name of the Data Lake Store account to create.
+    # @param parameters [DataLakeStoreAccount] Parameters supplied to create the
+    # Data Lake Store account.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def create_async(resource_group_name, name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_create_async(resource_group_name, name, parameters, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -88,6 +154,8 @@ module Azure::ARM::DataLakeStore
     end
 
     #
+    # Updates the specified Data Lake Store account information.
+    #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
     # @param name [String] The name of the Data Lake Store account to update.
@@ -96,25 +164,90 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
+      update_async(resource_group_name, name, parameters, custom_headers).value!
+    end
+
+    #
+    # Updates the specified Data Lake Store account information.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group that
+    # contains the Data Lake Store account.
+    # @param name [String] The name of the Data Lake Store account to update.
+    # @param parameters [DataLakeStoreAccountUpdateParameters] Parameters supplied
+    # to update the Data Lake Store account.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def update_async(resource_group_name, name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_update_async(resource_group_name, name, parameters, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccountUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -126,11 +259,14 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    #
     def delete(resource_group_name, name, custom_headers = nil)
       response = delete_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
+    #
+    # Deletes the specified Data Lake Store account.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
@@ -138,23 +274,58 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, name, custom_headers = nil)
+      delete_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Deletes the specified Data Lake Store account.
+    #
+    # @param resource_group_name [String] The name of the Azure resource group that
+    # contains the Data Lake Store account.
+    # @param name [String] The name of the Data Lake Store account to delete.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, name, custom_headers = nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, name, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -182,7 +353,7 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_with_http_info(resource_group_name, name, custom_headers = nil)
       get_async(resource_group_name, name, custom_headers).value!
@@ -207,10 +378,6 @@ module Azure::ARM::DataLakeStore
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
 
       request_url = @base_url || @client.base_url
@@ -230,10 +397,9 @@ module Azure::ARM::DataLakeStore
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -279,7 +445,7 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def enable_key_vault_with_http_info(resource_group_name, account_name, custom_headers = nil)
       enable_key_vault_async(resource_group_name, account_name, custom_headers).value!
@@ -306,10 +472,6 @@ module Azure::ARM::DataLakeStore
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/enableKeyVault'
 
       request_url = @base_url || @client.base_url
@@ -329,10 +491,9 @@ module Azure::ARM::DataLakeStore
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
       end
@@ -363,11 +524,11 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<DataLakeStoreAccountBasic>] operation results.
+    # @return [DataLakeStoreAccountListResult] operation results.
     #
     def list_by_resource_group(resource_group_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, filter, top, skip, select, orderby, count, custom_headers)
-      first_page.get_all_items
+      response = list_by_resource_group_async(resource_group_name, filter, top, skip, select, orderby, count, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -393,7 +554,7 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_by_resource_group_with_http_info(resource_group_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
       list_by_resource_group_async(resource_group_name, filter, top, skip, select, orderby, count, custom_headers).value!
@@ -431,10 +592,6 @@ module Azure::ARM::DataLakeStore
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts'
 
       request_url = @base_url || @client.base_url
@@ -454,10 +611,9 @@ module Azure::ARM::DataLakeStore
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -496,11 +652,11 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<DataLakeStoreAccountBasic>] operation results.
+    # @return [DataLakeStoreAccountListResult] operation results.
     #
     def list(filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      first_page = list_as_lazy(filter, top, skip, select, orderby, count, custom_headers)
-      first_page.get_all_items
+      response = list_async(filter, top, skip, select, orderby, count, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -524,7 +680,7 @@ module Azure::ARM::DataLakeStore
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_with_http_info(filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
       list_async(filter, top, skip, select, orderby, count, custom_headers).value!
@@ -559,10 +715,6 @@ module Azure::ARM::DataLakeStore
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts'
 
       request_url = @base_url || @client.base_url
@@ -582,10 +734,9 @@ module Azure::ARM::DataLakeStore
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -601,581 +752,6 @@ module Azure::ARM::DataLakeStore
       end
 
       promise.execute
-    end
-
-    #
-    # Creates the specified Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to create.
-    # @param parameters [DataLakeStoreAccount] Parameters supplied to create the
-    # Data Lake Store account.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataLakeStoreAccount] operation results.
-    #
-    def begin_create(resource_group_name, name, parameters, custom_headers = nil)
-      response = begin_create_async(resource_group_name, name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Creates the specified Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to create.
-    # @param parameters [DataLakeStoreAccount] Parameters supplied to create the
-    # Data Lake Store account.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_create_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      begin_create_async(resource_group_name, name, parameters, custom_headers).value!
-    end
-
-    #
-    # Creates the specified Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to create.
-    # @param parameters [DataLakeStoreAccount] Parameters supplied to create the
-    # Data Lake Store account.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_create_async(resource_group_name, name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Updates the specified Data Lake Store account information.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to update.
-    # @param parameters [DataLakeStoreAccountUpdateParameters] Parameters supplied
-    # to update the Data Lake Store account.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataLakeStoreAccount] operation results.
-    #
-    def begin_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = begin_update_async(resource_group_name, name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Updates the specified Data Lake Store account information.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to update.
-    # @param parameters [DataLakeStoreAccountUpdateParameters] Parameters supplied
-    # to update the Data Lake Store account.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      begin_update_async(resource_group_name, name, parameters, custom_headers).value!
-    end
-
-    #
-    # Updates the specified Data Lake Store account information.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to update.
-    # @param parameters [DataLakeStoreAccountUpdateParameters] Parameters supplied
-    # to update the Data Lake Store account.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_update_async(resource_group_name, name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccountUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:patch, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deletes the specified Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_delete(resource_group_name, name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the specified Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to delete.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_delete_with_http_info(resource_group_name, name, custom_headers = nil)
-      begin_delete_async(resource_group_name, name, custom_headers).value!
-    end
-
-    #
-    # Deletes the specified Data Lake Store account.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param name [String] The name of the Data Lake Store account to delete.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_delete_async(resource_group_name, name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204 || status_code == 202
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the Data Lake Store accounts within a specific resource group. The
-    # response includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataLakeStoreAccountListResult] operation results.
-    #
-    def list_by_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists the Data Lake Store accounts within a specific resource group. The
-    # response includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_by_resource_group_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Lists the Data Lake Store accounts within a specific resource group. The
-    # response includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccountListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the Data Lake Store accounts within the subscription. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataLakeStoreAccountListResult] operation results.
-    #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists the Data Lake Store accounts within the subscription. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Lists the Data Lake Store accounts within the subscription. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccountListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists the Data Lake Store accounts within a specific resource group. The
-    # response includes a link to the next page of results, if any.
-    #
-    # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account(s).
-    # @param filter [String] OData filter. Optional.
-    # @param top [Integer] The number of items to return. Optional.
-    # @param skip [Integer] The number of items to skip over before returning
-    # elements. Optional.
-    # @param select [String] OData Select statement. Limits the properties on each
-    # entry to just those requested, e.g.
-    # Categories?$select=CategoryName,Description. Optional.
-    # @param orderby [String] OrderBy clause. One or more comma-separated
-    # expressions with an optional "asc" (the default) or "desc" depending on the
-    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
-    # desc. Optional.
-    # @param count [Boolean] A Boolean value of true or false to request a count of
-    # the matching resources included with the resources in the response, e.g.
-    # Categories?$count=true. Optional.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataLakeStoreAccountListResult] which provide lazy access to pages
-    # of the response.
-    #
-    def list_by_resource_group_as_lazy(resource_group_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, filter, top, skip, select, orderby, count, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_by_resource_group_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # Lists the Data Lake Store accounts within the subscription. The response
-    # includes a link to the next page of results, if any.
-    #
-    # @param filter [String] OData filter. Optional.
-    # @param top [Integer] The number of items to return. Optional.
-    # @param skip [Integer] The number of items to skip over before returning
-    # elements. Optional.
-    # @param select [String] OData Select statement. Limits the properties on each
-    # entry to just those requested, e.g.
-    # Categories?$select=CategoryName,Description. Optional.
-    # @param orderby [String] OrderBy clause. One or more comma-separated
-    # expressions with an optional "asc" (the default) or "desc" depending on the
-    # order you'd like the values sorted, e.g. Categories?$orderby=CategoryName
-    # desc. Optional.
-    # @param count [Boolean] The Boolean value of true or false to request a count
-    # of the matching resources included with the resources in the response, e.g.
-    # Categories?$count=true. Optional.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DataLakeStoreAccountListResult] which provide lazy access to pages
-    # of the response.
-    #
-    def list_as_lazy(filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
-      response = list_async(filter, top, skip, select, orderby, count, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
     end
 
   end

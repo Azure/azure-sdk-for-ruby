@@ -9,10 +9,6 @@ module Azure::ARM::DataLakeStore
     # Data Lake Store error details information
     #
     class ErrorDetails
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] the HTTP status code or error code associated with
       # this error
       attr_accessor :code
