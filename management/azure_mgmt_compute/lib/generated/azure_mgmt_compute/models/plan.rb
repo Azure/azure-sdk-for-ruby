@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Plan for the resource.
     #
     class Plan
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The plan ID.
       attr_accessor :name
 

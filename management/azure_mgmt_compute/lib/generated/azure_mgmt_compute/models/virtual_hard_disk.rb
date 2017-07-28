@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the uri of a disk.
     #
     class VirtualHardDisk
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The virtual hard disk's URI. Must be a valid URI to a
       # virtual hard disk.
       attr_accessor :uri

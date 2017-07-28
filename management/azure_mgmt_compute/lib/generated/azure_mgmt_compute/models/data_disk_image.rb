@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Contains the data disk images information.
     #
     class DataDiskImage
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The LUN number for a data disk. This value is used to
       # identify data disk image inside the VMImage and therefore it must be
       # unique for each data disk.

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The disks and snapshots sku name. Can be Standard_LRS or Premium_LRS.
     #
     class DiskSku
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [StorageAccountTypes] The sku name. Possible values include:
       # 'Standard_LRS', 'Premium_LRS'
       attr_accessor :name

@@ -7,31 +7,16 @@ module Azure::ARM::Compute
   #
   # A service client - single point of access to the REST API.
   #
-  class ComputeManagementClient < MsRestAzure::AzureServiceClient
-    include MsRestAzure
-    include MsRestAzure::Serialization
+  class ComputeManagementClient < MsRest::ServiceClient
+    include MsRest::Serialization
 
     # @return [String] the base URI of the service.
     attr_accessor :base_url
-
-    # @return Credentials needed for the client to connect to Azure.
-    attr_reader :credentials
 
     # @return [String] Subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
-
-    # @return [String] Gets or sets the preferred language for the response.
-    attr_accessor :accept_language
-
-    # @return [Integer] Gets or sets the retry timeout in seconds for Long
-    # Running Operations. Default value is 30.
-    attr_accessor :long_running_operation_retry_timeout
-
-    # @return [Boolean] When set to true a unique x-ms-client-request-id value
-    # is generated and included in each request. Default is true.
-    attr_accessor :generate_client_request_id
 
     # @return [AvailabilitySets] availability_sets
     attr_reader :availability_sets
@@ -111,9 +96,6 @@ module Azure::ARM::Compute
       @snapshots = Snapshots.new(self)
       @virtual_machine_run_commands = VirtualMachineRunCommands.new(self)
       @container_services = ContainerServices.new(self)
-      @accept_language = 'en-US'
-      @long_running_operation_retry_timeout = 30
-      @generate_client_request_id = true
       add_telemetry
     end
 
@@ -143,7 +125,7 @@ module Azure::ARM::Compute
     # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
-    # @return [MsRestAzure::AzureOperationResponse] Operation response containing the request, response and status.
+    # @return [MsRest::HttpOperationResponse] Operation response containing the request, response and status.
     #
     def make_request_with_http_info(method, path, options = {})
       result = make_request_async(method, path, options).value!
@@ -165,7 +147,6 @@ module Azure::ARM::Compute
       request_url = options[:base_url] || @base_url
 
       request_headers = @request_headers
-      request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
       options.merge!({headers: request_headers.merge(options[:headers] || {})})
       options.merge!({credentials: @credentials}) unless @credentials.nil?
 

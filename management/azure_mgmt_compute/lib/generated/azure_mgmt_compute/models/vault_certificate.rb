@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # certificate should reside on the VM.
     #
     class VaultCertificate
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The URL referencing a secret in a Key Vault which
       # contains a properly formatted certificate.
       attr_accessor :certificate_url

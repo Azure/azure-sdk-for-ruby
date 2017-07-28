@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a diagnostics profile.
     #
     class DiagnosticsProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [BootDiagnostics] Boot Diagnostics is a debugging feature which
       # allows the user to view console output and/or a screenshot of the
       # virtual machine from the hypervisor.

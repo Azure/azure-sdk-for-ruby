@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Compute Client
   #
   class VirtualMachineSizes
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the VirtualMachineSizes class.
@@ -44,7 +43,7 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_with_http_info(location, custom_headers = nil)
       list_async(location, custom_headers).value!
@@ -67,10 +66,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes'
 
       request_url = @base_url || @client.base_url
@@ -90,10 +85,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

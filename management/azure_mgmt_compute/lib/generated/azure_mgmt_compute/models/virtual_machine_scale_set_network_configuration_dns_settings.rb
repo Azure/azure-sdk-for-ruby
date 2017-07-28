@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # settings.
     #
     class VirtualMachineScaleSetNetworkConfigurationDnsSettings
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<String>] List of DNS servers IP addresses
       attr_accessor :dns_servers
 

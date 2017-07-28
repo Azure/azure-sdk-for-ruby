@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # scale set.
     #
     class VirtualMachineScaleSetInstanceViewStatusesSummary
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<VirtualMachineStatusCodeCount>] The extensions
       # information.
       attr_accessor :statuses_summary

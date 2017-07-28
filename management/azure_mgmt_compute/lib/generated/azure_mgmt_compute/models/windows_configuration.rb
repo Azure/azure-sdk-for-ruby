@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes Windows Configuration of the OS Profile.
     #
     class WindowsConfiguration
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Boolean] Indicates whether the virtual machine agent should be
       # provisioned on the Virtual Machine. If not specified, then the default
       # behavior is to set it to true.

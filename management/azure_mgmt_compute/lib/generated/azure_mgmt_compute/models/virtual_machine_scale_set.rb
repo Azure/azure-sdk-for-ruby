@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine Scale Set.
     #
-    class VirtualMachineScaleSet < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualMachineScaleSet < Resource
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 

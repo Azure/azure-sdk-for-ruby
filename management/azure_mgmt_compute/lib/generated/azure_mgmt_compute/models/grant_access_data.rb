@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Data used for requesting a SAS.
     #
     class GrantAccessData
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [AccessLevel] Possible values include: 'None', 'Read'
       attr_accessor :access
 

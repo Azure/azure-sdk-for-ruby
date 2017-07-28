@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes scaling information of a SKU.
     #
     class ResourceSkuCapacity
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The minimum capacity.
       attr_accessor :minimum
 

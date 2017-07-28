@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Profile for Windows VMs in the container service cluster.
     #
     class ContainerServiceWindowsProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The administrator username to use for Windows VMs.
       attr_accessor :admin_username
 

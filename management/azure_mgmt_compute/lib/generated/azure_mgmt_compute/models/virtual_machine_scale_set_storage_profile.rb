@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a virtual machine scale set storage profile.
     #
     class VirtualMachineScaleSetStorageProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [ImageReference] The image reference.
       attr_accessor :image_reference
 

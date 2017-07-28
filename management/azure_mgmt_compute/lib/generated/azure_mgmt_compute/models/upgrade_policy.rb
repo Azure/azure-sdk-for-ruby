@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes an upgrade policy - automatic or manual.
     #
     class UpgradePolicy
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [UpgradeMode] The upgrade mode. Possible values include:
       # 'Automatic', 'Manual'
       attr_accessor :mode

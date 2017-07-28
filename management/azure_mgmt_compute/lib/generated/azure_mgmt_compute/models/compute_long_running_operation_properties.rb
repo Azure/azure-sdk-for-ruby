@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Compute-specific operation properties, including output
     #
     class ComputeLongRunningOperationProperties
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return Operation output data (raw JSON)
       attr_accessor :output
 

@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine.
     #
-    class VirtualMachine < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualMachine < Resource
       # @return [Plan] The purchase plan when deploying virtual machine from VM
       # Marketplace images.
       attr_accessor :plan

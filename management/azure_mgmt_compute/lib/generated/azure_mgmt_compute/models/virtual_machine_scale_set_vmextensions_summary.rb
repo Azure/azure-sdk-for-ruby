@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Extensions summary for virtual machines of a virtual machine scale set.
     #
     class VirtualMachineScaleSetVMExtensionsSummary
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The extension name.
       attr_accessor :name
 

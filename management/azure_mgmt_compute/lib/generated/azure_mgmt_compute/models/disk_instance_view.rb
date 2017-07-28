@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The instance view of the disk.
     #
     class DiskInstanceView
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The disk name.
       attr_accessor :name
 

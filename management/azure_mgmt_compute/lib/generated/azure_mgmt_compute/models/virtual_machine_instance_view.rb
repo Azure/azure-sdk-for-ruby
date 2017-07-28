@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The instance view of a virtual machine.
     #
     class VirtualMachineInstanceView
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] Specifies the update domain of the virtual machine.
       attr_accessor :platform_update_domain
 

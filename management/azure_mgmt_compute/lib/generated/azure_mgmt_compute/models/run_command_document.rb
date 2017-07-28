@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the properties of a Run Command.
     #
     class RunCommandDocument < RunCommandDocumentBase
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<String>] The script to be executed.
       attr_accessor :script
 

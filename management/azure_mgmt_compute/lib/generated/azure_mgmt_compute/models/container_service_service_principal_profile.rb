@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     # manipulating Azure APIs.
     #
     class ContainerServiceServicePrincipalProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The ID for the service principal.
       attr_accessor :client_id
 

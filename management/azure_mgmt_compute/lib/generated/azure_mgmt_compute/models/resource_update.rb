@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The Resource model definition.
     #
     class ResourceUpdate
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

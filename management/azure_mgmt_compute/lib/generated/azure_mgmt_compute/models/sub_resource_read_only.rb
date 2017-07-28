@@ -10,10 +10,6 @@ module Azure::ARM::Compute
     #
     #
     class SubResourceReadOnly
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 

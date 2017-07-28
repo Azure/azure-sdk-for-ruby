@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Contains information about SSH certificate public key data.
     #
     class ContainerServiceSshPublicKey
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Certificate public key used to authenticate with VMs
       # through SSH. The certificate must be in PEM format with or without
       # headers.

@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the recovery policy.
     #
     class RecoveryPolicy
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [RecoveryMode] The recovery mode. Possible values include:
       # 'None', 'OverProvision', 'Reprovision'
       attr_accessor :mode

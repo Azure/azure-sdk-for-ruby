@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Operation status response
     #
     class OperationStatusResponse
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Operation ID
       attr_accessor :name
 

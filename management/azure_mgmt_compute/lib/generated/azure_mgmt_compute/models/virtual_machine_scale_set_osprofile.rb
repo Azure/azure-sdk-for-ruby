@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes a virtual machine scale set OS profile.
     #
     class VirtualMachineScaleSetOSProfile
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The computer name prefix.
       attr_accessor :computer_name_prefix
 

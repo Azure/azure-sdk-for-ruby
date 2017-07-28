@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the parameters of a ScaleSet managed disk.
     #
     class VirtualMachineScaleSetManagedDiskParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [StorageAccountTypes] The Storage Account type. Possible values
       # include: 'Standard_LRS', 'Premium_LRS'
       attr_accessor :storage_account_type

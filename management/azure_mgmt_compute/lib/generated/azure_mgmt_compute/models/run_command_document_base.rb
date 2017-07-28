@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes the properties of a Run Command metadata.
     #
     class RunCommandDocumentBase
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The VM run command schema.
       attr_accessor :schema
 

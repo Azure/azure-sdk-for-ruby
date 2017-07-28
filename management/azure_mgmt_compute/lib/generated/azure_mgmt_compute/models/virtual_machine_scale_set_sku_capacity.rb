@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes scaling information of a sku.
     #
     class VirtualMachineScaleSetSkuCapacity
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] The minimum capacity.
       attr_accessor :minimum
 

@@ -8,7 +8,6 @@ module Azure::ARM::Compute
   # Compute Client
   #
   class VirtualMachineScaleSetVMs
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the VirtualMachineScaleSetVMs class.
@@ -39,31 +38,79 @@ module Azure::ARM::Compute
     end
 
     #
+    # Reimages (upgrade the operating system) a specific virtual machine in a VM
+    # scale set.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def reimage_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Reimages (upgrade the operating system) a specific virtual machine in a VM
+    # scale set.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param instance_id [String] The instance ID of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      api_version = '2017-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -84,31 +131,79 @@ module Azure::ARM::Compute
     end
 
     #
+    # Allows you to re-image all the disks ( including data disks ) in the a VM
+    # scale set instance. This operation is only supported for managed disks.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def reimage_all_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      reimage_all_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Allows you to re-image all the disks ( including data disks ) in the a VM
+    # scale set instance. This operation is only supported for managed disks.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param instance_id [String] The instance ID of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def reimage_all_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_reimage_all_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      api_version = '2017-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimageall'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -131,31 +226,83 @@ module Azure::ARM::Compute
     end
 
     #
+    # Deallocates a specific virtual machine in a VM scale set. Shuts down the
+    # virtual machine and releases the compute resources it uses. You are not
+    # billed for the compute resources of this virtual machine once it is
+    # deallocated.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def deallocate_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      deallocate_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Deallocates a specific virtual machine in a VM scale set. Shuts down the
+    # virtual machine and releases the compute resources it uses. You are not
+    # billed for the compute resources of this virtual machine once it is
+    # deallocated.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param instance_id [String] The instance ID of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def deallocate_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_deallocate_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      api_version = '2017-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/deallocate'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -175,31 +322,77 @@ module Azure::ARM::Compute
     end
 
     #
+    # Deletes a virtual machine from a VM scale set.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      delete_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Deletes a virtual machine from a VM scale set.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param instance_id [String] The instance ID of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      api_version = '2017-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -227,7 +420,7 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
       get_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
@@ -253,10 +446,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}'
 
       request_url = @base_url || @client.base_url
@@ -276,10 +465,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -322,7 +510,7 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_instance_view_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
       get_instance_view_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
@@ -348,10 +536,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/instanceView'
 
       request_url = @base_url || @client.base_url
@@ -371,10 +555,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -403,11 +586,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VirtualMachineScaleSetVM>] operation results.
+    # @return [VirtualMachineScaleSetVMListResult] operation results.
     #
     def list(resource_group_name, virtual_machine_scale_set_name, filter = nil, select = nil, expand = nil, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, virtual_machine_scale_set_name, filter, select, expand, custom_headers)
-      first_page.get_all_items
+      response = list_async(resource_group_name, virtual_machine_scale_set_name, filter, select, expand, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
@@ -421,7 +604,7 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_with_http_info(resource_group_name, virtual_machine_scale_set_name, filter = nil, select = nil, expand = nil, custom_headers = nil)
       list_async(resource_group_name, virtual_machine_scale_set_name, filter, select, expand, custom_headers).value!
@@ -448,10 +631,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines'
 
       request_url = @base_url || @client.base_url
@@ -471,10 +650,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -511,167 +689,36 @@ module Azure::ARM::Compute
     end
 
     #
+    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
+    # still attached and you are getting charged for the resources. Instead, use
+    # deallocate to release resources and avoid charges.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param instance_id [String] The instance ID of the virtual machine.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def power_off_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      power_off_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
+    # still attached and you are getting charged for the resources. Instead, use
+    # deallocate to release resources and avoid charges.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param instance_id [String] The instance ID of the virtual machine.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def power_off_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_power_off_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Restarts a virtual machine in a VM scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def restart(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Starts a virtual machine in a VM scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def start(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      # Send request
-      promise = begin_start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Reimages (upgrade the operating system) a specific virtual machine in a VM
-    # scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def begin_reimage(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Reimages (upgrade the operating system) a specific virtual machine in a VM
-    # scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_reimage_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-    end
-
-    #
-    # Reimages (upgrade the operating system) a specific virtual machine in a VM
-    # scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_reimage_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -680,408 +727,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Allows you to re-image all the disks ( including data disks ) in the a VM
-    # scale set instance. This operation is only supported for managed disks.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def begin_reimage_all(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_reimage_all_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Allows you to re-image all the disks ( including data disks ) in the a VM
-    # scale set instance. This operation is only supported for managed disks.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_reimage_all_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_reimage_all_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-    end
-
-    #
-    # Allows you to re-image all the disks ( including data disks ) in the a VM
-    # scale set instance. This operation is only supported for managed disks.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_reimage_all_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
-      api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimageall'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deallocates a specific virtual machine in a VM scale set. Shuts down the
-    # virtual machine and releases the compute resources it uses. You are not
-    # billed for the compute resources of this virtual machine once it is
-    # deallocated.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def begin_deallocate(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_deallocate_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Deallocates a specific virtual machine in a VM scale set. Shuts down the
-    # virtual machine and releases the compute resources it uses. You are not
-    # billed for the compute resources of this virtual machine once it is
-    # deallocated.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_deallocate_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_deallocate_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-    end
-
-    #
-    # Deallocates a specific virtual machine in a VM scale set. Shuts down the
-    # virtual machine and releases the compute resources it uses. You are not
-    # billed for the compute resources of this virtual machine once it is
-    # deallocated.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_deallocate_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
-      api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/deallocate'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deletes a virtual machine from a VM scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def begin_delete(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Deletes a virtual machine from a VM scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_delete_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_delete_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-    end
-
-    #
-    # Deletes a virtual machine from a VM scale set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_delete_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
-      api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::OperationStatusResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
-    # still attached and you are getting charged for the resources. Instead, use
-    # deallocate to release resources and avoid charges.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [OperationStatusResponse] operation results.
-    #
-    def begin_power_off(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_power_off_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
-    # still attached and you are getting charged for the resources. Instead, use
-    # deallocate to release resources and avoid charges.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_power_off_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_power_off_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
-    end
-
-    #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
-    # still attached and you are getting charged for the resources. Instead, use
-    # deallocate to release resources and avoid charges.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the VM scale set.
-    # @param instance_id [String] The instance ID of the virtual machine.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_power_off_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
-      api_version = '2017-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/poweroff'
 
       request_url = @base_url || @client.base_url
@@ -1101,10 +746,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1133,8 +777,8 @@ module Azure::ARM::Compute
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_restart(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    def restart(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      response = restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1147,10 +791,10 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_restart_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    def restart_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
     end
 
     #
@@ -1164,7 +808,7 @@ module Azure::ARM::Compute
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+    def restart_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -1173,10 +817,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/restart'
 
       request_url = @base_url || @client.base_url
@@ -1196,10 +836,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1228,8 +867,8 @@ module Azure::ARM::Compute
     #
     # @return [OperationStatusResponse] operation results.
     #
-    def begin_start(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      response = begin_start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    def start(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      response = start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1242,10 +881,10 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_start_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
-      begin_start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
+    def start_with_http_info(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+      start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers).value!
     end
 
     #
@@ -1259,7 +898,7 @@ module Azure::ARM::Compute
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
+    def start_async(resource_group_name, vm_scale_set_name, instance_id, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'instance_id is nil' if instance_id.nil?
@@ -1268,10 +907,6 @@ module Azure::ARM::Compute
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/start'
 
       request_url = @base_url || @client.base_url
@@ -1291,10 +926,9 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1310,118 +944,6 @@ module Azure::ARM::Compute
       end
 
       promise.execute
-    end
-
-    #
-    # Gets a list of all virtual machines in a VM scale sets.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualMachineScaleSetVMListResult] operation results.
-    #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets a list of all virtual machines in a VM scale sets.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Gets a list of all virtual machines in a VM scale sets.
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Models::VirtualMachineScaleSetVMListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets a list of all virtual machines in a VM scale sets.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_machine_scale_set_name [String] The name of the VM scale set.
-    # @param filter [String] The filter to apply to the operation.
-    # @param select [String] The list parameters.
-    # @param expand [String] The expand expression to apply to the operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualMachineScaleSetVMListResult] which provide lazy access to
-    # pages of the response.
-    #
-    def list_as_lazy(resource_group_name, virtual_machine_scale_set_name, filter = nil, select = nil, expand = nil, custom_headers = nil)
-      response = list_async(resource_group_name, virtual_machine_scale_set_name, filter, select, expand, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
     end
 
   end

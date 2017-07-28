@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # Describes metadata for retrieving price info.
     #
     class ResourceSkuCosts
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Used for querying price from commerce.
       attr_accessor :meter_id
 

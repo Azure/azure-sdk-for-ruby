@@ -8,11 +8,7 @@ module Azure::ARM::Compute
     #
     # Resource Id.
     #
-    class VirtualMachineCaptureResult < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualMachineCaptureResult < SubResource
       # @return Operation output data (raw JSON)
       attr_accessor :output
 

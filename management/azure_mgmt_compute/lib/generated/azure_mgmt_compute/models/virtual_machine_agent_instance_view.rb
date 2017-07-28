@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The instance view of the VM Agent running on the virtual machine.
     #
     class VirtualMachineAgentInstanceView
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The VM Agent full version.
       attr_accessor :vm_agent_version
 

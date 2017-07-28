@@ -9,10 +9,6 @@ module Azure::ARM::Compute
     # The instance view of a virtual machine extension handler.
     #
     class VirtualMachineExtensionHandlerInstanceView
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Full type of the extension handler which includes both
       # publisher and type.
       attr_accessor :type
