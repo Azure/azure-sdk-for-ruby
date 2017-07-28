@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Information on the connectivity status.
     #
     class ConnectivityInformation
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ConnectivityHop>] List of hops between the source and
       # the destination.
       attr_accessor :hops

@@ -8,7 +8,6 @@ module Azure::ARM::Network
   # Network Client
   #
   class NetworkWatchers
-    include MsRestAzure
 
     #
     # Creates and initializes a new instance of the NetworkWatchers class.
@@ -48,7 +47,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def create_or_update_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       create_or_update_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
@@ -75,10 +74,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -107,10 +102,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -161,7 +155,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_with_http_info(resource_group_name, network_watcher_name, custom_headers = nil)
       get_async(resource_group_name, network_watcher_name, custom_headers).value!
@@ -185,10 +179,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}'
 
       request_url = @base_url || @client.base_url
@@ -208,10 +198,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -237,34 +226,71 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    #
     def delete(resource_group_name, network_watcher_name, custom_headers = nil)
       response = delete_async(resource_group_name, network_watcher_name, custom_headers).value!
       nil
     end
 
     #
+    # Deletes the specified network watcher resource.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_watcher_name [String] The name of the network watcher.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, network_watcher_name, custom_headers = nil)
+      delete_async(resource_group_name, network_watcher_name, custom_headers).value!
+    end
+
+    #
+    # Deletes the specified network watcher resource.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_watcher_name [String] The name of the network watcher.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def delete_async(resource_group_name, network_watcher_name, custom_headers = nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, network_watcher_name, custom_headers)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
+      api_version = '2017-06-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
+
+      request_headers = {}
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'networkWatcherName' => network_watcher_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+
+        result
       end
 
-      promise
+      promise.execute
     end
 
     #
@@ -288,7 +314,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_with_http_info(resource_group_name, custom_headers = nil)
       list_async(resource_group_name, custom_headers).value!
@@ -310,10 +336,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers'
 
       request_url = @base_url || @client.base_url
@@ -333,10 +355,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -373,7 +394,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def list_all_with_http_info(custom_headers = nil)
       list_all_async(custom_headers).value!
@@ -393,10 +414,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers'
 
       request_url = @base_url || @client.base_url
@@ -416,10 +433,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -464,7 +480,7 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
     def get_topology_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       get_topology_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
@@ -491,10 +507,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -523,10 +535,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -563,6 +574,9 @@ module Azure::ARM::Network
     end
 
     #
+    # Verify IP flow from the specified VM to a location given the currently
+    # configured NSG rules.
+    #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_watcher_name [String] The name of the network watcher.
     # @param parameters [VerificationIPFlowParameters] Parameters that define the
@@ -570,496 +584,26 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
+    #
+    def verify_ipflow_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Verify IP flow from the specified VM to a location given the currently
+    # configured NSG rules.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_watcher_name [String] The name of the network watcher.
+    # @param parameters [VerificationIPFlowParameters] Parameters that define the
+    # IP flow to be verified.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::VerificationIPFlowResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Gets the next hop from the specified VM.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [NextHopParameters] Parameters that define the source and
-    # destination endpoint.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [NextHopResult] operation results.
-    #
-    def get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [NextHopParameters] Parameters that define the source and
-    # destination endpoint.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::NextHopResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Gets the configured and effective security group rules on the specified VM.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [SecurityGroupViewParameters] Parameters that define the VM
-    # to check security groups for.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [SecurityGroupViewResult] operation results.
-    #
-    def get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [SecurityGroupViewParameters] Parameters that define the VM
-    # to check security groups for.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::SecurityGroupViewResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Initiate troubleshooting on a specified resource
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [TroubleshootingParameters] Parameters that define the
-    # resource to troubleshoot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [TroubleshootingResult] operation results.
-    #
-    def get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [TroubleshootingParameters] Parameters that define the
-    # resource to troubleshoot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Get the last completed troubleshooting result on a specified resource
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [QueryTroubleshootingParameters] Parameters that define the
-    # resource to query the troubleshooting result.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [TroubleshootingResult] operation results.
-    #
-    def get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [QueryTroubleshootingParameters] Parameters that define the
-    # resource to query the troubleshooting result.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::TroubleshootingResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Configures flow log on a specified resource.
-    #
-    # @param resource_group_name [String] The name of the network watcher resource
-    # group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [FlowLogInformation] Parameters that define the
-    # configuration of flow log.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [FlowLogInformation] operation results.
-    #
-    def set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the network watcher resource
-    # group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [FlowLogInformation] Parameters that define the
-    # configuration of flow log.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Queries status of flow log on a specified resource.
-    #
-    # @param resource_group_name [String] The name of the network watcher resource
-    # group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [FlowLogInformation] operation results.
-    #
-    def get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the network watcher resource
-    # group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [FlowLogStatusParameters] Parameters that define a resource
-    # to query flow log status.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::FlowLogInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Verifies the possibility of establishing a direct TCP connection from a
-    # virtual machine to a given endpoint including another VM or an arbitrary
-    # remote server.
-    #
-    # @param resource_group_name [String] The name of the network watcher resource
-    # group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [ConnectivityParameters] Parameters that determine how the
-    # connectivity check will be performed.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ConnectivityInformation] operation results.
-    #
-    def check_connectivity(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the network watcher resource
-    # group.
-    # @param network_watcher_name [String] The name of the network watcher
-    # resource.
-    # @param parameters [ConnectivityParameters] Parameters that determine how the
-    # connectivity check will be performed.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::ConnectivityInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Deletes the specified network watcher resource.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_delete(resource_group_name, network_watcher_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, network_watcher_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the specified network watcher resource.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_delete_with_http_info(resource_group_name, network_watcher_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, network_watcher_name, custom_headers).value!
-    end
-
-    #
-    # Deletes the specified network watcher resource.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_delete_async(resource_group_name, network_watcher_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
-      api_version = '2017-06-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'networkWatcherName' => network_watcher_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 202 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Verify IP flow from the specified VM to a location given the currently
-    # configured NSG rules.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [VerificationIPFlowParameters] Parameters that define the
-    # IP flow to be verified.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VerificationIPFlowResult] operation results.
-    #
-    def begin_verify_ipflow(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Verify IP flow from the specified VM to a location given the currently
-    # configured NSG rules.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [VerificationIPFlowParameters] Parameters that define the
-    # IP flow to be verified.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_verify_ipflow_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
-    end
-
-    #
-    # Verify IP flow from the specified VM to a location given the currently
-    # configured NSG rules.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param network_watcher_name [String] The name of the network watcher.
-    # @param parameters [VerificationIPFlowParameters] Parameters that define the
-    # IP flow to be verified.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_verify_ipflow_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1068,10 +612,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1100,10 +640,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1143,8 +682,8 @@ module Azure::ARM::Network
     #
     # @return [NextHopResult] operation results.
     #
-    def begin_get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_next_hop(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1158,10 +697,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_get_next_hop_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_next_hop_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1176,7 +715,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def get_next_hop_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1185,10 +724,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1217,10 +752,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1260,8 +794,8 @@ module Azure::ARM::Network
     #
     # @return [SecurityGroupViewResult] operation results.
     #
-    def begin_get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_vmsecurity_rules(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1275,10 +809,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_get_vmsecurity_rules_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_vmsecurity_rules_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1293,7 +827,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def get_vmsecurity_rules_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1302,10 +836,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1334,10 +864,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1378,8 +907,8 @@ module Azure::ARM::Network
     #
     # @return [TroubleshootingResult] operation results.
     #
-    def begin_get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_troubleshooting(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1394,10 +923,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_get_troubleshooting_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_troubleshooting_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1413,7 +942,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def get_troubleshooting_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1422,10 +951,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1454,10 +979,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1498,8 +1022,8 @@ module Azure::ARM::Network
     #
     # @return [TroubleshootingResult] operation results.
     #
-    def begin_get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_troubleshooting_result(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1514,10 +1038,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_get_troubleshooting_result_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_troubleshooting_result_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1533,7 +1057,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def get_troubleshooting_result_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1542,10 +1066,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1574,10 +1094,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1619,8 +1138,8 @@ module Azure::ARM::Network
     #
     # @return [FlowLogInformation] operation results.
     #
-    def begin_set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def set_flow_log_configuration(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1636,10 +1155,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_set_flow_log_configuration_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def set_flow_log_configuration_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1656,7 +1175,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def set_flow_log_configuration_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1665,10 +1184,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1697,10 +1212,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1742,8 +1256,8 @@ module Azure::ARM::Network
     #
     # @return [FlowLogInformation] operation results.
     #
-    def begin_get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_flow_log_status(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1759,10 +1273,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_get_flow_log_status_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def get_flow_log_status_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1779,7 +1293,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def get_flow_log_status_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1788,10 +1302,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1820,10 +1330,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
@@ -1867,8 +1376,8 @@ module Azure::ARM::Network
     #
     # @return [ConnectivityInformation] operation results.
     #
-    def begin_check_connectivity(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      response = begin_check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def check_connectivity(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      response = check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1886,10 +1395,10 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    # @return [MsRest::HttpOperationResponse] HTTP response information.
     #
-    def begin_check_connectivity_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
-      begin_check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
+    def check_connectivity_with_http_info(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+      check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers).value!
     end
 
     #
@@ -1908,7 +1417,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
+    def check_connectivity_async(resource_group_name, network_watcher_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_watcher_name is nil' if network_watcher_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1917,10 +1426,6 @@ module Azure::ARM::Network
 
 
       request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
@@ -1949,10 +1454,9 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin

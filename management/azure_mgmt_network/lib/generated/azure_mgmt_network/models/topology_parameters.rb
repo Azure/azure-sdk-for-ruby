@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the representation of topology.
     #
     class TopologyParameters
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The name of the target resource group to perform
       # topology on.
       attr_accessor :target_resource_group_name

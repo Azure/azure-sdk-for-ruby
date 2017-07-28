@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # Peerings in a virtual network resource.
     #
-    class VirtualNetworkPeering < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class VirtualNetworkPeering < SubResource
       # @return [Boolean] Whether the VMs in the linked virtual network space
       # would be able to access all the VMs in local Virtual network space.
       attr_accessor :allow_virtual_network_access

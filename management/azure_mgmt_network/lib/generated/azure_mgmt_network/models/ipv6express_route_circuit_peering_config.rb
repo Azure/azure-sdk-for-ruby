@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Contains IPv6 peering config.
     #
     class Ipv6ExpressRouteCircuitPeeringConfig
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The primary address prefix.
       attr_accessor :primary_peer_address_prefix
 

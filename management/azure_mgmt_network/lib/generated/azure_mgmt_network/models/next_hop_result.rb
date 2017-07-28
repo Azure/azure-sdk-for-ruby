@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The information about next hop from the specified VM.
     #
     class NextHopResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [NextHopType] Next hop type. Possible values include:
       # 'Internet', 'VirtualAppliance', 'VirtualNetworkGateway', 'VnetLocal',
       # 'HyperNetGateway', 'None'

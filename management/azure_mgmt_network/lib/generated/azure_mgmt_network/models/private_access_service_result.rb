@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # Private access service.
     #
-    class PrivateAccessServiceResult < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class PrivateAccessServiceResult < SubResource
       # @return [String] Name of the private access value.
       attr_accessor :name
 

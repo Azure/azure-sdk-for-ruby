@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The private access service properties.
     #
     class PrivateAccessServicePropertiesFormat
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The type of the private access.
       attr_accessor :service
 

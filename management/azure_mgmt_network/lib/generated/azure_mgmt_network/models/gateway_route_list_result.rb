@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # List of virtual network gateway routes
     #
     class GatewayRouteListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<GatewayRoute>] List of gateway routes
       attr_accessor :value
 

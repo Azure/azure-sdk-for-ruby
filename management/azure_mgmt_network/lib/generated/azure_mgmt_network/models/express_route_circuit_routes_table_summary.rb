@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The routes table associated with the ExpressRouteCircuit.
     #
     class ExpressRouteCircuitRoutesTableSummary
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Neighbor
       attr_accessor :neighbor
 

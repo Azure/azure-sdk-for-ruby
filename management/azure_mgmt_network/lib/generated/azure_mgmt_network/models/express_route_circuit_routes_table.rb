@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # The routes table associated with the ExpressRouteCircuit
     #
     class ExpressRouteCircuitRoutesTable
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] network
       attr_accessor :network
 

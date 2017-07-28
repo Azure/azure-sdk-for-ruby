@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Parameters that define the create packet capture operation.
     #
     class PacketCapture
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The ID of the targeted resource, only VM is currently
       # supported.
       attr_accessor :target

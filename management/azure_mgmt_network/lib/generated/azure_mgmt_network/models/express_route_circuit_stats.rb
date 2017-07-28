@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Contains stats associated with the peering.
     #
     class ExpressRouteCircuitStats
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] Gets BytesIn of the peering.
       attr_accessor :primarybytes_in
 

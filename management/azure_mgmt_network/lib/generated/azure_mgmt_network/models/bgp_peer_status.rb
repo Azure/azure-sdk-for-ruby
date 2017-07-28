@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # BGP peer status details
     #
     class BgpPeerStatus
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The virtual network gateway's local address
       attr_accessor :local_address
 

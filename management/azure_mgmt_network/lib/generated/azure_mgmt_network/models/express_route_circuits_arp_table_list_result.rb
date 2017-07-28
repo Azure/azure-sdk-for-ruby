@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for ListArpTable associated with the Express Route Circuits API.
     #
     class ExpressRouteCircuitsArpTableListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuitArpTable>] Gets list of the ARP
       # table.
       attr_accessor :value

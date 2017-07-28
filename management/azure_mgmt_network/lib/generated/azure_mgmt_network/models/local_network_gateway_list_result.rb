@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Response for ListLocalNetworkGateways API service call.
     #
     class LocalNetworkGatewayListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<LocalNetworkGateway>] A list of local network gateways
       # that exists in a resource group.
       attr_accessor :value
@@ -20,37 +16,6 @@ module Azure::ARM::Network
       # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
-      # return [Proc] with next page method call.
-      attr_accessor :next_method
-
-      #
-      # Gets the rest of the items for the request, enabling auto-pagination.
-      #
-      # @return [Array<LocalNetworkGateway>] operation results.
-      #
-      def get_all_items
-        items = @value
-        page = self
-        while page.next_link != nil do
-          page = page.get_next_page
-          items.concat(page.value)
-        end
-        items
-      end
-
-      #
-      # Gets the next page of results.
-      #
-      # @return [LocalNetworkGatewayListResult] with next page content.
-      #
-      def get_next_page
-        response = @next_method.call(@next_link).value! unless @next_method.nil?
-        unless response.nil?
-          @next_link = response.body.next_link
-          @value = response.body.value
-          self
-        end
-      end
 
       #
       # Mapper for LocalNetworkGatewayListResult class as Ruby Hash.

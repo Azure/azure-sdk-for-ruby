@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Network interface and all its associated security rules.
     #
     class SecurityGroupNetworkInterface
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] ID of the network interface.
       attr_accessor :id
 

@@ -8,11 +8,7 @@ module Azure::ARM::Network
     #
     # Request routing rule of an application gateway.
     #
-    class ApplicationGatewayRequestRoutingRule < MsRestAzure::SubResource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class ApplicationGatewayRequestRoutingRule < SubResource
       # @return [ApplicationGatewayRequestRoutingRuleType] Rule type. Possible
       # values include: 'Basic', 'PathBasedRouting'
       attr_accessor :rule_type

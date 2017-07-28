@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # List of packet capture sessions.
     #
     class PacketCaptureListResult
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Array<PacketCaptureResult>] Information about packet capture
       # sessions.
       attr_accessor :value

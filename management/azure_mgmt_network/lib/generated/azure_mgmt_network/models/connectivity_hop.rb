@@ -9,10 +9,6 @@ module Azure::ARM::Network
     # Information about a hop between the source and the destination.
     #
     class ConnectivityHop
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The type of the hop.
       attr_accessor :type
 
