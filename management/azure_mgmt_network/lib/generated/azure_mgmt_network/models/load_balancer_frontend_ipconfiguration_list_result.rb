@@ -6,15 +6,15 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for the ListVirtualNetworkGateways API service call.
+    # Response for ListFrontendIPConfiguration API service call.
     #
-    class VirtualNetworkGatewayListResult
+    class LoadBalancerFrontendIPConfigurationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<VirtualNetworkGateway>] Gets a list of
-      # VirtualNetworkGateway resources that exists in a resource group.
+      # @return [Array<FrontendIPConfiguration>] A list of frontend IP
+      # configurations in a load balancer.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.
@@ -26,7 +26,7 @@ module Azure::ARM::Network
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<VirtualNetworkGateway>] operation results.
+      # @return [Array<FrontendIPConfiguration>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +41,8 @@ module Azure::ARM::Network
       #
       # Gets the next page of results.
       #
-      # @return [VirtualNetworkGatewayListResult] with next page content.
+      # @return [LoadBalancerFrontendIPConfigurationListResult] with next page
+      # content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,16 +54,17 @@ module Azure::ARM::Network
       end
 
       #
-      # Mapper for VirtualNetworkGatewayListResult class as Ruby Hash.
+      # Mapper for LoadBalancerFrontendIPConfigurationListResult class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualNetworkGatewayListResult',
+          serialized_name: 'LoadBalancerFrontendIPConfigurationListResult',
           type: {
             name: 'Composite',
-            class_name: 'VirtualNetworkGatewayListResult',
+            class_name: 'LoadBalancerFrontendIPConfigurationListResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,10 +73,10 @@ module Azure::ARM::Network
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'VirtualNetworkGatewayElementType',
+                      serialized_name: 'FrontendIPConfigurationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'VirtualNetworkGateway'
+                        class_name: 'FrontendIPConfiguration'
                       }
                   }
                 }
