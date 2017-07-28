@@ -6,27 +6,24 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The Resource definition.
+    # Premium Messaging Region
     #
-    class ResourceNamespacePatch < Resource
-      # @return [String] Resource location
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource tags
-      attr_accessor :tags
+    class PremiumMessagingRegions < ResourceNamespacePatch
+      # @return [PremiumMessagingRegionsProperties]
+      attr_accessor :properties
 
 
       #
-      # Mapper for ResourceNamespacePatch class as Ruby Hash.
+      # Mapper for PremiumMessagingRegions class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceNamespacePatch',
+          serialized_name: 'PremiumMessagingRegions',
           type: {
             name: 'Composite',
-            class_name: 'ResourceNamespacePatch',
+            class_name: 'PremiumMessagingRegions',
             model_properties: {
               id: {
                 required: false,
@@ -71,6 +68,14 @@ module Azure::ARM::ServiceBus
                         name: 'String'
                       }
                   }
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PremiumMessagingRegionsProperties'
                 }
               }
             }

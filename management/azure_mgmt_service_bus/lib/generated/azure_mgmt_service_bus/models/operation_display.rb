@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # The object that represents the operation.
     #
     class OperationDisplay
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.ServiceBus
       attr_accessor :provider
 

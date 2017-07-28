@@ -6,43 +6,53 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Represents set of actions written in SQL language-based syntax that is
-    # performed against a ServiceBus.Messaging.BrokeredMessage
+    # The Resource definition for other than namespace.
     #
-    class SqlRuleAction < Action
+    class Resource
+      # @return [String] Resource Id
+      attr_accessor :id
+
+      # @return [String] Resource name
+      attr_accessor :name
+
+      # @return [String] Resource type
+      attr_accessor :type
+
 
       #
-      # Mapper for SqlRuleAction class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SqlRuleAction',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'SqlRuleAction',
+            class_name: 'Resource',
             model_properties: {
-              sql_expression: {
+              id: {
                 required: false,
-                serialized_name: 'sqlExpression',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              compatibility_level: {
+              name: {
                 required: false,
-                serialized_name: 'compatibilityLevel',
+                read_only: true,
+                serialized_name: 'name',
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               },
-              requires_preprocessing: {
+              type: {
                 required: false,
-                serialized_name: 'requiresPreprocessing',
-                default_value: true,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
                 }
               }
             }

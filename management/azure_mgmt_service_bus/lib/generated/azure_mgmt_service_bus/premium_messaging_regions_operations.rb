@@ -7,10 +7,10 @@ module Azure::ARM::ServiceBus
   #
   # Azure Service Bus client
   #
-  class Operations
+  class PremiumMessagingRegionsOperations
 
     #
-    # Creates and initializes a new instance of the Operations class.
+    # Creates and initializes a new instance of the PremiumMessagingRegionsOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -21,12 +21,12 @@ module Azure::ARM::ServiceBus
     attr_reader :client
 
     #
-    # Lists all of the available ServiceBus REST API operations.
+    # Gets the available premium messaging regions for servicebus
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [OperationListResult] operation results.
+    # @return [PremiumMessagingRegionsListResult] operation results.
     #
     def list(custom_headers = nil)
       response = list_async(custom_headers).value!
@@ -34,7 +34,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists all of the available ServiceBus REST API operations.
+    # Gets the available premium messaging regions for servicebus
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -46,7 +46,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists all of the available ServiceBus REST API operations.
+    # Gets the available premium messaging regions for servicebus
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -55,15 +55,17 @@ module Azure::ARM::ServiceBus
     #
     def list_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
-      path_template = 'providers/Microsoft.ServiceBus/operations'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/premiumMessagingRegions'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -83,7 +85,7 @@ module Azure::ARM::ServiceBus
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Models::OperationListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::PremiumMessagingRegionsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

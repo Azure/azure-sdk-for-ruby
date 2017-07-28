@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # Message Count Details.
     #
     class MessageCountDetails
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [Integer] Number of active messages in the queue, topic, or
       # subscription.
       attr_accessor :active_message_count

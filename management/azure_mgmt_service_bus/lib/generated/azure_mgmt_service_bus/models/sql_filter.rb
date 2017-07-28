@@ -10,10 +10,6 @@ module Azure::ARM::ServiceBus
     # that is executed in the pub/sub pipeline.
     #
     class SqlFilter
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The SQL expression. e.g. MyProperty='ABC'
       attr_accessor :sql_expression
 

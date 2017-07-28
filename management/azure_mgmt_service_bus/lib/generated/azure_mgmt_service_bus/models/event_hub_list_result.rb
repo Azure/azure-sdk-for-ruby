@@ -6,28 +6,28 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response to the List Queues operation.
+    # The result of the List EventHubs operation.
     #
-    class SBQueueListResult
-      # @return [Array<SBQueue>] Result of the List Queues operation.
+    class EventHubListResult
+      # @return [Array<Eventhub>] Result of the List EventHubs operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of queues.
+      # contains incomplete list of EventHubs.
       attr_accessor :next_link
 
 
       #
-      # Mapper for SBQueueListResult class as Ruby Hash.
+      # Mapper for EventHubListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SBQueueListResult',
+          serialized_name: 'EventHubListResult',
           type: {
             name: 'Composite',
-            class_name: 'SBQueueListResult',
+            class_name: 'EventHubListResult',
             model_properties: {
               value: {
                 required: false,
@@ -36,16 +36,17 @@ module Azure::ARM::ServiceBus
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SBQueueElementType',
+                      serialized_name: 'EventhubElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SBQueue'
+                        class_name: 'Eventhub'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

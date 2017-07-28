@@ -8,11 +8,7 @@ module Azure::ARM::ServiceBus
     #
     # Description of a namespace authorization rule.
     #
-    class SBAuthorizationRule < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class SBAuthorizationRule < Resource
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 

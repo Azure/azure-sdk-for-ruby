@@ -10,10 +10,6 @@ module Azure::ARM::ServiceBus
     # a message that have been matched by a filter expression.
     #
     class Action
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] SQL expression. e.g. MyProperty='ABC'
       attr_accessor :sql_expression
 

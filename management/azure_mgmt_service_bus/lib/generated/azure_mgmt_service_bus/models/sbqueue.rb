@@ -8,11 +8,7 @@ module Azure::ARM::ServiceBus
     #
     # Description of queue Resource.
     #
-    class SBQueue < MsRestAzure::Resource
-
-      include MsRestAzure
-
-      include MsRest::JSONable
+    class SBQueue < Resource
       # @return [MessageCountDetails] Message Count Details.
       attr_accessor :count_details
 

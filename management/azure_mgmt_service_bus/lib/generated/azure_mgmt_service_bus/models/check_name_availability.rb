@@ -9,10 +9,6 @@ module Azure::ARM::ServiceBus
     # Description of a Check Name availability request properties.
     #
     class CheckNameAvailability
-
-      include MsRestAzure
-
-      include MsRest::JSONable
       # @return [String] The Name to check the namespce name availability and
       # The namespace name can contain only letters, numbers, and hyphens. The
       # namespace must start with a letter, and it must end with a letter or
