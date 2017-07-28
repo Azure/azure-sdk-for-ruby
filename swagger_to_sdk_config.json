@@ -4,7 +4,8 @@
     "language": "Ruby",
     "autorest": "latest",
     "autorest_options": {
-      "ruby": ""
+      "ruby": "",
+      "azure-arm": true
     }
   },
   "projects": {
@@ -158,7 +159,7 @@
         "namespace": "Azure::ARM::Features",
         "package-name": "azure_mgmt_features",
         "package-version": "0.11.0",
-        "tag": "package-features"
+        "tag": "package-features-2015-12"
       },
       "output_dir": "management/azure_mgmt_features/lib",
       "wrapper_filesOrDirs": [
@@ -207,7 +208,7 @@
         "namespace": "Azure::ARM::Locks",
         "package-name": "azure_mgmt_locks",
         "package-version": "0.11.0",
-        "tag": "package-locks"
+        "tag": "package-locks-2016-09"
       },
       "output_dir": "management/azure_mgmt_locks/lib",
       "wrapper_filesOrDirs": [
@@ -304,7 +305,7 @@
         "namespace": "Azure::ARM::Policy",
         "package-name": "azure_mgmt_policy",
         "package-version": "0.11.0",
-        "tag": "package-policy"
+        "tag": "package-policy-2016-12"
       },
       "output_dir": "management/azure_mgmt_policy/lib",
       "wrapper_filesOrDirs": [
@@ -365,7 +366,7 @@
         "namespace": "Azure::ARM::Resources",
         "package-name": "azure_mgmt_resources",
         "package-version": "0.11.0",
-        "tag": "package-resources"
+        "tag": "package-resources-2017-05"
       },
       "output_dir": "management/azure_mgmt_resources/lib",
       "wrapper_filesOrDirs": [
@@ -462,7 +463,7 @@
         "namespace": "Azure::ARM::Subscriptions",
         "package-name": "azure_mgmt_subscriptions",
         "package-version": "0.11.0",
-        "tag": "package-subscriptions"
+        "tag": "package-subscriptions-2016-06"
       },
       "output_dir": "management/azure_mgmt_subscriptions/lib",
       "wrapper_filesOrDirs": [
