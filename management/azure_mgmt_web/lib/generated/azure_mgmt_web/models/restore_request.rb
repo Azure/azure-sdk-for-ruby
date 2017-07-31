@@ -39,8 +39,13 @@ module Azure::ARM::Web
       # conflicts during the operation. Default value: false .
       attr_accessor :ignore_conflicting_host_names
 
+      # @return [Boolean] Ignore the databases and only restore the site
+      # content. Default value: false .
+      attr_accessor :ignore_databases
+
       # @return [BackupRestoreOperationType] Operation type. Possible values
-      # include: 'Default', 'Clone', 'Relocation'. Default value: 'Default' .
+      # include: 'Default', 'Clone', 'Relocation', 'Snapshot'. Default value:
+      # 'Default' .
       attr_accessor :operation_type
 
       # @return [Boolean] <code>true</code> if SiteConfig.ConnectionStrings
@@ -74,6 +79,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -95,6 +101,7 @@ module Azure::ARM::Web
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -160,6 +167,14 @@ module Azure::ARM::Web
               ignore_conflicting_host_names: {
                 required: false,
                 serialized_name: 'properties.ignoreConflictingHostNames',
+                default_value: false,
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              ignore_databases: {
+                required: false,
+                serialized_name: 'properties.ignoreDatabases',
                 default_value: false,
                 type: {
                   name: 'Boolean'

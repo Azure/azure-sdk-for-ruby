@@ -38,6 +38,10 @@ module Azure::ARM::Web
       # normally, use the POST /listKeys API instead.
       attr_accessor :send_key_value
 
+      # @return [String] The suffix for the service bus endpoint. By default
+      # this is .servicebus.windows.net
+      attr_accessor :service_bus_suffix
+
 
       #
       # Mapper for HybridConnection class as Ruby Hash.
@@ -61,6 +65,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -82,6 +87,7 @@ module Azure::ARM::Web
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -146,6 +152,13 @@ module Azure::ARM::Web
               send_key_value: {
                 required: false,
                 serialized_name: 'properties.sendKeyValue',
+                type: {
+                  name: 'String'
+                }
+              },
+              service_bus_suffix: {
+                required: false,
+                serialized_name: 'properties.serviceBusSuffix',
                 type: {
                   name: 'String'
                 }

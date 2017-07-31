@@ -13,9 +13,12 @@ module Azure::ARM::Web
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Connection string to the remote MySQL database to
-      # which data should be migrated.
+      # @return [String] Connection string to the remote MySQL database.
       attr_accessor :connection_string
+
+      # @return [MySqlMigrationType] The type of migration operation to be
+      # done. Possible values include: 'LocalToRemote', 'RemoteToLocal'
+      attr_accessor :migration_type
 
 
       #
@@ -40,6 +43,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -61,6 +65,7 @@ module Azure::ARM::Web
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -85,6 +90,14 @@ module Azure::ARM::Web
                 serialized_name: 'properties.connectionString',
                 type: {
                   name: 'String'
+                }
+              },
+              migration_type: {
+                required: false,
+                serialized_name: 'properties.migrationType',
+                type: {
+                  name: 'Enum',
+                  module: 'MySqlMigrationType'
                 }
               }
             }

@@ -22,6 +22,9 @@ module Azure::ARM::Web
       # @return [Float] Value of counter at a certain time.
       attr_accessor :value
 
+      # @return [Integer] Core Count of worker. Not a data member
+      attr_accessor :core_count
+
 
       #
       # Mapper for PerfMonSample class as Ruby Hash.
@@ -54,6 +57,13 @@ module Azure::ARM::Web
                 serialized_name: 'value',
                 type: {
                   name: 'Double'
+                }
+              },
+              core_count: {
+                required: false,
+                serialized_name: 'coreCount',
+                type: {
+                  name: 'Number'
                 }
               }
             }
