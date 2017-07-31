@@ -22,14 +22,16 @@ module Azure::ARM::Network
       # 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
       attr_accessor :public_ipaddress_version
 
-      # @return [IPConfiguration]
+      # @return [IPConfiguration] The IP configuration associated with the
+      # public IP address.
       attr_accessor :ip_configuration
 
       # @return [PublicIPAddressDnsSettings] The FQDN of the DNS record
       # associated with the public IP address.
       attr_accessor :dns_settings
 
-      # @return [String]
+      # @return [String] The IP address associated with the public IP address
+      # resource.
       attr_accessor :ip_address
 
       # @return [Integer] The idle timeout of the public IP address.
