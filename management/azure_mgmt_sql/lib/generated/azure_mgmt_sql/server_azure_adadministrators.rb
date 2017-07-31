@@ -231,8 +231,8 @@ module Azure::ARM::SQL
     #
     # @return [ServerAdministratorListResult] operation results.
     #
-    def list(resource_group_name, server_name, custom_headers = nil)
-      response = list_async(resource_group_name, server_name, custom_headers).value!
+    def list_by_server(resource_group_name, server_name, custom_headers = nil)
+      response = list_by_server_async(resource_group_name, server_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -248,8 +248,8 @@ module Azure::ARM::SQL
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, server_name, custom_headers = nil)
-      list_async(resource_group_name, server_name, custom_headers).value!
+    def list_by_server_with_http_info(resource_group_name, server_name, custom_headers = nil)
+      list_by_server_async(resource_group_name, server_name, custom_headers).value!
     end
 
     #
@@ -264,7 +264,7 @@ module Azure::ARM::SQL
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, server_name, custom_headers = nil)
+    def list_by_server_async(resource_group_name, server_name, custom_headers = nil)
       api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?

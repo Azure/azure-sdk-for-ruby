@@ -8,11 +8,14 @@ module Azure::ARM::SQL
     #
     # Represents a database transparent data encryption configuration.
     #
-    class TransparentDataEncryption < SubResource
+    class TransparentDataEncryption < ProxyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [String] Resource location.
+      attr_accessor :location
+
       # @return [TransparentDataEncryptionStatus] The status of the database
       # transparent data encryption. Possible values include: 'Enabled',
       # 'Disabled'
@@ -31,6 +34,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'TransparentDataEncryption',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -39,10 +50,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                read_only: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }

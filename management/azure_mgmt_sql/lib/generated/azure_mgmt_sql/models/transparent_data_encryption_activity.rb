@@ -8,11 +8,14 @@ module Azure::ARM::SQL
     #
     # Represents a database transparent data encryption Scan.
     #
-    class TransparentDataEncryptionActivity < SubResource
+    class TransparentDataEncryptionActivity < ProxyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [String] Resource location.
+      attr_accessor :location
+
       # @return [TransparentDataEncryptionActivityStatus] The status of the
       # database. Possible values include: 'Encrypting', 'Decrypting'
       attr_accessor :status
@@ -34,6 +37,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'TransparentDataEncryptionActivity',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -42,10 +53,18 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                read_only: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }

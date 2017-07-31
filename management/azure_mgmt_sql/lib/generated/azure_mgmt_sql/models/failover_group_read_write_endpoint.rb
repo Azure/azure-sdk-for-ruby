@@ -14,12 +14,14 @@ module Azure::ARM::SQL
 
       include MsRest::JSONable
       # @return [ReadWriteEndpointFailoverPolicy] Failover policy of the
-      # read-write endpoint for the failover group. Possible values include:
-      # 'Manual', 'Automatic'
+      # read-write endpoint for the failover group. If failoverPolicy is
+      # Automatic then failoverWithDataLossGracePeriodMinutes is required.
+      # Possible values include: 'Manual', 'Automatic'
       attr_accessor :failover_policy
 
       # @return [Integer] Grace period before failover with data loss is
-      # attempted for the read-write endpoint.
+      # attempted for the read-write endpoint. If failoverPolicy is Automatic
+      # then failoverWithDataLossGracePeriodMinutes is required.
       attr_accessor :failover_with_data_loss_grace_period_minutes
 
 
@@ -36,7 +38,7 @@ module Azure::ARM::SQL
             class_name: 'FailoverGroupReadWriteEndpoint',
             model_properties: {
               failover_policy: {
-                required: false,
+                required: true,
                 serialized_name: 'failoverPolicy',
                 type: {
                   name: 'String'
