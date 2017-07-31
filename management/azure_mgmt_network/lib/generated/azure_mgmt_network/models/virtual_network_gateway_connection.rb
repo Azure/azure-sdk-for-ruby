@@ -16,13 +16,16 @@ module Azure::ARM::Network
       # @return [String] The authorizationKey.
       attr_accessor :authorization_key
 
-      # @return [VirtualNetworkGateway]
+      # @return [GatewayReference] The reference to virtual network gateway
+      # resource.
       attr_accessor :virtual_network_gateway1
 
-      # @return [VirtualNetworkGateway]
+      # @return [GatewayReference] The reference to virtual network gateway
+      # resource.
       attr_accessor :virtual_network_gateway2
 
-      # @return [LocalNetworkGateway]
+      # @return [GatewayReference] The reference to local network gateway
+      # resource.
       attr_accessor :local_network_gateway2
 
       # @return [VirtualNetworkGatewayConnectionType] Gateway connection type.
@@ -148,7 +151,7 @@ module Azure::ARM::Network
                 serialized_name: 'properties.virtualNetworkGateway1',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualNetworkGateway'
+                  class_name: 'GatewayReference'
                 }
               },
               virtual_network_gateway2: {
@@ -156,7 +159,7 @@ module Azure::ARM::Network
                 serialized_name: 'properties.virtualNetworkGateway2',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualNetworkGateway'
+                  class_name: 'GatewayReference'
                 }
               },
               local_network_gateway2: {
@@ -164,7 +167,7 @@ module Azure::ARM::Network
                 serialized_name: 'properties.localNetworkGateway2',
                 type: {
                   name: 'Composite',
-                  class_name: 'LocalNetworkGateway'
+                  class_name: 'GatewayReference'
                 }
               },
               connection_type: {
