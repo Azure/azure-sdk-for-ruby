@@ -8,7 +8,7 @@ module Azure::ARM::Network
     #
     # A common class for general resource information
     #
-    class VirtualNetworkGatewayConnection < MsRestAzure::Resource
+    class VirtualNetworkGatewayConnectionListEntity < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -16,16 +16,16 @@ module Azure::ARM::Network
       # @return [String] The authorizationKey.
       attr_accessor :authorization_key
 
-      # @return [VirtualNetworkGateway] The reference to virtual network
-      # gateway resource.
+      # @return [VirtualNetworkConnectionGatewayReference] The reference to
+      # virtual network gateway resource.
       attr_accessor :virtual_network_gateway1
 
-      # @return [VirtualNetworkGateway] The reference to virtual network
-      # gateway resource.
+      # @return [VirtualNetworkConnectionGatewayReference] The reference to
+      # virtual network gateway resource.
       attr_accessor :virtual_network_gateway2
 
-      # @return [LocalNetworkGateway] The reference to local network gateway
-      # resource.
+      # @return [VirtualNetworkConnectionGatewayReference] The reference to
+      # local network gateway resource.
       attr_accessor :local_network_gateway2
 
       # @return [VirtualNetworkGatewayConnectionType] Gateway connection type.
@@ -84,16 +84,17 @@ module Azure::ARM::Network
 
 
       #
-      # Mapper for VirtualNetworkGatewayConnection class as Ruby Hash.
+      # Mapper for VirtualNetworkGatewayConnectionListEntity class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualNetworkGatewayConnection',
+          serialized_name: 'VirtualNetworkGatewayConnectionListEntity',
           type: {
             name: 'Composite',
-            class_name: 'VirtualNetworkGatewayConnection',
+            class_name: 'VirtualNetworkGatewayConnectionListEntity',
             model_properties: {
               id: {
                 required: false,
@@ -151,7 +152,7 @@ module Azure::ARM::Network
                 serialized_name: 'properties.virtualNetworkGateway1',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualNetworkGateway'
+                  class_name: 'VirtualNetworkConnectionGatewayReference'
                 }
               },
               virtual_network_gateway2: {
@@ -159,7 +160,7 @@ module Azure::ARM::Network
                 serialized_name: 'properties.virtualNetworkGateway2',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualNetworkGateway'
+                  class_name: 'VirtualNetworkConnectionGatewayReference'
                 }
               },
               local_network_gateway2: {
@@ -167,7 +168,7 @@ module Azure::ARM::Network
                 serialized_name: 'properties.localNetworkGateway2',
                 type: {
                   name: 'Composite',
-                  class_name: 'LocalNetworkGateway'
+                  class_name: 'VirtualNetworkConnectionGatewayReference'
                 }
               },
               connection_type: {
