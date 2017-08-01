@@ -17,9 +17,9 @@ module Azure::ARM::Network
       # (if created by the user).
       attr_accessor :name
 
-      # @return [SecurityRuleProtocol] The network protocol this rule applies
-      # to. Possible values are: 'Tcp', 'Udp', and '*'. Possible values
-      # include: 'Tcp', 'Udp', '*'
+      # @return [EffectiveSecurityRuleProtocol] The network protocol this rule
+      # applies to. Possible values are: 'Tcp', 'Udp', and 'All'. Possible
+      # values include: 'Tcp', 'Udp', 'All'
       attr_accessor :protocol
 
       # @return [String] The source port or range.
