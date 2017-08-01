@@ -13,8 +13,17 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The resource ID of the virtual network subnet
+      # @return [String] The ARM resource id of the virtual network subnet.
       attr_accessor :virtual_network_subnet_id
+
+      # @return [Boolean] Create firewall rule before the virtual network has
+      # private access enabled.
+      attr_accessor :ignore_vnet_private_access_configuration
+
+      # @return [VirtualNetworkRuleState] Virtual network rule state. Possible
+      # values include: 'Initializing', 'InProgress', 'Ready', 'Deleting',
+      # 'Unknown'
+      attr_accessor :state
 
 
       #
@@ -54,8 +63,23 @@ module Azure::ARM::SQL
                 }
               },
               virtual_network_subnet_id: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.virtualNetworkSubnetId',
+                type: {
+                  name: 'String'
+                }
+              },
+              ignore_vnet_private_access_configuration: {
+                required: false,
+                serialized_name: 'properties.ignoreVnetPrivateAccessConfiguration',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.state',
                 type: {
                   name: 'String'
                 }

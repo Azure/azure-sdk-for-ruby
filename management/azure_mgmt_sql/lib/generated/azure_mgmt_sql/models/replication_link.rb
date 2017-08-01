@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database replication link.
     #
-    class ReplicationLink < SubResource
+    class ReplicationLink < ProxyResource
 
       include MsRestAzure
 
@@ -16,9 +16,6 @@ module Azure::ARM::SQL
       # @return [String] Location of the server that contains this firewall
       # rule.
       attr_accessor :location
-
-      # @return [String] Type of resource this is.
-      attr_accessor :type
 
       # @return [Boolean] Legacy value indicating whether termination is
       # allowed.  Currently always returns true.
@@ -71,14 +68,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ReplicationLink',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -87,10 +76,10 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              location: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'location',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -99,6 +88,14 @@ module Azure::ARM::SQL
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: false,
+                read_only: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }

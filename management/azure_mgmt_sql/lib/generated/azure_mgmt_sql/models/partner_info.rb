@@ -37,7 +37,7 @@ module Azure::ARM::SQL
             class_name: 'PartnerInfo',
             model_properties: {
               id: {
-                required: false,
+                required: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
