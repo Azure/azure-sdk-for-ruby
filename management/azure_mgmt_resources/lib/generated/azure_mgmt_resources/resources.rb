@@ -133,7 +133,7 @@ module Azure::ARM::Resources
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -145,7 +145,7 @@ module Azure::ARM::Resources
 
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -156,6 +156,55 @@ module Azure::ARM::Resources
     def move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
       # Send request
       promise = begin_move_resources_async(source_resource_group_name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Validates whether resources can be moved from one resource group to another
+    # resource group.
+    #
+    # This operation checks whether the specified resources can be moved to the
+    # target. The resources to move must be in the same source resource group. The
+    # target resource group may be in a different subscription. If validation
+    # succeeds, it returns HTTP response code 204 (no content). If validation
+    # fails, it returns HTTP response code 409 (Conflict) with an error message.
+    # Retrieve the URL in the Location header value to check the result of the
+    # long-running operation.
+    #
+    # @param source_resource_group_name [String] The name of the resource group
+    # containing the resources to validate for move.
+    # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def validate_move_resources(source_resource_group_name, parameters, custom_headers = nil)
+      response = validate_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+      nil
+    end
+
+    #
+    # @param source_resource_group_name [String] The name of the resource group
+    # containing the resources to validate for move.
+    # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def validate_move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -873,7 +922,7 @@ module Azure::ARM::Resources
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -894,7 +943,7 @@ module Azure::ARM::Resources
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -915,7 +964,7 @@ module Azure::ARM::Resources
     # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
-    # containing the rsources to move.
+    # containing the resources to move.
     # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -961,6 +1010,125 @@ module Azure::ARM::Resources
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Validates whether resources can be moved from one resource group to another
+    # resource group.
+    #
+    # This operation checks whether the specified resources can be moved to the
+    # target. The resources to move must be in the same source resource group. The
+    # target resource group may be in a different subscription. If validation
+    # succeeds, it returns HTTP response code 204 (no content). If validation
+    # fails, it returns HTTP response code 409 (Conflict) with an error message.
+    # Retrieve the URL in the Location header value to check the result of the
+    # long-running operation.
+    #
+    # @param source_resource_group_name [String] The name of the resource group
+    # containing the resources to validate for move.
+    # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_validate_move_resources(source_resource_group_name, parameters, custom_headers = nil)
+      response = begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+      nil
+    end
+
+    #
+    # Validates whether resources can be moved from one resource group to another
+    # resource group.
+    #
+    # This operation checks whether the specified resources can be moved to the
+    # target. The resources to move must be in the same source resource group. The
+    # target resource group may be in a different subscription. If validation
+    # succeeds, it returns HTTP response code 204 (no content). If validation
+    # fails, it returns HTTP response code 409 (Conflict) with an error message.
+    # Retrieve the URL in the Location header value to check the result of the
+    # long-running operation.
+    #
+    # @param source_resource_group_name [String] The name of the resource group
+    # containing the resources to validate for move.
+    # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_validate_move_resources_with_http_info(source_resource_group_name, parameters, custom_headers = nil)
+      begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Validates whether resources can be moved from one resource group to another
+    # resource group.
+    #
+    # This operation checks whether the specified resources can be moved to the
+    # target. The resources to move must be in the same source resource group. The
+    # target resource group may be in a different subscription. If validation
+    # succeeds, it returns HTTP response code 204 (no content). If validation
+    # fails, it returns HTTP response code 409 (Conflict) with an error message.
+    # Retrieve the URL in the Location header value to check the result of the
+    # long-running operation.
+    #
+    # @param source_resource_group_name [String] The name of the resource group
+    # containing the resources to validate for move.
+    # @param parameters [ResourcesMoveInfo] Parameters for moving resources.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_validate_move_resources_async(source_resource_group_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'source_resource_group_name is nil' if source_resource_group_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Resources::Models::ResourcesMoveInfo.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'sourceResourceGroupName' => source_resource_group_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 204 || status_code == 409
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
