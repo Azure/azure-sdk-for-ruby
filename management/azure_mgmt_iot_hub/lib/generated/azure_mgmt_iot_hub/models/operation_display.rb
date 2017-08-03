@@ -6,57 +6,57 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # Quota metrics properties.
+    # The object that represents the operation.
     #
-    class IotHubQuotaMetricInfo
+    class OperationDisplay
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The name of the quota metric.
-      attr_accessor :name
+      # @return [String] Service provider: Microsoft Devices
+      attr_accessor :provider
 
-      # @return [Integer] The current value for the quota metric.
-      attr_accessor :current_value
+      # @return [String] Resource Type: IotHubs
+      attr_accessor :resource
 
-      # @return [Integer] The maximum value of the quota metric.
-      attr_accessor :max_value
+      # @return [String] Name of the operation
+      attr_accessor :operation
 
 
       #
-      # Mapper for IotHubQuotaMetricInfo class as Ruby Hash.
+      # Mapper for OperationDisplay class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'IotHubQuotaMetricInfo',
+          serialized_name: 'Operation_display',
           type: {
             name: 'Composite',
-            class_name: 'IotHubQuotaMetricInfo',
+            class_name: 'OperationDisplay',
             model_properties: {
-              name: {
+              provider: {
                 required: false,
                 read_only: true,
-                serialized_name: 'Name',
+                serialized_name: 'provider',
                 type: {
                   name: 'String'
                 }
               },
-              current_value: {
+              resource: {
                 required: false,
                 read_only: true,
-                serialized_name: 'CurrentValue',
+                serialized_name: 'resource',
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               },
-              max_value: {
+              operation: {
                 required: false,
                 read_only: true,
-                serialized_name: 'MaxValue',
+                serialized_name: 'operation',
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               }
             }

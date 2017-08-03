@@ -31,6 +31,11 @@ module Azure::ARM::IotHub
       # This list does not include the built-in Event Hubs endpoint.
       attr_accessor :event_hubs
 
+      # @return [Array<RoutingStorageContainerProperties>] The list of storage
+      # container endpoints that IoT hub routes messages to, based on the
+      # routing rules.
+      attr_accessor :storage_containers
+
 
       #
       # Mapper for RoutingEndpoints class as Ruby Hash.
@@ -85,6 +90,21 @@ module Azure::ARM::IotHub
                       type: {
                         name: 'Composite',
                         class_name: 'RoutingEventHubProperties'
+                      }
+                  }
+                }
+              },
+              storage_containers: {
+                required: false,
+                serialized_name: 'storageContainers',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RoutingStorageContainerPropertiesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'RoutingStorageContainerProperties'
                       }
                   }
                 }

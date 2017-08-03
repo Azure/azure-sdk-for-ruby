@@ -6,18 +6,20 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The JSON-serialized array of IotHubDescription objects with a next link.
+    # Result of the request to list IoT Hub operations. It contains a list of
+    # operations and a URL link to get the next set of results.
     #
-    class IotHubDescriptionListResult
+    class OperationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<IotHubDescription>] The array of IotHubDescription
-      # objects.
+      # @return [Array<Operation>] List of IoT Hub operations supported by the
+      # Microsoft.Devices resource provider.
       attr_accessor :value
 
-      # @return [String] The next link.
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -26,7 +28,7 @@ module Azure::ARM::IotHub
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<IotHubDescription>] operation results.
+      # @return [Array<Operation>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +43,7 @@ module Azure::ARM::IotHub
       #
       # Gets the next page of results.
       #
-      # @return [IotHubDescriptionListResult] with next page content.
+      # @return [OperationListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,28 +55,29 @@ module Azure::ARM::IotHub
       end
 
       #
-      # Mapper for IotHubDescriptionListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'IotHubDescriptionListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'IotHubDescriptionListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'IotHubDescriptionElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'IotHubDescription'
+                        class_name: 'Operation'
                       }
                   }
                 }
