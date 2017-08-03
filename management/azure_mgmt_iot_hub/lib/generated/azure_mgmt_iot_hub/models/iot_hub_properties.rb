@@ -54,7 +54,7 @@ module Azure::ARM::IotHub
       # @return [CloudToDeviceProperties]
       attr_accessor :cloud_to_device
 
-      # @return [String] Comments.
+      # @return [String] IoT hub comments.
       attr_accessor :comments
 
       # @return [OperationsMonitoringProperties]

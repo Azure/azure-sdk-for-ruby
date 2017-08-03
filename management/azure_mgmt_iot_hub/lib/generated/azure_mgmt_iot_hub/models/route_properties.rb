@@ -16,7 +16,7 @@ module Azure::ARM::IotHub
       include MsRest::JSONable
       # @return [String] The name of the route. The name can only include
       # alphanumeric characters, periods, underscores, hyphens, has a maximum
-      # length of 64 characters,  and must be unique.
+      # length of 64 characters, and must be unique.
       attr_accessor :name
 
       # @return [RoutingSource] The source that the routing rule is to be
@@ -27,7 +27,7 @@ module Azure::ARM::IotHub
 
       # @return [String] The condition that is evaluated to apply the routing
       # rule. If no condition is provided, it evaluates to true by default. For
-      # grammar, See:
+      # grammar, see:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
       attr_accessor :condition
 
