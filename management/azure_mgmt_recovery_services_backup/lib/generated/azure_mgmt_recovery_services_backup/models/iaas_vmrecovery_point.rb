@@ -59,6 +59,9 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Virtual Machine Size
       attr_accessor :virtual_machine_size
 
+      # @return [Boolean] Original SA Option
+      attr_accessor :original_storage_account_option
+
 
       #
       # Mapper for IaasVMRecoveryPoint class as Ruby Hash.
@@ -156,6 +159,13 @@ module Azure::ARM::RecoveryServicesBackup
                 serialized_name: 'virtualMachineSize',
                 type: {
                   name: 'String'
+                }
+              },
+              original_storage_account_option: {
+                required: false,
+                serialized_name: 'originalStorageAccountOption',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
