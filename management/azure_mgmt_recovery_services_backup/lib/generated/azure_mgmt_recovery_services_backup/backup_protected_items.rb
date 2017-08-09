@@ -26,8 +26,7 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -45,8 +44,7 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -63,8 +61,7 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
@@ -129,8 +126,7 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -145,8 +141,7 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -160,8 +155,7 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -219,8 +213,7 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items that are backed up within a vault.
     #
     # @param vault_name [String] The name of the recovery services vault.
     # @param resource_group_name [String] The name of the resource group where the
