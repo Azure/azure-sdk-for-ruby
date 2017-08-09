@@ -6,35 +6,41 @@
 module Azure::ARM::Web
   module Models
     #
-    # Used for getting ResourceHealthCheck settings.
+    # Details about app recovery operation.
     #
-    class ResourceHealthMetadata < MsRestAzure::Resource
+    class SnapshotRecoveryRequest < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] ARM Resource Id
-      attr_accessor :resource_health_metadata_id
+      # @return [DateTime] Point in time in which the app recovery should be
+      # attempted.
+      attr_accessor :snapshot_time
 
-      # @return [String] The category that the resource matches in the RHC
-      # Policy File
-      attr_accessor :category
+      # @return [SnapshotRecoveryTarget] Specifies the web app that snapshot
+      # contents will be written to.
+      attr_accessor :recovery_target
 
-      # @return [Boolean] Is there a health signal for the resource
-      attr_accessor :signal_availability
+      # @return [Boolean] <code>true</code> if the recovery operation can
+      # overwrite source app; otherwise, <code>false</code>.
+      attr_accessor :overwrite
+
+      # @return [Boolean] Site configuration, in addition to content, will be
+      # reverted if this is true.
+      attr_accessor :recover_configuration
 
 
       #
-      # Mapper for ResourceHealthMetadata class as Ruby Hash.
+      # Mapper for SnapshotRecoveryRequest class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceHealthMetadata',
+          serialized_name: 'SnapshotRecoveryRequest',
           type: {
             name: 'Composite',
-            class_name: 'ResourceHealthMetadata',
+            class_name: 'SnapshotRecoveryRequest',
             model_properties: {
               id: {
                 required: false,
@@ -46,6 +52,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -58,51 +65,39 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              tags: {
+              snapshot_time: {
                 required: false,
-                serialized_name: 'tags',
+                serialized_name: 'properties.snapshotTime',
                 type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'DateTime'
                 }
               },
-              resource_health_metadata_id: {
+              recovery_target: {
                 required: false,
-                serialized_name: 'properties.id',
+                serialized_name: 'properties.recoveryTarget',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'SnapshotRecoveryTarget'
                 }
               },
-              category: {
+              overwrite: {
                 required: false,
-                serialized_name: 'properties.category',
+                serialized_name: 'properties.overwrite',
                 type: {
-                  name: 'String'
+                  name: 'Boolean'
                 }
               },
-              signal_availability: {
+              recover_configuration: {
                 required: false,
-                serialized_name: 'properties.signalAvailability',
+                serialized_name: 'properties.recoverConfiguration',
                 type: {
                   name: 'Boolean'
                 }
