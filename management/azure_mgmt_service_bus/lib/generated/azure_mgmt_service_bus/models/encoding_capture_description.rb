@@ -6,12 +6,11 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Defines values for SkuTier
+    # Defines values for EncodingCaptureDescription
     #
-    module SkuTier
-      Basic = "Basic"
-      Standard = "Standard"
-      Premium = "Premium"
+    module EncodingCaptureDescription
+      Avro = "Avro"
+      AvroDeflate = "AvroDeflate"
     end
   end
 end
