@@ -6,46 +6,47 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # A ServiceBus REST API operation
+    # Model object.
     #
-    class Operation
+    #
+    class PremiumMessagingRegionsProperties
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Operation name: {provider}/{resource}/{operation}
-      attr_accessor :name
+      # @return [String] Region code
+      attr_accessor :code
 
-      # @return [OperationDisplay] The object that represents the operation.
-      attr_accessor :display
+      # @return [String] Full name of the region
+      attr_accessor :full_name
 
 
       #
-      # Mapper for Operation class as Ruby Hash.
+      # Mapper for PremiumMessagingRegionsProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Operation',
+          serialized_name: 'PremiumMessagingRegions_properties',
           type: {
             name: 'Composite',
-            class_name: 'Operation',
+            class_name: 'PremiumMessagingRegionsProperties',
             model_properties: {
-              name: {
+              code: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              display: {
+              full_name: {
                 required: false,
-                serialized_name: 'display',
+                read_only: true,
+                serialized_name: 'fullName',
                 type: {
-                  name: 'Composite',
-                  class_name: 'OperationDisplay'
+                  name: 'String'
                 }
               }
             }
