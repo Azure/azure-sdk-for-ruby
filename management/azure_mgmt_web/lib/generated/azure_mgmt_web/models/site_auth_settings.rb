@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Configuration settings for the Azure App Service Authentication /
     # Authorization feature.
     #
-    class SiteAuthSettings < MsRestAzure::Resource
+    class SiteAuthSettings < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
@@ -197,6 +197,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -209,32 +210,12 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               enabled: {
