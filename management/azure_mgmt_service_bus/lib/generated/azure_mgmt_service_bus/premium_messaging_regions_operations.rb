@@ -3,66 +3,59 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network
+module Azure::ARM::ServiceBus
   #
-  # Network Client
+  # Azure Service Bus client
   #
-  class AvailablePrivateAccessServices
+  class PremiumMessagingRegionsOperations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the AvailablePrivateAccessServices class.
+    # Creates and initializes a new instance of the PremiumMessagingRegionsOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
       @client = client
     end
 
-    # @return [NetworkManagementClient] reference to the NetworkManagementClient
+    # @return [ServiceBusManagementClient] reference to the ServiceBusManagementClient
     attr_reader :client
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
-    # @param location [String] The location to check available private access
-    # values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<PrivateAccessServiceResult>] operation results.
+    # @return [Array<PremiumMessagingRegions>] operation results.
     #
-    def list(location, custom_headers = nil)
-      first_page = list_as_lazy(location, custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
-    # @param location [String] The location to check available private access
-    # values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, custom_headers = nil)
-      list_async(location, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
-    # @param location [String] The location to check available private access
-    # values.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, custom_headers = nil)
-      fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2017-06-01'
+    def list_async(custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -71,14 +64,14 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/privateAccessServices'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/premiumMessagingRegions'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'location' => location,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -90,7 +83,7 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -98,7 +91,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::PrivateAccessServicesListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::PremiumMessagingRegionsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -112,14 +105,14 @@ module Azure::ARM::Network
     end
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PrivateAccessServicesListResult] operation results.
+    # @return [PremiumMessagingRegionsListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -127,7 +120,7 @@ module Azure::ARM::Network
     end
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -141,7 +134,7 @@ module Azure::ARM::Network
     end
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -177,7 +170,7 @@ module Azure::ARM::Network
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -185,7 +178,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::PrivateAccessServicesListResult.mapper()
+            result_mapper = Azure::ARM::ServiceBus::Models::PremiumMessagingRegionsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -199,18 +192,16 @@ module Azure::ARM::Network
     end
 
     #
-    # List what values of private access services are available for use.
+    # Gets the available premium messaging regions for servicebus
     #
-    # @param location [String] The location to check available private access
-    # values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [PrivateAccessServicesListResult] which provide lazy access to pages
-    # of the response.
+    # @return [PremiumMessagingRegionsListResult] which provide lazy access to
+    # pages of the response.
     #
-    def list_as_lazy(location, custom_headers = nil)
-      response = list_async(location, custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

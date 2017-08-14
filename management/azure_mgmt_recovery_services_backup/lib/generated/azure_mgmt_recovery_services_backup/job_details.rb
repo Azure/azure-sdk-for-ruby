@@ -71,7 +71,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(vault_name, resource_group_name, job_name, custom_headers = nil)
-      api_version = '2016-12-01'
+      api_version = '2017-07-01'
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
