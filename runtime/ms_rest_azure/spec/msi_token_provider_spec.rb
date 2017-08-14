@@ -24,13 +24,13 @@ module MsRestAzure
       expect(token_provider.send(:port)).to eq(50342)
       settings = token_provider.send(:settings)
       expect(settings.authentication_endpoint).to eq(azure_cloud.active_directory_endpoint_url)
-      expect(settings.token_audience).to eq(azure_cloud.resource_manager_endpoint_url)
+      expect(settings.token_audience).to eq(azure_cloud.active_directory_resource_id)
     end
 
     it 'should set customs for managed service identity' do
       tenant = 'xxxx-xxxx-xxxxx-xxxxx'
       port = 50333
-      settings = MSIActiveDirectoryServiceSettings.new()
+      settings = ActiveDirectoryServiceSettings.new()
       settings.authentication_endpoint = 'https://login.microsoftonline.com/'
       settings.token_audience = 'https://vault.azure.net'
 

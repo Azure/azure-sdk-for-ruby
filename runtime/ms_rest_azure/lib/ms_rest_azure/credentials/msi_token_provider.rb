@@ -41,8 +41,8 @@ module MsRestAzure
     # Creates and initialize new instance of the MSITokenProvider class.
     # @param tenant_id [String] tenant id (also known as domain).
     # @param port [Integer] port number where MSI service is running.
-    # @param settings [MSIActiveDirectoryServiceSettings] MSI active directory setting.
-    def initialize(tenant_id, port = 50342, settings = MSIActiveDirectoryServiceSettings.get_azure_settings)
+    # @param settings [ActiveDirectoryServiceSettings] active directory setting.
+    def initialize(tenant_id, port = 50342, settings = ActiveDirectoryServiceSettings.get_azure_settings)
       fail ArgumentError, 'Tenant id cannot be nil' if tenant_id.nil?
       fail ArgumentError, 'Port cannot be nil' if port.nil?
       fail ArgumentError, 'Port must be an Integer' unless port.is_a? Integer
