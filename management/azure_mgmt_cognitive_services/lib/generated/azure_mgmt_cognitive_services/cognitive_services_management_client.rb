@@ -24,9 +24,6 @@ module Azure::ARM::CognitiveServices
     # Current version is 2017-04-18
     attr_reader :api_version
 
-    # @return [String] Resource location.
-    attr_accessor :location
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
