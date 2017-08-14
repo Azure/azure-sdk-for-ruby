@@ -24,7 +24,6 @@ module Azure::ARM::CognitiveServices
     #
     # Check available SKUs.
     #
-    # @param location [String] Resource location.
     # @param skus [Array<SkuName>] The SKU of the resource.
     # @param kind [Kind] The Kind of the resource. Possible values include:
     # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
@@ -37,15 +36,14 @@ module Azure::ARM::CognitiveServices
     #
     # @return [CheckSkuAvailabilityResultList] operation results.
     #
-    def list(location, skus, kind, type, custom_headers = nil)
-      response = list_async(location, skus, kind, type, custom_headers).value!
+    def list(skus, kind, type, custom_headers = nil)
+      response = list_async(skus, kind, type, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Check available SKUs.
     #
-    # @param location [String] Resource location.
     # @param skus [Array<SkuName>] The SKU of the resource.
     # @param kind [Kind] The Kind of the resource. Possible values include:
     # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
@@ -58,14 +56,13 @@ module Azure::ARM::CognitiveServices
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(location, skus, kind, type, custom_headers = nil)
-      list_async(location, skus, kind, type, custom_headers).value!
+    def list_with_http_info(skus, kind, type, custom_headers = nil)
+      list_async(skus, kind, type, custom_headers).value!
     end
 
     #
     # Check available SKUs.
     #
-    # @param location [String] Resource location.
     # @param skus [Array<SkuName>] The SKU of the resource.
     # @param kind [Kind] The Kind of the resource. Possible values include:
     # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
@@ -78,10 +75,10 @@ module Azure::ARM::CognitiveServices
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(location, skus, kind, type, custom_headers = nil)
+    def list_async(skus, kind, type, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, '@client.location is nil' if @client.location.nil?
       fail ArgumentError, 'skus is nil' if skus.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'type is nil' if type.nil?
@@ -112,7 +109,7 @@ module Azure::ARM::CognitiveServices
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'location' => location},
+          path_params: {'subscriptionId' => @client.subscription_id,'location' => @client.location},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
