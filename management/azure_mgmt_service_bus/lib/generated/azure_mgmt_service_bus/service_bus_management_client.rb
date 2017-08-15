@@ -54,6 +54,16 @@ module Azure::ARM::ServiceBus
     # @return [Rules] rules
     attr_reader :rules
 
+    # @return [Regions] regions
+    attr_reader :regions
+
+    # @return [PremiumMessagingRegionsOperations]
+    # premium_messaging_regions_operations
+    attr_reader :premium_messaging_regions_operations
+
+    # @return [EventHubs] event_hubs
+    attr_reader :event_hubs
+
     #
     # Creates initializes a new instance of the ServiceBusManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -73,6 +83,9 @@ module Azure::ARM::ServiceBus
       @topics = Topics.new(self)
       @subscriptions = Subscriptions.new(self)
       @rules = Rules.new(self)
+      @regions = Regions.new(self)
+      @premium_messaging_regions_operations = PremiumMessagingRegionsOperations.new(self)
+      @event_hubs = EventHubs.new(self)
       @api_version = '2017-04-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

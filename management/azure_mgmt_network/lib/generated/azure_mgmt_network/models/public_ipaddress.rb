@@ -13,6 +13,9 @@ module Azure::ARM::Network
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [PublicIPAddressSku] The public IP address SKU.
+      attr_accessor :sku
+
       # @return [IPAllocationMethod] The public IP allocation method. Possible
       # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
       # 'Dynamic'
@@ -22,14 +25,16 @@ module Azure::ARM::Network
       # 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
       attr_accessor :public_ipaddress_version
 
-      # @return [IPConfiguration]
+      # @return [IPConfiguration] The IP configuration associated with the
+      # public IP address.
       attr_accessor :ip_configuration
 
       # @return [PublicIPAddressDnsSettings] The FQDN of the DNS record
       # associated with the public IP address.
       attr_accessor :dns_settings
 
-      # @return [String]
+      # @return [String] The IP address associated with the public IP address
+      # resource.
       attr_accessor :ip_address
 
       # @return [Integer] The idle timeout of the public IP address.
@@ -101,6 +106,14 @@ module Azure::ARM::Network
                         name: 'String'
                       }
                   }
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PublicIPAddressSku'
                 }
               },
               public_ipallocation_method: {
