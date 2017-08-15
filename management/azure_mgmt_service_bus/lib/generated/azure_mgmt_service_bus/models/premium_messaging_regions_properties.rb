@@ -3,54 +3,48 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network
+module Azure::ARM::ServiceBus
   module Models
     #
-    # Private access service.
+    # Model object.
     #
-    class PrivateAccessServiceResult < MsRestAzure::SubResource
+    #
+    class PremiumMessagingRegionsProperties
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Name of the private access value.
-      attr_accessor :name
+      # @return [String] Region code
+      attr_accessor :code
 
-      # @return [String] Type of the private access value.
-      attr_accessor :type
+      # @return [String] Full name of the region
+      attr_accessor :full_name
 
 
       #
-      # Mapper for PrivateAccessServiceResult class as Ruby Hash.
+      # Mapper for PremiumMessagingRegionsProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PrivateAccessServiceResult',
+          serialized_name: 'PremiumMessagingRegions_properties',
           type: {
             name: 'Composite',
-            class_name: 'PrivateAccessServiceResult',
+            class_name: 'PremiumMessagingRegionsProperties',
             model_properties: {
-              id: {
+              code: {
                 required: false,
-                serialized_name: 'id',
+                read_only: true,
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              full_name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'fullName',
                 type: {
                   name: 'String'
                 }

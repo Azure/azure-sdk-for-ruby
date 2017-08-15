@@ -79,6 +79,9 @@ module Azure::ARM::RecoveryServicesBackup
       # as it was at the time of backup.
       attr_accessor :create_new_cloud_service
 
+      # @return [Boolean]
+      attr_accessor :original_storage_account_option
+
       # @return [EncryptionDetails] Details needed if the VM was encrypted at
       # the time of backup.
       attr_accessor :encryption_details
@@ -183,6 +186,13 @@ module Azure::ARM::RecoveryServicesBackup
               create_new_cloud_service: {
                 required: false,
                 serialized_name: 'createNewCloudService',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              original_storage_account_option: {
+                required: false,
+                serialized_name: 'originalStorageAccountOption',
                 type: {
                   name: 'Boolean'
                 }

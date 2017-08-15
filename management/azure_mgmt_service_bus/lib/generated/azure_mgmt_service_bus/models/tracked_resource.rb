@@ -13,7 +13,7 @@ module Azure::ARM::ServiceBus
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The Geo-location where the resource live
+      # @return [String] The Geo-location where the resource lives
       attr_accessor :location
 
       # @return [Hash{String => String}] Resource tags

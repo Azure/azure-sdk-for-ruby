@@ -19,7 +19,7 @@ module Azure::ARM::Network
       # @return [NetworkInterfaceIPConfiguration] A reference to a private IP
       # address defined on a network interface of a VM. Traffic sent to the
       # frontend port of each of the frontend IP configurations is forwarded to
-      # the backed IP.
+      # the backend IP.
       attr_accessor :backend_ipconfiguration
 
       # @return [TransportProtocol] The transport protocol for the endpoint.

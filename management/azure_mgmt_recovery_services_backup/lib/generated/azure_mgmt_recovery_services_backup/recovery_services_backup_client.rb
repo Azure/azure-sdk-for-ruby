@@ -35,6 +35,12 @@ module Azure::ARM::RecoveryServicesBackup
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [BackupJobs] backup_jobs
+    attr_reader :backup_jobs
+
+    # @return [JobDetails] job_details
+    attr_reader :job_details
+
     # @return [BackupResourceVaultConfigs] backup_resource_vault_configs
     attr_reader :backup_resource_vault_configs
 
@@ -73,12 +79,6 @@ module Azure::ARM::RecoveryServicesBackup
 
     # @return [Restores] restores
     attr_reader :restores
-
-    # @return [BackupJobs] backup_jobs
-    attr_reader :backup_jobs
-
-    # @return [JobDetails] job_details
-    attr_reader :job_details
 
     # @return [JobCancellations] job_cancellations
     attr_reader :job_cancellations
@@ -146,6 +146,8 @@ module Azure::ARM::RecoveryServicesBackup
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @backup_jobs = BackupJobs.new(self)
+      @job_details = JobDetails.new(self)
       @backup_resource_vault_configs = BackupResourceVaultConfigs.new(self)
       @backup_engines = BackupEngines.new(self)
       @protection_container_refresh_operation_results = ProtectionContainerRefreshOperationResults.new(self)
@@ -158,8 +160,6 @@ module Azure::ARM::RecoveryServicesBackup
       @recovery_points = RecoveryPoints.new(self)
       @item_level_recovery_connections = ItemLevelRecoveryConnections.new(self)
       @restores = Restores.new(self)
-      @backup_jobs = BackupJobs.new(self)
-      @job_details = JobDetails.new(self)
       @job_cancellations = JobCancellations.new(self)
       @job_operation_results = JobOperationResults.new(self)
       @export_jobs_operation_results = ExportJobsOperationResults.new(self)

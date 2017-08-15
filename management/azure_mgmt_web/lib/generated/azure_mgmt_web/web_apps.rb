@@ -5046,6 +5046,360 @@ module Azure::ARM::Web
     end
 
     #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def get_msdeploy_status(resource_group_name, name, custom_headers = nil)
+      response = get_msdeploy_status_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_msdeploy_status_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_msdeploy_status_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_msdeploy_status_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def create_msdeploy_operation(resource_group_name, name, msdeploy, custom_headers = nil)
+      response = create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers = nil)
+      # Send request
+      promise = begin_create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployLog] operation results.
+    #
+    def get_msdeploy_log(resource_group_name, name, custom_headers = nil)
+      response = get_msdeploy_log_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_msdeploy_log_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_msdeploy_log_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_msdeploy_log_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy/log'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployLog.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [String] operation results.
+    #
+    def get_functions_admin_token(resource_group_name, name, custom_headers = nil)
+      response = get_functions_admin_token_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_functions_admin_token_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_functions_admin_token_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_functions_admin_token_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/token'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get hostname bindings for an app or a deployment slot.
     #
     # Get hostname bindings for an app or a deployment slot.
@@ -7257,6 +7611,264 @@ module Azure::ARM::Web
     end
 
     #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def get_instance_ms_deploy_status(resource_group_name, name, instance_id, custom_headers = nil)
+      response = get_instance_ms_deploy_status_async(resource_group_name, name, instance_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_instance_ms_deploy_status_with_http_info(resource_group_name, name, instance_id, custom_headers = nil)
+      get_instance_ms_deploy_status_async(resource_group_name, name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_instance_ms_deploy_status_async(resource_group_name, name, instance_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def create_instance_msdeploy_operation(resource_group_name, name, instance_id, msdeploy, custom_headers = nil)
+      response = create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers = nil)
+      # Send request
+      promise = begin_create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployLog] operation results.
+    #
+    def get_instance_msdeploy_log(resource_group_name, name, instance_id, custom_headers = nil)
+      response = get_instance_msdeploy_log_async(resource_group_name, name, instance_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_instance_msdeploy_log_with_http_info(resource_group_name, name, instance_id, custom_headers = nil)
+      get_instance_msdeploy_log_async(resource_group_name, name, instance_id, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_instance_msdeploy_log_async(resource_group_name, name, instance_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy/log'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployLog.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Shows whether an app can be cloned to another resource group or subscription.
     #
     # Shows whether an app can be cloned to another resource group or subscription.
@@ -8841,6 +9453,429 @@ module Azure::ARM::Web
     end
 
     #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<PublicCertificate>] operation results.
+    #
+    def list_public_certificates(resource_group_name, name, custom_headers = nil)
+      first_page = list_public_certificates_as_lazy(resource_group_name, name, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_public_certificates_with_http_info(resource_group_name, name, custom_headers = nil)
+      list_public_certificates_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_public_certificates_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public CertificateName
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificate] operation results.
+    #
+    def get_public_certificate(resource_group_name, name, public_certificate_name, custom_headers = nil)
+      response = get_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public CertificateName
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_public_certificate_with_http_info(resource_group_name, name, public_certificate_name, custom_headers = nil)
+      get_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers).value!
+    end
+
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public CertificateName
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'publicCertificateName' => public_certificate_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a hostname binding for an app.
+    #
+    # Creates a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public certificate name.
+    # @param public_certificate [PublicCertificate] Public certificate details.
+    # This is the JSON representation of a PublicCertificate object.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificate] operation results.
+    #
+    def create_or_update_public_certificate(resource_group_name, name, public_certificate_name, public_certificate, custom_headers = nil)
+      response = create_or_update_public_certificate_async(resource_group_name, name, public_certificate_name, public_certificate, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a hostname binding for an app.
+    #
+    # Creates a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public certificate name.
+    # @param public_certificate [PublicCertificate] Public certificate details.
+    # This is the JSON representation of a PublicCertificate object.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_public_certificate_with_http_info(resource_group_name, name, public_certificate_name, public_certificate, custom_headers = nil)
+      create_or_update_public_certificate_async(resource_group_name, name, public_certificate_name, public_certificate, custom_headers).value!
+    end
+
+    #
+    # Creates a hostname binding for an app.
+    #
+    # Creates a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public certificate name.
+    # @param public_certificate [PublicCertificate] Public certificate details.
+    # This is the JSON representation of a PublicCertificate object.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_public_certificate_async(resource_group_name, name, public_certificate_name, public_certificate, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
+      fail ArgumentError, 'public_certificate is nil' if public_certificate.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Web::Models::PublicCertificate.mapper()
+      request_content = @client.serialize(request_mapper,  public_certificate)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'publicCertificateName' => public_certificate_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public Certificate Name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_public_certificate(resource_group_name, name, public_certificate_name, custom_headers = nil)
+      response = delete_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public Certificate Name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_public_certificate_with_http_info(resource_group_name, name, public_certificate_name, custom_headers = nil)
+      delete_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers).value!
+    end
+
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public Certificate Name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_public_certificate_async(resource_group_name, name, public_certificate_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'publicCertificateName' => public_certificate_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets the publishing profile for an app (or deployment slot, if specified).
     #
     # Gets the publishing profile for an app (or deployment slot, if specified).
@@ -8973,9 +10008,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8990,9 +10025,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9105,106 +10140,6 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param name [String] Name of web app
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ResourceHealthMetadata] operation results.
-    #
-    def get_resource_health_metadata(resource_group_name, name, custom_headers = nil)
-      response = get_resource_health_metadata_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param name [String] Name of web app
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_resource_health_metadata_with_http_info(resource_group_name, name, custom_headers = nil)
-      get_resource_health_metadata_async(resource_group_name, name, custom_headers).value!
-    end
-
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param name [String] Name of web app
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_resource_health_metadata_async(resource_group_name, name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resourceHealthMetadata'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Models::ResourceHealthMetadata.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
@@ -14321,6 +15256,385 @@ module Azure::ARM::Web
     end
 
     #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def get_msdeploy_status_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_msdeploy_status_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_msdeploy_status_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_msdeploy_status_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_msdeploy_status_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def create_msdeploy_operation_slot(resource_group_name, name, slot, msdeploy, custom_headers = nil)
+      response = create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers = nil)
+      # Send request
+      promise = begin_create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployLog] operation results.
+    #
+    def get_msdeploy_log_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_msdeploy_log_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_msdeploy_log_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_msdeploy_log_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_msdeploy_log_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy/log'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployLog.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [String] operation results.
+    #
+    def get_functions_admin_token_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_functions_admin_token_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_functions_admin_token_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_functions_admin_token_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # Fetch a short lived token that can be exchanged for a master key.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_functions_admin_token_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/admin/token'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get hostname bindings for an app or a deployment slot.
     #
     # Get hostname bindings for an app or a deployment slot.
@@ -16654,6 +17968,282 @@ module Azure::ARM::Web
     end
 
     #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def get_instance_ms_deploy_status_slot(resource_group_name, name, slot, instance_id, custom_headers = nil)
+      response = get_instance_ms_deploy_status_slot_async(resource_group_name, name, slot, instance_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_instance_ms_deploy_status_slot_with_http_info(resource_group_name, name, slot, instance_id, custom_headers = nil)
+      get_instance_ms_deploy_status_slot_async(resource_group_name, name, slot, instance_id, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_instance_ms_deploy_status_slot_async(resource_group_name, name, slot, instance_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def create_instance_msdeploy_operation_slot(resource_group_name, name, slot, instance_id, msdeploy, custom_headers = nil)
+      response = create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers = nil)
+      # Send request
+      promise = begin_create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployLog] operation results.
+    #
+    def get_instance_msdeploy_log_slot(resource_group_name, name, slot, instance_id, custom_headers = nil)
+      response = get_instance_msdeploy_log_slot_async(resource_group_name, name, slot, instance_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_instance_msdeploy_log_slot_with_http_info(resource_group_name, name, slot, instance_id, custom_headers = nil)
+      get_instance_msdeploy_log_slot_async(resource_group_name, name, slot, instance_id, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # Invoke the MSDeploy Log web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_instance_msdeploy_log_slot_async(resource_group_name, name, slot, instance_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy/log'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployLog.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Shows whether an app can be cloned to another resource group or subscription.
     #
     # Shows whether an app can be cloned to another resource group or subscription.
@@ -17563,7 +19153,7 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot. **** CURRENTLY UNUSED *****
+    # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
     # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
@@ -17587,7 +19177,7 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot. **** CURRENTLY UNUSED *****
+    # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
     # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
@@ -17610,7 +19200,7 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot. **** CURRENTLY UNUSED *****
+    # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
     # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
@@ -18227,6 +19817,457 @@ module Azure::ARM::Web
     end
 
     #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<PublicCertificate>] operation results.
+    #
+    def list_public_certificates_slot(resource_group_name, name, slot, custom_headers = nil)
+      first_page = list_public_certificates_slot_as_lazy(resource_group_name, name, slot, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_public_certificates_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      list_public_certificates_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_public_certificates_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API the named binding for the production slot.
+    # @param public_certificate_name [String] Public CertificateName
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificate] operation results.
+    #
+    def get_public_certificate_slot(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
+      response = get_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API the named binding for the production slot.
+    # @param public_certificate_name [String] Public CertificateName
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_public_certificate_slot_with_http_info(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
+      get_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers).value!
+    end
+
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # Get the named public certificate for an app (or deployment slot, if
+    # specified).
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API the named binding for the production slot.
+    # @param public_certificate_name [String] Public CertificateName
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'publicCertificateName' => public_certificate_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a hostname binding for an app.
+    #
+    # Creates a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public certificate name.
+    # @param public_certificate [PublicCertificate] Public certificate details.
+    # This is the JSON representation of a PublicCertificate object.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificate] operation results.
+    #
+    def create_or_update_public_certificate_slot(resource_group_name, name, public_certificate_name, public_certificate, slot, custom_headers = nil)
+      response = create_or_update_public_certificate_slot_async(resource_group_name, name, public_certificate_name, public_certificate, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a hostname binding for an app.
+    #
+    # Creates a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public certificate name.
+    # @param public_certificate [PublicCertificate] Public certificate details.
+    # This is the JSON representation of a PublicCertificate object.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_public_certificate_slot_with_http_info(resource_group_name, name, public_certificate_name, public_certificate, slot, custom_headers = nil)
+      create_or_update_public_certificate_slot_async(resource_group_name, name, public_certificate_name, public_certificate, slot, custom_headers).value!
+    end
+
+    #
+    # Creates a hostname binding for an app.
+    #
+    # Creates a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param public_certificate_name [String] Public certificate name.
+    # @param public_certificate [PublicCertificate] Public certificate details.
+    # This is the JSON representation of a PublicCertificate object.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a binding for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_public_certificate_slot_async(resource_group_name, name, public_certificate_name, public_certificate, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
+      fail ArgumentError, 'public_certificate is nil' if public_certificate.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Web::Models::PublicCertificate.mapper()
+      request_content = @client.serialize(request_mapper,  public_certificate)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'publicCertificateName' => public_certificate_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param public_certificate_name [String] Public Certificate Name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_public_certificate_slot(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
+      response = delete_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param public_certificate_name [String] Public Certificate Name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_public_certificate_slot_with_http_info(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
+      delete_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers).value!
+    end
+
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # Deletes a hostname binding for an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param public_certificate_name [String] Public Certificate Name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_public_certificate_slot_async(resource_group_name, name, slot, public_certificate_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, 'public_certificate_name is nil' if public_certificate_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'publicCertificateName' => public_certificate_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets the publishing profile for an app (or deployment slot, if specified).
     #
     # Gets the publishing profile for an app (or deployment slot, if specified).
@@ -18366,9 +20407,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -18385,9 +20426,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -18509,113 +20550,6 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ResourceHealthMetadata] operation results.
-    #
-    def get_resource_health_metadata_slot(resource_group_name, name, slot, custom_headers = nil)
-      response = get_resource_health_metadata_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_resource_health_metadata_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
-      get_resource_health_metadata_slot_async(resource_group_name, name, slot, custom_headers).value!
-    end
-
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # Gets the category of ResourceHealthMetadata to use for the given site
-    #
-    # @param resource_group_name [String] Name of the resource group to which the
-    # resource belongs.
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_resource_health_metadata_slot_async(resource_group_name, name, slot, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/resourceHealthMetadata'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Models::ResourceHealthMetadata.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
@@ -19546,7 +21480,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -21532,7 +23466,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 204
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -23067,6 +25001,236 @@ module Azure::ARM::Web
     end
 
     #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def begin_create_msdeploy_operation(resource_group_name, name, msdeploy, custom_headers = nil)
+      response = begin_create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_msdeploy_operation_with_http_info(resource_group_name, name, msdeploy, custom_headers = nil)
+      begin_create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_msdeploy_operation_async(resource_group_name, name, msdeploy, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Web::Models::MSDeploy.mapper()
+      request_content = @client.serialize(request_mapper,  msdeploy)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def begin_create_instance_msdeploy_operation(resource_group_name, name, instance_id, msdeploy, custom_headers = nil)
+      response = begin_create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_instance_msdeploy_operation_with_http_info(resource_group_name, name, instance_id, msdeploy, custom_headers = nil)
+      begin_create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_instance_msdeploy_operation_async(resource_group_name, name, instance_id, msdeploy, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Web::Models::MSDeploy.mapper()
+      request_content = @client.serialize(request_mapper,  msdeploy)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Restores a web app.
     #
     # Restores a web app.
@@ -23307,9 +25471,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23328,9 +25492,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23348,9 +25512,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23373,7 +25537,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Models::CsmSiteRecoveryEntity.mapper()
+      request_mapper = Azure::ARM::Web::Models::SnapshotRecoveryRequest.mapper()
       request_content = @client.serialize(request_mapper,  recovery_entity)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -23819,6 +25983,250 @@ module Azure::ARM::Web
     end
 
     #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def begin_create_msdeploy_operation_slot(resource_group_name, name, slot, msdeploy, custom_headers = nil)
+      response = begin_create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_msdeploy_operation_slot_with_http_info(resource_group_name, name, slot, msdeploy, custom_headers = nil)
+      begin_create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_msdeploy_operation_slot_async(resource_group_name, name, slot, msdeploy, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Web::Models::MSDeploy.mapper()
+      request_content = @client.serialize(request_mapper,  msdeploy)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MSDeployStatus] operation results.
+    #
+    def begin_create_instance_msdeploy_operation_slot(resource_group_name, name, slot, instance_id, msdeploy, custom_headers = nil)
+      response = begin_create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_instance_msdeploy_operation_slot_with_http_info(resource_group_name, name, slot, instance_id, msdeploy, custom_headers = nil)
+      begin_create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers).value!
+    end
+
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # Invoke the MSDeploy web app extension as pass-through API
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of web app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param instance_id [String] Id of web app instance
+    # @param msdeploy [MSDeploy] Details of MSDeploy operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_instance_msdeploy_operation_slot_async(resource_group_name, name, slot, instance_id, msdeploy, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, 'instance_id is nil' if instance_id.nil?
+      fail ArgumentError, 'msdeploy is nil' if msdeploy.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Web::Models::MSDeploy.mapper()
+      request_content = @client.serialize(request_mapper,  msdeploy)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'instanceId' => instance_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 409
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::MSDeployStatus.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Recovers a deleted web app.
     #
     # Recovers a deleted web app.
@@ -23826,9 +26234,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -23849,9 +26257,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -23871,9 +26279,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group to which the
     # resource belongs.
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
-    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
-    # GetSiteSnapshots API.
+    # @param recovery_entity [SnapshotRecoveryRequest] Snapshot data used for web
+    # app recovery. Snapshot information can be obtained by calling GetDeletedSites
+    # or GetSiteSnapshots API.
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -23899,7 +26307,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Models::CsmSiteRecoveryEntity.mapper()
+      request_mapper = Azure::ARM::Web::Models::SnapshotRecoveryRequest.mapper()
       request_content = @client.serialize(request_mapper,  recovery_entity)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -25549,6 +27957,99 @@ module Azure::ARM::Web
     end
 
     #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificateCollection] operation results.
+    #
+    def list_public_certificates_next(next_page_link, custom_headers = nil)
+      response = list_public_certificates_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_public_certificates_next_with_http_info(next_page_link, custom_headers = nil)
+      list_public_certificates_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_public_certificates_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets an app's deployment slots.
     #
     # Gets an app's deployment slots.
@@ -26584,6 +29085,99 @@ module Azure::ARM::Web
     end
 
     #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificateCollection] operation results.
+    #
+    def list_public_certificates_slot_next(next_page_link, custom_headers = nil)
+      response = list_public_certificates_slot_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_public_certificates_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_public_certificates_slot_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_public_certificates_slot_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Web::Models::PublicCertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Get the difference in configuration settings between two web app slots.
     #
     # Get the difference in configuration settings between two web app slots.
@@ -27470,6 +30064,31 @@ module Azure::ARM::Web
     end
 
     #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificateCollection] which provide lazy access to pages of
+    # the response.
+    #
+    def list_public_certificates_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_public_certificates_async(resource_group_name, name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_public_certificates_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
     # Gets an app's deployment slots.
     #
     # Gets an app's deployment slots.
@@ -27759,7 +30378,7 @@ module Azure::ARM::Web
     # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot. **** CURRENTLY UNUSED *****
+    # to production slot.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
     # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
@@ -27776,6 +30395,33 @@ module Azure::ARM::Web
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_perf_mon_counters_slot_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # Get public certificates for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PublicCertificateCollection] which provide lazy access to pages of
+    # the response.
+    #
+    def list_public_certificates_slot_as_lazy(resource_group_name, name, slot, custom_headers = nil)
+      response = list_public_certificates_slot_async(resource_group_name, name, slot, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_public_certificates_slot_next_async(next_page_link, custom_headers)
         end
         page
       end
