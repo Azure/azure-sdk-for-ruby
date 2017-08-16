@@ -29,6 +29,14 @@ module Azure::ARM::Network
       # network gateway.
       attr_accessor :vpn_client_protocols
 
+      # @return [String] The radius server address property of the
+      # VirtualNetworkGateway resource for vpn client connection.
+      attr_accessor :radius_server_address
+
+      # @return [String] The radius secret property of the
+      # VirtualNetworkGateway resource for vpn client connection.
+      attr_accessor :radius_server_secret
+
 
       #
       # Mapper for VpnClientConfiguration class as Ruby Hash.
@@ -92,6 +100,20 @@ module Azure::ARM::Network
                         name: 'String'
                       }
                   }
+                }
+              },
+              radius_server_address: {
+                required: false,
+                serialized_name: 'radiusServerAddress',
+                type: {
+                  name: 'String'
+                }
+              },
+              radius_server_secret: {
+                required: false,
+                serialized_name: 'radiusServerSecret',
+                type: {
+                  name: 'String'
                 }
               }
             }
