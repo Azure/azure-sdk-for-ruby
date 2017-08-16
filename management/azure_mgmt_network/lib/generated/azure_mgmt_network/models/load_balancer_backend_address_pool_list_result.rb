@@ -6,15 +6,15 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for the ListAvailablePrivateAccessServices API service call.
+    # Response for ListBackendAddressPool API service call.
     #
-    class PrivateAccessServicesListResult
+    class LoadBalancerBackendAddressPoolListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<PrivateAccessServiceResult>] List of available private
-      # access service values in a region.
+      # @return [Array<BackendAddressPool>] A list of backend address pools in
+      # a load balancer.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.
@@ -26,7 +26,7 @@ module Azure::ARM::Network
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<PrivateAccessServiceResult>] operation results.
+      # @return [Array<BackendAddressPool>] operation results.
       #
       def get_all_items
         items = @value
@@ -41,7 +41,8 @@ module Azure::ARM::Network
       #
       # Gets the next page of results.
       #
-      # @return [PrivateAccessServicesListResult] with next page content.
+      # @return [LoadBalancerBackendAddressPoolListResult] with next page
+      # content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -53,16 +54,16 @@ module Azure::ARM::Network
       end
 
       #
-      # Mapper for PrivateAccessServicesListResult class as Ruby Hash.
+      # Mapper for LoadBalancerBackendAddressPoolListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PrivateAccessServicesListResult',
+          serialized_name: 'LoadBalancerBackendAddressPoolListResult',
           type: {
             name: 'Composite',
-            class_name: 'PrivateAccessServicesListResult',
+            class_name: 'LoadBalancerBackendAddressPoolListResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,16 +72,17 @@ module Azure::ARM::Network
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'PrivateAccessServiceResultElementType',
+                      serialized_name: 'BackendAddressPoolElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'PrivateAccessServiceResult'
+                        class_name: 'BackendAddressPool'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

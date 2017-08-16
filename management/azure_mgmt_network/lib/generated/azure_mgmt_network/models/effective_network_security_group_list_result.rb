@@ -50,6 +50,7 @@ module Azure::ARM::Network
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
