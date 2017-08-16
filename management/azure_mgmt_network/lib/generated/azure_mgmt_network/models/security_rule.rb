@@ -45,8 +45,14 @@ module Azure::ARM::Network
       attr_accessor :destination_address_prefix
 
       # @return [Array<String>] The destination address prefixes. CIDR or
-      # destination IP rangees.
+      # destination IP ranges.
       attr_accessor :destination_address_prefixes
+
+      # @return [Array<String>] The source port ranges.
+      attr_accessor :source_port_ranges
+
+      # @return [Array<String>] The destination port ranges.
+      attr_accessor :destination_port_ranges
 
       # @return [SecurityRuleAccess] The network traffic is allowed or denied.
       # Possible values are: 'Allow' and 'Deny'. Possible values include:
@@ -156,6 +162,34 @@ module Azure::ARM::Network
               destination_address_prefixes: {
                 required: false,
                 serialized_name: 'properties.destinationAddressPrefixes',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              source_port_ranges: {
+                required: false,
+                serialized_name: 'properties.sourcePortRanges',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              destination_port_ranges: {
+                required: false,
+                serialized_name: 'properties.destinationPortRanges',
                 type: {
                   name: 'Sequence',
                   element: {
