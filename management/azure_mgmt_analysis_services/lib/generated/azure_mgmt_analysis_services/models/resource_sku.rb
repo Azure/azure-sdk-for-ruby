@@ -21,6 +21,10 @@ module Azure::ARM::AnalysisServices
       # applies. Possible values include: 'Development', 'Basic', 'Standard'
       attr_accessor :tier
 
+      # @return [Integer] The number of instances in the read only query pool.
+      # Default value: 1 .
+      attr_accessor :capacity
+
 
       #
       # Mapper for ResourceSku class as Ruby Hash.
@@ -46,6 +50,18 @@ module Azure::ARM::AnalysisServices
                 serialized_name: 'tier',
                 type: {
                   name: 'String'
+                }
+              },
+              capacity: {
+                required: false,
+                serialized_name: 'capacity',
+                default_value: 1,
+                constraints: {
+                  InclusiveMaximum: 8,
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
                 }
               }
             }
