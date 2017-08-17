@@ -6,12 +6,11 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # Defines values for SkuTier
+    # Defines values for ConnectionMode
     #
-    module SkuTier
-      Development = "Development"
-      Basic = "Basic"
-      Standard = "Standard"
+    module ConnectionMode
+      All = "All"
+      ReadOnly = "ReadOnly"
     end
   end
 end
