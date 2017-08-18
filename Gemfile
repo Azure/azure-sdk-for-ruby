@@ -53,4 +53,4 @@ gem 'azure_mgmt_subscriptions',             path: 'management/azure_mgmt_subscri
 gem 'azure_mgmt_traffic_manager',           path: 'management/azure_mgmt_traffic_manager'
 gem 'azure_mgmt_web',                       path: 'management/azure_mgmt_web'
 gem 'azure_sdk',                            path: 'azure_sdk'
-gem 'azure-core',                           git: 'https://github.com/Azure/azure-ruby-asm-core.git', branch: 'master'
+gem 'azure-core',                           git: 'https://github.com/katmsft/azure-ruby-asm-core.git', branch: 'master'
