@@ -6,35 +6,35 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An object that represents SKU details for existing resources.
+    # Status of gateway is error.
     #
-    class SkuDetailsForExistingResource
+    class GatewayListStatusError
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [ResourceSku] The SKU in SKU details for existing resources.
-      attr_accessor :sku
+      # @return [GatewayError] Error of the list gateway status.
+      attr_accessor :error
 
 
       #
-      # Mapper for SkuDetailsForExistingResource class as Ruby Hash.
+      # Mapper for GatewayListStatusError class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SkuDetailsForExistingResource',
+          serialized_name: 'GatewayListStatusError',
           type: {
             name: 'Composite',
-            class_name: 'SkuDetailsForExistingResource',
+            class_name: 'GatewayListStatusError',
             model_properties: {
-              sku: {
+              error: {
                 required: false,
-                serialized_name: 'sku',
+                serialized_name: 'error',
                 type: {
                   name: 'Composite',
-                  class_name: 'ResourceSku'
+                  class_name: 'GatewayError'
                 }
               }
             }
