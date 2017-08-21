@@ -6,7 +6,7 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An object that represents enumerating SKUs for new resources
+    # An object that represents enumerating SKUs for new resources.
     #
     class SkuEnumerationForNewResourceResult
 
@@ -14,7 +14,7 @@ module Azure::ARM::AnalysisServices
 
       include MsRest::JSONable
       # @return [Array<ResourceSku>] The collection of available SKUs for new
-      # resources
+      # resources.
       attr_accessor :value
 
 

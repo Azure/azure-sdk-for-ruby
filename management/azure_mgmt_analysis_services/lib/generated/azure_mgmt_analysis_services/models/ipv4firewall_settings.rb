@@ -6,43 +6,52 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An object that represents enumerating SKUs for existing resources.
+    # An array of firewall rules.
     #
-    class SkuEnumerationForExistingResourceResult
+    class IPv4FirewallSettings
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<SkuDetailsForExistingResource>] The collection of
-      # available SKUs for existing resources.
-      attr_accessor :value
+      # @return [Array<IPv4FirewallRule>] An array of firewall rules.
+      attr_accessor :firewall_rules
+
+      # @return [String] The indicator of enableing PBI service.
+      attr_accessor :enable_power_biservice
 
 
       #
-      # Mapper for SkuEnumerationForExistingResourceResult class as Ruby Hash.
+      # Mapper for IPv4FirewallSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SkuEnumerationForExistingResourceResult',
+          serialized_name: 'IPv4FirewallSettings',
           type: {
             name: 'Composite',
-            class_name: 'SkuEnumerationForExistingResourceResult',
+            class_name: 'IPv4FirewallSettings',
             model_properties: {
-              value: {
+              firewall_rules: {
                 required: false,
-                serialized_name: 'value',
+                serialized_name: 'firewallRules',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'SkuDetailsForExistingResourceElementType',
+                      serialized_name: 'IPv4FirewallRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'SkuDetailsForExistingResource'
+                        class_name: 'IPv4FirewallRule'
                       }
                   }
+                }
+              },
+              enable_power_biservice: {
+                required: false,
+                serialized_name: 'enablePowerBIService',
+                type: {
+                  name: 'String'
                 }
               }
             }

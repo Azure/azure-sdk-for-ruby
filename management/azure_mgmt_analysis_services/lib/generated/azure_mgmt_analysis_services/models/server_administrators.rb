@@ -6,7 +6,7 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An array of administrator user identities
+    # An array of administrator user identities.
     #
     class ServerAdministrators
 

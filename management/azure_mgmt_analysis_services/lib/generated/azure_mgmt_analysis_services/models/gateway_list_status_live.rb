@@ -6,35 +6,35 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An object that represents SKU details for existing resources.
+    # Status of gateway is live.
     #
-    class SkuDetailsForExistingResource
+    class GatewayListStatusLive
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [ResourceSku] The SKU in SKU details for existing resources.
-      attr_accessor :sku
+      # @return [Status] Live message of list gateway. Possible values include:
+      # 'Live'
+      attr_accessor :status
 
 
       #
-      # Mapper for SkuDetailsForExistingResource class as Ruby Hash.
+      # Mapper for GatewayListStatusLive class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SkuDetailsForExistingResource',
+          serialized_name: 'GatewayListStatusLive',
           type: {
             name: 'Composite',
-            class_name: 'SkuDetailsForExistingResource',
+            class_name: 'GatewayListStatusLive',
             model_properties: {
-              sku: {
+              status: {
                 required: false,
-                serialized_name: 'sku',
+                serialized_name: 'status',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ResourceSku'
+                  name: 'String'
                 }
               }
             }
