@@ -550,6 +550,106 @@ module Azure::ARM::CDN
     end
 
     #
+    # Gets the supported optimization types for the current profile. A user can
+    # create an endpoint with an optimization type from the listed values.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SupportedOptimizationTypesResult] operation results.
+    #
+    def get_supported_optimization_types(resource_group_name, profile_name, custom_headers = nil)
+      response = get_supported_optimization_types_async(resource_group_name, profile_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the supported optimization types for the current profile. A user can
+    # create an endpoint with an optimization type from the listed values.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_supported_optimization_types_with_http_info(resource_group_name, profile_name, custom_headers = nil)
+      get_supported_optimization_types_async(resource_group_name, profile_name, custom_headers).value!
+    end
+
+    #
+    # Gets the supported optimization types for the current profile. A user can
+    # create an endpoint with an optimization type from the listed values.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param profile_name [String] Name of the CDN profile which is unique within
+    # the resource group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_supported_optimization_types_async(resource_group_name, profile_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::CDN::Models::SupportedOptimizationTypesResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Checks the quota and actual usage of endpoints under the given CDN profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
