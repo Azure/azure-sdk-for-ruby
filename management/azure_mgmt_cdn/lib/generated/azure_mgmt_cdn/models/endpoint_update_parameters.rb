@@ -49,9 +49,12 @@ module Azure::ARM::CDN
       # 'BypassCaching', 'UseQueryString', 'NotSet'
       attr_accessor :query_string_caching_behavior
 
-      # @return [String] Customer can specify what scenario they want this CDN
-      # endpoint to optimize, e.g. Download, Media services. With this
-      # information we can apply scenario driven optimization.
+      # @return [OptimizationType] Customer can specify what scenario they want
+      # this CDN endpoint to optimize, e.g. Download, Media services. With this
+      # information we can apply scenario driven optimization. Possible values
+      # include: 'GeneralWebDelivery', 'GeneralMediaStreaming',
+      # 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+      # 'DynamicSiteAcceleration'
       attr_accessor :optimization_type
 
       # @return [Array<GeoFilter>] List of rules defining user geo access
