@@ -56,7 +56,7 @@ module Azure::ARM::Storage
     autoload :ListAccountSasResponse,                             'generated/azure_mgmt_storage/models/list_account_sas_response.rb'
     autoload :Sku,                                                'generated/azure_mgmt_storage/models/sku.rb'
     autoload :ServiceSasParameters,                               'generated/azure_mgmt_storage/models/service_sas_parameters.rb'
-    autoload :StorageNetworkAcls,                                 'generated/azure_mgmt_storage/models/storage_network_acls.rb'
+    autoload :NetworkRuleSet,                                     'generated/azure_mgmt_storage/models/network_rule_set.rb'
     autoload :ListServiceSasResponse,                             'generated/azure_mgmt_storage/models/list_service_sas_response.rb'
     autoload :StorageAccount,                                     'generated/azure_mgmt_storage/models/storage_account.rb'
     autoload :Reason,                                             'generated/azure_mgmt_storage/models/reason.rb'

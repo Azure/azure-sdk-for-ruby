@@ -6,9 +6,9 @@
 module Azure::ARM::Storage
   module Models
     #
-    # Network ACL
+    # Network rule set
     #
-    class StorageNetworkAcls
+    class NetworkRuleSet
 
       include MsRestAzure
 
@@ -20,7 +20,7 @@ module Azure::ARM::Storage
       # 'Logging', 'Metrics', 'AzureServices'. Default value: 'AzureServices' .
       attr_accessor :bypass
 
-      # @return [Array<VirtualNetworkRule>] Sets the virtual network ACL rules
+      # @return [Array<VirtualNetworkRule>] Sets the virtual network rules
       attr_accessor :virtual_network_rules
 
       # @return [Array<IPRule>] Sets the IP ACL rules
@@ -33,16 +33,16 @@ module Azure::ARM::Storage
 
 
       #
-      # Mapper for StorageNetworkAcls class as Ruby Hash.
+      # Mapper for NetworkRuleSet class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'StorageNetworkAcls',
+          serialized_name: 'NetworkRuleSet',
           type: {
             name: 'Composite',
-            class_name: 'StorageNetworkAcls',
+            class_name: 'NetworkRuleSet',
             model_properties: {
               bypass: {
                 required: false,
