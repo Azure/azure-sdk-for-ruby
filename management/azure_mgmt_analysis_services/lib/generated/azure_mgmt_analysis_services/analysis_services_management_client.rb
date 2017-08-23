@@ -38,6 +38,9 @@ module Azure::ARM::AnalysisServices
     # @return [Servers] servers
     attr_reader :servers
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     #
     # Creates initializes a new instance of the AnalysisServicesManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -52,7 +55,8 @@ module Azure::ARM::AnalysisServices
       @credentials = credentials
 
       @servers = Servers.new(self)
-      @api_version = '2016-05-16'
+      @operations = Operations.new(self)
+      @api_version = '2017-08-01-beta'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
