@@ -19,6 +19,23 @@ module Azure::ARM::AnalysisServices
       # @return [String] The container URI of backup blob.
       attr_accessor :backup_blob_container_uri
 
+      # @return [GatewayDetails] The gateway details configured for the AS
+      # server.
+      attr_accessor :gateway_details
+
+      # @return [IPv4FirewallSettings] The firewall settings for the AS server.
+      attr_accessor :ip_v4firewall_settings
+
+      # @return [ConnectionMode] How the read-write server's participation in
+      # the query pool is controlled.<br/>It can have the following values:
+      # <ul><li>readOnly - indicates that the read-write server is intended not
+      # to participate in query operations</li><li>all - indicates that the
+      # read-write server can participate in query
+      # operations</li></ul>Specifying readOnly when capacity is 1 results in
+      # error. Possible values include: 'All', 'ReadOnly'. Default value: 'All'
+      # .
+      attr_accessor :querypool_connection_mode
+
       # @return [State] The current state of Analysis Services resource. The
       # state is to indicate more states outside of resource provisioning.
       # Possible values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
@@ -115,6 +132,31 @@ module Azure::ARM::AnalysisServices
                 serialized_name: 'properties.backupBlobContainerUri',
                 type: {
                   name: 'String'
+                }
+              },
+              gateway_details: {
+                required: false,
+                serialized_name: 'properties.gatewayDetails',
+                type: {
+                  name: 'Composite',
+                  class_name: 'GatewayDetails'
+                }
+              },
+              ip_v4firewall_settings: {
+                required: false,
+                serialized_name: 'properties.ipV4FirewallSettings',
+                type: {
+                  name: 'Composite',
+                  class_name: 'IPv4FirewallSettings'
+                }
+              },
+              querypool_connection_mode: {
+                required: false,
+                serialized_name: 'properties.querypoolConnectionMode',
+                default_value: 'All',
+                type: {
+                  name: 'Enum',
+                  module: 'ConnectionMode'
                 }
               },
               state: {
