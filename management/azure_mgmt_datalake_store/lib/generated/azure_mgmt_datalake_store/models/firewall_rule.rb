@@ -43,7 +43,7 @@ module Azure::ARM::DataLakeStore
                 }
               },
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
