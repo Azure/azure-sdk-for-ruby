@@ -16,8 +16,8 @@ module Azure::ARM::Compute
       # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [Array<DiskEncryptionSettings>] The encryption settings of the
-      # disk.
+      # @return [Array<DiskEncryptionSettings>] Specifies the encryption
+      # settings for the OS Disk. <br><br> Minimum api-version: 2015-06-15
       attr_accessor :encryption_settings
 
       # @return [Array<InstanceViewStatus>] The resource status information.

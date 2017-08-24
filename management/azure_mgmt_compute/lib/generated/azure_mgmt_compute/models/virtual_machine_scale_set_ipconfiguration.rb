@@ -16,11 +16,11 @@ module Azure::ARM::Compute
       # @return [String] The IP configuration name.
       attr_accessor :name
 
-      # @return [ApiEntityReference] The subnet.
+      # @return [ApiEntityReference] Specifies the identifier of the subnet.
       attr_accessor :subnet
 
-      # @return [Boolean] Specifies the primary IP Configuration in case the
-      # network interface has more than one IP Configuration.
+      # @return [Boolean] Specifies the primary network interface in case the
+      # virtual machine has more than 1 network interface.
       attr_accessor :primary
 
       # @return [VirtualMachineScaleSetPublicIPAddressConfiguration] The
@@ -33,14 +33,22 @@ module Azure::ARM::Compute
       # Possible values include: 'IPv4', 'IPv6'
       attr_accessor :private_ipaddress_version
 
-      # @return [Array<SubResource>] The application gateway backend address
-      # pools.
+      # @return [Array<SubResource>] Specifies an array of references to
+      # backend address pools of application gateways. A scale set can
+      # reference backend address pools of multiple application gateways.
+      # Multiple scale sets cannot use the same application gateway.
       attr_accessor :application_gateway_backend_address_pools
 
-      # @return [Array<SubResource>] The load balancer backend address pools.
+      # @return [Array<SubResource>] Specifies an array of references to
+      # backend address pools of load balancers. A scale set can reference
+      # backend address pools of one public and one internal load balancer.
+      # Multiple scale sets cannot use the same load balancer.
       attr_accessor :load_balancer_backend_address_pools
 
-      # @return [Array<SubResource>] The load balancer inbound nat pools.
+      # @return [Array<SubResource>] Specifies an array of references to
+      # inbound Nat pools of the load balancers. A scale set can reference
+      # inbound nat pools of one public and one internal load balancer.
+      # Multiple scale sets cannot use the same load balancer
       attr_accessor :load_balancer_inbound_nat_pools
 
 
