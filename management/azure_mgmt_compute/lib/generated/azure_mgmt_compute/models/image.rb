@@ -6,7 +6,9 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Describes an Image.
+    # The source user image virtual hard disk. The virtual hard disk will be
+    # copied before being attached to the virtual machine. If SourceImage is
+    # provided, the destination virtual hard drive must not exist.
     #
     class Image < MsRestAzure::Resource
 
@@ -17,7 +19,8 @@ module Azure::ARM::Compute
       # created.
       attr_accessor :source_virtual_machine
 
-      # @return [ImageStorageProfile] The storage profile.
+      # @return [ImageStorageProfile] Specifies the storage settings for the
+      # virtual machine disks.
       attr_accessor :storage_profile
 
       # @return [String] The provisioning state.

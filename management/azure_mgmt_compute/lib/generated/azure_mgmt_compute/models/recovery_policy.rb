@@ -13,7 +13,13 @@ module Azure::ARM::Compute
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [RecoveryMode] The recovery mode. Possible values include:
+      # @return [RecoveryMode] Specifies the mode of an upgrade to virtual
+      # machines in the scale set.<br /><br /> Possible values are:<br /><br />
+      # **Manual** - You  control the application of updates to virtual
+      # machines in the scale set. You do this by using the manualUpgrade
+      # action in [Manage all VMs in a set](manage-all-vms-in-a-set.md).<br
+      # /><br /> **Automatic** - All virtual machines in the scale set are
+      # automatically updated at the same time. Possible values include:
       # 'None', 'OverProvision', 'Reprovision'
       attr_accessor :mode
 

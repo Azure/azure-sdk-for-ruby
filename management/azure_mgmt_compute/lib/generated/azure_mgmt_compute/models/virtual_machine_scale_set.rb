@@ -16,8 +16,13 @@ module Azure::ARM::Compute
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 
-      # @return [Plan] The purchase plan when deploying a virtual machine scale
-      # set from VM Marketplace images.
+      # @return [Plan] Specifies information about the marketplace image used
+      # to create the virtual machine. This element is only used for
+      # marketplace images. Before you can use a marketplace image from an API,
+      # you must enable the image for programmatic use.  In the Azure portal,
+      # find the marketplace image that you want to use and then click **Want
+      # to deploy programmatically, Get Started ->**. Enter any required
+      # information and then click **Save**.
       attr_accessor :plan
 
       # @return [UpgradePolicy] The upgrade policy.

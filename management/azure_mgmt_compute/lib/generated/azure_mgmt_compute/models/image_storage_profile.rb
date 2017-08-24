@@ -13,10 +13,16 @@ module Azure::ARM::Compute
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [ImageOSDisk] The OS disk.
+      # @return [ImageOSDisk] Specifies information about the operating system
+      # disk used by the virtual machine. <br><br> For more information about
+      # disks, see [About disks and VHDs for Azure virtual
+      # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
       attr_accessor :os_disk
 
-      # @return [Array<ImageDataDisk>] The data disks.
+      # @return [Array<ImageDataDisk>] Specifies the parameters that are used
+      # to add a data disk to a virtual machine. <br><br> For more information
+      # about disks, see [About disks and VHDs for Azure virtual
+      # machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
       attr_accessor :data_disks
 
 
