@@ -6,31 +6,31 @@
 module Azure::ARM::Network
   module Models
     #
-    # Private access service.
+    # Endpoint service.
     #
-    class PrivateAccessServiceResult < MsRestAzure::SubResource
+    class EndpointServiceResult < MsRestAzure::SubResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Name of the private access value.
+      # @return [String] Name of the endpoint service.
       attr_accessor :name
 
-      # @return [String] Type of the private access value.
+      # @return [String] Type of the endpoint service.
       attr_accessor :type
 
 
       #
-      # Mapper for PrivateAccessServiceResult class as Ruby Hash.
+      # Mapper for EndpointServiceResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PrivateAccessServiceResult',
+          serialized_name: 'EndpointServiceResult',
           type: {
             name: 'Composite',
-            class_name: 'PrivateAccessServiceResult',
+            class_name: 'EndpointServiceResult',
             model_properties: {
               id: {
                 required: false,
