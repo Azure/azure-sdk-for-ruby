@@ -41,6 +41,15 @@ spec.add_runtime_dependency 'ms_rest_azure', '~> 0.8.0'
 ```
 Don't forget to correct the version.
 
+# Utilizing MSI(Managed Service Identity) Token Provider
+
+MSI support has been enabled in `ms_rest_azure` version `0.8.2`. Below code snippet demonstrates how to use MSITokenProvider with default port `50342`:  
+
+```ruby
+provider = MsRestAzure::MSITokenProvider.new('{tenant_id}')
+credentials = MsRest::TokenCredentials.new(provider)
+```
+
 # Utilizing Telemetry Extension in your SDK
 
 We encourage the customer of ms_rest_azure library to provide information about their product sent via telemetry extension point as below:
