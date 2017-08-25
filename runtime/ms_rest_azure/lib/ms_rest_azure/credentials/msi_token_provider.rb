@@ -4,27 +4,24 @@
 
 module MsRestAzure
   #
-  # Class that provides access to authentication token.
+  # Class that provides access to authentication token via Managed Service Identity.
   #
-  class ApplicationTokenProvider < MsRest::TokenProvider
+  class MSITokenProvider < MsRest::TokenProvider
 
     private
 
-    TOKEN_ACQUIRE_URL = '{authentication_endpoint}{tenant_id}/oauth2/token'
-    REQUEST_BODY_PATTERN = 'resource={resource_uri}&client_id={client_id}&client_secret={client_secret}&grant_type=client_credentials'
+    TOKEN_ACQUIRE_URL = 'http://localhost:{port}/oauth2/token'
+    REQUEST_BODY_PATTERN = 'authority={authentication_endpoint}{tenant_id}&resource={resource_uri}'
     DEFAULT_SCHEME = 'Bearer'
 
-    # @return [ActiveDirectoryServiceSettings] settings.
+    # @return [MSIActiveDirectoryServiceSettings] settings.
     attr_accessor :settings
 
     # @return [String] tenant id (also known as domain).
     attr_accessor :tenant_id
 
-    # @return [String] application id.
-    attr_accessor :client_id
-
-    # @return [String] application secret key.
-    attr_accessor :client_secret
+    # @return [Integer] port number where MSI service is running.
+    attr_accessor :port
 
     # @return [String] auth token.
     attr_accessor :token
@@ -41,20 +38,18 @@ module MsRestAzure
     public
 
     #
-    # Creates and initialize new instance of the ApplicationTokenProvider class.
+    # Creates and initialize new instance of the MSITokenProvider class.
     # @param tenant_id [String] tenant id (also known as domain).
-    # @param client_id [String] client id.
-    # @param client_secret [String] client secret.
+    # @param port [Integer] port number where MSI service is running.
     # @param settings [ActiveDirectoryServiceSettings] active directory setting.
-    def initialize(tenant_id, client_id, client_secret, settings = ActiveDirectoryServiceSettings.get_azure_settings)
+    def initialize(tenant_id, port = 50342, settings = ActiveDirectoryServiceSettings.get_azure_settings)
       fail ArgumentError, 'Tenant id cannot be nil' if tenant_id.nil?
-      fail ArgumentError, 'Client id cannot be nil' if client_id.nil?
-      fail ArgumentError, 'Client secret key cannot be nil' if client_secret.nil?
+      fail ArgumentError, 'Port cannot be nil' if port.nil?
+      fail ArgumentError, 'Port must be an Integer' unless port.is_a? Integer
       fail ArgumentError, 'Azure AD settings cannot be nil' if settings.nil?
 
       @tenant_id = tenant_id
-      @client_id = client_id
-      @client_secret = client_secret
+      @port = port
       @settings = settings
 
       @expiration_threshold = 5 * 60
@@ -86,8 +81,7 @@ module MsRestAzure
     # @return [String] new authentication token.
     def acquire_token
       token_acquire_url = TOKEN_ACQUIRE_URL.dup
-      token_acquire_url['{authentication_endpoint}'] = @settings.authentication_endpoint
-      token_acquire_url['{tenant_id}'] = @tenant_id
+      token_acquire_url['{port}'] = @port.to_s
 
       url = URI.parse(token_acquire_url)
 
@@ -96,17 +90,17 @@ module MsRestAzure
       end
 
       request_body = REQUEST_BODY_PATTERN.dup
+      request_body['{authentication_endpoint}'] = ERB::Util.url_encode(@settings.authentication_endpoint)
+      request_body['{tenant_id}'] = ERB::Util.url_encode(@tenant_id)
       request_body['{resource_uri}'] = ERB::Util.url_encode(@settings.token_audience)
-      request_body['{client_id}'] = ERB::Util.url_encode(@client_id)
-      request_body['{client_secret}'] = ERB::Util.url_encode(@client_secret)
 
-      response = connection.get do |request|
+      response = connection.post do |request|
         request.headers['content-type'] = 'application/x-www-form-urlencoded'
         request.body = request_body
       end
 
       fail AzureOperationError,
-        'Couldn\'t login to Azure, please verify your tenant id, client id and client secret' unless response.status == 200
+        'Couldn\'t acquire access token from Managed Service Identity, please verify your tenant id, port and settings' unless response.status == 200
 
       response_body = JSON.load(response.body)
       @token = response_body['access_token']
