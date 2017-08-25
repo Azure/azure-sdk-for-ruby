@@ -1,4 +1,4 @@
-##2017.08.25 ms_rest_azure version 0.8.2
+##2017.08.28 ms_rest_azure version 0.8.2
 * Enable Managed Service Identity authentication features into ms_rest_azure runtime for azure_mgmt_* sdks.[Issue #884](https://github.com/Azure/azure-sdk-for-ruby/issues/884) [PR #889](https://github.com/Azure/azure-sdk-for-ruby/pull/889)
 
 ##2017.07.10 ms_rest_azure version 0.8.1
