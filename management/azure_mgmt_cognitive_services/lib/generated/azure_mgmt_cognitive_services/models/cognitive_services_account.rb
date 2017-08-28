@@ -75,6 +75,7 @@ module Azure::ARM::CognitiveServices
               },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -96,6 +97,7 @@ module Azure::ARM::CognitiveServices
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -148,6 +150,7 @@ module Azure::ARM::CognitiveServices
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
