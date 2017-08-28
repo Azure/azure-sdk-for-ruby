@@ -1,5 +1,5 @@
-##Unreleased ms_rest_azure version 0.8.x
-* Enable Managed Service Identity authentication features into ms-rest-azure runtime for azure_mgmt_* sdks.[Issue #884](https://github.com/Azure/azure-sdk-for-ruby/issues/884) [PR #889](https://github.com/Azure/azure-sdk-for-ruby/pull/889)
+##2017.08.28 ms_rest_azure version 0.8.2
+* Enable Managed Service Identity authentication features into ms_rest_azure runtime for azure_mgmt_* sdks.[Issue #884](https://github.com/Azure/azure-sdk-for-ruby/issues/884) [PR #889](https://github.com/Azure/azure-sdk-for-ruby/pull/889)
 
 ##2017.07.10 ms_rest_azure version 0.8.1
 * [Bug Fix] Fixed the issue with the polling status object to handle the response code and provisioning status correctly.[Issue #817](https://github.com/Azure/azure-sdk-for-ruby/issues/817) [PR #828](https://github.com/Azure/azure-sdk-for-ruby/pull/828)
