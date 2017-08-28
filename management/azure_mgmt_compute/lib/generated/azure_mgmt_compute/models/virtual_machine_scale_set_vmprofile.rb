@@ -13,28 +13,36 @@ module Azure::ARM::Compute
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [VirtualMachineScaleSetOSProfile] The virtual machine scale set
-      # OS profile.
+      # @return [VirtualMachineScaleSetOSProfile] Specifies the operating
+      # system settings for the virtual machines in the scale set.
       attr_accessor :os_profile
 
-      # @return [VirtualMachineScaleSetStorageProfile] The virtual machine
-      # scale set storage profile.
+      # @return [VirtualMachineScaleSetStorageProfile] Specifies the storage
+      # settings for the virtual machine disks.
       attr_accessor :storage_profile
 
-      # @return [VirtualMachineScaleSetNetworkProfile] The virtual machine
-      # scale set network profile.
+      # @return [VirtualMachineScaleSetNetworkProfile] Specifies properties of
+      # the network interfaces of the virtual machines in the scale set.
       attr_accessor :network_profile
 
-      # @return [DiagnosticsProfile] The virtual machine scale set diagnostics
-      # profile.
+      # @return [DiagnosticsProfile] Specifies the boot diagnostic settings
+      # state. <br><br>Minimum api-version: 2015-06-15.
       attr_accessor :diagnostics_profile
 
-      # @return [VirtualMachineScaleSetExtensionProfile] The virtual machine
-      # scale set extension profile.
+      # @return [VirtualMachineScaleSetExtensionProfile] Specifies a collection
+      # of settings for extensions installed on virtual machines in the scale
+      # set.
       attr_accessor :extension_profile
 
-      # @return [String] The license type, which is for bring your own license
-      # scenario.
+      # @return [String] Specifies that the image or disk that is being used
+      # was licensed on-premises. This element is only used for images that
+      # contain the Windows Server operating system. <br><br> Possible values
+      # are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+      # element is included in a request for an update, the value must match
+      # the initial value. This value cannot be updated. <br><br> For more
+      # information, see [Azure Hybrid Use Benefit for Windows
+      # Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+      # <br><br> Minimum api-version: 2015-06-15
       attr_accessor :license_type
 
 
