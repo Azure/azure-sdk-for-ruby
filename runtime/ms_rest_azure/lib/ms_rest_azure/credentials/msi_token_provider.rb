@@ -96,6 +96,7 @@ module MsRestAzure
 
       response = connection.post do |request|
         request.headers['content-type'] = 'application/x-www-form-urlencoded'
+        request.headers['Metadata'] = 'true'
         request.body = request_body
       end
 
