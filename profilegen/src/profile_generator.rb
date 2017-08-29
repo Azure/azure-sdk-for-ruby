@@ -43,7 +43,7 @@ class ProfileGenerator
   def generate
     generate_profile_sdk
     generate_profile_gemspec
-    generate_license
+    generate_license_and_rakefile
     generate_utils
   end
 
@@ -74,8 +74,10 @@ class ProfileGenerator
   # Method to generate the License file. Copies
   # the license file from resources folder to destination
   #
-  def generate_license
-    FileUtils.cp './res/LICENSE.txt', "#{@output_dir}/#{@profile_name}/"
+  def generate_license_and_rakefile
+    profile_folder = "#{@output_dir}/#{@profile_name}/"
+    copy_file './res/LICENSE.txt', profile_folder
+    copy_file './res/Rakefile', profile_folder
   end
 
   #
@@ -84,8 +86,13 @@ class ProfileGenerator
   # resources folder to destination.
   #
   def generate_utils
-    FileUtils.cp './res/configurable.rb', "#{@output_dir}/#{@profile_name}/lib/utils/"
-    FileUtils.cp './res/default.rb', "#{@output_dir}/#{@profile_name}/lib/utils/"
+    utils_folder = "#{@output_dir}/#{@profile_name}/lib/utils/"
+    copy_file './res/configurable.rb', utils_folder
+    copy_file './res/default.rb', utils_folder
+  end
+
+  def copy_file(source, destination)
+    FileUtils.cp source, destination
   end
 
   #
@@ -100,7 +107,7 @@ class ProfileGenerator
     @resource_types.each do |resource_type_name, resource_type|
       base_file_path = @dir_metadata[resource_type_name]['path'] + get_sdk_path + "azure_mgmt_#{get_ruby_specific_resource_type_name(resource_type_name).downcase}.rb"
       require base_file_path
-      @module_require = @dir_metadata[resource_type_name]['module_require'] + resource_type['version']
+      @module_require = @dir_metadata[resource_type_name]['module_require']
       @spec_includes << @module_require
       @module_name    = get_module_name(resource_type_name)
       @class_name     = get_ruby_specific_resource_type_name(resource_type_name)
