@@ -104,7 +104,7 @@ class ProfileGenerator
   #        4. Generate the module file
   #
   def generate_modules
-    @resource_types.each do |resource_type_name, resource_type|
+    @resource_types.each do |resource_type_name, resource_type_version|
       base_file_path = @dir_metadata[resource_type_name]['path'] + get_sdk_path + "azure_mgmt_#{get_ruby_specific_resource_type_name(resource_type_name).downcase}.rb"
       require base_file_path
       @module_require = @dir_metadata[resource_type_name]['module_require']

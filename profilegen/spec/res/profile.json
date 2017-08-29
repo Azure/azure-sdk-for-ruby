@@ -1,30 +1,16 @@
 [
   {
     "name": "Api_2016_06_30",
-    "ruby_version": "1.0.0",
     "resourceTypes": {
-      "Microsoft.Compute" : {
-        "version": "2016_06_30",
-        "models": ["VirtualMachine", "Disk"]
-      },
-      "Microsoft.Network" : {
-        "version": "2016_06_30",
-        "models": ["Subnet", "Usage"]
-      }
+      "Microsoft.Compute" : "2016_06_30",
+      "Microsoft.Network" : "2016_06_30"
     }
   },
   {
     "name": "Api_2016_07_30",
-    "ruby_version": "1.0.1",
     "resourceTypes": {
-      "Microsoft.Compute" : {
-        "version": "2016_06_30",
-        "models": ["VirtualMachine", "Disk"]
-      },
-      "Microsoft.Network" : {
-        "version": "2016_06_30",
-        "models": ["Subnet", "Usage"]
-      }
+      "Microsoft.Compute" : "2016_06_30",
+      "Microsoft.Network" : "2016_06_30"
     }
   }
 ]
