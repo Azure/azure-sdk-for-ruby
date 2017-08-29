@@ -13,12 +13,20 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Operation name: {provider}/{resource}/{operation}
+      # @return [String] The name of the operation being performed on this
+      # particular object.
       attr_accessor :name
 
-      # @return [OperationDisplay] Display metadata associated with the
-      # operation.
+      # @return [OperationDisplay] The localized display information for this
+      # particular operation / action.
       attr_accessor :display
+
+      # @return [OperationOrigin] The intended executor of the operation.
+      # Possible values include: 'user', 'system'
+      attr_accessor :origin
+
+      # @return Additional descriptions for the operation.
+      attr_accessor :properties
 
 
       #
@@ -35,6 +43,7 @@ module Azure::ARM::SQL
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -42,10 +51,34 @@ module Azure::ARM::SQL
               },
               display: {
                 required: false,
+                read_only: true,
                 serialized_name: 'display',
                 type: {
                   name: 'Composite',
                   class_name: 'OperationDisplay'
+                }
+              },
+              origin: {
+                required: false,
+                read_only: true,
+                serialized_name: 'origin',
+                type: {
+                  name: 'String'
+                }
+              },
+              properties: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'ObjectElementType',
+                      type: {
+                        name: 'Object'
+                      }
+                  }
                 }
               }
             }

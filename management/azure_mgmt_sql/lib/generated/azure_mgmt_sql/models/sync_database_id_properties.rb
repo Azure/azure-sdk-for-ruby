@@ -6,40 +6,29 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Subresource properties
+    # Properties of the sync database id.
     #
-    class SqlSubResource
+    class SyncDatabaseIdProperties
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Resource name
-      attr_accessor :name
-
-      # @return [String] Resource Id
+      # @return [String] ARM resource id of sync database.
       attr_accessor :id
 
 
       #
-      # Mapper for SqlSubResource class as Ruby Hash.
+      # Mapper for SyncDatabaseIdProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SqlSubResource',
+          serialized_name: 'SyncDatabaseIdProperties',
           type: {
             name: 'Composite',
-            class_name: 'SqlSubResource',
+            class_name: 'SyncDatabaseIdProperties',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,

@@ -13,15 +13,19 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Service provider: Microsoft SQL Database.
+      # @return [String] The localized friendly form of the resource provider
+      # name.
       attr_accessor :provider
 
-      # @return [String] Resource on which the operation is performed: Server,
-      # Database, etc.
+      # @return [String] The localized friendly form of the resource type
+      # related to this action/operation.
       attr_accessor :resource
 
-      # @return [String] Type of operation: get, read, delete, etc.
+      # @return [String] The localized friendly name for the operation.
       attr_accessor :operation
+
+      # @return [String] The localized friendly description for the operation.
+      attr_accessor :description
 
 
       #
@@ -31,13 +35,14 @@ module Azure::ARM::SQL
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Operation_display',
+          serialized_name: 'OperationDisplay',
           type: {
             name: 'Composite',
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
                 required: false,
+                read_only: true,
                 serialized_name: 'provider',
                 type: {
                   name: 'String'
@@ -45,6 +50,7 @@ module Azure::ARM::SQL
               },
               resource: {
                 required: false,
+                read_only: true,
                 serialized_name: 'resource',
                 type: {
                   name: 'String'
@@ -52,7 +58,16 @@ module Azure::ARM::SQL
               },
               operation: {
                 required: false,
+                read_only: true,
                 serialized_name: 'operation',
+                type: {
+                  name: 'String'
+                }
+              },
+              description: {
+                required: false,
+                read_only: true,
+                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }

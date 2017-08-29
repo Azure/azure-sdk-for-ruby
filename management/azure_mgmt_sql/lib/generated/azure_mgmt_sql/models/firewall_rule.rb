@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a server firewall rule.
     #
-    class FirewallRule < SubResource
+    class FirewallRule < ProxyResource
 
       include MsRestAzure
 
@@ -19,9 +19,6 @@ module Azure::ARM::SQL
       # @return [String] Location of the server that contains this firewall
       # rule.
       attr_accessor :location
-
-      # @return [String] Type of resource this is.
-      attr_accessor :type
 
       # @return [String] The start IP address of the firewall rule. Must be
       # IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP
@@ -46,6 +43,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'FirewallRule',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -54,10 +59,10 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
@@ -74,14 +79,6 @@ module Azure::ARM::SQL
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

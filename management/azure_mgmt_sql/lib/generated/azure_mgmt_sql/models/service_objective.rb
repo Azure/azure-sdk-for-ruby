@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a database service objective.
     #
-    class ServiceObjective < SubResource
+    class ServiceObjective < ProxyResource
 
       include MsRestAzure
 
@@ -43,6 +43,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ServiceObjective',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -51,10 +59,10 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

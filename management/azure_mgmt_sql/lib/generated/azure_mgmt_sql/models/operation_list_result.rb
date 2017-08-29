@@ -6,22 +6,50 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Result of the request to list SQL operations. It contains a list of
-    # operations and a URL link to get the next set of results.
+    # Result of the request to list SQL operations.
     #
     class OperationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<Operation>] List of SQL operations supported by the SQL
-      # resource provider.
+      # @return [Array<Operation>] Array of results.
       attr_accessor :value
 
-      # @return [String] URL to get the next set of operation list results if
-      # there are any.
+      # @return [String] Link to retrieve next page of results.
       attr_accessor :next_link
 
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<Operation>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.next_link != nil do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [OperationListResult] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@next_link).value! unless @next_method.nil?
+        unless response.nil?
+          @next_link = response.body.next_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for OperationListResult class as Ruby Hash.
@@ -37,6 +65,7 @@ module Azure::ARM::SQL
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
@@ -52,6 +81,7 @@ module Azure::ARM::SQL
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

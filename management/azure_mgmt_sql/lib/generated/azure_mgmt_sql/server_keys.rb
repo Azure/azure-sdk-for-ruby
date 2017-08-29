@@ -25,7 +25,7 @@ module Azure::ARM::SQL
     attr_reader :client
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -42,7 +42,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -58,7 +58,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -122,7 +122,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a server key.
+    # Gets a server key.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -140,7 +140,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a server key.
+    # Gets a server key.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -157,7 +157,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a server key.
+    # Gets a server key.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
@@ -556,7 +556,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -571,7 +571,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -585,7 +585,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -643,7 +643,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns a list of server keys.
+    # Gets a list of server keys.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
