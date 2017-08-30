@@ -145,7 +145,7 @@ module Azure::ARM::StreamAnalytics
     # Adds telemetry information.
     #
     def add_telemetry
-        sdk_information = 'azure_mgmt_stream_analytics'
+        sdk_information = 'streamingjobs'
         if defined? Azure::ARM::StreamAnalytics::VERSION
           sdk_information = "#{sdk_information}/#{Azure::ARM::StreamAnalytics::VERSION}"
         end
