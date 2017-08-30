@@ -5,7 +5,7 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Resources
+include Azure::ARM::Resources::Api_2017_05_10
 
 describe 'Resources' do
   before(:each) do
@@ -169,7 +169,7 @@ describe 'Resources' do
 
   it 'should move resources' do
     target_resource_group_name = 'RubySDKTest_azure_mgmt_resources1'
-    params = Azure::ARM::Resources::Models::ResourceGroup.new()
+    params = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup.new()
     params.location = 'westus'
 
     target_rg = @resource_helper.resource_client.resource_groups.create_or_update_async(target_resource_group_name, params).value!.body
