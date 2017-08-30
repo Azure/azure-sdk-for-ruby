@@ -5,12 +5,12 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'generated/azure_mgmt_cdn/module_definition'
-require 'generated/azure_mgmt_cdn/version'
+require '2016-10-02/generated/azure_mgmt_cdn/module_definition'
+require '2016-10-02/generated/azure_mgmt_cdn/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_cdn'
-  spec.version       = Azure::ARM::CDN::VERSION
+  spec.version       = Azure::ARM::CDN::Api_2016_10_02::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure CDN Management Client Library for Ruby'

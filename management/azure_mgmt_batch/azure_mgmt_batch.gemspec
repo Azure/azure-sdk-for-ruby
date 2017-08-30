@@ -5,12 +5,12 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'generated/azure_mgmt_batch/module_definition'
-require 'generated/azure_mgmt_batch/version'
+require '2017-05-01/generated/azure_mgmt_batch/module_definition'
+require '2017-05-01/generated/azure_mgmt_batch/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_batch'
-  spec.version       = Azure::ARM::Batch::VERSION
+  spec.version       = Azure::ARM::Batch::Api_2017_05_01::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Batch Management Client Library for Ruby'
