@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::AnalysisServices
-  module Api_2016_05_16
+module Azure::ARM::AnalysisServices::Api_2016_05_16
   #
   # The Azure Analysis Services Web API provides a RESTful set of web services
   # that enables users to create, retrieve, update, and delete Analysis
@@ -1243,5 +1242,4 @@ module Azure::ARM::AnalysisServices
     end
 
   end
-end
 end

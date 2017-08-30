@@ -6,3 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Batch end
+module Azure::ARM::Batch::Api_2017_05_01 end

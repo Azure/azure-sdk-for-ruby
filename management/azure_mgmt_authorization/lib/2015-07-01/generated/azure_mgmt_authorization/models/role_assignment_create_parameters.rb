@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Authorization
-module Api_2015_07_01
+module Azure::ARM::Authorization::Api_2015_07_01
   module Models
     #
     # Role assignment create parameters.
@@ -44,5 +43,4 @@ module Api_2015_07_01
       end
     end
   end
-end
 end

@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
- module Api_2016_03_30
+module Azure::ARM::Compute::Api_2017_01_31
   module Models
     #
     # Defines values for PassNames
@@ -13,5 +12,4 @@ module Azure::ARM::Compute
       OobeSystem = "oobeSystem"
     end
   end
-   end
 end

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
+module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
     # The List Usages operation response.

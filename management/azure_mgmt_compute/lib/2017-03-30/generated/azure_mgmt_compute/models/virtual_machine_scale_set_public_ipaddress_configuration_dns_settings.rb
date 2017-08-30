@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
-module Api_2017_03_30
+module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
     # Describes a virtual machines scale sets network configuration's DNS
@@ -48,5 +47,4 @@ module Api_2017_03_30
       end
     end
   end
-end
 end

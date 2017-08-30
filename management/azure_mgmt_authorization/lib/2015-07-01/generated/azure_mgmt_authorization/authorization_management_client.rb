@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Authorization
- module Api_2015_07_01
+module Azure::ARM::Authorization::Api_2015_07_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -138,11 +137,10 @@ module Azure::ARM::Authorization
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_authorization'
-        if defined? Azure::ARM::Authorization::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Authorization::VERSION}"
+        if defined? Azure::ARM::Authorization::Api_2015_07_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Authorization::Api_2015_07_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end
   end
- end
 end

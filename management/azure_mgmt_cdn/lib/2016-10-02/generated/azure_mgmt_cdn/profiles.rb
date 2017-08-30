@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN
-  module Api_2016_10_02
+module Azure::ARM::CDN::Api_2016_10_02
   #
   # Use these APIs to manage Azure CDN resources through the Azure Resource
   # Manager. You must make sure that requests made to these resources are
@@ -1426,5 +1425,4 @@ module Azure::ARM::CDN
     end
 
   end
-end
 end

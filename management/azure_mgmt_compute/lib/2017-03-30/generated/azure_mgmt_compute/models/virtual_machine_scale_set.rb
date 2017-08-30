@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
-module Api_2017_03_30
+module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
     # Describes a Virtual Machine Scale Set.
@@ -28,9 +27,6 @@ module Api_2017_03_30
 
       # @return [UpgradePolicy] The upgrade policy.
       attr_accessor :upgrade_policy
-
-      # @return [RecoveryPolicy] The recovery policy.
-      attr_accessor :recovery_policy
 
       # @return [VirtualMachineScaleSetVMProfile] The virtual machine profile.
       attr_accessor :virtual_machine_profile
@@ -137,14 +133,6 @@ module Api_2017_03_30
                   class_name: 'UpgradePolicy'
                 }
               },
-              recovery_policy: {
-                required: false,
-                serialized_name: 'properties.recoveryPolicy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'RecoveryPolicy'
-                }
-              },
               virtual_machine_profile: {
                 required: false,
                 serialized_name: 'properties.virtualMachineProfile',
@@ -197,5 +185,4 @@ module Api_2017_03_30
       end
     end
   end
-end
 end

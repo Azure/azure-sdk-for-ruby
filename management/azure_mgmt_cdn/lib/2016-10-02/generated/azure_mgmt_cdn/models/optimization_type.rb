@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN
- module Api_2016_10_02
+module Azure::ARM::CDN::Api_2016_10_02
   module Models
     #
     # Defines values for OptimizationType
@@ -17,5 +16,4 @@ module Azure::ARM::CDN
       DynamicSiteAcceleration = "DynamicSiteAcceleration"
     end
   end
-   end
 end

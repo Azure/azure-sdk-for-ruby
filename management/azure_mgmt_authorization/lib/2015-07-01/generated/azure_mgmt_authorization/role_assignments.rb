@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Authorization
-  module Api_2015_07_01
+module Azure::ARM::Authorization::Api_2015_07_01
   #
   # Role based access control provides you a way to apply granular level policy
   # administration down to individual resources or resource groups. These
@@ -1481,5 +1480,4 @@ module Azure::ARM::Authorization
     end
 
   end
-end
 end

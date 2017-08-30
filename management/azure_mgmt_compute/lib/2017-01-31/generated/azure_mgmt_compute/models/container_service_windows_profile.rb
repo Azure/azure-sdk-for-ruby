@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
-module Api_2017_01_31
+module Azure::ARM::Compute::Api_2017_01_31
   module Models
     #
     # Profile for Windows VMs in the container service cluster.
@@ -59,5 +58,4 @@ module Api_2017_01_31
       end
     end
   end
-end
 end

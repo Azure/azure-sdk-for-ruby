@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::AnalysisServices
- module Api_2016_05_16
+module Azure::ARM::AnalysisServices::Api_2016_05_16
   module Models
     #
     # Defines values for State
@@ -24,5 +23,4 @@ module Azure::ARM::AnalysisServices
       Scaling = "Scaling"
     end
   end
-   end
 end

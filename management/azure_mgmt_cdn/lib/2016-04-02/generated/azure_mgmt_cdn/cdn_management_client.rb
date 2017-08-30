@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN
- module Api_2016_04_02
+module Azure::ARM::CDN::Api_2016_04_02
   #
   # A service client - single point of access to the REST API.
   #
@@ -142,11 +141,10 @@ module Azure::ARM::CDN
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
-        if defined? Azure::ARM::CDN::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::CDN::VERSION}"
+        if defined? Azure::ARM::CDN::Api_2016_04_02::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::CDN::Api_2016_04_02::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end
   end
- end
 end

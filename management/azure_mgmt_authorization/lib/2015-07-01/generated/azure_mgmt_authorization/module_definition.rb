@@ -6,3 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Authorization end
+module Azure::ARM::Authorization::Api_2015_07_01 end

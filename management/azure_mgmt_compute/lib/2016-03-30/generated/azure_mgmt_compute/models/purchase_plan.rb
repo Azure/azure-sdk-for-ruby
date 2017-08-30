@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
-module Api_2016_03_30
+module Azure::ARM::Compute::Api_2017_01_31
   module Models
     #
     # Used for establishing the purchase context of any 3rd Party artifact
@@ -64,5 +63,4 @@ module Api_2016_03_30
       end
     end
   end
-end
 end

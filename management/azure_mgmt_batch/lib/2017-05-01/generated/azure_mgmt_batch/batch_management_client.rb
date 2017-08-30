@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Batch
- module Api_2017_05_01
+module Azure::ARM::Batch::Api_2017_05_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -138,11 +137,10 @@ module Azure::ARM::Batch
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_batch'
-        if defined? Azure::ARM::Batch::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Batch::VERSION}"
+        if defined? Azure::ARM::Batch::Api_2017_05_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Batch::Api_2017_05_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end
   end
- end
 end

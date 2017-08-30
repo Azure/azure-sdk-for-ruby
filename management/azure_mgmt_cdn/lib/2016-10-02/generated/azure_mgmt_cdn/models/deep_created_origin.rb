@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN
-module Api_2016_10_02
+module Azure::ARM::CDN::Api_2016_10_02
   module Models
     #
     # Origin to be added when creating a CDN endpoint.
@@ -84,5 +83,4 @@ module Api_2016_10_02
       end
     end
   end
-end
 end

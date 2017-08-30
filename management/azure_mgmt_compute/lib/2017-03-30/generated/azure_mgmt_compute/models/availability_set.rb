@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
-module Api_2017_03_30
+module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
     # Specifies information about the availability set that the virtual machine
@@ -157,5 +156,4 @@ module Api_2017_03_30
       end
     end
   end
-end
 end

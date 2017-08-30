@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Batch
-module Api_2017_05_01
+module Azure::ARM::Batch::Api_2017_05_01
   module Models
     #
     # Contains information about an application in a Batch account.
@@ -95,5 +94,4 @@ module Api_2017_05_01
       end
     end
   end
-end
 end

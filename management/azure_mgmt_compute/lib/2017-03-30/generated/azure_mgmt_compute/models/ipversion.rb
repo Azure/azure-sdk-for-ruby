@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
- module Api_2017_03_30
+module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
     # Defines values for IPVersion
@@ -14,5 +13,4 @@ module Azure::ARM::Compute
       IPv6 = "IPv6"
     end
   end
-   end
 end

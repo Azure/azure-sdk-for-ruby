@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
- module Api_2017_01_31
+module Azure::ARM::Compute::Api_2017_01_31
   module Models
     #
     # Defines values for ContainerServiceOrchestratorTypes
@@ -16,5 +15,4 @@ module Azure::ARM::Compute
       Kubernetes = "Kubernetes"
     end
   end
-   end
 end

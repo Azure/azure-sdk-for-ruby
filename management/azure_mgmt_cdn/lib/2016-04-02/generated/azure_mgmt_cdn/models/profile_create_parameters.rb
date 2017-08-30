@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN
-module Api_2016_04_02
+module Azure::ARM::CDN::Api_2016_04_02
   module Models
     #
     # Profile properties required for profile creation.
@@ -71,5 +70,4 @@ module Api_2016_04_02
       end
     end
   end
-end
 end

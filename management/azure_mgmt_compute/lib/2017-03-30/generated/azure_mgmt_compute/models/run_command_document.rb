@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute
-module Api_2017_03_30
+module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
     # Describes the properties of a Run Command.
@@ -105,5 +104,4 @@ module Api_2017_03_30
       end
     end
   end
-end
 end

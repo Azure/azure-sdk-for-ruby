@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Authorization
+module Azure::ARM::Authorization::Api_2015_07_01
   module Models
     #
     # Provider operations metadata list

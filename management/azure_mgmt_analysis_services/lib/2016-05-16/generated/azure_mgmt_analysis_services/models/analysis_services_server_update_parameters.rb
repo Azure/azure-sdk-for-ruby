@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::AnalysisServices
-module Api_2016_05_16
+module Azure::ARM::AnalysisServices::Api_2016_05_16
   module Models
     #
     # Provision request specification
@@ -83,5 +82,4 @@ module Api_2016_05_16
       end
     end
   end
-end
 end

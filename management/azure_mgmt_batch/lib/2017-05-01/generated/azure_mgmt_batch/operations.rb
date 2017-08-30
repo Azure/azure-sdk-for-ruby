@@ -3,8 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Batch
-  module Api_2017_05_01
+module Azure::ARM::Batch::Api_2017_05_01
   #
   # Operations
   #
@@ -211,5 +210,4 @@ module Azure::ARM::Batch
     end
 
   end
-end
 end
