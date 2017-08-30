@@ -16,6 +16,7 @@ require 'dotenv/tasks'
 require 'rspec/core/rake_task'
 require 'open3'
 require 'os'
+require 'json'
 
 version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
 
@@ -28,10 +29,11 @@ namespace :arm do
     end
   end
 
-  desc 'Delete ./lib/generated for each of the Azure Resource Manager projects'
-  task :clean_generated do
+  desc 'Delete ./lib/generated for each sdk'
+  task :clean_generated_api_versions do
     each_gem do
-      execute_and_stream(OS.windows? ? 'del /S /Q lib\generated 2>nul' : 'rm -rf lib/generated')
+      delete_command_windows = 'for /r lib\ %a in (generated) do @if exist %a del /S /Q %a 2>nul'
+      execute_and_stream(OS.windows? ? delete_command_windows : 'rm -rf lib/*/generated')
     end
   end
 
@@ -50,20 +52,36 @@ namespace :arm do
     end
   end
 
-  desc 'Regen code for each of the Azure Resource Manager projects'
-  task :regen => :clean_generated do
+  desc 'Regen code for each sdk with all its api versions'
+  task :apiVersions => :clean_generated_api_versions do
+    json = get_config_file
     REGEN_EXCLUDES = ['azure_sdk']
-    each_gem do |dir|
+    each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
       unless REGEN_EXCLUDES.include?(dir.to_s)
         puts "\nGenerating #{dir}\n"
-        md = REGEN_METADATA[dir.to_sym]
         ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
-
-        command = "#{ar_base_command} #{md[:spec_uri]} --package-version=#{md[:version]} --namespace=#{md[:ns]} --package-name=#{md[:pn].nil? ? dir : md[:pn]} --output-folder=#{File.join(Dir.pwd, 'lib')} --ruby --azure-arm"
-        command += " --#{md[:options]}" unless md[:options].nil?
-        command += " --tag=#{md[:tag]}" unless md[:tag].nil?
-
-        execute_and_stream(command)
+        md = json[dir] # there should be an entry in the metadata for each of the api versions to generate
+        puts "md: #{md}"
+        package_name = dir
+        md.each do |api_version_pkg, api_version_value|
+         ar_arguments = ''
+         output_folder = ''
+         api_version_value.each do |argument_name, argument_value|
+           if argument_name.casecmp("output-folder") == 0
+             output_folder = argument_value
+           else
+             if argument_name.casecmp("markdown") == 0
+               ar_arguments = ar_arguments + " #{argument_value}"
+             else
+               ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+             end
+           end
+         end
+         # puts "Arguments: #{ar_arguments}"
+         command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
+         puts "command: #{command}"
+         execute_and_stream(command)
+        end
       end
     end
   end
@@ -108,6 +126,11 @@ def execute(cmd)
   end
 end
 
+def get_config_file
+  config_file = File.read "F:/Git/azure-sdk-for-ruby/config.json"
+  config_json = JSON.parse(config_file)
+end
+
 def each_child
   top_level_dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
   management_level_dirs = Dir.entries('management/.').select { |f| File.directory?("management/#{f}") and !(f =='.' || f == '..') }
@@ -122,229 +145,18 @@ end
 
 def each_gem
   each_child do |dir|
-    gem_dir = dir.split('/').last.to_sym
-    if REGEN_METADATA.has_key?(gem_dir)
+    #puts "Each child #{dir}"
+    gem_dir = dir.split('/').last
+    if get_config_file.has_key?(gem_dir)
+     # puts "Gem dir #{gem_dir}"
       yield gem_dir
     end
   end
 end
 
 REGEN_METADATA = {
-    autorest_loc: ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
+    autorest_loc: "node F:/Git/newautorest/autorest/src/autorest-core/dist/app.js", #autorest", #ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
     azure_sdk: {
         version: version
-    },
-    azure_mgmt_analysis_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/analysisservices/resource-manager/readme.md',
-        ns: 'Azure::ARM::AnalysisServices',
-        version: version
-    },
-    azure_mgmt_authorization: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/authorization/resource-manager/readme.md',
-        ns: 'Azure::ARM::Authorization',
-        version: version
-    },
-    azure_mgmt_batch: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/batch/resource-manager/readme.md',
-        ns: 'Azure::ARM::Batch',
-        version: version
-    },
-    azure_mgmt_cdn: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/cdn/resource-manager/readme.md',
-        ns: 'Azure::ARM::CDN',
-        version: version
-    },
-    azure_mgmt_cognitive_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/cognitiveservices/resource-manager/readme.md',
-        ns: 'Azure::ARM::CognitiveServices',
-        version: version
-    },
-    azure_mgmt_commerce: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/commerce/resource-manager/readme.md',
-        ns: 'Azure::ARM::Commerce',
-        version: version
-    },
-    azure_mgmt_compute: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/readme.md',
-        ns: 'Azure::ARM::Compute',
-        version: version
-    },
-    azure_mgmt_datalake_analytics: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/datalake-analytics/resource-manager/readme.md',
-        ns: 'Azure::ARM::DataLakeAnalytics',
-        version: version
-    },
-    azure_mgmt_datalake_store: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/datalake-store/resource-manager/readme.md',
-        ns: 'Azure::ARM::DataLakeStore',
-        version: version
-    },
-    azure_mgmt_devtestlabs: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/devtestlabs/resource-manager/readme.md',
-        ns: 'Azure::ARM::DevTestLabs',
-        version: version
-    },
-    azure_mgmt_dns: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/dns/resource-manager/readme.md',
-        ns: 'Azure::ARM::Dns',
-        version: version
-    },
-    azure_mgmt_event_hub: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/eventhub/resource-manager/readme.md',
-        ns: 'Azure::ARM::EventHub',
-        version: version
-    },
-    azure_mgmt_features: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
-        ns: 'Azure::ARM::Features',
-        version: version,
-        options: 'package-features'
-    },
-    azure_mgmt_graph: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/graphrbac/data-plane/readme.md',
-        ns: 'Azure::ARM::Graph',
-        version: version
-    },
-    # Not generating this gem due to known issue in swagger
-    # azure_mgmt_intune: {
-    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-intune/2015-01-14-preview/swagger/intune.json',
-    #     ns: 'Azure::ARM::Intune',
-    #     version: version,
-    #     tag: 'arm_intune'
-    # },
-    azure_mgmt_iot_hub: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/iothub/resource-manager/readme.md',
-        ns: 'Azure::ARM::IotHub',
-        version: version
-    },
-    azure_mgmt_key_vault: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/keyvault/resource-manager/readme.md',
-        ns: 'Azure::ARM::KeyVault',
-        version: version
-    },
-    azure_mgmt_locks: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
-        ns: 'Azure::ARM::Locks',
-        version: version,
-        options: 'package-locks'
-    },
-    azure_mgmt_logic: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/logic/resource-manager/readme.md',
-        ns: 'Azure::ARM::Logic',
-        version: version
-    },
-    azure_mgmt_machine_learning: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/readme.md',
-        ns: 'Azure::ARM::MachineLearning',
-        version: version,
-        options: 'package-webservices'
-    },
-    azure_mgmt_media_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/mediaservices/resource-manager/readme.md',
-        ns: 'Azure::ARM::MediaServices',
-        version: version
-    },
-    azure_mgmt_mobile_engagement: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/mobileengagement/resource-manager/readme.md',
-        ns: 'Azure::ARM::MobileEngagement',
-        version: version
-    },
-    azure_mgmt_monitor: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/monitor/resource-manager/readme.md',
-        ns: 'Azure::ARM::Monitor',
-        version: version
-    },
-    azure_mgmt_network: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/readme.md',
-        ns: 'Azure::ARM::Network',
-        version: version
-    },
-    azure_mgmt_notification_hubs: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/notificationhubs/resource-manager/readme.md',
-        ns: 'Azure::ARM::NotificationHubs',
-        version: version
-    },
-    azure_mgmt_policy: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
-        ns: 'Azure::ARM::Policy',
-        version: version,
-        options: 'package-policy'
-    },
-    azure_mgmt_powerbi_embedded: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/powerbiembedded/resource-manager/readme.md',
-        ns: 'Azure::ARM::PowerBiEmbedded',
-        version: version
-    },
-    azure_mgmt_recovery_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/recoveryservices/resource-manager/readme.md',
-        ns: 'Azure::ARM::RecoveryServices',
-        version: version
-    },
-    azure_mgmt_recovery_services_backup: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/recoveryservicesbackup/resource-manager/readme.md',
-        ns: 'Azure::ARM::RecoveryServicesBackup',
-        version: version
-    },
-    azure_mgmt_redis: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/redis/resource-manager/readme.md',
-        ns: 'Azure::ARM::Redis',
-        version: version
-    },
-    azure_mgmt_resources: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
-        ns: 'Azure::ARM::Resources',
-        version: version,
-        options: 'package-resources'
-    },
-    azure_mgmt_scheduler: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/scheduler/resource-manager/readme.md',
-        ns: 'Azure::ARM::Scheduler',
-        version: version
-    },
-    azure_mgmt_search: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/search/resource-manager/readme.md',
-        ns: 'Azure::ARM::Search',
-        version: version
-    },
-    azure_mgmt_server_management: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/servermanagement/resource-manager/readme.md',
-        ns: 'Azure::ARM::ServerManagement',
-        version: version
-    },
-    azure_mgmt_service_bus: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/servicebus/resource-manager/readme.md',
-        ns: 'Azure::ARM::ServiceBus',
-        version: version
-    },
-    azure_mgmt_sql: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/sql/resource-manager/readme.md',
-        ns: 'Azure::ARM::SQL',
-        version: version
-    },
-    azure_mgmt_storage: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/storage/resource-manager/readme.md',
-        ns: 'Azure::ARM::Storage',
-        version: version
-    },
-    azure_mgmt_stream_analytics: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/streamanalytics/resource-manager/readme.md',
-        ns: 'Azure::ARM::StreamAnalytics',
-        version: version
-    },
-    azure_mgmt_subscriptions: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
-        ns: 'Azure::ARM::Subscriptions',
-        version: version,
-        options: 'package-subscriptions'
-    },
-    azure_mgmt_traffic_manager: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/trafficmanager/resource-manager/readme.md',
-        ns: 'Azure::ARM::TrafficManager',
-        version: version
-    },
-    azure_mgmt_web: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/web/resource-manager/readme.md',
-        ns: 'Azure::ARM::Web',
-        version: version
-    },
+    }
 }
