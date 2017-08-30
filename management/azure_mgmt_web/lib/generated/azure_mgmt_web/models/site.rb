@@ -64,9 +64,6 @@ module Azure::ARM::Web
       # the app. Read-only.
       attr_accessor :traffic_manager_host_names
 
-      # @return [Boolean] Indicates whether app is deployed as a premium app.
-      attr_accessor :premium_app_deployed
-
       # @return [Boolean] <code>true</code> to stop SCM (KUDU) site when the
       # app is stopped; otherwise, <code>false</code>. The default is
       # <code>false</code>. Default value: false .
@@ -79,13 +76,6 @@ module Azure::ARM::Web
       # @return [HostingEnvironmentProfile] App Service Environment to use for
       # the app.
       attr_accessor :hosting_environment_profile
-
-      # @return [String] Micro services like apps, logic apps. Default value:
-      # 'WebSites' .
-      attr_accessor :micro_service
-
-      # @return [String] Name of gateway app associated with the app.
-      attr_accessor :gateway_site_name
 
       # @return [Boolean] <code>true</code> to enable client affinity;
       # <code>false</code> to stop sending session affinity cookies, which
@@ -127,6 +117,10 @@ module Azure::ARM::Web
       # cloned from a source app.
       attr_accessor :cloning_info
 
+      # @return [SnapshotRecoveryRequest] If specified during app creation, the
+      # app is created from a previous snapshot.
+      attr_accessor :snapshot_info
+
       # @return [String] Name of the resource group the app belongs to.
       # Read-only.
       attr_accessor :resource_group
@@ -141,6 +135,16 @@ module Azure::ARM::Web
       # @return [SlotSwapStatus] Status of the last deployment slot swap
       # operation.
       attr_accessor :slot_swap_status
+
+      # @return [Boolean] Indicates whether app is deployed as a premium app.
+      attr_accessor :premium_app_deployed
+
+      # @return [String] Micro services like apps, logic apps. Default value:
+      # 'WebSites' .
+      attr_accessor :micro_service
+
+      # @return [String] Name of gateway app associated with the app.
+      attr_accessor :gateway_site_name
 
 
       #
@@ -165,6 +169,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -186,6 +191,7 @@ module Azure::ARM::Web
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -337,14 +343,6 @@ module Azure::ARM::Web
                   }
                 }
               },
-              premium_app_deployed: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.premiumAppDeployed',
-                type: {
-                  name: 'Boolean'
-                }
-              },
               scm_site_also_stopped: {
                 required: false,
                 serialized_name: 'properties.scmSiteAlsoStopped',
@@ -367,21 +365,6 @@ module Azure::ARM::Web
                 type: {
                   name: 'Composite',
                   class_name: 'HostingEnvironmentProfile'
-                }
-              },
-              micro_service: {
-                required: false,
-                serialized_name: 'properties.microService',
-                default_value: 'WebSites',
-                type: {
-                  name: 'String'
-                }
-              },
-              gateway_site_name: {
-                required: false,
-                serialized_name: 'properties.gatewaySiteName',
-                type: {
-                  name: 'String'
                 }
               },
               client_affinity_enabled: {
@@ -451,6 +434,14 @@ module Azure::ARM::Web
                   class_name: 'CloningInfo'
                 }
               },
+              snapshot_info: {
+                required: false,
+                serialized_name: 'properties.snapshotInfo',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SnapshotRecoveryRequest'
+                }
+              },
               resource_group: {
                 required: false,
                 read_only: true,
@@ -482,6 +473,29 @@ module Azure::ARM::Web
                 type: {
                   name: 'Composite',
                   class_name: 'SlotSwapStatus'
+                }
+              },
+              premium_app_deployed: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.premiumAppDeployed',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              micro_service: {
+                required: false,
+                serialized_name: 'properties.microService',
+                default_value: 'WebSites',
+                type: {
+                  name: 'String'
+                }
+              },
+              gateway_site_name: {
+                required: false,
+                serialized_name: 'properties.gatewaySiteName',
+                type: {
+                  name: 'String'
                 }
               }
             }

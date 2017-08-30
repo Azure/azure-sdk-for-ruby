@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Description of a backup which will be performed.
     #
-    class BackupRequest < MsRestAzure::Resource
+    class BackupRequest < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
@@ -33,7 +33,7 @@ module Azure::ARM::Web
       attr_accessor :databases
 
       # @return [BackupRestoreOperationType] Type of the backup. Possible
-      # values include: 'Default', 'Clone', 'Relocation'
+      # values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
       attr_accessor :backup_request_type
 
 
@@ -59,6 +59,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -71,32 +72,12 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               backup_request_name: {
