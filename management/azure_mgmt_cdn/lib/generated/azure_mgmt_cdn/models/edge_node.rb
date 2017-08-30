@@ -6,7 +6,8 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Edge node of CDN service.
+    # Edgenode is a global Point of Presence (POP) location used to deliver CDN
+    # content to end users.
     #
     class EdgeNode < MsRestAzure::Resource
 

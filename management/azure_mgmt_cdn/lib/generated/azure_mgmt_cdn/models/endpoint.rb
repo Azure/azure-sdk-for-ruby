@@ -20,7 +20,8 @@ module Azure::ARM::CDN
       # to origin. The default value is the host name of the origin.
       attr_accessor :origin_host_header
 
-      # @return [String] The path used when CDN sends request to origin.
+      # @return [String] A directory path on the origin that CDN can use to
+      # retreive content from, e.g. contoso.cloudapp.net/originpath.
       attr_accessor :origin_path
 
       # @return [Array<String>] List of content types on which compression
@@ -44,17 +45,28 @@ module Azure::ARM::CDN
       # must be allowed.
       attr_accessor :is_https_allowed
 
-      # @return [QueryStringCachingBehavior] Defines the query string caching
-      # behavior. Possible values include: 'IgnoreQueryString',
-      # 'BypassCaching', 'UseQueryString', 'NotSet'
+      # @return [QueryStringCachingBehavior] Defines how CDN caches requests
+      # that include query strings. You can ignore any query strings when
+      # caching, bypass caching to prevent requests that contain query strings
+      # from being cached, or cache every request with a unique URL. Possible
+      # values include: 'IgnoreQueryString', 'BypassCaching', 'UseQueryString',
+      # 'NotSet'
       attr_accessor :query_string_caching_behavior
 
-      # @return [String] Customer can specify what scenario they want this CDN
-      # endpoint to optimize, e.g. Download, Media services. With this
-      # information we can apply scenario driven optimization.
+      # @return [OptimizationType] Specifies what scenario the customer wants
+      # this CDN endpoint to optimize for, e.g. Download, Media services. With
+      # this information, CDN can apply scenario driven optimization. Possible
+      # values include: 'GeneralWebDelivery', 'GeneralMediaStreaming',
+      # 'VideoOnDemandMediaStreaming', 'LargeFileDownload',
+      # 'DynamicSiteAcceleration'
       attr_accessor :optimization_type
 
-      # @return [Array<GeoFilter>] List of rules defining user geo access
+      # @return [String] Path to a file hosted on the origin which helps
+      # accelerate delivery of the dynamic content and calculate the most
+      # optimal routes for the CDN. This is relative to the origin path.
+      attr_accessor :probe_path
+
+      # @return [Array<GeoFilter>] List of rules defining the user's geo access
       # within a CDN endpoint. Each geo filter defines an acess rule to a
       # specified path or content, e.g. block APAC for path /pictures/
       attr_accessor :geo_filters
@@ -193,6 +205,13 @@ module Azure::ARM::CDN
               optimization_type: {
                 required: false,
                 serialized_name: 'properties.optimizationType',
+                type: {
+                  name: 'String'
+                }
+              },
+              probe_path: {
+                required: false,
+                serialized_name: 'properties.probePath',
                 type: {
                   name: 'String'
                 }

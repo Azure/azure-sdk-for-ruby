@@ -6,34 +6,32 @@
 module Azure::ARM::CDN
   module Models
     #
-    # The URI required to login to the supplemental portal from the Azure
-    # portal.
+    # Input of the validate probe API.
     #
-    class SsoUri
+    class ValidateProbeInput
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The URI used to login to the supplemental portal.
-      attr_accessor :sso_uri_value
+      # @return [String] The probe URL to validate.
+      attr_accessor :probe_url
 
 
       #
-      # Mapper for SsoUri class as Ruby Hash.
+      # Mapper for ValidateProbeInput class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SsoUri',
+          serialized_name: 'ValidateProbeInput',
           type: {
             name: 'Composite',
-            class_name: 'SsoUri',
+            class_name: 'ValidateProbeInput',
             model_properties: {
-              sso_uri_value: {
-                required: false,
-                read_only: true,
-                serialized_name: 'ssoUriValue',
+              probe_url: {
+                required: true,
+                serialized_name: 'probeURL',
                 type: {
                   name: 'String'
                 }

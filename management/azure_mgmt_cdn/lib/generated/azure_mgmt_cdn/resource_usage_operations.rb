@@ -9,11 +9,11 @@ module Azure::ARM::CDN
   # Manager. You must make sure that requests made to these resources are
   # secure.
   #
-  class EdgeNodes
+  class ResourceUsageOperations
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the EdgeNodes class.
+    # Creates and initializes a new instance of the ResourceUsageOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -24,13 +24,13 @@ module Azure::ARM::CDN
     attr_reader :client
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<EdgeNode>] operation results.
+    # @return [Array<ResourceUsage>] operation results.
     #
     def list(custom_headers = nil)
       first_page = list_as_lazy(custom_headers)
@@ -38,8 +38,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -51,8 +51,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -60,6 +60,7 @@ module Azure::ARM::CDN
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -68,17 +69,18 @@ module Azure::ARM::CDN
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'providers/Microsoft.Cdn/edgenodes'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -94,7 +96,7 @@ module Azure::ARM::CDN
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CDN::Models::EdgenodeResult.mapper()
+            result_mapper = Azure::ARM::CDN::Models::ResourceUsageListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -108,15 +110,15 @@ module Azure::ARM::CDN
     end
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [EdgenodeResult] operation results.
+    # @return [ResourceUsageListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -124,8 +126,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -139,8 +141,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -168,7 +170,7 @@ module Azure::ARM::CDN
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:get, path_template, options)
+      promise = @client.make_request_async(:post, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
@@ -184,7 +186,7 @@ module Azure::ARM::CDN
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CDN::Models::EdgenodeResult.mapper()
+            result_mapper = Azure::ARM::CDN::Models::ResourceUsageListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -198,13 +200,14 @@ module Azure::ARM::CDN
     end
 
     #
-    # Edgenodes are the global Point of Presence (POP) locations used to deliver
-    # CDN content to end users.
+    # Check the quota and actual usage of the CDN profiles under the given
+    # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [EdgenodeResult] which provide lazy access to pages of the response.
+    # @return [ResourceUsageListResult] which provide lazy access to pages of the
+    # response.
     #
     def list_as_lazy(custom_headers = nil)
       response = list_async(custom_headers).value!

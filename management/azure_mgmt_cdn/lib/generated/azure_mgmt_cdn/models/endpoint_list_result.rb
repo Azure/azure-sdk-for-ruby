@@ -18,7 +18,7 @@ module Azure::ARM::CDN
       attr_accessor :value
 
       # @return [String] URL to get the next set of endpoint objects if there
-      # are any.
+      # is any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -67,6 +67,7 @@ module Azure::ARM::CDN
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

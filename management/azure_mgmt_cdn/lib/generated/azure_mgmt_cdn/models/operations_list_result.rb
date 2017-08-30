@@ -9,7 +9,7 @@ module Azure::ARM::CDN
     # Result of the request to list CDN operations. It contains a list of
     # operations and a URL link to get the next set of results.
     #
-    class OperationListResult
+    class OperationsListResult
 
       include MsRestAzure
 
@@ -43,7 +43,7 @@ module Azure::ARM::CDN
       #
       # Gets the next page of results.
       #
-      # @return [OperationListResult] with next page content.
+      # @return [OperationsListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -55,19 +55,20 @@ module Azure::ARM::CDN
       end
 
       #
-      # Mapper for OperationListResult class as Ruby Hash.
+      # Mapper for OperationsListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'OperationListResult',
+          serialized_name: 'OperationsListResult',
           type: {
             name: 'Composite',
-            class_name: 'OperationListResult',
+            class_name: 'OperationsListResult',
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

@@ -6,7 +6,8 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Customer provided domain for branding purposes, e.g. www.consoto.com.
+    # Friendly domain name mapping to the endpoint hostname that the customer
+    # provides for branding purposes, e.g. www.consoto.com.
     #
     class CustomDomain < MsRestAzure::Resource
 
@@ -21,10 +22,21 @@ module Azure::ARM::CDN
       # domain. Possible values include: 'Creating', 'Active', 'Deleting'
       attr_accessor :resource_state
 
-      # @return [CustomHttpsProvisioningState] Provisioning state of Custom
+      # @return [CustomHttpsProvisioningState] Provisioning status of Custom
       # Https of the custom domain. Possible values include: 'Enabling',
       # 'Enabled', 'Disabling', 'Disabled', 'Failed'
       attr_accessor :custom_https_provisioning_state
+
+      # @return [CustomHttpsProvisioningSubstate] Provisioning substate shows
+      # the progress of custom HTTPS enabling/disabling process step by step.
+      # Possible values include: 'SubmittingDomainControlValidationRequest',
+      # 'PendingDomainControlValidationREquestApproval',
+      # 'DomainControlValidationRequestApproved',
+      # 'DomainControlValidationRequestRejected',
+      # 'DomainControlValidationRequestTimedOut', 'IssuingCertificate',
+      # 'DeployingCertificate', 'CertificateDeployed', 'DeletingCertificate',
+      # 'CertificateDeleted'
+      attr_accessor :custom_https_provisioning_substate
 
       # @return [String] Special validation or data may be required when
       # delivering CDN to some regions due to local compliance reasons. E.g.
@@ -112,6 +124,14 @@ module Azure::ARM::CDN
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.customHttpsProvisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              custom_https_provisioning_substate: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.customHttpsProvisioningSubstate',
                 type: {
                   name: 'String'
                 }
