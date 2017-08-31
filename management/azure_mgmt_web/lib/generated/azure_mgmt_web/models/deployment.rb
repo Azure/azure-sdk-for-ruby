@@ -8,24 +8,24 @@ module Azure::ARM::Web
     #
     # User crendentials used for publishing activity.
     #
-    class Deployment < MsRestAzure::Resource
+    class Deployment < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] ID.
+      # @return [String] Identifier for deployment.
       attr_accessor :deployment_id
 
-      # @return [Integer] Status.
+      # @return [Integer] Deployment status.
       attr_accessor :status
 
-      # @return [String] Message.
+      # @return [String] Details about deployment status.
       attr_accessor :message
 
-      # @return [String] Author.
+      # @return [String] Who authored the deployment.
       attr_accessor :author
 
-      # @return [String] Deployer.
+      # @return [String] Who performed the deployment.
       attr_accessor :deployer
 
       # @return [String] Author email.
@@ -37,10 +37,11 @@ module Azure::ARM::Web
       # @return [DateTime] End time.
       attr_accessor :end_time
 
-      # @return [Boolean] Active.
+      # @return [Boolean] True if deployment is currently active, false if
+      # completed and null if not started.
       attr_accessor :active
 
-      # @return [String] Detail.
+      # @return [String] Details on deployment.
       attr_accessor :details
 
 
@@ -66,6 +67,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -78,32 +80,12 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               deployment_id: {

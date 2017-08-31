@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Virtual Network information contract.
     #
-    class VnetInfo
+    class VnetInfo < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
@@ -49,9 +49,40 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'VnetInfo',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               vnet_resource_id: {
                 required: false,
-                serialized_name: 'vnetResourceId',
+                serialized_name: 'properties.vnetResourceId',
                 type: {
                   name: 'String'
                 }
@@ -59,14 +90,14 @@ module Azure::ARM::Web
               cert_thumbprint: {
                 required: false,
                 read_only: true,
-                serialized_name: 'certThumbprint',
+                serialized_name: 'properties.certThumbprint',
                 type: {
                   name: 'String'
                 }
               },
               cert_blob: {
                 required: false,
-                serialized_name: 'certBlob',
+                serialized_name: 'properties.certBlob',
                 type: {
                   name: 'String'
                 }
@@ -74,7 +105,7 @@ module Azure::ARM::Web
               routes: {
                 required: false,
                 read_only: true,
-                serialized_name: 'routes',
+                serialized_name: 'properties.routes',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -90,14 +121,14 @@ module Azure::ARM::Web
               resync_required: {
                 required: false,
                 read_only: true,
-                serialized_name: 'resyncRequired',
+                serialized_name: 'properties.resyncRequired',
                 type: {
                   name: 'Boolean'
                 }
               },
               dns_servers: {
                 required: false,
-                serialized_name: 'dnsServers',
+                serialized_name: 'properties.dnsServers',
                 type: {
                   name: 'String'
                 }
