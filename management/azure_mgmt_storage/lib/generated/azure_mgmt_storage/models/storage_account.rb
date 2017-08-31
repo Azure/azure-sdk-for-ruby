@@ -86,8 +86,8 @@ module Azure::ARM::Storage
       # to true. Default value: false .
       attr_accessor :enable_https_traffic_only
 
-      # @return [StorageNetworkAcls] Network ACL
-      attr_accessor :network_acls
+      # @return [NetworkRuleSet] Network rule set
+      attr_accessor :network_rule_set
 
 
       #
@@ -285,13 +285,13 @@ module Azure::ARM::Storage
                   name: 'Boolean'
                 }
               },
-              network_acls: {
+              network_rule_set: {
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.networkAcls',
                 type: {
                   name: 'Composite',
-                  class_name: 'StorageNetworkAcls'
+                  class_name: 'NetworkRuleSet'
                 }
               }
             }

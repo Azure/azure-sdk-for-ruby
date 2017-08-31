@@ -7,11 +7,11 @@ module Azure::ARM::Storage
   #
   # The Azure Storage Management API.
   #
-  class UsageOperations
+  class SKUs
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the UsageOperations class.
+    # Creates and initializes a new instance of the SKUs class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,13 +22,13 @@ module Azure::ARM::Storage
     attr_reader :client
 
     #
-    # Gets the current usage count and the limit for the resources under the
+    # Lists the available SKUs supported by Microsoft.Storage for given
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [UsageListResult] operation results.
+    # @return [StorageSkuListResult] operation results.
     #
     def list(custom_headers = nil)
       response = list_async(custom_headers).value!
@@ -36,7 +36,7 @@ module Azure::ARM::Storage
     end
 
     #
-    # Gets the current usage count and the limit for the resources under the
+    # Lists the available SKUs supported by Microsoft.Storage for given
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -49,7 +49,7 @@ module Azure::ARM::Storage
     end
 
     #
-    # Gets the current usage count and the limit for the resources under the
+    # Lists the available SKUs supported by Microsoft.Storage for given
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -67,7 +67,7 @@ module Azure::ARM::Storage
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Storage/usages'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus'
 
       request_url = @base_url || @client.base_url
 
@@ -94,7 +94,7 @@ module Azure::ARM::Storage
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Models::UsageListResult.mapper()
+            result_mapper = Azure::ARM::Storage::Models::StorageSkuListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

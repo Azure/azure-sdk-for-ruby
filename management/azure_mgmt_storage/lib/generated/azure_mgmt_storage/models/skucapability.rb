@@ -6,44 +6,48 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The usage names that can be used; currently limited to StorageAccount.
+    # The capability information in the specified sku, including file
+    # encryption, network acls, change notification, etc.
     #
-    class UsageName
+    class SKUCapability
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Gets a string describing the resource name.
-      attr_accessor :value
+      # @return [String] The name of capability, The capability information in
+      # the specified sku, including file encryption, network acls, change
+      # notification, etc.
+      attr_accessor :name
 
-      # @return [String] Gets a localized string describing the resource name.
-      attr_accessor :localized_value
+      # @return [String] A string value to indicate states of given capability.
+      # Possibly 'true' or 'false'.
+      attr_accessor :value
 
 
       #
-      # Mapper for UsageName class as Ruby Hash.
+      # Mapper for SKUCapability class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'UsageName',
+          serialized_name: 'SKUCapability',
           type: {
             name: 'Composite',
-            class_name: 'UsageName',
+            class_name: 'SKUCapability',
             model_properties: {
-              value: {
+              name: {
                 required: false,
                 read_only: true,
-                serialized_name: 'value',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              localized_value: {
+              value: {
                 required: false,
                 read_only: true,
-                serialized_name: 'localizedValue',
+                serialized_name: 'value',
                 type: {
                   name: 'String'
                 }

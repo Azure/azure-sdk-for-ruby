@@ -13,16 +13,17 @@ module Azure::ARM::Storage
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] A URL of vnet, subnet, classicVnet or classicSubnet.
+      # @return [String] Resource ID of a subnet, for example:
+      # /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
       attr_accessor :virtual_network_resource_id
 
-      # @return [Action] The action of virtual network ACL rule. Possible
-      # values include: 'Allow'. Default value: 'Allow' .
+      # @return [Action] The action of virtual network rule. Possible values
+      # include: 'Allow'. Default value: 'Allow' .
       attr_accessor :action
 
-      # @return [State] Gets the state of virtual network ACL rule. Possible
-      # values include: 'provisioning', 'deprovisioning', 'succeeded',
-      # 'failed', 'networkSourceDeleted'
+      # @return [State] Gets the state of virtual network rule. Possible values
+      # include: 'provisioning', 'deprovisioning', 'succeeded', 'failed',
+      # 'networkSourceDeleted'
       attr_accessor :state
 
 
