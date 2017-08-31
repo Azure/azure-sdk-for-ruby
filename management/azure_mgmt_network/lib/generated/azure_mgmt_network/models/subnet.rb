@@ -23,9 +23,9 @@ module Azure::ARM::Network
       # @return [RouteTable] The reference of the RouteTable resource.
       attr_accessor :route_table
 
-      # @return [Array<PrivateAccessServicePropertiesFormat>] An array of
-      # private access services values.
-      attr_accessor :private_access_services
+      # @return [Array<ServiceEndpointPropertiesFormat>] An array of service
+      # endpoints.
+      attr_accessor :service_endpoints
 
       # @return [Array<IPConfiguration>] Gets an array of references to the
       # network interface IP configurations using subnet.
@@ -89,17 +89,17 @@ module Azure::ARM::Network
                   class_name: 'RouteTable'
                 }
               },
-              private_access_services: {
+              service_endpoints: {
                 required: false,
-                serialized_name: 'properties.privateAccessServices',
+                serialized_name: 'properties.serviceEndpoints',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'PrivateAccessServicePropertiesFormatElementType',
+                      serialized_name: 'ServiceEndpointPropertiesFormatElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'PrivateAccessServicePropertiesFormat'
+                        class_name: 'ServiceEndpointPropertiesFormat'
                       }
                   }
                 }
