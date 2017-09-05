@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Operation properties.
+    # Class to represent shoebox service specification in json client
+    # discovery.
     #
     class ClientDiscoveryForServiceSpecification
 
@@ -32,7 +33,6 @@ module Azure::ARM::RecoveryServices
             model_properties: {
               log_specifications: {
                 required: false,
-                read_only: true,
                 serialized_name: 'logSpecifications',
                 type: {
                   name: 'Sequence',

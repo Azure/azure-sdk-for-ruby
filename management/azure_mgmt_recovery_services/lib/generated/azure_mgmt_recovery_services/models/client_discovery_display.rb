@@ -13,16 +13,16 @@ module Azure::ARM::RecoveryServices
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Name of the resource provider.
+      # @return [String] Name of the provider for display purposes
       attr_accessor :provider
 
-      # @return [String] Type of the resource.
+      # @return [String] Name of the resource type for display purposes
       attr_accessor :resource
 
-      # @return [String] Name of the operation.
+      # @return [String] Name of the operation for display purposes
       attr_accessor :operation
 
-      # @return [String] Operation description.
+      # @return [String] Description of the operation for display purposes
       attr_accessor :description
 
 
@@ -40,7 +40,6 @@ module Azure::ARM::RecoveryServices
             model_properties: {
               provider: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Provider',
                 type: {
                   name: 'String'
@@ -48,7 +47,6 @@ module Azure::ARM::RecoveryServices
               },
               resource: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Resource',
                 type: {
                   name: 'String'
@@ -56,7 +54,6 @@ module Azure::ARM::RecoveryServices
               },
               operation: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Operation',
                 type: {
                   name: 'String'
@@ -64,7 +61,6 @@ module Azure::ARM::RecoveryServices
               },
               description: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Description',
                 type: {
                   name: 'String'

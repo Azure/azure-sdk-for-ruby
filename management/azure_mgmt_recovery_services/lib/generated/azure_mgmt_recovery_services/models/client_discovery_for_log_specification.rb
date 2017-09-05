@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # Log specification for the operation.
+    # Class to represent shoebox log specification in json client discovery.
     #
     class ClientDiscoveryForLogSpecification
 
@@ -16,10 +16,10 @@ module Azure::ARM::RecoveryServices
       # @return [String] Name of the log.
       attr_accessor :name
 
-      # @return [String] Localized display name.
+      # @return [String] Localized display name
       attr_accessor :display_name
 
-      # @return [DateTime] Blob duration.
+      # @return [String] Blobs created in customer storage account per hour
       attr_accessor :blob_duration
 
 
@@ -37,7 +37,6 @@ module Azure::ARM::RecoveryServices
             model_properties: {
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -45,7 +44,6 @@ module Azure::ARM::RecoveryServices
               },
               display_name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'displayName',
                 type: {
                   name: 'String'
@@ -53,10 +51,9 @@ module Azure::ARM::RecoveryServices
               },
               blob_duration: {
                 required: false,
-                read_only: true,
                 serialized_name: 'blobDuration',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               }
             }
