@@ -6,14 +6,14 @@
 module Azure::ARM::Network
   module Models
     #
-    # The private access service properties.
+    # The service endpoint properties.
     #
-    class PrivateAccessServicePropertiesFormat
+    class ServiceEndpointPropertiesFormat
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The type of the private access.
+      # @return [String] The type of the endpoint service.
       attr_accessor :service
 
       # @return [Array<String>] A list of locations.
@@ -24,16 +24,16 @@ module Azure::ARM::Network
 
 
       #
-      # Mapper for PrivateAccessServicePropertiesFormat class as Ruby Hash.
+      # Mapper for ServiceEndpointPropertiesFormat class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PrivateAccessServicePropertiesFormat',
+          serialized_name: 'ServiceEndpointPropertiesFormat',
           type: {
             name: 'Composite',
-            class_name: 'PrivateAccessServicePropertiesFormat',
+            class_name: 'ServiceEndpointPropertiesFormat',
             model_properties: {
               service: {
                 required: false,

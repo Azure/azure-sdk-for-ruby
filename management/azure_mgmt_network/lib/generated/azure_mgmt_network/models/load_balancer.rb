@@ -13,6 +13,9 @@ module Azure::ARM::Network
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [LoadBalancerSku] The load balancer SKU.
+      attr_accessor :sku
+
       # @return [Array<FrontendIPConfiguration>] Object representing the
       # frontend IPs to be used for the load balancer
       attr_accessor :frontend_ipconfigurations
@@ -118,6 +121,14 @@ module Azure::ARM::Network
                         name: 'String'
                       }
                   }
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'LoadBalancerSku'
                 }
               },
               frontend_ipconfigurations: {
