@@ -24,7 +24,7 @@ Information on Azure deployment models: [https://azure.microsoft.com/en-us/docum
 
 # Supported Ruby Versions
 
-* Ruby 2+
+* Ruby 2+ DDDDDDD
 
 Note: x64 Ruby for Windows is known to have some compatibility issues.
 
