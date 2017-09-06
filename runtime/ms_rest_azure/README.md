@@ -46,7 +46,7 @@ Don't forget to correct the version.
 MSI support has been enabled in `ms_rest_azure` version `0.8.3`. Below code snippet demonstrates how to use MSITokenProvider with default port `50342`:  
 
 ```ruby
-provider = MsRestAzure::MSITokenProvider.new('{tenant_id}')
+provider = MsRestAzure::MSITokenProvider.new()
 credentials = MsRest::TokenCredentials.new(provider)
 ```
 

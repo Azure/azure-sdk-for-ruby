@@ -11,14 +11,11 @@ module MsRestAzure
     private
 
     TOKEN_ACQUIRE_URL = 'http://localhost:{port}/oauth2/token'
-    REQUEST_BODY_PATTERN = 'authority={authentication_endpoint}{tenant_id}&resource={resource_uri}'
+    REQUEST_BODY_PATTERN = 'resource={resource_uri}'
     DEFAULT_SCHEME = 'Bearer'
 
     # @return [MSIActiveDirectoryServiceSettings] settings.
     attr_accessor :settings
-
-    # @return [String] tenant id (also known as domain).
-    attr_accessor :tenant_id
 
     # @return [Integer] port number where MSI service is running.
     attr_accessor :port
@@ -39,16 +36,13 @@ module MsRestAzure
 
     #
     # Creates and initialize new instance of the MSITokenProvider class.
-    # @param tenant_id [String] tenant id (also known as domain).
     # @param port [Integer] port number where MSI service is running.
     # @param settings [ActiveDirectoryServiceSettings] active directory setting.
-    def initialize(tenant_id, port = 50342, settings = ActiveDirectoryServiceSettings.get_azure_settings)
-      fail ArgumentError, 'Tenant id cannot be nil' if tenant_id.nil?
+    def initialize(port = 50342, settings = ActiveDirectoryServiceSettings.get_azure_settings)
       fail ArgumentError, 'Port cannot be nil' if port.nil?
       fail ArgumentError, 'Port must be an Integer' unless port.is_a? Integer
       fail ArgumentError, 'Azure AD settings cannot be nil' if settings.nil?
 
-      @tenant_id = tenant_id
       @port = port
       @settings = settings
 
@@ -90,8 +84,6 @@ module MsRestAzure
       end
 
       request_body = REQUEST_BODY_PATTERN.dup
-      request_body['{authentication_endpoint}'] = ERB::Util.url_encode(@settings.authentication_endpoint)
-      request_body['{tenant_id}'] = ERB::Util.url_encode(@tenant_id)
       request_body['{resource_uri}'] = ERB::Util.url_encode(@settings.token_audience)
 
       response = connection.post do |request|
