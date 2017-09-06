@@ -1,3 +1,6 @@
+## 2017.09.07 - Azure Gems @version 0.7.10
+* This version is released to fix the dependency issue on nokogiri. [#946](https://github.com/Azure/azure-sdk-for-ruby/pull/946)
+
 ## 2017.04.19 - Azure Gems @version 0.7.9
 * No new changes in this release. This version is released to fix the checksum issue in the rubygems. [#755](https://github.com/Azure/azure-sdk-for-ruby/issues/755)
 

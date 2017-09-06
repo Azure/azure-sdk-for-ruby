@@ -28,6 +28,9 @@ Information on Azure deployment models: [https://azure.microsoft.com/en-us/docum
 
 Note: x64 Ruby for Windows is known to have some compatibility issues.
 
+### Notice
+For ruby version >= 1.9.3 and < 2.2.0, please install compatible Nokogiri(version >= 1.6.8), otherwise the installation using old version of bundler or all version of rubygems will report failure.
+
 # Getting Started with Azure Service Management
 
 ## Install the rubygem package
