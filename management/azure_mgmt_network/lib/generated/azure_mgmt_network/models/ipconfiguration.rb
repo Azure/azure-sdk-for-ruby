@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # IPConfiguration
+    # IP configuration
     #
     class IPConfiguration < MsRestAzure::SubResource
 
