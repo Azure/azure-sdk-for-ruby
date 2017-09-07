@@ -10,17 +10,13 @@ module MsRestAzure
   describe MSITokenProvider do
     it 'should throw error if nil data is passed into constructor' do
       expect { MSITokenProvider.new(nil) }.to raise_error(ArgumentError)
-      expect { MSITokenProvider.new('tenant_id',nil) }.to raise_error(ArgumentError)
-      expect { MSITokenProvider.new('tenant_id','port') }.to raise_error(ArgumentError)
-      expect { MSITokenProvider.new('tenant_id',50431,nil) }.to raise_error(ArgumentError)
+      expect { MSITokenProvider.new(50431,nil) }.to raise_error(ArgumentError)
     end
 
     it 'should set defaults for managed service identity' do
-      tenant = 'xxxx-xxxx-xxxxx-xxxxx'
       azure_cloud = MsRestAzure::AzureEnvironments::AzureCloud
 
-      token_provider = MSITokenProvider.new(tenant)
-      expect(token_provider.send(:tenant_id)).to eq(tenant)
+      token_provider = MSITokenProvider.new
       expect(token_provider.send(:port)).to eq(50342)
       settings = token_provider.send(:settings)
       expect(settings.authentication_endpoint).to eq(azure_cloud.active_directory_endpoint_url)
@@ -28,14 +24,12 @@ module MsRestAzure
     end
 
     it 'should set customs for managed service identity' do
-      tenant = 'xxxx-xxxx-xxxxx-xxxxx'
       port = 50333
       settings = ActiveDirectoryServiceSettings.new()
       settings.authentication_endpoint = 'https://login.microsoftonline.com/'
       settings.token_audience = 'https://vault.azure.net'
 
-      token_provider = MSITokenProvider.new(tenant, port, settings)
-      expect(token_provider.send(:tenant_id)).to eq(tenant)
+      token_provider = MSITokenProvider.new(port, settings)
       expect(token_provider.send(:port)).to eq(port)
       settings = token_provider.send(:settings)
       expect(settings.authentication_endpoint).to eq(settings.authentication_endpoint)
