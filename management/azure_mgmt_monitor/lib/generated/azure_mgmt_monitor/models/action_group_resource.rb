@@ -18,7 +18,7 @@ module Azure::ARM::Monitor
       attr_accessor :group_short_name
 
       # @return [Boolean] Indicates whether this action group is enabled. If an
-      # action group is not enabled, then none of its receviers will receive
+      # action group is not enabled, then none of its receivers will receive
       # communications. Default value: true .
       attr_accessor :enabled
 

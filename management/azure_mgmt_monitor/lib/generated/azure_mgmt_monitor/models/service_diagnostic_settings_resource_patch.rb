@@ -26,7 +26,8 @@ module Azure::ARM::Monitor
       # ID}/authorizationrules/{key name}'.
       attr_accessor :service_bus_rule_id
 
-      # @return [String] The resource Id for the event hub authorization rule.
+      # @return [String] The resource Id for the event hub namespace
+      # authorization rule.
       attr_accessor :event_hub_authorization_rule_id
 
       # @return [Array<MetricSettings>] the list of metric settings.
