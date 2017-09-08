@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # A loag balancing rule for a load balancer.
+    # A load balancing rule for a load balancer.
     #
     class LoadBalancingRule < MsRestAzure::SubResource
 
@@ -54,6 +54,11 @@ module Azure::ARM::Network
       # AlwaysOn Availability Groups in SQL server. This setting can't be
       # changed after you create the endpoint.
       attr_accessor :enable_floating_ip
+
+      # @return [Boolean] Configures SNAT for the VMs in the backend pool to
+      # use the publicIP address specified in the frontend of the load
+      # balancing rule.
+      attr_accessor :disable_outbound_snat
 
       # @return [String] Gets the provisioning state of the PublicIP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -149,6 +154,13 @@ module Azure::ARM::Network
               enable_floating_ip: {
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              disable_outbound_snat: {
+                required: false,
+                serialized_name: 'properties.disableOutboundSnat',
                 type: {
                   name: 'Boolean'
                 }

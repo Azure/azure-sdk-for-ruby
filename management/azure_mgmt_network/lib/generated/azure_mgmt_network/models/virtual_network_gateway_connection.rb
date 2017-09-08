@@ -16,13 +16,16 @@ module Azure::ARM::Network
       # @return [String] The authorizationKey.
       attr_accessor :authorization_key
 
-      # @return [VirtualNetworkGateway]
+      # @return [VirtualNetworkGateway] The reference to virtual network
+      # gateway resource.
       attr_accessor :virtual_network_gateway1
 
-      # @return [VirtualNetworkGateway]
+      # @return [VirtualNetworkGateway] The reference to virtual network
+      # gateway resource.
       attr_accessor :virtual_network_gateway2
 
-      # @return [LocalNetworkGateway]
+      # @return [LocalNetworkGateway] The reference to local network gateway
+      # resource.
       attr_accessor :local_network_gateway2
 
       # @return [VirtualNetworkGatewayConnectionType] Gateway connection type.
