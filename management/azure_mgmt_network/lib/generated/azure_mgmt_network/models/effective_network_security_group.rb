@@ -16,7 +16,8 @@ module Azure::ARM::Network
       # @return [SubResource] The ID of network security group that is applied.
       attr_accessor :network_security_group
 
-      # @return [EffectiveNetworkSecurityGroupAssociation]
+      # @return [EffectiveNetworkSecurityGroupAssociation] Associated
+      # resources.
       attr_accessor :association
 
       # @return [Array<EffectiveNetworkSecurityRule>] A collection of effective
