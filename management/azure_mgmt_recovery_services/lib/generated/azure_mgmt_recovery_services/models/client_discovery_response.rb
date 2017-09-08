@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServices
   module Models
     #
-    # List of available operations.
+    # Operations List response which contains list of available APIs.
     #
     class ClientDiscoveryResponse
 
@@ -17,7 +17,7 @@ module Azure::ARM::RecoveryServices
       # operationss.
       attr_accessor :value
 
-      # @return [String] NextLink
+      # @return [String] NextLink of the Response.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -66,7 +66,6 @@ module Azure::ARM::RecoveryServices
             model_properties: {
               value: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Value',
                 type: {
                   name: 'Sequence',
@@ -82,7 +81,6 @@ module Azure::ARM::RecoveryServices
               },
               next_link: {
                 required: false,
-                read_only: true,
                 serialized_name: 'NextLink',
                 type: {
                   name: 'String'

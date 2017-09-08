@@ -13,18 +13,19 @@ module Azure::ARM::RecoveryServices
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Name of the operation.
+      # @return [String] Name of the operation
       attr_accessor :name
 
       # @return [ClientDiscoveryDisplay] Contains the localized display
-      # information for this particular operation.
+      # information for this particular operation
       attr_accessor :display
 
-      # @return [String] The intended executor of the operation.
+      # @return [String] The intended executor of the operation;governs the
+      # display of the operation in the RBAC UX and the audit logs UX
       attr_accessor :origin
 
-      # @return [ClientDiscoveryForServiceSpecification] Operation properties.
-      attr_accessor :service_specification
+      # @return [ClientDiscoveryForProperties] Properties
+      attr_accessor :properties
 
 
       #
@@ -41,7 +42,6 @@ module Azure::ARM::RecoveryServices
             model_properties: {
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Name',
                 type: {
                   name: 'String'
@@ -49,7 +49,6 @@ module Azure::ARM::RecoveryServices
               },
               display: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Display',
                 type: {
                   name: 'Composite',
@@ -58,19 +57,17 @@ module Azure::ARM::RecoveryServices
               },
               origin: {
                 required: false,
-                read_only: true,
                 serialized_name: 'Origin',
                 type: {
                   name: 'String'
                 }
               },
-              service_specification: {
+              properties: {
                 required: false,
-                read_only: true,
-                serialized_name: 'Properties.serviceSpecification',
+                serialized_name: 'Properties',
                 type: {
                   name: 'Composite',
-                  class_name: 'ClientDiscoveryForServiceSpecification'
+                  class_name: 'ClientDiscoveryForProperties'
                 }
               }
             }
