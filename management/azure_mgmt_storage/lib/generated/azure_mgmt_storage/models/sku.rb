@@ -23,6 +23,28 @@ module Azure::ARM::Storage
       # Possible values include: 'Standard', 'Premium'
       attr_accessor :tier
 
+      # @return [String] The type of the resource, usually it is
+      # 'storageAccounts'.
+      attr_accessor :resource_type
+
+      # @return [Kind] Indicates the type of storage account. Possible values
+      # include: 'Storage', 'BlobStorage'
+      attr_accessor :kind
+
+      # @return [Array<String>] The set of locations that the SKU is available.
+      # This will be supported and registered Azure Geo Regions (e.g. West US,
+      # East US, Southeast Asia, etc.).
+      attr_accessor :locations
+
+      # @return [Array<SKUCapability>] The capability information in the
+      # specified sku, including file encryption, network acls, change
+      # notification, etc.
+      attr_accessor :capabilities
+
+      # @return [Array<Restriction>] The restrictions because of which SKU
+      # cannot be used. This is empty if there are no restrictions.
+      attr_accessor :restrictions
+
 
       #
       # Mapper for Sku class as Ruby Hash.
@@ -51,6 +73,69 @@ module Azure::ARM::Storage
                 type: {
                   name: 'Enum',
                   module: 'SkuTier'
+                }
+              },
+              resource_type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'resourceType',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                read_only: true,
+                serialized_name: 'kind',
+                type: {
+                  name: 'Enum',
+                  module: 'Kind'
+                }
+              },
+              locations: {
+                required: false,
+                read_only: true,
+                serialized_name: 'locations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              capabilities: {
+                required: false,
+                read_only: true,
+                serialized_name: 'capabilities',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SKUCapabilityElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SKUCapability'
+                      }
+                  }
+                }
+              },
+              restrictions: {
+                required: false,
+                serialized_name: 'restrictions',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RestrictionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Restriction'
+                      }
+                  }
                 }
               }
             }

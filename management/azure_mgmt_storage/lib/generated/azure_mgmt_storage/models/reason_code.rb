@@ -6,11 +6,11 @@
 module Azure::ARM::Storage
   module Models
     #
-    # Defines values for Reason
+    # Defines values for ReasonCode
     #
-    module Reason
-      AccountNameInvalid = "AccountNameInvalid"
-      AlreadyExists = "AlreadyExists"
+    module ReasonCode
+      QuotaId = "QuotaId"
+      NotAvailableForSubscription = "NotAvailableForSubscription"
     end
   end
 end

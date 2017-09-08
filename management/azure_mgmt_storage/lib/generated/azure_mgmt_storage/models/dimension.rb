@@ -6,7 +6,7 @@
 module Azure::ARM::Storage
   module Models
     #
-    # Dimensions.
+    # Dimension of blobs, possiblly be blob type or access tier.
     #
     class Dimension
 

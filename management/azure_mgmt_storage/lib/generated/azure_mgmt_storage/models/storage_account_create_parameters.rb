@@ -49,8 +49,8 @@ module Azure::ARM::Storage
       # same. The default setting is unencrypted.
       attr_accessor :encryption
 
-      # @return [StorageNetworkAcls] Network ACL
-      attr_accessor :network_acls
+      # @return [NetworkRuleSet] Network rule set
+      attr_accessor :network_rule_set
 
       # @return [AccessTier] Required for storage accounts where kind =
       # BlobStorage. The access tier used for billing. Possible values include:
@@ -135,12 +135,12 @@ module Azure::ARM::Storage
                   class_name: 'Encryption'
                 }
               },
-              network_acls: {
+              network_rule_set: {
                 required: false,
                 serialized_name: 'properties.networkAcls',
                 type: {
                   name: 'Composite',
-                  class_name: 'StorageNetworkAcls'
+                  class_name: 'NetworkRuleSet'
                 }
               },
               access_tier: {

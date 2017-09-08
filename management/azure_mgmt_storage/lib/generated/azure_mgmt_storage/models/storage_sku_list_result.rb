@@ -6,46 +6,44 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The usage names that can be used; currently limited to StorageAccount.
+    # The response from the List Storage SKUs operation.
     #
-    class UsageName
+    class StorageSkuListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Gets a string describing the resource name.
+      # @return [Array<Sku>] Get the list result of storage SKUs and their
+      # properties.
       attr_accessor :value
-
-      # @return [String] Gets a localized string describing the resource name.
-      attr_accessor :localized_value
 
 
       #
-      # Mapper for UsageName class as Ruby Hash.
+      # Mapper for StorageSkuListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'UsageName',
+          serialized_name: 'StorageSkuListResult',
           type: {
             name: 'Composite',
-            class_name: 'UsageName',
+            class_name: 'StorageSkuListResult',
             model_properties: {
               value: {
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
-                  name: 'String'
-                }
-              },
-              localized_value: {
-                required: false,
-                read_only: true,
-                serialized_name: 'localizedValue',
-                type: {
-                  name: 'String'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SkuElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Sku'
+                      }
+                  }
                 }
               }
             }

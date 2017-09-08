@@ -25,7 +25,8 @@ module Azure::ARM::Storage
       # @return [String] Unit could be Bytes or Count.
       attr_accessor :unit
 
-      # @return [Array<Dimension>] Dimensions.
+      # @return [Array<Dimension>] Dimensions of blobs, including blob type and
+      # access tier.
       attr_accessor :dimensions
 
       # @return [String] Aggregation type could be Average.
