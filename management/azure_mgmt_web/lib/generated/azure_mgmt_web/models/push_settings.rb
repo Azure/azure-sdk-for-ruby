@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Push settings for the App.
     #
-    class PushSettings
+    class PushSettings < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
@@ -47,30 +47,61 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'PushSettings',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
               is_push_enabled: {
-                required: true,
-                serialized_name: 'isPushEnabled',
+                required: false,
+                serialized_name: 'properties.isPushEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               tag_whitelist_json: {
                 required: false,
-                serialized_name: 'tagWhitelistJson',
+                serialized_name: 'properties.tagWhitelistJson',
                 type: {
                   name: 'String'
                 }
               },
               tags_requiring_auth: {
                 required: false,
-                serialized_name: 'tagsRequiringAuth',
+                serialized_name: 'properties.tagsRequiringAuth',
                 type: {
                   name: 'String'
                 }
               },
               dynamic_tags_json: {
                 required: false,
-                serialized_name: 'dynamicTagsJson',
+                serialized_name: 'properties.dynamicTagsJson',
                 type: {
                   name: 'String'
                 }
