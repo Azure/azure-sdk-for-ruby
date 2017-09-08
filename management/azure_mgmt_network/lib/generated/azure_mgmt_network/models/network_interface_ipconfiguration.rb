@@ -25,7 +25,7 @@ module Azure::ARM::Network
       # LoadBalancerInboundNatRules.
       attr_accessor :load_balancer_inbound_nat_rules
 
-      # @return [String]
+      # @return [String] Private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 
       # @return [IPAllocationMethod] Defines how a private IP address is
@@ -39,17 +39,20 @@ module Azure::ARM::Network
       # Possible values include: 'IPv4', 'IPv6'
       attr_accessor :private_ipaddress_version
 
-      # @return [Subnet]
+      # @return [Subnet] Subnet bound to the IP configuration.
       attr_accessor :subnet
 
       # @return [Boolean] Gets whether this is a primary customer address on
       # the network interface.
       attr_accessor :primary
 
-      # @return [PublicIPAddress]
+      # @return [PublicIPAddress] Public IP address bound to the IP
+      # configuration.
       attr_accessor :public_ipaddress
 
-      # @return [String]
+      # @return [String] The provisioning state of the network interface IP
+      # configuration. Possible values are: 'Updating', 'Deleting', and
+      # 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a
