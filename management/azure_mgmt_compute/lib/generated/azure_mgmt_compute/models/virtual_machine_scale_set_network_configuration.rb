@@ -17,7 +17,8 @@ module Azure::ARM::Compute
       # @return [String] The network configuration name.
       attr_accessor :name
 
-      # @return [Boolean] Whether this is a primary NIC on a virtual machine.
+      # @return [Boolean] Specifies the primary network interface in case the
+      # virtual machine has more than 1 network interface.
       attr_accessor :primary
 
       # @return [Boolean] Specifies whether the network interface is
@@ -31,8 +32,8 @@ module Azure::ARM::Compute
       # settings to be applied on the network interfaces.
       attr_accessor :dns_settings
 
-      # @return [Array<VirtualMachineScaleSetIPConfiguration>] The virtual
-      # machine scale set IP Configuration.
+      # @return [Array<VirtualMachineScaleSetIPConfiguration>] Specifies the IP
+      # configurations of the network interface.
       attr_accessor :ip_configurations
 
 

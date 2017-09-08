@@ -19,7 +19,9 @@ module Azure::ARM::Compute
       # @return [String] The name of SKU.
       attr_accessor :name
 
-      # @return [String] The tier of this particular SKU.
+      # @return [String] Specifies the tier of virtual machines in a scale
+      # set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+      # **Basic**
       attr_accessor :tier
 
       # @return [String] The Size of the SKU.
@@ -31,7 +33,8 @@ module Azure::ARM::Compute
       # @return [String] The Kind of resources that are supported in this SKU.
       attr_accessor :kind
 
-      # @return [ResourceSkuCapacity] Available scaling information.
+      # @return [ResourceSkuCapacity] Specifies the number of virtual machines
+      # in the scale set.
       attr_accessor :capacity
 
       # @return [Array<String>] The set of locations that the SKU is available.
