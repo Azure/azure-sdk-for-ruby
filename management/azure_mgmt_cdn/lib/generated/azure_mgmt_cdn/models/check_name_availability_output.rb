@@ -38,6 +38,7 @@ module Azure::ARM::CDN
             model_properties: {
               name_available: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nameAvailable',
                 type: {
                   name: 'Boolean'
@@ -45,6 +46,7 @@ module Azure::ARM::CDN
               },
               reason: {
                 required: false,
+                read_only: true,
                 serialized_name: 'reason',
                 type: {
                   name: 'String'
@@ -52,6 +54,7 @@ module Azure::ARM::CDN
               },
               message: {
                 required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'

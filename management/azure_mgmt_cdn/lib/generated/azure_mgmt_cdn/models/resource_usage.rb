@@ -13,16 +13,16 @@ module Azure::ARM::CDN
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Resource type of the usages.
+      # @return [String] Resource type for which the usage is provided.
       attr_accessor :resource_type
 
       # @return [String] Unit of the usage. e.g. Count.
       attr_accessor :unit
 
-      # @return [Integer] Actual value of the resource type.
+      # @return [Integer] Actual value of usage on the specified resource type.
       attr_accessor :current_value
 
-      # @return [Integer] Quota of the resource type.
+      # @return [Integer] Quota of the specified resource type.
       attr_accessor :limit
 
 
@@ -40,6 +40,7 @@ module Azure::ARM::CDN
             model_properties: {
               resource_type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'resourceType',
                 type: {
                   name: 'String'
@@ -47,6 +48,7 @@ module Azure::ARM::CDN
               },
               unit: {
                 required: false,
+                read_only: true,
                 serialized_name: 'unit',
                 type: {
                   name: 'String'
@@ -54,6 +56,7 @@ module Azure::ARM::CDN
               },
               current_value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'currentValue',
                 type: {
                   name: 'Number'
@@ -61,6 +64,7 @@ module Azure::ARM::CDN
               },
               limit: {
                 required: false,
+                read_only: true,
                 serialized_name: 'limit',
                 type: {
                   name: 'Number'

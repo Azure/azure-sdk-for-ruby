@@ -6,7 +6,8 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Origin to be added when creating a CDN endpoint.
+    # The main origin of CDN content which is added when creating a CDN
+    # endpoint.
     #
     class DeepCreatedOrigin
 
@@ -16,7 +17,7 @@ module Azure::ARM::CDN
       # @return [String] Origin name
       attr_accessor :name
 
-      # @return [String] The address of the origin. It can be a domain names,
+      # @return [String] The address of the origin. It can be a domain name,
       # IPv4 address, or IPv6 address.
       attr_accessor :host_name
 

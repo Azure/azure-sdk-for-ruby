@@ -13,8 +13,7 @@ module Azure::ARM::CDN
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Boolean] Indicates whether the custom domain is validated or
-      # not.
+      # @return [Boolean] Indicates whether the custom domain is valid or not.
       attr_accessor :custom_domain_validated
 
       # @return [String] The reason why the custom domain is not valid.
@@ -39,6 +38,7 @@ module Azure::ARM::CDN
             model_properties: {
               custom_domain_validated: {
                 required: false,
+                read_only: true,
                 serialized_name: 'customDomainValidated',
                 type: {
                   name: 'Boolean'
@@ -46,6 +46,7 @@ module Azure::ARM::CDN
               },
               reason: {
                 required: false,
+                read_only: true,
                 serialized_name: 'reason',
                 type: {
                   name: 'String'
@@ -53,6 +54,7 @@ module Azure::ARM::CDN
               },
               message: {
                 required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'

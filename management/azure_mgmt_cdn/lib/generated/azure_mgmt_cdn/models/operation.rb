@@ -34,6 +34,7 @@ module Azure::ARM::CDN
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

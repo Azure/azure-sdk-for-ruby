@@ -6,56 +6,57 @@
 module Azure::ARM::CDN
   module Models
     #
-    # The object that represents the operation.
+    # Output of the validate probe API.
     #
-    class OperationDisplay
+    class ValidateProbeOutput
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Service provider: Microsoft.Cdn
-      attr_accessor :provider
+      # @return [Boolean] Indicates whether the probe URL is accepted or not.
+      attr_accessor :is_valid
 
-      # @return [String] Resource on which the operation is performed: Profile,
-      # endpoint, etc.
-      attr_accessor :resource
+      # @return [String] Specifies the error code when the probe url is not
+      # accepted.
+      attr_accessor :error_code
 
-      # @return [String] Operation type: Read, write, delete, etc.
-      attr_accessor :operation
+      # @return [String] The detailed error message describing why the probe
+      # URL is not accepted.
+      attr_accessor :message
 
 
       #
-      # Mapper for OperationDisplay class as Ruby Hash.
+      # Mapper for ValidateProbeOutput class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Operation_display',
+          serialized_name: 'ValidateProbeOutput',
           type: {
             name: 'Composite',
-            class_name: 'OperationDisplay',
+            class_name: 'ValidateProbeOutput',
             model_properties: {
-              provider: {
+              is_valid: {
                 required: false,
                 read_only: true,
-                serialized_name: 'provider',
+                serialized_name: 'isValid',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              error_code: {
+                required: false,
+                read_only: true,
+                serialized_name: 'errorCode',
                 type: {
                   name: 'String'
                 }
               },
-              resource: {
+              message: {
                 required: false,
                 read_only: true,
-                serialized_name: 'resource',
-                type: {
-                  name: 'String'
-                }
-              },
-              operation: {
-                required: false,
-                read_only: true,
-                serialized_name: 'operation',
+                serialized_name: 'message',
                 type: {
                   name: 'String'
                 }

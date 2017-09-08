@@ -6,7 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Rules defining user geo access within a CDN endpoint.
+    # Rules defining user's geo access within a CDN endpoint.
     #
     class GeoFilter
 

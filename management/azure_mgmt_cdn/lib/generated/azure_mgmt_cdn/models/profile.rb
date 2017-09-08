@@ -6,10 +6,8 @@
 module Azure::ARM::CDN
   module Models
     #
-    # CDN profile represents the top level resource and the entry point into
-    # the CDN API. This allows users to set up a logical grouping of endpoints
-    # in addition to creating shared configuration settings and selecting
-    # pricing tiers and providers.
+    # CDN profile is a logical grouping of endpoints that share the same
+    # settings, such as CDN provider and pricing tier.
     #
     class Profile < MsRestAzure::Resource
 

@@ -68,6 +68,7 @@ module Azure::ARM::CDN
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
