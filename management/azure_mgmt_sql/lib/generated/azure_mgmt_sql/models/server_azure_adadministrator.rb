@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # An server Active Directory Administrator.
     #
-    class ServerAzureADAdministrator < SqlSubResource
+    class ServerAzureADAdministrator < ProxyResource
 
       include MsRestAzure
 
@@ -39,6 +39,14 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'ServerAzureADAdministrator',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 read_only: true,
@@ -47,10 +55,10 @@ module Azure::ARM::SQL
                   name: 'String'
                 }
               },
-              id: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

@@ -13,7 +13,7 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The resource ID of the virtual network subnet
+      # @return [String] The ARM resource id of the virtual network subnet.
       attr_accessor :virtual_network_subnet_id
 
 
@@ -54,7 +54,7 @@ module Azure::ARM::SQL
                 }
               },
               virtual_network_subnet_id: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.virtualNetworkSubnetId',
                 type: {
                   name: 'String'

@@ -235,7 +235,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server containing the failover
     # group.
     # @param failover_group_name [String] The name of the failover group.
-    # @param parameters [FailoverGroup] The failover group parameters.
+    # @param parameters [FailoverGroupUpdate] The failover group parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -253,7 +253,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server containing the failover
     # group.
     # @param failover_group_name [String] The name of the failover group.
-    # @param parameters [FailoverGroup] The failover group parameters.
+    # @param parameters [FailoverGroupUpdate] The failover group parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -708,7 +708,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server containing the failover
     # group.
     # @param failover_group_name [String] The name of the failover group.
-    # @param parameters [FailoverGroup] The failover group parameters.
+    # @param parameters [FailoverGroupUpdate] The failover group parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -728,7 +728,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server containing the failover
     # group.
     # @param failover_group_name [String] The name of the failover group.
-    # @param parameters [FailoverGroup] The failover group parameters.
+    # @param parameters [FailoverGroupUpdate] The failover group parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -747,7 +747,7 @@ module Azure::ARM::SQL
     # @param server_name [String] The name of the server containing the failover
     # group.
     # @param failover_group_name [String] The name of the failover group.
-    # @param parameters [FailoverGroup] The failover group parameters.
+    # @param parameters [FailoverGroupUpdate] The failover group parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -771,7 +771,7 @@ module Azure::ARM::SQL
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::SQL::Models::FailoverGroup.mapper()
+      request_mapper = Azure::ARM::SQL::Models::FailoverGroupUpdate.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

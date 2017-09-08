@@ -6,41 +6,33 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Subresource properties
+    # Properties of an Azure SQL Database sync agent key.
     #
-    class SubResource < MsRestAzure::SubResource
+    class SyncAgentKeyProperties
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Resource name
-      attr_accessor :name
+      # @return [String] Key of sync agent.
+      attr_accessor :sync_agent_key
 
 
       #
-      # Mapper for SubResource class as Ruby Hash.
+      # Mapper for SyncAgentKeyProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SubResource',
+          serialized_name: 'SyncAgentKeyProperties',
           type: {
             name: 'Composite',
-            class_name: 'SubResource',
+            class_name: 'SyncAgentKeyProperties',
             model_properties: {
-              name: {
+              sync_agent_key: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'syncAgentKey',
                 type: {
                   name: 'String'
                 }
