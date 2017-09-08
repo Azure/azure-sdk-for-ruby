@@ -6,35 +6,40 @@
 module Azure::ARM::Network
   module Models
     #
-    # A ExpressRouteResourceProvider object.
+    # An application security group in a resource group.
     #
-    class ExpressRouteServiceProvider < MsRestAzure::Resource
+    class ApplicationSecurityGroup < MsRestAzure::Resource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<String>] Get a list of peering locations.
-      attr_accessor :peering_locations
+      # @return [String] The resource GUID property of the application security
+      # group resource. It uniquely identifies a resource, even if the user
+      # changes its name or migrate the resource across subscriptions or
+      # resource groups.
+      attr_accessor :resource_guid
 
-      # @return [Array<ExpressRouteServiceProviderBandwidthsOffered>] Gets
-      # bandwidths offered.
-      attr_accessor :bandwidths_offered
-
-      # @return [String] Gets the provisioning state of the resource.
+      # @return [String] The provisioning state of the application security
+      # group resource. Possible values are: 'Succeeded', 'Updating',
+      # 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
+
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
+      attr_accessor :etag
 
 
       #
-      # Mapper for ExpressRouteServiceProvider class as Ruby Hash.
+      # Mapper for ApplicationSecurityGroup class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ExpressRouteServiceProvider',
+          serialized_name: 'ApplicationSecurityGroup',
           type: {
             name: 'Composite',
-            class_name: 'ExpressRouteServiceProvider',
+            class_name: 'ApplicationSecurityGroup',
             model_properties: {
               id: {
                 required: false,
@@ -81,38 +86,26 @@ module Azure::ARM::Network
                   }
                 }
               },
-              peering_locations: {
+              resource_guid: {
                 required: false,
-                serialized_name: 'properties.peeringLocations',
+                read_only: true,
+                serialized_name: 'properties.resourceGuid',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              bandwidths_offered: {
-                required: false,
-                serialized_name: 'properties.bandwidthsOffered',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'ExpressRouteServiceProviderBandwidthsOfferedElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'ExpressRouteServiceProviderBandwidthsOffered'
-                      }
-                  }
+                  name: 'String'
                 }
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              etag: {
+                required: false,
+                read_only: true,
+                serialized_name: 'etag',
                 type: {
                   name: 'String'
                 }

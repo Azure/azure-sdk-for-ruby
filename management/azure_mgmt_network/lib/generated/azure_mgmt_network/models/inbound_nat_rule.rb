@@ -22,13 +22,12 @@ module Azure::ARM::Network
       # the backend IP.
       attr_accessor :backend_ipconfiguration
 
-      # @return [TransportProtocol] The transport protocol for the endpoint.
-      # Possible values are: 'Udp' or 'Tcp'. Possible values include: 'Udp',
-      # 'Tcp'
+      # @return [TransportProtocol] Possible values include: 'Udp', 'Tcp',
+      # 'All'
       attr_accessor :protocol
 
       # @return [Integer] The port for the external endpoint. Port numbers for
-      # each Rule must be unique within the Load Balancer. Acceptable values
+      # each rule must be unique within the Load Balancer. Acceptable values
       # range from 1 to 65534.
       attr_accessor :frontend_port
 

@@ -24,9 +24,8 @@ module Azure::ARM::Network
       # the load balancing rule.
       attr_accessor :probe
 
-      # @return [TransportProtocol] The transport protocol for the external
-      # endpoint. Possible values are 'Udp' or 'Tcp'. Possible values include:
-      # 'Udp', 'Tcp'
+      # @return [TransportProtocol] Possible values include: 'Udp', 'Tcp',
+      # 'All'
       attr_accessor :protocol
 
       # @return [LoadDistribution] The load distribution policy for this rule.
@@ -35,12 +34,13 @@ module Azure::ARM::Network
       attr_accessor :load_distribution
 
       # @return [Integer] The port for the external endpoint. Port numbers for
-      # each Rule must be unique within the Load Balancer. Acceptable values
-      # are between 1 and 65534.
+      # each rule must be unique within the Load Balancer. Acceptable values
+      # are between 0 and 65534. Note that value 0 enables "Any Port"
       attr_accessor :frontend_port
 
       # @return [Integer] The port used for internal connections on the
-      # endpoint. Acceptable values are between 1 and 65535.
+      # endpoint. Acceptable values are between 0 and 65535. Note that value 0
+      # enables "Any Port"
       attr_accessor :backend_port
 
       # @return [Integer] The timeout for the TCP idle connection. The value
