@@ -24,7 +24,7 @@ module Azure::ARM::Monitor
       # be activated. Default value: true .
       attr_accessor :enabled
 
-      # @return [ActivityLogAlertAllOfCondition] The conditon that will cause
+      # @return [ActivityLogAlertAllOfCondition] The condition that will cause
       # this alert to activate.
       attr_accessor :condition
 

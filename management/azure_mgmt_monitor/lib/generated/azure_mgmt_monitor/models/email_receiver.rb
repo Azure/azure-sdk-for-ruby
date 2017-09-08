@@ -20,8 +20,8 @@ module Azure::ARM::Monitor
       # @return [String] The email address of this receiver.
       attr_accessor :email_address
 
-      # @return [ReceiverStatus] Possible values include: 'NotSpecified',
-      # 'Enabled', 'Disabled'
+      # @return [ReceiverStatus] The receiver status of the e-mail. Possible
+      # values include: 'NotSpecified', 'Enabled', 'Disabled'
       attr_accessor :status
 
 

@@ -23,8 +23,8 @@ module Azure::ARM::Monitor
       # @return [String] The phone number of the SMS receiver.
       attr_accessor :phone_number
 
-      # @return [ReceiverStatus] Possible values include: 'NotSpecified',
-      # 'Enabled', 'Disabled'
+      # @return [ReceiverStatus] The status of the receiver. Possible values
+      # include: 'NotSpecified', 'Enabled', 'Disabled'
       attr_accessor :status
 
 

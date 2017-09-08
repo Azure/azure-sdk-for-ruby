@@ -17,7 +17,8 @@ module Azure::ARM::Monitor
       # alerts.
       attr_accessor :value
 
-      # @return [String] Provides the link to retrive the next set of elements.
+      # @return [String] Provides the link to retrieve the next set of
+      # elements.
       attr_accessor :next_link
 
 
