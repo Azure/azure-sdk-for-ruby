@@ -12,7 +12,6 @@ module Azure::ARM::Web
       Default = "Default"
       Clone = "Clone"
       Relocation = "Relocation"
-      Snapshot = "Snapshot"
     end
   end
 end

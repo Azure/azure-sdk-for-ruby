@@ -22,8 +22,7 @@ module Azure::ARM::Web
       # 0 or lower means no retention.
       attr_accessor :retention_in_days
 
-      # @return [Boolean] True if configuration is enabled, false if it is
-      # disabled and null if configuration is not set.
+      # @return [Boolean] Enabled.
       attr_accessor :enabled
 
 

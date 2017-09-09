@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A hostname binding object.
     #
-    class HostNameBinding < MsRestAzure::ProxyOnlyResource
+    class HostNameBinding < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -71,7 +71,6 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -84,12 +83,32 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               host_name_binding_name: {
@@ -161,7 +180,6 @@ module Azure::ARM::Web
               },
               virtual_ip: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.virtualIP',
                 type: {
                   name: 'String'

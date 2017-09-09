@@ -8,17 +8,14 @@ module Azure::ARM::Web
     #
     # MySQL migration request.
     #
-    class MigrateMySqlRequest < MsRestAzure::ProxyOnlyResource
+    class MigrateMySqlRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Connection string to the remote MySQL database.
+      # @return [String] Connection string to the remote MySQL database to
+      # which data should be migrated.
       attr_accessor :connection_string
-
-      # @return [MySqlMigrationType] The type of migration operation to be
-      # done. Possible values include: 'LocalToRemote', 'RemoteToLocal'
-      attr_accessor :migration_type
 
 
       #
@@ -43,7 +40,6 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -56,12 +52,32 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               connection_string: {
@@ -69,14 +85,6 @@ module Azure::ARM::Web
                 serialized_name: 'properties.connectionString',
                 type: {
                   name: 'String'
-                }
-              },
-              migration_type: {
-                required: false,
-                serialized_name: 'properties.migrationType',
-                type: {
-                  name: 'Enum',
-                  module: 'MySqlMigrationType'
                 }
               }
             }

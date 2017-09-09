@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A top level domain object.
     #
-    class TopLevelDomain < MsRestAzure::ProxyOnlyResource
+    class TopLevelDomain < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -43,7 +43,6 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -56,12 +55,32 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               domain_name: {

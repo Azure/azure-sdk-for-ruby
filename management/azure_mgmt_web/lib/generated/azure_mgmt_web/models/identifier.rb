@@ -8,12 +8,12 @@ module Azure::ARM::Web
     #
     # Identifier.
     #
-    class Identifier < MsRestAzure::ProxyOnlyResource
+    class Identifier < MsRestAzure::Resource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] String representation of the identity.
+      # @return [String] ID.
       attr_accessor :identifier_id
 
 
@@ -39,7 +39,6 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -52,12 +51,32 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               identifier_id: {
