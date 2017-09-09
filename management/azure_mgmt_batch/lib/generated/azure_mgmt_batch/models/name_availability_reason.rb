@@ -6,11 +6,11 @@
 module Azure::ARM::Batch
   module Models
     #
-    # Defines values for PoolAllocationMode
+    # Defines values for NameAvailabilityReason
     #
-    module PoolAllocationMode
-      BatchService = "BatchService"
-      UserSubscription = "UserSubscription"
+    module NameAvailabilityReason
+      Invalid = "Invalid"
+      AlreadyExists = "AlreadyExists"
     end
   end
 end

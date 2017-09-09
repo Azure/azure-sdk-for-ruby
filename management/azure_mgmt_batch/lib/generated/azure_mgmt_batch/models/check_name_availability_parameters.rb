@@ -6,44 +6,46 @@
 module Azure::ARM::Batch
   module Models
     #
-    # Identifies the Azure key vault associated with a Batch account.
+    # Parameters for a check name availability request.
     #
-    class KeyVaultReference
+    class CheckNameAvailabilityParameters
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The resource ID of the Azure key vault associated with
-      # the Batch account.
-      attr_accessor :id
+      # @return [String] The name to check for availability
+      attr_accessor :name
 
-      # @return [String] The URL of the Azure key vault associated with the
-      # Batch account.
-      attr_accessor :url
+      # @return [String] The resource type. Must be set to
+      # Microsoft.Batch/batchAccounts. Default value:
+      # 'Microsoft.Batch/batchAccounts' .
+      attr_accessor :type
 
 
       #
-      # Mapper for KeyVaultReference class as Ruby Hash.
+      # Mapper for CheckNameAvailabilityParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'KeyVaultReference',
+          serialized_name: 'CheckNameAvailabilityParameters',
           type: {
             name: 'Composite',
-            class_name: 'KeyVaultReference',
+            class_name: 'CheckNameAvailabilityParameters',
             model_properties: {
-              id: {
+              name: {
                 required: true,
-                serialized_name: 'id',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              url: {
+              type: {
                 required: true,
-                serialized_name: 'url',
+                is_constant: true,
+                serialized_name: 'type',
+                default_value: 'Microsoft.Batch/batchAccounts',
                 type: {
                   name: 'String'
                 }
