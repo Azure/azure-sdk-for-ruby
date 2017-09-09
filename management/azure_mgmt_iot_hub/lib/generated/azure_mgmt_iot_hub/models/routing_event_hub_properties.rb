@@ -16,11 +16,11 @@ module Azure::ARM::IotHub
       # @return [String] The connection string of the event hub endpoint.
       attr_accessor :connection_string
 
-      # @return [String] The name of the event hub endpoint. The name can only
-      # include alphanumeric characters, periods, underscores, hyphens and has
-      # a maximum length of 64 characters. The following names are reserved;
-      # events, operationsMonitoringEvents, fileNotifications, $default.
-      # Endpoint names must be unique across endpoint types.
+      # @return [String] The name that identifies this endpoint. The name can
+      # only include alphanumeric characters, periods, underscores, hyphens and
+      # has a maximum length of 64 characters. The following names are
+      # reserved:  events, operationsMonitoringEvents, fileNotifications,
+      # $default. Endpoint names must be unique across endpoint types.
       attr_accessor :name
 
       # @return [String] The subscription identifier of the event hub endpoint.
