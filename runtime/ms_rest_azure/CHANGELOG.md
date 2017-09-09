@@ -1,4 +1,4 @@
-##Unreleased ms_rest_azure version 0.9.0
+##2017.09.11 ms_rest_azure version 0.9.0
 * [Breaking Change] Managed Service Identity authentication to acquire token does not require `tenant_id`.[Issue #930](https://github.com/Azure/azure-sdk-for-ruby/issues/930) [PR #931](https://github.com/Azure/azure-sdk-for-ruby/pull/931)
 
 ##2017.08.28 ms_rest_azure version 0.8.2
