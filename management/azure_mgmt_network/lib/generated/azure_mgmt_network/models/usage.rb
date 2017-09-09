@@ -13,6 +13,9 @@ module Azure::ARM::Network
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [String] Resource identifier.
+      attr_accessor :id
+
       # @return [String] An enum describing the unit of measurement. Default
       # value: 'Count' .
       attr_accessor :unit
@@ -39,6 +42,14 @@ module Azure::ARM::Network
             name: 'Composite',
             class_name: 'Usage',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               unit: {
                 required: true,
                 is_constant: true,

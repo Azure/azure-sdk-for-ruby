@@ -22,7 +22,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param location [String] The location where resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -36,7 +36,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param location [String] The location where resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -49,7 +49,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param location [String] The location where resource usage is queried.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -109,7 +109,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -124,7 +124,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -138,7 +138,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -196,7 +196,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Lists compute usages for a subscription.
+    # List network usages for a subscription.
     #
     # @param location [String] The location where resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
