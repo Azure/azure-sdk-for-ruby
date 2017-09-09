@@ -556,8 +556,8 @@ module Azure::ARM::Network
     #
     # @return [String] operation results.
     #
-    def get_vpn_profile_pacakge_url(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      response = get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    def get_vpn_profile_package_url(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -571,9 +571,9 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+    def get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers)
+      promise = begin_get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -1290,8 +1290,8 @@ module Azure::ARM::Network
     #
     # @return [String] operation results.
     #
-    def begin_get_vpn_profile_pacakge_url(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      response = begin_get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    def begin_get_vpn_profile_package_url(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = begin_get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1308,8 +1308,8 @@ module Azure::ARM::Network
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_get_vpn_profile_pacakge_url_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      begin_get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    def begin_get_vpn_profile_package_url_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      begin_get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
     end
 
     #
@@ -1325,7 +1325,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+    def begin_get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       api_version = '2017-08-01'
