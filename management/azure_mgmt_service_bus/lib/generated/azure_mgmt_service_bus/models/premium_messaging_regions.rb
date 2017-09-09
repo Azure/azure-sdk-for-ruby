@@ -6,31 +6,28 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The Resource definition.
+    # Premium Messaging Region
     #
-    class TrackedResource < MsRestAzure::Resource
+    class PremiumMessagingRegions < ResourceNamespacePatch
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The Geo-location where the resource lives
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource tags
-      attr_accessor :tags
+      # @return [PremiumMessagingRegionsProperties]
+      attr_accessor :properties
 
 
       #
-      # Mapper for TrackedResource class as Ruby Hash.
+      # Mapper for PremiumMessagingRegions class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TrackedResource',
+          serialized_name: 'PremiumMessagingRegions',
           type: {
             name: 'Composite',
-            class_name: 'TrackedResource',
+            class_name: 'PremiumMessagingRegions',
             model_properties: {
               id: {
                 required: false,
@@ -57,7 +54,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               location: {
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -75,6 +72,14 @@ module Azure::ARM::ServiceBus
                         name: 'String'
                       }
                   }
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PremiumMessagingRegionsProperties'
                 }
               }
             }
