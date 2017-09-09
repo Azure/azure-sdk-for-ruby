@@ -6,7 +6,7 @@
 module Azure::ARM::StreamAnalytics
   module Models
     #
-    # Describes a Service Bus Queue data source.
+    # Describes a Service Bus Queue output data source.
     #
     class ServiceBusQueueOutputDataSource < OutputDataSource
 
