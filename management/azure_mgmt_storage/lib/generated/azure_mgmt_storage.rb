@@ -21,7 +21,7 @@ require 'ms_rest_azure'
 
 module Azure::ARM::Storage
   autoload :Operations,                                         'generated/azure_mgmt_storage/operations.rb'
-  autoload :SKUs,                                               'generated/azure_mgmt_storage/skus.rb'
+  autoload :Skus,                                               'generated/azure_mgmt_storage/skus.rb'
   autoload :StorageAccounts,                                    'generated/azure_mgmt_storage/storage_accounts.rb'
   autoload :UsageOperations,                                    'generated/azure_mgmt_storage/usage_operations.rb'
   autoload :StorageManagementClient,                            'generated/azure_mgmt_storage/storage_management_client.rb'

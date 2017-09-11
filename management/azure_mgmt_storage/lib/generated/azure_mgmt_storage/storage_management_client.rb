@@ -39,7 +39,7 @@ module Azure::ARM::Storage
     # @return [Operations] operations
     attr_reader :operations
 
-    # @return [SKUs] skus
+    # @return [Skus] skus
     attr_reader :skus
 
     # @return [StorageAccounts] storage_accounts
@@ -62,7 +62,7 @@ module Azure::ARM::Storage
       @credentials = credentials
 
       @operations = Operations.new(self)
-      @skus = SKUs.new(self)
+      @skus = Skus.new(self)
       @storage_accounts = StorageAccounts.new(self)
       @usage_operations = UsageOperations.new(self)
       @api_version = '2017-06-01'

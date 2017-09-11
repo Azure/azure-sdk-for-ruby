@@ -7,11 +7,11 @@ module Azure::ARM::Storage
   #
   # The Azure Storage Management API.
   #
-  class SKUs
+  class Skus
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the SKUs class.
+    # Creates and initializes a new instance of the Skus class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
