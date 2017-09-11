@@ -7,11 +7,11 @@ module Azure::ARM::Network
   #
   # Network Client
   #
-  class InboundNatRules
+  class ApplicationSecurityGroups
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the InboundNatRules class.
+    # Creates and initializes a new instance of the ApplicationSecurityGroups class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -22,47 +22,90 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # Deletes the specified application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<InboundNatRule>] operation results.
-    #
-    def list(resource_group_name, load_balancer_name, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, load_balancer_name, custom_headers)
-      first_page.get_all_items
+    def delete(resource_group_name, application_security_group_name, custom_headers = nil)
+      response = delete_async(resource_group_name, application_security_group_name, custom_headers).value!
+      nil
     end
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def delete_async(resource_group_name, application_security_group_name, custom_headers = nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, application_security_group_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Gets information about the specified application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ApplicationSecurityGroup] operation results.
+    #
+    def get(resource_group_name, application_security_group_name, custom_headers = nil)
+      response = get_async(resource_group_name, application_security_group_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets information about the specified application security group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, load_balancer_name, custom_headers = nil)
-      list_async(resource_group_name, load_balancer_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, application_security_group_name, custom_headers = nil)
+      get_async(resource_group_name, application_security_group_name, custom_headers).value!
     end
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # Gets information about the specified application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, load_balancer_name, custom_headers = nil)
+    def get_async(resource_group_name, application_security_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'load_balancer_name is nil' if load_balancer_name.nil?
+      fail ArgumentError, 'application_security_group_name is nil' if application_security_group_name.nil?
       api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -72,13 +115,13 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'loadBalancerName' => load_balancer_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'applicationSecurityGroupName' => application_security_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -99,7 +142,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::InboundNatRuleListResult.mapper()
+            result_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -113,36 +156,44 @@ module Azure::ARM::Network
     end
 
     #
-    # Deletes the specified load balancer inbound nat rule.
+    # Creates or updates an application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param parameters [ApplicationSecurityGroup] Parameters supplied to the
+    # create or update ApplicationSecurityGroup operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers = nil)
-      response = delete_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers).value!
-      nil
+    # @return [ApplicationSecurityGroup] operation results.
+    #
+    def create_or_update(resource_group_name, application_security_group_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, application_security_group_name, parameters, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param parameters [ApplicationSecurityGroup] Parameters supplied to the
+    # create or update ApplicationSecurityGroup operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers = nil)
+    def create_or_update_async(resource_group_name, application_security_group_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, application_security_group_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroup.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
         # Waiting for response.
@@ -153,54 +204,39 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets the specified load balancer inbound nat rule.
+    # Gets all application security groups in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [InboundNatRule] operation results.
+    # @return [Array<ApplicationSecurityGroup>] operation results.
     #
-    def get(resource_group_name, load_balancer_name, inbound_nat_rule_name, expand = nil, custom_headers = nil)
-      response = get_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, expand, custom_headers).value!
-      response.body unless response.nil?
+    def list_all(custom_headers = nil)
+      first_page = list_all_as_lazy(custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Gets the specified load balancer inbound nat rule.
+    # Gets all application security groups in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, load_balancer_name, inbound_nat_rule_name, expand = nil, custom_headers = nil)
-      get_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, expand, custom_headers).value!
+    def list_all_with_http_info(custom_headers = nil)
+      list_all_async(custom_headers).value!
     end
 
     #
-    # Gets the specified load balancer inbound nat rule.
+    # Gets all application security groups in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, expand = nil, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'load_balancer_name is nil' if load_balancer_name.nil?
-      fail ArgumentError, 'inbound_nat_rule_name is nil' if inbound_nat_rule_name.nil?
+    def list_all_async(custom_headers = nil)
       api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -210,14 +246,14 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'loadBalancerName' => load_balancer_name,'inboundNatRuleName' => inbound_nat_rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version,'$expand' => expand},
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -237,7 +273,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::InboundNatRule.mapper()
+            result_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroupListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -251,98 +287,49 @@ module Azure::ARM::Network
     end
 
     #
-    # Creates or updates a load balancer inbound nat rule.
+    # Deletes the specified application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param inbound_nat_rule_parameters [InboundNatRule] Parameters supplied to
-    # the create or update inbound nat rule operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [InboundNatRule] operation results.
-    #
-    def create_or_update(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param inbound_nat_rule_parameters [InboundNatRule] Parameters supplied to
-    # the create or update inbound nat rule operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def create_or_update_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers = nil)
-      # Send request
-      promise = begin_create_or_update_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Models::InboundNatRule.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Deletes the specified load balancer inbound nat rule.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers).value!
+    def begin_delete(resource_group_name, application_security_group_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, application_security_group_name, custom_headers).value!
       nil
     end
 
     #
-    # Deletes the specified load balancer inbound nat rule.
+    # Deletes the specified application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, application_security_group_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, application_security_group_name, custom_headers).value!
     end
 
     #
-    # Deletes the specified load balancer inbound nat rule.
+    # Deletes the specified application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, application_security_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'load_balancer_name is nil' if load_balancer_name.nil?
-      fail ArgumentError, 'inbound_nat_rule_name is nil' if inbound_nat_rule_name.nil?
+      fail ArgumentError, 'application_security_group_name is nil' if application_security_group_name.nil?
       api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -352,13 +339,13 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'loadBalancerName' => load_balancer_name,'inboundNatRuleName' => inbound_nat_rule_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'applicationSecurityGroupName' => application_security_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -383,58 +370,57 @@ module Azure::ARM::Network
     end
 
     #
-    # Creates or updates a load balancer inbound nat rule.
+    # Creates or updates an application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param inbound_nat_rule_parameters [InboundNatRule] Parameters supplied to
-    # the create or update inbound nat rule operation.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param parameters [ApplicationSecurityGroup] Parameters supplied to the
+    # create or update ApplicationSecurityGroup operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [InboundNatRule] operation results.
+    # @return [ApplicationSecurityGroup] operation results.
     #
-    def begin_create_or_update(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers).value!
+    def begin_create_or_update(resource_group_name, application_security_group_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, application_security_group_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or updates a load balancer inbound nat rule.
+    # Creates or updates an application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param inbound_nat_rule_parameters [InboundNatRule] Parameters supplied to
-    # the create or update inbound nat rule operation.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param parameters [ApplicationSecurityGroup] Parameters supplied to the
+    # create or update ApplicationSecurityGroup operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, application_security_group_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, application_security_group_name, parameters, custom_headers).value!
     end
 
     #
-    # Creates or updates a load balancer inbound nat rule.
+    # Creates or updates an application security group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
-    # @param inbound_nat_rule_name [String] The name of the inbound nat rule.
-    # @param inbound_nat_rule_parameters [InboundNatRule] Parameters supplied to
-    # the create or update inbound nat rule operation.
+    # @param application_security_group_name [String] The name of the application
+    # security group.
+    # @param parameters [ApplicationSecurityGroup] Parameters supplied to the
+    # create or update ApplicationSecurityGroup operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, load_balancer_name, inbound_nat_rule_name, inbound_nat_rule_parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, application_security_group_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'load_balancer_name is nil' if load_balancer_name.nil?
-      fail ArgumentError, 'inbound_nat_rule_name is nil' if inbound_nat_rule_name.nil?
-      fail ArgumentError, 'inbound_nat_rule_parameters is nil' if inbound_nat_rule_parameters.nil?
+      fail ArgumentError, 'application_security_group_name is nil' if application_security_group_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
       api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -448,17 +434,17 @@ module Azure::ARM::Network
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Network::Models::InboundNatRule.mapper()
-      request_content = @client.serialize(request_mapper,  inbound_nat_rule_parameters)
+      request_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroup.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'loadBalancerName' => load_balancer_name,'inboundNatRuleName' => inbound_nat_rule_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'applicationSecurityGroupName' => application_security_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -480,7 +466,7 @@ module Azure::ARM::Network
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::InboundNatRule.mapper()
+            result_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -490,7 +476,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::InboundNatRule.mapper()
+            result_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -504,22 +490,22 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # Gets all application security groups in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [InboundNatRuleListResult] operation results.
+    # @return [ApplicationSecurityGroupListResult] operation results.
     #
-    def list_next(next_page_link, custom_headers = nil)
-      response = list_next_async(next_page_link, custom_headers).value!
+    def list_all_next(next_page_link, custom_headers = nil)
+      response = list_all_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # Gets all application security groups in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -528,12 +514,12 @@ module Azure::ARM::Network
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_next_with_http_info(next_page_link, custom_headers = nil)
-      list_next_async(next_page_link, custom_headers).value!
+    def list_all_next_with_http_info(next_page_link, custom_headers = nil)
+      list_all_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # Gets all application security groups in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -542,7 +528,7 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_next_async(next_page_link, custom_headers = nil)
+    def list_all_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -577,7 +563,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Models::InboundNatRuleListResult.mapper()
+            result_mapper = Azure::ARM::Network::Models::ApplicationSecurityGroupListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -591,22 +577,20 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the inbound nat rules in a load balancer.
+    # Gets all application security groups in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the load balancer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [InboundNatRuleListResult] which provide lazy access to pages of the
-    # response.
+    # @return [ApplicationSecurityGroupListResult] which provide lazy access to
+    # pages of the response.
     #
-    def list_as_lazy(resource_group_name, load_balancer_name, custom_headers = nil)
-      response = list_async(resource_group_name, load_balancer_name, custom_headers).value!
+    def list_all_as_lazy(custom_headers = nil)
+      response = list_all_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_next_async(next_page_link, custom_headers)
+          list_all_next_async(next_page_link, custom_headers)
         end
         page
       end

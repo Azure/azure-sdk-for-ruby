@@ -50,6 +50,10 @@ module Azure::ARM::Network
       # configuration.
       attr_accessor :public_ipaddress
 
+      # @return [Array<ApplicationSecurityGroup>] Application security groups
+      # in which the IP configuration is included.
+      attr_accessor :application_security_groups
+
       # @return [String] The provisioning state of the network interface IP
       # configuration. Possible values are: 'Updating', 'Deleting', and
       # 'Failed'.
@@ -170,6 +174,21 @@ module Azure::ARM::Network
                 type: {
                   name: 'Composite',
                   class_name: 'PublicIPAddress'
+                }
+              },
+              application_security_groups: {
+                required: false,
+                serialized_name: 'properties.applicationSecurityGroups',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ApplicationSecurityGroupElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationSecurityGroup'
+                      }
+                  }
                 }
               },
               provisioning_state: {
