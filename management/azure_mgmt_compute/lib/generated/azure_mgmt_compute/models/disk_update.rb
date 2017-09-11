@@ -8,7 +8,7 @@ module Azure::ARM::Compute
     #
     # Disk update resource.
     #
-    class DiskUpdate < MsRestAzure::ResourceUpdate
+    class DiskUpdate < ResourceUpdate
 
       include MsRestAzure
 
