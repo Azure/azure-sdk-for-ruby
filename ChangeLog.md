@@ -1,3 +1,10 @@
+## 2017.09.11 - Azure ARM version 0.12.0
+
+* Regened all azure_mgmt_* sdks using [AutoRest 1.9.3](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.12.0
+* Updated all azure_mgmt_* sdks to use [ms_rest_azure version 0.9.0](https://rubygems.org/gems/ms_rest_azure/versions/0.9.0) to include MSI based authentication
+* **Skipped** generation of `azure_mgmt_traffic_manager` due to https://github.com/Azure/autorest.ruby/pull/7
+* **Skipped** generation of `azure_mgmt_web` due to https://github.com/Azure/azure-sdk-for-ruby/issues/957
+
 ## 2017.07.19 - Azure ARM version 0.11.0
 
 * Regened all azure_mgmt_* sdks using [AutoRest.1.2.2.0](https://github.com/Azure/autorest/tree/v1.2.2) for release of ARM version 0.11.0
