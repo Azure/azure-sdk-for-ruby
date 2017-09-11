@@ -114,7 +114,7 @@ module Azure::ARM::Network
     def get_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -241,7 +241,7 @@ module Azure::ARM::Network
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -335,7 +335,7 @@ module Azure::ARM::Network
     def list_connections_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -785,7 +785,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -897,7 +897,7 @@ module Azure::ARM::Network
     def begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -990,7 +990,7 @@ module Azure::ARM::Network
     def begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1094,7 +1094,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1213,7 +1213,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1328,7 +1328,7 @@ module Azure::ARM::Network
     def begin_get_vpn_profile_pacakge_url_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1431,7 +1431,7 @@ module Azure::ARM::Network
     def begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1528,7 +1528,7 @@ module Azure::ARM::Network
     def begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1629,7 +1629,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'peer is nil' if peer.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
