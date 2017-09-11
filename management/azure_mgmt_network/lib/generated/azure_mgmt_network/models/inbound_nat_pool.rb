@@ -16,9 +16,8 @@ module Azure::ARM::Network
       # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 
-      # @return [TransportProtocol] The transport protocol for the endpoint.
-      # Possible values are: 'Udp' or 'Tcp'. Possible values include: 'Udp',
-      # 'Tcp'
+      # @return [TransportProtocol] Possible values include: 'Udp', 'Tcp',
+      # 'All'
       attr_accessor :protocol
 
       # @return [Integer] The first port number in the range of external ports

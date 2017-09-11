@@ -101,7 +101,7 @@ module Azure::ARM::Network
     def get_async(resource_group_name, application_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -234,7 +234,7 @@ module Azure::ARM::Network
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -317,7 +317,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_all_async(custom_headers = nil)
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -523,7 +523,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_available_waf_rule_sets_async(custom_headers = nil)
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -606,7 +606,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_available_ssl_options_async(custom_headers = nil)
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -689,7 +689,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_available_ssl_predefined_policies_async(custom_headers = nil)
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -775,7 +775,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_ssl_predefined_policy_async(predefined_policy_name, custom_headers = nil)
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'predefined_policy_name is nil' if predefined_policy_name.nil?
 
@@ -866,7 +866,7 @@ module Azure::ARM::Network
     def begin_delete_async(resource_group_name, application_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -954,7 +954,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1063,7 +1063,7 @@ module Azure::ARM::Network
     def begin_start_async(resource_group_name, application_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1143,7 +1143,7 @@ module Azure::ARM::Network
     def begin_stop_async(resource_group_name, application_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1233,7 +1233,7 @@ module Azure::ARM::Network
     def begin_backend_health_async(resource_group_name, application_gateway_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
