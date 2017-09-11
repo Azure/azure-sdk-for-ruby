@@ -8,7 +8,7 @@ module Azure::ARM::Compute
     #
     # Snapshot update resource.
     #
-    class SnapshotUpdate < MsRestAzure::ResourceUpdate
+    class SnapshotUpdate < ResourceUpdate
 
       include MsRestAzure
 
