@@ -3,55 +3,49 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Resources
+module Azure::ARM::Policy
   module Models
     #
-    # The alias type.
+    # The policy sku.
     #
-    class AliasType
+    class PolicySku
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The alias name.
+      # @return [String] The name of the policy sku. Possible values are A0 and
+      # A1.
       attr_accessor :name
 
-      # @return [Array<AliasPathType>] The paths for an alias.
-      attr_accessor :paths
+      # @return [String] The policy sku tier. Possible values are Free and
+      # Standard.
+      attr_accessor :tier
 
 
       #
-      # Mapper for AliasType class as Ruby Hash.
+      # Mapper for PolicySku class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AliasType',
+          serialized_name: 'PolicySku',
           type: {
             name: 'Composite',
-            class_name: 'AliasType',
+            class_name: 'PolicySku',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              paths: {
+              tier: {
                 required: false,
-                serialized_name: 'paths',
+                serialized_name: 'tier',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'AliasPathTypeElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'AliasPathType'
-                      }
-                  }
+                  name: 'String'
                 }
               }
             }

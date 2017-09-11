@@ -3,14 +3,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Resources
+module Azure::ARM::Policy
   module Models
     #
-    # Defines values for DeploymentMode
+    # Defines values for PolicyMode
     #
-    module DeploymentMode
-      Incremental = "Incremental"
-      Complete = "Complete"
+    module PolicyMode
+      NotSpecified = "NotSpecified"
+      Indexed = "Indexed"
+      All = "All"
     end
   end
 end

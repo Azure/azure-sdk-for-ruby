@@ -25,10 +25,12 @@ module Azure::ARM::Policy
   autoload :PolicyClient,                                       'generated/azure_mgmt_policy/policy_client.rb'
 
   module Models
+    autoload :PolicySku,                                          'generated/azure_mgmt_policy/models/policy_sku.rb'
     autoload :PolicyAssignment,                                   'generated/azure_mgmt_policy/models/policy_assignment.rb'
-    autoload :PolicyDefinition,                                   'generated/azure_mgmt_policy/models/policy_definition.rb'
-    autoload :PolicyAssignmentListResult,                         'generated/azure_mgmt_policy/models/policy_assignment_list_result.rb'
     autoload :PolicyDefinitionListResult,                         'generated/azure_mgmt_policy/models/policy_definition_list_result.rb'
+    autoload :PolicyAssignmentListResult,                         'generated/azure_mgmt_policy/models/policy_assignment_list_result.rb'
+    autoload :PolicyDefinition,                                   'generated/azure_mgmt_policy/models/policy_definition.rb'
     autoload :PolicyType,                                         'generated/azure_mgmt_policy/models/policy_type.rb'
+    autoload :PolicyMode,                                         'generated/azure_mgmt_policy/models/policy_mode.rb'
   end
 end

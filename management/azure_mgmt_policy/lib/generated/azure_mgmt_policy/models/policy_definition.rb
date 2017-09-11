@@ -18,6 +18,11 @@ module Azure::ARM::Policy
       # 'NotSpecified', 'BuiltIn', 'Custom'
       attr_accessor :policy_type
 
+      # @return [PolicyMode] The policy definition mode. Possible values are
+      # NotSpecified, Indexed, and All. Possible values include:
+      # 'NotSpecified', 'Indexed', 'All'
+      attr_accessor :mode
+
       # @return [String] The display name of the policy definition.
       attr_accessor :display_name
 
@@ -26,6 +31,9 @@ module Azure::ARM::Policy
 
       # @return The policy rule.
       attr_accessor :policy_rule
+
+      # @return The policy definition metadata.
+      attr_accessor :metadata
 
       # @return Required if a parameter is used in policy rule.
       attr_accessor :parameters
@@ -58,6 +66,13 @@ module Azure::ARM::Policy
                   name: 'String'
                 }
               },
+              mode: {
+                required: false,
+                serialized_name: 'properties.mode',
+                type: {
+                  name: 'String'
+                }
+              },
               display_name: {
                 required: false,
                 serialized_name: 'properties.displayName',
@@ -79,6 +94,13 @@ module Azure::ARM::Policy
                   name: 'Object'
                 }
               },
+              metadata: {
+                required: false,
+                serialized_name: 'properties.metadata',
+                type: {
+                  name: 'Object'
+                }
+              },
               parameters: {
                 required: false,
                 serialized_name: 'properties.parameters',
@@ -88,6 +110,7 @@ module Azure::ARM::Policy
               },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
