@@ -36,6 +36,9 @@ module Azure::ARM::Network
     # @return [ApplicationGateways] application_gateways
     attr_reader :application_gateways
 
+    # @return [ApplicationSecurityGroups] application_security_groups
+    attr_reader :application_security_groups
+
     # @return [AvailableEndpointServices] available_endpoint_services
     attr_reader :available_endpoint_services
 
@@ -155,6 +158,7 @@ module Azure::ARM::Network
       @credentials = credentials
 
       @application_gateways = ApplicationGateways.new(self)
+      @application_security_groups = ApplicationSecurityGroups.new(self)
       @available_endpoint_services = AvailableEndpointServices.new(self)
       @express_route_circuit_authorizations = ExpressRouteCircuitAuthorizations.new(self)
       @express_route_circuit_peerings = ExpressRouteCircuitPeerings.new(self)
@@ -250,7 +254,8 @@ module Azure::ARM::Network
     end
 
     #
-    # Checks whether a domain name in the cloudapp.net zone is available for use.
+    # Checks whether a domain name in the cloudapp.azure.com zone is available for
+    # use.
     #
     # @param location [String] The location of the domain name.
     # @param domain_name_label [String] The domain name to be verified. It must
@@ -260,13 +265,14 @@ module Azure::ARM::Network
     #
     # @return [DnsNameAvailabilityResult] operation results.
     #
-    def check_dns_name_availability(location, domain_name_label = nil, custom_headers = nil)
+    def check_dns_name_availability(location, domain_name_label, custom_headers = nil)
       response = check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Checks whether a domain name in the cloudapp.net zone is available for use.
+    # Checks whether a domain name in the cloudapp.azure.com zone is available for
+    # use.
     #
     # @param location [String] The location of the domain name.
     # @param domain_name_label [String] The domain name to be verified. It must
@@ -276,12 +282,13 @@ module Azure::ARM::Network
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_dns_name_availability_with_http_info(location, domain_name_label = nil, custom_headers = nil)
+    def check_dns_name_availability_with_http_info(location, domain_name_label, custom_headers = nil)
       check_dns_name_availability_async(location, domain_name_label, custom_headers).value!
     end
 
     #
-    # Checks whether a domain name in the cloudapp.net zone is available for use.
+    # Checks whether a domain name in the cloudapp.azure.com zone is available for
+    # use.
     #
     # @param location [String] The location of the domain name.
     # @param domain_name_label [String] The domain name to be verified. It must
@@ -291,9 +298,10 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_dns_name_availability_async(location, domain_name_label = nil, custom_headers = nil)
+    def check_dns_name_availability_async(location, domain_name_label, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2017-08-01'
+      fail ArgumentError, 'domain_name_label is nil' if domain_name_label.nil?
+      api_version = '2017-09-01'
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 

@@ -55,7 +55,7 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(custom_headers = nil)
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

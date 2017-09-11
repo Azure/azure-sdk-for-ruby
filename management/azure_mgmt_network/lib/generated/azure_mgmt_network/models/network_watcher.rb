@@ -36,6 +36,7 @@ module Azure::ARM::Network
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
