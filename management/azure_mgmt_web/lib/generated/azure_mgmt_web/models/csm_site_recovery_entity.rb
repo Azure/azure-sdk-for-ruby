@@ -6,55 +6,55 @@
 module Azure::ARM::Web
   module Models
     #
-    # The status of the last successfull slot swap operation.
+    # Details about app recovery operation.
     #
-    class SlotSwapStatus
+    class CsmSiteRecoveryEntity
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [DateTime] The time the last successful slot swap completed.
-      attr_accessor :timestamp_utc
+      # @return [DateTime] Point in time in which the app recovery should be
+      # attempted.
+      attr_accessor :snapshot_time
 
-      # @return [String] The source slot of the last swap operation.
-      attr_accessor :source_slot_name
+      # @return [String] [Optional] Destination app name into which app should
+      # be recovered. This is case when new app should be created instead.
+      attr_accessor :site_name
 
-      # @return [String] The destination slot of the last swap operation.
-      attr_accessor :destination_slot_name
+      # @return [String] [Optional] Destination app slot name into which app
+      # should be recovered.
+      attr_accessor :slot_name
 
 
       #
-      # Mapper for SlotSwapStatus class as Ruby Hash.
+      # Mapper for CsmSiteRecoveryEntity class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SlotSwapStatus',
+          serialized_name: 'CsmSiteRecoveryEntity',
           type: {
             name: 'Composite',
-            class_name: 'SlotSwapStatus',
+            class_name: 'CsmSiteRecoveryEntity',
             model_properties: {
-              timestamp_utc: {
+              snapshot_time: {
                 required: false,
-                read_only: true,
-                serialized_name: 'timestampUtc',
+                serialized_name: 'snapshotTime',
                 type: {
                   name: 'DateTime'
                 }
               },
-              source_slot_name: {
+              site_name: {
                 required: false,
-                read_only: true,
-                serialized_name: 'sourceSlotName',
+                serialized_name: 'siteName',
                 type: {
                   name: 'String'
                 }
               },
-              destination_slot_name: {
+              slot_name: {
                 required: false,
-                read_only: true,
-                serialized_name: 'destinationSlotName',
+                serialized_name: 'slotName',
                 type: {
                   name: 'String'
                 }
