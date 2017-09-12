@@ -3,60 +3,58 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::IotHub
   module Models
     #
-    # MSDeploy log entry
+    # The object that represents the operation.
     #
-    class MSDeployLogEntry
+    class OperationDisplay
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [DateTime] Timestamp of log entry
-      attr_accessor :time
+      # @return [String] Service provider: Microsoft Devices
+      attr_accessor :provider
 
-      # @return [MSDeployLogEntryType] Log entry type. Possible values include:
-      # 'Message', 'Warning', 'Error'
-      attr_accessor :type
+      # @return [String] Resource Type: IotHubs
+      attr_accessor :resource
 
-      # @return [String] Log entry message
-      attr_accessor :message
+      # @return [String] Name of the operation
+      attr_accessor :operation
 
 
       #
-      # Mapper for MSDeployLogEntry class as Ruby Hash.
+      # Mapper for OperationDisplay class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'MSDeployLogEntry',
+          serialized_name: 'Operation_display',
           type: {
             name: 'Composite',
-            class_name: 'MSDeployLogEntry',
+            class_name: 'OperationDisplay',
             model_properties: {
-              time: {
+              provider: {
                 required: false,
                 read_only: true,
-                serialized_name: 'time',
+                serialized_name: 'provider',
                 type: {
-                  name: 'DateTime'
+                  name: 'String'
                 }
               },
-              type: {
+              resource: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'resource',
                 type: {
-                  name: 'Enum',
-                  module: 'MSDeployLogEntryType'
+                  name: 'String'
                 }
               },
-              message: {
+              operation: {
                 required: false,
                 read_only: true,
-                serialized_name: 'message',
+                serialized_name: 'operation',
                 type: {
                   name: 'String'
                 }

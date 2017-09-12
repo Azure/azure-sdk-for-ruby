@@ -3,46 +3,48 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::ServiceBus
   module Models
     #
     # Model object.
     #
     #
-    class MetricAvailability
+    class PremiumMessagingRegionsProperties
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String]
-      attr_accessor :time_grain
+      # @return [String] Region code
+      attr_accessor :code
 
-      # @return [String]
-      attr_accessor :blob_duration
+      # @return [String] Full name of the region
+      attr_accessor :full_name
 
 
       #
-      # Mapper for MetricAvailability class as Ruby Hash.
+      # Mapper for PremiumMessagingRegionsProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'MetricAvailability',
+          serialized_name: 'PremiumMessagingRegions_properties',
           type: {
             name: 'Composite',
-            class_name: 'MetricAvailability',
+            class_name: 'PremiumMessagingRegionsProperties',
             model_properties: {
-              time_grain: {
+              code: {
                 required: false,
-                serialized_name: 'timeGrain',
+                read_only: true,
+                serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
-              blob_duration: {
+              full_name: {
                 required: false,
-                serialized_name: 'blobDuration',
+                read_only: true,
+                serialized_name: 'fullName',
                 type: {
                   name: 'String'
                 }

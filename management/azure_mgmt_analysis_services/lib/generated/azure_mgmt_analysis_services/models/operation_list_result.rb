@@ -3,20 +3,23 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::AnalysisServices
   module Models
     #
-    # Collection of Azure resource manager operation metadata.
+    # Result of listing consumption operations. It contains a list of
+    # operations and a URL link to get the next set of results.
     #
-    class CsmOperationCollection
+    class OperationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<CsmOperationDescription>] Collection of resources.
+      # @return [Array<Operation>] List of analysis services operations
+      # supported by the Microsoft.AnalysisServices resource provider.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources.
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +28,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<CsmOperationDescription>] operation results.
+      # @return [Array<Operation>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +43,7 @@ module Azure::ARM::Web
       #
       # Gets the next page of results.
       #
-      # @return [CsmOperationCollection] with next page content.
+      # @return [OperationListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,34 +55,36 @@ module Azure::ARM::Web
       end
 
       #
-      # Mapper for CsmOperationCollection class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CsmOperationCollection',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'CsmOperationCollection',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'CsmOperationDescriptionElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'CsmOperationDescription'
+                        class_name: 'Operation'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

@@ -6,8 +6,8 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties related to the fallback route based on which the IoT hub
-    # routes messages to the fallback endpoint.
+    # The properties of the fallback route. IoT Hub uses these properties when
+    # it routes messages to the fallback endpoint.
     #
     class FallbackRouteProperties
 
@@ -15,7 +15,7 @@ module Azure::ARM::IotHub
 
       include MsRest::JSONable
       # @return [String] The source to which the routing rule is to be applied
-      # to. e.g. DeviceMessages. Default value: 'DeviceMessages' .
+      # to. For example, DeviceMessages. Default value: 'DeviceMessages' .
       attr_accessor :source
 
       # @return [String] The condition which is evaluated in order to apply the
@@ -29,8 +29,8 @@ module Azure::ARM::IotHub
       # allowed.
       attr_accessor :endpoint_names
 
-      # @return [Boolean] Used to specify whether the fallback route is enabled
-      # or not.
+      # @return [Boolean] Used to specify whether the fallback route is
+      # enabled.
       attr_accessor :is_enabled
 
 

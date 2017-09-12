@@ -3,44 +3,39 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::IotHub
   module Models
     #
-    # Model object.
+    # IoT Hub REST API operation
     #
-    #
-    class CsmOperationDescription
+    class Operation
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String]
+      # @return [String] Operation name: {provider}/{resource}/{read | write |
+      # action | delete}
       attr_accessor :name
 
-      # @return [CsmOperationDisplay]
+      # @return [OperationDisplay] The object that represents the operation.
       attr_accessor :display
-
-      # @return [String]
-      attr_accessor :origin
-
-      # @return [CsmOperationDescriptionProperties]
-      attr_accessor :properties
 
 
       #
-      # Mapper for CsmOperationDescription class as Ruby Hash.
+      # Mapper for Operation class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CsmOperationDescription',
+          serialized_name: 'Operation',
           type: {
             name: 'Composite',
-            class_name: 'CsmOperationDescription',
+            class_name: 'Operation',
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -51,22 +46,7 @@ module Azure::ARM::Web
                 serialized_name: 'display',
                 type: {
                   name: 'Composite',
-                  class_name: 'CsmOperationDisplay'
-                }
-              },
-              origin: {
-                required: false,
-                serialized_name: 'origin',
-                type: {
-                  name: 'String'
-                }
-              },
-              properties: {
-                required: false,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Composite',
-                  class_name: 'CsmOperationDescriptionProperties'
+                  class_name: 'OperationDisplay'
                 }
               }
             }

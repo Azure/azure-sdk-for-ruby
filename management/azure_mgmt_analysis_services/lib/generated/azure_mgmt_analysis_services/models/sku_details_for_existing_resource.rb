@@ -6,7 +6,7 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # An object that represents SKU details for existing resources
+    # An object that represents SKU details for existing resources.
     #
     class SkuDetailsForExistingResource
 

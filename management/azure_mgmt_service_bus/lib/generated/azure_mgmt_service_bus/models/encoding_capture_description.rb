@@ -3,15 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::ServiceBus
   module Models
     #
-    # Defines values for PublicCertificateLocation
+    # Defines values for EncodingCaptureDescription
     #
-    module PublicCertificateLocation
-      CurrentUserMy = "CurrentUserMy"
-      LocalMachineMy = "LocalMachineMy"
-      Unknown = "Unknown"
+    module EncodingCaptureDescription
+      Avro = "Avro"
+      AvroDeflate = "AvroDeflate"
     end
   end
 end

@@ -3,69 +3,58 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::AnalysisServices
   module Models
     #
-    # Azure proxy only resource. This resource is not tracked by Azure Resource
-    # Manager.
+    # The gateway details.
     #
-    class ProxyOnlyResource
+    class GatewayDetails
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Resource Id.
-      attr_accessor :id
+      # @return [String] Gateway resource to be associated with the server.
+      attr_accessor :gateway_resource_id
 
-      # @return [String] Resource Name.
-      attr_accessor :name
+      # @return [String] Gateway object id from in the DMTS cluster for the
+      # gateway resource.
+      attr_accessor :gateway_object_id
 
-      # @return [String] Kind of resource.
-      attr_accessor :kind
-
-      # @return [String] Resource type.
-      attr_accessor :type
+      # @return [String] Uri of the DMTS cluster.
+      attr_accessor :dmts_cluster_uri
 
 
       #
-      # Mapper for ProxyOnlyResource class as Ruby Hash.
+      # Mapper for GatewayDetails class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ProxyOnlyResource',
+          serialized_name: 'GatewayDetails',
           type: {
             name: 'Composite',
-            class_name: 'ProxyOnlyResource',
+            class_name: 'GatewayDetails',
             model_properties: {
-              id: {
+              gateway_resource_id: {
                 required: false,
-                read_only: true,
-                serialized_name: 'id',
+                serialized_name: 'gatewayResourceId',
                 type: {
                   name: 'String'
                 }
               },
-              name: {
+              gateway_object_id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'name',
+                serialized_name: 'gatewayObjectId',
                 type: {
                   name: 'String'
                 }
               },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
+              dmts_cluster_uri: {
                 required: false,
                 read_only: true,
-                serialized_name: 'type',
+                serialized_name: 'dmtsClusterUri',
                 type: {
                   name: 'String'
                 }

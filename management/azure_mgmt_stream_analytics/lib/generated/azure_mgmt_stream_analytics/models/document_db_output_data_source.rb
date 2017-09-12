@@ -6,7 +6,7 @@
 module Azure::ARM::StreamAnalytics
   module Models
     #
-    # Describes a DocumentDB data source.
+    # Describes a DocumentDB output data source.
     #
     class DocumentDbOutputDataSource < OutputDataSource
 

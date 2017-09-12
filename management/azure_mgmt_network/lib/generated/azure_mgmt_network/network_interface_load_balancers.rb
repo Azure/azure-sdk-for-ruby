@@ -22,7 +22,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -37,7 +37,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -51,7 +51,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -113,7 +113,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -128,7 +128,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -142,7 +142,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -200,7 +200,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Get all load balancers in a network interface
+    # List all load balancers in a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.

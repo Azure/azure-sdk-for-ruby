@@ -3,39 +3,39 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::AnalysisServices
   module Models
     #
-    # Model object.
+    # Status of gateway is live.
     #
-    #
-    class CsmOperationDescriptionProperties
+    class GatewayListStatusLive
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [ServiceSpecification]
-      attr_accessor :service_specification
+      # @return [Status] Live message of list gateway. Possible values include:
+      # 'Live'
+      attr_accessor :status
 
 
       #
-      # Mapper for CsmOperationDescriptionProperties class as Ruby Hash.
+      # Mapper for GatewayListStatusLive class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CsmOperationDescriptionProperties',
+          serialized_name: 'GatewayListStatusLive',
           type: {
             name: 'Composite',
-            class_name: 'CsmOperationDescriptionProperties',
+            class_name: 'GatewayListStatusLive',
             model_properties: {
-              service_specification: {
+              status: {
                 required: false,
-                serialized_name: 'serviceSpecification',
+                serialized_name: 'status',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ServiceSpecification'
+                  name: 'Enum',
+                  module: 'Status'
                 }
               }
             }

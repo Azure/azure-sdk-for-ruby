@@ -57,7 +57,7 @@ namespace :arm do
       unless REGEN_EXCLUDES.include?(dir.to_s)
         puts "\nGenerating #{dir}\n"
         md = REGEN_METADATA[dir.to_sym]
-        ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
+        ar_base_command = REGEN_METADATA[:autorest_loc]
 
         command = "#{ar_base_command} #{md[:spec_uri]} --package-version=#{md[:version]} --namespace=#{md[:ns]} --package-name=#{md[:pn].nil? ? dir : md[:pn]} --output-folder=#{File.join(Dir.pwd, 'lib')} --ruby --azure-arm"
         command += " --#{md[:options]}" unless md[:options].nil?
@@ -130,7 +130,7 @@ def each_gem
 end
 
 REGEN_METADATA = {
-    autorest_loc: ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
+    autorest_loc: ENV.fetch('AUTOREST_LOC', 'autorest'),
     azure_sdk: {
         version: version
     },

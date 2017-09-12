@@ -3,20 +3,21 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::ServiceBus
   module Models
     #
-    # Collection of public certificates
+    # The result of the List EventHubs operation.
     #
-    class PublicCertificateCollection
+    class EventHubListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<PublicCertificate>] Collection of resources.
+      # @return [Array<Eventhub>] Result of the List EventHubs operation.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources.
+      # @return [String] Link to the next set of results. Not empty if Value
+      # contains incomplete list of EventHubs.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +26,7 @@ module Azure::ARM::Web
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<PublicCertificate>] operation results.
+      # @return [Array<Eventhub>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +41,7 @@ module Azure::ARM::Web
       #
       # Gets the next page of results.
       #
-      # @return [PublicCertificateCollection] with next page content.
+      # @return [EventHubListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,34 +53,35 @@ module Azure::ARM::Web
       end
 
       #
-      # Mapper for PublicCertificateCollection class as Ruby Hash.
+      # Mapper for EventHubListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PublicCertificateCollection',
+          serialized_name: 'EventHubListResult',
           type: {
             name: 'Composite',
-            class_name: 'PublicCertificateCollection',
+            class_name: 'EventHubListResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'PublicCertificateElementType',
+                      serialized_name: 'EventhubElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'PublicCertificate'
+                        class_name: 'Eventhub'
                       }
                   }
                 }
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

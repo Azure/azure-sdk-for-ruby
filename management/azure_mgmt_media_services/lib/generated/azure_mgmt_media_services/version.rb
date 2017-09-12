@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::MediaServices
-    VERSION = '0.11.0'
+    VERSION = '0.12.0'
 end

@@ -3,14 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::Batch
   module Models
     #
-    # Defines values for MySqlMigrationType
+    # Defines values for NameAvailabilityReason
     #
-    module MySqlMigrationType
-      LocalToRemote = "LocalToRemote"
-      RemoteToLocal = "RemoteToLocal"
+    module NameAvailabilityReason
+      Invalid = "Invalid"
+      AlreadyExists = "AlreadyExists"
     end
   end
 end

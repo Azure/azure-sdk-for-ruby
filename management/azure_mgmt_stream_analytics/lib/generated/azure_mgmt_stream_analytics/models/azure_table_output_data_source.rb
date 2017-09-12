@@ -6,7 +6,7 @@
 module Azure::ARM::StreamAnalytics
   module Models
     #
-    # Describes an Azure Table data source.
+    # Describes an Azure Table output data source.
     #
     class AzureTableOutputDataSource < OutputDataSource
 

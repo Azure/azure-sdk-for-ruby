@@ -3,35 +3,31 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::ServiceBus
   module Models
     #
-    # A class that describes the reason for a validation failure.
+    # Premium Messaging Region
     #
-    class VnetValidationFailureDetails < MsRestAzure::ProxyOnlyResource
+    class PremiumMessagingRegions < ResourceNamespacePatch
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Boolean] A flag describing whether or not validation failed.
-      attr_accessor :failed
-
-      # @return [Array<VnetValidationTestFailure>] A list of tests that failed
-      # in the validation.
-      attr_accessor :failed_tests
+      # @return [PremiumMessagingRegionsProperties]
+      attr_accessor :properties
 
 
       #
-      # Mapper for VnetValidationFailureDetails class as Ruby Hash.
+      # Mapper for PremiumMessagingRegions class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VnetValidationFailureDetails',
+          serialized_name: 'PremiumMessagingRegions',
           type: {
             name: 'Composite',
-            class_name: 'VnetValidationFailureDetails',
+            class_name: 'PremiumMessagingRegions',
             model_properties: {
               id: {
                 required: false,
@@ -49,13 +45,6 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
                 read_only: true,
@@ -64,26 +53,33 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              failed: {
+              location: {
                 required: false,
-                serialized_name: 'properties.failed',
+                serialized_name: 'location',
                 type: {
-                  name: 'Boolean'
+                  name: 'String'
                 }
               },
-              failed_tests: {
+              tags: {
                 required: false,
-                serialized_name: 'properties.failedTests',
+                serialized_name: 'tags',
                 type: {
-                  name: 'Sequence',
-                  element: {
+                  name: 'Dictionary',
+                  value: {
                       required: false,
-                      serialized_name: 'VnetValidationTestFailureElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'VnetValidationTestFailure'
+                        name: 'String'
                       }
                   }
+                }
+              },
+              properties: {
+                required: false,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PremiumMessagingRegionsProperties'
                 }
               }
             }

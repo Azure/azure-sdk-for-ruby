@@ -146,6 +146,14 @@ bundle install
 
 Running the command ``yard`` will generate the API documentation in the `./doc` directory.
 
+### Re-Gen all azure_mgmt_* SDKs
+
+Follow the steps below to regenerate all the azure_mgmt_* sdks using [autorest.ruby](https://github.com/Azure/autorest.ruby) generator:
+1. Install [Node.js](https://nodejs.org/en/) version `7.10.0` or greater
+2. Install autorest using `npm install -g autorest`
+3. Run `bundle install` in the root directory of the project
+4. Run `rake arm:regen` task to regenerate all the management SDKs 
+
 ## Provide Feedback
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project. Please make sure to label the

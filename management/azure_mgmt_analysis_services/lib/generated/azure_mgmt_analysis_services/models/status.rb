@@ -3,15 +3,13 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::AnalysisServices
   module Models
     #
-    # Defines values for MSDeployLogEntryType
+    # Defines values for Status
     #
-    module MSDeployLogEntryType
-      Message = "Message"
-      Warning = "Warning"
-      Error = "Error"
+    module Status
+      Live = "Live"
     end
   end
 end

@@ -34,6 +34,9 @@ module Azure::ARM::IotHub
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [IotHubResource] iot_hub_resource
     attr_reader :iot_hub_resource
 
@@ -50,8 +53,9 @@ module Azure::ARM::IotHub
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @iot_hub_resource = IotHubResource.new(self)
-      @api_version = '2017-01-19'
+      @api_version = '2017-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

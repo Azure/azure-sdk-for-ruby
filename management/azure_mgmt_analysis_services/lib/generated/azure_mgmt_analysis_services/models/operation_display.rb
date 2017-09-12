@@ -3,44 +3,42 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::AnalysisServices
   module Models
     #
-    # Model object.
+    # The object that represents the operation.
     #
-    #
-    class CsmOperationDisplay
+    class OperationDisplay
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String]
+      # @return [String] Service provider: Microsoft.Consumption.
       attr_accessor :provider
 
-      # @return [String]
+      # @return [String] Resource on which the operation is performed:
+      # UsageDetail, etc.
       attr_accessor :resource
 
-      # @return [String]
+      # @return [String] Operation type: Read, write, delete, etc.
       attr_accessor :operation
-
-      # @return [String]
-      attr_accessor :description
 
 
       #
-      # Mapper for CsmOperationDisplay class as Ruby Hash.
+      # Mapper for OperationDisplay class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CsmOperationDisplay',
+          serialized_name: 'Operation_display',
           type: {
             name: 'Composite',
-            class_name: 'CsmOperationDisplay',
+            class_name: 'OperationDisplay',
             model_properties: {
               provider: {
                 required: false,
+                read_only: true,
                 serialized_name: 'provider',
                 type: {
                   name: 'String'
@@ -48,6 +46,7 @@ module Azure::ARM::Web
               },
               resource: {
                 required: false,
+                read_only: true,
                 serialized_name: 'resource',
                 type: {
                   name: 'String'
@@ -55,14 +54,8 @@ module Azure::ARM::Web
               },
               operation: {
                 required: false,
+                read_only: true,
                 serialized_name: 'operation',
-                type: {
-                  name: 'String'
-                }
-              },
-              description: {
-                required: false,
-                serialized_name: 'description',
                 type: {
                   name: 'String'
                 }

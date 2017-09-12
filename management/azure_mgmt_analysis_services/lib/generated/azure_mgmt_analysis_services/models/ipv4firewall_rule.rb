@@ -3,68 +3,57 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web
+module Azure::ARM::AnalysisServices
   module Models
     #
-    # Model object.
+    # The detail of firewall rule.
     #
-    #
-    class Dimension
+    class IPv4FirewallRule
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String]
-      attr_accessor :name
+      # @return [String] The rule name.
+      attr_accessor :firewall_rule_name
 
-      # @return [String]
-      attr_accessor :display_name
+      # @return [String] The start range of IPv4.
+      attr_accessor :range_start
 
-      # @return [String]
-      attr_accessor :internal_name
-
-      # @return [Boolean]
-      attr_accessor :to_be_exported_for_shoebox
+      # @return [String] The end range of IPv4.
+      attr_accessor :range_end
 
 
       #
-      # Mapper for Dimension class as Ruby Hash.
+      # Mapper for IPv4FirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Dimension',
+          serialized_name: 'IPv4FirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'Dimension',
+            class_name: 'IPv4FirewallRule',
             model_properties: {
-              name: {
+              firewall_rule_name: {
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'firewallRuleName',
                 type: {
                   name: 'String'
                 }
               },
-              display_name: {
+              range_start: {
                 required: false,
-                serialized_name: 'displayName',
+                serialized_name: 'rangeStart',
                 type: {
                   name: 'String'
                 }
               },
-              internal_name: {
+              range_end: {
                 required: false,
-                serialized_name: 'internalName',
+                serialized_name: 'rangeEnd',
                 type: {
                   name: 'String'
-                }
-              },
-              to_be_exported_for_shoebox: {
-                required: false,
-                serialized_name: 'toBeExportedForShoebox',
-                type: {
-                  name: 'Boolean'
                 }
               }
             }
