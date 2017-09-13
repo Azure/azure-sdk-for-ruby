@@ -170,11 +170,11 @@ class ProfileGenerator
   def generate_model_types(resource_type_name)
     obj = Module.const_get(@dir_metadata[resource_type_name]['namespace'] + '::Models')
     obj.constants.select do |const_name|
-      if(obj.const_get(const_name).instance_of?Class)
+      #if(obj.const_get(const_name).instance_of?Class)
         method_name = get_model_name(const_name.to_s)
         method_body = obj.name + '::' + const_name.to_s
         @model_types << {'method_name': method_name, 'method_body': method_body}
-      end
+      #end
     end
   end
 
