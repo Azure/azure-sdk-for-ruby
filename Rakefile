@@ -30,10 +30,14 @@ namespace :arm do
   end
 
   desc 'Delete ./lib/generated for each sdk'
-  task :clean_generated_api_versions do
+  task :clean_generated do
     each_gem do
       delete_command_windows = 'for /r lib\ %a in (generated) do @if exist %a del /S /Q %a 2>nul'
-      execute_and_stream(OS.windows? ? delete_command_windows : 'rm -rf lib/*/generated')
+      delete_command_linux = 'rm -rf lib/*/generated'
+      execute_and_stream(OS.windows? ? delete_command_windows : delete_command_linux)
+      delete_empty_folders_windows = "ROBOCOPY lib lib /S /MOVE"
+      delete_empty_folders_linux = ""
+      execute_and_stream(OS.windows? ? delete_empty_folders_windows : delete_empty_folders_linux)
     end
   end
 
@@ -53,15 +57,14 @@ namespace :arm do
   end
 
   desc 'Regen code for each sdk with all its api versions'
-  task :apiVersions => :clean_generated_api_versions do
+  task :regen => :clean_generated do
     json = get_config_file
     REGEN_EXCLUDES = ['azure_sdk']
     each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
       unless REGEN_EXCLUDES.include?(dir.to_s)
         puts "\nGenerating #{dir}\n"
-        ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
+        ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}" + " --use=F:/Git/autorest.ruby"
         md = json[dir] # there should be an entry in the metadata for each of the api versions to generate
-        puts "md: #{md}"
         package_name = dir
         md.each do |api_version_pkg, api_version_value|
          ar_arguments = ''
@@ -73,13 +76,16 @@ namespace :arm do
              if argument_name.casecmp("markdown") == 0
                ar_arguments = ar_arguments + " #{argument_value}"
              else
-               ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+               if argument_name.casecmp("input-file") == 0
+                 input_files = argument_value.map {|file| "--input-file=#{file}"}
+                 ar_arguments = ar_arguments + input_files.join(" ")
+               else
+                 ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+               end
              end
            end
          end
-         # puts "Arguments: #{ar_arguments}"
          command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
-         puts "command: #{command}"
          execute_and_stream(command)
         end
       end
@@ -127,8 +133,8 @@ def execute(cmd)
 end
 
 def get_config_file
-  config_file = File.read "F:/Git/azure-sdk-for-ruby/config.json"
-  config_json = JSON.parse(config_file)
+  config_file = File.read(File.expand_path('../config.json', __FILE__))
+  JSON.parse(config_file)
 end
 
 def each_child
@@ -145,17 +151,14 @@ end
 
 def each_gem
   each_child do |dir|
-    #puts "Each child #{dir}"
     gem_dir = dir.split('/').last
     if get_config_file.has_key?(gem_dir)
-     # puts "Gem dir #{gem_dir}"
       yield gem_dir
     end
   end
 end
 
 REGEN_METADATA = {
-    autorest_loc: "node F:/Git/newautorest/autorest/src/autorest-core/dist/app.js", #autorest", #ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
     azure_sdk: {
         version: version
     }
