@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_04_preview
+module Azure::ARM::Compute::Api_2016_04_30_preview
   module Models
     #
     # Specifies a list of virtual machine instance IDs from the VM scale set.

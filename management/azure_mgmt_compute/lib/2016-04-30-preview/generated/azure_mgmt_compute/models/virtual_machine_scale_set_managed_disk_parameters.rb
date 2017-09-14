@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_04_preview
+module Azure::ARM::Compute::Api_2016_04_30_preview
   module Models
     #
     # Describes the parameters of a ScaleSet managed disk.

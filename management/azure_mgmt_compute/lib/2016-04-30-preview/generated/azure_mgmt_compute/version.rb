@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_04_preview
+module Azure::ARM::Compute::Api_2016_04_30_preview
     VERSION = '0.11.0'
 end

@@ -8,7 +8,7 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Disk update resource.
     #
-    class DiskUpdate < MsRestAzure::ResourceUpdate
+    class DiskUpdate < ResourceUpdate
 
       include MsRestAzure
 

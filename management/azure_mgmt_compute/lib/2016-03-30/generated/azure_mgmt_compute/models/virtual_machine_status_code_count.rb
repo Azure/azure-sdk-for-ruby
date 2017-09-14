@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2017_01_31
+module Azure::ARM::Compute::Api_2016_03_30
   module Models
     #
     # The status code and count of the virtual machine scale set instance view

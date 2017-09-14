@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Compute end
-module Azure::ARM::Compute::Api_2016_04_preview end
+module Azure::ARM::Compute::Api_2016_04_30_preview end

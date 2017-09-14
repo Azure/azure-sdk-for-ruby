@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_04_preview
+module Azure::ARM::Compute::Api_2016_04_30_preview
   #
   # Compute Client
   #
@@ -58,7 +58,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+          result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -106,7 +106,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+          result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -198,7 +198,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -244,7 +244,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -329,7 +329,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -412,7 +412,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -462,7 +462,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::AccessUri.mapper()
+          result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::AccessUri.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -506,7 +506,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -582,7 +582,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+      request_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
       request_content = @client.serialize(request_mapper,  disk)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -614,7 +614,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -624,7 +624,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -702,7 +702,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::DiskUpdate.mapper()
+      request_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::DiskUpdate.mapper()
       request_content = @client.serialize(request_mapper,  disk)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -734,7 +734,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -744,7 +744,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::Disk.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Disk.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -838,7 +838,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -916,7 +916,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::GrantAccessData.mapper()
+      request_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::GrantAccessData.mapper()
       request_content = @client.serialize(request_mapper,  grant_access_data)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -948,7 +948,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::AccessUri.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::AccessUri.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1042,7 +1042,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1129,7 +1129,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1216,7 +1216,7 @@ module Azure::ARM::Compute::Api_2016_04_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2016_04_preview::Models::DiskList.mapper()
+            result_mapper = Azure::ARM::Compute::Api_2016_04_30_preview::Models::DiskList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
