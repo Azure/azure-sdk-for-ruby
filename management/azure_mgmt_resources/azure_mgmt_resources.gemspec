@@ -5,12 +5,12 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require '2017-05-10/generated/azure_mgmt_resources/module_definition'
-require '2017-05-10/generated/azure_mgmt_resources/version'
+require 'module_definition'
+require 'version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_resources'
-  spec.version       =  Azure::ARM::Resources::Api_2017_05_10::VERSION
+  spec.version       =  Azure::ARM::Resources::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Management Client Library for Ruby'

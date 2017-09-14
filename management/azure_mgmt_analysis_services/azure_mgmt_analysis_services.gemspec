@@ -5,12 +5,12 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require '2016-05-16/generated/azure_mgmt_analysis_services/module_definition'
-require '2016-05-16/generated/azure_mgmt_analysis_services/version'
+require 'module_definition'
+require 'version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_analysis_services'
-  spec.version       = Azure::ARM::AnalysisServices::Api_2016_05_16::VERSION
+  spec.version       = Azure::ARM::AnalysisServices::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Analysis Services Library for Ruby'
