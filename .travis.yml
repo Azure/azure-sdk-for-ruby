@@ -4,6 +4,7 @@ rvm:
   - 2.1.5
   - 2.2.0
   - 2.3.0
+before_install: gem install bundler -v 1.14.1
 matrix:
   include:
     - rvm: 2.3.0
@@ -14,7 +15,6 @@ matrix:
 before_install:
   - if [ "$LATEST_RUNTIME" == "true" ] ; then ./scripts/latest_runtime.sh ; fi
 script:
-  - gem install bundler
   - if [ "$INTEG_RECORDED" == "true" ] ; then bundle install --gemfile=Gemfile && bundle exec rake arm:spec ; fi
   - bundle exec rake arm:build
   - unset BUNDLE_GEMFILE
