@@ -264,10 +264,10 @@ def build_storage_account_create_parameters(name)
   sku = Azure::ARM::Storage::Api_2017_06_01::Models::Sku.new
   sku.name = 'Standard_GRS'
 
-  params = Azure::ARM::Storage::Models::StorageAccountCreateParameters.new
+  params = Azure::ARM::Storage::Api_2017_06_01::Models::StorageAccountCreateParameters.new
   params.location = @location
   params.sku = sku
-  params.kind = Azure::ARM::Storage::Models::Kind::Storage
+  params.kind = Azure::ARM::Storage::Api_2017_06_01::Models::Kind::Storage
 
   params
 end
