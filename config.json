@@ -69,12 +69,6 @@
       "package-version": "0.11.0",
       "tag": "package-compute-2017-03"
     },
-    "azure_mgmt_container_service_2017_01_31": {
-      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/readme.md",
-      "namespace": "Azure::ARM::ContainerService::Api_2017_01_31",
-      "package-version": "0.11.0",
-      "tag": "package-container-service-2017-01"
-    },
     "azure_mgmt_compute_2016_04_30_preview": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/readme.md",
       "namespace": "Azure::ARM::Compute::Api_2016_04_30_preview",
@@ -86,6 +80,14 @@
       "namespace": "Azure::ARM::Compute::Api_2016_03_30",
       "package-version": "0.11.0",
       "tag": "package-compute-2016-03"
+    }
+  },
+  "azure_mgmt_container_service": {
+    "azure_mgmt_container_service_2017_01_31": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/readme.md",
+      "namespace": "Azure::ARM::ContainerService::Api_2017_01_31",
+      "package-version": "0.11.0",
+      "tag": "package-container-service-2017-01"
     },
     "azure_mgmt_container_service_2016_03_30": {
       "input-file": [
