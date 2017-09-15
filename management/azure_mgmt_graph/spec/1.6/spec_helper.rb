@@ -2,10 +2,10 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require File.join(File.dirname(__FILE__), '../../../vcr_helper')
+require File.join(File.dirname(__FILE__), '../../../../vcr_helper')
 require 'azure_mgmt_graph'
 
-include Azure::ARM::Graph
+include Azure::ARM::Graph::Api_1_6
 
 class ResourceHelper
   attr_reader :graph_client
@@ -25,6 +25,10 @@ class ResourceHelper
 
     token_provider = MsRestAzure::ApplicationTokenProvider.new(tenant_id, client_id, secret, settings)
     @credentials = MsRest::TokenCredentials.new(token_provider)
+
+    VCR.configure do |config|
+      config.cassette_library_dir = "spec/1.6/vcr_cassettes"
+    end
   end
 
   def graph_client
