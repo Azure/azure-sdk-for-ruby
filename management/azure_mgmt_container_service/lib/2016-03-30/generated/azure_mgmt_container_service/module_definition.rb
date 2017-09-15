@@ -3,6 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_03_30
-    VERSION = '0.11.0'
-end
+module Azure end
+module Azure::ARM end
+module Azure::ARM::ContainerService end
+module Azure::ARM::ContainerService::Api_2016_03_30 end

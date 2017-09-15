@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerService::Api_2017_01_31
+module Azure::ARM::ContainerService::Api_2016_03_30
   #
   # A service client - single point of access to the REST API.
   #
-  class ComputeManagementClient < MsRestAzure::AzureServiceClient
+  class ContainerServiceClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -40,7 +40,7 @@ module Azure::ARM::ContainerService::Api_2017_01_31
     attr_reader :container_services
 
     #
-    # Creates initializes a new instance of the ComputeManagementClient class.
+    # Creates initializes a new instance of the ContainerServiceClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -53,7 +53,7 @@ module Azure::ARM::ContainerService::Api_2017_01_31
       @credentials = credentials
 
       @container_services = ContainerServices.new(self)
-      @api_version = '2017-01-31'
+      @api_version = '2016-03-30'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -121,9 +121,9 @@ module Azure::ARM::ContainerService::Api_2017_01_31
     # Adds telemetry information.
     #
     def add_telemetry
-        sdk_information = 'azure_mgmt_compute'
-        if defined? Azure::ARM::ContainerService::Api_2017_01_31::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::ContainerService::Api_2017_01_31::VERSION}"
+        sdk_information = 'azure_mgmt_container_service'
+        if defined? Azure::ARM::ContainerService::Api_2016_03_30::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::ContainerService::Api_2016_03_30::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end
