@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2017_01_31
+module Azure::ARM::ContainerService::Api_2017_01_31
   module Models
     #
     # Information about a service principal identity for the cluster to use for

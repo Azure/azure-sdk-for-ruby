@@ -63,9 +63,6 @@ module Azure::ARM::Compute::Api_2016_03_30
     # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
     attr_reader :virtual_machine_scale_set_vms
 
-    # @return [ContainerServices] container_services
-    attr_reader :container_services
-
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -88,7 +85,6 @@ module Azure::ARM::Compute::Api_2016_03_30
       @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
-      @container_services = ContainerServices.new(self)
       @api_version = '2016-03-30'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
