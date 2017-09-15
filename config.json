@@ -93,7 +93,7 @@
     "azure_mgmt_graph":{
         "azure_mgmt_graph_1.6":{
             "input-file": ["https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/graphrbac/data-plane/1.6/graphrbac.json"],
-            "namespace": "Azure::ARM::Graph::Api_1.6",
+            "namespace": "Azure::ARM::Graph::Api_1_6",
             "package-version": "0.11.0"
         }
     },
@@ -107,12 +107,11 @@
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/loadBalancer.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/network.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkInterface.json",
+              "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkSecurityGroup.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkWatcher.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/publicIpAddress.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/routeFilter.json",
-              "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/routeTable.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/serviceCommunity.json",
-              "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/routeTable.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/routeTable.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/usage.json",
               "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/virtualNetwork.json",
