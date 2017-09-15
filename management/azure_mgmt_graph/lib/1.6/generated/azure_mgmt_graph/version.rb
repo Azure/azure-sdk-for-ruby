@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Graph::Api_1.6
+module Azure::ARM::Graph::Api_1_6
     VERSION = '0.11.0'
 end

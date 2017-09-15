@@ -3,21 +3,23 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Graph::Api_1_6
+module Azure::ARM::Network::Api_2017_09_01
   module Models
     #
-    # Server response for Get tenant groups API call
+    # Response for ListSecurityRule API service call. Retrieves all security
+    # rules that belongs to a network security group.
     #
-    class GroupListResult
+    class SecurityRuleListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<ADGroup>] A collection of Active Directory groups.
+      # @return [Array<SecurityRule>] The security rules in a network security
+      # group.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.
-      attr_accessor :odatanext_link
+      attr_accessor :next_link
 
       # return [Proc] with next page method call.
       attr_accessor :next_method
@@ -25,12 +27,12 @@ module Azure::ARM::Graph::Api_1_6
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ADGroup>] operation results.
+      # @return [Array<SecurityRule>] operation results.
       #
       def get_all_items
         items = @value
         page = self
-        while page.odatanext_link != nil do
+        while page.next_link != nil do
           page = page.get_next_page
           items.concat(page.value)
         end
@@ -40,28 +42,28 @@ module Azure::ARM::Graph::Api_1_6
       #
       # Gets the next page of results.
       #
-      # @return [GroupListResult] with next page content.
+      # @return [SecurityRuleListResult] with next page content.
       #
       def get_next_page
-        response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
+        response = @next_method.call(@next_link).value! unless @next_method.nil?
         unless response.nil?
-          @odatanext_link = response.body.odatanext_link
+          @next_link = response.body.next_link
           @value = response.body.value
           self
         end
       end
 
       #
-      # Mapper for GroupListResult class as Ruby Hash.
+      # Mapper for SecurityRuleListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'GroupListResult',
+          serialized_name: 'SecurityRuleListResult',
           type: {
             name: 'Composite',
-            class_name: 'GroupListResult',
+            class_name: 'SecurityRuleListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,17 +72,17 @@ module Azure::ARM::Graph::Api_1_6
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ADGroupElementType',
+                      serialized_name: 'SecurityRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ADGroup'
+                        class_name: 'SecurityRule'
                       }
                   }
                 }
               },
-              odatanext_link: {
+              next_link: {
                 required: false,
-                serialized_name: 'odata\\.nextLink',
+                serialized_name: 'nextLink',
                 type: {
                   name: 'String'
                 }

@@ -92,6 +92,15 @@ module Azure::ARM::Network::Api_2017_09_01
     # @return [NetworkInterfaceLoadBalancers] network_interface_load_balancers
     attr_reader :network_interface_load_balancers
 
+    # @return [NetworkSecurityGroups] network_security_groups
+    attr_reader :network_security_groups
+
+    # @return [SecurityRules] security_rules
+    attr_reader :security_rules
+
+    # @return [DefaultSecurityRules] default_security_rules
+    attr_reader :default_security_rules
+
     # @return [NetworkWatchers] network_watchers
     attr_reader :network_watchers
 
@@ -107,14 +116,14 @@ module Azure::ARM::Network::Api_2017_09_01
     # @return [RouteFilterRules] route_filter_rules
     attr_reader :route_filter_rules
 
+    # @return [BgpServiceCommunities] bgp_service_communities
+    attr_reader :bgp_service_communities
+
     # @return [RouteTables] route_tables
     attr_reader :route_tables
 
     # @return [Routes] routes
     attr_reader :routes
-
-    # @return [BgpServiceCommunities] bgp_service_communities
-    attr_reader :bgp_service_communities
 
     # @return [Usages] usages
     attr_reader :usages
@@ -168,14 +177,17 @@ module Azure::ARM::Network::Api_2017_09_01
       @network_interfaces = NetworkInterfaces.new(self)
       @network_interface_ipconfigurations = NetworkInterfaceIPConfigurations.new(self)
       @network_interface_load_balancers = NetworkInterfaceLoadBalancers.new(self)
+      @network_security_groups = NetworkSecurityGroups.new(self)
+      @security_rules = SecurityRules.new(self)
+      @default_security_rules = DefaultSecurityRules.new(self)
       @network_watchers = NetworkWatchers.new(self)
       @packet_captures = PacketCaptures.new(self)
       @public_ipaddresses = PublicIPAddresses.new(self)
       @route_filters = RouteFilters.new(self)
       @route_filter_rules = RouteFilterRules.new(self)
+      @bgp_service_communities = BgpServiceCommunities.new(self)
       @route_tables = RouteTables.new(self)
       @routes = Routes.new(self)
-      @bgp_service_communities = BgpServiceCommunities.new(self)
       @usages = Usages.new(self)
       @virtual_networks = VirtualNetworks.new(self)
       @subnets = Subnets.new(self)
