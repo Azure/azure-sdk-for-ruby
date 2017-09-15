@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require File.join(File.dirname(__FILE__), '../../../vcr_helper')
+require File.join(File.dirname(__FILE__), '../../../../vcr_helper')
 require 'azure_mgmt_resources'
 require 'azure_mgmt_datalake_store'
 require 'ms_rest_azure'
@@ -23,6 +23,10 @@ class ResourceHelper
 
     token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
     @credentials = TokenCredentials.new(token_provider)
+
+    VCR.configure do |config|
+      config.cassette_library_dir = "spec/2016-11-01/vcr_cassettes"
+    end
   end
 
   def resource_client

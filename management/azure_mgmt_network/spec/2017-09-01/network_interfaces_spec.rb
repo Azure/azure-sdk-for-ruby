@@ -5,8 +5,8 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Resources
-include Azure::ARM::Network
+include Azure::ARM::Resources::Api_2017_05_10
+include Azure::ARM::Network::Api_2017_09_01
 
 describe 'Network Interfaces' do
   before(:each) do

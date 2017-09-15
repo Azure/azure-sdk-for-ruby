@@ -5,9 +5,9 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Resources
-include Azure::ARM::Network
-include Azure::ARM::Network::Models
+include Azure::ARM::Resources::Api_2017_05_10
+include Azure::ARM::Network::Api_2017_09_01
+include Azure::ARM::Network::Api_2017_09_01::Models
 
 describe 'Load balancers' do
   before(:each) do

@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require File.join(File.dirname(__FILE__), '../../../vcr_helper')
+require File.join(File.dirname(__FILE__), '../../../../vcr_helper')
 require 'azure_mgmt_resources'
 require 'azure_mgmt_storage'
 require 'ms_rest_azure'
@@ -32,6 +32,10 @@ class ResourceHelper
     @resource_client = ResourceManagementClient.new(credentials)
     @resource_client.subscription_id = subscription_id
     @resource_client.long_running_operation_retry_timeout = ENV['RETRY_TIMEOUT'].to_i || 30
+
+    VCR.configure do |config|
+      config.cassette_library_dir = "spec/2017-06-01/vcr_cassettes"
+    end
   end
 
   def create_resource_group

@@ -2,16 +2,16 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require File.join(File.dirname(__FILE__), '../../../vcr_helper')
+require File.join(File.dirname(__FILE__), '../../../../vcr_helper')
 require 'azure_mgmt_network'
 require 'azure_mgmt_resources'
 require 'ms_rest_azure'
 
 include MsRest
 include MsRestAzure
-include Azure::ARM::Resources
-include Azure::ARM::Network
-include Azure::ARM::Network::Models
+include Azure::ARM::Resources::Api_2017_05_10
+include Azure::ARM::Network::Api_2017_09_01
+include Azure::ARM::Network::Api_2017_09_01::Models
 
 class ResourceHelper
   attr_reader :network_client, :resource_client
@@ -24,6 +24,10 @@ class ResourceHelper
 
     token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
     @credentials = TokenCredentials.new(token_provider)
+
+    VCR.configure do |config|
+      config.cassette_library_dir = "spec/2017-09-01/vcr_cassettes"
+    end
   end
 
   def resource_client

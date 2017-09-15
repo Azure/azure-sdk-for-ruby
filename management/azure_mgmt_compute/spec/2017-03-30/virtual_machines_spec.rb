@@ -4,14 +4,14 @@
 
 require_relative 'spec_helper'
 
-include Azure::ARM::Resources
-include Azure::ARM::Resources::Models
+include Azure::ARM::Resources::Api_2017_05_10
+include Azure::ARM::Resources::Api_2017_05_10::Models
 
-include Azure::ARM::Compute
-include Azure::ARM::Compute::Models
+include Azure::ARM::Compute::Api_2017_03_30
+include Azure::ARM::Compute::Api_2017_03_30::Models
 
-include Azure::ARM::Network
-include Azure::ARM::Network::Models
+include Azure::ARM::Network::Api_2017_09_01
+include Azure::ARM::Network::Api_2017_09_01::Models
 
 describe 'Virtual machine and vm extension creation' do
   before(:each) do
@@ -261,7 +261,7 @@ end
 
 # Storage helpers
 def build_storage_account_create_parameters(name)
-  sku = Azure::ARM::Storage::Models::Sku.new
+  sku = Azure::ARM::Storage::Api_2017_06_01::Models::Sku.new
   sku.name = 'Standard_GRS'
 
   params = Azure::ARM::Storage::Models::StorageAccountCreateParameters.new

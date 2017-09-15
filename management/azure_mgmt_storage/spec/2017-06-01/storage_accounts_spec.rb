@@ -5,7 +5,7 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Storage
+include Azure::ARM::Storage::Api_2017_05_10
 
 describe StorageAccounts do
 
