@@ -17,13 +17,13 @@ describe 'Service Bus Management Client' do
 
   it 'should create list and delete namespace' do
     namespace_name = "smaple34566"
-    namespace_parameters = Azure::ARM::ServiceBus::Models::SBNamespace.new
+    namespace_parameters = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBNamespace.new
     namespace_parameters.location = 'westus'
 
     # Create new namespace
     namespace = @service_bus_client.namespaces.create_or_update(@resource_group.name, namespace_name, namespace_parameters)
     expect(namespace).not_to be_nil
-    expect(namespace).to be_a(Azure::ARM::ServiceBus::Models::SBNamespace)
+    expect(namespace).to be_a(Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBNamespace)
     expect(namespace.name).to eq(namespace_name)
     expect(namespace.provisioning_state).to eq("Succeeded")
 
