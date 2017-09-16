@@ -17,10 +17,16 @@ module Azure::ARM::Monitor
       # @return [Duration] the timegrain of the metric in ISO8601 format.
       attr_accessor :time_grain
 
-      # @return [Boolean] a value indicating whether this timegrain is enabled.
+      # @return [String] Name of a Diagnostic Metric category for a resource
+      # type this setting is applied to. To obtain the list of Diagnostic
+      # metric categories for a resource, first perform a GET diagnostic
+      # settings operation.
+      attr_accessor :category
+
+      # @return [Boolean] a value indicating whether this category is enabled.
       attr_accessor :enabled
 
-      # @return [RetentionPolicy] the retention policy for this timegrain.
+      # @return [RetentionPolicy] the retention policy for this category.
       attr_accessor :retention_policy
 
 
@@ -37,10 +43,17 @@ module Azure::ARM::Monitor
             class_name: 'MetricSettings',
             model_properties: {
               time_grain: {
-                required: true,
+                required: false,
                 serialized_name: 'timeGrain',
                 type: {
                   name: 'TimeSpan'
+                }
+              },
+              category: {
+                required: false,
+                serialized_name: 'category',
+                type: {
+                  name: 'String'
                 }
               },
               enabled: {

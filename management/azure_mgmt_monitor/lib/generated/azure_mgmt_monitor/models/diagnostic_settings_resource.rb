@@ -6,9 +6,9 @@
 module Azure::ARM::Monitor
   module Models
     #
-    # Description of a service diagnostic setting
+    # The diagnostic setting resource.
     #
-    class ServiceDiagnosticSettingsResource < MsRestAzure::Resource
+    class DiagnosticSettingsResource < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
@@ -17,15 +17,12 @@ module Azure::ARM::Monitor
       # would like to send Diagnostic Logs.
       attr_accessor :storage_account_id
 
-      # @return [String] The service bus rule ID of the service bus namespace
-      # in which you would like to have Event Hubs created for streaming
-      # Diagnostic Logs. The rule ID is of the format: '{service bus resource
-      # ID}/authorizationrules/{key name}'.
-      attr_accessor :service_bus_rule_id
-
-      # @return [String] The resource Id for the event hub namespace
-      # authorization rule.
+      # @return [String] The resource Id for the event hub authorization rule.
       attr_accessor :event_hub_authorization_rule_id
+
+      # @return [String] The name of the event hub. If none is specified, the
+      # default event hub will be selected.
+      attr_accessor :event_hub_name
 
       # @return [Array<MetricSettings>] the list of metric settings.
       attr_accessor :metrics
@@ -41,16 +38,16 @@ module Azure::ARM::Monitor
 
 
       #
-      # Mapper for ServiceDiagnosticSettingsResource class as Ruby Hash.
+      # Mapper for DiagnosticSettingsResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServiceDiagnosticSettingsResource',
+          serialized_name: 'DiagnosticSettingsResource',
           type: {
             name: 'Composite',
-            class_name: 'ServiceDiagnosticSettingsResource',
+            class_name: 'DiagnosticSettingsResource',
             model_properties: {
               id: {
                 required: false,
@@ -76,27 +73,6 @@ module Azure::ARM::Monitor
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               storage_account_id: {
                 required: false,
                 serialized_name: 'properties.storageAccountId',
@@ -104,16 +80,16 @@ module Azure::ARM::Monitor
                   name: 'String'
                 }
               },
-              service_bus_rule_id: {
+              event_hub_authorization_rule_id: {
                 required: false,
-                serialized_name: 'properties.serviceBusRuleId',
+                serialized_name: 'properties.eventHubAuthorizationRuleId',
                 type: {
                   name: 'String'
                 }
               },
-              event_hub_authorization_rule_id: {
+              event_hub_name: {
                 required: false,
-                serialized_name: 'properties.eventHubAuthorizationRuleId',
+                serialized_name: 'properties.eventHubName',
                 type: {
                   name: 'String'
                 }
