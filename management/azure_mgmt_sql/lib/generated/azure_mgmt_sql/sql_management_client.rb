@@ -143,6 +143,9 @@ module Azure::ARM::SQL
     # @return [VirtualNetworkRules] virtual_network_rules
     attr_reader :virtual_network_rules
 
+    # @return [DatabaseOperations] database_operations
+    attr_reader :database_operations
+
     #
     # Creates initializes a new instance of the SqlManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -192,6 +195,7 @@ module Azure::ARM::SQL
       @sync_groups = SyncGroups.new(self)
       @sync_members = SyncMembers.new(self)
       @virtual_network_rules = VirtualNetworkRules.new(self)
+      @database_operations = DatabaseOperations.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
