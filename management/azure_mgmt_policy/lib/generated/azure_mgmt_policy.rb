@@ -20,8 +20,8 @@ require 'generated/azure_mgmt_policy/module_definition'
 require 'ms_rest_azure'
 
 module Azure::ARM::Policy
-  autoload :PolicyAssignments,                                  'generated/azure_mgmt_policy/policy_assignments.rb'
   autoload :PolicyDefinitions,                                  'generated/azure_mgmt_policy/policy_definitions.rb'
+  autoload :PolicyAssignments,                                  'generated/azure_mgmt_policy/policy_assignments.rb'
   autoload :PolicyClient,                                       'generated/azure_mgmt_policy/policy_client.rb'
 
   module Models
@@ -30,5 +30,6 @@ module Azure::ARM::Policy
     autoload :PolicyAssignmentListResult,                         'generated/azure_mgmt_policy/models/policy_assignment_list_result.rb'
     autoload :PolicyDefinitionListResult,                         'generated/azure_mgmt_policy/models/policy_definition_list_result.rb'
     autoload :PolicyType,                                         'generated/azure_mgmt_policy/models/policy_type.rb'
+    autoload :PolicyMode,                                         'generated/azure_mgmt_policy/models/policy_mode.rb'
   end
 end
