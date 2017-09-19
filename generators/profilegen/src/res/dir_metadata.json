@@ -1,0 +1,12 @@
+{
+  "Microsoft.Compute": {
+    "path": "../../../management/azure_mgmt_compute/",
+    "namespace": "Azure::ARM::Compute",
+    "module_require": "azure_mgmt_compute"
+  },
+  "Microsoft.Network": {
+    "path": "../../../management/azure_mgmt_network/",
+    "namespace": "Azure::ARM::Network",
+    "module_require": "azure_mgmt_network"
+  }
+}
