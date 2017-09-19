@@ -18,6 +18,11 @@ module Azure::ARM::Policy
       # 'NotSpecified', 'BuiltIn', 'Custom'
       attr_accessor :policy_type
 
+      # @return [PolicyMode] The policy definition mode. Possible values are
+      # NotSpecified, Indexed, and All. Possible values include:
+      # 'NotSpecified', 'Indexed', 'All'
+      attr_accessor :mode
+
       # @return [String] The display name of the policy definition.
       attr_accessor :display_name
 
@@ -27,15 +32,16 @@ module Azure::ARM::Policy
       # @return The policy rule.
       attr_accessor :policy_rule
 
+      # @return The policy definition metadata.
+      attr_accessor :metadata
+
       # @return Required if a parameter is used in policy rule.
       attr_accessor :parameters
 
       # @return [String] The ID of the policy definition.
       attr_accessor :id
 
-      # @return [String] The name of the policy definition. If you do not
-      # specify a value for name, the value is inferred from the name value in
-      # the request URI.
+      # @return [String] The name of the policy definition.
       attr_accessor :name
 
 
@@ -54,6 +60,13 @@ module Azure::ARM::Policy
               policy_type: {
                 required: false,
                 serialized_name: 'properties.policyType',
+                type: {
+                  name: 'String'
+                }
+              },
+              mode: {
+                required: false,
+                serialized_name: 'properties.mode',
                 type: {
                   name: 'String'
                 }
@@ -79,6 +92,13 @@ module Azure::ARM::Policy
                   name: 'Object'
                 }
               },
+              metadata: {
+                required: false,
+                serialized_name: 'properties.metadata',
+                type: {
+                  name: 'Object'
+                }
+              },
               parameters: {
                 required: false,
                 serialized_name: 'properties.parameters',
@@ -88,6 +108,7 @@ module Azure::ARM::Policy
               },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -95,6 +116,7 @@ module Azure::ARM::Policy
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
