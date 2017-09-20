@@ -38,6 +38,10 @@ module Azure::ARM::Network
       # @return [Array<String>] The CIDR or source IP ranges.
       attr_accessor :source_address_prefixes
 
+      # @return [Array<ApplicationSecurityGroup>] The application security
+      # group specified as source.
+      attr_accessor :source_application_security_groups
+
       # @return [String] The destination address prefix. CIDR or destination IP
       # range. Asterix '*' can also be used to match all source IPs. Default
       # tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can
@@ -47,6 +51,10 @@ module Azure::ARM::Network
       # @return [Array<String>] The destination address prefixes. CIDR or
       # destination IP ranges.
       attr_accessor :destination_address_prefixes
+
+      # @return [Array<ApplicationSecurityGroup>] The application security
+      # group specified as destination.
+      attr_accessor :destination_application_security_groups
 
       # @return [Array<String>] The source port ranges.
       attr_accessor :source_port_ranges
@@ -152,6 +160,21 @@ module Azure::ARM::Network
                   }
                 }
               },
+              source_application_security_groups: {
+                required: false,
+                serialized_name: 'properties.sourceApplicationSecurityGroups',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ApplicationSecurityGroupElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationSecurityGroup'
+                      }
+                  }
+                }
+              },
               destination_address_prefix: {
                 required: true,
                 serialized_name: 'properties.destinationAddressPrefix',
@@ -169,6 +192,21 @@ module Azure::ARM::Network
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              destination_application_security_groups: {
+                required: false,
+                serialized_name: 'properties.destinationApplicationSecurityGroups',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ApplicationSecurityGroupElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationSecurityGroup'
                       }
                   }
                 }
