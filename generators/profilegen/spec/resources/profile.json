@@ -1,6 +1,7 @@
 [
   {
     "name": "Api_2016_06_30",
+    "ruby_version": "0.1.0",
     "resourceTypes": {
       "Microsoft.Compute" : {
         "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
@@ -12,6 +13,7 @@
   },
   {
     "name": "Api_2016_07_30",
+    "ruby_version": "0.2.0",
     "resourceTypes": {
       "Microsoft.Compute" : {
         "2016-03-30": ["VirtualMachines", "AvailabilitySets"]

@@ -3,14 +3,15 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'lib/client'
+require_relative 'lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_profile_<%= profile_version %>'
-  spec.version       = '<%= profile_ruby_version %>'
+  spec.version       = Azure::Profiles::Management::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Management Profile'
-  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Management profile.'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Management profile version: <%= @profile_version %>.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
 

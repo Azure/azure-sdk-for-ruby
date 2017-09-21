@@ -31,4 +31,11 @@ class ProfileTemplates
   def self.client_template
     File.read(ProfileTemplateFiles::CLIENT_TEMPLATE)
   end
+
+  #
+  # Version template to generate the profile version
+  #
+  def self.version_template
+    File.read(ProfileTemplateFiles::VERSION_TEMPLATE)
+  end
 end

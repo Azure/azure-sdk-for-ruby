@@ -46,6 +46,7 @@ class ProfileGenerator
     generate_profile_gemspec
     generate_license_and_rakefile
     generate_utils
+    generate_version_file
   end
 
   private
@@ -71,14 +72,19 @@ class ProfileGenerator
     file.write(get_renderer(ProfileTemplates.spec_template))
   end
 
+  def generate_version_file
+    file = get_version_file
+    file.write(get_renderer(ProfileTemplates.version_template))
+  end
+
   #
   # Method to generate the License file. Copies
   # the license file from resources folder to destination
   #
   def generate_license_and_rakefile
     profile_folder = "#{@output_dir}/#{@profile_name}/"
-    copy_file './res/LICENSE.txt', profile_folder
-    copy_file './res/Rakefile', profile_folder
+    copy_file './resources/LICENSE.txt', profile_folder
+    copy_file './resources/Rakefile', profile_folder
   end
 
   #
@@ -88,8 +94,8 @@ class ProfileGenerator
   #
   def generate_utils
     utils_folder = "#{@output_dir}/#{@profile_name}/lib/utils/"
-    copy_file './res/configurable.rb', utils_folder
-    copy_file './res/default.rb', utils_folder
+    copy_file './resources/configurable.rb', utils_folder
+    copy_file './resources/default.rb', utils_folder
   end
 
   def copy_file(source, destination)
@@ -221,6 +227,12 @@ class ProfileGenerator
   def get_spec_file
     check_and_create_directory
     file_name =  "#{@output_dir}/#{@profile_name}/azure_mgmt_profile_#{@profile_version}.gemspec"
+    File.new(file_name, 'w')
+  end
+
+  def get_version_file
+    check_and_create_directory
+    file_name =  "#{@output_dir}/#{@profile_name}/lib/version.rb"
     File.new(file_name, 'w')
   end
 
