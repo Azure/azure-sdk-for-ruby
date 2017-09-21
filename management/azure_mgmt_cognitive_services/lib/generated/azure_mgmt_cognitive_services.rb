@@ -20,7 +20,6 @@ require 'generated/azure_mgmt_cognitive_services/module_definition'
 require 'ms_rest_azure'
 
 module Azure::ARM::CognitiveServices
-  autoload :CognitiveServicesAccounts,                          'generated/azure_mgmt_cognitive_services/cognitive_services_accounts.rb'
   autoload :Accounts,                                           'generated/azure_mgmt_cognitive_services/accounts.rb'
   autoload :Operations,                                         'generated/azure_mgmt_cognitive_services/operations.rb'
   autoload :CheckSkuAvailability,                               'generated/azure_mgmt_cognitive_services/check_sku_availability.rb'
