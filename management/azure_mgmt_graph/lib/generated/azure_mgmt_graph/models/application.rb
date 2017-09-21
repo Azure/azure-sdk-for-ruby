@@ -41,6 +41,9 @@ module Azure::ARM::Graph
       # @return [String] The home page of the application.
       attr_accessor :homepage
 
+      # @return [Boolean] Whether to allow implicit grant flow for OAuth2
+      attr_accessor :oauth2allow_implicit_flow
+
 
       #
       # Mapper for Application class as Ruby Hash.
@@ -136,6 +139,13 @@ module Azure::ARM::Graph
                 serialized_name: 'homepage',
                 type: {
                   name: 'String'
+                }
+              },
+              oauth2allow_implicit_flow: {
+                required: false,
+                serialized_name: 'oauth2AllowImplicitFlow',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
