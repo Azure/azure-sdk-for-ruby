@@ -3,12 +3,10 @@
     "name": "Api_2016_06_30",
     "resourceTypes": {
       "Microsoft.Compute" : {
-        "AvailabilitySets": "2017-03-30",
-        "Disks": "2017-03-30"
+        "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
       },
       "Microsoft.Network" : {
-        "NetworkInterfaces": "2017-03-30",
-        "ApplicationGateways": "2017-09-01"
+        "2017-03-30": ["NetworkInterfaces", "PublicIPAddresses"]
       }
     }
   },
@@ -16,12 +14,10 @@
     "name": "Api_2016_07_30",
     "resourceTypes": {
       "Microsoft.Compute" : {
-        "AvailabilitySets": "2017-03-30",
-        "Disks": "2017-03-30"
+        "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
       },
       "Microsoft.Network" : {
-        "NetworkInterfaces": "2017-03-30",
-        "ApplicationGateways": "2017-09-01"
+        "2017-03-30": ["NetworkInterfaces", "PublicIPAddresses"]
       }
     }
   }

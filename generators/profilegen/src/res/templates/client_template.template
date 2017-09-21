@@ -9,41 +9,39 @@ require_relative 'utils/configurable'
 require_relative 'utils/default'
 
 module Azure
-  module Management
-    module Profiles
-      module <%= @profile_name %>
-        #
-        # Client class for the <%= @profile_name %> profile SDK.
-        #
-        class Client
-          include Azure::ARM::Configurable
+  module Profiles
+    module Management
+      #
+      # Client class for the <%= @profile_name %> profile SDK.
+      #
+      class Client
+        include Azure::ARM::Configurable
 
-          attr_accessor <% @module_class_mapper.each_with_index do |module_class, index| %> :<%= module_class[:class_name].downcase %><% if index != @module_class_mapper.length - 1 %>,<% end %><% end %>
+        attr_accessor <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
 
-          def initialize(options = {})
-            if options.is_a?(Hash) && options.length == 0
-              @options = setup_options
-            else
-              @options = options
-            end
-
-            reset!(options)
-
-            <%- @module_class_mapper.each do |module_class| -%>
-            self.<%= module_class[:class_name].downcase %> = <%= "#{module_class[:module_name]}::#{module_class[:class_name]}" %>.new(self, nil, nil)
-            <%- end -%>
+        def initialize(options = {})
+          if options.is_a?(Hash) && options.length == 0
+            @options = setup_options
+          else
+            @options = options
           end
 
-          def credentials
-            if @credentials.nil?
-              self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
+          reset!(options)
 
-              @credentials = MsRest::TokenCredentials.new(
+          <%- @class_names.each do |class_name| -%>
+          self.<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>.new(self, nil, nil)
+          <%- end -%>
+        end
+
+        def credentials
+          if @credentials.nil?
+            self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
+
+            @credentials = MsRest::TokenCredentials.new(
                     MsRestAzure::ApplicationTokenProvider.new(
                         self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
-            end
-            @credentials
           end
+          @credentials
         end
       end
     end

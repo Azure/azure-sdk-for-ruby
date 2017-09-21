@@ -15,9 +15,9 @@ require_relative 'profile_templates'
 
 class ProfileGenerator
   # Accessors to be used in the generation of profile client
-  attr_accessor :file_names, :profile_name, :module_class_mapper
+  attr_accessor :file_names, :profile_name, :class_names
   # Accessors to be used in the generation of module
-  attr_accessor :module_require, :module_name, :class_name, :operation_types, :management_client, :model_types
+  attr_accessor :module_require, :module_name, :class_name, :operation_types, :management_client, :model_types, :versions_clients_mapper
   # Accessors to be used in the generation of profile spec file
   attr_accessor :profile_version, :profile_ruby_version, :spec_includes
 
@@ -28,7 +28,8 @@ class ProfileGenerator
     @output_dir = output_dir
     @dir_metadata = dir_metadata
     @file_names, @model_types, @operation_types = [], [], []
-    @spec_includes, @module_class_mapper = [], []
+    @spec_includes, @class_names = [], []
+    @versions_clients_mapper = {}
   end
 
   #
@@ -104,23 +105,24 @@ class ProfileGenerator
   #        4. Generate the module file
   #
   def generate_modules
-    @resource_provider_types.each do |resource_provider, resource_types|
+    @resource_provider_types.each do |resource_provider, resource_types_obj|
       @module_require = @dir_metadata[resource_provider]['module_require']
       @spec_includes << @module_require
-      @module_name    = get_module_name(resource_provider)
       @class_name     = get_ruby_specific_resource_type_name(resource_provider)
-      @module_class_mapper << { 'module_name': @module_name, 'class_name': @class_name }
+      @class_names   << @class_name
 
-      resource_types.each do |resource_type, resource_type_version|
+      resource_types_obj.each do |resource_type_version, resource_types|
         base_file_path = @dir_metadata[resource_provider]['path'] + get_sdk_path + "#{resource_type_version}/generated/azure_mgmt_#{get_ruby_specific_resource_type_name(resource_provider).downcase}.rb"
         require base_file_path
-        generate_operation_types(resource_provider, resource_type, resource_type_version)
-        generate_model_types(resource_provider, resource_type, resource_type_version)
+        resource_types.each do |resource_type|
+          generate_operation_types(resource_provider, resource_type, resource_type_version)
+        end
+        generate_model_types(resource_provider, resource_type_version)
       end
 
       file = get_module_file resource_provider
       file.write(get_renderer(ProfileTemplates.module_template))
-      @model_types, @operation_types = [], []
+      @model_types, @operation_types, @versions_clients_mapper = [], [], {}
     end
   end
 
@@ -151,23 +153,27 @@ class ProfileGenerator
   #
   def generate_operation_types(resource_provider, resource_type, resource_type_version)
     obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}")
-    operations = []
+    operation = nil
     obj.constants.select do |const_name|
       if((obj.const_get(const_name).instance_of?Class) && const_name.to_s == resource_type)
-        operations << const_name.to_s
+        operation = const_name.to_s
       elsif((obj.const_get(const_name).instance_of?Class) && const_name.to_s.end_with?('ManagementClient'))
         @management_client = obj.name + '::' + const_name.to_s
+        @versions_clients_mapper[resource_type_version] = @management_client
       end
     end
 
-    operations.each do |operation|
-      operation_body = obj.name + '::' + operation
-      operation_name = get_model_name(operation)
-      if(check_for_availability(@operation_types, operation_name))
-        raise "#{operation_name} operation is appearing twice for the RP: #{resource_provider}."
-      else
-        @operation_types << { 'operation_name': operation_name, 'operation_body': operation_body}
-      end
+    if operation == nil
+      raise "#{resource_type} operation could not be found for RP: #{resource_provider}:Version: #{resource_type_version}"
+    end
+
+    operation_body = obj.name + '::' + operation
+    operation_name_ruby = get_model_name(operation)
+
+    if(check_for_availability(@operation_types, operation_name_ruby))
+      raise "#{operation_name} operation is appearing twice for the RP: #{resource_provider}."
+    else
+      @operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
     end
   end
 
@@ -177,16 +183,16 @@ class ProfileGenerator
   # @param resource_provider name of the resource for which the
   # models to be generated
   #
-  def generate_model_types(resource_provider, resource_type, resource_type_version)
+  def generate_model_types(resource_provider, resource_type_version)
     obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + + "::#{get_version(resource_type_version)}::Models")
     obj.constants.select do |const_name|
-        method_name = get_model_name(const_name.to_s)
-        method_body = obj.name + '::' + const_name.to_s
+        model_name = const_name.to_s
+        model_body = obj.name + '::' + const_name.to_s
 
-        if(check_for_availability(@model_types, method_name))
-          raise "#{method_name} Model is appearing twice for the RP: #{resource_provider}."
+        if(check_for_availability(@model_types, model_name))
+          raise "#{model_name} Model is appearing twice for the RP: #{resource_provider}."
         else
-          @model_types << {'method_name': method_name, 'method_body': method_body}
+          @model_types << {'model_name': model_name, 'model_body': model_body}
         end
     end
   end
@@ -194,10 +200,6 @@ class ProfileGenerator
   #
   # Utility methods
   #
-  def get_module_name(resource_type_name)
-    get_ruby_specific_resource_type_name(resource_type_name).capitalize + 'Module'
-  end
-
   def get_model_name(model_name)
     model_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase
   end
@@ -256,8 +258,14 @@ class ProfileGenerator
 
   def check_for_availability(array_of_hash, key)
     array_of_hash.each do |hash_entry|
-      if(hash_entry.key?key)
-        return true
+      if(hash_entry.keys.include?(:model_name))
+        if(hash_entry[:model_name] == key)
+          return true
+        end
+      elsif(hash_entry.keys.include?(:method_name))
+        if(hash_entry[:method_name] == key)
+          return true
+        end
       end
     end
     false
