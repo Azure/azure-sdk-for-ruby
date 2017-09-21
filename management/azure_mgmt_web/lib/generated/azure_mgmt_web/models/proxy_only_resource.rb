@@ -6,29 +6,38 @@
 module Azure::ARM::Web
   module Models
     #
-    # Response for an app recovery request.
+    # Azure proxy only resource. This resource is not tracked by Azure Resource
+    # Manager.
     #
-    class RecoverResponse < MsRestAzure::Resource
+    class ProxyOnlyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] ID of the recovery operation. Can be used to check the
-      # status of the corresponding operation.
-      attr_accessor :operation_id
+      # @return [String] Resource Id.
+      attr_accessor :id
+
+      # @return [String] Resource Name.
+      attr_accessor :name
+
+      # @return [String] Kind of resource.
+      attr_accessor :kind
+
+      # @return [String] Resource type.
+      attr_accessor :type
 
 
       #
-      # Mapper for RecoverResponse class as Ruby Hash.
+      # Mapper for ProxyOnlyResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RecoverResponse',
+          serialized_name: 'ProxyOnlyResource',
           type: {
             name: 'Composite',
-            class_name: 'RecoverResponse',
+            class_name: 'ProxyOnlyResource',
             model_properties: {
               id: {
                 required: false,
@@ -40,6 +49,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -52,38 +62,10 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              operation_id: {
-                required: false,
                 read_only: true,
-                serialized_name: 'properties.operationId',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

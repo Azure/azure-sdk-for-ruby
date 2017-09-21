@@ -6,35 +6,41 @@
 module Azure::ARM::Web
   module Models
     #
-    # Used for getting ResourceHealthCheck settings.
+    # MSDeploy ARM response
     #
-    class ResourceHealthMetadata < MsRestAzure::Resource
+    class MSDeployStatus < MsRestAzure::ProxyOnlyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] ARM Resource Id
-      attr_accessor :resource_health_metadata_id
+      # @return [String] Username of deployer
+      attr_accessor :deployer
 
-      # @return [String] The category that the resource matches in the RHC
-      # Policy File
-      attr_accessor :category
+      # @return [MSDeployProvisioningState] Provisioning state. Possible values
+      # include: 'accepted', 'running', 'succeeded', 'failed', 'canceled'
+      attr_accessor :provisioning_state
 
-      # @return [Boolean] Is there a health signal for the resource
-      attr_accessor :signal_availability
+      # @return [DateTime] Start time of deploy operation
+      attr_accessor :start_time
+
+      # @return [DateTime] End time of deploy operation
+      attr_accessor :end_time
+
+      # @return [Boolean] Whether the deployment operation has completed
+      attr_accessor :complete
 
 
       #
-      # Mapper for ResourceHealthMetadata class as Ruby Hash.
+      # Mapper for MSDeployStatus class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ResourceHealthMetadata',
+          serialized_name: 'MSDeployStatus',
           type: {
             name: 'Composite',
-            class_name: 'ResourceHealthMetadata',
+            class_name: 'MSDeployStatus',
             model_properties: {
               id: {
                 required: false,
@@ -46,6 +52,7 @@ module Azure::ARM::Web
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -58,51 +65,51 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              tags: {
+              deployer: {
                 required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              resource_health_metadata_id: {
-                required: false,
-                serialized_name: 'properties.id',
+                read_only: true,
+                serialized_name: 'properties.deployer',
                 type: {
                   name: 'String'
                 }
               },
-              category: {
+              provisioning_state: {
                 required: false,
-                serialized_name: 'properties.category',
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'MSDeployProvisioningState'
                 }
               },
-              signal_availability: {
+              start_time: {
                 required: false,
-                serialized_name: 'properties.signalAvailability',
+                read_only: true,
+                serialized_name: 'properties.startTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              end_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.endTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              complete: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.complete',
                 type: {
                   name: 'Boolean'
                 }
