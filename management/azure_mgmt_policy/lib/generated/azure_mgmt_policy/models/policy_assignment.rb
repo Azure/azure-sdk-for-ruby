@@ -6,7 +6,7 @@
 module Azure::ARM::Policy
   module Models
     #
-    # The policy definition.
+    # The policy assignment.
     #
     class PolicyAssignment
 
@@ -88,6 +88,7 @@ module Azure::ARM::Policy
               },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
