@@ -5,8 +5,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require_relative 'lib/module_definition'
-require_relative 'lib/version'
+require '../azure_mgmt_authorization/lib/module_definition'
+require '../azure_mgmt_authorization/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_authorization'

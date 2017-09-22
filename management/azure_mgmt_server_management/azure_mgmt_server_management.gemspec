@@ -5,8 +5,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'generated/azure_mgmt_server_management/module_definition'
-require 'generated/azure_mgmt_server_management/version'
+require '../azure_mgmt_server_management/lib/module_definition'
+require '../azure_mgmt_server_management/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_server_management'

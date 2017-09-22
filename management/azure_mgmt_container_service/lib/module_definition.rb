@@ -7,4 +7,5 @@ module Azure end
 module Azure::ARM end
 module Azure::ARM::ContainerService end
 module Azure::ARM::ContainerService::Api_2017_01_31 end
+module Azure::ARM::ContainerService::Api_2016_09_30 end
 module Azure::ARM::ContainerService::Api_2016_03_30 end

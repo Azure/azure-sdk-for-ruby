@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/token
+    body:
+      encoding: UTF-8
+      string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      server:
+      - Microsoft-IIS/8.5
+      x-ms-request-id:
+      - 30557d9d-9dae-49ff-b6a7-107f7c42b407
+      client-request-id:
+      - ef68f44c-96a5-4429-a684-77117c453b72
+      x-ms-gateway-service-instanceid:
+      - ESTSFE_IN_541
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - flight-uxoptin=true; path=/; secure; HttpOnly, esctx=AAABAAAAiL9Kn2Z27UubvWFPbm0gLTgWl6BkiS1Flrp0KIuzlenL173h9diupGnAIf2Il8ddYG1wSVQPxLP-GByep7OI8O4Xse2Z151I9tOrZJ7MOyYxNjYFOEH0e5if_H3MJjSxntF7FqkCK6pqLRTUVuTNCtWXD5SBxp1WAc-PnBAAKf4x7Czr8KiLOTlSc2W7XV7DIAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly, x-ms-gateway-slice=productiona;
+        path=/; secure; HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Thu, 19 May 2016 03:28:12 GMT
+      connection:
+      - close
+      content-length:
+      - '1234'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","expires_in":"3599","expires_on":"1463632092","not_before":"1463628192","resource":"https://management.core.windows.net/","access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 19 May 2016 03:28:14 GMT
+- request:
+    method: head
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/non-existence?api-version=2016-09-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.2.1/
+      x-ms-client-request-id:
+      - a4cb99d9-5fee-46c7-b10c-ef0441bf737b
+      accept-language:
+      - en-US
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      pragma:
+      - no-cache
+      content-length:
+      - '105'
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      x-ms-failure-cause:
+      - gateway
+      x-ms-ratelimit-remaining-subscription-reads:
+      - '14940'
+      x-ms-request-id:
+      - b44b3023-e826-4c52-a7a1-91446769db34
+      x-ms-correlation-request-id:
+      - b44b3023-e826-4c52-a7a1-91446769db34
+      x-ms-routing-request-id:
+      - WESTUS:20160519T032812Z:b44b3023-e826-4c52-a7a1-91446769db34
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 19 May 2016 03:28:12 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 19 May 2016 03:28:15 GMT
+recorded_with: VCR 3.0.1

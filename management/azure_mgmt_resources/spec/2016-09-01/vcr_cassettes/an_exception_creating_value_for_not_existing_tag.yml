@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/token
+    body:
+      encoding: UTF-8
+      string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      server:
+      - Microsoft-IIS/8.5
+      x-ms-request-id:
+      - fb92d777-e484-4bb1-a908-da6b5601f31b
+      client-request-id:
+      - 04ba4f54-9127-4d0e-8845-592a85ce27d2
+      x-ms-gateway-service-instanceid:
+      - ESTSFE_IN_99
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - flight-uxoptin=true; path=/; secure; HttpOnly, esctx=AAABAAAAiL9Kn2Z27UubvWFPbm0gLcmwhYn-GGwZohAwy-1luFf0Tr7qvbmUeARwMF816xoQKghUVf7otMS_kjcbl9ykA-ZEHmUWkLFN9nNX0Uar0UPbEOQH5EPxiFUTE7L1kyXjaFK2MV7HjhadL68P3K3NtTPtONOZs1fjivIroGvV7VSHbc_8t-OtR7A4enyNN7CHIAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly, x-ms-gateway-slice=productiona;
+        path=/; secure; HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Thu, 19 May 2016 04:48:05 GMT
+      connection:
+      - close
+      content-length:
+      - '1234'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","expires_in":"3600","expires_on":"1463636886","not_before":"1463632986","resource":"https://management.core.windows.net/","access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 19 May 2016 04:48:06 GMT
+- request:
+    method: put
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/tagNames/unknown_tag_name/tagValues/unknown_tag_value?api-version=2016-09-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.2.1/
+      x-ms-client-request-id:
+      - 47bf19e7-f212-4f8e-9725-48b470010f61
+      accept-language:
+      - en-US
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      x-ms-failure-cause:
+      - gateway
+      x-ms-ratelimit-remaining-subscription-writes:
+      - '1198'
+      x-ms-request-id:
+      - a39edc66-9b79-4d81-8a50-232d711b2852
+      x-ms-correlation-request-id:
+      - a39edc66-9b79-4d81-8a50-232d711b2852
+      x-ms-routing-request-id:
+      - WESTUS:20160519T044808Z:a39edc66-9b79-4d81-8a50-232d711b2852
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 19 May 2016 04:48:07 GMT
+      connection:
+      - close
+      content-length:
+      - '121'
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"SubscriptionTagNameNotFound","message":"Subscription
+        tag name ''unknown_tag_name'' could not be found."}}'
+    http_version: 
+  recorded_at: Thu, 19 May 2016 04:48:07 GMT
+recorded_with: VCR 3.0.1
