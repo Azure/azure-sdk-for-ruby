@@ -34,6 +34,9 @@ module Azure::ARM::Monitor
     # @return [AutoscaleSettings] autoscale_settings
     attr_reader :autoscale_settings
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [AlertRuleIncidents] alert_rule_incidents
     attr_reader :alert_rule_incidents
 
@@ -43,9 +46,12 @@ module Azure::ARM::Monitor
     # @return [LogProfiles] log_profiles
     attr_reader :log_profiles
 
-    # @return [ServiceDiagnosticSettingsOperations]
-    # service_diagnostic_settings_operations
-    attr_reader :service_diagnostic_settings_operations
+    # @return [DiagnosticSettingsOperations] diagnostic_settings_operations
+    attr_reader :diagnostic_settings_operations
+
+    # @return [DiagnosticSettingsCategoryOperations]
+    # diagnostic_settings_category_operations
+    attr_reader :diagnostic_settings_category_operations
 
     # @return [ActionGroups] action_groups
     attr_reader :action_groups
@@ -67,10 +73,12 @@ module Azure::ARM::Monitor
       @credentials = credentials
 
       @autoscale_settings = AutoscaleSettings.new(self)
+      @operations = Operations.new(self)
       @alert_rule_incidents = AlertRuleIncidents.new(self)
       @alert_rules = AlertRules.new(self)
       @log_profiles = LogProfiles.new(self)
-      @service_diagnostic_settings_operations = ServiceDiagnosticSettingsOperations.new(self)
+      @diagnostic_settings_operations = DiagnosticSettingsOperations.new(self)
+      @diagnostic_settings_category_operations = DiagnosticSettingsCategoryOperations.new(self)
       @action_groups = ActionGroups.new(self)
       @activity_log_alerts = ActivityLogAlerts.new(self)
       @accept_language = 'en-US'
