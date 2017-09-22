@@ -34,10 +34,10 @@ namespace :arm do
     each_gem do
       delete_command_windows = 'for /r lib\ %a in (generated) do @if exist %a del /S /Q %a 2>nul'
       delete_command_linux = 'rm -rf lib/*/generated'
-      execute_and_stream(OS.windows? ? delete_command_windows : delete_command_linux)
+      # execute_and_stream(OS.windows? ? delete_command_windows : delete_command_linux)
       delete_empty_folders_windows = "ROBOCOPY lib lib /S /MOVE"
       delete_empty_folders_linux = ""
-      execute_and_stream(OS.windows? ? delete_empty_folders_windows : delete_empty_folders_linux)
+      execute_and_stream(OS.windows? ? delete_command_windows + " & " + delete_empty_folders_windows : delete_command_linux + " ; " + delete_empty_folders_linux)
     end
   end
 
@@ -63,7 +63,9 @@ namespace :arm do
     each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
       unless REGEN_EXCLUDES.include?(dir.to_s)
         puts "\nGenerating #{dir}\n"
-        ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}" + " --use=F:/Git/autorest.ruby"
+        ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}"
+        ar_base_command = "#{ar_base_command} --use=#{ENV.fetch('AUTOREST_RUBY_LOC')}" unless ENV.fetch('AUTOREST_RUBY_LOC', nil).nil?
+        puts "ar_base_command #{ar_base_command}"
         md = json[dir] # there should be an entry in the metadata for each of the api versions to generate
         package_name = dir
         md.each do |api_version_pkg, api_version_value|
@@ -73,14 +75,18 @@ namespace :arm do
            if argument_name.casecmp("output-folder") == 0
              output_folder = argument_value
            else
-             if argument_name.casecmp("markdown") == 0
-               ar_arguments = ar_arguments + " #{argument_value}"
+             if argument_name.casecmp("package-name") == 0
+               package_name = argument_value
              else
-               if argument_name.casecmp("input-file") == 0
-                 input_files = argument_value.map {|file| "--input-file=#{file}"}
-                 ar_arguments = ar_arguments + input_files.join(" ")
+               if argument_name.casecmp("markdown") == 0
+                 ar_arguments = ar_arguments + " #{argument_value}"
                else
-                 ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+                 if argument_name.casecmp("input-file") == 0
+                   input_files = argument_value.map {|file| "--input-file=#{file}"}
+                   ar_arguments = ar_arguments + input_files.join(" ")
+                 else
+                   ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+                 end
                end
              end
            end
