@@ -8,7 +8,7 @@ module Azure::ARM::Graph::Api_1_6
     #
     # Request parameters for updating an existing work or school account user.
     #
-    class UserUpdateParameters
+    class UserUpdateParameters < UserBase
 
       include MsRestAzure
 
@@ -22,14 +22,12 @@ module Azure::ARM::Graph::Api_1_6
       # @return [PasswordProfile] The password profile of the user.
       attr_accessor :password_profile
 
+      # @return [String] The user principal name (someuser@contoso.com). It
+      # must contain one of the verified domains for the tenant.
+      attr_accessor :user_principal_name
+
       # @return [String] The mail alias for the user.
       attr_accessor :mail_nickname
-
-      # @return [String] A two letter country code (ISO standard 3166).
-      # Required for users that will be assigned licenses due to legal
-      # requirement to check for availability of services in countries.
-      # Examples include: "US", "JP", and "GB".
-      attr_accessor :usage_location
 
 
       #
@@ -44,6 +42,41 @@ module Azure::ARM::Graph::Api_1_6
             name: 'Composite',
             class_name: 'UserUpdateParameters',
             model_properties: {
+              immutable_id: {
+                required: false,
+                serialized_name: 'immutableId',
+                type: {
+                  name: 'String'
+                }
+              },
+              usage_location: {
+                required: false,
+                serialized_name: 'usageLocation',
+                type: {
+                  name: 'String'
+                }
+              },
+              given_name: {
+                required: false,
+                serialized_name: 'givenName',
+                type: {
+                  name: 'String'
+                }
+              },
+              surname: {
+                required: false,
+                serialized_name: 'surname',
+                type: {
+                  name: 'String'
+                }
+              },
+              user_type: {
+                required: false,
+                serialized_name: 'userType',
+                type: {
+                  name: 'String'
+                }
+              },
               account_enabled: {
                 required: false,
                 serialized_name: 'accountEnabled',
@@ -66,16 +99,16 @@ module Azure::ARM::Graph::Api_1_6
                   class_name: 'PasswordProfile'
                 }
               },
-              mail_nickname: {
+              user_principal_name: {
                 required: false,
-                serialized_name: 'mailNickname',
+                serialized_name: 'userPrincipalName',
                 type: {
                   name: 'String'
                 }
               },
-              usage_location: {
+              mail_nickname: {
                 required: false,
-                serialized_name: 'usageLocation',
+                serialized_name: 'mailNickname',
                 type: {
                   name: 'String'
                 }

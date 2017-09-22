@@ -35,6 +35,9 @@ module Azure::ARM::Graph::Api_1_6
       # objects.
       attr_accessor :password_credentials
 
+      # @return [Boolean] Whether to allow implicit grant flow for OAuth2
+      attr_accessor :oauth2allow_implicit_flow
+
 
       #
       # Mapper for ApplicationUpdateParameters class as Ruby Hash.
@@ -125,6 +128,13 @@ module Azure::ARM::Graph::Api_1_6
                         class_name: 'PasswordCredential'
                       }
                   }
+                }
+              },
+              oauth2allow_implicit_flow: {
+                required: false,
+                serialized_name: 'oauth2AllowImplicitFlow',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
