@@ -3,9 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure
-  module Profiles
-    module Management
-      VERSION = '0.2.0'
-    end
-  end
+  VERSION = '0.11.0'
 end

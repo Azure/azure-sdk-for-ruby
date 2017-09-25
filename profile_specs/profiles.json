@@ -1,0 +1,35 @@
+[
+  {
+  "name": "Profile_Azure_Stack",
+  "resourceTypes": {
+      "Microsoft.Compute" : {
+        "2016-03-30": ["*"]
+      },
+      "Microsoft.Network" : {
+        "2017-03-30": ["*"]
+      }
+    }
+  },
+  {
+    "name": "Profile_2016_06_30",
+    "resourceTypes": {
+      "Microsoft.Compute" : {
+        "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
+      },
+      "Microsoft.Network" : {
+        "2017-03-30": ["NetworkInterfaces", "PublicIPAddresses"]
+      }
+    }
+  },
+  {
+    "name": "Profile_2017_03_30",
+    "resourceTypes": {
+      "Microsoft.Compute" : {
+        "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
+      },
+      "Microsoft.Network" : {
+        "2017-03-30": ["NetworkInterfaces", "PublicIPAddresses"]
+      }
+    }
+  }
+]

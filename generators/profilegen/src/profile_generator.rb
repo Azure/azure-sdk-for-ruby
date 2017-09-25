@@ -32,84 +32,16 @@ class ProfileGenerator
     @versions_clients_mapper = {}
   end
 
-  #
-  # Public method to generate the profile SDK
-  #
-  # Steps:
-  #     1. Generate the profile SDK files
-  #     2. Generate the profile gemspec file
-  #     3. Generate the profile License file
-  #     4. Generate the Utils files
-  #
   def generate
     generate_profile_sdk
-    generate_profile_gemspec
-    generate_license_and_rakefile
-    generate_utils
-    generate_version_file
   end
 
   private
-  #
-  # Method to generate the profile SDK files
-  #
-  # Steps:
-  #     1. Generate the module files for each RP
-  #     2. Generate the profile client
-  #
   def generate_profile_sdk
     generate_modules
     generate_client
   end
 
-  #
-  # Method to generate the profile gemspec.
-  # Gets the spec template and renders it
-  #
-  def generate_profile_gemspec
-    @profile_version = get_profile_version
-    file = get_spec_file
-    file.write(get_renderer(ProfileTemplates.spec_template))
-  end
-
-  def generate_version_file
-    file = get_version_file
-    file.write(get_renderer(ProfileTemplates.version_template))
-  end
-
-  #
-  # Method to generate the License file. Copies
-  # the license file from resources folder to destination
-  #
-  def generate_license_and_rakefile
-    profile_folder = "#{@output_dir}/#{@profile_name}/"
-    copy_file './resources/LICENSE.txt', profile_folder
-    copy_file './resources/Rakefile', profile_folder
-  end
-
-  #
-  # Method to generate the utils files.
-  # Copies the configurable.rb & default.rb files from the
-  # resources folder to destination.
-  #
-  def generate_utils
-    utils_folder = "#{@output_dir}/#{@profile_name}/lib/utils/"
-    copy_file './resources/configurable.rb', utils_folder
-    copy_file './resources/default.rb', utils_folder
-  end
-
-  def copy_file(source, destination)
-    FileUtils.cp source, destination
-  end
-
-  #
-  # Method to generate the individual module files per RP.
-  # For each RP in the profile:
-  #        1. Load the main file
-  #        2. Generate the list of operations
-  #        3. Generate the list of models
-  #        4. Generate the module file
-  #
   def generate_modules
     @resource_provider_types.each do |resource_provider, resource_types_obj|
       @module_require = @dir_metadata[resource_provider]['module_require']
@@ -120,9 +52,15 @@ class ProfileGenerator
       resource_types_obj.each do |resource_type_version, resource_types|
         base_file_path = @dir_metadata[resource_provider]['path'] + get_sdk_path + "#{resource_type_version}/generated/azure_mgmt_#{get_ruby_specific_resource_type_name(resource_provider).downcase}.rb"
         require base_file_path
-        resource_types.each do |resource_type|
-          generate_operation_types(resource_provider, resource_type, resource_type_version)
+
+        if(resource_types.length == 1 && resource_types[0] == '*')
+          generate_all_operation_types(resource_provider, resource_type_version)
+        elsif
+          resource_types.each do |resource_type|
+            generate_operation_types(resource_provider, resource_type, resource_type_version)
+          end
         end
+
         generate_model_types(resource_provider, resource_type_version)
       end
 
@@ -151,21 +89,43 @@ class ProfileGenerator
     renderer.result(get_binding)
   end
 
-  #
-  # Method to generate operations
-  #
-  # @param resource_provider name of the resource for which the
-  # operations to be generated
-  #
+  def generate_all_operation_types(resource_provider, resource_type_version)
+    obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}")
+    operations = []
+    obj.constants.select do |const_name|
+      if((obj.const_get(const_name).instance_of?Class))
+        if(const_name.to_s.end_with?('ManagementClient'))
+          @management_client = obj.name + '::' + const_name.to_s
+          @versions_clients_mapper[resource_type_version] = @management_client
+        else
+          operations << const_name.to_s
+        end
+      end
+    end
+
+    operations.each do |operation|
+      operation_body = obj.name + '::' + operation
+      operation_name_ruby = get_model_name(operation)
+
+      if(check_for_availability(@operation_types, operation_name_ruby))
+        raise "#{operation_name} operation is appearing twice for the RP: #{resource_provider}."
+      else
+        @operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
+      end
+    end
+  end
+
   def generate_operation_types(resource_provider, resource_type, resource_type_version)
     obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}")
     operation = nil
     obj.constants.select do |const_name|
-      if((obj.const_get(const_name).instance_of?Class) && const_name.to_s == resource_type)
-        operation = const_name.to_s
-      elsif((obj.const_get(const_name).instance_of?Class) && const_name.to_s.end_with?('ManagementClient'))
-        @management_client = obj.name + '::' + const_name.to_s
-        @versions_clients_mapper[resource_type_version] = @management_client
+      if((obj.const_get(const_name).instance_of?Class))
+        if(const_name.to_s.end_with?('ManagementClient'))
+          @management_client = obj.name + '::' + const_name.to_s
+          @versions_clients_mapper[resource_type_version] = @management_client
+        elsif (const_name.to_s == resource_type)
+          operation = const_name.to_s
+        end
       end
     end
 
@@ -183,12 +143,6 @@ class ProfileGenerator
     end
   end
 
-  #
-  # Method to generate model types
-  #
-  # @param resource_provider name of the resource for which the
-  # models to be generated
-  #
   def generate_model_types(resource_provider, resource_type_version)
     obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + + "::#{get_version(resource_type_version)}::Models")
     obj.constants.select do |const_name|
@@ -203,16 +157,13 @@ class ProfileGenerator
     end
   end
 
-  #
-  # Utility methods
-  #
   def get_model_name(model_name)
     model_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase
   end
 
   def get_client_file
     check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/lib/client.rb"
+    file_name =  "#{@output_dir}/#{@profile_name}/profile_client.rb"
     File.new(file_name, 'w')
   end
 
@@ -220,19 +171,13 @@ class ProfileGenerator
     check_and_create_directory
     file_name = get_module_file_name(resource_type_name)
     @file_names << file_name.sub('.rb', '')
-    complete_file_name = "#{@output_dir}/#{@profile_name}/lib/modules/#{file_name}"
+    complete_file_name = "#{@output_dir}/#{@profile_name}/modules/#{file_name}"
     File.new(complete_file_name, 'w')
   end
 
   def get_spec_file
     check_and_create_directory
     file_name =  "#{@output_dir}/#{@profile_name}/azure_mgmt_profile_#{@profile_version}.gemspec"
-    File.new(file_name, 'w')
-  end
-
-  def get_version_file
-    check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/lib/version.rb"
     File.new(file_name, 'w')
   end
 
@@ -243,9 +188,7 @@ class ProfileGenerator
   def check_and_create_directory
     Dir.mkdir("#{@output_dir}") unless File.directory?("#{@output_dir}")
     Dir.mkdir("#{@output_dir}/#{@profile_name}") unless File.directory?("#{@output_dir}/#{@profile_name}")
-    Dir.mkdir("#{@output_dir}/#{@profile_name}/lib") unless File.directory?("#{@output_dir}/#{@profile_name}/lib")
-    Dir.mkdir("#{@output_dir}/#{@profile_name}/lib/utils") unless File.directory?("#{@output_dir}/#{@profile_name}/lib/utils")
-    Dir.mkdir("#{@output_dir}/#{@profile_name}/lib/modules") unless File.directory?("#{@output_dir}/#{@profile_name}/lib/modules")
+    Dir.mkdir("#{@output_dir}/#{@profile_name}/modules") unless File.directory?("#{@output_dir}/#{@profile_name}/modules")
   end
 
   def get_ruby_specific_resource_type_name(resource_type_name)
