@@ -36,6 +36,9 @@ module Azure::ARM::Network
     # @return [ApplicationGateways] application_gateways
     attr_reader :application_gateways
 
+    # @return [ApplicationSecurityGroups] application_security_groups
+    attr_reader :application_security_groups
+
     # @return [AvailableEndpointServices] available_endpoint_services
     attr_reader :available_endpoint_services
 
@@ -155,6 +158,7 @@ module Azure::ARM::Network
       @credentials = credentials
 
       @application_gateways = ApplicationGateways.new(self)
+      @application_security_groups = ApplicationSecurityGroups.new(self)
       @available_endpoint_services = AvailableEndpointServices.new(self)
       @express_route_circuit_authorizations = ExpressRouteCircuitAuthorizations.new(self)
       @express_route_circuit_peerings = ExpressRouteCircuitPeerings.new(self)
@@ -297,7 +301,7 @@ module Azure::ARM::Network
     def check_dns_name_availability_async(location, domain_name_label, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'domain_name_label is nil' if domain_name_label.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 
