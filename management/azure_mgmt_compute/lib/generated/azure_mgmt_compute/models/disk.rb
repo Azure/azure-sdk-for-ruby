@@ -20,6 +20,9 @@ module Azure::ARM::Compute
       # @return [DiskSku]
       attr_accessor :sku
 
+      # @return [Array<String>] The Logical zone list for Disk.
+      attr_accessor :zones
+
       # @return [DateTime] The time when the disk was created.
       attr_accessor :time_created
 
@@ -116,6 +119,20 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'DiskSku'
+                }
+              },
+              zones: {
+                required: false,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               time_created: {

@@ -9,7 +9,7 @@ module Azure::ARM::Compute
     # Defines values for ResourceSkuRestrictionsType
     #
     module ResourceSkuRestrictionsType
-      Location = "location"
+      Location = "Location"
     end
   end
 end

@@ -13,6 +13,12 @@ module Azure::ARM::Compute
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [ApiEntityReference] A reference to a load balancer probe used
+      # to determine the health of an instance in the virtual machine scale
+      # set. The reference will be in the form:
+      # '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+      attr_accessor :health_probe
+
       # @return [Array<VirtualMachineScaleSetNetworkConfiguration>] The list of
       # network configurations.
       attr_accessor :network_interface_configurations
@@ -30,6 +36,14 @@ module Azure::ARM::Compute
             name: 'Composite',
             class_name: 'VirtualMachineScaleSetNetworkProfile',
             model_properties: {
+              health_probe: {
+                required: false,
+                serialized_name: 'healthProbe',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ApiEntityReference'
+                }
+              },
               network_interface_configurations: {
                 required: false,
                 serialized_name: 'networkInterfaceConfigurations',

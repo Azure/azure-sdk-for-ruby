@@ -6,12 +6,13 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Defines values for UpgradeMode
+    # Defines values for RollingUpgradeStatusCode
     #
-    module UpgradeMode
-      Automatic = "Automatic"
-      Manual = "Manual"
-      Rolling = "Rolling"
+    module RollingUpgradeStatusCode
+      RollingForward = "RollingForward"
+      Cancelled = "Cancelled"
+      Completed = "Completed"
+      Faulted = "Faulted"
     end
   end
 end

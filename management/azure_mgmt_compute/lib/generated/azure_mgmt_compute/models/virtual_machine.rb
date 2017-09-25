@@ -86,6 +86,9 @@ module Azure::ARM::Compute
       # if configured.
       attr_accessor :identity
 
+      # @return [Array<String>] The virtual machine zones.
+      attr_accessor :zones
+
 
       #
       # Mapper for VirtualMachine class as Ruby Hash.
@@ -254,6 +257,20 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineIdentity'
+                }
+              },
+              zones: {
+                required: false,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

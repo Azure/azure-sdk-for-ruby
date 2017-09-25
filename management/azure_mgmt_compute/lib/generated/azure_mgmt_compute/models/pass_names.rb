@@ -9,7 +9,7 @@ module Azure::ARM::Compute
     # Defines values for PassNames
     #
     module PassNames
-      OobeSystem = "oobeSystem"
+      OobeSystem = "OobeSystem"
     end
   end
 end

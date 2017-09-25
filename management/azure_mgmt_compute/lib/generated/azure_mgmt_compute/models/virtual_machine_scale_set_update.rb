@@ -8,7 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine Scale Set.
     #
-    class VirtualMachineScaleSet < MsRestAzure::Resource
+    class VirtualMachineScaleSetUpdate < MsRestAzure::UpdateResource
 
       include MsRestAzure
 
@@ -16,32 +16,20 @@ module Azure::ARM::Compute
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 
-      # @return [Plan] Specifies information about the marketplace image used
-      # to create the virtual machine. This element is only used for
-      # marketplace images. Before you can use a marketplace image from an API,
-      # you must enable the image for programmatic use.  In the Azure portal,
-      # find the marketplace image that you want to use and then click **Want
-      # to deploy programmatically, Get Started ->**. Enter any required
-      # information and then click **Save**.
+      # @return [Plan] The purchase plan when deploying a virtual machine scale
+      # set from VM Marketplace images.
       attr_accessor :plan
 
       # @return [UpgradePolicy] The upgrade policy.
       attr_accessor :upgrade_policy
 
-      # @return [VirtualMachineScaleSetVMProfile] The virtual machine profile.
+      # @return [VirtualMachineScaleSetUpdateVMProfile] The virtual machine
+      # profile.
       attr_accessor :virtual_machine_profile
-
-      # @return [String] The provisioning state, which only appears in the
-      # response.
-      attr_accessor :provisioning_state
 
       # @return [Boolean] Specifies whether the Virtual Machine Scale Set
       # should be overprovisioned.
       attr_accessor :overprovision
-
-      # @return [String] Specifies the ID which uniquely identifies a Virtual
-      # Machine Scale Set.
-      attr_accessor :unique_id
 
       # @return [Boolean] When true this limits the scale set to a single
       # placement group, of max size 100 virtual machines.
@@ -51,53 +39,19 @@ module Azure::ARM::Compute
       # machine scale set, if configured.
       attr_accessor :identity
 
-      # @return [Array<String>] The virtual machine scale set zones.
-      attr_accessor :zones
-
 
       #
-      # Mapper for VirtualMachineScaleSet class as Ruby Hash.
+      # Mapper for VirtualMachineScaleSetUpdate class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualMachineScaleSet',
+          serialized_name: 'VirtualMachineScaleSetUpdate',
           type: {
             name: 'Composite',
-            class_name: 'VirtualMachineScaleSet',
+            class_name: 'VirtualMachineScaleSetUpdate',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -141,15 +95,7 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.virtualMachineProfile',
                 type: {
                   name: 'Composite',
-                  class_name: 'VirtualMachineScaleSetVMProfile'
-                }
-              },
-              provisioning_state: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
+                  class_name: 'VirtualMachineScaleSetUpdateVMProfile'
                 }
               },
               overprovision: {
@@ -157,14 +103,6 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.overprovision',
                 type: {
                   name: 'Boolean'
-                }
-              },
-              unique_id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.uniqueId',
-                type: {
-                  name: 'String'
                 }
               },
               single_placement_group: {
@@ -180,20 +118,6 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineScaleSetIdentity'
-                }
-              },
-              zones: {
-                required: false,
-                serialized_name: 'zones',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }
