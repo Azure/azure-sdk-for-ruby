@@ -53,12 +53,8 @@ class ProfileGenerator
         base_file_path = @dir_metadata[resource_provider]['path'] + get_sdk_path + "#{resource_type_version}/generated/azure_mgmt_#{get_ruby_specific_resource_type_name(resource_provider).downcase}.rb"
         require base_file_path
 
-        if(resource_types.length == 1 && resource_types[0] == '*')
-          generate_all_operation_types(resource_provider, resource_type_version)
-        elsif
-          resource_types.each do |resource_type|
-            generate_operation_types(resource_provider, resource_type, resource_type_version)
-          end
+        resource_types.each do |resource_type|
+          generate_operation_types(resource_provider, resource_type, resource_type_version)
         end
 
         generate_model_types(resource_provider, resource_type_version)
@@ -89,7 +85,7 @@ class ProfileGenerator
     renderer.result(get_binding)
   end
 
-  def generate_all_operation_types(resource_provider, resource_type_version)
+  def generate_operation_types(resource_provider, resource_type, resource_type_version)
     obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}")
     operations = []
     obj.constants.select do |const_name|
@@ -97,43 +93,23 @@ class ProfileGenerator
         if(const_name.to_s.end_with?('ManagementClient'))
           @management_client = obj.name + '::' + const_name.to_s
           @versions_clients_mapper[resource_type_version] = @management_client
-        else
+        elsif (const_name.to_s == resource_type || '*' == resource_type)
           operations << const_name.to_s
         end
       end
     end
 
-    operations.each do |operation|
-      operation_body = obj.name + '::' + operation
-      operation_name_ruby = get_model_name(operation)
-
-      if(check_for_availability(@operation_types, operation_name_ruby))
-        raise "#{operation_name} operation is appearing twice for the RP: #{resource_provider}."
-      else
-        @operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
-      end
-    end
-  end
-
-  def generate_operation_types(resource_provider, resource_type, resource_type_version)
-    obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}")
-    operation = nil
-    obj.constants.select do |const_name|
-      if((obj.const_get(const_name).instance_of?Class))
-        if(const_name.to_s.end_with?('ManagementClient'))
-          @management_client = obj.name + '::' + const_name.to_s
-          @versions_clients_mapper[resource_type_version] = @management_client
-        elsif (const_name.to_s == resource_type)
-          operation = const_name.to_s
-        end
-      end
-    end
-
-    if operation == nil
+    if operations.empty?
       raise "#{resource_type} operation could not be found for RP: #{resource_provider}:Version: #{resource_type_version}"
     end
 
-    operation_body = obj.name + '::' + operation
+    operations.each do |operation|
+      check_and_add_operation(obj, operation, resource_provider)
+    end
+  end
+
+  def check_and_add_operation(module_obj, operation, resource_provider)
+    operation_body = module_obj.name + '::' + operation
     operation_name_ruby = get_model_name(operation)
 
     if(check_for_availability(@operation_types, operation_name_ruby))
@@ -148,11 +124,12 @@ class ProfileGenerator
     obj.constants.select do |const_name|
         model_name = const_name.to_s
         model_body = obj.name + '::' + const_name.to_s
+        method_name = get_model_name(const_name.to_s)
 
         if(check_for_availability(@model_types, model_name))
           raise "#{model_name} Model is appearing twice for the RP: #{resource_provider}."
         else
-          @model_types << {'model_name': model_name, 'model_body': model_body}
+          @model_types << {'model_name': model_name, 'model_body': model_body, 'method_name': method_name}
         end
     end
   end
