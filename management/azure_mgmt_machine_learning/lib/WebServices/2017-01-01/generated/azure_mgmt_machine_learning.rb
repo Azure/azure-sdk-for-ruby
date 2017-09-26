@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-01-01/generated/azure_mgmt_machine_learning/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
+module Azure::ARM::MachineLearning::Api_2017_01_01
   autoload :WebServices,                                        '2017-01-01/generated/azure_mgmt_machine_learning/web_services.rb'
   autoload :AzureMLWebServicesManagementClient,                 '2017-01-01/generated/azure_mgmt_machine_learning/azure_mlweb_services_management_client.rb'
 

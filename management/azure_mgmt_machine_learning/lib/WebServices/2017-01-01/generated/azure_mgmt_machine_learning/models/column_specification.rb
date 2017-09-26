@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
+module Azure::ARM::MachineLearning::Api_2017_01_01
   module Models
     #
     # Swagger 2.0 schema for a column within the data table representing a web

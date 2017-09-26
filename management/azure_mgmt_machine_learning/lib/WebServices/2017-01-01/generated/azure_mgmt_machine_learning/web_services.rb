@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
+module Azure::ARM::MachineLearning::Api_2017_01_01
   #
   # These APIs allow end users to operate on Azure Machine Learning Web
   # Services resources. They support the following operations:<ul><li>Create or
@@ -66,7 +66,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+          result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -173,7 +173,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -225,7 +225,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+          result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -318,7 +318,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::AsyncOperationStatus.mapper()
+          result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::AsyncOperationStatus.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -410,7 +410,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebServiceKeys.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebServiceKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -503,7 +503,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -589,7 +589,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -676,7 +676,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+      request_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
       request_content = @client.serialize(request_mapper,  create_or_update_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -708,7 +708,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -718,7 +718,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -802,7 +802,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+      request_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
       request_content = @client.serialize(request_mapper,  patch_payload)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -834,7 +834,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::WebService.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::WebService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1033,7 +1033,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::AsyncOperationStatus.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::AsyncOperationStatus.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1120,7 +1120,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1207,7 +1207,7 @@ module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::MachineLearning::WebServices::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
+            result_mapper = Azure::ARM::MachineLearning::Api_2017_01_01::Models::PaginatedWebServicesList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
