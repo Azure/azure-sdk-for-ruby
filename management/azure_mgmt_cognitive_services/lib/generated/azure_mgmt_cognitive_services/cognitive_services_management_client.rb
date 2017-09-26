@@ -35,9 +35,6 @@ module Azure::ARM::CognitiveServices
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [CognitiveServicesAccounts] cognitive_services_accounts
-    attr_reader :cognitive_services_accounts
-
     # @return [Accounts] accounts
     attr_reader :accounts
 
@@ -60,7 +57,6 @@ module Azure::ARM::CognitiveServices
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @cognitive_services_accounts = CognitiveServicesAccounts.new(self)
       @accounts = Accounts.new(self)
       @operations = Operations.new(self)
       @check_sku_availability = CheckSkuAvailability.new(self)
