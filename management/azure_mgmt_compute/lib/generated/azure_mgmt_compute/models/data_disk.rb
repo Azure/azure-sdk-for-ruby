@@ -21,7 +21,7 @@ module Azure::ARM::Compute
       # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [VirtualHardDisk] The virtual hard disk..
+      # @return [VirtualHardDisk] The virtual hard disk.
       attr_accessor :vhd
 
       # @return [VirtualHardDisk] The source user image virtual hard disk. The
@@ -45,7 +45,7 @@ module Azure::ARM::Compute
       # are using a platform image, you also use the imageReference element
       # described above. If you are using a marketplace image, you  also use
       # the plan element previously described. Possible values include:
-      # 'fromImage', 'empty', 'attach'
+      # 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
       # @return [Integer] Specifies the size of an empty data disk in

@@ -33,6 +33,9 @@ module Azure::ARM::Compute
       # information.
       attr_accessor :extensions
 
+      # @return [VirtualMachineHealthStatus] The health status for the VM.
+      attr_accessor :vm_health
+
       # @return [BootDiagnosticsInstanceView] Boot Diagnostics is a debugging
       # feature which allows you to view Console Output and Screenshot to
       # diagnose VM status. <br><br> For Linux Virtual Machines, you can easily
@@ -118,6 +121,15 @@ module Azure::ARM::Compute
                         class_name: 'VirtualMachineExtensionInstanceView'
                       }
                   }
+                }
+              },
+              vm_health: {
+                required: false,
+                read_only: true,
+                serialized_name: 'vmHealth',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VirtualMachineHealthStatus'
                 }
               },
               boot_diagnostics: {

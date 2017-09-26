@@ -29,7 +29,7 @@ module Azure::ARM::Compute
       attr_accessor :caching
 
       # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
+      # include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
       # @return [Integer] Specifies the size of an empty data disk in

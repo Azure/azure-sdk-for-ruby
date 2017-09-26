@@ -29,7 +29,7 @@ module Azure::ARM::Compute
       # create the virtual machine. If you are using a platform image, you also
       # use the imageReference element described above. If you are using a
       # marketplace image, you  also use the plan element previously described.
-      # Possible values include: 'fromImage', 'empty', 'attach'
+      # Possible values include: 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
       # @return [OperatingSystemTypes] This property allows you to specify the
