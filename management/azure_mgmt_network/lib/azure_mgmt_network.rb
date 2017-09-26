@@ -4,6 +4,7 @@
 
 require '2017-09-01/generated/azure_mgmt_network'
 require '2017-03-01/generated/azure_mgmt_network'
+require '2017-03-30/generated/azure_mgmt_network'
 require '2016-12-01/generated/azure_mgmt_network'
 require '2016-09-01/generated/azure_mgmt_network'
 require '2016-06-01/generated/azure_mgmt_network'

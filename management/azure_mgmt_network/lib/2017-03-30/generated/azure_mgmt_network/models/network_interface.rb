@@ -3,47 +3,51 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2017_09_01
+module Azure::ARM::Network::Api_2017_03_30
   module Models
     #
-    # Public IP address resource.
+    # A network interface in a resource group.
     #
-    class PublicIPAddress < MsRestAzure::Resource
+    class NetworkInterface < MsRestAzure::Resource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [PublicIPAddressSku] The public IP address SKU.
-      attr_accessor :sku
+      # @return [SubResource] The reference of a virtual machine.
+      attr_accessor :virtual_machine
 
-      # @return [IPAllocationMethod] The public IP allocation method. Possible
-      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
-      # 'Dynamic'
-      attr_accessor :public_ipallocation_method
+      # @return [NetworkSecurityGroup] The reference of the
+      # NetworkSecurityGroup resource.
+      attr_accessor :network_security_group
 
-      # @return [IPVersion] The public IP address version. Possible values are:
-      # 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
-      attr_accessor :public_ipaddress_version
+      # @return [Array<NetworkInterfaceIPConfiguration>] A list of
+      # IPConfigurations of the network interface.
+      attr_accessor :ip_configurations
 
-      # @return [IPConfiguration] The IP configuration associated with the
-      # public IP address.
-      attr_accessor :ip_configuration
-
-      # @return [PublicIPAddressDnsSettings] The FQDN of the DNS record
-      # associated with the public IP address.
+      # @return [NetworkInterfaceDnsSettings] The DNS settings in network
+      # interface.
       attr_accessor :dns_settings
 
-      # @return [String] The IP address associated with the public IP address
+      # @return [String] The MAC address of the network interface.
+      attr_accessor :mac_address
+
+      # @return [Boolean] Gets whether this is a primary network interface on a
+      # virtual machine.
+      attr_accessor :primary
+
+      # @return [Boolean] If the network interface is accelerated networking
+      # enabled.
+      attr_accessor :enable_accelerated_networking
+
+      # @return [Boolean] Indicates whether IP forwarding is enabled on this
+      # network interface.
+      attr_accessor :enable_ipforwarding
+
+      # @return [String] The resource GUID property of the network interface
       # resource.
-      attr_accessor :ip_address
-
-      # @return [Integer] The idle timeout of the public IP address.
-      attr_accessor :idle_timeout_in_minutes
-
-      # @return [String] The resource GUID property of the public IP resource.
       attr_accessor :resource_guid
 
-      # @return [String] The provisioning state of the PublicIP resource.
+      # @return [String] The provisioning state of the public IP resource.
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
@@ -51,22 +55,18 @@ module Azure::ARM::Network::Api_2017_09_01
       # resource is updated.
       attr_accessor :etag
 
-      # @return [Array<String>] A list of availability zones denoting the IP
-      # allocated for the resource needs to come from.
-      attr_accessor :zones
-
 
       #
-      # Mapper for PublicIPAddress class as Ruby Hash.
+      # Mapper for NetworkInterface class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'PublicIPAddress',
+          serialized_name: 'NetworkInterface',
           type: {
             name: 'Composite',
-            class_name: 'PublicIPAddress',
+            class_name: 'NetworkInterface',
             model_properties: {
               id: {
                 required: false,
@@ -112,35 +112,35 @@ module Azure::ARM::Network::Api_2017_09_01
                   }
                 }
               },
-              sku: {
+              virtual_machine: {
                 required: false,
-                serialized_name: 'sku',
+                serialized_name: 'properties.virtualMachine',
                 type: {
                   name: 'Composite',
-                  class_name: 'PublicIPAddressSku'
+                  class_name: 'SubResource'
                 }
               },
-              public_ipallocation_method: {
+              network_security_group: {
                 required: false,
-                serialized_name: 'properties.publicIPAllocationMethod',
-                type: {
-                  name: 'String'
-                }
-              },
-              public_ipaddress_version: {
-                required: false,
-                serialized_name: 'properties.publicIPAddressVersion',
-                type: {
-                  name: 'String'
-                }
-              },
-              ip_configuration: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.ipConfiguration',
+                serialized_name: 'properties.networkSecurityGroup',
                 type: {
                   name: 'Composite',
-                  class_name: 'IPConfiguration'
+                  class_name: 'NetworkSecurityGroup'
+                }
+              },
+              ip_configurations: {
+                required: false,
+                serialized_name: 'properties.ipConfigurations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'NetworkInterfaceIPConfigurationElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'NetworkInterfaceIPConfiguration'
+                      }
+                  }
                 }
               },
               dns_settings: {
@@ -148,21 +148,35 @@ module Azure::ARM::Network::Api_2017_09_01
                 serialized_name: 'properties.dnsSettings',
                 type: {
                   name: 'Composite',
-                  class_name: 'PublicIPAddressDnsSettings'
+                  class_name: 'NetworkInterfaceDnsSettings'
                 }
               },
-              ip_address: {
+              mac_address: {
                 required: false,
-                serialized_name: 'properties.ipAddress',
+                serialized_name: 'properties.macAddress',
                 type: {
                   name: 'String'
                 }
               },
-              idle_timeout_in_minutes: {
+              primary: {
                 required: false,
-                serialized_name: 'properties.idleTimeoutInMinutes',
+                serialized_name: 'properties.primary',
                 type: {
-                  name: 'Number'
+                  name: 'Boolean'
+                }
+              },
+              enable_accelerated_networking: {
+                required: false,
+                serialized_name: 'properties.enableAcceleratedNetworking',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_ipforwarding: {
+                required: false,
+                serialized_name: 'properties.enableIPForwarding',
+                type: {
+                  name: 'Boolean'
                 }
               },
               resource_guid: {
@@ -184,20 +198,6 @@ module Azure::ARM::Network::Api_2017_09_01
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
-                }
-              },
-              zones: {
-                required: false,
-                serialized_name: 'zones',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               }
             }
