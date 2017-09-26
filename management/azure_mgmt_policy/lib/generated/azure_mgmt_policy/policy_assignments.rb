@@ -75,7 +75,7 @@ module Azure::ARM::Policy
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{scope}/providers/Microsoft.Authorization/policyassignments/{policyAssignmentName}'
+      path_template = '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'
 
       request_url = @base_url || @client.base_url
 
@@ -190,7 +190,7 @@ module Azure::ARM::Policy
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '{scope}/providers/Microsoft.Authorization/policyassignments/{policyAssignmentName}'
+      path_template = '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'
 
       request_url = @base_url || @client.base_url
 
@@ -285,7 +285,7 @@ module Azure::ARM::Policy
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{scope}/providers/Microsoft.Authorization/policyassignments/{policyAssignmentName}'
+      path_template = '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'
 
       request_url = @base_url || @client.base_url
 
@@ -495,7 +495,7 @@ module Azure::ARM::Policy
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyassignments'
+      path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments'
 
       request_url = @base_url || @client.base_url
 
@@ -582,7 +582,7 @@ module Azure::ARM::Policy
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyassignments'
+      path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments'
 
       request_url = @base_url || @client.base_url
 
