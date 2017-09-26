@@ -25,15 +25,15 @@ module Azure::ARM::MediaServices
     # Checks whether the Media Service resource name is available. The name must be
     # globally unique.
     #
-    # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
-    # needed to check the availability of a name.
+    # @param parameters [CheckNameAvailabilityInput] Properties needed to check the
+    # availability of a name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CheckNameAvailabilityOutput] operation results.
     #
-    def check_name_availability(check_name_availability_input, custom_headers = nil)
-      response = check_name_availability_async(check_name_availability_input, custom_headers).value!
+    def check_name_availability(parameters, custom_headers = nil)
+      response = check_name_availability_async(parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -41,32 +41,32 @@ module Azure::ARM::MediaServices
     # Checks whether the Media Service resource name is available. The name must be
     # globally unique.
     #
-    # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
-    # needed to check the availability of a name.
+    # @param parameters [CheckNameAvailabilityInput] Properties needed to check the
+    # availability of a name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(check_name_availability_input, custom_headers = nil)
-      check_name_availability_async(check_name_availability_input, custom_headers).value!
+    def check_name_availability_with_http_info(parameters, custom_headers = nil)
+      check_name_availability_async(parameters, custom_headers).value!
     end
 
     #
     # Checks whether the Media Service resource name is available. The name must be
     # globally unique.
     #
-    # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
-    # needed to check the availability of a name.
+    # @param parameters [CheckNameAvailabilityInput] Properties needed to check the
+    # availability of a name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(check_name_availability_input, custom_headers = nil)
+    def check_name_availability_async(parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -79,7 +79,7 @@ module Azure::ARM::MediaServices
 
       # Serialize Request
       request_mapper = Azure::ARM::MediaServices::Models::CheckNameAvailabilityInput.mapper()
-      request_content = @client.serialize(request_mapper,  check_name_availability_input)
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Media/CheckNameAvailability'
@@ -313,15 +313,15 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
+    # @param parameters [MediaService] Media Service properties needed for
     # creation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MediaService] operation results.
     #
-    def create(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      response = create_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def create(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, media_service_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -331,15 +331,15 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
+    # @param parameters [MediaService] Media Service properties needed for
     # creation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      create_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def create_with_http_info(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      create_async(resource_group_name, media_service_name, parameters, custom_headers).value!
     end
 
     #
@@ -348,19 +348,19 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
+    # @param parameters [MediaService] Media Service properties needed for
     # creation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, media_service_name, media_service, custom_headers = nil)
+    def create_async(resource_group_name, media_service_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'media_service is nil' if media_service.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -373,7 +373,7 @@ module Azure::ARM::MediaServices
 
       # Serialize Request
       request_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
-      request_content = @client.serialize(request_mapper,  media_service)
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
@@ -506,15 +506,14 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # update.
+    # @param parameters [MediaService] Media Service properties needed for update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MediaService] operation results.
     #
-    def update(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      response = update_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def update(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, media_service_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -524,15 +523,14 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # update.
+    # @param parameters [MediaService] Media Service properties needed for update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      update_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def update_with_http_info(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      update_async(resource_group_name, media_service_name, parameters, custom_headers).value!
     end
 
     #
@@ -541,19 +539,18 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # update.
+    # @param parameters [MediaService] Media Service properties needed for update.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, media_service_name, media_service, custom_headers = nil)
+    def update_async(resource_group_name, media_service_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'media_service is nil' if media_service.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -566,7 +563,7 @@ module Azure::ARM::MediaServices
 
       # Serialize Request
       request_mapper = Azure::ARM::MediaServices::Models::MediaService.mapper()
-      request_content = @client.serialize(request_mapper,  media_service)
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
@@ -616,15 +613,15 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param regenerate_key_input [RegenerateKeyInput] Properties needed to
-    # regenerate the Media Service key.
+    # @param parameters [RegenerateKeyInput] Properties needed to regenerate the
+    # Media Service key.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RegenerateKeyOutput] operation results.
     #
-    def regenerate_key(resource_group_name, media_service_name, regenerate_key_input, custom_headers = nil)
-      response = regenerate_key_async(resource_group_name, media_service_name, regenerate_key_input, custom_headers).value!
+    def regenerate_key(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      response = regenerate_key_async(resource_group_name, media_service_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -634,15 +631,15 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param regenerate_key_input [RegenerateKeyInput] Properties needed to
-    # regenerate the Media Service key.
+    # @param parameters [RegenerateKeyInput] Properties needed to regenerate the
+    # Media Service key.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_key_with_http_info(resource_group_name, media_service_name, regenerate_key_input, custom_headers = nil)
-      regenerate_key_async(resource_group_name, media_service_name, regenerate_key_input, custom_headers).value!
+    def regenerate_key_with_http_info(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      regenerate_key_async(resource_group_name, media_service_name, parameters, custom_headers).value!
     end
 
     #
@@ -651,19 +648,19 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param regenerate_key_input [RegenerateKeyInput] Properties needed to
-    # regenerate the Media Service key.
+    # @param parameters [RegenerateKeyInput] Properties needed to regenerate the
+    # Media Service key.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_key_async(resource_group_name, media_service_name, regenerate_key_input, custom_headers = nil)
+    def regenerate_key_async(resource_group_name, media_service_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'regenerate_key_input is nil' if regenerate_key_input.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -676,7 +673,7 @@ module Azure::ARM::MediaServices
 
       # Serialize Request
       request_mapper = Azure::ARM::MediaServices::Models::RegenerateKeyInput.mapper()
-      request_content = @client.serialize(request_mapper,  regenerate_key_input)
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/regenerateKey'
@@ -821,14 +818,14 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # synchronize the keys for a storage account to the Media Service.
+    # @param parameters [SyncStorageKeysInput] Properties needed to synchronize the
+    # keys for a storage account to the Media Service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def sync_storage_keys(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
-      response = sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers).value!
+    def sync_storage_keys(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      response = sync_storage_keys_async(resource_group_name, media_service_name, parameters, custom_headers).value!
       nil
     end
 
@@ -839,15 +836,15 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # synchronize the keys for a storage account to the Media Service.
+    # @param parameters [SyncStorageKeysInput] Properties needed to synchronize the
+    # keys for a storage account to the Media Service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def sync_storage_keys_with_http_info(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
-      sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers).value!
+    def sync_storage_keys_with_http_info(resource_group_name, media_service_name, parameters, custom_headers = nil)
+      sync_storage_keys_async(resource_group_name, media_service_name, parameters, custom_headers).value!
     end
 
     #
@@ -857,19 +854,19 @@ module Azure::ARM::MediaServices
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
-    # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # synchronize the keys for a storage account to the Media Service.
+    # @param parameters [SyncStorageKeysInput] Properties needed to synchronize the
+    # keys for a storage account to the Media Service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
+    def sync_storage_keys_async(resource_group_name, media_service_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'sync_storage_keys_input is nil' if sync_storage_keys_input.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -882,7 +879,7 @@ module Azure::ARM::MediaServices
 
       # Serialize Request
       request_mapper = Azure::ARM::MediaServices::Models::SyncStorageKeysInput.mapper()
-      request_content = @client.serialize(request_mapper,  sync_storage_keys_input)
+      request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/syncStorageKeys'

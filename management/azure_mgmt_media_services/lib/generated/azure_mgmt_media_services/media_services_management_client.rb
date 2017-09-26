@@ -22,7 +22,7 @@ module Azure::ARM::MediaServices
     attr_accessor :subscription_id
 
     # @return [String] Version of the API to be used with the client request.
-    # Current version is 2015-10-01
+    # The current version is 2015-10-01.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -35,6 +35,9 @@ module Azure::ARM::MediaServices
     # @return [Boolean] When set to true a unique x-ms-client-request-id value
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
+
+    # @return [Operations] operations
+    attr_reader :operations
 
     # @return [MediaServiceOperations] media_service_operations
     attr_reader :media_service_operations
@@ -52,6 +55,7 @@ module Azure::ARM::MediaServices
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @media_service_operations = MediaServiceOperations.new(self)
       @api_version = '2015-10-01'
       @accept_language = 'en-US'

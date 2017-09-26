@@ -40,7 +40,7 @@ module Azure::ARM::MediaServices
                 constraints: {
                   MaxLength: 24,
                   MinLength: 3,
-                  Pattern: '^[a-z0-9]'
+                  Pattern: '^[a-z0-9]{3,24}$'
                 },
                 type: {
                   name: 'String'

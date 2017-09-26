@@ -6,43 +6,56 @@
 module Azure::ARM::MediaServices
   module Models
     #
-    # The collection of Media Service resources.
+    # Result of the request to list Media Services operations.
     #
-    class MediaServiceCollection
+    class OperationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<MediaService>] The collection of Media Service
-      # resources.
+      # @return [Array<Operation>] List of Media Services operations supported
+      # by the Microsoft.Media resource provider.
       attr_accessor :value
+
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
+      attr_accessor :next_link
 
 
       #
-      # Mapper for MediaServiceCollection class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'MediaServiceCollection',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'MediaServiceCollection',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'MediaServiceElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'MediaService'
+                        class_name: 'Operation'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                read_only: true,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
