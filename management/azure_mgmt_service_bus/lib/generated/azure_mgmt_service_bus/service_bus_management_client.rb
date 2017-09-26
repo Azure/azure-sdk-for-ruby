@@ -42,6 +42,9 @@ module Azure::ARM::ServiceBus
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
+    # @return [DisasterRecoveryConfigs] disaster_recovery_configs
+    attr_reader :disaster_recovery_configs
+
     # @return [Queues] queues
     attr_reader :queues
 
@@ -79,6 +82,7 @@ module Azure::ARM::ServiceBus
 
       @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
+      @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
       @queues = Queues.new(self)
       @topics = Topics.new(self)
       @subscriptions = Subscriptions.new(self)

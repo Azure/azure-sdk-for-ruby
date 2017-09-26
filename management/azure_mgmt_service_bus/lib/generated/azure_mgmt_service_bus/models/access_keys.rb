@@ -21,6 +21,14 @@ module Azure::ARM::ServiceBus
       # authorization rule.
       attr_accessor :secondary_connection_string
 
+      # @return [String] Primary connection string of the alias if GEO DR is
+      # enabled
+      attr_accessor :alias_primary_connection_string
+
+      # @return [String] Secondary  connection string of the alias if GEO DR is
+      # enabled
+      attr_accessor :alias_secondary_connection_string
+
       # @return [String] A base64-encoded 256-bit primary key for signing and
       # validating the SAS token.
       attr_accessor :primary_key
@@ -57,6 +65,22 @@ module Azure::ARM::ServiceBus
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryConnectionString',
+                type: {
+                  name: 'String'
+                }
+              },
+              alias_primary_connection_string: {
+                required: false,
+                read_only: true,
+                serialized_name: 'aliasPrimaryConnectionString',
+                type: {
+                  name: 'String'
+                }
+              },
+              alias_secondary_connection_string: {
+                required: false,
+                read_only: true,
+                serialized_name: 'aliasSecondaryConnectionString',
                 type: {
                   name: 'String'
                 }
