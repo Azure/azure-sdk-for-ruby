@@ -4,3 +4,4 @@
 
 require '2017-05-10/generated/azure_mgmt_resources'
 require '2016-09-01/generated/azure_mgmt_resources'
+require '2016-07-01/generated/azure_mgmt_resources'
