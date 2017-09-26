@@ -32,7 +32,10 @@ module Azure::ARM::Network
       # true. This flag cannot be set if virtual network already has a gateway.
       attr_accessor :use_remote_gateways
 
-      # @return [SubResource] The reference of the remote virtual network.
+      # @return [SubResource] The reference of the remote virtual network. The
+      # remote virtual network can be in the same or different region
+      # (preview). See here to register for the preview and learn more
+      # (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
       attr_accessor :remote_virtual_network
 
       # @return [VirtualNetworkPeeringState] The status of the virtual network
