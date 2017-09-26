@@ -114,7 +114,7 @@ module Azure::ARM::Network
     def get_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -241,7 +241,7 @@ module Azure::ARM::Network
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -335,7 +335,7 @@ module Azure::ARM::Network
     def list_connections_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -642,6 +642,106 @@ module Azure::ARM::Network
     end
 
     #
+    # Gets a xml format representation for supported vpn devices.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [String] operation results.
+    #
+    def supported_vpn_devices(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      response = supported_vpn_devices_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a xml format representation for supported vpn devices.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def supported_vpn_devices_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      supported_vpn_devices_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    end
+
+    #
+    # Gets a xml format representation for supported vpn devices.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_name [String] The name of the virtual network
+    # gateway.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def supported_vpn_devices_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
+      api_version = '2017-09-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/supportedvpndevices'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # This operation retrieves a list of routes the virtual network gateway has
     # learned, including routes learned from BGP peers.
     #
@@ -734,6 +834,125 @@ module Azure::ARM::Network
     end
 
     #
+    # Gets a xml format representation for vpn device configuration script.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
+    # virtual network gateway connection for which the configuration script is
+    # generated.
+    # @param parameters [VpnDeviceScriptParameters] Parameters supplied to the
+    # generate vpn device script operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [String] operation results.
+    #
+    def vpn_device_configuration_script(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      response = vpn_device_configuration_script_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a xml format representation for vpn device configuration script.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
+    # virtual network gateway connection for which the configuration script is
+    # generated.
+    # @param parameters [VpnDeviceScriptParameters] Parameters supplied to the
+    # generate vpn device script operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def vpn_device_configuration_script_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      vpn_device_configuration_script_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Gets a xml format representation for vpn device configuration script.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
+    # virtual network gateway connection for which the configuration script is
+    # generated.
+    # @param parameters [VpnDeviceScriptParameters] Parameters supplied to the
+    # generate vpn device script operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def vpn_device_configuration_script_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      api_version = '2017-09-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Network::Models::VpnDeviceScriptParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'String'
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Creates or updates a virtual network gateway in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -785,7 +1004,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -897,7 +1116,7 @@ module Azure::ARM::Network
     def begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -990,7 +1209,7 @@ module Azure::ARM::Network
     def begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1094,7 +1313,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1213,7 +1432,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1328,7 +1547,7 @@ module Azure::ARM::Network
     def begin_get_vpn_profile_package_url_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1431,7 +1650,7 @@ module Azure::ARM::Network
     def begin_get_bgp_peer_status_async(resource_group_name, virtual_network_gateway_name, peer = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1528,7 +1747,7 @@ module Azure::ARM::Network
     def begin_get_learned_routes_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1629,7 +1848,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
       fail ArgumentError, 'peer is nil' if peer.nil?
-      api_version = '2017-08-01'
+      api_version = '2017-09-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

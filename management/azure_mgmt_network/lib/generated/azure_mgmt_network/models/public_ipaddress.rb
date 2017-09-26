@@ -51,6 +51,10 @@ module Azure::ARM::Network
       # resource is updated.
       attr_accessor :etag
 
+      # @return [Array<String>] A list of availability zones denoting the IP
+      # allocated for the resource needs to come from.
+      attr_accessor :zones
+
 
       #
       # Mapper for PublicIPAddress class as Ruby Hash.
@@ -180,6 +184,20 @@ module Azure::ARM::Network
                 serialized_name: 'etag',
                 type: {
                   name: 'String'
+                }
+              },
+              zones: {
+                required: false,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }
