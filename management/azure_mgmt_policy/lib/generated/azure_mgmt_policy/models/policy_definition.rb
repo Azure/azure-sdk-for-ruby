@@ -41,9 +41,7 @@ module Azure::ARM::Policy
       # @return [String] The ID of the policy definition.
       attr_accessor :id
 
-      # @return [String] The name of the policy definition. If you do not
-      # specify a value for name, the value is inferred from the name value in
-      # the request URI.
+      # @return [String] The name of the policy definition.
       attr_accessor :name
 
 
@@ -118,6 +116,7 @@ module Azure::ARM::Policy
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

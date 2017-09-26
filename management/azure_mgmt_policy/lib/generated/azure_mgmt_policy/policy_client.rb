@@ -34,11 +34,11 @@ module Azure::ARM::Policy
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [PolicyAssignments] policy_assignments
-    attr_reader :policy_assignments
-
     # @return [PolicyDefinitions] policy_definitions
     attr_reader :policy_definitions
+
+    # @return [PolicyAssignments] policy_assignments
+    attr_reader :policy_assignments
 
     #
     # Creates initializes a new instance of the PolicyClient class.
@@ -53,8 +53,8 @@ module Azure::ARM::Policy
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @policy_assignments = PolicyAssignments.new(self)
       @policy_definitions = PolicyDefinitions.new(self)
+      @policy_assignments = PolicyAssignments.new(self)
       @api_version = '2016-12-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
