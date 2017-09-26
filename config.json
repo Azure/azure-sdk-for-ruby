@@ -114,10 +114,7 @@
       "input-file": [
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/compute.json",
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/disk.json",
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/runCommands.json" //,
-     //   "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssNetworkInterface.json",
-     //   "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssPublicIpAddress.json"
-        //this last 2 together with the above give a code generation errors because resource definition has different description
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/compute/resource-manager/Microsoft.Compute/2017-03-30/runCommands.json"
       ],
       "namespace": "Azure::ARM::Compute::Api_2017_03_30",
       "package-version": "0.11.0",
@@ -376,26 +373,19 @@
   "azure_mgmt_machine_learning": {
     "azure_mgmt_web_services_2017_01_01": {
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/readme.md",
-      "namespace": "Azure::ARM::MachineLearning::WebServices::Api_2017_01_01",
+      "namespace": "Azure::ARM::MachineLearning::Api_2017_01_01",
       "package-version": "0.11.0",
       "tag": "package-webservices-2017-01",
-      "output-folder": "WebServices"      
-    },
-    "azure_mgmt_commitment_plans_2016_05_01_preview": {
-      "input-file": ["https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/Microsoft.MachineLearning/2016-05-01-preview/commitmentPlans.json"
-        ],
-      "namespace": "Azure::ARM::MachineLearning::CommitmentPlans::Api_2016_05_01_preview",
-      "package-version": "0.11.0",
-      "output-folder": "CommitmentPlans"
-    },
-    "azure_mgmt_web_services_2016_05_01_preview": {
-      "input-file": [
-        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/Microsoft.MachineLearning/2016-05-01-preview/webservices.json"
-        ],
-      "namespace": "Azure::ARM::MachineLearning::WebServices::Api_2016_05_01_preview",
-      "package-version": "0.11.0",
       "output-folder": "WebServices"
-    }
+    }//,
+    // fails code generation when putting these input files together
+//    "azure_mgmt_machine_learning_2016_05_01_preview": {
+//      "input-file": ["https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/Microsoft.MachineLearning/2016-05-01-preview/commitmentPlans.json",
+//    "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/Microsoft.MachineLearning/2016-05-01-preview/webservices.json"
+//        ],
+//      "namespace": "Azure::ARM::MachineLearning::Api_2016_05_01_preview",
+//      "package-version": "0.11.0"
+//    },
   },
   "azure_mgmt_managed_applications": {
     "azure_mgmt_managed_applications_2016_09_01_preview": {
@@ -496,6 +486,15 @@
         "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/virtualNetworkGateway.json"
       ],
       "namespace": "Azure::ARM::Network::Api_2017_09_01",
+      "package-version": "0.11.0"
+    },
+    "azure_mgmt_network_2017_03_30": {
+      "input-file": [
+        // the api version in the folder of these files doesn't match the one inside the files, these files are from Compute, but don't share the models with other Compute specs
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssNetworkInterface.json",
+        "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssPublicIpAddress.json"
+      ],
+      "namespace": "Azure::ARM::Network::Api_2017_03_30",
       "package-version": "0.11.0"
     },
      "azure_mgmt_network_2017_03_01":{
