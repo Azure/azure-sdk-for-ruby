@@ -11,6 +11,7 @@ module Azure::ARM::Network
     module TransportProtocol
       Udp = "Udp"
       Tcp = "Tcp"
+      All = "All"
     end
   end
 end

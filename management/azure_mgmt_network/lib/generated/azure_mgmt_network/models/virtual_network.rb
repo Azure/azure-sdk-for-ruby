@@ -36,6 +36,14 @@ module Azure::ARM::Network
       # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
+      # @return [Boolean] Indicates if DDoS protection is enabled for all the
+      # protected resources in a Virtual Network.
+      attr_accessor :enable_ddos_protection
+
+      # @return [Boolean] Indicates if Vm protection is enabled for all the
+      # subnets in a Virtual Network.
+      attr_accessor :enable_vm_protection
+
       # @return [String] Gets a unique read-only string that changes whenever
       # the resource is updated.
       attr_accessor :etag
@@ -155,6 +163,20 @@ module Azure::ARM::Network
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
+                }
+              },
+              enable_ddos_protection: {
+                required: false,
+                serialized_name: 'properties.enableDdosProtection',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_vm_protection: {
+                required: false,
+                serialized_name: 'properties.enableVmProtection',
+                type: {
+                  name: 'Boolean'
                 }
               },
               etag: {
