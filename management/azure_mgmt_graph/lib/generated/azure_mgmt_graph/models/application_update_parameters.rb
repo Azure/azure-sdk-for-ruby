@@ -35,6 +35,16 @@ module Azure::ARM::Graph
       # objects.
       attr_accessor :password_credentials
 
+      # @return [Boolean] Whether to allow implicit grant flow for OAuth2
+      attr_accessor :oauth2allow_implicit_flow
+
+      # @return [Array<RequiredResourceAccess>] Specifies resources that this
+      # application requires access to and the set of OAuth permission scopes
+      # and application roles that it needs under each of those resources. This
+      # pre-configuration of required resource access drives the consent
+      # experience.
+      attr_accessor :required_resource_access
+
 
       #
       # Mapper for ApplicationUpdateParameters class as Ruby Hash.
@@ -123,6 +133,28 @@ module Azure::ARM::Graph
                       type: {
                         name: 'Composite',
                         class_name: 'PasswordCredential'
+                      }
+                  }
+                }
+              },
+              oauth2allow_implicit_flow: {
+                required: false,
+                serialized_name: 'oauth2AllowImplicitFlow',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              required_resource_access: {
+                required: false,
+                serialized_name: 'requiredResourceAccess',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RequiredResourceAccessElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'RequiredResourceAccess'
                       }
                   }
                 }
