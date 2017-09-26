@@ -8,7 +8,7 @@ module Azure::ARM::Graph
     #
     # Request parameters for creating a new work or school account user.
     #
-    class UserCreateParameters
+    class UserCreateParameters < UserBase
 
       include MsRestAzure
 
@@ -29,17 +29,8 @@ module Azure::ARM::Graph
       # @return [String] The mail alias for the user.
       attr_accessor :mail_nickname
 
-      # @return [String] This must be specified if you are using a federated
-      # domain for the user's userPrincipalName (UPN) property when creating a
-      # new user account. It is used to associate an on-premises Active
-      # Directory user account with their Azure AD user object.
-      attr_accessor :immutable_id
-
-      # @return [String] A two letter country code (ISO standard 3166).
-      # Required for users that will be assigned licenses due to legal
-      # requirement to check for availability of services in countries.
-      # Examples include: "US", "JP", and "GB".
-      attr_accessor :usage_location
+      # @return [String] The primary email address of the user.
+      attr_accessor :mail
 
 
       #
@@ -54,6 +45,41 @@ module Azure::ARM::Graph
             name: 'Composite',
             class_name: 'UserCreateParameters',
             model_properties: {
+              immutable_id: {
+                required: false,
+                serialized_name: 'immutableId',
+                type: {
+                  name: 'String'
+                }
+              },
+              usage_location: {
+                required: false,
+                serialized_name: 'usageLocation',
+                type: {
+                  name: 'String'
+                }
+              },
+              given_name: {
+                required: false,
+                serialized_name: 'givenName',
+                type: {
+                  name: 'String'
+                }
+              },
+              surname: {
+                required: false,
+                serialized_name: 'surname',
+                type: {
+                  name: 'String'
+                }
+              },
+              user_type: {
+                required: false,
+                serialized_name: 'userType',
+                type: {
+                  name: 'String'
+                }
+              },
               account_enabled: {
                 required: true,
                 serialized_name: 'accountEnabled',
@@ -90,16 +116,9 @@ module Azure::ARM::Graph
                   name: 'String'
                 }
               },
-              immutable_id: {
+              mail: {
                 required: false,
-                serialized_name: 'immutableId',
-                type: {
-                  name: 'String'
-                }
-              },
-              usage_location: {
-                required: false,
-                serialized_name: 'usageLocation',
+                serialized_name: 'mail',
                 type: {
                   name: 'String'
                 }
