@@ -22,12 +22,12 @@ module Azure::ARM::Monitor
       attr_accessor :odata.type
 
       # @return [Boolean] Whether the administrators (service and
-      # co-adiminstrators) of the service should be notified when the alert is
+      # co-administrators) of the service should be notified when the alert is
       # activated.
       attr_accessor :send_to_service_owners
 
       # @return [Array<String>] the list of administrator's custom email
-      # addresses notifiy of the activation of the alert.
+      # addresses to notify of the activation of the alert.
       attr_accessor :custom_emails
 
 

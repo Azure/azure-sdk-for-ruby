@@ -24,7 +24,8 @@ module Azure::ARM::Monitor
       attr_accessor :odata.type
 
       # @return [String] the resource identifier of the resource the rule
-      # monitors.
+      # monitors. **NOTE**: this property cannot be updated for an existing
+      # rule.
       attr_accessor :resource_uri
 
 

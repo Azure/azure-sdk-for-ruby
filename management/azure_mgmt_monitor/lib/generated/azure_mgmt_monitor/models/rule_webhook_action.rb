@@ -21,7 +21,7 @@ module Azure::ARM::Monitor
 
       attr_accessor :odata.type
 
-      # @return [String] the service uri to Post the notitication when the
+      # @return [String] the service uri to Post the notification when the
       # alert activates or resolves.
       attr_accessor :service_uri
 
