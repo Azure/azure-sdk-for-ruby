@@ -375,8 +375,7 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/machinelearning/resource-manager/readme.md",
       "namespace": "Azure::ARM::MachineLearning::Api_2017_01_01",
       "package-version": "0.11.0",
-      "tag": "package-webservices-2017-01",
-      "output-folder": "WebServices"
+      "tag": "package-webservices-2017-01"
     }//,
     // fails code generation when putting these input files together
 //    "azure_mgmt_machine_learning_2016_05_01_preview": {
