@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Billing end
-module Azure::ARM::Billing::Api_2017_04_24_preview end

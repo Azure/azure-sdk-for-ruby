@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::ServerManagement end
-module Azure::ARM::ServerManagement::Api_2016_07_01_preview end

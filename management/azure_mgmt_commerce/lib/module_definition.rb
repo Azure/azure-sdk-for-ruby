@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Commerce end
-module Azure::ARM::Commerce::Api_2015_06_01_preview end
+

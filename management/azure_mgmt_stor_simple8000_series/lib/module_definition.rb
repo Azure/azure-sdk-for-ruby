@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::StorSimple8000Series end
-module Azure::ARM::StorSimple8000Series::Api_2017_06_01 end

@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::DevTestLabs end
-module Azure::ARM::DevTestLabs::Api_2016_05_15 end
+

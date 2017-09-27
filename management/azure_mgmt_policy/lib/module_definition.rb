@@ -6,7 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Policy end
-module Azure::ARM::Policy::Api_2017_06_01_preview end
-module Azure::ARM::Policy::Api_2016_12_01 end
-module Azure::ARM::Policy::Api_2016_04_01 end
-module Azure::ARM::Policy::Api_2015_10_01_preview end

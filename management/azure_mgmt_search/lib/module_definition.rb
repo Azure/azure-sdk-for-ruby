@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Search end
-module Azure::ARM::Search::Api_2015_08_19 end

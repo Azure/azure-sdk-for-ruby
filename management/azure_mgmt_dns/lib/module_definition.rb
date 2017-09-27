@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Dns end
-module Azure::ARM::Dns::Api_2016_04_01 end
+

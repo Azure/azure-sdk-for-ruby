@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::MediaServices end
-module Azure::ARM::MediaServices::Api_2015_10_01 end
+

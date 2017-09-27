@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Features end
-module Azure::ARM::Features::Api_2015_12_01 end
+

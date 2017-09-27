@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::ApiManagement end
-module Azure::ARM::ApiManagement::Api_2017_07_14 end

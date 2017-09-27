@@ -6,7 +6,5 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Redis end
-module Azure::ARM::Redis::Api_2017_02_01 end
-module Azure::ARM::Redis::Api_2016_04_01 end
-module Azure::ARM::Redis::Api_2015_08_01 end
+
 

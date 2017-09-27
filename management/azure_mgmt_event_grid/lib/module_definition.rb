@@ -6,5 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::EventGrid end
-module Azure::ARM::EventGrid::Api_2017_09_15_preview end
-module Azure::ARM::EventGrid::Api_2017_06_15_preview end

@@ -6,5 +6,5 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::StreamAnalytics end
-module Azure::ARM::StreamAnalytics::Api_2016_03_01 end
+
 

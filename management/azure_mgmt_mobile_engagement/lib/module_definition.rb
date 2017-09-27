@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::MobileEngagement end
-module Azure::ARM::MobileEngagement::Api_2014_12_01 end
+

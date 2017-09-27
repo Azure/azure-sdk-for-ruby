@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Graph end
-module Azure::ARM::Graph::Api_1_6 end
+

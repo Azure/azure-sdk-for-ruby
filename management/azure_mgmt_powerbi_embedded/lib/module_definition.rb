@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::PowerBiEmbedded end
-module Azure::ARM::PowerBiEmbedded::Api_2016_01_29 end
+

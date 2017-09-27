@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::ManagedApplications end
-module Azure::ARM::ManagedApplications::Api_2016_09_01_preview end

@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::CognitiveServices end
-module Azure::ARM::CognitiveServices::Api_2017_04_18 end
+

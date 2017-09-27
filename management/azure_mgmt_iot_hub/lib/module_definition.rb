@@ -6,6 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::IotHub end
-module Azure::ARM::IotHub::Api_2017_07_01 end
-module Azure::ARM::IotHub::Api_2017_01_19 end
-module Azure::ARM::IotHub::Api_2016_02_03 end
+

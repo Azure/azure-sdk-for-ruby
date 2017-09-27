@@ -6,7 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::RecoveryServicesBackup end
-module Azure::ARM::RecoveryServicesBackup::Api_2017_07_01 end
-module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01 end
-module Azure::ARM::RecoveryServicesBackup::Api_2016_08_10 end
-module Azure::ARM::RecoveryServicesBackup::Api_2016_06_01 end
+

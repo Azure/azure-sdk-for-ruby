@@ -6,6 +6,5 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::KeyVault end
-module Azure::ARM::KeyVault::Api_2016_10_01 end
-module Azure::ARM::KeyVault::Api_2015_06_01 end
+
 

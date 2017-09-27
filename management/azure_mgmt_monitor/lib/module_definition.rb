@@ -6,9 +6,5 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Monitor end
-module Azure::ARM::Monitor::Api_2017_05_01_preview end
-module Azure::ARM::Monitor::Api_2017_04_01 end
-module Azure::ARM::Monitor::Api_2016_09_01 end
-module Azure::ARM::Monitor::Api_2016_03_01 end
-module Azure::ARM::Monitor::Api_2015_04_01 end
+
 

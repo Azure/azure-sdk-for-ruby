@@ -6,10 +6,6 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Web end
-module Azure::ARM::Web::Api_2015_08_01 end
-module Azure::ARM::Web::Api_2015_04_01 end
-module Azure::ARM::Web::Api_2016_09_01 end
-module Azure::ARM::Web::Api_2016_08_01 end
-module Azure::ARM::Web::Api_2016_03_01 end
+
 
 

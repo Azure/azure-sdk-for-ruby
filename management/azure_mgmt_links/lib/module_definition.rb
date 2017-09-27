@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Links end
-module Azure::ARM::Links::Api_2016_09_01 end

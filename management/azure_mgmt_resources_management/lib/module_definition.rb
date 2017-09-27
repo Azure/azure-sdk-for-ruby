@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::ResourcesManagement end
-module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview end

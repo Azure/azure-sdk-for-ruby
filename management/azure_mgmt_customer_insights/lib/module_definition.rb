@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::CustomerInsights end
-module Azure::ARM::CustomerInsights::Api_2017_04_26 end

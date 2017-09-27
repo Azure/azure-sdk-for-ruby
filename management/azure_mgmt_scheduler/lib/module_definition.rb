@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Scheduler end
-module Azure::ARM::Scheduler::Api_2016_03_01 end

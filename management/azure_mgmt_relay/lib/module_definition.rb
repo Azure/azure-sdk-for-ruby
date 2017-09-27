@@ -6,5 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Relay end
-module Azure::ARM::Relay::Api_2017_04_01 end
-module Azure::ARM::Relay::Api_2016_07_01 end

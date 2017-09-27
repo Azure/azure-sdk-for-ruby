@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::RecoveryServicesSiteRecovery end
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10 end

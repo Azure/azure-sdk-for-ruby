@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::NotificationHubs end
-module Azure::ARM::NotificationHubs::Api_2017_04_01 end
+

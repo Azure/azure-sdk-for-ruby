@@ -6,5 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::OperationalInsights end
-module Azure::ARM::OperationalInsights::Api_2015_11_01_preview end
-module Azure::ARM::OperationalInsights::Api_2015_03_20 end

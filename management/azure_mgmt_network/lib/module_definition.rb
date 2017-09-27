@@ -6,11 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Network end
-module Azure::ARM::Network::Api_2017_09_01 end
-module Azure::ARM::Network::Api_2017_03_01 end
-module Azure::ARM::Network::Api_2016_12_01 end
-module Azure::ARM::Network::Api_2016_09_01 end
-module Azure::ARM::Network::Api_2016_06_01 end
-module Azure::ARM::Network::Api_2016_03_30 end
-module Azure::ARM::Network::Api_2015_06_15 end
-module Azure::ARM::Network::Api_2015_05_01_preview end

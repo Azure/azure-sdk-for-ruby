@@ -6,6 +6,5 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Subscriptions end
-module Azure::ARM::Subscriptions::Api_2016_06_01 end
-module Azure::ARM::Subscriptions::Api_2015_11_01 end
+
 

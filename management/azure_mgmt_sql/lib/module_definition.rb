@@ -6,6 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::SQL end
-module Azure::ARM::SQL::Api_2014_04_01 end
-module Azure::ARM::SQL::Api_2015_05_01_preview end
-module Azure::ARM::SQL::Api_2017_03_01_preview end

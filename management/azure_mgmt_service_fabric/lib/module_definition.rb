@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::ServiceFabric end
-module Azure::ARM::ServiceFabric::Api_2016_09_01 end
