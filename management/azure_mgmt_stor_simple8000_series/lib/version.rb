@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::OperationalInsights
+module Azure::ARM::StorSimple8000Series
     VERSION = '0.11.0'
 end
