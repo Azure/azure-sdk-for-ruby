@@ -45,8 +45,12 @@ namespace :arm do
   desc 'Push gem for each of the Azure Resource Manager projects'
   task :release, [:key] => :build do |_, args|
     each_gem do |dir|
-      # Using execute method so that keys are not logged onto console
-      execute("gem push ./pkg/#{dir}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+      begin
+        # Using execute method so that keys are not logged onto console
+        execute("gem push ./pkg/#{dir}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+      rescue Exception => ex
+        puts "Error occurred while publishing #{dir}: #{ex}"
+      end
     end
   end
 
