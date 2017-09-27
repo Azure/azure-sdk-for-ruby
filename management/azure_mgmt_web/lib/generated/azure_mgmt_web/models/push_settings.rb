@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Push settings for the App.
     #
-    class PushSettings < MsRestAzure::ProxyOnlyResource
+    class PushSettings < ProxyOnlyResource
 
       include MsRestAzure
 

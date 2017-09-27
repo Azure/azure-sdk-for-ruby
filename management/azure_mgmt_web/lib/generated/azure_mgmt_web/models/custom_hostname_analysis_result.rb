@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Custom domain analysis.
     #
-    class CustomHostnameAnalysisResult < MsRestAzure::ProxyOnlyResource
+    class CustomHostnameAnalysisResult < ProxyOnlyResource
 
       include MsRestAzure
 

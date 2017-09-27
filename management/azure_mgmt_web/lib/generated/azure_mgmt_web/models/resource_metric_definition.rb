@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Metadata for the metrics.
     #
-    class ResourceMetricDefinition < MsRestAzure::ProxyOnlyResource
+    class ResourceMetricDefinition < ProxyOnlyResource
 
       include MsRestAzure
 

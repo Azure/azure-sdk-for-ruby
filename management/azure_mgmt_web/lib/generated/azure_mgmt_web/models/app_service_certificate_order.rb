@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # SSL certificate purchase order.
     #
-    class AppServiceCertificateOrder < MsRestAzure::Resource
+    class AppServiceCertificateOrder < Resource
 
       include MsRestAzure
 

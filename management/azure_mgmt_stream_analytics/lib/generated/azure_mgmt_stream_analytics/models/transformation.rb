@@ -10,7 +10,7 @@ module Azure::ARM::StreamAnalytics
     # named transformation. All transformations are contained under a streaming
     # job.
     #
-    class Transformation < MsRestAzure::SubResource
+    class Transformation < SubResource
 
       include MsRestAzure
 

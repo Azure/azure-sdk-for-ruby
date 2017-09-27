@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A class that describes a test that failed during NSG and UDR validation.
     #
-    class VnetValidationTestFailure < MsRestAzure::ProxyOnlyResource
+    class VnetValidationTestFailure < ProxyOnlyResource
 
       include MsRestAzure
 

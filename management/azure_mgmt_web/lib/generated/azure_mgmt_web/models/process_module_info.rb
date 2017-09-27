@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Process Module Information.
     #
-    class ProcessModuleInfo < MsRestAzure::ProxyOnlyResource
+    class ProcessModuleInfo < ProxyOnlyResource
 
       include MsRestAzure
 

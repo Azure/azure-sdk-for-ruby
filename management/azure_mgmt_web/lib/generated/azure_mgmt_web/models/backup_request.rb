@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Description of a backup which will be performed.
     #
-    class BackupRequest < MsRestAzure::ProxyOnlyResource
+    class BackupRequest < ProxyOnlyResource
 
       include MsRestAzure
 

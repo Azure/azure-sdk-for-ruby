@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Class representing certificate renew request.
     #
-    class RenewCertificateOrderRequest < MsRestAzure::Resource
+    class RenewCertificateOrderRequest < Resource
 
       include MsRestAzure
 

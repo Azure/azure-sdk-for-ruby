@@ -8,7 +8,7 @@ module Azure::ARM::Monitor
     #
     # The diagnostic settings category resource.
     #
-    class DiagnosticSettingsCategoryResource < MsRestAzure::ProxyOnlyResource
+    class DiagnosticSettingsCategoryResource < ProxyOnlyResource
 
       include MsRestAzure
 

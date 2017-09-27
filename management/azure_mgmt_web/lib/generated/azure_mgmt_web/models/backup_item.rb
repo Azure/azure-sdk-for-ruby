@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Backup description.
     #
-    class BackupItem < MsRestAzure::ProxyOnlyResource
+    class BackupItem < ProxyOnlyResource
 
       include MsRestAzure
 

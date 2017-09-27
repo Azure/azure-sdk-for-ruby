@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # MSDeploy ARM response
     #
-    class MSDeployStatus < MsRestAzure::ProxyOnlyResource
+    class MSDeployStatus < ProxyOnlyResource
 
       include MsRestAzure
 

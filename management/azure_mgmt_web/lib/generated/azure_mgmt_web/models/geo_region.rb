@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Geographical region.
     #
-    class GeoRegion < MsRestAzure::ProxyOnlyResource
+    class GeoRegion < ProxyOnlyResource
 
       include MsRestAzure
 

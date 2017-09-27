@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A class that describes the reason for a validation failure.
     #
-    class VnetValidationFailureDetails < MsRestAzure::ProxyOnlyResource
+    class VnetValidationFailureDetails < ProxyOnlyResource
 
       include MsRestAzure
 

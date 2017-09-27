@@ -8,7 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine Scale Set.
     #
-    class VirtualMachineScaleSetUpdate < MsRestAzure::UpdateResource
+    class VirtualMachineScaleSetUpdate < UpdateResource
 
       include MsRestAzure
 

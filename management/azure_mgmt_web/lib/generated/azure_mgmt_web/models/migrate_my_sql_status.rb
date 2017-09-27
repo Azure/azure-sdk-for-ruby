@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # MySQL migration status.
     #
-    class MigrateMySqlStatus < MsRestAzure::ProxyOnlyResource
+    class MigrateMySqlStatus < ProxyOnlyResource
 
       include MsRestAzure
 

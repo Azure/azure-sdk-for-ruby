@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # App Service plan.
     #
-    class AppServicePlan < MsRestAzure::Resource
+    class AppServicePlan < Resource
 
       include MsRestAzure
 

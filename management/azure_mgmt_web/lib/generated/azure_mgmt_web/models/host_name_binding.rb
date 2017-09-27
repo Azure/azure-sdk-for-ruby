@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A hostname binding object.
     #
-    class HostNameBinding < MsRestAzure::ProxyOnlyResource
+    class HostNameBinding < ProxyOnlyResource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Web Job Information.
     #
-    class WebJob < MsRestAzure::ProxyOnlyResource
+    class WebJob < ProxyOnlyResource
 
       include MsRestAzure
 

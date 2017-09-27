@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Web app configuration ARM resource.
     #
-    class SiteConfigResource < MsRestAzure::ProxyOnlyResource
+    class SiteConfigResource < ProxyOnlyResource
 
       include MsRestAzure
 

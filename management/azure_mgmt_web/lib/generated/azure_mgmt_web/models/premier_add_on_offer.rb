@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Premier add-on offer.
     #
-    class PremierAddOnOffer < MsRestAzure::ProxyOnlyResource
+    class PremierAddOnOffer < ProxyOnlyResource
 
       include MsRestAzure
 

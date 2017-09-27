@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Full view of network features for an app (presently VNET integration and
     # Hybrid Connections).
     #
-    class NetworkFeatures < MsRestAzure::ProxyOnlyResource
+    class NetworkFeatures < ProxyOnlyResource
 
       include MsRestAzure
 

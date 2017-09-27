@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Process Thread Information.
     #
-    class ProcessThreadInfo < MsRestAzure::ProxyOnlyResource
+    class ProcessThreadInfo < ProxyOnlyResource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Usage of the quota resource.
     #
-    class Usage < MsRestAzure::ProxyOnlyResource
+    class Usage < ProxyOnlyResource
 
       include MsRestAzure
 

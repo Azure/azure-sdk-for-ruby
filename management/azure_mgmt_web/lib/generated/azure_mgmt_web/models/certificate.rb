@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # SSL certificate for an app.
     #
-    class Certificate < MsRestAzure::Resource
+    class Certificate < Resource
 
       include MsRestAzure
 

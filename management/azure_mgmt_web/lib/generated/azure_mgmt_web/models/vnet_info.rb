@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Virtual Network information contract.
     #
-    class VnetInfo < MsRestAzure::ProxyOnlyResource
+    class VnetInfo < ProxyOnlyResource
 
       include MsRestAzure
 

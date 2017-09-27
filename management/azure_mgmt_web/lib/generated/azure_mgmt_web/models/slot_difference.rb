@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A setting difference between two deployment slots of an app.
     #
-    class SlotDifference < MsRestAzure::ProxyOnlyResource
+    class SlotDifference < ProxyOnlyResource
 
       include MsRestAzure
 

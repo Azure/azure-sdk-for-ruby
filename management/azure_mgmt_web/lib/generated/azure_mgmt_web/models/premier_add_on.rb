@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Premier add-on.
     #
-    class PremierAddOn < MsRestAzure::Resource
+    class PremierAddOn < Resource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Identifier.
     #
-    class Identifier < MsRestAzure::ProxyOnlyResource
+    class Identifier < ProxyOnlyResource
 
       include MsRestAzure
 

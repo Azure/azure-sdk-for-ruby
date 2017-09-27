@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # User crendentials used for publishing activity.
     #
-    class Deployment < MsRestAzure::ProxyOnlyResource
+    class Deployment < ProxyOnlyResource
 
       include MsRestAzure
 

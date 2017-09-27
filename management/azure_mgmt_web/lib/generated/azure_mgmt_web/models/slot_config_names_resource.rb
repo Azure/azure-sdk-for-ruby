@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Slot Config names azure resource.
     #
-    class SlotConfigNamesResource < MsRestAzure::ProxyOnlyResource
+    class SlotConfigNamesResource < ProxyOnlyResource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Instance of an app.
     #
-    class SiteInstance < MsRestAzure::ProxyOnlyResource
+    class SiteInstance < ProxyOnlyResource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # String dictionary resource.
     #
-    class ConnectionStringDictionary < MsRestAzure::ProxyOnlyResource
+    class ConnectionStringDictionary < ProxyOnlyResource
 
       include MsRestAzure
 

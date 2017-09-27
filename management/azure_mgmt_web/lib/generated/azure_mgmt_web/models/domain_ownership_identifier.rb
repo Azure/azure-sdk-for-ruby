@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Domain ownership Identifier.
     #
-    class DomainOwnershipIdentifier < MsRestAzure::Resource
+    class DomainOwnershipIdentifier < Resource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A top level domain object.
     #
-    class TopLevelDomain < MsRestAzure::ProxyOnlyResource
+    class TopLevelDomain < ProxyOnlyResource
 
       include MsRestAzure
 

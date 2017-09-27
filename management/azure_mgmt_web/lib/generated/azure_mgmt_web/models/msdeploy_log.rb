@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # MSDeploy log
     #
-    class MSDeployLog < MsRestAzure::ProxyOnlyResource
+    class MSDeployLog < ProxyOnlyResource
 
       include MsRestAzure
 

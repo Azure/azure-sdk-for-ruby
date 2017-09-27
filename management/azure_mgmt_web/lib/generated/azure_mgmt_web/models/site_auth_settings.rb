@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Configuration settings for the Azure App Service Authentication /
     # Authorization feature.
     #
-    class SiteAuthSettings < MsRestAzure::ProxyOnlyResource
+    class SiteAuthSettings < ProxyOnlyResource
 
       include MsRestAzure
 

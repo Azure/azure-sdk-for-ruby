@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Worker pool of an App Service Environment ARM resource.
     #
-    class WorkerPoolResource < MsRestAzure::ProxyOnlyResource
+    class WorkerPoolResource < ProxyOnlyResource
 
       include MsRestAzure
 

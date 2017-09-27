@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Source control configuration for an app.
     #
-    class SiteSourceControl < MsRestAzure::ProxyOnlyResource
+    class SiteSourceControl < ProxyOnlyResource
 
       include MsRestAzure
 

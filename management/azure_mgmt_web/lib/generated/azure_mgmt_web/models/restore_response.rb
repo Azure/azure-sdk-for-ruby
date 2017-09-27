@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Response for an app restore request.
     #
-    class RestoreResponse < MsRestAzure::ProxyOnlyResource
+    class RestoreResponse < ProxyOnlyResource
 
       include MsRestAzure
 

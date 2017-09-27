@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A snapshot of a web app configuration.
     #
-    class SiteConfigurationSnapshotInfo < MsRestAzure::ProxyOnlyResource
+    class SiteConfigurationSnapshotInfo < ProxyOnlyResource
 
       include MsRestAzure
 

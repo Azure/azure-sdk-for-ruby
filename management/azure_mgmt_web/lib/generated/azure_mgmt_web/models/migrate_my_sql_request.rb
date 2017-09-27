@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # MySQL migration request.
     #
-    class MigrateMySqlRequest < MsRestAzure::ProxyOnlyResource
+    class MigrateMySqlRequest < ProxyOnlyResource
 
       include MsRestAzure
 

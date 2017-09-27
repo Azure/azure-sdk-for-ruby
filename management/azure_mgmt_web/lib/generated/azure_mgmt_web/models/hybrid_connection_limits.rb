@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Hybrid Connection limits contract. This is used to return the plan limits
     # of Hybrid Connections.
     #
-    class HybridConnectionLimits < MsRestAzure::ProxyOnlyResource
+    class HybridConnectionLimits < ProxyOnlyResource
 
       include MsRestAzure
 

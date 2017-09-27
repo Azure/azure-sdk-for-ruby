@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # The required set of inputs to validate a VNET
     #
-    class VnetParameters < MsRestAzure::ProxyOnlyResource
+    class VnetParameters < ProxyOnlyResource
 
       include MsRestAzure
 

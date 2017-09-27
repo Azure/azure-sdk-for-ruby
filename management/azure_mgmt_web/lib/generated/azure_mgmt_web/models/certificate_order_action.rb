@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Certificate order action.
     #
-    class CertificateOrderAction < MsRestAzure::Resource
+    class CertificateOrderAction < Resource
 
       include MsRestAzure
 

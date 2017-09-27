@@ -8,7 +8,7 @@ module Azure::ARM::StreamAnalytics
     #
     # Describes the current quota for the subscription.
     #
-    class SubscriptionQuota < MsRestAzure::SubResource
+    class SubscriptionQuota < SubResource
 
       include MsRestAzure
 

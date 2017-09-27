@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Response for a migration of app content request.
     #
-    class StorageMigrationResponse < MsRestAzure::ProxyOnlyResource
+    class StorageMigrationResponse < ProxyOnlyResource
 
       include MsRestAzure
 

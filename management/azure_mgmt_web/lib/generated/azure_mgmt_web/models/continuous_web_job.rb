@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Continuous Web Job Information.
     #
-    class ContinuousWebJob < MsRestAzure::ProxyOnlyResource
+    class ContinuousWebJob < ProxyOnlyResource
 
       include MsRestAzure
 

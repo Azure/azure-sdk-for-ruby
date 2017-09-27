@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Site Extension Information.
     #
-    class SiteExtensionInfo < MsRestAzure::ProxyOnlyResource
+    class SiteExtensionInfo < ProxyOnlyResource
 
       include MsRestAzure
 

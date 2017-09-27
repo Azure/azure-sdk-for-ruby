@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Public certificate object
     #
-    class PublicCertificate < MsRestAzure::ProxyOnlyResource
+    class PublicCertificate < ProxyOnlyResource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # App Service Environment ARM resource.
     #
-    class AppServiceEnvironmentResource < MsRestAzure::Resource
+    class AppServiceEnvironmentResource < Resource
 
       include MsRestAzure
 

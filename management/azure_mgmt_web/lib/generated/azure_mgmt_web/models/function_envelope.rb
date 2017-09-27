@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Web Job Information.
     #
-    class FunctionEnvelope < MsRestAzure::ProxyOnlyResource
+    class FunctionEnvelope < ProxyOnlyResource
 
       include MsRestAzure
 

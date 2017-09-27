@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # A snapshot of an app.
     #
-    class Snapshot < MsRestAzure::ProxyOnlyResource
+    class Snapshot < ProxyOnlyResource
 
       include MsRestAzure
 

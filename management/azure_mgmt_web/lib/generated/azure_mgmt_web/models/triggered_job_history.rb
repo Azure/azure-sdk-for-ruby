@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Triggered Web Job History. List of Triggered Web Job Run Information
     # elements.
     #
-    class TriggeredJobHistory < MsRestAzure::ProxyOnlyResource
+    class TriggeredJobHistory < ProxyOnlyResource
 
       include MsRestAzure
 

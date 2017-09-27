@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Triggered Web Job Run Information.
     #
-    class TriggeredJobRun < MsRestAzure::ProxyOnlyResource
+    class TriggeredJobRun < ProxyOnlyResource
 
       include MsRestAzure
 

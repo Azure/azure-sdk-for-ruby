@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Virtual Network route contract used to pass routing information for a
     # Virtual Network.
     #
-    class VnetRoute < MsRestAzure::ProxyOnlyResource
+    class VnetRoute < ProxyOnlyResource
 
       include MsRestAzure
 

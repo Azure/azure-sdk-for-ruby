@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Function secrets.
     #
-    class FunctionSecrets < MsRestAzure::ProxyOnlyResource
+    class FunctionSecrets < ProxyOnlyResource
 
       include MsRestAzure
 

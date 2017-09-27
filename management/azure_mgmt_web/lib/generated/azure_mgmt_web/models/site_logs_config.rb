@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Configuration of App Service site logs.
     #
-    class SiteLogsConfig < MsRestAzure::ProxyOnlyResource
+    class SiteLogsConfig < ProxyOnlyResource
 
       include MsRestAzure
 

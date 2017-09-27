@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # The source control OAuth token.
     #
-    class SourceControl < MsRestAzure::ProxyOnlyResource
+    class SourceControl < ProxyOnlyResource
 
       include MsRestAzure
 

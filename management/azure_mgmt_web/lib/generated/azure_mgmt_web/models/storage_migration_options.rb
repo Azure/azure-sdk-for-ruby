@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Options for app content migration.
     #
-    class StorageMigrationOptions < MsRestAzure::ProxyOnlyResource
+    class StorageMigrationOptions < ProxyOnlyResource
 
       include MsRestAzure
 

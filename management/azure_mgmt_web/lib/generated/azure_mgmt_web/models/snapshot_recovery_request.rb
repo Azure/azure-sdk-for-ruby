@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Details about app recovery operation.
     #
-    class SnapshotRecoveryRequest < MsRestAzure::ProxyOnlyResource
+    class SnapshotRecoveryRequest < ProxyOnlyResource
 
       include MsRestAzure
 

@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # MSDeploy ARM PUT information
     #
-    class MSDeploy < MsRestAzure::ProxyOnlyResource
+    class MSDeploy < ProxyOnlyResource
 
       include MsRestAzure
 

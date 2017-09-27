@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Class representing certificate reissue request.
     #
-    class ReissueCertificateOrderRequest < MsRestAzure::Resource
+    class ReissueCertificateOrderRequest < Resource
 
       include MsRestAzure
 

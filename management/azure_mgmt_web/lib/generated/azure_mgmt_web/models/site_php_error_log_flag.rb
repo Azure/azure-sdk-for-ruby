@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Used for getting PHP error logging flag.
     #
-    class SitePhpErrorLogFlag < MsRestAzure::ProxyOnlyResource
+    class SitePhpErrorLogFlag < ProxyOnlyResource
 
       include MsRestAzure
 

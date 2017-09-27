@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # Hybrid Connection for an App Service app.
     #
-    class RelayServiceConnectionEntity < MsRestAzure::ProxyOnlyResource
+    class RelayServiceConnectionEntity < ProxyOnlyResource
 
       include MsRestAzure
 

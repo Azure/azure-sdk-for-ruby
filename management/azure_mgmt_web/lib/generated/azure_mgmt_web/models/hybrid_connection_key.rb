@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Hybrid Connection key contract. This has the send key name and value for
     # a Hybrid Connection.
     #
-    class HybridConnectionKey < MsRestAzure::ProxyOnlyResource
+    class HybridConnectionKey < ProxyOnlyResource
 
       include MsRestAzure
 

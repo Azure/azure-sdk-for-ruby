@@ -8,7 +8,7 @@ module Azure::ARM::Web
     #
     # SSL certificate email.
     #
-    class CertificateEmail < MsRestAzure::ProxyOnlyResource
+    class CertificateEmail < ProxyOnlyResource
 
       include MsRestAzure
 

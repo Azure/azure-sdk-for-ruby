@@ -9,7 +9,7 @@ module Azure::ARM::Web
     # Hybrid Connection contract. This is used to configure a Hybrid
     # Connection.
     #
-    class HybridConnection < MsRestAzure::ProxyOnlyResource
+    class HybridConnection < ProxyOnlyResource
 
       include MsRestAzure
 
