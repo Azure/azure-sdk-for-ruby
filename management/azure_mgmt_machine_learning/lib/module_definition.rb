@@ -6,6 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::MachineLearning end
-module Azure::ARM::MachineLearning::CommitmentPlans::Api_2016_05_01_preview end
-module Azure::ARM::MachineLearning::WebServices::Api_2017_01_01 end
-module Azure::ARM::MachineLearning::WebServices::Api_2016_05_01_preview end
+module Azure::ARM::MachineLearning::Api_2017_01_01 end
