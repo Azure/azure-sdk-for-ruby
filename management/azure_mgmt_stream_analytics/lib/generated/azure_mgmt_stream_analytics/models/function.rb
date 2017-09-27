@@ -9,7 +9,7 @@ module Azure::ARM::StreamAnalytics
     # A function object, containing all information associated with the named
     # function. All functions are contained under a streaming job.
     #
-    class Function < MsRestAzure::SubResource
+    class Function < SubResource
 
       include MsRestAzure
 

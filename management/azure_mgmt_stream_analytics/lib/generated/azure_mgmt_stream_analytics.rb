@@ -100,5 +100,6 @@ module Azure::ARM::StreamAnalytics
     autoload :UdfType,                                            'generated/azure_mgmt_stream_analytics/models/udf_type.rb'
     autoload :JsonOutputSerializationFormat,                      'generated/azure_mgmt_stream_analytics/models/json_output_serialization_format.rb'
     autoload :Encoding,                                           'generated/azure_mgmt_stream_analytics/models/encoding.rb'
+    autoload :SubResource,                                        'generated/azure_mgmt_stream_analytics/models/sub_resource.rb'
   end
 end

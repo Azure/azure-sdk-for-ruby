@@ -9,7 +9,7 @@ module Azure::ARM::StreamAnalytics
     # A streamng job object, containing all information associated with the
     # named streaming job.
     #
-    class StreamingJob < MsRestAzure::Resource
+    class StreamingJob < Resource
 
       include MsRestAzure
 
