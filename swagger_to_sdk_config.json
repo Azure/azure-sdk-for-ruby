@@ -93,6 +93,18 @@
         "azure_mgmt_compute.rb"
       ]
     },
+    "azure_mgmt_container_registry": {
+      "markdown": "specification/containerregistry/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::ContainerRegistry",
+        "package-name": "azure_mgmt_container_registry",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_container_registry/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_container_registry.rb"
+      ]
+    },
     "azure_mgmt_datalake_analytics": {
       "markdown": "specification/datalake-analytics/resource-manager/readme.md",
       "autorest_options": {

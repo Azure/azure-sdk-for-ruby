@@ -37,6 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_cognitive_services', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_commerce', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_compute', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_container_registry', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_analytics', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_datalake_store', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_devtestlabs', "~>#{version}"
