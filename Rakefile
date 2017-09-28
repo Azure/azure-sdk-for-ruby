@@ -169,6 +169,11 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::Compute',
         version: version
     },
+    azure_mgmt_container_registry: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/containerregistry/resource-manager/readme.md',
+        ns: 'Azure::ARM::ContainerRegistry',
+        version: version
+    },
     azure_mgmt_datalake_analytics: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/datalake-analytics/resource-manager/readme.md',
         ns: 'Azure::ARM::DataLakeAnalytics',

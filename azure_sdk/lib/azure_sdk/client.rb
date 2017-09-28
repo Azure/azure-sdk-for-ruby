@@ -8,6 +8,7 @@ require 'azure_mgmt_cdn'
 require 'azure_mgmt_cognitive_services'
 require 'azure_mgmt_commerce'
 require 'azure_mgmt_compute'
+require 'azure_mgmt_container_registry'
 require 'azure_mgmt_datalake_analytics'
 require 'azure_mgmt_datalake_store'
 require 'azure_mgmt_devtestlabs'
@@ -53,6 +54,7 @@ module Azure::ARM
         :cognitive_services => 'Azure::ARM::CognitiveServices::CognitiveServicesManagementClient',
         :commerce => 'Azure::ARM::Commerce::UsageManagementClient',
         :compute => 'Azure::ARM::Compute::ComputeManagementClient',
+        :container_registry => 'Azure::ARM::ContainerRegistry::ContainerRegistry::ContainerRegistryManagementClient',
         :datalake_analytics => 'Azure::ARM::DataLakeAnalytics::DataLakeAnalyticsAccountManagementClient',
         :datalake_store => 'Azure::ARM::DataLakeStore::DataLakeStoreAccountManagementClient',
         :devtestlabs => 'Azure::ARM::DevTestLabs::DevTestLabsClient',
