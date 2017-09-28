@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ApiManagement::Api_2017_07_14
+module Azure::ARM::ApiManagement::Api_2017_03_01
   #
   # ApiManagement Client
   #
@@ -105,7 +105,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::NetworkStatusContract.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::NetworkStatusContract.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -212,7 +212,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::NetworkStatusContract.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::NetworkStatusContract.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

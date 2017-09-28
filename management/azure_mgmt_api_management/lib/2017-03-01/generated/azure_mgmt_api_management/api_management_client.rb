@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ApiManagement::Api_2017_07_14
+module Azure::ARM::ApiManagement::Api_2017_03_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -96,6 +96,15 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     # @return [OpenIdConnectProvider] open_id_connect_provider
     attr_reader :open_id_connect_provider
 
+    # @return [SignInSettings] sign_in_settings
+    attr_reader :sign_in_settings
+
+    # @return [SignUpSettings] sign_up_settings
+    attr_reader :sign_up_settings
+
+    # @return [DelegationSettings] delegation_settings
+    attr_reader :delegation_settings
+
     # @return [Product] product
     attr_reader :product
 
@@ -183,6 +192,9 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       @logger = Logger.new(self)
       @network_status = NetworkStatus.new(self)
       @open_id_connect_provider = OpenIdConnectProvider.new(self)
+      @sign_in_settings = SignInSettings.new(self)
+      @sign_up_settings = SignUpSettings.new(self)
+      @delegation_settings = DelegationSettings.new(self)
       @product = Product.new(self)
       @product_api = ProductApi.new(self)
       @product_group = ProductGroup.new(self)
@@ -270,8 +282,8 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_api_management'
-        if defined? Azure::ARM::ApiManagement::Api_2017_07_14::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::ApiManagement::Api_2017_07_14::VERSION}"
+        if defined? Azure::ARM::ApiManagement::Api_2017_03_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::ApiManagement::Api_2017_03_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

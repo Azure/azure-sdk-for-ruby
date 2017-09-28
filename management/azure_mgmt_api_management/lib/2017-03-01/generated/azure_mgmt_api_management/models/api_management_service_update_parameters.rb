@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ApiManagement::Api_2017_07_14
+module Azure::ARM::ApiManagement::Api_2017_03_01
   module Models
     #
     # Parameter supplied to Update Api Management Service.
@@ -62,7 +62,14 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       attr_accessor :additional_locations
 
       # @return [Hash{String => String}] Custom properties of the API
-      # Management service, like disabling TLS 1.0.
+      # Management service. Setting
+      # `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
+      # will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0,
+      # 1.1 and 1.2). Setting
+      # `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11`
+      # can be used to disable just TLS 1.1 and setting
+      # `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10`
+      # can be used to disable TLS 1.0 on an API Management service.
       attr_accessor :custom_properties
 
       # @return [Array<CertificateConfiguration>] List of Certificates that

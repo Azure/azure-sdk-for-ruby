@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ApiManagement::Api_2017_07_14
+module Azure::ARM::ApiManagement::Api_2017_03_01
   #
   # ApiManagement Client
   #
@@ -22,7 +22,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     attr_reader :client
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -40,7 +40,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     end
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -57,7 +57,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     end
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.
@@ -72,7 +72,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_api_async(resource_group_name, service_name, filter, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_api_id = 'byApi'
       fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -83,13 +82,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byApiId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byApiId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byApiId' => by_api_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -110,7 +109,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -174,7 +173,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_user_async(resource_group_name, service_name, filter, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_user_id = 'byUser'
       fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -185,13 +183,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byUserId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byUserId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byUserId' => by_user_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -212,7 +210,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -276,7 +274,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_operation_async(resource_group_name, service_name, filter, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_operation_id = 'byOperation'
       fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -287,13 +284,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byOperationId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byOperationId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byOperationId' => by_operation_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -314,7 +311,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -378,7 +375,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_product_async(resource_group_name, service_name, filter, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_product_id = 'byProduct'
       fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -389,13 +385,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byProductId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byProductId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byProductId' => by_product_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -416,7 +412,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -480,7 +476,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_geo_async(resource_group_name, service_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_geo_id = 'byGeo'
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -490,13 +485,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byGeoId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byGeoId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byGeoId' => by_geo_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -517,7 +512,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -581,7 +576,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_subscription_async(resource_group_name, service_name, filter = nil, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_subscription_id = 'bySubscription'
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -591,13 +585,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{bySubscriptionId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/bySubscriptionId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'bySubscriptionId' => by_subscription_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -618,7 +612,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -697,7 +691,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_time_async(resource_group_name, service_name, interval, filter = nil, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_time_id = 'byTime'
       fail ArgumentError, 'interval is nil' if interval.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -708,13 +701,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byTimeId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byTimeId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byTimeId' => by_time_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'interval' => interval,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -735,7 +728,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -799,7 +792,6 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     def list_by_request_async(resource_group_name, service_name, filter, top = nil, skip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'service_name is nil' if service_name.nil?
-      by_request_id = 'byRequest'
       fail ArgumentError, 'filter is nil' if filter.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -810,13 +802,13 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{byRequestId}'
+      path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byRequestId'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'byRequestId' => by_request_id,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'$top' => top,'$skip' => skip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -837,7 +829,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::RequestReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::RequestReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -851,7 +843,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     end
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -866,7 +858,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     end
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -880,7 +872,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     end
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -924,7 +916,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1011,7 +1003,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1098,7 +1090,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1185,7 +1177,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1272,7 +1264,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1359,7 +1351,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1446,7 +1438,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ApiManagement::Api_2017_07_14::Models::ReportCollection.mapper()
+            result_mapper = Azure::ARM::ApiManagement::Api_2017_03_01::Models::ReportCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1460,7 +1452,7 @@ module Azure::ARM::ApiManagement::Api_2017_07_14
     end
 
     #
-    # Lists report records.
+    # Lists report records by API.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param service_name [String] The name of the API Management service.

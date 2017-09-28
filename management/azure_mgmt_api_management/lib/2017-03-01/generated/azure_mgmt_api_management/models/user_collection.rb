@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ApiManagement::Api_2017_07_14
+module Azure::ARM::ApiManagement::Api_2017_03_01
   module Models
     #
     # Paged Users list representation.
