@@ -33,11 +33,9 @@ namespace :arm do
   task :clean_generated do
     each_gem do
       delete_command_windows = 'for /r lib\ %a in (generated) do @if exist %a del /S /Q %a 2>nul'
-      delete_command_linux = 'rm -rf lib/*/generated'
-      # execute_and_stream(OS.windows? ? delete_command_windows : delete_command_linux)
       delete_empty_folders_windows = "ROBOCOPY lib lib /S /MOVE"
-      delete_empty_folders_linux = ""
-      execute_and_stream(OS.windows? ? delete_command_windows + " & " + delete_empty_folders_windows : delete_command_linux + " ; " + delete_empty_folders_linux)
+      delete_command_linux = "find lib/* -d -type d -exec  rm -rf '{}' \;"
+      execute_and_stream(OS.windows? ? delete_command_windows + " & " + delete_empty_folders_windows : delete_command_linux)
     end
   end
 
