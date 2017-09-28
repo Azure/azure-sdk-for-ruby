@@ -1,3 +1,6 @@
+## 2017.09.28 - Azure Container Registry version 0.13.0
+* Released [azure_mgmt_container_registry](https://rubygems.org/gems/azure_mgmt_container_registry) version 0.13.0. Refer [PR# 1007](https://github.com/Azure/azure-sdk-for-ruby/pull/1007) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/65a45deed027ed8e428b18e7a6da8ea83bc68f21/specification/containerregistry/resource-manager/readme.md) for further details.
+
 ## 2017.09.27 - Azure ARM version 0.13.0
 
 * Regened all azure_mgmt_* sdks using [Autorest.2.0.4144](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.2.0.15](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.13.0
