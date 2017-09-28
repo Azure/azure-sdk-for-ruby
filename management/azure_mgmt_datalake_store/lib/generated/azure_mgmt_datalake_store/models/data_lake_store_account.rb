@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeStore
       # @return [DataLakeStoreAccountStatus] the provisioning status of the
       # Data Lake Store account. Possible values include: 'Failed', 'Creating',
       # 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
-      # 'Deleting', 'Deleted'
+      # 'Deleting', 'Deleted', 'Undeleting', 'Canceled'
       attr_accessor :provisioning_state
 
       # @return [DataLakeStoreAccountState] the state of the Data Lake Store
