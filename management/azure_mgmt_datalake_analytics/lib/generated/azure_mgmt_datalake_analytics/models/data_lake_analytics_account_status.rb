@@ -18,6 +18,8 @@ module Azure::ARM::DataLakeAnalytics
       Resuming = "Resuming"
       Deleting = "Deleting"
       Deleted = "Deleted"
+      Undeleting = "Undeleting"
+      Canceled = "Canceled"
     end
   end
 end
