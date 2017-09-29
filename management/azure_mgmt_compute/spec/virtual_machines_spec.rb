@@ -113,11 +113,11 @@ describe 'Virtual machine api' do
     ni = network_client.make_request(:get, ni_path, options)
     expect(ni).not_to be_nil
     # user NetworkInterface mapper to deserialize object
-    ni_instance  = NetworkInterface.new.from_json(ni)
+    ni_instance  = network_client.deserialize(NetworkInterface.mapper(), ni)
     # retrieve first IP address for first IP configuration
     ip_address_path = ni_instance.ip_configurations[0].public_ipaddress.id
     ip_address = network_client.make_request(:get, ip_address_path, options)
-    ip_address_instance = PublicIPAddress.new.from_json(ip_address)
+    ip_address_instance = network_client.deserialize(PublicIPAddress.mapper(), ip_address)
     expect(ip_address_instance.dns_settings.fqdn).to eq("testdomain53464.westus.cloudapp.azure.com")
   end
 
@@ -135,7 +135,7 @@ describe 'Virtual machine api' do
 
     result = @resource_helper.network_client.network_interfaces.list_all
     result.each do |network_interface|
-      expect(network_interface.virtual_machine).to be_an_instance_of(MsRestAzure::SubResource)
+      expect(network_interface.virtual_machine).to be_an_instance_of(SubResource)
     end
   end
 
