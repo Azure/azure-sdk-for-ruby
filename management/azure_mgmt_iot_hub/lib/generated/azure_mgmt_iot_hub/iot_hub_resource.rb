@@ -26,16 +26,13 @@ module Azure::ARM::IotHub
     #
     # Get the non-security related metadata of an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IotHubDescription] operation results.
     #
-    def get(resource_group_name, resource_name, custom_headers = nil)
-      response = get_async(resource_group_name, resource_name, custom_headers).value!
+    def get(custom_headers = nil)
+      response = get_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -44,16 +41,13 @@ module Azure::ARM::IotHub
     #
     # Get the non-security related metadata of an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      get_async(resource_group_name, resource_name, custom_headers).value!
+    def get_with_http_info(custom_headers = nil)
+      get_async(custom_headers).value!
     end
 
     #
@@ -61,19 +55,16 @@ module Azure::ARM::IotHub
     #
     # Get the non-security related metadata of an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, resource_name, custom_headers = nil)
+    def get_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -87,7 +78,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -128,9 +119,6 @@ module Azure::ARM::IotHub
     # property is to retrieve the IoT hub metadata and security metadata, and then
     # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -138,15 +126,12 @@ module Azure::ARM::IotHub
     #
     # @return [IotHubDescription] operation results.
     #
-    def create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
+    def create_or_update(iot_hub_description, custom_headers = nil)
+      response = create_or_update_async(iot_hub_description, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -155,9 +140,9 @@ module Azure::ARM::IotHub
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+    def create_or_update_async(iot_hub_description, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers)
+      promise = begin_create_or_update_async(iot_hub_description, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -178,32 +163,26 @@ module Azure::ARM::IotHub
     #
     # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Object] operation results.
     #
-    def delete(resource_group_name, resource_name, custom_headers = nil)
-      response = delete_async(resource_group_name, resource_name, custom_headers).value!
+    def delete(custom_headers = nil)
+      response = delete_async(custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, resource_name, custom_headers = nil)
+    def delete_async(custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, resource_name, custom_headers)
+      promise = begin_delete_async(custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -319,15 +298,13 @@ module Azure::ARM::IotHub
     #
     # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<IotHubDescription>] operation results.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -336,15 +313,13 @@ module Azure::ARM::IotHub
     #
     # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(custom_headers = nil)
+      list_by_resource_group_async(custom_headers).value!
     end
 
     #
@@ -352,17 +327,15 @@ module Azure::ARM::IotHub
     #
     # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
 
 
       request_headers = {}
@@ -376,7 +349,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -415,16 +388,13 @@ module Azure::ARM::IotHub
     #
     # Get the statistics from an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [RegistryStatistics] operation results.
     #
-    def get_stats(resource_group_name, resource_name, custom_headers = nil)
-      response = get_stats_async(resource_group_name, resource_name, custom_headers).value!
+    def get_stats(custom_headers = nil)
+      response = get_stats_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -433,16 +403,13 @@ module Azure::ARM::IotHub
     #
     # Get the statistics from an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_stats_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      get_stats_async(resource_group_name, resource_name, custom_headers).value!
+    def get_stats_with_http_info(custom_headers = nil)
+      get_stats_async(custom_headers).value!
     end
 
     #
@@ -450,19 +417,16 @@ module Azure::ARM::IotHub
     #
     # Get the statistics from an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_stats_async(resource_group_name, resource_name, custom_headers = nil)
+    def get_stats_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -476,7 +440,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -515,16 +479,13 @@ module Azure::ARM::IotHub
     #
     # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<IotHubSkuDescription>] operation results.
     #
-    def get_valid_skus(resource_group_name, resource_name, custom_headers = nil)
-      first_page = get_valid_skus_as_lazy(resource_group_name, resource_name, custom_headers)
+    def get_valid_skus(custom_headers = nil)
+      first_page = get_valid_skus_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -533,16 +494,13 @@ module Azure::ARM::IotHub
     #
     # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_valid_skus_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      get_valid_skus_async(resource_group_name, resource_name, custom_headers).value!
+    def get_valid_skus_with_http_info(custom_headers = nil)
+      get_valid_skus_async(custom_headers).value!
     end
 
     #
@@ -550,19 +508,16 @@ module Azure::ARM::IotHub
     #
     # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_valid_skus_async(resource_group_name, resource_name, custom_headers = nil)
+    def get_valid_skus_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -576,7 +531,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -617,9 +572,6 @@ module Azure::ARM::IotHub
     # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
     # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -627,8 +579,8 @@ module Azure::ARM::IotHub
     #
     # @return [Array<String>] operation results.
     #
-    def list_event_hub_consumer_groups(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
-      first_page = list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers)
+    def list_event_hub_consumer_groups(event_hub_endpoint_name, custom_headers = nil)
+      first_page = list_event_hub_consumer_groups_as_lazy(event_hub_endpoint_name, custom_headers)
       first_page.get_all_items
     end
 
@@ -639,9 +591,6 @@ module Azure::ARM::IotHub
     # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
     # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -649,8 +598,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_event_hub_consumer_groups_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
-      list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers).value!
+    def list_event_hub_consumer_groups_with_http_info(event_hub_endpoint_name, custom_headers = nil)
+      list_event_hub_consumer_groups_async(event_hub_endpoint_name, custom_headers).value!
     end
 
     #
@@ -660,9 +609,6 @@ module Azure::ARM::IotHub
     # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
     # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -670,11 +616,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
+    def list_event_hub_consumer_groups_async(event_hub_endpoint_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'event_hub_endpoint_name is nil' if event_hub_endpoint_name.nil?
 
 
@@ -689,7 +635,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'eventHubEndpointName' => event_hub_endpoint_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -730,9 +676,6 @@ module Azure::ARM::IotHub
     # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
     # for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to retrieve.
@@ -741,8 +684,8 @@ module Azure::ARM::IotHub
     #
     # @return [EventHubConsumerGroupInfo] operation results.
     #
-    def get_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
-      response = get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
+    def get_event_hub_consumer_group(event_hub_endpoint_name, name, custom_headers = nil)
+      response = get_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -753,9 +696,6 @@ module Azure::ARM::IotHub
     # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
     # for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to retrieve.
@@ -764,8 +704,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
-      get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
+    def get_event_hub_consumer_group_with_http_info(event_hub_endpoint_name, name, custom_headers = nil)
+      get_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers).value!
     end
 
     #
@@ -775,9 +715,6 @@ module Azure::ARM::IotHub
     # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
     # for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to retrieve.
@@ -786,11 +723,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+    def get_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'event_hub_endpoint_name is nil' if event_hub_endpoint_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
 
@@ -806,7 +743,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -845,9 +782,6 @@ module Azure::ARM::IotHub
     #
     # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to add.
@@ -856,8 +790,8 @@ module Azure::ARM::IotHub
     #
     # @return [EventHubConsumerGroupInfo] operation results.
     #
-    def create_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
-      response = create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
+    def create_event_hub_consumer_group(event_hub_endpoint_name, name, custom_headers = nil)
+      response = create_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -866,9 +800,6 @@ module Azure::ARM::IotHub
     #
     # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to add.
@@ -877,8 +808,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
-      create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
+    def create_event_hub_consumer_group_with_http_info(event_hub_endpoint_name, name, custom_headers = nil)
+      create_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers).value!
     end
 
     #
@@ -886,9 +817,6 @@ module Azure::ARM::IotHub
     #
     # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to add.
@@ -897,11 +825,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+    def create_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'event_hub_endpoint_name is nil' if event_hub_endpoint_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
 
@@ -917,7 +845,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -956,9 +884,6 @@ module Azure::ARM::IotHub
     #
     # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to delete.
@@ -966,8 +891,8 @@ module Azure::ARM::IotHub
     # will be added to the HTTP request.
     #
     #
-    def delete_event_hub_consumer_group(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
-      response = delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
+    def delete_event_hub_consumer_group(event_hub_endpoint_name, name, custom_headers = nil)
+      response = delete_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers).value!
       nil
     end
 
@@ -976,9 +901,6 @@ module Azure::ARM::IotHub
     #
     # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to delete.
@@ -987,8 +909,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_event_hub_consumer_group_with_http_info(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
-      delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers).value!
+    def delete_event_hub_consumer_group_with_http_info(event_hub_endpoint_name, name, custom_headers = nil)
+      delete_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers).value!
     end
 
     #
@@ -996,9 +918,6 @@ module Azure::ARM::IotHub
     #
     # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint in the IoT hub.
     # @param name [String] The name of the consumer group to delete.
@@ -1007,11 +926,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_event_hub_consumer_group_async(resource_group_name, resource_name, event_hub_endpoint_name, name, custom_headers = nil)
+    def delete_event_hub_consumer_group_async(event_hub_endpoint_name, name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'event_hub_endpoint_name is nil' if event_hub_endpoint_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
 
@@ -1027,7 +946,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1058,16 +977,13 @@ module Azure::ARM::IotHub
     # Get a list of all the jobs in an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<JobResponse>] operation results.
     #
-    def list_jobs(resource_group_name, resource_name, custom_headers = nil)
-      first_page = list_jobs_as_lazy(resource_group_name, resource_name, custom_headers)
+    def list_jobs(custom_headers = nil)
+      first_page = list_jobs_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -1078,16 +994,13 @@ module Azure::ARM::IotHub
     # Get a list of all the jobs in an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_jobs_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      list_jobs_async(resource_group_name, resource_name, custom_headers).value!
+    def list_jobs_with_http_info(custom_headers = nil)
+      list_jobs_async(custom_headers).value!
     end
 
     #
@@ -1097,19 +1010,16 @@ module Azure::ARM::IotHub
     # Get a list of all the jobs in an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_jobs_async(resource_group_name, resource_name, custom_headers = nil)
+    def list_jobs_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -1123,7 +1033,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1164,17 +1074,14 @@ module Azure::ARM::IotHub
     # Get the details of a job from an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param job_id [String] The job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [JobResponse] operation results.
     #
-    def get_job(resource_group_name, resource_name, job_id, custom_headers = nil)
-      response = get_job_async(resource_group_name, resource_name, job_id, custom_headers).value!
+    def get_job(job_id, custom_headers = nil)
+      response = get_job_async(job_id, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1185,17 +1092,14 @@ module Azure::ARM::IotHub
     # Get the details of a job from an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param job_id [String] The job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_job_with_http_info(resource_group_name, resource_name, job_id, custom_headers = nil)
-      get_job_async(resource_group_name, resource_name, job_id, custom_headers).value!
+    def get_job_with_http_info(job_id, custom_headers = nil)
+      get_job_async(job_id, custom_headers).value!
     end
 
     #
@@ -1205,20 +1109,17 @@ module Azure::ARM::IotHub
     # Get the details of a job from an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param job_id [String] The job identifier.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_job_async(resource_group_name, resource_name, job_id, custom_headers = nil)
+    def get_job_async(job_id, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'job_id is nil' if job_id.nil?
 
 
@@ -1233,7 +1134,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'jobId' => job_id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'jobId' => job_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1272,16 +1173,13 @@ module Azure::ARM::IotHub
     #
     # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<IotHubQuotaMetricInfo>] operation results.
     #
-    def get_quota_metrics(resource_group_name, resource_name, custom_headers = nil)
-      first_page = get_quota_metrics_as_lazy(resource_group_name, resource_name, custom_headers)
+    def get_quota_metrics(custom_headers = nil)
+      first_page = get_quota_metrics_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -1290,16 +1188,13 @@ module Azure::ARM::IotHub
     #
     # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_quota_metrics_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      get_quota_metrics_async(resource_group_name, resource_name, custom_headers).value!
+    def get_quota_metrics_with_http_info(custom_headers = nil)
+      get_quota_metrics_async(custom_headers).value!
     end
 
     #
@@ -1307,19 +1202,16 @@ module Azure::ARM::IotHub
     #
     # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_quota_metrics_async(resource_group_name, resource_name, custom_headers = nil)
+    def get_quota_metrics_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -1333,7 +1225,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1479,16 +1371,13 @@ module Azure::ARM::IotHub
     # Get the security metadata for an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<SharedAccessSignatureAuthorizationRule>] operation results.
     #
-    def list_keys(resource_group_name, resource_name, custom_headers = nil)
-      first_page = list_keys_as_lazy(resource_group_name, resource_name, custom_headers)
+    def list_keys(custom_headers = nil)
+      first_page = list_keys_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
@@ -1499,16 +1388,13 @@ module Azure::ARM::IotHub
     # Get the security metadata for an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      list_keys_async(resource_group_name, resource_name, custom_headers).value!
+    def list_keys_with_http_info(custom_headers = nil)
+      list_keys_async(custom_headers).value!
     end
 
     #
@@ -1518,19 +1404,16 @@ module Azure::ARM::IotHub
     # Get the security metadata for an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, resource_name, custom_headers = nil)
+    def list_keys_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -1544,7 +1427,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1585,17 +1468,14 @@ module Azure::ARM::IotHub
     # Get a shared access policy by name from an IoT hub. For more information,
     # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param key_name [String] The name of the shared access policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SharedAccessSignatureAuthorizationRule] operation results.
     #
-    def get_keys_for_key_name(resource_group_name, resource_name, key_name, custom_headers = nil)
-      response = get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers).value!
+    def get_keys_for_key_name(key_name, custom_headers = nil)
+      response = get_keys_for_key_name_async(key_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1606,17 +1486,14 @@ module Azure::ARM::IotHub
     # Get a shared access policy by name from an IoT hub. For more information,
     # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param key_name [String] The name of the shared access policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_keys_for_key_name_with_http_info(resource_group_name, resource_name, key_name, custom_headers = nil)
-      get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers).value!
+    def get_keys_for_key_name_with_http_info(key_name, custom_headers = nil)
+      get_keys_for_key_name_async(key_name, custom_headers).value!
     end
 
     #
@@ -1626,20 +1503,17 @@ module Azure::ARM::IotHub
     # Get a shared access policy by name from an IoT hub. For more information,
     # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param key_name [String] The name of the shared access policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_keys_for_key_name_async(resource_group_name, resource_name, key_name, custom_headers = nil)
+    def get_keys_for_key_name_async(key_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'key_name is nil' if key_name.nil?
 
 
@@ -1654,7 +1528,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'keyName' => key_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'keyName' => key_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1697,9 +1571,6 @@ module Azure::ARM::IotHub
     # Azure Storage blob container. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param export_devices_parameters [ExportDevicesRequest] The parameters that
     # specify the export devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1707,8 +1578,8 @@ module Azure::ARM::IotHub
     #
     # @return [JobResponse] operation results.
     #
-    def export_devices(resource_group_name, resource_name, export_devices_parameters, custom_headers = nil)
-      response = export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers).value!
+    def export_devices(export_devices_parameters, custom_headers = nil)
+      response = export_devices_async(export_devices_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1721,9 +1592,6 @@ module Azure::ARM::IotHub
     # Azure Storage blob container. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param export_devices_parameters [ExportDevicesRequest] The parameters that
     # specify the export devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1731,8 +1599,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def export_devices_with_http_info(resource_group_name, resource_name, export_devices_parameters, custom_headers = nil)
-      export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers).value!
+    def export_devices_with_http_info(export_devices_parameters, custom_headers = nil)
+      export_devices_async(export_devices_parameters, custom_headers).value!
     end
 
     #
@@ -1744,9 +1612,6 @@ module Azure::ARM::IotHub
     # Azure Storage blob container. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param export_devices_parameters [ExportDevicesRequest] The parameters that
     # specify the export devices operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1754,11 +1619,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def export_devices_async(resource_group_name, resource_name, export_devices_parameters, custom_headers = nil)
+    def export_devices_async(export_devices_parameters, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'export_devices_parameters is nil' if export_devices_parameters.nil?
 
 
@@ -1781,7 +1646,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1825,9 +1690,6 @@ module Azure::ARM::IotHub
     # from a blob. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param import_devices_parameters [ImportDevicesRequest] The parameters that
     # specify the import devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1835,8 +1697,8 @@ module Azure::ARM::IotHub
     #
     # @return [JobResponse] operation results.
     #
-    def import_devices(resource_group_name, resource_name, import_devices_parameters, custom_headers = nil)
-      response = import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers).value!
+    def import_devices(import_devices_parameters, custom_headers = nil)
+      response = import_devices_async(import_devices_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1849,9 +1711,6 @@ module Azure::ARM::IotHub
     # from a blob. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param import_devices_parameters [ImportDevicesRequest] The parameters that
     # specify the import devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1859,8 +1718,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def import_devices_with_http_info(resource_group_name, resource_name, import_devices_parameters, custom_headers = nil)
-      import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers).value!
+    def import_devices_with_http_info(import_devices_parameters, custom_headers = nil)
+      import_devices_async(import_devices_parameters, custom_headers).value!
     end
 
     #
@@ -1872,9 +1731,6 @@ module Azure::ARM::IotHub
     # from a blob. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param import_devices_parameters [ImportDevicesRequest] The parameters that
     # specify the import devices operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1882,11 +1738,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def import_devices_async(resource_group_name, resource_name, import_devices_parameters, custom_headers = nil)
+    def import_devices_async(import_devices_parameters, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'import_devices_parameters is nil' if import_devices_parameters.nil?
 
 
@@ -1909,7 +1765,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1951,9 +1807,6 @@ module Azure::ARM::IotHub
     # property is to retrieve the IoT hub metadata and security metadata, and then
     # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1961,8 +1814,8 @@ module Azure::ARM::IotHub
     #
     # @return [IotHubDescription] operation results.
     #
-    def begin_create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
+    def begin_create_or_update(iot_hub_description, custom_headers = nil)
+      response = begin_create_or_update_async(iot_hub_description, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1973,9 +1826,6 @@ module Azure::ARM::IotHub
     # property is to retrieve the IoT hub metadata and security metadata, and then
     # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1983,8 +1833,8 @@ module Azure::ARM::IotHub
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
+    def begin_create_or_update_with_http_info(iot_hub_description, custom_headers = nil)
+      begin_create_or_update_async(iot_hub_description, custom_headers).value!
     end
 
     #
@@ -1994,9 +1844,6 @@ module Azure::ARM::IotHub
     # property is to retrieve the IoT hub metadata and security metadata, and then
     # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -2004,11 +1851,11 @@ module Azure::ARM::IotHub
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+    def begin_create_or_update_async(iot_hub_description, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
       fail ArgumentError, 'iot_hub_description is nil' if iot_hub_description.nil?
 
 
@@ -2031,7 +1878,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -2081,16 +1928,13 @@ module Azure::ARM::IotHub
     #
     # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Object] operation results.
     #
-    def begin_delete(resource_group_name, resource_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, resource_name, custom_headers).value!
+    def begin_delete(custom_headers = nil)
+      response = begin_delete_async(custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -2099,16 +1943,13 @@ module Azure::ARM::IotHub
     #
     # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, resource_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, resource_name, custom_headers).value!
+    def begin_delete_with_http_info(custom_headers = nil)
+      begin_delete_async(custom_headers).value!
     end
 
     #
@@ -2116,19 +1957,16 @@ module Azure::ARM::IotHub
     #
     # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, resource_name, custom_headers = nil)
+    def begin_delete_async(custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
+      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
 
 
       request_headers = {}
@@ -2142,7 +1980,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -2892,16 +2730,14 @@ module Azure::ARM::IotHub
     #
     # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IotHubDescriptionListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(custom_headers = nil)
+      response = list_by_resource_group_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -2916,17 +2752,14 @@ module Azure::ARM::IotHub
     #
     # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IotHubSkuDescriptionListResult] which provide lazy access to pages
     # of the response.
     #
-    def get_valid_skus_as_lazy(resource_group_name, resource_name, custom_headers = nil)
-      response = get_valid_skus_async(resource_group_name, resource_name, custom_headers).value!
+    def get_valid_skus_as_lazy(custom_headers = nil)
+      response = get_valid_skus_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -2943,9 +2776,6 @@ module Azure::ARM::IotHub
     # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
     # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
     # endpoint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2954,8 +2784,8 @@ module Azure::ARM::IotHub
     # @return [EventHubConsumerGroupsListResult] which provide lazy access to pages
     # of the response.
     #
-    def list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
-      response = list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers).value!
+    def list_event_hub_consumer_groups_as_lazy(event_hub_endpoint_name, custom_headers = nil)
+      response = list_event_hub_consumer_groups_async(event_hub_endpoint_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -2972,17 +2802,14 @@ module Azure::ARM::IotHub
     # Get a list of all the jobs in an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [JobResponseListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_jobs_as_lazy(resource_group_name, resource_name, custom_headers = nil)
-      response = list_jobs_async(resource_group_name, resource_name, custom_headers).value!
+    def list_jobs_as_lazy(custom_headers = nil)
+      response = list_jobs_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -2997,17 +2824,14 @@ module Azure::ARM::IotHub
     #
     # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IotHubQuotaMetricInfoListResult] which provide lazy access to pages
     # of the response.
     #
-    def get_quota_metrics_as_lazy(resource_group_name, resource_name, custom_headers = nil)
-      response = get_quota_metrics_async(resource_group_name, resource_name, custom_headers).value!
+    def get_quota_metrics_as_lazy(custom_headers = nil)
+      response = get_quota_metrics_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -3024,17 +2848,14 @@ module Azure::ARM::IotHub
     # Get the security metadata for an IoT hub. For more information, see:
     # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SharedAccessSignatureAuthorizationRuleListResult] which provide lazy
     # access to pages of the response.
     #
-    def list_keys_as_lazy(resource_group_name, resource_name, custom_headers = nil)
-      response = list_keys_async(resource_group_name, resource_name, custom_headers).value!
+    def list_keys_as_lazy(custom_headers = nil)
+      response = list_keys_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
