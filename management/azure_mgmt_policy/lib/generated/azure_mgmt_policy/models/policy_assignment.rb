@@ -22,18 +22,12 @@ module Azure::ARM::Policy
       # @return [String] The scope for the policy assignment.
       attr_accessor :scope
 
-      # @return [Array<String>] The policy's excluded scopes.
-      attr_accessor :not_scopes
-
       # @return Required if a parameter is used in policy rule.
       attr_accessor :parameters
 
       # @return [String] This message will be part of response in case of
       # policy violation.
       attr_accessor :description
-
-      # @return The policy assignment metadata.
-      attr_accessor :metadata
 
       # @return [String] The ID of the policy assignment.
       attr_accessor :id
@@ -43,9 +37,6 @@ module Azure::ARM::Policy
 
       # @return [String] The name of the policy assignment.
       attr_accessor :name
-
-      # @return [PolicySku] The policy sku.
-      attr_accessor :sku
 
 
       #
@@ -81,20 +72,6 @@ module Azure::ARM::Policy
                   name: 'String'
                 }
               },
-              not_scopes: {
-                required: false,
-                serialized_name: 'properties.notScopes',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               parameters: {
                 required: false,
                 serialized_name: 'properties.parameters',
@@ -109,13 +86,6 @@ module Azure::ARM::Policy
                   name: 'String'
                 }
               },
-              metadata: {
-                required: false,
-                serialized_name: 'properties.metadata',
-                type: {
-                  name: 'Object'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
@@ -126,7 +96,6 @@ module Azure::ARM::Policy
               },
               type: {
                 required: false,
-                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -134,18 +103,9 @@ module Azure::ARM::Policy
               },
               name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
-                }
-              },
-              sku: {
-                required: false,
-                serialized_name: 'sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'PolicySku'
                 }
               }
             }
