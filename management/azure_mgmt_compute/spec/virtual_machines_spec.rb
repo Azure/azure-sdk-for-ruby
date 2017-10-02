@@ -135,7 +135,7 @@ describe 'Virtual machine api' do
 
     result = @resource_helper.network_client.network_interfaces.list_all
     result.each do |network_interface|
-      expect(network_interface.virtual_machine).to be_an_instance_of(VirtualMachine)
+      expect(network_interface.virtual_machine).to be_an_instance_of(Azure::ARM::Network::Models::SubResource)
     end
   end
 
