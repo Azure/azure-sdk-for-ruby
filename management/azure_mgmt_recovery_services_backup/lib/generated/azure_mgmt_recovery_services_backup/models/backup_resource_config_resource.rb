@@ -12,11 +12,10 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # The resource storage details.
     #
-    class BackupResourceConfigResource < MsRestAzure::Resource
+    class BackupResourceConfigResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [BackupResourceConfig] BackupResourceConfigResource properties
       attr_accessor :properties
 

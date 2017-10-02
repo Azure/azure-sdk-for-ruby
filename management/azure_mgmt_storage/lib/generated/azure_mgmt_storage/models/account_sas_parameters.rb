@@ -12,7 +12,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Services] The signed services accessible with the account SAS.
       # Possible values include: Blob (b), Queue (q), Table (t), File (f).
       # Possible values include: 'b', 'q', 't', 'f'

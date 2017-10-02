@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TransportProtocol] Protocol type of the port. Possible values
       # include: 'Tcp', 'Udp'
       attr_accessor :transport_protocol

@@ -35,6 +35,7 @@ module Azure::ARM::ServiceBus
   module Models
     autoload :CheckNameAvailabilityResult,                        'generated/azure_mgmt_service_bus/models/check_name_availability_result.rb'
     autoload :SBQueueListResult,                                  'generated/azure_mgmt_service_bus/models/sbqueue_list_result.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_service_bus/models/resource.rb'
     autoload :PremiumMessagingRegionsListResult,                  'generated/azure_mgmt_service_bus/models/premium_messaging_regions_list_result.rb'
     autoload :SBSku,                                              'generated/azure_mgmt_service_bus/models/sbsku.rb'
     autoload :SBTopicListResult,                                  'generated/azure_mgmt_service_bus/models/sbtopic_list_result.rb'

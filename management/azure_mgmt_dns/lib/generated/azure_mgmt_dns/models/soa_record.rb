@@ -12,7 +12,6 @@ module Azure::ARM::Dns
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The domain name of the authoritative name server for
       # this SOA record.
       attr_accessor :host

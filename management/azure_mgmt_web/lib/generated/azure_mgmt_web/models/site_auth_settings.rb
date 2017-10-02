@@ -13,7 +13,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] <code>true</code> if the Authentication /
       # Authorization feature is enabled for the current app; otherwise,
       # <code>false</code>.

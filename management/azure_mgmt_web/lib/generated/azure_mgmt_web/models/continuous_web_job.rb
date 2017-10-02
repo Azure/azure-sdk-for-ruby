@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContinuousWebJobStatus] Job status. Possible values include:
       # 'Initializing', 'Starting', 'Running', 'PendingRestart', 'Stopped'
       attr_accessor :status

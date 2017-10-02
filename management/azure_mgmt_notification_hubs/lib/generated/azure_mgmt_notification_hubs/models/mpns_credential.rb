@@ -12,7 +12,6 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The MPNS certificate.
       attr_accessor :mpns_certificate
 

@@ -9,11 +9,10 @@ module Azure::ARM::ServiceBus
     # Single item in List or Get Alias(Disaster Recovery configuration)
     # operation
     #
-    class ArmDisasterRecovery < MsRestAzure::Resource
+    class ArmDisasterRecovery < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProvisioningStateDR] Provisioning state of the Alias(Disaster
       # Recovery configuration) - possible values 'Accepted' or 'Succeeded' or
       # 'Failed'. Possible values include: 'Accepted', 'Succeeded', 'Failed'

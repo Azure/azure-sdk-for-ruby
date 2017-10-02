@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SecurityGroupNetworkInterface>] List of network
       # interfaces on the specified VM.
       attr_accessor :network_interfaces

@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to validate character
       # set in the message.
       attr_accessor :validate_character_set

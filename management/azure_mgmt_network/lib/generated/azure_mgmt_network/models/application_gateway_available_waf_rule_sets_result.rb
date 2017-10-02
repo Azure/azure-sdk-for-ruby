@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ApplicationGatewayFirewallRuleSet>] The list of
       # application gateway rule sets.
       attr_accessor :value

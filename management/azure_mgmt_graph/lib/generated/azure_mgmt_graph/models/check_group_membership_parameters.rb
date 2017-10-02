@@ -12,7 +12,6 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The object ID of the group to check.
       attr_accessor :group_id
 

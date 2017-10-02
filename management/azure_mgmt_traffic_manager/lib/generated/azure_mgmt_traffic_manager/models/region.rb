@@ -13,7 +13,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The code of the region
       attr_accessor :code
 

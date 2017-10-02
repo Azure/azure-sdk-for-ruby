@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<DiagnosticCondition>] A collection of zero or more
       # conditions applicable to the resource, or to the job overall, that
       # warrant customer attention.

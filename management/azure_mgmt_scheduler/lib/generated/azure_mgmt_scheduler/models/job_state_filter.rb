@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobState] Gets or sets the job state. Possible values include:
       # 'Enabled', 'Disabled', 'Faulted', 'Completed'
       attr_accessor :state

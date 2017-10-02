@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AvailabilitySet>] The list of availability sets
       attr_accessor :value
 

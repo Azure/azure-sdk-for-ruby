@@ -13,7 +13,6 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 

@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProtocolTypes] Specifies the protocol of listener. <br><br>
       # Possible values are: <br>**http** <br><br> **https**. Possible values
       # include: 'Http', 'Https'

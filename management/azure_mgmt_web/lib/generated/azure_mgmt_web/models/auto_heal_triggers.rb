@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RequestsBasedTrigger] A rule based on total requests.
       attr_accessor :requests
 

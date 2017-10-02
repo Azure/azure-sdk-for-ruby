@@ -17,7 +17,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
         @protectableItemType = "Microsoft.ClassicCompute/virtualMachines"

@@ -17,7 +17,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ClientDiscoveryForLogSpecification>] List of log
       # specifications of this operation.
       attr_accessor :log_specifications

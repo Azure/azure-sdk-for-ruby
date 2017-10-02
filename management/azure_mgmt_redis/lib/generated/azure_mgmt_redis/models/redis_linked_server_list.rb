@@ -12,7 +12,6 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RedisLinkedServer>] List of linked server Ids of a Redis
       # cache.
       attr_accessor :value

@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Minutes of the hour the schedule will run.
       attr_accessor :minute
 

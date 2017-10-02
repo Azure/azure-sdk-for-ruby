@@ -12,7 +12,6 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Encrypted User name to be used to connect to node.
       attr_accessor :user_name
 

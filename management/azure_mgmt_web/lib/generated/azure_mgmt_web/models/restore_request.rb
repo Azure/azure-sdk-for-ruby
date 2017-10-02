@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] SAS URL to the container.
       attr_accessor :storage_account_url
 

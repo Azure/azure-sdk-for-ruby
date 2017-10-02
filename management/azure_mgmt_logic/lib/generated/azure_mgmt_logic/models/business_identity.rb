@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The business identity qualifier e.g. as2identity, ZZ,
       # ZZZ, 31, 32
       attr_accessor :qualifier

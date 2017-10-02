@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The max permitted usage of this resource.
       attr_accessor :max_count
 

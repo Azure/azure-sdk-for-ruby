@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The changed time of integration account sessions.
       attr_accessor :changed_time
 

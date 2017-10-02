@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecurrenceFrequency] The frequency. Possible values include:
       # 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
       # 'Year'

@@ -8,11 +8,10 @@ module Azure::ARM::EventHub
     #
     # Single item in a List or Get AuthorizationRule operation
     #
-    class AuthorizationRule < MsRestAzure::Resource
+    class AuthorizationRule < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 

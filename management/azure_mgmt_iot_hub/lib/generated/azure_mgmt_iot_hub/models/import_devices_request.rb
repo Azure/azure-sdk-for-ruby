@@ -13,7 +13,6 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The input blob container URI.
       attr_accessor :input_blob_container_uri
 

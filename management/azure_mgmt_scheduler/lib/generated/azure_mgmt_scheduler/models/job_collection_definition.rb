@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the job collection resource identifier.
       attr_accessor :id
 

@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] An array of administrator user identities.
       attr_accessor :members
 

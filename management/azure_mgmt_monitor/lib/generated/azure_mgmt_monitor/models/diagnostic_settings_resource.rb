@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource ID of the storage account to which you
       # would like to send Diagnostic Logs.
       attr_accessor :storage_account_id

@@ -12,11 +12,10 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Parameters to restore file/folders API.
     #
-    class ILRRequestResource < MsRestAzure::Resource
+    class ILRRequestResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ILRRequest] ILRRequestResource properties
       attr_accessor :properties
 

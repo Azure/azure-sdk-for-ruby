@@ -12,7 +12,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] A boolean indicating whether or not the service
       # encrypts the data as it is stored.
       attr_accessor :enabled

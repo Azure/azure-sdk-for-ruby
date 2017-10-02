@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the username.
       attr_accessor :username
 

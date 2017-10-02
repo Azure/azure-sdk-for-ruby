@@ -12,7 +12,6 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The client identifier.
       attr_accessor :client_id
 

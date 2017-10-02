@@ -13,7 +13,6 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The export blob container URI.
       attr_accessor :export_blob_container_uri
 

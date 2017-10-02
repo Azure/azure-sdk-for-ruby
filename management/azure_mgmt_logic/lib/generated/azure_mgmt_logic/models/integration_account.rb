@@ -8,11 +8,10 @@ module Azure::ARM::Logic
     #
     # The integration account.
     #
-    class IntegrationAccount < MsRestAzure::Resource
+    class IntegrationAccount < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return The integration account properties.
       attr_accessor :properties
 

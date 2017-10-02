@@ -12,7 +12,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The IP address that this query experience originated
       # from.
       attr_accessor :source_ip

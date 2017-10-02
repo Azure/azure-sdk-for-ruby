@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageType] Storage type. Possible values include: 'Invalid',
       # 'GeoRedundant', 'LocallyRedundant'
       attr_accessor :storage_type

@@ -12,7 +12,6 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Ip adress itself.
       attr_accessor :base_ip_address
 

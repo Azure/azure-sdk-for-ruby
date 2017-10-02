@@ -12,7 +12,6 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] Name of this SKU. Possible values include: 'Basic',
       # 'Standard'
       attr_accessor :name

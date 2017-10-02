@@ -12,7 +12,6 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The total count of devices in the identity registry.
       attr_accessor :total_device_count
 

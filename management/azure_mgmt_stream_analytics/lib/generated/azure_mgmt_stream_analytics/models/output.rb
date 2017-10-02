@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OutputDataSource] Describes the data source that output will
       # be written to. Required on PUT (CreateOrReplace) requests.
       attr_accessor :datasource

@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Geographical location of the target web app, e.g.
       # SouthEastAsia, SouthCentralUS
       attr_accessor :location

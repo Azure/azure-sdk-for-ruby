@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Base address. Used as module identifier in ARM
       # resource URI.
       attr_accessor :base_address

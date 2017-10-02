@@ -12,7 +12,6 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Command to get tab completion for.
       attr_accessor :command
 

@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The type of administrator. Default value:
       # 'ActiveDirectory' .
       attr_accessor :administrator_type

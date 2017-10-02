@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
         @type = "Stream"

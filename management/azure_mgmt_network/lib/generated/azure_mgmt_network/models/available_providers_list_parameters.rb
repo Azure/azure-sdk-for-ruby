@@ -13,7 +13,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] A list of Azure regions.
       attr_accessor :azure_locations
 

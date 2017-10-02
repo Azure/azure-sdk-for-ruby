@@ -9,11 +9,10 @@ module Azure::ARM::ServerManagement
     # A PowerShell session resource (practically equivalent to a runspace
     # instance).
     #
-    class PowerShellSessionResource < MsRestAzure::Resource
+    class PowerShellSessionResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The PowerShell Session ID.
       attr_accessor :session_id
 

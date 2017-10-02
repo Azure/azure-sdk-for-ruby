@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Certificate Key Size.
       attr_accessor :key_size
 

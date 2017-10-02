@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] Name of this SKU. Possible values include: 'Basic',
       # 'Standard', 'Premium'
       attr_accessor :name

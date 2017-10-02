@@ -12,7 +12,6 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The IDs of the resources.
       attr_accessor :resources
 

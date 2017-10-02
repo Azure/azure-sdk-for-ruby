@@ -13,7 +13,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<InboundNatRule>] The incoming NAT rules
       attr_accessor :inbound_nat_rules
 

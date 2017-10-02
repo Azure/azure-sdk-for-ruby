@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Numeric id for the deleted site
       attr_accessor :id
 

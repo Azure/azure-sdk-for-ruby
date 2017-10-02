@@ -12,7 +12,6 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Location>] An array of locations.
       attr_accessor :value
 

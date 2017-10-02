@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [InstanceViewStatus] The health status information for the VM.
       attr_accessor :status
 

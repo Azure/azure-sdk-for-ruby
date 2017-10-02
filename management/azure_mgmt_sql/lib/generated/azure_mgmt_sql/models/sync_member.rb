@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SyncMemberDbType] Database type of the sync member. Possible
       # values include: 'AzureSqlDatabase', 'SqlServerDatabase'
       attr_accessor :database_type

@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the App Service Environment.
       attr_accessor :app_service_environment_resource_name
 

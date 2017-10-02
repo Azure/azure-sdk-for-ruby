@@ -8,11 +8,10 @@ module Azure::ARM::NotificationHubs
     #
     # Description of a Namespace AuthorizationRules.
     #
-    class SharedAccessAuthorizationRuleResource < MsRestAzure::Resource
+    class SharedAccessAuthorizationRuleResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 

@@ -8,11 +8,10 @@ module Azure::ARM::MobileEngagement
     #
     # The AppCollection resource.
     #
-    class AppCollection < MsRestAzure::Resource
+    class AppCollection < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProvisioningStates] Mobile Engagement AppCollection
       # Properties. Possible values include: 'Creating', 'Succeeded'
       attr_accessor :provisioning_state

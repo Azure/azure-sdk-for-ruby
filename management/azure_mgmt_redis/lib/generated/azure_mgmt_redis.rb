@@ -29,6 +29,7 @@ module Azure::ARM::Redis
     autoload :RedisRegenerateKeyParameters,                       'generated/azure_mgmt_redis/models/redis_regenerate_key_parameters.rb'
     autoload :Sku,                                                'generated/azure_mgmt_redis/models/sku.rb'
     autoload :RedisRebootParameters,                              'generated/azure_mgmt_redis/models/redis_reboot_parameters.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_redis/models/resource.rb'
     autoload :ExportRDBParameters,                                'generated/azure_mgmt_redis/models/export_rdbparameters.rb'
     autoload :RedisUpdateParameters,                              'generated/azure_mgmt_redis/models/redis_update_parameters.rb'
     autoload :ImportRDBParameters,                                'generated/azure_mgmt_redis/models/import_rdbparameters.rb'

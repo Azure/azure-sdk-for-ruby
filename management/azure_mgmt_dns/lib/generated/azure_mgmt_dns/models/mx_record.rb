@@ -12,7 +12,6 @@ module Azure::ARM::Dns
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The preference value for this MX record.
       attr_accessor :preference
 

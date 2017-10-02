@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Gets or sets a flag indicating whether the Push
       # endpoint is enabled.
       attr_accessor :is_push_enabled

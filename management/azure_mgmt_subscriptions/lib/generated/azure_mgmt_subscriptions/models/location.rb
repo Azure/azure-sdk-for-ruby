@@ -12,7 +12,6 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The fully qualified ID of the location. For example,
       # /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
       attr_accessor :id

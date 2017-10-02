@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The Sku name. Possible values include: 'Standard',
       # 'RS0'
       attr_accessor :name

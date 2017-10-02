@@ -12,7 +12,6 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The error code returned when exporting the template.
       attr_accessor :code
 

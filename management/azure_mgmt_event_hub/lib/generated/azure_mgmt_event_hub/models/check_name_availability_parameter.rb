@@ -12,7 +12,6 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name to check the namespace name availability
       attr_accessor :name
 

@@ -12,7 +12,6 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The currency in which the rates are provided.
       attr_accessor :currency
 

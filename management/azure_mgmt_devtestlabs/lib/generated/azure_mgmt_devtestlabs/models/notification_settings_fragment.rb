@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NotificationStatus] If notifications are enabled for this
       # schedule (i.e. Enabled, Disabled). Possible values include: 'Disabled',
       # 'Enabled'

@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the name of the storage account.
       attr_accessor :name
 

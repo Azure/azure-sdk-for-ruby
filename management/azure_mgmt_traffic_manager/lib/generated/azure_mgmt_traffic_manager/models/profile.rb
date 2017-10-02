@@ -12,7 +12,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProfileStatus] The status of the Traffic Manager profile.
       # Possible values include: 'Enabled', 'Disabled'
       attr_accessor :profile_status

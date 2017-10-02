@@ -10,11 +10,10 @@ module Azure::ARM::Compute
     # copied before being attached to the virtual machine. If SourceImage is
     # provided, the destination virtual hard drive must not exist.
     #
-    class Image < MsRestAzure::Resource
+    class Image < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] The source virtual machine from which Image is
       # created.
       attr_accessor :source_virtual_machine

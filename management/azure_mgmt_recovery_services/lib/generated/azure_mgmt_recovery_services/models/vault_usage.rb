@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UsagesUnit] Unit of the usage. Possible values include:
       # 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond',
       # 'BytesPerSecond'

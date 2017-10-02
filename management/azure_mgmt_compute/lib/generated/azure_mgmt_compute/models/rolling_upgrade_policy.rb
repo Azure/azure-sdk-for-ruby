@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The maximum percent of total virtual machine
       # instances that will be upgraded simultaneously by the rolling upgrade
       # in one batch. As this is a maximum, unhealthy instances in previous or

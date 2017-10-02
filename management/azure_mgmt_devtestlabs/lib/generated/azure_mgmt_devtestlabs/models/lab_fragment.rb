@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs
     #
     # A lab.
     #
-    class LabFragment < MsRestAzure::Resource
+    class LabFragment < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageType] Type of storage used by the lab. It can be either
       # Premium or Standard. Default is Premium. Possible values include:
       # 'Standard', 'Premium'

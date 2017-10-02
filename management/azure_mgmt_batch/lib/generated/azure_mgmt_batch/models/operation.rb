@@ -13,7 +13,6 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The operation name. This is of the format
       # {provider}/{resource}/{operation}
       attr_accessor :name

@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ComputeVmInstanceViewStatus>] Gets the statuses of the
       # virtual machine.
       attr_accessor :statuses

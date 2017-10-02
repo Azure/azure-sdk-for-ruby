@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Number of days to retain flow log records. Default
       # value: 0 .
       attr_accessor :days

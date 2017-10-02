@@ -12,7 +12,6 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The list of responses a cmdlet expects.
       attr_accessor :response
 

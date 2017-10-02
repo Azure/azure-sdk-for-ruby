@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the receiver to resubscribe.
       attr_accessor :receiver_name
 

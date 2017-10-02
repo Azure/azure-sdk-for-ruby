@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PublishingProfileFormat] Name of the format. Valid values are:
       # FileZilla3
       # WebDeploy -- default

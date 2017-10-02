@@ -12,7 +12,6 @@ module Azure::ARM::CognitiveServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] Gets or sets the SKU of the resource.
       attr_accessor :sku
 

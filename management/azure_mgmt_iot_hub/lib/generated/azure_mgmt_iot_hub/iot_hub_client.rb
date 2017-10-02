@@ -23,6 +23,16 @@ module Azure::ARM::IotHub
     # @return [String] The version of the API.
     attr_reader :api_version
 
+    # @return [String] The name of the resource group that contains the IoT
+    # hub.
+    attr_accessor :resource_group_name
+
+    # @return [String] The name of the IoT hub.
+    attr_accessor :resource_name
+
+    # @return [String] The name of the certificate
+    attr_accessor :certificate_name
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -40,6 +50,9 @@ module Azure::ARM::IotHub
     # @return [IotHubResource] iot_hub_resource
     attr_reader :iot_hub_resource
 
+    # @return [Certificates] certificates
+    attr_reader :certificates
+
     #
     # Creates initializes a new instance of the IotHubClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -55,6 +68,7 @@ module Azure::ARM::IotHub
 
       @operations = Operations.new(self)
       @iot_hub_resource = IotHubResource.new(self)
+      @certificates = Certificates.new(self)
       @api_version = '2017-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

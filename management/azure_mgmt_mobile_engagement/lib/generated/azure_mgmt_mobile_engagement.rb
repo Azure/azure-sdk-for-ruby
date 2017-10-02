@@ -62,6 +62,7 @@ module Azure::ARM::MobileEngagement
     autoload :FeedbackByCampaignParameter,                        'generated/azure_mgmt_mobile_engagement/models/feedback_by_campaign_parameter.rb'
     autoload :DeviceInfo,                                         'generated/azure_mgmt_mobile_engagement/models/device_info.rb'
     autoload :ImportTaskListResult,                               'generated/azure_mgmt_mobile_engagement/models/import_task_list_result.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_mobile_engagement/models/resource.rb'
     autoload :DeviceLocation,                                     'generated/azure_mgmt_mobile_engagement/models/device_location.rb'
     autoload :ExportTaskResult,                                   'generated/azure_mgmt_mobile_engagement/models/export_task_result.rb'
     autoload :Device,                                             'generated/azure_mgmt_mobile_engagement/models/device.rb'
