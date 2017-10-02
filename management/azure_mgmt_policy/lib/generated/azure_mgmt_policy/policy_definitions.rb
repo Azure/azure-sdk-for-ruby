@@ -67,7 +67,7 @@ module Azure::ARM::Policy
     def create_or_update_async(policy_definition_name, parameters, custom_headers = nil)
       fail ArgumentError, 'policy_definition_name is nil' if policy_definition_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-12-01'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -91,7 +91,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyDefinitionName' => policy_definition_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -165,7 +165,7 @@ module Azure::ARM::Policy
     #
     def delete_async(policy_definition_name, custom_headers = nil)
       fail ArgumentError, 'policy_definition_name is nil' if policy_definition_name.nil?
-      api_version = '2016-12-01'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -181,7 +181,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyDefinitionName' => policy_definition_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -245,7 +245,7 @@ module Azure::ARM::Policy
     #
     def get_async(policy_definition_name, custom_headers = nil)
       fail ArgumentError, 'policy_definition_name is nil' if policy_definition_name.nil?
-      api_version = '2016-12-01'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -261,7 +261,291 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyDefinitionName' => policy_definition_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Policy::Models::PolicyDefinition.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # create.
+    # @param parameters [PolicyDefinition] The policy definition properties.
+    # @param management_group_id [String] The ID of the management group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyDefinition] operation results.
+    #
+    def create_or_update_at_management_group(policy_definition_name, parameters, management_group_id, custom_headers = nil)
+      response = create_or_update_at_management_group_async(policy_definition_name, parameters, management_group_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # create.
+    # @param parameters [PolicyDefinition] The policy definition properties.
+    # @param management_group_id [String] The ID of the management group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_at_management_group_with_http_info(policy_definition_name, parameters, management_group_id, custom_headers = nil)
+      create_or_update_at_management_group_async(policy_definition_name, parameters, management_group_id, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # create.
+    # @param parameters [PolicyDefinition] The policy definition properties.
+    # @param management_group_id [String] The ID of the management group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_at_management_group_async(policy_definition_name, parameters, management_group_id, custom_headers = nil)
+      fail ArgumentError, 'policy_definition_name is nil' if policy_definition_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'management_group_id is nil' if management_group_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Azure::ARM::Policy::Models::PolicyDefinition.mapper()
+      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = 'providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policydefinitions/{policyDefinitionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'policyDefinitionName' => policy_definition_name,'subscriptionId' => @client.subscription_id,'managementGroupId' => management_group_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Policy::Models::PolicyDefinition.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # delete.
+    # @param management_group_id [String] The ID of the management group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_at_management_group(policy_definition_name, management_group_id, custom_headers = nil)
+      response = delete_at_management_group_async(policy_definition_name, management_group_id, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # delete.
+    # @param management_group_id [String] The ID of the management group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_at_management_group_with_http_info(policy_definition_name, management_group_id, custom_headers = nil)
+      delete_at_management_group_async(policy_definition_name, management_group_id, custom_headers).value!
+    end
+
+    #
+    # Deletes a policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # delete.
+    # @param management_group_id [String] The ID of the management group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_at_management_group_async(policy_definition_name, management_group_id, custom_headers = nil)
+      fail ArgumentError, 'policy_definition_name is nil' if policy_definition_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'management_group_id is nil' if management_group_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policydefinitions/{policyDefinitionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'policyDefinitionName' => policy_definition_name,'subscriptionId' => @client.subscription_id,'managementGroupId' => management_group_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # get.
+    # @param management_group_id [String] The ID of the management group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyDefinition] operation results.
+    #
+    def get_at_management_group(policy_definition_name, management_group_id, custom_headers = nil)
+      response = get_at_management_group_async(policy_definition_name, management_group_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # get.
+    # @param management_group_id [String] The ID of the management group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_at_management_group_with_http_info(policy_definition_name, management_group_id, custom_headers = nil)
+      get_at_management_group_async(policy_definition_name, management_group_id, custom_headers).value!
+    end
+
+    #
+    # Gets the policy definition at management group level.
+    #
+    # @param policy_definition_name [String] The name of the policy definition to
+    # get.
+    # @param management_group_id [String] The ID of the management group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_at_management_group_async(policy_definition_name, management_group_id, custom_headers = nil)
+      fail ArgumentError, 'policy_definition_name is nil' if policy_definition_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'management_group_id is nil' if management_group_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policydefinitions/{policyDefinitionName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'policyDefinitionName' => policy_definition_name,'subscriptionId' => @client.subscription_id,'managementGroupId' => management_group_id},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -331,7 +615,7 @@ module Azure::ARM::Policy
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(filter = nil, custom_headers = nil)
-      api_version = '2016-12-01'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -347,7 +631,97 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Policy::Models::PolicyDefinitionListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<PolicyDefinition>] operation results.
+    #
+    def list_by_management_group(management_group_id, filter = nil, custom_headers = nil)
+      first_page = list_by_management_group_as_lazy(management_group_id, filter, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_management_group_with_http_info(management_group_id, filter = nil, custom_headers = nil)
+      list_by_management_group_async(management_group_id, filter, custom_headers).value!
+    end
+
+    #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_management_group_async(management_group_id, filter = nil, custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'management_group_id is nil' if management_group_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = 'providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policydefinitions'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'managementGroupId' => management_group_id},
+          query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -468,6 +842,93 @@ module Azure::ARM::Policy
     end
 
     #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyDefinitionListResult] operation results.
+    #
+    def list_by_management_group_next(next_page_link, custom_headers = nil)
+      response = list_by_management_group_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_management_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_management_group_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_management_group_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Azure::ARM::Policy::Models::PolicyDefinitionListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response)
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Gets all the policy definitions for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
@@ -483,6 +944,28 @@ module Azure::ARM::Policy
         page = response.body
         page.next_method = Proc.new do |next_page_link|
           list_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Gets all the policy definitions for a subscription at management group level.
+    #
+    # @param management_group_id [String] The ID of the management group.
+    # @param filter [String] The filter to apply on the operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [PolicyDefinitionListResult] which provide lazy access to pages of
+    # the response.
+    #
+    def list_by_management_group_as_lazy(management_group_id, filter = nil, custom_headers = nil)
+      response = list_by_management_group_async(management_group_id, filter, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_management_group_next_async(next_page_link, custom_headers)
         end
         page
       end
