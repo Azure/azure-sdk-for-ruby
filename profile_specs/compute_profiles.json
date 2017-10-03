@@ -1,5 +1,15 @@
 [
   {
+    "name": "Profile_2015_06_15",
+    "resourceTypes": {
+      "Microsoft.Compute" : {
+        "2015-06-15": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_compute/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
     "name": "Profile_2016_03_30",
     "resourceTypes": {
       "Microsoft.Compute" : {
