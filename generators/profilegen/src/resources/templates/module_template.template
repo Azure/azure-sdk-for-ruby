@@ -2,10 +2,18 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+<%- if @individual_gem_profile -%>
+require_relative '../../../<%= @module_require %>'
+<%- else -%>
 require '<%= @module_require %>'
+<%- end -%>
+
 
 module Azure
   module Profiles
+    <%- if @individual_gem_profile -%>
+    module <%= @module_name %>
+    <%- end -%>
     module Management
       module <%= @profile_name %>
         module <%= @class_name %>
@@ -59,5 +67,8 @@ module Azure
         end
       end
     end
+    <%- if @individual_gem_profile -%>
+    end
+    <%- end -%>
   end
 end

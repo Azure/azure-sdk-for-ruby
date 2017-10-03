@@ -23,9 +23,9 @@ class ProfileGeneratorOptionsParser
     opt_parser = OptionParser.new do |opts|
       opts.banner = 'Usage: profile_generator_client.rb [options]'
 
-      opts.on('-oOUTPUT_DIR', '--output_dir=OUTPUT_DIR', 'Output directory to generate the profiles') do |base_dir|
-        options.base_dir = base_dir
-      end
+      #opts.on('-oOUTPUT_DIR', '--output_dir=OUTPUT_DIR', 'Output directory to generate the profiles') do |base_dir|
+      #  options.base_dir = base_dir
+      #end
 
       opts.on('-dDIR_METADATA', '--dir_metadata=DIR_METADATA', 'File containing directory metadata') do |dir_metadata|
         options.dir_metadata = dir_metadata
@@ -51,7 +51,7 @@ class ProfileGeneratorOptionsParser
   def self.options(args)
     args << '-h' if args.empty?
     options = self.parse(args)
-    mandatory_params = [:base_dir, :dir_metadata, :profile]
+    mandatory_params = [:dir_metadata, :profile]
     missing_params = mandatory_params.select{|param| options[param].nil?}
     raise OptionParser::MissingArgument.new(missing_params.join(', ')) unless missing_params.empty?
     options

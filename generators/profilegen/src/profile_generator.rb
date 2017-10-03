@@ -15,17 +15,19 @@ require_relative 'profile_templates'
 
 class ProfileGenerator
   # Accessors to be used in the generation of profile client
-  attr_accessor :file_names, :profile_name, :class_names
+  attr_accessor :file_names, :profile_name, :class_names, :individual_gem_profile
   # Accessors to be used in the generation of module
   attr_accessor :module_require, :module_name, :class_name, :operation_types, :management_client, :model_types, :versions_clients_mapper
   # Accessors to be used in the generation of profile spec file
-  attr_accessor :profile_version, :profile_ruby_version, :spec_includes
+  attr_accessor :profile_version, :profile_ruby_version, :spec_includes, :module_name
 
-  def initialize(profile, output_dir, dir_metadata)
+  def initialize(profile, dir_metadata)
     @profile_name = profile['name']
     @resource_provider_types = profile['resourceTypes']
     @profile_ruby_version = profile['ruby_version']
-    @output_dir = output_dir
+    @output_dir = profile['output_dir']
+    @module_name = ''
+    @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
     @file_names, @model_types, @operation_types = [], [], []
     @spec_includes, @class_names = [], []
@@ -45,6 +47,7 @@ class ProfileGenerator
   def generate_modules
     @resource_provider_types.each do |resource_provider, resource_types_obj|
       @module_require = @dir_metadata[resource_provider]['module_require']
+      @module_name    = get_module_name(resource_provider)
       @spec_includes << @module_require
       @class_name     = get_ruby_specific_resource_type_name(resource_provider)
       @class_names   << @class_name
@@ -73,6 +76,10 @@ class ProfileGenerator
   def generate_client
     file = get_client_file
     file.write(get_renderer(ProfileTemplates.client_template))
+  end
+
+  def get_module_name(resource_type_name)
+    get_ruby_specific_resource_type_name(resource_type_name).capitalize + 'Module'
   end
 
   #

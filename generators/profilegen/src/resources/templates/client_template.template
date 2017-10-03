@@ -10,6 +10,9 @@ require_relative '../utils/default'
 
 module Azure
   module Profiles
+    <%- if @individual_gem_profile -%>
+    module <%= @module_name %>
+    <%- end -%>
     module Management
       module <%= @profile_name %>
         #
@@ -47,5 +50,8 @@ module Azure
         end
       end
     end
+    <%- if @individual_gem_profile -%>
+    end
+    <%- end -%>
   end
 end
