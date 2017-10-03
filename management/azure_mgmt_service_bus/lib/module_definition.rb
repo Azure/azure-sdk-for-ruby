@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::ServiceBus end
-module Azure::ARM::ServiceBus::Api_2017_04_01 end

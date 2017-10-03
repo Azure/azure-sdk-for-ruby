@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::DataLakeStore end
-module Azure::ARM::DataLakeStore::Api_2016_11_01 end
+

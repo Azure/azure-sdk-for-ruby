@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::Storage end
-module Azure::ARM::Storage::Api_2017_06_01 end
+

@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::CDN end
-module Azure::ARM::CDN::Api_2016_10_02 end

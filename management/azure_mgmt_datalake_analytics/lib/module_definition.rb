@@ -6,4 +6,4 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::DataLakeAnalytics end
-module Azure::ARM::DataLakeAnalytics::Api_2016_11_01 end
+

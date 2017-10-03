@@ -6,4 +6,3 @@
 module Azure end
 module Azure::ARM end
 module Azure::ARM::AnalysisServices end
-module Azure::ARM::AnalysisServices::Api_2016_05_16 end

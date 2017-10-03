@@ -8,37 +8,34 @@ module Azure::ARM::Graph::Api_1_6
     #
     # Active Directory user information.
     #
-    class User
+    class User < UserBase
 
       include MsRestAzure
 
       include MsRest::JSONable
+      # @return [Boolean] Whether the account is enabled.
+      attr_accessor :account_enabled
+
+      # @return [String] The display name of the user.
+      attr_accessor :display_name
+
+      # @return [String] The principal name of the user.
+      attr_accessor :user_principal_name
+
+      # @return [String] The mail alias for the user.
+      attr_accessor :mail_nickname
+
+      # @return [String] The primary email address of the user.
+      attr_accessor :mail
+
       # @return [String] The object ID.
       attr_accessor :object_id
 
       # @return [String] The object type.
       attr_accessor :object_type
 
-      # @return [String] The principal name of the user.
-      attr_accessor :user_principal_name
-
-      # @return [String] The display name of the user.
-      attr_accessor :display_name
-
-      # @return [String] The sign-in name of the user.
-      attr_accessor :sign_in_name
-
-      # @return [String] The primary email address of the user.
-      attr_accessor :mail
-
-      # @return [String] The mail alias for the user.
-      attr_accessor :mail_nickname
-
-      # @return [String] A two letter country code (ISO standard 3166).
-      # Required for users that will be assigned licenses due to legal
-      # requirement to check for availability of services in countries.
-      # Examples include: "US", "JP", and "GB".
-      attr_accessor :usage_location
+      # @return [Array<SignInName>] The sign-in names of the user.
+      attr_accessor :sign_in_names
 
 
       #
@@ -53,6 +50,76 @@ module Azure::ARM::Graph::Api_1_6
             name: 'Composite',
             class_name: 'User',
             model_properties: {
+              immutable_id: {
+                required: false,
+                serialized_name: 'immutableId',
+                type: {
+                  name: 'String'
+                }
+              },
+              usage_location: {
+                required: false,
+                serialized_name: 'usageLocation',
+                type: {
+                  name: 'String'
+                }
+              },
+              given_name: {
+                required: false,
+                serialized_name: 'givenName',
+                type: {
+                  name: 'String'
+                }
+              },
+              surname: {
+                required: false,
+                serialized_name: 'surname',
+                type: {
+                  name: 'String'
+                }
+              },
+              user_type: {
+                required: false,
+                serialized_name: 'userType',
+                type: {
+                  name: 'String'
+                }
+              },
+              account_enabled: {
+                required: false,
+                serialized_name: 'accountEnabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              display_name: {
+                required: false,
+                serialized_name: 'displayName',
+                type: {
+                  name: 'String'
+                }
+              },
+              user_principal_name: {
+                required: false,
+                serialized_name: 'userPrincipalName',
+                type: {
+                  name: 'String'
+                }
+              },
+              mail_nickname: {
+                required: false,
+                serialized_name: 'mailNickname',
+                type: {
+                  name: 'String'
+                }
+              },
+              mail: {
+                required: false,
+                serialized_name: 'mail',
+                type: {
+                  name: 'String'
+                }
+              },
               object_id: {
                 required: false,
                 serialized_name: 'objectId',
@@ -67,46 +134,19 @@ module Azure::ARM::Graph::Api_1_6
                   name: 'String'
                 }
               },
-              user_principal_name: {
+              sign_in_names: {
                 required: false,
-                serialized_name: 'userPrincipalName',
+                serialized_name: 'signInNames',
                 type: {
-                  name: 'String'
-                }
-              },
-              display_name: {
-                required: false,
-                serialized_name: 'displayName',
-                type: {
-                  name: 'String'
-                }
-              },
-              sign_in_name: {
-                required: false,
-                serialized_name: 'signInName',
-                type: {
-                  name: 'String'
-                }
-              },
-              mail: {
-                required: false,
-                serialized_name: 'mail',
-                type: {
-                  name: 'String'
-                }
-              },
-              mail_nickname: {
-                required: false,
-                serialized_name: 'mailNickname',
-                type: {
-                  name: 'String'
-                }
-              },
-              usage_location: {
-                required: false,
-                serialized_name: 'usageLocation',
-                type: {
-                  name: 'String'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SignInNameElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SignInName'
+                      }
+                  }
                 }
               }
             }

@@ -5,7 +5,7 @@
 
 module Azure::ARM::Compute::Api_2017_03_30
   #
-  # Compute Client
+  # VirtualMachineImages
   #
   class VirtualMachineImages
     include MsRestAzure
