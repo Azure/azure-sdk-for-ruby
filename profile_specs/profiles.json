@@ -2,37 +2,34 @@
   {
   "name": "Profile_Azure_Stack",
   "resourceTypes": {
-      "Microsoft.Compute" : {
-        "2016-03-30": ["*"]
+      "Microsoft.Storage": {
+        "2017-06-01": ["*"]
       },
       "Microsoft.Network" : {
+        "2017-09-01": ["*"]
+      },
+      "Microsoft.Compute" : {
         "2017-03-30": ["*"]
+      },
+      "Microsoft.Features" : {
+        "2015-12-01": ["*"]
+      },
+      "Microsoft.Links" : {
+        "2016-09-01": ["*"]
+      },
+      "Microsoft.Locks" : {
+        "2016-09-01": ["*"]
+      },
+      "Microsoft.Policy" : {
+        "2017-06-01-preview": ["*"]
+      },
+      "Microsoft.Resources" : {
+        "2017-05-10": ["*"]
+      },
+      "Microsoft.Subscriptions" : {
+        "2016-06-01": ["*"]
       }
     },
   "output_dir": "../../../azure_sdk/lib"
-  },
-  {
-    "name": "Profile_2016_06_30",
-    "resourceTypes": {
-      "Microsoft.Compute" : {
-        "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
-      },
-      "Microsoft.Network" : {
-        "2017-03-30": ["NetworkInterfaces", "PublicIPAddresses"]
-      }
-    },
-    "output_dir": "../../../azure_sdk/lib"
-  },
-  {
-    "name": "Profile_2017_03_30",
-    "resourceTypes": {
-      "Microsoft.Compute" : {
-        "2016-03-30": ["VirtualMachines", "AvailabilitySets"]
-      },
-      "Microsoft.Network" : {
-        "2017-03-30": ["NetworkInterfaces", "PublicIPAddresses"]
-      }
-    },
-    "output_dir": "../../../azure_sdk/lib"
   }
 ]
