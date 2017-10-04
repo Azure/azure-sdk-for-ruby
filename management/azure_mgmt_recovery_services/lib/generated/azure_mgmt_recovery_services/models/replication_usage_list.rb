@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ReplicationUsage>] The list of replication usages for
       # the given vault.
       attr_accessor :value

@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Virtual path.
       attr_accessor :virtual_path
 

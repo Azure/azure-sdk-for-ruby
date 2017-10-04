@@ -12,7 +12,6 @@ module Azure::ARM::CognitiveServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [KeyName] key name to generate (Key1|Key2). Possible values
       # include: 'Key1', 'Key2'
       attr_accessor :key_name

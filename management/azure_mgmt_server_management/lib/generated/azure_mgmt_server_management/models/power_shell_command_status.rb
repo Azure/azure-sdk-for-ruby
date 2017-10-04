@@ -8,11 +8,10 @@ module Azure::ARM::ServerManagement
     #
     # Result status from invoking a PowerShell command.
     #
-    class PowerShellCommandStatus < MsRestAzure::Resource
+    class PowerShellCommandStatus < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<PowerShellCommandResult>]
       attr_accessor :results
 

@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Title of the choice.
       attr_accessor :title
 

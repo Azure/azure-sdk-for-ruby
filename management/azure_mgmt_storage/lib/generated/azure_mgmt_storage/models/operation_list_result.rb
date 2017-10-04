@@ -13,7 +13,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Operation>] List of Storage operations supported by the
       # Storage resource provider.
       attr_accessor :value

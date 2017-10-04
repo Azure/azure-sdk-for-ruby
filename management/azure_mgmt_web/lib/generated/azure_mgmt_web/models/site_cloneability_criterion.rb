@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of criterion.
       attr_accessor :name
 

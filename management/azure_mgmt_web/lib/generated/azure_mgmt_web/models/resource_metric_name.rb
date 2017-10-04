@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] metric name value.
       attr_accessor :value
 

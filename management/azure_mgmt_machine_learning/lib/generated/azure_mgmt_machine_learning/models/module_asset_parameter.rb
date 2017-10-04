@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Parameter name.
       attr_accessor :name
 

@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the name.
       attr_accessor :name
 

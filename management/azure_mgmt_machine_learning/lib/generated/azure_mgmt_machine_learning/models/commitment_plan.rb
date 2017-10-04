@@ -13,7 +13,6 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the Azure Resource Manager ID of the
       # commitment plan associated with the web service.
       attr_accessor :id

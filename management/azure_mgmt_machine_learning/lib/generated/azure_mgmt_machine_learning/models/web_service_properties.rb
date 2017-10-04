@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Graph"] = "WebServicePropertiesForGraph"
 

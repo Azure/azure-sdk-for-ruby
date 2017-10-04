@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A shared Access Signature (SAS) Storage URI where the
       # job results will be retrieved from.
       attr_accessor :storage_url

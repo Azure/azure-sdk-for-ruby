@@ -12,7 +12,6 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DayOfWeek] Day of the week when a cache can be patched.
       # Possible values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
       # 'Friday', 'Saturday', 'Sunday', 'Everyday', 'Weekend'

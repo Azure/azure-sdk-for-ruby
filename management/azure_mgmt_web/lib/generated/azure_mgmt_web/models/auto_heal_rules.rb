@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AutoHealTriggers] Conditions that describe when to execute the
       # auto-heal actions.
       attr_accessor :triggers

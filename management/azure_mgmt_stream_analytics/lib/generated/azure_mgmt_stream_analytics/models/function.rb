@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FunctionProperties] The properties that are associated with a
       # function.
       attr_accessor :properties

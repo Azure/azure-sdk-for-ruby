@@ -12,7 +12,6 @@ module Azure::ARM::KeyVault
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] SKU family name. Default value: 'A' .
       attr_accessor :family
 

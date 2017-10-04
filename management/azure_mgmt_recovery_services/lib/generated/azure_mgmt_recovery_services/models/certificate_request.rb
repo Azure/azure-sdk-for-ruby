@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RawCertificateData]
       attr_accessor :properties
 

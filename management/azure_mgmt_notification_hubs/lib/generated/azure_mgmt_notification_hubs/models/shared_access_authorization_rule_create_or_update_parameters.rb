@@ -8,11 +8,10 @@ module Azure::ARM::NotificationHubs
     #
     # Parameters supplied to the CreateOrUpdate Namespace AuthorizationRules.
     #
-    class SharedAccessAuthorizationRuleCreateOrUpdateParameters < MsRestAzure::Resource
+    class SharedAccessAuthorizationRuleCreateOrUpdateParameters < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SharedAccessAuthorizationRuleProperties] Properties of the
       # Namespace AuthorizationRules.
       attr_accessor :properties

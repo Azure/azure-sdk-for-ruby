@@ -13,7 +13,6 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Swagger schema title.
       attr_accessor :title
 

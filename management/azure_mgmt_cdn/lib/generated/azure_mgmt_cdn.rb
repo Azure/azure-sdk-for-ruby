@@ -51,6 +51,7 @@ module Azure::ARM::CDN
     autoload :CustomDomainParameters,                             'generated/azure_mgmt_cdn/models/custom_domain_parameters.rb'
     autoload :ProfileUpdateParameters,                            'generated/azure_mgmt_cdn/models/profile_update_parameters.rb'
     autoload :ErrorResponse,                                      'generated/azure_mgmt_cdn/models/error_response.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_cdn/models/resource.rb'
     autoload :OperationDisplay,                                   'generated/azure_mgmt_cdn/models/operation_display.rb'
     autoload :PurgeParameters,                                    'generated/azure_mgmt_cdn/models/purge_parameters.rb'
     autoload :Operation,                                          'generated/azure_mgmt_cdn/models/operation.rb'

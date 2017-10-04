@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 

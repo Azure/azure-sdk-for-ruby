@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Domain availability (True/False).
       attr_accessor :available
 

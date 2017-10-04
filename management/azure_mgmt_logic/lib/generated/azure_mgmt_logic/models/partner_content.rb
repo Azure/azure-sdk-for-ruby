@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [B2BPartnerContent] The B2B partner content.
       attr_accessor :b2b
 

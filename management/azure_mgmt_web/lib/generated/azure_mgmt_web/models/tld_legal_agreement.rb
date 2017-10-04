@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Unique identifier for the agreement.
       attr_accessor :agreement_key
 

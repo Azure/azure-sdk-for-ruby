@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Type of the difference: Information, Warning or Error.
       attr_accessor :slot_difference_type
 

@@ -13,7 +13,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the Service Bus namespace.
       attr_accessor :service_bus_namespace
 

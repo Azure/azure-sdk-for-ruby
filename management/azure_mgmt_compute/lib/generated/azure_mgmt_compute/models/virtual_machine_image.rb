@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PurchasePlan]
       attr_accessor :plan
 

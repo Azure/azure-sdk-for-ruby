@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApiEntityReference] A reference to a load balancer probe used
       # to determine the health of an instance in the virtual machine scale
       # set. The reference will be in the form:

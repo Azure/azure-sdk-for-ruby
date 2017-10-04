@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ISO 3166 two-letter country code.
       attr_accessor :countrycode
 

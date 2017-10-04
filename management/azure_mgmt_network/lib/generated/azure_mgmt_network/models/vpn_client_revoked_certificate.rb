@@ -8,11 +8,10 @@ module Azure::ARM::Network
     #
     # VPN client revoked certificate of virtual network gateway.
     #
-    class VpnClientRevokedCertificate < MsRestAzure::SubResource
+    class VpnClientRevokedCertificate < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The revoked VPN client certificate thumbprint.
       attr_accessor :thumbprint
 

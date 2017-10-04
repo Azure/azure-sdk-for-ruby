@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] a value indicating whether to send email to
       # subscription administrator.
       attr_accessor :send_to_subscription_administrator

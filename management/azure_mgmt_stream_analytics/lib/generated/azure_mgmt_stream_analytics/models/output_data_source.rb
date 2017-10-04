@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.DataLake/Accounts"] = "AzureDataLakeStoreOutputDataSource"
       @@discriminatorMap["PowerBI"] = "PowerBIOutputDataSource"

@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the timezone for the hours of the profile. Some
       # examples of valid timezones are: Dateline Standard Time, UTC-11,
       # Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time

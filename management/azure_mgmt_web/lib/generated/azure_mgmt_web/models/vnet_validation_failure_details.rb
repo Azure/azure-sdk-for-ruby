@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] A flag describing whether or not validation failed.
       attr_accessor :failed
 

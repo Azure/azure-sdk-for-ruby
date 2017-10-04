@@ -8,11 +8,10 @@ module Azure::ARM::Network
     #
     # An Ssl predefined policy
     #
-    class ApplicationGatewaySslPredefinedPolicy < MsRestAzure::SubResource
+    class ApplicationGatewaySslPredefinedPolicy < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of Ssl predefined policy.
       attr_accessor :name
 

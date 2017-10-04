@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to send or request a
       # MDN.
       attr_accessor :override_group_signing_certificate

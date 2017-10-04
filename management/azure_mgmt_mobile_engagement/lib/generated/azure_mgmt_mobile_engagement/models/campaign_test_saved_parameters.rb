@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Device identifier (as returned by the SDK).
       attr_accessor :device_id
 

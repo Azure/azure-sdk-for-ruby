@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The message id on which the validation settings has to
       # be applied.
       attr_accessor :message_id

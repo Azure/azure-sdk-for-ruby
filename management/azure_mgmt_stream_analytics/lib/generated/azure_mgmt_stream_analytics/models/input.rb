@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [InputProperties] The properties that are associated with an
       # input. Required on PUT (CreateOrReplace) requests.
       attr_accessor :properties

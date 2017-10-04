@@ -13,11 +13,10 @@ module Azure::ARM::RecoveryServicesBackup
     # The base backup engine class. All workload specific backup engines derive
     # from this class.
     #
-    class BackupEngineBaseResource < MsRestAzure::Resource
+    class BackupEngineBaseResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [BackupEngineBase] BackupEngineBaseResource properties
       attr_accessor :properties
 

@@ -10,9 +10,9 @@ module Azure::ARM::ContainerRegistry
     #
     module SkuName
       Classic = "Classic"
-      ManagedBasic = "Managed_Basic"
-      ManagedStandard = "Managed_Standard"
-      ManagedPremium = "Managed_Premium"
+      Basic = "Basic"
+      Standard = "Standard"
+      Premium = "Premium"
     end
   end
 end

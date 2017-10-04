@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs
     #
     # A gallery image.
     #
-    class GalleryImage < MsRestAzure::Resource
+    class GalleryImage < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The author of the gallery image.
       attr_accessor :author
 

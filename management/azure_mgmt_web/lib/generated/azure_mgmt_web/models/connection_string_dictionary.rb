@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => ConnStringValueTypePair}] Connection strings.
       attr_accessor :properties
 

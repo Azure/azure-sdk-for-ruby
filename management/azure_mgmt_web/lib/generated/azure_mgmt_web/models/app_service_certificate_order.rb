@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => AppServiceCertificate}] State of the Key Vault
       # secret.
       attr_accessor :certificates

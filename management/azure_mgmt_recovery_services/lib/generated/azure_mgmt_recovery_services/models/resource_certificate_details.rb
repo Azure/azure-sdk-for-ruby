@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["AzureActiveDirectory"] = "ResourceCertificateAndAadDetails"
       @@discriminatorMap["AccessControlService"] = "ResourceCertificateAndAcsDetails"

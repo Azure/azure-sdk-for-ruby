@@ -12,7 +12,6 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Fully qualified resourceId of the linked redis cache.
       attr_accessor :linked_redis_cache_id
 

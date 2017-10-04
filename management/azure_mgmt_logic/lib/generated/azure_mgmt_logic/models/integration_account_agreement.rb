@@ -8,11 +8,10 @@ module Azure::ARM::Logic
     #
     # The integration account agreement.
     #
-    class IntegrationAccountAgreement < MsRestAzure::Resource
+    class IntegrationAccountAgreement < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The created time.
       attr_accessor :created_time
 

@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The blob storage absolute sas uri with write
       # permission to the container which the usage data needs to be uploaded
       # to.

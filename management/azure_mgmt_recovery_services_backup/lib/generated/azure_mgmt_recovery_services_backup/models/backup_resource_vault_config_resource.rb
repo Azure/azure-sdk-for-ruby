@@ -12,11 +12,10 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Backup resource vault config details.
     #
-    class BackupResourceVaultConfigResource < MsRestAzure::Resource
+    class BackupResourceVaultConfigResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [BackupResourceVaultConfig] BackupResourceVaultConfigResource
       # properties
       attr_accessor :properties

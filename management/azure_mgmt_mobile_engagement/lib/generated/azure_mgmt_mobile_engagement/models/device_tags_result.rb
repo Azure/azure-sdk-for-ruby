@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] A JSON array containing all identifiers that
       # have been rejected. Please note that if the request parameters are
       # valid but all the specified devices are rejected, the status code is

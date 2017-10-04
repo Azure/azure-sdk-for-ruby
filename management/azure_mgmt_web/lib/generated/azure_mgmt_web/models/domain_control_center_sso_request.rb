@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] URL where the single sign-on request is to be made.
       attr_accessor :url
 

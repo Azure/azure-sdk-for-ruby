@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The task display name.
       attr_accessor :task_id
 

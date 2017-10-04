@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Attribute to provide information on
       # various DBs.
       attr_accessor :protectable_object_load_path

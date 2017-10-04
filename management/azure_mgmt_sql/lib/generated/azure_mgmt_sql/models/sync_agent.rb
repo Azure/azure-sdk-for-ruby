@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the sync agent.
       attr_accessor :sync_agent_name
 

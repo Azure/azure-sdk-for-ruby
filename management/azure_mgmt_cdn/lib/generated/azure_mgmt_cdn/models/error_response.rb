@@ -13,7 +13,6 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Error code.
       attr_accessor :code
 

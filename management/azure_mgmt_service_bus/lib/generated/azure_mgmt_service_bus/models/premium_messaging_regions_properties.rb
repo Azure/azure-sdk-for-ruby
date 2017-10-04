@@ -13,7 +13,6 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Region code
       attr_accessor :code
 

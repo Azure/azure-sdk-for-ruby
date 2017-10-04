@@ -12,7 +12,6 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [IotHubSku] The name of the SKU. Possible values include: 'F1',
       # 'S1', 'S2', 'S3'
       attr_accessor :name

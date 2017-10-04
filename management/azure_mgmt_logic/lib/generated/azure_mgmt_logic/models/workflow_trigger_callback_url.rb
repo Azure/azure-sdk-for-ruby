@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the workflow trigger callback URL.
       attr_accessor :value
 

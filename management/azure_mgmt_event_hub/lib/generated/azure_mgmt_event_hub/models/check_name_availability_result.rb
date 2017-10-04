@@ -12,7 +12,6 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The detailed info regarding the reason associated with
       # the Namespace.
       attr_accessor :message

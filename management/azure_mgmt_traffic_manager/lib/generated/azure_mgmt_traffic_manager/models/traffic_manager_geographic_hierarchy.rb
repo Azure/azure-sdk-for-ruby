@@ -13,7 +13,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Region] The region at the root of the hierarchy from all the
       # regions in the hierarchy can be retrieved.
       attr_accessor :geographic_hierarchy

@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ResourceSku] The SKU in SKU details for existing resources.
       attr_accessor :sku
 

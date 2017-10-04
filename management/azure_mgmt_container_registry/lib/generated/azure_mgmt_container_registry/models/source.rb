@@ -13,7 +13,6 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The IP or hostname and the port of the registry node
       # that generated the event. Generally, this will be resolved by
       # os.Hostname() along with the running port.

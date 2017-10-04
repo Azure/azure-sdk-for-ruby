@@ -12,7 +12,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Display name of dimension.
       attr_accessor :name
 

@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The error code.
       attr_accessor :code
 

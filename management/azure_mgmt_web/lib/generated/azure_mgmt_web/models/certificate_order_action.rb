@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CertificateOrderActionType] Action type. Possible values
       # include: 'CertificateIssued', 'CertificateOrderCanceled',
       # 'CertificateOrderCreated', 'CertificateRevoked',

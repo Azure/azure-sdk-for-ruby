@@ -13,11 +13,10 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for backup copies. Workload-specific backup copies are derived
     # from this class.
     #
-    class RecoveryPointResource < MsRestAzure::Resource
+    class RecoveryPointResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPoint] RecoveryPointResource properties
       attr_accessor :properties
 

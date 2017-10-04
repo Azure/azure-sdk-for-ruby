@@ -12,7 +12,6 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [KeyType] The keyType indicating which key you want to
       # regenerate, Primary or Secondary. Possible values include: 'Primary',
       # 'Secondary'

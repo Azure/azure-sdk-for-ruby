@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Contact] Administrative contact.
       attr_accessor :contact_admin
 

@@ -13,7 +13,6 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       #
       # Mapper for SqlRuleAction class as Ruby Hash.

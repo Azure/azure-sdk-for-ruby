@@ -12,7 +12,6 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return The unique identifier of the resource.
       attr_accessor :meter_id
 

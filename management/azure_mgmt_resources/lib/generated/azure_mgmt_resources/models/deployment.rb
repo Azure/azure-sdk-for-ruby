@@ -12,7 +12,6 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DeploymentProperties] The deployment properties.
       attr_accessor :properties
 

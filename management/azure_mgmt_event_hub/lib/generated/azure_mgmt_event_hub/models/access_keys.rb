@@ -12,7 +12,6 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Primary connection string of the created namespace
       # AuthorizationRule.
       attr_accessor :primary_connection_string

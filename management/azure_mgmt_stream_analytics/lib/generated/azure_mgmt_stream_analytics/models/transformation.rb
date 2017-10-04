@@ -14,7 +14,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Specifies the number of streaming units that the
       # streaming job uses.
       attr_accessor :streaming_units

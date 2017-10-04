@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => Hash{String => String}}] A JSON object
       # describing the set of tags to record for a set of users. Each key is a
       # device/user identifier, each value is itself a key/value set: the tags

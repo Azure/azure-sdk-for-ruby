@@ -8,11 +8,10 @@ module Azure::ARM::EventHub
     #
     # Definition of Resource
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource location
       attr_accessor :location
 

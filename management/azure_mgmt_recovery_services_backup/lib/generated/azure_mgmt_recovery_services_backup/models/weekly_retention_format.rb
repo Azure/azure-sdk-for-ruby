@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<DayOfWeek>] List of days of the week.
       attr_accessor :days_of_the_week
 

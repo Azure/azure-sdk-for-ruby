@@ -12,7 +12,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the IP or IP range in CIDR format. Only IPV4
       # address is allowed.
       attr_accessor :ipaddress_or_range

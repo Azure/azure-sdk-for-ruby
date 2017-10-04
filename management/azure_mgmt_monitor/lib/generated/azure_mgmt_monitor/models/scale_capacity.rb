@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the minimum number of instances for the resource.
       attr_accessor :minimum
 

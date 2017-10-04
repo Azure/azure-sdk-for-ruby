@@ -8,11 +8,10 @@ module Azure::ARM::Logic
     #
     # The workflow type.
     #
-    class Workflow < MsRestAzure::Resource
+    class Workflow < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WorkflowProvisioningState] Gets the provisioning state.
       # Possible values include: 'NotSpecified', 'Accepted', 'Running',
       # 'Ready', 'Creating', 'Created', 'Deleting', 'Deleted', 'Canceled',

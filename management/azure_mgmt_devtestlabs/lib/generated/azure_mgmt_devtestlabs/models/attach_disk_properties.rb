@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource ID of the Lab virtual machine to which
       # the disk is attached.
       attr_accessor :leased_by_lab_vm_id

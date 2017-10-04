@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ReadWriteEndpointFailoverPolicy] Failover policy of the
       # read-write endpoint for the failover group. If failoverPolicy is
       # Automatic then failoverWithDataLossGracePeriodMinutes is required.

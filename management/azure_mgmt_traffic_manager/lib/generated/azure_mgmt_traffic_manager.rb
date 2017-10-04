@@ -33,6 +33,7 @@ module Azure::ARM::TrafficManager
     autoload :DnsConfig,                                          'generated/azure_mgmt_traffic_manager/models/dns_config.rb'
     autoload :TrafficFlow,                                        'generated/azure_mgmt_traffic_manager/models/traffic_flow.rb'
     autoload :HeatMapEndpoint,                                    'generated/azure_mgmt_traffic_manager/models/heat_map_endpoint.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_traffic_manager/models/resource.rb'
     autoload :CheckTrafficManagerRelativeDnsNameAvailabilityParameters, 'generated/azure_mgmt_traffic_manager/models/check_traffic_manager_relative_dns_name_availability_parameters.rb'
     autoload :QueryExperience,                                    'generated/azure_mgmt_traffic_manager/models/query_experience.rb'
     autoload :ProfileListResult,                                  'generated/azure_mgmt_traffic_manager/models/profile_list_result.rb'

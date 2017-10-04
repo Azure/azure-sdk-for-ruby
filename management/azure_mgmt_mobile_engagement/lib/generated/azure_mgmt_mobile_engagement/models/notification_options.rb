@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Android 4.1+ only. Multi line message shown in
       # expanded notifications on Android 4.1+ devices. The `notificationType`
       # property must be set to `system`.

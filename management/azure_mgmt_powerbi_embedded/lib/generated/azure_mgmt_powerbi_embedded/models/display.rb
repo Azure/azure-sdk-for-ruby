@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The localized friendly form of the resource provider
       # name. This form is also expected to include the publisher/company
       # responsible. Use Title Casing. Begin with “Microsoft” for 1st party

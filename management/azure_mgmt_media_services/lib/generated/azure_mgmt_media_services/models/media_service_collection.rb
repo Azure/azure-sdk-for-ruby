@@ -12,7 +12,6 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<MediaService>] The collection of Media Service
       # resources.
       attr_accessor :value

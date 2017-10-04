@@ -12,7 +12,6 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The path of an alias.
       attr_accessor :path
 

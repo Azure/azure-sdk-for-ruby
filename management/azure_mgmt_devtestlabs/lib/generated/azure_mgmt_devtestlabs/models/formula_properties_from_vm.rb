@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The identifier of the VM from which a formula is to be
       # created.
       attr_accessor :lab_vm_id

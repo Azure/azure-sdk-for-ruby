@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Job name. Used as job identifier in ARM resource URI.
       attr_accessor :web_job_name
 

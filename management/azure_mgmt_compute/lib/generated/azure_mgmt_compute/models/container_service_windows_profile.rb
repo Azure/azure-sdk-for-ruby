@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The administrator username to use for Windows VMs.
       attr_accessor :admin_username
 

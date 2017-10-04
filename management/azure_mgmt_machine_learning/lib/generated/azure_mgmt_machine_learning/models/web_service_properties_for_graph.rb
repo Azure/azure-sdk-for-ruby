@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
         @packageType = "Graph"

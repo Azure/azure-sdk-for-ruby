@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the log.
       attr_accessor :name
 

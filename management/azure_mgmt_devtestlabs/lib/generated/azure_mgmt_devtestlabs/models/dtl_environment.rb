@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs
     #
     # An environment, which is essentially an ARM template deployment.
     #
-    class DtlEnvironment < MsRestAzure::Resource
+    class DtlEnvironment < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EnvironmentDeploymentProperties] The deployment properties of
       # the environment.
       attr_accessor :deployment_properties

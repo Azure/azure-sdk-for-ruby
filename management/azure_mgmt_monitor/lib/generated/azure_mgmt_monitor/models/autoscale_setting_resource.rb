@@ -8,11 +8,10 @@ module Azure::ARM::Monitor
     #
     # The autoscale setting resource.
     #
-    class AutoscaleSettingResource < MsRestAzure::Resource
+    class AutoscaleSettingResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AutoscaleProfile>] the collection of automatic scaling
       # profiles that specify different scaling parameters for different time
       # periods. A maximum of 20 profiles can be specified.

@@ -13,7 +13,6 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Checks if the namespace name is available
       attr_accessor :name_available
 

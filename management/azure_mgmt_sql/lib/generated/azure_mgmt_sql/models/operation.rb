@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the operation being performed on this
       # particular object.
       attr_accessor :name

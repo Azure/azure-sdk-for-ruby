@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus
     #
     # Description of subscription resource.
     #
-    class SBSubscription < MsRestAzure::Resource
+    class SBSubscription < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Number of messages.
       attr_accessor :message_count
 
