@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2016_09_01_Preview",
+    "resourceTypes": {
+      "Microsoft.ManagedApplications" : {
+        "2016-09-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_managed_applications/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.ManagedApplications" : {
+        "2016-09-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_managed_applications/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

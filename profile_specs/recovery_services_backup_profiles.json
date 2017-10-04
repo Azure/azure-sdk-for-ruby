@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Profile_2016_06_01",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesBackup" : {
+        "2016-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_backup/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_08_10",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesBackup" : {
+        "2016-08-10": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_backup/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_12_01",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesBackup" : {
+        "2016-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_backup/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_07_01",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesBackup" : {
+        "2017-07-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_backup/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesBackup" : {
+        "2017-07-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_backup/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2014_12_01",
+    "resourceTypes": {
+      "Microsoft.MobileEngagement" : {
+        "2014-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_mobile_engagement/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.MobileEngagement" : {
+        "2014-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_mobile_engagement/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

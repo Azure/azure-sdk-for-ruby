@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2016_05_15",
+    "resourceTypes": {
+      "Microsoft.DevTestLabs" : {
+        "2016-05-15": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_devtestlabs/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.DevTestLabs" : {
+        "2016-05-15": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_devtestlabs/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_12_01",
+    "resourceTypes": {
+      "Microsoft.Features" : {
+        "2015-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_features/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Features" : {
+        "2015-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_features/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

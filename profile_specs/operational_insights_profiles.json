@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2015_03_20",
+    "resourceTypes": {
+      "Microsoft.OperationalInsights" : {
+        "2015-03-20": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_operational_insights/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2015_11_01_Preview",
+    "resourceTypes": {
+      "Microsoft.OperationalInsights" : {
+        "2015-11-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_operational_insights/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.OperationalInsights" : {
+        "2015-11-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_operational_insights/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

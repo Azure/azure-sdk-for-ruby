@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Profile_2015_06_01",
+    "resourceTypes": {
+      "Microsoft.CDN" : {
+        "2015-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_cdn/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_10_02",
+    "resourceTypes": {
+      "Microsoft.CDN" : {
+        "2016-10-02": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_cdn/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_04_02",
+    "resourceTypes": {
+      "Microsoft.CDN" : {
+        "2017-04-02": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_cdn/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.CDN" : {
+        "2017-04-02": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_cdn/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

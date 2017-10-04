@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_03_01",
+    "resourceTypes": {
+      "Microsoft.ApiManagement" : {
+        "2017-03-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_api_management/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.ApiManagement" : {
+        "2017-03-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_api_management/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

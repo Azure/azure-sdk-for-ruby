@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_04_01",
+    "resourceTypes": {
+      "Microsoft.Relay" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_relay/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Relay" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_relay/lib/profiles",
+    "individual_gem_profile": true
+  }
+]
