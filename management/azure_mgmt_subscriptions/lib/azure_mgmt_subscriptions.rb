@@ -4,3 +4,7 @@
 
 require '2015-11-01/generated/azure_mgmt_subscriptions'
 require '2016-06-01/generated/azure_mgmt_subscriptions'
+# Adding require for the profiles
+require 'profiles/Profile_2015_11_01/profile_client'
+require 'profiles/Profile_2016_06_01/profile_client'
+require 'profiles/Profile_Latest/profile_client'

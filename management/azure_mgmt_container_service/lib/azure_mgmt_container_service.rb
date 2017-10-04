@@ -5,3 +5,8 @@
 require '2017-01-31/generated/azure_mgmt_container_service'
 require '2016-09-30/generated/azure_mgmt_container_service'
 require '2016-03-30/generated/azure_mgmt_container_service'
+# Adding require for the profiles
+require 'profiles/Profile_2016_03_30/profile_client'
+require 'profiles/Profile_2016_09_30/profile_client'
+require 'profiles/Profile_2017_01_31/profile_client'
+require 'profiles/Profile_Latest/profile_client'

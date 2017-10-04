@@ -5,3 +5,8 @@
 require '2017-05-10/generated/azure_mgmt_resources'
 require '2016-09-01/generated/azure_mgmt_resources'
 require '2016-07-01/generated/azure_mgmt_resources'
+# Adding require for the profiles
+require 'profiles/Profile_2016_07_01/profile_client'
+require 'profiles/Profile_2016_09_01/profile_client'
+require 'profiles/Profile_2017_05_10/profile_client'
+require 'profiles/Profile_Latest/profile_client'

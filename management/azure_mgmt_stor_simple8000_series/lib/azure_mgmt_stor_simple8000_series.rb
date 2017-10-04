@@ -5,3 +5,7 @@
 require '2017-06-01/generated/azure_mgmt_stor_simple8000_series'
 
 
+
+# Adding require for the profiles
+require 'profiles/Profile_2017_06_01/profile_client'
+require 'profiles/Profile_Latest/profile_client'

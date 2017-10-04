@@ -5,3 +5,7 @@
 require '2015-06-01/generated/azure_mgmt_marketplace_ordering'
 
 
+
+# Adding require for the profiles
+require 'profiles/Profile_2015_06_01/profile_client'
+require 'profiles/Profile_Latest/profile_client'

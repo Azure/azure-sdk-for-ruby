@@ -4,4 +4,7 @@
 
 require '2017-09-15-preview/generated/azure_mgmt_event_grid'
 require '2017-06-15-preview/generated/azure_mgmt_event_grid'
-
+# Adding require for the profiles
+require 'profiles/Profile_2017_06_15_Preview/profile_client'
+require 'profiles/Profile_2017_09_15_Preview/profile_client'
+require 'profiles/Profile_Latest/profile_client'

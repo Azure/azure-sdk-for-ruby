@@ -6,3 +6,10 @@ require '2017-06-01-preview/generated/azure_mgmt_policy'
 require '2016-12-01/generated/azure_mgmt_policy'
 require '2016-04-01/generated/azure_mgmt_policy'
 require '2015-10-01-preview/generated/azure_mgmt_policy'
+
+# Adding require for the profiles
+require 'profiles/Profile_2015_10_01_Preview/profile_client'
+require 'profiles/Profile_2016_04_01/profile_client'
+require 'profiles/Profile_2016_12_01/profile_client'
+require 'profiles/Profile_2017_06_01_Preview/profile_client'
+require 'profiles/Profile_Latest/profile_client'

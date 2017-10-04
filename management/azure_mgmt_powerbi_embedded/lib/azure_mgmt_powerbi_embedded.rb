@@ -3,3 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2016-01-29/generated/azure_mgmt_powerbi_embedded'
+# Adding require for the profiles
+require 'profiles/Profile_2016_01_29/profile_client'
+require 'profiles/Profile_Latest/profile_client'

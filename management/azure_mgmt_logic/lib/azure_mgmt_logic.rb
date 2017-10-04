@@ -4,3 +4,7 @@
 
 require '2015-02-01-preview/generated/azure_mgmt_logic'
 require '2016-06-01/generated/azure_mgmt_logic'
+# Adding require for the profiles
+require 'profiles/Profile_2015_02_01_Preview/profile_client'
+require 'profiles/Profile_2016_06_01/profile_client'
+require 'profiles/Profile_Latest/profile_client'
