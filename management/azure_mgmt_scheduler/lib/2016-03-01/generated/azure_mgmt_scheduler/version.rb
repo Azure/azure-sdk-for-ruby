@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ResourcesManagement::Api_2016_03_01
+module Azure::ARM::Scheduler::Api_2016_03_01
     VERSION = '0.11.0'
 end

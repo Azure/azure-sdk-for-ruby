@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Relay::Api_2016_07_01
+module Azure::ARM::Relay::Api_2017_04_01
     VERSION = '0.11.0'
 end
