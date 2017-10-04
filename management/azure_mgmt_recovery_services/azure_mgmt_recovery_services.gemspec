@@ -5,8 +5,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'generated/azure_mgmt_recovery_services/module_definition'
-require 'generated/azure_mgmt_recovery_services/version'
+require '../azure_mgmt_recovery_services/lib/module_definition'
+require '../azure_mgmt_recovery_services/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_recovery_services'

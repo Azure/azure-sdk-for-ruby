@@ -19,7 +19,7 @@ VCR.configure do |config|
   config.default_cassette_options = {:record => :once, :match_requests_on => [:method, :host, :path], :allow_playback_repeats => true}
   config.hook_into :faraday
   config.allow_http_connections_when_no_cassette = true
-  config.cassette_library_dir = "spec/vcr_cassettes"
+  # config.cassette_library_dir = "spec/vcr_cassettes"
   config.configure_rspec_metadata!
 
   config.filter_sensitive_data('<AZURE_TENANT_ID>') { ENV['AZURE_TENANT_ID'] }
