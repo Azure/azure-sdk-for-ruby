@@ -1,7 +1,7 @@
 [
   {
-  "name": "Profile_Azure_Stack",
-  "resourceTypes": {
+    "name": "Profile_Azure_Stack",
+    "resourceTypes": {
       "Microsoft.Storage": {
         "2017-06-01": ["*"]
       },
@@ -30,6 +30,6 @@
         "2016-06-01": ["*"]
       }
     },
-  "output_dir": "../../../azure_sdk/lib"
+    "output_dir": "../../../azure_sdk/lib"
   }
 ]

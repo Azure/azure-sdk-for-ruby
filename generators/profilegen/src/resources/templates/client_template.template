@@ -10,10 +10,7 @@ require_relative '../utils/default'
 
 module Azure
   module Profiles
-    <%- if @individual_gem_profile -%>
-    module <%= @module_name %>
-    <%- end -%>
-    module Management
+    module <%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management
       module <%= @profile_name %>
         #
         # Client class for the <%= @profile_name %> profile SDK.
@@ -50,8 +47,5 @@ module Azure
         end
       end
     end
-    <%- if @individual_gem_profile -%>
-    end
-    <%- end -%>
   end
 end
