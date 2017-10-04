@@ -67,7 +67,7 @@ module Azure::ARM::Policy
     def delete_async(scope, policy_assignment_name, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'policy_assignment_name is nil' if policy_assignment_name.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -83,7 +83,7 @@ module Azure::ARM::Policy
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyAssignmentName' => policy_assignment_name},
           skip_encoding_path_params: {'scope' => scope},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -95,7 +95,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -174,7 +174,7 @@ module Azure::ARM::Policy
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'policy_assignment_name is nil' if policy_assignment_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -198,7 +198,7 @@ module Azure::ARM::Policy
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyAssignmentName' => policy_assignment_name},
           skip_encoding_path_params: {'scope' => scope},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -211,7 +211,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -277,7 +277,7 @@ module Azure::ARM::Policy
     def get_async(scope, policy_assignment_name, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'policy_assignment_name is nil' if policy_assignment_name.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -293,7 +293,7 @@ module Azure::ARM::Policy
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'policyAssignmentName' => policy_assignment_name},
           skip_encoding_path_params: {'scope' => scope},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -305,7 +305,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -370,7 +370,7 @@ module Azure::ARM::Policy
     #
     def list_for_resource_group_async(resource_group_name, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -386,7 +386,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -399,7 +399,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -486,7 +486,7 @@ module Azure::ARM::Policy
       fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
       fail ArgumentError, 'resource_type is nil' if resource_type.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -503,7 +503,7 @@ module Azure::ARM::Policy
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'resourceProviderNamespace' => resource_provider_namespace,'resourceName' => resource_name,'subscriptionId' => @client.subscription_id},
           skip_encoding_path_params: {'parentResourcePath' => parent_resource_path,'resourceType' => resource_type},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -515,7 +515,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -573,7 +573,7 @@ module Azure::ARM::Policy
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(filter = nil, custom_headers = nil)
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -589,7 +589,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'$filter' => filter,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -601,7 +601,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -687,7 +687,7 @@ module Azure::ARM::Policy
     #
     def delete_by_id_async(policy_assignment_id, custom_headers = nil)
       fail ArgumentError, 'policy_assignment_id is nil' if policy_assignment_id.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -702,7 +702,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           skip_encoding_path_params: {'policyAssignmentId' => policy_assignment_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -714,7 +714,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -810,7 +810,7 @@ module Azure::ARM::Policy
     def create_by_id_async(policy_assignment_id, parameters, custom_headers = nil)
       fail ArgumentError, 'policy_assignment_id is nil' if policy_assignment_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -833,7 +833,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           skip_encoding_path_params: {'policyAssignmentId' => policy_assignment_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -846,7 +846,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -932,7 +932,7 @@ module Azure::ARM::Policy
     #
     def get_by_id_async(policy_assignment_id, custom_headers = nil)
       fail ArgumentError, 'policy_assignment_id is nil' if policy_assignment_id.nil?
-      api_version = '2017-06-01-preview'
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -947,7 +947,7 @@ module Azure::ARM::Policy
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           skip_encoding_path_params: {'policyAssignmentId' => policy_assignment_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -959,7 +959,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -1046,7 +1046,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -1133,7 +1133,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -1220,7 +1220,7 @@ module Azure::ARM::Policy
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
