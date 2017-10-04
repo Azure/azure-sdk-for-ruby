@@ -89,7 +89,9 @@ class ProfileGenerator
   end
 
   def generate_operation_types(resource_provider, resource_type, resource_type_version)
-    obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}")
+    namespace = @dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}"
+    namespace = namespace.gsub(/\./, '_' )
+    obj = Module.const_get(namespace)
     operations = []
     obj.constants.select do |const_name|
       if((obj.const_get(const_name).instance_of?Class))
@@ -123,7 +125,9 @@ class ProfileGenerator
   end
 
   def generate_model_types(resource_provider, resource_type_version)
-    obj = Module.const_get(@dir_metadata[resource_provider]['namespace'] + + "::#{get_version(resource_type_version)}::Models")
+    namespace = @dir_metadata[resource_provider]['namespace'] + + "::#{get_version(resource_type_version)}::Models"
+    namespace = namespace.gsub(/\./, '_' )
+    obj = Module.const_get(namespace)
     obj.constants.select do |const_name|
         model_name = const_name.to_s
         model_body = obj.name + '::' + const_name.to_s

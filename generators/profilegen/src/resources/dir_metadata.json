@@ -35,7 +35,7 @@
     "module_require": "azure_mgmt_billing",
     "module_name": "BillingModule"
   },
-  "Microsoft.Cdn": {
+  "Microsoft.CDN": {
     "path": "../../../management/azure_mgmt_cdn/",
     "namespace": "Azure::ARM::CDN",
     "module_require": "azure_mgmt_cdn",

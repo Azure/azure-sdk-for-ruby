@@ -3,7 +3,7 @@
     "name": "Profile_1_6",
     "resourceTypes": {
       "Microsoft.Graph" : {
-        "1_6": ["*"]
+        "1.6": ["*"]
       }
     },
     "output_dir": "../../../management/azure_mgmt_graph/lib/profiles",
@@ -13,7 +13,7 @@
     "name": "Profile_Latest",
     "resourceTypes": {
       "Microsoft.Graph" : {
-        "1_6": ["*"]
+        "1.6": ["*"]
       }
     },
     "output_dir": "../../../management/azure_mgmt_graph/lib/profiles",
