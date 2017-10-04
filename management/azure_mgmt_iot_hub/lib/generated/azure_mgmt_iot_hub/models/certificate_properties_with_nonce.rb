@@ -13,6 +13,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The certificate's subject name.
       attr_accessor :subject
 
@@ -22,7 +23,7 @@ module Azure::ARM::IotHub
       # @return [String] The certificate's thumbprint.
       attr_accessor :thumbprint
 
-      # @return [Boolean] Determines wether certificate has been verified.
+      # @return [Boolean] Determines whether certificate has been verified.
       attr_accessor :is_verified
 
       # @return [DateTime] The certificate's create date and time.
@@ -32,7 +33,7 @@ module Azure::ARM::IotHub
       attr_accessor :updated
 
       # @return [String] The certificate's verification code that will be used
-      # for proof of posession.
+      # for proof of possession.
       attr_accessor :verification_code
 
 

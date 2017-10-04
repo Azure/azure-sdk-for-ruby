@@ -13,6 +13,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the route. The name can only include
       # alphanumeric characters, periods, underscores, hyphens, has a maximum
       # length of 64 characters, and must be unique.
