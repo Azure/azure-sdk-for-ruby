@@ -4,4 +4,4 @@
 
 require '2017-04-02/generated/azure_mgmt_cdn'
 require '2016-10-02/generated/azure_mgmt_cdn'
-require '2015-06-02/generated/azure_mgmt_cdn'
+require '2015-06-01/generated/azure_mgmt_cdn'

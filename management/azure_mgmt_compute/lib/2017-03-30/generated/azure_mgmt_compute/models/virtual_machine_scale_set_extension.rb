@@ -8,7 +8,7 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Describes a Virtual Machine Scale Set Extension.
     #
-    class VirtualMachineScaleSetExtension < MsRestAzure::SubResourceReadOnly
+    class VirtualMachineScaleSetExtension < SubResourceReadOnly
 
       include MsRestAzure
 
