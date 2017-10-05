@@ -154,7 +154,14 @@ class ProfileGenerator
 
   def get_client_file
     check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/#{@profile_name.downcase}_profile_client.rb"
+    client_file_name = ''
+    if @individual_gem_profile == true
+      client_file_name = "#{@module_name.sub(/module/, '').downcase}_#{@profile_name.downcase}_profile_client.rb"
+    else
+      client_file_name = "#{@profile_name.downcase}_profile_client.rb"
+    end
+
+    file_name =  "#{@output_dir}/#{@profile_name}/#{client_file_name}"
     File.new(file_name, 'w')
   end
 
