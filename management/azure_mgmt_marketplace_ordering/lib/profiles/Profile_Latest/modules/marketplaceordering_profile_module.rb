@@ -8,7 +8,6 @@ module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_Latest
   module MarketplaceOrdering
     MarketplaceAgreements = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceAgreements
     Operations = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Operations
-    MarketplaceOrderingAgreements = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceOrderingAgreements
 
     module Models
       OperationDisplay = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::OperationDisplay
@@ -23,22 +22,25 @@ module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_Latest
     # MarketplaceOrdering
     #
     class MarketplaceOrderingClass
-      attr_accessor :marketplace_agreements, :operations, :marketplace_ordering_agreements, :configurable, :base_url, :options, :model_classes
+      attr_accessor :marketplace_agreements, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceOrderingAgreements.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.marketplace_agreements = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceAgreements.new(client)
         self.operations = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Operations.new(client)
-        self.marketplace_ordering_agreements = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceOrderingAgreements.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2015-06-01'
+            client = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceOrderingAgreements.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

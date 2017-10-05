@@ -104,7 +104,8 @@ class ProfileGenerator
     operations = []
     obj.constants.select do |const_name|
       if((obj.const_get(const_name).instance_of?Class))
-        if(const_name.to_s.end_with?('Client'))
+        super_class = Object.const_get("#{namespace}::#{const_name.to_s}").superclass.to_s
+        if(super_class == 'MsRestAzure::AzureServiceClient')
           @management_client = obj.name + '::' + const_name.to_s
           @versions_clients_mapper[resource_type_version] = @management_client
         elsif (const_name.to_s == resource_type || '*' == resource_type)

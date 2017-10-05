@@ -10,7 +10,6 @@ module Azure::Profiles::Management::Profile_Latest
     Node = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Node
     Session = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Session
     PowerShell = Azure::ARM::ServerManagement::Api_2016_07_01_preview::PowerShell
-    ServerManagement = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement
 
     module Models
       Version = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Models::Version
@@ -49,11 +48,11 @@ module Azure::Profiles::Management::Profile_Latest
     # ServerManagement
     #
     class ServerManagementClass
-      attr_accessor :gateway, :node, :session, :power_shell, :server_management, :configurable, :base_url, :options, :model_classes
+      attr_accessor :gateway, :node, :session, :power_shell, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
@@ -61,12 +60,15 @@ module Azure::Profiles::Management::Profile_Latest
         self.node = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Node.new(client)
         self.session = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Session.new(client)
         self.power_shell = Azure::ARM::ServerManagement::Api_2016_07_01_preview::PowerShell.new(client)
-        self.server_management = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-07-01-preview'
+            client = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

@@ -8,7 +8,6 @@ module Azure::Profiles::ResourcesManagementModule::Management::Profile_2017_08_3
   module ResourcesManagement
     ManagementGroups = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroups
     Operations = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Operations
-    ManagementGroupsAPI = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI
 
     module Models
       ParentGroupInfo = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Models::ParentGroupInfo
@@ -31,22 +30,25 @@ module Azure::Profiles::ResourcesManagementModule::Management::Profile_2017_08_3
     # ResourcesManagement
     #
     class ResourcesManagementClass
-      attr_accessor :management_groups, :operations, :management_groups_api, :configurable, :base_url, :options, :model_classes
+      attr_accessor :management_groups, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.management_groups = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroups.new(client)
         self.operations = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Operations.new(client)
-        self.management_groups_api = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2017-08-31-preview'
+            client = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

@@ -9,7 +9,6 @@ module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_0
     LinkedServices = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::LinkedServices
     DataSources = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::DataSources
     Workspaces = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Workspaces
-    AzureLogAnalytics = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics
 
     module Models
       UsageMetric = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::UsageMetric
@@ -37,23 +36,26 @@ module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_0
     # OperationalInsights
     #
     class OperationalInsightsClass
-      attr_accessor :linked_services, :data_sources, :workspaces, :azure_log_analytics, :configurable, :base_url, :options, :model_classes
+      attr_accessor :linked_services, :data_sources, :workspaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.linked_services = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::LinkedServices.new(client)
         self.data_sources = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::DataSources.new(client)
         self.workspaces = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Workspaces.new(client)
-        self.azure_log_analytics = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2015-11-01-preview'
+            client = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end
