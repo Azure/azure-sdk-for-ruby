@@ -19,7 +19,7 @@ class ProfileGenerator
   # Accessors to be used in the generation of module
   attr_accessor :module_require, :module_name, :class_name, :operation_types, :management_client, :model_types, :versions_clients_mapper
   # Accessors to be used in the generation of profile spec file
-  attr_accessor :profile_version, :profile_ruby_version, :spec_includes, :module_name
+  attr_accessor :profile_version, :profile_ruby_version, :spec_includes, :module_name, :module_definition_file_name
 
   def initialize(profile, dir_metadata)
     @profile_name = profile['name']
@@ -29,6 +29,7 @@ class ProfileGenerator
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
     @module_name = ''
+    @module_definition_file_name = ''
     @file_names, @model_types, @operation_types = [], [], []
     @spec_includes, @class_names = [], []
     @versions_clients_mapper = {}
@@ -41,6 +42,7 @@ class ProfileGenerator
   private
   def generate_profile_sdk
     generate_modules
+    get_module_definition_file_name
     generate_client
     generate_module_definition
   end
@@ -165,9 +167,18 @@ class ProfileGenerator
     File.new(file_name, 'w')
   end
 
+  def get_module_definition_file_name
+    @module_definition_file_name = ''
+    if @individual_gem_profile == true
+      @module_definition_file_name = "#{@module_name.downcase.sub(/module/, '')}_#{@profile_name.downcase}_module_definition.rb"
+    else
+      @module_definition_file_name = "#{@profile_name.downcase}_module_definition.rb"
+    end
+  end
+
   def get_module_definition_file
     check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/module_definition.rb"
+    file_name =  "#{@output_dir}/#{@profile_name}/#{@module_definition_file_name}"
     File.new(file_name, 'w')
   end
 
