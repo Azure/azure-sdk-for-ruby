@@ -11,7 +11,6 @@ require 'ostruct'
 #
 # Options
 #    -h, --help : Displays help for the profile generator
-#    -o, --output_dir : Output directory to store the generated profile SDK
 #    -d, --dir_metadata : File that contains metadata info about RPs
 #    -p, --profile : Input file contains the profile generation info about RPs, versions, etc.
 #
@@ -22,10 +21,6 @@ class ProfileGeneratorOptionsParser
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = 'Usage: profile_generator_client.rb [options]'
-
-      #opts.on('-oOUTPUT_DIR', '--output_dir=OUTPUT_DIR', 'Output directory to generate the profiles') do |base_dir|
-      #  options.base_dir = base_dir
-      #end
 
       opts.on('-dDIR_METADATA', '--dir_metadata=DIR_METADATA', 'File containing directory metadata') do |dir_metadata|
         options.dir_metadata = dir_metadata
