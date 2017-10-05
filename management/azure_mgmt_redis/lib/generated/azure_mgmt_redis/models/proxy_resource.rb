@@ -6,52 +6,47 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Parameters for Redis export operation.
+    # The resource model definition for a ARM proxy resource. It will have
+    # everything other than required location and tags
     #
-    class ExportRDBParameters
+    class ProxyResource < MsRestAzure::Resource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] File format.
-      attr_accessor :format
-
-      # @return [String] Prefix to use for exported files.
-      attr_accessor :prefix
-
-      # @return [String] Container name to export to.
-      attr_accessor :container
-
 
       #
-      # Mapper for ExportRDBParameters class as Ruby Hash.
+      # Mapper for ProxyResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ExportRDBParameters',
+          serialized_name: 'ProxyResource',
           type: {
             name: 'Composite',
-            class_name: 'ExportRDBParameters',
+            class_name: 'ProxyResource',
             model_properties: {
-              format: {
+              id: {
                 required: false,
-                serialized_name: 'format',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              prefix: {
-                required: true,
-                serialized_name: 'prefix',
+              name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              container: {
-                required: true,
-                serialized_name: 'container',
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

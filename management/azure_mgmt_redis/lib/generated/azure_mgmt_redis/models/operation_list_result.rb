@@ -6,17 +6,20 @@
 module Azure::ARM::Redis
   module Models
     #
-    # The response of list Redis operation.
+    # Result of the request to list REST API operations. It contains a list of
+    # operations and a URL nextLink to get the next set of results.
     #
-    class RedisListResult
+    class OperationListResult
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<RedisResource>] List of Redis cache instances.
+      # @return [Array<Operation>] List of operations supported by the resource
+      # provider.
       attr_accessor :value
 
-      # @return [String] Link for next set of locations.
+      # @return [String] URL to get the next set of operation list results if
+      # there are any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +28,7 @@ module Azure::ARM::Redis
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<RedisResource>] operation results.
+      # @return [Array<Operation>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +43,7 @@ module Azure::ARM::Redis
       #
       # Gets the next page of results.
       #
-      # @return [RedisListResult] with next page content.
+      # @return [OperationListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +55,16 @@ module Azure::ARM::Redis
       end
 
       #
-      # Mapper for RedisListResult class as Ruby Hash.
+      # Mapper for OperationListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RedisListResult',
+          serialized_name: 'OperationListResult',
           type: {
             name: 'Composite',
-            class_name: 'RedisListResult',
+            class_name: 'OperationListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,10 +73,10 @@ module Azure::ARM::Redis
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'RedisResourceElementType',
+                      serialized_name: 'OperationElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'RedisResource'
+                        class_name: 'Operation'
                       }
                   }
                 }
