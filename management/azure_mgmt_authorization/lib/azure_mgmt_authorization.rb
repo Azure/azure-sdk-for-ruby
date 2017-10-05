@@ -4,5 +4,5 @@
 
 require '2015-07-01/generated/azure_mgmt_authorization'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2015_07_01/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2015_07_01/authorization_profile_2015_07_01_profile_client'
+require 'profiles/Profile_Latest/authorization_profile_latest_profile_client'

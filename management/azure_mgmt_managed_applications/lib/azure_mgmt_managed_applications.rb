@@ -4,5 +4,5 @@
 
 require '2016-09-01-preview/generated/azure_mgmt_managed_applications'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2016_09_01_Preview/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2016_09_01_Preview/managedapplications_profile_2016_09_01_preview_profile_client'
+require 'profiles/Profile_Latest/managedapplications_profile_latest_profile_client'

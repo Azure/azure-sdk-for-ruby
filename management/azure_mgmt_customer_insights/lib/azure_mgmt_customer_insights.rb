@@ -4,5 +4,5 @@
 
 require '2017-10-01/generated/azure_mgmt_customer_insights'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2017_04_26/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2017_04_26/customerinsights_profile_2017_04_26_profile_client'
+require 'profiles/Profile_Latest/customerinsights_profile_latest_profile_client'

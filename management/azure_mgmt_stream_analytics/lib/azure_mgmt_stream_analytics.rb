@@ -4,5 +4,5 @@
 
 require '2016-03-01/generated/azure_mgmt_stream_analytics'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2016_03_01/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2016_03_01/streamanalytics_profile_2016_03_01_profile_client'
+require 'profiles/Profile_Latest/streamanalytics_profile_latest_profile_client'

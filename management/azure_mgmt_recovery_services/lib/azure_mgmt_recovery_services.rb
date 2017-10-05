@@ -5,6 +5,6 @@
 require '2016-06-01/generated/azure_mgmt_recovery_services'
 require '2016-12-01/generated/azure_mgmt_recovery_services'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2016_06_01/profile_client'
-require_relative 'profiles/Profile_2016_12_01/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2016_06_01/recoveryservices_profile_2016_06_01_profile_client'
+require 'profiles/Profile_2016_12_01/recoveryservices_profile_2016_12_01_profile_client'
+require 'profiles/Profile_Latest/recoveryservices_profile_latest_profile_client'

@@ -1,4 +1,4 @@
-require_relative '../../../azure_sdk/lib/Profile_Azure_Stack/profile_client'
+require_relative '../../../azure_sdk/lib/Profile_Azure_Stack/profile_azure_stack_profile_client'
 
 vm_name                         = 'testissue567'
 rg_name                         = 'testissue567rg'

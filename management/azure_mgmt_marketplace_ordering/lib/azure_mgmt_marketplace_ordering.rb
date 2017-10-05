@@ -4,5 +4,5 @@
 
 require '2015-06-01/generated/azure_mgmt_marketplace_ordering'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2015_06_01/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2015_06_01/marketplaceordering_profile_2015_06_01_profile_client'
+require 'profiles/Profile_Latest/marketplaceordering_profile_latest_profile_client'

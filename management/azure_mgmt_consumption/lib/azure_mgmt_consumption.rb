@@ -4,5 +4,5 @@
 
 require '2017-04-24-preview/generated/azure_mgmt_consumption'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2017_04_24_Preview/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2017_04_24_Preview/consumption_profile_2017_04_24_preview_profile_client'
+require 'profiles/Profile_Latest/consumption_profile_latest_profile_client'

@@ -4,5 +4,5 @@
 
 require '1.6/generated/azure_mgmt_graph'
 # Adding require for the profiles
-require_relative 'profiles/Profile_1_6/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_1_6/graph_profile_1_6_profile_client'
+require 'profiles/Profile_Latest/graph_profile_latest_profile_client'

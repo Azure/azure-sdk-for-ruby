@@ -6,6 +6,6 @@ require '2016-05-16/generated/azure_mgmt_analysis_services'
 require '2017-07-14/generated/azure_mgmt_analysis_services'
 
 # Adding require for the profiles
-require_relative 'profiles/Profile_2016_05_16/profile_client'
-require_relative 'profiles/Profile_2017_07_14/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2016_05_16/analysisservices_profile_2016_05_16_profile_client'
+require 'profiles/Profile_2017_07_14/analysisservices_profile_2017_07_14_profile_client'
+require 'profiles/Profile_Latest/analysisservices_profile_latest_profile_client'

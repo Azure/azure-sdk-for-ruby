@@ -4,5 +4,5 @@
 
 require '2016-09-01/generated/azure_mgmt_service_fabric'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2016_09_01/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2016_09_01/servicefabric_profile_2016_09_01_profile_client'
+require 'profiles/Profile_Latest/servicefabric_profile_latest_profile_client'

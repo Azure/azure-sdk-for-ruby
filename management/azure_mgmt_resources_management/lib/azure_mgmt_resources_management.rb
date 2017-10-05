@@ -4,5 +4,5 @@
 
 require '2015-08-31-preview/generated/azure_mgmt_resources_management'
 # Adding require for the profiles
-require_relative 'profiles/Profile_2017_08_31_Preview/profile_client'
-require_relative 'profiles/Profile_Latest/profile_client'
+require 'profiles/Profile_2017_08_31_Preview/resourcesmanagement_profile_2017_08_31_preview_profile_client'
+require 'profiles/Profile_Latest/resourcesmanagement_profile_latest_profile_client'
