@@ -7,7 +7,7 @@ module Azure::ARM::Links::Api_2016_09_01
   #
   # A service client - single point of access to the REST API.
   #
-  class ManagementLinkClient < MsRestAzure::AzureServiceClient
+  class LinksManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -38,7 +38,7 @@ module Azure::ARM::Links::Api_2016_09_01
     attr_reader :resource_links
 
     #
-    # Creates initializes a new instance of the ManagementLinkClient class.
+    # Creates initializes a new instance of the LinksManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
