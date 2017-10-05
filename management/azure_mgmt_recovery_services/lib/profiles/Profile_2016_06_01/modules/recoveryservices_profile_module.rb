@@ -13,7 +13,6 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
     Operations = Azure::ARM::RecoveryServices::Api_2016_06_01::Operations
     VaultExtendedInfoOperations = Azure::ARM::RecoveryServices::Api_2016_06_01::VaultExtendedInfoOperations
     Usages = Azure::ARM::RecoveryServices::Api_2016_06_01::Usages
-    RecoveryServicesClient = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient
 
     module Models
       ClientDiscoveryForProperties = Azure::ARM::RecoveryServices::Api_2016_06_01::Models::ClientDiscoveryForProperties
@@ -54,11 +53,11 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
     # RecoveryServices
     #
     class RecoveryServicesClass
-      attr_accessor :vault_certificates, :registered_identities, :replication_usages, :vaults, :operations, :vault_extended_info_operations, :usages, :recovery_services_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :vault_certificates, :registered_identities, :replication_usages, :vaults, :operations, :vault_extended_info_operations, :usages, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
@@ -69,12 +68,15 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
         self.operations = Azure::ARM::RecoveryServices::Api_2016_06_01::Operations.new(client)
         self.vault_extended_info_operations = Azure::ARM::RecoveryServices::Api_2016_06_01::VaultExtendedInfoOperations.new(client)
         self.usages = Azure::ARM::RecoveryServices::Api_2016_06_01::Usages.new(client)
-        self.recovery_services_client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-06-01'
+            client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

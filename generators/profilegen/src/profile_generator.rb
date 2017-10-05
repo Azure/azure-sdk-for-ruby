@@ -104,7 +104,7 @@ class ProfileGenerator
     operations = []
     obj.constants.select do |const_name|
       if((obj.const_get(const_name).instance_of?Class))
-        if(const_name.to_s.end_with?('ManagementClient') || const_name.to_s == 'ManagementLinkClient' || const_name.to_s == 'ManagementLockClient' || const_name.to_s == 'FeatureClient' || const_name.to_s == 'PolicyClient' || const_name.to_s == 'SubscriptionClient')
+        if(const_name.to_s.end_with?('Client'))
           @management_client = obj.name + '::' + const_name.to_s
           @versions_clients_mapper[resource_type_version] = @management_client
         elsif (const_name.to_s == resource_type || '*' == resource_type)

@@ -28,7 +28,6 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
     BackupOperationStatuses = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupOperationStatuses
     BackupOperationResults = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupOperationResults
     BackupEngines = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupEngines
-    RecoveryServicesBackupClient = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient
 
     module Models
       SchedulePolicy = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::Models::SchedulePolicy
@@ -164,11 +163,11 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
     # RecoveryServicesBackup
     #
     class RecoveryServicesBackupClass
-      attr_accessor :item_level_recovery_connections, :restores, :protection_policy_operation_statuses, :protection_policy_operation_results, :protection_policies, :protection_container_operation_results, :protection_container_refresh_operation_results, :protection_containers, :recovery_points, :backups, :protected_item_operation_statuses, :protected_item_operation_results, :protected_items, :protectable_items, :export_jobs_operation_results, :job_operation_results, :jobs, :job_cancellations, :job_details, :backup_operation_statuses, :backup_operation_results, :backup_engines, :recovery_services_backup_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :item_level_recovery_connections, :restores, :protection_policy_operation_statuses, :protection_policy_operation_results, :protection_policies, :protection_container_operation_results, :protection_container_refresh_operation_results, :protection_containers, :recovery_points, :backups, :protected_item_operation_statuses, :protected_item_operation_results, :protected_items, :protectable_items, :export_jobs_operation_results, :job_operation_results, :jobs, :job_cancellations, :job_details, :backup_operation_statuses, :backup_operation_results, :backup_engines, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
@@ -194,12 +193,15 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
         self.backup_operation_statuses = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupOperationStatuses.new(client)
         self.backup_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupOperationResults.new(client)
         self.backup_engines = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupEngines.new(client)
-        self.recovery_services_backup_client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-06-01'
+            client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

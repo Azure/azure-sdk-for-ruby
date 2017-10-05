@@ -7,7 +7,6 @@ require 'azure_mgmt_monitor'
 module Azure::Profiles::MonitorModule::Management::Profile_2016_09_01
   module Monitor
     ServiceDiagnosticSettingsOperations = Azure::ARM::Monitor::Api_2016_09_01::ServiceDiagnosticSettingsOperations
-    MonitorClient = Azure::ARM::Monitor::Api_2016_09_01::MonitorClient
 
     module Models
       LogSettings = Azure::ARM::Monitor::Api_2016_09_01::Models::LogSettings
@@ -22,21 +21,24 @@ module Azure::Profiles::MonitorModule::Management::Profile_2016_09_01
     # Monitor
     #
     class MonitorClass
-      attr_accessor :service_diagnostic_settings_operations, :monitor_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :service_diagnostic_settings_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::Monitor::Api_2016_09_01::MonitorClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.service_diagnostic_settings_operations = Azure::ARM::Monitor::Api_2016_09_01::ServiceDiagnosticSettingsOperations.new(client)
-        self.monitor_client = Azure::ARM::Monitor::Api_2016_09_01::MonitorClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-09-01'
+            client = Azure::ARM::Monitor::Api_2016_09_01::MonitorClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

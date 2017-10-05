@@ -8,7 +8,6 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2017_0
   module RecoveryServicesBackup
     BackupJobs = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::BackupJobs
     JobDetails = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::JobDetails
-    RecoveryServicesBackupClient = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::RecoveryServicesBackupClient
 
     module Models
       JobQueryObject = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::Models::JobQueryObject
@@ -41,22 +40,25 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2017_0
     # RecoveryServicesBackup
     #
     class RecoveryServicesBackupClass
-      attr_accessor :backup_jobs, :job_details, :recovery_services_backup_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :backup_jobs, :job_details, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.backup_jobs = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::BackupJobs.new(client)
         self.job_details = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::JobDetails.new(client)
-        self.recovery_services_backup_client = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::RecoveryServicesBackupClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2017-07-01'
+            client = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

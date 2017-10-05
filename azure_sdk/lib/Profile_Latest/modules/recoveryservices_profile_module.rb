@@ -8,7 +8,6 @@ module Azure::Profiles::Management::Profile_Latest
   module RecoveryServices
     BackupVaultConfigs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupVaultConfigs
     BackupStorageConfigs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupStorageConfigs
-    RecoveryServicesBackupClient = Azure::ARM::RecoveryServices::Api_2016_12_01::RecoveryServicesBackupClient
 
     module Models
       UpgradeDetails = Azure::ARM::RecoveryServices::Api_2016_12_01::Models::UpgradeDetails
@@ -33,22 +32,25 @@ module Azure::Profiles::Management::Profile_Latest
     # RecoveryServices
     #
     class RecoveryServicesClass
-      attr_accessor :backup_vault_configs, :backup_storage_configs, :recovery_services_backup_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :backup_vault_configs, :backup_storage_configs, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::RecoveryServices::Api_2016_12_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.backup_vault_configs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupVaultConfigs.new(client)
         self.backup_storage_configs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupStorageConfigs.new(client)
-        self.recovery_services_backup_client = Azure::ARM::RecoveryServices::Api_2016_12_01::RecoveryServicesBackupClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-12-01'
+            client = Azure::ARM::RecoveryServices::Api_2016_12_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

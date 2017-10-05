@@ -7,7 +7,6 @@ require 'azure_mgmt_container_service'
 module Azure::Profiles::ContainerServiceModule::Management::Profile_2016_03_30
   module ContainerService
     ContainerServices = Azure::ARM::ContainerService::Api_2016_03_30::ContainerServices
-    ContainerServiceClient = Azure::ARM::ContainerService::Api_2016_03_30::ContainerServiceClient
 
     module Models
       ContainerServiceSshConfiguration = Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceSshConfiguration
@@ -29,21 +28,24 @@ module Azure::Profiles::ContainerServiceModule::Management::Profile_2016_03_30
     # ContainerService
     #
     class ContainerServiceClass
-      attr_accessor :container_services, :container_service_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :container_services, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::ContainerService::Api_2016_03_30::ContainerServiceClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.container_services = Azure::ARM::ContainerService::Api_2016_03_30::ContainerServices.new(client)
-        self.container_service_client = Azure::ARM::ContainerService::Api_2016_03_30::ContainerServiceClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-03-30'
+            client = Azure::ARM::ContainerService::Api_2016_03_30::ContainerServiceClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

@@ -27,7 +27,6 @@ module Azure::Profiles::Management::Profile_Latest
     VirtualMachines = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualMachines
     VirtualMachineSchedules = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualMachineSchedules
     VirtualNetworks = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualNetworks
-    DevTestLabsClient = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient
 
     module Models
       FormulaPropertiesFromVm = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::FormulaPropertiesFromVm
@@ -185,11 +184,11 @@ module Azure::Profiles::Management::Profile_Latest
     # DevTestLabs
     #
     class DevTestLabsClass
-      attr_accessor :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :policies, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :dev_test_labs_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :policies, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
@@ -214,12 +213,15 @@ module Azure::Profiles::Management::Profile_Latest
         self.virtual_machines = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualMachines.new(client)
         self.virtual_machine_schedules = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualMachineSchedules.new(client)
         self.virtual_networks = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualNetworks.new(client)
-        self.dev_test_labs_client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-05-15'
+            client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

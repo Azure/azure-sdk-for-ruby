@@ -35,7 +35,6 @@ module Azure::Profiles::AutomationModule::Management::Profile_Latest
     ScheduleOperations = Azure::ARM::Automation::Api_2015_10_31::ScheduleOperations
     VariableOperations = Azure::ARM::Automation::Api_2015_10_31::VariableOperations
     WebhookOperations = Azure::ARM::Automation::Api_2015_10_31::WebhookOperations
-    AutomationClient = Azure::ARM::Automation::Api_2015_10_31::AutomationClient
 
     module Models
       DscCompilationJob = Azure::ARM::Automation::Api_2015_10_31::Models::DscCompilationJob
@@ -169,11 +168,11 @@ module Azure::Profiles::AutomationModule::Management::Profile_Latest
     # Automation
     #
     class AutomationClass
-      attr_accessor :automation_account_operations, :operations, :statistics_operations, :usages, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_jobs, :schedule_operations, :variable_operations, :webhook_operations, :automation_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :automation_account_operations, :operations, :statistics_operations, :usages, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_jobs, :schedule_operations, :variable_operations, :webhook_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::Automation::Api_2015_10_31::AutomationClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
@@ -206,12 +205,15 @@ module Azure::Profiles::AutomationModule::Management::Profile_Latest
         self.schedule_operations = Azure::ARM::Automation::Api_2015_10_31::ScheduleOperations.new(client)
         self.variable_operations = Azure::ARM::Automation::Api_2015_10_31::VariableOperations.new(client)
         self.webhook_operations = Azure::ARM::Automation::Api_2015_10_31::WebhookOperations.new(client)
-        self.automation_client = Azure::ARM::Automation::Api_2015_10_31::AutomationClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2015-10-31'
+            client = Azure::ARM::Automation::Api_2015_10_31::AutomationClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

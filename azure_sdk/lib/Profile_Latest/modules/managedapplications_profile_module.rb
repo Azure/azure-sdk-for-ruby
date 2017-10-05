@@ -8,7 +8,6 @@ module Azure::Profiles::Management::Profile_Latest
   module ManagedApplications
     Appliances = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Appliances
     ApplianceDefinitions = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ApplianceDefinitions
-    ManagedApplicationClient = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ManagedApplicationClient
 
     module Models
       Sku = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Sku
@@ -34,22 +33,25 @@ module Azure::Profiles::Management::Profile_Latest
     # ManagedApplications
     #
     class ManagedApplicationsClass
-      attr_accessor :appliances, :appliance_definitions, :managed_application_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :appliances, :appliance_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ManagedApplicationClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.appliances = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Appliances.new(client)
         self.appliance_definitions = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ApplianceDefinitions.new(client)
-        self.managed_application_client = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ManagedApplicationClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-09-01-preview'
+            client = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ManagedApplicationClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

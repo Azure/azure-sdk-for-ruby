@@ -7,7 +7,6 @@ require 'azure_mgmt_recovery_services_backup'
 module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_08_10
   module RecoveryServicesBackup
     Operations = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::Operations
-    RecoveryServicesBackupClient = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::RecoveryServicesBackupClient
 
     module Models
       ClientDiscoveryForProperties = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::Models::ClientDiscoveryForProperties
@@ -22,21 +21,24 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
     # RecoveryServicesBackup
     #
     class RecoveryServicesBackupClass
-      attr_accessor :operations, :recovery_services_backup_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.operations = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::Operations.new(client)
-        self.recovery_services_backup_client = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::RecoveryServicesBackupClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-08-10'
+            client = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end

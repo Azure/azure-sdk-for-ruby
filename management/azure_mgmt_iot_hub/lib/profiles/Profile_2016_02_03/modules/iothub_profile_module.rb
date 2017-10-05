@@ -7,7 +7,6 @@ require 'azure_mgmt_iot_hub'
 module Azure::Profiles::IotHubModule::Management::Profile_2016_02_03
   module IotHub
     IotHubResource = Azure::ARM::IotHub::Api_2016_02_03::IotHubResource
-    IotHubClient = Azure::ARM::IotHub::Api_2016_02_03::IotHubClient
 
     module Models
       IotHubQuotaMetricInfo = Azure::ARM::IotHub::Api_2016_02_03::Models::IotHubQuotaMetricInfo
@@ -54,21 +53,24 @@ module Azure::Profiles::IotHubModule::Management::Profile_2016_02_03
     # IotHub
     #
     class IotHubClass
-      attr_accessor :iot_hub_resource, :iot_hub_client, :configurable, :base_url, :options, :model_classes
+      attr_accessor :iot_hub_resource, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = .new(configurable.credentials, base_url, options)
+        client = Azure::ARM::IotHub::Api_2016_02_03::IotHubClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
         self.iot_hub_resource = Azure::ARM::IotHub::Api_2016_02_03::IotHubResource.new(client)
-        self.iot_hub_client = Azure::ARM::IotHub::Api_2016_02_03::IotHubClient.new(client)
         self.model_classes = ModelClasses.new
       end
 
       def get_client(version)
         case version
+          when '2016-02-03'
+            client = Azure::ARM::IotHub::Api_2016_02_03::IotHubClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           else
             raise "No client of version #{version} could be found in this profile."
         end
