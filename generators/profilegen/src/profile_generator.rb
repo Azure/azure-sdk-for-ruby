@@ -154,7 +154,7 @@ class ProfileGenerator
 
   def get_client_file
     check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/profile_client.rb"
+    file_name =  "#{@output_dir}/#{@profile_name}/#{@profile_name.downcase}_profile_client.rb"
     File.new(file_name, 'w')
   end
 
