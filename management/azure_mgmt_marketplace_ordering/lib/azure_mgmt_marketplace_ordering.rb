@@ -3,9 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2015-06-01/generated/azure_mgmt_marketplace_ordering'
-
-
-
 # Adding require for the profiles
-require 'profiles/Profile_2015_06_01/profile_client'
-require 'profiles/Profile_Latest/profile_client'
+require_relative 'profiles/Profile_2015_06_01/profile_client'
+require_relative 'profiles/Profile_Latest/profile_client'

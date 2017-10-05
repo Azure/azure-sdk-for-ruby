@@ -2,50 +2,45 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+require_relative './module_definition'
 <%- @file_names.each do |file_name| -%>
 require_relative 'modules/<%= file_name %>'
 <%- end -%>
 require_relative '../utils/configurable'
 require_relative '../utils/default'
 
-module Azure
-  module Profiles
-    module <%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management
-      module <%= @profile_name %>
-        #
-        # Client class for the <%= @profile_name %> profile SDK.
-        #
-        class Client
-          include Azure::ARM::Configurable
+module Azure::Profiles::<%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management::<%= @profile_name %>
+  #
+  # Client class for the <%= @profile_name %> profile SDK.
+  #
+  class Client
+    include Azure::ARM::Configurable
 
-          attr_accessor <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
+    attr_accessor <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
 
-          def initialize(options = {})
-            if options.is_a?(Hash) && options.length == 0
-              @options = setup_options
-            else
-              @options = options
-            end
-
-            reset!(options)
-
-            <%- @class_names.each do |class_name| -%>
-            self.<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>.new(self, nil, nil)
-            <%- end -%>
-          end
-
-          def credentials
-            if @credentials.nil?
-              self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
-
-              @credentials = MsRest::TokenCredentials.new(
-                      MsRestAzure::ApplicationTokenProvider.new(
-                          self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
-            end
-            @credentials
-          end
-        end
+    def initialize(options = {})
+      if options.is_a?(Hash) && options.length == 0
+        @options = setup_options
+      else
+        @options = options
       end
+
+      reset!(options)
+
+      <%- @class_names.each do |class_name| -%>
+      self.<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self, nil, nil)
+      <%- end -%>
+    end
+
+    def credentials
+      if @credentials.nil?
+        self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
+
+        @credentials = MsRest::TokenCredentials.new(
+                    MsRestAzure::ApplicationTokenProvider.new(
+                        self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
+      end
+      @credentials
     end
   end
 end

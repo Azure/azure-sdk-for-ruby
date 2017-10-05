@@ -9,59 +9,55 @@ require '<%= @module_require %>'
 <%- end -%>
 
 
-module Azure
-  module Profiles
-    module <%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management
-      module <%= @profile_name %>
-        module <%= @class_name %>
-          <%- @operation_types.each do |operation_type| -%>
-          <%= operation_type[:operation_name] %> = <%= operation_type[:operation_body] %>
-          <%- end -%>
+module Azure::Profiles::<%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management::<%= @profile_name %>
+  module <%= @class_name %>
+    <%- @operation_types.each do |operation_type| -%>
+    <%= operation_type[:operation_name] %> = <%= operation_type[:operation_body] %>
+    <%- end -%>
 
-          module Models
-            <%- @model_types.each do |model_type| -%>
-            <%= model_type[:model_name] %> = <%= model_type[:model_body] %>
-            <%- end -%>
-          end
+    module Models
+      <%- @model_types.each do |model_type| -%>
+      <%= model_type[:model_name] %> = <%= model_type[:model_body] %>
+      <%- end -%>
+    end
 
-          #
-          # <%= @class_name %>
-          #
-          class <%= @class_name %>
-            attr_accessor <% @operation_types.each do |operation_type| %>:<%= operation_type[:operation_name_ruby] %>, <% end %>:configurable, :base_url, :options, :model_classes
+    #
+    # <%= @class_name %>
+    #
+    class <%= @class_name %>Class
+      attr_accessor <% @operation_types.each do |operation_type| %>:<%= operation_type[:operation_name_ruby] %>, <% end %>:configurable, :base_url, :options, :model_classes
 
-            def initialize(configurable, base_url, options)
-              @configurable, @base_url, @options = configurable, base_url, options
-              client = <%= @management_client %>.new(configurable.credentials, base_url, options)
-              client.subscription_id = configurable.subscription_id
-              <%- @operation_types.each do |operation_type| -%>
-              self.<%= operation_type[:operation_name_ruby] %> = <%= operation_type[:operation_body] %>.new(client)
-              <%- end -%>
-              self.model_classes = ModelClasses.new
-            end
-
-            def get_client(version)
-              case version
-                <%- @versions_clients_mapper.each do |key, value| -%>
-                when '<%= key %>'
-                  client = <%= value %>.new(@configurable.credentials, @base_url, @options)
-                  client.subscription_id = configurable.subscription_id
-                  return client
-                <%- end -%>
-                else
-                  raise "No client of version #{version} could be found in this profile."
-              end
-            end
-
-            class ModelClasses
-              <%- @model_types.each do |model_type| -%>
-              def <%= model_type[:method_name] %>
-                <%= model_type[:model_body] %>
-              end
-              <%- end -%>
-            end
-          end
+      def initialize(configurable, base_url, options)
+        @configurable, @base_url, @options = configurable, base_url, options
+        client = <%= @management_client %>.new(configurable.credentials, base_url, options)
+        if(client.respond_to?(:subscription_id))
+          client.subscription_id = configurable.subscription_id
         end
+        <%- @operation_types.each do |operation_type| -%>
+        self.<%= operation_type[:operation_name_ruby] %> = <%= operation_type[:operation_body] %>.new(client)
+        <%- end -%>
+        self.model_classes = ModelClasses.new
+      end
+
+      def get_client(version)
+        case version
+          <%- @versions_clients_mapper.each do |key, value| -%>
+          when '<%= key %>'
+            client = <%= value %>.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          <%- end -%>
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
+      end
+
+      class ModelClasses
+        <%- @model_types.each do |model_type| -%>
+        def <%= model_type[:method_name] %>
+          <%= model_type[:model_body] %>
+        end
+        <%- end -%>
       end
     end
   end

@@ -4,5 +4,5 @@
 
 require '2014-12-01/generated/azure_mgmt_mobile_engagement'
 # Adding require for the profiles
-require 'profiles/Profile_2014_12_01/profile_client'
-require 'profiles/Profile_Latest/profile_client'
+require_relative 'profiles/Profile_2014_12_01/profile_client'
+require_relative 'profiles/Profile_Latest/profile_client'

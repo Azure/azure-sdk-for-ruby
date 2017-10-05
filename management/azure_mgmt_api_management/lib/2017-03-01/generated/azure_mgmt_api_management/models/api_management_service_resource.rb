@@ -8,7 +8,7 @@ module Azure::ARM::ApiManagement::Api_2017_03_01
     #
     # A single API Management service resource in List or Get response.
     #
-    class ApiManagementServiceResource < MsRestAzure::ApimResource
+    class ApiManagementServiceResource < ApimResource
 
       include MsRestAzure
 

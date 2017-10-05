@@ -8,7 +8,7 @@ module Azure::ARM::ApiManagement::Api_2017_03_01
     #
     # Parameter supplied to Update Api Management Service.
     #
-    class ApiManagementServiceUpdateParameters < MsRestAzure::ApimResource
+    class ApiManagementServiceUpdateParameters < ApimResource
 
       include MsRestAzure
 

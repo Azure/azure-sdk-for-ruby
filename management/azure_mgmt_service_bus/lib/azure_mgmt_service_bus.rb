@@ -5,6 +5,6 @@
 require '2017-04-01/generated/azure_mgmt_service_bus'
 require '2015-08-01/generated/azure_mgmt_service_bus'
 # Adding require for the profiles
-require 'profiles/Profile_2015_08_01/profile_client'
-require 'profiles/Profile_2017_04_01/profile_client'
-require 'profiles/Profile_Latest/profile_client'
+require_relative 'profiles/Profile_2015_08_01/profile_client'
+require_relative 'profiles/Profile_2017_04_01/profile_client'
+require_relative 'profiles/Profile_Latest/profile_client'

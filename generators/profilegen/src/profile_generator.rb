@@ -42,6 +42,7 @@ class ProfileGenerator
   def generate_profile_sdk
     generate_modules
     generate_client
+    generate_module_definition
   end
 
   def generate_modules
@@ -66,6 +67,7 @@ class ProfileGenerator
       file = get_module_file resource_provider
       file.write(get_renderer(ProfileTemplates.module_template))
       @model_types, @operation_types, @versions_clients_mapper = [], [], {}
+      @management_client = ''
     end
   end
 
@@ -76,6 +78,11 @@ class ProfileGenerator
   def generate_client
     file = get_client_file
     file.write(get_renderer(ProfileTemplates.client_template))
+  end
+
+  def generate_module_definition
+    file = get_module_definition_file
+    file.write(get_renderer(ProfileTemplates.module_definition_template))
   end
 
   #
@@ -95,7 +102,7 @@ class ProfileGenerator
     operations = []
     obj.constants.select do |const_name|
       if((obj.const_get(const_name).instance_of?Class))
-        if(const_name.to_s.end_with?('ManagementClient'))
+        if(const_name.to_s.end_with?('ManagementClient') || const_name.to_s == 'ManagementLinkClient' || const_name.to_s == 'ManagementLockClient' || const_name.to_s == 'FeatureClient' || const_name.to_s == 'PolicyClient' || const_name.to_s == 'SubscriptionClient')
           @management_client = obj.name + '::' + const_name.to_s
           @versions_clients_mapper[resource_type_version] = @management_client
         elsif (const_name.to_s == resource_type || '*' == resource_type)
@@ -148,6 +155,12 @@ class ProfileGenerator
   def get_client_file
     check_and_create_directory
     file_name =  "#{@output_dir}/#{@profile_name}/profile_client.rb"
+    File.new(file_name, 'w')
+  end
+
+  def get_module_definition_file
+    check_and_create_directory
+    file_name =  "#{@output_dir}/#{@profile_name}/module_definition.rb"
     File.new(file_name, 'w')
   end
 

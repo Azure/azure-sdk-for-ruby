@@ -11,4 +11,5 @@ module ProfileTemplateFiles
   MODULE_TEMPLATE = './resources/templates/module_template.template'
   CLIENT_TEMPLATE = './resources/templates/client_template.template'
   VERSION_TEMPLATE = './resources/templates/version_template.template'
+  MODULE_DEFINITION_TEMPLATE = './resources/templates/module_definition_template.template'
 end

@@ -4,5 +4,5 @@
 
 require '2015-06-01-preview/generated/azure_mgmt_commerce'
 # Adding require for the profiles
-require 'profiles/Profile_2015_06_01_Preview/profile_client'
-require 'profiles/Profile_Latest/profile_client'
+require_relative 'profiles/Profile_2015_06_01_Preview/profile_client'
+require_relative 'profiles/Profile_Latest/profile_client'

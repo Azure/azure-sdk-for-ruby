@@ -38,4 +38,8 @@ class ProfileTemplates
   def self.version_template
     File.read(ProfileTemplateFiles::VERSION_TEMPLATE)
   end
+
+  def self.module_definition_template
+    File.read(ProfileTemplateFiles::MODULE_DEFINITION_TEMPLATE)
+  end
 end
