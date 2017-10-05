@@ -12,6 +12,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The id of the endpoint from the 'endpoints' array
       # which these queries were routed to.
       attr_accessor :endpoint_id
@@ -37,14 +38,14 @@ module Azure::ARM::TrafficManager
             class_name: 'QueryExperience',
             model_properties: {
               endpoint_id: {
-                required: false,
+                required: true,
                 serialized_name: 'endpointId',
                 type: {
                   name: 'Number'
                 }
               },
               query_count: {
-                required: false,
+                required: true,
                 serialized_name: 'queryCount',
                 type: {
                   name: 'Number'

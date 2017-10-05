@@ -24,6 +24,7 @@ module Azure::ARM::TrafficManager
   autoload :Profiles,                                           'generated/azure_mgmt_traffic_manager/profiles.rb'
   autoload :GeographicHierarchies,                              'generated/azure_mgmt_traffic_manager/geographic_hierarchies.rb'
   autoload :HeatMap,                                            'generated/azure_mgmt_traffic_manager/heat_map.rb'
+  autoload :TrafficManagerUserMetricsKeys,                      'generated/azure_mgmt_traffic_manager/traffic_manager_user_metrics_keys.rb'
   autoload :TrafficManagerManagementClient,                     'generated/azure_mgmt_traffic_manager/traffic_manager_management_client.rb'
 
   module Models
@@ -33,7 +34,6 @@ module Azure::ARM::TrafficManager
     autoload :DnsConfig,                                          'generated/azure_mgmt_traffic_manager/models/dns_config.rb'
     autoload :TrafficFlow,                                        'generated/azure_mgmt_traffic_manager/models/traffic_flow.rb'
     autoload :HeatMapEndpoint,                                    'generated/azure_mgmt_traffic_manager/models/heat_map_endpoint.rb'
-    autoload :Resource,                                           'generated/azure_mgmt_traffic_manager/models/resource.rb'
     autoload :CheckTrafficManagerRelativeDnsNameAvailabilityParameters, 'generated/azure_mgmt_traffic_manager/models/check_traffic_manager_relative_dns_name_availability_parameters.rb'
     autoload :QueryExperience,                                    'generated/azure_mgmt_traffic_manager/models/query_experience.rb'
     autoload :ProfileListResult,                                  'generated/azure_mgmt_traffic_manager/models/profile_list_result.rb'
@@ -43,6 +43,7 @@ module Azure::ARM::TrafficManager
     autoload :Profile,                                            'generated/azure_mgmt_traffic_manager/models/profile.rb'
     autoload :TrafficManagerGeographicHierarchy,                  'generated/azure_mgmt_traffic_manager/models/traffic_manager_geographic_hierarchy.rb'
     autoload :TrackedResource,                                    'generated/azure_mgmt_traffic_manager/models/tracked_resource.rb'
+    autoload :TrafficManagerUserMetricsKeyModel,                  'generated/azure_mgmt_traffic_manager/models/traffic_manager_user_metrics_key_model.rb'
     autoload :HeatMapModel,                                       'generated/azure_mgmt_traffic_manager/models/heat_map_model.rb'
     autoload :EndpointStatus,                                     'generated/azure_mgmt_traffic_manager/models/endpoint_status.rb'
     autoload :EndpointMonitorStatus,                              'generated/azure_mgmt_traffic_manager/models/endpoint_monitor_status.rb'

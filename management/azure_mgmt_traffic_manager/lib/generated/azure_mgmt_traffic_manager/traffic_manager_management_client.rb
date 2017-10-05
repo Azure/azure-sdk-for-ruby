@@ -22,9 +22,6 @@ module Azure::ARM::TrafficManager
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -48,6 +45,9 @@ module Azure::ARM::TrafficManager
     # @return [HeatMap] heat_map
     attr_reader :heat_map
 
+    # @return [TrafficManagerUserMetricsKeys] traffic_manager_user_metrics_keys
+    attr_reader :traffic_manager_user_metrics_keys
+
     #
     # Creates initializes a new instance of the TrafficManagerManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -65,7 +65,7 @@ module Azure::ARM::TrafficManager
       @profiles = Profiles.new(self)
       @geographic_hierarchies = GeographicHierarchies.new(self)
       @heat_map = HeatMap.new(self)
-      @api_version = '2017-09-01-preview'
+      @traffic_manager_user_metrics_keys = TrafficManagerUserMetricsKeys.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

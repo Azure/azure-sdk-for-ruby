@@ -58,7 +58,7 @@ module Azure::ARM::TrafficManager
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_default_async(custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2017-05-01'
 
 
       request_headers = {}
@@ -72,7 +72,7 @@ module Azure::ARM::TrafficManager
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
