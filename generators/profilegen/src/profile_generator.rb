@@ -156,7 +156,7 @@ class ProfileGenerator
     check_and_create_directory
     client_file_name = ''
     if @individual_gem_profile == true
-      client_file_name = "#{@module_name.sub(/module/, '').downcase}_#{@profile_name.downcase}_profile_client.rb"
+      client_file_name = "#{@module_name.downcase.sub(/module/, '')}_#{@profile_name.downcase}_profile_client.rb"
     else
       client_file_name = "#{@profile_name.downcase}_profile_client.rb"
     end
