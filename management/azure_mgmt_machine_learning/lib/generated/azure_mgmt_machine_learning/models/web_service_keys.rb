@@ -12,6 +12,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The primary access key.
       attr_accessor :primary
 

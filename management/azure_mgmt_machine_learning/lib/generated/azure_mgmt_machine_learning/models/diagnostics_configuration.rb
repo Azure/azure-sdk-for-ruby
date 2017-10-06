@@ -12,6 +12,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DiagnosticsLevel] Specifies the verbosity of the diagnostic
       # output. Valid values are: None - disables tracing; Error - collects
       # only error (stderr) traces; All - collects all traces (stdout and

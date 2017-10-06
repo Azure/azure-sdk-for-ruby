@@ -12,6 +12,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The graph node's identifier
       attr_accessor :node_id
 

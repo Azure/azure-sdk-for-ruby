@@ -12,6 +12,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URI from which the blob is accessible from. For
       # example, aml://abc for system assets or https://xyz for user assets or
       # payload.

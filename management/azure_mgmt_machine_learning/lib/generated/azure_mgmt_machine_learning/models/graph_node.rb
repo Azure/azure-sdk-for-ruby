@@ -14,6 +14,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The id of the asset represented by this node.
       attr_accessor :asset_id
 

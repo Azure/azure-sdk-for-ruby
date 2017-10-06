@@ -13,6 +13,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the workspace ID of the machine learning
       # workspace associated with the web service
       attr_accessor :id

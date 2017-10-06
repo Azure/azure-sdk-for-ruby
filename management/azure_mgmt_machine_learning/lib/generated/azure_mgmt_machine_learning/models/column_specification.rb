@@ -14,6 +14,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ColumnType] Data type of the column. Possible values include:
       # 'Boolean', 'Integer', 'Number', 'String'
       attr_accessor :type

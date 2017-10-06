@@ -12,6 +12,7 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return Sample input data for the web service's input(s) given as an
       # input name to sample input values matrix map.
       attr_accessor :inputs
