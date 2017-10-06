@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource kind.
       attr_accessor :kind
 

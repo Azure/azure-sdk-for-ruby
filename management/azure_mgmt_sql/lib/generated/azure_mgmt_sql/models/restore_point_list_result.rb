@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RestorePoint>] The list of database restore points.
       attr_accessor :value
 

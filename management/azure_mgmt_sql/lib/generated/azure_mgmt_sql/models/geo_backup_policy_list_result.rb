@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<GeoBackupPolicy>] The list of geo backup policies.
       attr_accessor :value
 

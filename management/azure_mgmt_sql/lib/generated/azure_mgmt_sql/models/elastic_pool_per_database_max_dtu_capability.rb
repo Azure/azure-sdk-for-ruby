@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The maximum DTUs per database.
       attr_accessor :limit
 

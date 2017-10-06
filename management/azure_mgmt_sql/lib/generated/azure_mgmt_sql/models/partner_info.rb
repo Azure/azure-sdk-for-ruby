@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource identifier of the partner server.
       attr_accessor :id
 

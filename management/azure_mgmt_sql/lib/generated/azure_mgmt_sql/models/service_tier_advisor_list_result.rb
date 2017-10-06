@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ServiceTierAdvisor>] The list of service tier advisors
       # for specified database.
       attr_accessor :value

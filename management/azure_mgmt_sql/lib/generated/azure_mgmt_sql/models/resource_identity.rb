@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The Azure Active Directory principal id.
       attr_accessor :principal_id
 

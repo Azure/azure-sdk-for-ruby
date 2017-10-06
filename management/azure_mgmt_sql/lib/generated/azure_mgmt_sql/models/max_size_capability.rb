@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The maximum size of the database (see 'unit' for the
       # units).
       attr_accessor :limit

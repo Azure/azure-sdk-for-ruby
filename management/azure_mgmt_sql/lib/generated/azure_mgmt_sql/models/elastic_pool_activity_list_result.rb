@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ElasticPoolActivity>] The list of elastic pool
       # activities.
       attr_accessor :value

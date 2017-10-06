@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Quoted name of sync group table column.
       attr_accessor :quoted_name
 

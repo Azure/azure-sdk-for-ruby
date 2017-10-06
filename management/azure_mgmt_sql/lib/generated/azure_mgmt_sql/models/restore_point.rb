@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RestorePointType] The restore point type of the database
       # restore point. Possible values include: 'DISCRETE', 'CONTINUOUS'
       attr_accessor :restore_point_type

@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Metadata used for the Azure portal experience.
       attr_accessor :kind
 

@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RestorableDroppedDatabase>] A list of restorable dropped
       # databases
       attr_accessor :value

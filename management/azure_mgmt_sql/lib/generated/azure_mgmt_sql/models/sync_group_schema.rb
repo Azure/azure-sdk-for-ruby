@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SyncGroupSchemaTable>] List of tables in sync group
       # schema.
       attr_accessor :tables

@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Database>] The list of databases housed in the server.
       attr_accessor :value
 

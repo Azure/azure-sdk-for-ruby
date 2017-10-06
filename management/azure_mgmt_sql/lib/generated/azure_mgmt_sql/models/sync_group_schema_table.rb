@@ -12,6 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SyncGroupSchemaTableColumn>] List of columns in sync
       # group schema.
       attr_accessor :columns
