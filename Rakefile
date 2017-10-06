@@ -17,6 +17,7 @@ require 'rspec/core/rake_task'
 require 'open3'
 require 'os'
 require 'json'
+require 'fileutils'
 
 version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
 
@@ -114,9 +115,77 @@ namespace :arm do
       execute_and_stream('bundle exec rspec')
     end
   end
+
+  desc 'Clean Rollup Profiles'
+  task :clean_rollup_profiles do
+    Dir.chdir(File.expand_path('../azure_sdk/lib', __FILE__))
+    subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+    subdir_list.each do |subdir|
+      if subdir != 'utils' && subdir != 'azure_sdk'
+        folder_to_be_cleaned = File.expand_path("../azure_sdk/lib/#{subdir}", __FILE__)
+        puts "Cleaning folder - #{folder_to_be_cleaned}"
+        FileUtils.rm_rf(folder_to_be_cleaned)
+      end
+    end
+  end
+
+  desc 'Clean Individual Profiles'
+  task :clean_individual_profiles do
+    Dir.chdir(File.expand_path('../management', __FILE__))
+    gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
+    gem_folders.each do |gem|
+      Dir.chdir(File.expand_path("../management/#{gem}/lib/profiles", __FILE__))
+      subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+      subdir_list.each do |subdir|
+        if subdir != 'utils'
+          folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/profiles/#{subdir}", __FILE__)
+          puts "Cleaning folder - #{folder_to_be_cleaned}"
+          FileUtils.rm_rf(folder_to_be_cleaned)
+        end
+      end
+    end
+  end
+
+  desc 'Clean All profiles'
+  task :clean_profiles => [:clean_rollup_profiles, :clean_individual_profiles] do
+    puts 'Cleaned all profiles'
+  end
+
+  desc 'Regen rollup profiles'
+  task :regen_rollup_profile => :clean_rollup_profiles do
+    Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
+    command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{PROFILE_METADATA[:azure_sdk]}"
+    execute_and_stream(command)
+  end
+
+  desc 'Regen individual profiles'
+  task :regen_individual_profiles => :clean_individual_profiles do
+    Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
+    PROFILE_METADATA.each do |sdk, profile_spec_file|
+      if(sdk != 'azure_sdk')
+        command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{profile_spec_file}"
+        execute_and_stream(command)
+      end
+    end
+  end
+
+  desc 'Regen all profiles'
+  task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles] do
+    puts 'Regenerated all profiles'
+  end
 end
 
 task :default => :spec
+
+def get_base_profile_generation_cmd
+  cmd = 'bundle exec ruby profile_generator_client.rb'
+  dir_metadata = "--dir_metadata=#{File.expand_path('../generators/profilegen/src/resources/dir_metadata.json', __FILE__)}"
+  "#{cmd} #{dir_metadata} --profile="
+end
+
+def get_profile_spec_files_folder
+  File.expand_path('../profile_specs', __FILE__)
+end
 
 def execute_and_stream(cmd)
   puts "running: #{cmd}"
@@ -166,4 +235,65 @@ REGEN_METADATA = {
     azure_sdk: {
         version: version
     }
+}
+
+PROFILE_METADATA = {
+    azure_sdk: 'profiles.json',
+    azure_mgmt_analysis_services: 'analysis_services_profiles.json',
+    azure_mgmt_authorization: 'authorization_profiles.json',
+    azure_mgmt_automation: 'automation_profiles.json',
+    azure_mgmt_batch: 'batch_profiles.json',
+    azure_mgmt_billing: 'billing_profiles.json',
+    azure_mgmt_cdn: 'cdn_profiles.json',
+    azure_mgmt_cognitive_services: 'cognitive_services_profiles.json',
+    azure_mgmt_commerce: 'commerce_profiles.json',
+    azure_mgmt_compute: 'compute_profiles.json',
+    azure_mgmt_consumption: 'consumption_profiles.json',
+    azure_mgmt_container_instance: 'container_instance_profiles.json',
+    azure_mgmt_container_registry: 'container_registry_profiles.json',
+    azure_mgmt_container_service: 'container_service_profiles.json',
+    azure_mgmt_customer_insights: 'customer_insights_profiles.json',
+    azure_mgmt_datalake_analytics: 'datalake_analytics_profiles.json',
+    azure_mgmt_datalake_store: 'datalake_store_profiles.json',
+    azure_mgmt_devtestlabs: 'devtestlabs_profiles.json',
+    azure_mgmt_dns: 'dns_profiles.json',
+    azure_mgmt_event_grid: 'event_grid_profiles.json',
+    azure_mgmt_event_hub: 'event_hub_profiles.json',
+    azure_mgmt_features: 'features_profiles.json',
+    azure_mgmt_graph: 'graph_profiles.json',
+    azure_mgmt_iot_hub: 'iot_hub_profiles.json',
+    azure_mgmt_key_vault: 'key_vault_profiles.json',
+    azure_mgmt_links: 'links_profiles.json',
+    azure_mgmt_locks: 'locks_profiles.json',
+    azure_mgmt_logic: 'logic_profiles.json',
+    azure_mgmt_machine_learning: 'machine_learning_profiles.json',
+    azure_mgmt_managed_applications: 'managed_applications_profiles.json',
+    azure_mgmt_marketplace_ordering: 'marketplace_ordering_profiles.json',
+    azure_mgmt_media_services: 'media_services_profiles.json',
+    azure_mgmt_mobile_engagement: 'mobile_engagement_profiles.json',
+    azure_mgmt_monitor: 'monitor_profiles.json',
+    azure_mgmt_network: 'network_profiles.json',
+    azure_mgmt_notification_hubs: 'notification_hubs_profiles.json',
+    azure_mgmt_operational_insights: 'operational_insights_profiles.json',
+    azure_mgmt_policy: 'policy_profiles.json',
+    azure_mgmt_powerbi_embedded: 'powerbi_embedded_profiles.json',
+    azure_mgmt_recovery_services: 'recovery_services_profiles.json',
+    azure_mgmt_recovery_services_backup: 'recovery_services_backup_profiles.json',
+    azure_mgmt_recovery_services_site_recovery: 'recovery_services_site_recovery_profiles.json',
+    azure_mgmt_redis: 'redis_profiles.json',
+    azure_mgmt_relay: 'relay_profiles.json',
+    azure_mgmt_resources: 'resources_profiles.json',
+    azure_mgmt_resources_management: 'resources_management_profiles.json',
+    azure_mgmt_scheduler: 'scheduler_profiles.json',
+    azure_mgmt_search: 'search_profiles.json',
+    azure_mgmt_server_management: 'server_management_profiles.json',
+    azure_mgmt_service_bus: 'service_bus_profiles.json',
+    azure_mgmt_service_fabric: 'service_fabric_profiles.json',
+    azure_mgmt_sql: 'sql_profiles.json',
+    azure_mgmt_stor_simple8000_series: 'stor_simple8000_series_profiles.json',
+    azure_mgmt_storage: 'storage_profiles.json',
+    azure_mgmt_stream_analytics: 'stream_analytics_profiles.json',
+    azure_mgmt_subscriptions: 'subscriptions_profiles.json',
+    azure_mgmt_traffic_manager: 'traffic_manager_profiles.json',
+    azure_mgmt_web: 'web_profiles.json'
 }
