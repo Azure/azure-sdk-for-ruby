@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The administrator username to use for Linux VMs.
       attr_accessor :admin_username
 

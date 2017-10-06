@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the type of the extension; an example is
       # "CustomScriptExtension".
       attr_accessor :type

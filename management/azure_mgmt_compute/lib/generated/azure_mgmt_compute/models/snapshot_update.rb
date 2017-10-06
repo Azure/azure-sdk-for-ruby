@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [OperatingSystemTypes] the Operating System type. Possible
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type

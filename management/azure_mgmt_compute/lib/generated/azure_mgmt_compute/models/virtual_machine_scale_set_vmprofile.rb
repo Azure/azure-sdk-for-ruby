@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [VirtualMachineScaleSetOSProfile] Specifies the operating
       # system settings for the virtual machines in the scale set.
       attr_accessor :os_profile

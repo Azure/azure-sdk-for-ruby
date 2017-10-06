@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [OperatingSystemTypes] This property allows you to specify the
       # type of the OS that is included in the disk if creating a VM from a
       # custom image. <br><br> Possible values are: <br><br> **Windows**

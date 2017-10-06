@@ -8,10 +8,11 @@ module Azure::ARM::Compute
     #
     # Disk resource.
     #
-    class Disk < Resource
+    class Disk < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A relative URI containing the ID of the VM that has
       # the disk attached.
       attr_accessor :managed_by

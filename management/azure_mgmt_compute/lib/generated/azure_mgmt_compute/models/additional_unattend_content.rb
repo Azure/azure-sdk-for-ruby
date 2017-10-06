@@ -15,6 +15,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PassNames] The pass name. Currently, the only allowable value
       # is oobeSystem. Possible values include: 'OobeSystem'
       attr_accessor :pass_name

@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The type of resource the SKU applies to.
       attr_accessor :resource_type
 

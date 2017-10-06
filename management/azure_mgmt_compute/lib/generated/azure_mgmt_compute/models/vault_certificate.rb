@@ -13,6 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] This is the URL of a certificate that has been
       # uploaded to Key Vault as a secret. For adding a secret to the Key
       # Vault, see [Add a key or secret to the key

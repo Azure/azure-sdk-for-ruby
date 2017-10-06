@@ -13,6 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SourceVault] Resource id of the KeyVault containing the key or
       # secret
       attr_accessor :source_vault

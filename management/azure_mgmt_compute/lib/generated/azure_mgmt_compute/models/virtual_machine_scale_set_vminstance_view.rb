@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The Update Domain count.
       attr_accessor :platform_update_domain
 

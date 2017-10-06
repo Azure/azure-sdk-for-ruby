@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<NetworkInterfaceReference>] Specifies the list of
       # resource Ids for the network interfaces associated with the virtual
       # machine.

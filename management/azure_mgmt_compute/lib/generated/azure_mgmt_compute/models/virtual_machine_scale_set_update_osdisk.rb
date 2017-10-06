@@ -13,6 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [CachingTypes] The caching type. Possible values include:
       # 'None', 'ReadOnly', 'ReadWrite'
       attr_accessor :caching

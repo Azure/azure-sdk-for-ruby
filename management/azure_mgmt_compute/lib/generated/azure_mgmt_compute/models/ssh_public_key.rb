@@ -13,6 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the full path on the created VM where ssh
       # public key is stored. If the file already exists, the specified key is
       # appended to the file. Example: /home/user/.ssh/authorized_keys

@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ImageReference] Specifies information about the image to use.
       # You can specify information about platform images, marketplace images,
       # or virtual machine images. This element is required when you want to

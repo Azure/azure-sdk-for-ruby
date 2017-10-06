@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageAccountTypes] Specifies the storage account type for
       # the managed disk. Possible values are: Standard_LRS or Premium_LRS.
       # Possible values include: 'Standard_LRS', 'Premium_LRS'

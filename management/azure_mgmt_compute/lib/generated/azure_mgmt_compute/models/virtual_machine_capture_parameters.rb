@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The captured virtual hard disk's name prefix.
       attr_accessor :vhd_prefix
 

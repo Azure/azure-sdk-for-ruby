@@ -12,10 +12,11 @@ module Azure::ARM::Compute
     # marketplace image, or virtual machine image, but is not used in other
     # creation operations.
     #
-    class ImageReference < SubResource
+    class ImageReference < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The image publisher.
       attr_accessor :publisher
 

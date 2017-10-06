@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL referencing a key encryption key in Key Vault.
       attr_accessor :key_url
 

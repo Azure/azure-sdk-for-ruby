@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RollingUpgradeStatusCode] Code indicating the current status
       # of the upgrade. Possible values include: 'RollingForward', 'Cancelled',
       # 'Completed', 'Faulted'

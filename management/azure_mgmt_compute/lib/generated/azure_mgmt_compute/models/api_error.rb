@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ApiErrorBase>] The Api error details
       attr_accessor :details
 

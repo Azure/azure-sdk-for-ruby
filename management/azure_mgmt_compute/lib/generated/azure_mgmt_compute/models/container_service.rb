@@ -8,10 +8,11 @@ module Azure::ARM::Compute
     #
     # Container service.
     #
-    class ContainerService < Resource
+    class ContainerService < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the current deployment or provisioning state, which
       # only appears in the response.
       attr_accessor :provisioning_state

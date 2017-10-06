@@ -13,6 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The publicIP address configuration name.
       attr_accessor :name
 

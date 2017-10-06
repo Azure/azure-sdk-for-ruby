@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Unique name of the agent pool profile in the context
       # of the subscription and resource group.
       attr_accessor :name

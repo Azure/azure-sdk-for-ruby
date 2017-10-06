@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A SAS uri for accessing a disk.
       attr_accessor :access_sas
 

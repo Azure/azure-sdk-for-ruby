@@ -8,10 +8,11 @@ module Azure::ARM::Compute
     #
     # Describes a network interface reference.
     #
-    class NetworkInterfaceReference < SubResource
+    class NetworkInterfaceReference < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Specifies the primary network interface in case the
       # virtual machine has more than 1 network interface.
       attr_accessor :primary

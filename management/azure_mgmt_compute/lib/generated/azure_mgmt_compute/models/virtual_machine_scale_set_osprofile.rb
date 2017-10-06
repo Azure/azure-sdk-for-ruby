@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the computer name prefix for all of the
       # virtual machines in the scale set. Computer name prefixes must be 1 to
       # 15 characters long.

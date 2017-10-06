@@ -13,6 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The number of instances that have been successfully
       # upgraded.
       attr_accessor :successful_instance_count

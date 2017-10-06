@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A base-64 encoded string of custom data.
       attr_accessor :custom_data
 

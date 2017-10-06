@@ -12,6 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualMachineScaleSetUpdateNetworkConfiguration>] The
       # list of network configurations.
       attr_accessor :network_interface_configurations
