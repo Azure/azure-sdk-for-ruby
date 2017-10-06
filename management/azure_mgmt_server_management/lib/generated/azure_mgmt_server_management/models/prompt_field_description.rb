@@ -12,6 +12,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the prompt.
       attr_accessor :name
 

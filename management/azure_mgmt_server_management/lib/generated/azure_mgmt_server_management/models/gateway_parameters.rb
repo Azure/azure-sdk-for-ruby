@@ -12,6 +12,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Location of the resource.
       attr_accessor :location
 

@@ -8,25 +8,11 @@ module Azure::ARM::ServerManagement
     #
     # Resource Manager Resource Information.
     #
-    class Resource
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Manager Resource ID.
-      attr_accessor :id
-
-      # @return [String] Resource Manager Resource Type.
-      attr_accessor :type
-
-      # @return [String] Resource Manager Resource Name.
-      attr_accessor :name
-
-      # @return [String] Resource Manager Resource Location.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource Manager Resource Tags.
-      attr_accessor :tags
-
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :etag
 

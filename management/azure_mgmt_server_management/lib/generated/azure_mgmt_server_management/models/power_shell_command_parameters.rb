@@ -12,6 +12,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Script to execute.
       attr_accessor :command
 

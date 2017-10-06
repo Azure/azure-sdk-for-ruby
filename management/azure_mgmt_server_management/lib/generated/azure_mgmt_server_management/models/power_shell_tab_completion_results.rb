@@ -13,6 +13,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>]
       attr_accessor :results
 

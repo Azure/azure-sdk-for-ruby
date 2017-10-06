@@ -12,6 +12,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Float] The available memory on the gateway host machine in
       # megabytes.
       attr_accessor :available_memory_mbyte

@@ -8,10 +8,11 @@ module Azure::ARM::ServerManagement
     #
     # Data model for an arm gateway resource.
     #
-    class GatewayResource < Resource
+    class GatewayResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] UTC date and time when gateway was first added to
       # management service.
       attr_accessor :created

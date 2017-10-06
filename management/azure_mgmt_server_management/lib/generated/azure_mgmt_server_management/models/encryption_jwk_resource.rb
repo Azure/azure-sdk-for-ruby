@@ -12,6 +12,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :kty
 

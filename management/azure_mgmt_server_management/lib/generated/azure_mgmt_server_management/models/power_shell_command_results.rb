@@ -12,6 +12,7 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<PowerShellCommandResult>]
       attr_accessor :results
 
