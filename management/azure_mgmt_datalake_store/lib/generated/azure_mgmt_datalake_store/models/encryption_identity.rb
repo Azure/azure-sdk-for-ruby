@@ -12,6 +12,7 @@ module Azure::ARM::DataLakeStore
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The type of encryption being used. Currently the only
       # supported type is 'SystemAssigned'. Default value: 'SystemAssigned' .
       attr_accessor :type
