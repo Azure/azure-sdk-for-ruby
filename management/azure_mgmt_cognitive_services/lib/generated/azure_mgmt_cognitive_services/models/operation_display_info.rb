@@ -12,6 +12,7 @@ module Azure::ARM::CognitiveServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The description of the operation.
       attr_accessor :description
 

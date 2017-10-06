@@ -12,6 +12,7 @@ module Azure::ARM::CognitiveServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<CheckSkuAvailabilityResult>] Check SKU availability
       # result list.
       attr_accessor :value

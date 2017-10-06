@@ -12,6 +12,7 @@ module Azure::ARM::CognitiveServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ErrorBody] The error body.
       attr_accessor :error
 
