@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Gets or set the maximum job count.
       attr_accessor :max_job_count
 

@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the content type.
       attr_accessor :content_type
 

@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the queue name.
       attr_accessor :queue_name
 

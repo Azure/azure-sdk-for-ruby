@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Gets or sets the job start time.
       attr_accessor :start_time
 

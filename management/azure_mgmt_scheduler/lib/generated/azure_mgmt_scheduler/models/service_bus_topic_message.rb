@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the topic path.
       attr_accessor :topic_path
 

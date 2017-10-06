@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ServiceBusAuthentication] Gets or sets the Service Bus
       # authentication.
       attr_accessor :authentication

@@ -13,6 +13,7 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecurrenceFrequency] Gets or sets the frequency of recurrence
       # (second, minute, hour, day, week, month). Possible values include:
       # 'Minute', 'Hour', 'Day', 'Week', 'Month'
