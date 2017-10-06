@@ -8,37 +8,57 @@ If you're looking for Azure Service Management (ASM) please refer to this [repo]
 Additional info on Azure deployment models [https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/](https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/)
 
 ## Azure Resource Management (preview)
+* [Analysis Services](https://rubygems.org/gems/azure_mgmt_analysis_services) Manage Azure Analysis Services
 * [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
+* [Automation](https://rubygems.org/gems/azure_mgmt_automation) Manage Azure Automation service
 * [Batch](https://rubygems.org/gems/azure_mgmt_batch) Azure Batch Management Account & Application operations management
+* [Billing](https://rubygems.org/gems/azure_mgmt_billing) Manage Azure Billing service
 * [CDN](https://rubygems.org/gems/azure_mgmt_cdn) Azure Content Delivery Network
 * [Cognitive Services](https://rubygems.org/gems/azure_mgmt_cognitive_services) Azure Cognitive Services Account management
 * [Commerce](https://rubygems.org/gems/azure_mgmt_commerce) Azure Commerce Usage aggregates & Rate card management
 * [Compute](https://rubygems.org/gems/azure_mgmt_compute) Virtual Machines, Images, Extensions, Availability Sets, etc...
+* [Consumption](https://rubygems.org/gems/azure_mgmt_consumption) Manage Azure Consumption service
+* [Container Instance](https://rubygems.org/gems/azure_mgmt_container_instance) Manage Azure Container Instance service
 * [Container Registry](https://rubygems.org/gems/azure_mgmt_container_registry) Registries, Credentials, Replications, etc...
+* [Customer Insights](https://rubygems.org/gems/azure_mgmt_customer_insights) Manage Azure Customer Insights service
 * [Datalake Analytics](https://rubygems.org/gems/azure_mgmt_datalake_analytics) Azure Datalake Analytics Account, Catalog and Job management
 * [Datalake Store](https://rubygems.org/gems/azure_mgmt_datalake_store) Azure Datalake Store Account and FileSystem management
 * [DevTest Labs](https://rubygems.org/gems/azure_mgmt_devtestlabs) Azure DevTest Labs LabOperations, ArtifactSourceOperations, ArtifactOperations, CostOperations etc...
 * [DNS](https://rubygems.org/gems/azure_mgmt_dns) Azure DNS Record Set and Zone management
+* [Event Grid](https://rubygems.org/gems/azure_mgmt_event_grid) Azure Event Grid management service
+* [Event Hub](https://rubygems.org/gems/azure_mgmt_event_hub) Azure Event Hub management service
 * [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
 * [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
-* [Monitor](https://rubygems.org/gems/azure_mgmt_monitor) Azure Monitor management
 * [IoTHub](https://rubygems.org/gems/azure_mgmt_iot_hub) Azure IoTHub's Resource Management
 * [Key Vault](https://rubygems.org/gems/azure_mgmt_key_vault) Azure Key Vault's vault management
+* [Links](https://rubygems.org/gems/azure_mgmt_links) Management links for Azure Resources
 * [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
-* [Logic](https://rubygems.org/gems/azure_mgmt_logic) Integration Accounts, AccountSchemas, AccountMaps, AccountPartners etc... 
+* [Logic](https://rubygems.org/gems/azure_mgmt_logic) Integration Accounts, AccountSchemas, AccountMaps, AccountPartners etc...
 * [Machine Learning](https://rubygems.org/gems/azure_mgmt_machine_learning) Azure Machine Learning web services management
+* [Managed Applications](https://rubygems.org/gems/azure_mgmt_managed_applications) Manage Applications for Azure Resources
+* [Marketplace Ordering](https://rubygems.org/gems/azure_mgmt_marketplace_ordering) Manage Azure Marketplace Ordering service
 * [Media Services](https://rubygems.org/gems/azure_mgmt_media_services) Media Services resource management APIs
-* [Mobile Engagement](https://rubygems.org/gems/azure_mgmt_mobile_engagement) Azure Mobile Engagement's Apps, App Collections, Devices management APIs  
+* [Mobile Engagement](https://rubygems.org/gems/azure_mgmt_mobile_engagement) Azure Mobile Engagement's Apps, App Collections, Devices management APIs
+* [Monitor](https://rubygems.org/gems/azure_mgmt_monitor) Azure Monitor management
 * [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
 * [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
+* [Operational Insights](https://rubygems.org/gems/azure_mgmt_operational_insights) Manage Azure Operational Insights service
 * [Policy](https://rubygems.org/gems/azure_mgmt_policy) Policy Assignment & Policy definition operations
 * [Powerbi Embedded](https://rubygems.org/gems/azure_mgmt_powerbi_embedded) Azure Powerbi Embedded Workspace & WorkspaceCollection management
+* [Recovery Services](https://rubygems.org/gems/azure_mgmt_recovery_services) Azure Recovery Services management
+* [Recovery Services Backup](https://rubygems.org/gems/azure_mgmt_recovery_services_backup) Azure Recovery Services Backup management
+* [Recovery Services Site Recovery](https://rubygems.org/gems/azure_mgmt_recovery_services_site_recovery) Azure Recovery Services Site Recovery management
 * [Redis](https://rubygems.org/gems/azure_mgmt_redis) Redis resource management
+* [Relay](https://rubygems.org/gems/azure_mgmt_relay) Azure Relay management
 * [Resources](https://rubygems.org/gems/azure_mgmt_resources) Resource Groups, Resource Providers, Template Deployments, Operations, etc...
+* [Resources Management](https://rubygems.org/gems/azure_mgmt_resources_management) Azure Resources Management service
 * [Scheduler](https://rubygems.org/gems/azure_mgmt_scheduler) Manage scheduled jobs in Azure
 * [Search](https://rubygems.org/gems/azure_mgmt_search) Manage Search resources
 * [Server Management](https://rubygems.org/gems/azure_mgmt_server_management) Azure Server Management Service like node, gateway, powershell etc..
+* [Service Bus](https://rubygems.org/gems/azure_mgmt_service_bus) Manage Azure Service Bus
+* [Service Fabric](https://rubygems.org/gems/azure_mgmt_service_fabric) Manage Azure Fabric Bus
 * [SQL](https://rubygems.org/gems/azure_mgmt_sql) Manage Azure SQL resources
+* [Stor Simple 8000 Series](https://rubygems.org/gems/azure_mgmt_stor_simple8000_series) Manage Azure Stor Simple 8000 Series service
 * [Storage](https://rubygems.org/gems/azure_mgmt_storage) Account Creation, Usage Operations, etc...
 * [Stream Analytics](https://rubygems.org/gems/azure_mgmt_stream_analytics) Create, update, start, stop streaming jobs etc...
 * [Subscriptions](https://rubygems.org/gems/azure_mgmt_subscriptions) Manage Azure subscriptions

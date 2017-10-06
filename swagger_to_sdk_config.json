@@ -33,6 +33,18 @@
         "azure_mgmt_authorization.rb"
       ]
     },
+    "azure_mgmt_automation": {
+      "markdown": "specification/automation/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::Automation",
+        "package-name": "azure_mgmt_automation",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_automation/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_automation.rb"
+      ]
+    },
     "azure_mgmt_batch": {
       "markdown": "specification/batch/resource-manager/readme.md",
       "autorest_options": {
@@ -43,6 +55,18 @@
       "output_dir": "management/azure_mgmt_batch/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_batch.rb"
+      ]
+    },
+    "azure_mgmt_billing": {
+      "markdown": "specification/billing/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::Billing",
+        "package-name": "azure_mgmt_billing",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_billing/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_billing.rb"
       ]
     },
     "azure_mgmt_cdn": {
@@ -93,6 +117,30 @@
         "azure_mgmt_compute.rb"
       ]
     },
+    "azure_mgmt_consumption": {
+      "markdown": "specification/consumption/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::Consumption",
+        "package-name": "azure_mgmt_consumption",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_consumption/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_consumption.rb"
+      ]
+    },
+    "azure_mgmt_container_instance": {
+      "markdown": "specification/containerinstance/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::ContainerInstance",
+        "package-name": "azure_mgmt_container_instance",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_container_instance/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_container_instance.rb"
+      ]
+    },
     "azure_mgmt_container_registry": {
       "markdown": "specification/containerregistry/resource-manager/readme.md",
       "autorest_options": {
@@ -103,6 +151,18 @@
       "output_dir": "management/azure_mgmt_container_registry/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_container_registry.rb"
+      ]
+    },
+    "azure_mgmt_customer_insights": {
+      "markdown": "specification/customer-insights/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::ContainerInsights",
+        "package-name": "azure_mgmt_customer_insights",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_customer_insights/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_customer_insights.rb"
       ]
     },
     "azure_mgmt_datalake_analytics": {
@@ -165,6 +225,18 @@
         "azure_mgmt_event_hub.rb"
       ]
     },
+    "azure_mgmt_event_grid": {
+      "markdown": "specification/eventgrid/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::EventGrid",
+        "package-name": "azure_mgmt_event_grid",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_event_grid/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_event_grid.rb"
+      ]
+    },
     "azure_mgmt_features": {
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
@@ -214,6 +286,19 @@
         "azure_mgmt_key_vault.rb"
       ]
     },
+    "azure_mgmt_links": {
+      "markdown": "specification/resources/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::Links",
+        "package-name": "azure_mgmt_links",
+        "package-version": "0.13.0",
+        "tag": "package-links-2016-09"
+      },
+      "output_dir": "management/azure_mgmt_links/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_links.rb"
+      ]
+    },
     "azure_mgmt_locks": {
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
@@ -249,6 +334,31 @@
       "output_dir": "management/azure_mgmt_machine_learning/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_machine_learning.rb"
+      ]
+    },
+    "azure_mgmt_managed_applications": {
+      "markdown": "specification/resources/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::ManagedApplications",
+        "package-name": "azure_mgmt_managed_applications",
+        "package-version": "0.13.0",
+        "tag": "package-managedapplications-2016-09"
+      },
+      "output_dir": "management/azure_mgmt_managed_applications/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_managed_applications.rb"
+      ]
+    },
+    "azure_mgmt_marketplace_ordering": {
+      "markdown": "specification/marketplaceordering/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::MarketplaceOrdering",
+        "package-name": "azure_mgmt_marketplace_ordering",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_marketplace_ordering/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_marketplace_ordering.rb"
       ]
     },
     "azure_mgmt_media_services": {
@@ -311,6 +421,18 @@
         "azure_mgmt_notification_hubs.rb"
       ]
     },
+    "azure_mgmt_operational_insights": {
+      "markdown": "specification/operationalinsights/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::OperationalInsights",
+        "package-name": "azure_mgmt_operational_insights",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_operational_insights/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_operational_insights.rb"
+      ]
+    },
     "azure_mgmt_policy": {
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
@@ -360,6 +482,18 @@
         "azure_mgmt_recovery_services_backup.rb"
       ]
     },
+    "azure_mgmt_recovery_services_site_recovery": {
+      "markdown": "specification/recoveryservicessiterecovery/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::RecoveryServicesSiteRecovery",
+        "package-name": "azure_mgmt_recovery_services_site_recovery",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_recovery_services_site_recovery/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_recovery_services_site_recovery.rb"
+      ]
+    },
     "azure_mgmt_redis": {
       "markdown": "specification/redis/resource-manager/readme.md",
       "autorest_options": {
@@ -370,6 +504,18 @@
       "output_dir": "management/azure_mgmt_redis/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_redis.rb"
+      ]
+    },
+    "azure_mgmt_relay": {
+      "markdown": "specification/relay/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::Relay",
+        "package-name": "azure_mgmt_relay",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_relay/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_relay.rb"
       ]
     },
     "azure_mgmt_resources": {
@@ -383,6 +529,19 @@
       "output_dir": "management/azure_mgmt_resources/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_resources.rb"
+      ]
+    },
+    "azure_mgmt_resources_management": {
+      "markdown": "specification/resources/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::ResourcesManagement",
+        "package-name": "azure_mgmt_resources_management",
+        "package-version": "0.13.0",
+        "tag": "package-management-2017-08"
+      },
+      "output_dir": "management/azure_mgmt_resources_management/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_resources_management.rb"
       ]
     },
     "azure_mgmt_scheduler": {
@@ -433,6 +592,18 @@
         "azure_mgmt_service_bus.rb"
       ]
     },
+    "azure_mgmt_service_fabric": {
+      "markdown": "specification/servicefabric/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::ServiceFabric",
+        "package-name": "azure_mgmt_service_fabric",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_service_fabric/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_service_fabric.rb"
+      ]
+    },
     "azure_mgmt_sql": {
       "markdown": "specification/sql/resource-manager/readme.md",
       "autorest_options": {
@@ -443,6 +614,18 @@
       "output_dir": "management/azure_mgmt_sql/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_sql.rb"
+      ]
+    },
+    "azure_mgmt_stor_simple8000_series": {
+      "markdown": "specification/storsimple8000series/resource-manager/readme.md",
+      "autorest_options": {
+        "namespace": "Azure::ARM::StorSimple8000Series",
+        "package-name": "azure_mgmt_stor_simple8000_series",
+        "package-version": "0.13.0"
+      },
+      "output_dir": "management/azure_mgmt_stor_simple8000_series/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_stor_simple8000_series.rb"
       ]
     },
     "azure_mgmt_storage": {
