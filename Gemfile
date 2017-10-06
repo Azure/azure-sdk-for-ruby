@@ -13,7 +13,6 @@ group :development, :test do
 end
 
 gem 'azure_mgmt_analysis_services',         path: 'management/azure_mgmt_analysis_services'
-gem 'azure_mgmt_api_management',            path: 'management/azure_mgmt_api_management'
 gem 'azure_mgmt_authorization',             path: 'management/azure_mgmt_authorization'
 gem 'azure_mgmt_automation',                path: 'management/azure_mgmt_automation'
 gem 'azure_mgmt_batch',                     path: 'management/azure_mgmt_batch'

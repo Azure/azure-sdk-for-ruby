@@ -4,7 +4,6 @@
 
 require 'Profile_Latest/profile_latest_module_definition.rb'
 require 'Profile_Latest/modules/analysisservices_profile_module'
-require 'Profile_Latest/modules/apimanagement_profile_module'
 require 'Profile_Latest/modules/authorization_profile_module'
 require 'Profile_Latest/modules/automation_profile_module'
 require 'Profile_Latest/modules/batch_profile_module'
@@ -68,7 +67,7 @@ module Azure::Profiles::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :analysisservices, :apimanagement, :authorization, :automation, :batch, :billing, :cdn, :cognitiveservices, :commerce, :compute, :consumption, :containerinstance, :containerregistry, :containerservice, :customerinsights, :datalakeanalytics, :datalakestore, :devtestlabs, :dns, :eventgrid, :eventhub, :features, :graph, :iothub, :keyvault, :links, :locks, :logic, :machinelearning, :managedapplications, :marketplaceordering, :mediaservices, :mobileengagement, :monitor, :network, :notificationhubs, :operationalinsights, :policy, :powerbiembedded, :recoveryservices, :recoveryservicesbackup, :recoveryservicessiterecovery, :redis, :resources, :resourcesmanagement, :search, :servermanagement, :servicebus, :servicefabric, :sql, :storsimple8000series, :storage, :streamanalytics, :subscriptions, :web
+    attr_accessor  :analysisservices, :authorization, :automation, :batch, :billing, :cdn, :cognitiveservices, :commerce, :compute, :consumption, :containerinstance, :containerregistry, :containerservice, :customerinsights, :datalakeanalytics, :datalakestore, :devtestlabs, :dns, :eventgrid, :eventhub, :features, :graph, :iothub, :keyvault, :links, :locks, :logic, :machinelearning, :managedapplications, :marketplaceordering, :mediaservices, :mobileengagement, :monitor, :network, :notificationhubs, :operationalinsights, :policy, :powerbiembedded, :recoveryservices, :recoveryservicesbackup, :recoveryservicessiterecovery, :redis, :resources, :resourcesmanagement, :search, :servermanagement, :servicebus, :servicefabric, :sql, :storsimple8000series, :storage, :streamanalytics, :subscriptions, :web
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -80,7 +79,6 @@ module Azure::Profiles::Management::Profile_Latest
       reset!(options)
 
       self.analysisservices = AnalysisServices::AnalysisServicesClass.new(self, nil, nil)
-      self.apimanagement = ApiManagement::ApiManagementClass.new(self, nil, nil)
       self.authorization = Authorization::AuthorizationClass.new(self, nil, nil)
       self.automation = Automation::AutomationClass.new(self, nil, nil)
       self.batch = Batch::BatchClass.new(self, nil, nil)

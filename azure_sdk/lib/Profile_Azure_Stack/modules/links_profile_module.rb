@@ -24,7 +24,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
 
       def initialize(configurable, base_url, options)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(configurable.credentials, base_url, options)
+        client = Azure::ARM::Links::Api_2016_09_01::LinksManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
@@ -35,7 +35,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       def get_client(version)
         case version
           when '2016-09-01'
-            client = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::ARM::Links::Api_2016_09_01::LinksManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
