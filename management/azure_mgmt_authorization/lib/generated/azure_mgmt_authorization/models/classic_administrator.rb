@@ -12,6 +12,7 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the administrator.
       attr_accessor :id
 
