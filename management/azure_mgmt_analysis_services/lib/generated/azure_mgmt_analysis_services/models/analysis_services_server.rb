@@ -8,14 +8,15 @@ module Azure::ARM::AnalysisServices
     #
     # Represents an instance of an Analysis Services resource.
     #
-    class AnalysisServicesServer < Resource
+    class AnalysisServicesServer < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ServerAdministrators] A collection of AS server administrators
       attr_accessor :as_administrators
 
-      # @return [String] The container URI of backup blob.
+      # @return [String] The SAS container URI to the backup container.
       attr_accessor :backup_blob_container_uri
 
       # @return [GatewayDetails] The gateway details configured for the AS

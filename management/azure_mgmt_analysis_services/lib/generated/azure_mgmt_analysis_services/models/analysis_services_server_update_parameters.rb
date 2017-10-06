@@ -12,6 +12,7 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ResourceSku] The SKU of the Analysis Services resource.
       attr_accessor :sku
 
@@ -22,7 +23,7 @@ module Azure::ARM::AnalysisServices
       # @return [ServerAdministrators] A collection of AS server administrators
       attr_accessor :as_administrators
 
-      # @return [String] The container URI of backup blob.
+      # @return [String] The SAS container URI to the backup container.
       attr_accessor :backup_blob_container_uri
 
       # @return [GatewayDetails] The gateway details configured for the AS
