@@ -8,10 +8,11 @@ module Azure::ARM::Monitor
     #
     # The alert rule resource.
     #
-    class AlertRuleResource < Resource
+    class AlertRuleResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the name of the alert rule.
       attr_accessor :alert_rule_resource_name
 

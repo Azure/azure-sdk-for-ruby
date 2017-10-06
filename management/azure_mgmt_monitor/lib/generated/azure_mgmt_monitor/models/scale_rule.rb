@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MetricTrigger] the trigger that results in a scaling action.
       attr_accessor :metric_trigger
 

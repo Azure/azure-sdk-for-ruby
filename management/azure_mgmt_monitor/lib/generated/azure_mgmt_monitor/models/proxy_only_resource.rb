@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Azure resource Id
       attr_accessor :id
 

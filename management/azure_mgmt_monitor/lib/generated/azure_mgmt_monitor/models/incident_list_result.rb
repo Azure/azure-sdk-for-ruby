@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Incident>] the incident collection.
       attr_accessor :value
 

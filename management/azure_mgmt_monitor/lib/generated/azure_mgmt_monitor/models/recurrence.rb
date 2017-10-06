@@ -13,6 +13,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecurrenceFrequency] the recurrence frequency. How often the
       # schedule profile should take effect. This value must be Week, meaning
       # each week will have the same set of profiles. Possible values include:

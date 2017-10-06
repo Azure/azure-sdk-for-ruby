@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<DiagnosticSettingsCategoryResource>] The collection of
       # diagnostic settings category resources.
       attr_accessor :value

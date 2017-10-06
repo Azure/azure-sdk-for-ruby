@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the operation associated with the notification and its
       # value must be "scale". Default value: 'Scale' .
       attr_accessor :operation

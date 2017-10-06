@@ -13,6 +13,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ActivityLogAlertLeafCondition>] The list of activity log
       # alert conditions.
       attr_accessor :all_of

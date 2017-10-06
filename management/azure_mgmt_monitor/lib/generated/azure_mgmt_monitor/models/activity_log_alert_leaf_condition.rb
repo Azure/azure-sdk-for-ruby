@@ -13,6 +13,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the field that this condition will
       # examine. The possible values for this field are (case-insensitive):
       # 'resourceId', 'category', 'caller', 'level', 'operationName',

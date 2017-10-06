@@ -33,7 +33,6 @@ module Azure::ARM::Monitor
 
   module Models
     autoload :RuleAction,                                         'generated/azure_mgmt_monitor/models/rule_action.rb'
-    autoload :Resource,                                           'generated/azure_mgmt_monitor/models/resource.rb'
     autoload :WebhookReceiver,                                    'generated/azure_mgmt_monitor/models/webhook_receiver.rb'
     autoload :MetricTrigger,                                      'generated/azure_mgmt_monitor/models/metric_trigger.rb'
     autoload :ActivityLogAlertLeafCondition,                      'generated/azure_mgmt_monitor/models/activity_log_alert_leaf_condition.rb'

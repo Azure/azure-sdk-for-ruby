@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [CategoryType] The type of the diagnostic settings category.
       # Possible values include: 'Metrics', 'Logs'
       attr_accessor :category_type

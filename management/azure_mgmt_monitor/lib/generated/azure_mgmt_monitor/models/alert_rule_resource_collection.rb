@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<AlertRuleResource>] the values for the alert rule
       # resources.
       attr_accessor :value

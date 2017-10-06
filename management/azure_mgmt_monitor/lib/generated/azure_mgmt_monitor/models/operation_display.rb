@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Insights
       attr_accessor :provider
 

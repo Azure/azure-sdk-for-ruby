@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"] = "ThresholdRuleCondition"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition"] = "LocationThresholdRuleCondition"

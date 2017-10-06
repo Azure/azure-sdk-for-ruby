@@ -12,6 +12,7 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ConditionOperator] the condition operator. Possible values
       # include: 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
       # 'LessThanOrEqual'
