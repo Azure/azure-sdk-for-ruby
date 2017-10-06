@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the cost threshold item.
       attr_accessor :threshold_id
 

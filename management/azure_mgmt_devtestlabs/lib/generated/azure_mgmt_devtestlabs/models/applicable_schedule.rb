@@ -9,10 +9,11 @@ module Azure::ARM::DevTestLabs
     # Schedules applicable to a virtual machine. The schedules may have been
     # defined on a VM or on lab level.
     #
-    class ApplicableSchedule < Resource
+    class ApplicableSchedule < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Schedule] The auto-shutdown schedule, if one has been set at
       # the lab or lab resource level.
       attr_accessor :lab_vms_shutdown

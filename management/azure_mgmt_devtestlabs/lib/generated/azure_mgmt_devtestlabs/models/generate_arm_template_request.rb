@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource name of the virtual machine.
       attr_accessor :virtual_machine_name
 

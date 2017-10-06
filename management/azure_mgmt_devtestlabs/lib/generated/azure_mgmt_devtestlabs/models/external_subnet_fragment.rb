@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the identifier.
       attr_accessor :id
 

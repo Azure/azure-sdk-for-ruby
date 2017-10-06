@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # Profile of a lab user.
     #
-    class UserFragment < Resource
+    class UserFragment < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [UserIdentityFragment] The identity of the user.
       attr_accessor :identity
 

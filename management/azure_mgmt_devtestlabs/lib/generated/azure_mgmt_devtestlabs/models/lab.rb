@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A lab.
     #
-    class Lab < Resource
+    class Lab < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The lab's default storage account.
       attr_accessor :default_storage_account
 

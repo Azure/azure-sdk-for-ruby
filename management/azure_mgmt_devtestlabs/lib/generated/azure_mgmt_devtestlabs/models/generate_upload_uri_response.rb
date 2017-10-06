@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The upload URI for the VHD.
       attr_accessor :upload_uri
 

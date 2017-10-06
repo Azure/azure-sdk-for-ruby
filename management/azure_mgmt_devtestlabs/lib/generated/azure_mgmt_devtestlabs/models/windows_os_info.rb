@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WindowsOsState] The state of the Windows OS (i.e.
       # NonSysprepped, SysprepRequested, SysprepApplied). Possible values
       # include: 'NonSysprepped', 'SysprepRequested', 'SysprepApplied'

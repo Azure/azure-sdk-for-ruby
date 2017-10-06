@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Azure Resource Manager template's identifier.
       attr_accessor :arm_template_id
 

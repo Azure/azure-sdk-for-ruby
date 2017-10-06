@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BulkCreationParameters] The number of virtual machine
       # instances to create.
       attr_accessor :bulk_creation_parameters

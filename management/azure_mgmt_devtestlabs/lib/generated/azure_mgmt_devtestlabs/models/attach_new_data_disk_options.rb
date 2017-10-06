@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Size of the disk to be attached in GibiBytes.
       attr_accessor :disk_size_gi_b
 

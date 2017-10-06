@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A Policy.
     #
-    class Policy < Resource
+    class Policy < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The description of the policy.
       attr_accessor :description
 

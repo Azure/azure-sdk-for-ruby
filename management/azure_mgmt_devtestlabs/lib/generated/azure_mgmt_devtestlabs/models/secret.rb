@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A secret.
     #
-    class Secret < Resource
+    class Secret < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The value of the secret for secret creation.
       attr_accessor :value
 

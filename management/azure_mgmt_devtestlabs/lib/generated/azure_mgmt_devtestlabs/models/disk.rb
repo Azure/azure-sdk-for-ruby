@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A Disk.
     #
-    class Disk < Resource
+    class Disk < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageType] The storage type for the disk (i.e. Standard,
       # Premium). Possible values include: 'Standard', 'Premium'
       attr_accessor :disk_type

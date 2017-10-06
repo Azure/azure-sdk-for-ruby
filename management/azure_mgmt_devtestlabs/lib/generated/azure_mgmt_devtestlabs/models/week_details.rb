@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The days of the week for which the schedule is
       # set (e.g. Sunday, Monday, Tuesday, etc.).
       attr_accessor :weekdays

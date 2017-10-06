@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A container for a managed identity to execute DevTest lab services.
     #
-    class ServiceRunner < Resource
+    class ServiceRunner < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [IdentityProperties] The identity of the resource.
       attr_accessor :identity
 

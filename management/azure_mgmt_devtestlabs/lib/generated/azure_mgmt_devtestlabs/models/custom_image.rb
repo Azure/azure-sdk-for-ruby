@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A custom image.
     #
-    class CustomImage < Resource
+    class CustomImage < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [CustomImagePropertiesFromVm] The virtual machine from which
       # the image is to be created.
       attr_accessor :vm

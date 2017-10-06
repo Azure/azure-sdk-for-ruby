@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # A virtual network.
     #
-    class VirtualNetworkFragment < Resource
+    class VirtualNetworkFragment < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubnetFragment>] The allowed subnets of the virtual
       # network.
       attr_accessor :allowed_subnets

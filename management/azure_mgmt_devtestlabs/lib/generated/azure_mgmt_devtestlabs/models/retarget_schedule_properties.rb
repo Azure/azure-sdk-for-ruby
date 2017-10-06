@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource Id of the virtual machine on which the
       # schedule operates
       attr_accessor :current_resource_id

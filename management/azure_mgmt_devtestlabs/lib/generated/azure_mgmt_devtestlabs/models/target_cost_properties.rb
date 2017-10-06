@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TargetCostStatus] Target cost status. Possible values include:
       # 'Enabled', 'Disabled'
       attr_accessor :status

@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NotificationChannelEventType] The type of event (i.e.
       # AutoShutdown, Cost). Possible values include: 'AutoShutdown', 'Cost'
       attr_accessor :event_name

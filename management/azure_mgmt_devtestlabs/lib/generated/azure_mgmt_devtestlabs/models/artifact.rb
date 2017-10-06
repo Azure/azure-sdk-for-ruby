@@ -8,10 +8,11 @@ module Azure::ARM::DevTestLabs
     #
     # An artifact.
     #
-    class Artifact < Resource
+    class Artifact < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The artifact's title.
       attr_accessor :title
 

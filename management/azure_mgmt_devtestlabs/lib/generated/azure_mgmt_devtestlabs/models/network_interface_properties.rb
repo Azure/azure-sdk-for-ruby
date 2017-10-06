@@ -12,6 +12,7 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource ID of the virtual network.
       attr_accessor :virtual_network_id
 
