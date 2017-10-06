@@ -12,6 +12,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The type of restrictions. As of now only possible
       # value for this is location.
       attr_accessor :type

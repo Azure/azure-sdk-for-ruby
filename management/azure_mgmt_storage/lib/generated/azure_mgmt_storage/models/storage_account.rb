@@ -8,10 +8,11 @@ module Azure::ARM::Storage
     #
     # The storage account.
     #
-    class StorageAccount < Resource
+    class StorageAccount < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] Gets the SKU.
       attr_accessor :sku
 

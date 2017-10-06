@@ -12,6 +12,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] List SAS credentials of storage account.
       attr_accessor :account_sas_token
 

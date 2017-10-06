@@ -12,6 +12,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<MetricSpecification>] Metric specifications of
       # operation.
       attr_accessor :metric_specifications

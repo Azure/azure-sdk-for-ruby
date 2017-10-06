@@ -12,6 +12,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The canonical path to the signed resource.
       attr_accessor :canonicalized_resource
 

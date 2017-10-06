@@ -12,6 +12,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<StorageAccountKey>] Gets the list of storage account
       # keys and their properties for the specified storage account.
       attr_accessor :keys

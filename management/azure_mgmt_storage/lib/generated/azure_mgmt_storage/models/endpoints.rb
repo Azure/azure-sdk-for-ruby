@@ -13,6 +13,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the blob endpoint.
       attr_accessor :blob
 

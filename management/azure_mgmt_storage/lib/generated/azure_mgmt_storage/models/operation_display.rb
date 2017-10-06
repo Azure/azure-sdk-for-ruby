@@ -12,6 +12,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Service provider: Microsoft Storage.
       attr_accessor :provider
 

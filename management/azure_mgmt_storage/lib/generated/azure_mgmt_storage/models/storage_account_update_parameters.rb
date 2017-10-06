@@ -13,6 +13,7 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] Gets or sets the SKU name. Note that the SKU name cannot
       # be updated to Standard_ZRS or Premium_LRS, nor can accounts of those
       # sku names be updated to any other value.
