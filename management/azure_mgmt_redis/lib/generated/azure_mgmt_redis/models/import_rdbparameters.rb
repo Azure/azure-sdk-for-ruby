@@ -12,6 +12,7 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] File format.
       attr_accessor :format
 

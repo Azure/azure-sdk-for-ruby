@@ -6,48 +6,45 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Redis cache access keys.
+    # REST API operation
     #
-    class RedisAccessKeys
+    class Operation
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] The current primary key that clients can use to
-      # authenticate with Redis cache.
-      attr_accessor :primary_key
+      # @return [String] Operation name: {provider}/{resource}/{operation}
+      attr_accessor :name
 
-      # @return [String] The current secondary key that clients can use to
-      # authenticate with Redis cache.
-      attr_accessor :secondary_key
+      # @return [OperationDisplay] The object that describes the operation.
+      attr_accessor :display
 
 
       #
-      # Mapper for RedisAccessKeys class as Ruby Hash.
+      # Mapper for Operation class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RedisAccessKeys',
+          serialized_name: 'Operation',
           type: {
             name: 'Composite',
-            class_name: 'RedisAccessKeys',
+            class_name: 'Operation',
             model_properties: {
-              primary_key: {
+              name: {
                 required: false,
-                read_only: true,
-                serialized_name: 'primaryKey',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              secondary_key: {
+              display: {
                 required: false,
-                read_only: true,
-                serialized_name: 'secondaryKey',
+                serialized_name: 'display',
                 type: {
-                  name: 'String'
+                  name: 'Composite',
+                  class_name: 'OperationDisplay'
                 }
               }
             }
