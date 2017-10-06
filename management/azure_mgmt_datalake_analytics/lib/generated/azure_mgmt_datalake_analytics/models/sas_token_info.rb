@@ -12,6 +12,7 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the access token for the associated Azure Storage
       # Container.
       attr_accessor :access_token

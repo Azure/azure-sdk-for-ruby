@@ -12,6 +12,7 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The AAD object identifier for the entity to create a policy
       # for.
       attr_accessor :object_id

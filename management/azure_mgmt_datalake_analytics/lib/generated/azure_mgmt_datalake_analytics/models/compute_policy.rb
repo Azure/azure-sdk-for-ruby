@@ -12,6 +12,7 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the compute policy
       attr_accessor :name
 

@@ -12,6 +12,7 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the access key associated with this Azure Storage
       # account that will be used to connect to it.
       attr_accessor :access_key

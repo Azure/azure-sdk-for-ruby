@@ -13,6 +13,7 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
