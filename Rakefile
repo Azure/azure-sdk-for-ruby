@@ -196,7 +196,7 @@ REGEN_METADATA = {
     },
     azure_mgmt_customer_insights: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/customer-insights/resource-manager/readme.md',
-        ns: 'Azure::ARM::ContainerInsights',
+        ns: 'Azure::ARM::CustomerInsights',
         version: version
     },
     azure_mgmt_datalake_analytics: {
