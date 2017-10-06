@@ -30,7 +30,6 @@ module Azure::ARM::Search
     autoload :CheckNameAvailabilityInput,                         'generated/azure_mgmt_search/models/check_name_availability_input.rb'
     autoload :SearchManagementRequestOptions,                     'generated/azure_mgmt_search/models/search_management_request_options.rb'
     autoload :AdminKeyResult,                                     'generated/azure_mgmt_search/models/admin_key_result.rb'
-    autoload :Resource,                                           'generated/azure_mgmt_search/models/resource.rb'
     autoload :QueryKey,                                           'generated/azure_mgmt_search/models/query_key.rb'
     autoload :CheckNameAvailabilityOutput,                        'generated/azure_mgmt_search/models/check_name_availability_output.rb'
     autoload :SearchService,                                      'generated/azure_mgmt_search/models/search_service.rb'
