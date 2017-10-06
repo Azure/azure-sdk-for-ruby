@@ -12,6 +12,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The object ID.
       attr_accessor :object_id
 

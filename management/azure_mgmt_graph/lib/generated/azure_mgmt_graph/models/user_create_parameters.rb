@@ -12,6 +12,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Whether the account is enabled.
       attr_accessor :account_enabled
 

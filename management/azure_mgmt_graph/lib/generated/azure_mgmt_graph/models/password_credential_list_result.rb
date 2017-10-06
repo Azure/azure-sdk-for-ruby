@@ -12,6 +12,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<PasswordCredential>] A collection of
       # PasswordCredentials.
       attr_accessor :value

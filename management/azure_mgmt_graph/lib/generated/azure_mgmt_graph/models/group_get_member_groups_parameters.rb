@@ -12,6 +12,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] If true, only membership in security-enabled groups
       # should be checked. Otherwise, membership in all groups should be
       # checked.

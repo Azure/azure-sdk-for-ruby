@@ -13,6 +13,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] This must be specified if you are using a federated
       # domain for the user's userPrincipalName (UPN) property when creating a
       # new user account. It is used to associate an on-premises Active

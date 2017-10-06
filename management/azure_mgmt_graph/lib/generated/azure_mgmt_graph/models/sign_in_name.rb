@@ -13,6 +13,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A string value that can be used to classify user
       # sign-in types in your directory, such as 'emailAddress' or 'userName'.
       attr_accessor :type

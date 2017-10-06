@@ -17,6 +17,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ResourceAccess>] The list of OAuth2.0 permission scopes
       # and app roles that the application requires from the specified
       # resource.

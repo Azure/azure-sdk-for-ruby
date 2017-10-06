@@ -12,6 +12,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Whether the application is available to other
       # tenants.
       attr_accessor :available_to_other_tenants

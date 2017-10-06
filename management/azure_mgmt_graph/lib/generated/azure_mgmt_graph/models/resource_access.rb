@@ -14,6 +14,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The unique identifier for one of the OAuth2Permission
       # or AppRole instances that the resource application exposes.
       attr_accessor :id
