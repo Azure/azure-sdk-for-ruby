@@ -12,6 +12,7 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The template content.
       attr_accessor :template
 
