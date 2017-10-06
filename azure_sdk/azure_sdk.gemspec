@@ -80,7 +80,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_service_bus', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_service_fabric', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_sql', "~>#{version}"
-  spec.add_runtime_dependency 'azure_mgmt_stor_simple8000series', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_stor_simple8000_series', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_storage', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_stream_analytics', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{version}"
