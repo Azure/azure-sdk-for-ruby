@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RetentionScheduleFormat] Retention schedule format for yearly
       # retention policy. Possible values include: 'Invalid', 'Daily', 'Weekly'
       attr_accessor :retention_schedule_format_type

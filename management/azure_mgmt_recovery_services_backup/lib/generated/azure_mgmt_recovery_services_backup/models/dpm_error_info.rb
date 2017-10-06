@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Localized error string.
       attr_accessor :error_string
 

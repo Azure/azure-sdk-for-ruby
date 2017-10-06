@@ -17,6 +17,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @backupEngineType = "AzureBackupServerEngine"

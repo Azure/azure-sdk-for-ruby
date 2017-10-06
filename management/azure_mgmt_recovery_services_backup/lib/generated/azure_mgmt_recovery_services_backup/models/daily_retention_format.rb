@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Day>] List of days of the month.
       attr_accessor :days_of_the_month
 

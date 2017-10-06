@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [OperationResultInfoBase] OperationResultInfoBaseResource
       # operation
       attr_accessor :operation

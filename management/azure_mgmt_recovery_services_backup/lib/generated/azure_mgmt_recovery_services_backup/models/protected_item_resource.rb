@@ -12,10 +12,11 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Base class for backup items.
     #
-    class ProtectedItemResource < Resource
+    class ProtectedItemResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProtectedItem] ProtectedItemResource properties
       attr_accessor :properties
 

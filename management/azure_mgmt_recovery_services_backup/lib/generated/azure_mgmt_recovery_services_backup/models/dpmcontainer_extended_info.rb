@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Last refresh time of the DPMContainer.
       attr_accessor :last_refreshed_at
 

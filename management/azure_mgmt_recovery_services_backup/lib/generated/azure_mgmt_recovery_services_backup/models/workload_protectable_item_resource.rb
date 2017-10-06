@@ -13,10 +13,11 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for backup item. Workload-specific backup items are derived
     # from this class.
     #
-    class WorkloadProtectableItemResource < Resource
+    class WorkloadProtectableItemResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkloadProtectableItem] WorkloadProtectableItemResource
       # properties
       attr_accessor :properties

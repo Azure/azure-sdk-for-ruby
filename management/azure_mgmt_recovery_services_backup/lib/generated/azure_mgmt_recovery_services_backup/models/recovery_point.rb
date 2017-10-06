@@ -17,6 +17,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["GenericRecoveryPoint"] = "GenericRecoveryPoint"
       @@discriminatorMap["IaasVMRecoveryPoint"] = "IaasVMRecoveryPoint"

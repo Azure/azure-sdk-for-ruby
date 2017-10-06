@@ -13,10 +13,11 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for container with backup items. Containers with specific
     # workloads are derived from this class.
     #
-    class ProtectionContainerResource < Resource
+    class ProtectionContainerResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProtectionContainer] ProtectionContainerResource properties
       attr_accessor :properties
 

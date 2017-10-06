@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<AzureIaaSVMJobTaskDetails>] List of tasks associated
       # with this job.
       attr_accessor :tasks_list

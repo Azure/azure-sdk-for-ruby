@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [HealthState] Health State for the backed up item. Possible
       # values include: 'Passed', 'ActionRequired', 'ActionSuggested',
       # 'Invalid'

@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ClientScriptForConnect>] List of client scripts.
       attr_accessor :client_scripts
 

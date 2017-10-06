@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies if the additional information should be
       # provided for this item.
       attr_accessor :expand

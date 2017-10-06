@@ -16,6 +16,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Time stamp when this container was refreshed.
       attr_accessor :last_refreshed_at
 

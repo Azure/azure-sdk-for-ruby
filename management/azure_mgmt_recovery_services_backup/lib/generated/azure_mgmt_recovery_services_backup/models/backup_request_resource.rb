@@ -13,10 +13,11 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for backup request. Workload-specific backup requests are
     # derived from this class.
     #
-    class BackupRequestResource < Resource
+    class BackupRequestResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BackupRequest] BackupRequestResource properties
       attr_accessor :properties
 
