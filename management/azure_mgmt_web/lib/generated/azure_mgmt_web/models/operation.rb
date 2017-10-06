@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation ID.
       attr_accessor :id
 

@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Float] Maximum allowed CPU usage percentage.
       attr_accessor :max_percentage_cpu
 

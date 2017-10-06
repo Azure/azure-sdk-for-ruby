@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] When server starts the migration process, it will
       # return an operation ID identifying that particular migration operation.
       attr_accessor :operation_id

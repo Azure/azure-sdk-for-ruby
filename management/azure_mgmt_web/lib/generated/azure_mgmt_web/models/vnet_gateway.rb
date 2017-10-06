@@ -13,6 +13,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Virtual Network name.
       attr_accessor :vnet_name
 

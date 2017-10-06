@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LogLevel] Log level. Possible values include: 'Off',
       # 'Verbose', 'Information', 'Warning', 'Error'
       attr_accessor :level

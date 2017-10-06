@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Function name.
       attr_accessor :function_envelope_name
 

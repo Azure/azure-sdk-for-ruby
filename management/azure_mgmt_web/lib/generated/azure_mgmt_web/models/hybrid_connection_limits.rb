@@ -13,6 +13,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The current number of Hybrid Connections.
       attr_accessor :current
 

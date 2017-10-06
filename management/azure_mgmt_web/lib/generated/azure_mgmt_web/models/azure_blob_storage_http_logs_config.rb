@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SAS url to a azure blob container with
       # read/write/list/delete permissions.
       attr_accessor :sas_url

@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Friendly name shown in the UI.
       attr_accessor :display_name
 

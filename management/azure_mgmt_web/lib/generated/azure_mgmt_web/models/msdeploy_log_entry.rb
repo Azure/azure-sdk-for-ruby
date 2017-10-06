@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Timestamp of log entry
       attr_accessor :time
 

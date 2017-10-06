@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Point in time in which the app recovery should be
       # attempted, formatted as a DateTime string.
       attr_accessor :snapshot_time

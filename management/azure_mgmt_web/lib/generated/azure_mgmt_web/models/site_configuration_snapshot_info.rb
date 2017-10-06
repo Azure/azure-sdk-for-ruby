@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The time the snapshot was taken.
       attr_accessor :time
 

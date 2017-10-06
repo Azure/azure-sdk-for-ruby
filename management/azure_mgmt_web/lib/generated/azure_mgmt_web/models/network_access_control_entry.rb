@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AccessControlEntryAction] Action object. Possible values
       # include: 'Permit', 'Deny'
       attr_accessor :action

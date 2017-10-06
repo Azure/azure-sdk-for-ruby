@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Destination deployment slot during swap operation.
       attr_accessor :target_slot
 

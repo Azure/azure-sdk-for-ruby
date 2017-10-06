@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationLogsConfig] Application logs configuration.
       attr_accessor :application_logs
 

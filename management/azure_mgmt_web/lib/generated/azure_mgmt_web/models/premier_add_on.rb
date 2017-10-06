@@ -8,10 +8,11 @@ module Azure::ARM::Web
     #
     # Premier add-on.
     #
-    class PremierAddOn < Resource
+    class PremierAddOn < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SKU.
       attr_accessor :sku
 

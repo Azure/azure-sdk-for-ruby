@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Settings.
       attr_accessor :properties
 

@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DatabaseType] Database type (e.g. SqlAzure / MySql). Possible
       # values include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
       attr_accessor :database_type

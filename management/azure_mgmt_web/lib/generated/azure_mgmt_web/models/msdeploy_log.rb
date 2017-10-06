@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<MSDeployLogEntry>] List of log entry messages
       attr_accessor :entries
 

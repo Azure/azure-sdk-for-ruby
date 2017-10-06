@@ -8,27 +8,13 @@ module Azure::ARM::Web
     #
     # Azure resource. This resource is tracked in Azure Resource Manager
     #
-    class Resource
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id.
-      attr_accessor :id
-
-      # @return [String] Resource Name.
-      attr_accessor :name
-
+      include MsRest::JSONable
       # @return [String] Kind of resource.
       attr_accessor :kind
-
-      # @return [String] Resource Location.
-      attr_accessor :location
-
-      # @return [String] Resource type.
-      attr_accessor :type
-
-      # @return [Hash{String => String}] Resource tags.
-      attr_accessor :tags
 
 
       #

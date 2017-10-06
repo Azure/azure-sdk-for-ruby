@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] <code>true</code> if hostname is already verified;
       # otherwise, <code>false</code>.
       attr_accessor :is_hostname_already_verified

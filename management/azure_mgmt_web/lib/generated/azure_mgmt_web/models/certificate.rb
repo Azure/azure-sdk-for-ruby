@@ -8,10 +8,11 @@ module Azure::ARM::Web
     #
     # SSL certificate for an app.
     #
-    class Certificate < Resource
+    class Certificate < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Friendly name of the certificate.
       attr_accessor :friendly_name
 

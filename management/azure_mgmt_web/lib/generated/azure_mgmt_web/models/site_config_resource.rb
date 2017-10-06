@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Number of workers.
       attr_accessor :number_of_workers
 

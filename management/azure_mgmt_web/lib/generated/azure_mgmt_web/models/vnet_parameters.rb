@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Resource Group of the VNET to be validated
       attr_accessor :vnet_resource_group
 

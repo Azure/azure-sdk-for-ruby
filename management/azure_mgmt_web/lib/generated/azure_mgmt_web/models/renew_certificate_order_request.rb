@@ -8,10 +8,11 @@ module Azure::ARM::Web
     #
     # Class representing certificate renew request.
     #
-    class RenewCertificateOrderRequest < Resource
+    class RenewCertificateOrderRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Certificate Key Size.
       attr_accessor :key_size
 

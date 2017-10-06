@@ -13,6 +13,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of this route. This is only returned by the
       # server and does not need to be set by the client.
       attr_accessor :vnet_route_name

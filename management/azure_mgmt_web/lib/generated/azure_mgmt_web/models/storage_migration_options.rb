@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] AzureFiles connection string.
       attr_accessor :azurefiles_connection_string
 

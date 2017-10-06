@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TriggeredJobRun] Latest job run information.
       attr_accessor :latest_run
 

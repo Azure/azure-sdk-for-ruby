@@ -12,6 +12,7 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] IP address the security restriction is valid for.
       attr_accessor :ip_address
 
