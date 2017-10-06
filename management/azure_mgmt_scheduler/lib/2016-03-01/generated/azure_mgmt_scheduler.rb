@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-03-01/generated/azure_mgmt_scheduler/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ResourcesManagement::Api_2016_03_01
+module Azure::ARM::Scheduler::Api_2016_03_01
   autoload :JobCollections,                                     '2016-03-01/generated/azure_mgmt_scheduler/job_collections.rb'
   autoload :Jobs,                                               '2016-03-01/generated/azure_mgmt_scheduler/jobs.rb'
   autoload :SchedulerManagementClient,                          '2016-03-01/generated/azure_mgmt_scheduler/scheduler_management_client.rb'

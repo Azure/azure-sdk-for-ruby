@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Links::Api_2016_09_01
+module Azure::ARM::TrafficManager::Api_2017_09_01_preview
   #
   # A service client - single point of access to the REST API.
   #
-  class ManagementLinkClient < MsRestAzure::AzureServiceClient
+  class TrafficManagerManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -17,10 +17,12 @@ module Azure::ARM::Links::Api_2016_09_01
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The ID of the target subscription.
+    # @return [String] Gets subscription credentials which uniquely identify
+    # Microsoft Azure subscription. The subscription ID forms part of the URI
+    # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] The API version to use for the operation.
+    # @return [String] Client Api Version.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -34,11 +36,20 @@ module Azure::ARM::Links::Api_2016_09_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [ResourceLinks] resource_links
-    attr_reader :resource_links
+    # @return [Endpoints] endpoints
+    attr_reader :endpoints
+
+    # @return [Profiles] profiles
+    attr_reader :profiles
+
+    # @return [GeographicHierarchies] geographic_hierarchies
+    attr_reader :geographic_hierarchies
+
+    # @return [HeatMap] heat_map
+    attr_reader :heat_map
 
     #
-    # Creates initializes a new instance of the ManagementLinkClient class.
+    # Creates initializes a new instance of the TrafficManagerManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -50,8 +61,11 @@ module Azure::ARM::Links::Api_2016_09_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @resource_links = ResourceLinks.new(self)
-      @api_version = '2016-09-01'
+      @endpoints = Endpoints.new(self)
+      @profiles = Profiles.new(self)
+      @geographic_hierarchies = GeographicHierarchies.new(self)
+      @heat_map = HeatMap.new(self)
+      @api_version = '2017-09-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -119,9 +133,9 @@ module Azure::ARM::Links::Api_2016_09_01
     # Adds telemetry information.
     #
     def add_telemetry
-        sdk_information = 'azure_mgmt_links'
-        if defined? Azure::ARM::Links::Api_2016_09_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Links::Api_2016_09_01::VERSION}"
+        sdk_information = 'azure_mgmt_traffic_manager'
+        if defined? Azure::ARM::TrafficManager::Api_2017_09_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::TrafficManager::Api_2017_09_01_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

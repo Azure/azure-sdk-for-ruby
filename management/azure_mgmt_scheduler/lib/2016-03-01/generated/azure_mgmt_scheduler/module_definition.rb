@@ -5,5 +5,5 @@
 
 module Azure end
 module Azure::ARM end
-module Azure::ARM::ResourcesManagement end
-module Azure::ARM::ResourcesManagement::Api_2016_03_01 end
+module Azure::ARM::Scheduler end
+module Azure::ARM::Scheduler::Api_2016_03_01 end

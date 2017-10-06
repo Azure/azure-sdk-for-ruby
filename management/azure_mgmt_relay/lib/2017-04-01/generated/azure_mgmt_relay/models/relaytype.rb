@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Relay::Api_2016_07_01
+module Azure::ARM::Relay::Api_2017_04_01
   module Models
     #
     # Defines values for Relaytype
