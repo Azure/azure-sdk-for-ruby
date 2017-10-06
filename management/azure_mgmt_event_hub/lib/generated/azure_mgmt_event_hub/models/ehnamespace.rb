@@ -12,6 +12,7 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] Properties of sku resource
       attr_accessor :sku
 

@@ -8,10 +8,11 @@ module Azure::ARM::EventHub
     #
     # Single item in List or Get Consumer group operation
     #
-    class ConsumerGroup < Resource
+    class ConsumerGroup < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
 

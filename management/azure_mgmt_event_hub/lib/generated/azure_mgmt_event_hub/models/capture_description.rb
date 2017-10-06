@@ -12,6 +12,7 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] A value that indicates whether capture description is
       # enabled.
       attr_accessor :enabled

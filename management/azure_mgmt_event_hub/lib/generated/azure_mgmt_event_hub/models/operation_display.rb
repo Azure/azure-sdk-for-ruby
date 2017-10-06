@@ -12,6 +12,7 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.EventHub
       attr_accessor :provider
 

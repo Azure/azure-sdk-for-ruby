@@ -30,7 +30,6 @@ module Azure::ARM::EventHub
   module Models
     autoload :CaptureDescription,                                 'generated/azure_mgmt_event_hub/models/capture_description.rb'
     autoload :Destination,                                        'generated/azure_mgmt_event_hub/models/destination.rb'
-    autoload :Resource,                                           'generated/azure_mgmt_event_hub/models/resource.rb'
     autoload :Operation,                                          'generated/azure_mgmt_event_hub/models/operation.rb'
     autoload :ErrorResponse,                                      'generated/azure_mgmt_event_hub/models/error_response.rb'
     autoload :OperationListResult,                                'generated/azure_mgmt_event_hub/models/operation_list_result.rb'

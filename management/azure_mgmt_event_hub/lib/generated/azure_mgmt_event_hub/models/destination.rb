@@ -12,6 +12,7 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name for capture destination
       attr_accessor :name
 
