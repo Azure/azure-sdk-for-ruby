@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<AvailableProvidersListCountry>] List of available
       # countries.
       attr_accessor :countries

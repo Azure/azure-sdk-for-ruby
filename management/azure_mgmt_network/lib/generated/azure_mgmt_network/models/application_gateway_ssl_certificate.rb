@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # SSL certificates of an application gateway.
     #
-    class ApplicationGatewaySslCertificate < SubResource
+    class ApplicationGatewaySslCertificate < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Base-64 encoded pfx certificate. Only applicable in
       # PUT Request.
       attr_accessor :data

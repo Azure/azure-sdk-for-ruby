@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Frontend port of an application gateway.
     #
-    class ApplicationGatewayFrontendPort < SubResource
+    class ApplicationGatewayFrontendPort < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Frontend port
       attr_accessor :port
 

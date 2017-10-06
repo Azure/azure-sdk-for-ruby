@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The time stamp.
       attr_accessor :time_stamp
 

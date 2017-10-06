@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Service Community Properties.
     #
-    class BgpServiceCommunity < Resource
+    class BgpServiceCommunity < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the bgp community. e.g. Skype.
       attr_accessor :service_name
 

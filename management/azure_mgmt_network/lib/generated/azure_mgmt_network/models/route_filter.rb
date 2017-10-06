@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Route Filter Resource.
     #
-    class RouteFilter < Resource
+    class RouteFilter < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RouteFilterRule>] Collection of RouteFilterRules
       # contained within a route filter.
       attr_accessor :rules

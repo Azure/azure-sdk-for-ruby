@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # LoadBalancer resource
     #
-    class LoadBalancer < Resource
+    class LoadBalancer < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LoadBalancerSku] The load balancer SKU.
       attr_accessor :sku
 

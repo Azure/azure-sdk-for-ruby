@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<EffectiveNetworkSecurityGroup>] A list of effective
       # network security groups.
       attr_accessor :value

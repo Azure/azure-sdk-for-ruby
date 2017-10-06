@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Frontend IP address of the load balancer.
     #
-    class FrontendIPConfiguration < SubResource
+    class FrontendIPConfiguration < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubResource>] Read only. Inbound rules URIs that use
       # this frontend IP.
       attr_accessor :inbound_nat_rules

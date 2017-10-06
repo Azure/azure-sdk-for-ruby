@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Network security rule.
     #
-    class SecurityRule < SubResource
+    class SecurityRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A description for this rule. Restricted to 140 chars.
       attr_accessor :description
 
@@ -139,7 +140,7 @@ module Azure::ARM::Network
                 }
               },
               source_address_prefix: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.sourceAddressPrefix',
                 type: {
                   name: 'String'
@@ -175,7 +176,7 @@ module Azure::ARM::Network
                 }
               },
               destination_address_prefix: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.destinationAddressPrefix',
                 type: {
                   name: 'String'

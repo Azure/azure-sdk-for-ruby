@@ -9,10 +9,11 @@ module Azure::ARM::Network
     # UrlPathMaps give a url path to the backend mapping information for
     # PathBasedRouting.
     #
-    class ApplicationGatewayUrlPathMap < SubResource
+    class ApplicationGatewayUrlPathMap < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] Default backend address pool resource of URL path
       # map.
       attr_accessor :default_backend_address_pool

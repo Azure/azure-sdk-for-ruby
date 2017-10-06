@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Outbound NAT pool of the load balancer.
     #
-    class OutboundNatRule < SubResource
+    class OutboundNatRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The number of outbound ports to be used for NAT.
       attr_accessor :allocated_outbound_ports
 

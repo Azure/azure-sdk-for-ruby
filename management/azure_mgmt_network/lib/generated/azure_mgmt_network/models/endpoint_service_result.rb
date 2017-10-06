@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Endpoint service.
     #
-    class EndpointServiceResult < SubResource
+    class EndpointServiceResult < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of the endpoint service.
       attr_accessor :name
 

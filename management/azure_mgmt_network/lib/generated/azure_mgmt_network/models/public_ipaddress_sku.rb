@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PublicIPAddressSkuName] Name of a public IP address SKU.
       # Possible values include: 'Basic', 'Standard'
       attr_accessor :name

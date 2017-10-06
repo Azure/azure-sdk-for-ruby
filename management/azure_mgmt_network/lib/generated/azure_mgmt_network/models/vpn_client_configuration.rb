@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AddressSpace] The reference of the address space resource
       # which represents Address space for P2S VpnClient.
       attr_accessor :vpn_client_address_pool

@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Route Filter Rule Resource
     #
-    class RouteFilterRule < SubResource
+    class RouteFilterRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Access] The access type of the rule. Valid values are:
       # 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
       attr_accessor :access

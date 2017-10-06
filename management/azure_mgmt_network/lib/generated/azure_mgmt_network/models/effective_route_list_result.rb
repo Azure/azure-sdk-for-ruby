@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<EffectiveRoute>] A list of effective routes.
       attr_accessor :value
 

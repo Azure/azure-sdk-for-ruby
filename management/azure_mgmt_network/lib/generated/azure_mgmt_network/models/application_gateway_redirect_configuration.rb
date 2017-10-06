@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Redirect configuration of an application gateway.
     #
-    class ApplicationGatewayRedirectConfiguration < SubResource
+    class ApplicationGatewayRedirectConfiguration < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewayRedirectType] Supported http redirection
       # types - Permanent, Temporary, Found, SeeOther. Possible values include:
       # 'Permanent', 'Found', 'SeeOther', 'Temporary'

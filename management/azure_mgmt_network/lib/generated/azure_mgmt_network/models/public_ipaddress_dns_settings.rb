@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the Domain name label.The concatenation
       # of the domain name label and the regionalized DNS zone make up the
       # fully qualified domain name associated with the public IP address. If a

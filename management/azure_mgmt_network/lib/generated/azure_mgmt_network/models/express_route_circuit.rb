@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # ExpressRouteCircuit resource
     #
-    class ExpressRouteCircuit < Resource
+    class ExpressRouteCircuit < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ExpressRouteCircuitSku] The SKU.
       attr_accessor :sku
 

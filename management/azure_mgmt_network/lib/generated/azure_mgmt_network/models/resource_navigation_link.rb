@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # ResourceNavigationLink resource.
     #
-    class ResourceNavigationLink < SubResource
+    class ResourceNavigationLink < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource type of the linked resource.
       attr_accessor :linked_resource_type
 

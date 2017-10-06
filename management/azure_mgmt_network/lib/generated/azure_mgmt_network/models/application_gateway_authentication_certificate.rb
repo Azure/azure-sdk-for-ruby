@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Authentication certificates of an application gateway.
     #
-    class ApplicationGatewayAuthenticationCertificate < SubResource
+    class ApplicationGatewayAuthenticationCertificate < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Certificate public data.
       attr_accessor :data
 

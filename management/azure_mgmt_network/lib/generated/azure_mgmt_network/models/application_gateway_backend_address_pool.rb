@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # Backend Address Pool of an application gateway.
     #
-    class ApplicationGatewayBackendAddressPool < SubResource
+    class ApplicationGatewayBackendAddressPool < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<NetworkInterfaceIPConfiguration>] Collection of
       # references to IPs defined in network interfaces.
       attr_accessor :backend_ipconfigurations

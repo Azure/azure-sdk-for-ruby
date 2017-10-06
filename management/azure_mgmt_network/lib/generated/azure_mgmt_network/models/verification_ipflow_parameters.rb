@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the target resource to perform next-hop on.
       attr_accessor :target_resource_id
 

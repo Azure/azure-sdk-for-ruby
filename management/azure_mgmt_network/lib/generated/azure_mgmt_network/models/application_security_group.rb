@@ -8,10 +8,11 @@ module Azure::ARM::Network
     #
     # An application security group in a resource group.
     #
-    class ApplicationSecurityGroup < Resource
+    class ApplicationSecurityGroup < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource GUID property of the application security
       # group resource. It uniquely identifies a resource, even if the user
       # changes its name or migrate the resource across subscriptions or

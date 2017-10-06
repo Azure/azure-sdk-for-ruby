@@ -12,6 +12,7 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<PacketCaptureResult>] Information about packet capture
       # sessions.
       attr_accessor :value
