@@ -12,6 +12,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] A value indicating whether packages within the
       # application may be overwritten using the same version string.
       attr_accessor :allow_updates

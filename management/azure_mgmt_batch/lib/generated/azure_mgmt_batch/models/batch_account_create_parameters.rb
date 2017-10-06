@@ -12,6 +12,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The region in which to create the account.
       attr_accessor :location
 

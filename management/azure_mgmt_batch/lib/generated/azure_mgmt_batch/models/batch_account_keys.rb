@@ -12,6 +12,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Batch account name.
       attr_accessor :account_name
 

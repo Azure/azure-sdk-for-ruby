@@ -13,6 +13,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Friendly name of the resource provider.
       attr_accessor :provider
 

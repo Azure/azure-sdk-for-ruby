@@ -12,6 +12,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A string that uniquely identifies the application
       # within the account.
       attr_accessor :id

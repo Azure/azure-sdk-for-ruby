@@ -12,6 +12,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The number of Batch accounts that may be created
       # under the subscription in the specified region.
       attr_accessor :account_quota
