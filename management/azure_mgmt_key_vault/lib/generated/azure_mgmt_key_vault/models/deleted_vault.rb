@@ -12,6 +12,7 @@ module Azure::ARM::KeyVault
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource ID for the deleted key vault.
       attr_accessor :id
 
