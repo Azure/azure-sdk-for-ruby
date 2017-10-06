@@ -12,6 +12,7 @@ module Azure::ARM::Dns
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The canonical name for this CNAME record.
       attr_accessor :cname
 

@@ -12,6 +12,7 @@ module Azure::ARM::Dns
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecordSet] Specifies information about the record set being
       # updated.
       attr_accessor :record_set

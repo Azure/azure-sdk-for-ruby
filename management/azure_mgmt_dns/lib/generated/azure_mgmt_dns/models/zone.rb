@@ -8,10 +8,11 @@ module Azure::ARM::Dns
     #
     # Describes a DNS zone.
     #
-    class Zone < Resource
+    class Zone < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The etag of the zone.
       attr_accessor :etag
 
