@@ -12,6 +12,7 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The content of the event response message.
       attr_accessor :content
 

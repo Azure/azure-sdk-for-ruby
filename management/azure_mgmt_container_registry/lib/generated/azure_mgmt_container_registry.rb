@@ -57,7 +57,6 @@ module Azure::ARM::ContainerRegistry
     autoload :RegistryListCredentialsResult,                      'generated/azure_mgmt_container_registry/models/registry_list_credentials_result.rb'
     autoload :EventResponseMessage,                               'generated/azure_mgmt_container_registry/models/event_response_message.rb'
     autoload :EventListResult,                                    'generated/azure_mgmt_container_registry/models/event_list_result.rb'
-    autoload :Resource,                                           'generated/azure_mgmt_container_registry/models/resource.rb'
     autoload :Registry,                                           'generated/azure_mgmt_container_registry/models/registry.rb'
     autoload :Replication,                                        'generated/azure_mgmt_container_registry/models/replication.rb'
     autoload :Webhook,                                            'generated/azure_mgmt_container_registry/models/webhook.rb'

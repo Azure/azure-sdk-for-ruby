@@ -13,6 +13,7 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The value that indicates whether the name is
       # available.
       attr_accessor :name_available

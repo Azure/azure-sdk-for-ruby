@@ -12,6 +12,7 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RegistryUsage>] The list of container registry quota
       # usages.
       attr_accessor :value

@@ -12,6 +12,7 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the request that initiated the event.
       attr_accessor :id
 

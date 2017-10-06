@@ -12,6 +12,7 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource provider name:
       # Microsoft.ContainerRegistry.
       attr_accessor :provider

@@ -13,6 +13,7 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource ID of the storage account.
       attr_accessor :id
 
