@@ -12,6 +12,7 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The state of the provisioning.
       attr_accessor :provisioning_state
 

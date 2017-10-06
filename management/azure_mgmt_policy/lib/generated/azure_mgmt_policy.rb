@@ -20,21 +20,15 @@ require 'generated/azure_mgmt_policy/module_definition'
 require 'ms_rest_azure'
 
 module Azure::ARM::Policy
-  autoload :PolicyAssignments,                                  'generated/azure_mgmt_policy/policy_assignments.rb'
-  autoload :PolicySetDefinitions,                               'generated/azure_mgmt_policy/policy_set_definitions.rb'
   autoload :PolicyDefinitions,                                  'generated/azure_mgmt_policy/policy_definitions.rb'
+  autoload :PolicyAssignments,                                  'generated/azure_mgmt_policy/policy_assignments.rb'
   autoload :PolicyClient,                                       'generated/azure_mgmt_policy/policy_client.rb'
 
   module Models
-    autoload :PolicyDefinitionReference,                          'generated/azure_mgmt_policy/models/policy_definition_reference.rb'
-    autoload :PolicySetDefinition,                                'generated/azure_mgmt_policy/models/policy_set_definition.rb'
     autoload :PolicyAssignment,                                   'generated/azure_mgmt_policy/models/policy_assignment.rb'
-    autoload :PolicySetDefinitionListResult,                      'generated/azure_mgmt_policy/models/policy_set_definition_list_result.rb'
-    autoload :ErrorResponse,                                      'generated/azure_mgmt_policy/models/error_response.rb'
     autoload :PolicyDefinition,                                   'generated/azure_mgmt_policy/models/policy_definition.rb'
     autoload :PolicyAssignmentListResult,                         'generated/azure_mgmt_policy/models/policy_assignment_list_result.rb'
     autoload :PolicyDefinitionListResult,                         'generated/azure_mgmt_policy/models/policy_definition_list_result.rb'
-    autoload :PolicySku,                                          'generated/azure_mgmt_policy/models/policy_sku.rb'
     autoload :PolicyType,                                         'generated/azure_mgmt_policy/models/policy_type.rb'
     autoload :PolicyMode,                                         'generated/azure_mgmt_policy/models/policy_mode.rb'
   end
