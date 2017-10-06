@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Marketplace_Ordering
+module Azure::ARM::MarketplaceOrdering
   #
   # A service client - single point of access to the REST API.
   #
@@ -125,8 +125,8 @@ module Azure::ARM::Marketplace_Ordering
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_marketplace_ordering'
-        if defined? Azure::ARM::Marketplace_Ordering::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Marketplace_Ordering::VERSION}"
+        if defined? Azure::ARM::MarketplaceOrdering::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::MarketplaceOrdering::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

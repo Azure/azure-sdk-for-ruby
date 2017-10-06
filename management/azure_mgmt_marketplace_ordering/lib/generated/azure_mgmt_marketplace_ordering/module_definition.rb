@@ -5,4 +5,4 @@
 
 module Azure end
 module Azure::ARM end
-module Azure::ARM::Marketplace_Ordering end
+module Azure::ARM::MarketplaceOrdering end
