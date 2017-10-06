@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ClientDiscoveryForServiceSpecification] Operation properties.
       attr_accessor :service_specification
 

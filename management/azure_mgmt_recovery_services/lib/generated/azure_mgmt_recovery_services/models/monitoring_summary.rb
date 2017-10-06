@@ -12,6 +12,7 @@ module Azure::ARM::RecoveryServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Count of unhealthy VMs.
       attr_accessor :un_healthy_vm_count
 

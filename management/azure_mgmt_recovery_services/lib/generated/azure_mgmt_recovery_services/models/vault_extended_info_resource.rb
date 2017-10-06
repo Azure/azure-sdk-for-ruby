@@ -8,10 +8,11 @@ module Azure::ARM::RecoveryServices
     #
     # Vault extended information.
     #
-    class VaultExtendedInfoResource < Resource
+    class VaultExtendedInfoResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Integrity key.
       attr_accessor :integrity_key
 

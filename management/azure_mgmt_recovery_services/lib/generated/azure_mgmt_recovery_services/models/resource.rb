@@ -8,21 +8,11 @@ module Azure::ARM::RecoveryServices
     #
     # ARM Resource.
     #
-    class Resource
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id represents the complete path to the
-      # resource.
-      attr_accessor :id
-
-      # @return [String] Resource name associated with the resource.
-      attr_accessor :name
-
-      # @return [String] Resource type represents the complete path of the form
-      # Namespace/ResourceType/ResourceType/...
-      attr_accessor :type
-
+      include MsRest::JSONable
       # @return [String] Optional ETag.
       attr_accessor :e_tag
 
