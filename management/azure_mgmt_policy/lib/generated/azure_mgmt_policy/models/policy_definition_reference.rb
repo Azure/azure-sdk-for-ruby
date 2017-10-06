@@ -12,6 +12,7 @@ module Azure::ARM::Policy
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the policy definition or policy set
       # definition.
       attr_accessor :policy_definition_id
