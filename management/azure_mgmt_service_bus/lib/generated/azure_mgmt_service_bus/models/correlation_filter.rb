@@ -12,6 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Identifier of the correlation.
       attr_accessor :correlation_id
 

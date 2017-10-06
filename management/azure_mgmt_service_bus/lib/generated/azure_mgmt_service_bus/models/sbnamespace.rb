@@ -12,6 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SBSku] Porperties of Sku
       attr_accessor :sku
 

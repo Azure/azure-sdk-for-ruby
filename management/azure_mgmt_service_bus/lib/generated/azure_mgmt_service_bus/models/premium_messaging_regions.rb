@@ -12,6 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PremiumMessagingRegionsProperties]
       attr_accessor :properties
 

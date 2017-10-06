@@ -13,6 +13,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KeyType] The access key to regenerate. Possible values
       # include: 'PrimaryKey', 'SecondaryKey'
       attr_accessor :key_type
