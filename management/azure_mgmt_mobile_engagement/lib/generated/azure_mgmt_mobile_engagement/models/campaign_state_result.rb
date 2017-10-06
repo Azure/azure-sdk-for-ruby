@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Campaign identifier.
       attr_accessor :id
 

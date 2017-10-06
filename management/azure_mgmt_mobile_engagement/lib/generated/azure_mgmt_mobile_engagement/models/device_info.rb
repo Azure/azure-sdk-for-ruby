@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Phone model.
       attr_accessor :phone_model
 

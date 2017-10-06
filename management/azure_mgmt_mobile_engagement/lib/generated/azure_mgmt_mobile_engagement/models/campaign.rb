@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Unique name of the campaign.
       attr_accessor :name
 

@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] First time the device used the application in
       # milliseconds since January 1st, 1970 UTC.
       attr_accessor :first_seen

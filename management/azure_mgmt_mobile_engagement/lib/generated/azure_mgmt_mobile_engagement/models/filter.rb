@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["engage-subset"] = "EngageSubsetFilter"
       @@discriminatorMap["engage-old-users"] = "EngageOldUsersFilter"

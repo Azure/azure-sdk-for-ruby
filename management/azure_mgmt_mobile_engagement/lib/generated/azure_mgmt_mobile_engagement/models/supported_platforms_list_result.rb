@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] List of supported platforms.
       attr_accessor :platforms
 

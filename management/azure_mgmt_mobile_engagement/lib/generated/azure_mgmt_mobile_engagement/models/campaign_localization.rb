@@ -13,6 +13,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Title of the notification. This field supports appInfo
       # markers.
       attr_accessor :notification_title

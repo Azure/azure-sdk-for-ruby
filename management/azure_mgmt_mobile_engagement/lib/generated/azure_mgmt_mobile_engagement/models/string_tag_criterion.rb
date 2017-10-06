@@ -12,6 +12,7 @@ module Azure::ARM::MobileEngagement
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "string-tag"
