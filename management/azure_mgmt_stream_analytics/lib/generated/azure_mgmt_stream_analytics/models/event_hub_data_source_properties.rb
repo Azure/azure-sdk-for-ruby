@@ -12,6 +12,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the Event Hub. Required on PUT
       # (CreateOrReplace) requests.
       attr_accessor :event_hub_name

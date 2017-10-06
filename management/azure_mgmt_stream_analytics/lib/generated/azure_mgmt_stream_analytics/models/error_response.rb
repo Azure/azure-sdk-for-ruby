@@ -12,6 +12,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code associated with the error that occurred.
       attr_accessor :code
 

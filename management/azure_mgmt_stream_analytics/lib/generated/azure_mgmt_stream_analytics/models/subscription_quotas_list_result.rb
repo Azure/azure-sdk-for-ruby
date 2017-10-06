@@ -13,6 +13,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubscriptionQuota>] List of quotas for the subscription
       # in a particular region.
       attr_accessor :value

@@ -10,10 +10,11 @@ module Azure::ARM::StreamAnalytics
     # named transformation. All transformations are contained under a streaming
     # job.
     #
-    class Transformation < SubResource
+    class Transformation < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Specifies the number of streaming units that the
       # streaming job uses.
       attr_accessor :streaming_units

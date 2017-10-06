@@ -13,6 +13,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the output column.
       attr_accessor :name
 

@@ -12,6 +12,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The (Azure Stream Analytics supported) data type of
       # the function input parameter. A list of valid Azure Stream Analytics
       # data types are described at

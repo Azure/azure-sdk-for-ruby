@@ -12,6 +12,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the Azure Storage account. Required on PUT
       # (CreateOrReplace) requests.
       attr_accessor :account_name

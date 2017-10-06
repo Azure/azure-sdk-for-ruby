@@ -13,6 +13,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Avro"] = "AvroSerialization"
       @@discriminatorMap["Json"] = "JsonSerialization"

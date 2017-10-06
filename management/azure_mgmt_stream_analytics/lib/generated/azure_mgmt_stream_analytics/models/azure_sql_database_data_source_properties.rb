@@ -13,6 +13,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the SQL server containing the Azure SQL
       # database. Required on PUT (CreateOrReplace) requests.
       attr_accessor :server

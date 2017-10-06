@@ -12,6 +12,7 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<StorageAccount>] A list of one or more Azure Storage
       # accounts. Required on PUT (CreateOrReplace) requests.
       attr_accessor :storage_accounts
