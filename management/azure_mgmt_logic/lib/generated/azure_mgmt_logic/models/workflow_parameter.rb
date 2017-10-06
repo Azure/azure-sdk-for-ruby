@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ParameterType] The type. Possible values include:
       # 'NotSpecified', 'String', 'SecureString', 'Int', 'Float', 'Bool',
       # 'Array', 'Object', 'SecureObject'

@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The client tracking id.
       attr_accessor :client_tracking_id
 

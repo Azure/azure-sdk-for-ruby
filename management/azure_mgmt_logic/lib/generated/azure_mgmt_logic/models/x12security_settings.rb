@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The authorization qualifier.
       attr_accessor :authorization_qualifier
 

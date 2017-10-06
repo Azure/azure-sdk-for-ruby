@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to mask security
       # information.
       attr_accessor :mask_security_info

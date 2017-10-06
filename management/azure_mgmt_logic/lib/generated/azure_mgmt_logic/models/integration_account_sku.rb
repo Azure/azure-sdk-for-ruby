@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [IntegrationAccountSkuName] The sku name. Possible values
       # include: 'NotSpecified', 'Free', 'Standard'
       attr_accessor :name

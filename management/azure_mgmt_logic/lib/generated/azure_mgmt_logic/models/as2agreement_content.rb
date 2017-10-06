@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AS2OneWayAgreement] The AS2 one-way receive agreement.
       attr_accessor :receive_agreement
 

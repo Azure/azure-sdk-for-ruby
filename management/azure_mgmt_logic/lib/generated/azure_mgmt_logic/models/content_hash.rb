@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The algorithm of the content hash.
       attr_accessor :algorithm
 

@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KeyVaultKeyReferenceKeyVault] The key vault reference.
       attr_accessor :key_vault
 

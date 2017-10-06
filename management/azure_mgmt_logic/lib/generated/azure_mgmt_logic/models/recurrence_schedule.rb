@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Integer>] The minutes.
       attr_accessor :minutes
 

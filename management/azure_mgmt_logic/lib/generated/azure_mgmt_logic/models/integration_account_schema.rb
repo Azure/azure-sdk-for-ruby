@@ -8,10 +8,11 @@ module Azure::ARM::Logic
     #
     # The integration account schema.
     #
-    class IntegrationAccountSchema < Resource
+    class IntegrationAccountSchema < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SchemaType] The schema type. Possible values include:
       # 'NotSpecified', 'Xml'
       attr_accessor :schema_type

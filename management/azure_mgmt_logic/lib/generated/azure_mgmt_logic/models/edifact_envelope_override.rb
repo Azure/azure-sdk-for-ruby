@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The message id on which this envelope settings has to
       # be applied.
       attr_accessor :message_id

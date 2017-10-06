@@ -8,10 +8,11 @@ module Azure::ARM::Logic
     #
     # The workflow run action.
     #
-    class WorkflowRunAction < SubResource
+    class WorkflowRunAction < MsRestAzure::SubResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Gets the start time.
       attr_accessor :start_time
 

@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<BusinessIdentity>] The list of partner business
       # identities.
       attr_accessor :business_identities

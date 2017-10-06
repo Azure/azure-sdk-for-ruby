@@ -8,10 +8,11 @@ module Azure::ARM::Logic
     #
     # The integration account session.
     #
-    class IntegrationAccountSession < Resource
+    class IntegrationAccountSession < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The created time.
       attr_accessor :created_time
 

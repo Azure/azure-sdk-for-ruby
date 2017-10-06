@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkflowState] The state of workflows. Possible values
       # include: 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted',
       # 'Suspended'

@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KeyType] The key type. Possible values include:
       # 'NotSpecified', 'Primary', 'Secondary'
       attr_accessor :key_type

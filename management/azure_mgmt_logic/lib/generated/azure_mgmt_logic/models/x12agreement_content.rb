@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [X12OneWayAgreement] The X12 one-way receive agreement.
       attr_accessor :receive_agreement
 

@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MessageFilterType] The message filter type. Possible values
       # include: 'NotSpecified', 'Include', 'Exclude'
       attr_accessor :message_filter_type

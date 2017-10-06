@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The service code list directory version.
       attr_accessor :service_code_list_directory_version
 

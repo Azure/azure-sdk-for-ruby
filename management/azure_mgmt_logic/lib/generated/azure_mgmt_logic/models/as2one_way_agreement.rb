@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BusinessIdentity] The sender business identity
       attr_accessor :sender_business_identity
 

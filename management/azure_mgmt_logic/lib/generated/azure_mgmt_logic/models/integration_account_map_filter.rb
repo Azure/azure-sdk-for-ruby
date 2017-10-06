@@ -12,6 +12,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MapType] The map type of integration account map. Possible
       # values include: 'NotSpecified', 'Xslt'
       attr_accessor :map_type

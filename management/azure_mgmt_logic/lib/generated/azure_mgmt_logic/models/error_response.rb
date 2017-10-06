@@ -13,6 +13,7 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ErrorProperties] The error properties.
       attr_accessor :error
 
