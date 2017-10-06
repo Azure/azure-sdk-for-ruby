@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerInsights
+module Azure::ARM::CustomerInsights
     VERSION = '0.13.0'
 end

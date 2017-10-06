@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerInsights
+module Azure::ARM::CustomerInsights
   module Models
     #
     # The fields mapping for Relationships.

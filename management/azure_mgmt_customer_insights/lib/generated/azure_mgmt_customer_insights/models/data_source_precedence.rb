@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerInsights
+module Azure::ARM::CustomerInsights
   module Models
     #
     # The data source precedence is a way to know the precedence of each data

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerInsights
+module Azure::ARM::CustomerInsights
   #
   # The Azure Customer Insights management API provides a RESTful set of web
   # services that interact with Azure Customer Insights service to manage your
@@ -90,7 +90,7 @@ module Azure::ARM::ContainerInsights
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
+      request_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -122,7 +122,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -132,7 +132,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -227,7 +227,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicyResourceFormat.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -318,7 +318,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicyListResult.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicyListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -413,7 +413,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicy.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -508,7 +508,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicy.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicy.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -595,7 +595,7 @@ module Azure::ARM::ContainerInsights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ContainerInsights::Models::AuthorizationPolicyListResult.mapper()
+            result_mapper = Azure::ARM::CustomerInsights::Models::AuthorizationPolicyListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -19,7 +19,7 @@ require 'ms_rest'
 require 'generated/azure_mgmt_customer_insights/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ContainerInsights
+module Azure::ARM::CustomerInsights
   autoload :Hubs,                                               'generated/azure_mgmt_customer_insights/hubs.rb'
   autoload :Profiles,                                           'generated/azure_mgmt_customer_insights/profiles.rb'
   autoload :Interactions,                                       'generated/azure_mgmt_customer_insights/interactions.rb'

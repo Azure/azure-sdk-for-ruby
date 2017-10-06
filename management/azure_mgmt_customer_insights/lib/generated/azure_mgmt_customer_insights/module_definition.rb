@@ -5,4 +5,4 @@
 
 module Azure end
 module Azure::ARM end
-module Azure::ARM::ContainerInsights end
+module Azure::ARM::CustomerInsights end
