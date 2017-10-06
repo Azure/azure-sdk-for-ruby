@@ -5,12 +5,6 @@
     "module_require": "azure_mgmt_analysis_services",
     "module_name": "AnalysisServicesModule"
   },
-  "Microsoft.ApiManagement": {
-    "path": "../../../management/azure_mgmt_api_management/",
-    "namespace": "Azure::ARM::ApiManagement",
-    "module_require": "azure_mgmt_api_management",
-    "module_name": "ApiManagementModule"
-  },
   "Microsoft.Authorization": {
     "path": "../../../management/azure_mgmt_authorization/",
     "namespace": "Azure::ARM::Authorization",

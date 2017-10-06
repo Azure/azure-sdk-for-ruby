@@ -45,8 +45,10 @@ require 'Profile_Latest/modules/recoveryservices_profile_module'
 require 'Profile_Latest/modules/recoveryservicesbackup_profile_module'
 require 'Profile_Latest/modules/recoveryservicessiterecovery_profile_module'
 require 'Profile_Latest/modules/redis_profile_module'
+require 'Profile_Latest/modules/relay_profile_module'
 require 'Profile_Latest/modules/resources_profile_module'
 require 'Profile_Latest/modules/resourcesmanagement_profile_module'
+require 'Profile_Latest/modules/scheduler_profile_module'
 require 'Profile_Latest/modules/search_profile_module'
 require 'Profile_Latest/modules/servermanagement_profile_module'
 require 'Profile_Latest/modules/servicebus_profile_module'
@@ -56,6 +58,7 @@ require 'Profile_Latest/modules/storsimple8000series_profile_module'
 require 'Profile_Latest/modules/storage_profile_module'
 require 'Profile_Latest/modules/streamanalytics_profile_module'
 require 'Profile_Latest/modules/subscriptions_profile_module'
+require 'Profile_Latest/modules/trafficmanager_profile_module'
 require 'Profile_Latest/modules/web_profile_module'
 require 'utils/configurable'
 require 'utils/default'
@@ -67,7 +70,7 @@ module Azure::Profiles::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :analysisservices, :authorization, :automation, :batch, :billing, :cdn, :cognitiveservices, :commerce, :compute, :consumption, :containerinstance, :containerregistry, :containerservice, :customerinsights, :datalakeanalytics, :datalakestore, :devtestlabs, :dns, :eventgrid, :eventhub, :features, :graph, :iothub, :keyvault, :links, :locks, :logic, :machinelearning, :managedapplications, :marketplaceordering, :mediaservices, :mobileengagement, :monitor, :network, :notificationhubs, :operationalinsights, :policy, :powerbiembedded, :recoveryservices, :recoveryservicesbackup, :recoveryservicessiterecovery, :redis, :resources, :resourcesmanagement, :search, :servermanagement, :servicebus, :servicefabric, :sql, :storsimple8000series, :storage, :streamanalytics, :subscriptions, :web
+    attr_accessor  :analysisservices, :authorization, :automation, :batch, :billing, :cdn, :cognitiveservices, :commerce, :compute, :consumption, :containerinstance, :containerregistry, :containerservice, :customerinsights, :datalakeanalytics, :datalakestore, :devtestlabs, :dns, :eventgrid, :eventhub, :features, :graph, :iothub, :keyvault, :links, :locks, :logic, :machinelearning, :managedapplications, :marketplaceordering, :mediaservices, :mobileengagement, :monitor, :network, :notificationhubs, :operationalinsights, :policy, :powerbiembedded, :recoveryservices, :recoveryservicesbackup, :recoveryservicessiterecovery, :redis, :relay, :resources, :resourcesmanagement, :scheduler, :search, :servermanagement, :servicebus, :servicefabric, :sql, :storsimple8000series, :storage, :streamanalytics, :subscriptions, :trafficmanager, :web
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -120,8 +123,10 @@ module Azure::Profiles::Management::Profile_Latest
       self.recoveryservicesbackup = RecoveryServicesBackup::RecoveryServicesBackupClass.new(self, nil, nil)
       self.recoveryservicessiterecovery = RecoveryServicesSiteRecovery::RecoveryServicesSiteRecoveryClass.new(self, nil, nil)
       self.redis = Redis::RedisClass.new(self, nil, nil)
+      self.relay = Relay::RelayClass.new(self, nil, nil)
       self.resources = Resources::ResourcesClass.new(self, nil, nil)
       self.resourcesmanagement = ResourcesManagement::ResourcesManagementClass.new(self, nil, nil)
+      self.scheduler = Scheduler::SchedulerClass.new(self, nil, nil)
       self.search = Search::SearchClass.new(self, nil, nil)
       self.servermanagement = ServerManagement::ServerManagementClass.new(self, nil, nil)
       self.servicebus = ServiceBus::ServiceBusClass.new(self, nil, nil)
@@ -131,6 +136,7 @@ module Azure::Profiles::Management::Profile_Latest
       self.storage = Storage::StorageClass.new(self, nil, nil)
       self.streamanalytics = StreamAnalytics::StreamAnalyticsClass.new(self, nil, nil)
       self.subscriptions = Subscriptions::SubscriptionsClass.new(self, nil, nil)
+      self.trafficmanager = TrafficManager::TrafficManagerClass.new(self, nil, nil)
       self.web = Web::WebClass.new(self, nil, nil)
     end
 

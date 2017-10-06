@@ -161,11 +161,17 @@
       "Microsoft.Redis": {
         "2017-02-01": ["*"]
       },
+      "Microsoft.Relay": {
+        "2017-04-01": ["*"]
+      },
       "Microsoft.Resources": {
         "2017-05-10": ["*"]
       },
       "Microsoft.ResourcesManagement": {
         "2017-08-31-preview": ["*"]
+      },
+      "Microsoft.Scheduler": {
+        "2016-03-01": ["*"]
       },
       "Microsoft.Search": {
         "2015-08-19": ["*"]
@@ -193,6 +199,9 @@
       },
       "Microsoft.Subscriptions": {
         "2016-06-01": ["*"]
+      },
+      "Microsoft.TrafficManager": {
+        "2017-09-01-preview": ["*"]
       },
       "Microsoft.Web": {
         "2016-09-01": ["*"]
