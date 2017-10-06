@@ -13,6 +13,7 @@ module Azure::ARM::PowerBiEmbedded
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Workspace collection name
       attr_accessor :name
 
