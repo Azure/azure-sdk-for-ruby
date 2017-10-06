@@ -1,3 +1,23 @@
+## 2017.10.09 - Azure ARM version 0.14.0
+
+* Regened all azure_mgmt_* sdks using [Autorest.2.0.4147](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.2.0.15](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.14.0
+* Added new gems:
+  - [azure_mgmt_automation](https://rubygems.org/gems/azure_mgmt_automation)
+  - [azure_mgmt_billing](https://rubygems.org/gems/azure_mgmt_billing)
+  - [azure_mgmt_consumption](https://rubygems.org/gems/azure_mgmt_consumption)
+  - [azure_mgmt_container_instance](https://rubygems.org/gems/azure_mgmt_container_instance)
+  - [azure_mgmt_customer_insights](https://rubygems.org/gems/azure_mgmt_customer_insights)
+  - [azure_mgmt_event_grid](https://rubygems.org/gems/azure_mgmt_event_grid)
+  - [azure_mgmt_links](https://rubygems.org/gems/azure_mgmt_links)
+  - [azure_mgmt_managed_applications](https://rubygems.org/gems/azure_mgmt_managed_applications)
+  - [azure_mgmt_marketplace_ordering](https://rubygems.org/gems/azure_mgmt_marketplace_ordering)
+  - [azure_mgmt_operational_insights](https://rubygems.org/gems/azure_mgmt_operational_insights)
+  - [azure_mgmt_recovery_services_site_recovery](https://rubygems.org/gems/azure_mgmt_recovery_services_site_recovery)
+  - [azure_mgmt_relay](https://rubygems.org/gems/azure_mgmt_relay)
+  - [azure_mgmt_resources_management](https://rubygems.org/gems/azure_mgmt_resources_management)
+  - [azure_mgmt_service_fabric](https://rubygems.org/gems/azure_mgmt_service_fabric)
+  - [azure_mgmt_stor_simple8000_series](https://rubygems.org/gems/azure_mgmt_stor_simple8000_series)
+
 ## 2017.09.28 - Azure Container Registry version 0.13.0
 * Released [azure_mgmt_container_registry](https://rubygems.org/gems/azure_mgmt_container_registry) version 0.13.0. Refer [PR# 1007](https://github.com/Azure/azure-sdk-for-ruby/pull/1007) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/65a45deed027ed8e428b18e7a6da8ea83bc68f21/specification/containerregistry/resource-manager/readme.md) for further details.
 
