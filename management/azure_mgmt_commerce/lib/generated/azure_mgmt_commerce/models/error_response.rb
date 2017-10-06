@@ -12,6 +12,7 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code
       attr_accessor :code
 

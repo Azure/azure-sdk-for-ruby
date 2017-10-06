@@ -12,6 +12,7 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @Name = "Monetary Credit"

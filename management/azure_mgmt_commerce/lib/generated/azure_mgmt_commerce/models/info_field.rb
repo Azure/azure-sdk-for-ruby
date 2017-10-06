@@ -12,6 +12,7 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Identifies the name of the instance provisioned by the
       # user.
       attr_accessor :project
