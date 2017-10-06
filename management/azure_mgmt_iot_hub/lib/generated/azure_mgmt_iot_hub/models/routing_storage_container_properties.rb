@@ -12,6 +12,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The connection string of the storage account.
       attr_accessor :connection_string
 

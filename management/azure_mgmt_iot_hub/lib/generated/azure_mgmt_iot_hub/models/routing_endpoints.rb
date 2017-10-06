@@ -15,6 +15,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RoutingServiceBusQueueEndpointProperties>] The list of
       # Service Bus queue endpoints that IoT hub routes the messages to, based
       # on the routing rules.

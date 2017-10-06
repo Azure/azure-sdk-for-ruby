@@ -26,13 +26,16 @@ module Azure::ARM::IotHub
     #
     # Returns the list of certificates.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CertificateListDescription] operation results.
     #
-    def list_by_io_thub(custom_headers = nil)
-      response = list_by_io_thub_async(custom_headers).value!
+    def list_by_iot_hub(resource_group_name, resource_name, custom_headers = nil)
+      response = list_by_iot_hub_async(resource_group_name, resource_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -41,13 +44,16 @@ module Azure::ARM::IotHub
     #
     # Returns the list of certificates.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_io_thub_with_http_info(custom_headers = nil)
-      list_by_io_thub_async(custom_headers).value!
+    def list_by_iot_hub_with_http_info(resource_group_name, resource_name, custom_headers = nil)
+      list_by_iot_hub_async(resource_group_name, resource_name, custom_headers).value!
     end
 
     #
@@ -55,16 +61,19 @@ module Azure::ARM::IotHub
     #
     # Returns the list of certificates.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_io_thub_async(custom_headers = nil)
+    def list_by_iot_hub_async(resource_group_name, resource_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
 
 
       request_headers = {}
@@ -78,7 +87,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -117,13 +126,17 @@ module Azure::ARM::IotHub
     #
     # Returns the certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CertificateDescription] operation results.
     #
-    def get(custom_headers = nil)
-      response = get_async(custom_headers).value!
+    def get(resource_group_name, resource_name, certificate_name, custom_headers = nil)
+      response = get_async(resource_group_name, resource_name, certificate_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -132,13 +145,17 @@ module Azure::ARM::IotHub
     #
     # Returns the certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(custom_headers = nil)
-      get_async(custom_headers).value!
+    def get_with_http_info(resource_group_name, resource_name, certificate_name, custom_headers = nil)
+      get_async(resource_group_name, resource_name, certificate_name, custom_headers).value!
     end
 
     #
@@ -146,17 +163,21 @@ module Azure::ARM::IotHub
     #
     # Returns the certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(custom_headers = nil)
+    def get_async(resource_group_name, resource_name, certificate_name, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
-      fail ArgumentError, '@client.certificate_name is nil' if @client.certificate_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
 
 
       request_headers = {}
@@ -170,7 +191,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'certificateName' => @client.certificate_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'certificateName' => certificate_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -209,15 +230,21 @@ module Azure::ARM::IotHub
     #
     # Adds new or replaces existing certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param certificate_description [CertificateBodyDescription] The certificate
     # body.
+    # @param if_match [String] ETag of the Certificate. Do not specify for creating
+    # a brand new certificate. Required to update an existing certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CertificateDescription] operation results.
     #
-    def create_or_update(certificate_description, custom_headers = nil)
-      response = create_or_update_async(certificate_description, custom_headers).value!
+    def create_or_update(resource_group_name, resource_name, certificate_name, certificate_description, if_match = nil, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, resource_name, certificate_name, certificate_description, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -226,15 +253,21 @@ module Azure::ARM::IotHub
     #
     # Adds new or replaces existing certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param certificate_description [CertificateBodyDescription] The certificate
     # body.
+    # @param if_match [String] ETag of the Certificate. Do not specify for creating
+    # a brand new certificate. Required to update an existing certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(certificate_description, custom_headers = nil)
-      create_or_update_async(certificate_description, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, resource_name, certificate_name, certificate_description, if_match = nil, custom_headers = nil)
+      create_or_update_async(resource_group_name, resource_name, certificate_name, certificate_description, if_match, custom_headers).value!
     end
 
     #
@@ -242,19 +275,25 @@ module Azure::ARM::IotHub
     #
     # Adds new or replaces existing certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param certificate_description [CertificateBodyDescription] The certificate
     # body.
+    # @param if_match [String] ETag of the Certificate. Do not specify for creating
+    # a brand new certificate. Required to update an existing certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(certificate_description, custom_headers = nil)
+    def create_or_update_async(resource_group_name, resource_name, certificate_name, certificate_description, if_match = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
-      fail ArgumentError, '@client.certificate_name is nil' if @client.certificate_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
       fail ArgumentError, 'certificate_description is nil' if certificate_description.nil?
 
 
@@ -262,6 +301,7 @@ module Azure::ARM::IotHub
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -277,7 +317,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'certificateName' => @client.certificate_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'certificateName' => certificate_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -327,12 +367,17 @@ module Azure::ARM::IotHub
     #
     # Deletes an existing X509 certificate or does nothing if it does not exist.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(custom_headers = nil)
-      response = delete_async(custom_headers).value!
+    def delete(resource_group_name, resource_name, certificate_name, if_match, custom_headers = nil)
+      response = delete_async(resource_group_name, resource_name, certificate_name, if_match, custom_headers).value!
       nil
     end
 
@@ -341,13 +386,18 @@ module Azure::ARM::IotHub
     #
     # Deletes an existing X509 certificate or does nothing if it does not exist.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(custom_headers = nil)
-      delete_async(custom_headers).value!
+    def delete_with_http_info(resource_group_name, resource_name, certificate_name, if_match, custom_headers = nil)
+      delete_async(resource_group_name, resource_name, certificate_name, if_match, custom_headers).value!
     end
 
     #
@@ -355,23 +405,30 @@ module Azure::ARM::IotHub
     #
     # Deletes an existing X509 certificate or does nothing if it does not exist.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(custom_headers = nil)
+    def delete_async(resource_group_name, resource_name, certificate_name, if_match, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
-      fail ArgumentError, '@client.certificate_name is nil' if @client.certificate_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
       request_headers = {}
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}'
 
@@ -379,7 +436,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'certificateName' => @client.certificate_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'certificateName' => certificate_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -404,59 +461,76 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Generate verification code for proof of posession flow.
+    # Generate verification code for proof of possession flow.
     #
-    # Generates verification code for proof of posession flow. The verifification
+    # Generates verification code for proof of possession flow. The verification
     # code will be used to generate a leaf certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CertificateWithNonceDescription] operation results.
     #
-    def generate_verification_code(custom_headers = nil)
-      response = generate_verification_code_async(custom_headers).value!
+    def generate_verification_code(resource_group_name, resource_name, certificate_name, if_match, custom_headers = nil)
+      response = generate_verification_code_async(resource_group_name, resource_name, certificate_name, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Generate verification code for proof of posession flow.
+    # Generate verification code for proof of possession flow.
     #
-    # Generates verification code for proof of posession flow. The verifification
+    # Generates verification code for proof of possession flow. The verification
     # code will be used to generate a leaf certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_verification_code_with_http_info(custom_headers = nil)
-      generate_verification_code_async(custom_headers).value!
+    def generate_verification_code_with_http_info(resource_group_name, resource_name, certificate_name, if_match, custom_headers = nil)
+      generate_verification_code_async(resource_group_name, resource_name, certificate_name, if_match, custom_headers).value!
     end
 
     #
-    # Generate verification code for proof of posession flow.
+    # Generate verification code for proof of possession flow.
     #
-    # Generates verification code for proof of posession flow. The verifification
+    # Generates verification code for proof of possession flow. The verification
     # code will be used to generate a leaf certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_verification_code_async(custom_headers = nil)
+    def generate_verification_code_async(resource_group_name, resource_name, certificate_name, if_match, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
-      fail ArgumentError, '@client.certificate_name is nil' if @client.certificate_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
       request_headers = {}
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/generateVerificationCode'
 
@@ -464,7 +538,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'certificateName' => @client.certificate_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'certificateName' => certificate_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -499,66 +573,83 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Verify certificate's private key posession.
+    # Verify certificate's private key possession.
     #
-    # Verifies the certificate's private key posession by providing the leaf cert
+    # Verifies the certificate's private key possession by providing the leaf cert
     # issued by the verifying pre uploaded certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param certificate_verification_body [CertificateVerificationDescription] The
     # name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CertificateDescription] operation results.
     #
-    def verify(certificate_verification_body, custom_headers = nil)
-      response = verify_async(certificate_verification_body, custom_headers).value!
+    def verify(resource_group_name, resource_name, certificate_name, certificate_verification_body, if_match, custom_headers = nil)
+      response = verify_async(resource_group_name, resource_name, certificate_name, certificate_verification_body, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Verify certificate's private key posession.
+    # Verify certificate's private key possession.
     #
-    # Verifies the certificate's private key posession by providing the leaf cert
+    # Verifies the certificate's private key possession by providing the leaf cert
     # issued by the verifying pre uploaded certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param certificate_verification_body [CertificateVerificationDescription] The
     # name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def verify_with_http_info(certificate_verification_body, custom_headers = nil)
-      verify_async(certificate_verification_body, custom_headers).value!
+    def verify_with_http_info(resource_group_name, resource_name, certificate_name, certificate_verification_body, if_match, custom_headers = nil)
+      verify_async(resource_group_name, resource_name, certificate_name, certificate_verification_body, if_match, custom_headers).value!
     end
 
     #
-    # Verify certificate's private key posession.
+    # Verify certificate's private key possession.
     #
-    # Verifies the certificate's private key posession by providing the leaf cert
+    # Verifies the certificate's private key possession by providing the leaf cert
     # issued by the verifying pre uploaded certificate.
     #
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param certificate_name [String] The name of the certificate
     # @param certificate_verification_body [CertificateVerificationDescription] The
     # name of the certificate
+    # @param if_match [String] ETag of the Certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def verify_async(certificate_verification_body, custom_headers = nil)
+    def verify_async(resource_group_name, resource_name, certificate_name, certificate_verification_body, if_match, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.resource_name is nil' if @client.resource_name.nil?
-      fail ArgumentError, '@client.certificate_name is nil' if @client.certificate_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
       fail ArgumentError, 'certificate_verification_body is nil' if certificate_verification_body.nil?
+      fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
       request_headers = {}
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -574,7 +665,7 @@ module Azure::ARM::IotHub
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'resourceName' => @client.resource_name,'certificateName' => @client.certificate_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'certificateName' => certificate_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

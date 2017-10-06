@@ -12,6 +12,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{read | write |
       # action | delete}
       attr_accessor :name

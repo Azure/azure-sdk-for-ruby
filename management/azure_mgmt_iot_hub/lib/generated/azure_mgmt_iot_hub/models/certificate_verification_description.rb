@@ -12,6 +12,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] base-64 representation of X509 certificate .cer file
       # or just .pem file content.
       attr_accessor :certificate

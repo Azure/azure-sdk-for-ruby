@@ -13,13 +13,14 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The retention time for device-to-cloud messages in
       # days. See:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
       attr_accessor :retention_time_in_days
 
-      # @return [Integer] The number of paritions for receiving device-to-cloud
-      # messages in the Event Hub-compatible endpoint. See:
+      # @return [Integer] The number of partitions for receiving
+      # device-to-cloud messages in the Event Hub-compatible endpoint. See:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages.
       attr_accessor :partition_count
 

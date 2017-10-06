@@ -13,6 +13,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RoutingEndpoints]
       attr_accessor :endpoints
 
