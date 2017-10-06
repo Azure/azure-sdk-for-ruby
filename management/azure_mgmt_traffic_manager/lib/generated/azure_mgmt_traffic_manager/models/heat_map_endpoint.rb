@@ -12,6 +12,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ARM Resource ID of this Traffic Manager endpoint.
       attr_accessor :resource_id
 

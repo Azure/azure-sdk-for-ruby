@@ -12,6 +12,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The result of the operation or request.
       attr_accessor :operation_result
 

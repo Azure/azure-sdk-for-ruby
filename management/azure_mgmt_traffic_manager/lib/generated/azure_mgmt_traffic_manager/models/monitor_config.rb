@@ -13,6 +13,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProfileMonitorStatus] The profile-level monitoring status of
       # the Traffic Manager profile. Possible values include:
       # 'CheckingEndpoints', 'Online', 'Degraded', 'Disabled', 'Inactive'
