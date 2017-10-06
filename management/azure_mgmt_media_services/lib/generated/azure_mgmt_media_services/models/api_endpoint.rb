@@ -12,6 +12,7 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Media Services REST endpoint.
       attr_accessor :endpoint
 

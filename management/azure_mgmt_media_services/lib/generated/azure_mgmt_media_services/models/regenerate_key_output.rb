@@ -12,6 +12,7 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The new value of either the primary or secondary key.
       attr_accessor :key
 

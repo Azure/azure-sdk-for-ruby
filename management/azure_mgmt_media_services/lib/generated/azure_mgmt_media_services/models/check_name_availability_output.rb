@@ -12,6 +12,7 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Specifies if the name is available.
       attr_accessor :name_available
 

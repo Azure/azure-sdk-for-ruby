@@ -12,6 +12,7 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The id of the storage account resource. Media Services
       # relies on tables and queues as well as blobs, so the primary storage
       # account must be a Standard Storage account (either

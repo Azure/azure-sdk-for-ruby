@@ -12,6 +12,7 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The primary authorization endpoint.
       attr_accessor :primary_auth_endpoint
 

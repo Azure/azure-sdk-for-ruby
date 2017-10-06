@@ -12,6 +12,7 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Media
       attr_accessor :provider
 
