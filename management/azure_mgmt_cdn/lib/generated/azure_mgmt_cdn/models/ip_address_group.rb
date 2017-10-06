@@ -12,6 +12,7 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The delivery region of the ip address group
       attr_accessor :delivery_region
 

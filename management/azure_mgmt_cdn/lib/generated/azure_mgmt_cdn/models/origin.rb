@@ -11,10 +11,11 @@ module Azure::ARM::CDN
     # cached, they attempt to fetch it from one or more of the configured
     # origins.
     #
-    class Origin < Resource
+    class Origin < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The address of the origin. Domain names, IPv4
       # addresses, and IPv6 addresses are supported.
       attr_accessor :host_name

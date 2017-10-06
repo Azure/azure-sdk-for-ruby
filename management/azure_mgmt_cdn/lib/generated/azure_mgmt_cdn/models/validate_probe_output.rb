@@ -12,6 +12,7 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Indicates whether the probe URL is accepted or not.
       attr_accessor :is_valid
 

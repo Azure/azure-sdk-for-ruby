@@ -11,10 +11,11 @@ module Azure::ARM::CDN
     # behavior. The CDN endpoint uses the URL format
     # <endpointname>.azureedge.net.
     #
-    class Endpoint < Resource
+    class Endpoint < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The host header CDN sends along with content requests
       # to origin. The default value is the host name of the origin.
       attr_accessor :origin_host_header

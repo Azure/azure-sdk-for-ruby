@@ -12,6 +12,7 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The address of the origin. Domain names, IPv4
       # addresses, and IPv6 addresses are supported.
       attr_accessor :host_name

@@ -13,6 +13,7 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Origin name
       attr_accessor :name
 

@@ -9,10 +9,11 @@ module Azure::ARM::CDN
     # Edgenode is a global Point of Presence (POP) location used to deliver CDN
     # content to end users.
     #
-    class EdgeNode < Resource
+    class EdgeNode < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<IpAddressGroup>] List of ip address groups.
       attr_accessor :ip_address_groups
 
