@@ -9,25 +9,11 @@ module Azure::ARM::NotificationHubs
     # Model object.
     #
     #
-    class Resource
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Resource Id
-      attr_accessor :id
-
-      # @return [String] Resource name
-      attr_accessor :name
-
-      # @return [String] Resource type
-      attr_accessor :type
-
-      # @return [String] Resource location
-      attr_accessor :location
-
-      # @return [Hash{String => String}] Resource tags
-      attr_accessor :tags
-
+      include MsRest::JSONable
       # @return [Sku] The sku of the created namespace
       attr_accessor :sku
 

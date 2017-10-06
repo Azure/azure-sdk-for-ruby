@@ -8,10 +8,11 @@ module Azure::ARM::NotificationHubs
     #
     # Parameters supplied to the CreateOrUpdate Namespace operation.
     #
-    class NamespaceCreateOrUpdateParameters < Resource
+    class NamespaceCreateOrUpdateParameters < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the namespace.
       attr_accessor :namespace_create_or_update_parameters_name
 

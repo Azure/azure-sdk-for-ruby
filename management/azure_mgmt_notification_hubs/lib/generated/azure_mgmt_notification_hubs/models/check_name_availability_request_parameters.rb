@@ -13,6 +13,7 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource name
       attr_accessor :name
 

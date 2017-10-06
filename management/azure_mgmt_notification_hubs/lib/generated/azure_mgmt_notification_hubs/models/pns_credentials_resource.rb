@@ -8,10 +8,11 @@ module Azure::ARM::NotificationHubs
     #
     # Description of a NotificationHub PNS Credentials.
     #
-    class PnsCredentialsResource < Resource
+    class PnsCredentialsResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApnsCredential] The ApnsCredential of the created
       # NotificationHub
       attr_accessor :apns_credential

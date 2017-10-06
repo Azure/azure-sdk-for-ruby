@@ -12,6 +12,7 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

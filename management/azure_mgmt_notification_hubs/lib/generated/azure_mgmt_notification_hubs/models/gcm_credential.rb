@@ -12,6 +12,7 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The GCM endpoint.
       attr_accessor :gcm_endpoint
 
