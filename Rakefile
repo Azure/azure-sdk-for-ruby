@@ -169,10 +169,37 @@ namespace :arm do
     end
   end
 
+  desc 'Generate individual require files'
+  task :regen_individual_require_files do
+    Dir.chdir(File.expand_path('../generators/requirefilegen/src', __FILE__))
+    command = 'bundle exec ruby require_file_generator.rb --mode=individual'
+    execute_and_stream(command)
+  end
+
+  desc 'Generate rollup require files'
+  task :regen_rollup_require_files do
+    Dir.chdir(File.expand_path('../generators/requirefilegen/src', __FILE__))
+    command = 'bundle exec ruby require_file_generator.rb --mode=rollup'
+    execute_and_stream(command)
+  end
+
+  desc 'Generate all require files'
+  task :regen_all_require_files => [:regen_individual_require_files, :regen_rollup_require_files] do
+    puts 'Generated all require files'
+  end
+
   desc 'Regen all profiles'
-  task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles] do
+  task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles, :regen_all_require_files] do
     puts 'Regenerated all profiles'
   end
+end
+
+Rake::Task['arm:regen_rollup_profile'].enhance do
+  Rake::Task['arm:regen_rollup_require_files'].invoke
+end
+
+Rake::Task['arm:regen_individual_profiles'].enhance do
+  Rake::Task['arm:regen_individual_require_files'].invoke
 end
 
 task :default => :spec
