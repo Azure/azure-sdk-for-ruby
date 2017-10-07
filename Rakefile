@@ -121,7 +121,7 @@ namespace :arm do
     Dir.chdir(File.expand_path('../azure_sdk/lib', __FILE__))
     subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
     subdir_list.each do |subdir|
-      if subdir != 'utils' && subdir != 'azure_sdk'
+      if subdir != 'common' && subdir != 'azure_sdk'
         folder_to_be_cleaned = File.expand_path("../azure_sdk/lib/#{subdir}", __FILE__)
         puts "Cleaning folder - #{folder_to_be_cleaned}"
         FileUtils.rm_rf(folder_to_be_cleaned)
@@ -137,7 +137,7 @@ namespace :arm do
       Dir.chdir(File.expand_path("../management/#{gem}/lib/profiles", __FILE__))
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|
-        if subdir != 'utils'
+        if subdir != 'common'
           folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/profiles/#{subdir}", __FILE__)
           puts "Cleaning folder - #{folder_to_be_cleaned}"
           FileUtils.rm_rf(folder_to_be_cleaned)
