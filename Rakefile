@@ -137,7 +137,7 @@ namespace :arm do
       Dir.chdir(File.expand_path("../management/#{gem}/lib/profiles", __FILE__))
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|
-        if subdir != 'common'
+        if subdir.to_s != 'common'
           folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/profiles/#{subdir}", __FILE__)
           puts "Cleaning folder - #{folder_to_be_cleaned}"
           FileUtils.rm_rf(folder_to_be_cleaned)
@@ -162,7 +162,7 @@ namespace :arm do
   task :regen_individual_profiles => :clean_individual_profiles do
     Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
     PROFILE_METADATA.each do |sdk, profile_spec_file|
-      if(sdk != 'azure_sdk')
+      if(sdk.to_s != 'azure_sdk')
         command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{profile_spec_file}"
         execute_and_stream(command)
       end
