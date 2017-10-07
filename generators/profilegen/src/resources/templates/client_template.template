@@ -37,7 +37,7 @@ module Azure::Profiles::<%- if @individual_gem_profile -%><%= @module_name %>::<
       reset!(options)
 
       <%- @class_names.each do |class_name| -%>
-      self.<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self, nil, nil)
+      self.<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self)
       <%- end -%>
     end
 

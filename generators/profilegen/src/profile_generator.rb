@@ -19,12 +19,11 @@ class ProfileGenerator
   # Accessors to be used in the generation of module
   attr_accessor :module_require, :module_name, :class_name, :operation_types, :management_client, :model_types, :versions_clients_mapper
   # Accessors to be used in the generation of profile spec file
-  attr_accessor :profile_version, :profile_ruby_version, :spec_includes, :module_name, :module_definition_file_name
+  attr_accessor :profile_version, :spec_includes, :module_name, :module_definition_file_name
 
   def initialize(profile, dir_metadata)
     @profile_name = profile['name']
     @resource_provider_types = profile['resourceTypes']
-    @profile_ruby_version = profile['ruby_version']
     @output_dir = profile['output_dir']
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
@@ -98,8 +97,7 @@ class ProfileGenerator
   end
 
   def generate_operation_types(resource_provider, resource_type, resource_type_version)
-    namespace = @dir_metadata[resource_provider]['namespace'] + "::#{get_version(resource_type_version)}"
-    namespace = namespace.gsub(/\./, '_' )
+    namespace = get_namespace(resource_provider, resource_type_version, false)
     obj = Module.const_get(namespace)
     operations = []
     obj.constants.select do |const_name|
@@ -124,7 +122,7 @@ class ProfileGenerator
   end
 
   def check_and_add_operation(module_obj, operation, resource_provider)
-    operation_body = module_obj.name + '::' + operation
+    operation_body =  "#{module_obj.name}::#{operation}"
     operation_name_ruby = get_model_name(operation)
 
     if(check_for_availability(@operation_types, operation_name_ruby))
@@ -134,13 +132,23 @@ class ProfileGenerator
     end
   end
 
+  def get_namespace(resource_provider, resource_type_version, is_models)
+    if is_models
+      namespace = "#{@dir_metadata[resource_provider]['namespace']}::#{get_version(resource_type_version)}::Models"
+    else
+      namespace = "#{@dir_metadata[resource_provider]['namespace']}::#{get_version(resource_type_version)}"
+    end
+    # The following substitution is required for only one scenario of handling the
+    # graph API 1.6 -> 1_6
+    namespace.gsub(/\./, '_' )
+  end
+
   def generate_model_types(resource_provider, resource_type_version)
-    namespace = @dir_metadata[resource_provider]['namespace'] + + "::#{get_version(resource_type_version)}::Models"
-    namespace = namespace.gsub(/\./, '_' )
+    namespace = get_namespace(resource_provider, resource_type_version, true)
     obj = Module.const_get(namespace)
     obj.constants.select do |const_name|
         model_name = const_name.to_s
-        model_body = obj.name + '::' + const_name.to_s
+        model_body = "#{obj.name}::#{const_name.to_s}"
         method_name = get_model_name(const_name.to_s)
 
         if(check_for_availability(@model_types, model_name))
@@ -198,7 +206,7 @@ class ProfileGenerator
   end
 
   def get_module_file_name(resource_type_name)
-    get_ruby_specific_resource_type_name(resource_type_name).downcase + '_profile_module.rb'
+    "#{get_ruby_specific_resource_type_name(resource_type_name).downcase}_profile_module.rb"
   end
 
   def check_and_create_directory
@@ -209,10 +217,6 @@ class ProfileGenerator
 
   def get_ruby_specific_resource_type_name(resource_type_name)
     resource_type_name.slice(resource_type_name.rindex('.') + 1, resource_type_name.length - 1)
-  end
-
-  def get_profile_version
-    @profile_name[4..@profile_name.length - 1]
   end
 
   def get_binding
