@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_08_19/search_profile_2015_08_19_module_definition.rb'
 require 'profiles/profile_2015_08_19/modules/search_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::SearchModule::Management::Profile_2015_08_19
   #

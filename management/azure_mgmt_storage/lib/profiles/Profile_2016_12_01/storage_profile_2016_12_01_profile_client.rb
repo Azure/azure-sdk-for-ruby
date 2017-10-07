@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_12_01/storage_profile_2016_12_01_module_definition.rb'
 require 'profiles/profile_2016_12_01/modules/storage_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::StorageModule::Management::Profile_2016_12_01
   #

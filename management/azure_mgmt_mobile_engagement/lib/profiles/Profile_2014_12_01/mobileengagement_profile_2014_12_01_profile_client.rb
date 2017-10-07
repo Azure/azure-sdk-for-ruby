@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2014_12_01/mobileengagement_profile_2014_12_01_module_definition.rb'
 require 'profiles/profile_2014_12_01/modules/mobileengagement_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::MobileEngagementModule::Management::Profile_2014_12_01
   #

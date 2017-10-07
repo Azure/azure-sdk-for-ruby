@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_10_31/automation_profile_2015_10_31_module_definition.rb'
 require 'profiles/profile_2015_10_31/modules/automation_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::AutomationModule::Management::Profile_2015_10_31
   #

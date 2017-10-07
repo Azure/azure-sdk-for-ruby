@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_05_15/devtestlabs_profile_2016_05_15_module_definition.rb'
 require 'profiles/profile_2016_05_15/modules/devtestlabs_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::DevTestLabsModule::Management::Profile_2016_05_15
   #

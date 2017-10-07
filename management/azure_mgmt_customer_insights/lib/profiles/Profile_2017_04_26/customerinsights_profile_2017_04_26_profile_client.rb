@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_04_26/customerinsights_profile_2017_04_26_module_definition.rb'
 require 'profiles/profile_2017_04_26/modules/customerinsights_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::CustomerInsightsModule::Management::Profile_2017_04_26
   #

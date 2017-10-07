@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_07_01/authorization_profile_2015_07_01_module_definition.rb'
 require 'profiles/profile_2015_07_01/modules/authorization_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::AuthorizationModule::Management::Profile_2015_07_01
   #

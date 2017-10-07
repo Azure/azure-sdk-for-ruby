@@ -12,8 +12,8 @@ require 'profile_azure_stack/modules/locks_profile_module'
 require 'profile_azure_stack/modules/policy_profile_module'
 require 'profile_azure_stack/modules/resources_profile_module'
 require 'profile_azure_stack/modules/subscriptions_profile_module'
-require 'utils/configurable'
-require 'utils/default'
+require 'common/configurable'
+require 'common/default'
 
 module Azure::Profiles::Management::Profile_Azure_Stack
   #

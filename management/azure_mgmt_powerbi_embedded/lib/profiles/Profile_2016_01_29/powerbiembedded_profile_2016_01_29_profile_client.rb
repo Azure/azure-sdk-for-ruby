@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_01_29/powerbiembedded_profile_2016_01_29_module_definition.rb'
 require 'profiles/profile_2016_01_29/modules/powerbiembedded_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::PowerBiEmbeddedModule::Management::Profile_2016_01_29
   #

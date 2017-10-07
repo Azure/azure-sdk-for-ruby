@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_07_01/relay_profile_2016_07_01_module_definition.rb'
 require 'profiles/profile_2016_07_01/modules/relay_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::RelayModule::Management::Profile_2016_07_01
   #

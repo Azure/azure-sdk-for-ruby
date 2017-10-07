@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_04_30_preview/compute_profile_2016_04_30_preview_module_definition.rb'
 require 'profiles/profile_2016_04_30_preview/modules/compute_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ComputeModule::Management::Profile_2016_04_30_Preview
   #

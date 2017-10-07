@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_08_10/recoveryservicessiterecovery_profile_2016_08_10_module_definition.rb'
 require 'profiles/profile_2016_08_10/modules/recoveryservicessiterecovery_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_2016_08_10
   #

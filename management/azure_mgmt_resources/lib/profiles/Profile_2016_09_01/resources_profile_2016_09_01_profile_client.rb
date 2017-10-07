@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_09_01/resources_profile_2016_09_01_module_definition.rb'
 require 'profiles/profile_2016_09_01/modules/resources_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ResourcesModule::Management::Profile_2016_09_01
   #

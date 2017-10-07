@@ -60,8 +60,8 @@ require 'profile_latest/modules/streamanalytics_profile_module'
 require 'profile_latest/modules/subscriptions_profile_module'
 require 'profile_latest/modules/trafficmanager_profile_module'
 require 'profile_latest/modules/web_profile_module'
-require 'utils/configurable'
-require 'utils/default'
+require 'common/configurable'
+require 'common/default'
 
 module Azure::Profiles::Management::Profile_Latest
   #

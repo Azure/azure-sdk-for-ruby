@@ -4,8 +4,8 @@
 
 require 'profiles/profile_1_6/graph_profile_1_6_module_definition.rb'
 require 'profiles/profile_1_6/modules/graph_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::GraphModule::Management::Profile_1_6
   #

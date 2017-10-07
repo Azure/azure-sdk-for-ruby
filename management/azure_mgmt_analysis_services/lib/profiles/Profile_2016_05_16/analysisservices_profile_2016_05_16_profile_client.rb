@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_05_16/analysisservices_profile_2016_05_16_module_definition.rb'
 require 'profiles/profile_2016_05_16/modules/analysisservices_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::AnalysisServicesModule::Management::Profile_2016_05_16
   #

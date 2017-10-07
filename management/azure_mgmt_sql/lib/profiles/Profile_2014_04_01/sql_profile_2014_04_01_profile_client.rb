@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2014_04_01/sql_profile_2014_04_01_module_definition.rb'
 require 'profiles/profile_2014_04_01/modules/sql_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::SQLModule::Management::Profile_2014_04_01
   #

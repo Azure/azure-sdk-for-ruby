@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_04_18/cognitiveservices_profile_2017_04_18_module_definition.rb'
 require 'profiles/profile_2017_04_18/modules/cognitiveservices_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::CognitiveServicesModule::Management::Profile_2017_04_18
   #

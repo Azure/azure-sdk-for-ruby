@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_09_01_preview/managedapplications_profile_2016_09_01_preview_module_definition.rb'
 require 'profiles/profile_2016_09_01_preview/modules/managedapplications_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ManagedApplicationsModule::Management::Profile_2016_09_01_Preview
   #

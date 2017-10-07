@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_10_01/keyvault_profile_2016_10_01_module_definition.rb'
 require 'profiles/profile_2016_10_01/modules/keyvault_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::KeyVaultModule::Management::Profile_2016_10_01
   #

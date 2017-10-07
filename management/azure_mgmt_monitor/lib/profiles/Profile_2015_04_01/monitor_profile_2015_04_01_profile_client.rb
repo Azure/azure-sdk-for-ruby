@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_04_01/monitor_profile_2015_04_01_module_definition.rb'
 require 'profiles/profile_2015_04_01/modules/monitor_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::MonitorModule::Management::Profile_2015_04_01
   #

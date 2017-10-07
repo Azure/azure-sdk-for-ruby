@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_08_01_preview/containerinstance_profile_2017_08_01_preview_module_definition.rb'
 require 'profiles/profile_2017_08_01_preview/modules/containerinstance_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ContainerInstanceModule::Management::Profile_2017_08_01_Preview
   #

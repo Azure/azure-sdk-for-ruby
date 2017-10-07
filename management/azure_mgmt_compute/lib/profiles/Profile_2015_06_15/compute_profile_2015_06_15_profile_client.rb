@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_06_15/compute_profile_2015_06_15_module_definition.rb'
 require 'profiles/profile_2015_06_15/modules/compute_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ComputeModule::Management::Profile_2015_06_15
   #

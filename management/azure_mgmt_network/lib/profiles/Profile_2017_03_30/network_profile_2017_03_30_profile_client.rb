@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_03_30/network_profile_2017_03_30_module_definition.rb'
 require 'profiles/profile_2017_03_30/modules/network_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::NetworkModule::Management::Profile_2017_03_30
   #

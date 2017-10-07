@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_03_01/streamanalytics_profile_2016_03_01_module_definition.rb'
 require 'profiles/profile_2016_03_01/modules/streamanalytics_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::StreamAnalyticsModule::Management::Profile_2016_03_01
   #

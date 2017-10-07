@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_11_01/datalakestore_profile_2016_11_01_module_definition.rb'
 require 'profiles/profile_2016_11_01/modules/datalakestore_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::DataLakeStoreModule::Management::Profile_2016_11_01
   #

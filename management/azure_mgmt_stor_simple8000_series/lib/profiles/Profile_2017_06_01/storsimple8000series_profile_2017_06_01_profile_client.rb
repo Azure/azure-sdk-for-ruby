@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_06_01/storsimple8000series_profile_2017_06_01_module_definition.rb'
 require 'profiles/profile_2017_06_01/modules/storsimple8000series_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::StorSimple8000SeriesModule::Management::Profile_2017_06_01
   #

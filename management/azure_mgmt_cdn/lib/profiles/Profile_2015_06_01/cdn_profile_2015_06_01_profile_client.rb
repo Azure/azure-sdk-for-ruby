@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_06_01/cdn_profile_2015_06_01_module_definition.rb'
 require 'profiles/profile_2015_06_01/modules/cdn_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::CdnModule::Management::Profile_2015_06_01
   #

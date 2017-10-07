@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_05_01/batch_profile_2017_05_01_module_definition.rb'
 require 'profiles/profile_2017_05_01/modules/batch_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::BatchModule::Management::Profile_2017_05_01
   #

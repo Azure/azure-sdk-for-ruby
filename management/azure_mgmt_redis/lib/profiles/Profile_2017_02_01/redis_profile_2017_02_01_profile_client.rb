@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_02_01/redis_profile_2017_02_01_module_definition.rb'
 require 'profiles/profile_2017_02_01/modules/redis_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::RedisModule::Management::Profile_2017_02_01
   #

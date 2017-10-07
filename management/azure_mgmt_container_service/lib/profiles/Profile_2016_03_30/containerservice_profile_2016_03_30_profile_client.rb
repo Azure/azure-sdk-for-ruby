@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_03_30/containerservice_profile_2016_03_30_module_definition.rb'
 require 'profiles/profile_2016_03_30/modules/containerservice_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ContainerServiceModule::Management::Profile_2016_03_30
   #

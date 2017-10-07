@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_02_03/iothub_profile_2016_02_03_module_definition.rb'
 require 'profiles/profile_2016_02_03/modules/iothub_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::IotHubModule::Management::Profile_2016_02_03
   #

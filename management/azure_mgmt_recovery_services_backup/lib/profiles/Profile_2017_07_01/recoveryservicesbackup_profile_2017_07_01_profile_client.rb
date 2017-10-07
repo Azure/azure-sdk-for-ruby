@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_07_01/recoveryservicesbackup_profile_2017_07_01_module_definition.rb'
 require 'profiles/profile_2017_07_01/modules/recoveryservicesbackup_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2017_07_01
   #

@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_06_01/logic_profile_2016_06_01_module_definition.rb'
 require 'profiles/profile_2016_06_01/modules/logic_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::LogicModule::Management::Profile_2016_06_01
   #

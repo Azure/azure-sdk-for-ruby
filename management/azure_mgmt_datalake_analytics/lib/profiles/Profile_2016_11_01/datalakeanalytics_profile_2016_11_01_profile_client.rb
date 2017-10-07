@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_11_01/datalakeanalytics_profile_2016_11_01_module_definition.rb'
 require 'profiles/profile_2016_11_01/modules/datalakeanalytics_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_2016_11_01
   #

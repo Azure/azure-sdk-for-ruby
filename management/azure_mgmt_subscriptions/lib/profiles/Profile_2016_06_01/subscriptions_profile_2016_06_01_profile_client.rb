@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_06_01/subscriptions_profile_2016_06_01_module_definition.rb'
 require 'profiles/profile_2016_06_01/modules/subscriptions_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::SubscriptionsModule::Management::Profile_2016_06_01
   #

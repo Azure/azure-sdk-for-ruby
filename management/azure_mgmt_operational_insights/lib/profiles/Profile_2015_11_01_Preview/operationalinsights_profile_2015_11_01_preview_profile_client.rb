@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2015_11_01_preview/operationalinsights_profile_2015_11_01_preview_module_definition.rb'
 require 'profiles/profile_2015_11_01_preview/modules/operationalinsights_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_01_Preview
   #

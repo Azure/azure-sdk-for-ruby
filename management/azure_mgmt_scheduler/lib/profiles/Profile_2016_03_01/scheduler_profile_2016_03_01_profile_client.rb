@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_03_01/scheduler_profile_2016_03_01_module_definition.rb'
 require 'profiles/profile_2016_03_01/modules/scheduler_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01
   #

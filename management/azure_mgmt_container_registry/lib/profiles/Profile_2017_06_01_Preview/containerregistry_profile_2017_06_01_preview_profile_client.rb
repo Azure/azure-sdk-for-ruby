@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_06_01_preview/containerregistry_profile_2017_06_01_preview_module_definition.rb'
 require 'profiles/profile_2017_06_01_preview/modules/containerregistry_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ContainerRegistryModule::Management::Profile_2017_06_01_Preview
   #

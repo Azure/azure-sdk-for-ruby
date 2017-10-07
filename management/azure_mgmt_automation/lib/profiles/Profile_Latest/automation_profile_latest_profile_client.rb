@@ -4,8 +4,8 @@
 
 require 'profiles/profile_latest/automation_profile_latest_module_definition.rb'
 require 'profiles/profile_latest/modules/automation_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::AutomationModule::Management::Profile_Latest
   #

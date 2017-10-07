@@ -4,8 +4,8 @@
 
 require 'profiles/profile_latest/servermanagement_profile_latest_module_definition.rb'
 require 'profiles/profile_latest/modules/servermanagement_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ServerManagementModule::Management::Profile_Latest
   #

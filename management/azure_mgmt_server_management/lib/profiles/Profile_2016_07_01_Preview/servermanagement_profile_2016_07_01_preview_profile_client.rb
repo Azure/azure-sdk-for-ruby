@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_07_01_preview/servermanagement_profile_2016_07_01_preview_module_definition.rb'
 require 'profiles/profile_2016_07_01_preview/modules/servermanagement_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::ServerManagementModule::Management::Profile_2016_07_01_Preview
   #

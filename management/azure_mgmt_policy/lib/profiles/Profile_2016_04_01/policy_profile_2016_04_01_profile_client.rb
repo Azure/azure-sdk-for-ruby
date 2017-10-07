@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2016_04_01/policy_profile_2016_04_01_module_definition.rb'
 require 'profiles/profile_2016_04_01/modules/policy_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::PolicyModule::Management::Profile_2016_04_01
   #

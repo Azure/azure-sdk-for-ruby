@@ -4,8 +4,8 @@
 
 require 'profiles/profile_latest/mobileengagement_profile_latest_module_definition.rb'
 require 'profiles/profile_latest/modules/mobileengagement_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::MobileEngagementModule::Management::Profile_Latest
   #

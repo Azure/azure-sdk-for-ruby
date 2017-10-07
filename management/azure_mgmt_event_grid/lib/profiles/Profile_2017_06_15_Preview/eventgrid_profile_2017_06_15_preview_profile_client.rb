@@ -4,8 +4,8 @@
 
 require 'profiles/profile_2017_06_15_preview/eventgrid_profile_2017_06_15_preview_module_definition.rb'
 require 'profiles/profile_2017_06_15_preview/modules/eventgrid_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::EventGridModule::Management::Profile_2017_06_15_Preview
   #

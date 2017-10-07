@@ -4,8 +4,8 @@
 
 require 'profiles/profile_latest/links_profile_latest_module_definition.rb'
 require 'profiles/profile_latest/modules/links_profile_module'
-require 'profiles/utils/configurable'
-require 'profiles/utils/default'
+require 'profiles/common/configurable'
+require 'profiles/common/default'
 
 module Azure::Profiles::LinksModule::Management::Profile_Latest
   #
