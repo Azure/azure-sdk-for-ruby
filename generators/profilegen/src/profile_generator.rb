@@ -172,7 +172,7 @@ class ProfileGenerator
       client_file_name = "#{@profile_name.downcase}_profile_client.rb"
     end
 
-    file_name =  "#{@output_dir}/#{@profile_name}/#{client_file_name}"
+    file_name =  "#{@output_dir}/#{@profile_name.downcase}/#{client_file_name}"
     File.new(file_name, 'w')
   end
 
@@ -187,7 +187,7 @@ class ProfileGenerator
 
   def get_module_definition_file
     check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/#{@module_definition_file_name}"
+    file_name =  "#{@output_dir}/#{@profile_name.downcase}/#{@module_definition_file_name}"
     File.new(file_name, 'w')
   end
 
@@ -195,14 +195,8 @@ class ProfileGenerator
     check_and_create_directory
     file_name = get_module_file_name(resource_type_name)
     @file_names << file_name.sub('.rb', '')
-    complete_file_name = "#{@output_dir}/#{@profile_name}/modules/#{file_name}"
+    complete_file_name = "#{@output_dir}/#{@profile_name.downcase}/modules/#{file_name}"
     File.new(complete_file_name, 'w')
-  end
-
-  def get_spec_file
-    check_and_create_directory
-    file_name =  "#{@output_dir}/#{@profile_name}/azure_mgmt_profile_#{@profile_version}.gemspec"
-    File.new(file_name, 'w')
   end
 
   def get_module_file_name(resource_type_name)
@@ -211,8 +205,8 @@ class ProfileGenerator
 
   def check_and_create_directory
     Dir.mkdir("#{@output_dir}") unless File.directory?("#{@output_dir}")
-    Dir.mkdir("#{@output_dir}/#{@profile_name}") unless File.directory?("#{@output_dir}/#{@profile_name}")
-    Dir.mkdir("#{@output_dir}/#{@profile_name}/modules") unless File.directory?("#{@output_dir}/#{@profile_name}/modules")
+    Dir.mkdir("#{@output_dir}/#{@profile_name.downcase}") unless File.directory?("#{@output_dir}/#{@profile_name.downcase}")
+    Dir.mkdir("#{@output_dir}/#{@profile_name.downcase}/modules") unless File.directory?("#{@output_dir}/#{@profile_name.downcase}/modules")
   end
 
   def get_ruby_specific_resource_type_name(resource_type_name)

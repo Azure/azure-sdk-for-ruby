@@ -2,8 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/Profile_2015_11_01/trafficmanager_profile_2015_11_01_module_definition.rb'
-require 'profiles/Profile_2015_11_01/modules/trafficmanager_profile_module'
+require 'profiles/profile_2015_11_01/trafficmanager_profile_2015_11_01_module_definition.rb'
+require 'profiles/profile_2015_11_01/modules/trafficmanager_profile_module'
 require 'profiles/utils/configurable'
 require 'profiles/utils/default'
 

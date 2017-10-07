@@ -2,8 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/Profile_2015_10_01/mediaservices_profile_2015_10_01_module_definition.rb'
-require 'profiles/Profile_2015_10_01/modules/mediaservices_profile_module'
+require 'profiles/profile_2015_10_01/mediaservices_profile_2015_10_01_module_definition.rb'
+require 'profiles/profile_2015_10_01/modules/mediaservices_profile_module'
 require 'profiles/utils/configurable'
 require 'profiles/utils/default'
 

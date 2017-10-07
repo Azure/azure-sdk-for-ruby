@@ -2,8 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/Profile_2016_06_27_Preview/containerregistry_profile_2016_06_27_preview_module_definition.rb'
-require 'profiles/Profile_2016_06_27_Preview/modules/containerregistry_profile_module'
+require 'profiles/profile_2016_06_27_preview/containerregistry_profile_2016_06_27_preview_module_definition.rb'
+require 'profiles/profile_2016_06_27_preview/modules/containerregistry_profile_module'
 require 'profiles/utils/configurable'
 require 'profiles/utils/default'
 

@@ -2,8 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/Profile_Latest/servicefabric_profile_latest_module_definition.rb'
-require 'profiles/Profile_Latest/modules/servicefabric_profile_module'
+require 'profiles/profile_latest/servicefabric_profile_latest_module_definition.rb'
+require 'profiles/profile_latest/modules/servicefabric_profile_module'
 require 'profiles/utils/configurable'
 require 'profiles/utils/default'
 

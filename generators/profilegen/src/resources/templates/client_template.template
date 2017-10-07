@@ -3,16 +3,16 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 <%- if @individual_gem_profile -%>
-require 'profiles/<%= @profile_name %>/<%= @module_definition_file_name %>'
+require 'profiles/<%= @profile_name.downcase %>/<%= @module_definition_file_name %>'
 <%- @file_names.each do |file_name| -%>
-require 'profiles/<%= @profile_name %>/modules/<%= file_name %>'
+require 'profiles/<%= @profile_name.downcase %>/modules/<%= file_name %>'
 <%- end -%>
 require 'profiles/utils/configurable'
 require 'profiles/utils/default'
 <%- else -%>
-require '<%= @profile_name %>/<%= @module_definition_file_name %>'
+require '<%= @profile_name.downcase %>/<%= @module_definition_file_name %>'
 <%- @file_names.each do |file_name| -%>
-require '<%= @profile_name %>/modules/<%= file_name %>'
+require '<%= @profile_name.downcase %>/modules/<%= file_name %>'
 <%- end -%>
 require 'utils/configurable'
 require 'utils/default'

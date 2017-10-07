@@ -2,16 +2,16 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'Profile_Azure_Stack/profile_azure_stack_module_definition.rb'
-require 'Profile_Azure_Stack/modules/storage_profile_module'
-require 'Profile_Azure_Stack/modules/network_profile_module'
-require 'Profile_Azure_Stack/modules/compute_profile_module'
-require 'Profile_Azure_Stack/modules/features_profile_module'
-require 'Profile_Azure_Stack/modules/links_profile_module'
-require 'Profile_Azure_Stack/modules/locks_profile_module'
-require 'Profile_Azure_Stack/modules/policy_profile_module'
-require 'Profile_Azure_Stack/modules/resources_profile_module'
-require 'Profile_Azure_Stack/modules/subscriptions_profile_module'
+require 'profile_azure_stack/profile_azure_stack_module_definition.rb'
+require 'profile_azure_stack/modules/storage_profile_module'
+require 'profile_azure_stack/modules/network_profile_module'
+require 'profile_azure_stack/modules/compute_profile_module'
+require 'profile_azure_stack/modules/features_profile_module'
+require 'profile_azure_stack/modules/links_profile_module'
+require 'profile_azure_stack/modules/locks_profile_module'
+require 'profile_azure_stack/modules/policy_profile_module'
+require 'profile_azure_stack/modules/resources_profile_module'
+require 'profile_azure_stack/modules/subscriptions_profile_module'
 require 'utils/configurable'
 require 'utils/default'
 
