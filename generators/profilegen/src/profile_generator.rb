@@ -4,9 +4,7 @@
 
 require 'erb'
 require 'json'
-require 'ms_rest'
 require 'fileutils'
-require 'ms_rest_azure'
 require_relative 'profile_templates'
 
 #
