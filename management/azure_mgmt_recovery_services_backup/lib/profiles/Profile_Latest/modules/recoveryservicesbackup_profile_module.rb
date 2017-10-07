@@ -54,23 +54,14 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_Latest
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #
-      def get_client(version)
-        case version
-          when '2017-07-01'
-            client = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
+      def get_client
+        client = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
+        client.subscription_id = configurable.subscription_id
+        return client
       end
 
       class ModelClasses
