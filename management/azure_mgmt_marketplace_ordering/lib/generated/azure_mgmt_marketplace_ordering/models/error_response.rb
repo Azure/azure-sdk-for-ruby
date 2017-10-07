@@ -14,7 +14,6 @@ module Azure::ARM::MarketplaceOrdering
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ErrorResponseError] The details of the error.
       attr_accessor :error
 

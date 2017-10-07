@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The symbolic name of data store.
       attr_accessor :symbolic_name
 

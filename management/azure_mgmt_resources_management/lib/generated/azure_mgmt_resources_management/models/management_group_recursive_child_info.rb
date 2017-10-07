@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Enum] Managment Group Recursive Child Info. Possible values
       # include: 'Enrollment', 'Department', 'Account', 'Subscription'
       attr_accessor :child_type

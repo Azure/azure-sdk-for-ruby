@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The relationship profile.
       attr_accessor :profile_name
 

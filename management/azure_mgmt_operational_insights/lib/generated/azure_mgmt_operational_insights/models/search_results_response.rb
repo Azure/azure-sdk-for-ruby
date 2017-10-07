@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The id of the search, which includes the full url.
       attr_accessor :id
 

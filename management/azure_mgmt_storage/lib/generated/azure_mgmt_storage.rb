@@ -54,6 +54,7 @@ module Azure::ARM::Storage
     autoload :EncryptionService,                                  'generated/azure_mgmt_storage/models/encryption_service.rb'
     autoload :UsageListResult,                                    'generated/azure_mgmt_storage/models/usage_list_result.rb'
     autoload :VirtualNetworkRule,                                 'generated/azure_mgmt_storage/models/virtual_network_rule.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_storage/models/resource.rb'
     autoload :StorageAccountCheckNameAvailabilityParameters,      'generated/azure_mgmt_storage/models/storage_account_check_name_availability_parameters.rb'
     autoload :AccountSasParameters,                               'generated/azure_mgmt_storage/models/account_sas_parameters.rb'
     autoload :KeyVaultProperties,                                 'generated/azure_mgmt_storage/models/key_vault_properties.rb'

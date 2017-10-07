@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The source fabric name filter.
       attr_accessor :source_fabric_name
 

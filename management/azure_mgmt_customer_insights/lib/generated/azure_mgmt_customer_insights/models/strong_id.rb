@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The properties which make up the unique ID.
       attr_accessor :key_property_names
 

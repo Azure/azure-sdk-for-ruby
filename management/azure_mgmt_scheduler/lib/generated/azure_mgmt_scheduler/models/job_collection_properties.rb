@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] Gets or sets the SKU.
       attr_accessor :sku
 

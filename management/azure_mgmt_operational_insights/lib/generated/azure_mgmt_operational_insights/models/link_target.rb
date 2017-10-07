@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The GUID that uniquely identifies the workspace.
       attr_accessor :customer_id
 

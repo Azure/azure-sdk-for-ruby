@@ -12,7 +12,6 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Cdn
       attr_accessor :provider
 

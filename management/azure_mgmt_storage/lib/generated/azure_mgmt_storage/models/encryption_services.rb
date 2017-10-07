@@ -12,7 +12,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EncryptionService] The encryption function of the blob storage
       # service.
       attr_accessor :blob

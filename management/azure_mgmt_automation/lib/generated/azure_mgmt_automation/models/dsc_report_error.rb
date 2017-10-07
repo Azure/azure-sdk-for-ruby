@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the source of the error.
       attr_accessor :error_source
 

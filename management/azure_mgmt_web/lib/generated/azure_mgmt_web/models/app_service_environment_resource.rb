@@ -8,11 +8,10 @@ module Azure::ARM::Web
     #
     # App Service Environment ARM resource.
     #
-    class AppServiceEnvironmentResource < MsRestAzure::Resource
+    class AppServiceEnvironmentResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the App Service Environment.
       attr_accessor :app_service_environment_resource_name
 

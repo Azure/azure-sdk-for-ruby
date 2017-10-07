@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] VM Disk details.
       attr_accessor :os_type
 

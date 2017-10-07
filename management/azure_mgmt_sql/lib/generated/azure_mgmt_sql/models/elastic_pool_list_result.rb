@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ElasticPool>] The list of elastic pools hosted in the
       # server.
       attr_accessor :value

@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The role name.
       attr_accessor :role_name
 

@@ -12,7 +12,6 @@ module Azure::ARM::Consumption
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Consumption.
       attr_accessor :provider
 

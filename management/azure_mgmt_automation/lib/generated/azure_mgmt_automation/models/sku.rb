@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuNameEnum] Gets or sets the SKU name of the account.
       # Possible values include: 'Free', 'Basic'
       attr_accessor :name

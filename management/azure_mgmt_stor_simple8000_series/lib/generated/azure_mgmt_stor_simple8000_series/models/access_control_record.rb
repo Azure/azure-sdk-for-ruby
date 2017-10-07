@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The iSCSI initiator name (IQN).
       attr_accessor :initiator_name
 

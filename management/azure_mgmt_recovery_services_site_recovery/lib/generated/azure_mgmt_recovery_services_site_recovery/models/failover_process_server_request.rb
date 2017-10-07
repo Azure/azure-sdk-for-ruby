@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FailoverProcessServerRequestProperties] The properties of the
       # PS Failover request.
       attr_accessor :properties

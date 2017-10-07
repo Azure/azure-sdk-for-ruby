@@ -8,11 +8,10 @@ module Azure::ARM::EventGrid
     #
     # Properties of a topic type info.
     #
-    class TopicTypeInfo < MsRestAzure::Resource
+    class TopicTypeInfo < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Namespace of the provider of the topic type.
       attr_accessor :provider
 

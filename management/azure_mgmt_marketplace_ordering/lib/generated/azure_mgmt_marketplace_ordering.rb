@@ -30,6 +30,7 @@ module Azure::ARM::MarketplaceOrdering
     autoload :ErrorResponseError,                                 'generated/azure_mgmt_marketplace_ordering/models/error_response_error.rb'
     autoload :OperationListResult,                                'generated/azure_mgmt_marketplace_ordering/models/operation_list_result.rb'
     autoload :ErrorResponse,                                      'generated/azure_mgmt_marketplace_ordering/models/error_response.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_marketplace_ordering/models/resource.rb'
     autoload :AgreementTerms,                                     'generated/azure_mgmt_marketplace_ordering/models/agreement_terms.rb'
   end
 end

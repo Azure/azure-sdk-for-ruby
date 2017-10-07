@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Float] The memory request in GB of this container instance.
       attr_accessor :memory_in_gb
 

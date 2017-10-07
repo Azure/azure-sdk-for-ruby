@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ErrorDetails] Error.
       attr_accessor :error
 

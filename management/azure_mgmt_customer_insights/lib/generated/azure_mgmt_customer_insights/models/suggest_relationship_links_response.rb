@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The interaction name.
       attr_accessor :interaction_name
 

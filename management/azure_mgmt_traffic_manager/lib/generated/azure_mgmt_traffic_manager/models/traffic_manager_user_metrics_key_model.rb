@@ -12,7 +12,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The key returned by the Realtime User Metrics
       # operation.
       attr_accessor :key

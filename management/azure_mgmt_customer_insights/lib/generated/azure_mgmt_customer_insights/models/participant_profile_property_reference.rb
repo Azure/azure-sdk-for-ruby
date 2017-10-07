@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The source interaction property that maps to the
       # target profile property.
       attr_accessor :interaction_property_name

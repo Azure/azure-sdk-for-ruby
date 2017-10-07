@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [MetricName] The name of the metric.
       attr_accessor :name
 

@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
         @bindingType = "Microsoft.StreamAnalytics/JavascriptUdf"

@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The localized error message stating the reason why the
       # device is not eligible as a target device.
       attr_accessor :message

@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The display name the hardware component group.
       attr_accessor :display_name
 

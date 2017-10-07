@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["A2A"] = "AzureFabricCreationInput"
       @@discriminatorMap["VMwareV2"] = "VMwareV2FabricCreationInput"

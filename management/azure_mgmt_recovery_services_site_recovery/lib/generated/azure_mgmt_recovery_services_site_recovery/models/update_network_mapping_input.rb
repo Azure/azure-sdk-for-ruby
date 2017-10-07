@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpdateNetworkMappingInputProperties] The input properties
       # needed to update network mapping.
       attr_accessor :properties

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplyRecoveryPointInputProperties] The input properties to
       # apply recovery point.
       attr_accessor :properties

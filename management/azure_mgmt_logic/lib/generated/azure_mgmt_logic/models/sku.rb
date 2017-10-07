@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The name. Possible values include: 'NotSpecified',
       # 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
       attr_accessor :name

@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ActivityLogAlertActionGroup>] The list of activity log
       # alerts.
       attr_accessor :action_groups

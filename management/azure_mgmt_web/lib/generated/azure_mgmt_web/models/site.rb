@@ -8,11 +8,10 @@ module Azure::ARM::Web
     #
     # A web app, a mobile app backend, or an API app.
     #
-    class Site < MsRestAzure::Resource
+    class Site < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Current state of the app.
       attr_accessor :state
 

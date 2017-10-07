@@ -8,11 +8,10 @@ module Azure::ARM::Billing
     #
     # An invoice resource can be used download a PDF version of an invoice.
     #
-    class Invoice < MsRestAzure::Resource
+    class Invoice < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DownloadUrl] A secure link to download the PDF version of an
       # invoice. The link will cease to work after its expiry time is reached.
       attr_accessor :download_url

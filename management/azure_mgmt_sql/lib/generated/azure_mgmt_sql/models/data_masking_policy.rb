@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataMaskingState] The state of the data masking policy.
       # Possible values include: 'Disabled', 'Enabled'
       attr_accessor :data_masking_state

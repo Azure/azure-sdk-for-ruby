@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of metric source.
       attr_accessor :resource_id
 

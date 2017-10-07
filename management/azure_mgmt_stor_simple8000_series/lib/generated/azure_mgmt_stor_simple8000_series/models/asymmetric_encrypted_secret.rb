@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The value of the secret.
       attr_accessor :value
 

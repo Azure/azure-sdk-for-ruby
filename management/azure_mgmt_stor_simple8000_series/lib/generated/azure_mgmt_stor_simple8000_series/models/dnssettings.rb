@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The primary IPv4 DNS server for the device
       attr_accessor :primary_dns_server
 

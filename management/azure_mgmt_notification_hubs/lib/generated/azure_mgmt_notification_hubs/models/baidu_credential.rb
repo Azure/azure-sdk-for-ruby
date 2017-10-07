@@ -12,7 +12,6 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Baidu Api Key.
       attr_accessor :baidu_api_key
 

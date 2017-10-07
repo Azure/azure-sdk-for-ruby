@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpdateVCenterRequestProperties] The update VCenter Request
       # Properties.
       attr_accessor :properties

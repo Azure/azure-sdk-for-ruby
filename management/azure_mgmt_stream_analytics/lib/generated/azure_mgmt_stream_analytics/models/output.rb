@@ -9,11 +9,10 @@ module Azure::ARM::StreamAnalytics
     # An output object, containing all information associated with the named
     # output. All outputs are contained under a streaming job.
     #
-    class Output < MsRestAzure::SubResource
+    class Output < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OutputDataSource] Describes the data source that output will
       # be written to. Required on PUT (CreateOrReplace) requests.
       attr_accessor :datasource

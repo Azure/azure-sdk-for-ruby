@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OperationStatus] Status of the migration task. Possible values
       # include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created'
       attr_accessor :migration_operation_status

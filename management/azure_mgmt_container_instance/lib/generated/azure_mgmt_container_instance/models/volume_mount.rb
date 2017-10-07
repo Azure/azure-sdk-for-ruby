@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the volume mount.
       attr_accessor :name
 

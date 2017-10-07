@@ -9,11 +9,10 @@ module Azure::ARM::Web
     # Key Vault container ARM resource for a certificate that is purchased
     # through Azure.
     #
-    class AppServiceCertificateResource < MsRestAzure::Resource
+    class AppServiceCertificateResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Key Vault resource Id.
       attr_accessor :key_vault_id
 

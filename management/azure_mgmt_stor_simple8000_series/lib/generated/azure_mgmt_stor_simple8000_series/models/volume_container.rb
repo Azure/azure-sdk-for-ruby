@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AsymmetricEncryptedSecret] The key used to encrypt data in the
       # volume container. It is required when property 'EncryptionStatus' is
       # "Enabled".

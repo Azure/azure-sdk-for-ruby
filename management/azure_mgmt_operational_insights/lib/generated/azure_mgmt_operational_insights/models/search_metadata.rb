@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The request id of the search.
       attr_accessor :search_id
 

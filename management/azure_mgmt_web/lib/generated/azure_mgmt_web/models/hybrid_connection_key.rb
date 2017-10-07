@@ -13,7 +13,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the send key.
       attr_accessor :send_key_name
 

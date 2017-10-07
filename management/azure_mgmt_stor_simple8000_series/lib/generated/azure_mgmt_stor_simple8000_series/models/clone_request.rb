@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The path ID of the device which will act as the clone
       # target.
       attr_accessor :target_device_id

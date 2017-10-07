@@ -9,11 +9,10 @@ module Azure::ARM::StreamAnalytics
     # A streamng job object, containing all information associated with the
     # named streaming job.
     #
-    class StreamingJob < MsRestAzure::Resource
+    class StreamingJob < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] Describes the SKU of the streaming job. Required on PUT
       # (CreateOrReplace) requests.
       attr_accessor :sku

@@ -8,11 +8,10 @@ module Azure::ARM::Web
     #
     # Domain ownership Identifier.
     #
-    class DomainOwnershipIdentifier < MsRestAzure::Resource
+    class DomainOwnershipIdentifier < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Ownership Id.
       attr_accessor :ownership_id
 

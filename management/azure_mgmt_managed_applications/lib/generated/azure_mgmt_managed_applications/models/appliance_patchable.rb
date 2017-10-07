@@ -12,7 +12,6 @@ module Azure::ARM::ManagedApplications
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The managed resource group Id.
       attr_accessor :managed_resource_group_id
 

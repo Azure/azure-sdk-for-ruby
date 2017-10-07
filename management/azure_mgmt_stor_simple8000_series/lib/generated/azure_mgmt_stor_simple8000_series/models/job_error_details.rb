@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<JobErrorItem>] The error details.
       attr_accessor :error_details
 

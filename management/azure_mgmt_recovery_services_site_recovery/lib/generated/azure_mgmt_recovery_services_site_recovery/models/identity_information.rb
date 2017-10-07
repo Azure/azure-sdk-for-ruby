@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [IdentityProviderType] The identity provider type. Value is the
       # ToString() of a IdentityProviderType value. Possible values include:
       # 'RecoveryServicesActiveDirectory', 'CustomerActiveDirectory'

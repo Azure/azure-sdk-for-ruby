@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The value of the secret itself. If the secret is in
       # plaintext or null then EncryptionAlgorithm will be none.
       attr_accessor :value

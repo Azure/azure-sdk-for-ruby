@@ -12,7 +12,6 @@ module Azure::ARM::Links
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The fully qualified ID of the resource link.
       attr_accessor :id
 

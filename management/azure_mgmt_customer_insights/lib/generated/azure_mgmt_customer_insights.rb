@@ -85,6 +85,7 @@ module Azure::ARM::CustomerInsights
     autoload :PredictionDistributionDefinitionDistributionsItem,  'generated/azure_mgmt_customer_insights/models/prediction_distribution_definition_distributions_item.rb'
     autoload :KpiParticipantProfilesMetadata,                     'generated/azure_mgmt_customer_insights/models/kpi_participant_profiles_metadata.rb'
     autoload :RelationshipLinkListResult,                         'generated/azure_mgmt_customer_insights/models/relationship_link_list_result.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_customer_insights/models/resource.rb'
     autoload :PredictionSystemGeneratedEntities,                  'generated/azure_mgmt_customer_insights/models/prediction_system_generated_entities.rb'
     autoload :RelationshipTypeFieldMapping,                       'generated/azure_mgmt_customer_insights/models/relationship_type_field_mapping.rb'
     autoload :ViewListResult,                                     'generated/azure_mgmt_customer_insights/models/view_list_result.rb'

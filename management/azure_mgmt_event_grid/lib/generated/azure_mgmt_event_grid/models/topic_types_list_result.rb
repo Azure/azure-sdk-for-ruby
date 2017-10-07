@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<TopicTypeInfo>] A collection of topic types
       attr_accessor :value
 

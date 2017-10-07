@@ -8,11 +8,10 @@ module Azure::ARM::DataLakeStore
     #
     # Basic Data Lake Store account information, returned on list calls.
     #
-    class DataLakeStoreAccountBasic < MsRestAzure::Resource
+    class DataLakeStoreAccountBasic < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataLakeStoreAccountStatus] the provisioning status of the
       # Data Lake Store account. Possible values include: 'Failed', 'Creating',
       # 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',

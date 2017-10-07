@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Enum] This level is used to set the number of replicas of the
       # system services. Possible values include: 'Bronze', 'Silver', 'Gold'
       attr_accessor :reliability_level

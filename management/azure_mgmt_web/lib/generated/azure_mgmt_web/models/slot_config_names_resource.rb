@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] List of connection string names.
       attr_accessor :connection_string_names
 

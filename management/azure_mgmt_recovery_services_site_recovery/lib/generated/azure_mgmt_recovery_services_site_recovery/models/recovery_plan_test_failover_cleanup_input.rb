@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPlanTestFailoverCleanupInputProperties] The recovery
       # plan test failover cleanup input properties.
       attr_accessor :properties

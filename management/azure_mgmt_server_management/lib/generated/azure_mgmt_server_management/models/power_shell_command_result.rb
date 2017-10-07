@@ -12,7 +12,6 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The type of message.
       attr_accessor :message_type
 

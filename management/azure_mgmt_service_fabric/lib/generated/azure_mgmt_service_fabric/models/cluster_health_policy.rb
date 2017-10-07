@@ -13,7 +13,6 @@ module Azure::ARM::ServiceFabric
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The maximum allowed percentage of unhealthy nodes
       # before reporting an error. For example, to allow 10% of nodes to be
       # unhealthy, this value would be 10.

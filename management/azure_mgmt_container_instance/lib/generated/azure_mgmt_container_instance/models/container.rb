@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The user-provided name of the container instance.
       attr_accessor :name
 

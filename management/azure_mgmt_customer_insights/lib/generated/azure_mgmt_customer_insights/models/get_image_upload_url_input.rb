@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Type of entity. Can be Profile or Interaction.
       attr_accessor :entity_type
 

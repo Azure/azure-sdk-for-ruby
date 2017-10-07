@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The hard disk max size in MB.
       attr_accessor :max_size_mb
 

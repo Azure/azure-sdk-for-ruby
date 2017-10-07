@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Shared access key1 for the topic.
       attr_accessor :key1
 

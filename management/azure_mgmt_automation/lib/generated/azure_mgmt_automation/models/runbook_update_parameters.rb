@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the description of the runbook.
       attr_accessor :description
 

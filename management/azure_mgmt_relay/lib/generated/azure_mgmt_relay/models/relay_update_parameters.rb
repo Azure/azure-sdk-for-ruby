@@ -12,7 +12,6 @@ module Azure::ARM::Relay
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] SKU of the namespace.
       attr_accessor :sku
 

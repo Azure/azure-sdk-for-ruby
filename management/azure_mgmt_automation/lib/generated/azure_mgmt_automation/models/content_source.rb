@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContentHash] Gets or sets the hash.
       attr_accessor :hash
 

@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The job id.
       attr_accessor :job_id
 

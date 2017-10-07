@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The guest signature of disk to be excluded from
       # replication.
       attr_accessor :disk_signature

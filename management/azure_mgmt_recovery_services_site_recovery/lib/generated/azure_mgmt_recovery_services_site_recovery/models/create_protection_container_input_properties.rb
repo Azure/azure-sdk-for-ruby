@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ReplicationProviderSpecificContainerCreationInput>]
       # Provider specific inputs for container creation.
       attr_accessor :provider_specific_input

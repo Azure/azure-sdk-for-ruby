@@ -8,11 +8,10 @@ module Azure::ARM::Consumption
     #
     # An usage detail resource.
     #
-    class UsageDetail < MsRestAzure::Resource
+    class UsageDetail < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The id of the billing period resource that the usage
       # belongs to.
       attr_accessor :billing_period_id

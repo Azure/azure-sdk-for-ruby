@@ -32,6 +32,7 @@ module Azure::ARM::Consumption
     autoload :MeterDetails,                                       'generated/azure_mgmt_consumption/models/meter_details.rb'
     autoload :OperationListResult,                                'generated/azure_mgmt_consumption/models/operation_list_result.rb'
     autoload :ErrorDetails,                                       'generated/azure_mgmt_consumption/models/error_details.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_consumption/models/resource.rb'
     autoload :UsageDetail,                                        'generated/azure_mgmt_consumption/models/usage_detail.rb'
   end
 end

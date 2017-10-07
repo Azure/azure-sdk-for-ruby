@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["LongTermRetentionPolicy"] = "LongTermRetentionPolicy"
       @@discriminatorMap["SimpleRetentionPolicy"] = "SimpleRetentionPolicy"

@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Key name to regenerate key1 or key2
       attr_accessor :key_name
 

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ResumeJobParamsProperties] Resume job properties.
       attr_accessor :properties
 

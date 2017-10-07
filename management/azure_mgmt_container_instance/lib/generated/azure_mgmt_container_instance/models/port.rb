@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContainerGroupNetworkProtocol] The protocol associated with
       # the port. Possible values include: 'TCP', 'UDP'
       attr_accessor :protocol

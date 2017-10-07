@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The controller 0's IPv4 address.
       attr_accessor :controller_zero_ip
 

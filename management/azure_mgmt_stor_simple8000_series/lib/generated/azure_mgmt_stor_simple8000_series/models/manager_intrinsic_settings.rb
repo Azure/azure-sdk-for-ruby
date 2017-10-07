@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ManagerType] The type of StorSimple Manager. Possible values
       # include: 'GardaV1', 'HelsinkiV1'
       attr_accessor :type

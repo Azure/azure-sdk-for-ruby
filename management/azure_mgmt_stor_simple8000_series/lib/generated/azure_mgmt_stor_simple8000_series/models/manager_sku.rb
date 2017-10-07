@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Refers to the sku name which should be "Standard".
       # Default value: 'Standard' .
       attr_accessor :name

@@ -12,7 +12,6 @@ module Azure::ARM::MarketplaceOrdering
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.MarketplaceOrdering
       attr_accessor :provider
 

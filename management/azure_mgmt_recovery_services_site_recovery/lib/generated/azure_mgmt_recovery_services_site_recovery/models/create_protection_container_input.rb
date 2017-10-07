@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CreateProtectionContainerInputProperties] Create protection
       # container input properties.
       attr_accessor :properties

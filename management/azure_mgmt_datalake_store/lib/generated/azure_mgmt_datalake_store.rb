@@ -35,6 +35,8 @@ module Azure::ARM::DataLakeStore
     autoload :DataLakeStoreFirewallRuleListResult,                'generated/azure_mgmt_datalake_store/models/data_lake_store_firewall_rule_list_result.rb'
     autoload :EncryptionIdentity,                                 'generated/azure_mgmt_datalake_store/models/encryption_identity.rb'
     autoload :EncryptionConfig,                                   'generated/azure_mgmt_datalake_store/models/encryption_config.rb'
+    autoload :SubResource,                                        'generated/azure_mgmt_datalake_store/models/sub_resource.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_datalake_store/models/resource.rb'
     autoload :KeyVaultMetaInfo,                                   'generated/azure_mgmt_datalake_store/models/key_vault_meta_info.rb'
     autoload :DataLakeStoreAccountListResult,                     'generated/azure_mgmt_datalake_store/models/data_lake_store_account_list_result.rb'
     autoload :ErrorDetails,                                       'generated/azure_mgmt_datalake_store/models/error_details.rb'

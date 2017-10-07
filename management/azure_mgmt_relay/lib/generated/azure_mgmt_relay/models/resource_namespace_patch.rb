@@ -8,11 +8,10 @@ module Azure::ARM::Relay
     #
     # Definition of resource.
     #
-    class ResourceNamespacePatch < MsRestAzure::Resource
+    class ResourceNamespacePatch < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 

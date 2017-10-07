@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return The data source properties in raw json format, each kind of
       # data source have it's own schema.
       attr_accessor :properties

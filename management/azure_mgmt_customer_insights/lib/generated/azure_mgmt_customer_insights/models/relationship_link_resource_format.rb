@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Localized display name for the
       # Relationship Link.
       attr_accessor :display_name

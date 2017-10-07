@@ -13,7 +13,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Gets or sets verbose log option.
       attr_accessor :log_verbose
 

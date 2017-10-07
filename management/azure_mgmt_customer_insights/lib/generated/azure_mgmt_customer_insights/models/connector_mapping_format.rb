@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The type mapping format. Default value: 'TextFormat' .
       attr_accessor :format_type
 

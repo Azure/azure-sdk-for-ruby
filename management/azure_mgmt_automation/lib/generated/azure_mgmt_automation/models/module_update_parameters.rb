@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContentLink] Gets or sets the module content link.
       attr_accessor :content_link
 

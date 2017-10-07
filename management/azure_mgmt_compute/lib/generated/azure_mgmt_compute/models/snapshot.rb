@@ -8,11 +8,10 @@ module Azure::ARM::Compute
     #
     # Snapshot resource.
     #
-    class Snapshot < MsRestAzure::Resource
+    class Snapshot < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Unused. Always Null.
       attr_accessor :managed_by
 

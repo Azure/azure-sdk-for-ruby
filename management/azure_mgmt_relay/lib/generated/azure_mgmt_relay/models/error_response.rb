@@ -13,7 +13,6 @@ module Azure::ARM::Relay
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Error code.
       attr_accessor :code
 

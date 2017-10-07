@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SalesforceDiscoverSetting] The user settings.
       attr_accessor :usersetting
 

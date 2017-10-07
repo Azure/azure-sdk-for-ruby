@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The time stamp of the metric data.
       attr_accessor :time_stamp
 

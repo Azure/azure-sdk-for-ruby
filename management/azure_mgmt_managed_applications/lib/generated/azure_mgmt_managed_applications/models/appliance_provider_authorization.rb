@@ -12,7 +12,6 @@ module Azure::ARM::ManagedApplications
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The provider's principal identifier. This is the
       # identity that the provider will use to call ARM to manage the appliance
       # resources.

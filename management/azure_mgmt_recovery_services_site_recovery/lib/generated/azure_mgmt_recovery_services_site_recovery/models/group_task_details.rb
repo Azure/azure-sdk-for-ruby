@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["InlineWorkflowTaskDetails"] = "InlineWorkflowTaskDetails"
       @@discriminatorMap["RecoveryPlanGroupTaskDetails"] = "RecoveryPlanGroupTaskDetails"

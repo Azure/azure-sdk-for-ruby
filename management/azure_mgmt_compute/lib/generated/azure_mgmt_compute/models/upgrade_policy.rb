@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpgradeMode] Specifies the mode of an upgrade to virtual
       # machines in the scale set.<br /><br /> Possible values are:<br /><br />
       # **Manual** - You  control the application of updates to virtual

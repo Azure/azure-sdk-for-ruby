@@ -8,11 +8,10 @@ module Azure::ARM::Billing
     #
     # A billing period resource.
     #
-    class BillingPeriod < MsRestAzure::Resource
+    class BillingPeriod < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Date] The start of the date range covered by the billing
       # period.
       attr_accessor :billing_period_start_date

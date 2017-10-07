@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The names of the blob containers that the
       # workspace should read
       attr_accessor :containers

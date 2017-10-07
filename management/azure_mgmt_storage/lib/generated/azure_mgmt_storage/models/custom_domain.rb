@@ -13,7 +13,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the custom domain name assigned to the
       # storage account. Name is the CNAME source.
       attr_accessor :name

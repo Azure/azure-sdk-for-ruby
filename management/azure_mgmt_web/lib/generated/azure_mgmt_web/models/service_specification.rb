@@ -13,7 +13,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<MetricSpecification>]
       attr_accessor :metric_specifications
 

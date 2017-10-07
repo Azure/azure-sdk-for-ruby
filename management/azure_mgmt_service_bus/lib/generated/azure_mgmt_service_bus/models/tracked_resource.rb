@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus
     #
     # The Resource definition.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Geo-location where the resource lives
       attr_accessor :location
 

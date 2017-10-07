@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The rule name.
       attr_accessor :firewall_rule_name
 

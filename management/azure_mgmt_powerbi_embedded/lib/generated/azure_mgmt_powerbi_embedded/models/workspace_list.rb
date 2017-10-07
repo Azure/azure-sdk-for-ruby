@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Workspace>]
       attr_accessor :value
 

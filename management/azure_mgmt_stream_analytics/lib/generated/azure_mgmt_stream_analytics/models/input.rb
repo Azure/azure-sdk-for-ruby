@@ -9,11 +9,10 @@ module Azure::ARM::StreamAnalytics
     # An input object, containing all information associated with the named
     # input. All inputs are contained under a streaming job.
     #
-    class Input < MsRestAzure::SubResource
+    class Input < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [InputProperties] The properties that are associated with an
       # input. Required on PUT (CreateOrReplace) requests.
       attr_accessor :properties

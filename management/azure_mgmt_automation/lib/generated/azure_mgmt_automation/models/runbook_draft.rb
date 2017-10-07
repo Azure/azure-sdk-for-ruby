@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Gets or sets whether runbook is in edit mode.
       attr_accessor :in_edit
 

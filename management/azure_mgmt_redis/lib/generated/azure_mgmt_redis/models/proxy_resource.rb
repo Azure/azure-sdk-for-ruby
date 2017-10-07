@@ -9,11 +9,10 @@ module Azure::ARM::Redis
     # The resource model definition for a ARM proxy resource. It will have
     # everything other than required location and tags
     #
-    class ProxyResource < MsRestAzure::Resource
+    class ProxyResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       #
       # Mapper for ProxyResource class as Ruby Hash.

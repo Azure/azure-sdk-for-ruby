@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DscConfigurationAssociationProperty] Gets or sets the
       # configuration.
       attr_accessor :configuration

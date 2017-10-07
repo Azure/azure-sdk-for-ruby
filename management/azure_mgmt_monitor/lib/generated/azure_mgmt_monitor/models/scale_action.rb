@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ScaleDirection] the scale direction. Whether the scaling
       # action increases or decreases the number of instances. Possible values
       # include: 'None', 'Increase', 'Decrease'

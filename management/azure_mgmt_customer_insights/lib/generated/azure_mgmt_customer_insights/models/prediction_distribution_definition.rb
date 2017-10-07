@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Total positive in the distribution.
       attr_accessor :total_positives
 

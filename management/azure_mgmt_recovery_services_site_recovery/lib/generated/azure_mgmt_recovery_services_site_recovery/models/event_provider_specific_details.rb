@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["HyperVReplicaBaseEventDetails"] = "HyperVReplicaBaseEventDetails"
       @@discriminatorMap["HyperVReplica2012"] = "HyperVReplica2012EventDetails"

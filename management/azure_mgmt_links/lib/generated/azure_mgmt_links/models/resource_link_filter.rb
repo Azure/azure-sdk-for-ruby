@@ -12,7 +12,6 @@ module Azure::ARM::Links
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the target resource.
       attr_accessor :target_id
 

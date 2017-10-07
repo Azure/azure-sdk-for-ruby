@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Connection string to the remote MySQL database.
       attr_accessor :connection_string
 

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] The Azure VM tags.
       attr_accessor :tags
 

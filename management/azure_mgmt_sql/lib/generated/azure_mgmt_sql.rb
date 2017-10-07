@@ -61,6 +61,7 @@ module Azure::ARM::SQL
 
   module Models
     autoload :RecommendedElasticPoolListMetricsResult,            'generated/azure_mgmt_sql/models/recommended_elastic_pool_list_metrics_result.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_sql/models/resource.rb'
     autoload :SloUsageMetric,                                     'generated/azure_mgmt_sql/models/slo_usage_metric.rb'
     autoload :CheckNameAvailabilityResponse,                      'generated/azure_mgmt_sql/models/check_name_availability_response.rb'
     autoload :RecommendedElasticPoolMetric,                       'generated/azure_mgmt_sql/models/recommended_elastic_pool_metric.rb'

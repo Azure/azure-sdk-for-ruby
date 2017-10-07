@@ -13,7 +13,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContentSource] Gets or sets the source.
       attr_accessor :source
 

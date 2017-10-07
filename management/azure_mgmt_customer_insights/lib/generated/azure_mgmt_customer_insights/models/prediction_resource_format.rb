@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Description of the prediction.
       attr_accessor :description
 

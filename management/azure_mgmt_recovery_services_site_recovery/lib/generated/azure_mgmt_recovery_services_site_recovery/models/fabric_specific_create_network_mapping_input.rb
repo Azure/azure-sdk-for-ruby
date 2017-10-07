@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["AzureToAzure"] = "AzureToAzureCreateNetworkMappingInput"
       @@discriminatorMap["VmmToAzure"] = "VmmToAzureCreateNetworkMappingInput"

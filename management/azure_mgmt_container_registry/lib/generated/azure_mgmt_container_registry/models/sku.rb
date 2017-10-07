@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The SKU name of the container registry. Required for
       # registry creation. Possible values include: 'Classic', 'Basic',
       # 'Standard', 'Premium'

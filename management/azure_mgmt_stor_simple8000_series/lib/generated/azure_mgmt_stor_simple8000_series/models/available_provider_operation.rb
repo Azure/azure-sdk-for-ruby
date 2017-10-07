@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the operation being performed on a
       # particular object. Name format:
       # "{resourceProviderNamespace}/{resourceType}/{read|write|delete|action}".

@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<InMageVolumeExclusionOptions>] The volume label based
       # option for disk exclusion.
       attr_accessor :volume_options

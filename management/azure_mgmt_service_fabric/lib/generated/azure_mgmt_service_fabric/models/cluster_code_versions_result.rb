@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The identification of the result
       attr_accessor :id
 

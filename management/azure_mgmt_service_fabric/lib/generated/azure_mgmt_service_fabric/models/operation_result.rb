@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Result name
       attr_accessor :name
 

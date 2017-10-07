@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ArtifactInstallProperties>] The list of artifacts to
       # apply.
       attr_accessor :artifacts

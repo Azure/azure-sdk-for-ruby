@@ -12,7 +12,6 @@ module Azure::ARM::CognitiveServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource Namespace and Type
       attr_accessor :resource_type
 

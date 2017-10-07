@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Worker size ID for referencing this worker pool.
       attr_accessor :worker_size_id
 

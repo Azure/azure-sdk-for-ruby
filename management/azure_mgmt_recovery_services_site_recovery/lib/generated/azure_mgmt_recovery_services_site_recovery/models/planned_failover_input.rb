@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PlannedFailoverInputProperties] Planned failover input
       # properties
       attr_accessor :properties

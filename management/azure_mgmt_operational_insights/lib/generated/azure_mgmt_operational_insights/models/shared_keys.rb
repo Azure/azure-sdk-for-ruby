@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The primary shared key of a workspace.
       attr_accessor :primary_shared_key
 

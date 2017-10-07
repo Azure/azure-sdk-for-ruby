@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The target namespace on which this envelope settings
       # has to be applied.
       attr_accessor :target_namespace

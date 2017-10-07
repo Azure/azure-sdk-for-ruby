@@ -37,6 +37,7 @@ module Azure::ARM::Logic
 
   module Models
     autoload :IntegrationAccountPartnerFilter,                    'generated/azure_mgmt_logic/models/integration_account_partner_filter.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_logic/models/resource.rb'
     autoload :AS2MessageConnectionSettings,                       'generated/azure_mgmt_logic/models/as2message_connection_settings.rb'
     autoload :ResourceReference,                                  'generated/azure_mgmt_logic/models/resource_reference.rb'
     autoload :AS2AcknowledgementConnectionSettings,               'generated/azure_mgmt_logic/models/as2acknowledgement_connection_settings.rb'
@@ -48,6 +49,7 @@ module Azure::ARM::Logic
     autoload :WorkflowVersionListResult,                          'generated/azure_mgmt_logic/models/workflow_version_list_result.rb'
     autoload :IntegrationAccountPartnerListResult,                'generated/azure_mgmt_logic/models/integration_account_partner_list_result.rb'
     autoload :RecurrenceSchedule,                                 'generated/azure_mgmt_logic/models/recurrence_schedule.rb'
+    autoload :SubResource,                                        'generated/azure_mgmt_logic/models/sub_resource.rb'
     autoload :Sku,                                                'generated/azure_mgmt_logic/models/sku.rb'
     autoload :WorkflowTriggerListResult,                          'generated/azure_mgmt_logic/models/workflow_trigger_list_result.rb'
     autoload :WorkflowTriggerListCallbackUrlQueries,              'generated/azure_mgmt_logic/models/workflow_trigger_list_callback_url_queries.rb'

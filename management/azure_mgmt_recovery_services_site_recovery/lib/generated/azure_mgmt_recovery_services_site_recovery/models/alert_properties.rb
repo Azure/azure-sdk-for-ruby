@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A value indicating whether to send email to
       # subscription administrator.
       attr_accessor :send_to_owners

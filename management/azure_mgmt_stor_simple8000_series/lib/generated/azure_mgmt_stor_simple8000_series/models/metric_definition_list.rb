@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<MetricDefinition>] The list of metric definitions.
       attr_accessor :value
 

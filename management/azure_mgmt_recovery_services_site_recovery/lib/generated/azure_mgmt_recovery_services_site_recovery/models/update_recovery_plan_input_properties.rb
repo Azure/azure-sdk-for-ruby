@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RecoveryPlanGroup>] The recovery plan groups.
       attr_accessor :groups
 

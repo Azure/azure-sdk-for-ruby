@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # Storage object definition.
     #
-    class StorageClassification < MsRestAzure::Resource
+    class StorageClassification < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageClassificationProperties] Proprties of the storage
       # object.
       attr_accessor :properties

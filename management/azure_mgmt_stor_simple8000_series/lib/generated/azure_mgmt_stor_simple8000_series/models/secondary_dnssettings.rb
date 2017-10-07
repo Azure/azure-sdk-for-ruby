@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The list of secondary DNS Server IP addresses.
       attr_accessor :secondary_dns_servers
 

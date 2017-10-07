@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Use the user defined upgrade policy or not
       attr_accessor :override_user_upgrade_policy
 

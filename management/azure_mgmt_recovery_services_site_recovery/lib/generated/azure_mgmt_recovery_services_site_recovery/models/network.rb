@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # Network model.
     #
-    class Network < MsRestAzure::Resource
+    class Network < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NetworkProperties] The Network Properties.
       attr_accessor :properties
 

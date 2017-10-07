@@ -8,11 +8,10 @@ module Azure::ARM::ContainerInstance
     #
     # A container group.
     #
-    class ContainerGroup < MsRestAzure::Resource
+    class ContainerGroup < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The provisioning state of the container group. This
       # only appears in the response.
       attr_accessor :provisioning_state

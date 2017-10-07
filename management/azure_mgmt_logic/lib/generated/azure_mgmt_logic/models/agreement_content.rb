@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AS2AgreementContent] The AS2 agreement content.
       attr_accessor :a_s2
 

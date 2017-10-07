@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # Implements the Alert class.
     #
-    class Alert < MsRestAzure::Resource
+    class Alert < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AlertProperties] Alert related data.
       attr_accessor :properties
 

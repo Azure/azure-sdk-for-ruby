@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Gets or sets the ConfigurationModeFrequencyMins value
       # of the meta configuration.
       attr_accessor :configuration_mode_frequency_mins

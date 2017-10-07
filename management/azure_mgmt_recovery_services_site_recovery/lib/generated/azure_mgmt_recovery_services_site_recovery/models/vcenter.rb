@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # vCenter definition.
     #
-    class VCenter < MsRestAzure::Resource
+    class VCenter < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VCenterProperties] VCenter related data.
       attr_accessor :properties
 

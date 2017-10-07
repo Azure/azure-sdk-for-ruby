@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FabricCreationInputProperties] Fabric creation input.
       attr_accessor :properties
 

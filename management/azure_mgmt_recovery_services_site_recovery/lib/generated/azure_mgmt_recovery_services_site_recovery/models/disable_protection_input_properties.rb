@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DisableProtectionReason] Disable protection reason. It can
       # have values NotSpecified/MigrationComplete. Possible values include:
       # 'NotSpecified', 'MigrationComplete'

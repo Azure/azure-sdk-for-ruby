@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RemoteManagementModeConfiguration] The remote management mode.
       # Possible values include: 'Unknown', 'Disabled', 'HttpsEnabled',
       # 'HttpsAndHttpEnabled'

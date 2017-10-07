@@ -8,11 +8,10 @@ module Azure::ARM::Relay
     #
     # Definition of resource.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource location.
       attr_accessor :location
 

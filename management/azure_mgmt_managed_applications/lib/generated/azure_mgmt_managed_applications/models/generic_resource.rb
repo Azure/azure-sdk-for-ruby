@@ -8,11 +8,10 @@ module Azure::ARM::ManagedApplications
     #
     # Resource information.
     #
-    class GenericResource < MsRestAzure::Resource
+    class GenericResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] ID of the resource that manages this resource.
       attr_accessor :managed_by
 

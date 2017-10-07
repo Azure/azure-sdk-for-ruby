@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The connection KeyVault URL.
       attr_accessor :connection_key_vault_url
 

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DiscoverProtectableItemRequestProperties] The properties of a
       # discover protectable item request.
       attr_accessor :properties

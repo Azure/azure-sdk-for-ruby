@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageInsightState] The state of the storage insight
       # connection to the workspace. Possible values include: 'OK', 'ERROR'
       attr_accessor :state

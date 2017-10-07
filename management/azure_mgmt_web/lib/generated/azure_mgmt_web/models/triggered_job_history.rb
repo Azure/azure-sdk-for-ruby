@@ -13,7 +13,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<TriggeredJobRun>] List of triggered web job runs.
       attr_accessor :triggered_job_runs
 

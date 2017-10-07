@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Reference"] = "ReferenceInputProperties"
       @@discriminatorMap["Stream"] = "StreamInputProperties"

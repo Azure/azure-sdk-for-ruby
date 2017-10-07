@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the certificate password, return value
       # will always be empty.
       attr_accessor :password

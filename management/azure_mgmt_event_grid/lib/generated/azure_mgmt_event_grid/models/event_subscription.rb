@@ -8,11 +8,10 @@ module Azure::ARM::EventGrid
     #
     # Event Subscription
     #
-    class EventSubscription < MsRestAzure::Resource
+    class EventSubscription < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the topic of the event subscription.
       attr_accessor :topic
 

@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RunbookAssociationProperty] Gets or sets the runbook.
       attr_accessor :runbook
 

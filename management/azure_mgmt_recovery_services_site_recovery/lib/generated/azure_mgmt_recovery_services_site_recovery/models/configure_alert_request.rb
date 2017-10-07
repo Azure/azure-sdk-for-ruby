@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ConfigureAlertRequestProperties] The properties of a configure
       # alert request.
       attr_accessor :properties

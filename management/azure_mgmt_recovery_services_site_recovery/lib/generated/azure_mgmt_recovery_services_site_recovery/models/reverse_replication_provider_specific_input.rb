@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["HyperVReplicaAzure"] = "HyperVReplicaAzureReprotectInput"
       @@discriminatorMap["InMageAzureV2"] = "InMageAzureV2ReprotectInput"

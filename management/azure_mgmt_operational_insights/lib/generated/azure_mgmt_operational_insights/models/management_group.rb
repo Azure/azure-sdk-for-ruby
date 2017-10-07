@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The number of servers connected to the management
       # group.
       attr_accessor :server_count

@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs
     #
     # A schedule.
     #
-    class ScheduleFragment < MsRestAzure::Resource
+    class ScheduleFragment < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EnableStatus] The status of the schedule (i.e. Enabled,
       # Disabled). Possible values include: 'Enabled', 'Disabled'
       attr_accessor :status

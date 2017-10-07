@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Minimum number of workers for this App Service plan
       # SKU.
       attr_accessor :minimum

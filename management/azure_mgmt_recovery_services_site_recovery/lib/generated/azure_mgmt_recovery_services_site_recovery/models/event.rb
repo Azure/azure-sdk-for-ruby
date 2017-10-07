@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # Implements the Event class.
     #
-    class Event < MsRestAzure::Resource
+    class Event < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EventProperties] Event related data.
       attr_accessor :properties
 

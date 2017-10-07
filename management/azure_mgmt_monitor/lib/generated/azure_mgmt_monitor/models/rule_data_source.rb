@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"] = "RuleMetricDataSource"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource"] = "RuleManagementEventDataSource"

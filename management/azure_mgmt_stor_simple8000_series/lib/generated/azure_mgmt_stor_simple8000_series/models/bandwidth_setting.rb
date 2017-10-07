@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<BandwidthSchedule>] The schedules.
       attr_accessor :schedules
 

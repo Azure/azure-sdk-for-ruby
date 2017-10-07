@@ -12,7 +12,6 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<CertificateDescription>] The array of Certificate
       # objects.
       attr_accessor :value

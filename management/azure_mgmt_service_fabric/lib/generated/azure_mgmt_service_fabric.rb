@@ -48,6 +48,7 @@ module Azure::ARM::ServiceFabric
     autoload :ClusterHealthPolicy,                                'generated/azure_mgmt_service_fabric/models/cluster_health_policy.rb'
     autoload :ErrorModel,                                         'generated/azure_mgmt_service_fabric/models/error_model.rb'
     autoload :SettingsSectionDescription,                         'generated/azure_mgmt_service_fabric/models/settings_section_description.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_service_fabric/models/resource.rb'
     autoload :Cluster,                                            'generated/azure_mgmt_service_fabric/models/cluster.rb'
     autoload :ProvisioningState,                                  'generated/azure_mgmt_service_fabric/models/provisioning_state.rb'
   end

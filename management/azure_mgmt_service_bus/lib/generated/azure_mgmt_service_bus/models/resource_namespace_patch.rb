@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus
     #
     # The Resource definition.
     #
-    class ResourceNamespacePatch < MsRestAzure::Resource
+    class ResourceNamespacePatch < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource location
       attr_accessor :location
 

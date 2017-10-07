@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Workspace>] A list of workspaces.
       attr_accessor :value
 

@@ -12,7 +12,6 @@ module Azure::ARM::ManagedApplications
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The appliance artifact name.
       attr_accessor :name
 

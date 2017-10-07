@@ -8,11 +8,10 @@ module Azure::ARM::Logic
     #
     # The workflow trigger history.
     #
-    class WorkflowTriggerHistory < MsRestAzure::SubResource
+    class WorkflowTriggerHistory < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Gets the start time.
       attr_accessor :start_time
 

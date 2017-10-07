@@ -8,11 +8,10 @@ module Azure::ARM::MobileEngagement
     #
     # The Mobile Engagement App resource.
     #
-    class App < MsRestAzure::Resource
+    class App < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The application unique identifier.
       attr_accessor :backend_id
 

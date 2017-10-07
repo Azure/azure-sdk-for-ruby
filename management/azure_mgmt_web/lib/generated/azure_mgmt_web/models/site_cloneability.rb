@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CloneAbilityResult] Name of app. Possible values include:
       # 'Cloneable', 'PartiallyCloneable', 'NotCloneable'
       attr_accessor :result

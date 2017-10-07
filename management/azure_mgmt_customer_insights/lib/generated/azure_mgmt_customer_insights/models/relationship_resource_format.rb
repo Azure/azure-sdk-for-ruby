@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CardinalityTypes] The Relationship Cardinality. Possible
       # values include: 'OneToOne', 'OneToMany', 'ManyToMany'
       attr_accessor :cardinality

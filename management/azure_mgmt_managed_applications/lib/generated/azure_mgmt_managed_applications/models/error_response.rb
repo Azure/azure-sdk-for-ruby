@@ -13,7 +13,6 @@ module Azure::ARM::ManagedApplications
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Http status code.
       attr_accessor :http_status
 

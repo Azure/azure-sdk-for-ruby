@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PolicyProviderSpecificInput] The ReplicationProviderSettings.
       attr_accessor :provider_specific_input
 

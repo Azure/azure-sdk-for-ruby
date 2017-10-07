@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ManagementGroup>] Gets or sets a list of management
       # groups attached to the workspace.
       attr_accessor :value

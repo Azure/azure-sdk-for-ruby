@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the management group. E.g.
       # /providers/Microsoft.Management/managementGroups/20000000-0000-0000-0000-000000000000
       attr_accessor :id

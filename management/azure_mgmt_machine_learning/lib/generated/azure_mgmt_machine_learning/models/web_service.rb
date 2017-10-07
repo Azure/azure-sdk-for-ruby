@@ -8,11 +8,10 @@ module Azure::ARM::MachineLearning
     #
     # Instance of an Azure ML web service resource.
     #
-    class WebService < MsRestAzure::Resource
+    class WebService < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WebServiceProperties] Contains the property payload that
       # describes the web service.
       attr_accessor :properties

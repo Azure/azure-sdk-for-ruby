@@ -12,7 +12,6 @@ module Azure::ARM::Features
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The registration state of the feature for the
       # subscription.
       attr_accessor :state

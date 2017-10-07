@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The data element separator.
       attr_accessor :data_element_separator
 

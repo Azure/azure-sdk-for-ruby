@@ -12,7 +12,6 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of storage keys that want to be regenerated,
       # possible vaules are key1, key2.
       attr_accessor :key_name

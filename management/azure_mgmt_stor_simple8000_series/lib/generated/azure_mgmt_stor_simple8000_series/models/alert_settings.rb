@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AlertEmailNotificationStatus] Indicates whether email
       # notification enabled or not. Possible values include: 'Enabled',
       # 'Disabled'

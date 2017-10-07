@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Days of the week that the job should execute
       # on.
       attr_accessor :week_days

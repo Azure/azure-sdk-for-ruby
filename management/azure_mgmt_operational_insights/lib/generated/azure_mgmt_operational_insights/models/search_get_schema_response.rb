@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SearchMetadata] The metadata from search results.
       attr_accessor :metadata
 

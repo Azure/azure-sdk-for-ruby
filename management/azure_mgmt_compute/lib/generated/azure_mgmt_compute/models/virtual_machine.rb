@@ -8,11 +8,10 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine.
     #
-    class VirtualMachine < MsRestAzure::Resource
+    class VirtualMachine < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Plan] Specifies information about the marketplace image used
       # to create the virtual machine. This element is only used for
       # marketplace images. Before you can use a marketplace image from an API,

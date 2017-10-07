@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the disk resource ID to detach from virtual
       # machine.
       attr_accessor :existing_lab_disk_id

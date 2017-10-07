@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       #
       # Mapper for EnrichingKpi class as Ruby Hash.

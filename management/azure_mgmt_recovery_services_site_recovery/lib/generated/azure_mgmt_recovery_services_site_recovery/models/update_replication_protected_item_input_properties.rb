@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Target azure VM name given by the user.
       attr_accessor :recovery_azure_vmname
 

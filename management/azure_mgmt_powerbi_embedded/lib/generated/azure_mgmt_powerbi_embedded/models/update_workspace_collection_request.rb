@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}]
       attr_accessor :tags
 

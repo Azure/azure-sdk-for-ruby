@@ -12,7 +12,6 @@ module Azure::ARM::Dns
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The text value of this TXT record.
       attr_accessor :value
 

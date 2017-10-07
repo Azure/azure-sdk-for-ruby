@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobStatus] Status of the job. Possible values include:
       # 'Invalid', 'InProgress', 'Completed', 'Failed',
       # 'CompletedWithWarnings', 'Cancelled', 'Cancelling'

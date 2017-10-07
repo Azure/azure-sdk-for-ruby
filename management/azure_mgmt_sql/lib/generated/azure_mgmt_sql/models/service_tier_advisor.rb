@@ -12,7 +12,6 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The observation period start (ISO8601 format).
       attr_accessor :observation_period_start
 

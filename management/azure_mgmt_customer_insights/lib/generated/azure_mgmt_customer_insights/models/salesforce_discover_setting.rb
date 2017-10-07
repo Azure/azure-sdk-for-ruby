@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The salesforce connection string secret URL.
       attr_accessor :salesforce_connection_string_secret_url
 

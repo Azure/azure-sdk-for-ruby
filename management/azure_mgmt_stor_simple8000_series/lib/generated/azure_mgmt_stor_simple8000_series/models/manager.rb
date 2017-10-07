@@ -8,11 +8,10 @@ module Azure::ARM::StorSimple8000Series
     #
     # The StorSimple Manager.
     #
-    class Manager < MsRestAzure::Resource
+    class Manager < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ManagerIntrinsicSettings] Represents the type of StorSimple
       # Manager.
       attr_accessor :cis_intrinsic_settings

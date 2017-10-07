@@ -12,7 +12,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The beginning of the time window for this HeatMap,
       # inclusive.
       attr_accessor :start_time

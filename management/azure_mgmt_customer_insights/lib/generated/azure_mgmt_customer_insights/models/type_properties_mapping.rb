@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String]  Property name on the source Entity Type.
       attr_accessor :source_property_name
 

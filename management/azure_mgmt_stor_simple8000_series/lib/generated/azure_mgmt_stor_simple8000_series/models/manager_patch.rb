@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] The tags attached to the Manager.
       attr_accessor :tags
 

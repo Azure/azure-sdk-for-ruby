@@ -12,7 +12,6 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The email address of the administrator.
       attr_accessor :email_address
 

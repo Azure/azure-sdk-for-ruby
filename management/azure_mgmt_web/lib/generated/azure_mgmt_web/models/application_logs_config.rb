@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FileSystemApplicationLogsConfig] Application logs to file
       # system configuration.
       attr_accessor :file_system

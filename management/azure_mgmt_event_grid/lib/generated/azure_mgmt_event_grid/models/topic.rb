@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TopicProvisioningState] Provisioning state of the topic.
       # Possible values include: 'Creating', 'Updating', 'Deleting',
       # 'Succeeded', 'Canceled', 'Failed'

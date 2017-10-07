@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs
     #
     # A cost item.
     #
-    class LabCost < MsRestAzure::Resource
+    class LabCost < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TargetCostProperties] The target cost properties
       attr_accessor :target_cost
 

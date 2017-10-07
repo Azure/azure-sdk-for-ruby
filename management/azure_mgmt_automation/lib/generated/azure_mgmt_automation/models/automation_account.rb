@@ -8,11 +8,10 @@ module Azure::ARM::Automation
     #
     # Definition of the automation account type.
     #
-    class AutomationAccount < MsRestAzure::Resource
+    class AutomationAccount < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] Gets or sets the SKU of account.
       attr_accessor :sku
 

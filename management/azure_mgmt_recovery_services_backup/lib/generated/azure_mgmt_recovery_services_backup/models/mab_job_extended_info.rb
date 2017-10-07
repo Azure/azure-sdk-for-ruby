@@ -16,7 +16,6 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<MabJobTaskDetails>] List of tasks for this job.
       attr_accessor :tasks_list
 

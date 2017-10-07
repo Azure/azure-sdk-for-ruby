@@ -8,11 +8,10 @@ module Azure::ARM::Compute
     #
     # The status of the latest virtual machine scale set rolling upgrade.
     #
-    class RollingUpgradeStatusInfo < MsRestAzure::Resource
+    class RollingUpgradeStatusInfo < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RollingUpgradePolicy] The rolling upgrade policies applied for
       # this upgrade.
       attr_accessor :policy

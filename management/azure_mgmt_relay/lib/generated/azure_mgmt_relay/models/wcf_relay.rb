@@ -8,11 +8,10 @@ module Azure::ARM::Relay
     #
     # Description of the WCF relay resource.
     #
-    class WcfRelay < MsRestAzure::Resource
+    class WcfRelay < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Returns true if the relay is dynamic; otherwise,
       # false.
       attr_accessor :is_dynamic

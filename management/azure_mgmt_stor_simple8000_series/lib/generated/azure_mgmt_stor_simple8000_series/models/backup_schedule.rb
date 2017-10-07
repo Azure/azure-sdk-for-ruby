@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ScheduleRecurrence] The schedule recurrence.
       attr_accessor :schedule_recurrence
 

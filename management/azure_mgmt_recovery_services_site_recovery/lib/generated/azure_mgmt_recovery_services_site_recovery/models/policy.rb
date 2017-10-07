@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # Protection profile details.
     #
-    class Policy < MsRestAzure::Resource
+    class Policy < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PolicyProperties] The custom data.
       attr_accessor :properties
 

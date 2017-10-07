@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Management.
       attr_accessor :provider
 

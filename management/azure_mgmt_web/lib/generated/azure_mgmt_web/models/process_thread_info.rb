@@ -12,7 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] ARM Identifier for deployment.
       attr_accessor :process_thread_info_id
 

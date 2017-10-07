@@ -12,7 +12,6 @@ module Azure::ARM::Monitor
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
         @odata.type = "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpdateRecoveryPlanInputProperties] Recovery plan update
       # properties.
       attr_accessor :properties

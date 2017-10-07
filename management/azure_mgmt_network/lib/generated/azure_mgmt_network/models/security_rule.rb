@@ -8,11 +8,10 @@ module Azure::ARM::Network
     #
     # Network security rule.
     #
-    class SecurityRule < MsRestAzure::SubResource
+    class SecurityRule < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A description for this rule. Restricted to 140 chars.
       attr_accessor :description
 

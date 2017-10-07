@@ -12,7 +12,6 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Unique Id for the usage aggregate.
       attr_accessor :id
 

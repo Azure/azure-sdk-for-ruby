@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Occurrence of the week within the month. Must be
       # between 1 and 5
       attr_accessor :occurrence

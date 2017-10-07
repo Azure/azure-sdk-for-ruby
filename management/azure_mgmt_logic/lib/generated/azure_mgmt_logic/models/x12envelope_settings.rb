@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The controls standards id.
       attr_accessor :control_standards_id
 

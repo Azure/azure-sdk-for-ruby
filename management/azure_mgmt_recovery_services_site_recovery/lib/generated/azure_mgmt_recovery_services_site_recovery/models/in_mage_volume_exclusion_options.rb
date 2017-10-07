@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The volume label. The disk having any volume with this
       # label will be excluded from replication.
       attr_accessor :volume_label

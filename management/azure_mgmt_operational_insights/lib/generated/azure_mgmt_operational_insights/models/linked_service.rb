@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource id of the resource that will be linked to
       # the workspace.
       attr_accessor :resource_id

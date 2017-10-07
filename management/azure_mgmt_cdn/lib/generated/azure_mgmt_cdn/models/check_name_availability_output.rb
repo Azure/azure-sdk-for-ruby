@@ -12,7 +12,6 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Indicates whether the name is available.
       attr_accessor :name_available
 

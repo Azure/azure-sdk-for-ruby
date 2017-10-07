@@ -14,11 +14,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     # entirety with references to base models to facilitate exensions in
     # subsequent versions.
     #
-    class NetworkMapping < MsRestAzure::Resource
+    class NetworkMapping < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NetworkMappingProperties] The Network Mapping Properties.
       attr_accessor :properties
 

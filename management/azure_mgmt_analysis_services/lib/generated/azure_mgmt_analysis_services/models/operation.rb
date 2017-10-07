@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}.
       attr_accessor :name
 

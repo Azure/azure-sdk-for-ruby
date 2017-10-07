@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EncryptionStatus] The encryption status to indicates if
       # encryption is enabled or not. Possible values include: 'Enabled',
       # 'Disabled'

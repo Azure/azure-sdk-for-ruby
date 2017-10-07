@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] Gets or sets account SKU.
       attr_accessor :sku
 

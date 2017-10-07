@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The total bytes of data to be processed, as part of
       # the job.
       attr_accessor :total_data

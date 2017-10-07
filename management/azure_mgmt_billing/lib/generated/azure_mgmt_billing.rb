@@ -26,6 +26,7 @@ module Azure::ARM::Billing
   autoload :BillingManagementClient,                            'generated/azure_mgmt_billing/billing_management_client.rb'
 
   module Models
+    autoload :Resource,                                           'generated/azure_mgmt_billing/models/resource.rb'
     autoload :BillingPeriodsListResult,                           'generated/azure_mgmt_billing/models/billing_periods_list_result.rb'
     autoload :InvoicesListResult,                                 'generated/azure_mgmt_billing/models/invoices_list_result.rb'
     autoload :ErrorDetails,                                       'generated/azure_mgmt_billing/models/error_details.rb'

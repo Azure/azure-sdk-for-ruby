@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ErrorManagementTypes] The type of error management to use for
       # the mapping. Possible values include: 'RejectAndContinue',
       # 'StopImport', 'RejectUntilLimit'

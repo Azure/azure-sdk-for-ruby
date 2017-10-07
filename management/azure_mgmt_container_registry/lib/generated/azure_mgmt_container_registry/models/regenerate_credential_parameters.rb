@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PasswordName] Specifies name of the password which should be
       # regenerated -- password or password2. Possible values include:
       # 'password', 'password2'

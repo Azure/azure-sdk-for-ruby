@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TargetEligibilityStatus] The eligibility status of device, as
       # a failover target device. Possible values include: 'NotEligible',
       # 'Eligible'

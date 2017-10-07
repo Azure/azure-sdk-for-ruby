@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpdateReplicationProtectedItemInputProperties] Update
       # replication protected item properties.
       attr_accessor :properties

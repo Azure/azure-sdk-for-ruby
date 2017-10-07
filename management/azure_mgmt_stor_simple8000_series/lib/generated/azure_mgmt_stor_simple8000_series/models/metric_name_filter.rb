@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the metric name to be filtered on. E.g.,
       # CloudStorageUsed. Valid values are the ones returned in the field
       # "name" in the ListMetricDefinitions call. Only 'Equality' operator is

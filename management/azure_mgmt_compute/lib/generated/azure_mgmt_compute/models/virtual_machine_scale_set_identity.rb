@@ -12,7 +12,6 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The principal id of virtual machine scale set
       # identity.
       attr_accessor :principal_id

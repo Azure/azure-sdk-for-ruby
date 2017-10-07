@@ -13,7 +13,6 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] SQL expression. e.g. MyProperty='ABC'
       attr_accessor :sql_expression
 

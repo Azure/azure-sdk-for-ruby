@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ReplicationProviderContainerUnmappingInput] Provider specific
       # input for unpairing.
       attr_accessor :provider_specific_input

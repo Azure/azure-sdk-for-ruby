@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The list of email IDs to send the test alert
       # email
       attr_accessor :email_list

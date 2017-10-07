@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => Array<String>}] The attributes for the Type.
       attr_accessor :attributes
 

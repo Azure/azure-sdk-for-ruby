@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ScheduleAssociationProperty] Gets or sets the schedule.
       attr_accessor :schedule
 

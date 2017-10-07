@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Gets the start time.
       attr_accessor :start_time
 

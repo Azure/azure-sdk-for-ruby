@@ -12,7 +12,6 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Allowed actions.
       attr_accessor :actions
 

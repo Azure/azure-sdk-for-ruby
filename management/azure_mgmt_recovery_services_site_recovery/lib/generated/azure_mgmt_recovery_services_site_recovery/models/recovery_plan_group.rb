@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPlanGroupType] The group type. Possible values
       # include: 'Shutdown', 'Boot', 'Failover'
       attr_accessor :group_type

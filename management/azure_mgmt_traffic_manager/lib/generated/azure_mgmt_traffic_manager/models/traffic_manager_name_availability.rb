@@ -12,7 +12,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The relative name.
       attr_accessor :name
 

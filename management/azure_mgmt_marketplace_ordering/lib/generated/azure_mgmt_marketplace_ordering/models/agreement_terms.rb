@@ -8,11 +8,10 @@ module Azure::ARM::MarketplaceOrdering
     #
     # Terms properties for provided Publisher/Offer/Plan tuple
     #
-    class AgreementTerms < MsRestAzure::Resource
+    class AgreementTerms < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Publisher identifier string of image being deployed.
       attr_accessor :publisher
 

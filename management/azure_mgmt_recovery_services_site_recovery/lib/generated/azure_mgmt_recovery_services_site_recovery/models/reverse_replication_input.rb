@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ReverseReplicationInputProperties] Reverse replication
       # properties
       attr_accessor :properties

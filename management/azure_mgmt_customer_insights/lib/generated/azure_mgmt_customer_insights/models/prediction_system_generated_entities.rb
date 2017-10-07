@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Generated interaction types.
       attr_accessor :generated_interaction_types
 

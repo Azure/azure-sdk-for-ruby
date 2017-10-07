@@ -210,6 +210,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     autoload :ConfigureAlertRequestProperties,                    'generated/azure_mgmt_recovery_services_site_recovery/models/configure_alert_request_properties.rb'
     autoload :DiskVolumeDetails,                                  'generated/azure_mgmt_recovery_services_site_recovery/models/disk_volume_details.rb'
     autoload :FabricCreationInput,                                'generated/azure_mgmt_recovery_services_site_recovery/models/fabric_creation_input.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_recovery_services_site_recovery/models/resource.rb'
     autoload :JobCollection,                                      'generated/azure_mgmt_recovery_services_site_recovery/models/job_collection.rb'
     autoload :A2AVmManagedDiskInputDetails,                       'generated/azure_mgmt_recovery_services_site_recovery/models/a2avm_managed_disk_input_details.rb'
     autoload :Subnet,                                             'generated/azure_mgmt_recovery_services_site_recovery/models/subnet.rb'

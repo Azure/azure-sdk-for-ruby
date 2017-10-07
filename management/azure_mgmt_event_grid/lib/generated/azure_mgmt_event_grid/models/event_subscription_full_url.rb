@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URL that represents the endpoint of the
       # destination of an event subscription.
       attr_accessor :endpoint_url

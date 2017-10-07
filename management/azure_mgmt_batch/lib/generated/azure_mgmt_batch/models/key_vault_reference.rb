@@ -12,7 +12,6 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource ID of the Azure key vault associated with
       # the Batch account.
       attr_accessor :id

@@ -43,6 +43,7 @@ module Azure::ARM::OperationalInsights
     autoload :WorkspaceListManagementGroupsResult,                'generated/azure_mgmt_operational_insights/models/workspace_list_management_groups_result.rb'
     autoload :SavedSearchesListResult,                            'generated/azure_mgmt_operational_insights/models/saved_searches_list_result.rb'
     autoload :Sku,                                                'generated/azure_mgmt_operational_insights/models/sku.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_operational_insights/models/resource.rb'
     autoload :SearchError,                                        'generated/azure_mgmt_operational_insights/models/search_error.rb'
     autoload :ProxyResource,                                      'generated/azure_mgmt_operational_insights/models/proxy_resource.rb'
     autoload :StorageInsightStatus,                               'generated/azure_mgmt_operational_insights/models/storage_insight_status.rb'

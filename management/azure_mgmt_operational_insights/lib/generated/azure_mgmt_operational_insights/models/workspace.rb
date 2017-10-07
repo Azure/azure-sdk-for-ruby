@@ -8,11 +8,10 @@ module Azure::ARM::OperationalInsights
     #
     # The top level Workspace resource container.
     #
-    class Workspace < MsRestAzure::Resource
+    class Workspace < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EntityStatus] The provisioning state of the workspace.
       # Possible values include: 'Creating', 'Succeeded', 'Failed', 'Canceled',
       # 'Deleting', 'ProvisioningAccount'

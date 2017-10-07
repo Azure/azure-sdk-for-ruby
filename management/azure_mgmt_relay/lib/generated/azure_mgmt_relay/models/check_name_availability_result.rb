@@ -12,7 +12,6 @@ module Azure::ARM::Relay
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The detailed info regarding the reason associated with
       # the namespace.
       attr_accessor :message

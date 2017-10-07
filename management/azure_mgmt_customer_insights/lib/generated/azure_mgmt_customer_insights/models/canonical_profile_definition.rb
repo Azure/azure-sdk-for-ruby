@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Canonical profile ID.
       attr_accessor :canonical_profile_id
 

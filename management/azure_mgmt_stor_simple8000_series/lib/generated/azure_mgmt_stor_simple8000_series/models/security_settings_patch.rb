@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RemoteManagementSettingsPatch] The remote management settings.
       attr_accessor :remote_management_settings
 

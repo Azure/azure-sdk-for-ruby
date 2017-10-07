@@ -13,7 +13,6 @@ module Azure::ARM::Consumption
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ErrorDetails] The details of the error.
       attr_accessor :error
 

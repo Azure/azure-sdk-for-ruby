@@ -35,6 +35,7 @@ module Azure::ARM::EventGrid
     autoload :EventTypesListResult,                               'generated/azure_mgmt_event_grid/models/event_types_list_result.rb'
     autoload :TopicSharedAccessKeys,                              'generated/azure_mgmt_event_grid/models/topic_shared_access_keys.rb'
     autoload :EventSubscriptionUpdateParameters,                  'generated/azure_mgmt_event_grid/models/event_subscription_update_parameters.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_event_grid/models/resource.rb'
     autoload :EventSubscriptionsListResult,                       'generated/azure_mgmt_event_grid/models/event_subscriptions_list_result.rb'
     autoload :EventSubscriptionFullUrl,                           'generated/azure_mgmt_event_grid/models/event_subscription_full_url.rb'
     autoload :TopicTypesListResult,                               'generated/azure_mgmt_event_grid/models/topic_types_list_result.rb'

@@ -12,7 +12,6 @@ module Azure::ARM::Logic
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [X12ValidationSettings] The X12 validation settings.
       attr_accessor :validation_settings
 

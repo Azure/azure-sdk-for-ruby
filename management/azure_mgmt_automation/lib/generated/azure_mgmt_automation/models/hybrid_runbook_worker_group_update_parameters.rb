@@ -12,7 +12,6 @@ module Azure::ARM::Automation
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RunAsCredentialAssociationProperty] Sets the credential of a
       # worker group.
       attr_accessor :credential

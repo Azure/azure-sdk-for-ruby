@@ -8,11 +8,10 @@ module Azure::ARM::Automation
     #
     # Definition of the runbook type.
     #
-    class Runbook < MsRestAzure::Resource
+    class Runbook < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RunbookTypeEnum] Gets or sets the type of the runbook.
       # Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
       # 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'

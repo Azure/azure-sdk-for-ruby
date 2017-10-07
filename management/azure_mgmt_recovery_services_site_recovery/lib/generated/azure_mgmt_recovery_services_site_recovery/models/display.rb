@@ -15,7 +15,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The provider. The localized friendly form of the
       # resource provider name – it is expected to also include the
       # publisher/company responsible. It should use Title Casing and begin

@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of VirtualNetworkGateway or LocalNetworkGateway
       # resource.
       attr_accessor :id

@@ -8,11 +8,10 @@ module Azure::ARM::SQL
     #
     # Represents a database update.
     #
-    class DatabaseUpdate < MsRestAzure::Resource
+    class DatabaseUpdate < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 

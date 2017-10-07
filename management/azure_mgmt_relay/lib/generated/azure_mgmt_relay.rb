@@ -29,6 +29,7 @@ module Azure::ARM::Relay
   module Models
     autoload :RelayNamespaceListResult,                           'generated/azure_mgmt_relay/models/relay_namespace_list_result.rb'
     autoload :OperationDisplay,                                   'generated/azure_mgmt_relay/models/operation_display.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_relay/models/resource.rb'
     autoload :CheckNameAvailability,                              'generated/azure_mgmt_relay/models/check_name_availability.rb'
     autoload :HybridConnectionListResult,                         'generated/azure_mgmt_relay/models/hybrid_connection_list_result.rb'
     autoload :CheckNameAvailabilityResult,                        'generated/azure_mgmt_relay/models/check_name_availability_result.rb'

@@ -12,7 +12,6 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [LoadBalancerSkuName] Name of a load balancer SKU. Possible
       # values include: 'Basic', 'Standard'
       attr_accessor :name

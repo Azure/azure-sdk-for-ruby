@@ -31,6 +31,7 @@ module Azure::ARM::IotHub
     autoload :CertificateBodyDescription,                         'generated/azure_mgmt_iot_hub/models/certificate_body_description.rb'
     autoload :CertificateProperties,                              'generated/azure_mgmt_iot_hub/models/certificate_properties.rb'
     autoload :CertificateListDescription,                         'generated/azure_mgmt_iot_hub/models/certificate_list_description.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_iot_hub/models/resource.rb'
     autoload :CertificateWithNonceDescription,                    'generated/azure_mgmt_iot_hub/models/certificate_with_nonce_description.rb'
     autoload :SharedAccessSignatureAuthorizationRuleListResult,   'generated/azure_mgmt_iot_hub/models/shared_access_signature_authorization_rule_list_result.rb'
     autoload :IpFilterRule,                                       'generated/azure_mgmt_iot_hub/models/ip_filter_rule.rb'

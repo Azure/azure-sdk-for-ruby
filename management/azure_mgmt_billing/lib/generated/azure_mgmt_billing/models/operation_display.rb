@@ -12,7 +12,6 @@ module Azure::ARM::Billing
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Billing.
       attr_accessor :provider
 

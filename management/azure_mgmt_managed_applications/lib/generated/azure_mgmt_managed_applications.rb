@@ -34,6 +34,7 @@ module Azure::ARM::ManagedApplications
     autoload :ApplianceDefinitionListResult,                      'generated/azure_mgmt_managed_applications/models/appliance_definition_list_result.rb'
     autoload :ApplianceListResult,                                'generated/azure_mgmt_managed_applications/models/appliance_list_result.rb'
     autoload :ApplianceArtifact,                                  'generated/azure_mgmt_managed_applications/models/appliance_artifact.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_managed_applications/models/resource.rb'
     autoload :GenericResource,                                    'generated/azure_mgmt_managed_applications/models/generic_resource.rb'
     autoload :Appliance,                                          'generated/azure_mgmt_managed_applications/models/appliance.rb'
     autoload :AppliancePatchable,                                 'generated/azure_mgmt_managed_applications/models/appliance_patchable.rb'

@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery
     #
     # Protection container mapping object.
     #
-    class ProtectionContainerMapping < MsRestAzure::Resource
+    class ProtectionContainerMapping < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProtectionContainerMappingProperties] The custom data.
       attr_accessor :properties
 

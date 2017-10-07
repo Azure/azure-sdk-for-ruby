@@ -13,7 +13,6 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] lowest IP address included in the range
       attr_accessor :start_ip
 

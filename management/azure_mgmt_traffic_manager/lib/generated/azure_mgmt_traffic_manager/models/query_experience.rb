@@ -12,7 +12,6 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The id of the endpoint from the 'endpoints' array
       # which these queries were routed to.
       attr_accessor :endpoint_id
