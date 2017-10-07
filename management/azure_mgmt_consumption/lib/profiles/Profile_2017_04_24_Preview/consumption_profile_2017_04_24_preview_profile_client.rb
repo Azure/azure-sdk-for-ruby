@@ -25,7 +25,7 @@ module Azure::Profiles::ConsumptionModule::Management::Profile_2017_04_24_Previe
 
       reset!(options)
 
-      self.consumption = Consumption::ConsumptionClass.new(self, nil, nil)
+      self.consumption = Consumption::ConsumptionClass.new(self)
     end
 
     def credentials

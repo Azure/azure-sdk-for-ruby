@@ -25,7 +25,7 @@ module Azure::Profiles::SubscriptionsModule::Management::Profile_2015_11_01
 
       reset!(options)
 
-      self.subscriptions = Subscriptions::SubscriptionsClass.new(self, nil, nil)
+      self.subscriptions = Subscriptions::SubscriptionsClass.new(self)
     end
 
     def credentials

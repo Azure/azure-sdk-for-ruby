@@ -25,7 +25,7 @@ module Azure::Profiles::IotHubModule::Management::Profile_2017_07_01
 
       reset!(options)
 
-      self.iothub = IotHub::IotHubClass.new(self, nil, nil)
+      self.iothub = IotHub::IotHubClass.new(self)
     end
 
     def credentials

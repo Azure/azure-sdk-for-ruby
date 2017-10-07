@@ -25,7 +25,7 @@ module Azure::Profiles::ServiceFabricModule::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.servicefabric = ServiceFabric::ServiceFabricClass.new(self, nil, nil)
+      self.servicefabric = ServiceFabric::ServiceFabricClass.new(self)
     end
 
     def credentials

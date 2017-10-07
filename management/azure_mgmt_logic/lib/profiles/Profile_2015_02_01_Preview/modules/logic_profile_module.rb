@@ -60,7 +60,7 @@ module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview
     class LogicClass
       attr_accessor :workflows, :workflow_versions, :workflow_access_keys, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::Logic::Api_2015_02_01_preview::LogicManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -76,6 +76,15 @@ module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2015-02-01-preview'

@@ -25,7 +25,7 @@ module Azure::Profiles::CustomerInsightsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.customerinsights = CustomerInsights::CustomerInsightsClass.new(self, nil, nil)
+      self.customerinsights = CustomerInsights::CustomerInsightsClass.new(self)
     end
 
     def credentials

@@ -25,7 +25,7 @@ module Azure::Profiles::WebModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.web = Web::WebClass.new(self, nil, nil)
+      self.web = Web::WebClass.new(self)
     end
 
     def credentials

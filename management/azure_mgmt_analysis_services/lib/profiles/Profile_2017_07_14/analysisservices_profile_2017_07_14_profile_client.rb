@@ -25,7 +25,7 @@ module Azure::Profiles::AnalysisServicesModule::Management::Profile_2017_07_14
 
       reset!(options)
 
-      self.analysisservices = AnalysisServices::AnalysisServicesClass.new(self, nil, nil)
+      self.analysisservices = AnalysisServices::AnalysisServicesClass.new(self)
     end
 
     def credentials

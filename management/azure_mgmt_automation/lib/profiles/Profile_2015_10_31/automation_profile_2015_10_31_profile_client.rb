@@ -25,7 +25,7 @@ module Azure::Profiles::AutomationModule::Management::Profile_2015_10_31
 
       reset!(options)
 
-      self.automation = Automation::AutomationClass.new(self, nil, nil)
+      self.automation = Automation::AutomationClass.new(self)
     end
 
     def credentials

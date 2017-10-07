@@ -25,7 +25,7 @@ module Azure::Profiles::MachineLearningModule::Management::Profile_2017_01_01
 
       reset!(options)
 
-      self.machinelearning = MachineLearning::MachineLearningClass.new(self, nil, nil)
+      self.machinelearning = MachineLearning::MachineLearningClass.new(self)
     end
 
     def credentials

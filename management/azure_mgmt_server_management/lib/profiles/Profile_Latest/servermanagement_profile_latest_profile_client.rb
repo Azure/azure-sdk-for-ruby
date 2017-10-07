@@ -25,7 +25,7 @@ module Azure::Profiles::ServerManagementModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.servermanagement = ServerManagement::ServerManagementClass.new(self, nil, nil)
+      self.servermanagement = ServerManagement::ServerManagementClass.new(self)
     end
 
     def credentials

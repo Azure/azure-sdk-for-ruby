@@ -25,7 +25,7 @@ module Azure::Profiles::PowerBiEmbeddedModule::Management::Profile_2016_01_29
 
       reset!(options)
 
-      self.powerbiembedded = PowerBiEmbedded::PowerBiEmbeddedClass.new(self, nil, nil)
+      self.powerbiembedded = PowerBiEmbedded::PowerBiEmbeddedClass.new(self)
     end
 
     def credentials

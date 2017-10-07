@@ -99,7 +99,7 @@ module Azure::Profiles::SQLModule::Management::Profile_2015_05_01_Preview
     class SQLClass
       attr_accessor :database_advisors, :database_recommended_actions, :server_advisors, :database_blob_auditing_policies, :encryption_protectors, :failover_groups, :operations, :server_keys, :servers, :sync_agents, :sync_groups, :sync_members, :virtual_network_rules, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::SQL::Api_2015_05_01_preview::SqlManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -121,6 +121,15 @@ module Azure::Profiles::SQLModule::Management::Profile_2015_05_01_Preview
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2015-05-01-preview'

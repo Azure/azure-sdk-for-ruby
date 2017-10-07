@@ -25,7 +25,7 @@ module Azure::Profiles::CognitiveServicesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.cognitiveservices = CognitiveServices::CognitiveServicesClass.new(self, nil, nil)
+      self.cognitiveservices = CognitiveServices::CognitiveServicesClass.new(self)
     end
 
     def credentials

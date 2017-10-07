@@ -38,7 +38,7 @@ module Azure::Profiles::BatchModule::Management::Profile_2015_12_01
     class BatchClass
       attr_accessor :batch_account_operations, :application_package_operations, :application_operations, :location, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::Batch::Api_2015_12_01::BatchManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -51,6 +51,15 @@ module Azure::Profiles::BatchModule::Management::Profile_2015_12_01
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2015-12-01'

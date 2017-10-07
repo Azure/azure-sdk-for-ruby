@@ -25,7 +25,7 @@ module Azure::Profiles::StorSimple8000SeriesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.storsimple8000series = StorSimple8000Series::StorSimple8000SeriesClass.new(self, nil, nil)
+      self.storsimple8000series = StorSimple8000Series::StorSimple8000SeriesClass.new(self)
     end
 
     def credentials

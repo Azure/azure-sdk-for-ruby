@@ -25,7 +25,7 @@ module Azure::Profiles::LogicModule::Management::Profile_2016_06_01
 
       reset!(options)
 
-      self.logic = Logic::LogicClass.new(self, nil, nil)
+      self.logic = Logic::LogicClass.new(self)
     end
 
     def credentials

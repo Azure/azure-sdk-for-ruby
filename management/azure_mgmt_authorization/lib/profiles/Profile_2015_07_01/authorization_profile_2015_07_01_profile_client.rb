@@ -25,7 +25,7 @@ module Azure::Profiles::AuthorizationModule::Management::Profile_2015_07_01
 
       reset!(options)
 
-      self.authorization = Authorization::AuthorizationClass.new(self, nil, nil)
+      self.authorization = Authorization::AuthorizationClass.new(self)
     end
 
     def credentials

@@ -25,7 +25,7 @@ module Azure::Profiles::MonitorModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.monitor = Monitor::MonitorClass.new(self, nil, nil)
+      self.monitor = Monitor::MonitorClass.new(self)
     end
 
     def credentials

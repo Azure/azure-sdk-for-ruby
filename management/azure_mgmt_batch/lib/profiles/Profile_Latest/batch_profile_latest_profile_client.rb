@@ -25,7 +25,7 @@ module Azure::Profiles::BatchModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.batch = Batch::BatchClass.new(self, nil, nil)
+      self.batch = Batch::BatchClass.new(self)
     end
 
     def credentials

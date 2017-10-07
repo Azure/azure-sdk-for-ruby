@@ -25,7 +25,7 @@ module Azure::Profiles::StreamAnalyticsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.streamanalytics = StreamAnalytics::StreamAnalyticsClass.new(self, nil, nil)
+      self.streamanalytics = StreamAnalytics::StreamAnalyticsClass.new(self)
     end
 
     def credentials

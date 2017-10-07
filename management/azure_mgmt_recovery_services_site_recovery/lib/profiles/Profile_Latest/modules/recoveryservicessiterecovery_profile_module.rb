@@ -360,7 +360,7 @@ module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_
     class RecoveryServicesSiteRecoveryClass
       attr_accessor :replication_vault_health, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_services_providers, :recovery_points, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_protectable_items, :replication_policies, :operations, :replication_networks, :replication_logical_networks, :replication_jobs, :replication_events, :replication_alert_settings, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::SiteRecoveryManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -389,6 +389,15 @@ module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2016-08-10'

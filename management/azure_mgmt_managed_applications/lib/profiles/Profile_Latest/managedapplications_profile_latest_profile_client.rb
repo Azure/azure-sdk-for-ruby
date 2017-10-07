@@ -25,7 +25,7 @@ module Azure::Profiles::ManagedApplicationsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.managedapplications = ManagedApplications::ManagedApplicationsClass.new(self, nil, nil)
+      self.managedapplications = ManagedApplications::ManagedApplicationsClass.new(self)
     end
 
     def credentials

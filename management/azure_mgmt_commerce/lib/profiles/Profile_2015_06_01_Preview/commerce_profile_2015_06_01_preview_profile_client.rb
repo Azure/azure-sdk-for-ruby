@@ -25,7 +25,7 @@ module Azure::Profiles::CommerceModule::Management::Profile_2015_06_01_Preview
 
       reset!(options)
 
-      self.commerce = Commerce::CommerceClass.new(self, nil, nil)
+      self.commerce = Commerce::CommerceClass.new(self)
     end
 
     def credentials

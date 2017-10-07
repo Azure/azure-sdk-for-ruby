@@ -25,7 +25,7 @@ module Azure::Profiles::DnsModule::Management::Profile_2016_04_01
 
       reset!(options)
 
-      self.dns = Dns::DnsClass.new(self, nil, nil)
+      self.dns = Dns::DnsClass.new(self)
     end
 
     def credentials

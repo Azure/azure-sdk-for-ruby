@@ -25,7 +25,7 @@ module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_03_2
 
       reset!(options)
 
-      self.operationalinsights = OperationalInsights::OperationalInsightsClass.new(self, nil, nil)
+      self.operationalinsights = OperationalInsights::OperationalInsightsClass.new(self)
     end
 
     def credentials

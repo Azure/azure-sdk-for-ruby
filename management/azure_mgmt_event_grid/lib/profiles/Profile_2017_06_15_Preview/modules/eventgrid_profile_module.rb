@@ -44,7 +44,7 @@ module Azure::Profiles::EventGridModule::Management::Profile_2017_06_15_Preview
     class EventGridClass
       attr_accessor :event_subscriptions, :operations, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -57,6 +57,15 @@ module Azure::Profiles::EventGridModule::Management::Profile_2017_06_15_Preview
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2017-06-15-preview'

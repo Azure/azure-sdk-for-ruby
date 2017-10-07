@@ -25,7 +25,7 @@ module Azure::Profiles::ContainerServiceModule::Management::Profile_2017_01_31
 
       reset!(options)
 
-      self.containerservice = ContainerService::ContainerServiceClass.new(self, nil, nil)
+      self.containerservice = ContainerService::ContainerServiceClass.new(self)
     end
 
     def credentials

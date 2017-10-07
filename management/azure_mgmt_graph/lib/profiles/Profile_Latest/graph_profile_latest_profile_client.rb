@@ -25,7 +25,7 @@ module Azure::Profiles::GraphModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.graph = Graph::GraphClass.new(self, nil, nil)
+      self.graph = Graph::GraphClass.new(self)
     end
 
     def credentials

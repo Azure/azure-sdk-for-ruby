@@ -25,7 +25,7 @@ module Azure::Profiles::ContainerRegistryModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.containerregistry = ContainerRegistry::ContainerRegistryClass.new(self, nil, nil)
+      self.containerregistry = ContainerRegistry::ContainerRegistryClass.new(self)
     end
 
     def credentials

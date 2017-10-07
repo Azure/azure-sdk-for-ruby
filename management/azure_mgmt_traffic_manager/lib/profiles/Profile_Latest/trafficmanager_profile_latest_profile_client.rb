@@ -25,7 +25,7 @@ module Azure::Profiles::TrafficManagerModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.trafficmanager = TrafficManager::TrafficManagerClass.new(self, nil, nil)
+      self.trafficmanager = TrafficManager::TrafficManagerClass.new(self)
     end
 
     def credentials

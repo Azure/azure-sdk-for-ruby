@@ -25,7 +25,7 @@ module Azure::Profiles::DevTestLabsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.devtestlabs = DevTestLabs::DevTestLabsClass.new(self, nil, nil)
+      self.devtestlabs = DevTestLabs::DevTestLabsClass.new(self)
     end
 
     def credentials

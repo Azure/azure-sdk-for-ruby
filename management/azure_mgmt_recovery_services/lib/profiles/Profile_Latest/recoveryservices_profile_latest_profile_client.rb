@@ -25,7 +25,7 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.recoveryservices = RecoveryServices::RecoveryServicesClass.new(self, nil, nil)
+      self.recoveryservices = RecoveryServices::RecoveryServicesClass.new(self)
     end
 
     def credentials

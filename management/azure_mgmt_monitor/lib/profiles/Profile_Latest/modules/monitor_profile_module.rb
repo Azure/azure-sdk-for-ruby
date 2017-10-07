@@ -28,7 +28,7 @@ module Azure::Profiles::MonitorModule::Management::Profile_Latest
     class MonitorClass
       attr_accessor :diagnostic_settings_category_operations, :diagnostic_settings_operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::Monitor::Api_2017_05_01_preview::MonitorClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -39,6 +39,15 @@ module Azure::Profiles::MonitorModule::Management::Profile_Latest
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2017-05-01-preview'

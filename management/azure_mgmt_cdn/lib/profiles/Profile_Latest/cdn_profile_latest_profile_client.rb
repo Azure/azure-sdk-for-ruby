@@ -25,7 +25,7 @@ module Azure::Profiles::CdnModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.cdn = CDN::CDNClass.new(self, nil, nil)
+      self.cdn = CDN::CDNClass.new(self)
     end
 
     def credentials

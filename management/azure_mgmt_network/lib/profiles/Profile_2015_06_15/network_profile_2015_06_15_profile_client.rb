@@ -25,7 +25,7 @@ module Azure::Profiles::NetworkModule::Management::Profile_2015_06_15
 
       reset!(options)
 
-      self.network = Network::NetworkClass.new(self, nil, nil)
+      self.network = Network::NetworkClass.new(self)
     end
 
     def credentials

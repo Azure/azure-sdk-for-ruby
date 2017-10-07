@@ -25,7 +25,7 @@ module Azure::Profiles::KeyVaultModule::Management::Profile_2016_10_01
 
       reset!(options)
 
-      self.keyvault = KeyVault::KeyVaultClass.new(self, nil, nil)
+      self.keyvault = KeyVault::KeyVaultClass.new(self)
     end
 
     def credentials

@@ -25,7 +25,7 @@ module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_2015_06_0
 
       reset!(options)
 
-      self.marketplaceordering = MarketplaceOrdering::MarketplaceOrderingClass.new(self, nil, nil)
+      self.marketplaceordering = MarketplaceOrdering::MarketplaceOrderingClass.new(self)
     end
 
     def credentials

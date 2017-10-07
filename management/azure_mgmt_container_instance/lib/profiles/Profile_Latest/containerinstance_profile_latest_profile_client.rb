@@ -25,7 +25,7 @@ module Azure::Profiles::ContainerInstanceModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.containerinstance = ContainerInstance::ContainerInstanceClass.new(self, nil, nil)
+      self.containerinstance = ContainerInstance::ContainerInstanceClass.new(self)
     end
 
     def credentials

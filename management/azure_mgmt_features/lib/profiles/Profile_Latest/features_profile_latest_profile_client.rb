@@ -25,7 +25,7 @@ module Azure::Profiles::FeaturesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.features = Features::FeaturesClass.new(self, nil, nil)
+      self.features = Features::FeaturesClass.new(self)
     end
 
     def credentials

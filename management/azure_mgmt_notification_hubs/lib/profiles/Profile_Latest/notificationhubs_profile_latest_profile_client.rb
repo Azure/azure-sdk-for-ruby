@@ -25,7 +25,7 @@ module Azure::Profiles::NotificationHubsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.notificationhubs = NotificationHubs::NotificationHubsClass.new(self, nil, nil)
+      self.notificationhubs = NotificationHubs::NotificationHubsClass.new(self)
     end
 
     def credentials

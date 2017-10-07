@@ -132,7 +132,7 @@ module Azure::Profiles::CustomerInsightsModule::Management::Profile_Latest
     class CustomerInsightsClass
       attr_accessor :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :role_assignments, :images, :predictions, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::CustomerInsights::Api_2017_04_26::CustomerInsightsManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -157,6 +157,15 @@ module Azure::Profiles::CustomerInsightsModule::Management::Profile_Latest
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2017-04-26'

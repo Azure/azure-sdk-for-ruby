@@ -25,7 +25,7 @@ module Azure::Profiles::SQLModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.sql = SQL::SQLClass.new(self, nil, nil)
+      self.sql = SQL::SQLClass.new(self)
     end
 
     def credentials

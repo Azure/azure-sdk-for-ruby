@@ -165,7 +165,7 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
     class RecoveryServicesBackupClass
       attr_accessor :item_level_recovery_connections, :restores, :protection_policy_operation_statuses, :protection_policy_operation_results, :protection_policies, :protection_container_operation_results, :protection_container_refresh_operation_results, :protection_containers, :recovery_points, :backups, :protected_item_operation_statuses, :protected_item_operation_results, :protected_items, :protectable_items, :export_jobs_operation_results, :job_operation_results, :jobs, :job_cancellations, :job_details, :backup_operation_statuses, :backup_operation_results, :backup_engines, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -196,6 +196,15 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2016-06-01'

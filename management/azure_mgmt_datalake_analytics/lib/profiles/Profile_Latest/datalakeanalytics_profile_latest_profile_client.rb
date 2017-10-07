@@ -25,7 +25,7 @@ module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.datalakeanalytics = DataLakeAnalytics::DataLakeAnalyticsClass.new(self, nil, nil)
+      self.datalakeanalytics = DataLakeAnalytics::DataLakeAnalyticsClass.new(self)
     end
 
     def credentials

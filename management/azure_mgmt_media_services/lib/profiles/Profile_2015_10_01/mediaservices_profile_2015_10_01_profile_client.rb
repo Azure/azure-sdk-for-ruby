@@ -25,7 +25,7 @@ module Azure::Profiles::MediaServicesModule::Management::Profile_2015_10_01
 
       reset!(options)
 
-      self.mediaservices = MediaServices::MediaServicesClass.new(self, nil, nil)
+      self.mediaservices = MediaServices::MediaServicesClass.new(self)
     end
 
     def credentials

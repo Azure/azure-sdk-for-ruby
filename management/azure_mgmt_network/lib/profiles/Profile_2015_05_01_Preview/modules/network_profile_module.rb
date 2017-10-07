@@ -137,7 +137,7 @@ module Azure::Profiles::NetworkModule::Management::Profile_2015_05_01_Preview
     class NetworkClass
       attr_accessor :application_gateways, :express_route_circuits, :express_route_service_providers, :express_route_circuit_peerings, :load_balancers, :local_network_gateways, :network_interfaces, :route_tables, :network_security_groups, :public_ip_addresses, :routes, :security_rules, :express_route_circuit_authorizations, :subnets, :usages, :virtual_network_gateway_connections, :virtual_network_gateways, :virtual_networks, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::Network::Api_2015_05_01_preview::NetworkManagementClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -164,6 +164,15 @@ module Azure::Profiles::NetworkModule::Management::Profile_2015_05_01_Preview
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2015-05-01-preview'

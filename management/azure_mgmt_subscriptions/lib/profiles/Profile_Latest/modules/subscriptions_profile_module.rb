@@ -27,7 +27,7 @@ module Azure::Profiles::SubscriptionsModule::Management::Profile_Latest
     class SubscriptionsClass
       attr_accessor :subscriptions, :tenants, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::Subscriptions::Api_2016_06_01::SubscriptionClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -38,6 +38,15 @@ module Azure::Profiles::SubscriptionsModule::Management::Profile_Latest
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2016-06-01'

@@ -25,7 +25,7 @@ module Azure::Profiles::RelayModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.relay = Relay::RelayClass.new(self, nil, nil)
+      self.relay = Relay::RelayClass.new(self)
     end
 
     def credentials

@@ -25,7 +25,7 @@ module Azure::Profiles::PolicyModule::Management::Profile_2015_10_01_Preview
 
       reset!(options)
 
-      self.policy = Policy::PolicyClass.new(self, nil, nil)
+      self.policy = Policy::PolicyClass.new(self)
     end
 
     def credentials

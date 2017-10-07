@@ -25,7 +25,7 @@ module Azure::Profiles::LocksModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.locks = Locks::LocksClass.new(self, nil, nil)
+      self.locks = Locks::LocksClass.new(self)
     end
 
     def credentials

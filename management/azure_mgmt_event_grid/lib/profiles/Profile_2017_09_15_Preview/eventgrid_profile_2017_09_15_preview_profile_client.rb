@@ -25,7 +25,7 @@ module Azure::Profiles::EventGridModule::Management::Profile_2017_09_15_Preview
 
       reset!(options)
 
-      self.eventgrid = EventGrid::EventGridClass.new(self, nil, nil)
+      self.eventgrid = EventGrid::EventGridClass.new(self)
     end
 
     def credentials

@@ -25,7 +25,7 @@ module Azure::Profiles::ComputeModule::Management::Profile_2015_06_15
 
       reset!(options)
 
-      self.compute = Compute::ComputeClass.new(self, nil, nil)
+      self.compute = Compute::ComputeClass.new(self)
     end
 
     def credentials

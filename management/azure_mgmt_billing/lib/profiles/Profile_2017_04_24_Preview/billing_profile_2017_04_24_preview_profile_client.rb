@@ -25,7 +25,7 @@ module Azure::Profiles::BillingModule::Management::Profile_2017_04_24_Preview
 
       reset!(options)
 
-      self.billing = Billing::BillingClass.new(self, nil, nil)
+      self.billing = Billing::BillingClass.new(self)
     end
 
     def credentials

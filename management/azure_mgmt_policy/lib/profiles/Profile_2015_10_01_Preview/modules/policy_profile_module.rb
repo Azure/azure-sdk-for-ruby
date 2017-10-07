@@ -23,7 +23,7 @@ module Azure::Profiles::PolicyModule::Management::Profile_2015_10_01_Preview
     class PolicyClass
       attr_accessor :policy_assignments, :policy_definitions, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::Policy::Api_2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -34,6 +34,15 @@ module Azure::Profiles::PolicyModule::Management::Profile_2015_10_01_Preview
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2015-10-01-preview'

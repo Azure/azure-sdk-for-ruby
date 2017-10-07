@@ -33,15 +33,15 @@ module Azure::Profiles::Management::Profile_Azure_Stack
 
       reset!(options)
 
-      self.storage = Storage::StorageClass.new(self, nil, nil)
-      self.network = Network::NetworkClass.new(self, nil, nil)
-      self.compute = Compute::ComputeClass.new(self, nil, nil)
-      self.features = Features::FeaturesClass.new(self, nil, nil)
-      self.links = Links::LinksClass.new(self, nil, nil)
-      self.locks = Locks::LocksClass.new(self, nil, nil)
-      self.policy = Policy::PolicyClass.new(self, nil, nil)
-      self.resources = Resources::ResourcesClass.new(self, nil, nil)
-      self.subscriptions = Subscriptions::SubscriptionsClass.new(self, nil, nil)
+      self.storage = Storage::StorageClass.new(self)
+      self.network = Network::NetworkClass.new(self)
+      self.compute = Compute::ComputeClass.new(self)
+      self.features = Features::FeaturesClass.new(self)
+      self.links = Links::LinksClass.new(self)
+      self.locks = Locks::LocksClass.new(self)
+      self.policy = Policy::PolicyClass.new(self)
+      self.resources = Resources::ResourcesClass.new(self)
+      self.subscriptions = Subscriptions::SubscriptionsClass.new(self)
     end
 
     def credentials

@@ -25,7 +25,7 @@ module Azure::Profiles::SearchModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.search = Search::SearchClass.new(self, nil, nil)
+      self.search = Search::SearchClass.new(self)
     end
 
     def credentials

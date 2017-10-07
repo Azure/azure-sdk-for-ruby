@@ -25,7 +25,7 @@ module Azure::Profiles::RedisModule::Management::Profile_2015_08_01
 
       reset!(options)
 
-      self.redis = Redis::RedisClass.new(self, nil, nil)
+      self.redis = Redis::RedisClass.new(self)
     end
 
     def credentials

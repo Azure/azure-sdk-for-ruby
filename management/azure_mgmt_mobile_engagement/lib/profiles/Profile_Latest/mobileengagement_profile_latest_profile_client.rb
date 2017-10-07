@@ -25,7 +25,7 @@ module Azure::Profiles::MobileEngagementModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.mobileengagement = MobileEngagement::MobileEngagementClass.new(self, nil, nil)
+      self.mobileengagement = MobileEngagement::MobileEngagementClass.new(self)
     end
 
     def credentials

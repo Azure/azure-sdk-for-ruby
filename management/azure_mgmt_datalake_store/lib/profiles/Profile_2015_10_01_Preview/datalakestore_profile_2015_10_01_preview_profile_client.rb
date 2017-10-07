@@ -25,7 +25,7 @@ module Azure::Profiles::DataLakeStoreModule::Management::Profile_2015_10_01_Prev
 
       reset!(options)
 
-      self.datalakestore = DataLakeStore::DataLakeStoreClass.new(self, nil, nil)
+      self.datalakestore = DataLakeStore::DataLakeStoreClass.new(self)
     end
 
     def credentials

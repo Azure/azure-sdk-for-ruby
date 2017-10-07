@@ -25,7 +25,7 @@ module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01
 
       reset!(options)
 
-      self.scheduler = Scheduler::SchedulerClass.new(self, nil, nil)
+      self.scheduler = Scheduler::SchedulerClass.new(self)
     end
 
     def credentials

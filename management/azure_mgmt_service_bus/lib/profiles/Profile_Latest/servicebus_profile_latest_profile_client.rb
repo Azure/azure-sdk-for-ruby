@@ -25,7 +25,7 @@ module Azure::Profiles::ServiceBusModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.servicebus = ServiceBus::ServiceBusClass.new(self, nil, nil)
+      self.servicebus = ServiceBus::ServiceBusClass.new(self)
     end
 
     def credentials

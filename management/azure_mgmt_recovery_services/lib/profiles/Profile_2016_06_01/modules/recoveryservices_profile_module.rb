@@ -55,7 +55,7 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
     class RecoveryServicesClass
       attr_accessor :vault_certificates, :registered_identities, :replication_usages, :vaults, :operations, :vault_extended_info_operations, :usages, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url, options)
+      def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
         client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
         if(client.respond_to?(:subscription_id))
@@ -71,6 +71,15 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
         self.model_classes = ModelClasses.new
       end
 
+      #
+      # Method to get the client object based on the version
+      # If the version is invalid, an exception is raised
+      #
+      # @param version [String] The version of the required
+      # client object.
+      #
+      # @return Client object
+      #
       def get_client(version)
         case version
           when '2016-06-01'

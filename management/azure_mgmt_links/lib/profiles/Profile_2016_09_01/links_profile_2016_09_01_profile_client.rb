@@ -25,7 +25,7 @@ module Azure::Profiles::LinksModule::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.links = Links::LinksClass.new(self, nil, nil)
+      self.links = Links::LinksClass.new(self)
     end
 
     def credentials

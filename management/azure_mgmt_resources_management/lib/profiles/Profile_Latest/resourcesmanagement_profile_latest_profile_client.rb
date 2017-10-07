@@ -25,7 +25,7 @@ module Azure::Profiles::ResourcesManagementModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.resourcesmanagement = ResourcesManagement::ResourcesManagementClass.new(self, nil, nil)
+      self.resourcesmanagement = ResourcesManagement::ResourcesManagementClass.new(self)
     end
 
     def credentials

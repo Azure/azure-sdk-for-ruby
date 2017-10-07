@@ -25,7 +25,7 @@ module Azure::Profiles::StorageModule::Management::Profile_2015_05_01_Preview
 
       reset!(options)
 
-      self.storage = Storage::StorageClass.new(self, nil, nil)
+      self.storage = Storage::StorageClass.new(self)
     end
 
     def credentials

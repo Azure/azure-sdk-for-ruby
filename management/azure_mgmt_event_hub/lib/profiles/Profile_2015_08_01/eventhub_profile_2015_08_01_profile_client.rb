@@ -25,7 +25,7 @@ module Azure::Profiles::EventHubModule::Management::Profile_2015_08_01
 
       reset!(options)
 
-      self.eventhub = EventHub::EventHubClass.new(self, nil, nil)
+      self.eventhub = EventHub::EventHubClass.new(self)
     end
 
     def credentials
