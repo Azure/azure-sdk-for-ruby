@@ -44,7 +44,7 @@ class RequireFileGenerator
           Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib/profiles")
           profiles_folders = Dir['*'].reject{|o| not File.directory?(o)}
           profiles_folders.each do |profile_folder|
-            if profile_folder != 'utils'
+            if profile_folder != 'common'
               Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib/profiles/#{profile_folder}")
               files_list = Dir['*'].reject{|o| File.directory?(o)}
               files_list.each do |file|
@@ -74,7 +74,7 @@ class RequireFileGenerator
     Dir.chdir("#{@current_location}/#{@azure_sdk_location}/lib")
     sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
     sub_dirs.each do |sub_dir|
-      if(sub_dir != 'utils' && sub_dir != 'azure_sdk' )
+      if(sub_dir != 'common' && sub_dir != 'azure_sdk' )
         Dir.chdir("#{@current_location}/#{@azure_sdk_location}/lib/#{sub_dir}")
         sub_files_list = Dir['*'].reject{|o| File.directory?(o)}
         sub_files_list.each do |file|

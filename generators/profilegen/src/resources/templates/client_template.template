@@ -14,8 +14,8 @@ require '<%= @profile_name.downcase %>/<%= @module_definition_file_name %>'
 <%- @file_names.each do |file_name| -%>
 require '<%= @profile_name.downcase %>/modules/<%= file_name %>'
 <%- end -%>
-require 'utils/configurable'
-require 'utils/default'
+require 'common/configurable'
+require 'common/default'
 <%- end -%>
 
 module Azure::Profiles::<%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management::<%= @profile_name %>
