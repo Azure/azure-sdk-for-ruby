@@ -42,9 +42,8 @@ class ProfileGenerator
   private
   def generate_profile_sdk
     generate_modules
-    get_module_definition_file_name
-    generate_client
     generate_module_definition
+    generate_client
   end
 
   def generate_modules
@@ -83,6 +82,7 @@ class ProfileGenerator
   end
 
   def generate_module_definition
+    get_module_definition_file_name
     file = get_module_definition_file
     file.write(get_renderer(ProfileTemplates.module_definition_template))
   end
