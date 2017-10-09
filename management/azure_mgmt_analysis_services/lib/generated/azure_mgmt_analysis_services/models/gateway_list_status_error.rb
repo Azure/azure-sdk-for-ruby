@@ -12,6 +12,7 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [GatewayError] Error of the list gateway status.
       attr_accessor :error
 

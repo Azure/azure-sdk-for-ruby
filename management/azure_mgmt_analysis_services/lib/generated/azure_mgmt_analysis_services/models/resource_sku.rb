@@ -13,6 +13,7 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of the SKU level.
       attr_accessor :name
 

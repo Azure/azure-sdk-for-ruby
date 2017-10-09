@@ -12,6 +12,7 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code
       attr_accessor :code
 

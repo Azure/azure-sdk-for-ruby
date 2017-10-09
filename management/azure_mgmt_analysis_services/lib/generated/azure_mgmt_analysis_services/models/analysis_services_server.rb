@@ -8,10 +8,11 @@ module Azure::ARM::AnalysisServices
     #
     # Represents an instance of an Analysis Services resource.
     #
-    class AnalysisServicesServer < Resource
+    class AnalysisServicesServer < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ServerAdministrators] A collection of AS server administrators
       attr_accessor :as_administrators
 

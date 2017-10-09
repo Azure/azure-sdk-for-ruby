@@ -12,6 +12,7 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<IPv4FirewallRule>] An array of firewall rules.
       attr_accessor :firewall_rules
 
