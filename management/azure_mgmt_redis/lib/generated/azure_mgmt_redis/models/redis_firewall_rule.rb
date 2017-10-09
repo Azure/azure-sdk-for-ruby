@@ -6,41 +6,32 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Response to put/get patch schedules for Redis cache.
+    # A firewall rule on a redis cache has a name, and describes a contiguous
+    # range of IP addresses permitted to connect
     #
-    class RedisPatchSchedule
+    class RedisFirewallRule < ProxyResource
 
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [String] Resource ID.
-      attr_accessor :id
+      # @return [String] lowest IP address included in the range
+      attr_accessor :start_ip
 
-      # @return [String] Resource name.
-      attr_accessor :name
-
-      # @return [String] Resource type.
-      attr_accessor :type
-
-      # @return [String] Resource location.
-      attr_accessor :location
-
-      # @return [Array<ScheduleEntry>] List of patch schedules for a Redis
-      # cache.
-      attr_accessor :schedule_entries
+      # @return [String] highest IP address included in the range
+      attr_accessor :end_ip
 
 
       #
-      # Mapper for RedisPatchSchedule class as Ruby Hash.
+      # Mapper for RedisFirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RedisPatchSchedule',
+          serialized_name: 'RedisFirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'RedisPatchSchedule',
+            class_name: 'RedisFirewallRule',
             model_properties: {
               id: {
                 required: false,
@@ -66,27 +57,18 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              location: {
-                required: false,
-                read_only: true,
-                serialized_name: 'location',
+              start_ip: {
+                required: true,
+                serialized_name: 'properties.startIP',
                 type: {
                   name: 'String'
                 }
               },
-              schedule_entries: {
+              end_ip: {
                 required: true,
-                serialized_name: 'properties.scheduleEntries',
+                serialized_name: 'properties.endIP',
                 type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'ScheduleEntryElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'ScheduleEntry'
-                      }
-                  }
+                  name: 'String'
                 }
               }
             }

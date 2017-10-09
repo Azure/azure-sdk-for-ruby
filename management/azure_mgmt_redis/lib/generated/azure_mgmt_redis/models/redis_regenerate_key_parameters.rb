@@ -12,6 +12,7 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RedisKeyType] The Redis access key to regenerate. Possible
       # values include: 'Primary', 'Secondary'
       attr_accessor :key_type

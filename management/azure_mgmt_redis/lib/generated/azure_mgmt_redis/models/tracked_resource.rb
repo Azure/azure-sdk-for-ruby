@@ -6,39 +6,31 @@
 module Azure::ARM::Redis
   module Models
     #
-    # The Resource definition.
+    # The resource model definition for a ARM tracked top level resource
     #
-    class Resource
+    class TrackedResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Resource ID.
-      attr_accessor :id
-
-      # @return [String] Resource name.
-      attr_accessor :name
-
-      # @return [String] Resource type.
-      attr_accessor :type
-
-      # @return [String] Resource location.
-      attr_accessor :location
-
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
+      # @return [String] The geo-location where the resource lives
+      attr_accessor :location
+
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for TrackedResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'TrackedResource',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'TrackedResource',
             model_properties: {
               id: {
                 required: false,
@@ -64,13 +56,6 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -83,6 +68,13 @@ module Azure::ARM::Redis
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               }
             }

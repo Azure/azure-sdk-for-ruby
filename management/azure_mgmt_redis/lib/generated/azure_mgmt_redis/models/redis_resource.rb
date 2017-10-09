@@ -8,10 +8,11 @@ module Azure::ARM::Redis
     #
     # A single Redis item in List or Get Operation.
     #
-    class RedisResource < Resource
+    class RedisResource < TrackedResource
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] All Redis Settings. Few possible keys:
       # rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
       # etc.
@@ -100,13 +101,6 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -119,6 +113,13 @@ module Azure::ARM::Redis
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               redis_configuration: {

@@ -12,6 +12,7 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Status message
       attr_accessor :message
 
