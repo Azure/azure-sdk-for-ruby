@@ -12,6 +12,7 @@ module Azure::ARM::Features
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the feature.
       attr_accessor :name
 
