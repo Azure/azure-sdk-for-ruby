@@ -11,30 +11,46 @@ The following is an example of a Profile:
 ```json
 [
   {
-    "name": "Api_2016_06_30",
-    "ruby_version": "1.0.0",
-    "resourceTypes": {
-      "Microsoft.Compute" : {
-        "version": "2016_06_30",
-        "models": ["VirtualMachine", "Disk"]
+      "name": "Profile_Azure_Stack",
+      "resourceTypes": {
+        "Microsoft.Storage": {
+          "2017-06-01": ["*"]
+        },
+        "Microsoft.Network" : {
+          "2017-09-01": ["*"]
+        },
+        "Microsoft.Compute" : {
+          "2017-03-30": ["*"]
+        },
+        "Microsoft.Features" : {
+          "2015-12-01": ["*"]
+        },
+        "Microsoft.Links" : {
+          "2016-09-01": ["*"]
+        },
+        "Microsoft.Locks" : {
+          "2016-09-01": ["*"]
+        },
+        "Microsoft.Policy" : {
+          "2017-06-01-preview": ["*"]
+        },
+        "Microsoft.Resources" : {
+          "2017-05-10": ["*"]
+        },
+        "Microsoft.Subscriptions" : {
+          "2016-06-01": ["*"]
+        }
       },
-      "Microsoft.Network" : {
-        "version": "2016_06_30",
-        "models": ["Subnet", "Usage"]
-      }
+      "output_dir": "../../../azure_sdk/lib"
     }
-  }
 ]
 ```
-
-The above profile (API_2016_06_30) defines 2 resource types - Microsoft.Compute(version: 2016_06_30) & Microsoft.Network(version: 
-2016_06_30). 
 
 ##Generator
 The following command must be used to generate the profile gems:
 
 ```ruby
-ruby profile_generator_client.rb --output_dir='/Users/saranganrajamanickam/Projects/azure-sdk-for-ruby/profiles' --dir_metadata='./res/dir_metadata.json' --profile='../spec/res/profile.json' --version='1.0.0'
+ruby profile_generator_client.rb --dir_metadata='./res/dir_metadata.json' --profile='../spec/res/profile.json'
 ```
 
 ##
