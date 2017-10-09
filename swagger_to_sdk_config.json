@@ -643,9 +643,9 @@
     "azure_mgmt_stream_analytics": {
         "markdown": "specification/streamanalytics/resource-manager/readme.md",
         "autorest_options": {
-          "Namespace": "Azure::ARM::StreamAnalytics",
-          "PackageName": "azure_mgmt_stream_analytics",
-          "PackageVersion": "0.10.0"
+          "namespace": "Azure::ARM::StreamAnalytics",
+          "package-name": "azure_mgmt_stream_analytics",
+          "package-version": "0.14.0"
         },
         "output_dir": "management/azure_mgmt_stream_analytics/lib",
         "wrapper_filesOrDirs": [
