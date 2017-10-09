@@ -13,6 +13,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The certificate's subject name.
       attr_accessor :subject
 

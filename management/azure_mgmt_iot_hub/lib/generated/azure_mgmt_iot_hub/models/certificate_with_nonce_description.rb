@@ -12,6 +12,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [CertificatePropertiesWithNonce]
       attr_accessor :properties
 

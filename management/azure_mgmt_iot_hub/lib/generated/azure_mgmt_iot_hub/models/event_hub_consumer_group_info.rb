@@ -12,6 +12,7 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] The tags.
       attr_accessor :tags
 
