@@ -12,6 +12,7 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The subscription location placement ID. The ID
       # indicates which regions are visible for a subscription. For example, a
       # subscription with a location placement Id of Public_2014-09-01 has
