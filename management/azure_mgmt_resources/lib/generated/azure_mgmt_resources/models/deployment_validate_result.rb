@@ -12,6 +12,7 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ResourceManagementErrorWithDetails] Validation error.
       attr_accessor :error
 

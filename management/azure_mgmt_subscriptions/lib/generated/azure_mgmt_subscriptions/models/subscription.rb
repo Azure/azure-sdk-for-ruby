@@ -12,6 +12,7 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The fully qualified ID for the subscription. For
       # example, /subscriptions/00000000-0000-0000-0000-000000000000.
       attr_accessor :id
