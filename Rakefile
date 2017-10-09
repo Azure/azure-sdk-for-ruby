@@ -189,7 +189,7 @@ namespace :arm do
   end
 
   desc 'Regen all profiles'
-  task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles, :regen_all_require_files] do
+  task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles] do
     puts 'Regenerated all profiles'
   end
 end
