@@ -23,16 +23,6 @@ module Azure::ARM::IotHub
     # @return [String] The version of the API.
     attr_reader :api_version
 
-    # @return [String] The name of the resource group that contains the IoT
-    # hub.
-    attr_accessor :resource_group_name
-
-    # @return [String] The name of the IoT hub.
-    attr_accessor :resource_name
-
-    # @return [String] The name of the certificate
-    attr_accessor :certificate_name
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 

@@ -139,7 +139,7 @@ module Azure::ARM::Network
                 }
               },
               source_address_prefix: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.sourceAddressPrefix',
                 type: {
                   name: 'String'
@@ -175,7 +175,7 @@ module Azure::ARM::Network
                 }
               },
               destination_address_prefix: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.destinationAddressPrefix',
                 type: {
                   name: 'String'

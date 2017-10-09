@@ -2,37 +2,57 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+require 'azure_mgmt_analysis_services'
 require 'azure_mgmt_authorization'
+require 'azure_mgmt_automation'
 require 'azure_mgmt_batch'
+require 'azure_mgmt_billing'
 require 'azure_mgmt_cdn'
 require 'azure_mgmt_cognitive_services'
 require 'azure_mgmt_commerce'
 require 'azure_mgmt_compute'
+require 'azure_mgmt_consumption'
+require 'azure_mgmt_container_instance'
 require 'azure_mgmt_container_registry'
+require 'azure_mgmt_customer_insights'
 require 'azure_mgmt_datalake_analytics'
 require 'azure_mgmt_datalake_store'
 require 'azure_mgmt_devtestlabs'
 require 'azure_mgmt_dns'
+require 'azure_mgmt_event_grid'
+require 'azure_mgmt_event_hub'
 require 'azure_mgmt_features'
 require 'azure_mgmt_graph'
 require 'azure_mgmt_iot_hub'
 require 'azure_mgmt_key_vault'
+require 'azure_mgmt_links'
 require 'azure_mgmt_locks'
 require 'azure_mgmt_logic'
 require 'azure_mgmt_machine_learning'
+require 'azure_mgmt_managed_applications'
+require 'azure_mgmt_marketplace_ordering'
 require 'azure_mgmt_media_services'
 require 'azure_mgmt_mobile_engagement'
+require 'azure_mgmt_monitor'
 require 'azure_mgmt_network'
 require 'azure_mgmt_notification_hubs'
+require 'azure_mgmt_operational_insights'
 require 'azure_mgmt_policy'
 require 'azure_mgmt_powerbi_embedded'
+require 'azure_mgmt_recovery_services'
+require 'azure_mgmt_recovery_services_backup'
+require 'azure_mgmt_recovery_services_site_recovery'
 require 'azure_mgmt_redis'
+require 'azure_mgmt_relay'
 require 'azure_mgmt_resources'
+require 'azure_mgmt_resources_management'
 require 'azure_mgmt_scheduler'
 require 'azure_mgmt_search'
 require 'azure_mgmt_server_management'
 require 'azure_mgmt_service_bus'
+require 'azure_mgmt_service_fabric'
 require 'azure_mgmt_sql'
+require 'azure_mgmt_stor_simple8000_series'
 require 'azure_mgmt_storage'
 require 'azure_mgmt_stream_analytics'
 require 'azure_mgmt_subscriptions'
@@ -48,37 +68,54 @@ module Azure::ARM
     # @return [Hash] Supported Azure::ARM clients.
     #
     @@supported_clients = {
+        :analysis_services => 'Azure::ARM::AnalysisServices::AnalysisServicesManagementClient',
         :authorization => 'Azure::ARM::Authorization::AuthorizationManagementClient',
+        :automation => 'Azure::ARM::Automation::AutomationClient',
         :batch => 'Azure::ARM::Batch::BatchManagementClient',
+        :billing => 'Azure::ARM::Batch::BillingManagementClient',
         :cdn => 'Azure::ARM::CDN::CdnManagementClient',
         :cognitive_services => 'Azure::ARM::CognitiveServices::CognitiveServicesManagementClient',
         :commerce => 'Azure::ARM::Commerce::UsageManagementClient',
         :compute => 'Azure::ARM::Compute::ComputeManagementClient',
+        :consumption => 'Azure::ARM::Compute::ConsumptionManagementClient',
+        :container_instance => 'Azure::ARM::ContainerInstance::ContainerInstanceManagementClient',
         :container_registry => 'Azure::ARM::ContainerRegistry::ContainerRegistry::ContainerRegistryManagementClient',
+        :customer_insights => 'Azure::ARM::CustomerInsights::CustomerInsightsManagementClient',
         :datalake_analytics => 'Azure::ARM::DataLakeAnalytics::DataLakeAnalyticsAccountManagementClient',
         :datalake_store => 'Azure::ARM::DataLakeStore::DataLakeStoreAccountManagementClient',
         :devtestlabs => 'Azure::ARM::DevTestLabs::DevTestLabsClient',
         :dns => 'Azure::ARM::Dns::DnsManagementClient',
+        :event_grid => 'Azure::ARM::EventGrid::EventGridManagementClient',
+        :event_hub => 'Azure::ARM::EventHub::EventHubManagementClient',
         :features => 'Azure::ARM::Features::FeatureClient',
         :graph_rbac => 'Azure::ARM::Graph::GraphRbacManagementClient',
         :iot_hub => 'Azure::ARM::IotHub::IotHubClient',
         :key_vault => 'Azure::ARM::KeyVault::KeyVaultManagementClient',
+        :links => 'Azure::ARM::Locks::ManagementLinkClient',
         :locks => 'Azure::ARM::Locks::ManagementLockClient',
         :logic => 'Azure::ARM::Logic::LogicManagementClient',
         :machine_learning => 'Azure::ARM::MachineLearning::AzureMLWebServicesManagementClient',
+        :managed_applications => 'Azure::ARM::ManagedApplications::ManagedApplicationClient',
+        :marketplace_ordering => 'Azure::ARM::Marketplace_Ordering::MarketplaceOrderingAgreements',
         :media_services => 'Azure::ARM::MediaServices::MediaServicesManagementClient',
         :mobile_engagement => 'Azure::ARM::MobileEngagement::EngagementManagementClient',
+        :monitor => 'Azure::ARM::Monitor::MonitorManagementClient',
         :network => 'Azure::ARM::Network::NetworkManagementClient',
         :notification_hubs => 'Azure::ARM::NotificationHubs::NotificationHubsManagementClient',
+        :operational_insights => 'Azure::ARM::OperationalInsights::OperationalInsightsManagementClient',
         :policy => 'Azure::ARM::Policy::PolicyClient',
         :powerbi_embedded => 'Azure::ARM::PowerBiEmbedded::PowerBIEmbeddedManagementClient',
         :redis => 'Azure::ARM::Redis::RedisManagementClient',
+        :relay => 'Azure::ARM::Relay::RelayManagementClient',
         :resources => 'Azure::ARM::Resources::ResourceManagementClient',
+        :resources_management => 'Azure::ARM::ResourcesManagement::ManagementGroupsAPI',
         :scheduler => 'Azure::ARM::Scheduler::SchedulerManagementClient',
         :search => 'Azure::ARM::Search::SearchManagementClient',
         :server_management => 'Azure::ARM::ServerManagement::ServerManagement',
         :service_bus => 'Azure::ARM::ServiceBus::ServiceBusManagementClient',
+        :service_fabric => 'Azure::ARM::ServiceFabric::ServiceFabricManagementClient ',
         :sql => 'Azure::ARM::SQL::SqlManagementClient',
+        :stor_simple8000_series => 'Azure::ARM::StorSimple8000Series::StorSimple8000SeriesManagementClient',
         :storage => 'Azure::ARM::Storage::StorageManagementClient',
         :stream_analytics => 'Azure::ARM::StreamAnalytics::StreamAnalyticsManagementClient',
         :subscription => 'Azure::ARM::Subscriptions::SubscriptionClient',

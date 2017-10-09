@@ -8,7 +8,7 @@ module Azure::ARM::Redis
     #
     # A single Redis item in List or Get Operation.
     #
-    class RedisResource < Resource
+    class RedisResource < TrackedResource
 
       include MsRestAzure
 
@@ -100,13 +100,6 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -119,6 +112,13 @@ module Azure::ARM::Redis
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               redis_configuration: {

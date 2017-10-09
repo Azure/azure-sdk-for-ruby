@@ -21,7 +21,7 @@ module Azure::ARM::IotHub
       # @return [String] The certificate's thumbprint.
       attr_accessor :thumbprint
 
-      # @return [Boolean] Determines wether certificate has been verified.
+      # @return [Boolean] Determines whether certificate has been verified.
       attr_accessor :is_verified
 
       # @return [DateTime] The certificate's create date and time.

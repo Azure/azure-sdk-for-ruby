@@ -8,7 +8,7 @@ module Azure::ARM::Redis
     #
     # Parameters supplied to the Create Redis operation.
     #
-    class RedisCreateParameters < Resource
+    class RedisCreateParameters < TrackedResource
 
       include MsRestAzure
 
@@ -77,13 +77,6 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -96,6 +89,13 @@ module Azure::ARM::Redis
                         name: 'String'
                       }
                   }
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
                 }
               },
               redis_configuration: {

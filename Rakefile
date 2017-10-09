@@ -148,9 +148,19 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::Authorization',
         version: version
     },
+    azure_mgmt_automation: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/automation/resource-manager/readme.md',
+        ns: 'Azure::ARM::Automation',
+        version: version
+    },
     azure_mgmt_batch: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/batch/resource-manager/readme.md',
         ns: 'Azure::ARM::Batch',
+        version: version
+    },
+    azure_mgmt_billing: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/billing/resource-manager/readme.md',
+        ns: 'Azure::ARM::Billing',
         version: version
     },
     azure_mgmt_cdn: {
@@ -173,9 +183,24 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::Compute',
         version: version
     },
+    azure_mgmt_consumption: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/consumption/resource-manager/readme.md',
+        ns: 'Azure::ARM::Consumption',
+        version: version
+    },
+    azure_mgmt_container_instance: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/containerinstance/resource-manager/readme.md',
+        ns: 'Azure::ARM::ContainerInstance',
+        version: version
+    },
     azure_mgmt_container_registry: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/containerregistry/resource-manager/readme.md',
         ns: 'Azure::ARM::ContainerRegistry',
+        version: version
+    },
+    azure_mgmt_customer_insights: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/customer-insights/resource-manager/readme.md',
+        ns: 'Azure::ARM::CustomerInsights',
         version: version
     },
     azure_mgmt_datalake_analytics: {
@@ -196,6 +221,11 @@ REGEN_METADATA = {
     azure_mgmt_dns: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/dns/resource-manager/readme.md',
         ns: 'Azure::ARM::Dns',
+        version: version
+    },
+    azure_mgmt_event_grid: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/eventgrid/resource-manager/readme.md',
+        ns: 'Azure::ARM::EventGrid',
         version: version
     },
     azure_mgmt_event_hub: {
@@ -231,6 +261,12 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::KeyVault',
         version: version
     },
+    azure_mgmt_links: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
+        ns: 'Azure::ARM::Links',
+        version: version,
+        options: 'package-links'
+    },
     azure_mgmt_locks: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Locks',
@@ -247,6 +283,17 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::MachineLearning',
         version: version,
         options: 'package-webservices'
+    },
+    azure_mgmt_managed_applications: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
+        ns: 'Azure::ARM::ManagedApplications',
+        version: version,
+        options: 'package-managedapplications'
+    },
+    azure_mgmt_marketplace_ordering: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/marketplaceordering/resource-manager/readme.md',
+        ns: 'Azure::ARM::MarketplaceOrdering',
+        version: version
     },
     azure_mgmt_media_services: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/mediaservices/resource-manager/readme.md',
@@ -273,6 +320,11 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::NotificationHubs',
         version: version
     },
+    azure_mgmt_operational_insights: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/operationalinsights/resource-manager/readme.md',
+        ns: 'Azure::ARM::OperationalInsights',
+        version: version
+    },
     azure_mgmt_policy: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
         ns: 'Azure::ARM::Policy',
@@ -294,9 +346,19 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::RecoveryServicesBackup',
         version: version
     },
+    azure_mgmt_recovery_services_site_recovery: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/recoveryservicessiterecovery/resource-manager/readme.md',
+        ns: 'Azure::ARM::RecoveryServicesSiteRecovery',
+        version: version
+    },
     azure_mgmt_redis: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/redis/resource-manager/readme.md',
         ns: 'Azure::ARM::Redis',
+        version: version
+    },
+    azure_mgmt_relay: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/relay/resource-manager/readme.md',
+        ns: 'Azure::ARM::Relay',
         version: version
     },
     azure_mgmt_resources: {
@@ -304,6 +366,12 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::Resources',
         version: version,
         options: 'package-resources'
+    },
+    azure_mgmt_resources_management: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/resources/resource-manager/readme.md',
+        ns: 'Azure::ARM::ResourcesManagement',
+        version: version,
+        options: 'package-management'
     },
     azure_mgmt_scheduler: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/scheduler/resource-manager/readme.md',
@@ -325,9 +393,20 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::ServiceBus',
         version: version
     },
+    azure_mgmt_service_fabric: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/servicefabric/resource-manager/readme.md',
+        ns: 'Azure::ARM::ServiceFabric',
+        version: version,
+        tag: "package-2016-09"
+    },
     azure_mgmt_sql: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/sql/resource-manager/readme.md',
         ns: 'Azure::ARM::SQL',
+        version: version
+    },
+    azure_mgmt_stor_simple8000_series: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current/specification/storsimple8000series/resource-manager/readme.md',
+        ns: 'Azure::ARM::StorSimple8000Series',
         version: version
     },
     azure_mgmt_storage: {
