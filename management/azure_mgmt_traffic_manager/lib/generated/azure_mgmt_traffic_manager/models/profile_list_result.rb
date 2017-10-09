@@ -12,6 +12,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Profile>] Gets the list of Traffic manager profiles.
       attr_accessor :value
 

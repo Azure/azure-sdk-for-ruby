@@ -12,6 +12,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The relative DNS name provided by this Traffic Manager
       # profile. This value is combined with the DNS domain name used by Azure
       # Traffic Manager to form the fully-qualified domain name (FQDN) of the

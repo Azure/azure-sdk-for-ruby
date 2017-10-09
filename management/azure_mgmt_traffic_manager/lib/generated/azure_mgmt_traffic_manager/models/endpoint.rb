@@ -12,6 +12,7 @@ module Azure::ARM::TrafficManager
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Azure Resource URI of the of the endpoint. Not
       # applicable to endpoints of type 'ExternalEndpoints'.
       attr_accessor :target_resource_id

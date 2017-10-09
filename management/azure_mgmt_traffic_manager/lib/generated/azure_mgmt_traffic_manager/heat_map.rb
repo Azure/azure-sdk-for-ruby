@@ -80,7 +80,7 @@ module Azure::ARM::TrafficManager
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       heat_map_type = 'default'
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2017-09-01-preview'
 
 
       request_headers = {}
@@ -95,7 +95,7 @@ module Azure::ARM::TrafficManager
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'profileName' => profile_name,'heatMapType' => heat_map_type},
-          query_params: {'topLeft' => top_left.nil? ? nil : top_left.join(','),'botRight' => bot_right.nil? ? nil : bot_right.join(','),'api-version' => @client.api_version},
+          query_params: {'topLeft' => top_left.nil? ? nil : top_left.join(','),'botRight' => bot_right.nil? ? nil : bot_right.join(','),'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

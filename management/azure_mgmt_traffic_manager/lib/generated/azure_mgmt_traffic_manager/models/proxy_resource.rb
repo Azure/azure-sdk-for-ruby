@@ -9,10 +9,11 @@ module Azure::ARM::TrafficManager
     # The resource model definition for a ARM proxy resource. It will have
     # everything other than required location and tags
     #
-    class ProxyResource < Resource
+    class ProxyResource < MsRestAzure::Resource
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       #
       # Mapper for ProxyResource class as Ruby Hash.

@@ -6,35 +6,29 @@
 module Azure::ARM::TrafficManager
   module Models
     #
-    # The core properties of ARM resources
+    # Class representing a Traffic Manager Real User Metrics key response.
     #
-    class Resource
+    class TrafficManagerUserMetricsKeyModel < ProxyResource
 
       include MsRestAzure
 
-      # @return [String] Fully qualified resource Id for the resource. Ex -
-      # /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-      attr_accessor :id
-
-      # @return [String] The name of the resource
-      attr_accessor :name
-
-      # @return [String] The type of the resource. Ex-
-      # Microsoft.Network/trafficmanagerProfiles.
-      attr_accessor :type
+      include MsRest::JSONable
+      # @return [String] The key returned by the Realtime User Metrics
+      # operation.
+      attr_accessor :key
 
 
       #
-      # Mapper for Resource class as Ruby Hash.
+      # Mapper for TrafficManagerUserMetricsKeyModel class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'Resource',
+          serialized_name: 'TrafficManagerUserMetricsKeyModel',
           type: {
             name: 'Composite',
-            class_name: 'Resource',
+            class_name: 'TrafficManagerUserMetricsKeyModel',
             model_properties: {
               id: {
                 required: false,
@@ -56,6 +50,13 @@ module Azure::ARM::TrafficManager
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              key: {
+                required: false,
+                serialized_name: 'properties.key',
                 type: {
                   name: 'String'
                 }
