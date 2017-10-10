@@ -14,7 +14,7 @@ module Azure::Search::Management::Profile_2015_08_19
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :search
+    attr_reader  :search
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Search::Management::Profile_2015_08_19
 
       reset!(options)
 
-      self.search = SearchClass.new(self)
+      @search = SearchClass.new(self)
     end
 
     def credentials

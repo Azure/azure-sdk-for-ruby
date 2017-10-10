@@ -108,7 +108,7 @@ module Azure::MobileEngagement::Management::Profile_Latest
     # MobileEngagement
     #
     class MobileEngagementClass
-      attr_accessor :app_collections, :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :configurable, :base_url, :options, :model_classes
+      attr_reader :app_collections, :apps, :supported_platforms, :campaigns, :devices, :export_tasks, :import_tasks, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -116,14 +116,14 @@ module Azure::MobileEngagement::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.app_collections = client.app_collections
-        self.apps = client.apps
-        self.supported_platforms = client.supported_platforms
-        self.campaigns = client.campaigns
-        self.devices = client.devices
-        self.export_tasks = client.export_tasks
-        self.import_tasks = client.import_tasks
-        self.model_classes = ModelClasses.new
+        @app_collections = client.app_collections
+        @apps = client.apps
+        @supported_platforms = client.supported_platforms
+        @campaigns = client.campaigns
+        @devices = client.devices
+        @export_tasks = client.export_tasks
+        @import_tasks = client.import_tasks
+        @model_classes = ModelClasses.new
       end
 
       #

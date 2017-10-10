@@ -14,7 +14,7 @@ module Azure::Network::Management::Profile_2016_03_30
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :network
+    attr_reader  :network
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Network::Management::Profile_2016_03_30
 
       reset!(options)
 
-      self.network = NetworkClass.new(self)
+      @network = NetworkClass.new(self)
     end
 
     def credentials

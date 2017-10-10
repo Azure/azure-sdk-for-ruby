@@ -40,7 +40,7 @@ module Azure::Monitor::Management::Profile_2016_03_01
     # Monitor
     #
     class MonitorClass
-      attr_accessor :alert_rule_incidents, :alert_rules, :log_profiles, :configurable, :base_url, :options, :model_classes
+      attr_reader :alert_rule_incidents, :alert_rules, :log_profiles, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -48,10 +48,10 @@ module Azure::Monitor::Management::Profile_2016_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.alert_rule_incidents = client.alert_rule_incidents
-        self.alert_rules = client.alert_rules
-        self.log_profiles = client.log_profiles
-        self.model_classes = ModelClasses.new
+        @alert_rule_incidents = client.alert_rule_incidents
+        @alert_rules = client.alert_rules
+        @log_profiles = client.log_profiles
+        @model_classes = ModelClasses.new
       end
 
       #

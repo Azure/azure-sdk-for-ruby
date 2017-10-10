@@ -14,7 +14,7 @@ module Azure::DataLakeAnalytics::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :datalakeanalytics
+    attr_reader  :datalakeanalytics
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::DataLakeAnalytics::Management::Profile_Latest
 
       reset!(options)
 
-      self.datalakeanalytics = DataLakeAnalyticsClass.new(self)
+      @datalakeanalytics = DataLakeAnalyticsClass.new(self)
     end
 
     def credentials

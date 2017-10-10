@@ -14,7 +14,7 @@ module Azure::EventGrid::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :eventgrid
+    attr_reader  :eventgrid
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::EventGrid::Management::Profile_Latest
 
       reset!(options)
 
-      self.eventgrid = EventGridClass.new(self)
+      @eventgrid = EventGridClass.new(self)
     end
 
     def credentials

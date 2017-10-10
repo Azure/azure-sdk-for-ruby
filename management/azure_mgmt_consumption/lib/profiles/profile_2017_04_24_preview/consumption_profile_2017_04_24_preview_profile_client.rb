@@ -14,7 +14,7 @@ module Azure::Consumption::Management::Profile_2017_04_24_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :consumption
+    attr_reader  :consumption
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Consumption::Management::Profile_2017_04_24_Preview
 
       reset!(options)
 
-      self.consumption = ConsumptionClass.new(self)
+      @consumption = ConsumptionClass.new(self)
     end
 
     def credentials

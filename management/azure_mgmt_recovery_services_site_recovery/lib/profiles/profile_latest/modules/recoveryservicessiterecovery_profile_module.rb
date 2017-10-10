@@ -357,7 +357,7 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_Latest
     # RecoveryServicesSiteRecovery
     #
     class RecoveryServicesSiteRecoveryClass
-      attr_accessor :replication_vault_health, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_services_providers, :recovery_points, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_protectable_items, :replication_policies, :operations, :replication_networks, :replication_logical_networks, :replication_jobs, :replication_events, :replication_alert_settings, :configurable, :base_url, :options, :model_classes
+      attr_reader :replication_vault_health, :replication_protected_items, :replication_network_mappings, :replication_fabrics, :replicationv_centers, :replication_storage_classification_mappings, :replication_storage_classifications, :replication_recovery_services_providers, :recovery_points, :replication_recovery_plans, :replication_protection_containers, :replication_protection_container_mappings, :replication_protectable_items, :replication_policies, :operations, :replication_networks, :replication_logical_networks, :replication_jobs, :replication_events, :replication_alert_settings, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -365,27 +365,27 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.replication_vault_health = client.replication_vault_health
-        self.replication_protected_items = client.replication_protected_items
-        self.replication_network_mappings = client.replication_network_mappings
-        self.replication_fabrics = client.replication_fabrics
-        self.replicationv_centers = client.replicationv_centers
-        self.replication_storage_classification_mappings = client.replication_storage_classification_mappings
-        self.replication_storage_classifications = client.replication_storage_classifications
-        self.replication_recovery_services_providers = client.replication_recovery_services_providers
-        self.recovery_points = client.recovery_points
-        self.replication_recovery_plans = client.replication_recovery_plans
-        self.replication_protection_containers = client.replication_protection_containers
-        self.replication_protection_container_mappings = client.replication_protection_container_mappings
-        self.replication_protectable_items = client.replication_protectable_items
-        self.replication_policies = client.replication_policies
-        self.operations = client.operations
-        self.replication_networks = client.replication_networks
-        self.replication_logical_networks = client.replication_logical_networks
-        self.replication_jobs = client.replication_jobs
-        self.replication_events = client.replication_events
-        self.replication_alert_settings = client.replication_alert_settings
-        self.model_classes = ModelClasses.new
+        @replication_vault_health = client.replication_vault_health
+        @replication_protected_items = client.replication_protected_items
+        @replication_network_mappings = client.replication_network_mappings
+        @replication_fabrics = client.replication_fabrics
+        @replicationv_centers = client.replicationv_centers
+        @replication_storage_classification_mappings = client.replication_storage_classification_mappings
+        @replication_storage_classifications = client.replication_storage_classifications
+        @replication_recovery_services_providers = client.replication_recovery_services_providers
+        @recovery_points = client.recovery_points
+        @replication_recovery_plans = client.replication_recovery_plans
+        @replication_protection_containers = client.replication_protection_containers
+        @replication_protection_container_mappings = client.replication_protection_container_mappings
+        @replication_protectable_items = client.replication_protectable_items
+        @replication_policies = client.replication_policies
+        @operations = client.operations
+        @replication_networks = client.replication_networks
+        @replication_logical_networks = client.replication_logical_networks
+        @replication_jobs = client.replication_jobs
+        @replication_events = client.replication_events
+        @replication_alert_settings = client.replication_alert_settings
+        @model_classes = ModelClasses.new
       end
 
       #

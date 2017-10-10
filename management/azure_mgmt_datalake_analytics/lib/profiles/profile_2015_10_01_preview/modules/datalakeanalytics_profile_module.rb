@@ -37,7 +37,7 @@ module Azure::DataLakeAnalytics::Management::Profile_2015_10_01_Preview
     # DataLakeAnalytics
     #
     class DataLakeAnalyticsClass
-      attr_accessor :account, :configurable, :base_url, :options, :model_classes
+      attr_reader :account, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -45,8 +45,8 @@ module Azure::DataLakeAnalytics::Management::Profile_2015_10_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.account = client.account
-        self.model_classes = ModelClasses.new
+        @account = client.account
+        @model_classes = ModelClasses.new
       end
 
       #

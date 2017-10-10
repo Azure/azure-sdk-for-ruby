@@ -67,7 +67,7 @@ module Azure::ServiceBus::Management::Profile_2017_04_01
     # ServiceBus
     #
     class ServiceBusClass
-      attr_accessor :operations, :namespaces, :queues, :topics, :subscriptions, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :namespaces, :queues, :topics, :subscriptions, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -75,16 +75,16 @@ module Azure::ServiceBus::Management::Profile_2017_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.namespaces = client.namespaces
-        self.queues = client.queues
-        self.topics = client.topics
-        self.subscriptions = client.subscriptions
-        self.rules = client.rules
-        self.regions = client.regions
-        self.premium_messaging_regions_operations = client.premium_messaging_regions_operations
-        self.event_hubs = client.event_hubs
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @namespaces = client.namespaces
+        @queues = client.queues
+        @topics = client.topics
+        @subscriptions = client.subscriptions
+        @rules = client.rules
+        @regions = client.regions
+        @premium_messaging_regions_operations = client.premium_messaging_regions_operations
+        @event_hubs = client.event_hubs
+        @model_classes = ModelClasses.new
       end
 
       #

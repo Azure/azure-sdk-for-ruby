@@ -14,7 +14,7 @@ module Azure::Relay::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :relay
+    attr_reader  :relay
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Relay::Management::Profile_Latest
 
       reset!(options)
 
-      self.relay = RelayClass.new(self)
+      @relay = RelayClass.new(self)
     end
 
     def credentials

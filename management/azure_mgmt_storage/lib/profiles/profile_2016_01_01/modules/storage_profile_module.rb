@@ -42,7 +42,7 @@ module Azure::Storage::Management::Profile_2016_01_01
     # Storage
     #
     class StorageClass
-      attr_accessor :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -50,9 +50,9 @@ module Azure::Storage::Management::Profile_2016_01_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.storage_accounts = client.storage_accounts
-        self.usage_operations = client.usage_operations
-        self.model_classes = ModelClasses.new
+        @storage_accounts = client.storage_accounts
+        @usage_operations = client.usage_operations
+        @model_classes = ModelClasses.new
       end
 
       #

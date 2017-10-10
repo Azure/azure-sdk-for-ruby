@@ -134,7 +134,7 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
     # Network
     #
     class NetworkClass
-      attr_accessor :application_gateways, :express_route_circuits, :express_route_service_providers, :express_route_circuit_peerings, :load_balancers, :local_network_gateways, :network_interfaces, :route_tables, :network_security_groups, :public_ip_addresses, :routes, :security_rules, :express_route_circuit_authorizations, :subnets, :usages, :virtual_network_gateway_connections, :virtual_network_gateways, :virtual_networks, :configurable, :base_url, :options, :model_classes
+      attr_reader :application_gateways, :express_route_circuits, :express_route_service_providers, :express_route_circuit_peerings, :load_balancers, :local_network_gateways, :network_interfaces, :route_tables, :network_security_groups, :public_ip_addresses, :routes, :security_rules, :express_route_circuit_authorizations, :subnets, :usages, :virtual_network_gateway_connections, :virtual_network_gateways, :virtual_networks, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -142,25 +142,25 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.application_gateways = client.application_gateways
-        self.express_route_circuits = client.express_route_circuits
-        self.express_route_service_providers = client.express_route_service_providers
-        self.express_route_circuit_peerings = client.express_route_circuit_peerings
-        self.load_balancers = client.load_balancers
-        self.local_network_gateways = client.local_network_gateways
-        self.network_interfaces = client.network_interfaces
-        self.route_tables = client.route_tables
-        self.network_security_groups = client.network_security_groups
-        self.public_ip_addresses = client.public_ip_addresses
-        self.routes = client.routes
-        self.security_rules = client.security_rules
-        self.express_route_circuit_authorizations = client.express_route_circuit_authorizations
-        self.subnets = client.subnets
-        self.usages = client.usages
-        self.virtual_network_gateway_connections = client.virtual_network_gateway_connections
-        self.virtual_network_gateways = client.virtual_network_gateways
-        self.virtual_networks = client.virtual_networks
-        self.model_classes = ModelClasses.new
+        @application_gateways = client.application_gateways
+        @express_route_circuits = client.express_route_circuits
+        @express_route_service_providers = client.express_route_service_providers
+        @express_route_circuit_peerings = client.express_route_circuit_peerings
+        @load_balancers = client.load_balancers
+        @local_network_gateways = client.local_network_gateways
+        @network_interfaces = client.network_interfaces
+        @route_tables = client.route_tables
+        @network_security_groups = client.network_security_groups
+        @public_ip_addresses = client.public_ip_addresses
+        @routes = client.routes
+        @security_rules = client.security_rules
+        @express_route_circuit_authorizations = client.express_route_circuit_authorizations
+        @subnets = client.subnets
+        @usages = client.usages
+        @virtual_network_gateway_connections = client.virtual_network_gateway_connections
+        @virtual_network_gateways = client.virtual_network_gateways
+        @virtual_networks = client.virtual_networks
+        @model_classes = ModelClasses.new
       end
 
       #

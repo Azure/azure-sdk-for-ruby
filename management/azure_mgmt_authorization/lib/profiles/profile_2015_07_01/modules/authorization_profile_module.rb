@@ -37,7 +37,7 @@ module Azure::Authorization::Management::Profile_2015_07_01
     # Authorization
     #
     class AuthorizationClass
-      attr_accessor :classic_administrators, :permissions, :provider_operations_metadata_operations, :role_assignments, :role_definitions, :configurable, :base_url, :options, :model_classes
+      attr_reader :classic_administrators, :permissions, :provider_operations_metadata_operations, :role_assignments, :role_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -45,12 +45,12 @@ module Azure::Authorization::Management::Profile_2015_07_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.classic_administrators = client.classic_administrators
-        self.permissions = client.permissions
-        self.provider_operations_metadata_operations = client.provider_operations_metadata_operations
-        self.role_assignments = client.role_assignments
-        self.role_definitions = client.role_definitions
-        self.model_classes = ModelClasses.new
+        @classic_administrators = client.classic_administrators
+        @permissions = client.permissions
+        @provider_operations_metadata_operations = client.provider_operations_metadata_operations
+        @role_assignments = client.role_assignments
+        @role_definitions = client.role_definitions
+        @model_classes = ModelClasses.new
       end
 
       #

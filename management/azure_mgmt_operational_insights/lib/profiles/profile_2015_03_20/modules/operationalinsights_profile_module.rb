@@ -37,7 +37,7 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
     # OperationalInsights
     #
     class OperationalInsightsClass
-      attr_accessor :storage_insights, :workspaces, :saved_searches, :configurable, :base_url, :options, :model_classes
+      attr_reader :storage_insights, :workspaces, :saved_searches, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -45,10 +45,10 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.storage_insights = client.storage_insights
-        self.workspaces = client.workspaces
-        self.saved_searches = client.saved_searches
-        self.model_classes = ModelClasses.new
+        @storage_insights = client.storage_insights
+        @workspaces = client.workspaces
+        @saved_searches = client.saved_searches
+        @model_classes = ModelClasses.new
       end
 
       #

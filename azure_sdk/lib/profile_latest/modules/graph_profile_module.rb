@@ -57,7 +57,7 @@ module Azure::Profiles::Management::Profile_Latest
     # Graph
     #
     class GraphClass
-      attr_accessor :objects, :applications, :groups, :service_principals, :users, :domains, :configurable, :base_url, :options, :model_classes
+      attr_reader :objects, :applications, :groups, :service_principals, :users, :domains, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -65,13 +65,13 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.objects = client.objects
-        self.applications = client.applications
-        self.groups = client.groups
-        self.service_principals = client.service_principals
-        self.users = client.users
-        self.domains = client.domains
-        self.model_classes = ModelClasses.new
+        @objects = client.objects
+        @applications = client.applications
+        @groups = client.groups
+        @service_principals = client.service_principals
+        @users = client.users
+        @domains = client.domains
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -20,7 +20,7 @@ module Azure::Monitor::Management::Profile_2016_09_01
     # Monitor
     #
     class MonitorClass
-      attr_accessor :service_diagnostic_settings_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :service_diagnostic_settings_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -28,8 +28,8 @@ module Azure::Monitor::Management::Profile_2016_09_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.service_diagnostic_settings_operations = client.service_diagnostic_settings_operations
-        self.model_classes = ModelClasses.new
+        @service_diagnostic_settings_operations = client.service_diagnostic_settings_operations
+        @model_classes = ModelClasses.new
       end
 
       #

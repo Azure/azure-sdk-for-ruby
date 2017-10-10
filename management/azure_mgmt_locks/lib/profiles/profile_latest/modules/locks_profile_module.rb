@@ -18,7 +18,7 @@ module Azure::Locks::Management::Profile_Latest
     # Locks
     #
     class LocksClass
-      attr_accessor :management_locks, :configurable, :base_url, :options, :model_classes
+      attr_reader :management_locks, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -26,8 +26,8 @@ module Azure::Locks::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.management_locks = client.management_locks
-        self.model_classes = ModelClasses.new
+        @management_locks = client.management_locks
+        @model_classes = ModelClasses.new
       end
 
       #

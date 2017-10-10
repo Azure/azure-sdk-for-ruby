@@ -52,7 +52,7 @@ module Azure::IotHub::Management::Profile_2016_02_03
     # IotHub
     #
     class IotHubClass
-      attr_accessor :iot_hub_resource, :configurable, :base_url, :options, :model_classes
+      attr_reader :iot_hub_resource, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -60,8 +60,8 @@ module Azure::IotHub::Management::Profile_2016_02_03
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.iot_hub_resource = client.iot_hub_resource
-        self.model_classes = ModelClasses.new
+        @iot_hub_resource = client.iot_hub_resource
+        @model_classes = ModelClasses.new
       end
 
       #

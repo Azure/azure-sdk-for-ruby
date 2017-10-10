@@ -14,7 +14,7 @@ module Azure::DataLakeStore::Management::Profile_2015_10_01_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :datalakestore
+    attr_reader  :datalakestore
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::DataLakeStore::Management::Profile_2015_10_01_Preview
 
       reset!(options)
 
-      self.datalakestore = DataLakeStoreClass.new(self)
+      @datalakestore = DataLakeStoreClass.new(self)
     end
 
     def credentials

@@ -14,7 +14,7 @@ module Azure::ContainerService::Management::Profile_2016_09_30
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :containerservice
+    attr_reader  :containerservice
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ContainerService::Management::Profile_2016_09_30
 
       reset!(options)
 
-      self.containerservice = ContainerServiceClass.new(self)
+      @containerservice = ContainerServiceClass.new(self)
     end
 
     def credentials

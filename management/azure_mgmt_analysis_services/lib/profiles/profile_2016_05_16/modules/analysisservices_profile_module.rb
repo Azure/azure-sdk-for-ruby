@@ -26,7 +26,7 @@ module Azure::AnalysisServices::Management::Profile_2016_05_16
     # AnalysisServices
     #
     class AnalysisServicesClass
-      attr_accessor :servers, :configurable, :base_url, :options, :model_classes
+      attr_reader :servers, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -34,8 +34,8 @@ module Azure::AnalysisServices::Management::Profile_2016_05_16
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.servers = client.servers
-        self.model_classes = ModelClasses.new
+        @servers = client.servers
+        @model_classes = ModelClasses.new
       end
 
       #

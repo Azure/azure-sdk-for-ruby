@@ -37,7 +37,7 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
     # TrafficManager
     #
     class TrafficManagerClass
-      attr_accessor :endpoints, :profiles, :geographic_hierarchies, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
+      attr_reader :endpoints, :profiles, :geographic_hierarchies, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -45,11 +45,11 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.endpoints = client.endpoints
-        self.profiles = client.profiles
-        self.geographic_hierarchies = client.geographic_hierarchies
-        self.traffic_manager_user_metrics_keys = client.traffic_manager_user_metrics_keys
-        self.model_classes = ModelClasses.new
+        @endpoints = client.endpoints
+        @profiles = client.profiles
+        @geographic_hierarchies = client.geographic_hierarchies
+        @traffic_manager_user_metrics_keys = client.traffic_manager_user_metrics_keys
+        @model_classes = ModelClasses.new
       end
 
       #

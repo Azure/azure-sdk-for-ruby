@@ -63,7 +63,7 @@ module Azure::Resources::Management::Profile_2016_07_01
     # Resources
     #
     class ResourcesClass
-      attr_accessor :deployments, :providers, :resource_groups, :resources, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :deployments, :providers, :resource_groups, :resources, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -71,13 +71,13 @@ module Azure::Resources::Management::Profile_2016_07_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.deployments = client.deployments
-        self.providers = client.providers
-        self.resource_groups = client.resource_groups
-        self.resources = client.resources
-        self.tags = client.tags
-        self.deployment_operations = client.deployment_operations
-        self.model_classes = ModelClasses.new
+        @deployments = client.deployments
+        @providers = client.providers
+        @resource_groups = client.resource_groups
+        @resources = client.resources
+        @tags = client.tags
+        @deployment_operations = client.deployment_operations
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -96,7 +96,7 @@ module Azure::SQL::Management::Profile_2015_05_01_Preview
     # SQL
     #
     class SQLClass
-      attr_accessor :database_advisors, :database_recommended_actions, :server_advisors, :database_blob_auditing_policies, :encryption_protectors, :failover_groups, :operations, :server_keys, :servers, :sync_agents, :sync_groups, :sync_members, :virtual_network_rules, :configurable, :base_url, :options, :model_classes
+      attr_reader :database_advisors, :database_recommended_actions, :server_advisors, :database_blob_auditing_policies, :encryption_protectors, :failover_groups, :operations, :server_keys, :servers, :sync_agents, :sync_groups, :sync_members, :virtual_network_rules, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -104,20 +104,20 @@ module Azure::SQL::Management::Profile_2015_05_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.database_advisors = client.database_advisors
-        self.database_recommended_actions = client.database_recommended_actions
-        self.server_advisors = client.server_advisors
-        self.database_blob_auditing_policies = client.database_blob_auditing_policies
-        self.encryption_protectors = client.encryption_protectors
-        self.failover_groups = client.failover_groups
-        self.operations = client.operations
-        self.server_keys = client.server_keys
-        self.servers = client.servers
-        self.sync_agents = client.sync_agents
-        self.sync_groups = client.sync_groups
-        self.sync_members = client.sync_members
-        self.virtual_network_rules = client.virtual_network_rules
-        self.model_classes = ModelClasses.new
+        @database_advisors = client.database_advisors
+        @database_recommended_actions = client.database_recommended_actions
+        @server_advisors = client.server_advisors
+        @database_blob_auditing_policies = client.database_blob_auditing_policies
+        @encryption_protectors = client.encryption_protectors
+        @failover_groups = client.failover_groups
+        @operations = client.operations
+        @server_keys = client.server_keys
+        @servers = client.servers
+        @sync_agents = client.sync_agents
+        @sync_groups = client.sync_groups
+        @sync_members = client.sync_members
+        @virtual_network_rules = client.virtual_network_rules
+        @model_classes = ModelClasses.new
       end
 
       #

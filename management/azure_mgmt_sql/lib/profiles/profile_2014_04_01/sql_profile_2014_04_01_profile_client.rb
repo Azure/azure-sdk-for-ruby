@@ -14,7 +14,7 @@ module Azure::SQL::Management::Profile_2014_04_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :sql
+    attr_reader  :sql
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::SQL::Management::Profile_2014_04_01
 
       reset!(options)
 
-      self.sql = SQLClass.new(self)
+      @sql = SQLClass.new(self)
     end
 
     def credentials

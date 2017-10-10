@@ -42,7 +42,7 @@ module Azure::DataLakeStore::Management::Profile_2016_11_01
     # DataLakeStore
     #
     class DataLakeStoreClass
-      attr_accessor :firewall_rules, :trusted_id_providers, :account, :configurable, :base_url, :options, :model_classes
+      attr_reader :firewall_rules, :trusted_id_providers, :account, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -50,10 +50,10 @@ module Azure::DataLakeStore::Management::Profile_2016_11_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.firewall_rules = client.firewall_rules
-        self.trusted_id_providers = client.trusted_id_providers
-        self.account = client.account
-        self.model_classes = ModelClasses.new
+        @firewall_rules = client.firewall_rules
+        @trusted_id_providers = client.trusted_id_providers
+        @account = client.account
+        @model_classes = ModelClasses.new
       end
 
       #

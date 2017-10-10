@@ -33,7 +33,7 @@ module Azure::Dns::Management::Profile_Latest
     # Dns
     #
     class DnsClass
-      attr_accessor :record_sets, :zones, :configurable, :base_url, :options, :model_classes
+      attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -41,9 +41,9 @@ module Azure::Dns::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.record_sets = client.record_sets
-        self.zones = client.zones
-        self.model_classes = ModelClasses.new
+        @record_sets = client.record_sets
+        @zones = client.zones
+        @model_classes = ModelClasses.new
       end
 
       #

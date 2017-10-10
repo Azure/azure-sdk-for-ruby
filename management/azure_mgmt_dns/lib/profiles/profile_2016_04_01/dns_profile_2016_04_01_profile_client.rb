@@ -14,7 +14,7 @@ module Azure::Dns::Management::Profile_2016_04_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :dns
+    attr_reader  :dns
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Dns::Management::Profile_2016_04_01
 
       reset!(options)
 
-      self.dns = DnsClass.new(self)
+      @dns = DnsClass.new(self)
     end
 
     def credentials

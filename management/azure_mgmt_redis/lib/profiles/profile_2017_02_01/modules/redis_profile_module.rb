@@ -40,7 +40,7 @@ module Azure::Redis::Management::Profile_2017_02_01
     # Redis
     #
     class RedisClass
-      attr_accessor :redis, :patch_schedules, :redis_linked_server_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :redis, :patch_schedules, :redis_linked_server_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -48,10 +48,10 @@ module Azure::Redis::Management::Profile_2017_02_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.redis = client.redis
-        self.patch_schedules = client.patch_schedules
-        self.redis_linked_server_operations = client.redis_linked_server_operations
-        self.model_classes = ModelClasses.new
+        @redis = client.redis
+        @patch_schedules = client.patch_schedules
+        @redis_linked_server_operations = client.redis_linked_server_operations
+        @model_classes = ModelClasses.new
       end
 
       #

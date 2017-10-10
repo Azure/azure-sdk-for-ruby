@@ -185,7 +185,7 @@ module Azure::SQL::Management::Profile_2014_04_01
     # SQL
     #
     class SQLClass
-      attr_accessor :database_advisors, :backup_long_term_retention_policies, :backup_long_term_retention_vaults, :restore_points, :recoverable_databases, :restorable_dropped_databases, :capabilities, :server_connection_policies, :database_threat_detection_policies, :data_masking_policies, :data_masking_rules, :transparent_data_encryption_configurations, :firewall_rules, :geo_backup_policies, :databases, :elastic_pools, :operations, :queries, :query_statistics, :replication_links, :server_azure_adadministrators, :server_communication_links, :servers, :service_objectives, :elastic_pool_activities, :elastic_pool_database_activities, :recommended_elastic_pools, :service_tier_advisors, :transparent_data_encryptions, :transparent_data_encryption_activities, :server_table_auditing_policies, :database_table_auditing_policies, :database_connection_policies, :server_usages, :database_usages, :configurable, :base_url, :options, :model_classes
+      attr_reader :database_advisors, :backup_long_term_retention_policies, :backup_long_term_retention_vaults, :restore_points, :recoverable_databases, :restorable_dropped_databases, :capabilities, :server_connection_policies, :database_threat_detection_policies, :data_masking_policies, :data_masking_rules, :transparent_data_encryption_configurations, :firewall_rules, :geo_backup_policies, :databases, :elastic_pools, :operations, :queries, :query_statistics, :replication_links, :server_azure_adadministrators, :server_communication_links, :servers, :service_objectives, :elastic_pool_activities, :elastic_pool_database_activities, :recommended_elastic_pools, :service_tier_advisors, :transparent_data_encryptions, :transparent_data_encryption_activities, :server_table_auditing_policies, :database_table_auditing_policies, :database_connection_policies, :server_usages, :database_usages, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -193,42 +193,42 @@ module Azure::SQL::Management::Profile_2014_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.database_advisors = client.database_advisors
-        self.backup_long_term_retention_policies = client.backup_long_term_retention_policies
-        self.backup_long_term_retention_vaults = client.backup_long_term_retention_vaults
-        self.restore_points = client.restore_points
-        self.recoverable_databases = client.recoverable_databases
-        self.restorable_dropped_databases = client.restorable_dropped_databases
-        self.capabilities = client.capabilities
-        self.server_connection_policies = client.server_connection_policies
-        self.database_threat_detection_policies = client.database_threat_detection_policies
-        self.data_masking_policies = client.data_masking_policies
-        self.data_masking_rules = client.data_masking_rules
-        self.transparent_data_encryption_configurations = client.transparent_data_encryption_configurations
-        self.firewall_rules = client.firewall_rules
-        self.geo_backup_policies = client.geo_backup_policies
-        self.databases = client.databases
-        self.elastic_pools = client.elastic_pools
-        self.operations = client.operations
-        self.queries = client.queries
-        self.query_statistics = client.query_statistics
-        self.replication_links = client.replication_links
-        self.server_azure_adadministrators = client.server_azure_adadministrators
-        self.server_communication_links = client.server_communication_links
-        self.servers = client.servers
-        self.service_objectives = client.service_objectives
-        self.elastic_pool_activities = client.elastic_pool_activities
-        self.elastic_pool_database_activities = client.elastic_pool_database_activities
-        self.recommended_elastic_pools = client.recommended_elastic_pools
-        self.service_tier_advisors = client.service_tier_advisors
-        self.transparent_data_encryptions = client.transparent_data_encryptions
-        self.transparent_data_encryption_activities = client.transparent_data_encryption_activities
-        self.server_table_auditing_policies = client.server_table_auditing_policies
-        self.database_table_auditing_policies = client.database_table_auditing_policies
-        self.database_connection_policies = client.database_connection_policies
-        self.server_usages = client.server_usages
-        self.database_usages = client.database_usages
-        self.model_classes = ModelClasses.new
+        @database_advisors = client.database_advisors
+        @backup_long_term_retention_policies = client.backup_long_term_retention_policies
+        @backup_long_term_retention_vaults = client.backup_long_term_retention_vaults
+        @restore_points = client.restore_points
+        @recoverable_databases = client.recoverable_databases
+        @restorable_dropped_databases = client.restorable_dropped_databases
+        @capabilities = client.capabilities
+        @server_connection_policies = client.server_connection_policies
+        @database_threat_detection_policies = client.database_threat_detection_policies
+        @data_masking_policies = client.data_masking_policies
+        @data_masking_rules = client.data_masking_rules
+        @transparent_data_encryption_configurations = client.transparent_data_encryption_configurations
+        @firewall_rules = client.firewall_rules
+        @geo_backup_policies = client.geo_backup_policies
+        @databases = client.databases
+        @elastic_pools = client.elastic_pools
+        @operations = client.operations
+        @queries = client.queries
+        @query_statistics = client.query_statistics
+        @replication_links = client.replication_links
+        @server_azure_adadministrators = client.server_azure_adadministrators
+        @server_communication_links = client.server_communication_links
+        @servers = client.servers
+        @service_objectives = client.service_objectives
+        @elastic_pool_activities = client.elastic_pool_activities
+        @elastic_pool_database_activities = client.elastic_pool_database_activities
+        @recommended_elastic_pools = client.recommended_elastic_pools
+        @service_tier_advisors = client.service_tier_advisors
+        @transparent_data_encryptions = client.transparent_data_encryptions
+        @transparent_data_encryption_activities = client.transparent_data_encryption_activities
+        @server_table_auditing_policies = client.server_table_auditing_policies
+        @database_table_auditing_policies = client.database_table_auditing_policies
+        @database_connection_policies = client.database_connection_policies
+        @server_usages = client.server_usages
+        @database_usages = client.database_usages
+        @model_classes = ModelClasses.new
       end
 
       #

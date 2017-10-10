@@ -14,7 +14,7 @@ module Azure::Web::Management::Profile_2016_09_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :web
+    attr_reader  :web
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Web::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.web = WebClass.new(self)
+      @web = WebClass.new(self)
     end
 
     def credentials

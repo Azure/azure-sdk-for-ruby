@@ -14,7 +14,7 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :operationalinsights
+    attr_reader  :operationalinsights
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
 
       reset!(options)
 
-      self.operationalinsights = OperationalInsightsClass.new(self)
+      @operationalinsights = OperationalInsightsClass.new(self)
     end
 
     def credentials

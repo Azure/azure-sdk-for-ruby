@@ -59,7 +59,7 @@ module Azure::Profiles::Management::Profile_Latest
     # ContainerRegistry
     #
     class ContainerRegistryClass
-      attr_accessor :registries, :operations, :replications, :webhooks, :configurable, :base_url, :options, :model_classes
+      attr_reader :registries, :operations, :replications, :webhooks, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -67,11 +67,11 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.registries = client.registries
-        self.operations = client.operations
-        self.replications = client.replications
-        self.webhooks = client.webhooks
-        self.model_classes = ModelClasses.new
+        @registries = client.registries
+        @operations = client.operations
+        @replications = client.replications
+        @webhooks = client.webhooks
+        @model_classes = ModelClasses.new
       end
 
       #

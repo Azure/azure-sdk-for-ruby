@@ -14,7 +14,7 @@ module Azure::Scheduler::Management::Profile_2016_03_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :scheduler
+    attr_reader  :scheduler
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Scheduler::Management::Profile_2016_03_01
 
       reset!(options)
 
-      self.scheduler = SchedulerClass.new(self)
+      @scheduler = SchedulerClass.new(self)
     end
 
     def credentials

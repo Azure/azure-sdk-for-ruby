@@ -176,7 +176,7 @@ module Azure::Compute::Management::Profile_Latest
     # Compute
     #
     class ComputeClass
-      attr_accessor :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machines, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :configurable, :base_url, :options, :model_classes
+      attr_reader :availability_sets, :virtual_machine_extension_images, :virtual_machine_extensions, :virtual_machine_images, :usage_operations, :virtual_machine_sizes, :images, :resource_skus, :virtual_machines, :virtual_machine_scale_sets, :virtual_machine_scale_set_extensions, :virtual_machine_scale_set_vms, :disks, :snapshots, :virtual_machine_run_commands, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -184,22 +184,22 @@ module Azure::Compute::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.availability_sets = client.availability_sets
-        self.virtual_machine_extension_images = client.virtual_machine_extension_images
-        self.virtual_machine_extensions = client.virtual_machine_extensions
-        self.virtual_machine_images = client.virtual_machine_images
-        self.usage_operations = client.usage_operations
-        self.virtual_machine_sizes = client.virtual_machine_sizes
-        self.images = client.images
-        self.resource_skus = client.resource_skus
-        self.virtual_machines = client.virtual_machines
-        self.virtual_machine_scale_sets = client.virtual_machine_scale_sets
-        self.virtual_machine_scale_set_extensions = client.virtual_machine_scale_set_extensions
-        self.virtual_machine_scale_set_vms = client.virtual_machine_scale_set_vms
-        self.disks = client.disks
-        self.snapshots = client.snapshots
-        self.virtual_machine_run_commands = client.virtual_machine_run_commands
-        self.model_classes = ModelClasses.new
+        @availability_sets = client.availability_sets
+        @virtual_machine_extension_images = client.virtual_machine_extension_images
+        @virtual_machine_extensions = client.virtual_machine_extensions
+        @virtual_machine_images = client.virtual_machine_images
+        @usage_operations = client.usage_operations
+        @virtual_machine_sizes = client.virtual_machine_sizes
+        @images = client.images
+        @resource_skus = client.resource_skus
+        @virtual_machines = client.virtual_machines
+        @virtual_machine_scale_sets = client.virtual_machine_scale_sets
+        @virtual_machine_scale_set_extensions = client.virtual_machine_scale_set_extensions
+        @virtual_machine_scale_set_vms = client.virtual_machine_scale_set_vms
+        @disks = client.disks
+        @snapshots = client.snapshots
+        @virtual_machine_run_commands = client.virtual_machine_run_commands
+        @model_classes = ModelClasses.new
       end
 
       #

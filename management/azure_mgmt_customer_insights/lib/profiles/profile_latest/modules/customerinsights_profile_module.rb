@@ -129,7 +129,7 @@ module Azure::CustomerInsights::Management::Profile_Latest
     # CustomerInsights
     #
     class CustomerInsightsClass
-      attr_accessor :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :role_assignments, :images, :predictions, :configurable, :base_url, :options, :model_classes
+      attr_reader :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :role_assignments, :images, :predictions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -137,23 +137,23 @@ module Azure::CustomerInsights::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.hubs = client.hubs
-        self.profiles = client.profiles
-        self.interactions = client.interactions
-        self.relationships = client.relationships
-        self.relationship_links = client.relationship_links
-        self.authorization_policies = client.authorization_policies
-        self.connectors = client.connectors
-        self.connector_mappings = client.connector_mappings
-        self.kpi = client.kpi
-        self.widget_types = client.widget_types
-        self.views = client.views
-        self.links = client.links
-        self.roles = client.roles
-        self.role_assignments = client.role_assignments
-        self.images = client.images
-        self.predictions = client.predictions
-        self.model_classes = ModelClasses.new
+        @hubs = client.hubs
+        @profiles = client.profiles
+        @interactions = client.interactions
+        @relationships = client.relationships
+        @relationship_links = client.relationship_links
+        @authorization_policies = client.authorization_policies
+        @connectors = client.connectors
+        @connector_mappings = client.connector_mappings
+        @kpi = client.kpi
+        @widget_types = client.widget_types
+        @views = client.views
+        @links = client.links
+        @roles = client.roles
+        @role_assignments = client.role_assignments
+        @images = client.images
+        @predictions = client.predictions
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -14,7 +14,7 @@ module Azure::KeyVault::Management::Profile_2015_06_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :keyvault
+    attr_reader  :keyvault
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::KeyVault::Management::Profile_2015_06_01
 
       reset!(options)
 
-      self.keyvault = KeyVaultClass.new(self)
+      @keyvault = KeyVaultClass.new(self)
     end
 
     def credentials

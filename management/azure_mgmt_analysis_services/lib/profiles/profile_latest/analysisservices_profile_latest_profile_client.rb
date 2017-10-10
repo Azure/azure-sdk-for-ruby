@@ -14,7 +14,7 @@ module Azure::AnalysisServices::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :analysisservices
+    attr_reader  :analysisservices
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::AnalysisServices::Management::Profile_Latest
 
       reset!(options)
 
-      self.analysisservices = AnalysisServicesClass.new(self)
+      @analysisservices = AnalysisServicesClass.new(self)
     end
 
     def credentials

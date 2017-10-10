@@ -14,7 +14,7 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :recoveryservicessiterecovery
+    attr_reader  :recoveryservicessiterecovery
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
 
       reset!(options)
 
-      self.recoveryservicessiterecovery = RecoveryServicesSiteRecoveryClass.new(self)
+      @recoveryservicessiterecovery = RecoveryServicesSiteRecoveryClass.new(self)
     end
 
     def credentials

@@ -14,7 +14,7 @@ module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :resourcesmanagement
+    attr_reader  :resourcesmanagement
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview
 
       reset!(options)
 
-      self.resourcesmanagement = ResourcesManagementClass.new(self)
+      @resourcesmanagement = ResourcesManagementClass.new(self)
     end
 
     def credentials

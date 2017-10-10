@@ -14,7 +14,7 @@ module Azure::EventHub::Management::Profile_2017_04_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :eventhub
+    attr_reader  :eventhub
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::EventHub::Management::Profile_2017_04_01
 
       reset!(options)
 
-      self.eventhub = EventHubClass.new(self)
+      @eventhub = EventHubClass.new(self)
     end
 
     def credentials

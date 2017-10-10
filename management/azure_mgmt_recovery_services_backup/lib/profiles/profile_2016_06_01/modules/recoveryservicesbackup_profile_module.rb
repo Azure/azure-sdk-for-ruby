@@ -162,7 +162,7 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_06_01
     # RecoveryServicesBackup
     #
     class RecoveryServicesBackupClass
-      attr_accessor :item_level_recovery_connections, :restores, :protection_policy_operation_statuses, :protection_policy_operation_results, :protection_policies, :protection_container_operation_results, :protection_container_refresh_operation_results, :protection_containers, :recovery_points, :backups, :protected_item_operation_statuses, :protected_item_operation_results, :protected_items, :protectable_items, :export_jobs_operation_results, :job_operation_results, :jobs, :job_cancellations, :job_details, :backup_operation_statuses, :backup_operation_results, :backup_engines, :configurable, :base_url, :options, :model_classes
+      attr_reader :item_level_recovery_connections, :restores, :protection_policy_operation_statuses, :protection_policy_operation_results, :protection_policies, :protection_container_operation_results, :protection_container_refresh_operation_results, :protection_containers, :recovery_points, :backups, :protected_item_operation_statuses, :protected_item_operation_results, :protected_items, :protectable_items, :export_jobs_operation_results, :job_operation_results, :jobs, :job_cancellations, :job_details, :backup_operation_statuses, :backup_operation_results, :backup_engines, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -170,29 +170,29 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_06_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.item_level_recovery_connections = client.item_level_recovery_connections
-        self.restores = client.restores
-        self.protection_policy_operation_statuses = client.protection_policy_operation_statuses
-        self.protection_policy_operation_results = client.protection_policy_operation_results
-        self.protection_policies = client.protection_policies
-        self.protection_container_operation_results = client.protection_container_operation_results
-        self.protection_container_refresh_operation_results = client.protection_container_refresh_operation_results
-        self.protection_containers = client.protection_containers
-        self.recovery_points = client.recovery_points
-        self.backups = client.backups
-        self.protected_item_operation_statuses = client.protected_item_operation_statuses
-        self.protected_item_operation_results = client.protected_item_operation_results
-        self.protected_items = client.protected_items
-        self.protectable_items = client.protectable_items
-        self.export_jobs_operation_results = client.export_jobs_operation_results
-        self.job_operation_results = client.job_operation_results
-        self.jobs = client.jobs
-        self.job_cancellations = client.job_cancellations
-        self.job_details = client.job_details
-        self.backup_operation_statuses = client.backup_operation_statuses
-        self.backup_operation_results = client.backup_operation_results
-        self.backup_engines = client.backup_engines
-        self.model_classes = ModelClasses.new
+        @item_level_recovery_connections = client.item_level_recovery_connections
+        @restores = client.restores
+        @protection_policy_operation_statuses = client.protection_policy_operation_statuses
+        @protection_policy_operation_results = client.protection_policy_operation_results
+        @protection_policies = client.protection_policies
+        @protection_container_operation_results = client.protection_container_operation_results
+        @protection_container_refresh_operation_results = client.protection_container_refresh_operation_results
+        @protection_containers = client.protection_containers
+        @recovery_points = client.recovery_points
+        @backups = client.backups
+        @protected_item_operation_statuses = client.protected_item_operation_statuses
+        @protected_item_operation_results = client.protected_item_operation_results
+        @protected_items = client.protected_items
+        @protectable_items = client.protectable_items
+        @export_jobs_operation_results = client.export_jobs_operation_results
+        @job_operation_results = client.job_operation_results
+        @jobs = client.jobs
+        @job_cancellations = client.job_cancellations
+        @job_details = client.job_details
+        @backup_operation_statuses = client.backup_operation_statuses
+        @backup_operation_results = client.backup_operation_results
+        @backup_engines = client.backup_engines
+        @model_classes = ModelClasses.new
       end
 
       #

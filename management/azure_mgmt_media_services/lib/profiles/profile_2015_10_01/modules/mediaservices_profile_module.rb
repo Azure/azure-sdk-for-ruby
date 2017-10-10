@@ -32,7 +32,7 @@ module Azure::MediaServices::Management::Profile_2015_10_01
     # MediaServices
     #
     class MediaServicesClass
-      attr_accessor :operations, :media_service_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :media_service_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -40,9 +40,9 @@ module Azure::MediaServices::Management::Profile_2015_10_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.media_service_operations = client.media_service_operations
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @media_service_operations = client.media_service_operations
+        @model_classes = ModelClasses.new
       end
 
       #

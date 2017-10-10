@@ -167,7 +167,7 @@ module Azure::Automation::Management::Profile_Latest
     # Automation
     #
     class AutomationClass
-      attr_accessor :automation_account_operations, :operations, :statistics_operations, :usages, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_jobs, :schedule_operations, :variable_operations, :webhook_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :automation_account_operations, :operations, :statistics_operations, :usages, :certificate_operations, :connection_operations, :connection_type_operations, :credential_operations, :dsc_compilation_job_operations, :dsc_configuration_operations, :agent_registration_information, :dsc_node_operations, :node_reports, :dsc_node_configuration_operations, :hybrid_runbook_worker_group_operations, :job_operations, :job_stream_operations, :job_schedule_operations, :activity_operations, :module_model_operations, :object_data_types, :fields, :runbook_draft_operations, :runbook_operations, :test_job_streams, :test_jobs, :schedule_operations, :variable_operations, :webhook_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -175,36 +175,36 @@ module Azure::Automation::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.automation_account_operations = client.automation_account_operations
-        self.operations = client.operations
-        self.statistics_operations = client.statistics_operations
-        self.usages = client.usages
-        self.certificate_operations = client.certificate_operations
-        self.connection_operations = client.connection_operations
-        self.connection_type_operations = client.connection_type_operations
-        self.credential_operations = client.credential_operations
-        self.dsc_compilation_job_operations = client.dsc_compilation_job_operations
-        self.dsc_configuration_operations = client.dsc_configuration_operations
-        self.agent_registration_information = client.agent_registration_information
-        self.dsc_node_operations = client.dsc_node_operations
-        self.node_reports = client.node_reports
-        self.dsc_node_configuration_operations = client.dsc_node_configuration_operations
-        self.hybrid_runbook_worker_group_operations = client.hybrid_runbook_worker_group_operations
-        self.job_operations = client.job_operations
-        self.job_stream_operations = client.job_stream_operations
-        self.job_schedule_operations = client.job_schedule_operations
-        self.activity_operations = client.activity_operations
-        self.module_model_operations = client.module_model_operations
-        self.object_data_types = client.object_data_types
-        self.fields = client.fields
-        self.runbook_draft_operations = client.runbook_draft_operations
-        self.runbook_operations = client.runbook_operations
-        self.test_job_streams = client.test_job_streams
-        self.test_jobs = client.test_jobs
-        self.schedule_operations = client.schedule_operations
-        self.variable_operations = client.variable_operations
-        self.webhook_operations = client.webhook_operations
-        self.model_classes = ModelClasses.new
+        @automation_account_operations = client.automation_account_operations
+        @operations = client.operations
+        @statistics_operations = client.statistics_operations
+        @usages = client.usages
+        @certificate_operations = client.certificate_operations
+        @connection_operations = client.connection_operations
+        @connection_type_operations = client.connection_type_operations
+        @credential_operations = client.credential_operations
+        @dsc_compilation_job_operations = client.dsc_compilation_job_operations
+        @dsc_configuration_operations = client.dsc_configuration_operations
+        @agent_registration_information = client.agent_registration_information
+        @dsc_node_operations = client.dsc_node_operations
+        @node_reports = client.node_reports
+        @dsc_node_configuration_operations = client.dsc_node_configuration_operations
+        @hybrid_runbook_worker_group_operations = client.hybrid_runbook_worker_group_operations
+        @job_operations = client.job_operations
+        @job_stream_operations = client.job_stream_operations
+        @job_schedule_operations = client.job_schedule_operations
+        @activity_operations = client.activity_operations
+        @module_model_operations = client.module_model_operations
+        @object_data_types = client.object_data_types
+        @fields = client.fields
+        @runbook_draft_operations = client.runbook_draft_operations
+        @runbook_operations = client.runbook_operations
+        @test_job_streams = client.test_job_streams
+        @test_jobs = client.test_jobs
+        @schedule_operations = client.schedule_operations
+        @variable_operations = client.variable_operations
+        @webhook_operations = client.webhook_operations
+        @model_classes = ModelClasses.new
       end
 
       #

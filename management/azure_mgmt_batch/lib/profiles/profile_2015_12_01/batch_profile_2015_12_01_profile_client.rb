@@ -14,7 +14,7 @@ module Azure::Batch::Management::Profile_2015_12_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :batch
+    attr_reader  :batch
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Batch::Management::Profile_2015_12_01
 
       reset!(options)
 
-      self.batch = BatchClass.new(self)
+      @batch = BatchClass.new(self)
     end
 
     def credentials

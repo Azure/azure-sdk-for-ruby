@@ -14,7 +14,7 @@ module Azure::Features::Management::Profile_2015_12_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :features
+    attr_reader  :features
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Features::Management::Profile_2015_12_01
 
       reset!(options)
 
-      self.features = FeaturesClass.new(self)
+      @features = FeaturesClass.new(self)
     end
 
     def credentials

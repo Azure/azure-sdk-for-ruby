@@ -21,7 +21,7 @@ module Azure::ContainerRegistry::Management::Profile_2016_06_27_Preview
     # ContainerRegistry
     #
     class ContainerRegistryClass
-      attr_accessor :registries, :configurable, :base_url, :options, :model_classes
+      attr_reader :registries, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -29,8 +29,8 @@ module Azure::ContainerRegistry::Management::Profile_2016_06_27_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.registries = client.registries
-        self.model_classes = ModelClasses.new
+        @registries = client.registries
+        @model_classes = ModelClasses.new
       end
 
       #

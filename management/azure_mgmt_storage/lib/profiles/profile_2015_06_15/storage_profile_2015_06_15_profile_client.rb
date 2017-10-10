@@ -14,7 +14,7 @@ module Azure::Storage::Management::Profile_2015_06_15
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :storage
+    attr_reader  :storage
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Storage::Management::Profile_2015_06_15
 
       reset!(options)
 
-      self.storage = StorageClass.new(self)
+      @storage = StorageClass.new(self)
     end
 
     def credentials

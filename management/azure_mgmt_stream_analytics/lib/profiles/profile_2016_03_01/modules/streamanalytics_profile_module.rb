@@ -91,7 +91,7 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
     # StreamAnalytics
     #
     class StreamAnalyticsClass
-      attr_accessor :operations, :streaming_jobs, :inputs, :outputs, :transformations, :functions, :subscriptions, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :streaming_jobs, :inputs, :outputs, :transformations, :functions, :subscriptions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -99,14 +99,14 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.streaming_jobs = client.streaming_jobs
-        self.inputs = client.inputs
-        self.outputs = client.outputs
-        self.transformations = client.transformations
-        self.functions = client.functions
-        self.subscriptions = client.subscriptions
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @streaming_jobs = client.streaming_jobs
+        @inputs = client.inputs
+        @outputs = client.outputs
+        @transformations = client.transformations
+        @functions = client.functions
+        @subscriptions = client.subscriptions
+        @model_classes = ModelClasses.new
       end
 
       #

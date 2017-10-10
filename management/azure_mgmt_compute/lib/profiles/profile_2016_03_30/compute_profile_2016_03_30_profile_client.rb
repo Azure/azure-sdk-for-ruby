@@ -14,7 +14,7 @@ module Azure::Compute::Management::Profile_2016_03_30
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :compute
+    attr_reader  :compute
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Compute::Management::Profile_2016_03_30
 
       reset!(options)
 
-      self.compute = ComputeClass.new(self)
+      @compute = ComputeClass.new(self)
     end
 
     def credentials

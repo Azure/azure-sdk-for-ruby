@@ -14,7 +14,7 @@ module Azure::CDN::Management::Profile_2017_04_02
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :cdn
+    attr_reader  :cdn
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::CDN::Management::Profile_2017_04_02
 
       reset!(options)
 
-      self.cdn = CDNClass.new(self)
+      @cdn = CDNClass.new(self)
     end
 
     def credentials

@@ -14,7 +14,7 @@ module Azure::Policy::Management::Profile_2017_06_01_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :policy
+    attr_reader  :policy
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Policy::Management::Profile_2017_06_01_Preview
 
       reset!(options)
 
-      self.policy = PolicyClass.new(self)
+      @policy = PolicyClass.new(self)
     end
 
     def credentials

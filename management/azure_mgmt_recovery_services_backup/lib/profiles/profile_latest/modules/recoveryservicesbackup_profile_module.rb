@@ -39,7 +39,7 @@ module Azure::RecoveryServicesBackup::Management::Profile_Latest
     # RecoveryServicesBackup
     #
     class RecoveryServicesBackupClass
-      attr_accessor :backup_jobs, :job_details, :configurable, :base_url, :options, :model_classes
+      attr_reader :backup_jobs, :job_details, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -47,9 +47,9 @@ module Azure::RecoveryServicesBackup::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.backup_jobs = client.backup_jobs
-        self.job_details = client.job_details
-        self.model_classes = ModelClasses.new
+        @backup_jobs = client.backup_jobs
+        @job_details = client.job_details
+        @model_classes = ModelClasses.new
       end
 
       #

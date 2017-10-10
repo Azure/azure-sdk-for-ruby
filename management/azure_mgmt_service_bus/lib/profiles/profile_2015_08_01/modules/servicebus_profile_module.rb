@@ -52,7 +52,7 @@ module Azure::ServiceBus::Management::Profile_2015_08_01
     # ServiceBus
     #
     class ServiceBusClass
-      attr_accessor :operations, :namespaces, :queues, :topics, :subscriptions, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :namespaces, :queues, :topics, :subscriptions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -60,12 +60,12 @@ module Azure::ServiceBus::Management::Profile_2015_08_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.namespaces = client.namespaces
-        self.queues = client.queues
-        self.topics = client.topics
-        self.subscriptions = client.subscriptions
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @namespaces = client.namespaces
+        @queues = client.queues
+        @topics = client.topics
+        @subscriptions = client.subscriptions
+        @model_classes = ModelClasses.new
       end
 
       #

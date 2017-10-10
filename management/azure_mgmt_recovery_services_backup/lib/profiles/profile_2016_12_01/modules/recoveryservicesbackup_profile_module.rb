@@ -178,7 +178,7 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_12_01
     # RecoveryServicesBackup
     #
     class RecoveryServicesBackupClass
-      attr_accessor :backup_resource_vault_configs, :backup_engines, :protection_container_refresh_operation_results, :protection_containers, :protection_container_operation_results, :protected_items, :backups, :protected_item_operation_results, :protected_item_operation_statuses, :recovery_points, :item_level_recovery_connections, :restores, :job_cancellations, :job_operation_results, :export_jobs_operation_results, :jobs, :backup_operation_results, :backup_operation_statuses, :backup_policies, :protection_policies, :protection_policy_operation_results, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protected_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :backup_usage_summaries, :configurable, :base_url, :options, :model_classes
+      attr_reader :backup_resource_vault_configs, :backup_engines, :protection_container_refresh_operation_results, :protection_containers, :protection_container_operation_results, :protected_items, :backups, :protected_item_operation_results, :protected_item_operation_statuses, :recovery_points, :item_level_recovery_connections, :restores, :job_cancellations, :job_operation_results, :export_jobs_operation_results, :jobs, :backup_operation_results, :backup_operation_statuses, :backup_policies, :protection_policies, :protection_policy_operation_results, :protection_policy_operation_statuses, :backup_protectable_items, :backup_protected_items, :backup_protection_containers, :security_pins, :backup_resource_storage_configs, :backup_usage_summaries, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -186,35 +186,35 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_12_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.backup_resource_vault_configs = client.backup_resource_vault_configs
-        self.backup_engines = client.backup_engines
-        self.protection_container_refresh_operation_results = client.protection_container_refresh_operation_results
-        self.protection_containers = client.protection_containers
-        self.protection_container_operation_results = client.protection_container_operation_results
-        self.protected_items = client.protected_items
-        self.backups = client.backups
-        self.protected_item_operation_results = client.protected_item_operation_results
-        self.protected_item_operation_statuses = client.protected_item_operation_statuses
-        self.recovery_points = client.recovery_points
-        self.item_level_recovery_connections = client.item_level_recovery_connections
-        self.restores = client.restores
-        self.job_cancellations = client.job_cancellations
-        self.job_operation_results = client.job_operation_results
-        self.export_jobs_operation_results = client.export_jobs_operation_results
-        self.jobs = client.jobs
-        self.backup_operation_results = client.backup_operation_results
-        self.backup_operation_statuses = client.backup_operation_statuses
-        self.backup_policies = client.backup_policies
-        self.protection_policies = client.protection_policies
-        self.protection_policy_operation_results = client.protection_policy_operation_results
-        self.protection_policy_operation_statuses = client.protection_policy_operation_statuses
-        self.backup_protectable_items = client.backup_protectable_items
-        self.backup_protected_items = client.backup_protected_items
-        self.backup_protection_containers = client.backup_protection_containers
-        self.security_pins = client.security_pins
-        self.backup_resource_storage_configs = client.backup_resource_storage_configs
-        self.backup_usage_summaries = client.backup_usage_summaries
-        self.model_classes = ModelClasses.new
+        @backup_resource_vault_configs = client.backup_resource_vault_configs
+        @backup_engines = client.backup_engines
+        @protection_container_refresh_operation_results = client.protection_container_refresh_operation_results
+        @protection_containers = client.protection_containers
+        @protection_container_operation_results = client.protection_container_operation_results
+        @protected_items = client.protected_items
+        @backups = client.backups
+        @protected_item_operation_results = client.protected_item_operation_results
+        @protected_item_operation_statuses = client.protected_item_operation_statuses
+        @recovery_points = client.recovery_points
+        @item_level_recovery_connections = client.item_level_recovery_connections
+        @restores = client.restores
+        @job_cancellations = client.job_cancellations
+        @job_operation_results = client.job_operation_results
+        @export_jobs_operation_results = client.export_jobs_operation_results
+        @jobs = client.jobs
+        @backup_operation_results = client.backup_operation_results
+        @backup_operation_statuses = client.backup_operation_statuses
+        @backup_policies = client.backup_policies
+        @protection_policies = client.protection_policies
+        @protection_policy_operation_results = client.protection_policy_operation_results
+        @protection_policy_operation_statuses = client.protection_policy_operation_statuses
+        @backup_protectable_items = client.backup_protectable_items
+        @backup_protected_items = client.backup_protected_items
+        @backup_protection_containers = client.backup_protection_containers
+        @security_pins = client.security_pins
+        @backup_resource_storage_configs = client.backup_resource_storage_configs
+        @backup_usage_summaries = client.backup_usage_summaries
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -14,7 +14,7 @@ module Azure::Locks::Management::Profile_2016_09_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :locks
+    attr_reader  :locks
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Locks::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.locks = LocksClass.new(self)
+      @locks = LocksClass.new(self)
     end
 
     def credentials

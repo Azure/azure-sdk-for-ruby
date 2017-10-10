@@ -44,7 +44,7 @@ module Azure::Network::Management::Profile_2017_03_30
     # Network
     #
     class NetworkClass
-      attr_accessor :network_interfaces, :public_ipaddresses, :configurable, :base_url, :options, :model_classes
+      attr_reader :network_interfaces, :public_ipaddresses, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -52,9 +52,9 @@ module Azure::Network::Management::Profile_2017_03_30
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.network_interfaces = client.network_interfaces
-        self.public_ipaddresses = client.public_ipaddresses
-        self.model_classes = ModelClasses.new
+        @network_interfaces = client.network_interfaces
+        @public_ipaddresses = client.public_ipaddresses
+        @model_classes = ModelClasses.new
       end
 
       #

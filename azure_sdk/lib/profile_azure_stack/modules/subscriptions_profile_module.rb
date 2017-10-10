@@ -25,7 +25,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
     # Subscriptions
     #
     class SubscriptionsClass
-      attr_accessor :subscriptions, :tenants, :configurable, :base_url, :options, :model_classes
+      attr_reader :subscriptions, :tenants, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -33,9 +33,9 @@ module Azure::Profiles::Management::Profile_Azure_Stack
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.subscriptions = client.subscriptions
-        self.tenants = client.tenants
-        self.model_classes = ModelClasses.new
+        @subscriptions = client.subscriptions
+        @tenants = client.tenants
+        @model_classes = ModelClasses.new
       end
 
       #

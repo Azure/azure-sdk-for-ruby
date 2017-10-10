@@ -35,7 +35,7 @@ module Azure::OperationalInsights::Management::Profile_Latest
     # OperationalInsights
     #
     class OperationalInsightsClass
-      attr_accessor :linked_services, :data_sources, :workspaces, :configurable, :base_url, :options, :model_classes
+      attr_reader :linked_services, :data_sources, :workspaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -43,10 +43,10 @@ module Azure::OperationalInsights::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.linked_services = client.linked_services
-        self.data_sources = client.data_sources
-        self.workspaces = client.workspaces
-        self.model_classes = ModelClasses.new
+        @linked_services = client.linked_services
+        @data_sources = client.data_sources
+        @workspaces = client.workspaces
+        @model_classes = ModelClasses.new
       end
 
       #

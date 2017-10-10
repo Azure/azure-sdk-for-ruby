@@ -40,7 +40,7 @@ module Azure::Relay::Management::Profile_2016_07_01
     # Relay
     #
     class RelayClass
-      attr_accessor :operations, :namespaces, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :namespaces, :hybrid_connections, :wcfrelays, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -48,11 +48,11 @@ module Azure::Relay::Management::Profile_2016_07_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.namespaces = client.namespaces
-        self.hybrid_connections = client.hybrid_connections
-        self.wcfrelays = client.wcfrelays
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @namespaces = client.namespaces
+        @hybrid_connections = client.hybrid_connections
+        @wcfrelays = client.wcfrelays
+        @model_classes = ModelClasses.new
       end
 
       #

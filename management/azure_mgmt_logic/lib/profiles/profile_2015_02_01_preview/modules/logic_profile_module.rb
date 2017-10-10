@@ -57,7 +57,7 @@ module Azure::Logic::Management::Profile_2015_02_01_Preview
     # Logic
     #
     class LogicClass
-      attr_accessor :workflows, :workflow_versions, :workflow_access_keys, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :configurable, :base_url, :options, :model_classes
+      attr_reader :workflows, :workflow_versions, :workflow_access_keys, :workflow_triggers, :workflow_trigger_histories, :workflow_runs, :workflow_run_actions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -65,14 +65,14 @@ module Azure::Logic::Management::Profile_2015_02_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.workflows = client.workflows
-        self.workflow_versions = client.workflow_versions
-        self.workflow_access_keys = client.workflow_access_keys
-        self.workflow_triggers = client.workflow_triggers
-        self.workflow_trigger_histories = client.workflow_trigger_histories
-        self.workflow_runs = client.workflow_runs
-        self.workflow_run_actions = client.workflow_run_actions
-        self.model_classes = ModelClasses.new
+        @workflows = client.workflows
+        @workflow_versions = client.workflow_versions
+        @workflow_access_keys = client.workflow_access_keys
+        @workflow_triggers = client.workflow_triggers
+        @workflow_trigger_histories = client.workflow_trigger_histories
+        @workflow_runs = client.workflow_runs
+        @workflow_run_actions = client.workflow_run_actions
+        @model_classes = ModelClasses.new
       end
 
       #

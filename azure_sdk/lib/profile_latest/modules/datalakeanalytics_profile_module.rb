@@ -50,7 +50,7 @@ module Azure::Profiles::Management::Profile_Latest
     # DataLakeAnalytics
     #
     class DataLakeAnalyticsClass
-      attr_accessor :compute_policies, :firewall_rules, :storage_accounts, :data_lake_store_accounts, :account, :configurable, :base_url, :options, :model_classes
+      attr_reader :compute_policies, :firewall_rules, :storage_accounts, :data_lake_store_accounts, :account, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -58,12 +58,12 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.compute_policies = client.compute_policies
-        self.firewall_rules = client.firewall_rules
-        self.storage_accounts = client.storage_accounts
-        self.data_lake_store_accounts = client.data_lake_store_accounts
-        self.account = client.account
-        self.model_classes = ModelClasses.new
+        @compute_policies = client.compute_policies
+        @firewall_rules = client.firewall_rules
+        @storage_accounts = client.storage_accounts
+        @data_lake_store_accounts = client.data_lake_store_accounts
+        @account = client.account
+        @model_classes = ModelClasses.new
       end
 
       #

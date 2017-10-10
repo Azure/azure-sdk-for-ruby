@@ -34,7 +34,7 @@ module Azure::PowerBiEmbedded::Management::Profile_Latest
     # PowerBiEmbedded
     #
     class PowerBiEmbeddedClass
-      attr_accessor :workspace_collections, :workspaces, :configurable, :base_url, :options, :model_classes
+      attr_reader :workspace_collections, :workspaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -42,9 +42,9 @@ module Azure::PowerBiEmbedded::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.workspace_collections = client.workspace_collections
-        self.workspaces = client.workspaces
-        self.model_classes = ModelClasses.new
+        @workspace_collections = client.workspace_collections
+        @workspaces = client.workspaces
+        @model_classes = ModelClasses.new
       end
 
       #

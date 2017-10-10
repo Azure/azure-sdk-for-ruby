@@ -14,7 +14,7 @@ module Azure::Graph::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :graph
+    attr_reader  :graph
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Graph::Management::Profile_Latest
 
       reset!(options)
 
-      self.graph = GraphClass.new(self)
+      @graph = GraphClass.new(self)
     end
 
     def credentials

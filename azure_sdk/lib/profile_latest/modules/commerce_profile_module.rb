@@ -28,7 +28,7 @@ module Azure::Profiles::Management::Profile_Latest
     # Commerce
     #
     class CommerceClass
-      attr_accessor :usage_aggregates, :rate_card, :configurable, :base_url, :options, :model_classes
+      attr_reader :usage_aggregates, :rate_card, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -36,9 +36,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.usage_aggregates = client.usage_aggregates
-        self.rate_card = client.rate_card
-        self.model_classes = ModelClasses.new
+        @usage_aggregates = client.usage_aggregates
+        @rate_card = client.rate_card
+        @model_classes = ModelClasses.new
       end
 
       #

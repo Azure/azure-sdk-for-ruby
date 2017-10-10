@@ -50,7 +50,7 @@ module Azure::MachineLearning::Management::Profile_Latest
     # MachineLearning
     #
     class MachineLearningClass
-      attr_accessor :web_services, :configurable, :base_url, :options, :model_classes
+      attr_reader :web_services, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -58,8 +58,8 @@ module Azure::MachineLearning::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.web_services = client.web_services
-        self.model_classes = ModelClasses.new
+        @web_services = client.web_services
+        @model_classes = ModelClasses.new
       end
 
       #

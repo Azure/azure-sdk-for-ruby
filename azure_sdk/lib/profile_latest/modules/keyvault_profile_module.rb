@@ -32,7 +32,7 @@ module Azure::Profiles::Management::Profile_Latest
     # KeyVault
     #
     class KeyVaultClass
-      attr_accessor :vaults, :configurable, :base_url, :options, :model_classes
+      attr_reader :vaults, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -40,8 +40,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.vaults = client.vaults
-        self.model_classes = ModelClasses.new
+        @vaults = client.vaults
+        @model_classes = ModelClasses.new
       end
 
       #

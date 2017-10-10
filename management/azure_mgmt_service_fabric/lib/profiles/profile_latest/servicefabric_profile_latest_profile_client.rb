@@ -14,7 +14,7 @@ module Azure::ServiceFabric::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :servicefabric
+    attr_reader  :servicefabric
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ServiceFabric::Management::Profile_Latest
 
       reset!(options)
 
-      self.servicefabric = ServiceFabricClass.new(self)
+      @servicefabric = ServiceFabricClass.new(self)
     end
 
     def credentials

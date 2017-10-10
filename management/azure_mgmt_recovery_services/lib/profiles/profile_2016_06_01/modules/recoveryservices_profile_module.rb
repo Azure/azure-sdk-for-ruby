@@ -52,7 +52,7 @@ module Azure::RecoveryServices::Management::Profile_2016_06_01
     # RecoveryServices
     #
     class RecoveryServicesClass
-      attr_accessor :vault_certificates, :registered_identities, :replication_usages, :vaults, :operations, :vault_extended_info_operations, :usages, :configurable, :base_url, :options, :model_classes
+      attr_reader :vault_certificates, :registered_identities, :replication_usages, :vaults, :operations, :vault_extended_info_operations, :usages, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -60,14 +60,14 @@ module Azure::RecoveryServices::Management::Profile_2016_06_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.vault_certificates = client.vault_certificates
-        self.registered_identities = client.registered_identities
-        self.replication_usages = client.replication_usages
-        self.vaults = client.vaults
-        self.operations = client.operations
-        self.vault_extended_info_operations = client.vault_extended_info_operations
-        self.usages = client.usages
-        self.model_classes = ModelClasses.new
+        @vault_certificates = client.vault_certificates
+        @registered_identities = client.registered_identities
+        @replication_usages = client.replication_usages
+        @vaults = client.vaults
+        @operations = client.operations
+        @vault_extended_info_operations = client.vault_extended_info_operations
+        @usages = client.usages
+        @model_classes = ModelClasses.new
       end
 
       #

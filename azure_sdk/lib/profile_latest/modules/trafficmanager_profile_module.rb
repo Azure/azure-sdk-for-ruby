@@ -41,7 +41,7 @@ module Azure::Profiles::Management::Profile_Latest
     # TrafficManager
     #
     class TrafficManagerClass
-      attr_accessor :endpoints, :profiles, :geographic_hierarchies, :heat_map, :configurable, :base_url, :options, :model_classes
+      attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -49,11 +49,11 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.endpoints = client.endpoints
-        self.profiles = client.profiles
-        self.geographic_hierarchies = client.geographic_hierarchies
-        self.heat_map = client.heat_map
-        self.model_classes = ModelClasses.new
+        @endpoints = client.endpoints
+        @profiles = client.profiles
+        @geographic_hierarchies = client.geographic_hierarchies
+        @heat_map = client.heat_map
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -14,7 +14,7 @@ module Azure::Links::Management::Profile_2016_09_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :links
+    attr_reader  :links
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Links::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.links = LinksClass.new(self)
+      @links = LinksClass.new(self)
     end
 
     def credentials

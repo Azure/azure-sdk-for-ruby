@@ -14,7 +14,7 @@ module Azure::Monitor::Management::Profile_2017_05_01_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :monitor
+    attr_reader  :monitor
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Monitor::Management::Profile_2017_05_01_Preview
 
       reset!(options)
 
-      self.monitor = MonitorClass.new(self)
+      @monitor = MonitorClass.new(self)
     end
 
     def credentials

@@ -61,7 +61,7 @@ module Azure::CDN::Management::Profile_2016_10_02
     # CDN
     #
     class CDNClass
-      attr_accessor :profiles, :endpoints, :origins, :custom_domains, :edge_nodes, :configurable, :base_url, :options, :model_classes
+      attr_reader :profiles, :endpoints, :origins, :custom_domains, :edge_nodes, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -69,12 +69,12 @@ module Azure::CDN::Management::Profile_2016_10_02
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.profiles = client.profiles
-        self.endpoints = client.endpoints
-        self.origins = client.origins
-        self.custom_domains = client.custom_domains
-        self.edge_nodes = client.edge_nodes
-        self.model_classes = ModelClasses.new
+        @profiles = client.profiles
+        @endpoints = client.endpoints
+        @origins = client.origins
+        @custom_domains = client.custom_domains
+        @edge_nodes = client.edge_nodes
+        @model_classes = ModelClasses.new
       end
 
       #

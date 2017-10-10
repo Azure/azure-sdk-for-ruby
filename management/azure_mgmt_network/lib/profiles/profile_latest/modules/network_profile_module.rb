@@ -312,7 +312,7 @@ module Azure::Network::Management::Profile_Latest
     # Network
     #
     class NetworkClass
-      attr_accessor :application_gateways, :application_security_groups, :available_endpoint_services, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interfaces, :network_interface_ipconfigurations, :network_interface_load_balancers, :network_security_groups, :security_rules, :default_security_rules, :network_watchers, :packet_captures, :public_ipaddresses, :route_filters, :route_filter_rules, :bgp_service_communities, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_peerings, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :configurable, :base_url, :options, :model_classes
+      attr_reader :application_gateways, :application_security_groups, :available_endpoint_services, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :load_balancer_backend_address_pools, :load_balancer_frontend_ipconfigurations, :inbound_nat_rules, :load_balancer_load_balancing_rules, :load_balancer_network_interfaces, :load_balancer_probes, :network_interfaces, :network_interface_ipconfigurations, :network_interface_load_balancers, :network_security_groups, :security_rules, :default_security_rules, :network_watchers, :packet_captures, :public_ipaddresses, :route_filters, :route_filter_rules, :bgp_service_communities, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_peerings, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -320,42 +320,42 @@ module Azure::Network::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.application_gateways = client.application_gateways
-        self.application_security_groups = client.application_security_groups
-        self.available_endpoint_services = client.available_endpoint_services
-        self.express_route_circuit_authorizations = client.express_route_circuit_authorizations
-        self.express_route_circuit_peerings = client.express_route_circuit_peerings
-        self.express_route_circuits = client.express_route_circuits
-        self.express_route_service_providers = client.express_route_service_providers
-        self.load_balancers = client.load_balancers
-        self.load_balancer_backend_address_pools = client.load_balancer_backend_address_pools
-        self.load_balancer_frontend_ipconfigurations = client.load_balancer_frontend_ipconfigurations
-        self.inbound_nat_rules = client.inbound_nat_rules
-        self.load_balancer_load_balancing_rules = client.load_balancer_load_balancing_rules
-        self.load_balancer_network_interfaces = client.load_balancer_network_interfaces
-        self.load_balancer_probes = client.load_balancer_probes
-        self.network_interfaces = client.network_interfaces
-        self.network_interface_ipconfigurations = client.network_interface_ipconfigurations
-        self.network_interface_load_balancers = client.network_interface_load_balancers
-        self.network_security_groups = client.network_security_groups
-        self.security_rules = client.security_rules
-        self.default_security_rules = client.default_security_rules
-        self.network_watchers = client.network_watchers
-        self.packet_captures = client.packet_captures
-        self.public_ipaddresses = client.public_ipaddresses
-        self.route_filters = client.route_filters
-        self.route_filter_rules = client.route_filter_rules
-        self.bgp_service_communities = client.bgp_service_communities
-        self.route_tables = client.route_tables
-        self.routes = client.routes
-        self.usages = client.usages
-        self.virtual_networks = client.virtual_networks
-        self.subnets = client.subnets
-        self.virtual_network_peerings = client.virtual_network_peerings
-        self.virtual_network_gateways = client.virtual_network_gateways
-        self.virtual_network_gateway_connections = client.virtual_network_gateway_connections
-        self.local_network_gateways = client.local_network_gateways
-        self.model_classes = ModelClasses.new
+        @application_gateways = client.application_gateways
+        @application_security_groups = client.application_security_groups
+        @available_endpoint_services = client.available_endpoint_services
+        @express_route_circuit_authorizations = client.express_route_circuit_authorizations
+        @express_route_circuit_peerings = client.express_route_circuit_peerings
+        @express_route_circuits = client.express_route_circuits
+        @express_route_service_providers = client.express_route_service_providers
+        @load_balancers = client.load_balancers
+        @load_balancer_backend_address_pools = client.load_balancer_backend_address_pools
+        @load_balancer_frontend_ipconfigurations = client.load_balancer_frontend_ipconfigurations
+        @inbound_nat_rules = client.inbound_nat_rules
+        @load_balancer_load_balancing_rules = client.load_balancer_load_balancing_rules
+        @load_balancer_network_interfaces = client.load_balancer_network_interfaces
+        @load_balancer_probes = client.load_balancer_probes
+        @network_interfaces = client.network_interfaces
+        @network_interface_ipconfigurations = client.network_interface_ipconfigurations
+        @network_interface_load_balancers = client.network_interface_load_balancers
+        @network_security_groups = client.network_security_groups
+        @security_rules = client.security_rules
+        @default_security_rules = client.default_security_rules
+        @network_watchers = client.network_watchers
+        @packet_captures = client.packet_captures
+        @public_ipaddresses = client.public_ipaddresses
+        @route_filters = client.route_filters
+        @route_filter_rules = client.route_filter_rules
+        @bgp_service_communities = client.bgp_service_communities
+        @route_tables = client.route_tables
+        @routes = client.routes
+        @usages = client.usages
+        @virtual_networks = client.virtual_networks
+        @subnets = client.subnets
+        @virtual_network_peerings = client.virtual_network_peerings
+        @virtual_network_gateways = client.virtual_network_gateways
+        @virtual_network_gateway_connections = client.virtual_network_gateway_connections
+        @local_network_gateways = client.local_network_gateways
+        @model_classes = ModelClasses.new
       end
 
       #

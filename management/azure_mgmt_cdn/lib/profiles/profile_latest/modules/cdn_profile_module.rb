@@ -66,7 +66,7 @@ module Azure::CDN::Management::Profile_Latest
     # CDN
     #
     class CDNClass
-      attr_accessor :profiles, :endpoints, :origins, :custom_domains, :resource_usage_operations, :operations, :edge_nodes, :configurable, :base_url, :options, :model_classes
+      attr_reader :profiles, :endpoints, :origins, :custom_domains, :resource_usage_operations, :operations, :edge_nodes, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -74,14 +74,14 @@ module Azure::CDN::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.profiles = client.profiles
-        self.endpoints = client.endpoints
-        self.origins = client.origins
-        self.custom_domains = client.custom_domains
-        self.resource_usage_operations = client.resource_usage_operations
-        self.operations = client.operations
-        self.edge_nodes = client.edge_nodes
-        self.model_classes = ModelClasses.new
+        @profiles = client.profiles
+        @endpoints = client.endpoints
+        @origins = client.origins
+        @custom_domains = client.custom_domains
+        @resource_usage_operations = client.resource_usage_operations
+        @operations = client.operations
+        @edge_nodes = client.edge_nodes
+        @model_classes = ModelClasses.new
       end
 
       #

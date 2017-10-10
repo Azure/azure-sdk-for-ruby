@@ -14,7 +14,7 @@ module Azure::Logic::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :logic
+    attr_reader  :logic
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Logic::Management::Profile_Latest
 
       reset!(options)
 
-      self.logic = LogicClass.new(self)
+      @logic = LogicClass.new(self)
     end
 
     def credentials

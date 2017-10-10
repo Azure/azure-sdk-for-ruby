@@ -29,7 +29,7 @@ module Azure::Search::Management::Profile_Latest
     # Search
     #
     class SearchClass
-      attr_accessor :admin_keys, :query_keys, :services, :configurable, :base_url, :options, :model_classes
+      attr_reader :admin_keys, :query_keys, :services, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -37,10 +37,10 @@ module Azure::Search::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.admin_keys = client.admin_keys
-        self.query_keys = client.query_keys
-        self.services = client.services
-        self.model_classes = ModelClasses.new
+        @admin_keys = client.admin_keys
+        @query_keys = client.query_keys
+        @services = client.services
+        @model_classes = ModelClasses.new
       end
 
       #

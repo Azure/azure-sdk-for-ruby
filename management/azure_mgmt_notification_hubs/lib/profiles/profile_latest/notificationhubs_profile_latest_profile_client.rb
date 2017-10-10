@@ -14,7 +14,7 @@ module Azure::NotificationHubs::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :notificationhubs
+    attr_reader  :notificationhubs
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::NotificationHubs::Management::Profile_Latest
 
       reset!(options)
 
-      self.notificationhubs = NotificationHubsClass.new(self)
+      @notificationhubs = NotificationHubsClass.new(self)
     end
 
     def credentials

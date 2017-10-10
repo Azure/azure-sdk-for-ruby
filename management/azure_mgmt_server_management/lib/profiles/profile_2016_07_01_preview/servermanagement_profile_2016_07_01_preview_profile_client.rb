@@ -14,7 +14,7 @@ module Azure::ServerManagement::Management::Profile_2016_07_01_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :servermanagement
+    attr_reader  :servermanagement
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ServerManagement::Management::Profile_2016_07_01_Preview
 
       reset!(options)
 
-      self.servermanagement = ServerManagementClass.new(self)
+      @servermanagement = ServerManagementClass.new(self)
     end
 
     def credentials

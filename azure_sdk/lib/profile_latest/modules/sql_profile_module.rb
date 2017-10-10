@@ -19,7 +19,7 @@ module Azure::Profiles::Management::Profile_Latest
     # SQL
     #
     class SQLClass
-      attr_accessor :database_operations, :configurable, :base_url, :options, :model_classes
+      attr_reader :database_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -27,8 +27,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.database_operations = client.database_operations
-        self.model_classes = ModelClasses.new
+        @database_operations = client.database_operations
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -47,7 +47,7 @@ module Azure::ServerManagement::Management::Profile_Latest
     # ServerManagement
     #
     class ServerManagementClass
-      attr_accessor :gateway, :node, :session, :power_shell, :configurable, :base_url, :options, :model_classes
+      attr_reader :gateway, :node, :session, :power_shell, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -55,11 +55,11 @@ module Azure::ServerManagement::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.gateway = client.gateway
-        self.node = client.node
-        self.session = client.session
-        self.power_shell = client.power_shell
-        self.model_classes = ModelClasses.new
+        @gateway = client.gateway
+        @node = client.node
+        @session = client.session
+        @power_shell = client.power_shell
+        @model_classes = ModelClasses.new
       end
 
       #

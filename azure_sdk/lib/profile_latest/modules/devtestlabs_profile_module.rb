@@ -184,7 +184,7 @@ module Azure::Profiles::Management::Profile_Latest
     # DevTestLabs
     #
     class DevTestLabsClass
-      attr_accessor :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :policies, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :configurable, :base_url, :options, :model_classes
+      attr_reader :labs, :global_schedules, :artifact_sources, :arm_templates, :artifacts, :costs, :custom_images, :formulas, :gallery_images, :notification_channels, :policy_sets, :policies, :schedules, :service_runners, :users, :disks, :environments, :secrets, :virtual_machines, :virtual_machine_schedules, :virtual_networks, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -192,28 +192,28 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.labs = client.labs
-        self.global_schedules = client.global_schedules
-        self.artifact_sources = client.artifact_sources
-        self.arm_templates = client.arm_templates
-        self.artifacts = client.artifacts
-        self.costs = client.costs
-        self.custom_images = client.custom_images
-        self.formulas = client.formulas
-        self.gallery_images = client.gallery_images
-        self.notification_channels = client.notification_channels
-        self.policy_sets = client.policy_sets
-        self.policies = client.policies
-        self.schedules = client.schedules
-        self.service_runners = client.service_runners
-        self.users = client.users
-        self.disks = client.disks
-        self.environments = client.environments
-        self.secrets = client.secrets
-        self.virtual_machines = client.virtual_machines
-        self.virtual_machine_schedules = client.virtual_machine_schedules
-        self.virtual_networks = client.virtual_networks
-        self.model_classes = ModelClasses.new
+        @labs = client.labs
+        @global_schedules = client.global_schedules
+        @artifact_sources = client.artifact_sources
+        @arm_templates = client.arm_templates
+        @artifacts = client.artifacts
+        @costs = client.costs
+        @custom_images = client.custom_images
+        @formulas = client.formulas
+        @gallery_images = client.gallery_images
+        @notification_channels = client.notification_channels
+        @policy_sets = client.policy_sets
+        @policies = client.policies
+        @schedules = client.schedules
+        @service_runners = client.service_runners
+        @users = client.users
+        @disks = client.disks
+        @environments = client.environments
+        @secrets = client.secrets
+        @virtual_machines = client.virtual_machines
+        @virtual_machine_schedules = client.virtual_machine_schedules
+        @virtual_networks = client.virtual_networks
+        @model_classes = ModelClasses.new
       end
 
       #

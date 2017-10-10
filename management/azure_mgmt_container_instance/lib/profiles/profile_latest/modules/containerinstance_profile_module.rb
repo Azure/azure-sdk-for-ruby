@@ -36,7 +36,7 @@ module Azure::ContainerInstance::Management::Profile_Latest
     # ContainerInstance
     #
     class ContainerInstanceClass
-      attr_accessor :container_groups, :container_logs, :configurable, :base_url, :options, :model_classes
+      attr_reader :container_groups, :container_logs, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -44,9 +44,9 @@ module Azure::ContainerInstance::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.container_groups = client.container_groups
-        self.container_logs = client.container_logs
-        self.model_classes = ModelClasses.new
+        @container_groups = client.container_groups
+        @container_logs = client.container_logs
+        @model_classes = ModelClasses.new
       end
 
       #

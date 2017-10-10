@@ -32,7 +32,7 @@ module Azure::Profiles::Management::Profile_Latest
     # RecoveryServices
     #
     class RecoveryServicesClass
-      attr_accessor :backup_vault_configs, :backup_storage_configs, :configurable, :base_url, :options, :model_classes
+      attr_reader :backup_vault_configs, :backup_storage_configs, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -40,9 +40,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.backup_vault_configs = client.backup_vault_configs
-        self.backup_storage_configs = client.backup_storage_configs
-        self.model_classes = ModelClasses.new
+        @backup_vault_configs = client.backup_vault_configs
+        @backup_storage_configs = client.backup_storage_configs
+        @model_classes = ModelClasses.new
       end
 
       #

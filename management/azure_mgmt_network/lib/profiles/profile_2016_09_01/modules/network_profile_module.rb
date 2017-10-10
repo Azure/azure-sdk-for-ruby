@@ -220,7 +220,7 @@ module Azure::Network::Management::Profile_2016_09_01
     # Network
     #
     class NetworkClass
-      attr_accessor :network_interfaces, :application_gateways, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :network_security_groups, :security_rules, :network_watchers, :packet_captures, :public_ipaddresses, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_peerings, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :configurable, :base_url, :options, :model_classes
+      attr_reader :network_interfaces, :application_gateways, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :network_security_groups, :security_rules, :network_watchers, :packet_captures, :public_ipaddresses, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_peerings, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -228,28 +228,28 @@ module Azure::Network::Management::Profile_2016_09_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.network_interfaces = client.network_interfaces
-        self.application_gateways = client.application_gateways
-        self.express_route_circuit_authorizations = client.express_route_circuit_authorizations
-        self.express_route_circuit_peerings = client.express_route_circuit_peerings
-        self.express_route_circuits = client.express_route_circuits
-        self.express_route_service_providers = client.express_route_service_providers
-        self.load_balancers = client.load_balancers
-        self.network_security_groups = client.network_security_groups
-        self.security_rules = client.security_rules
-        self.network_watchers = client.network_watchers
-        self.packet_captures = client.packet_captures
-        self.public_ipaddresses = client.public_ipaddresses
-        self.route_tables = client.route_tables
-        self.routes = client.routes
-        self.usages = client.usages
-        self.virtual_networks = client.virtual_networks
-        self.subnets = client.subnets
-        self.virtual_network_peerings = client.virtual_network_peerings
-        self.virtual_network_gateways = client.virtual_network_gateways
-        self.virtual_network_gateway_connections = client.virtual_network_gateway_connections
-        self.local_network_gateways = client.local_network_gateways
-        self.model_classes = ModelClasses.new
+        @network_interfaces = client.network_interfaces
+        @application_gateways = client.application_gateways
+        @express_route_circuit_authorizations = client.express_route_circuit_authorizations
+        @express_route_circuit_peerings = client.express_route_circuit_peerings
+        @express_route_circuits = client.express_route_circuits
+        @express_route_service_providers = client.express_route_service_providers
+        @load_balancers = client.load_balancers
+        @network_security_groups = client.network_security_groups
+        @security_rules = client.security_rules
+        @network_watchers = client.network_watchers
+        @packet_captures = client.packet_captures
+        @public_ipaddresses = client.public_ipaddresses
+        @route_tables = client.route_tables
+        @routes = client.routes
+        @usages = client.usages
+        @virtual_networks = client.virtual_networks
+        @subnets = client.subnets
+        @virtual_network_peerings = client.virtual_network_peerings
+        @virtual_network_gateways = client.virtual_network_gateways
+        @virtual_network_gateway_connections = client.virtual_network_gateway_connections
+        @local_network_gateways = client.local_network_gateways
+        @model_classes = ModelClasses.new
       end
 
       #

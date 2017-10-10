@@ -14,7 +14,7 @@ module Azure::Redis::Management::Profile_2017_02_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :redis
+    attr_reader  :redis
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Redis::Management::Profile_2017_02_01
 
       reset!(options)
 
-      self.redis = RedisClass.new(self)
+      @redis = RedisClass.new(self)
     end
 
     def credentials

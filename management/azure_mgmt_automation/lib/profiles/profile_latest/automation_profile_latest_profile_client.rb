@@ -14,7 +14,7 @@ module Azure::Automation::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :automation
+    attr_reader  :automation
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Automation::Management::Profile_Latest
 
       reset!(options)
 
-      self.automation = AutomationClass.new(self)
+      @automation = AutomationClass.new(self)
     end
 
     def credentials

@@ -23,7 +23,7 @@ module Azure::Policy::Management::Profile_Latest
     # Policy
     #
     class PolicyClass
-      attr_accessor :policy_assignments, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
+      attr_reader :policy_assignments, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -31,9 +31,9 @@ module Azure::Policy::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.policy_assignments = client.policy_assignments
-        self.policy_set_definitions = client.policy_set_definitions
-        self.model_classes = ModelClasses.new
+        @policy_assignments = client.policy_assignments
+        @policy_set_definitions = client.policy_set_definitions
+        @model_classes = ModelClasses.new
       end
 
       #

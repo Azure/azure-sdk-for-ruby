@@ -14,7 +14,7 @@ module Azure::ContainerInstance::Management::Profile_2017_08_01_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :containerinstance
+    attr_reader  :containerinstance
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ContainerInstance::Management::Profile_2017_08_01_Preview
 
       reset!(options)
 
-      self.containerinstance = ContainerInstanceClass.new(self)
+      @containerinstance = ContainerInstanceClass.new(self)
     end
 
     def credentials

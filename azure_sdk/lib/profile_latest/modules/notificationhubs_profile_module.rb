@@ -47,7 +47,7 @@ module Azure::Profiles::Management::Profile_Latest
     # NotificationHubs
     #
     class NotificationHubsClass
-      attr_accessor :namespaces, :name, :notification_hubs, :hubs, :configurable, :base_url, :options, :model_classes
+      attr_reader :namespaces, :name, :notification_hubs, :hubs, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -55,11 +55,11 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.namespaces = client.namespaces
-        self.name = client.name
-        self.notification_hubs = client.notification_hubs
-        self.hubs = client.hubs
-        self.model_classes = ModelClasses.new
+        @namespaces = client.namespaces
+        @name = client.name
+        @notification_hubs = client.notification_hubs
+        @hubs = client.hubs
+        @model_classes = ModelClasses.new
       end
 
       #

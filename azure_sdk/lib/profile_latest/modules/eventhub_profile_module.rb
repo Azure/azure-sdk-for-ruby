@@ -45,7 +45,7 @@ module Azure::Profiles::Management::Profile_Latest
     # EventHub
     #
     class EventHubClass
-      attr_accessor :operations, :namespaces, :event_hubs, :consumer_groups, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :namespaces, :event_hubs, :consumer_groups, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -53,11 +53,11 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.namespaces = client.namespaces
-        self.event_hubs = client.event_hubs
-        self.consumer_groups = client.consumer_groups
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @namespaces = client.namespaces
+        @event_hubs = client.event_hubs
+        @consumer_groups = client.consumer_groups
+        @model_classes = ModelClasses.new
       end
 
       #

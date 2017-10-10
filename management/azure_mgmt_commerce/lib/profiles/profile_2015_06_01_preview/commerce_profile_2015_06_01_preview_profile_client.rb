@@ -14,7 +14,7 @@ module Azure::Commerce::Management::Profile_2015_06_01_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :commerce
+    attr_reader  :commerce
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Commerce::Management::Profile_2015_06_01_Preview
 
       reset!(options)
 
-      self.commerce = CommerceClass.new(self)
+      @commerce = CommerceClass.new(self)
     end
 
     def credentials

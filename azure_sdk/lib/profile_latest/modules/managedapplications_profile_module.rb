@@ -33,7 +33,7 @@ module Azure::Profiles::Management::Profile_Latest
     # ManagedApplications
     #
     class ManagedApplicationsClass
-      attr_accessor :appliances, :appliance_definitions, :configurable, :base_url, :options, :model_classes
+      attr_reader :appliances, :appliance_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -41,9 +41,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.appliances = client.appliances
-        self.appliance_definitions = client.appliance_definitions
-        self.model_classes = ModelClasses.new
+        @appliances = client.appliances
+        @appliance_definitions = client.appliance_definitions
+        @model_classes = ModelClasses.new
       end
 
       #

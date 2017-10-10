@@ -22,7 +22,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :storage, :network, :compute, :features, :links, :locks, :policy, :resources, :subscriptions
+    attr_reader  :storage, :network, :compute, :features, :links, :locks, :policy, :resources, :subscriptions
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -33,15 +33,15 @@ module Azure::Profiles::Management::Profile_Azure_Stack
 
       reset!(options)
 
-      self.storage = Storage::StorageClass.new(self)
-      self.network = Network::NetworkClass.new(self)
-      self.compute = Compute::ComputeClass.new(self)
-      self.features = Features::FeaturesClass.new(self)
-      self.links = Links::LinksClass.new(self)
-      self.locks = Locks::LocksClass.new(self)
-      self.policy = Policy::PolicyClass.new(self)
-      self.resources = Resources::ResourcesClass.new(self)
-      self.subscriptions = Subscriptions::SubscriptionsClass.new(self)
+      @storage = Storage::StorageClass.new(self)
+      @network = Network::NetworkClass.new(self)
+      @compute = Compute::ComputeClass.new(self)
+      @features = Features::FeaturesClass.new(self)
+      @links = Links::LinksClass.new(self)
+      @locks = Locks::LocksClass.new(self)
+      @policy = Policy::PolicyClass.new(self)
+      @resources = Resources::ResourcesClass.new(self)
+      @subscriptions = Subscriptions::SubscriptionsClass.new(self)
     end
 
     def credentials

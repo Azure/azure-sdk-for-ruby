@@ -14,7 +14,7 @@ module Azure::Subscriptions::Management::Profile_2015_11_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_accessor  :subscriptions
+    attr_reader  :subscriptions
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::Subscriptions::Management::Profile_2015_11_01
 
       reset!(options)
 
-      self.subscriptions = SubscriptionsClass.new(self)
+      @subscriptions = SubscriptionsClass.new(self)
     end
 
     def credentials

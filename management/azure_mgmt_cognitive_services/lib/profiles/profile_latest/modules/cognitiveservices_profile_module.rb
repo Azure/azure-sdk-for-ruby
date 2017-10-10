@@ -38,7 +38,7 @@ module Azure::CognitiveServices::Management::Profile_Latest
     # CognitiveServices
     #
     class CognitiveServicesClass
-      attr_accessor :accounts, :operations, :check_sku_availability, :configurable, :base_url, :options, :model_classes
+      attr_reader :accounts, :operations, :check_sku_availability, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -46,10 +46,10 @@ module Azure::CognitiveServices::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.accounts = client.accounts
-        self.operations = client.operations
-        self.check_sku_availability = client.check_sku_availability
-        self.model_classes = ModelClasses.new
+        @accounts = client.accounts
+        @operations = client.operations
+        @check_sku_availability = client.check_sku_availability
+        @model_classes = ModelClasses.new
       end
 
       #

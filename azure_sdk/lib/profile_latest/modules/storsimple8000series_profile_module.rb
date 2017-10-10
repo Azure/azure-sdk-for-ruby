@@ -188,7 +188,7 @@ module Azure::Profiles::Management::Profile_Latest
     # StorSimple8000Series
     #
     class StorSimple8000SeriesClass
-      attr_accessor :operations, :managers, :access_control_records, :alerts, :bandwidth_settings, :cloud_appliances, :devices, :device_settings, :backup_policies, :backup_schedules, :backups, :hardware_component_groups, :jobs, :volume_containers, :volumes, :storage_account_credentials, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :managers, :access_control_records, :alerts, :bandwidth_settings, :cloud_appliances, :devices, :device_settings, :backup_policies, :backup_schedules, :backups, :hardware_component_groups, :jobs, :volume_containers, :volumes, :storage_account_credentials, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -196,23 +196,23 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.managers = client.managers
-        self.access_control_records = client.access_control_records
-        self.alerts = client.alerts
-        self.bandwidth_settings = client.bandwidth_settings
-        self.cloud_appliances = client.cloud_appliances
-        self.devices = client.devices
-        self.device_settings = client.device_settings
-        self.backup_policies = client.backup_policies
-        self.backup_schedules = client.backup_schedules
-        self.backups = client.backups
-        self.hardware_component_groups = client.hardware_component_groups
-        self.jobs = client.jobs
-        self.volume_containers = client.volume_containers
-        self.volumes = client.volumes
-        self.storage_account_credentials = client.storage_account_credentials
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @managers = client.managers
+        @access_control_records = client.access_control_records
+        @alerts = client.alerts
+        @bandwidth_settings = client.bandwidth_settings
+        @cloud_appliances = client.cloud_appliances
+        @devices = client.devices
+        @device_settings = client.device_settings
+        @backup_policies = client.backup_policies
+        @backup_schedules = client.backup_schedules
+        @backups = client.backups
+        @hardware_component_groups = client.hardware_component_groups
+        @jobs = client.jobs
+        @volume_containers = client.volume_containers
+        @volumes = client.volumes
+        @storage_account_credentials = client.storage_account_credentials
+        @model_classes = ModelClasses.new
       end
 
       #

@@ -41,7 +41,7 @@ module Azure::Redis::Management::Profile_2016_04_01
     # Redis
     #
     class RedisClass
-      attr_accessor :operations, :redis, :firewall_rules, :redis_firewall_rule_operations, :patch_schedules, :configurable, :base_url, :options, :model_classes
+      attr_reader :operations, :redis, :firewall_rules, :redis_firewall_rule_operations, :patch_schedules, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -49,12 +49,12 @@ module Azure::Redis::Management::Profile_2016_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = client.operations
-        self.redis = client.redis
-        self.firewall_rules = client.firewall_rules
-        self.redis_firewall_rule_operations = client.redis_firewall_rule_operations
-        self.patch_schedules = client.patch_schedules
-        self.model_classes = ModelClasses.new
+        @operations = client.operations
+        @redis = client.redis
+        @firewall_rules = client.firewall_rules
+        @redis_firewall_rule_operations = client.redis_firewall_rule_operations
+        @patch_schedules = client.patch_schedules
+        @model_classes = ModelClasses.new
       end
 
       #

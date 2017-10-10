@@ -43,7 +43,7 @@ module Azure::Profiles::Management::Profile_Latest
     # EventGrid
     #
     class EventGridClass
-      attr_accessor :event_subscriptions, :operations, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
+      attr_reader :event_subscriptions, :operations, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -51,11 +51,11 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.event_subscriptions = client.event_subscriptions
-        self.operations = client.operations
-        self.topics = client.topics
-        self.topic_types = client.topic_types
-        self.model_classes = ModelClasses.new
+        @event_subscriptions = client.event_subscriptions
+        @operations = client.operations
+        @topics = client.topics
+        @topic_types = client.topic_types
+        @model_classes = ModelClasses.new
       end
 
       #
