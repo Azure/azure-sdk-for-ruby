@@ -154,6 +154,8 @@ namespace :arm do
   desc 'Regen rollup profiles'
   task :regen_rollup_profile => :clean_rollup_profiles do
     Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
+    # Sample Command
+    # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json
     command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{PROFILE_METADATA[:azure_sdk]}"
     execute_and_stream(command)
   end
@@ -163,6 +165,8 @@ namespace :arm do
     Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
     PROFILE_METADATA.each do |sdk, profile_spec_file|
       if(sdk.to_s != 'azure_sdk')
+        # Sample Command
+        # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json
         command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{profile_spec_file}"
         execute_and_stream(command)
       end
