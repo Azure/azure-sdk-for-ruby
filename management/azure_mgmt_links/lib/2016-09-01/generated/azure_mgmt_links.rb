@@ -21,7 +21,7 @@ require 'ms_rest_azure'
 
 module Azure::ARM::Links::Api_2016_09_01
   autoload :ResourceLinks,                                      '2016-09-01/generated/azure_mgmt_links/resource_links.rb'
-  autoload :LinksManagementClient,                              '2016-09-01/generated/azure_mgmt_links/links_management_client.rb'
+  autoload :ManagementLinkClient,                               '2016-09-01/generated/azure_mgmt_links/management_link_client.rb'
 
   module Models
     autoload :ResourceLink,                                       '2016-09-01/generated/azure_mgmt_links/models/resource_link.rb'
