@@ -37,8 +37,8 @@ module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.management_groups = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroups.new(client)
-        self.operations = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Operations.new(client)
+        self.management_groups = client.management_groups
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

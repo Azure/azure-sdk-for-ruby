@@ -195,22 +195,22 @@ module Azure::StorSimple8000Series::Management::Profile_2017_06_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Operations.new(client)
-        self.managers = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Managers.new(client)
-        self.access_control_records = Azure::ARM::StorSimple8000Series::Api_2017_06_01::AccessControlRecords.new(client)
-        self.alerts = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Alerts.new(client)
-        self.bandwidth_settings = Azure::ARM::StorSimple8000Series::Api_2017_06_01::BandwidthSettings.new(client)
-        self.cloud_appliances = Azure::ARM::StorSimple8000Series::Api_2017_06_01::CloudAppliances.new(client)
-        self.devices = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Devices.new(client)
-        self.device_settings = Azure::ARM::StorSimple8000Series::Api_2017_06_01::DeviceSettings.new(client)
-        self.backup_policies = Azure::ARM::StorSimple8000Series::Api_2017_06_01::BackupPolicies.new(client)
-        self.backup_schedules = Azure::ARM::StorSimple8000Series::Api_2017_06_01::BackupSchedules.new(client)
-        self.backups = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Backups.new(client)
-        self.hardware_component_groups = Azure::ARM::StorSimple8000Series::Api_2017_06_01::HardwareComponentGroups.new(client)
-        self.jobs = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Jobs.new(client)
-        self.volume_containers = Azure::ARM::StorSimple8000Series::Api_2017_06_01::VolumeContainers.new(client)
-        self.volumes = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Volumes.new(client)
-        self.storage_account_credentials = Azure::ARM::StorSimple8000Series::Api_2017_06_01::StorageAccountCredentials.new(client)
+        self.operations = client.operations
+        self.managers = client.managers
+        self.access_control_records = client.access_control_records
+        self.alerts = client.alerts
+        self.bandwidth_settings = client.bandwidth_settings
+        self.cloud_appliances = client.cloud_appliances
+        self.devices = client.devices
+        self.device_settings = client.device_settings
+        self.backup_policies = client.backup_policies
+        self.backup_schedules = client.backup_schedules
+        self.backups = client.backups
+        self.hardware_component_groups = client.hardware_component_groups
+        self.jobs = client.jobs
+        self.volume_containers = client.volume_containers
+        self.volumes = client.volumes
+        self.storage_account_credentials = client.storage_account_credentials
         self.model_classes = ModelClasses.new
       end
 

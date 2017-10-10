@@ -66,10 +66,10 @@ module Azure::ContainerRegistry::Management::Profile_2017_06_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.registries = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Registries.new(client)
-        self.operations = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Operations.new(client)
-        self.replications = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Replications.new(client)
-        self.webhooks = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Webhooks.new(client)
+        self.registries = client.registries
+        self.operations = client.operations
+        self.replications = client.replications
+        self.webhooks = client.webhooks
         self.model_classes = ModelClasses.new
       end
 

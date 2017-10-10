@@ -48,9 +48,9 @@ module Azure::Monitor::Management::Profile_2016_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.alert_rule_incidents = Azure::ARM::Monitor::Api_2016_03_01::AlertRuleIncidents.new(client)
-        self.alert_rules = Azure::ARM::Monitor::Api_2016_03_01::AlertRules.new(client)
-        self.log_profiles = Azure::ARM::Monitor::Api_2016_03_01::LogProfiles.new(client)
+        self.alert_rule_incidents = client.alert_rule_incidents
+        self.alert_rules = client.alert_rules
+        self.log_profiles = client.log_profiles
         self.model_classes = ModelClasses.new
       end
 

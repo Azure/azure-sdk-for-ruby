@@ -36,8 +36,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.usage_aggregates = Azure::ARM::Commerce::Api_2015_06_01_preview::UsageAggregates.new(client)
-        self.rate_card = Azure::ARM::Commerce::Api_2015_06_01_preview::RateCard.new(client)
+        self.usage_aggregates = client.usage_aggregates
+        self.rate_card = client.rate_card
         self.model_classes = ModelClasses.new
       end
 

@@ -365,26 +365,26 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.replication_vault_health = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationVaultHealth.new(client)
-        self.replication_protected_items = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationProtectedItems.new(client)
-        self.replication_network_mappings = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationNetworkMappings.new(client)
-        self.replication_fabrics = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationFabrics.new(client)
-        self.replicationv_centers = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationvCenters.new(client)
-        self.replication_storage_classification_mappings = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationStorageClassificationMappings.new(client)
-        self.replication_storage_classifications = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationStorageClassifications.new(client)
-        self.replication_recovery_services_providers = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationRecoveryServicesProviders.new(client)
-        self.recovery_points = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::RecoveryPoints.new(client)
-        self.replication_recovery_plans = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationRecoveryPlans.new(client)
-        self.replication_protection_containers = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationProtectionContainers.new(client)
-        self.replication_protection_container_mappings = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationProtectionContainerMappings.new(client)
-        self.replication_protectable_items = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationProtectableItems.new(client)
-        self.replication_policies = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationPolicies.new(client)
-        self.operations = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Operations.new(client)
-        self.replication_networks = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationNetworks.new(client)
-        self.replication_logical_networks = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationLogicalNetworks.new(client)
-        self.replication_jobs = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationJobs.new(client)
-        self.replication_events = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationEvents.new(client)
-        self.replication_alert_settings = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationAlertSettings.new(client)
+        self.replication_vault_health = client.replication_vault_health
+        self.replication_protected_items = client.replication_protected_items
+        self.replication_network_mappings = client.replication_network_mappings
+        self.replication_fabrics = client.replication_fabrics
+        self.replicationv_centers = client.replicationv_centers
+        self.replication_storage_classification_mappings = client.replication_storage_classification_mappings
+        self.replication_storage_classifications = client.replication_storage_classifications
+        self.replication_recovery_services_providers = client.replication_recovery_services_providers
+        self.recovery_points = client.recovery_points
+        self.replication_recovery_plans = client.replication_recovery_plans
+        self.replication_protection_containers = client.replication_protection_containers
+        self.replication_protection_container_mappings = client.replication_protection_container_mappings
+        self.replication_protectable_items = client.replication_protectable_items
+        self.replication_policies = client.replication_policies
+        self.operations = client.operations
+        self.replication_networks = client.replication_networks
+        self.replication_logical_networks = client.replication_logical_networks
+        self.replication_jobs = client.replication_jobs
+        self.replication_events = client.replication_events
+        self.replication_alert_settings = client.replication_alert_settings
         self.model_classes = ModelClasses.new
       end
 

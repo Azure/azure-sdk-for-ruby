@@ -32,8 +32,8 @@ module Azure::Subscriptions::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.subscriptions = Azure::ARM::Subscriptions::Api_2016_06_01::Subscriptions.new(client)
-        self.tenants = Azure::ARM::Subscriptions::Api_2016_06_01::Tenants.new(client)
+        self.subscriptions = client.subscriptions
+        self.tenants = client.tenants
         self.model_classes = ModelClasses.new
       end
 

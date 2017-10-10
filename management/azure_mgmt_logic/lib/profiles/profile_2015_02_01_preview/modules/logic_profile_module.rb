@@ -65,13 +65,13 @@ module Azure::Logic::Management::Profile_2015_02_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.workflows = Azure::ARM::Logic::Api_2015_02_01_preview::Workflows.new(client)
-        self.workflow_versions = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowVersions.new(client)
-        self.workflow_access_keys = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowAccessKeys.new(client)
-        self.workflow_triggers = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowTriggers.new(client)
-        self.workflow_trigger_histories = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowTriggerHistories.new(client)
-        self.workflow_runs = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowRuns.new(client)
-        self.workflow_run_actions = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowRunActions.new(client)
+        self.workflows = client.workflows
+        self.workflow_versions = client.workflow_versions
+        self.workflow_access_keys = client.workflow_access_keys
+        self.workflow_triggers = client.workflow_triggers
+        self.workflow_trigger_histories = client.workflow_trigger_histories
+        self.workflow_runs = client.workflow_runs
+        self.workflow_run_actions = client.workflow_run_actions
         self.model_classes = ModelClasses.new
       end
 

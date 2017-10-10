@@ -28,7 +28,7 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.resource_links = Azure::ARM::Links::Api_2016_09_01::ResourceLinks.new(client)
+        self.resource_links = client.resource_links
         self.model_classes = ModelClasses.new
       end
 

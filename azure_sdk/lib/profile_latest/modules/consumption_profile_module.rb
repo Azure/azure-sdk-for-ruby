@@ -32,8 +32,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.usage_details = Azure::ARM::Consumption::Api_2017_04_24_preview::UsageDetails.new(client)
-        self.operations = Azure::ARM::Consumption::Api_2017_04_24_preview::Operations.new(client)
+        self.usage_details = client.usage_details
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

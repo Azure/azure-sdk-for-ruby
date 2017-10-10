@@ -99,13 +99,13 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::StreamAnalytics::Api_2016_03_01::Operations.new(client)
-        self.streaming_jobs = Azure::ARM::StreamAnalytics::Api_2016_03_01::StreamingJobs.new(client)
-        self.inputs = Azure::ARM::StreamAnalytics::Api_2016_03_01::Inputs.new(client)
-        self.outputs = Azure::ARM::StreamAnalytics::Api_2016_03_01::Outputs.new(client)
-        self.transformations = Azure::ARM::StreamAnalytics::Api_2016_03_01::Transformations.new(client)
-        self.functions = Azure::ARM::StreamAnalytics::Api_2016_03_01::Functions.new(client)
-        self.subscriptions = Azure::ARM::StreamAnalytics::Api_2016_03_01::Subscriptions.new(client)
+        self.operations = client.operations
+        self.streaming_jobs = client.streaming_jobs
+        self.inputs = client.inputs
+        self.outputs = client.outputs
+        self.transformations = client.transformations
+        self.functions = client.functions
+        self.subscriptions = client.subscriptions
         self.model_classes = ModelClasses.new
       end
 

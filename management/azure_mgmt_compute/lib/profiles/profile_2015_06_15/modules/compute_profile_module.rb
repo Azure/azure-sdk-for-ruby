@@ -123,15 +123,15 @@ module Azure::Compute::Management::Profile_2015_06_15
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.availability_sets = Azure::ARM::Compute::Api_2015_06_15::AvailabilitySets.new(client)
-        self.virtual_machine_extension_images = Azure::ARM::Compute::Api_2015_06_15::VirtualMachineExtensionImages.new(client)
-        self.virtual_machine_extensions = Azure::ARM::Compute::Api_2015_06_15::VirtualMachineExtensions.new(client)
-        self.virtual_machine_images = Azure::ARM::Compute::Api_2015_06_15::VirtualMachineImages.new(client)
-        self.usage_operations = Azure::ARM::Compute::Api_2015_06_15::UsageOperations.new(client)
-        self.virtual_machine_sizes = Azure::ARM::Compute::Api_2015_06_15::VirtualMachineSizes.new(client)
-        self.virtual_machines = Azure::ARM::Compute::Api_2015_06_15::VirtualMachines.new(client)
-        self.virtual_machine_scale_sets = Azure::ARM::Compute::Api_2015_06_15::VirtualMachineScaleSets.new(client)
-        self.virtual_machine_scale_set_vms = Azure::ARM::Compute::Api_2015_06_15::VirtualMachineScaleSetVMs.new(client)
+        self.availability_sets = client.availability_sets
+        self.virtual_machine_extension_images = client.virtual_machine_extension_images
+        self.virtual_machine_extensions = client.virtual_machine_extensions
+        self.virtual_machine_images = client.virtual_machine_images
+        self.usage_operations = client.usage_operations
+        self.virtual_machine_sizes = client.virtual_machine_sizes
+        self.virtual_machines = client.virtual_machines
+        self.virtual_machine_scale_sets = client.virtual_machine_scale_sets
+        self.virtual_machine_scale_set_vms = client.virtual_machine_scale_set_vms
         self.model_classes = ModelClasses.new
       end
 

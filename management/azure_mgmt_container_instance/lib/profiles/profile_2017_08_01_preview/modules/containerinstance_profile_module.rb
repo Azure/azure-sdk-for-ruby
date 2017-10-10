@@ -44,8 +44,8 @@ module Azure::ContainerInstance::Management::Profile_2017_08_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.container_groups = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerGroups.new(client)
-        self.container_logs = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerLogs.new(client)
+        self.container_groups = client.container_groups
+        self.container_logs = client.container_logs
         self.model_classes = ModelClasses.new
       end
 

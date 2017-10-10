@@ -63,12 +63,12 @@ module Azure::CDN::Management::Profile_2015_06_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.profiles = Azure::ARM::CDN::Api_2015_06_01::Profiles.new(client)
-        self.endpoints = Azure::ARM::CDN::Api_2015_06_01::Endpoints.new(client)
-        self.origins = Azure::ARM::CDN::Api_2015_06_01::Origins.new(client)
-        self.custom_domains = Azure::ARM::CDN::Api_2015_06_01::CustomDomains.new(client)
-        self.name_availability = Azure::ARM::CDN::Api_2015_06_01::NameAvailability.new(client)
-        self.operations = Azure::ARM::CDN::Api_2015_06_01::Operations.new(client)
+        self.profiles = client.profiles
+        self.endpoints = client.endpoints
+        self.origins = client.origins
+        self.custom_domains = client.custom_domains
+        self.name_availability = client.name_availability
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

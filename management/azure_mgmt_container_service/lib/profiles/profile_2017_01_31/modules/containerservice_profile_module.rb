@@ -37,7 +37,7 @@ module Azure::ContainerService::Management::Profile_2017_01_31
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.container_services = Azure::ARM::ContainerService::Api_2017_01_31::ContainerServices.new(client)
+        self.container_services = client.container_services
         self.model_classes = ModelClasses.new
       end
 

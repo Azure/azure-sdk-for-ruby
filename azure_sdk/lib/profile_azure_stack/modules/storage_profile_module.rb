@@ -82,10 +82,10 @@ module Azure::Profiles::Management::Profile_Azure_Stack
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::Storage::Api_2017_06_01::Operations.new(client)
-        self.skus = Azure::ARM::Storage::Api_2017_06_01::Skus.new(client)
-        self.storage_accounts = Azure::ARM::Storage::Api_2017_06_01::StorageAccounts.new(client)
-        self.usage_operations = Azure::ARM::Storage::Api_2017_06_01::UsageOperations.new(client)
+        self.operations = client.operations
+        self.skus = client.skus
+        self.storage_accounts = client.storage_accounts
+        self.usage_operations = client.usage_operations
         self.model_classes = ModelClasses.new
       end
 

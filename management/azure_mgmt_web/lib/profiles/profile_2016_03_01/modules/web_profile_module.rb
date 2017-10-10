@@ -71,10 +71,10 @@ module Azure::Web::Management::Profile_2016_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.certificates = Azure::ARM::Web::Api_2016_03_01::Certificates.new(client)
-        self.deleted_web_apps = Azure::ARM::Web::Api_2016_03_01::DeletedWebApps.new(client)
-        self.provider = Azure::ARM::Web::Api_2016_03_01::Provider.new(client)
-        self.recommendations = Azure::ARM::Web::Api_2016_03_01::Recommendations.new(client)
+        self.certificates = client.certificates
+        self.deleted_web_apps = client.deleted_web_apps
+        self.provider = client.provider
+        self.recommendations = client.recommendations
         self.model_classes = ModelClasses.new
       end
 

@@ -28,8 +28,8 @@ module Azure::Policy::Management::Profile_2016_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.policy_assignments = Azure::ARM::Policy::Api_2016_04_01::PolicyAssignments.new(client)
-        self.policy_definitions = Azure::ARM::Policy::Api_2016_04_01::PolicyDefinitions.new(client)
+        self.policy_assignments = client.policy_assignments
+        self.policy_definitions = client.policy_definitions
         self.model_classes = ModelClasses.new
       end
 

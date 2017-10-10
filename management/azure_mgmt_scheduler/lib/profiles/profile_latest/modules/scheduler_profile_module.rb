@@ -68,8 +68,8 @@ module Azure::Scheduler::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.job_collections = Azure::ARM::Scheduler::Api_2016_03_01::JobCollections.new(client)
-        self.jobs = Azure::ARM::Scheduler::Api_2016_03_01::Jobs.new(client)
+        self.job_collections = client.job_collections
+        self.jobs = client.jobs
         self.model_classes = ModelClasses.new
       end
 

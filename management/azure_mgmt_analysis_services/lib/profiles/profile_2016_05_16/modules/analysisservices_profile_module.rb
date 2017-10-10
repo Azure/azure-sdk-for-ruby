@@ -34,7 +34,7 @@ module Azure::AnalysisServices::Management::Profile_2016_05_16
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.servers = Azure::ARM::AnalysisServices::Api_2016_05_16::Servers.new(client)
+        self.servers = client.servers
         self.model_classes = ModelClasses.new
       end
 

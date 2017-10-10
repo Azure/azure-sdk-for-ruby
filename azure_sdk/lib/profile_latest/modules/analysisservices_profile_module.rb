@@ -40,7 +40,7 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.servers = Azure::ARM::AnalysisServices::Api_2017_07_14::Servers.new(client)
+        self.servers = client.servers
         self.model_classes = ModelClasses.new
       end
 

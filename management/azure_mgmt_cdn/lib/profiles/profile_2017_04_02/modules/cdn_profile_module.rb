@@ -74,13 +74,13 @@ module Azure::CDN::Management::Profile_2017_04_02
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.profiles = Azure::ARM::CDN::Api_2017_04_02::Profiles.new(client)
-        self.endpoints = Azure::ARM::CDN::Api_2017_04_02::Endpoints.new(client)
-        self.origins = Azure::ARM::CDN::Api_2017_04_02::Origins.new(client)
-        self.custom_domains = Azure::ARM::CDN::Api_2017_04_02::CustomDomains.new(client)
-        self.resource_usage_operations = Azure::ARM::CDN::Api_2017_04_02::ResourceUsageOperations.new(client)
-        self.operations = Azure::ARM::CDN::Api_2017_04_02::Operations.new(client)
-        self.edge_nodes = Azure::ARM::CDN::Api_2017_04_02::EdgeNodes.new(client)
+        self.profiles = client.profiles
+        self.endpoints = client.endpoints
+        self.origins = client.origins
+        self.custom_domains = client.custom_domains
+        self.resource_usage_operations = client.resource_usage_operations
+        self.operations = client.operations
+        self.edge_nodes = client.edge_nodes
         self.model_classes = ModelClasses.new
       end
 

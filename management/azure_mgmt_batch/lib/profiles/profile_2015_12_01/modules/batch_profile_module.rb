@@ -43,10 +43,10 @@ module Azure::Batch::Management::Profile_2015_12_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.batch_account_operations = Azure::ARM::Batch::Api_2015_12_01::BatchAccountOperations.new(client)
-        self.application_package_operations = Azure::ARM::Batch::Api_2015_12_01::ApplicationPackageOperations.new(client)
-        self.application_operations = Azure::ARM::Batch::Api_2015_12_01::ApplicationOperations.new(client)
-        self.location = Azure::ARM::Batch::Api_2015_12_01::Location.new(client)
+        self.batch_account_operations = client.batch_account_operations
+        self.application_package_operations = client.application_package_operations
+        self.application_operations = client.application_operations
+        self.location = client.location
         self.model_classes = ModelClasses.new
       end
 

@@ -72,12 +72,12 @@ module Azure::Resources::Management::Profile_2017_05_10
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.deployments = Azure::ARM::Resources::Api_2017_05_10::Deployments.new(client)
-        self.providers = Azure::ARM::Resources::Api_2017_05_10::Providers.new(client)
-        self.resources = Azure::ARM::Resources::Api_2017_05_10::Resources.new(client)
-        self.resource_groups = Azure::ARM::Resources::Api_2017_05_10::ResourceGroups.new(client)
-        self.tags = Azure::ARM::Resources::Api_2017_05_10::Tags.new(client)
-        self.deployment_operations = Azure::ARM::Resources::Api_2017_05_10::DeploymentOperations.new(client)
+        self.deployments = client.deployments
+        self.providers = client.providers
+        self.resources = client.resources
+        self.resource_groups = client.resource_groups
+        self.tags = client.tags
+        self.deployment_operations = client.deployment_operations
         self.model_classes = ModelClasses.new
       end
 

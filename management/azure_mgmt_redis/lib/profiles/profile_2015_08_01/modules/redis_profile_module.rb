@@ -36,7 +36,7 @@ module Azure::Redis::Management::Profile_2015_08_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.redis = Azure::ARM::Redis::Api_2015_08_01::Redis.new(client)
+        self.redis = client.redis
         self.model_classes = ModelClasses.new
       end
 

@@ -43,8 +43,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.workspace_collections = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::WorkspaceCollections.new(client)
-        self.workspaces = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::Workspaces.new(client)
+        self.workspace_collections = client.workspace_collections
+        self.workspaces = client.workspaces
         self.model_classes = ModelClasses.new
       end
 

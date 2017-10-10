@@ -54,10 +54,10 @@ module Azure::NotificationHubs::Management::Profile_2017_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.namespaces = Azure::ARM::NotificationHubs::Api_2017_04_01::Namespaces.new(client)
-        self.name = Azure::ARM::NotificationHubs::Api_2017_04_01::Name.new(client)
-        self.notification_hubs = Azure::ARM::NotificationHubs::Api_2017_04_01::NotificationHubs.new(client)
-        self.hubs = Azure::ARM::NotificationHubs::Api_2017_04_01::Hubs.new(client)
+        self.namespaces = client.namespaces
+        self.name = client.name
+        self.notification_hubs = client.notification_hubs
+        self.hubs = client.hubs
         self.model_classes = ModelClasses.new
       end
 

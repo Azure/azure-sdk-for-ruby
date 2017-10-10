@@ -51,9 +51,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.firewall_rules = Azure::ARM::DataLakeStore::Api_2016_11_01::FirewallRules.new(client)
-        self.trusted_id_providers = Azure::ARM::DataLakeStore::Api_2016_11_01::TrustedIdProviders.new(client)
-        self.account = Azure::ARM::DataLakeStore::Api_2016_11_01::Account.new(client)
+        self.firewall_rules = client.firewall_rules
+        self.trusted_id_providers = client.trusted_id_providers
+        self.account = client.account
         self.model_classes = ModelClasses.new
       end
 

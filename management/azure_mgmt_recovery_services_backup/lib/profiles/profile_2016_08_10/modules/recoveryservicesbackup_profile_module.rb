@@ -28,7 +28,7 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_08_10
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::Operations.new(client)
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

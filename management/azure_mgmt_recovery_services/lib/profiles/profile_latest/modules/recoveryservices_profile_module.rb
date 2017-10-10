@@ -39,8 +39,8 @@ module Azure::RecoveryServices::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.backup_vault_configs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupVaultConfigs.new(client)
-        self.backup_storage_configs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupStorageConfigs.new(client)
+        self.backup_vault_configs = client.backup_vault_configs
+        self.backup_storage_configs = client.backup_storage_configs
         self.model_classes = ModelClasses.new
       end
 

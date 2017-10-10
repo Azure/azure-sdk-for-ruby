@@ -60,11 +60,11 @@ module Azure::ServiceBus::Management::Profile_2015_08_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::ServiceBus::Api_2015_08_01::Operations.new(client)
-        self.namespaces = Azure::ARM::ServiceBus::Api_2015_08_01::Namespaces.new(client)
-        self.queues = Azure::ARM::ServiceBus::Api_2015_08_01::Queues.new(client)
-        self.topics = Azure::ARM::ServiceBus::Api_2015_08_01::Topics.new(client)
-        self.subscriptions = Azure::ARM::ServiceBus::Api_2015_08_01::Subscriptions.new(client)
+        self.operations = client.operations
+        self.namespaces = client.namespaces
+        self.queues = client.queues
+        self.topics = client.topics
+        self.subscriptions = client.subscriptions
         self.model_classes = ModelClasses.new
       end
 

@@ -35,9 +35,9 @@ module Azure::TrafficManager::Management::Profile_2017_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.endpoints = Azure::ARM::TrafficManager::Api_2017_03_01::Endpoints.new(client)
-        self.profiles = Azure::ARM::TrafficManager::Api_2017_03_01::Profiles.new(client)
-        self.geographic_hierarchies = Azure::ARM::TrafficManager::Api_2017_03_01::GeographicHierarchies.new(client)
+        self.endpoints = client.endpoints
+        self.profiles = client.profiles
+        self.geographic_hierarchies = client.geographic_hierarchies
         self.model_classes = ModelClasses.new
       end
 

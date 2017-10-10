@@ -28,7 +28,7 @@ module Azure::Monitor::Management::Profile_2016_09_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.service_diagnostic_settings_operations = Azure::ARM::Monitor::Api_2016_09_01::ServiceDiagnosticSettingsOperations.new(client)
+        self.service_diagnostic_settings_operations = client.service_diagnostic_settings_operations
         self.model_classes = ModelClasses.new
       end
 

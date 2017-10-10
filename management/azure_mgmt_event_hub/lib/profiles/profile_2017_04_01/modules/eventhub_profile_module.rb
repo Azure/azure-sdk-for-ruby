@@ -52,10 +52,10 @@ module Azure::EventHub::Management::Profile_2017_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::EventHub::Api_2017_04_01::Operations.new(client)
-        self.namespaces = Azure::ARM::EventHub::Api_2017_04_01::Namespaces.new(client)
-        self.event_hubs = Azure::ARM::EventHub::Api_2017_04_01::EventHubs.new(client)
-        self.consumer_groups = Azure::ARM::EventHub::Api_2017_04_01::ConsumerGroups.new(client)
+        self.operations = client.operations
+        self.namespaces = client.namespaces
+        self.event_hubs = client.event_hubs
+        self.consumer_groups = client.consumer_groups
         self.model_classes = ModelClasses.new
       end
 

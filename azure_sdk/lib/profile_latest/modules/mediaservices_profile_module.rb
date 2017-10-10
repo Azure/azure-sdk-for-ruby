@@ -41,8 +41,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::MediaServices::Api_2015_10_01::Operations.new(client)
-        self.media_service_operations = Azure::ARM::MediaServices::Api_2015_10_01::MediaServiceOperations.new(client)
+        self.operations = client.operations
+        self.media_service_operations = client.media_service_operations
         self.model_classes = ModelClasses.new
       end
 

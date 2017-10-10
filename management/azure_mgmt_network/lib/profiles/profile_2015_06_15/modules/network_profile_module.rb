@@ -155,24 +155,24 @@ module Azure::Network::Management::Profile_2015_06_15
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.application_gateways = Azure::ARM::Network::Api_2015_06_15::ApplicationGateways.new(client)
-        self.express_route_circuit_authorizations = Azure::ARM::Network::Api_2015_06_15::ExpressRouteCircuitAuthorizations.new(client)
-        self.express_route_circuit_peerings = Azure::ARM::Network::Api_2015_06_15::ExpressRouteCircuitPeerings.new(client)
-        self.express_route_circuits = Azure::ARM::Network::Api_2015_06_15::ExpressRouteCircuits.new(client)
-        self.express_route_service_providers = Azure::ARM::Network::Api_2015_06_15::ExpressRouteServiceProviders.new(client)
-        self.load_balancers = Azure::ARM::Network::Api_2015_06_15::LoadBalancers.new(client)
-        self.network_interfaces = Azure::ARM::Network::Api_2015_06_15::NetworkInterfaces.new(client)
-        self.network_security_groups = Azure::ARM::Network::Api_2015_06_15::NetworkSecurityGroups.new(client)
-        self.security_rules = Azure::ARM::Network::Api_2015_06_15::SecurityRules.new(client)
-        self.public_ipaddresses = Azure::ARM::Network::Api_2015_06_15::PublicIPAddresses.new(client)
-        self.route_tables = Azure::ARM::Network::Api_2015_06_15::RouteTables.new(client)
-        self.routes = Azure::ARM::Network::Api_2015_06_15::Routes.new(client)
-        self.usages = Azure::ARM::Network::Api_2015_06_15::Usages.new(client)
-        self.virtual_networks = Azure::ARM::Network::Api_2015_06_15::VirtualNetworks.new(client)
-        self.subnets = Azure::ARM::Network::Api_2015_06_15::Subnets.new(client)
-        self.virtual_network_gateways = Azure::ARM::Network::Api_2015_06_15::VirtualNetworkGateways.new(client)
-        self.virtual_network_gateway_connections = Azure::ARM::Network::Api_2015_06_15::VirtualNetworkGatewayConnections.new(client)
-        self.local_network_gateways = Azure::ARM::Network::Api_2015_06_15::LocalNetworkGateways.new(client)
+        self.application_gateways = client.application_gateways
+        self.express_route_circuit_authorizations = client.express_route_circuit_authorizations
+        self.express_route_circuit_peerings = client.express_route_circuit_peerings
+        self.express_route_circuits = client.express_route_circuits
+        self.express_route_service_providers = client.express_route_service_providers
+        self.load_balancers = client.load_balancers
+        self.network_interfaces = client.network_interfaces
+        self.network_security_groups = client.network_security_groups
+        self.security_rules = client.security_rules
+        self.public_ipaddresses = client.public_ipaddresses
+        self.route_tables = client.route_tables
+        self.routes = client.routes
+        self.usages = client.usages
+        self.virtual_networks = client.virtual_networks
+        self.subnets = client.subnets
+        self.virtual_network_gateways = client.virtual_network_gateways
+        self.virtual_network_gateway_connections = client.virtual_network_gateway_connections
+        self.local_network_gateways = client.local_network_gateways
         self.model_classes = ModelClasses.new
       end
 

@@ -31,8 +31,8 @@ module Azure::Policy::Management::Profile_2017_06_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.policy_assignments = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyAssignments.new(client)
-        self.policy_set_definitions = Azure::ARM::Policy::Api_2017_06_01_preview::PolicySetDefinitions.new(client)
+        self.policy_assignments = client.policy_assignments
+        self.policy_set_definitions = client.policy_set_definitions
         self.model_classes = ModelClasses.new
       end
 

@@ -57,11 +57,11 @@ module Azure::DataLakeAnalytics::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.compute_policies = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::ComputePolicies.new(client)
-        self.firewall_rules = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::FirewallRules.new(client)
-        self.storage_accounts = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::StorageAccounts.new(client)
-        self.data_lake_store_accounts = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeStoreAccounts.new(client)
-        self.account = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Account.new(client)
+        self.compute_policies = client.compute_policies
+        self.firewall_rules = client.firewall_rules
+        self.storage_accounts = client.storage_accounts
+        self.data_lake_store_accounts = client.data_lake_store_accounts
+        self.account = client.account
         self.model_classes = ModelClasses.new
       end
 

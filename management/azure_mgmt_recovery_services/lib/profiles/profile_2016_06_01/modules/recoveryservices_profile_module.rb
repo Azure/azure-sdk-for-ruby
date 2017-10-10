@@ -60,13 +60,13 @@ module Azure::RecoveryServices::Management::Profile_2016_06_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.vault_certificates = Azure::ARM::RecoveryServices::Api_2016_06_01::VaultCertificates.new(client)
-        self.registered_identities = Azure::ARM::RecoveryServices::Api_2016_06_01::RegisteredIdentities.new(client)
-        self.replication_usages = Azure::ARM::RecoveryServices::Api_2016_06_01::ReplicationUsages.new(client)
-        self.vaults = Azure::ARM::RecoveryServices::Api_2016_06_01::Vaults.new(client)
-        self.operations = Azure::ARM::RecoveryServices::Api_2016_06_01::Operations.new(client)
-        self.vault_extended_info_operations = Azure::ARM::RecoveryServices::Api_2016_06_01::VaultExtendedInfoOperations.new(client)
-        self.usages = Azure::ARM::RecoveryServices::Api_2016_06_01::Usages.new(client)
+        self.vault_certificates = client.vault_certificates
+        self.registered_identities = client.registered_identities
+        self.replication_usages = client.replication_usages
+        self.vaults = client.vaults
+        self.operations = client.operations
+        self.vault_extended_info_operations = client.vault_extended_info_operations
+        self.usages = client.usages
         self.model_classes = ModelClasses.new
       end
 

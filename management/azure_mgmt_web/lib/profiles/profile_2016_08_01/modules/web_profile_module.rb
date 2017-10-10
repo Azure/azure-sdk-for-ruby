@@ -184,7 +184,7 @@ module Azure::Web::Management::Profile_2016_08_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.web_apps = Azure::ARM::Web::Api_2016_08_01::WebApps.new(client)
+        self.web_apps = client.web_apps
         self.model_classes = ModelClasses.new
       end
 

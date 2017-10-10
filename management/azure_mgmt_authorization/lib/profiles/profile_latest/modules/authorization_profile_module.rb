@@ -45,11 +45,11 @@ module Azure::Authorization::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.classic_administrators = Azure::ARM::Authorization::Api_2015_07_01::ClassicAdministrators.new(client)
-        self.permissions = Azure::ARM::Authorization::Api_2015_07_01::Permissions.new(client)
-        self.provider_operations_metadata_operations = Azure::ARM::Authorization::Api_2015_07_01::ProviderOperationsMetadataOperations.new(client)
-        self.role_assignments = Azure::ARM::Authorization::Api_2015_07_01::RoleAssignments.new(client)
-        self.role_definitions = Azure::ARM::Authorization::Api_2015_07_01::RoleDefinitions.new(client)
+        self.classic_administrators = client.classic_administrators
+        self.permissions = client.permissions
+        self.provider_operations_metadata_operations = client.provider_operations_metadata_operations
+        self.role_assignments = client.role_assignments
+        self.role_definitions = client.role_definitions
         self.model_classes = ModelClasses.new
       end
 

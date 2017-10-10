@@ -137,22 +137,22 @@ module Azure::CustomerInsights::Management::Profile_2017_04_26
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.hubs = Azure::ARM::CustomerInsights::Api_2017_04_26::Hubs.new(client)
-        self.profiles = Azure::ARM::CustomerInsights::Api_2017_04_26::Profiles.new(client)
-        self.interactions = Azure::ARM::CustomerInsights::Api_2017_04_26::Interactions.new(client)
-        self.relationships = Azure::ARM::CustomerInsights::Api_2017_04_26::Relationships.new(client)
-        self.relationship_links = Azure::ARM::CustomerInsights::Api_2017_04_26::RelationshipLinks.new(client)
-        self.authorization_policies = Azure::ARM::CustomerInsights::Api_2017_04_26::AuthorizationPolicies.new(client)
-        self.connectors = Azure::ARM::CustomerInsights::Api_2017_04_26::Connectors.new(client)
-        self.connector_mappings = Azure::ARM::CustomerInsights::Api_2017_04_26::ConnectorMappings.new(client)
-        self.kpi = Azure::ARM::CustomerInsights::Api_2017_04_26::Kpi.new(client)
-        self.widget_types = Azure::ARM::CustomerInsights::Api_2017_04_26::WidgetTypes.new(client)
-        self.views = Azure::ARM::CustomerInsights::Api_2017_04_26::Views.new(client)
-        self.links = Azure::ARM::CustomerInsights::Api_2017_04_26::Links.new(client)
-        self.roles = Azure::ARM::CustomerInsights::Api_2017_04_26::Roles.new(client)
-        self.role_assignments = Azure::ARM::CustomerInsights::Api_2017_04_26::RoleAssignments.new(client)
-        self.images = Azure::ARM::CustomerInsights::Api_2017_04_26::Images.new(client)
-        self.predictions = Azure::ARM::CustomerInsights::Api_2017_04_26::Predictions.new(client)
+        self.hubs = client.hubs
+        self.profiles = client.profiles
+        self.interactions = client.interactions
+        self.relationships = client.relationships
+        self.relationship_links = client.relationship_links
+        self.authorization_policies = client.authorization_policies
+        self.connectors = client.connectors
+        self.connector_mappings = client.connector_mappings
+        self.kpi = client.kpi
+        self.widget_types = client.widget_types
+        self.views = client.views
+        self.links = client.links
+        self.roles = client.roles
+        self.role_assignments = client.role_assignments
+        self.images = client.images
+        self.predictions = client.predictions
         self.model_classes = ModelClasses.new
       end
 

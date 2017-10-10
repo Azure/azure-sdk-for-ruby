@@ -35,9 +35,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.billing_periods = Azure::ARM::Billing::Api_2017_04_24_preview::BillingPeriods.new(client)
-        self.invoices = Azure::ARM::Billing::Api_2017_04_24_preview::Invoices.new(client)
-        self.operations = Azure::ARM::Billing::Api_2017_04_24_preview::Operations.new(client)
+        self.billing_periods = client.billing_periods
+        self.invoices = client.invoices
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

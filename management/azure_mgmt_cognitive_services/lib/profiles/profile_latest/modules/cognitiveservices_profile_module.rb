@@ -46,9 +46,9 @@ module Azure::CognitiveServices::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.accounts = Azure::ARM::CognitiveServices::Api_2017_04_18::Accounts.new(client)
-        self.operations = Azure::ARM::CognitiveServices::Api_2017_04_18::Operations.new(client)
-        self.check_sku_availability = Azure::ARM::CognitiveServices::Api_2017_04_18::CheckSkuAvailability.new(client)
+        self.accounts = client.accounts
+        self.operations = client.operations
+        self.check_sku_availability = client.check_sku_availability
         self.model_classes = ModelClasses.new
       end
 

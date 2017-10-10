@@ -49,10 +49,10 @@ module Azure::EventGrid::Management::Profile_2017_06_15_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.event_subscriptions = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventSubscriptions.new(client)
-        self.operations = Azure::ARM::EventGrid::Api_2017_06_15_preview::Operations.new(client)
-        self.topics = Azure::ARM::EventGrid::Api_2017_06_15_preview::Topics.new(client)
-        self.topic_types = Azure::ARM::EventGrid::Api_2017_06_15_preview::TopicTypes.new(client)
+        self.event_subscriptions = client.event_subscriptions
+        self.operations = client.operations
+        self.topics = client.topics
+        self.topic_types = client.topic_types
         self.model_classes = ModelClasses.new
       end
 

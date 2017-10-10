@@ -55,10 +55,10 @@ module Azure::ServerManagement::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.gateway = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Gateway.new(client)
-        self.node = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Node.new(client)
-        self.session = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Session.new(client)
-        self.power_shell = Azure::ARM::ServerManagement::Api_2016_07_01_preview::PowerShell.new(client)
+        self.gateway = client.gateway
+        self.node = client.node
+        self.session = client.session
+        self.power_shell = client.power_shell
         self.model_classes = ModelClasses.new
       end
 

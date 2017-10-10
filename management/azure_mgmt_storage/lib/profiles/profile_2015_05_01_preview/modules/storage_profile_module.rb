@@ -42,8 +42,8 @@ module Azure::Storage::Management::Profile_2015_05_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.storage_accounts = Azure::ARM::Storage::Api_2015_05_01_preview::StorageAccounts.new(client)
-        self.usage_operations = Azure::ARM::Storage::Api_2015_05_01_preview::UsageOperations.new(client)
+        self.storage_accounts = client.storage_accounts
+        self.usage_operations = client.usage_operations
         self.model_classes = ModelClasses.new
       end
 

@@ -50,8 +50,8 @@ module Azure::Web::Management::Profile_2015_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.domains = Azure::ARM::Web::Api_2015_04_01::Domains.new(client)
-        self.top_level_domains = Azure::ARM::Web::Api_2015_04_01::TopLevelDomains.new(client)
+        self.domains = client.domains
+        self.top_level_domains = client.top_level_domains
         self.model_classes = ModelClasses.new
       end
 

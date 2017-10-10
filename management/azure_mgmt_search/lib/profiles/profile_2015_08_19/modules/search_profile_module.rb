@@ -37,9 +37,9 @@ module Azure::Search::Management::Profile_2015_08_19
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.admin_keys = Azure::ARM::Search::Api_2015_08_19::AdminKeys.new(client)
-        self.query_keys = Azure::ARM::Search::Api_2015_08_19::QueryKeys.new(client)
-        self.services = Azure::ARM::Search::Api_2015_08_19::Services.new(client)
+        self.admin_keys = client.admin_keys
+        self.query_keys = client.query_keys
+        self.services = client.services
         self.model_classes = ModelClasses.new
       end
 

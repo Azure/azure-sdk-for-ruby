@@ -47,8 +47,8 @@ module Azure::RecoveryServicesBackup::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.backup_jobs = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::BackupJobs.new(client)
-        self.job_details = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::JobDetails.new(client)
+        self.backup_jobs = client.backup_jobs
+        self.job_details = client.job_details
         self.model_classes = ModelClasses.new
       end
 

@@ -104,19 +104,19 @@ module Azure::SQL::Management::Profile_2015_05_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.database_advisors = Azure::ARM::SQL::Api_2015_05_01_preview::DatabaseAdvisors.new(client)
-        self.database_recommended_actions = Azure::ARM::SQL::Api_2015_05_01_preview::DatabaseRecommendedActions.new(client)
-        self.server_advisors = Azure::ARM::SQL::Api_2015_05_01_preview::ServerAdvisors.new(client)
-        self.database_blob_auditing_policies = Azure::ARM::SQL::Api_2015_05_01_preview::DatabaseBlobAuditingPolicies.new(client)
-        self.encryption_protectors = Azure::ARM::SQL::Api_2015_05_01_preview::EncryptionProtectors.new(client)
-        self.failover_groups = Azure::ARM::SQL::Api_2015_05_01_preview::FailoverGroups.new(client)
-        self.operations = Azure::ARM::SQL::Api_2015_05_01_preview::Operations.new(client)
-        self.server_keys = Azure::ARM::SQL::Api_2015_05_01_preview::ServerKeys.new(client)
-        self.servers = Azure::ARM::SQL::Api_2015_05_01_preview::Servers.new(client)
-        self.sync_agents = Azure::ARM::SQL::Api_2015_05_01_preview::SyncAgents.new(client)
-        self.sync_groups = Azure::ARM::SQL::Api_2015_05_01_preview::SyncGroups.new(client)
-        self.sync_members = Azure::ARM::SQL::Api_2015_05_01_preview::SyncMembers.new(client)
-        self.virtual_network_rules = Azure::ARM::SQL::Api_2015_05_01_preview::VirtualNetworkRules.new(client)
+        self.database_advisors = client.database_advisors
+        self.database_recommended_actions = client.database_recommended_actions
+        self.server_advisors = client.server_advisors
+        self.database_blob_auditing_policies = client.database_blob_auditing_policies
+        self.encryption_protectors = client.encryption_protectors
+        self.failover_groups = client.failover_groups
+        self.operations = client.operations
+        self.server_keys = client.server_keys
+        self.servers = client.servers
+        self.sync_agents = client.sync_agents
+        self.sync_groups = client.sync_groups
+        self.sync_members = client.sync_members
+        self.virtual_network_rules = client.virtual_network_rules
         self.model_classes = ModelClasses.new
       end
 

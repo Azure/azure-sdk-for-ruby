@@ -142,24 +142,24 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.application_gateways = Azure::ARM::Network::Api_2015_05_01_preview::ApplicationGateways.new(client)
-        self.express_route_circuits = Azure::ARM::Network::Api_2015_05_01_preview::ExpressRouteCircuits.new(client)
-        self.express_route_service_providers = Azure::ARM::Network::Api_2015_05_01_preview::ExpressRouteServiceProviders.new(client)
-        self.express_route_circuit_peerings = Azure::ARM::Network::Api_2015_05_01_preview::ExpressRouteCircuitPeerings.new(client)
-        self.load_balancers = Azure::ARM::Network::Api_2015_05_01_preview::LoadBalancers.new(client)
-        self.local_network_gateways = Azure::ARM::Network::Api_2015_05_01_preview::LocalNetworkGateways.new(client)
-        self.network_interfaces = Azure::ARM::Network::Api_2015_05_01_preview::NetworkInterfaces.new(client)
-        self.route_tables = Azure::ARM::Network::Api_2015_05_01_preview::RouteTables.new(client)
-        self.network_security_groups = Azure::ARM::Network::Api_2015_05_01_preview::NetworkSecurityGroups.new(client)
-        self.public_ip_addresses = Azure::ARM::Network::Api_2015_05_01_preview::PublicIpAddresses.new(client)
-        self.routes = Azure::ARM::Network::Api_2015_05_01_preview::Routes.new(client)
-        self.security_rules = Azure::ARM::Network::Api_2015_05_01_preview::SecurityRules.new(client)
-        self.express_route_circuit_authorizations = Azure::ARM::Network::Api_2015_05_01_preview::ExpressRouteCircuitAuthorizations.new(client)
-        self.subnets = Azure::ARM::Network::Api_2015_05_01_preview::Subnets.new(client)
-        self.usages = Azure::ARM::Network::Api_2015_05_01_preview::Usages.new(client)
-        self.virtual_network_gateway_connections = Azure::ARM::Network::Api_2015_05_01_preview::VirtualNetworkGatewayConnections.new(client)
-        self.virtual_network_gateways = Azure::ARM::Network::Api_2015_05_01_preview::VirtualNetworkGateways.new(client)
-        self.virtual_networks = Azure::ARM::Network::Api_2015_05_01_preview::VirtualNetworks.new(client)
+        self.application_gateways = client.application_gateways
+        self.express_route_circuits = client.express_route_circuits
+        self.express_route_service_providers = client.express_route_service_providers
+        self.express_route_circuit_peerings = client.express_route_circuit_peerings
+        self.load_balancers = client.load_balancers
+        self.local_network_gateways = client.local_network_gateways
+        self.network_interfaces = client.network_interfaces
+        self.route_tables = client.route_tables
+        self.network_security_groups = client.network_security_groups
+        self.public_ip_addresses = client.public_ip_addresses
+        self.routes = client.routes
+        self.security_rules = client.security_rules
+        self.express_route_circuit_authorizations = client.express_route_circuit_authorizations
+        self.subnets = client.subnets
+        self.usages = client.usages
+        self.virtual_network_gateway_connections = client.virtual_network_gateway_connections
+        self.virtual_network_gateways = client.virtual_network_gateways
+        self.virtual_networks = client.virtual_networks
         self.model_classes = ModelClasses.new
       end
 

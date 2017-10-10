@@ -52,10 +52,10 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::Relay::Api_2017_04_01::Operations.new(client)
-        self.namespaces = Azure::ARM::Relay::Api_2017_04_01::Namespaces.new(client)
-        self.hybrid_connections = Azure::ARM::Relay::Api_2017_04_01::HybridConnections.new(client)
-        self.wcfrelays = Azure::ARM::Relay::Api_2017_04_01::WCFRelays.new(client)
+        self.operations = client.operations
+        self.namespaces = client.namespaces
+        self.hybrid_connections = client.hybrid_connections
+        self.wcfrelays = client.wcfrelays
         self.model_classes = ModelClasses.new
       end
 

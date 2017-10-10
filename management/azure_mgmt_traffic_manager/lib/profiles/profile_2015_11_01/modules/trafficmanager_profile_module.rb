@@ -31,8 +31,8 @@ module Azure::TrafficManager::Management::Profile_2015_11_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.endpoints = Azure::ARM::TrafficManager::Api_2015_11_01::Endpoints.new(client)
-        self.profiles = Azure::ARM::TrafficManager::Api_2015_11_01::Profiles.new(client)
+        self.endpoints = client.endpoints
+        self.profiles = client.profiles
         self.model_classes = ModelClasses.new
       end
 

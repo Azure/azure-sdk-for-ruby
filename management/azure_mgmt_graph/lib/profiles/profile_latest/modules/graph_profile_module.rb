@@ -64,12 +64,12 @@ module Azure::Graph::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.objects = Azure::ARM::Graph::Api_1_6::Objects.new(client)
-        self.applications = Azure::ARM::Graph::Api_1_6::Applications.new(client)
-        self.groups = Azure::ARM::Graph::Api_1_6::Groups.new(client)
-        self.service_principals = Azure::ARM::Graph::Api_1_6::ServicePrincipals.new(client)
-        self.users = Azure::ARM::Graph::Api_1_6::Users.new(client)
-        self.domains = Azure::ARM::Graph::Api_1_6::Domains.new(client)
+        self.objects = client.objects
+        self.applications = client.applications
+        self.groups = client.groups
+        self.service_principals = client.service_principals
+        self.users = client.users
+        self.domains = client.domains
         self.model_classes = ModelClasses.new
       end
 

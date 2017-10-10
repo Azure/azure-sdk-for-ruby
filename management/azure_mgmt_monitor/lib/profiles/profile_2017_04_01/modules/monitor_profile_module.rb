@@ -38,8 +38,8 @@ module Azure::Monitor::Management::Profile_2017_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.action_groups = Azure::ARM::Monitor::Api_2017_04_01::ActionGroups.new(client)
-        self.activity_log_alerts = Azure::ARM::Monitor::Api_2017_04_01::ActivityLogAlerts.new(client)
+        self.action_groups = client.action_groups
+        self.activity_log_alerts = client.activity_log_alerts
         self.model_classes = ModelClasses.new
       end
 

@@ -76,15 +76,15 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::ServiceBus::Api_2017_04_01::Operations.new(client)
-        self.namespaces = Azure::ARM::ServiceBus::Api_2017_04_01::Namespaces.new(client)
-        self.queues = Azure::ARM::ServiceBus::Api_2017_04_01::Queues.new(client)
-        self.topics = Azure::ARM::ServiceBus::Api_2017_04_01::Topics.new(client)
-        self.subscriptions = Azure::ARM::ServiceBus::Api_2017_04_01::Subscriptions.new(client)
-        self.rules = Azure::ARM::ServiceBus::Api_2017_04_01::Rules.new(client)
-        self.regions = Azure::ARM::ServiceBus::Api_2017_04_01::Regions.new(client)
-        self.premium_messaging_regions_operations = Azure::ARM::ServiceBus::Api_2017_04_01::PremiumMessagingRegionsOperations.new(client)
-        self.event_hubs = Azure::ARM::ServiceBus::Api_2017_04_01::EventHubs.new(client)
+        self.operations = client.operations
+        self.namespaces = client.namespaces
+        self.queues = client.queues
+        self.topics = client.topics
+        self.subscriptions = client.subscriptions
+        self.rules = client.rules
+        self.regions = client.regions
+        self.premium_messaging_regions_operations = client.premium_messaging_regions_operations
+        self.event_hubs = client.event_hubs
         self.model_classes = ModelClasses.new
       end
 

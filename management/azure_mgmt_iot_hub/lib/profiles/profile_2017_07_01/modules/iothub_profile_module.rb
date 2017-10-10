@@ -73,8 +73,8 @@ module Azure::IotHub::Management::Profile_2017_07_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::IotHub::Api_2017_07_01::Operations.new(client)
-        self.iot_hub_resource = Azure::ARM::IotHub::Api_2017_07_01::IotHubResource.new(client)
+        self.operations = client.operations
+        self.iot_hub_resource = client.iot_hub_resource
         self.model_classes = ModelClasses.new
       end
 

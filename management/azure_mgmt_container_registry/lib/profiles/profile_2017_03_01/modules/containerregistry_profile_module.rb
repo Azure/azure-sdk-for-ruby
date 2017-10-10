@@ -41,8 +41,8 @@ module Azure::ContainerRegistry::Management::Profile_2017_03_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.registries = Azure::ARM::ContainerRegistry::Api_2017_03_01::Registries.new(client)
-        self.operations = Azure::ARM::ContainerRegistry::Api_2017_03_01::Operations.new(client)
+        self.registries = client.registries
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

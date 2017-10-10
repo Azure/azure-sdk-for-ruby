@@ -29,8 +29,8 @@ module Azure::MarketplaceOrdering::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.marketplace_agreements = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceAgreements.new(client)
-        self.operations = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Operations.new(client)
+        self.marketplace_agreements = client.marketplace_agreements
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

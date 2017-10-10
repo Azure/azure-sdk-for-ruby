@@ -44,9 +44,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.linked_services = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::LinkedServices.new(client)
-        self.data_sources = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::DataSources.new(client)
-        self.workspaces = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Workspaces.new(client)
+        self.linked_services = client.linked_services
+        self.data_sources = client.data_sources
+        self.workspaces = client.workspaces
         self.model_classes = ModelClasses.new
       end
 

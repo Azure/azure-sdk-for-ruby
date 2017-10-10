@@ -168,19 +168,19 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.workflows = Azure::ARM::Logic::Api_2016_06_01::Workflows.new(client)
-        self.workflow_versions = Azure::ARM::Logic::Api_2016_06_01::WorkflowVersions.new(client)
-        self.workflow_triggers = Azure::ARM::Logic::Api_2016_06_01::WorkflowTriggers.new(client)
-        self.workflow_trigger_histories = Azure::ARM::Logic::Api_2016_06_01::WorkflowTriggerHistories.new(client)
-        self.workflow_runs = Azure::ARM::Logic::Api_2016_06_01::WorkflowRuns.new(client)
-        self.workflow_run_actions = Azure::ARM::Logic::Api_2016_06_01::WorkflowRunActions.new(client)
-        self.integration_accounts = Azure::ARM::Logic::Api_2016_06_01::IntegrationAccounts.new(client)
-        self.schemas = Azure::ARM::Logic::Api_2016_06_01::Schemas.new(client)
-        self.maps = Azure::ARM::Logic::Api_2016_06_01::Maps.new(client)
-        self.partners = Azure::ARM::Logic::Api_2016_06_01::Partners.new(client)
-        self.agreements = Azure::ARM::Logic::Api_2016_06_01::Agreements.new(client)
-        self.certificates = Azure::ARM::Logic::Api_2016_06_01::Certificates.new(client)
-        self.sessions = Azure::ARM::Logic::Api_2016_06_01::Sessions.new(client)
+        self.workflows = client.workflows
+        self.workflow_versions = client.workflow_versions
+        self.workflow_triggers = client.workflow_triggers
+        self.workflow_trigger_histories = client.workflow_trigger_histories
+        self.workflow_runs = client.workflow_runs
+        self.workflow_run_actions = client.workflow_run_actions
+        self.integration_accounts = client.integration_accounts
+        self.schemas = client.schemas
+        self.maps = client.maps
+        self.partners = client.partners
+        self.agreements = client.agreements
+        self.certificates = client.certificates
+        self.sessions = client.sessions
         self.model_classes = ModelClasses.new
       end
 

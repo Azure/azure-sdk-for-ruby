@@ -116,13 +116,13 @@ module Azure::MobileEngagement::Management::Profile_2014_12_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.app_collections = Azure::ARM::MobileEngagement::Api_2014_12_01::AppCollections.new(client)
-        self.apps = Azure::ARM::MobileEngagement::Api_2014_12_01::Apps.new(client)
-        self.supported_platforms = Azure::ARM::MobileEngagement::Api_2014_12_01::SupportedPlatforms.new(client)
-        self.campaigns = Azure::ARM::MobileEngagement::Api_2014_12_01::Campaigns.new(client)
-        self.devices = Azure::ARM::MobileEngagement::Api_2014_12_01::Devices.new(client)
-        self.export_tasks = Azure::ARM::MobileEngagement::Api_2014_12_01::ExportTasks.new(client)
-        self.import_tasks = Azure::ARM::MobileEngagement::Api_2014_12_01::ImportTasks.new(client)
+        self.app_collections = client.app_collections
+        self.apps = client.apps
+        self.supported_platforms = client.supported_platforms
+        self.campaigns = client.campaigns
+        self.devices = client.devices
+        self.export_tasks = client.export_tasks
+        self.import_tasks = client.import_tasks
         self.model_classes = ModelClasses.new
       end
 

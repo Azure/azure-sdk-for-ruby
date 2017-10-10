@@ -192,27 +192,27 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.labs = Azure::ARM::DevTestLabs::Api_2016_05_15::Labs.new(client)
-        self.global_schedules = Azure::ARM::DevTestLabs::Api_2016_05_15::GlobalSchedules.new(client)
-        self.artifact_sources = Azure::ARM::DevTestLabs::Api_2016_05_15::ArtifactSources.new(client)
-        self.arm_templates = Azure::ARM::DevTestLabs::Api_2016_05_15::ArmTemplates.new(client)
-        self.artifacts = Azure::ARM::DevTestLabs::Api_2016_05_15::Artifacts.new(client)
-        self.costs = Azure::ARM::DevTestLabs::Api_2016_05_15::Costs.new(client)
-        self.custom_images = Azure::ARM::DevTestLabs::Api_2016_05_15::CustomImages.new(client)
-        self.formulas = Azure::ARM::DevTestLabs::Api_2016_05_15::Formulas.new(client)
-        self.gallery_images = Azure::ARM::DevTestLabs::Api_2016_05_15::GalleryImages.new(client)
-        self.notification_channels = Azure::ARM::DevTestLabs::Api_2016_05_15::NotificationChannels.new(client)
-        self.policy_sets = Azure::ARM::DevTestLabs::Api_2016_05_15::PolicySets.new(client)
-        self.policies = Azure::ARM::DevTestLabs::Api_2016_05_15::Policies.new(client)
-        self.schedules = Azure::ARM::DevTestLabs::Api_2016_05_15::Schedules.new(client)
-        self.service_runners = Azure::ARM::DevTestLabs::Api_2016_05_15::ServiceRunners.new(client)
-        self.users = Azure::ARM::DevTestLabs::Api_2016_05_15::Users.new(client)
-        self.disks = Azure::ARM::DevTestLabs::Api_2016_05_15::Disks.new(client)
-        self.environments = Azure::ARM::DevTestLabs::Api_2016_05_15::Environments.new(client)
-        self.secrets = Azure::ARM::DevTestLabs::Api_2016_05_15::Secrets.new(client)
-        self.virtual_machines = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualMachines.new(client)
-        self.virtual_machine_schedules = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualMachineSchedules.new(client)
-        self.virtual_networks = Azure::ARM::DevTestLabs::Api_2016_05_15::VirtualNetworks.new(client)
+        self.labs = client.labs
+        self.global_schedules = client.global_schedules
+        self.artifact_sources = client.artifact_sources
+        self.arm_templates = client.arm_templates
+        self.artifacts = client.artifacts
+        self.costs = client.costs
+        self.custom_images = client.custom_images
+        self.formulas = client.formulas
+        self.gallery_images = client.gallery_images
+        self.notification_channels = client.notification_channels
+        self.policy_sets = client.policy_sets
+        self.policies = client.policies
+        self.schedules = client.schedules
+        self.service_runners = client.service_runners
+        self.users = client.users
+        self.disks = client.disks
+        self.environments = client.environments
+        self.secrets = client.secrets
+        self.virtual_machines = client.virtual_machines
+        self.virtual_machine_schedules = client.virtual_machine_schedules
+        self.virtual_networks = client.virtual_networks
         self.model_classes = ModelClasses.new
       end
 

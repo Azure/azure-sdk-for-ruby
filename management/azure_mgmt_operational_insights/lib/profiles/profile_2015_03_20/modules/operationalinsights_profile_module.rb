@@ -45,9 +45,9 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.storage_insights = Azure::ARM::OperationalInsights::Api_2015_03_20::StorageInsights.new(client)
-        self.workspaces = Azure::ARM::OperationalInsights::Api_2015_03_20::Workspaces.new(client)
-        self.saved_searches = Azure::ARM::OperationalInsights::Api_2015_03_20::SavedSearches.new(client)
+        self.storage_insights = client.storage_insights
+        self.workspaces = client.workspaces
+        self.saved_searches = client.saved_searches
         self.model_classes = ModelClasses.new
       end
 

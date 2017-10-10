@@ -52,8 +52,8 @@ module Azure::Network::Management::Profile_2017_03_30
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.network_interfaces = Azure::ARM::Network::Api_2017_03_30::NetworkInterfaces.new(client)
-        self.public_ipaddresses = Azure::ARM::Network::Api_2017_03_30::PublicIPAddresses.new(client)
+        self.network_interfaces = client.network_interfaces
+        self.public_ipaddresses = client.public_ipaddresses
         self.model_classes = ModelClasses.new
       end
 

@@ -48,10 +48,10 @@ module Azure::TrafficManager::Management::Profile_2017_09_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.endpoints = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Endpoints.new(client)
-        self.profiles = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Profiles.new(client)
-        self.geographic_hierarchies = Azure::ARM::TrafficManager::Api_2017_09_01_preview::GeographicHierarchies.new(client)
-        self.heat_map = Azure::ARM::TrafficManager::Api_2017_09_01_preview::HeatMap.new(client)
+        self.endpoints = client.endpoints
+        self.profiles = client.profiles
+        self.geographic_hierarchies = client.geographic_hierarchies
+        self.heat_map = client.heat_map
         self.model_classes = ModelClasses.new
       end
 

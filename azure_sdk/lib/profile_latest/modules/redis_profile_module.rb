@@ -49,9 +49,9 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.redis = Azure::ARM::Redis::Api_2017_02_01::Redis.new(client)
-        self.patch_schedules = Azure::ARM::Redis::Api_2017_02_01::PatchSchedules.new(client)
-        self.redis_linked_server_operations = Azure::ARM::Redis::Api_2017_02_01::RedisLinkedServerOperations.new(client)
+        self.redis = client.redis
+        self.patch_schedules = client.patch_schedules
+        self.redis_linked_server_operations = client.redis_linked_server_operations
         self.model_classes = ModelClasses.new
       end
 

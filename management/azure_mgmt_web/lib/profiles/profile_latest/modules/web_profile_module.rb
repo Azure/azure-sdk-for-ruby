@@ -117,8 +117,8 @@ module Azure::Web::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.app_service_environments = Azure::ARM::Web::Api_2016_09_01::AppServiceEnvironments.new(client)
-        self.app_service_plans = Azure::ARM::Web::Api_2016_09_01::AppServicePlans.new(client)
+        self.app_service_environments = client.app_service_environments
+        self.app_service_plans = client.app_service_plans
         self.model_classes = ModelClasses.new
       end
 

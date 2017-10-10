@@ -48,9 +48,9 @@ module Azure::ServiceFabric::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.clusters = Azure::ARM::ServiceFabric::Api_2016_09_01::Clusters.new(client)
-        self.cluster_versions = Azure::ARM::ServiceFabric::Api_2016_09_01::ClusterVersions.new(client)
-        self.operations = Azure::ARM::ServiceFabric::Api_2016_09_01::Operations.new(client)
+        self.clusters = client.clusters
+        self.cluster_versions = client.cluster_versions
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

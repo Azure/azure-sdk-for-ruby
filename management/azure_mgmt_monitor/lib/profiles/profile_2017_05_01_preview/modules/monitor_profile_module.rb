@@ -33,8 +33,8 @@ module Azure::Monitor::Management::Profile_2017_05_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.diagnostic_settings_category_operations = Azure::ARM::Monitor::Api_2017_05_01_preview::DiagnosticSettingsCategoryOperations.new(client)
-        self.diagnostic_settings_operations = Azure::ARM::Monitor::Api_2017_05_01_preview::DiagnosticSettingsOperations.new(client)
+        self.diagnostic_settings_category_operations = client.diagnostic_settings_category_operations
+        self.diagnostic_settings_operations = client.diagnostic_settings_operations
         self.model_classes = ModelClasses.new
       end
 

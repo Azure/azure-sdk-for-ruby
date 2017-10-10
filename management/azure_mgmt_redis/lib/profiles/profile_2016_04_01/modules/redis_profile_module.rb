@@ -49,11 +49,11 @@ module Azure::Redis::Management::Profile_2016_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.operations = Azure::ARM::Redis::Api_2016_04_01::Operations.new(client)
-        self.redis = Azure::ARM::Redis::Api_2016_04_01::Redis.new(client)
-        self.firewall_rules = Azure::ARM::Redis::Api_2016_04_01::FirewallRules.new(client)
-        self.redis_firewall_rule_operations = Azure::ARM::Redis::Api_2016_04_01::RedisFirewallRuleOperations.new(client)
-        self.patch_schedules = Azure::ARM::Redis::Api_2016_04_01::PatchSchedules.new(client)
+        self.operations = client.operations
+        self.redis = client.redis
+        self.firewall_rules = client.firewall_rules
+        self.redis_firewall_rule_operations = client.redis_firewall_rule_operations
+        self.patch_schedules = client.patch_schedules
         self.model_classes = ModelClasses.new
       end
 

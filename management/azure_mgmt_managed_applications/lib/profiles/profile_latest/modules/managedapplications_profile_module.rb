@@ -40,8 +40,8 @@ module Azure::ManagedApplications::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.appliances = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Appliances.new(client)
-        self.appliance_definitions = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ApplianceDefinitions.new(client)
+        self.appliances = client.appliances
+        self.appliance_definitions = client.appliance_definitions
         self.model_classes = ModelClasses.new
       end
 

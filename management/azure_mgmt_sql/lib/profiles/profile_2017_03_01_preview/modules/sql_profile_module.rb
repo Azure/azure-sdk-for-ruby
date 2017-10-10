@@ -26,7 +26,7 @@ module Azure::SQL::Management::Profile_2017_03_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.database_operations = Azure::ARM::SQL::Api_2017_03_01_preview::DatabaseOperations.new(client)
+        self.database_operations = client.database_operations
         self.model_classes = ModelClasses.new
       end
 

@@ -26,7 +26,7 @@ module Azure::Locks::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.management_locks = Azure::ARM::Locks::Api_2016_09_01::ManagementLocks.new(client)
+        self.management_locks = client.management_locks
         self.model_classes = ModelClasses.new
       end
 

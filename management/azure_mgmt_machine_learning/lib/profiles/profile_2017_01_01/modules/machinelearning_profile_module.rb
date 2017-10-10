@@ -58,7 +58,7 @@ module Azure::MachineLearning::Management::Profile_2017_01_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.web_services = Azure::ARM::MachineLearning::Api_2017_01_01::WebServices.new(client)
+        self.web_services = client.web_services
         self.model_classes = ModelClasses.new
       end
 

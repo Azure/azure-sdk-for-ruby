@@ -47,8 +47,8 @@ module Azure::Monitor::Management::Profile_2015_04_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.autoscale_settings = Azure::ARM::Monitor::Api_2015_04_01::AutoscaleSettings.new(client)
-        self.operations = Azure::ARM::Monitor::Api_2015_04_01::Operations.new(client)
+        self.autoscale_settings = client.autoscale_settings
+        self.operations = client.operations
         self.model_classes = ModelClasses.new
       end
 

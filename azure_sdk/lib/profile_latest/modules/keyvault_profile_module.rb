@@ -40,7 +40,7 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.vaults = Azure::ARM::KeyVault::Api_2016_10_01::Vaults.new(client)
+        self.vaults = client.vaults
         self.model_classes = ModelClasses.new
       end
 

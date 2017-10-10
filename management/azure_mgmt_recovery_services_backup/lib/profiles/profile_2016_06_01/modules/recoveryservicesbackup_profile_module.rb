@@ -170,28 +170,28 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_06_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.item_level_recovery_connections = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ItemLevelRecoveryConnections.new(client)
-        self.restores = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::Restores.new(client)
-        self.protection_policy_operation_statuses = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionPolicyOperationStatuses.new(client)
-        self.protection_policy_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionPolicyOperationResults.new(client)
-        self.protection_policies = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionPolicies.new(client)
-        self.protection_container_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionContainerOperationResults.new(client)
-        self.protection_container_refresh_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionContainerRefreshOperationResults.new(client)
-        self.protection_containers = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionContainers.new(client)
-        self.recovery_points = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryPoints.new(client)
-        self.backups = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::Backups.new(client)
-        self.protected_item_operation_statuses = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectedItemOperationStatuses.new(client)
-        self.protected_item_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectedItemOperationResults.new(client)
-        self.protected_items = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectedItems.new(client)
-        self.protectable_items = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectableItems.new(client)
-        self.export_jobs_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ExportJobsOperationResults.new(client)
-        self.job_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::JobOperationResults.new(client)
-        self.jobs = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::Jobs.new(client)
-        self.job_cancellations = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::JobCancellations.new(client)
-        self.job_details = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::JobDetails.new(client)
-        self.backup_operation_statuses = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupOperationStatuses.new(client)
-        self.backup_operation_results = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupOperationResults.new(client)
-        self.backup_engines = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::BackupEngines.new(client)
+        self.item_level_recovery_connections = client.item_level_recovery_connections
+        self.restores = client.restores
+        self.protection_policy_operation_statuses = client.protection_policy_operation_statuses
+        self.protection_policy_operation_results = client.protection_policy_operation_results
+        self.protection_policies = client.protection_policies
+        self.protection_container_operation_results = client.protection_container_operation_results
+        self.protection_container_refresh_operation_results = client.protection_container_refresh_operation_results
+        self.protection_containers = client.protection_containers
+        self.recovery_points = client.recovery_points
+        self.backups = client.backups
+        self.protected_item_operation_statuses = client.protected_item_operation_statuses
+        self.protected_item_operation_results = client.protected_item_operation_results
+        self.protected_items = client.protected_items
+        self.protectable_items = client.protectable_items
+        self.export_jobs_operation_results = client.export_jobs_operation_results
+        self.job_operation_results = client.job_operation_results
+        self.jobs = client.jobs
+        self.job_cancellations = client.job_cancellations
+        self.job_details = client.job_details
+        self.backup_operation_statuses = client.backup_operation_statuses
+        self.backup_operation_results = client.backup_operation_results
+        self.backup_engines = client.backup_engines
         self.model_classes = ModelClasses.new
       end
 

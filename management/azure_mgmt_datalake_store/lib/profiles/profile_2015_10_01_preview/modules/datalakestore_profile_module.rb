@@ -42,7 +42,7 @@ module Azure::DataLakeStore::Management::Profile_2015_10_01_Preview
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.account = Azure::ARM::DataLakeStore::Api_2015_10_01_preview::Account.new(client)
+        self.account = client.account
         self.model_classes = ModelClasses.new
       end
 

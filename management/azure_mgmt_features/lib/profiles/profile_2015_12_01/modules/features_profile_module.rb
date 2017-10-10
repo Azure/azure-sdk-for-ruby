@@ -25,7 +25,7 @@ module Azure::Features::Management::Profile_2015_12_01
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.features = Azure::ARM::Features::Api_2015_12_01::Features.new(client)
+        self.features = client.features
         self.model_classes = ModelClasses.new
       end
 

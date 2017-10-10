@@ -42,8 +42,8 @@ module Azure::Profiles::Management::Profile_Latest
         if(client.respond_to?(:subscription_id))
           client.subscription_id = configurable.subscription_id
         end
-        self.record_sets = Azure::ARM::Dns::Api_2016_04_01::RecordSets.new(client)
-        self.zones = Azure::ARM::Dns::Api_2016_04_01::Zones.new(client)
+        self.record_sets = client.record_sets
+        self.zones = client.zones
         self.model_classes = ModelClasses.new
       end
 
