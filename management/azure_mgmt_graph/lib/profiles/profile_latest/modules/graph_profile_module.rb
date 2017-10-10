@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_graph'
 
-module Azure::Profiles::GraphModule::Management::Profile_Latest
-  module Graph
+module Azure::Graph::Management::Profile_Latest
     Objects = Azure::ARM::Graph::Api_1_6::Objects
     Applications = Azure::ARM::Graph::Api_1_6::Applications
     Groups = Azure::ARM::Graph::Api_1_6::Groups
@@ -199,5 +198,4 @@ module Azure::Profiles::GraphModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

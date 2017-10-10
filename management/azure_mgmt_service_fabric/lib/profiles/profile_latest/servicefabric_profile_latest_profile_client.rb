@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/servicefabric_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ServiceFabricModule::Management::Profile_Latest
+module Azure::ServiceFabric::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ServiceFabricModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.servicefabric = ServiceFabric::ServiceFabricClass.new(self)
+      self.servicefabric = ServiceFabricClass.new(self)
     end
 
     def credentials

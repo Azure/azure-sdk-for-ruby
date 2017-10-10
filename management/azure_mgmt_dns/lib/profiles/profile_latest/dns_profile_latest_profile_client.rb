@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/dns_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::DnsModule::Management::Profile_Latest
+module Azure::Dns::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::DnsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.dns = Dns::DnsClass.new(self)
+      self.dns = DnsClass.new(self)
     end
 
     def credentials

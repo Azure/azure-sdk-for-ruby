@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/authorization_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::AuthorizationModule::Management::Profile_Latest
+module Azure::Authorization::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::AuthorizationModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.authorization = Authorization::AuthorizationClass.new(self)
+      self.authorization = AuthorizationClass.new(self)
     end
 
     def credentials

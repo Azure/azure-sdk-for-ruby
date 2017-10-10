@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_redis'
 
-module Azure::Profiles::RedisModule::Management::Profile_2017_02_01
-  module Redis
+module Azure::Redis::Management::Profile_2017_02_01
     Redis = Azure::ARM::Redis::Api_2017_02_01::Redis
     PatchSchedules = Azure::ARM::Redis::Api_2017_02_01::PatchSchedules
     RedisLinkedServerOperations = Azure::ARM::Redis::Api_2017_02_01::RedisLinkedServerOperations
@@ -141,5 +140,4 @@ module Azure::Profiles::RedisModule::Management::Profile_2017_02_01
         end
       end
     end
-  end
 end

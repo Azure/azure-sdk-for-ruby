@@ -75,7 +75,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-11-01')
         case version
           when '2016-11-01'
             client = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(@configurable.credentials, @base_url, @options)

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_sql'
 
-module Azure::Profiles::SQLModule::Management::Profile_Latest
-  module SQL
+module Azure::SQL::Management::Profile_Latest
     DatabaseOperations = Azure::ARM::SQL::Api_2017_03_01_preview::DatabaseOperations
 
     module Models
@@ -57,5 +56,4 @@ module Azure::Profiles::SQLModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

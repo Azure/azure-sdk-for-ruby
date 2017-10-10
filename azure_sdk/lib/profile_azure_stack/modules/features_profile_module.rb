@@ -39,7 +39,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2015-12-01')
         case version
           when '2015-12-01'
             client = Azure::ARM::Features::Api_2015_12_01::FeatureClient.new(@configurable.credentials, @base_url, @options)

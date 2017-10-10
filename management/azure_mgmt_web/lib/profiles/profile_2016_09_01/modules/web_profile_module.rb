@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_web'
 
-module Azure::Profiles::WebModule::Management::Profile_2016_09_01
-  module Web
+module Azure::Web::Management::Profile_2016_09_01
     AppServiceEnvironments = Azure::ARM::Web::Api_2016_09_01::AppServiceEnvironments
     AppServicePlans = Azure::ARM::Web::Api_2016_09_01::AppServicePlans
 
@@ -419,5 +418,4 @@ module Azure::Profiles::WebModule::Management::Profile_2016_09_01
         end
       end
     end
-  end
 end

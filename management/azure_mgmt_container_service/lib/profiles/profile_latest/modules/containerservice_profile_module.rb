@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_container_service'
 
-module Azure::Profiles::ContainerServiceModule::Management::Profile_Latest
-  module ContainerService
+module Azure::ContainerService::Management::Profile_Latest
     ContainerServices = Azure::ARM::ContainerService::Api_2017_01_31::ContainerServices
 
     module Models
@@ -101,5 +100,4 @@ module Azure::Profiles::ContainerServiceModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

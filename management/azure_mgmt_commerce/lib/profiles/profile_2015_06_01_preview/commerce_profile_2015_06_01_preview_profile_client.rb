@@ -7,7 +7,7 @@ require 'profiles/profile_2015_06_01_preview/modules/commerce_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::CommerceModule::Management::Profile_2015_06_01_Preview
+module Azure::Commerce::Management::Profile_2015_06_01_Preview
   #
   # Client class for the Profile_2015_06_01_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::CommerceModule::Management::Profile_2015_06_01_Preview
 
       reset!(options)
 
-      self.commerce = Commerce::CommerceClass.new(self)
+      self.commerce = CommerceClass.new(self)
     end
 
     def credentials

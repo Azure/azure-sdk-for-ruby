@@ -91,7 +91,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-05-10')
         case version
           when '2017-05-10'
             client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(@configurable.credentials, @base_url, @options)

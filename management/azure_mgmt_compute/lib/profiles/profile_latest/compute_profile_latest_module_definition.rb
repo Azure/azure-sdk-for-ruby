@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::ComputeModule end
-module Azure::Profiles::ComputeModule::Management end
-module Azure::Profiles::ComputeModule::Management::Profile_Latest end
+module Azure::Compute end
+module Azure::Compute::Management end
+module Azure::Compute::Management::Profile_Latest end

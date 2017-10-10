@@ -7,7 +7,7 @@ require 'profiles/profile_2016_03_01/modules/monitor_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MonitorModule::Management::Profile_2016_03_01
+module Azure::Monitor::Management::Profile_2016_03_01
   #
   # Client class for the Profile_2016_03_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MonitorModule::Management::Profile_2016_03_01
 
       reset!(options)
 
-      self.monitor = Monitor::MonitorClass.new(self)
+      self.monitor = MonitorClass.new(self)
     end
 
     def credentials

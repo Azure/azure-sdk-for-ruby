@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_network'
 
-module Azure::Profiles::NetworkModule::Management::Profile_2015_05_01_Preview
-  module Network
+module Azure::Network::Management::Profile_2015_05_01_Preview
     ApplicationGateways = Azure::ARM::Network::Api_2015_05_01_preview::ApplicationGateways
     ExpressRouteCircuits = Azure::ARM::Network::Api_2015_05_01_preview::ExpressRouteCircuits
     ExpressRouteServiceProviders = Azure::ARM::Network::Api_2015_05_01_preview::ExpressRouteServiceProviders
@@ -487,5 +486,4 @@ module Azure::Profiles::NetworkModule::Management::Profile_2015_05_01_Preview
         end
       end
     end
-  end
 end

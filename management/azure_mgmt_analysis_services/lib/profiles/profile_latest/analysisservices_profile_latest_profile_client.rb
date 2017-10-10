@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/analysisservices_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::AnalysisServicesModule::Management::Profile_Latest
+module Azure::AnalysisServices::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::AnalysisServicesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.analysisservices = AnalysisServices::AnalysisServicesClass.new(self)
+      self.analysisservices = AnalysisServicesClass.new(self)
     end
 
     def credentials

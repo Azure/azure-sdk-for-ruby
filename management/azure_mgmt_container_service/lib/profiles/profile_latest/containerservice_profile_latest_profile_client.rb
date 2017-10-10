@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/containerservice_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ContainerServiceModule::Management::Profile_Latest
+module Azure::ContainerService::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ContainerServiceModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.containerservice = ContainerService::ContainerServiceClass.new(self)
+      self.containerservice = ContainerServiceClass.new(self)
     end
 
     def credentials

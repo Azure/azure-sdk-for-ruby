@@ -368,7 +368,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-09-01')
         case version
           when '2017-09-01'
             client = Azure::ARM::Network::Api_2017_09_01::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)

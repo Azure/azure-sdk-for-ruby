@@ -7,7 +7,7 @@ require 'profiles/profile_2015_10_31/modules/automation_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::AutomationModule::Management::Profile_2015_10_31
+module Azure::Automation::Management::Profile_2015_10_31
   #
   # Client class for the Profile_2015_10_31 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::AutomationModule::Management::Profile_2015_10_31
 
       reset!(options)
 
-      self.automation = Automation::AutomationClass.new(self)
+      self.automation = AutomationClass.new(self)
     end
 
     def credentials

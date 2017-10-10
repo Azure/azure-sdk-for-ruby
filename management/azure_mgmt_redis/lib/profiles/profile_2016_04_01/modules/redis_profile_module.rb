@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_redis'
 
-module Azure::Profiles::RedisModule::Management::Profile_2016_04_01
-  module Redis
+module Azure::Redis::Management::Profile_2016_04_01
     Operations = Azure::ARM::Redis::Api_2016_04_01::Operations
     Redis = Azure::ARM::Redis::Api_2016_04_01::Redis
     FirewallRules = Azure::ARM::Redis::Api_2016_04_01::FirewallRules
@@ -141,5 +140,4 @@ module Azure::Profiles::RedisModule::Management::Profile_2016_04_01
         end
       end
     end
-  end
 end

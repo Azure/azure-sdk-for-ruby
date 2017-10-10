@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_customer_insights'
 
-module Azure::Profiles::CustomerInsightsModule::Management::Profile_2017_04_26
-  module CustomerInsights
+module Azure::CustomerInsights::Management::Profile_2017_04_26
     Hubs = Azure::ARM::CustomerInsights::Api_2017_04_26::Hubs
     Profiles = Azure::ARM::CustomerInsights::Api_2017_04_26::Profiles
     Interactions = Azure::ARM::CustomerInsights::Api_2017_04_26::Interactions
@@ -471,5 +470,4 @@ module Azure::Profiles::CustomerInsightsModule::Management::Profile_2017_04_26
         end
       end
     end
-  end
 end

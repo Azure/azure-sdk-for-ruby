@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_batch'
 
-module Azure::Profiles::BatchModule::Management::Profile_2015_12_01
-  module Batch
+module Azure::Batch::Management::Profile_2015_12_01
     BatchAccountOperations = Azure::ARM::Batch::Api_2015_12_01::BatchAccountOperations
     ApplicationPackageOperations = Azure::ARM::Batch::Api_2015_12_01::ApplicationPackageOperations
     ApplicationOperations = Azure::ARM::Batch::Api_2015_12_01::ApplicationOperations
@@ -119,5 +118,4 @@ module Azure::Profiles::BatchModule::Management::Profile_2015_12_01
         end
       end
     end
-  end
 end

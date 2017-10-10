@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services_backup'
 
-module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_Latest
-  module RecoveryServicesBackup
+module Azure::RecoveryServicesBackup::Management::Profile_Latest
     BackupJobs = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::BackupJobs
     JobDetails = Azure::ARM::RecoveryServicesBackup::Api_2017_07_01::JobDetails
 
@@ -139,5 +138,4 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

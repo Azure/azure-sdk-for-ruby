@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_cognitive_services'
 
-module Azure::Profiles::CognitiveServicesModule::Management::Profile_2017_04_18
-  module CognitiveServices
+module Azure::CognitiveServices::Management::Profile_2017_04_18
     Accounts = Azure::ARM::CognitiveServices::Api_2017_04_18::Accounts
     Operations = Azure::ARM::CognitiveServices::Api_2017_04_18::Operations
     CheckSkuAvailability = Azure::ARM::CognitiveServices::Api_2017_04_18::CheckSkuAvailability
@@ -133,5 +132,4 @@ module Azure::Profiles::CognitiveServicesModule::Management::Profile_2017_04_18
         end
       end
     end
-  end
 end

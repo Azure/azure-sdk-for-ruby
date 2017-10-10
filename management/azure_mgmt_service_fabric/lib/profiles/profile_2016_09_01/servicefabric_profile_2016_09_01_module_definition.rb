@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::ServiceFabricModule end
-module Azure::Profiles::ServiceFabricModule::Management end
-module Azure::Profiles::ServiceFabricModule::Management::Profile_2016_09_01 end
+module Azure::ServiceFabric end
+module Azure::ServiceFabric::Management end
+module Azure::ServiceFabric::Management::Profile_2016_09_01 end

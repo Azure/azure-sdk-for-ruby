@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::FeaturesModule end
-module Azure::Profiles::FeaturesModule::Management end
-module Azure::Profiles::FeaturesModule::Management::Profile_2015_12_01 end
+module Azure::Features end
+module Azure::Features::Management end
+module Azure::Features::Management::Profile_2015_12_01 end

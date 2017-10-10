@@ -7,7 +7,7 @@ require 'profiles/profile_2016_03_01/modules/scheduler_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01
+module Azure::Scheduler::Management::Profile_2016_03_01
   #
   # Client class for the Profile_2016_03_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01
 
       reset!(options)
 
-      self.scheduler = Scheduler::SchedulerClass.new(self)
+      self.scheduler = SchedulerClass.new(self)
     end
 
     def credentials

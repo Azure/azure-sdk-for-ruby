@@ -7,7 +7,7 @@ require 'profiles/profile_2016_08_10/modules/recoveryservicessiterecovery_profil
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
   #
   # Client class for the Profile_2016_08_10 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_
 
       reset!(options)
 
-      self.recoveryservicessiterecovery = RecoveryServicesSiteRecovery::RecoveryServicesSiteRecoveryClass.new(self)
+      self.recoveryservicessiterecovery = RecoveryServicesSiteRecoveryClass.new(self)
     end
 
     def credentials

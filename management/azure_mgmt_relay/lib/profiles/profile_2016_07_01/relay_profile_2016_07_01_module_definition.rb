@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::RelayModule end
-module Azure::Profiles::RelayModule::Management end
-module Azure::Profiles::RelayModule::Management::Profile_2016_07_01 end
+module Azure::Relay end
+module Azure::Relay::Management end
+module Azure::Relay::Management::Profile_2016_07_01 end

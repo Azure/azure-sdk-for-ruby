@@ -7,7 +7,7 @@ require 'profiles/profile_2016_04_30_preview/modules/compute_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ComputeModule::Management::Profile_2016_04_30_Preview
+module Azure::Compute::Management::Profile_2016_04_30_Preview
   #
   # Client class for the Profile_2016_04_30_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ComputeModule::Management::Profile_2016_04_30_Preview
 
       reset!(options)
 
-      self.compute = Compute::ComputeClass.new(self)
+      self.compute = ComputeClass.new(self)
     end
 
     def credentials

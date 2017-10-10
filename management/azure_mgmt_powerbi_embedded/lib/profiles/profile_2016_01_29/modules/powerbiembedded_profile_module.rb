@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_powerbi_embedded'
 
-module Azure::Profiles::PowerBiEmbeddedModule::Management::Profile_2016_01_29
-  module PowerBiEmbedded
+module Azure::PowerBiEmbedded::Management::Profile_2016_01_29
     WorkspaceCollections = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::WorkspaceCollections
     Workspaces = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::Workspaces
 
@@ -119,5 +118,4 @@ module Azure::Profiles::PowerBiEmbeddedModule::Management::Profile_2016_01_29
         end
       end
     end
-  end
 end

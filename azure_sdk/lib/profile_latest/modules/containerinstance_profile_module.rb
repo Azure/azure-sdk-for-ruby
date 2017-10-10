@@ -59,7 +59,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-08-01-preview')
         case version
           when '2017-08-01-preview'
             client = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerInstanceManagementClient.new(@configurable.credentials, @base_url, @options)

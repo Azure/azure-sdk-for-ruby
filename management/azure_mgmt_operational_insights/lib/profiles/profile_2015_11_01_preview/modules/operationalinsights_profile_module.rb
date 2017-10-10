@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_operational_insights'
 
-module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_01_Preview
-  module OperationalInsights
+module Azure::OperationalInsights::Management::Profile_2015_11_01_Preview
     LinkedServices = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::LinkedServices
     DataSources = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::DataSources
     Workspaces = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Workspaces
@@ -121,5 +120,4 @@ module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_0
         end
       end
     end
-  end
 end

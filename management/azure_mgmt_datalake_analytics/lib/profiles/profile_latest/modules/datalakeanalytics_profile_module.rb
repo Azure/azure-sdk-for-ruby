@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_datalake_analytics'
 
-module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_Latest
-  module DataLakeAnalytics
+module Azure::DataLakeAnalytics::Management::Profile_Latest
     ComputePolicies = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::ComputePolicies
     FirewallRules = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::FirewallRules
     StorageAccounts = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::StorageAccounts
@@ -173,5 +172,4 @@ module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

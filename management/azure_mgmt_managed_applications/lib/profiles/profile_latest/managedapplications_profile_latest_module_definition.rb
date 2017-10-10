@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::ManagedApplicationsModule end
-module Azure::Profiles::ManagedApplicationsModule::Management end
-module Azure::Profiles::ManagedApplicationsModule::Management::Profile_Latest end
+module Azure::ManagedApplications end
+module Azure::ManagedApplications::Management end
+module Azure::ManagedApplications::Management::Profile_Latest end

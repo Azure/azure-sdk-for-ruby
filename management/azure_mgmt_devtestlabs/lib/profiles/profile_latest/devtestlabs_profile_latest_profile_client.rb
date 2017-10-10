@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/devtestlabs_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::DevTestLabsModule::Management::Profile_Latest
+module Azure::DevTestLabs::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::DevTestLabsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.devtestlabs = DevTestLabs::DevTestLabsClass.new(self)
+      self.devtestlabs = DevTestLabsClass.new(self)
     end
 
     def credentials

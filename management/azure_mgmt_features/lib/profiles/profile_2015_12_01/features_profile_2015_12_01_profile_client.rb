@@ -7,7 +7,7 @@ require 'profiles/profile_2015_12_01/modules/features_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::FeaturesModule::Management::Profile_2015_12_01
+module Azure::Features::Management::Profile_2015_12_01
   #
   # Client class for the Profile_2015_12_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::FeaturesModule::Management::Profile_2015_12_01
 
       reset!(options)
 
-      self.features = Features::FeaturesClass.new(self)
+      self.features = FeaturesClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_redis'
 
-module Azure::Profiles::RedisModule::Management::Profile_2015_08_01
-  module Redis
+module Azure::Redis::Management::Profile_2015_08_01
     Redis = Azure::ARM::Redis::Api_2015_08_01::Redis
 
     module Models
@@ -97,5 +96,4 @@ module Azure::Profiles::RedisModule::Management::Profile_2015_08_01
         end
       end
     end
-  end
 end

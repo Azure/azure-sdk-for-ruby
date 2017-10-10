@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_traffic_manager'
 
-module Azure::Profiles::TrafficManagerModule::Management::Profile_2015_11_01
-  module TrafficManager
+module Azure::TrafficManager::Management::Profile_2015_11_01
     Endpoints = Azure::ARM::TrafficManager::Api_2015_11_01::Endpoints
     Profiles = Azure::ARM::TrafficManager::Api_2015_11_01::Profiles
 
@@ -75,5 +74,4 @@ module Azure::Profiles::TrafficManagerModule::Management::Profile_2015_11_01
         end
       end
     end
-  end
 end

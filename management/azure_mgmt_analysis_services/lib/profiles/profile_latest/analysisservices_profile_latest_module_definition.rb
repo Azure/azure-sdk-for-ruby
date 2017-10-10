@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::AnalysisServicesModule end
-module Azure::Profiles::AnalysisServicesModule::Management end
-module Azure::Profiles::AnalysisServicesModule::Management::Profile_Latest end
+module Azure::AnalysisServices end
+module Azure::AnalysisServices::Management end
+module Azure::AnalysisServices::Management::Profile_Latest end

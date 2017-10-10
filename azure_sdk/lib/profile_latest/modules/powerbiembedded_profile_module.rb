@@ -57,7 +57,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-01-29')
         case version
           when '2016-01-29'
             client = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::PowerBIEmbeddedManagementClient.new(@configurable.credentials, @base_url, @options)

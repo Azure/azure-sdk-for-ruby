@@ -52,7 +52,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-08-31-preview')
         case version
           when '2017-08-31-preview'
             client = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(@configurable.credentials, @base_url, @options)

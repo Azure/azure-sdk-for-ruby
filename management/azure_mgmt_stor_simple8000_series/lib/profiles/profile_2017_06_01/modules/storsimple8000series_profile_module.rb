@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_stor_simple8000_series'
 
-module Azure::Profiles::StorSimple8000SeriesModule::Management::Profile_2017_06_01
-  module StorSimple8000Series
+module Azure::StorSimple8000Series::Management::Profile_2017_06_01
     Operations = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Operations
     Managers = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Managers
     AccessControlRecords = Azure::ARM::StorSimple8000Series::Api_2017_06_01::AccessControlRecords
@@ -703,5 +702,4 @@ module Azure::Profiles::StorSimple8000SeriesModule::Management::Profile_2017_06_
         end
       end
     end
-  end
 end

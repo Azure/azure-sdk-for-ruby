@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_resources'
 
-module Azure::Profiles::ResourcesModule::Management::Profile_2016_07_01
-  module Resources
+module Azure::Resources::Management::Profile_2016_07_01
     Deployments = Azure::ARM::Resources::Api_2016_07_01::Deployments
     Providers = Azure::ARM::Resources::Api_2016_07_01::Providers
     ResourceGroups = Azure::ARM::Resources::Api_2016_07_01::ResourceGroups
@@ -227,5 +226,4 @@ module Azure::Profiles::ResourcesModule::Management::Profile_2016_07_01
         end
       end
     end
-  end
 end

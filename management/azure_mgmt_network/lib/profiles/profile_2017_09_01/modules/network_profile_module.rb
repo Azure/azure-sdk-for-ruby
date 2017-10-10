@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_network'
 
-module Azure::Profiles::NetworkModule::Management::Profile_2017_09_01
-  module Network
+module Azure::Network::Management::Profile_2017_09_01
     ApplicationGateways = Azure::ARM::Network::Api_2017_09_01::ApplicationGateways
     ApplicationSecurityGroups = Azure::ARM::Network::Api_2017_09_01::ApplicationSecurityGroups
     AvailableEndpointServices = Azure::ARM::Network::Api_2017_09_01::AvailableEndpointServices
@@ -1165,5 +1164,4 @@ module Azure::Profiles::NetworkModule::Management::Profile_2017_09_01
         end
       end
     end
-  end
 end

@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::SubscriptionsModule end
-module Azure::Profiles::SubscriptionsModule::Management end
-module Azure::Profiles::SubscriptionsModule::Management::Profile_2015_11_01 end
+module Azure::Subscriptions end
+module Azure::Subscriptions::Management end
+module Azure::Subscriptions::Management::Profile_2015_11_01 end

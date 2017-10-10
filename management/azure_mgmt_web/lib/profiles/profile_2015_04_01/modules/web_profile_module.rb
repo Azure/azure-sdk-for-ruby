@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_web'
 
-module Azure::Profiles::WebModule::Management::Profile_2015_04_01
-  module Web
+module Azure::Web::Management::Profile_2015_04_01
     Domains = Azure::ARM::Web::Api_2015_04_01::Domains
     TopLevelDomains = Azure::ARM::Web::Api_2015_04_01::TopLevelDomains
 
@@ -151,5 +150,4 @@ module Azure::Profiles::WebModule::Management::Profile_2015_04_01
         end
       end
     end
-  end
 end

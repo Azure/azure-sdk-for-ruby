@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_cdn'
 
-module Azure::Profiles::CdnModule::Management::Profile_2016_10_02
-  module CDN
+module Azure::CDN::Management::Profile_2016_10_02
     Profiles = Azure::ARM::CDN::Api_2016_10_02::Profiles
     Endpoints = Azure::ARM::CDN::Api_2016_10_02::Endpoints
     Origins = Azure::ARM::CDN::Api_2016_10_02::Origins
@@ -221,5 +220,4 @@ module Azure::Profiles::CdnModule::Management::Profile_2016_10_02
         end
       end
     end
-  end
 end

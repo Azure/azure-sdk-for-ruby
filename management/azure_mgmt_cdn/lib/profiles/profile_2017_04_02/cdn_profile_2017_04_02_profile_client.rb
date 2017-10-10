@@ -7,7 +7,7 @@ require 'profiles/profile_2017_04_02/modules/cdn_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::CdnModule::Management::Profile_2017_04_02
+module Azure::CDN::Management::Profile_2017_04_02
   #
   # Client class for the Profile_2017_04_02 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::CdnModule::Management::Profile_2017_04_02
 
       reset!(options)
 
-      self.cdn = CDN::CDNClass.new(self)
+      self.cdn = CDNClass.new(self)
     end
 
     def credentials

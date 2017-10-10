@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_operational_insights'
 
-module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_03_20
-  module OperationalInsights
+module Azure::OperationalInsights::Management::Profile_2015_03_20
     StorageInsights = Azure::ARM::OperationalInsights::Api_2015_03_20::StorageInsights
     Workspaces = Azure::ARM::OperationalInsights::Api_2015_03_20::Workspaces
     SavedSearches = Azure::ARM::OperationalInsights::Api_2015_03_20::SavedSearches
@@ -129,5 +128,4 @@ module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_03_2
         end
       end
     end
-  end
 end

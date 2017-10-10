@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/network_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::NetworkModule::Management::Profile_Latest
+module Azure::Network::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::NetworkModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.network = Network::NetworkClass.new(self)
+      self.network = NetworkClass.new(self)
     end
 
     def credentials

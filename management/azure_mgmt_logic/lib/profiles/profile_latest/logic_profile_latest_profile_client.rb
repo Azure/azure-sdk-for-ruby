@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/logic_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::LogicModule::Management::Profile_Latest
+module Azure::Logic::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::LogicModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.logic = Logic::LogicClass.new(self)
+      self.logic = LogicClass.new(self)
     end
 
     def credentials

@@ -7,7 +7,7 @@ require 'profiles/profile_2016_09_01/modules/links_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::LinksModule::Management::Profile_2016_09_01
+module Azure::Links::Management::Profile_2016_09_01
   #
   # Client class for the Profile_2016_09_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::LinksModule::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.links = Links::LinksClass.new(self)
+      self.links = LinksClass.new(self)
     end
 
     def credentials

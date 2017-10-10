@@ -7,7 +7,7 @@ require 'profiles/profile_2016_09_01/modules/resources_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ResourcesModule::Management::Profile_2016_09_01
+module Azure::Resources::Management::Profile_2016_09_01
   #
   # Client class for the Profile_2016_09_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ResourcesModule::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.resources = Resources::ResourcesClass.new(self)
+      self.resources = ResourcesClass.new(self)
     end
 
     def credentials

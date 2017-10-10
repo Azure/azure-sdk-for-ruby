@@ -40,7 +40,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-09-01')
         case version
           when '2016-09-01'
             client = Azure::ARM::Locks::Api_2016_09_01::ManagementLockClient.new(@configurable.credentials, @base_url, @options)

@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::SchedulerModule end
-module Azure::Profiles::SchedulerModule::Management end
-module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01 end
+module Azure::Scheduler end
+module Azure::Scheduler::Management end
+module Azure::Scheduler::Management::Profile_2016_03_01 end

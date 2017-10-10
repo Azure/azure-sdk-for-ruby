@@ -48,7 +48,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-05-01-preview')
         case version
           when '2017-05-01-preview'
             client = Azure::ARM::Monitor::Api_2017_05_01_preview::MonitorClient.new(@configurable.credentials, @base_url, @options)

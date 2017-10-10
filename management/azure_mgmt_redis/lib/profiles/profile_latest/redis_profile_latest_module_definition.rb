@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::RedisModule end
-module Azure::Profiles::RedisModule::Management end
-module Azure::Profiles::RedisModule::Management::Profile_Latest end
+module Azure::Redis end
+module Azure::Redis::Management end
+module Azure::Redis::Management::Profile_Latest end

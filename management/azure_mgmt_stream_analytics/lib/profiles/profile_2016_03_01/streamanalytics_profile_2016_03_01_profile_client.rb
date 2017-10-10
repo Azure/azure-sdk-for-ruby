@@ -7,7 +7,7 @@ require 'profiles/profile_2016_03_01/modules/streamanalytics_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::StreamAnalyticsModule::Management::Profile_2016_03_01
+module Azure::StreamAnalytics::Management::Profile_2016_03_01
   #
   # Client class for the Profile_2016_03_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::StreamAnalyticsModule::Management::Profile_2016_03_01
 
       reset!(options)
 
-      self.streamanalytics = StreamAnalytics::StreamAnalyticsClass.new(self)
+      self.streamanalytics = StreamAnalyticsClass.new(self)
     end
 
     def credentials

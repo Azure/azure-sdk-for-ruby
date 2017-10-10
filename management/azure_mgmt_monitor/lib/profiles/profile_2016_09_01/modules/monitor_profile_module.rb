@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_monitor'
 
-module Azure::Profiles::MonitorModule::Management::Profile_2016_09_01
-  module Monitor
+module Azure::Monitor::Management::Profile_2016_09_01
     ServiceDiagnosticSettingsOperations = Azure::ARM::Monitor::Api_2016_09_01::ServiceDiagnosticSettingsOperations
 
     module Models
@@ -65,5 +64,4 @@ module Azure::Profiles::MonitorModule::Management::Profile_2016_09_01
         end
       end
     end
-  end
 end

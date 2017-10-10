@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_monitor'
 
-module Azure::Profiles::MonitorModule::Management::Profile_2016_03_01
-  module Monitor
+module Azure::Monitor::Management::Profile_2016_03_01
     AlertRuleIncidents = Azure::ARM::Monitor::Api_2016_03_01::AlertRuleIncidents
     AlertRules = Azure::ARM::Monitor::Api_2016_03_01::AlertRules
     LogProfiles = Azure::ARM::Monitor::Api_2016_03_01::LogProfiles
@@ -141,5 +140,4 @@ module Azure::Profiles::MonitorModule::Management::Profile_2016_03_01
         end
       end
     end
-  end
 end

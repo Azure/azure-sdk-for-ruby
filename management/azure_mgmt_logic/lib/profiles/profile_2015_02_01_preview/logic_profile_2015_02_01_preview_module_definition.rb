@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::LogicModule end
-module Azure::Profiles::LogicModule::Management end
-module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview end
+module Azure::Logic end
+module Azure::Logic::Management end
+module Azure::Logic::Management::Profile_2015_02_01_Preview end

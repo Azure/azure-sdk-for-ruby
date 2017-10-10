@@ -7,7 +7,7 @@ require 'profiles/profile_2016_11_01/modules/datalakeanalytics_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_2016_11_01
+module Azure::DataLakeAnalytics::Management::Profile_2016_11_01
   #
   # Client class for the Profile_2016_11_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_2016_11_01
 
       reset!(options)
 
-      self.datalakeanalytics = DataLakeAnalytics::DataLakeAnalyticsClass.new(self)
+      self.datalakeanalytics = DataLakeAnalyticsClass.new(self)
     end
 
     def credentials

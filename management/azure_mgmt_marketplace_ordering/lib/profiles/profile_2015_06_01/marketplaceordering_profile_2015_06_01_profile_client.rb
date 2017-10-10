@@ -7,7 +7,7 @@ require 'profiles/profile_2015_06_01/modules/marketplaceordering_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_2015_06_01
+module Azure::MarketplaceOrdering::Management::Profile_2015_06_01
   #
   # Client class for the Profile_2015_06_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_2015_06_0
 
       reset!(options)
 
-      self.marketplaceordering = MarketplaceOrdering::MarketplaceOrderingClass.new(self)
+      self.marketplaceordering = MarketplaceOrderingClass.new(self)
     end
 
     def credentials

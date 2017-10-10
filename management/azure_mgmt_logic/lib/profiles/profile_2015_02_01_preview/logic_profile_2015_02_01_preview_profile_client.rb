@@ -7,7 +7,7 @@ require 'profiles/profile_2015_02_01_preview/modules/logic_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview
+module Azure::Logic::Management::Profile_2015_02_01_Preview
   #
   # Client class for the Profile_2015_02_01_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview
 
       reset!(options)
 
-      self.logic = Logic::LogicClass.new(self)
+      self.logic = LogicClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_commerce'
 
-module Azure::Profiles::CommerceModule::Management::Profile_2015_06_01_Preview
-  module Commerce
+module Azure::Commerce::Management::Profile_2015_06_01_Preview
     UsageAggregates = Azure::ARM::Commerce::Api_2015_06_01_preview::UsageAggregates
     RateCard = Azure::ARM::Commerce::Api_2015_06_01_preview::RateCard
 
@@ -91,5 +90,4 @@ module Azure::Profiles::CommerceModule::Management::Profile_2015_06_01_Preview
         end
       end
     end
-  end
 end

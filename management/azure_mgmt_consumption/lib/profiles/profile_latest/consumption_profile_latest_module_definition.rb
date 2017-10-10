@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::ConsumptionModule end
-module Azure::Profiles::ConsumptionModule::Management end
-module Azure::Profiles::ConsumptionModule::Management::Profile_Latest end
+module Azure::Consumption end
+module Azure::Consumption::Management end
+module Azure::Consumption::Management::Profile_Latest end

@@ -398,7 +398,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-08-10')
         case version
           when '2016-08-10'
             client = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::SiteRecoveryManagementClient.new(@configurable.credentials, @base_url, @options)

@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::EventGridModule end
-module Azure::Profiles::EventGridModule::Management end
-module Azure::Profiles::EventGridModule::Management::Profile_2017_09_15_Preview end
+module Azure::EventGrid end
+module Azure::EventGrid::Management end
+module Azure::EventGrid::Management::Profile_2017_09_15_Preview end

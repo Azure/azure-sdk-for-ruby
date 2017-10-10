@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_consumption'
 
-module Azure::Profiles::ConsumptionModule::Management::Profile_2017_04_24_Preview
-  module Consumption
+module Azure::Consumption::Management::Profile_2017_04_24_Preview
     UsageDetails = Azure::ARM::Consumption::Api_2017_04_24_preview::UsageDetails
     Operations = Azure::ARM::Consumption::Api_2017_04_24_preview::Operations
 
@@ -75,5 +74,4 @@ module Azure::Profiles::ConsumptionModule::Management::Profile_2017_04_24_Previe
         end
       end
     end
-  end
 end

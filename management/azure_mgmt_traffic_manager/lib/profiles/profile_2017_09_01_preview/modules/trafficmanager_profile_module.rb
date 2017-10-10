@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_traffic_manager'
 
-module Azure::Profiles::TrafficManagerModule::Management::Profile_2017_09_01_Preview
-  module TrafficManager
+module Azure::TrafficManager::Management::Profile_2017_09_01_Preview
     Endpoints = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Endpoints
     Profiles = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Profiles
     GeographicHierarchies = Azure::ARM::TrafficManager::Api_2017_09_01_preview::GeographicHierarchies
@@ -139,5 +138,4 @@ module Azure::Profiles::TrafficManagerModule::Management::Profile_2017_09_01_Pre
         end
       end
     end
-  end
 end

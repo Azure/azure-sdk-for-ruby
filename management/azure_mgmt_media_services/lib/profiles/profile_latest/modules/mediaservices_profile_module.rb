@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_media_services'
 
-module Azure::Profiles::MediaServicesModule::Management::Profile_Latest
-  module MediaServices
+module Azure::MediaServices::Management::Profile_Latest
     Operations = Azure::ARM::MediaServices::Api_2015_10_01::Operations
     MediaServiceOperations = Azure::ARM::MediaServices::Api_2015_10_01::MediaServiceOperations
 
@@ -111,5 +110,4 @@ module Azure::Profiles::MediaServicesModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

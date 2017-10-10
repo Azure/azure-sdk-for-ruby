@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_container_registry'
 
-module Azure::Profiles::ContainerRegistryModule::Management::Profile_2017_06_01_Preview
-  module ContainerRegistry
+module Azure::ContainerRegistry::Management::Profile_2017_06_01_Preview
     Registries = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Registries
     Operations = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Operations
     Replications = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::Replications
@@ -211,5 +210,4 @@ module Azure::Profiles::ContainerRegistryModule::Management::Profile_2017_06_01_
         end
       end
     end
-  end
 end

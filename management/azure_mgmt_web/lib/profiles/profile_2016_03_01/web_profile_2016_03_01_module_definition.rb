@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::WebModule end
-module Azure::Profiles::WebModule::Management end
-module Azure::Profiles::WebModule::Management::Profile_2016_03_01 end
+module Azure::Web end
+module Azure::Web::Management end
+module Azure::Web::Management::Profile_2016_03_01 end

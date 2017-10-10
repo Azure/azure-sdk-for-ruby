@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/streamanalytics_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::StreamAnalyticsModule::Management::Profile_Latest
+module Azure::StreamAnalytics::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::StreamAnalyticsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.streamanalytics = StreamAnalytics::StreamAnalyticsClass.new(self)
+      self.streamanalytics = StreamAnalyticsClass.new(self)
     end
 
     def credentials

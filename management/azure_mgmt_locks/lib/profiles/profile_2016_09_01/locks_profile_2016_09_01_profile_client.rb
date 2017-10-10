@@ -7,7 +7,7 @@ require 'profiles/profile_2016_09_01/modules/locks_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::LocksModule::Management::Profile_2016_09_01
+module Azure::Locks::Management::Profile_2016_09_01
   #
   # Client class for the Profile_2016_09_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::LocksModule::Management::Profile_2016_09_01
 
       reset!(options)
 
-      self.locks = Locks::LocksClass.new(self)
+      self.locks = LocksClass.new(self)
     end
 
     def credentials

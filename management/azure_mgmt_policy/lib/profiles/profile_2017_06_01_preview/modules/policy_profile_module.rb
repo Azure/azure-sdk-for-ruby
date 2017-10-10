@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_policy'
 
-module Azure::Profiles::PolicyModule::Management::Profile_2017_06_01_Preview
-  module Policy
+module Azure::Policy::Management::Profile_2017_06_01_Preview
     PolicyAssignments = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyAssignments
     PolicySetDefinitions = Azure::ARM::Policy::Api_2017_06_01_preview::PolicySetDefinitions
 
@@ -75,5 +74,4 @@ module Azure::Profiles::PolicyModule::Management::Profile_2017_06_01_Preview
         end
       end
     end
-  end
 end

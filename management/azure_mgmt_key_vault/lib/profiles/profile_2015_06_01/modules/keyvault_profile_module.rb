@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_key_vault'
 
-module Azure::Profiles::KeyVaultModule::Management::Profile_2015_06_01
-  module KeyVault
+module Azure::KeyVault::Management::Profile_2015_06_01
     Vaults = Azure::ARM::KeyVault::Api_2015_06_01::Vaults
 
     module Models
@@ -89,5 +88,4 @@ module Azure::Profiles::KeyVaultModule::Management::Profile_2015_06_01
         end
       end
     end
-  end
 end

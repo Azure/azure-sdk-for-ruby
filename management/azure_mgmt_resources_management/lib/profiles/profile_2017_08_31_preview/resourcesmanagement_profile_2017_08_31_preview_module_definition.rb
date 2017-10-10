@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::ResourcesManagementModule end
-module Azure::Profiles::ResourcesManagementModule::Management end
-module Azure::Profiles::ResourcesManagementModule::Management::Profile_2017_08_31_Preview end
+module Azure::ResourcesManagement end
+module Azure::ResourcesManagement::Management end
+module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview end

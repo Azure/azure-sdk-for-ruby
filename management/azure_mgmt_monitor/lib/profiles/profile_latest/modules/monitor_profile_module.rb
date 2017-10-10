@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_monitor'
 
-module Azure::Profiles::MonitorModule::Management::Profile_Latest
-  module Monitor
+module Azure::Monitor::Management::Profile_Latest
     DiagnosticSettingsCategoryOperations = Azure::ARM::Monitor::Api_2017_05_01_preview::DiagnosticSettingsCategoryOperations
     DiagnosticSettingsOperations = Azure::ARM::Monitor::Api_2017_05_01_preview::DiagnosticSettingsOperations
 
@@ -83,5 +82,4 @@ module Azure::Profiles::MonitorModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

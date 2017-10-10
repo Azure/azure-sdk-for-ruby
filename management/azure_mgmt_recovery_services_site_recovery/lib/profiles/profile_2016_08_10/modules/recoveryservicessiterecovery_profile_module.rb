@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services_site_recovery'
 
-module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_2016_08_10
-  module RecoveryServicesSiteRecovery
+module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
     ReplicationVaultHealth = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationVaultHealth
     ReplicationProtectedItems = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationProtectedItems
     ReplicationNetworkMappings = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::ReplicationNetworkMappings
@@ -1375,5 +1374,4 @@ module Azure::Profiles::RecoveryServicesSiteRecoveryModule::Management::Profile_
         end
       end
     end
-  end
 end

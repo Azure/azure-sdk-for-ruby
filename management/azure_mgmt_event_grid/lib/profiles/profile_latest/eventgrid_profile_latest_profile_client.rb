@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/eventgrid_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::EventGridModule::Management::Profile_Latest
+module Azure::EventGrid::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::EventGridModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.eventgrid = EventGrid::EventGridClass.new(self)
+      self.eventgrid = EventGridClass.new(self)
     end
 
     def credentials

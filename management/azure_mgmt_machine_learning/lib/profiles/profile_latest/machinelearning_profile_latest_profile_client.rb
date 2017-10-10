@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/machinelearning_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MachineLearningModule::Management::Profile_Latest
+module Azure::MachineLearning::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MachineLearningModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.machinelearning = MachineLearning::MachineLearningClass.new(self)
+      self.machinelearning = MachineLearningClass.new(self)
     end
 
     def credentials

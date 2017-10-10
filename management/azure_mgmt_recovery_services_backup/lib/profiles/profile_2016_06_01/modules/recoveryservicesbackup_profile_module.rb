@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services_backup'
 
-module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_06_01
-  module RecoveryServicesBackup
+module Azure::RecoveryServicesBackup::Management::Profile_2016_06_01
     ItemLevelRecoveryConnections = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ItemLevelRecoveryConnections
     Restores = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::Restores
     ProtectionPolicyOperationStatuses = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::ProtectionPolicyOperationStatuses
@@ -591,5 +590,4 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
         end
       end
     end
-  end
 end

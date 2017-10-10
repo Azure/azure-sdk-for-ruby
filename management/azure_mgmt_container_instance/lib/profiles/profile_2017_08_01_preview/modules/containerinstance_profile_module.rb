@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_container_instance'
 
-module Azure::Profiles::ContainerInstanceModule::Management::Profile_2017_08_01_Preview
-  module ContainerInstance
+module Azure::ContainerInstance::Management::Profile_2017_08_01_Preview
     ContainerGroups = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerGroups
     ContainerLogs = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerLogs
 
@@ -127,5 +126,4 @@ module Azure::Profiles::ContainerInstanceModule::Management::Profile_2017_08_01_
         end
       end
     end
-  end
 end

@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::BatchModule end
-module Azure::Profiles::BatchModule::Management end
-module Azure::Profiles::BatchModule::Management::Profile_2015_12_01 end
+module Azure::Batch end
+module Azure::Batch::Management end
+module Azure::Batch::Management::Profile_2015_12_01 end

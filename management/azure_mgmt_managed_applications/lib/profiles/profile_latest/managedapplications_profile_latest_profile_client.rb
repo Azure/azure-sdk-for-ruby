@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/managedapplications_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ManagedApplicationsModule::Management::Profile_Latest
+module Azure::ManagedApplications::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ManagedApplicationsModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.managedapplications = ManagedApplications::ManagedApplicationsClass.new(self)
+      self.managedapplications = ManagedApplicationsClass.new(self)
     end
 
     def credentials

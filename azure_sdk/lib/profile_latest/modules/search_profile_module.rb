@@ -53,7 +53,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2015-08-19')
         case version
           when '2015-08-19'
             client = Azure::ARM::Search::Api_2015_08_19::SearchManagementClient.new(@configurable.credentials, @base_url, @options)

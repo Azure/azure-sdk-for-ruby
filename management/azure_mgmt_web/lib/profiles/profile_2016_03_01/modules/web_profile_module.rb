@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_web'
 
-module Azure::Profiles::WebModule::Management::Profile_2016_03_01
-  module Web
+module Azure::Web::Management::Profile_2016_03_01
     Certificates = Azure::ARM::Web::Api_2016_03_01::Certificates
     DeletedWebApps = Azure::ARM::Web::Api_2016_03_01::DeletedWebApps
     Provider = Azure::ARM::Web::Api_2016_03_01::Provider
@@ -231,5 +230,4 @@ module Azure::Profiles::WebModule::Management::Profile_2016_03_01
         end
       end
     end
-  end
 end

@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/recoveryservices_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::RecoveryServicesModule::Management::Profile_Latest
+module Azure::RecoveryServices::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.recoveryservices = RecoveryServices::RecoveryServicesClass.new(self)
+      self.recoveryservices = RecoveryServicesClass.new(self)
     end
 
     def credentials

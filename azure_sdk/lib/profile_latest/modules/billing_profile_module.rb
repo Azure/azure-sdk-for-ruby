@@ -50,7 +50,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-04-24-preview')
         case version
           when '2017-04-24-preview'
             client = Azure::ARM::Billing::Api_2017_04_24_preview::BillingManagementClient.new(@configurable.credentials, @base_url, @options)

@@ -47,7 +47,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-06-01')
         case version
           when '2016-06-01'
             client = Azure::ARM::Subscriptions::Api_2016_06_01::SubscriptionClient.new(@configurable.credentials, @base_url, @options)

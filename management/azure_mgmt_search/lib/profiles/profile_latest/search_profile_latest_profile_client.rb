@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/search_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::SearchModule::Management::Profile_Latest
+module Azure::Search::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::SearchModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.search = Search::SearchClass.new(self)
+      self.search = SearchClass.new(self)
     end
 
     def credentials

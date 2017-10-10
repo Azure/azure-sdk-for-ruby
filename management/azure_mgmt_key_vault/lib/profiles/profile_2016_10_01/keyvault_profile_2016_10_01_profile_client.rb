@@ -7,7 +7,7 @@ require 'profiles/profile_2016_10_01/modules/keyvault_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::KeyVaultModule::Management::Profile_2016_10_01
+module Azure::KeyVault::Management::Profile_2016_10_01
   #
   # Client class for the Profile_2016_10_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::KeyVaultModule::Management::Profile_2016_10_01
 
       reset!(options)
 
-      self.keyvault = KeyVault::KeyVaultClass.new(self)
+      self.keyvault = KeyVaultClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_resources_management'
 
-module Azure::Profiles::ResourcesManagementModule::Management::Profile_2017_08_31_Preview
-  module ResourcesManagement
+module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview
     ManagementGroups = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroups
     Operations = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Operations
 
@@ -99,5 +98,4 @@ module Azure::Profiles::ResourcesManagementModule::Management::Profile_2017_08_3
         end
       end
     end
-  end
 end

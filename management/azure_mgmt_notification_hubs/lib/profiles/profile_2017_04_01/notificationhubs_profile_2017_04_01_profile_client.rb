@@ -7,7 +7,7 @@ require 'profiles/profile_2017_04_01/modules/notificationhubs_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::NotificationHubsModule::Management::Profile_2017_04_01
+module Azure::NotificationHubs::Management::Profile_2017_04_01
   #
   # Client class for the Profile_2017_04_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::NotificationHubsModule::Management::Profile_2017_04_01
 
       reset!(options)
 
-      self.notificationhubs = NotificationHubs::NotificationHubsClass.new(self)
+      self.notificationhubs = NotificationHubsClass.new(self)
     end
 
     def credentials

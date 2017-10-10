@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::GraphModule end
-module Azure::Profiles::GraphModule::Management end
-module Azure::Profiles::GraphModule::Management::Profile_Latest end
+module Azure::Graph end
+module Azure::Graph::Management end
+module Azure::Graph::Management::Profile_Latest end

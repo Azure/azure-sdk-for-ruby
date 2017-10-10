@@ -7,7 +7,7 @@ require 'profiles/profile_2015_08_01/modules/redis_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::RedisModule::Management::Profile_2015_08_01
+module Azure::Redis::Management::Profile_2015_08_01
   #
   # Client class for the Profile_2015_08_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::RedisModule::Management::Profile_2015_08_01
 
       reset!(options)
 
-      self.redis = Redis::RedisClass.new(self)
+      self.redis = RedisClass.new(self)
     end
 
     def credentials

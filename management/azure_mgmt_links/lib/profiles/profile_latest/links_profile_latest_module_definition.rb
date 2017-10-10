@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::LinksModule end
-module Azure::Profiles::LinksModule::Management end
-module Azure::Profiles::LinksModule::Management::Profile_Latest end
+module Azure::Links end
+module Azure::Links::Management end
+module Azure::Links::Management::Profile_Latest end

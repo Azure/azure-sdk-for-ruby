@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_analysis_services'
 
-module Azure::Profiles::AnalysisServicesModule::Management::Profile_2017_07_14
-  module AnalysisServices
+module Azure::AnalysisServices::Management::Profile_2017_07_14
     Servers = Azure::ARM::AnalysisServices::Api_2017_07_14::Servers
 
     module Models
@@ -109,5 +108,4 @@ module Azure::Profiles::AnalysisServicesModule::Management::Profile_2017_07_14
         end
       end
     end
-  end
 end

@@ -7,7 +7,7 @@ require 'profiles/profile_2017_01_19/modules/iothub_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::IotHubModule::Management::Profile_2017_01_19
+module Azure::IotHub::Management::Profile_2017_01_19
   #
   # Client class for the Profile_2017_01_19 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::IotHubModule::Management::Profile_2017_01_19
 
       reset!(options)
 
-      self.iothub = IotHub::IotHubClass.new(self)
+      self.iothub = IotHubClass.new(self)
     end
 
     def credentials

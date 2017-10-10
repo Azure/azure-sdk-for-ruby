@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_monitor'
 
-module Azure::Profiles::MonitorModule::Management::Profile_2015_04_01
-  module Monitor
+module Azure::Monitor::Management::Profile_2015_04_01
     AutoscaleSettings = Azure::ARM::Monitor::Api_2015_04_01::AutoscaleSettings
     Operations = Azure::ARM::Monitor::Api_2015_04_01::Operations
 
@@ -139,5 +138,4 @@ module Azure::Profiles::MonitorModule::Management::Profile_2015_04_01
         end
       end
     end
-  end
 end

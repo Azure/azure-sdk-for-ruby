@@ -7,7 +7,7 @@ require 'profiles/profile_2015_08_01/modules/web_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::WebModule::Management::Profile_2015_08_01
+module Azure::Web::Management::Profile_2015_08_01
   #
   # Client class for the Profile_2015_08_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::WebModule::Management::Profile_2015_08_01
 
       reset!(options)
 
-      self.web = Web::WebClass.new(self)
+      self.web = WebClass.new(self)
     end
 
     def credentials

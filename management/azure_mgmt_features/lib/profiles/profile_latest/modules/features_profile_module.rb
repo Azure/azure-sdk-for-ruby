@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_features'
 
-module Azure::Profiles::FeaturesModule::Management::Profile_Latest
-  module Features
+module Azure::Features::Management::Profile_Latest
     Features = Azure::ARM::Features::Api_2015_12_01::Features
 
     module Models
@@ -53,5 +52,4 @@ module Azure::Profiles::FeaturesModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

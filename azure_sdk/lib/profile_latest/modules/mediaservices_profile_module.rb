@@ -55,7 +55,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2015-10-01')
         case version
           when '2015-10-01'
             client = Azure::ARM::MediaServices::Api_2015_10_01::MediaServicesManagementClient.new(@configurable.credentials, @base_url, @options)

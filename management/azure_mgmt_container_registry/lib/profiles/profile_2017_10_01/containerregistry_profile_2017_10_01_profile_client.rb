@@ -7,7 +7,7 @@ require 'profiles/profile_2017_10_01/modules/containerregistry_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ContainerRegistryModule::Management::Profile_2017_10_01
+module Azure::ContainerRegistry::Management::Profile_2017_10_01
   #
   # Client class for the Profile_2017_10_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ContainerRegistryModule::Management::Profile_2017_10_01
 
       reset!(options)
 
-      self.containerregistry = ContainerRegistry::ContainerRegistryClass.new(self)
+      self.containerregistry = ContainerRegistryClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_storage'
 
-module Azure::Profiles::StorageModule::Management::Profile_2015_05_01_Preview
-  module Storage
+module Azure::Storage::Management::Profile_2015_05_01_Preview
     StorageAccounts = Azure::ARM::Storage::Api_2015_05_01_preview::StorageAccounts
     UsageOperations = Azure::ARM::Storage::Api_2015_05_01_preview::UsageOperations
 
@@ -119,5 +118,4 @@ module Azure::Profiles::StorageModule::Management::Profile_2015_05_01_Preview
         end
       end
     end
-  end
 end

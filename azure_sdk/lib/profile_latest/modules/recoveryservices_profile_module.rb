@@ -54,7 +54,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-12-01')
         case version
           when '2016-12-01'
             client = Azure::ARM::RecoveryServices::Api_2016_12_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)

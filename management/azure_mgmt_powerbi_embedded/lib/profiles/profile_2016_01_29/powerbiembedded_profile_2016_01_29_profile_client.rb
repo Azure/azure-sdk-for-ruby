@@ -7,7 +7,7 @@ require 'profiles/profile_2016_01_29/modules/powerbiembedded_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::PowerBiEmbeddedModule::Management::Profile_2016_01_29
+module Azure::PowerBiEmbedded::Management::Profile_2016_01_29
   #
   # Client class for the Profile_2016_01_29 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::PowerBiEmbeddedModule::Management::Profile_2016_01_29
 
       reset!(options)
 
-      self.powerbiembedded = PowerBiEmbedded::PowerBiEmbeddedClass.new(self)
+      self.powerbiembedded = PowerBiEmbeddedClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_service_bus'
 
-module Azure::Profiles::ServiceBusModule::Management::Profile_2015_08_01
-  module ServiceBus
+module Azure::ServiceBus::Management::Profile_2015_08_01
     Operations = Azure::ARM::ServiceBus::Api_2015_08_01::Operations
     Namespaces = Azure::ARM::ServiceBus::Api_2015_08_01::Namespaces
     Queues = Azure::ARM::ServiceBus::Api_2015_08_01::Queues
@@ -185,5 +184,4 @@ module Azure::Profiles::ServiceBusModule::Management::Profile_2015_08_01
         end
       end
     end
-  end
 end

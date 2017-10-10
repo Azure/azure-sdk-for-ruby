@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_subscriptions'
 
-module Azure::Profiles::SubscriptionsModule::Management::Profile_2015_11_01
-  module Subscriptions
+module Azure::Subscriptions::Management::Profile_2015_11_01
     Subscriptions = Azure::ARM::Subscriptions::Api_2015_11_01::Subscriptions
     Tenants = Azure::ARM::Subscriptions::Api_2015_11_01::Tenants
 
@@ -71,5 +70,4 @@ module Azure::Profiles::SubscriptionsModule::Management::Profile_2015_11_01
         end
       end
     end
-  end
 end

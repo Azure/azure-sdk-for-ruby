@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_relay'
 
-module Azure::Profiles::RelayModule::Management::Profile_Latest
-  module Relay
+module Azure::Relay::Management::Profile_Latest
     Operations = Azure::ARM::Relay::Api_2017_04_01::Operations
     Namespaces = Azure::ARM::Relay::Api_2017_04_01::Namespaces
     HybridConnections = Azure::ARM::Relay::Api_2017_04_01::HybridConnections
@@ -151,5 +150,4 @@ module Azure::Profiles::RelayModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

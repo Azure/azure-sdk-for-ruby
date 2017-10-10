@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_machine_learning'
 
-module Azure::Profiles::MachineLearningModule::Management::Profile_2017_01_01
-  module MachineLearning
+module Azure::MachineLearning::Management::Profile_2017_01_01
     WebServices = Azure::ARM::MachineLearning::Api_2017_01_01::WebServices
 
     module Models
@@ -185,5 +184,4 @@ module Azure::Profiles::MachineLearningModule::Management::Profile_2017_01_01
         end
       end
     end
-  end
 end

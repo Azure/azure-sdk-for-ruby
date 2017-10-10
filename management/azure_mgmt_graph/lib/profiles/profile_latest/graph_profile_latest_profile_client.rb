@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/graph_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::GraphModule::Management::Profile_Latest
+module Azure::Graph::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::GraphModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.graph = Graph::GraphClass.new(self)
+      self.graph = GraphClass.new(self)
     end
 
     def credentials

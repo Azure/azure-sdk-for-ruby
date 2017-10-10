@@ -217,7 +217,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2015-10-31')
         case version
           when '2015-10-31'
             client = Azure::ARM::Automation::Api_2015_10_31::AutomationClient.new(@configurable.credentials, @base_url, @options)

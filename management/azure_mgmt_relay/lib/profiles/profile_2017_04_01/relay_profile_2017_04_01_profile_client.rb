@@ -7,7 +7,7 @@ require 'profiles/profile_2017_04_01/modules/relay_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::RelayModule::Management::Profile_2017_04_01
+module Azure::Relay::Management::Profile_2017_04_01
   #
   # Client class for the Profile_2017_04_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::RelayModule::Management::Profile_2017_04_01
 
       reset!(options)
 
-      self.relay = Relay::RelayClass.new(self)
+      self.relay = RelayClass.new(self)
     end
 
     def credentials

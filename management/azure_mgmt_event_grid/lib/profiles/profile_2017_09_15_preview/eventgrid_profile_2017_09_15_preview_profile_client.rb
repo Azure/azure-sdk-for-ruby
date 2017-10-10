@@ -7,7 +7,7 @@ require 'profiles/profile_2017_09_15_preview/modules/eventgrid_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::EventGridModule::Management::Profile_2017_09_15_Preview
+module Azure::EventGrid::Management::Profile_2017_09_15_Preview
   #
   # Client class for the Profile_2017_09_15_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::EventGridModule::Management::Profile_2017_09_15_Preview
 
       reset!(options)
 
-      self.eventgrid = EventGrid::EventGridClass.new(self)
+      self.eventgrid = EventGridClass.new(self)
     end
 
     def credentials

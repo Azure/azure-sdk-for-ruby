@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_authorization'
 
-module Azure::Profiles::AuthorizationModule::Management::Profile_2015_07_01
-  module Authorization
+module Azure::Authorization::Management::Profile_2015_07_01
     ClassicAdministrators = Azure::ARM::Authorization::Api_2015_07_01::ClassicAdministrators
     Permissions = Azure::ARM::Authorization::Api_2015_07_01::Permissions
     ProviderOperationsMetadataOperations = Azure::ARM::Authorization::Api_2015_07_01::ProviderOperationsMetadataOperations
@@ -125,5 +124,4 @@ module Azure::Profiles::AuthorizationModule::Management::Profile_2015_07_01
         end
       end
     end
-  end
 end

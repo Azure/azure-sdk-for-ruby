@@ -119,7 +119,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-03-01')
         case version
           when '2016-03-01'
             client = Azure::ARM::StreamAnalytics::Api_2016_03_01::StreamAnalyticsManagementClient.new(@configurable.credentials, @base_url, @options)

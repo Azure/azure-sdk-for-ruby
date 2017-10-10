@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::DevTestLabsModule end
-module Azure::Profiles::DevTestLabsModule::Management end
-module Azure::Profiles::DevTestLabsModule::Management::Profile_Latest end
+module Azure::DevTestLabs end
+module Azure::DevTestLabs::Management end
+module Azure::DevTestLabs::Management::Profile_Latest end

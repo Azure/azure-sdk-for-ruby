@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_managed_applications'
 
-module Azure::Profiles::ManagedApplicationsModule::Management::Profile_2016_09_01_Preview
-  module ManagedApplications
+module Azure::ManagedApplications::Management::Profile_2016_09_01_Preview
     Appliances = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Appliances
     ApplianceDefinitions = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::ApplianceDefinitions
 
@@ -111,5 +110,4 @@ module Azure::Profiles::ManagedApplicationsModule::Management::Profile_2016_09_0
         end
       end
     end
-  end
 end

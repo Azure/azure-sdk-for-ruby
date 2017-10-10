@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/resourcesmanagement_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ResourcesManagementModule::Management::Profile_Latest
+module Azure::ResourcesManagement::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ResourcesManagementModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.resourcesmanagement = ResourcesManagement::ResourcesManagementClass.new(self)
+      self.resourcesmanagement = ResourcesManagementClass.new(self)
     end
 
     def credentials

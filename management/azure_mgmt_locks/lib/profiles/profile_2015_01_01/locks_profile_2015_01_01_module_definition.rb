@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::LocksModule end
-module Azure::Profiles::LocksModule::Management end
-module Azure::Profiles::LocksModule::Management::Profile_2015_01_01 end
+module Azure::Locks end
+module Azure::Locks::Management end
+module Azure::Locks::Management::Profile_2015_01_01 end

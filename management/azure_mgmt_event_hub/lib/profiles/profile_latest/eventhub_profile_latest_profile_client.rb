@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/eventhub_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::EventHubModule::Management::Profile_Latest
+module Azure::EventHub::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::EventHubModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.eventhub = EventHub::EventHubClass.new(self)
+      self.eventhub = EventHubClass.new(self)
     end
 
     def credentials

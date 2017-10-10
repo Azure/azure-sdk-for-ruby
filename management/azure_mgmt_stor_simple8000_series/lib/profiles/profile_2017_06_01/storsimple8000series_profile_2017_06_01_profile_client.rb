@@ -7,7 +7,7 @@ require 'profiles/profile_2017_06_01/modules/storsimple8000series_profile_module
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::StorSimple8000SeriesModule::Management::Profile_2017_06_01
+module Azure::StorSimple8000Series::Management::Profile_2017_06_01
   #
   # Client class for the Profile_2017_06_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::StorSimple8000SeriesModule::Management::Profile_2017_06_
 
       reset!(options)
 
-      self.storsimple8000series = StorSimple8000Series::StorSimple8000SeriesClass.new(self)
+      self.storsimple8000series = StorSimple8000SeriesClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_iot_hub'
 
-module Azure::Profiles::IotHubModule::Management::Profile_2017_01_19
-  module IotHub
+module Azure::IotHub::Management::Profile_2017_01_19
     IotHubResource = Azure::ARM::IotHub::Api_2017_01_19::IotHubResource
 
     module Models
@@ -225,5 +224,4 @@ module Azure::Profiles::IotHubModule::Management::Profile_2017_01_19
         end
       end
     end
-  end
 end

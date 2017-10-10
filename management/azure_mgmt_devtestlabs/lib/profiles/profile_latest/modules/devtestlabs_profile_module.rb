@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_devtestlabs'
 
-module Azure::Profiles::DevTestLabsModule::Management::Profile_Latest
-  module DevTestLabs
+module Azure::DevTestLabs::Management::Profile_Latest
     Labs = Azure::ARM::DevTestLabs::Api_2016_05_15::Labs
     GlobalSchedules = Azure::ARM::DevTestLabs::Api_2016_05_15::GlobalSchedules
     ArtifactSources = Azure::ARM::DevTestLabs::Api_2016_05_15::ArtifactSources
@@ -677,5 +676,4 @@ module Azure::Profiles::DevTestLabsModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_event_hub'
 
-module Azure::Profiles::EventHubModule::Management::Profile_2015_08_01
-  module EventHub
+module Azure::EventHub::Management::Profile_2015_08_01
     Operations = Azure::ARM::EventHub::Api_2015_08_01::Operations
     Namespaces = Azure::ARM::EventHub::Api_2015_08_01::Namespaces
     EventHubs = Azure::ARM::EventHub::Api_2015_08_01::EventHubs
@@ -163,5 +162,4 @@ module Azure::Profiles::EventHubModule::Management::Profile_2015_08_01
         end
       end
     end
-  end
 end

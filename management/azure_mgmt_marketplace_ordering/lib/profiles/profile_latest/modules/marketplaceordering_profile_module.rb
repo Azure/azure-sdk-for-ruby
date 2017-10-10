@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_marketplace_ordering'
 
-module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_Latest
-  module MarketplaceOrdering
+module Azure::MarketplaceOrdering::Management::Profile_Latest
     MarketplaceAgreements = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::MarketplaceAgreements
     Operations = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Operations
 
@@ -67,5 +66,4 @@ module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

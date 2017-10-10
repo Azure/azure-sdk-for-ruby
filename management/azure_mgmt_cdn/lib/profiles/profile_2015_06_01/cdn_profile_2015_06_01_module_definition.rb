@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::CdnModule end
-module Azure::Profiles::CdnModule::Management end
-module Azure::Profiles::CdnModule::Management::Profile_2015_06_01 end
+module Azure::CDN end
+module Azure::CDN::Management end
+module Azure::CDN::Management::Profile_2015_06_01 end

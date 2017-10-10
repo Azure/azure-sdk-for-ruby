@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_service_fabric'
 
-module Azure::Profiles::ServiceFabricModule::Management::Profile_Latest
-  module ServiceFabric
+module Azure::ServiceFabric::Management::Profile_Latest
     Clusters = Azure::ARM::ServiceFabric::Api_2016_09_01::Clusters
     ClusterVersions = Azure::ARM::ServiceFabric::Api_2016_09_01::ClusterVersions
     Operations = Azure::ARM::ServiceFabric::Api_2016_09_01::Operations
@@ -141,5 +140,4 @@ module Azure::Profiles::ServiceFabricModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

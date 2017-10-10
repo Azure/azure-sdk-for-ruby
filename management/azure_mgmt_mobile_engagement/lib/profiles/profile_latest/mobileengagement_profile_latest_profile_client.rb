@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/mobileengagement_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MobileEngagementModule::Management::Profile_Latest
+module Azure::MobileEngagement::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MobileEngagementModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.mobileengagement = MobileEngagement::MobileEngagementClass.new(self)
+      self.mobileengagement = MobileEngagementClass.new(self)
     end
 
     def credentials

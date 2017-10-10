@@ -7,7 +7,7 @@ require 'profiles/profile_1_6/modules/graph_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::GraphModule::Management::Profile_1_6
+module Azure::Graph::Management::Profile_1_6
   #
   # Client class for the Profile_1_6 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::GraphModule::Management::Profile_1_6
 
       reset!(options)
 
-      self.graph = Graph::GraphClass.new(self)
+      self.graph = GraphClass.new(self)
     end
 
     def credentials

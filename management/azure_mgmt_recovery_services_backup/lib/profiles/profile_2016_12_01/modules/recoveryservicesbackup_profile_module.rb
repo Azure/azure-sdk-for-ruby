@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services_backup'
 
-module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_12_01
-  module RecoveryServicesBackup
+module Azure::RecoveryServicesBackup::Management::Profile_2016_12_01
     BackupResourceVaultConfigs = Azure::ARM::RecoveryServicesBackup::Api_2016_12_01::BackupResourceVaultConfigs
     BackupEngines = Azure::ARM::RecoveryServicesBackup::Api_2016_12_01::BackupEngines
     ProtectionContainerRefreshOperationResults = Azure::ARM::RecoveryServicesBackup::Api_2016_12_01::ProtectionContainerRefreshOperationResults
@@ -643,5 +642,4 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_1
         end
       end
     end
-  end
 end

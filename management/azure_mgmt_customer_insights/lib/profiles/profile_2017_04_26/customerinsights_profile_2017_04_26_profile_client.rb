@@ -7,7 +7,7 @@ require 'profiles/profile_2017_04_26/modules/customerinsights_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::CustomerInsightsModule::Management::Profile_2017_04_26
+module Azure::CustomerInsights::Management::Profile_2017_04_26
   #
   # Client class for the Profile_2017_04_26 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::CustomerInsightsModule::Management::Profile_2017_04_26
 
       reset!(options)
 
-      self.customerinsights = CustomerInsights::CustomerInsightsClass.new(self)
+      self.customerinsights = CustomerInsightsClass.new(self)
     end
 
     def credentials

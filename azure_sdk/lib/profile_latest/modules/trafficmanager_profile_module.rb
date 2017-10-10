@@ -65,7 +65,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-09-01-preview')
         case version
           when '2017-09-01-preview'
             client = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)

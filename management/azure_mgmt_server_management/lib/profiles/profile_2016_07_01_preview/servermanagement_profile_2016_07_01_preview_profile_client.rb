@@ -7,7 +7,7 @@ require 'profiles/profile_2016_07_01_preview/modules/servermanagement_profile_mo
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ServerManagementModule::Management::Profile_2016_07_01_Preview
+module Azure::ServerManagement::Management::Profile_2016_07_01_Preview
   #
   # Client class for the Profile_2016_07_01_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ServerManagementModule::Management::Profile_2016_07_01_P
 
       reset!(options)
 
-      self.servermanagement = ServerManagement::ServerManagementClass.new(self)
+      self.servermanagement = ServerManagementClass.new(self)
     end
 
     def credentials

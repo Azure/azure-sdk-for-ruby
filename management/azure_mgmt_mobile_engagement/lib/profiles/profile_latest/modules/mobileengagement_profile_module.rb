@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_mobile_engagement'
 
-module Azure::Profiles::MobileEngagementModule::Management::Profile_Latest
-  module MobileEngagement
+module Azure::MobileEngagement::Management::Profile_Latest
     AppCollections = Azure::ARM::MobileEngagement::Api_2014_12_01::AppCollections
     Apps = Azure::ARM::MobileEngagement::Api_2014_12_01::Apps
     SupportedPlatforms = Azure::ARM::MobileEngagement::Api_2014_12_01::SupportedPlatforms
@@ -405,5 +404,4 @@ module Azure::Profiles::MobileEngagementModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

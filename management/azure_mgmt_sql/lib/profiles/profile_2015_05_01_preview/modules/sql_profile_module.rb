@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_sql'
 
-module Azure::Profiles::SQLModule::Management::Profile_2015_05_01_Preview
-  module SQL
+module Azure::SQL::Management::Profile_2015_05_01_Preview
     DatabaseAdvisors = Azure::ARM::SQL::Api_2015_05_01_preview::DatabaseAdvisors
     DatabaseRecommendedActions = Azure::ARM::SQL::Api_2015_05_01_preview::DatabaseRecommendedActions
     ServerAdvisors = Azure::ARM::SQL::Api_2015_05_01_preview::ServerAdvisors
@@ -345,5 +344,4 @@ module Azure::Profiles::SQLModule::Management::Profile_2015_05_01_Preview
         end
       end
     end
-  end
 end

@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::MonitorModule end
-module Azure::Profiles::MonitorModule::Management end
-module Azure::Profiles::MonitorModule::Management::Profile_2015_04_01 end
+module Azure::Monitor end
+module Azure::Monitor::Management end
+module Azure::Monitor::Management::Profile_2015_04_01 end

@@ -7,7 +7,7 @@ require 'profiles/profile_2014_04_01/modules/sql_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::SQLModule::Management::Profile_2014_04_01
+module Azure::SQL::Management::Profile_2014_04_01
   #
   # Client class for the Profile_2014_04_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::SQLModule::Management::Profile_2014_04_01
 
       reset!(options)
 
-      self.sql = SQL::SQLClass.new(self)
+      self.sql = SQLClass.new(self)
     end
 
     def credentials

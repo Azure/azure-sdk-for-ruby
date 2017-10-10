@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_locks'
 
-module Azure::Profiles::LocksModule::Management::Profile_Latest
-  module Locks
+module Azure::Locks::Management::Profile_Latest
     ManagementLocks = Azure::ARM::Locks::Api_2016_09_01::ManagementLocks
 
     module Models
@@ -57,5 +56,4 @@ module Azure::Profiles::LocksModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

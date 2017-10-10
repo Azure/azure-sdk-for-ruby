@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/storage_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::StorageModule::Management::Profile_Latest
+module Azure::Storage::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::StorageModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.storage = Storage::StorageClass.new(self)
+      self.storage = StorageClass.new(self)
     end
 
     def credentials

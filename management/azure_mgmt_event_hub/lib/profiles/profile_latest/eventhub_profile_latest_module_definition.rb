@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::EventHubModule end
-module Azure::Profiles::EventHubModule::Management end
-module Azure::Profiles::EventHubModule::Management::Profile_Latest end
+module Azure::EventHub end
+module Azure::EventHub::Management end
+module Azure::EventHub::Management::Profile_Latest end

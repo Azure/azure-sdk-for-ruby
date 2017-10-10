@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_web'
 
-module Azure::Profiles::WebModule::Management::Profile_2016_08_01
-  module Web
+module Azure::Web::Management::Profile_2016_08_01
     WebApps = Azure::ARM::Web::Api_2016_08_01::WebApps
 
     module Models
@@ -689,5 +688,4 @@ module Azure::Profiles::WebModule::Management::Profile_2016_08_01
         end
       end
     end
-  end
 end

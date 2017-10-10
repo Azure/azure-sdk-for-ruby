@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/cognitiveservices_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::CognitiveServicesModule::Management::Profile_Latest
+module Azure::CognitiveServices::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::CognitiveServicesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.cognitiveservices = CognitiveServices::CognitiveServicesClass.new(self)
+      self.cognitiveservices = CognitiveServicesClass.new(self)
     end
 
     def credentials

@@ -7,7 +7,7 @@ require 'profiles/profile_2015_10_01_preview/modules/datalakestore_profile_modul
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::DataLakeStoreModule::Management::Profile_2015_10_01_Preview
+module Azure::DataLakeStore::Management::Profile_2015_10_01_Preview
   #
   # Client class for the Profile_2015_10_01_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::DataLakeStoreModule::Management::Profile_2015_10_01_Prev
 
       reset!(options)
 
-      self.datalakestore = DataLakeStore::DataLakeStoreClass.new(self)
+      self.datalakestore = DataLakeStoreClass.new(self)
     end
 
     def credentials

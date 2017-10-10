@@ -68,7 +68,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-04-01')
         case version
           when '2017-04-01'
             client = Azure::ARM::Relay::Api_2017_04_01::RelayManagementClient.new(@configurable.credentials, @base_url, @options)

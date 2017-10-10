@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::IotHubModule end
-module Azure::Profiles::IotHubModule::Management end
-module Azure::Profiles::IotHubModule::Management::Profile_2017_01_19 end
+module Azure::IotHub end
+module Azure::IotHub::Management end
+module Azure::IotHub::Management::Profile_2017_01_19 end

@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/billing_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::BillingModule::Management::Profile_Latest
+module Azure::Billing::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::BillingModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.billing = Billing::BillingClass.new(self)
+      self.billing = BillingClass.new(self)
     end
 
     def credentials

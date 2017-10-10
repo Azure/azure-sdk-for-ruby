@@ -7,7 +7,7 @@ require 'profiles/profile_2015_06_15/modules/storage_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::StorageModule::Management::Profile_2015_06_15
+module Azure::Storage::Management::Profile_2015_06_15
   #
   # Client class for the Profile_2015_06_15 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::StorageModule::Management::Profile_2015_06_15
 
       reset!(options)
 
-      self.storage = Storage::StorageClass.new(self)
+      self.storage = StorageClass.new(self)
     end
 
     def credentials

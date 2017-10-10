@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_search'
 
-module Azure::Profiles::SearchModule::Management::Profile_Latest
-  module Search
+module Azure::Search::Management::Profile_Latest
     AdminKeys = Azure::ARM::Search::Api_2015_08_19::AdminKeys
     QueryKeys = Azure::ARM::Search::Api_2015_08_19::QueryKeys
     Services = Azure::ARM::Search::Api_2015_08_19::Services
@@ -97,5 +96,4 @@ module Azure::Profiles::SearchModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

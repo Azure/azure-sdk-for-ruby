@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_web'
 
-module Azure::Profiles::WebModule::Management::Profile_2015_08_01
-  module Web
+module Azure::Web::Management::Profile_2015_08_01
     AppServiceCertificateOrders = Azure::ARM::Web::Api_2015_08_01::AppServiceCertificateOrders
 
     module Models
@@ -121,5 +120,4 @@ module Azure::Profiles::WebModule::Management::Profile_2015_08_01
         end
       end
     end
-  end
 end

@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::CognitiveServicesModule end
-module Azure::Profiles::CognitiveServicesModule::Management end
-module Azure::Profiles::CognitiveServicesModule::Management::Profile_2017_04_18 end
+module Azure::CognitiveServices end
+module Azure::CognitiveServices::Management end
+module Azure::CognitiveServices::Management::Profile_2017_04_18 end

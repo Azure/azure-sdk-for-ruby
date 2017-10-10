@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_stream_analytics'
 
-module Azure::Profiles::StreamAnalyticsModule::Management::Profile_2016_03_01
-  module StreamAnalytics
+module Azure::StreamAnalytics::Management::Profile_2016_03_01
     Operations = Azure::ARM::StreamAnalytics::Api_2016_03_01::Operations
     StreamingJobs = Azure::ARM::StreamAnalytics::Api_2016_03_01::StreamingJobs
     Inputs = Azure::ARM::StreamAnalytics::Api_2016_03_01::Inputs
@@ -337,5 +336,4 @@ module Azure::Profiles::StreamAnalyticsModule::Management::Profile_2016_03_01
         end
       end
     end
-  end
 end

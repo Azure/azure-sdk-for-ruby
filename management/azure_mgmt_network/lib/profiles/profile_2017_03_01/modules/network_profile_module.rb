@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_network'
 
-module Azure::Profiles::NetworkModule::Management::Profile_2017_03_01
-  module Network
+module Azure::Network::Management::Profile_2017_03_01
     ApplicationGateways = Azure::ARM::Network::Api_2017_03_01::ApplicationGateways
     ExpressRouteCircuitAuthorizations = Azure::ARM::Network::Api_2017_03_01::ExpressRouteCircuitAuthorizations
     ExpressRouteCircuitPeerings = Azure::ARM::Network::Api_2017_03_01::ExpressRouteCircuitPeerings
@@ -975,5 +974,4 @@ module Azure::Profiles::NetworkModule::Management::Profile_2017_03_01
         end
       end
     end
-  end
 end

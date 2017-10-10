@@ -7,7 +7,7 @@ require 'profiles/profile_2016_12_01/modules/policy_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::PolicyModule::Management::Profile_2016_12_01
+module Azure::Policy::Management::Profile_2016_12_01
   #
   # Client class for the Profile_2016_12_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::PolicyModule::Management::Profile_2016_12_01
 
       reset!(options)
 
-      self.policy = Policy::PolicyClass.new(self)
+      self.policy = PolicyClass.new(self)
     end
 
     def credentials

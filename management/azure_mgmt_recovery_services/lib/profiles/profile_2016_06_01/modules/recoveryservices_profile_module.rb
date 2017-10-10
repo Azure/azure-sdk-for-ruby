@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services'
 
-module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
-  module RecoveryServices
+module Azure::RecoveryServices::Management::Profile_2016_06_01
     VaultCertificates = Azure::ARM::RecoveryServices::Api_2016_06_01::VaultCertificates
     RegisteredIdentities = Azure::ARM::RecoveryServices::Api_2016_06_01::RegisteredIdentities
     ReplicationUsages = Azure::ARM::RecoveryServices::Api_2016_06_01::ReplicationUsages
@@ -181,5 +180,4 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_2016_06_01
         end
       end
     end
-  end
 end

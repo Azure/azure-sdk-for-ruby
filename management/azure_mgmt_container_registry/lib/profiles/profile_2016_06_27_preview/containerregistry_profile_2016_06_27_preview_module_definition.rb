@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::ContainerRegistryModule end
-module Azure::Profiles::ContainerRegistryModule::Management end
-module Azure::Profiles::ContainerRegistryModule::Management::Profile_2016_06_27_Preview end
+module Azure::ContainerRegistry end
+module Azure::ContainerRegistry::Management end
+module Azure::ContainerRegistry::Management::Profile_2016_06_27_Preview end

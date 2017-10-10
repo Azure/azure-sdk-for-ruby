@@ -67,7 +67,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-09-15-preview')
         case version
           when '2017-09-15-preview'
             client = Azure::ARM::EventGrid::Api_2017_09_15_preview::EventGridManagementClient.new(@configurable.credentials, @base_url, @options)

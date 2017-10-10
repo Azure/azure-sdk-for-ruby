@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::CustomerInsightsModule end
-module Azure::Profiles::CustomerInsightsModule::Management end
-module Azure::Profiles::CustomerInsightsModule::Management::Profile_2017_04_26 end
+module Azure::CustomerInsights end
+module Azure::CustomerInsights::Management end
+module Azure::CustomerInsights::Management::Profile_2017_04_26 end

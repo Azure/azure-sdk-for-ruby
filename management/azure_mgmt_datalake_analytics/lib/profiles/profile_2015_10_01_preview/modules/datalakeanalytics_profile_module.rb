@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_datalake_analytics'
 
-module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_2015_10_01_Preview
-  module DataLakeAnalytics
+module Azure::DataLakeAnalytics::Management::Profile_2015_10_01_Preview
     Account = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Account
 
     module Models
@@ -133,5 +132,4 @@ module Azure::Profiles::DataLakeAnalyticsModule::Management::Profile_2015_10_01_
         end
       end
     end
-  end
 end

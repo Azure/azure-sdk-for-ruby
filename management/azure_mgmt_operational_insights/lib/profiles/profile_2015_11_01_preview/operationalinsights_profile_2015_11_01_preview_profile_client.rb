@@ -7,7 +7,7 @@ require 'profiles/profile_2015_11_01_preview/modules/operationalinsights_profile
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_01_Preview
+module Azure::OperationalInsights::Management::Profile_2015_11_01_Preview
   #
   # Client class for the Profile_2015_11_01_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::OperationalInsightsModule::Management::Profile_2015_11_0
 
       reset!(options)
 
-      self.operationalinsights = OperationalInsights::OperationalInsightsClass.new(self)
+      self.operationalinsights = OperationalInsightsClass.new(self)
     end
 
     def credentials

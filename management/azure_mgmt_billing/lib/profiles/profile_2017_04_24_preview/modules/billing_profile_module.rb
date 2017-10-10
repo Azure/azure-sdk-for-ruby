@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_billing'
 
-module Azure::Profiles::BillingModule::Management::Profile_2017_04_24_Preview
-  module Billing
+module Azure::Billing::Management::Profile_2017_04_24_Preview
     BillingPeriods = Azure::ARM::Billing::Api_2017_04_24_preview::BillingPeriods
     Invoices = Azure::ARM::Billing::Api_2017_04_24_preview::Invoices
     Operations = Azure::ARM::Billing::Api_2017_04_24_preview::Operations
@@ -85,5 +84,4 @@ module Azure::Profiles::BillingModule::Management::Profile_2017_04_24_Preview
         end
       end
     end
-  end
 end

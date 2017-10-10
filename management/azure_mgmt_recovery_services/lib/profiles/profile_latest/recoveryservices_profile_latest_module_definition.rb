@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::RecoveryServicesModule end
-module Azure::Profiles::RecoveryServicesModule::Management end
-module Azure::Profiles::RecoveryServicesModule::Management::Profile_Latest end
+module Azure::RecoveryServices end
+module Azure::RecoveryServices::Management end
+module Azure::RecoveryServices::Management::Profile_Latest end

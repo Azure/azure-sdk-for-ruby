@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_datalake_store'
 
-module Azure::Profiles::DataLakeStoreModule::Management::Profile_2016_11_01
-  module DataLakeStore
+module Azure::DataLakeStore::Management::Profile_2016_11_01
     FirewallRules = Azure::ARM::DataLakeStore::Api_2016_11_01::FirewallRules
     TrustedIdProviders = Azure::ARM::DataLakeStore::Api_2016_11_01::TrustedIdProviders
     Account = Azure::ARM::DataLakeStore::Api_2016_11_01::Account
@@ -149,5 +148,4 @@ module Azure::Profiles::DataLakeStoreModule::Management::Profile_2016_11_01
         end
       end
     end
-  end
 end

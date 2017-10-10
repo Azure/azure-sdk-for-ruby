@@ -7,7 +7,7 @@ require 'profiles/profile_2017_05_01/modules/trafficmanager_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::TrafficManagerModule::Management::Profile_2017_05_01
+module Azure::TrafficManager::Management::Profile_2017_05_01
   #
   # Client class for the Profile_2017_05_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::TrafficManagerModule::Management::Profile_2017_05_01
 
       reset!(options)
 
-      self.trafficmanager = TrafficManager::TrafficManagerClass.new(self)
+      self.trafficmanager = TrafficManagerClass.new(self)
     end
 
     def credentials

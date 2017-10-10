@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services'
 
-module Azure::Profiles::RecoveryServicesModule::Management::Profile_Latest
-  module RecoveryServices
+module Azure::RecoveryServices::Management::Profile_Latest
     BackupVaultConfigs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupVaultConfigs
     BackupStorageConfigs = Azure::ARM::RecoveryServices::Api_2016_12_01::BackupStorageConfigs
 
@@ -107,5 +106,4 @@ module Azure::Profiles::RecoveryServicesModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

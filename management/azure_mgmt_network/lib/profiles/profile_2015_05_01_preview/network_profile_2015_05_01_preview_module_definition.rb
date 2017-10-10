@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::NetworkModule end
-module Azure::Profiles::NetworkModule::Management end
-module Azure::Profiles::NetworkModule::Management::Profile_2015_05_01_Preview end
+module Azure::Network end
+module Azure::Network::Management end
+module Azure::Network::Management::Profile_2015_05_01_Preview end

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_scheduler'
 
-module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01
-  module Scheduler
+module Azure::Scheduler::Management::Profile_2016_03_01
     JobCollections = Azure::ARM::Scheduler::Api_2016_03_01::JobCollections
     Jobs = Azure::ARM::Scheduler::Api_2016_03_01::Jobs
 
@@ -223,5 +222,4 @@ module Azure::Profiles::SchedulerModule::Management::Profile_2016_03_01
         end
       end
     end
-  end
 end

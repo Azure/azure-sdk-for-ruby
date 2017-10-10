@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/mediaservices_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MediaServicesModule::Management::Profile_Latest
+module Azure::MediaServices::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MediaServicesModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.mediaservices = MediaServices::MediaServicesClass.new(self)
+      self.mediaservices = MediaServicesClass.new(self)
     end
 
     def credentials

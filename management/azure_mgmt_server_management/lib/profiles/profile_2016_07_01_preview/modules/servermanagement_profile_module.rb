@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_server_management'
 
-module Azure::Profiles::ServerManagementModule::Management::Profile_2016_07_01_Preview
-  module ServerManagement
+module Azure::ServerManagement::Management::Profile_2016_07_01_Preview
     Gateway = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Gateway
     Node = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Node
     Session = Azure::ARM::ServerManagement::Api_2016_07_01_preview::Session
@@ -167,5 +166,4 @@ module Azure::Profiles::ServerManagementModule::Management::Profile_2016_07_01_P
         end
       end
     end
-  end
 end

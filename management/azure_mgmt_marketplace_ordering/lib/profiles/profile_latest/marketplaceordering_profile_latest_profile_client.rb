@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/marketplaceordering_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_Latest
+module Azure::MarketplaceOrdering::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MarketplaceOrderingModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.marketplaceordering = MarketplaceOrdering::MarketplaceOrderingClass.new(self)
+      self.marketplaceordering = MarketplaceOrderingClass.new(self)
     end
 
     def credentials

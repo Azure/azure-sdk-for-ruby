@@ -7,7 +7,7 @@ require 'profiles/profile_2014_12_01/modules/mobileengagement_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::MobileEngagementModule::Management::Profile_2014_12_01
+module Azure::MobileEngagement::Management::Profile_2014_12_01
   #
   # Client class for the Profile_2014_12_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::MobileEngagementModule::Management::Profile_2014_12_01
 
       reset!(options)
 
-      self.mobileengagement = MobileEngagement::MobileEngagementClass.new(self)
+      self.mobileengagement = MobileEngagementClass.new(self)
     end
 
     def credentials

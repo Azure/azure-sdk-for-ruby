@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_network'
 
-module Azure::Profiles::NetworkModule::Management::Profile_2017_03_30
-  module Network
+module Azure::Network::Management::Profile_2017_03_30
     NetworkInterfaces = Azure::ARM::Network::Api_2017_03_30::NetworkInterfaces
     PublicIPAddresses = Azure::ARM::Network::Api_2017_03_30::PublicIPAddresses
 
@@ -159,5 +158,4 @@ module Azure::Profiles::NetworkModule::Management::Profile_2017_03_30
         end
       end
     end
-  end
 end

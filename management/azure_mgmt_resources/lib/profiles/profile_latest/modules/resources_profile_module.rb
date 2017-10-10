@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_resources'
 
-module Azure::Profiles::ResourcesModule::Management::Profile_Latest
-  module Resources
+module Azure::Resources::Management::Profile_Latest
     Deployments = Azure::ARM::Resources::Api_2017_05_10::Deployments
     Providers = Azure::ARM::Resources::Api_2017_05_10::Providers
     Resources = Azure::ARM::Resources::Api_2017_05_10::Resources
@@ -231,5 +230,4 @@ module Azure::Profiles::ResourcesModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

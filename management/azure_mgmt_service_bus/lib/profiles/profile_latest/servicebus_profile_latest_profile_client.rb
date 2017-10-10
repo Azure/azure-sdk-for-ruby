@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/servicebus_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ServiceBusModule::Management::Profile_Latest
+module Azure::ServiceBus::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ServiceBusModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.servicebus = ServiceBus::ServiceBusClass.new(self)
+      self.servicebus = ServiceBusClass.new(self)
     end
 
     def credentials

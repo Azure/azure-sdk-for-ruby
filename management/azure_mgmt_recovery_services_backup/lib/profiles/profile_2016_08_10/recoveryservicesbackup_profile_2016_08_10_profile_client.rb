@@ -7,7 +7,7 @@ require 'profiles/profile_2016_08_10/modules/recoveryservicesbackup_profile_modu
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_08_10
+module Azure::RecoveryServicesBackup::Management::Profile_2016_08_10
   #
   # Client class for the Profile_2016_08_10 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
 
       reset!(options)
 
-      self.recoveryservicesbackup = RecoveryServicesBackup::RecoveryServicesBackupClass.new(self)
+      self.recoveryservicesbackup = RecoveryServicesBackupClass.new(self)
     end
 
     def credentials

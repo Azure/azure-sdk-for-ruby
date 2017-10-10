@@ -7,7 +7,7 @@ require 'profiles/profile_2016_05_15/modules/devtestlabs_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::DevTestLabsModule::Management::Profile_2016_05_15
+module Azure::DevTestLabs::Management::Profile_2016_05_15
   #
   # Client class for the Profile_2016_05_15 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::DevTestLabsModule::Management::Profile_2016_05_15
 
       reset!(options)
 
-      self.devtestlabs = DevTestLabs::DevTestLabsClass.new(self)
+      self.devtestlabs = DevTestLabsClass.new(self)
     end
 
     def credentials

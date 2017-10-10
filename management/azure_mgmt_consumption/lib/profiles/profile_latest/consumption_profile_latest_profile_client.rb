@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/consumption_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ConsumptionModule::Management::Profile_Latest
+module Azure::Consumption::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ConsumptionModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.consumption = Consumption::ConsumptionClass.new(self)
+      self.consumption = ConsumptionClass.new(self)
     end
 
     def credentials

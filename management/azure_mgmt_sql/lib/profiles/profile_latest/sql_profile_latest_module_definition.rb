@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
-module Azure::Profiles::SQLModule end
-module Azure::Profiles::SQLModule::Management end
-module Azure::Profiles::SQLModule::Management::Profile_Latest end
+module Azure::SQL end
+module Azure::SQL::Management end
+module Azure::SQL::Management::Profile_Latest end

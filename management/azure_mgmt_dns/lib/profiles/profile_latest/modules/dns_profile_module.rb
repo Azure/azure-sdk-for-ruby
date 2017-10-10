@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_dns'
 
-module Azure::Profiles::DnsModule::Management::Profile_Latest
-  module Dns
+module Azure::Dns::Management::Profile_Latest
     RecordSets = Azure::ARM::Dns::Api_2016_04_01::RecordSets
     Zones = Azure::ARM::Dns::Api_2016_04_01::Zones
 
@@ -115,5 +114,4 @@ module Azure::Profiles::DnsModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

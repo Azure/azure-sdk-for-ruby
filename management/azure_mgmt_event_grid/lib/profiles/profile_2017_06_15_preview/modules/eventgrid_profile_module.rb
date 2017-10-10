@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_event_grid'
 
-module Azure::Profiles::EventGridModule::Management::Profile_2017_06_15_Preview
-  module EventGrid
+module Azure::EventGrid::Management::Profile_2017_06_15_Preview
     EventSubscriptions = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventSubscriptions
     Operations = Azure::ARM::EventGrid::Api_2017_06_15_preview::Operations
     Topics = Azure::ARM::EventGrid::Api_2017_06_15_preview::Topics
@@ -143,5 +142,4 @@ module Azure::Profiles::EventGridModule::Management::Profile_2017_06_15_Preview
         end
       end
     end
-  end
 end

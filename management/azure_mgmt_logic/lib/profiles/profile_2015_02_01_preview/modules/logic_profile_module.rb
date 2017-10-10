@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_logic'
 
-module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview
-  module Logic
+module Azure::Logic::Management::Profile_2015_02_01_Preview
     Workflows = Azure::ARM::Logic::Api_2015_02_01_preview::Workflows
     WorkflowVersions = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowVersions
     WorkflowAccessKeys = Azure::ARM::Logic::Api_2015_02_01_preview::WorkflowAccessKeys
@@ -201,5 +200,4 @@ module Azure::Profiles::LogicModule::Management::Profile_2015_02_01_Preview
         end
       end
     end
-  end
 end

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_automation'
 
-module Azure::Profiles::AutomationModule::Management::Profile_2015_10_31
-  module Automation
+module Azure::Automation::Management::Profile_2015_10_31
     AutomationAccountOperations = Azure::ARM::Automation::Api_2015_10_31::AutomationAccountOperations
     Operations = Azure::ARM::Automation::Api_2015_10_31::Operations
     StatisticsOperations = Azure::ARM::Automation::Api_2015_10_31::StatisticsOperations
@@ -597,5 +596,4 @@ module Azure::Profiles::AutomationModule::Management::Profile_2015_10_31
         end
       end
     end
-  end
 end

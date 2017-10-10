@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_logic'
 
-module Azure::Profiles::LogicModule::Management::Profile_Latest
-  module Logic
+module Azure::Logic::Management::Profile_Latest
     Workflows = Azure::ARM::Logic::Api_2016_06_01::Workflows
     WorkflowVersions = Azure::ARM::Logic::Api_2016_06_01::WorkflowVersions
     WorkflowTriggers = Azure::ARM::Logic::Api_2016_06_01::WorkflowTriggers
@@ -597,5 +596,4 @@ module Azure::Profiles::LogicModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

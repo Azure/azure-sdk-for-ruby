@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_notification_hubs'
 
-module Azure::Profiles::NotificationHubsModule::Management::Profile_2017_04_01
-  module NotificationHubs
+module Azure::NotificationHubs::Management::Profile_2017_04_01
     Namespaces = Azure::ARM::NotificationHubs::Api_2017_04_01::Namespaces
     Name = Azure::ARM::NotificationHubs::Api_2017_04_01::Name
     NotificationHubs = Azure::ARM::NotificationHubs::Api_2017_04_01::NotificationHubs
@@ -163,5 +162,4 @@ module Azure::Profiles::NotificationHubsModule::Management::Profile_2017_04_01
         end
       end
     end
-  end
 end

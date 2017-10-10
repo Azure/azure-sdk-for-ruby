@@ -7,7 +7,7 @@ require 'profiles/profile_2015_11_01/modules/subscriptions_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::SubscriptionsModule::Management::Profile_2015_11_01
+module Azure::Subscriptions::Management::Profile_2015_11_01
   #
   # Client class for the Profile_2015_11_01 profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::SubscriptionsModule::Management::Profile_2015_11_01
 
       reset!(options)
 
-      self.subscriptions = Subscriptions::SubscriptionsClass.new(self)
+      self.subscriptions = SubscriptionsClass.new(self)
     end
 
     def credentials

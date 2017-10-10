@@ -7,7 +7,7 @@ require 'profiles/profile_latest/modules/batch_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::BatchModule::Management::Profile_Latest
+module Azure::Batch::Management::Profile_Latest
   #
   # Client class for the Profile_Latest profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::BatchModule::Management::Profile_Latest
 
       reset!(options)
 
-      self.batch = Batch::BatchClass.new(self)
+      self.batch = BatchClass.new(self)
     end
 
     def credentials

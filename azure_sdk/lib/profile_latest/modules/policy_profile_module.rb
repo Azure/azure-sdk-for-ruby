@@ -46,7 +46,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2017-06-01-preview')
         case version
           when '2017-06-01-preview'
             client = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyClient.new(@configurable.credentials, @base_url, @options)

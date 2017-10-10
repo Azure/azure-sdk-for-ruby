@@ -59,7 +59,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2015-11-01-preview')
         case version
           when '2015-11-01-preview'
             client = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(@configurable.credentials, @base_url, @options)

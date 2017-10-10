@@ -53,7 +53,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-10-01')
         case version
           when '2016-10-01'
             client = Azure::ARM::KeyVault::Api_2016_10_01::KeyVaultManagementClient.new(@configurable.credentials, @base_url, @options)

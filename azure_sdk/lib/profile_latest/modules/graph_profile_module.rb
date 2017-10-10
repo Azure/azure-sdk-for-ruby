@@ -83,7 +83,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '1.6')
         case version
           when '1.6'
             client = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(@configurable.credentials, @base_url, @options)

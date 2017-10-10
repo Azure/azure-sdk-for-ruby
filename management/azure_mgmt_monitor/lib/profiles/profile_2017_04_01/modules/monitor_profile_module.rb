@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_monitor'
 
-module Azure::Profiles::MonitorModule::Management::Profile_2017_04_01
-  module Monitor
+module Azure::Monitor::Management::Profile_2017_04_01
     ActionGroups = Azure::ARM::Monitor::Api_2017_04_01::ActionGroups
     ActivityLogAlerts = Azure::ARM::Monitor::Api_2017_04_01::ActivityLogAlerts
 
@@ -103,5 +102,4 @@ module Azure::Profiles::MonitorModule::Management::Profile_2017_04_01
         end
       end
     end
-  end
 end

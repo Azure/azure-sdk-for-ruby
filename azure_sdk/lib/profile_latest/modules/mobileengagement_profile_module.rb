@@ -136,7 +136,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2014-12-01')
         case version
           when '2014-12-01'
             client = Azure::ARM::MobileEngagement::Api_2014_12_01::EngagementManagementClient.new(@configurable.credentials, @base_url, @options)

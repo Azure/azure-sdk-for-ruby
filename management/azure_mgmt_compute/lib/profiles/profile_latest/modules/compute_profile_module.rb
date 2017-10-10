@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_compute'
 
-module Azure::Profiles::ComputeModule::Management::Profile_Latest
-  module Compute
+module Azure::Compute::Management::Profile_Latest
     AvailabilitySets = Azure::ARM::Compute::Api_2017_03_30::AvailabilitySets
     VirtualMachineExtensionImages = Azure::ARM::Compute::Api_2017_03_30::VirtualMachineExtensionImages
     VirtualMachineExtensions = Azure::ARM::Compute::Api_2017_03_30::VirtualMachineExtensions
@@ -661,5 +660,4 @@ module Azure::Profiles::ComputeModule::Management::Profile_Latest
         end
       end
     end
-  end
 end

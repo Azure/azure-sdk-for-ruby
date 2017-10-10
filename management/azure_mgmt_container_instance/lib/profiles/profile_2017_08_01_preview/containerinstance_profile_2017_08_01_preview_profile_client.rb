@@ -7,7 +7,7 @@ require 'profiles/profile_2017_08_01_preview/modules/containerinstance_profile_m
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ContainerInstanceModule::Management::Profile_2017_08_01_Preview
+module Azure::ContainerInstance::Management::Profile_2017_08_01_Preview
   #
   # Client class for the Profile_2017_08_01_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ContainerInstanceModule::Management::Profile_2017_08_01_
 
       reset!(options)
 
-      self.containerinstance = ContainerInstance::ContainerInstanceClass.new(self)
+      self.containerinstance = ContainerInstanceClass.new(self)
     end
 
     def credentials

@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_recovery_services_backup'
 
-module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_08_10
-  module RecoveryServicesBackup
+module Azure::RecoveryServicesBackup::Management::Profile_2016_08_10
     Operations = Azure::ARM::RecoveryServicesBackup::Api_2016_08_10::Operations
 
     module Models
@@ -65,5 +64,4 @@ module Azure::Profiles::RecoveryServicesBackupModule::Management::Profile_2016_0
         end
       end
     end
-  end
 end

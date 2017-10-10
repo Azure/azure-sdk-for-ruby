@@ -7,7 +7,7 @@ require 'profiles/profile_2017_04_24_preview/modules/consumption_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 
-module Azure::Profiles::ConsumptionModule::Management::Profile_2017_04_24_Preview
+module Azure::Consumption::Management::Profile_2017_04_24_Preview
   #
   # Client class for the Profile_2017_04_24_Preview profile SDK.
   #
@@ -25,7 +25,7 @@ module Azure::Profiles::ConsumptionModule::Management::Profile_2017_04_24_Previe
 
       reset!(options)
 
-      self.consumption = Consumption::ConsumptionClass.new(self)
+      self.consumption = ConsumptionClass.new(self)
     end
 
     def credentials

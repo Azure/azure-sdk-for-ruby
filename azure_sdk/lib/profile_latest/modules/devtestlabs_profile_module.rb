@@ -225,7 +225,7 @@ module Azure::Profiles::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = '2016-05-15')
         case version
           when '2016-05-15'
             client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(@configurable.credentials, @base_url, @options)

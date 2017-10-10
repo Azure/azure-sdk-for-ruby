@@ -4,8 +4,7 @@
 
 require 'azure_mgmt_sql'
 
-module Azure::Profiles::SQLModule::Management::Profile_2014_04_01
-  module SQL
+module Azure::SQL::Management::Profile_2014_04_01
     DatabaseAdvisors = Azure::ARM::SQL::Api_2014_04_01::DatabaseAdvisors
     BackupLongTermRetentionPolicies = Azure::ARM::SQL::Api_2014_04_01::BackupLongTermRetentionPolicies
     BackupLongTermRetentionVaults = Azure::ARM::SQL::Api_2014_04_01::BackupLongTermRetentionVaults
@@ -657,5 +656,4 @@ module Azure::Profiles::SQLModule::Management::Profile_2014_04_01
         end
       end
     end
-  end
 end
