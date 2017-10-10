@@ -30,13 +30,22 @@ namespace :arm do
     end
   end
 
-  desc 'Delete ./lib/generated for each sdk'
+  desc 'Delete multiple version folders for each sdk'
   task :clean_generated do
-    each_gem do
-      delete_command_windows = 'for /r lib\ %a in (generated) do @if exist %a del /S /Q %a 2>nul'
-      delete_empty_folders_windows = "ROBOCOPY lib lib /S /MOVE"
-      delete_command_linux = "find lib/* -d -type d -exec  rm -rf '{}' \\;"
-      execute_and_stream(OS.windows? ? delete_command_windows + " & " + delete_empty_folders_windows : delete_command_linux)
+    Dir.chdir(File.expand_path('../management', __FILE__))
+    gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
+    gem_folders.each do |gem|
+      Dir.chdir(File.expand_path("../management/#{gem}/lib", __FILE__))
+      subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+      subdir_list.each do |subdir|
+        if subdir.to_s == 'profiles'
+          next
+        end
+
+        folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/#{subdir}", __FILE__)
+        puts "Cleaning folder - #{folder_to_be_cleaned}"
+        FileUtils.rm_rf(folder_to_be_cleaned)
+      end
     end
   end
 
