@@ -18,7 +18,7 @@ require 'common/configurable'
 require 'common/default'
 <%- end -%>
 
-module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management::<%= @profile_name %>
+module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @individual_gem_profile -%><%= @class_name %>::<%- end -%>Management::<%= @profile_name %>
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #

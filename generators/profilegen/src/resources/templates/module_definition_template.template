@@ -4,9 +4,9 @@
 
 module Azure end
 <%- if @individual_gem_profile -%>
-module Azure::<%= @module_name %> end
-module Azure::<%= @module_name %>::Management end
-module Azure::<%= @module_name %>::Management::<%= @profile_name %> end
+module Azure::<%= @class_name %> end
+module Azure::<%= @class_name %>::Management end
+module Azure::<%= @class_name %>::Management::<%= @profile_name %> end
 <%- else -%>
 module Azure::Profiles end
 module Azure::Profiles::Management end
