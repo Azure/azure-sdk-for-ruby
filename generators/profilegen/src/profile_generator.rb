@@ -74,7 +74,7 @@ class ProfileGenerator
       end
 
       resource_types_obj.each do |resource_type_version, resource_types|
-        base_file_path =  "#{@dir_metadata[resource_provider]['path']}lib/#{resource_type_version}/generated/#{@module_require}.rb"
+        base_file_path =  "#{@dir_metadata[resource_provider]['path']}/lib/#{resource_type_version}/generated/#{@module_require}.rb"
         require base_file_path
 
         resource_types.each do |resource_type|
