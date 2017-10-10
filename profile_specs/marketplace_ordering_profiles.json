@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_06_01",
+    "resourceTypes": {
+      "Microsoft.MarketplaceOrdering" : {
+        "2015-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_marketplace_ordering/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.MarketplaceOrdering" : {
+        "2015-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_marketplace_ordering/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

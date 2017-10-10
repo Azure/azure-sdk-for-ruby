@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_08_01_Preview",
+    "resourceTypes": {
+      "Microsoft.ContainerInstance" : {
+        "2017-08-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_container_instance/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.ContainerInstance" : {
+        "2017-08-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_container_instance/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

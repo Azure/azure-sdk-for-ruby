@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Profile_2014_04_01",
+    "resourceTypes": {
+      "Microsoft.SQL" : {
+        "2014-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_sql/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2015_05_01_Preview",
+    "resourceTypes": {
+      "Microsoft.SQL" : {
+        "2015-05-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_sql/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_03_01_Preview",
+    "resourceTypes": {
+      "Microsoft.SQL" : {
+        "2017-03-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_sql/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.SQL" : {
+        "2017-03-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_sql/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

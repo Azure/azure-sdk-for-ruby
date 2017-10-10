@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Profile_2016_03_30",
+    "resourceTypes": {
+      "Microsoft.ContainerService" : {
+        "2016-03-30": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_container_service/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_09_30",
+    "resourceTypes": {
+      "Microsoft.ContainerService" : {
+        "2016-09-30": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_container_service/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_01_31",
+    "resourceTypes": {
+      "Microsoft.ContainerService" : {
+        "2017-01-31": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_container_service/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.ContainerService" : {
+        "2017-01-31": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_container_service/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

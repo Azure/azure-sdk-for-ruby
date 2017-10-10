@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2015_11_01",
+    "resourceTypes": {
+      "Microsoft.Subscriptions" : {
+        "2015-11-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_subscriptions/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_06_01",
+    "resourceTypes": {
+      "Microsoft.Subscriptions" : {
+        "2016-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_subscriptions/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Subscriptions" : {
+        "2016-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_subscriptions/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

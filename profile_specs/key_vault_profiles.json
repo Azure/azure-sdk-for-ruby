@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2015_06_01",
+    "resourceTypes": {
+      "Microsoft.KeyVault" : {
+        "2015-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_key_vault/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_10_01",
+    "resourceTypes": {
+      "Microsoft.KeyVault" : {
+        "2016-10-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_key_vault/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.KeyVault" : {
+        "2016-10-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_key_vault/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

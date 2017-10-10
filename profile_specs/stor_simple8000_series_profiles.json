@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_06_01",
+    "resourceTypes": {
+      "Microsoft.StorSimple8000Series" : {
+        "2017-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_stor_simple8000_series/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.StorSimple8000Series" : {
+        "2017-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_stor_simple8000_series/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_08_19",
+    "resourceTypes": {
+      "Microsoft.Search" : {
+        "2015-08-19": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_search/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Search" : {
+        "2015-08-19": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_search/lib/profiles",
+    "individual_gem_profile": true
+  }
+]
