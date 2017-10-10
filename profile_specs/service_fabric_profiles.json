@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2016_09_01",
+    "resourceTypes": {
+      "Microsoft.ServiceFabric" : {
+        "2016-09-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_service_fabric/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.ServiceFabric" : {
+        "2016-09-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_service_fabric/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

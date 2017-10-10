@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_04_24_Preview",
+    "resourceTypes": {
+      "Microsoft.Billing" : {
+        "2017-04-24-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_billing/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Billing" : {
+        "2017-04-24-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_billing/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

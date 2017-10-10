@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_1_6",
+    "resourceTypes": {
+      "Microsoft.Graph" : {
+        "1.6": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_graph/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Graph" : {
+        "1.6": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_graph/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2016_05_16",
+    "resourceTypes": {
+      "Microsoft.AnalysisServices" : {
+        "2016-05-16": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_analysis_services/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_07_14",
+    "resourceTypes": {
+      "Microsoft.AnalysisServices" : {
+        "2017-07-14": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_analysis_services/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.AnalysisServices" : {
+        "2017-07-14": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_analysis_services/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

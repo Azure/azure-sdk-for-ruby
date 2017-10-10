@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_04_01",
+    "resourceTypes": {
+      "Microsoft.NotificationHubs" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_notification_hubs/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.NotificationHubs" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_notification_hubs/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

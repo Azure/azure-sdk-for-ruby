@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2016_04_01",
+    "resourceTypes": {
+      "Microsoft.Dns" : {
+        "2016-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_dns/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Dns" : {
+        "2016-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_dns/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

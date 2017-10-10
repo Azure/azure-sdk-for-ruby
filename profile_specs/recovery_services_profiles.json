@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2016_06_01",
+    "resourceTypes": {
+      "Microsoft.RecoveryServices" : {
+        "2016-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_12_01",
+    "resourceTypes": {
+      "Microsoft.RecoveryServices" : {
+        "2016-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.RecoveryServices" : {
+        "2016-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

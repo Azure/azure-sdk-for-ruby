@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2015_08_01",
+    "resourceTypes": {
+      "Microsoft.EventHub" : {
+        "2015-08-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_event_hub/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_04_01",
+    "resourceTypes": {
+      "Microsoft.EventHub" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_event_hub/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.EventHub" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_event_hub/lib/profiles",
+    "individual_gem_profile": true
+  }
+]
