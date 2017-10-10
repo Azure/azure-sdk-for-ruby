@@ -1,0 +1,53 @@
+# encoding: utf-8
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+
+require 'optparse'
+require 'ostruct'
+
+#
+# Command line options parser for the generation
+# of require files.
+#
+# Options
+#    -h, --help : Displays help for the require files generator
+#    -m, --mode : Mode for which the require files are to be generated.
+#                 ['rollup', 'individual']
+#
+
+class RequireFileGeneratorOptionsParser
+  def self.parse(args)
+    options = OpenStruct.new
+
+    opt_parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: require_file_generator.rb [options]'
+
+      opts.on('-mMODE', '--mode=MODE', 'Mode for which the require files are to be generated') do |mode|
+        if (mode != 'rollup' && mode != 'individual')
+          raise OptionParser::InvalidOption.new("mode can be only 'rollup'/'individual'")
+        end
+        options.mode = mode
+      end
+
+      opts.on('-h', '--help', 'Prints this help') do
+        puts opts
+        exit
+      end
+    end
+
+    opt_parser.parse!(args)
+    options
+  end
+
+  #
+  # Gets the parsed command line options.
+  #
+  def self.options(args)
+    args << '-h' if args.empty?
+    options = self.parse(args)
+    mandatory_params = [:mode]
+    missing_params = mandatory_params.select{|param| options[param].nil?}
+    raise OptionParser::MissingArgument.new(missing_params.join(', ')) unless missing_params.empty?
+    options
+  end
+end

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Profile_2015_12_01",
+    "resourceTypes": {
+      "Microsoft.Batch" : {
+        "2015-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_batch/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_05_01",
+    "resourceTypes": {
+      "Microsoft.Batch" : {
+        "2017-05-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_batch/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Batch" : {
+        "2017-05-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_batch/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

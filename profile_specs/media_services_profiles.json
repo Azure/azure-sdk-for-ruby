@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_10_01",
+    "resourceTypes": {
+      "Microsoft.MediaServices" : {
+        "2015-10-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_media_services/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.MediaServices" : {
+        "2015-10-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_media_services/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

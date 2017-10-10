@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Profile_2015_05_01_Preview",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2015-05-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2015_06_15",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2015-06-15": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_03_30",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2016-03-30": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_06_01",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2016-06-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_09_01",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2016-09-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_12_01",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2016-12-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_03_01",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2017-03-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_03_30",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2017-03-30": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_09_01",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2017-09-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Network" : {
+        "2017-09-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_network/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

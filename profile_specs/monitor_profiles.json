@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Profile_2015_04_01",
+    "resourceTypes": {
+      "Microsoft.Monitor" : {
+        "2015-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_03_01",
+    "resourceTypes": {
+      "Microsoft.Monitor" : {
+        "2016-03-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2016_09_01",
+    "resourceTypes": {
+      "Microsoft.Monitor" : {
+        "2016-09-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_04_01",
+    "resourceTypes": {
+      "Microsoft.Monitor" : {
+        "2017-04-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_2017_05_01_Preview",
+    "resourceTypes": {
+      "Microsoft.Monitor" : {
+        "2017-05-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Monitor" : {
+        "2017-05-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_07_01",
+    "resourceTypes": {
+      "Microsoft.Authorization" : {
+        "2015-07-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_authorization/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Authorization" : {
+        "2015-07-01": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_authorization/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

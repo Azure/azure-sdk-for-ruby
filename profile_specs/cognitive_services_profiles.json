@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2017_04_18",
+    "resourceTypes": {
+      "Microsoft.CognitiveServices" : {
+        "2017-04-18": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_cognitive_services/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.CognitiveServices" : {
+        "2017-04-18": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_cognitive_services/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

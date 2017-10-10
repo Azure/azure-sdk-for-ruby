@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_06_01_Preview",
+    "resourceTypes": {
+      "Microsoft.Commerce" : {
+        "2015-06-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_commerce/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Commerce" : {
+        "2015-06-01-preview": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_commerce/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2016_08_10",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesSiteRecovery" : {
+        "2016-08-10": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_site_recovery/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.RecoveryServicesSiteRecovery" : {
+        "2016-08-10": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_recovery_services_site_recovery/lib/profiles",
+    "individual_gem_profile": true
+  }
+]

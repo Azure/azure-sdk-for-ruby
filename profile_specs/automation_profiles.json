@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Profile_2015_10_31",
+    "resourceTypes": {
+      "Microsoft.Automation" : {
+        "2015-10-31": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_automation/lib/profiles",
+    "individual_gem_profile": true
+  },
+  {
+    "name": "Profile_Latest",
+    "resourceTypes": {
+      "Microsoft.Automation" : {
+        "2015-10-31": ["*"]
+      }
+    },
+    "output_dir": "../../../management/azure_mgmt_automation/lib/profiles",
+    "individual_gem_profile": true
+  }
+]
