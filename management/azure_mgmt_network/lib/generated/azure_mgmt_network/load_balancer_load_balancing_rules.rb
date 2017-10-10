@@ -63,7 +63,7 @@ module Azure::ARM::Network
     def list_async(resource_group_name, load_balancer_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'load_balancer_name is nil' if load_balancer_name.nil?
-      api_version = '2017-09-01'
+      api_version = '2017-10-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -158,7 +158,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'load_balancer_name is nil' if load_balancer_name.nil?
       fail ArgumentError, 'load_balancing_rule_name is nil' if load_balancing_rule_name.nil?
-      api_version = '2017-09-01'
+      api_version = '2017-10-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
