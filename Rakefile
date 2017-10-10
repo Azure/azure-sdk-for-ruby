@@ -202,10 +202,6 @@ Rake::Task['arm:regen_individual_profiles'].enhance do
   Rake::Task['arm:regen_individual_require_files'].invoke
 end
 
-Rake::Task['arm:regen'].enhance do
-  Rake::Task['arm:regen_individual_require_files'].invoke
-end
-
 task :default => :spec
 
 def get_base_profile_generation_cmd
