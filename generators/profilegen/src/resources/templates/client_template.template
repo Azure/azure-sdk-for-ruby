@@ -18,7 +18,7 @@ require 'common/configurable'
 require 'common/default'
 <%- end -%>
 
-module Azure::Profiles::<%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management::<%= @profile_name %>
+module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @individual_gem_profile -%><%= @module_name %>::<%- end -%>Management::<%= @profile_name %>
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #
@@ -37,7 +37,11 @@ module Azure::Profiles::<%- if @individual_gem_profile -%><%= @module_name %>::<
       reset!(options)
 
       <%- @class_names.each do |class_name| -%>
+      <%- if @individual_gem_profile -%>
+      self.<%= class_name.downcase %> = <%= "#{class_name}" %>Class.new(self)
+      <%- else -%>
       self.<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self)
+      <%- end -%>
       <%- end -%>
     end
 

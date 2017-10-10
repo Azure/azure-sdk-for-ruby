@@ -13,9 +13,9 @@ require_relative 'profile_templates'
 
 class ProfileGenerator
   attr_accessor :file_names, :profile_name, :class_names, :individual_gem_profile
-  attr_accessor :module_require, :module_name, :class_name, :operation_types
+  attr_accessor :module_require, :class_name, :operation_types
   attr_accessor :management_client, :model_types, :versions_clients_mapper
-  attr_accessor :profile_version, :spec_includes, :module_name, :module_definition_file_name
+  attr_accessor :profile_version, :spec_includes, :module_definition_file_name
 
   def initialize(profile, dir_metadata)
     @profile_name = profile['name']
@@ -23,7 +23,6 @@ class ProfileGenerator
     @output_dir = profile['output_dir']
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
-    @module_name = ''
     @module_definition_file_name = ''
     @file_names, @model_types, @operation_types = [], [], []
     @spec_includes, @class_names = [], []
@@ -65,7 +64,6 @@ class ProfileGenerator
   def generate_modules
     @resource_provider_types.each do |resource_provider, resource_types_obj|
       @module_require = @dir_metadata[resource_provider]['module_require']
-      @module_name    = @dir_metadata[resource_provider]['module_name']
       @spec_includes << @module_require
       @class_name     = get_ruby_specific_resource_type_name(resource_provider)
       @class_names   << @class_name
@@ -172,7 +170,7 @@ class ProfileGenerator
     check_and_create_directory
     client_file_name = ''
     if @individual_gem_profile == true
-      client_file_name = "#{@module_name.downcase.sub(/module/, '')}_#{@profile_name.downcase}_profile_client.rb"
+      client_file_name = "#{@class_name.downcase}_#{@profile_name.downcase}_profile_client.rb"
     else
       client_file_name = "#{@profile_name.downcase}_profile_client.rb"
     end
@@ -210,7 +208,7 @@ class ProfileGenerator
   def get_module_definition_file_name
     @module_definition_file_name = ''
     if @individual_gem_profile == true
-      @module_definition_file_name = "#{@module_name.downcase.sub(/module/, '')}_#{@profile_name.downcase}_module_definition.rb"
+      @module_definition_file_name = "#{@class_name.downcase}_#{@profile_name.downcase}_module_definition.rb"
     else
       @module_definition_file_name = "#{@profile_name.downcase}_module_definition.rb"
     end

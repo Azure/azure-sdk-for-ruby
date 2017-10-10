@@ -3,12 +3,12 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::Profiles end
 <%- if @individual_gem_profile -%>
-module Azure::Profiles::<%= @module_name %> end
-module Azure::Profiles::<%= @module_name %>::Management end
-module Azure::Profiles::<%= @module_name %>::Management::<%= @profile_name %> end
+module Azure::<%= @module_name %> end
+module Azure::<%= @module_name %>::Management end
+module Azure::<%= @module_name %>::Management::<%= @profile_name %> end
 <%- else -%>
+module Azure::Profiles end
 module Azure::Profiles::Management end
 module Azure::Profiles::Management::<%= @profile_name %> end
 <%- end -%>
