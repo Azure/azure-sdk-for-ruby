@@ -47,6 +47,7 @@ namespace :arm do
         FileUtils.rm_rf(folder_to_be_cleaned)
       end
     end
+    Dir.chdir(File.expand_path('..', __FILE__))
   end
 
   desc 'Build gems for each of the Azure Resource Manager projects'
