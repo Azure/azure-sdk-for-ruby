@@ -35,7 +35,7 @@ namespace :arm do
     each_gem do
       delete_command_windows = 'for /r lib\ %a in (generated) do @if exist %a del /S /Q %a 2>nul'
       delete_empty_folders_windows = "ROBOCOPY lib lib /S /MOVE"
-      delete_command_linux = "find lib/* -d -type d -exec  rm -rf '{}' \;"
+      delete_command_linux = "find lib/* -d -type d -exec  rm -rf '{}' \\;"
       execute_and_stream(OS.windows? ? delete_command_windows + " & " + delete_empty_folders_windows : delete_command_linux)
     end
   end

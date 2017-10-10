@@ -22,7 +22,7 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
     # <%= @class_name %>
     #
     class <%= @class_name %>Class
-      attr_accessor <% @operation_types.each do |operation_type| %>:<%= operation_type[:operation_name_ruby] %>, <% end %>:configurable, :base_url, :options, :model_classes
+      attr_reader <% @operation_types.each do |operation_type| %>:<%= operation_type[:operation_name_ruby] %>, <% end %>:configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -31,9 +31,9 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
           client.subscription_id = configurable.subscription_id
         end
         <%- @operation_types.each do |operation_type| -%>
-        self.<%= operation_type[:operation_name_ruby] %> = client.<%= operation_type[:operation_name_ruby] %>
+        @<%= operation_type[:operation_name_ruby] %> = client.<%= operation_type[:operation_name_ruby] %>
         <%- end -%>
-        self.model_classes = ModelClasses.new
+        @model_classes = ModelClasses.new
       end
 
       <%- if @individual_gem_profile -%>
