@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/*"]
+  spec.files.reject! { |fn| fn.include? "build.json" }
   spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
