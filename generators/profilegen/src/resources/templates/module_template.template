@@ -57,7 +57,7 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
       #
       # @return Client object
       #
-      def get_client(version)
+      def get_client(version = <%= @default_rp_client_version %>)
         case version
           <%- @versions_clients_mapper.each do |key, value| -%>
           when '<%= key %>'

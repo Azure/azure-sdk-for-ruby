@@ -13,17 +13,19 @@ require_relative 'profile_templates'
 
 class ProfileGenerator
   attr_accessor :file_names, :profile_name, :class_names, :individual_gem_profile
-  attr_accessor :module_require, :class_name, :operation_types
+  attr_accessor :module_require, :class_name, :operation_types, :default_rp_client_version
   attr_accessor :management_client, :model_types, :versions_clients_mapper
   attr_accessor :profile_version, :spec_includes, :module_definition_file_name
 
   def initialize(profile, dir_metadata)
     @profile_name = profile['name']
     @resource_provider_types = profile['resourceTypes']
+    @default_versions = profile['defaultVersions']
     @output_dir = profile['output_dir']
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
     @module_definition_file_name = ''
+    @default_rp_client_version = ''
     @file_names, @model_types, @operation_types = [], [], []
     @spec_includes, @class_names = [], []
     @versions_clients_mapper = {}
@@ -67,6 +69,9 @@ class ProfileGenerator
       @spec_includes << @module_require
       @class_name     = get_ruby_specific_resource_type_name(resource_provider)
       @class_names   << @class_name
+      if(!@individual_gem_profile)
+        @default_rp_client_version = @default_versions[resource_provider]
+      end
 
       resource_types_obj.each do |resource_type_version, resource_types|
         base_file_path =  "#{@dir_metadata[resource_provider]['path']}lib/#{resource_type_version}/generated/#{@module_require}.rb"
@@ -83,6 +88,7 @@ class ProfileGenerator
       file.write(get_renderer(ProfileTemplates.module_template))
       @model_types, @operation_types, @versions_clients_mapper = [], [], {}
       @management_client = ''
+      @default_rp_client_version = ''
     end
   end
 
