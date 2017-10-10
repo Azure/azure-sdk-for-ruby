@@ -23,7 +23,7 @@ module Azure::ARM::Links::Api_2016_09_01
       @client = client
     end
 
-    # @return [LinksManagementClient] reference to the LinksManagementClient
+    # @return [ManagementLinkClient] reference to the ManagementLinkClient
     attr_reader :client
 
     #
