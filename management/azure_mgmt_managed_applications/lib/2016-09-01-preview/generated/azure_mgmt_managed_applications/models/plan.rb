@@ -12,7 +12,6 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The plan name.
       attr_accessor :name
 

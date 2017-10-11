@@ -8,11 +8,10 @@ module Azure::ARM::Redis::Api_2015_08_01
     #
     # Parameters supplied to the CreateOrUpdate Redis operation.
     #
-    class RedisCreateOrUpdateParameters < MsRestAzure::Resource
+    class RedisCreateOrUpdateParameters < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] RedisVersion parameter has been deprecated. As such,
       # it is no longer necessary to provide this parameter and any value
       # specified is ignored.

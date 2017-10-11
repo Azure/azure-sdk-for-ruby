@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Process Information.
     #
-    class ProcessInfo < MsRestAzure::ProxyOnlyResource
+    class ProcessInfo < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] ARM Identifier for deployment.
       attr_accessor :process_info_id
 

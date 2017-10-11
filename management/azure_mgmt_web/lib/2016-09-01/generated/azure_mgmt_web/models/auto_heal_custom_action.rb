@@ -13,7 +13,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Executable to be run.
       attr_accessor :exe
 

@@ -8,11 +8,10 @@ module Azure::ARM::KeyVault::Api_2016_10_01
     #
     # Resource information with extended details.
     #
-    class Vault < MsRestAzure::Resource
+    class Vault < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VaultProperties] Properties of the vault
       attr_accessor :properties
 

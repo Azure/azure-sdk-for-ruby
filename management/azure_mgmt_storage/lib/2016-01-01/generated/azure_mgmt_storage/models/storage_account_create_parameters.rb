@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2016_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] Required. Gets or sets the sku name.
       attr_accessor :sku
 

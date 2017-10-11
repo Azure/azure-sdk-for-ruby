@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataSourceKind] Possible values include: 'AzureActivityLog',
       # 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
       # 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',

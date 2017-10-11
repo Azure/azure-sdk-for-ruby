@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2015_06_15
     #
     # Describes a Virtual Machine Scale Set Extension.
     #
-    class VirtualMachineScaleSetExtension < MsRestAzure::SubResource
+    class VirtualMachineScaleSetExtension < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the extension.
       attr_accessor :name
 

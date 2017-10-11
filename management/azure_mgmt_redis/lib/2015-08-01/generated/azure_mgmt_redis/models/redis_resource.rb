@@ -8,11 +8,10 @@ module Azure::ARM::Redis::Api_2015_08_01
     #
     # A single Redis item in List or Get Operation.
     #
-    class RedisResource < MsRestAzure::Resource
+    class RedisResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] RedisVersion parameter has been deprecated. As such,
       # it is no longer necessary to provide this parameter and any value
       # specified is ignored.

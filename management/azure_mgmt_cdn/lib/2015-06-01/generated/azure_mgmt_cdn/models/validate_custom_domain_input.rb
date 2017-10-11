@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The host name of the custom domain. Must be a domain
       # name.
       attr_accessor :host_name

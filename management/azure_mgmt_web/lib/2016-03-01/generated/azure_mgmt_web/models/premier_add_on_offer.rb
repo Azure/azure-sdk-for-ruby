@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     # Premier add-on offer.
     #
-    class PremierAddOnOffer < MsRestAzure::ProxyOnlyResource
+    class PremierAddOnOffer < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] SKU.
       attr_accessor :sku
 

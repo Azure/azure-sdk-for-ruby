@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Gets BytesIn of the peering.
       attr_accessor :bytes_in
 

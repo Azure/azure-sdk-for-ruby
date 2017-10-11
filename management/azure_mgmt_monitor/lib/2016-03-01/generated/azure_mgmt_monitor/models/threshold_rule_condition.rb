@@ -12,13 +12,12 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [ConditionOperator] the operator used to compare the data and
       # the threshold. Possible values include: 'GreaterThan',
@@ -62,7 +61,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
                   class_name: 'RuleDataSource'
                 }
               },
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

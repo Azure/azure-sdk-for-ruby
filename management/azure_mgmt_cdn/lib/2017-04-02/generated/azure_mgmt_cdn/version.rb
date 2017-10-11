@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::CDN::Api_2017_04_02
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

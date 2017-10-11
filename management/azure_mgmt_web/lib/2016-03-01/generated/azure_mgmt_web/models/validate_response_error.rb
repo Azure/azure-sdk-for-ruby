@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Validation error code.
       attr_accessor :code
 

@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [HttpStatusCode] Possible values include: 'Continue',
       # 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
       # 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',

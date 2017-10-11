@@ -13,7 +13,6 @@ module Azure::ARM::ServerManagement::Api_2016_07_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Dataplane connection URL.
       attr_accessor :data_plane_service_base_address
 

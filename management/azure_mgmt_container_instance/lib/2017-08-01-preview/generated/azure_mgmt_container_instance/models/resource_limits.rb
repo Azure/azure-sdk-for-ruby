@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Float] The memory limit in GB of this container instance.
       attr_accessor :memory_in_gb
 

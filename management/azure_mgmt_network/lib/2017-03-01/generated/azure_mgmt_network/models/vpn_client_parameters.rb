@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProcessorArchitecture] VPN client Processor Architecture.
       # Possible values are: 'AMD64' and 'X86'. Possible values include:
       # 'Amd64', 'X86'

@@ -12,7 +12,6 @@ module Azure::ARM::Graph::Api_1_6
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the type of the authentication into the domain.
       attr_accessor :authentication_type
 

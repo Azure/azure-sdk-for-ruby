@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::ContainerRegistry::Api_2017_10_01
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

@@ -8,11 +8,10 @@ module Azure::ARM::ContainerRegistry::Api_2016_06_27_preview
     #
     # An object that represents a container registry.
     #
-    class Registry < MsRestAzure::Resource
+    class Registry < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URL that can be used to log into the container
       # registry.
       attr_accessor :login_server

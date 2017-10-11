@@ -13,7 +13,6 @@ module Azure::ARM::ServerManagement::Api_2016_07_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>]
       attr_accessor :results
 

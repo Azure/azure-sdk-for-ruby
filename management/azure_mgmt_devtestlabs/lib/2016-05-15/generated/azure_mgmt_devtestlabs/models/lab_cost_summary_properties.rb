@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Float] The cost component of the cost item.
       attr_accessor :estimated_lab_cost
 

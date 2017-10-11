@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::AnalysisServices::Api_2016_05_16
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

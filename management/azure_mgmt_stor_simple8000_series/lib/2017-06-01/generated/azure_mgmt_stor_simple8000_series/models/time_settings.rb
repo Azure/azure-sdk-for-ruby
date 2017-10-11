@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The timezone of device, like '(UTC -06:00) Central
       # America'
       attr_accessor :time_zone

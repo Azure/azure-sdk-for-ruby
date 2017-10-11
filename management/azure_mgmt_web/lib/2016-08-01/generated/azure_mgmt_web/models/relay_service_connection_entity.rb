@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Hybrid Connection for an App Service app.
     #
-    class RelayServiceConnectionEntity < MsRestAzure::ProxyOnlyResource
+    class RelayServiceConnectionEntity < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String]
       attr_accessor :entity_name
 

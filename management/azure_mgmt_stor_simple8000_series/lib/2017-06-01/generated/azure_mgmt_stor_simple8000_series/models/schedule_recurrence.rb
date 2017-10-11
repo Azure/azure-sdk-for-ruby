@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecurrenceType] The recurrence type. Possible values include:
       # 'Minutes', 'Hourly', 'Daily', 'Weekly'
       attr_accessor :recurrence_type

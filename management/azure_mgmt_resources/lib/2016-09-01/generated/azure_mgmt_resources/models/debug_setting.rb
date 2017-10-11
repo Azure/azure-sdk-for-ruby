@@ -13,7 +13,6 @@ module Azure::ARM::Resources::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the type of information to log for
       # debugging. The permitted values are none, requestContent,
       # responseContent, or both requestContent and responseContent separated

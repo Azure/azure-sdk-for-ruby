@@ -12,7 +12,6 @@ module Azure::ARM::Resources::Api_2016_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The ids of the resources. The only supported
       # string currently is '*' (all resources). Future api updates will
       # support exporting specific resources.

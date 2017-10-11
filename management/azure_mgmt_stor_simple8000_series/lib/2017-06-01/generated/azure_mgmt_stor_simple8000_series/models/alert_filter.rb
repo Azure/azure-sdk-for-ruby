@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AlertStatus] Specifies the status of the alerts to be
       # filtered. Only 'Equality' operator is supported for this property.
       # Possible values include: 'Active', 'Cleared'

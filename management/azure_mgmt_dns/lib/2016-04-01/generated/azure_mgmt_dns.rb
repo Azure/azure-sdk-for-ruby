@@ -37,6 +37,7 @@ module Azure::ARM::Dns::Api_2016_04_01
     autoload :AaaaRecord,                                         '2016-04-01/generated/azure_mgmt_dns/models/aaaa_record.rb'
     autoload :ZoneListResult,                                     '2016-04-01/generated/azure_mgmt_dns/models/zone_list_result.rb'
     autoload :TxtRecord,                                          '2016-04-01/generated/azure_mgmt_dns/models/txt_record.rb'
+    autoload :Resource,                                           '2016-04-01/generated/azure_mgmt_dns/models/resource.rb'
     autoload :NsRecord,                                           '2016-04-01/generated/azure_mgmt_dns/models/ns_record.rb'
     autoload :SoaRecord,                                          '2016-04-01/generated/azure_mgmt_dns/models/soa_record.rb'
     autoload :Zone,                                               '2016-04-01/generated/azure_mgmt_dns/models/zone.rb'

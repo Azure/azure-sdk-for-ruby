@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Function secrets.
     #
-    class FunctionSecrets < MsRestAzure::ProxyOnlyResource
+    class FunctionSecrets < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Secret key.
       attr_accessor :key
 

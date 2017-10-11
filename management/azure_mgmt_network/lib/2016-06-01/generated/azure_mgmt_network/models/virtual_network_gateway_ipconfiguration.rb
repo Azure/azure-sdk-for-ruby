@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_06_01
     #
     # IpConfiguration for Virtual network gateway
     #
-    class VirtualNetworkGatewayIPConfiguration < MsRestAzure::SubResource
+    class VirtualNetworkGatewayIPConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [IPAllocationMethod] Gets or sets PrivateIP allocation method.
       # Possible values include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method

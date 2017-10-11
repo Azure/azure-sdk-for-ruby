@@ -36,6 +36,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
     autoload :Sku,                                                '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/sku.rb'
     autoload :MetricName,                                         '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/metric_name.rb'
     autoload :SharedKeys,                                         '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/shared_keys.rb'
+    autoload :Resource,                                           '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/resource.rb'
     autoload :DataSourceListResult,                               '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/data_source_list_result.rb'
     autoload :ProxyResource,                                      '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/proxy_resource.rb'
     autoload :WorkspaceListResult,                                '2015-11-01-preview/generated/azure_mgmt_operational_insights/models/workspace_list_result.rb'

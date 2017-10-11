@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Base class representing a recovery point.
     #
-    class RecoveryPoint < MsRestAzure::Resource
+    class RecoveryPoint < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPointProperties] Recovery point related data.
       attr_accessor :properties
 

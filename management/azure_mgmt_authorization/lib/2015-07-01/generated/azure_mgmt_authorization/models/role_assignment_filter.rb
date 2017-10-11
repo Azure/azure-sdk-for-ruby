@@ -12,7 +12,6 @@ module Azure::ARM::Authorization::Api_2015_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Returns role assignment of the specific principal.
       attr_accessor :principal_id
 

@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] <code>true</code> indicates name is valid and
       # available. <code>false</code> indicates the name is invalid,
       # unavailable, or both.

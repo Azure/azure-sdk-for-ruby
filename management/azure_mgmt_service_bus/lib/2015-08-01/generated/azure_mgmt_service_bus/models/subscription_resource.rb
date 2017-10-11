@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
     #
     # Description of subscription resource.
     #
-    class SubscriptionResource < MsRestAzure::Resource
+    class SubscriptionResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Last time there was a receive request to this
       # subscription.
       attr_accessor :accessed_at

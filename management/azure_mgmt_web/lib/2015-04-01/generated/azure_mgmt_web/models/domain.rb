@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2015_04_01
     #
     # Information about a domain.
     #
-    class Domain < MsRestAzure::Resource
+    class Domain < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Contact] Administrative contact.
       attr_accessor :contact_admin
 

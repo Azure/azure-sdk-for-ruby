@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.ServiceBus
       attr_accessor :provider
 

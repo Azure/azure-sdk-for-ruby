@@ -17,7 +17,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The plan ID.
       attr_accessor :name
 

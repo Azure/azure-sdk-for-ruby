@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_06_15
     #
     # A common class for general resource information
     #
-    class VirtualNetworkGatewayConnection < MsRestAzure::Resource
+    class VirtualNetworkGatewayConnection < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The authorizationKey.
       attr_accessor :authorization_key
 

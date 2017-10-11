@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpdateKeyVaultMetaInfo] The updated Key Vault key to use in
       # user managed key rotation.
       attr_accessor :key_vault_meta_info

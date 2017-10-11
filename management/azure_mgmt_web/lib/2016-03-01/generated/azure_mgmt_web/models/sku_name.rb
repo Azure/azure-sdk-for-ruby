@@ -14,6 +14,7 @@ module Azure::ARM::Web::Api_2016_03_01
       Basic = "Basic"
       Standard = "Standard"
       Premium = "Premium"
+      PremiumV2 = "PremiumV2"
       Dynamic = "Dynamic"
       Isolated = "Isolated"
     end

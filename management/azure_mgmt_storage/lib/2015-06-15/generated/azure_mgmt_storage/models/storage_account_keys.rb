@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The value of key 1.
       attr_accessor :key1
 

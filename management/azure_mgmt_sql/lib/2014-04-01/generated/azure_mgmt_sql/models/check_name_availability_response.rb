@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] True if the name is available, otherwise false.
       attr_accessor :available
 

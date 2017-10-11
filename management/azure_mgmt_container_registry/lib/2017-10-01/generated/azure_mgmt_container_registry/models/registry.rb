@@ -8,11 +8,10 @@ module Azure::ARM::ContainerRegistry::Api_2017_10_01
     #
     # An object that represents a container registry.
     #
-    class Registry < MsRestAzure::Resource
+    class Registry < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] The SKU of the container registry.
       attr_accessor :sku
 

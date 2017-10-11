@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_03_01
     #
     # NetworkSecurityGroup resource.
     #
-    class NetworkSecurityGroup < MsRestAzure::Resource
+    class NetworkSecurityGroup < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SecurityRule>] A collection of security rules of the
       # network security group.
       attr_accessor :security_rules

@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FailoverGroupReadWriteEndpoint] Read-write endpoint of the
       # failover group instance.
       attr_accessor :read_write_endpoint

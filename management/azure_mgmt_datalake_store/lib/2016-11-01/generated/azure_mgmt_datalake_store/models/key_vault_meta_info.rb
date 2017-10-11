@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource identifier for the user managed Key Vault
       # being used to encrypt.
       attr_accessor :key_vault_resource_id

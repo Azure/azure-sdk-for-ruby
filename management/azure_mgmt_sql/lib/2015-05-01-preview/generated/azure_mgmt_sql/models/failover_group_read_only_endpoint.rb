@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ReadOnlyEndpointFailoverPolicy] Failover policy of the
       # read-only endpoint for the failover group. Possible values include:
       # 'Disabled', 'Enabled'

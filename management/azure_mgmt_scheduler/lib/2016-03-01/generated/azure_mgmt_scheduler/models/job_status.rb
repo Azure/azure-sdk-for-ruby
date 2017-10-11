@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Gets the number of times this job has executed.
       attr_accessor :execution_count
 

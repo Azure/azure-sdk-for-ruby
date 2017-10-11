@@ -13,7 +13,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of capability, The capability information in
       # the specified sku, including file encryption, network acls, change
       # notification, etc.

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Resources::Api_2017_05_10
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

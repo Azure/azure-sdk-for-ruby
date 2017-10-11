@@ -18,6 +18,8 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
       Resuming = "Resuming"
       Deleting = "Deleting"
       Deleted = "Deleted"
+      Undeleting = "Undeleting"
+      Canceled = "Canceled"
     end
   end
 end

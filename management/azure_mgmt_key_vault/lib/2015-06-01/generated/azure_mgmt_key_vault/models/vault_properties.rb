@@ -12,7 +12,6 @@ module Azure::ARM::KeyVault::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URI of the vault for performing operations on keys
       # and secrets.
       attr_accessor :vault_uri

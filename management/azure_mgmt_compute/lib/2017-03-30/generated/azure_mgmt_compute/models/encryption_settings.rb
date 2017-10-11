@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Set this flag to true and provide DiskEncryptionKey
       # and optional KeyEncryptionKey to enable encryption. Set this flag to
       # false and remove DiskEncryptionKey and KeyEncryptionKey to disable

@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::ARM::MachineLearning
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

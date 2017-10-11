@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AgreementType] The agreement type of integration account
       # agreement. Possible values include: 'NotSpecified', 'AS2', 'X12',
       # 'Edifact'

@@ -32,6 +32,7 @@ module Azure::ARM::Consumption::Api_2017_04_24_preview
     autoload :MeterDetails,                                       '2017-04-24-preview/generated/azure_mgmt_consumption/models/meter_details.rb'
     autoload :OperationListResult,                                '2017-04-24-preview/generated/azure_mgmt_consumption/models/operation_list_result.rb'
     autoload :ErrorDetails,                                       '2017-04-24-preview/generated/azure_mgmt_consumption/models/error_details.rb'
+    autoload :Resource,                                           '2017-04-24-preview/generated/azure_mgmt_consumption/models/resource.rb'
     autoload :UsageDetail,                                        '2017-04-24-preview/generated/azure_mgmt_consumption/models/usage_detail.rb'
   end
 end

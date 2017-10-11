@@ -12,7 +12,6 @@ module Azure::ARM::ContainerService::Api_2017_01_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the custom orchestrator to use.
       attr_accessor :orchestrator
 

@@ -12,7 +12,6 @@ module Azure::ARM::Batch::Api_2015_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The primary key associated with the account.
       attr_accessor :primary
 

@@ -8,11 +8,10 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
     #
     # ARM tracked top level resource.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource location.
       attr_accessor :location
 

@@ -9,11 +9,10 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
     # Model object.
     #
     #
-    class WorkflowVersion < MsRestAzure::Resource
+    class WorkflowVersion < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Gets the created time.
       attr_accessor :created_time
 

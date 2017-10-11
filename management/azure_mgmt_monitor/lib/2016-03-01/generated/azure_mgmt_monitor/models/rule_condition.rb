@@ -12,17 +12,16 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"] = "ThresholdRuleCondition"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition"] = "LocationThresholdRuleCondition"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition"] = "ManagementEventRuleCondition"
 
       def initialize
-        @odata.type = "RuleCondition"
+        @odatatype = "RuleCondition"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [RuleDataSource] the resource from which the rule collects its
       # data. For this type dataSource will always be of type

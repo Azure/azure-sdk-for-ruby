@@ -29,6 +29,7 @@ module Azure::ARM::Relay::Api_2016_07_01
   module Models
     autoload :AuthorizationRuleListResult,                        '2016-07-01/generated/azure_mgmt_relay/models/authorization_rule_list_result.rb'
     autoload :RelayNamespaceListResult,                           '2016-07-01/generated/azure_mgmt_relay/models/relay_namespace_list_result.rb'
+    autoload :Resource,                                           '2016-07-01/generated/azure_mgmt_relay/models/resource.rb'
     autoload :OperationDisplay,                                   '2016-07-01/generated/azure_mgmt_relay/models/operation_display.rb'
     autoload :HybridConnectionListResult,                         '2016-07-01/generated/azure_mgmt_relay/models/hybrid_connection_list_result.rb'
     autoload :RelayNamespaceUpdateParameter,                      '2016-07-01/generated/azure_mgmt_relay/models/relay_namespace_update_parameter.rb'

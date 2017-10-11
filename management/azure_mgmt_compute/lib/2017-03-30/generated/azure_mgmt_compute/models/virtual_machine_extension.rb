@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Describes a Virtual Machine Extension.
     #
-    class VirtualMachineExtension < MsRestAzure::Resource
+    class VirtualMachineExtension < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] How the extension handler should be forced to update
       # even if the extension configuration has not changed.
       attr_accessor :force_update_tag

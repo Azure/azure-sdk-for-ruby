@@ -12,7 +12,6 @@ module Azure::ARM::ServerManagement::Api_2016_07_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<PowerShellSessionResource>] Collection of PowerShell
       # session resources.
       attr_accessor :value

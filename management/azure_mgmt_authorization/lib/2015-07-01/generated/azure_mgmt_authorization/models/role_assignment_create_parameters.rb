@@ -12,7 +12,6 @@ module Azure::ARM::Authorization::Api_2015_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RoleAssignmentProperties] Role assignment properties.
       attr_accessor :properties
 

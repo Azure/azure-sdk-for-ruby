@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ARM resource id in the form of
       # /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
       attr_accessor :id

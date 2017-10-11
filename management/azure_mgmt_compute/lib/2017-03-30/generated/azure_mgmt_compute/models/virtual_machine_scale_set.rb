@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Describes a Virtual Machine Scale Set.
     #
-    class VirtualMachineScaleSet < MsRestAzure::Resource
+    class VirtualMachineScaleSet < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 
@@ -50,6 +49,9 @@ module Azure::ARM::Compute::Api_2017_03_30
       # @return [VirtualMachineScaleSetIdentity] The identity of the virtual
       # machine scale set, if configured.
       attr_accessor :identity
+
+      # @return [Array<String>] The virtual machine scale set zones.
+      attr_accessor :zones
 
 
       #
@@ -177,6 +179,20 @@ module Azure::ARM::Compute::Api_2017_03_30
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineScaleSetIdentity'
+                }
+              },
+              zones: {
+                required: false,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

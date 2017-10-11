@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the start IP address for the firewall rule. This can
       # be either ipv4 or ipv6. Start and End should be in the same protocol.
       attr_accessor :start_ip_address

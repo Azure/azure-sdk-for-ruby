@@ -28,6 +28,7 @@ module Azure::ARM::MediaServices::Api_2015_10_01
     autoload :RegenerateKeyInput,                                 '2015-10-01/generated/azure_mgmt_media_services/models/regenerate_key_input.rb'
     autoload :RegenerateKeyOutput,                                '2015-10-01/generated/azure_mgmt_media_services/models/regenerate_key_output.rb'
     autoload :ApiError,                                           '2015-10-01/generated/azure_mgmt_media_services/models/api_error.rb'
+    autoload :Resource,                                           '2015-10-01/generated/azure_mgmt_media_services/models/resource.rb'
     autoload :CheckNameAvailabilityOutput,                        '2015-10-01/generated/azure_mgmt_media_services/models/check_name_availability_output.rb'
     autoload :ServiceKeys,                                        '2015-10-01/generated/azure_mgmt_media_services/models/service_keys.rb'
     autoload :MediaServiceCollection,                             '2015-10-01/generated/azure_mgmt_media_services/models/media_service_collection.rb'

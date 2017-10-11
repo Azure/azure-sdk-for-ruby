@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [InputPortType] Port data type. Possible values include:
       # 'Dataset'. Default value: 'Dataset' .
       attr_accessor :type

@@ -12,7 +12,6 @@ module Azure::ARM::Locks::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The application ID of the lock owner.
       attr_accessor :application_id
 

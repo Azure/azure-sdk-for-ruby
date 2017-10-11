@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets ipAddress.
       attr_accessor :ip_address
 

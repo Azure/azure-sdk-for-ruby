@@ -12,7 +12,6 @@ module Azure::ARM::Resources::Api_2017_05_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<BasicDependency>] The list of dependencies.
       attr_accessor :depends_on
 

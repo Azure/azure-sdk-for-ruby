@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_09_01
     #
     # Usage of the quota resource.
     #
-    class Usage < MsRestAzure::ProxyOnlyResource
+    class Usage < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Friendly name shown in the UI.
       attr_accessor :display_name
 

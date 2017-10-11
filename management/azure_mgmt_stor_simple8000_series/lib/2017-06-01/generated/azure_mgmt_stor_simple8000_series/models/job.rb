@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobStatus] The current status of the job. Possible values
       # include: 'Running', 'Succeeded', 'Failed', 'Canceled'
       attr_accessor :status

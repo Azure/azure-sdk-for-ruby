@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A relative uri containing either a Platform Imgage
       # Repository or user image reference.
       attr_accessor :id

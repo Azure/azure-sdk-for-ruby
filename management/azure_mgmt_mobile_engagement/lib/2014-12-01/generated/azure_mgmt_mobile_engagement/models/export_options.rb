@@ -12,7 +12,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean]
       attr_accessor :export_user_id
 

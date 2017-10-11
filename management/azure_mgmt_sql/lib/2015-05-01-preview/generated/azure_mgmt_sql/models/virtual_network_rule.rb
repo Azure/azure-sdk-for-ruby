@@ -12,9 +12,17 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ARM resource id of the virtual network subnet.
       attr_accessor :virtual_network_subnet_id
+
+      # @return [Boolean] Create firewall rule before the virtual network has
+      # vnet service endpoint enabled.
+      attr_accessor :ignore_missing_vnet_service_endpoint
+
+      # @return [VirtualNetworkRuleState] Virtual Network Rule State. Possible
+      # values include: 'Initializing', 'InProgress', 'Ready', 'Deleting',
+      # 'Unknown'
+      attr_accessor :state
 
 
       #
@@ -56,6 +64,21 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
               virtual_network_subnet_id: {
                 required: true,
                 serialized_name: 'properties.virtualNetworkSubnetId',
+                type: {
+                  name: 'String'
+                }
+              },
+              ignore_missing_vnet_service_endpoint: {
+                required: false,
+                serialized_name: 'properties.ignoreMissingVnetServiceEndpoint',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.state',
                 type: {
                   name: 'String'
                 }

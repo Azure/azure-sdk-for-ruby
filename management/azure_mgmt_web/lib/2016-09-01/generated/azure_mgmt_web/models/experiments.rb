@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RampUpRule>] List of ramp-up rules.
       attr_accessor :ramp_up_rules
 

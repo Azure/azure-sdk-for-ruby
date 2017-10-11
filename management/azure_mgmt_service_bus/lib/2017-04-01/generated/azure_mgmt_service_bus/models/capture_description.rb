@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] A value that indicates whether capture description is
       # enabled.
       attr_accessor :enabled

@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PcProtocol] Protocol to be filtered on. Possible values
       # include: 'TCP', 'UDP', 'Any'. Default value: 'Any' .
       attr_accessor :protocol

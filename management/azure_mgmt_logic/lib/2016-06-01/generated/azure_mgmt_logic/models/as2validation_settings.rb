@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to override incoming
       # message properties with those in agreement.
       attr_accessor :override_message_properties

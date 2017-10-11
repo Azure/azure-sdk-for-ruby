@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobScheduleDay] Gets or sets the day. Must be one of monday,
       # tuesday, wednesday, thursday, friday, saturday, sunday. Possible values
       # include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',

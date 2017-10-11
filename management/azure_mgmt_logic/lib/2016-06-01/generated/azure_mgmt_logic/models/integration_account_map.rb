@@ -8,11 +8,10 @@ module Azure::ARM::Logic::Api_2016_06_01
     #
     # The integration account map.
     #
-    class IntegrationAccountMap < MsRestAzure::Resource
+    class IntegrationAccountMap < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [MapType] The map type. Possible values include:
       # 'NotSpecified', 'Xslt'
       attr_accessor :map_type

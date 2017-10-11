@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Maximum size in megabytes that http log files can
       # use.
       # When reached old log files will be removed to make space for new ones.

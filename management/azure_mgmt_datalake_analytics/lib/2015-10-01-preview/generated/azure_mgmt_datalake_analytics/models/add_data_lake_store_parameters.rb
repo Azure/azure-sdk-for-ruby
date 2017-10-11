@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataLakeStoreAccountInfoProperties] the properties for the
       # Data Lake Store account being added.
       attr_accessor :properties

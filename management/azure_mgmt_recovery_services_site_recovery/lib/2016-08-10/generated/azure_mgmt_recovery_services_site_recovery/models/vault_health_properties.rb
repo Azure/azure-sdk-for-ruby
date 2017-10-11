@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<HealthError>] The list of errors on the vault.
       attr_accessor :vault_errors
 

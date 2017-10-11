@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VirtualMachineSize>] The list of virtual machine sizes.
       attr_accessor :value
 

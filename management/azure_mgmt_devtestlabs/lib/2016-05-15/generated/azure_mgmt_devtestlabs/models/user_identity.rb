@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Set to the principal name / UPN of the client JWT
       # making the request.
       attr_accessor :principal_name

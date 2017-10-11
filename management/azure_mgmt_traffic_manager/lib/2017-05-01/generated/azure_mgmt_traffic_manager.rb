@@ -23,7 +23,6 @@ module Azure::ARM::TrafficManager::Api_2017_05_01
   autoload :Endpoints,                                          '2017-05-01/generated/azure_mgmt_traffic_manager/endpoints.rb'
   autoload :Profiles,                                           '2017-05-01/generated/azure_mgmt_traffic_manager/profiles.rb'
   autoload :GeographicHierarchies,                              '2017-05-01/generated/azure_mgmt_traffic_manager/geographic_hierarchies.rb'
-  autoload :TrafficManagerUserMetricsKeys,                      '2017-05-01/generated/azure_mgmt_traffic_manager/traffic_manager_user_metrics_keys.rb'
   autoload :TrafficManagerManagementClient,                     '2017-05-01/generated/azure_mgmt_traffic_manager/traffic_manager_management_client.rb'
 
   module Models

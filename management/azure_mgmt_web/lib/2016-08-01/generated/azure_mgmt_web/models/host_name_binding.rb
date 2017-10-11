@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # A hostname binding object.
     #
-    class HostNameBinding < MsRestAzure::ProxyOnlyResource
+    class HostNameBinding < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Hostname.
       attr_accessor :host_name_binding_name
 

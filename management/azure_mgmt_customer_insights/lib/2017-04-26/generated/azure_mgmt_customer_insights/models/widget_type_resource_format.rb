@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The WidgetTypeResourceFormat
     #
-    class WidgetTypeResourceFormat < MsRestAzure::ProxyResource
+    class WidgetTypeResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the widget type.
       attr_accessor :widget_type_name
 

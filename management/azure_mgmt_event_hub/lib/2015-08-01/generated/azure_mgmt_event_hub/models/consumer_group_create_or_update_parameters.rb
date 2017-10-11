@@ -12,7 +12,6 @@ module Azure::ARM::EventHub::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Location of the resource.
       attr_accessor :location
 

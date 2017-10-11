@@ -70,6 +70,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     # virtual_machine_scale_set_extensions
     attr_reader :virtual_machine_scale_set_extensions
 
+    # @return [VirtualMachineScaleSetRollingUpgrades]
+    # virtual_machine_scale_set_rolling_upgrades
+    attr_reader :virtual_machine_scale_set_rolling_upgrades
+
     # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
     attr_reader :virtual_machine_scale_set_vms
 
@@ -106,6 +110,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_extensions = VirtualMachineScaleSetExtensions.new(self)
+      @virtual_machine_scale_set_rolling_upgrades = VirtualMachineScaleSetRollingUpgrades.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
       @disks = Disks.new(self)
       @snapshots = Snapshots.new(self)

@@ -130,34 +130,38 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param resource_name [String] The name of the IoT hub.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
+    # @param if_match [String] ETag of the IoT Hub. Do not specify for creating a
+    # brand new IoT Hub. Required to update an existing IoT Hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IotHubDescription] operation results.
     #
-    def create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
+    def create_or_update(resource_group_name, resource_name, iot_hub_description, if_match = nil, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, resource_name, iot_hub_description, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param resource_name [String] The name of the IoT hub.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
+    # @param if_match [String] ETag of the IoT Hub. Do not specify for creating a
+    # brand new IoT Hub. Required to update an existing IoT Hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+    def create_or_update_async(resource_group_name, resource_name, iot_hub_description, if_match = nil, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, if_match, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -180,7 +184,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -194,7 +198,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -320,7 +324,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     # Get all the IoT hubs in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
+    # contains the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -337,7 +341,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     # Get all the IoT hubs in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
+    # contains the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -353,7 +357,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     # Get all the IoT hubs in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
+    # contains the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1953,16 +1957,18 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param resource_name [String] The name of the IoT hub.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
+    # @param if_match [String] ETag of the IoT Hub. Do not specify for creating a
+    # brand new IoT Hub. Required to update an existing IoT Hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [IotHubDescription] operation results.
     #
-    def begin_create_or_update(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
+    def begin_create_or_update(resource_group_name, resource_name, iot_hub_description, if_match = nil, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, if_match, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1975,16 +1981,18 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param resource_name [String] The name of the IoT hub.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
+    # @param if_match [String] ETag of the IoT Hub. Do not specify for creating a
+    # brand new IoT Hub. Required to update an existing IoT Hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, resource_name, iot_hub_description, if_match = nil, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, if_match, custom_headers).value!
     end
 
     #
@@ -1996,15 +2004,17 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param resource_name [String] The name of the IoT hub.
     # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
     # security metadata.
+    # @param if_match [String] ETag of the IoT Hub. Do not specify for creating a
+    # brand new IoT Hub. Required to update an existing IoT Hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, resource_name, iot_hub_description, if_match = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -2016,6 +2026,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['If-Match'] = if_match unless if_match.nil?
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
@@ -2083,7 +2094,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2101,7 +2112,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2118,7 +2129,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the IoT hub.
-    # @param resource_name [String] The name of the IoT hub to delete.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2893,7 +2904,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
     # Get all the IoT hubs in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group that
-    # contains the IoT hubs.
+    # contains the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

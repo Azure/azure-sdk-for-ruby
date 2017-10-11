@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The LUN number for a data disk. This value is used to
       # identify data disk image inside the VMImage and therefore it must be
       # unique for each data disk.

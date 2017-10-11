@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Description of a restore request.
     #
-    class RestoreRequest < MsRestAzure::ProxyOnlyResource
+    class RestoreRequest < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] SAS URL to the container.
       attr_accessor :storage_account_url
 

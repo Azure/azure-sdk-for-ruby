@@ -13,7 +13,7 @@
       "markdown": "specification/analysisservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::AnalysisServices::Api_2017_07_14",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_analysis_services",
         "tag": "package-2017-07"
       },
@@ -25,7 +25,7 @@
       "markdown": "specification/analysisservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::AnalysisServices::Api_2016_05_16",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_analysis_services",
         "tag": "package-2016-05"
       },
@@ -37,7 +37,7 @@
       "markdown": "specification/authorization/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Authorization::Api_2015_07_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_authorization",
         "tag": "package-2015-07"
       },
@@ -49,7 +49,7 @@
       "markdown": "specification/automation/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Automation::Api_2015_10_31",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_automation",
         "tag": "package-2015-10"
       },
@@ -61,7 +61,7 @@
       "markdown": "specification/batch/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Batch::Api_2017_05_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_batch",
         "tag": "package-2017-05"
       },
@@ -73,7 +73,7 @@
       "markdown": "specification/batch/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Batch::Api_2015_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_batch",
         "tag": "package-2015-12"
       },
@@ -85,7 +85,7 @@
       "markdown": "specification/billing/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Billing::Api_2017_04_24_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_billing",
         "tag": "package-2017-04-preview"
       },
@@ -97,7 +97,7 @@
       "markdown": "specification/cdn/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CDN::Api_2017_04_02",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_cdn",
         "tag": "package-2017-04"
       },
@@ -109,7 +109,7 @@
       "markdown": "specification/cdn/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CDN::Api_2016_10_02",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_cdn",
         "tag": "package-2016-10"
       },
@@ -121,7 +121,7 @@
       "markdown": "specification/cdn/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CDN::Api_2015_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_cdn",
         "tag": "package-2015-06"
       },
@@ -133,7 +133,7 @@
       "markdown": "specification/cognitiveservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CognitiveServices::Api_2017_04_18",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_cognitive_services",
         "tag": "package-2017-04"
       },
@@ -145,7 +145,7 @@
       "markdown": "specification/commerce/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Commerce::Api_2015_06_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_commerce",
         "tag": "package-2015-06-preview"
       },
@@ -156,7 +156,7 @@
     "azure_mgmt_compute_2017_03_30": {
       "autorest_options": {
         "namespace": "Azure::ARM::Compute::Api_2017_03_30",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_compute",
         "input-file": [
           "specification/compute/resource-manager/Microsoft.Compute/2017-03-30/compute.json",
@@ -173,7 +173,7 @@
       "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Compute::Api_2016_04_30_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_compute",
         "tag": "package-compute-2016-04-preview"
       },
@@ -185,7 +185,7 @@
       "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Compute::Api_2016_03_30",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_compute",
         "tag": "package-compute-2016-03"
       },
@@ -197,7 +197,7 @@
       "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Compute::Api_2015_06_15",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_compute",
         "tag": "package-compute-2015-06"
       },
@@ -209,7 +209,7 @@
       "markdown": "specification/consumption/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Consumption::Api_2017_04_24_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_consumption",
         "tag": "package-2017-04-preview"
       },
@@ -221,7 +221,7 @@
       "markdown": "specification/containerinstance/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerInstance::Api_2017_08_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_instance",
         "tag": "package-2017-08-preview"
       },
@@ -233,7 +233,7 @@
       "markdown": "specification/containerregistry/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerRegistry::Api_2017_10_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_registry",
         "tag": "package-2017-10"
       },
@@ -245,7 +245,7 @@
       "markdown": "specification/containerregistry/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerRegistry::Api_2017_06_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_registry",
         "tag": "package-2017-06-preview"
       },
@@ -257,7 +257,7 @@
       "markdown": "specification/containerregistry/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerRegistry::Api_2017_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_registry",
         "tag": "package-2017-03"
       },
@@ -269,7 +269,7 @@
       "markdown": "specification/containerregistry/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerRegistry::Api_2016_06_27_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_registry",
         "tag": "package-2016-06-preview"
       },
@@ -281,7 +281,7 @@
       "markdown": "specification/compute/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerService::Api_2017_01_31",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_service",
         "tag": "package-container-service-2017-01"
       },
@@ -292,7 +292,7 @@
     "azure_mgmt_container_service_2016_09_30": {
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerService::Api_2016_09_30",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_service",
         "input-file": [
           "specification/compute/resource-manager/Microsoft.ContainerService/2016-09-30/containerService.json"
@@ -305,7 +305,7 @@
     "azure_mgmt_container_service_2016_03_30": {
       "autorest_options": {
         "namespace": "Azure::ARM::ContainerService::Api_2016_03_30",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_container_service",
         "input-file": [
           "specification/compute/resource-manager/Microsoft.ContainerService/2016-03-30/containerService.json"
@@ -319,7 +319,7 @@
       "markdown": "specification/customer-insights/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::CustomerInsights::Api_2017_04_26",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_customer_insights",
         "tag": "package-2017-04"
       },
@@ -331,7 +331,7 @@
       "markdown": "specification/datalake-analytics/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DataLakeAnalytics::Api_2016_11_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_datalake_analytics",
         "tag": "package-2016-11"
       },
@@ -343,7 +343,7 @@
       "markdown": "specification/datalake-analytics/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_datalake_analytics",
         "tag": "package-2015-10-preview"
       },
@@ -355,7 +355,7 @@
       "markdown": "specification/datalake-store/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DataLakeStore::Api_2016_11_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_datalake_store",
         "tag": "package-2016-11"
       },
@@ -367,7 +367,7 @@
       "markdown": "specification/datalake-store/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DataLakeStore::Api_2015_10_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_datalake_store",
         "tag": "package-2015-10-preview"
       },
@@ -379,7 +379,7 @@
       "markdown": "specification/devtestlabs/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::DevTestLabs::Api_2016_05_15",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_devtestlabs",
         "tag": "package-2016-05"
       },
@@ -391,7 +391,7 @@
       "markdown": "specification/dns/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Dns::Api_2016_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_dns",
         "tag": "package-2016-04"
       },
@@ -403,7 +403,7 @@
       "markdown": "specification/eventgrid/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::EventGrid::Api_2017_09_15_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_event_grid",
         "tag": "package-2017-09-preview"
       },
@@ -415,7 +415,7 @@
       "markdown": "specification/eventgrid/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::EventGrid::Api_2017_06_15_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_event_grid",
         "tag": "package-2017-06-preview"
       },
@@ -427,7 +427,7 @@
       "markdown": "specification/eventhub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::EventHub::Api_2017_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_event_hub",
         "tag": "package-2017-04"
       },
@@ -439,7 +439,7 @@
       "markdown": "specification/eventhub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::EventHub::Api_2015_08_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_event_hub",
         "tag": "package-2015-08"
       },
@@ -451,7 +451,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Features::Api_2015_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_features",
         "tag": "package-features-2015-12"
       },
@@ -462,7 +462,7 @@
     "azure_mgmt_graph_1.6": {
       "autorest_options": {
         "namespace": "Azure::ARM::Graph::Api_1_6",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_graph",
         "input-file": [
           "specification/graphrbac/data-plane/1.6/graphrbac.json"
@@ -476,7 +476,7 @@
       "markdown": "specification/iothub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::IotHub::Api_2017_07_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_iot_hub",
         "tag": "package-2017-07"
       },
@@ -488,7 +488,7 @@
       "markdown": "specification/iothub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::IotHub::Api_2017_01_19",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_iot_hub",
         "tag": "package-2017-01"
       },
@@ -500,7 +500,7 @@
       "markdown": "specification/iothub/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::IotHub::Api_2016_02_03",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_iot_hub",
         "tag": "package-2016-02"
       },
@@ -512,7 +512,7 @@
       "markdown": "specification/keyvault/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::KeyVault::Api_2016_10_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_key_vault",
         "tag": "package-2016-10"
       },
@@ -524,7 +524,7 @@
       "markdown": "specification/keyvault/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::KeyVault::Api_2015_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_key_vault",
         "tag": "package-2015-06"
       },
@@ -536,7 +536,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Links::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_links",
         "tag": "package-links-2016-09"
       },
@@ -548,7 +548,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Locks::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_locks",
         "tag": "package-locks-2016-09"
       },
@@ -560,7 +560,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Locks::Api_2015_01_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_locks",
         "tag": "package-locks-2015-01"
       },
@@ -572,7 +572,7 @@
       "markdown": "specification/logic/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Logic::Api_2016_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_logic",
         "tag": "package-2016-06"
       },
@@ -584,7 +584,7 @@
       "markdown": "specification/logic/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Logic::Api_2015_02_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_logic",
         "tag": "package-2015-02-preview"
       },
@@ -596,7 +596,7 @@
       "markdown": "specification/machinelearning/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MachineLearning::Api_2017_01_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_machine_learning",
         "tag": "package-webservices-2017-01"
       },
@@ -608,7 +608,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ManagedApplications::Api_2016_09_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_managed_applications",
         "tag": "package-managedapplications-2016-09"
       },
@@ -620,7 +620,7 @@
       "markdown": "specification/marketplaceordering/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MarketplaceOrdering::Api_2015_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_marketplace_ordering",
         "tag": "package-2015-06-01"
       },
@@ -632,7 +632,7 @@
       "markdown": "specification/mediaservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MediaServices::Api_2015_10_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_media_services",
         "tag": "package-2015-10"
       },
@@ -644,7 +644,7 @@
       "markdown": "specification/mobileengagement/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::MobileEngagement::Api_2014_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_mobile_engagement",
         "tag": "package-2014-12"
       },
@@ -655,7 +655,7 @@
     "azure_mgmt_monitor_2017_05_01_preview": {
       "autorest_options": {
         "namespace": "Azure::ARM::MobileEngagement::Api_2014_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
           "specification/monitor/resource-manager/microsoft.insights/2017-05-01-preview/diagnosticsSettingsCategories_API.json",
@@ -670,7 +670,7 @@
     "azure_mgmt_monitor_2017_04_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Monitor::Api_2017_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
           "specification/monitor/resource-manager/microsoft.insights/2017-04-01/actionGroups_API.json",
@@ -685,7 +685,7 @@
     "azure_mgmt_monitor_2016_09_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Monitor::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
           "specification/monitor/resource-manager/microsoft.insights/2016-09-01/serviceDiagnosticsSettings_API.json"
@@ -699,7 +699,7 @@
     "azure_mgmt_monitor_2016_03_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Monitor::Api_2016_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
           "specification/monitor/resource-manager/microsoft.insights/2016-03-01/alertRulesIncidents_API.json",
@@ -715,7 +715,7 @@
     "azure_mgmt_monitor_2015_04_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Monitor::Api_2015_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_monitor",
         "input-file": [
           "specification/monitor/resource-manager/microsoft.insights/2015-04-01/autoscale_API.json",
@@ -730,7 +730,7 @@
     "azure_mgmt_network_2017_09_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2017_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "input-file": [
           "specification/network/resource-manager/Microsoft.Network/2017-09-01/applicationGateway.json",
@@ -759,7 +759,7 @@
     "azure_mgmt_network_2017_03_30": {
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2017_03_30",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "input-file": [
           "specification/network/resource-manager/Microsoft.Network/2017-09-01/vmssNetworkInterface.json",
@@ -773,7 +773,7 @@
     "azure_mgmt_network_2017_03_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2017_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "input-file": [
           "specification/network/resource-manager/Microsoft.Network/2017-03-01/applicationGateway.json",
@@ -801,7 +801,7 @@
       "markdown": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2016_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "tag": "package-2016-12"
       },
@@ -813,7 +813,7 @@
       "markdown": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "tag": "package-2016-09"
       },
@@ -825,7 +825,7 @@
       "markdown": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2016_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "tag": "package-2016-06"
       },
@@ -837,7 +837,7 @@
       "markdown": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2016_03_30",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "tag": "package-2016-03"
       },
@@ -849,7 +849,7 @@
       "markdown": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2015_06_15",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "tag": "package-2015-06split"
       },
@@ -861,7 +861,7 @@
       "markdown": "specification/network/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Network::Api_2015_05_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_network",
         "tag": "package-2015-05-preview"
       },
@@ -873,7 +873,7 @@
       "markdown": "specification/notificationhubs/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::NotificationHubs::Api_2017_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_notification_hubs",
         "tag": "package-2017-04"
       },
@@ -884,7 +884,7 @@
     "azure_mgmt_operational_insights_2015_11_01_preview": {
       "autorest_options": {
         "namespace": "Azure::ARM::OperationalInsights::Api_2015_11_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_operational_insights",
         "input-file": [
           "specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/2015-11-01-preview/OperationalInsights.json"
@@ -898,7 +898,7 @@
       "markdown": "specification/operationalinsights/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::OperationalInsights::Api_2015_03_20",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_operational_insights",
         "tag": "package-2015-03"
       },
@@ -909,7 +909,7 @@
     "azure_mgmt_policy_2017_06_01_preview": {
       "autorest_options": {
         "namespace": "Azure::ARM::Policy::Api_2017_06_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_policy",
         "input-file": [
           "specification/resources/resource-manager/Microsoft.Authorization/2017-06-01-preview/policyAssignments.json",
@@ -925,7 +925,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Policy::Api_2016_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_policy",
         "tag": "package-policy-2016-12"
       },
@@ -937,7 +937,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Policy::Api_2016_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_policy",
         "tag": "package-policy-2016-04"
       },
@@ -949,7 +949,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Policy::Api_2015_10_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_policy",
         "tag": "package-policy-2015-10"
       },
@@ -961,7 +961,7 @@
       "markdown": "specification/powerbiembedded/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::PowerBiEmbedded::Api_2016_01_29",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_powerbi_embedded",
         "tag": "package-2016-01"
       },
@@ -972,7 +972,7 @@
     "azure_mgmt_recovery_services_2016_12_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServices::Api_2016_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services",
         "input-file": [
           "specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/2016-12-01/backup.json"
@@ -986,7 +986,7 @@
       "markdown": "specification/recoveryservices/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServices::Api_2016_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services",
         "tag": "package-2016-06"
       },
@@ -997,7 +997,7 @@
     "azure_mgmt_recovery_services_backup_2017_07_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServicesBackup::Api_2017_07_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services_backup",
         "input-file": [
           "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/2017-07-01/jobs.json"
@@ -1010,7 +1010,7 @@
     "azure_mgmt_recovery_services_backup_2016_12_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServicesBackup::Api_2016_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services_backup",
         "input-file": [
           "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/2016-12-01/backupManagement.json"
@@ -1023,7 +1023,7 @@
     "azure_mgmt_recovery_services_backup_2016_08_10": {
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServicesBackup::Api_2016_08_10",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services_backup",
         "input-file": [
           "specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/2016-08-10/operations.json"
@@ -1037,7 +1037,7 @@
       "markdown": "specification/recoveryservicesbackup/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServicesBackup::Api_2016_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services_backup",
         "tag": "package-2016-06"
       },
@@ -1049,7 +1049,7 @@
       "markdown": "specification/recoveryservicessiterecovery/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_recovery_services_site_recovery",
         "tag": "package-2016-08"
       },
@@ -1061,7 +1061,7 @@
       "markdown": "specification/redis/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Redis::Api_2017_02_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_redis",
         "tag": "package-2017-02"
       },
@@ -1073,7 +1073,7 @@
       "markdown": "specification/redis/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Redis::Api_2016_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_redis",
         "tag": "package-2016-04"
       },
@@ -1085,7 +1085,7 @@
       "markdown": "specification/redis/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Redis::Api_2015_08_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_redis",
         "tag": "package-2015-08"
       },
@@ -1097,7 +1097,7 @@
       "markdown": "specification/relay/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Relay::Api_2017_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_relay",
         "tag": "package-2017-04"
       },
@@ -1109,7 +1109,7 @@
       "markdown": "specification/relay/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Relay::Api_2016_07_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_relay",
         "tag": "package-2016-07"
       },
@@ -1120,7 +1120,7 @@
     "azure_mgmt_resources_2017_05_10": {
       "autorest_options": {
         "namespace": "Azure::ARM::Resources::Api_2017_05_10",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_resources",
         "input-file": [
           "specification/resources/resource-manager/Microsoft.Resources/2017-05-10/resources.json"
@@ -1133,7 +1133,7 @@
     "azure_mgmt_resources_2016_09_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Resources::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_resources",
         "input-file": [
           "specification/resources/resource-manager/Microsoft.Resources/2016-09-01/resources.json"
@@ -1146,7 +1146,7 @@
     "azure_mgmt_resources_2016_07_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Resources::Api_2016_07_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_resources",
         "input-file": [
           "specification/resources/resource-manager/Microsoft.Resources/2016-07-01/resources.json"
@@ -1156,11 +1156,24 @@
       "generated_relative_base_directory": "2016-07-01",
       "build_dir": "management/azure_mgmt_resources/lib/2016-07-01"
     },
+    "azure_mgmt_resources_2016_02_01": {
+      "autorest_options": {
+        "namespace": "Azure::ARM::Resources::Api_2016_02_01",
+        "package-version": "0.15.0",
+        "package-name": "azure_mgmt_resources",
+        "input-file": [
+          "specification/resources/resource-manager/Microsoft.Resources/2016-02-01/resources.json"
+        ]
+      },
+      "output_dir": "management/azure_mgmt_resources/lib/2016-02-01",
+      "generated_relative_base_directory": "2016-02-01",
+      "build_dir": "management/azure_mgmt_resources/lib/2016-02-01"
+    },
     "azure_mgmt_resources_management_2017_08_31_preview": {
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ResourcesManagement::Api_2017_08_31_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_resources_management",
         "tag": "package-management-2017-08"
       },
@@ -1172,7 +1185,7 @@
       "markdown": "specification/scheduler/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Scheduler::Api_2016_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_scheduler",
         "tag": "package-2016-03"
       },
@@ -1184,7 +1197,7 @@
       "markdown": "specification/search/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Search::Api_2015_08_19",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_search",
         "tag": "package-2015-08"
       },
@@ -1196,7 +1209,7 @@
       "markdown": "specification/servermanagement/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ServerManagement::Api_2016_07_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_server_management",
         "tag": "package-2016-07-preview"
       },
@@ -1208,7 +1221,7 @@
       "markdown": "specification/servicebus/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ServiceBus::Api_2017_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_service_bus",
         "tag": "package-2017-04"
       },
@@ -1220,7 +1233,7 @@
       "markdown": "specification/servicebus/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ServiceBus::Api_2015_08_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_service_bus",
         "tag": "package-2015-08"
       },
@@ -1232,7 +1245,7 @@
       "markdown": "specification/servicefabric/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::ServiceFabric::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_service_fabric",
         "tag": "package-2016-09"
       },
@@ -1244,7 +1257,7 @@
       "markdown": "specification/sql/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::SQL::Api_2014_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_sql",
         "tag": "schema-2014-04"
       },
@@ -1256,7 +1269,7 @@
       "markdown": "specification/sql/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::SQL::Api_2015_05_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_sql",
         "tag": "schema-2015-05-preview"
       },
@@ -1267,7 +1280,7 @@
     "azure_mgmt_sql_2017_03_01_preview": {
       "autorest_options": {
         "namespace": "Azure::ARM::SQL::Api_2017_03_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_sql",
         "input-file": [
           "specification/sql/resource-manager/Microsoft.Sql/2017-03-01-preview/cancelOperations.json"
@@ -1281,7 +1294,7 @@
       "markdown": "specification/storsimple8000series/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::StorSimple8000Series::Api_2017_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_stor_simple8000_series",
         "tag": "package-2017-06"
       },
@@ -1293,7 +1306,7 @@
       "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Storage::Api_2017_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_storage",
         "tag": "package-2017-06"
       },
@@ -1305,7 +1318,7 @@
       "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Storage::Api_2016_12_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_storage",
         "tag": "package-2016-12"
       },
@@ -1317,7 +1330,7 @@
       "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Storage::Api_2016_01_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_storage",
         "tag": "package-2016-01"
       },
@@ -1329,7 +1342,7 @@
       "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Storage::Api_2015_06_15",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_storage",
         "tag": "package-2015-06"
       },
@@ -1341,7 +1354,7 @@
       "markdown": "specification/storage/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Storage::Api_2015_05_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_storage",
         "tag": "package-2015-05-preview"
       },
@@ -1353,7 +1366,7 @@
       "markdown": "specification/streamanalytics/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::StreamAnalytics::Api_2016_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_stream_analytics",
         "tag": "package-2016-03"
       },
@@ -1365,7 +1378,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Subscriptions::Api_2016_06_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_subscriptions",
         "tag": "package-subscriptions-2016-06"
       },
@@ -1377,7 +1390,7 @@
       "markdown": "specification/resources/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::Subscriptions::Api_2015_11_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_subscriptions",
         "tag": "package-subscriptions-2015-11"
       },
@@ -1388,7 +1401,7 @@
     "azure_mgmt_traffic_manager_2017_09_01_preview": {
       "autorest_options": {
         "namespace": "Azure::ARM::TrafficManager::Api_2017_09_01_preview",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_traffic_manager",
         "input-file": [
           "specification/trafficmanager/resource-manager/Microsoft.Network/2017-09-01-preview/trafficmanageranalytics.json"
@@ -1402,7 +1415,7 @@
       "markdown": "specification/trafficmanager/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::TrafficManager::Api_2017_05_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_traffic_manager",
         "tag": "package-2017-05"
       },
@@ -1414,7 +1427,7 @@
       "markdown": "specification/trafficmanager/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::TrafficManager::Api_2017_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_traffic_manager",
         "tag": "package-2017-03"
       },
@@ -1426,7 +1439,7 @@
       "markdown": "specification/trafficmanager/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::TrafficManager::Api_2015_11_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_traffic_manager",
         "tag": "package-2015-11"
       },
@@ -1437,7 +1450,7 @@
     "azure_mgmt_web_2015_08_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Web::Api_2015_08_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_web",
         "input-file": [
           "specification/web/resource-manager/Microsoft.CertificateRegistration/2015-08-01/AppServiceCertificateOrders.json"
@@ -1451,7 +1464,7 @@
     "azure_mgmt_web_2015_04_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Web::Api_2015_04_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_web",
         "input-file": [
           "specification/web/resource-manager/Microsoft.DomainRegistration/2015-04-01/Domains.json",
@@ -1466,7 +1479,7 @@
     "azure_mgmt_web_2016_09_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Web::Api_2016_09_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_web",
         "input-file": [
           "specification/web/resource-manager/Microsoft.Web/2016-09-01/AppServiceEnvironments.json",
@@ -1481,7 +1494,7 @@
     "azure_mgmt_web_2016_08_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Web::Api_2016_08_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_web",
         "input-file": [
           "specification/web/resource-manager/Microsoft.Web/2016-08-01/WebApps.json"
@@ -1495,7 +1508,7 @@
     "azure_mgmt_web_2016_03_01": {
       "autorest_options": {
         "namespace": "Azure::ARM::Web::Api_2016_03_01",
-        "package-version": "0.14.0",
+        "package-version": "0.15.0",
         "package-name": "azure_mgmt_web",
         "input-file": [
           "specification/web/resource-manager/Microsoft.Web/2016-03-01/Certificates.json",

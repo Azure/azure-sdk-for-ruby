@@ -13,7 +13,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 

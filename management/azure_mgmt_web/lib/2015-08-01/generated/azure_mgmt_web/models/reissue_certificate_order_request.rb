@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2015_08_01
     #
     # Class representing certificate reissue request.
     #
-    class ReissueCertificateOrderRequest < MsRestAzure::Resource
+    class ReissueCertificateOrderRequest < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Certificate Key Size.
       attr_accessor :key_size
 

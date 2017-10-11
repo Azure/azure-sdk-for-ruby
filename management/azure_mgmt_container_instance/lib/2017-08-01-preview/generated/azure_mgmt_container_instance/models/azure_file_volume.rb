@@ -13,7 +13,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the Azure File share to be mounted as a
       # volume.
       attr_accessor :share_name

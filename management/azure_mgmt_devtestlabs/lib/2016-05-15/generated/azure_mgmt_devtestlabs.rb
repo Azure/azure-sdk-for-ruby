@@ -129,6 +129,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     autoload :ResponseWithContinuationSchedule,                   '2016-05-15/generated/azure_mgmt_devtestlabs/models/response_with_continuation_schedule.rb'
     autoload :PortFragment,                                       '2016-05-15/generated/azure_mgmt_devtestlabs/models/port_fragment.rb'
     autoload :ComputeVmInstanceViewStatus,                        '2016-05-15/generated/azure_mgmt_devtestlabs/models/compute_vm_instance_view_status.rb'
+    autoload :Resource,                                           '2016-05-15/generated/azure_mgmt_devtestlabs/models/resource.rb'
     autoload :CustomImagePropertiesFromVm,                        '2016-05-15/generated/azure_mgmt_devtestlabs/models/custom_image_properties_from_vm.rb'
     autoload :ResponseWithContinuationArmTemplate,                '2016-05-15/generated/azure_mgmt_devtestlabs/models/response_with_continuation_arm_template.rb'
     autoload :ResponseWithContinuationLabVirtualMachine,          '2016-05-15/generated/azure_mgmt_devtestlabs/models/response_with_continuation_lab_virtual_machine.rb'

@@ -13,7 +13,6 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WorkflowStatus] Gets or sets the status of workflow run
       # action. Possible values include: 'NotSpecified', 'Paused', 'Running',
       # 'Waiting', 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed',

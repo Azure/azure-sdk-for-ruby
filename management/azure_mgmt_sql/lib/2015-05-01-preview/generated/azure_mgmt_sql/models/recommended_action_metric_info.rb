@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the name of the metric. e.g., CPU, Number of
       # Queries.
       attr_accessor :metric_name

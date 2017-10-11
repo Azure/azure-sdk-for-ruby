@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Kind of encryption protector. This is metadata used
       # for the Azure portal experience.
       attr_accessor :kind

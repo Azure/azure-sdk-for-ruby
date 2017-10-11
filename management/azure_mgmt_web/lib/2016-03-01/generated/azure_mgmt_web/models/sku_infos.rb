@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource type that this SKU applies to.
       attr_accessor :resource_type
 

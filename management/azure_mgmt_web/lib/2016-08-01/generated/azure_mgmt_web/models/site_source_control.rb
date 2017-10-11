@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Source control configuration for an app.
     #
-    class SiteSourceControl < MsRestAzure::ProxyOnlyResource
+    class SiteSourceControl < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Repository or source control URL.
       attr_accessor :repo_url
 

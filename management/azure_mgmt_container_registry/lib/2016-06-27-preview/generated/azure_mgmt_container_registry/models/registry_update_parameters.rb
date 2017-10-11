@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2016_06_27_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] The resource tags for the container
       # registry.
       attr_accessor :tags

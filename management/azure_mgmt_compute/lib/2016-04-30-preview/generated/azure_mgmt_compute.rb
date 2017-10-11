@@ -37,6 +37,7 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
   module Models
     autoload :ImageOSDisk,                                        '2016-04-30-preview/generated/azure_mgmt_compute/models/image_osdisk.rb'
     autoload :ImageDataDisk,                                      '2016-04-30-preview/generated/azure_mgmt_compute/models/image_data_disk.rb'
+    autoload :SubResource,                                        '2016-04-30-preview/generated/azure_mgmt_compute/models/sub_resource.rb'
     autoload :ImageStorageProfile,                                '2016-04-30-preview/generated/azure_mgmt_compute/models/image_storage_profile.rb'
     autoload :VirtualMachineAgentInstanceView,                    '2016-04-30-preview/generated/azure_mgmt_compute/models/virtual_machine_agent_instance_view.rb'
     autoload :DiskInstanceView,                                   '2016-04-30-preview/generated/azure_mgmt_compute/models/disk_instance_view.rb'
@@ -88,6 +89,7 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     autoload :GrantAccessData,                                    '2016-04-30-preview/generated/azure_mgmt_compute/models/grant_access_data.rb'
     autoload :VirtualMachineScaleSetVMProfile,                    '2016-04-30-preview/generated/azure_mgmt_compute/models/virtual_machine_scale_set_vmprofile.rb'
     autoload :VirtualMachineCaptureParameters,                    '2016-04-30-preview/generated/azure_mgmt_compute/models/virtual_machine_capture_parameters.rb'
+    autoload :Resource,                                           '2016-04-30-preview/generated/azure_mgmt_compute/models/resource.rb'
     autoload :EncryptionSettings,                                 '2016-04-30-preview/generated/azure_mgmt_compute/models/encryption_settings.rb'
     autoload :VirtualMachineScaleSetVMInstanceIDs,                '2016-04-30-preview/generated/azure_mgmt_compute/models/virtual_machine_scale_set_vminstance_ids.rb'
     autoload :VirtualHardDisk,                                    '2016-04-30-preview/generated/azure_mgmt_compute/models/virtual_hard_disk.rb'

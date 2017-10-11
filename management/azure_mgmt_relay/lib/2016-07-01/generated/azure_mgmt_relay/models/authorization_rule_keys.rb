@@ -12,7 +12,6 @@ module Azure::ARM::Relay::Api_2016_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] PrimaryConnectionString of the created Namespace
       # AuthorizationRule.
       attr_accessor :primary_connection_string

@@ -12,7 +12,6 @@ module Azure::ARM::Relay::Api_2016_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PolicyKey] Key that needs to be regenerated. Possible values
       # include: 'PrimaryKey', 'SecondaryKey'
       attr_accessor :policy_key

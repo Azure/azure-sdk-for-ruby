@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Port>] Backend ports that virtual machines on this
       # subnet are allowed to expose
       attr_accessor :allowed_ports

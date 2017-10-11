@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String]
       attr_accessor :code
 

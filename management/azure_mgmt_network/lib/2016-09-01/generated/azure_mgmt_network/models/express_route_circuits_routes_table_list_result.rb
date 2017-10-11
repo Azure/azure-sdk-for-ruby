@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuitRoutesTable>] The list of routes
       # table.
       attr_accessor :value

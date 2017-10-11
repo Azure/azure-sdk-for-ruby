@@ -8,11 +8,10 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
     #
     # Event Type for a subject under a topic
     #
-    class EventType < MsRestAzure::Resource
+    class EventType < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Display name of the event type.
       attr_accessor :display_name
 

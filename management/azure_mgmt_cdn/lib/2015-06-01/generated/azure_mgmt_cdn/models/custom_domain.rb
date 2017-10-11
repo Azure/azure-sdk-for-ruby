@@ -10,11 +10,10 @@ module Azure::ARM::CDN::Api_2015_06_01
     # name and a CDN endpoint. This is to use custom domain names to represent
     # the URLs for branding purposes.
     #
-    class CustomDomain < MsRestAzure::Resource
+    class CustomDomain < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The host name of the custom domain. Must be a domain
       # name.
       attr_accessor :host_name

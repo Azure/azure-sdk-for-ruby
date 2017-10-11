@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Age.
       attr_accessor :age
 

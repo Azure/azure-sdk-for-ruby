@@ -80,6 +80,7 @@ module Azure::ARM::Redis::Api_2017_02_01
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

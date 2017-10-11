@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     #
     # Profile of a lab user.
     #
-    class User < MsRestAzure::Resource
+    class User < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UserIdentity] The identity of the user.
       attr_accessor :identity
 

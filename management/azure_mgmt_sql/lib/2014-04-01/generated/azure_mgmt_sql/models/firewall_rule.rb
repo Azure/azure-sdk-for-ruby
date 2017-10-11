@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Kind of server that contains this firewall rule.
       attr_accessor :kind
 

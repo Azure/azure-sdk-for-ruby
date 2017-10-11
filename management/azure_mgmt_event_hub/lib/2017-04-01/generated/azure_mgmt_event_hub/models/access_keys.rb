@@ -12,7 +12,6 @@ module Azure::ARM::EventHub::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Primary connection string of the created namespace
       # AuthorizationRule.
       attr_accessor :primary_connection_string
@@ -20,6 +19,14 @@ module Azure::ARM::EventHub::Api_2017_04_01
       # @return [String] Secondary connection string of the created namespace
       # AuthorizationRule.
       attr_accessor :secondary_connection_string
+
+      # @return [String] Primary connection string of the alias if GEO DR is
+      # enabled
+      attr_accessor :alias_primary_connection_string
+
+      # @return [String] Secondary  connection string of the alias if GEO DR is
+      # enabled
+      attr_accessor :alias_secondary_connection_string
 
       # @return [String] A base64-encoded 256-bit primary key for signing and
       # validating the SAS token.
@@ -57,6 +64,22 @@ module Azure::ARM::EventHub::Api_2017_04_01
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryConnectionString',
+                type: {
+                  name: 'String'
+                }
+              },
+              alias_primary_connection_string: {
+                required: false,
+                read_only: true,
+                serialized_name: 'aliasPrimaryConnectionString',
+                type: {
+                  name: 'String'
+                }
+              },
+              alias_secondary_connection_string: {
+                required: false,
+                read_only: true,
+                serialized_name: 'aliasSecondaryConnectionString',
                 type: {
                   name: 'String'
                 }

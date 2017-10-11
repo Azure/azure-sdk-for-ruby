@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Vault health details definition.
     #
-    class VaultHealthDetails < MsRestAzure::Resource
+    class VaultHealthDetails < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VaultHealthProperties] The vault health related data.
       attr_accessor :properties
 

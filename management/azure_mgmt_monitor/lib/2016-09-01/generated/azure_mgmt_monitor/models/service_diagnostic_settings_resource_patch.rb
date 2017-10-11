@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

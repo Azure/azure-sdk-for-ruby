@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SshPublicKey>] The list of SSH public keys used to
       # authenticate with linux based VMs.
       attr_accessor :public_keys

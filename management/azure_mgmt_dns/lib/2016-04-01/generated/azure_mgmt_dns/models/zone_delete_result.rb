@@ -12,7 +12,6 @@ module Azure::ARM::Dns::Api_2016_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Users can perform a Get on Azure-AsyncOperation to get
       # the status of their delete Zone operations.
       attr_accessor :azure_async_operation

@@ -8,11 +8,10 @@ module Azure::ARM::Search::Api_2015_08_19
     #
     # Describes an Azure Search service and its current state.
     #
-    class SearchService < MsRestAzure::Resource
+    class SearchService < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The number of replicas in the Search service. If
       # specified, it must be a value between 1 and 12 inclusive for standard
       # SKUs or between 1 and 3 inclusive for basic SKU. Default value: 1 .

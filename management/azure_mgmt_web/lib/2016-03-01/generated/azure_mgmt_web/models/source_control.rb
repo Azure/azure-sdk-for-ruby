@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     # The source control OAuth token.
     #
-    class SourceControl < MsRestAzure::ProxyOnlyResource
+    class SourceControl < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name or source control type.
       attr_accessor :source_control_name
 

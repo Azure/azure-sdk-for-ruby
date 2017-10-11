@@ -12,7 +12,6 @@ module Azure::ARM::ContainerService::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContainerServiceOchestratorTypes] The orchestrator to use to
       # manage container service cluster resources. Valid values are Swarm,
       # DCOS, and Custom. Possible values include: 'Swarm', 'DCOS'

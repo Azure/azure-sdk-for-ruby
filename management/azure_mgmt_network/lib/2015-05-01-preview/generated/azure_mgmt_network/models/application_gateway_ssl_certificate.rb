@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # SSL certificates of application gateway
     #
-    class ApplicationGatewaySslCertificate < MsRestAzure::SubResource
+    class ApplicationGatewaySslCertificate < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the certificate data
       attr_accessor :data
 

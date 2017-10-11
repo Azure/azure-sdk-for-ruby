@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Indicates whether the virtual machine agent should be
       # provisioned on the Virtual Machine. If not specified, then the default
       # behavior is to set it to true.

@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2016_10_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<OptimizationType>] Supported optimization types for a
       # profile.
       attr_accessor :supported_optimization_types

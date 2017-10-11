@@ -8,11 +8,10 @@ module Azure::ARM::Monitor::Api_2016_09_01
     #
     # Description of a service diagnostic setting
     #
-    class ServiceDiagnosticSettingsResource < MsRestAzure::Resource
+    class ServiceDiagnosticSettingsResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource ID of the storage account to which you
       # would like to send Diagnostic Logs.
       attr_accessor :storage_account_id

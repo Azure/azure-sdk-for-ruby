@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_09_01
     # Hybrid Connection limits contract. This is used to return the plan limits
     # of Hybrid Connections.
     #
-    class HybridConnectionLimits < MsRestAzure::ProxyOnlyResource
+    class HybridConnectionLimits < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The current number of Hybrid Connections.
       attr_accessor :current
 

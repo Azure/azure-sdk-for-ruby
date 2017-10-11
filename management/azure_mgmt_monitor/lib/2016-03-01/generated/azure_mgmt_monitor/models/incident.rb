@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Incident name.
       attr_accessor :name
 

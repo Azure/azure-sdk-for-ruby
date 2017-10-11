@@ -30,6 +30,7 @@ module Azure::ARM::Redis::Api_2015_08_01
     autoload :RedisRegenerateKeyParameters,                       '2015-08-01/generated/azure_mgmt_redis/models/redis_regenerate_key_parameters.rb'
     autoload :Sku,                                                '2015-08-01/generated/azure_mgmt_redis/models/sku.rb'
     autoload :RedisListResult,                                    '2015-08-01/generated/azure_mgmt_redis/models/redis_list_result.rb'
+    autoload :Resource,                                           '2015-08-01/generated/azure_mgmt_redis/models/resource.rb'
     autoload :RedisListKeysResult,                                '2015-08-01/generated/azure_mgmt_redis/models/redis_list_keys_result.rb'
     autoload :RedisCreateOrUpdateParameters,                      '2015-08-01/generated/azure_mgmt_redis/models/redis_create_or_update_parameters.rb'
     autoload :RedisResourceWithAccessKey,                         '2015-08-01/generated/azure_mgmt_redis/models/redis_resource_with_access_key.rb'

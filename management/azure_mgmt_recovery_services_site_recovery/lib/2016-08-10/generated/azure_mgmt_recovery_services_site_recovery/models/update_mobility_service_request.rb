@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpdateMobilityServiceRequestProperties] The properties of the
       # update mobility service request.
       attr_accessor :properties

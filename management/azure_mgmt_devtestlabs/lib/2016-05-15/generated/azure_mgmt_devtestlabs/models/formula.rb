@@ -9,11 +9,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     # A formula for creating a VM, specifying an image base and other
     # parameters
     #
-    class Formula < MsRestAzure::Resource
+    class Formula < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The description of the formula.
       attr_accessor :description
 

@@ -13,7 +13,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The subject or username associated with the request
       # context that generated the event.
       attr_accessor :name

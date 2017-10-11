@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RenewCertificateInputProperties] Renew certificate input
       # properties.
       attr_accessor :properties

@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AttachNewDataDiskOptions] Specifies options to attach a new
       # disk to the virtual machine.
       attr_accessor :attach_new_data_disk_options

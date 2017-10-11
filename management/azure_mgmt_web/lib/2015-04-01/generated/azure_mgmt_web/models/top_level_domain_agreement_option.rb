@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] If <code>true</code>, then the list of agreements
       # will include agreements for domain privacy as well; otherwise,
       # <code>false</code>.

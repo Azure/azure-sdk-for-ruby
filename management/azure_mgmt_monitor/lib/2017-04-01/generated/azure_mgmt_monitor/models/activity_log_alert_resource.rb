@@ -8,11 +8,10 @@ module Azure::ARM::Monitor::Api_2017_04_01
     #
     # An activity log alert resource.
     #
-    class ActivityLogAlertResource < MsRestAzure::Resource
+    class ActivityLogAlertResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] A list of resourceIds that will be used as
       # prefixes. The alert will only apply to activityLogs with resourceIds
       # that fall under one of these prefixes. This list must include at least

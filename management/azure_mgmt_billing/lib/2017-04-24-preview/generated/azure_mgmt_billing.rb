@@ -26,6 +26,7 @@ module Azure::ARM::Billing::Api_2017_04_24_preview
   autoload :BillingManagementClient,                            '2017-04-24-preview/generated/azure_mgmt_billing/billing_management_client.rb'
 
   module Models
+    autoload :Resource,                                           '2017-04-24-preview/generated/azure_mgmt_billing/models/resource.rb'
     autoload :BillingPeriodsListResult,                           '2017-04-24-preview/generated/azure_mgmt_billing/models/billing_periods_list_result.rb'
     autoload :InvoicesListResult,                                 '2017-04-24-preview/generated/azure_mgmt_billing/models/invoices_list_result.rb'
     autoload :ErrorDetails,                                       '2017-04-24-preview/generated/azure_mgmt_billing/models/error_details.rb'

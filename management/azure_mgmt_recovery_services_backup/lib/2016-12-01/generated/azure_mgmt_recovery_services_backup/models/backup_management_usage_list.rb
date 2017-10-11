@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<BackupManagementUsage>] The list of backup management
       # usages for the given vault.
       attr_accessor :value

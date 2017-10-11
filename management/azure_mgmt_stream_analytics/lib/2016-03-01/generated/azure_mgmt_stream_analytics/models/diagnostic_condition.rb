@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The UTC timestamp of when the condition started.
       # Customers should be able to find a corresponding event in the ops log
       # around this time.

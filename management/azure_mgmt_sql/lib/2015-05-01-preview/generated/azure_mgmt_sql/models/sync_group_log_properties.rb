@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Timestamp of the sync group log.
       attr_accessor :timestamp
 

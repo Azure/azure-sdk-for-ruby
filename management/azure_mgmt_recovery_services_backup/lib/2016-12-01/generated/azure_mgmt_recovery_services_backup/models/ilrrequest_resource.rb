@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
     #
     # Parameters to restore file/folders API.
     #
-    class ILRRequestResource < MsRestAzure::Resource
+    class ILRRequestResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ILRRequest] ILRRequestResource properties
       attr_accessor :properties
 

@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gateway resource to be associated with the server.
       attr_accessor :gateway_resource_id
 

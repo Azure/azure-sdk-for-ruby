@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DNSSettings] The DNS (Domain Name System) settings of device.
       attr_accessor :dns_settings
 

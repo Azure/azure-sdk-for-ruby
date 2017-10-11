@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] SKU name. Default value: 'S1' .
       attr_accessor :name
 

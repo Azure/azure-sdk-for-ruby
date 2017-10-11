@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Compute::Api_2016_04_30_preview
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

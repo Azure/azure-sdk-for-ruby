@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Error code
       attr_accessor :code
 

@@ -8,11 +8,10 @@ module Azure::ARM::Monitor::Api_2016_03_01
     #
     # The log profile resource.
     #
-    class LogProfileResource < MsRestAzure::Resource
+    class LogProfileResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the resource id of the storage account to which you
       # would like to send the Activity Log.
       attr_accessor :storage_account_id

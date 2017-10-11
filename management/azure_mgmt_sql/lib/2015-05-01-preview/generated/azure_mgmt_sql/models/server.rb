@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ResourceIdentity] The Azure Active Directory identity of the
       # server.
       attr_accessor :identity

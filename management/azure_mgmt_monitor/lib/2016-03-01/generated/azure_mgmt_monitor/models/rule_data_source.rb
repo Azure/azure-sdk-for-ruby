@@ -12,19 +12,19 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"] = "RuleMetricDataSource"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource"] = "RuleManagementEventDataSource"
 
       def initialize
-        @odata.type = "RuleDataSource"
+        @odatatype = "RuleDataSource"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [String] the resource identifier of the resource the rule
-      # monitors.
+      # monitors. **NOTE**: this property cannot be updated for an existing
+      # rule.
       attr_accessor :resource_uri
 
 

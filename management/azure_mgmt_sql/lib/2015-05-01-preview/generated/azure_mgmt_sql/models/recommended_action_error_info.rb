@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the reason why the recommended action was put to
       # error state. e.g., DatabaseHasQdsOff, IndexAlreadyExists
       attr_accessor :error_code

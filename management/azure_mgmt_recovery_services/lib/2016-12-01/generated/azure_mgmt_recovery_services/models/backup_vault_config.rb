@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServices::Api_2016_12_01
     #
     # Backup vault config details.
     #
-    class BackupVaultConfig < MsRestAzure::Resource
+    class BackupVaultConfig < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageType] Storage type. Possible values include: 'Invalid',
       # 'GeoRedundant', 'LocallyRedundant'
       attr_accessor :storage_type

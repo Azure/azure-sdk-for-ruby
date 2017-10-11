@@ -13,7 +13,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The source to which the routing rule is to be applied
       # to. e.g. DeviceMessages. Default value: 'DeviceMessages' .
       attr_accessor :source

@@ -12,7 +12,6 @@ module Azure::ARM::Consumption::Api_2017_04_24_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the meter, within the given meter category
       attr_accessor :meter_name
 

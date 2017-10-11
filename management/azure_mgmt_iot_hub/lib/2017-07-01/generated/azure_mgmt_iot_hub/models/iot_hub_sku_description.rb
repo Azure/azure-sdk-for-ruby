@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The type of the resource.
       attr_accessor :resource_type
 

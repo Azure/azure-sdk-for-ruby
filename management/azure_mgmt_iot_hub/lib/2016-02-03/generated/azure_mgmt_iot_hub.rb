@@ -36,6 +36,7 @@ module Azure::ARM::IotHub::Api_2016_02_03
     autoload :IotHubCapacity,                                     '2016-02-03/generated/azure_mgmt_iot_hub/models/iot_hub_capacity.rb'
     autoload :IotHubSkuInfo,                                      '2016-02-03/generated/azure_mgmt_iot_hub/models/iot_hub_sku_info.rb'
     autoload :IotHubSkuDescription,                               '2016-02-03/generated/azure_mgmt_iot_hub/models/iot_hub_sku_description.rb'
+    autoload :Resource,                                           '2016-02-03/generated/azure_mgmt_iot_hub/models/resource.rb'
     autoload :EventHubConsumerGroupsListResult,                   '2016-02-03/generated/azure_mgmt_iot_hub/models/event_hub_consumer_groups_list_result.rb'
     autoload :ErrorDetails,                                       '2016-02-03/generated/azure_mgmt_iot_hub/models/error_details.rb'
     autoload :EventHubConsumerGroupInfo,                          '2016-02-03/generated/azure_mgmt_iot_hub/models/event_hub_consumer_group_info.rb'

@@ -13,7 +13,6 @@ module Azure::ARM::Billing::Api_2017_04_24_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The time in UTC at which this download URL will
       # expire.
       attr_accessor :expiry_time

@@ -9,11 +9,10 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
     # Model object.
     #
     #
-    class WorkflowTrigger < MsRestAzure::SubResource
+    class WorkflowTrigger < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WorkflowTriggerProvisioningState] Gets the provisioning state.
       # Possible values include: 'NotSpecified', 'Creating', 'Succeeded',
       # 'Updating'

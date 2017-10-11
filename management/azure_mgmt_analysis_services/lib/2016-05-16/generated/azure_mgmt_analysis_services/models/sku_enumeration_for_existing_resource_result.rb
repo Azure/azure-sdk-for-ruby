@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices::Api_2016_05_16
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SkuDetailsForExistingResource>] The collection of
       # available SKUs for existing resources
       attr_accessor :value

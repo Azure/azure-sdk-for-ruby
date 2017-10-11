@@ -12,13 +12,12 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [ManagementEventAggregationCondition] How the data that is
       # collected should be combined over time and when the alert is activated.
@@ -49,7 +48,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
                   class_name: 'RuleDataSource'
                 }
               },
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

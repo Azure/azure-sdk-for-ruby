@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Used for getting PHP error logging flag.
     #
-    class SitePhpErrorLogFlag < MsRestAzure::ProxyOnlyResource
+    class SitePhpErrorLogFlag < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Local log_errors setting.
       attr_accessor :local_log_errors
 

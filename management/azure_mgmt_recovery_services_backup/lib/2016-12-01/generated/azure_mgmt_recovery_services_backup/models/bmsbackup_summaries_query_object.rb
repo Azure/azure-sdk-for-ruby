@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Type] Backup management type for this container. Possible
       # values include: 'Invalid', 'BackupProtectedItemCountSummary',
       # 'BackupProtectionContainerCountSummary'

@@ -8,11 +8,10 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
     #
     # The storage account.
     #
-    class StorageAccount < MsRestAzure::Resource
+    class StorageAccount < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProvisioningState] Gets the status of the storage account at
       # the time the operation was called. Possible values include: 'Creating',
       # 'ResolvingDNS', 'Succeeded'

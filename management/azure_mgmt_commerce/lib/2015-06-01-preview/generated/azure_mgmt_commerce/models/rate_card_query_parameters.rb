@@ -13,7 +13,6 @@ module Azure::ARM::Commerce::Api_2015_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Offer ID parameter consists of the 'MS-AZR-'
       # prefix, plus the Offer ID number (e.g., MS-AZR-0026P). See
       # https://azure.microsoft.com/en-us/support/legal/offer-details/ for more

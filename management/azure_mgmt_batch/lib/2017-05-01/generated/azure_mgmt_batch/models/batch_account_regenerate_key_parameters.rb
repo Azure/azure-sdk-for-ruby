@@ -12,7 +12,6 @@ module Azure::ARM::Batch::Api_2017_05_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AccountKeyType] The type of account key to regenerate.
       # Possible values include: 'Primary', 'Secondary'
       attr_accessor :key_name

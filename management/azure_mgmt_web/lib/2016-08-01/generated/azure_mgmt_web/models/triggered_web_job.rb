@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Triggered Web Job Information.
     #
-    class TriggeredWebJob < MsRestAzure::ProxyOnlyResource
+    class TriggeredWebJob < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TriggeredJobRun] Latest job run information.
       attr_accessor :latest_run
 

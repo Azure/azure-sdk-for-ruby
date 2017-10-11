@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] A JSON array containing all identifiers that
       # have been rejected. A device can be rejected for the following reasons:
       # * The device hasn’t reported any session yet. * The device is over

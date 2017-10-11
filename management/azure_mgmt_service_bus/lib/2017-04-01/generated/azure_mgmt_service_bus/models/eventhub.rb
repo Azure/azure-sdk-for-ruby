@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
     #
     # Single item in List or Get Event Hub operation
     #
-    class Eventhub < MsRestAzure::Resource
+    class Eventhub < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Current number of shards on the Event Hub.
       attr_accessor :partition_ids
 

@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_03_01
     #
     # A load balancer probe.
     #
-    class Probe < MsRestAzure::SubResource
+    class Probe < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SubResource>] The load balancer rules that use this
       # probe.
       attr_accessor :load_balancing_rules

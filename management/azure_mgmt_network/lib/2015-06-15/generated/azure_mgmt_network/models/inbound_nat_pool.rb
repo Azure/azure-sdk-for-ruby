@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_06_15
     #
     # Inbound NAT pool of the load balancer.
     #
-    class InboundNatPool < MsRestAzure::SubResource
+    class InboundNatPool < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 

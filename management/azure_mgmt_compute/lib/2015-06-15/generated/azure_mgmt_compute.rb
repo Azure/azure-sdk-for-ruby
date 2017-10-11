@@ -34,6 +34,7 @@ module Azure::ARM::Compute::Api_2015_06_15
   module Models
     autoload :BootDiagnostics,                                    '2015-06-15/generated/azure_mgmt_compute/models/boot_diagnostics.rb'
     autoload :DiagnosticsProfile,                                 '2015-06-15/generated/azure_mgmt_compute/models/diagnostics_profile.rb'
+    autoload :SubResource,                                        '2015-06-15/generated/azure_mgmt_compute/models/sub_resource.rb'
     autoload :VirtualMachineExtensionHandlerInstanceView,         '2015-06-15/generated/azure_mgmt_compute/models/virtual_machine_extension_handler_instance_view.rb'
     autoload :AvailabilitySetListResult,                          '2015-06-15/generated/azure_mgmt_compute/models/availability_set_list_result.rb'
     autoload :VirtualMachineAgentInstanceView,                    '2015-06-15/generated/azure_mgmt_compute/models/virtual_machine_agent_instance_view.rb'
@@ -50,6 +51,7 @@ module Azure::ARM::Compute::Api_2015_06_15
     autoload :VirtualMachineSize,                                 '2015-06-15/generated/azure_mgmt_compute/models/virtual_machine_size.rb'
     autoload :ListUsagesResult,                                   '2015-06-15/generated/azure_mgmt_compute/models/list_usages_result.rb'
     autoload :VirtualMachineScaleSetSkuCapacity,                  '2015-06-15/generated/azure_mgmt_compute/models/virtual_machine_scale_set_sku_capacity.rb'
+    autoload :Resource,                                           '2015-06-15/generated/azure_mgmt_compute/models/resource.rb'
     autoload :ApiError,                                           '2015-06-15/generated/azure_mgmt_compute/models/api_error.rb'
     autoload :HardwareProfile,                                    '2015-06-15/generated/azure_mgmt_compute/models/hardware_profile.rb'
     autoload :BootDiagnosticsInstanceView,                        '2015-06-15/generated/azure_mgmt_compute/models/boot_diagnostics_instance_view.rb'

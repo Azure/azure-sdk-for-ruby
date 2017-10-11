@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_03_30
     #
     # A NetworkInterface in a resource group
     #
-    class NetworkInterface < MsRestAzure::Resource
+    class NetworkInterface < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Gets or sets the reference of a VirtualMachine
       attr_accessor :virtual_machine
 

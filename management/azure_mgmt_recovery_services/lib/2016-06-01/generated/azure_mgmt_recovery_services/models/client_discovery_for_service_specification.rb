@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServices::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ClientDiscoveryForLogSpecification>] List of log
       # specifications of this operation.
       attr_accessor :log_specifications

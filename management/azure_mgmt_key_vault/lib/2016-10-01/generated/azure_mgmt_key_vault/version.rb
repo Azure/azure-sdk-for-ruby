@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::KeyVault::Api_2016_10_01
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

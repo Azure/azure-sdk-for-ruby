@@ -9,11 +9,10 @@ module Azure::ARM::CDN::Api_2017_04_02
     # CDN profile is a logical grouping of endpoints that share the same
     # settings, such as CDN provider and pricing tier.
     #
-    class Profile < MsRestAzure::Resource
+    class Profile < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] The pricing tier (defines a CDN provider, feature list
       # and rate) of the CDN profile.
       attr_accessor :sku

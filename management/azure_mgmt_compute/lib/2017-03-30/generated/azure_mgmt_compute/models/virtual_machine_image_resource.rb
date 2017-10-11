@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Virtual machine image resource information.
     #
-    class VirtualMachineImageResource < MsRestAzure::SubResource
+    class VirtualMachineImageResource < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the resource.
       attr_accessor :name
 

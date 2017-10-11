@@ -8,11 +8,10 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
     #
     # The parameters to provide for the account.
     #
-    class StorageAccountCreateParameters < MsRestAzure::Resource
+    class StorageAccountCreateParameters < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AccountType] Gets or sets the account type. Possible values
       # include: 'Standard_LRS', 'Standard_ZRS', 'Standard_GRS',
       # 'Standard_RAGRS', 'Premium_LRS'

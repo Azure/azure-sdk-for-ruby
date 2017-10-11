@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] An optional string to filter events for an event
       # subscription based on a resource path prefix.
       # The format of this depends on the publisher of the events.

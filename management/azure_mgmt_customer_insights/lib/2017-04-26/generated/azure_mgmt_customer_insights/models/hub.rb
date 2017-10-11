@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # Hub resource.
     #
-    class Hub < MsRestAzure::Resource
+    class Hub < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] API endpoint URL of the hub.
       attr_accessor :api_endpoint
 

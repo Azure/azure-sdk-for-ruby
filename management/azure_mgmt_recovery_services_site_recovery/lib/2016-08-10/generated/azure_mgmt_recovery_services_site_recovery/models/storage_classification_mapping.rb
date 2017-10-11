@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Storage mapping object.
     #
-    class StorageClassificationMapping < MsRestAzure::Resource
+    class StorageClassificationMapping < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageClassificationMappingProperties] Proprties of the
       # storage mappping object.
       attr_accessor :properties

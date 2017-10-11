@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_03_30
     #
     # Request routing rule of application gateway
     #
-    class ApplicationGatewayRequestRoutingRule < MsRestAzure::SubResource
+    class ApplicationGatewayRequestRoutingRule < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplicationGatewayRequestRoutingRuleType] Gets or sets the
       # rule type. Possible values include: 'Basic', 'PathBasedRouting'
       attr_accessor :rule_type

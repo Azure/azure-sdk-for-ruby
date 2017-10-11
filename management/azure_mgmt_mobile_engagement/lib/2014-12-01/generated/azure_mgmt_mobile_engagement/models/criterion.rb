@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["carrier-name"] = "CarrierNameCriterion"
       @@discriminatorMap["carrier-country"] = "CarrierCountryCriterion"

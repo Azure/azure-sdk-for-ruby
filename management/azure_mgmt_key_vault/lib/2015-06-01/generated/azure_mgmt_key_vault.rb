@@ -29,6 +29,7 @@ module Azure::ARM::KeyVault::Api_2015_06_01
     autoload :AccessPolicyEntry,                                  '2015-06-01/generated/azure_mgmt_key_vault/models/access_policy_entry.rb'
     autoload :VaultListResult,                                    '2015-06-01/generated/azure_mgmt_key_vault/models/vault_list_result.rb'
     autoload :Permissions,                                        '2015-06-01/generated/azure_mgmt_key_vault/models/permissions.rb'
+    autoload :Resource,                                           '2015-06-01/generated/azure_mgmt_key_vault/models/resource.rb'
     autoload :VaultProperties,                                    '2015-06-01/generated/azure_mgmt_key_vault/models/vault_properties.rb'
     autoload :ResourceListResult,                                 '2015-06-01/generated/azure_mgmt_key_vault/models/resource_list_result.rb'
     autoload :Vault,                                              '2015-06-01/generated/azure_mgmt_key_vault/models/vault.rb'

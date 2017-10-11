@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EdifactValidationSettings] The EDIFACT validation settings.
       attr_accessor :validation_settings
 

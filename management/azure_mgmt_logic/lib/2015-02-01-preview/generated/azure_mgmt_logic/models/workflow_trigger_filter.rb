@@ -13,7 +13,6 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WorkflowState] Gets or sets the state of workflow trigger.
       # Possible values include: 'NotSpecified', 'Enabled', 'Disabled',
       # 'Deleted', 'Suspended'

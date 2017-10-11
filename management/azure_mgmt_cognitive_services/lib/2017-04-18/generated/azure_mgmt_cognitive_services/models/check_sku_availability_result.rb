@@ -12,7 +12,6 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Kind] The Kind of the resource. Possible values include:
       # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
       # 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator',

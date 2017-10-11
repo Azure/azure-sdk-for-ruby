@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A refresh token that can be used to obtain a valid
       # access token that can then be used to authenticate with the data
       # source. A valid refresh token is currently only obtainable via the

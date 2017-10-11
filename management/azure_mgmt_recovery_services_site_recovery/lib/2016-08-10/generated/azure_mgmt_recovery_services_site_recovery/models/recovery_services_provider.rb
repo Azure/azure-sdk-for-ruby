@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Provider details.
     #
-    class RecoveryServicesProvider < MsRestAzure::Resource
+    class RecoveryServicesProvider < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryServicesProviderProperties] Provider properties.
       attr_accessor :properties
 

@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The location of the resource. This will be one of the
       # supported and registered Azure Geo Regions (e.g. West US, East US,
       # Southeast Asia, etc.). The geo region of a resource cannot be changed

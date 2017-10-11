@@ -13,7 +13,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["AzureIaasVM"] = "AzureIaaSVMProtectionPolicy"
       @@discriminatorMap["AzureSql"] = "AzureSqlProtectionPolicy"

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] ID of the vault upgrade operation.
       attr_accessor :operation_id
 

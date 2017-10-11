@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The status of the test operation.
       attr_accessor :status
 

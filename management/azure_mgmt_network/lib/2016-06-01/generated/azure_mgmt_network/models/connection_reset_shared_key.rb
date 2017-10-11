@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The virtual network connection reset shared key
       # length
       attr_accessor :key_length

@@ -37,6 +37,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
     autoload :IncidentListResult,                                 '2016-03-01/generated/azure_mgmt_monitor/models/incident_list_result.rb'
     autoload :LogProfileCollection,                               '2016-03-01/generated/azure_mgmt_monitor/models/log_profile_collection.rb'
     autoload :RuleDataSource,                                     '2016-03-01/generated/azure_mgmt_monitor/models/rule_data_source.rb'
+    autoload :Resource,                                           '2016-03-01/generated/azure_mgmt_monitor/models/resource.rb'
     autoload :RetentionPolicy,                                    '2016-03-01/generated/azure_mgmt_monitor/models/retention_policy.rb'
     autoload :LogProfileResourcePatch,                            '2016-03-01/generated/azure_mgmt_monitor/models/log_profile_resource_patch.rb'
     autoload :RuleMetricDataSource,                               '2016-03-01/generated/azure_mgmt_monitor/models/rule_metric_data_source.rb'

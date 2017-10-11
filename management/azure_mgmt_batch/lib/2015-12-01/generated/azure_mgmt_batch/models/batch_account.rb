@@ -8,11 +8,10 @@ module Azure::ARM::Batch::Api_2015_12_01
     #
     # Contains information about an Azure Batch account.
     #
-    class BatchAccount < MsRestAzure::Resource
+    class BatchAccount < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The endpoint used by this account to interact with the
       # Batch services.
       attr_accessor :account_endpoint

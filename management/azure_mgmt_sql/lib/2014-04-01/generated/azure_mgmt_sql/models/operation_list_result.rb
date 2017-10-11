@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Operation>] List of SQL operations supported by the SQL
       # resource provider.
       attr_accessor :value

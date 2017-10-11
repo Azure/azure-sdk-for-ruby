@@ -37,6 +37,7 @@ module Azure::ARM::Storage::Api_2015_06_15
     autoload :Endpoints,                                          '2015-06-15/generated/azure_mgmt_storage/models/endpoints.rb'
     autoload :UsageListResult,                                    '2015-06-15/generated/azure_mgmt_storage/models/usage_list_result.rb'
     autoload :CheckNameAvailabilityResult,                        '2015-06-15/generated/azure_mgmt_storage/models/check_name_availability_result.rb'
+    autoload :Resource,                                           '2015-06-15/generated/azure_mgmt_storage/models/resource.rb'
     autoload :StorageAccount,                                     '2015-06-15/generated/azure_mgmt_storage/models/storage_account.rb'
     autoload :Reason,                                             '2015-06-15/generated/azure_mgmt_storage/models/reason.rb'
     autoload :AccountType,                                        '2015-06-15/generated/azure_mgmt_storage/models/account_type.rb'

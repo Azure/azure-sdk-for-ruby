@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_09_01
     #
     # Metadata for a metric.
     #
-    class MetricDefinition < MsRestAzure::ProxyOnlyResource
+    class MetricDefinition < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the metric.
       attr_accessor :metric_definition_name
 

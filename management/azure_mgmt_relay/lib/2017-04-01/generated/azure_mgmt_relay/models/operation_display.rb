@@ -12,7 +12,6 @@ module Azure::ARM::Relay::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Relay.
       attr_accessor :provider
 

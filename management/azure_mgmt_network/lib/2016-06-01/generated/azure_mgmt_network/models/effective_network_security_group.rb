@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Gets the id of network security group that is
       # applied
       attr_accessor :network_security_group

@@ -45,7 +45,7 @@ module MsRestAzure
     # @param tenant_id [String] tenant id (also known as domain).
     # @param client_id [String] client id.
     # @param client_secret [String] client secret.
-    # @param settings [ActiveDirectoryServiceSettings] client secret.
+    # @param settings [ActiveDirectoryServiceSettings] active directory setting.
     def initialize(tenant_id, client_id, client_secret, settings = ActiveDirectoryServiceSettings.get_azure_settings)
       fail ArgumentError, 'Tenant id cannot be nil' if tenant_id.nil?
       fail ArgumentError, 'Client id cannot be nil' if client_id.nil?
@@ -81,7 +81,7 @@ module MsRestAzure
     end
 
     #
-    # Retrieves a new authenticaion token.
+    # Retrieves a new authentication token.
     #
     # @return [String] new authentication token.
     def acquire_token

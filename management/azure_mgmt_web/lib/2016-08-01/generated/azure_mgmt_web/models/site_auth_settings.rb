@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_08_01
     # Configuration settings for the Azure App Service Authentication /
     # Authorization feature.
     #
-    class SiteAuthSettings < MsRestAzure::ProxyOnlyResource
+    class SiteAuthSettings < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] <code>true</code> if the Authentication /
       # Authorization feature is enabled for the current app; otherwise,
       # <code>false</code>.

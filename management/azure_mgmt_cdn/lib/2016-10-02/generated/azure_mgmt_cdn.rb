@@ -55,6 +55,7 @@ module Azure::ARM::CDN::Api_2016_10_02
     autoload :ErrorResponse,                                      '2016-10-02/generated/azure_mgmt_cdn/models/error_response.rb'
     autoload :GeoFilter,                                          '2016-10-02/generated/azure_mgmt_cdn/models/geo_filter.rb'
     autoload :CidrIpAddress,                                      '2016-10-02/generated/azure_mgmt_cdn/models/cidr_ip_address.rb'
+    autoload :Resource,                                           '2016-10-02/generated/azure_mgmt_cdn/models/resource.rb'
     autoload :IpAddressGroup,                                     '2016-10-02/generated/azure_mgmt_cdn/models/ip_address_group.rb'
     autoload :Profile,                                            '2016-10-02/generated/azure_mgmt_cdn/models/profile.rb'
     autoload :Endpoint,                                           '2016-10-02/generated/azure_mgmt_cdn/models/endpoint.rb'

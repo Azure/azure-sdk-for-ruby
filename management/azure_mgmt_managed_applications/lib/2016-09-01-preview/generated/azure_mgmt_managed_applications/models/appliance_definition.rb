@@ -12,7 +12,6 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplianceLockLevel] The appliance lock level. Possible values
       # include: 'CanNotDelete', 'ReadOnly', 'None'
       attr_accessor :lock_level

@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ApplicationGatewaySslProtocol>] SSL protocols to be
       # disabled on application gateway. Possible values are: 'TLSv1_0',
       # 'TLSv1_1', and 'TLSv1_2'.

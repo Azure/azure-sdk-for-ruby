@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The SKU name of the container registry. Required for
       # registry creation. Possible values include: 'Basic', 'Managed_Basic',
       # 'Managed_Standard', 'Managed_Premium'

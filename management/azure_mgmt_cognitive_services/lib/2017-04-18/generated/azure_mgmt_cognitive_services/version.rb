@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::CognitiveServices::Api_2017_04_18
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

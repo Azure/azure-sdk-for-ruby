@@ -13,7 +13,6 @@ module Azure::ARM::Web::Api_2016_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] How often the backup should be executed (e.g. for
       # weekly backup, this should be set to 7 and FrequencyUnit should be set
       # to Day). Default value: 7 .

@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageAccountTypes] The Storage Account type. Possible values
       # include: 'Standard_LRS', 'Premium_LRS'
       attr_accessor :storage_account_type

@@ -12,7 +12,6 @@ module Azure::ARM::Redis::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RebootType] Which Redis node(s) to reboot. Depending on this
       # value data loss is possible. Possible values include: 'PrimaryNode',
       # 'SecondaryNode', 'AllNodes'

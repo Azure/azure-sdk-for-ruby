@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The c onnector mapping resource format.
     #
-    class ConnectorMappingResourceFormat < MsRestAzure::ProxyResource
+    class ConnectorMappingResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The connector name.
       attr_accessor :connector_name
 

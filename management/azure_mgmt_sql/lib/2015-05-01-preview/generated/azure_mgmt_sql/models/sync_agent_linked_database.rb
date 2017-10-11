@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SyncMemberDbType] Type of the sync agent linked database.
       # Possible values include: 'AzureSqlDatabase', 'SqlServerDatabase'
       attr_accessor :database_type

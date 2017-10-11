@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobExecutionStatus] Gets or sets the job execution status.
       # Possible values include: 'Completed', 'Failed', 'Postponed'
       attr_accessor :status

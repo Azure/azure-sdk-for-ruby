@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the operation being performed on this
       # particular object. This name should match the action name that appears
       # in RBAC / the event service.

@@ -12,7 +12,6 @@ module Azure::ARM::Search::Api_2015_08_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Search service name to validate. Search service
       # names must only contain lowercase letters, digits or dashes, cannot use
       # dash as the first two or last one characters, cannot contain

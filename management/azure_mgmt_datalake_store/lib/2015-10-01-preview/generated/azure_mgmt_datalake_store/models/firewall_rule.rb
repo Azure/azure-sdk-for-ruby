@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the firewall rule's name.
       attr_accessor :name
 

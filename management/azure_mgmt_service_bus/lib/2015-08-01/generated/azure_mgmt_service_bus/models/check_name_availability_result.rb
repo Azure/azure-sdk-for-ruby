@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Value indicating namespace is availability, true if
       # the namespace is available; otherwise, false.
       attr_accessor :name_available

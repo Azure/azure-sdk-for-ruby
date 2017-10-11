@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecommendedActionCurrentState] Current state the recommended
       # action is in. Some commonly used states are: Active      -> recommended
       # action is active and no action has been taken yet. Pending     ->

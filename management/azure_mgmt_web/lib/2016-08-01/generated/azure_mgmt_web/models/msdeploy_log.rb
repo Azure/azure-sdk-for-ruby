@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # MSDeploy log
     #
-    class MSDeployLog < MsRestAzure::ProxyOnlyResource
+    class MSDeployLog < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<MSDeployLogEntry>] List of log entry messages
       attr_accessor :entries
 

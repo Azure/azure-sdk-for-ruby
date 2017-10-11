@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] Name of the pricing tier. Possible values include:
       # 'Standard', 'Premium'
       attr_accessor :name

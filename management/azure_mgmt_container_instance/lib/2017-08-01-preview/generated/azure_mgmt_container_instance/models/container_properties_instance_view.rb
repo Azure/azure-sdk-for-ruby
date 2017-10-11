@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The number of times that the container instance has
       # been restarted.
       attr_accessor :restart_count

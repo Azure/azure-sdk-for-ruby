@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # A common class for general resource information
     #
-    class VirtualNetworkGatewayConnection < MsRestAzure::Resource
+    class VirtualNetworkGatewayConnection < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VirtualNetworkGateway]
       attr_accessor :virtual_network_gateway1
 

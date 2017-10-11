@@ -12,7 +12,6 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] Name of the notification hub sku. Possible values
       # include: 'Free', 'Basic', 'Standard'
       attr_accessor :name

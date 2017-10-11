@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SyncFullSchemaTable>] List of tables in the database
       # full schema.
       attr_accessor :tables

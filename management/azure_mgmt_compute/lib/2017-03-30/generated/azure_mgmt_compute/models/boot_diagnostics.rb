@@ -16,7 +16,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Whether boot diagnostics should be enabled on the
       # Virtual Machine.
       attr_accessor :enabled

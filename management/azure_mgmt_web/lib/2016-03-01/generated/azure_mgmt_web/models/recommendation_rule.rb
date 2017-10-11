@@ -13,7 +13,6 @@ module Azure::ARM::Web::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Unique name of the rule.
       attr_accessor :name
 

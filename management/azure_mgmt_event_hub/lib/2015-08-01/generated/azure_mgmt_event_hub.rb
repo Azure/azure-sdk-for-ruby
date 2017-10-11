@@ -32,6 +32,7 @@ module Azure::ARM::EventHub::Api_2015_08_01
     autoload :Operation,                                          '2015-08-01/generated/azure_mgmt_event_hub/models/operation.rb'
     autoload :RegenerateKeysParameters,                           '2015-08-01/generated/azure_mgmt_event_hub/models/regenerate_keys_parameters.rb'
     autoload :OperationDisplay,                                   '2015-08-01/generated/azure_mgmt_event_hub/models/operation_display.rb'
+    autoload :Resource,                                           '2015-08-01/generated/azure_mgmt_event_hub/models/resource.rb'
     autoload :OperationListResult,                                '2015-08-01/generated/azure_mgmt_event_hub/models/operation_list_result.rb'
     autoload :NamespaceCreateOrUpdateParameters,                  '2015-08-01/generated/azure_mgmt_event_hub/models/namespace_create_or_update_parameters.rb'
     autoload :CheckNameAvailabilityResult,                        '2015-08-01/generated/azure_mgmt_event_hub/models/check_name_availability_result.rb'

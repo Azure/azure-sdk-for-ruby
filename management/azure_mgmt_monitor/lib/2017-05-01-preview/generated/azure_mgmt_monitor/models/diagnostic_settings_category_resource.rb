@@ -8,11 +8,10 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
     #
     # The diagnostic settings category resource.
     #
-    class DiagnosticSettingsCategoryResource < MsRestAzure::ProxyOnlyResource
+    class DiagnosticSettingsCategoryResource < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CategoryType] The type of the diagnostic settings category.
       # Possible values include: 'Metrics', 'Logs'
       attr_accessor :category_type
