@@ -52,23 +52,21 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @gateway = client.gateway
-        @node = client.node
-        @session = client.session
-        @power_shell = client.power_shell
+        @gateway = client_0.gateway
+        @node = client_0.node
+        @session = client_0.session
+        @power_shell = client_0.power_shell
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

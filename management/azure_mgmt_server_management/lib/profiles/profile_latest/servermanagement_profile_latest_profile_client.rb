@@ -14,7 +14,7 @@ module Azure::ServerManagement::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :servermanagement
+    attr_reader  :server_management
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ServerManagement::Management::Profile_Latest
 
       reset!(options)
 
-      @servermanagement = ServerManagementClass.new(self)
+      @server_management = ServerManagementClass.new(self)
     end
 
     def credentials

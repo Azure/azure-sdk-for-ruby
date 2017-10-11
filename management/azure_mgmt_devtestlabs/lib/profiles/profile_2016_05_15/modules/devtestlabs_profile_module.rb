@@ -187,31 +187,33 @@ module Azure::DevTestLabs::Management::Profile_2016_05_15
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @labs = client.labs
-        @global_schedules = client.global_schedules
-        @artifact_sources = client.artifact_sources
-        @arm_templates = client.arm_templates
-        @artifacts = client.artifacts
-        @costs = client.costs
-        @custom_images = client.custom_images
-        @formulas = client.formulas
-        @gallery_images = client.gallery_images
-        @notification_channels = client.notification_channels
-        @policy_sets = client.policy_sets
-        @policies = client.policies
-        @schedules = client.schedules
-        @service_runners = client.service_runners
-        @users = client.users
-        @disks = client.disks
-        @environments = client.environments
-        @secrets = client.secrets
-        @virtual_machines = client.virtual_machines
-        @virtual_machine_schedules = client.virtual_machine_schedules
-        @virtual_networks = client.virtual_networks
+        @labs = client_0.labs
+        @global_schedules = client_0.global_schedules
+        @artifact_sources = client_0.artifact_sources
+        @arm_templates = client_0.arm_templates
+        @artifacts = client_0.artifacts
+        @costs = client_0.costs
+        @custom_images = client_0.custom_images
+        @formulas = client_0.formulas
+        @gallery_images = client_0.gallery_images
+        @notification_channels = client_0.notification_channels
+        @policy_sets = client_0.policy_sets
+        @policies = client_0.policies
+        @schedules = client_0.schedules
+        @service_runners = client_0.service_runners
+        @users = client_0.users
+        @disks = client_0.disks
+        @environments = client_0.environments
+        @secrets = client_0.secrets
+        @virtual_machines = client_0.virtual_machines
+        @virtual_machine_schedules = client_0.virtual_machine_schedules
+        @virtual_networks = client_0.virtual_networks
+
         @model_classes = ModelClasses.new
       end
 
@@ -220,10 +222,15 @@ module Azure::DevTestLabs::Management::Profile_2016_05_15
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-05-15')
+        case version
+          when '2016-05-15'
+            client = Azure::ARM::DevTestLabs::Api_2016_05_15::DevTestLabsClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

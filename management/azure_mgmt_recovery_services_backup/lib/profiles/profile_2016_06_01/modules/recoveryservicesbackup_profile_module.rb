@@ -166,32 +166,34 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_06_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @item_level_recovery_connections = client.item_level_recovery_connections
-        @restores = client.restores
-        @protection_policy_operation_statuses = client.protection_policy_operation_statuses
-        @protection_policy_operation_results = client.protection_policy_operation_results
-        @protection_policies = client.protection_policies
-        @protection_container_operation_results = client.protection_container_operation_results
-        @protection_container_refresh_operation_results = client.protection_container_refresh_operation_results
-        @protection_containers = client.protection_containers
-        @recovery_points = client.recovery_points
-        @backups = client.backups
-        @protected_item_operation_statuses = client.protected_item_operation_statuses
-        @protected_item_operation_results = client.protected_item_operation_results
-        @protected_items = client.protected_items
-        @protectable_items = client.protectable_items
-        @export_jobs_operation_results = client.export_jobs_operation_results
-        @job_operation_results = client.job_operation_results
-        @jobs = client.jobs
-        @job_cancellations = client.job_cancellations
-        @job_details = client.job_details
-        @backup_operation_statuses = client.backup_operation_statuses
-        @backup_operation_results = client.backup_operation_results
-        @backup_engines = client.backup_engines
+        @item_level_recovery_connections = client_0.item_level_recovery_connections
+        @restores = client_0.restores
+        @protection_policy_operation_statuses = client_0.protection_policy_operation_statuses
+        @protection_policy_operation_results = client_0.protection_policy_operation_results
+        @protection_policies = client_0.protection_policies
+        @protection_container_operation_results = client_0.protection_container_operation_results
+        @protection_container_refresh_operation_results = client_0.protection_container_refresh_operation_results
+        @protection_containers = client_0.protection_containers
+        @recovery_points = client_0.recovery_points
+        @backups = client_0.backups
+        @protected_item_operation_statuses = client_0.protected_item_operation_statuses
+        @protected_item_operation_results = client_0.protected_item_operation_results
+        @protected_items = client_0.protected_items
+        @protectable_items = client_0.protectable_items
+        @export_jobs_operation_results = client_0.export_jobs_operation_results
+        @job_operation_results = client_0.job_operation_results
+        @jobs = client_0.jobs
+        @job_cancellations = client_0.job_cancellations
+        @job_details = client_0.job_details
+        @backup_operation_statuses = client_0.backup_operation_statuses
+        @backup_operation_results = client_0.backup_operation_results
+        @backup_engines = client_0.backup_engines
+
         @model_classes = ModelClasses.new
       end
 
@@ -200,10 +202,15 @@ module Azure::RecoveryServicesBackup::Management::Profile_2016_06_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-06-01')
+        case version
+          when '2016-06-01'
+            client = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::RecoveryServicesBackupClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

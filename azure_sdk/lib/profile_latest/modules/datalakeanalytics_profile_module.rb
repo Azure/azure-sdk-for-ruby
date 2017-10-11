@@ -54,24 +54,22 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @compute_policies = client.compute_policies
-        @firewall_rules = client.firewall_rules
-        @storage_accounts = client.storage_accounts
-        @data_lake_store_accounts = client.data_lake_store_accounts
-        @account = client.account
+        @compute_policies = client_0.compute_policies
+        @firewall_rules = client_0.firewall_rules
+        @storage_accounts = client_0.storage_accounts
+        @data_lake_store_accounts = client_0.data_lake_store_accounts
+        @account = client_0.account
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

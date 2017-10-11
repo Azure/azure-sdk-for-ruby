@@ -42,13 +42,15 @@ module Azure::CognitiveServices::Management::Profile_2017_04_18
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::CognitiveServices::Api_2017_04_18::CognitiveServicesManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::CognitiveServices::Api_2017_04_18::CognitiveServicesManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @accounts = client.accounts
-        @operations = client.operations
-        @check_sku_availability = client.check_sku_availability
+        @accounts = client_0.accounts
+        @operations = client_0.operations
+        @check_sku_availability = client_0.check_sku_availability
+
         @model_classes = ModelClasses.new
       end
 
@@ -57,10 +59,15 @@ module Azure::CognitiveServices::Management::Profile_2017_04_18
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::CognitiveServices::Api_2017_04_18::CognitiveServicesManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-04-18')
+        case version
+          when '2017-04-18'
+            client = Azure::ARM::CognitiveServices::Api_2017_04_18::CognitiveServicesManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

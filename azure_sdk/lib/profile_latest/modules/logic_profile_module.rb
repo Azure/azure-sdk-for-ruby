@@ -164,32 +164,30 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Logic::Api_2016_06_01::LogicManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Logic::Api_2016_06_01::LogicManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @workflows = client.workflows
-        @workflow_versions = client.workflow_versions
-        @workflow_triggers = client.workflow_triggers
-        @workflow_trigger_histories = client.workflow_trigger_histories
-        @workflow_runs = client.workflow_runs
-        @workflow_run_actions = client.workflow_run_actions
-        @integration_accounts = client.integration_accounts
-        @schemas = client.schemas
-        @maps = client.maps
-        @partners = client.partners
-        @agreements = client.agreements
-        @certificates = client.certificates
-        @sessions = client.sessions
+        @workflows = client_0.workflows
+        @workflow_versions = client_0.workflow_versions
+        @workflow_triggers = client_0.workflow_triggers
+        @workflow_trigger_histories = client_0.workflow_trigger_histories
+        @workflow_runs = client_0.workflow_runs
+        @workflow_run_actions = client_0.workflow_run_actions
+        @integration_accounts = client_0.integration_accounts
+        @schemas = client_0.schemas
+        @maps = client_0.maps
+        @partners = client_0.partners
+        @agreements = client_0.agreements
+        @certificates = client_0.certificates
+        @sessions = client_0.sessions
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

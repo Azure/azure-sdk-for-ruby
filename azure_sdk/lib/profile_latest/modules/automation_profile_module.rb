@@ -172,48 +172,46 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Automation::Api_2015_10_31::AutomationClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Automation::Api_2015_10_31::AutomationClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @automation_account_operations = client.automation_account_operations
-        @operations = client.operations
-        @statistics_operations = client.statistics_operations
-        @usages = client.usages
-        @certificate_operations = client.certificate_operations
-        @connection_operations = client.connection_operations
-        @connection_type_operations = client.connection_type_operations
-        @credential_operations = client.credential_operations
-        @dsc_compilation_job_operations = client.dsc_compilation_job_operations
-        @dsc_configuration_operations = client.dsc_configuration_operations
-        @agent_registration_information = client.agent_registration_information
-        @dsc_node_operations = client.dsc_node_operations
-        @node_reports = client.node_reports
-        @dsc_node_configuration_operations = client.dsc_node_configuration_operations
-        @hybrid_runbook_worker_group_operations = client.hybrid_runbook_worker_group_operations
-        @job_operations = client.job_operations
-        @job_stream_operations = client.job_stream_operations
-        @job_schedule_operations = client.job_schedule_operations
-        @activity_operations = client.activity_operations
-        @module_model_operations = client.module_model_operations
-        @object_data_types = client.object_data_types
-        @fields = client.fields
-        @runbook_draft_operations = client.runbook_draft_operations
-        @runbook_operations = client.runbook_operations
-        @test_job_streams = client.test_job_streams
-        @test_jobs = client.test_jobs
-        @schedule_operations = client.schedule_operations
-        @variable_operations = client.variable_operations
-        @webhook_operations = client.webhook_operations
+        @automation_account_operations = client_0.automation_account_operations
+        @operations = client_0.operations
+        @statistics_operations = client_0.statistics_operations
+        @usages = client_0.usages
+        @certificate_operations = client_0.certificate_operations
+        @connection_operations = client_0.connection_operations
+        @connection_type_operations = client_0.connection_type_operations
+        @credential_operations = client_0.credential_operations
+        @dsc_compilation_job_operations = client_0.dsc_compilation_job_operations
+        @dsc_configuration_operations = client_0.dsc_configuration_operations
+        @agent_registration_information = client_0.agent_registration_information
+        @dsc_node_operations = client_0.dsc_node_operations
+        @node_reports = client_0.node_reports
+        @dsc_node_configuration_operations = client_0.dsc_node_configuration_operations
+        @hybrid_runbook_worker_group_operations = client_0.hybrid_runbook_worker_group_operations
+        @job_operations = client_0.job_operations
+        @job_stream_operations = client_0.job_stream_operations
+        @job_schedule_operations = client_0.job_schedule_operations
+        @activity_operations = client_0.activity_operations
+        @module_model_operations = client_0.module_model_operations
+        @object_data_types = client_0.object_data_types
+        @fields = client_0.fields
+        @runbook_draft_operations = client_0.runbook_draft_operations
+        @runbook_operations = client_0.runbook_operations
+        @test_job_streams = client_0.test_job_streams
+        @test_jobs = client_0.test_jobs
+        @schedule_operations = client_0.schedule_operations
+        @variable_operations = client_0.variable_operations
+        @webhook_operations = client_0.webhook_operations
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

@@ -181,34 +181,32 @@ module Azure::Profiles::Management::Profile_Azure_Stack
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Compute::Api_2017_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Compute::Api_2017_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @availability_sets = client.availability_sets
-        @virtual_machine_extension_images = client.virtual_machine_extension_images
-        @virtual_machine_extensions = client.virtual_machine_extensions
-        @virtual_machine_images = client.virtual_machine_images
-        @usage_operations = client.usage_operations
-        @virtual_machine_sizes = client.virtual_machine_sizes
-        @images = client.images
-        @resource_skus = client.resource_skus
-        @virtual_machines = client.virtual_machines
-        @virtual_machine_scale_sets = client.virtual_machine_scale_sets
-        @virtual_machine_scale_set_extensions = client.virtual_machine_scale_set_extensions
-        @virtual_machine_scale_set_vms = client.virtual_machine_scale_set_vms
-        @disks = client.disks
-        @snapshots = client.snapshots
-        @virtual_machine_run_commands = client.virtual_machine_run_commands
+        @availability_sets = client_0.availability_sets
+        @virtual_machine_extension_images = client_0.virtual_machine_extension_images
+        @virtual_machine_extensions = client_0.virtual_machine_extensions
+        @virtual_machine_images = client_0.virtual_machine_images
+        @usage_operations = client_0.usage_operations
+        @virtual_machine_sizes = client_0.virtual_machine_sizes
+        @images = client_0.images
+        @resource_skus = client_0.resource_skus
+        @virtual_machines = client_0.virtual_machines
+        @virtual_machine_scale_sets = client_0.virtual_machine_scale_sets
+        @virtual_machine_scale_set_extensions = client_0.virtual_machine_scale_set_extensions
+        @virtual_machine_scale_set_vms = client_0.virtual_machine_scale_set_vms
+        @disks = client_0.disks
+        @snapshots = client_0.snapshots
+        @virtual_machine_run_commands = client_0.virtual_machine_run_commands
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

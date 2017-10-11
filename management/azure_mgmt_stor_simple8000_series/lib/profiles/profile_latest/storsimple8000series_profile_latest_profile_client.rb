@@ -14,7 +14,7 @@ module Azure::StorSimple8000Series::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :storsimple8000series
+    attr_reader  :stor_simple8000_series
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::StorSimple8000Series::Management::Profile_Latest
 
       reset!(options)
 
-      @storsimple8000series = StorSimple8000SeriesClass.new(self)
+      @stor_simple8000_series = StorSimple8000SeriesClass.new(self)
     end
 
     def credentials

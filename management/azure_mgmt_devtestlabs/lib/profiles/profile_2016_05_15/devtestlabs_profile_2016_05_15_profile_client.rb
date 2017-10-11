@@ -14,7 +14,7 @@ module Azure::DevTestLabs::Management::Profile_2016_05_15
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :devtestlabs
+    attr_reader  :dev_test_labs
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::DevTestLabs::Management::Profile_2016_05_15
 
       reset!(options)
 
-      @devtestlabs = DevTestLabsClass.new(self)
+      @dev_test_labs = DevTestLabsClass.new(self)
     end
 
     def credentials

@@ -56,17 +56,19 @@ module Azure::RecoveryServices::Management::Profile_2016_06_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @vault_certificates = client.vault_certificates
-        @registered_identities = client.registered_identities
-        @replication_usages = client.replication_usages
-        @vaults = client.vaults
-        @operations = client.operations
-        @vault_extended_info_operations = client.vault_extended_info_operations
-        @usages = client.usages
+        @vault_certificates = client_0.vault_certificates
+        @registered_identities = client_0.registered_identities
+        @replication_usages = client_0.replication_usages
+        @vaults = client_0.vaults
+        @operations = client_0.operations
+        @vault_extended_info_operations = client_0.vault_extended_info_operations
+        @usages = client_0.usages
+
         @model_classes = ModelClasses.new
       end
 
@@ -75,10 +77,15 @@ module Azure::RecoveryServices::Management::Profile_2016_06_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-06-01')
+        case version
+          when '2016-06-01'
+            client = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

@@ -14,7 +14,7 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :trafficmanager
+    attr_reader  :traffic_manager
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
 
       reset!(options)
 
-      @trafficmanager = TrafficManagerClass.new(self)
+      @traffic_manager = TrafficManagerClass.new(self)
     end
 
     def credentials

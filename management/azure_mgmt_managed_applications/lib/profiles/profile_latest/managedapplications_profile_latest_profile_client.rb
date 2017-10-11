@@ -14,7 +14,7 @@ module Azure::ManagedApplications::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :managedapplications
+    attr_reader  :managed_applications
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ManagedApplications::Management::Profile_Latest
 
       reset!(options)
 
-      @managedapplications = ManagedApplicationsClass.new(self)
+      @managed_applications = ManagedApplicationsClass.new(self)
     end
 
     def credentials

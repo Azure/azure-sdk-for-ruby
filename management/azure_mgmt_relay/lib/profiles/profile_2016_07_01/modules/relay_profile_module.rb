@@ -44,14 +44,16 @@ module Azure::Relay::Management::Profile_2016_07_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Relay::Api_2016_07_01::RelayManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Relay::Api_2016_07_01::RelayManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @operations = client.operations
-        @namespaces = client.namespaces
-        @hybrid_connections = client.hybrid_connections
-        @wcfrelays = client.wcfrelays
+        @operations = client_0.operations
+        @namespaces = client_0.namespaces
+        @hybrid_connections = client_0.hybrid_connections
+        @wcfrelays = client_0.wcfrelays
+
         @model_classes = ModelClasses.new
       end
 
@@ -60,10 +62,15 @@ module Azure::Relay::Management::Profile_2016_07_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Relay::Api_2016_07_01::RelayManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-07-01')
+        case version
+          when '2016-07-01'
+            client = Azure::ARM::Relay::Api_2016_07_01::RelayManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

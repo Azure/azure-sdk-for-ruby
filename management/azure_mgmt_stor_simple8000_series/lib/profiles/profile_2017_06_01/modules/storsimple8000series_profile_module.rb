@@ -191,26 +191,28 @@ module Azure::StorSimple8000Series::Management::Profile_2017_06_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::StorSimple8000Series::Api_2017_06_01::StorSimple8000SeriesManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::StorSimple8000Series::Api_2017_06_01::StorSimple8000SeriesManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @operations = client.operations
-        @managers = client.managers
-        @access_control_records = client.access_control_records
-        @alerts = client.alerts
-        @bandwidth_settings = client.bandwidth_settings
-        @cloud_appliances = client.cloud_appliances
-        @devices = client.devices
-        @device_settings = client.device_settings
-        @backup_policies = client.backup_policies
-        @backup_schedules = client.backup_schedules
-        @backups = client.backups
-        @hardware_component_groups = client.hardware_component_groups
-        @jobs = client.jobs
-        @volume_containers = client.volume_containers
-        @volumes = client.volumes
-        @storage_account_credentials = client.storage_account_credentials
+        @operations = client_0.operations
+        @managers = client_0.managers
+        @access_control_records = client_0.access_control_records
+        @alerts = client_0.alerts
+        @bandwidth_settings = client_0.bandwidth_settings
+        @cloud_appliances = client_0.cloud_appliances
+        @devices = client_0.devices
+        @device_settings = client_0.device_settings
+        @backup_policies = client_0.backup_policies
+        @backup_schedules = client_0.backup_schedules
+        @backups = client_0.backups
+        @hardware_component_groups = client_0.hardware_component_groups
+        @jobs = client_0.jobs
+        @volume_containers = client_0.volume_containers
+        @volumes = client_0.volumes
+        @storage_account_credentials = client_0.storage_account_credentials
+
         @model_classes = ModelClasses.new
       end
 
@@ -219,10 +221,15 @@ module Azure::StorSimple8000Series::Management::Profile_2017_06_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::StorSimple8000Series::Api_2017_06_01::StorSimple8000SeriesManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-06-01')
+        case version
+          when '2017-06-01'
+            client = Azure::ARM::StorSimple8000Series::Api_2017_06_01::StorSimple8000SeriesManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

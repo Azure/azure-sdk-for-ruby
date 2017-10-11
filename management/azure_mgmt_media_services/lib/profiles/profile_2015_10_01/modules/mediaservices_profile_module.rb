@@ -36,12 +36,14 @@ module Azure::MediaServices::Management::Profile_2015_10_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::MediaServices::Api_2015_10_01::MediaServicesManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::MediaServices::Api_2015_10_01::MediaServicesManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @operations = client.operations
-        @media_service_operations = client.media_service_operations
+        @operations = client_0.operations
+        @media_service_operations = client_0.media_service_operations
+
         @model_classes = ModelClasses.new
       end
 
@@ -50,10 +52,15 @@ module Azure::MediaServices::Management::Profile_2015_10_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::MediaServices::Api_2015_10_01::MediaServicesManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-10-01')
+        case version
+          when '2015-10-01'
+            client = Azure::ARM::MediaServices::Api_2015_10_01::MediaServicesManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

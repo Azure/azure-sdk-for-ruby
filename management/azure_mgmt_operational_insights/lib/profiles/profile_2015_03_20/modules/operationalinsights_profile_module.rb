@@ -41,13 +41,15 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::OperationalInsights::Api_2015_03_20::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::OperationalInsights::Api_2015_03_20::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @storage_insights = client.storage_insights
-        @workspaces = client.workspaces
-        @saved_searches = client.saved_searches
+        @storage_insights = client_0.storage_insights
+        @workspaces = client_0.workspaces
+        @saved_searches = client_0.saved_searches
+
         @model_classes = ModelClasses.new
       end
 
@@ -56,10 +58,15 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::OperationalInsights::Api_2015_03_20::OperationalInsightsManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-03-20')
+        case version
+          when '2015-03-20'
+            client = Azure::ARM::OperationalInsights::Api_2015_03_20::OperationalInsightsManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

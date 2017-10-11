@@ -25,7 +25,7 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
+    attr_reader <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -38,9 +38,9 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
 
       <%- @class_names.each do |class_name| -%>
       <%- if @individual_gem_profile -%>
-      @<%= class_name.downcase %> = <%= "#{class_name}" %>Class.new(self)
+      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= "#{class_name}" %>Class.new(self)
       <%- else -%>
-      @<%= class_name.downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self)
+      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self)
       <%- end -%>
       <%- end -%>
     end

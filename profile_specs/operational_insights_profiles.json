@@ -13,6 +13,7 @@
     "name": "Profile_2015_11_01_Preview",
     "resourceTypes": {
       "Microsoft.OperationalInsights" : {
+        "2015-03-20": ["*"],
         "2015-11-01-preview": ["*"]
       }
     },
@@ -23,6 +24,7 @@
     "name": "Profile_Latest",
     "resourceTypes": {
       "Microsoft.OperationalInsights" : {
+        "2015-03-20": ["*"],
         "2015-11-01-preview": ["*"]
       }
     },

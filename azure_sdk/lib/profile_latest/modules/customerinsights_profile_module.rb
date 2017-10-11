@@ -134,35 +134,33 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::CustomerInsights::Api_2017_04_26::CustomerInsightsManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::CustomerInsights::Api_2017_04_26::CustomerInsightsManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @hubs = client.hubs
-        @profiles = client.profiles
-        @interactions = client.interactions
-        @relationships = client.relationships
-        @relationship_links = client.relationship_links
-        @authorization_policies = client.authorization_policies
-        @connectors = client.connectors
-        @connector_mappings = client.connector_mappings
-        @kpi = client.kpi
-        @widget_types = client.widget_types
-        @views = client.views
-        @links = client.links
-        @roles = client.roles
-        @role_assignments = client.role_assignments
-        @images = client.images
-        @predictions = client.predictions
+        @hubs = client_0.hubs
+        @profiles = client_0.profiles
+        @interactions = client_0.interactions
+        @relationships = client_0.relationships
+        @relationship_links = client_0.relationship_links
+        @authorization_policies = client_0.authorization_policies
+        @connectors = client_0.connectors
+        @connector_mappings = client_0.connector_mappings
+        @kpi = client_0.kpi
+        @widget_types = client_0.widget_types
+        @views = client_0.views
+        @links = client_0.links
+        @roles = client_0.roles
+        @role_assignments = client_0.role_assignments
+        @images = client_0.images
+        @predictions = client_0.predictions
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

@@ -14,7 +14,7 @@ module Azure::RecoveryServicesBackup::Management::Profile_2017_07_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :recoveryservicesbackup
+    attr_reader  :recovery_services_backup
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::RecoveryServicesBackup::Management::Profile_2017_07_01
 
       reset!(options)
 
-      @recoveryservicesbackup = RecoveryServicesBackupClass.new(self)
+      @recovery_services_backup = RecoveryServicesBackupClass.new(self)
     end
 
     def credentials

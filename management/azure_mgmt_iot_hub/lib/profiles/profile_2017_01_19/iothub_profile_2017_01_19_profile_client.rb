@@ -14,7 +14,7 @@ module Azure::IotHub::Management::Profile_2017_01_19
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :iothub
+    attr_reader  :iot_hub
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::IotHub::Management::Profile_2017_01_19
 
       reset!(options)
 
-      @iothub = IotHubClass.new(self)
+      @iot_hub = IotHubClass.new(self)
     end
 
     def credentials

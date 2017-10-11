@@ -14,7 +14,7 @@ module Azure::ServiceBus::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :servicebus
+    attr_reader  :service_bus
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ServiceBus::Management::Profile_Latest
 
       reset!(options)
 
-      @servicebus = ServiceBusClass.new(self)
+      @service_bus = ServiceBusClass.new(self)
     end
 
     def credentials

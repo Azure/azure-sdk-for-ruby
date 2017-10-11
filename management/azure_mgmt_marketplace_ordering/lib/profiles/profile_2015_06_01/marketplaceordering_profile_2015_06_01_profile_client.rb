@@ -14,7 +14,7 @@ module Azure::MarketplaceOrdering::Management::Profile_2015_06_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :marketplaceordering
+    attr_reader  :marketplace_ordering
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::MarketplaceOrdering::Management::Profile_2015_06_01
 
       reset!(options)
 
-      @marketplaceordering = MarketplaceOrderingClass.new(self)
+      @marketplace_ordering = MarketplaceOrderingClass.new(self)
     end
 
     def credentials

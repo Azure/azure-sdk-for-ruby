@@ -33,12 +33,14 @@ module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @management_groups = client.management_groups
-        @operations = client.operations
+        @management_groups = client_0.management_groups
+        @operations = client_0.operations
+
         @model_classes = ModelClasses.new
       end
 
@@ -47,10 +49,15 @@ module Azure::ResourcesManagement::Management::Profile_2017_08_31_Preview
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-08-31-preview')
+        case version
+          when '2017-08-31-preview'
+            client = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::ManagementGroupsAPI.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

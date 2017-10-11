@@ -21,6 +21,7 @@
         "2016-09-01": ["*"]
       },
       "Microsoft.Policy" : {
+        "2016-12-01": ["*"],
         "2017-06-01-preview": ["*"]
       },
       "Microsoft.Resources" : {
@@ -143,6 +144,9 @@
         "2014-12-01": ["*"]
       },
       "Microsoft.Monitor": {
+        "2015-04-01": ["*"],
+        "2016-03-01": ["*"],
+        "2017-04-01": ["*"],
         "2017-05-01-preview": ["*"]
       },
       "Microsoft.Network": {
@@ -152,18 +156,23 @@
         "2017-04-01": ["*"]
       },
       "Microsoft.OperationalInsights": {
+        "2015-03-20": ["*"],
         "2015-11-01-preview": ["*"]
       },
       "Microsoft.Policy": {
+        "2016-12-01": ["*"],
         "2017-06-01-preview": ["*"]
       },
       "Microsoft.PowerBiEmbedded": {
         "2016-01-29": ["*"]
       },
       "Microsoft.RecoveryServices": {
+        "2016-06-01": ["*"],
         "2016-12-01": ["*"]
       },
       "Microsoft.RecoveryServicesBackup": {
+        "2016-08-10": ["*"],
+        "2016-12-01": ["*"],
         "2017-07-01": ["*"]
       },
       "Microsoft.RecoveryServicesSiteRecovery": {
@@ -197,6 +206,8 @@
         "2016-09-01": ["*"]
       },
       "Microsoft.SQL": {
+        "2014-04-01": ["*"],
+        "2015-05-01-preview": ["*"],
         "2017-03-01-preview": ["*"]
       },
       "Microsoft.StorSimple8000Series": {
@@ -212,9 +223,14 @@
         "2016-06-01": ["*"]
       },
       "Microsoft.TrafficManager": {
+        "2017-05-01": ["*"],
         "2017-09-01-preview": ["*"]
       },
       "Microsoft.Web": {
+        "2015-04-01": ["*"],
+        "2015-08-01": ["*"],
+        "2016-03-01": ["*"],
+        "2016-08-01": ["*"],
         "2016-09-01": ["*"]
       }
     },

@@ -14,7 +14,7 @@ module Azure::EventGrid::Management::Profile_2017_09_15_Preview
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :eventgrid
+    attr_reader  :event_grid
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::EventGrid::Management::Profile_2017_09_15_Preview
 
       reset!(options)
 
-      @eventgrid = EventGridClass.new(self)
+      @event_grid = EventGridClass.new(self)
     end
 
     def credentials

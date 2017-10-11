@@ -45,15 +45,17 @@ module Azure::Redis::Management::Profile_2016_04_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Redis::Api_2016_04_01::RedisManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Redis::Api_2016_04_01::RedisManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @operations = client.operations
-        @redis = client.redis
-        @firewall_rules = client.firewall_rules
-        @redis_firewall_rule_operations = client.redis_firewall_rule_operations
-        @patch_schedules = client.patch_schedules
+        @operations = client_0.operations
+        @redis = client_0.redis
+        @firewall_rules = client_0.firewall_rules
+        @redis_firewall_rule_operations = client_0.redis_firewall_rule_operations
+        @patch_schedules = client_0.patch_schedules
+
         @model_classes = ModelClasses.new
       end
 
@@ -62,10 +64,15 @@ module Azure::Redis::Management::Profile_2016_04_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Redis::Api_2016_04_01::RedisManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-04-01')
+        case version
+          when '2016-04-01'
+            client = Azure::ARM::Redis::Api_2016_04_01::RedisManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

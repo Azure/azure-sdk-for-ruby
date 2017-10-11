@@ -14,7 +14,7 @@ module Azure::MediaServices::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :mediaservices
+    attr_reader  :media_services
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::MediaServices::Management::Profile_Latest
 
       reset!(options)
 
-      @mediaservices = MediaServicesClass.new(self)
+      @media_services = MediaServicesClass.new(self)
     end
 
     def credentials

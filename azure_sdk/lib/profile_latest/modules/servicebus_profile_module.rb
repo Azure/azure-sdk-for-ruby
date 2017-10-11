@@ -72,28 +72,26 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::ServiceBus::Api_2017_04_01::ServiceBusManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::ServiceBus::Api_2017_04_01::ServiceBusManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @operations = client.operations
-        @namespaces = client.namespaces
-        @queues = client.queues
-        @topics = client.topics
-        @subscriptions = client.subscriptions
-        @rules = client.rules
-        @regions = client.regions
-        @premium_messaging_regions_operations = client.premium_messaging_regions_operations
-        @event_hubs = client.event_hubs
+        @operations = client_0.operations
+        @namespaces = client_0.namespaces
+        @queues = client_0.queues
+        @topics = client_0.topics
+        @subscriptions = client_0.subscriptions
+        @rules = client_0.rules
+        @regions = client_0.regions
+        @premium_messaging_regions_operations = client_0.premium_messaging_regions_operations
+        @event_hubs = client_0.event_hubs
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

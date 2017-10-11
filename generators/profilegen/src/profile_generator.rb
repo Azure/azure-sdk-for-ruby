@@ -15,7 +15,7 @@ class ProfileGenerator
   attr_accessor :file_names, :profile_name, :class_names, :individual_gem_profile
   attr_accessor :module_require, :class_name, :operation_types, :default_rp_client_version
   attr_accessor :management_client, :model_types, :versions_clients_mapper
-  attr_accessor :profile_version, :spec_includes, :module_definition_file_name
+  attr_accessor :profile_version, :spec_includes, :module_definition_file_name, :clients_ops_mapper
 
   def initialize(profile, dir_metadata)
     @profile_name = profile['name']
@@ -28,7 +28,7 @@ class ProfileGenerator
     @default_rp_client_version = ''
     @file_names, @model_types, @operation_types = [], [], []
     @spec_includes, @class_names = [], []
-    @versions_clients_mapper = {}
+    @versions_clients_mapper, @clients_ops_mapper= {}, {}
   end
 
   #
@@ -82,14 +82,43 @@ class ProfileGenerator
         end
 
         generate_model_types(resource_provider, resource_type_version)
+        @clients_ops_mapper[@management_client] = @operation_types.clone
+        @operation_types = []
+        @management_client = ''
+      end
+
+      @clients_ops_mapper.each_with_index do |(key, operation_types), index|
+          operation_types.each do |operation_type|
+            if(check_available_after_index(operation_type, index))
+              operation_type[:operation_name_ruby] = 'DO_NOT_ADD'
+            end
+          end
       end
 
       file = get_module_file resource_provider
       file.write(get_renderer(ProfileTemplates.module_template))
       @model_types, @operation_types, @versions_clients_mapper = [], [], {}
+      @clients_ops_mapper = {}
       @management_client = ''
       @default_rp_client_version = ''
     end
+  end
+
+  def check_available_after_index(operation_type_to_check, index_after_to_compare)
+    @clients_ops_mapper.each_with_index do |(key, operation_types), index|
+      if(index <= index_after_to_compare)
+        next
+      end
+
+      operation_types.each do |operation_type|
+        if(operation_type[:operation_name_ruby] == operation_type_to_check[:operation_name_ruby] )
+          return true
+        end
+      end
+
+    end
+
+    false
   end
 
   #
@@ -138,11 +167,11 @@ class ProfileGenerator
     operation_body =  "#{module_obj.name}::#{operation}"
     operation_name_ruby = get_model_name(operation)
 
-    if(check_for_availability(@operation_types, operation_name_ruby))
-      raise "#{operation_name} operation is appearing twice for the RP: #{resource_provider}."
-    else
-      @operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
+    if(check_and_delete_if_available(@operation_types, operation_name_ruby))
+      puts "WARNING: #{operation_name} operation is appearing twice for the RP: #{resource_provider}."
     end
+
+    @operation_types << { 'operation_name': operation, 'operation_name_ruby': operation_name_ruby, 'operation_body': operation_body}
   end
 
   def get_namespace(resource_provider, resource_type_version, is_models)
@@ -164,11 +193,11 @@ class ProfileGenerator
         model_body = "#{obj.name}::#{const_name.to_s}"
         method_name = get_model_name(const_name.to_s)
 
-        if(check_for_availability(@model_types, model_name))
-          raise "#{model_name} Model is appearing twice for the RP: #{resource_provider}."
-        else
-          @model_types << {'model_name': model_name, 'model_body': model_body, 'method_name': method_name}
+        if(check_and_delete_if_available(@model_types, model_name))
+          puts "WARNING: #{model_name} Model is appearing twice for the RP: #{resource_provider}."
         end
+
+        @model_types << {'model_name': model_name, 'model_body': model_body, 'method_name': method_name}
     end
   end
 
@@ -185,14 +214,16 @@ class ProfileGenerator
     File.new(file_name, 'w')
   end
 
-  def check_for_availability(array_of_hash, key)
+  def check_and_delete_if_available(array_of_hash, key)
     array_of_hash.each do |hash_entry|
       if(hash_entry.keys.include?(:model_name))
         if(hash_entry[:model_name] == key)
+          array_of_hash.delete(hash_entry)
           return true
         end
       elsif(hash_entry.keys.include?(:method_name))
         if(hash_entry[:method_name] == key)
+          array_of_hash.delete(hash_entry)
           return true
         end
       end

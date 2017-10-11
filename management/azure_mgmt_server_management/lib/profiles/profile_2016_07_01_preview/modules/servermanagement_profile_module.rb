@@ -51,14 +51,16 @@ module Azure::ServerManagement::Management::Profile_2016_07_01_Preview
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @gateway = client.gateway
-        @node = client.node
-        @session = client.session
-        @power_shell = client.power_shell
+        @gateway = client_0.gateway
+        @node = client_0.node
+        @session = client_0.session
+        @power_shell = client_0.power_shell
+
         @model_classes = ModelClasses.new
       end
 
@@ -67,10 +69,15 @@ module Azure::ServerManagement::Management::Profile_2016_07_01_Preview
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-07-01-preview')
+        case version
+          when '2016-07-01-preview'
+            client = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

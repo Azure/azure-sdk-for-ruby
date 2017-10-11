@@ -27,12 +27,14 @@ module Azure::TrafficManager::Management::Profile_2015_11_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::TrafficManager::Api_2015_11_01::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::TrafficManager::Api_2015_11_01::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @endpoints = client.endpoints
-        @profiles = client.profiles
+        @endpoints = client_0.endpoints
+        @profiles = client_0.profiles
+
         @model_classes = ModelClasses.new
       end
 
@@ -41,10 +43,15 @@ module Azure::TrafficManager::Management::Profile_2015_11_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::TrafficManager::Api_2015_11_01::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-11-01')
+        case version
+          when '2015-11-01'
+            client = Azure::ARM::TrafficManager::Api_2015_11_01::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

@@ -47,23 +47,21 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::EventGrid::Api_2017_09_15_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::EventGrid::Api_2017_09_15_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @event_subscriptions = client.event_subscriptions
-        @operations = client.operations
-        @topics = client.topics
-        @topic_types = client.topic_types
+        @event_subscriptions = client_0.event_subscriptions
+        @operations = client_0.operations
+        @topics = client_0.topics
+        @topic_types = client_0.topic_types
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

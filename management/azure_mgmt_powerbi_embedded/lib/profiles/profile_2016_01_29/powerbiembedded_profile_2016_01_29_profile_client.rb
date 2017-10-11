@@ -14,7 +14,7 @@ module Azure::PowerBiEmbedded::Management::Profile_2016_01_29
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :powerbiembedded
+    attr_reader  :power_bi_embedded
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::PowerBiEmbedded::Management::Profile_2016_01_29
 
       reset!(options)
 
-      @powerbiembedded = PowerBiEmbeddedClass.new(self)
+      @power_bi_embedded = PowerBiEmbeddedClass.new(self)
     end
 
     def credentials

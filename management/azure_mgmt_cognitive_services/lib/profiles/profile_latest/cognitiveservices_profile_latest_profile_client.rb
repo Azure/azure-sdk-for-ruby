@@ -14,7 +14,7 @@ module Azure::CognitiveServices::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :cognitiveservices
+    attr_reader  :cognitive_services
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::CognitiveServices::Management::Profile_Latest
 
       reset!(options)
 
-      @cognitiveservices = CognitiveServicesClass.new(self)
+      @cognitive_services = CognitiveServicesClass.new(self)
     end
 
     def credentials

@@ -48,12 +48,14 @@ module Azure::Network::Management::Profile_2017_03_30
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Network::Api_2017_03_30::NetworkManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Network::Api_2017_03_30::NetworkManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @network_interfaces = client.network_interfaces
-        @public_ipaddresses = client.public_ipaddresses
+        @network_interfaces = client_0.network_interfaces
+        @public_ipaddresses = client_0.public_ipaddresses
+
         @model_classes = ModelClasses.new
       end
 
@@ -62,10 +64,15 @@ module Azure::Network::Management::Profile_2017_03_30
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Network::Api_2017_03_30::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-03-30')
+        case version
+          when '2017-03-30'
+            client = Azure::ARM::Network::Api_2017_03_30::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses
