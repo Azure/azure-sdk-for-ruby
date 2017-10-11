@@ -46,6 +46,7 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
       ServiceBusDataSourceProperties = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::ServiceBusDataSourceProperties
       InputListResult = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::InputListResult
       SubscriptionQuotasListResult = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::SubscriptionQuotasListResult
+      Resource = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Resource
       OAuthBasedDataSourceProperties = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::OAuthBasedDataSourceProperties
       Input = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Input
       Transformation = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation
@@ -223,6 +224,9 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
         end
         def subscription_quotas_list_result
           Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::SubscriptionQuotasListResult
+        end
+        def resource
+          Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Resource
         end
         def oauth_based_data_source_properties
           Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::OAuthBasedDataSourceProperties

@@ -10,6 +10,7 @@ module Azure::Billing::Management::Profile_2017_04_24_Preview
     Operations = Azure::ARM::Billing::Api_2017_04_24_preview::Operations
 
     module Models
+      Resource = Azure::ARM::Billing::Api_2017_04_24_preview::Models::Resource
       BillingPeriodsListResult = Azure::ARM::Billing::Api_2017_04_24_preview::Models::BillingPeriodsListResult
       InvoicesListResult = Azure::ARM::Billing::Api_2017_04_24_preview::Models::InvoicesListResult
       ErrorDetails = Azure::ARM::Billing::Api_2017_04_24_preview::Models::ErrorDetails
@@ -59,6 +60,9 @@ module Azure::Billing::Management::Profile_2017_04_24_Preview
       end
 
       class ModelClasses
+        def resource
+          Azure::ARM::Billing::Api_2017_04_24_preview::Models::Resource
+        end
         def billing_periods_list_result
           Azure::ARM::Billing::Api_2017_04_24_preview::Models::BillingPeriodsListResult
         end

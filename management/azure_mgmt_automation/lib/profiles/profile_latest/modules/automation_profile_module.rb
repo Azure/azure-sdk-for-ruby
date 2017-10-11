@@ -99,6 +99,7 @@ module Azure::Automation::Management::Profile_Latest
       JobStream = Azure::ARM::Automation::Api_2015_10_31::Models::JobStream
       DscConfigurationParameter = Azure::ARM::Automation::Api_2015_10_31::Models::DscConfigurationParameter
       JobStreamListResult = Azure::ARM::Automation::Api_2015_10_31::Models::JobStreamListResult
+      Resource = Azure::ARM::Automation::Api_2015_10_31::Models::Resource
       ModuleCreateOrUpdateParameters = Azure::ARM::Automation::Api_2015_10_31::Models::ModuleCreateOrUpdateParameters
       OperationListResult = Azure::ARM::Automation::Api_2015_10_31::Models::OperationListResult
       ModuleListResult = Azure::ARM::Automation::Api_2015_10_31::Models::ModuleListResult
@@ -125,6 +126,7 @@ module Azure::Automation::Management::Profile_Latest
       CertificateCreateOrUpdateParameters = Azure::ARM::Automation::Api_2015_10_31::Models::CertificateCreateOrUpdateParameters
       ScheduleListResult = Azure::ARM::Automation::Api_2015_10_31::Models::ScheduleListResult
       ConnectionTypeListResult = Azure::ARM::Automation::Api_2015_10_31::Models::ConnectionTypeListResult
+      SubResource = Azure::ARM::Automation::Api_2015_10_31::Models::SubResource
       ActivityOutputType = Azure::ARM::Automation::Api_2015_10_31::Models::ActivityOutputType
       TestJobCreateParameters = Azure::ARM::Automation::Api_2015_10_31::Models::TestJobCreateParameters
       DscConfigurationAssociationProperty = Azure::ARM::Automation::Api_2015_10_31::Models::DscConfigurationAssociationProperty
@@ -415,6 +417,9 @@ module Azure::Automation::Management::Profile_Latest
         def job_stream_list_result
           Azure::ARM::Automation::Api_2015_10_31::Models::JobStreamListResult
         end
+        def resource
+          Azure::ARM::Automation::Api_2015_10_31::Models::Resource
+        end
         def module_create_or_update_parameters
           Azure::ARM::Automation::Api_2015_10_31::Models::ModuleCreateOrUpdateParameters
         end
@@ -492,6 +497,9 @@ module Azure::Automation::Management::Profile_Latest
         end
         def connection_type_list_result
           Azure::ARM::Automation::Api_2015_10_31::Models::ConnectionTypeListResult
+        end
+        def sub_resource
+          Azure::ARM::Automation::Api_2015_10_31::Models::SubResource
         end
         def activity_output_type
           Azure::ARM::Automation::Api_2015_10_31::Models::ActivityOutputType

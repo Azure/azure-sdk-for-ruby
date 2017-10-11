@@ -20,6 +20,7 @@ module Azure::DataLakeStore::Management::Profile_Latest
       EncryptionIdentity = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::EncryptionIdentity
       EncryptionConfig = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::EncryptionConfig
       SubResource = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::SubResource
+      Resource = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::Resource
       KeyVaultMetaInfo = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::KeyVaultMetaInfo
       DataLakeStoreAccountListResult = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::DataLakeStoreAccountListResult
       ErrorDetails = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::ErrorDetails
@@ -104,6 +105,9 @@ module Azure::DataLakeStore::Management::Profile_Latest
         end
         def sub_resource
           Azure::ARM::DataLakeStore::Api_2016_11_01::Models::SubResource
+        end
+        def resource
+          Azure::ARM::DataLakeStore::Api_2016_11_01::Models::Resource
         end
         def key_vault_meta_info
           Azure::ARM::DataLakeStore::Api_2016_11_01::Models::KeyVaultMetaInfo

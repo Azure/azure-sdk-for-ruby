@@ -26,6 +26,7 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
       SavedSearchesListResult = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SavedSearchesListResult
       StorageInsightListResult = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightListResult
       SearchMetadata = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchMetadata
+      Resource = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::Resource
       SearchResultsResponse = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchResultsResponse
       ProxyResource = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::ProxyResource
       StorageInsight = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsight
@@ -117,6 +118,9 @@ module Azure::OperationalInsights::Management::Profile_2015_03_20
         end
         def search_metadata
           Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchMetadata
+        end
+        def resource
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::Resource
         end
         def search_results_response
           Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchResultsResponse

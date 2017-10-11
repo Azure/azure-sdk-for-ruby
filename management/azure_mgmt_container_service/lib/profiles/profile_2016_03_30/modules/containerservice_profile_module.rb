@@ -9,6 +9,7 @@ module Azure::ContainerService::Management::Profile_2016_03_30
 
     module Models
       ContainerServiceSshConfiguration = Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceSshConfiguration
+      Resource = Azure::ARM::ContainerService::Api_2016_03_30::Models::Resource
       ContainerServiceLinuxProfile = Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceLinuxProfile
       ContainerServiceMasterProfile = Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceMasterProfile
       ContainerServiceVMDiagnostics = Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceVMDiagnostics
@@ -60,6 +61,9 @@ module Azure::ContainerService::Management::Profile_2016_03_30
       class ModelClasses
         def container_service_ssh_configuration
           Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceSshConfiguration
+        end
+        def resource
+          Azure::ARM::ContainerService::Api_2016_03_30::Models::Resource
         end
         def container_service_linux_profile
           Azure::ARM::ContainerService::Api_2016_03_30::Models::ContainerServiceLinuxProfile

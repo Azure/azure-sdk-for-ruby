@@ -32,6 +32,7 @@ module Azure::Network::Management::Profile_2017_03_01
 
     module Models
       SecurityRuleListResult = Azure::ARM::Network::Api_2017_03_01::Models::SecurityRuleListResult
+      SubResource = Azure::ARM::Network::Api_2017_03_01::Models::SubResource
       NetworkSecurityGroupListResult = Azure::ARM::Network::Api_2017_03_01::Models::NetworkSecurityGroupListResult
       ExpressRouteCircuitRoutesTableSummary = Azure::ARM::Network::Api_2017_03_01::Models::ExpressRouteCircuitRoutesTableSummary
       ExpressRouteCircuitsRoutesTableSummaryListResult = Azure::ARM::Network::Api_2017_03_01::Models::ExpressRouteCircuitsRoutesTableSummaryListResult
@@ -73,6 +74,7 @@ module Azure::Network::Management::Profile_2017_03_01
       EffectiveNetworkSecurityGroup = Azure::ARM::Network::Api_2017_03_01::Models::EffectiveNetworkSecurityGroup
       VirtualNetworkPeeringListResult = Azure::ARM::Network::Api_2017_03_01::Models::VirtualNetworkPeeringListResult
       EffectiveNetworkSecurityGroupListResult = Azure::ARM::Network::Api_2017_03_01::Models::EffectiveNetworkSecurityGroupListResult
+      Resource = Azure::ARM::Network::Api_2017_03_01::Models::Resource
       EffectiveRoute = Azure::ARM::Network::Api_2017_03_01::Models::EffectiveRoute
       SubnetListResult = Azure::ARM::Network::Api_2017_03_01::Models::SubnetListResult
       EffectiveRouteListResult = Azure::ARM::Network::Api_2017_03_01::Models::EffectiveRouteListResult
@@ -316,6 +318,9 @@ module Azure::Network::Management::Profile_2017_03_01
         def security_rule_list_result
           Azure::ARM::Network::Api_2017_03_01::Models::SecurityRuleListResult
         end
+        def sub_resource
+          Azure::ARM::Network::Api_2017_03_01::Models::SubResource
+        end
         def network_security_group_list_result
           Azure::ARM::Network::Api_2017_03_01::Models::NetworkSecurityGroupListResult
         end
@@ -438,6 +443,9 @@ module Azure::Network::Management::Profile_2017_03_01
         end
         def effective_network_security_group_list_result
           Azure::ARM::Network::Api_2017_03_01::Models::EffectiveNetworkSecurityGroupListResult
+        end
+        def resource
+          Azure::ARM::Network::Api_2017_03_01::Models::Resource
         end
         def effective_route
           Azure::ARM::Network::Api_2017_03_01::Models::EffectiveRoute

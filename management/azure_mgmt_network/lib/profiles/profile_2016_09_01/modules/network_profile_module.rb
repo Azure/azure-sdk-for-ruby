@@ -29,7 +29,9 @@ module Azure::Network::Management::Profile_2016_09_01
 
     module Models
       EffectiveNetworkSecurityGroup = Azure::ARM::Network::Api_2016_09_01::Models::EffectiveNetworkSecurityGroup
+      Resource = Azure::ARM::Network::Api_2016_09_01::Models::Resource
       EffectiveNetworkSecurityGroupListResult = Azure::ARM::Network::Api_2016_09_01::Models::EffectiveNetworkSecurityGroupListResult
+      SubResource = Azure::ARM::Network::Api_2016_09_01::Models::SubResource
       EffectiveRoute = Azure::ARM::Network::Api_2016_09_01::Models::EffectiveRoute
       ExpressRouteCircuitRoutesTable = Azure::ARM::Network::Api_2016_09_01::Models::ExpressRouteCircuitRoutesTable
       ExpressRouteCircuitsRoutesTableListResult = Azure::ARM::Network::Api_2016_09_01::Models::ExpressRouteCircuitsRoutesTableListResult
@@ -274,8 +276,14 @@ module Azure::Network::Management::Profile_2016_09_01
         def effective_network_security_group
           Azure::ARM::Network::Api_2016_09_01::Models::EffectiveNetworkSecurityGroup
         end
+        def resource
+          Azure::ARM::Network::Api_2016_09_01::Models::Resource
+        end
         def effective_network_security_group_list_result
           Azure::ARM::Network::Api_2016_09_01::Models::EffectiveNetworkSecurityGroupListResult
+        end
+        def sub_resource
+          Azure::ARM::Network::Api_2016_09_01::Models::SubResource
         end
         def effective_route
           Azure::ARM::Network::Api_2016_09_01::Models::EffectiveRoute

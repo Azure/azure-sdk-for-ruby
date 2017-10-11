@@ -4,7 +4,7 @@
 
 require 'azure_mgmt_links'
 
-module Azure::Profiles::Management::Profile_Azure_Stack
+module Azure::Profiles::Management::Profile_2016_09_01
   module Links
     ResourceLinks = Azure::ARM::Links::Api_2016_09_01::ResourceLinks
 

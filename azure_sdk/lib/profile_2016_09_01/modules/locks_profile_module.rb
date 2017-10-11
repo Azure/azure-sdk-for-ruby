@@ -4,15 +4,14 @@
 
 require 'azure_mgmt_locks'
 
-module Azure::Profiles::Management::Profile_Azure_Stack
+module Azure::Profiles::Management::Profile_2016_09_01
   module Locks
-    ManagementLocks = Azure::ARM::Locks::Api_2016_09_01::ManagementLocks
+    ManagementLocks = Azure::ARM::Locks::Api_2015_01_01::ManagementLocks
 
     module Models
-      ManagementLockObject = Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockObject
-      ManagementLockListResult = Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockListResult
-      ManagementLockOwner = Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockOwner
-      LockLevel = Azure::ARM::Locks::Api_2016_09_01::Models::LockLevel
+      ManagementLockListResult = Azure::ARM::Locks::Api_2015_01_01::Models::ManagementLockListResult
+      ManagementLockObject = Azure::ARM::Locks::Api_2015_01_01::Models::ManagementLockObject
+      LockLevel = Azure::ARM::Locks::Api_2015_01_01::Models::LockLevel
     end
 
     #
@@ -24,7 +23,7 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Locks::Api_2016_09_01::ManagementLockClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::ARM::Locks::Api_2015_01_01::ManagementLockClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -38,10 +37,10 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       #
       # @return Client object
       #
-      def get_client(version = '2016-09-01')
+      def get_client(version = '2015-01-01')
         case version
-          when '2016-09-01'
-            client = Azure::ARM::Locks::Api_2016_09_01::ManagementLockClient.new(@configurable.credentials, @base_url, @options)
+          when '2015-01-01'
+            client = Azure::ARM::Locks::Api_2015_01_01::ManagementLockClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -50,17 +49,14 @@ module Azure::Profiles::Management::Profile_Azure_Stack
       end
 
       class ModelClasses
-        def management_lock_object
-          Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockObject
-        end
         def management_lock_list_result
-          Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockListResult
+          Azure::ARM::Locks::Api_2015_01_01::Models::ManagementLockListResult
         end
-        def management_lock_owner
-          Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockOwner
+        def management_lock_object
+          Azure::ARM::Locks::Api_2015_01_01::Models::ManagementLockObject
         end
         def lock_level
-          Azure::ARM::Locks::Api_2016_09_01::Models::LockLevel
+          Azure::ARM::Locks::Api_2015_01_01::Models::LockLevel
         end
       end
     end

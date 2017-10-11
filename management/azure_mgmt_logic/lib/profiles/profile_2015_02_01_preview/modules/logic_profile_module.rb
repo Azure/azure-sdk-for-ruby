@@ -16,6 +16,8 @@ module Azure::Logic::Management::Profile_2015_02_01_Preview
     module Models
       WorkflowTriggerFilter = Azure::ARM::Logic::Api_2015_02_01_preview::Models::WorkflowTriggerFilter
       WorkflowTriggerListResult = Azure::ARM::Logic::Api_2015_02_01_preview::Models::WorkflowTriggerListResult
+      SubResource = Azure::ARM::Logic::Api_2015_02_01_preview::Models::SubResource
+      Resource = Azure::ARM::Logic::Api_2015_02_01_preview::Models::Resource
       Sku = Azure::ARM::Logic::Api_2015_02_01_preview::Models::Sku
       ResourceReference = Azure::ARM::Logic::Api_2015_02_01_preview::Models::ResourceReference
       ContentLink = Azure::ARM::Logic::Api_2015_02_01_preview::Models::ContentLink
@@ -99,6 +101,12 @@ module Azure::Logic::Management::Profile_2015_02_01_Preview
         end
         def workflow_trigger_list_result
           Azure::ARM::Logic::Api_2015_02_01_preview::Models::WorkflowTriggerListResult
+        end
+        def sub_resource
+          Azure::ARM::Logic::Api_2015_02_01_preview::Models::SubResource
+        end
+        def resource
+          Azure::ARM::Logic::Api_2015_02_01_preview::Models::Resource
         end
         def sku
           Azure::ARM::Logic::Api_2015_02_01_preview::Models::Sku

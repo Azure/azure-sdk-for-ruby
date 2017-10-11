@@ -95,8 +95,10 @@ module Azure::Profiles::Management::Profile_Latest
       EffectiveNetworkSecurityGroupAssociation = Azure::ARM::Network::Api_2017_09_01::Models::EffectiveNetworkSecurityGroupAssociation
       UsagesListResult = Azure::ARM::Network::Api_2017_09_01::Models::UsagesListResult
       EffectiveNetworkSecurityRule = Azure::ARM::Network::Api_2017_09_01::Models::EffectiveNetworkSecurityRule
+      Resource = Azure::ARM::Network::Api_2017_09_01::Models::Resource
       EffectiveNetworkSecurityGroup = Azure::ARM::Network::Api_2017_09_01::Models::EffectiveNetworkSecurityGroup
       DnsNameAvailabilityResult = Azure::ARM::Network::Api_2017_09_01::Models::DnsNameAvailabilityResult
+      SubResource = Azure::ARM::Network::Api_2017_09_01::Models::SubResource
       EndpointServicesListResult = Azure::ARM::Network::Api_2017_09_01::Models::EndpointServicesListResult
       AvailableProvidersListParameters = Azure::ARM::Network::Api_2017_09_01::Models::AvailableProvidersListParameters
       AuthorizationListResult = Azure::ARM::Network::Api_2017_09_01::Models::AuthorizationListResult
@@ -534,11 +536,17 @@ module Azure::Profiles::Management::Profile_Latest
         def effective_network_security_rule
           Azure::ARM::Network::Api_2017_09_01::Models::EffectiveNetworkSecurityRule
         end
+        def resource
+          Azure::ARM::Network::Api_2017_09_01::Models::Resource
+        end
         def effective_network_security_group
           Azure::ARM::Network::Api_2017_09_01::Models::EffectiveNetworkSecurityGroup
         end
         def dns_name_availability_result
           Azure::ARM::Network::Api_2017_09_01::Models::DnsNameAvailabilityResult
+        end
+        def sub_resource
+          Azure::ARM::Network::Api_2017_09_01::Models::SubResource
         end
         def endpoint_services_list_result
           Azure::ARM::Network::Api_2017_09_01::Models::EndpointServicesListResult

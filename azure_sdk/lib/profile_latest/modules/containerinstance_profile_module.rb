@@ -27,6 +27,7 @@ module Azure::Profiles::Management::Profile_Latest
       ContainerPropertiesInstanceView = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerPropertiesInstanceView
       Logs = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Logs
       VolumeMount = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::VolumeMount
+      Resource = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Resource
       ContainerGroup = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroup
       ContainerRestartPolicy = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerRestartPolicy
       ContainerGroupNetworkProtocol = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroupNetworkProtocol
@@ -119,6 +120,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def volume_mount
           Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::VolumeMount
+        end
+        def resource
+          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Resource
         end
         def container_group
           Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroup

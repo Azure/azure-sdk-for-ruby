@@ -14,6 +14,7 @@ module Azure::ContainerRegistry::Management::Profile_2016_06_27_Preview
       StorageAccountProperties = Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::StorageAccountProperties
       RegistryCredentials = Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::RegistryCredentials
       RegistryNameStatus = Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::RegistryNameStatus
+      Resource = Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::Resource
       Registry = Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::Registry
     end
 
@@ -69,6 +70,9 @@ module Azure::ContainerRegistry::Management::Profile_2016_06_27_Preview
         end
         def registry_name_status
           Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::RegistryNameStatus
+        end
+        def resource
+          Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::Resource
         end
         def registry
           Azure::ARM::ContainerRegistry::Api_2016_06_27_preview::Models::Registry

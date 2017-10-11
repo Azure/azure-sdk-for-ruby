@@ -13,6 +13,7 @@ module Azure::Relay::Management::Profile_2016_07_01
     module Models
       AuthorizationRuleListResult = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRuleListResult
       RelayNamespaceListResult = Azure::ARM::Relay::Api_2016_07_01::Models::RelayNamespaceListResult
+      Resource = Azure::ARM::Relay::Api_2016_07_01::Models::Resource
       OperationDisplay = Azure::ARM::Relay::Api_2016_07_01::Models::OperationDisplay
       HybridConnectionListResult = Azure::ARM::Relay::Api_2016_07_01::Models::HybridConnectionListResult
       RelayNamespaceUpdateParameter = Azure::ARM::Relay::Api_2016_07_01::Models::RelayNamespaceUpdateParameter
@@ -79,6 +80,9 @@ module Azure::Relay::Management::Profile_2016_07_01
         end
         def relay_namespace_list_result
           Azure::ARM::Relay::Api_2016_07_01::Models::RelayNamespaceListResult
+        end
+        def resource
+          Azure::ARM::Relay::Api_2016_07_01::Models::Resource
         end
         def operation_display
           Azure::ARM::Relay::Api_2016_07_01::Models::OperationDisplay

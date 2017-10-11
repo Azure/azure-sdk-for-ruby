@@ -51,7 +51,9 @@ module Azure::Resources::Management::Profile_2016_07_01
       BasicDependency = Azure::ARM::Resources::Api_2016_07_01::Models::BasicDependency
       ResourceProviderOperationDisplayProperties = Azure::ARM::Resources::Api_2016_07_01::Models::ResourceProviderOperationDisplayProperties
       GenericResourceFilter = Azure::ARM::Resources::Api_2016_07_01::Models::GenericResourceFilter
+      Resource = Azure::ARM::Resources::Api_2016_07_01::Models::Resource
       DeploymentExtended = Azure::ARM::Resources::Api_2016_07_01::Models::DeploymentExtended
+      SubResource = Azure::ARM::Resources::Api_2016_07_01::Models::SubResource
       AliasPathType = Azure::ARM::Resources::Api_2016_07_01::Models::AliasPathType
       ResourceGroupExportResult = Azure::ARM::Resources::Api_2016_07_01::Models::ResourceGroupExportResult
       GenericResource = Azure::ARM::Resources::Api_2016_07_01::Models::GenericResource
@@ -213,8 +215,14 @@ module Azure::Resources::Management::Profile_2016_07_01
         def generic_resource_filter
           Azure::ARM::Resources::Api_2016_07_01::Models::GenericResourceFilter
         end
+        def resource
+          Azure::ARM::Resources::Api_2016_07_01::Models::Resource
+        end
         def deployment_extended
           Azure::ARM::Resources::Api_2016_07_01::Models::DeploymentExtended
+        end
+        def sub_resource
+          Azure::ARM::Resources::Api_2016_07_01::Models::SubResource
         end
         def alias_path_type
           Azure::ARM::Resources::Api_2016_07_01::Models::AliasPathType

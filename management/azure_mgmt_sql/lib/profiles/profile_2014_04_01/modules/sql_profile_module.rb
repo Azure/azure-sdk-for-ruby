@@ -43,6 +43,7 @@ module Azure::SQL::Management::Profile_2014_04_01
 
     module Models
       FirewallRuleListResult = Azure::ARM::SQL::Api_2014_04_01::Models::FirewallRuleListResult
+      Resource = Azure::ARM::SQL::Api_2014_04_01::Models::Resource
       SloUsageMetric = Azure::ARM::SQL::Api_2014_04_01::Models::SloUsageMetric
       ServerUsage = Azure::ARM::SQL::Api_2014_04_01::Models::ServerUsage
       AdvisorListResult = Azure::ARM::SQL::Api_2014_04_01::Models::AdvisorListResult
@@ -252,6 +253,9 @@ module Azure::SQL::Management::Profile_2014_04_01
       class ModelClasses
         def firewall_rule_list_result
           Azure::ARM::SQL::Api_2014_04_01::Models::FirewallRuleListResult
+        end
+        def resource
+          Azure::ARM::SQL::Api_2014_04_01::Models::Resource
         end
         def slo_usage_metric
           Azure::ARM::SQL::Api_2014_04_01::Models::SloUsageMetric

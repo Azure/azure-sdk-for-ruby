@@ -47,6 +47,7 @@ module Azure::Profiles::Management::Profile_Latest
       FeedbackByCampaignParameter = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::FeedbackByCampaignParameter
       DeviceInfo = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::DeviceInfo
       ImportTaskListResult = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::ImportTaskListResult
+      Resource = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::Resource
       DeviceLocation = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::DeviceLocation
       ExportTaskResult = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::ExportTaskResult
       Device = Azure::ARM::MobileEngagement::Api_2014_12_01::Models::Device
@@ -241,6 +242,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def import_task_list_result
           Azure::ARM::MobileEngagement::Api_2014_12_01::Models::ImportTaskListResult
+        end
+        def resource
+          Azure::ARM::MobileEngagement::Api_2014_12_01::Models::Resource
         end
         def device_location
           Azure::ARM::MobileEngagement::Api_2014_12_01::Models::DeviceLocation

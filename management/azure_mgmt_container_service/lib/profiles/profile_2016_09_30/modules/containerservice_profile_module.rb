@@ -9,6 +9,7 @@ module Azure::ContainerService::Management::Profile_2016_09_30
 
     module Models
       ContainerServiceSshPublicKey = Azure::ARM::ContainerService::Api_2016_09_30::Models::ContainerServiceSshPublicKey
+      Resource = Azure::ARM::ContainerService::Api_2016_09_30::Models::Resource
       ContainerServiceSshConfiguration = Azure::ARM::ContainerService::Api_2016_09_30::Models::ContainerServiceSshConfiguration
       ContainerServiceServicePrincipalProfile = Azure::ARM::ContainerService::Api_2016_09_30::Models::ContainerServiceServicePrincipalProfile
       ContainerServiceLinuxProfile = Azure::ARM::ContainerService::Api_2016_09_30::Models::ContainerServiceLinuxProfile
@@ -62,6 +63,9 @@ module Azure::ContainerService::Management::Profile_2016_09_30
       class ModelClasses
         def container_service_ssh_public_key
           Azure::ARM::ContainerService::Api_2016_09_30::Models::ContainerServiceSshPublicKey
+        end
+        def resource
+          Azure::ARM::ContainerService::Api_2016_09_30::Models::Resource
         end
         def container_service_ssh_configuration
           Azure::ARM::ContainerService::Api_2016_09_30::Models::ContainerServiceSshConfiguration

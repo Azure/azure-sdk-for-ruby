@@ -12,10 +12,12 @@ module Azure::Storage::Management::Profile_2015_05_01_Preview
       StorageAccountListResult = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountListResult
       StorageAccountCheckNameAvailabilityParameters = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountCheckNameAvailabilityParameters
       CheckNameAvailabilityResult = Azure::ARM::Storage::Api_2015_05_01_preview::Models::CheckNameAvailabilityResult
+      Resource = Azure::ARM::Storage::Api_2015_05_01_preview::Models::Resource
       CustomDomain = Azure::ARM::Storage::Api_2015_05_01_preview::Models::CustomDomain
       StorageAccountRegenerateKeyParameters = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountRegenerateKeyParameters
       StorageAccountKeys = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountKeys
       UsageName = Azure::ARM::Storage::Api_2015_05_01_preview::Models::UsageName
+      SubResource = Azure::ARM::Storage::Api_2015_05_01_preview::Models::SubResource
       Usage = Azure::ARM::Storage::Api_2015_05_01_preview::Models::Usage
       Endpoints = Azure::ARM::Storage::Api_2015_05_01_preview::Models::Endpoints
       UsageListResult = Azure::ARM::Storage::Api_2015_05_01_preview::Models::UsageListResult
@@ -75,6 +77,9 @@ module Azure::Storage::Management::Profile_2015_05_01_Preview
         def check_name_availability_result
           Azure::ARM::Storage::Api_2015_05_01_preview::Models::CheckNameAvailabilityResult
         end
+        def resource
+          Azure::ARM::Storage::Api_2015_05_01_preview::Models::Resource
+        end
         def custom_domain
           Azure::ARM::Storage::Api_2015_05_01_preview::Models::CustomDomain
         end
@@ -86,6 +91,9 @@ module Azure::Storage::Management::Profile_2015_05_01_Preview
         end
         def usage_name
           Azure::ARM::Storage::Api_2015_05_01_preview::Models::UsageName
+        end
+        def sub_resource
+          Azure::ARM::Storage::Api_2015_05_01_preview::Models::SubResource
         end
         def usage
           Azure::ARM::Storage::Api_2015_05_01_preview::Models::Usage

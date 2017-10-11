@@ -27,6 +27,7 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
     module Models
       LoadBalancerListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::LoadBalancerListResult
       AddressSpace = Azure::ARM::Network::Api_2015_05_01_preview::Models::AddressSpace
+      SubResource = Azure::ARM::Network::Api_2015_05_01_preview::Models::SubResource
       ExpressRouteCircuitPeeringListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::ExpressRouteCircuitPeeringListResult
       VirtualNetworkGatewayListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::VirtualNetworkGatewayListResult
       ExpressRouteServiceProviderBandwidthsOffered = Azure::ARM::Network::Api_2015_05_01_preview::Models::ExpressRouteServiceProviderBandwidthsOffered
@@ -63,6 +64,7 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
       AuthorizationListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::AuthorizationListResult
       LocalNetworkGatewayListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::LocalNetworkGatewayListResult
       NetworkSecurityGroupListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::NetworkSecurityGroupListResult
+      Resource = Azure::ARM::Network::Api_2015_05_01_preview::Models::Resource
       ExpressRouteCircuitsStatsListResult = Azure::ARM::Network::Api_2015_05_01_preview::Models::ExpressRouteCircuitsStatsListResult
       NetworkInterfaceDnsSettings = Azure::ARM::Network::Api_2015_05_01_preview::Models::NetworkInterfaceDnsSettings
       ExpressRouteCircuitArpTable = Azure::ARM::Network::Api_2015_05_01_preview::Models::ExpressRouteCircuitArpTable
@@ -188,6 +190,9 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
         def address_space
           Azure::ARM::Network::Api_2015_05_01_preview::Models::AddressSpace
         end
+        def sub_resource
+          Azure::ARM::Network::Api_2015_05_01_preview::Models::SubResource
+        end
         def express_route_circuit_peering_list_result
           Azure::ARM::Network::Api_2015_05_01_preview::Models::ExpressRouteCircuitPeeringListResult
         end
@@ -295,6 +300,9 @@ module Azure::Network::Management::Profile_2015_05_01_Preview
         end
         def network_security_group_list_result
           Azure::ARM::Network::Api_2015_05_01_preview::Models::NetworkSecurityGroupListResult
+        end
+        def resource
+          Azure::ARM::Network::Api_2015_05_01_preview::Models::Resource
         end
         def express_route_circuits_stats_list_result
           Azure::ARM::Network::Api_2015_05_01_preview::Models::ExpressRouteCircuitsStatsListResult

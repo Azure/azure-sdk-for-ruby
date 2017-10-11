@@ -16,6 +16,7 @@ module Azure::Consumption::Management::Profile_Latest
       MeterDetails = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::MeterDetails
       OperationListResult = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationListResult
       ErrorDetails = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::ErrorDetails
+      Resource = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::Resource
       UsageDetail = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::UsageDetail
     end
 
@@ -75,6 +76,9 @@ module Azure::Consumption::Management::Profile_Latest
         end
         def error_details
           Azure::ARM::Consumption::Api_2017_04_24_preview::Models::ErrorDetails
+        end
+        def resource
+          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::Resource
         end
         def usage_detail
           Azure::ARM::Consumption::Api_2017_04_24_preview::Models::UsageDetail

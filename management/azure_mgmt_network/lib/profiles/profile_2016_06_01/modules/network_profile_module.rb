@@ -29,6 +29,7 @@ module Azure::Network::Management::Profile_2016_06_01
       ExpressRouteCircuitsRoutesTableListResult = Azure::ARM::Network::Api_2016_06_01::Models::ExpressRouteCircuitsRoutesTableListResult
       ApplicationGatewaySku = Azure::ARM::Network::Api_2016_06_01::Models::ApplicationGatewaySku
       ExpressRouteCircuitRoutesTableSummary = Azure::ARM::Network::Api_2016_06_01::Models::ExpressRouteCircuitRoutesTableSummary
+      SubResource = Azure::ARM::Network::Api_2016_06_01::Models::SubResource
       ExpressRouteCircuitsRoutesTableSummaryListResult = Azure::ARM::Network::Api_2016_06_01::Models::ExpressRouteCircuitsRoutesTableSummaryListResult
       EffectiveNetworkSecurityGroup = Azure::ARM::Network::Api_2016_06_01::Models::EffectiveNetworkSecurityGroup
       AuthorizationListResult = Azure::ARM::Network::Api_2016_06_01::Models::AuthorizationListResult
@@ -69,6 +70,7 @@ module Azure::Network::Management::Profile_2016_06_01
       ExpressRouteServiceProviderListResult = Azure::ARM::Network::Api_2016_06_01::Models::ExpressRouteServiceProviderListResult
       SecurityRuleListResult = Azure::ARM::Network::Api_2016_06_01::Models::SecurityRuleListResult
       EffectiveRoute = Azure::ARM::Network::Api_2016_06_01::Models::EffectiveRoute
+      Resource = Azure::ARM::Network::Api_2016_06_01::Models::Resource
       ConnectionSharedKeyResult = Azure::ARM::Network::Api_2016_06_01::Models::ConnectionSharedKeyResult
       AzureAsyncOperationResult = Azure::ARM::Network::Api_2016_06_01::Models::AzureAsyncOperationResult
       NetworkInterfaceDnsSettings = Azure::ARM::Network::Api_2016_06_01::Models::NetworkInterfaceDnsSettings
@@ -224,6 +226,9 @@ module Azure::Network::Management::Profile_2016_06_01
         def express_route_circuit_routes_table_summary
           Azure::ARM::Network::Api_2016_06_01::Models::ExpressRouteCircuitRoutesTableSummary
         end
+        def sub_resource
+          Azure::ARM::Network::Api_2016_06_01::Models::SubResource
+        end
         def express_route_circuits_routes_table_summary_list_result
           Azure::ARM::Network::Api_2016_06_01::Models::ExpressRouteCircuitsRoutesTableSummaryListResult
         end
@@ -343,6 +348,9 @@ module Azure::Network::Management::Profile_2016_06_01
         end
         def effective_route
           Azure::ARM::Network::Api_2016_06_01::Models::EffectiveRoute
+        end
+        def resource
+          Azure::ARM::Network::Api_2016_06_01::Models::Resource
         end
         def connection_shared_key_result
           Azure::ARM::Network::Api_2016_06_01::Models::ConnectionSharedKeyResult

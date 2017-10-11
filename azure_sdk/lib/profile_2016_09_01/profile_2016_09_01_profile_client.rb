@@ -2,22 +2,22 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profile_azure_stack/profile_azure_stack_module_definition.rb'
-require 'profile_azure_stack/modules/storage_profile_module'
-require 'profile_azure_stack/modules/network_profile_module'
-require 'profile_azure_stack/modules/compute_profile_module'
-require 'profile_azure_stack/modules/features_profile_module'
-require 'profile_azure_stack/modules/links_profile_module'
-require 'profile_azure_stack/modules/locks_profile_module'
-require 'profile_azure_stack/modules/policy_profile_module'
-require 'profile_azure_stack/modules/resources_profile_module'
-require 'profile_azure_stack/modules/subscriptions_profile_module'
+require 'profile_2016_09_01/profile_2016_09_01_module_definition.rb'
+require 'profile_2016_09_01/modules/storage_profile_module'
+require 'profile_2016_09_01/modules/network_profile_module'
+require 'profile_2016_09_01/modules/compute_profile_module'
+require 'profile_2016_09_01/modules/features_profile_module'
+require 'profile_2016_09_01/modules/links_profile_module'
+require 'profile_2016_09_01/modules/locks_profile_module'
+require 'profile_2016_09_01/modules/policy_profile_module'
+require 'profile_2016_09_01/modules/resources_profile_module'
+require 'profile_2016_09_01/modules/subscriptions_profile_module'
 require 'common/configurable'
 require 'common/default'
 
-module Azure::Profiles::Management::Profile_Azure_Stack
+module Azure::Profiles::Management::Profile_2016_09_01
   #
-  # Client class for the Profile_Azure_Stack profile SDK.
+  # Client class for the Profile_2016_09_01 profile SDK.
   #
   class Client
     include Azure::ARM::Configurable

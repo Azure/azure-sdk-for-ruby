@@ -25,6 +25,7 @@ module Azure::Batch::Management::Profile_2015_12_01
       BatchAccountListResult = Azure::ARM::Batch::Api_2015_12_01::Models::BatchAccountListResult
       BatchLocationQuota = Azure::ARM::Batch::Api_2015_12_01::Models::BatchLocationQuota
       BatchAccountKeys = Azure::ARM::Batch::Api_2015_12_01::Models::BatchAccountKeys
+      Resource = Azure::ARM::Batch::Api_2015_12_01::Models::Resource
       BatchAccount = Azure::ARM::Batch::Api_2015_12_01::Models::BatchAccount
       ProvisioningState = Azure::ARM::Batch::Api_2015_12_01::Models::ProvisioningState
       AccountKeyType = Azure::ARM::Batch::Api_2015_12_01::Models::AccountKeyType
@@ -110,6 +111,9 @@ module Azure::Batch::Management::Profile_2015_12_01
         end
         def batch_account_keys
           Azure::ARM::Batch::Api_2015_12_01::Models::BatchAccountKeys
+        end
+        def resource
+          Azure::ARM::Batch::Api_2015_12_01::Models::Resource
         end
         def batch_account
           Azure::ARM::Batch::Api_2015_12_01::Models::BatchAccount

@@ -13,6 +13,7 @@ module Azure::KeyVault::Management::Profile_2015_06_01
       AccessPolicyEntry = Azure::ARM::KeyVault::Api_2015_06_01::Models::AccessPolicyEntry
       VaultListResult = Azure::ARM::KeyVault::Api_2015_06_01::Models::VaultListResult
       Permissions = Azure::ARM::KeyVault::Api_2015_06_01::Models::Permissions
+      Resource = Azure::ARM::KeyVault::Api_2015_06_01::Models::Resource
       VaultProperties = Azure::ARM::KeyVault::Api_2015_06_01::Models::VaultProperties
       ResourceListResult = Azure::ARM::KeyVault::Api_2015_06_01::Models::ResourceListResult
       Vault = Azure::ARM::KeyVault::Api_2015_06_01::Models::Vault
@@ -71,6 +72,9 @@ module Azure::KeyVault::Management::Profile_2015_06_01
         end
         def permissions
           Azure::ARM::KeyVault::Api_2015_06_01::Models::Permissions
+        end
+        def resource
+          Azure::ARM::KeyVault::Api_2015_06_01::Models::Resource
         end
         def vault_properties
           Azure::ARM::KeyVault::Api_2015_06_01::Models::VaultProperties
