@@ -1386,12 +1386,13 @@
       "build_dir": "management/azure_mgmt_subscriptions/lib/2015-11-01"
     },
     "azure_mgmt_traffic_manager_2017_09_01_preview": {
-      "markdown": "specification/trafficmanager/resource-manager/readme.md",
       "autorest_options": {
         "namespace": "Azure::ARM::TrafficManager::Api_2017_09_01_preview",
         "package-version": "0.14.0",
         "package-name": "azure_mgmt_traffic_manager",
-        "tag": "package-2017-09-preview"
+        "input-file": [
+          "specification/trafficmanager/resource-manager/Microsoft.Network/2017-09-01-preview/trafficmanageranalytics.json"
+        ]
       },
       "output_dir": "management/azure_mgmt_traffic_manager/lib/2017-09-01-preview",
       "generated_relative_base_directory": "2017-09-01-preview",
