@@ -13,7 +13,6 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Specifies the maximum concurrent calls that can be
       # made to the web service. Minimum value: 4, Maximum value: 200.
       attr_accessor :max_concurrent_calls

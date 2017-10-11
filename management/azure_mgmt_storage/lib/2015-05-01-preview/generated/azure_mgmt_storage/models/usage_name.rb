@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets a string describing the resource name.
       attr_accessor :value
 

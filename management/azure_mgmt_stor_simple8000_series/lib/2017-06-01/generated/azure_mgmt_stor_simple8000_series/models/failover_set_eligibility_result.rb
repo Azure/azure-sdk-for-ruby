@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Represents if this failover set is eligible for
       # failover or not.
       attr_accessor :is_eligible_for_failover

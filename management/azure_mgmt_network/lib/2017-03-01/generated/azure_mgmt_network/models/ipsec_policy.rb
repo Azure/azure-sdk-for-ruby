@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The IPSec Security Association (also called Quick
       # Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
       attr_accessor :sa_life_time_seconds

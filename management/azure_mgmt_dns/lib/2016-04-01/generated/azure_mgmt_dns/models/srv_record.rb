@@ -12,7 +12,6 @@ module Azure::ARM::Dns::Api_2016_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The priority value for this SRV record.
       attr_accessor :priority
 

@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] One of a server-defined set of error codes.
       attr_accessor :code
 

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

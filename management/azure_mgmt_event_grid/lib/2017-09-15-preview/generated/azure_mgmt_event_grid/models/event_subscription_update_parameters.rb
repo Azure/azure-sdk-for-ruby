@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EventSubscriptionDestination] Information about the
       # destination where events have to be delivered for the event
       # subscription.

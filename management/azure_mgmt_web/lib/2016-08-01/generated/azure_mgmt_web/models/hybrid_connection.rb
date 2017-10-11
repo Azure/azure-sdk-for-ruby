@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_08_01
     # Hybrid Connection contract. This is used to configure a Hybrid
     # Connection.
     #
-    class HybridConnection < MsRestAzure::ProxyOnlyResource
+    class HybridConnection < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the Service Bus namespace.
       attr_accessor :service_bus_namespace
 

@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_03_01
     #
     # A ExpressRouteResourceProvider object.
     #
-    class ExpressRouteServiceProvider < MsRestAzure::Resource
+    class ExpressRouteServiceProvider < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Get a list of peering locations.
       attr_accessor :peering_locations
 

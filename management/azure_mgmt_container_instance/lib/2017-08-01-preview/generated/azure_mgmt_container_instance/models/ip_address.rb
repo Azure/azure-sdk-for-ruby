@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Port>] The list of ports exposed on the container group.
       attr_accessor :ports
 

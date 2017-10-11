@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the email address.
       attr_accessor :email_address
 

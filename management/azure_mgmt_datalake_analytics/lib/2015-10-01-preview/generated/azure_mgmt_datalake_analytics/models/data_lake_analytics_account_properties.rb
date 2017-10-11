@@ -13,7 +13,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataLakeAnalyticsAccountStatus] the provisioning status of the
       # Data Lake Analytics account. Possible values include: 'Failed',
       # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',

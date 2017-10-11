@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the operation being performed on this
       # particular object.
       attr_accessor :name

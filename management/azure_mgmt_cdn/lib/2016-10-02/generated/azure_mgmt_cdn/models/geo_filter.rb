@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2016_10_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Relative path applicable to geo filter. (e.g.
       # '/mypictures', '/mypicture/kitty.jpg', and etc.)
       attr_accessor :relative_path

@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # Backend address pool settings of application gateway
     #
-    class ApplicationGatewayBackendHttpSettings < MsRestAzure::SubResource
+    class ApplicationGatewayBackendHttpSettings < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Gets or sets the port
       attr_accessor :port
 

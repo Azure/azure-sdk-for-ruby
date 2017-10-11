@@ -15,7 +15,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The host name of the endpoint {endpointName}.{DNSZone}
       attr_accessor :host_name
 

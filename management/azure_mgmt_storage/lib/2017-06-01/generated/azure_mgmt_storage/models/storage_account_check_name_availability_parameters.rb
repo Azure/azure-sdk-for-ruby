@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The storage account name.
       attr_accessor :name
 

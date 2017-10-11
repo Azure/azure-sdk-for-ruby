@@ -8,11 +8,10 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
     #
     # The cluster resource
     #
-    class Cluster < MsRestAzure::Resource
+    class Cluster < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ClusterVersionDetails>] The available cluster code
       # version which the cluster can upgrade to, note that you must choose
       # upgradeMode to manual to upgrade to

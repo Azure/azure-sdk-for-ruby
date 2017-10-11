@@ -36,17 +36,11 @@ module Azure::ARM::TrafficManager::Api_2017_09_01_preview
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [Endpoints] endpoints
-    attr_reader :endpoints
-
-    # @return [Profiles] profiles
-    attr_reader :profiles
-
-    # @return [GeographicHierarchies] geographic_hierarchies
-    attr_reader :geographic_hierarchies
-
     # @return [HeatMap] heat_map
     attr_reader :heat_map
+
+    # @return [TrafficManagerUserMetricsKeys] traffic_manager_user_metrics_keys
+    attr_reader :traffic_manager_user_metrics_keys
 
     #
     # Creates initializes a new instance of the TrafficManagerManagementClient class.
@@ -61,10 +55,8 @@ module Azure::ARM::TrafficManager::Api_2017_09_01_preview
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @endpoints = Endpoints.new(self)
-      @profiles = Profiles.new(self)
-      @geographic_hierarchies = GeographicHierarchies.new(self)
       @heat_map = HeatMap.new(self)
+      @traffic_manager_user_metrics_keys = TrafficManagerUserMetricsKeys.new(self)
       @api_version = '2017-09-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

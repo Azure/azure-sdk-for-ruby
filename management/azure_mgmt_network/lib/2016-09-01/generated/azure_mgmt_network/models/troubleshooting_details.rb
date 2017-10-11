@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The id of the get troubleshoot operation.
       attr_accessor :id
 

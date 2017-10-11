@@ -8,11 +8,10 @@ module Azure::ARM::EventHub::Api_2015_08_01
     #
     # Single item in List or Get Event Hub operation
     #
-    class EventHubResource < MsRestAzure::Resource
+    class EventHubResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Exact time the Event Hub was created.
       attr_accessor :created_at
 

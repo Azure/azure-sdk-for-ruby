@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Slot Config names azure resource.
     #
-    class SlotConfigNamesResource < MsRestAzure::ProxyOnlyResource
+    class SlotConfigNamesResource < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] List of connection string names.
       attr_accessor :connection_string_names
 

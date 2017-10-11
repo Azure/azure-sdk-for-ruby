@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Configuration of App Service site logs.
     #
-    class SiteLogsConfig < MsRestAzure::ProxyOnlyResource
+    class SiteLogsConfig < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplicationLogsConfig] Application logs configuration.
       attr_accessor :application_logs
 

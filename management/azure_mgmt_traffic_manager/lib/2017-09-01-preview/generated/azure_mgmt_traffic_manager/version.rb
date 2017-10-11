@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::TrafficManager::Api_2017_09_01_preview
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

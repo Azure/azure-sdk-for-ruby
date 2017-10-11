@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AccessKeyName] Key name. Possible values include: 'key1',
       # 'key2'
       attr_accessor :key_name

@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
     #
     # Description of queue Resource.
     #
-    class QueueResource < MsRestAzure::Resource
+    class QueueResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The duration of a peek-lock; that is, the amount of
       # time that the message is locked for other receivers. The maximum value
       # for LockDuration is 5 minutes; the default value is 1 minute.

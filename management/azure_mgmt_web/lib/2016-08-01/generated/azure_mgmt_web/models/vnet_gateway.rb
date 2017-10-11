@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_08_01
     # The Virtual Network gateway contract. This is used to give the Virtual
     # Network gateway access to the VPN package.
     #
-    class VnetGateway < MsRestAzure::ProxyOnlyResource
+    class VnetGateway < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Virtual Network name.
       attr_accessor :vnet_name
 

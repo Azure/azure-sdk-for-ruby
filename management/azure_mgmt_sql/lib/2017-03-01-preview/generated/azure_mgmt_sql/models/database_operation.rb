@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2017_03_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the database the operation is being
       # performed on.
       attr_accessor :database_name

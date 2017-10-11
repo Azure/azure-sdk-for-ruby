@@ -13,7 +13,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<CustomDomain>] List of CDN CustomDomains within an
       # endpoint.
       attr_accessor :value

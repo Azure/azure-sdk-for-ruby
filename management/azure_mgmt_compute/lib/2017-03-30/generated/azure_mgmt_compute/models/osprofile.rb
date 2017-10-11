@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the host OS name of the virtual machine.
       # <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length
       # (Linux):** 64 characters. <br><br> For naming conventions and

@@ -31,6 +31,7 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
     autoload :QueueCreateOrUpdateParameters,                      '2015-08-01/generated/azure_mgmt_service_bus/models/queue_create_or_update_parameters.rb'
     autoload :MessageCountDetails,                                '2015-08-01/generated/azure_mgmt_service_bus/models/message_count_details.rb'
     autoload :RegenerateKeysParameters,                           '2015-08-01/generated/azure_mgmt_service_bus/models/regenerate_keys_parameters.rb'
+    autoload :Resource,                                           '2015-08-01/generated/azure_mgmt_service_bus/models/resource.rb'
     autoload :NamespaceCreateOrUpdateParameters,                  '2015-08-01/generated/azure_mgmt_service_bus/models/namespace_create_or_update_parameters.rb'
     autoload :CheckNameAvailability,                              '2015-08-01/generated/azure_mgmt_service_bus/models/check_name_availability.rb'
     autoload :NamespaceListResult,                                '2015-08-01/generated/azure_mgmt_service_bus/models/namespace_list_result.rb'

@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<DataMaskingRule>] The list of database data masking
       # rules.
       attr_accessor :value

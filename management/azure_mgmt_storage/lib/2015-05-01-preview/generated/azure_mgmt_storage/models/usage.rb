@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UsageUnit] Gets the unit of measurement. Possible values
       # include: 'Count', 'Bytes', 'Seconds', 'Percent', 'CountsPerSecond',
       # 'BytesPerSecond'

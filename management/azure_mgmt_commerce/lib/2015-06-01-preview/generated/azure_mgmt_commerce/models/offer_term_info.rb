@@ -12,7 +12,6 @@ module Azure::ARM::Commerce::Api_2015_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Monetary Credit"] = "MonetaryCredit"
       @@discriminatorMap["Monetary Commitment"] = "MonetaryCommitment"

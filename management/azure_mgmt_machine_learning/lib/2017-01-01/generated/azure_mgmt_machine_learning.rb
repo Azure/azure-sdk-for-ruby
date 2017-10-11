@@ -47,6 +47,7 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
     autoload :GraphPackage,                                       '2017-01-01/generated/azure_mgmt_machine_learning/models/graph_package.rb'
     autoload :StorageAccount,                                     '2017-01-01/generated/azure_mgmt_machine_learning/models/storage_account.rb'
     autoload :AsyncOperationStatus,                               '2017-01-01/generated/azure_mgmt_machine_learning/models/async_operation_status.rb'
+    autoload :Resource,                                           '2017-01-01/generated/azure_mgmt_machine_learning/models/resource.rb'
     autoload :PaginatedWebServicesList,                           '2017-01-01/generated/azure_mgmt_machine_learning/models/paginated_web_services_list.rb'
     autoload :ExampleRequest,                                     '2017-01-01/generated/azure_mgmt_machine_learning/models/example_request.rb'
     autoload :AsyncOperationErrorInfo,                            '2017-01-01/generated/azure_mgmt_machine_learning/models/async_operation_error_info.rb'

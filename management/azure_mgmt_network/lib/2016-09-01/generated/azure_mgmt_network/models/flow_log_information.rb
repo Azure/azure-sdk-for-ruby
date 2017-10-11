@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the resource to configure for flow logging.
       attr_accessor :target_resource_id
 

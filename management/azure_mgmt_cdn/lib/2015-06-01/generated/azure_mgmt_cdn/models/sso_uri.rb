@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URI used to login to third party web portal.
       attr_accessor :sso_uri_value
 

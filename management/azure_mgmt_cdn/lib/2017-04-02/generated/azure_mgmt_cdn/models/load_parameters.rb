@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2017_04_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The path to the content to be loaded. Path
       # should be a relative file URL of the origin.
       attr_accessor :content_paths

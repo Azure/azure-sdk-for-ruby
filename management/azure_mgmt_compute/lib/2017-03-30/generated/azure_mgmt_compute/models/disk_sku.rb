@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageAccountTypes] The sku name. Possible values include:
       # 'Standard_LRS', 'Premium_LRS'
       attr_accessor :name

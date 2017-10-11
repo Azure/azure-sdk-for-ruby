@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<DayOfWeek>] Gets or sets the days of the week that the
       # job should execute on.
       attr_accessor :week_days

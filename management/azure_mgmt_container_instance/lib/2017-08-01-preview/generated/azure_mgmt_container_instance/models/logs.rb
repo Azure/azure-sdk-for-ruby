@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The content of the log.
       attr_accessor :content
 

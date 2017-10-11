@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DayOfWeek] The day of the week. Possible values include:
       # 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
       # 'Saturday'

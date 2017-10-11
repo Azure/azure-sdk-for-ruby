@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Replication protected item
     #
-    class ProtectableItem < MsRestAzure::Resource
+    class ProtectableItem < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProtectableItemProperties] The custom data.
       attr_accessor :properties
 

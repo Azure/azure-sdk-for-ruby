@@ -12,7 +12,6 @@ module Azure::ARM::Graph::Api_1_6
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] application Id
       attr_accessor :app_id
 

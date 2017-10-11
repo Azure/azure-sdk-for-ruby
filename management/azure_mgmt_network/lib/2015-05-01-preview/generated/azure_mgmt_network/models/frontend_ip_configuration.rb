@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # Frontend IP address of the load balancer
     #
-    class FrontendIpConfiguration < MsRestAzure::SubResource
+    class FrontendIpConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the IP address of the Load Balancer.This
       # is only specified if a specific private IP address shall be allocated
       # from the subnet specified in subnetRef

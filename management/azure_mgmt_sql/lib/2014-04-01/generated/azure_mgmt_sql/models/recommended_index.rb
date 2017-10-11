@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecommendedIndexAction] The proposed index action. You can
       # create a missing index, drop an unused index, or rebuild an existing
       # index to improve its performance. Possible values include: 'Create',

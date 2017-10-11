@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The short label for the status.
       attr_accessor :display_status
 

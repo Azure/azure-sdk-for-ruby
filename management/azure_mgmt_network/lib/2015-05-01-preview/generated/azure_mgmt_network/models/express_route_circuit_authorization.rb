@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # Authorization in a ExpressRouteCircuit resource
     #
-    class ExpressRouteCircuitAuthorization < MsRestAzure::SubResource
+    class ExpressRouteCircuitAuthorization < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the authorization key
       attr_accessor :authorization_key
 

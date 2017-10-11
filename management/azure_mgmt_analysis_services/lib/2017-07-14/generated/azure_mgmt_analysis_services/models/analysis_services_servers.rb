@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AnalysisServicesServer>] An array of Analysis Services
       # resources.
       attr_accessor :value

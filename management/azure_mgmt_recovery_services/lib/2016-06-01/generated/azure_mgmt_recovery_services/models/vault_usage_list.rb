@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VaultUsage>] The list of usages for the given vault.
       attr_accessor :value
 

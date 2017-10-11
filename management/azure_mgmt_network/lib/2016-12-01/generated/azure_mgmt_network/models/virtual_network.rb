@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_12_01
     #
     # Virtual Network resource.
     #
-    class VirtualNetwork < MsRestAzure::Resource
+    class VirtualNetwork < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AddressSpace] The AddressSpace that contains an array of IP
       # address ranges that can be used by subnets.
       attr_accessor :address_space

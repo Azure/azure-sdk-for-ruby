@@ -8,11 +8,10 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
     #
     # The parameters to update on the account.
     #
-    class StorageAccountUpdateParameters < MsRestAzure::Resource
+    class StorageAccountUpdateParameters < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AccountType] Gets or sets the account type. Note that
       # StandardZRS and PremiumLRS accounts cannot be changed to other account
       # types, and other account types cannot be changed to StandardZRS or

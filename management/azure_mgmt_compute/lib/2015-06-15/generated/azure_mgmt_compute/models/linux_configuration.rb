@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Specifies whether password authentication should be
       # disabled.
       attr_accessor :disable_password_authentication

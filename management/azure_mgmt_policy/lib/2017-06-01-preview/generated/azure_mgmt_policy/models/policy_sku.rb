@@ -12,7 +12,6 @@ module Azure::ARM::Policy::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the policy sku. Possible values are A0 and
       # A1.
       attr_accessor :name

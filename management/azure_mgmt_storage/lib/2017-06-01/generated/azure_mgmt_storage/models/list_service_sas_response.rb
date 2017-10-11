@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] List service SAS credentials of speicific resource.
       attr_accessor :service_sas_token
 

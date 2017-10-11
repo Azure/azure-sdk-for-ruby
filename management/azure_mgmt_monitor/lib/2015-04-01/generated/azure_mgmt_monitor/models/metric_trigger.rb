@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the name of the metric that defines what the rule
       # monitors.
       attr_accessor :metric_name

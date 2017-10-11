@@ -12,7 +12,6 @@ module Azure::ARM::MediaServices::Api_2015_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the resource. A name must be globally
       # unique.
       attr_accessor :name

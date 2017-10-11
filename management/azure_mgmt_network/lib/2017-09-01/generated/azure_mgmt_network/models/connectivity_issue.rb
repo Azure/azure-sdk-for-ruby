@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Origin] The origin of the issue. Possible values include:
       # 'Local', 'Inbound', 'Outbound'
       attr_accessor :origin

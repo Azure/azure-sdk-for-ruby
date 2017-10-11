@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the user defined route. This is optional.
       attr_accessor :name
 

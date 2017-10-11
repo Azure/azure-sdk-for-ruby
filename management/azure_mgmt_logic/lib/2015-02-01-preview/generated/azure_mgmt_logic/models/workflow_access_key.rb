@@ -9,11 +9,10 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
     # Model object.
     #
     #
-    class WorkflowAccessKey < MsRestAzure::SubResource
+    class WorkflowAccessKey < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Gets or sets the not-before time.
       attr_accessor :not_before
 

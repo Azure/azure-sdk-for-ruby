@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2017_04_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Indicates whether the custom domain is valid or not.
       attr_accessor :custom_domain_validated
 

@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] the last modified time of the blob container.
       attr_accessor :last_modified_time
 

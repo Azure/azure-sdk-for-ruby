@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Continuous Web Job Information.
     #
-    class ContinuousWebJob < MsRestAzure::ProxyOnlyResource
+    class ContinuousWebJob < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContinuousWebJobStatus] Job status. Possible values include:
       # 'Initializing', 'Starting', 'Running', 'PendingRestart', 'Stopped'
       attr_accessor :status

@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VirtualMachineScaleSetInstanceViewStatusesSummary] The
       # instance view status summary for the virtual machine scale set.
       attr_accessor :virtual_machine

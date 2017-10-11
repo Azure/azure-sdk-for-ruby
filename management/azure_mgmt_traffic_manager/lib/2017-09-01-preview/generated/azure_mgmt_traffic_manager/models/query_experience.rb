@@ -37,14 +37,14 @@ module Azure::ARM::TrafficManager::Api_2017_09_01_preview
             class_name: 'QueryExperience',
             model_properties: {
               endpoint_id: {
-                required: false,
+                required: true,
                 serialized_name: 'endpointId',
                 type: {
                   name: 'Number'
                 }
               },
               query_count: {
-                required: false,
+                required: true,
                 serialized_name: 'queryCount',
                 type: {
                   name: 'Number'

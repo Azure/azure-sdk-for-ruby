@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
     #
     # The Resource definition.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

@@ -13,7 +13,6 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the node type
       attr_accessor :name
 

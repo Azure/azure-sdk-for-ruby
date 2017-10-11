@@ -9,11 +9,10 @@ module Azure::ARM::Network::Api_2015_06_15
     # IP configuration of an application gateway. Currently 1 public and 1
     # private IP configuration is allowed.
     #
-    class ApplicationGatewayIPConfiguration < MsRestAzure::SubResource
+    class ApplicationGatewayIPConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Reference of the subnet resource. A subnet from
       # where application gateway gets its private address.
       attr_accessor :subnet

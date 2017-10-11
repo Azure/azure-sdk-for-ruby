@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] HTTP status code.
       attr_accessor :status
 

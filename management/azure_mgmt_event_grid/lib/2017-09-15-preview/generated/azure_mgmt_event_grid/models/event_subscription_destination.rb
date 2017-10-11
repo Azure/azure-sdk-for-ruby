@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["WebHook"] = "WebHookEventSubscriptionDestination"
       @@discriminatorMap["EventHub"] = "EventHubEventSubscriptionDestination"

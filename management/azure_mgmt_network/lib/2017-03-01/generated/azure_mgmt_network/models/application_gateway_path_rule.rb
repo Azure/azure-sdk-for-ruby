@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_03_01
     #
     # Path rule of URL path map of an application gateway.
     #
-    class ApplicationGatewayPathRule < MsRestAzure::SubResource
+    class ApplicationGatewayPathRule < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Path rules of URL path map.
       attr_accessor :paths
 

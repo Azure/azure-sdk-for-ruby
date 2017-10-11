@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The list of path IDs of the volume containers
       # that needs to be failed-over, for which we want to fetch the eligible
       # targets.

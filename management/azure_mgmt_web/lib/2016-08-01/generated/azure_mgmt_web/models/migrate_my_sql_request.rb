@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # MySQL migration request.
     #
-    class MigrateMySqlRequest < MsRestAzure::ProxyOnlyResource
+    class MigrateMySqlRequest < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Connection string to the remote MySQL database.
       attr_accessor :connection_string
 

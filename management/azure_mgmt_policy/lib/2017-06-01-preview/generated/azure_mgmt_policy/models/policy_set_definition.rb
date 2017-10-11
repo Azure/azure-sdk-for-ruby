@@ -12,7 +12,6 @@ module Azure::ARM::Policy::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PolicyType] The type of policy definition. Possible values are
       # NotSpecified, BuiltIn, and Custom. Possible values include:
       # 'NotSpecified', 'BuiltIn', 'Custom'

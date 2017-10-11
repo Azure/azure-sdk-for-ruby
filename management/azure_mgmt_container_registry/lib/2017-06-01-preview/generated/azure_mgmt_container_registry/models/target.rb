@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The MIME type of the referenced object.
       attr_accessor :media_type
 

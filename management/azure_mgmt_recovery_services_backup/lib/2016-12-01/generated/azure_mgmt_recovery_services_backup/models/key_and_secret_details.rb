@@ -17,7 +17,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [KEKDetails] KEK is encryption key for BEK.
       attr_accessor :kek_details
 

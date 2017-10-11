@@ -19,7 +19,6 @@ module Azure::ARM::Network::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NetworkOperationStatus] Status of the Azure async operation.
       # Possible values are: 'InProgress', 'Succeeded', and 'Failed'. Possible
       # values include: 'InProgress', 'Succeeded', 'Failed'

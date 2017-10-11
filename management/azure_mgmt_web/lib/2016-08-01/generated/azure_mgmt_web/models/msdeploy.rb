@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # MSDeploy ARM PUT information
     #
-    class MSDeploy < MsRestAzure::ProxyOnlyResource
+    class MSDeploy < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Package URI
       attr_accessor :package_uri
 

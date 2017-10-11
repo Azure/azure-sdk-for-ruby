@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [QueryAggregationFunction] The function that is used to
       # aggregate each query's metrics. Possible values include: 'min', 'max',
       # 'avg', 'sum'

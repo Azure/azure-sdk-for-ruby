@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The primary address prefix.
       attr_accessor :primary_peer_address_prefix
 

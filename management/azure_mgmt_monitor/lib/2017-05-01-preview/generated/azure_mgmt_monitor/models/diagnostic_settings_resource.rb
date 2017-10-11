@@ -8,11 +8,10 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
     #
     # The diagnostic setting resource.
     #
-    class DiagnosticSettingsResource < MsRestAzure::ProxyOnlyResource
+    class DiagnosticSettingsResource < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource ID of the storage account to which you
       # would like to send Diagnostic Logs.
       attr_accessor :storage_account_id

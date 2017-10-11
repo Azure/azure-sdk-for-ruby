@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_08_01
     # Full view of network features for an app (presently VNET integration and
     # Hybrid Connections).
     #
-    class NetworkFeatures < MsRestAzure::ProxyOnlyResource
+    class NetworkFeatures < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Virtual Network name.
       attr_accessor :virtual_network_name
 

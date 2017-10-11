@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The api entity set name. This becomes the odata entity
       # set name for the entity Type being refered in this object.
       attr_accessor :api_entity_set_name

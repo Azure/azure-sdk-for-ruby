@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

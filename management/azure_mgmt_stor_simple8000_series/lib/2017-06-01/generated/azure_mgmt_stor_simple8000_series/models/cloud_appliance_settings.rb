@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AsymmetricEncryptedSecret] The service data encryption key
       # (encrypted with DAK).
       attr_accessor :service_data_encryption_key

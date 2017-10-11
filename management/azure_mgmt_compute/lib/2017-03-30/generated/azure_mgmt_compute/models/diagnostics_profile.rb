@@ -13,7 +13,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [BootDiagnostics] Boot Diagnostics is a debugging feature which
       # allows you to view Console Output and Screenshot to diagnose VM status.
       # <br><br> For Linux Virtual Machines, you can easily view the output of

@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ServerAzureADAdministrator>] The list of server Active
       # Directory Administrators for the server.
       attr_accessor :value

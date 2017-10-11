@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_08_01
     # Virtual Network route contract used to pass routing information for a
     # Virtual Network.
     #
-    class VnetRoute < MsRestAzure::ProxyOnlyResource
+    class VnetRoute < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of this route. This is only returned by the
       # server and does not need to be set by the client.
       attr_accessor :vnet_route_name

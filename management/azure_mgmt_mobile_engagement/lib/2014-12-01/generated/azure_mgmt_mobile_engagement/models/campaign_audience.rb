@@ -18,7 +18,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Boolean expression made of criteria (variables)
       # operators (`not`, `and` or `or`) and parenthesis. Criterion names in
       # the audience expression must start with a capital letter and can only

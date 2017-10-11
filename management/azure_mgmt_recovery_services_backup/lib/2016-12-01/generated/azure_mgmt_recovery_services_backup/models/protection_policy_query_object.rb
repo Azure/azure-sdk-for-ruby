@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [BackupManagementType] Backup management type for the backup
       # policy. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql'

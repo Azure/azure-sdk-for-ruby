@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => GraphNode}] The set of nodes making up the
       # graph, provided as a nodeId to GraphNode map
       attr_accessor :nodes

@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<LogProfileResource>] the values of the log profiles.
       attr_accessor :value
 

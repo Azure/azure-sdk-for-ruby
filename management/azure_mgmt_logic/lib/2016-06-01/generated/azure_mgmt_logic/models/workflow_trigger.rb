@@ -8,11 +8,10 @@ module Azure::ARM::Logic::Api_2016_06_01
     #
     # The workflow trigger.
     #
-    class WorkflowTrigger < MsRestAzure::SubResource
+    class WorkflowTrigger < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WorkflowTriggerProvisioningState] Gets the provisioning state.
       # Possible values include: 'NotSpecified', 'Accepted', 'Running',
       # 'Ready', 'Creating', 'Created', 'Deleting', 'Deleted', 'Canceled',

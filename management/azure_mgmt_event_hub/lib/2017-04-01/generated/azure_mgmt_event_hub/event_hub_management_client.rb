@@ -42,6 +42,9 @@ module Azure::ARM::EventHub::Api_2017_04_01
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
+    # @return [DisasterRecoveryConfigs] disaster_recovery_configs
+    attr_reader :disaster_recovery_configs
+
     # @return [EventHubs] event_hubs
     attr_reader :event_hubs
 
@@ -63,6 +66,7 @@ module Azure::ARM::EventHub::Api_2017_04_01
 
       @operations = Operations.new(self)
       @namespaces = Namespaces.new(self)
+      @disaster_recovery_configs = DisasterRecoveryConfigs.new(self)
       @event_hubs = EventHubs.new(self)
       @consumer_groups = ConsumerGroups.new(self)
       @api_version = '2017-04-01'

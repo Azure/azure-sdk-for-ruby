@@ -8,11 +8,10 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
     #
     # An object that represents a webhook for a container registry.
     #
-    class Webhook < MsRestAzure::Resource
+    class Webhook < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WebhookStatus] The status of the webhook at the time the
       # operation was called. Possible values include: 'enabled', 'disabled'
       attr_accessor :status

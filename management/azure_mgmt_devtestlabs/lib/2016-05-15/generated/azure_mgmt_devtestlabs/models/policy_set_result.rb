@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] A value indicating whether this policy set evaluation
       # has discovered violations.
       attr_accessor :has_error

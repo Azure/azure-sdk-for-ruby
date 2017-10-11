@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DiskCreateOption] Possible values include: 'Empty', 'Attach',
       # 'FromImage', 'Import', 'Copy', 'Restore'
       attr_accessor :create_option

@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The detailed info regarding the reason associated with
       # the namespace.
       attr_accessor :message

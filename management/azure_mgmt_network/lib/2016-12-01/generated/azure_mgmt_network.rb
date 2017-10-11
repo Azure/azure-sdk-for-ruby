@@ -48,7 +48,9 @@ module Azure::ARM::Network::Api_2016_12_01
 
   module Models
     autoload :EffectiveRoute,                                     '2016-12-01/generated/azure_mgmt_network/models/effective_route.rb'
+    autoload :Resource,                                           '2016-12-01/generated/azure_mgmt_network/models/resource.rb'
     autoload :EffectiveRouteListResult,                           '2016-12-01/generated/azure_mgmt_network/models/effective_route_list_result.rb'
+    autoload :SubResource,                                        '2016-12-01/generated/azure_mgmt_network/models/sub_resource.rb'
     autoload :SecurityRuleListResult,                             '2016-12-01/generated/azure_mgmt_network/models/security_rule_list_result.rb'
     autoload :ExpressRouteCircuitRoutesTable,                     '2016-12-01/generated/azure_mgmt_network/models/express_route_circuit_routes_table.rb'
     autoload :ExpressRouteCircuitsRoutesTableListResult,          '2016-12-01/generated/azure_mgmt_network/models/express_route_circuits_routes_table_list_result.rb'

@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Web Job Information.
     #
-    class WebJob < MsRestAzure::ProxyOnlyResource
+    class WebJob < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Job name. Used as job identifier in ARM resource URI.
       attr_accessor :web_job_name
 

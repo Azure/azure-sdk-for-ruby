@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
     #
     # Description of a namespace authorization rule.
     #
-    class SharedAccessAuthorizationRuleResource < MsRestAzure::Resource
+    class SharedAccessAuthorizationRuleResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 

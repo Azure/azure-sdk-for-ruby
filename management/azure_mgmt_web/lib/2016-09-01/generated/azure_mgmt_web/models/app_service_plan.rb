@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_09_01
     #
     # App Service plan.
     #
-    class AppServicePlan < MsRestAzure::Resource
+    class AppServicePlan < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name for the App Service plan.
       attr_accessor :app_service_plan_name
 

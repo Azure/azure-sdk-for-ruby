@@ -13,11 +13,10 @@ module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataLakeAnalyticsAccountStatus] the provisioning status of the
       # Data Lake Analytics account. Possible values include: 'Failed',
       # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',
-      # 'Resuming', 'Deleting', 'Deleted'
+      # 'Resuming', 'Deleting', 'Deleted', 'Undeleting', 'Canceled'
       attr_accessor :provisioning_state
 
       # @return [DataLakeAnalyticsAccountState] the state of the Data Lake

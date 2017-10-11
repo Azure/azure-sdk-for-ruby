@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the fieldName in profile.
       attr_accessor :profile_field_name
 

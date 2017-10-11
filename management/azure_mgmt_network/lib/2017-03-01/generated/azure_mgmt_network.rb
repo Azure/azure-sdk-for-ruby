@@ -48,6 +48,7 @@ module Azure::ARM::Network::Api_2017_03_01
 
   module Models
     autoload :SecurityRuleListResult,                             '2017-03-01/generated/azure_mgmt_network/models/security_rule_list_result.rb'
+    autoload :SubResource,                                        '2017-03-01/generated/azure_mgmt_network/models/sub_resource.rb'
     autoload :NetworkSecurityGroupListResult,                     '2017-03-01/generated/azure_mgmt_network/models/network_security_group_list_result.rb'
     autoload :ExpressRouteCircuitRoutesTableSummary,              '2017-03-01/generated/azure_mgmt_network/models/express_route_circuit_routes_table_summary.rb'
     autoload :ExpressRouteCircuitsRoutesTableSummaryListResult,   '2017-03-01/generated/azure_mgmt_network/models/express_route_circuits_routes_table_summary_list_result.rb'
@@ -89,6 +90,7 @@ module Azure::ARM::Network::Api_2017_03_01
     autoload :EffectiveNetworkSecurityGroup,                      '2017-03-01/generated/azure_mgmt_network/models/effective_network_security_group.rb'
     autoload :VirtualNetworkPeeringListResult,                    '2017-03-01/generated/azure_mgmt_network/models/virtual_network_peering_list_result.rb'
     autoload :EffectiveNetworkSecurityGroupListResult,            '2017-03-01/generated/azure_mgmt_network/models/effective_network_security_group_list_result.rb'
+    autoload :Resource,                                           '2017-03-01/generated/azure_mgmt_network/models/resource.rb'
     autoload :EffectiveRoute,                                     '2017-03-01/generated/azure_mgmt_network/models/effective_route.rb'
     autoload :SubnetListResult,                                   '2017-03-01/generated/azure_mgmt_network/models/subnet_list_result.rb'
     autoload :EffectiveRouteListResult,                           '2017-03-01/generated/azure_mgmt_network/models/effective_route_list_result.rb'

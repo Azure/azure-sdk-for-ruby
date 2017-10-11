@@ -8,11 +8,10 @@ module Azure::ARM::Relay::Api_2017_04_01
     #
     # Description of a namespace authorization rule.
     #
-    class AuthorizationRule < MsRestAzure::Resource
+    class AuthorizationRule < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 

@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The target resource ID to query the troubleshooting
       # result.
       attr_accessor :target_resource_id

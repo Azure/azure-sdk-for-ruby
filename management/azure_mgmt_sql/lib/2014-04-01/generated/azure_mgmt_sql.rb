@@ -59,6 +59,7 @@ module Azure::ARM::SQL::Api_2014_04_01
 
   module Models
     autoload :FirewallRuleListResult,                             '2014-04-01/generated/azure_mgmt_sql/models/firewall_rule_list_result.rb'
+    autoload :Resource,                                           '2014-04-01/generated/azure_mgmt_sql/models/resource.rb'
     autoload :SloUsageMetric,                                     '2014-04-01/generated/azure_mgmt_sql/models/slo_usage_metric.rb'
     autoload :ServerUsage,                                        '2014-04-01/generated/azure_mgmt_sql/models/server_usage.rb'
     autoload :AdvisorListResult,                                  '2014-04-01/generated/azure_mgmt_sql/models/advisor_list_result.rb'

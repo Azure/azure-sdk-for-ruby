@@ -8,11 +8,10 @@ module Azure::ARM::Monitor::Api_2017_04_01
     #
     # An action group resource.
     #
-    class ActionGroupResource < MsRestAzure::Resource
+    class ActionGroupResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The short name of the action group. This will be used
       # in SMS messages.
       attr_accessor :group_short_name

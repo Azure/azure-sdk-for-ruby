@@ -8,11 +8,10 @@ module Azure::ARM::Logic::Api_2016_06_01
     #
     # The integration account partner.
     #
-    class IntegrationAccountPartner < MsRestAzure::Resource
+    class IntegrationAccountPartner < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PartnerType] The partner type. Possible values include:
       # 'NotSpecified', 'B2B'
       attr_accessor :partner_type

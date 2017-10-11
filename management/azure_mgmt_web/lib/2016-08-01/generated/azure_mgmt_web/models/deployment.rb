@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # User crendentials used for publishing activity.
     #
-    class Deployment < MsRestAzure::ProxyOnlyResource
+    class Deployment < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Identifier for deployment.
       attr_accessor :deployment_id
 

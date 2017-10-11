@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the volume.
       attr_accessor :name
 

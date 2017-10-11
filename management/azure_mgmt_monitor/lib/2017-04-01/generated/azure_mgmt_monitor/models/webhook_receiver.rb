@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the webhook receiver. Names must be unique
       # across all receivers within an action group.
       attr_accessor :name

@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SharedAccessSignatureAuthorizationRule>] The shared
       # access policies you can use to secure a connection to the IoT hub.
       attr_accessor :authorization_policies

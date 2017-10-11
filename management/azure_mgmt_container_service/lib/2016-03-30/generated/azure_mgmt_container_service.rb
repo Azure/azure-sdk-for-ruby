@@ -25,6 +25,7 @@ module Azure::ARM::ContainerService::Api_2016_03_30
 
   module Models
     autoload :ContainerServiceSshConfiguration,                   '2016-03-30/generated/azure_mgmt_container_service/models/container_service_ssh_configuration.rb'
+    autoload :Resource,                                           '2016-03-30/generated/azure_mgmt_container_service/models/resource.rb'
     autoload :ContainerServiceLinuxProfile,                       '2016-03-30/generated/azure_mgmt_container_service/models/container_service_linux_profile.rb'
     autoload :ContainerServiceMasterProfile,                      '2016-03-30/generated/azure_mgmt_container_service/models/container_service_master_profile.rb'
     autoload :ContainerServiceVMDiagnostics,                      '2016-03-30/generated/azure_mgmt_container_service/models/container_service_vmdiagnostics.rb'

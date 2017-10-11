@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CampaignStates] State of the campaign, or 'queued' when
       # testing a campaign. Possible values include: 'draft', 'scheduled',
       # 'in-progress', 'finished', 'queued'

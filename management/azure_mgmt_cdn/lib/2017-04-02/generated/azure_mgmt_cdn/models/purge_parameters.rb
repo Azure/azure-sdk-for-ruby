@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2017_04_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The path to the content to be purged. Can
       # describe a file path or a wild card directory.
       attr_accessor :content_paths

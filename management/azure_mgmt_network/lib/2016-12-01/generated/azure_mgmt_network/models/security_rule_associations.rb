@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NetworkInterfaceAssociation]
       attr_accessor :network_interface_association
 

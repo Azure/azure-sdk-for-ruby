@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
     #
     # Description of Rule Resource.
     #
-    class Rule < MsRestAzure::Resource
+    class Rule < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Action] Represents the filter actions which are allowed for
       # the transformation of a message that have been matched by a filter
       # expression.

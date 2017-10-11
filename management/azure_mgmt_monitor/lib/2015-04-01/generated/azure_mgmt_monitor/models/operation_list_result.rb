@@ -13,7 +13,6 @@ module Azure::ARM::Monitor::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Operation>] List of operations supported by the
       # Microsoft.Insights provider.
       attr_accessor :value

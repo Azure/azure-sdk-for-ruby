@@ -12,7 +12,6 @@ module Azure::ARM::Resources::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the deployment.
       attr_accessor :id
 

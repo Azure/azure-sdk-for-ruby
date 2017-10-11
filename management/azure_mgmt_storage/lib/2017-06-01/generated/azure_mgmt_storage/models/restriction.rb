@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The type of restrictions. As of now only possible
       # value for this is location.
       attr_accessor :type

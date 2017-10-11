@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Number of times the campaign was registered to be
       # pushed.
       attr_accessor :queued

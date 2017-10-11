@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_06_15
     #
     # IPConfiguration in a network interface.
     #
-    class NetworkInterfaceIPConfiguration < MsRestAzure::SubResource
+    class NetworkInterfaceIPConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<BackendAddressPool>] The reference of
       # LoadBalancerBackendAddressPool resource.
       attr_accessor :load_balancer_backend_address_pools

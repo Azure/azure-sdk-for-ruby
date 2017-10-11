@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The uri to fetch the next page of resources. Call
       # ListNext() fetches next page of resources.
       attr_accessor :next_link

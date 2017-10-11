@@ -8,11 +8,13 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
     #
     # The base sub-resource model definition.
     #
-    class SubResource < MsRestAzure::SubResource
+    class SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
+      # @return [String] Resource Id
+      attr_accessor :id
+
       # @return [String] Resource name
       attr_accessor :name
 

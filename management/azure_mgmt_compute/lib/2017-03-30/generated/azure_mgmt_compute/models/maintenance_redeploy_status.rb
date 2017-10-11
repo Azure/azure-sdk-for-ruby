@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] True, if customer is allowed to perform Maintenance.
       attr_accessor :is_customer_initiated_maintenance_allowed
 

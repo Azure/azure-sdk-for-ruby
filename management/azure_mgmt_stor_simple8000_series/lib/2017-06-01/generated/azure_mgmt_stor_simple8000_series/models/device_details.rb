@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The total number of endpoints that are currently on
       # the device ( i.e. number of volumes).
       attr_accessor :endpoint_count

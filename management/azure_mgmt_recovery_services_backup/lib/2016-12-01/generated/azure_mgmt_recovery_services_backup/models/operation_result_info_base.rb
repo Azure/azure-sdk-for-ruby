@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["ExportJobsOperationResultInfo"] = "ExportJobsOperationResultInfo"
       @@discriminatorMap["OperationResultInfo"] = "OperationResultInfo"

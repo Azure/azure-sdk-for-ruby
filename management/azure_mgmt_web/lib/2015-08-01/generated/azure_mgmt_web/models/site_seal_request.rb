@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Theme
       attr_accessor :light_theme
 

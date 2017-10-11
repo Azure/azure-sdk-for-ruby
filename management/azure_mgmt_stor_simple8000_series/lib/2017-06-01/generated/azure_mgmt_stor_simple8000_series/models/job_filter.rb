@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the status of the jobs to be filtered. For
       # e.g., "Running", "Succeeded", "Failed" or "Canceled". Only 'Equality'
       # operator is supported for this property.

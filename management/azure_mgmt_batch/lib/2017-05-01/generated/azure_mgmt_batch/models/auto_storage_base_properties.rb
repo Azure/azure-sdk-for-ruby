@@ -12,7 +12,6 @@ module Azure::ARM::Batch::Api_2017_05_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource ID of the storage account to be used for
       # auto-storage account.
       attr_accessor :storage_account_id

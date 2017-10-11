@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<DiagnosticSettingsResource>] The collection of
       # diagnostic settings resources;.
       attr_accessor :value

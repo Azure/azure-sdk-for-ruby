@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ApplicationGatewaySslProtocol>] Ssl protocols to be
       # disabled on application gateway.
       attr_accessor :disabled_ssl_protocols

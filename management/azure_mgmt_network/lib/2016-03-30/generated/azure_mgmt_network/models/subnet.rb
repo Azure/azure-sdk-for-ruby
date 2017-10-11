@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_03_30
     #
     # Subnet in a VirtualNework resource
     #
-    class Subnet < MsRestAzure::SubResource
+    class Subnet < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets Address prefix for the subnet.
       attr_accessor :address_prefix
 

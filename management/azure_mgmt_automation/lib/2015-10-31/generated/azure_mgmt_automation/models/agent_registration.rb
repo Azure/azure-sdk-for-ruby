@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the dsc meta configuration.
       attr_accessor :dsc_meta_configuration
 

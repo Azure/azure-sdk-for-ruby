@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Options for app content migration.
     #
-    class StorageMigrationOptions < MsRestAzure::ProxyOnlyResource
+    class StorageMigrationOptions < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] AzureFiles connection string.
       attr_accessor :azurefiles_connection_string
 

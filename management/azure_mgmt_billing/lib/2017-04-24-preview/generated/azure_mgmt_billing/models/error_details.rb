@@ -12,7 +12,6 @@ module Azure::ARM::Billing::Api_2017_04_24_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Error code.
       attr_accessor :code
 

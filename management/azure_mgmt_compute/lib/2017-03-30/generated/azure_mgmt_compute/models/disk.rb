@@ -8,17 +8,19 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Disk resource.
     #
-    class Disk < MsRestAzure::Resource
+    class Disk < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] A relative URI containing the ID of the VM that has
       # the disk attached.
       attr_accessor :managed_by
 
       # @return [DiskSku]
       attr_accessor :sku
+
+      # @return [Array<String>] The Logical zone list for Disk.
+      attr_accessor :zones
 
       # @return [DateTime] The time when the disk was created.
       attr_accessor :time_created
@@ -116,6 +118,20 @@ module Azure::ARM::Compute::Api_2017_03_30
                 type: {
                   name: 'Composite',
                   class_name: 'DiskSku'
+                }
+              },
+              zones: {
+                required: false,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               },
               time_created: {

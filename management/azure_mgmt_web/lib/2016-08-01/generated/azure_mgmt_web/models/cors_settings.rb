@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Gets or sets the list of origins that should be
       # allowed to make cross-origin
       # calls (for example: http://example.com:12345). Use "*" to allow all.

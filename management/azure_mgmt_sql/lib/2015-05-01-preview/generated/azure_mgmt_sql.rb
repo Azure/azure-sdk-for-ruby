@@ -37,6 +37,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
   module Models
     autoload :ServerListResult,                                   '2015-05-01-preview/generated/azure_mgmt_sql/models/server_list_result.rb'
+    autoload :Resource,                                           '2015-05-01-preview/generated/azure_mgmt_sql/models/resource.rb'
     autoload :ServerKeyListResult,                                '2015-05-01-preview/generated/azure_mgmt_sql/models/server_key_list_result.rb'
     autoload :ResourceIdentity,                                   '2015-05-01-preview/generated/azure_mgmt_sql/models/resource_identity.rb'
     autoload :RecommendedActionImplementationInfo,                '2015-05-01-preview/generated/azure_mgmt_sql/models/recommended_action_implementation_info.rb'
@@ -106,5 +107,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
     autoload :SyncGroupState,                                     '2015-05-01-preview/generated/azure_mgmt_sql/models/sync_group_state.rb'
     autoload :SyncDirection,                                      '2015-05-01-preview/generated/azure_mgmt_sql/models/sync_direction.rb'
     autoload :SyncMemberState,                                    '2015-05-01-preview/generated/azure_mgmt_sql/models/sync_member_state.rb'
+    autoload :VirtualNetworkRuleState,                            '2015-05-01-preview/generated/azure_mgmt_sql/models/virtual_network_rule_state.rb'
   end
 end

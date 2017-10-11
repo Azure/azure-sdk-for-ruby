@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::IotHub::Api_2016_02_03
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

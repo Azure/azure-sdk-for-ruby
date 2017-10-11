@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the dimension name. E.g., NetworkInterface.
       # Valid values are the ones specified in the field "dimensions" in the
       # ListMetricDefinitions call. Only 'Equality' operator is supported for

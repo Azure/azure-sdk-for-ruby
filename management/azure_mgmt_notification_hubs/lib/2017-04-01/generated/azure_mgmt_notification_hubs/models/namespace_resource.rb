@@ -8,11 +8,10 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
     #
     # Description of a Namespace resource.
     #
-    class NamespaceResource < MsRestAzure::Resource
+    class NamespaceResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the namespace.
       attr_accessor :namespace_resource_name
 

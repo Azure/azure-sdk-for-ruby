@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] The relative URL of the Key Vault containing all
       # of the certificates in VaultCertificates.
       attr_accessor :source_vault

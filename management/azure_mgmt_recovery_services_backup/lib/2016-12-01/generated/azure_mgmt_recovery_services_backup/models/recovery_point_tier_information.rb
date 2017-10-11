@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPointTierType] Recovery point tier type. Possible
       # values include: 'Invalid', 'InstantRP', 'HardenedRP'
       attr_accessor :type

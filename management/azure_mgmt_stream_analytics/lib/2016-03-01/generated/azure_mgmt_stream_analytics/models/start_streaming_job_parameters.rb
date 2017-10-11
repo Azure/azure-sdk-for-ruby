@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OutputStartMode] Value may be JobStartTime, CustomTime, or
       # LastOutputEventTime to indicate whether the starting point of the
       # output event stream should start whenever the job is started, start at

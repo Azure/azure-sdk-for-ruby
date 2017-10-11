@@ -19,7 +19,6 @@ module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OperationStatus] the status of the AzureAsuncOperation.
       # Possible values include: 'InProgress', 'Succeeded', 'Failed'
       attr_accessor :status

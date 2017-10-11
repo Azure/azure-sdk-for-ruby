@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Operation>] List of Automation operations supported by
       # the Automation resource provider.
       attr_accessor :value

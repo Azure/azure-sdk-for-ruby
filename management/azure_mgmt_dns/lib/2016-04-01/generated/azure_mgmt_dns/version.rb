@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Dns::Api_2016_04_01
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

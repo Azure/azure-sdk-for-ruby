@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_09_01
     #
     # Push settings for the App.
     #
-    class PushSettings < MsRestAzure::ProxyOnlyResource
+    class PushSettings < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Gets or sets a flag indicating whether the Push
       # endpoint is enabled.
       attr_accessor :is_push_enabled

@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NotificationChannelEventType] The event type for which this
       # notification is enabled (i.e. AutoShutdown, Cost). Possible values
       # include: 'AutoShutdown', 'Cost'

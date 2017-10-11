@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ARM path ID of the device which will act as the
       # failover target.
       attr_accessor :target_device_id

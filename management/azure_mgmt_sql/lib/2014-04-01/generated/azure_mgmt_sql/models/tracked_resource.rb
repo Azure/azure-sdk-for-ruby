@@ -8,11 +8,10 @@ module Azure::ARM::SQL::Api_2014_04_01
     #
     # ARM tracked top level resource.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 

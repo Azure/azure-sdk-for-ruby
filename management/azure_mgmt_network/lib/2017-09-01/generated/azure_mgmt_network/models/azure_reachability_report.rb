@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The aggregation level of Azure reachability report.
       # Can be Country, State or City.
       attr_accessor :aggregation_level

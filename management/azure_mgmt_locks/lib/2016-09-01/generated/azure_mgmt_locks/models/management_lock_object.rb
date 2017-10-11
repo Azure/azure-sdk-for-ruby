@@ -12,7 +12,6 @@ module Azure::ARM::Locks::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [LockLevel] The level of the lock. Possible values are:
       # NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized
       # users are able to read and modify the resources, but not delete.

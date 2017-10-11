@@ -12,7 +12,6 @@ module Azure::ARM::Redis::Api_2017_02_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The current primary key that clients can use to
       # authenticate with Redis cache.
       attr_accessor :primary_key

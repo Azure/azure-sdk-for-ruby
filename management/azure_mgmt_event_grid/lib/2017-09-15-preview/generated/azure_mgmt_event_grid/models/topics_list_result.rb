@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Topic>] A collection of Topics
       attr_accessor :value
 

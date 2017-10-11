@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Thumbprint of the primary certificate
       attr_accessor :thumbprint
 

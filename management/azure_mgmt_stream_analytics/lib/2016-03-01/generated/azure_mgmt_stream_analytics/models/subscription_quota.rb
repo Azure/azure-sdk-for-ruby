@@ -8,11 +8,10 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
     #
     # Describes the current quota for the subscription.
     #
-    class SubscriptionQuota < MsRestAzure::SubResource
+    class SubscriptionQuota < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The max permitted usage of this resource.
       attr_accessor :max_count
 

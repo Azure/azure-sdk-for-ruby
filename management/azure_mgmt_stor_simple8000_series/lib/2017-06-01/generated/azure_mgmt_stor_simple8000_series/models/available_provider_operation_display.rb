@@ -15,7 +15,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The localized friendly form of the resource provider
       # name - it is expected to also include the publisher/company
       # responsible. It should use Title Casing and begin with 'Microsoft' for

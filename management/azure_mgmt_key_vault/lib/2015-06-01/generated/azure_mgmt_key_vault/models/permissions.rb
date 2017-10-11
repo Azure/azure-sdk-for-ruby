@@ -12,7 +12,6 @@ module Azure::ARM::KeyVault::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<KeyPermissions>] Permissions to keys
       attr_accessor :keys
 

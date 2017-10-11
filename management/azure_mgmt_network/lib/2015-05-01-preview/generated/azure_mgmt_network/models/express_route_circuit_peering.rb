@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # Peering in a ExpressRouteCircuit resource
     #
-    class ExpressRouteCircuitPeering < MsRestAzure::SubResource
+    class ExpressRouteCircuitPeering < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ExpressRouteCircuitPeeringType] Gets or sets PeeringType.
       # Possible values include: 'AzurePublicPeering', 'AzurePrivatePeering',
       # 'MicrosoftPeering'

@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplicationGatewayBackendHttpSettings] Reference of an
       # ApplicationGatewayBackendHttpSettings resource.
       attr_accessor :backend_http_settings

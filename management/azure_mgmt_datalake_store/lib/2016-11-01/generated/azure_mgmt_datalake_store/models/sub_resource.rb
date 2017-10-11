@@ -8,11 +8,13 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
     #
     # The Resource model definition for a nested resource.
     #
-    class SubResource < MsRestAzure::SubResource
+    class SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
+      # @return [String] Resource Id
+      attr_accessor :id
+
       # @return [String] Resource name
       attr_accessor :name
 

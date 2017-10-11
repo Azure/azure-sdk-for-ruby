@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2016_02_03
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] The value which indicates whether the provided name
       # is available.
       attr_accessor :name_available

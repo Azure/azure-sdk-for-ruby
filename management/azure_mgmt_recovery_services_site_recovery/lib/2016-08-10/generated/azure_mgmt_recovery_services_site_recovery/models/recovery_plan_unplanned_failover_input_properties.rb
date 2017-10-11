@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PossibleOperationsDirections] The failover direction. Possible
       # values include: 'PrimaryToRecovery', 'RecoveryToPrimary'
       attr_accessor :failover_direction

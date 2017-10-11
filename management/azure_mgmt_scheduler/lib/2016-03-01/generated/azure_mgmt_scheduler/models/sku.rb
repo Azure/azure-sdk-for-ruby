@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuDefinition] Gets or set the SKU. Possible values include:
       # 'Standard', 'Free', 'P10Premium', 'P20Premium'
       attr_accessor :name

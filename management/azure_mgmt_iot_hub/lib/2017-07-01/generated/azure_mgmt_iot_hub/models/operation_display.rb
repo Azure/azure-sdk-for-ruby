@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Service provider: Microsoft Devices
       attr_accessor :provider
 

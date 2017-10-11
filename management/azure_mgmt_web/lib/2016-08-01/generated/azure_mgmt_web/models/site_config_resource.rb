@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Web app configuration ARM resource.
     #
-    class SiteConfigResource < MsRestAzure::ProxyOnlyResource
+    class SiteConfigResource < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Number of workers.
       attr_accessor :number_of_workers
 

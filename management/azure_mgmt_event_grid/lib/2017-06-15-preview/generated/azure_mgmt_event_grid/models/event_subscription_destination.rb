@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EndpointType] Type of the endpoint for the event subscription
       # destination. Possible values include: 'WebHook'
       attr_accessor :endpoint_type

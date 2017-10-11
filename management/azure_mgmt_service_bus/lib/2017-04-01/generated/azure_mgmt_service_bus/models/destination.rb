@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name for capture destination
       attr_accessor :name
 

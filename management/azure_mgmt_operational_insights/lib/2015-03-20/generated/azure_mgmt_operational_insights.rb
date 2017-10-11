@@ -42,6 +42,7 @@ module Azure::ARM::OperationalInsights::Api_2015_03_20
     autoload :SavedSearchesListResult,                            '2015-03-20/generated/azure_mgmt_operational_insights/models/saved_searches_list_result.rb'
     autoload :StorageInsightListResult,                           '2015-03-20/generated/azure_mgmt_operational_insights/models/storage_insight_list_result.rb'
     autoload :SearchMetadata,                                     '2015-03-20/generated/azure_mgmt_operational_insights/models/search_metadata.rb'
+    autoload :Resource,                                           '2015-03-20/generated/azure_mgmt_operational_insights/models/resource.rb'
     autoload :SearchResultsResponse,                              '2015-03-20/generated/azure_mgmt_operational_insights/models/search_results_response.rb'
     autoload :ProxyResource,                                      '2015-03-20/generated/azure_mgmt_operational_insights/models/proxy_resource.rb'
     autoload :StorageInsight,                                     '2015-03-20/generated/azure_mgmt_operational_insights/models/storage_insight.rb'

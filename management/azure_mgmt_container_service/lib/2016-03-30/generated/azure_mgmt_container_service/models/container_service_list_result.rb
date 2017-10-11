@@ -12,7 +12,6 @@ module Azure::ARM::ContainerService::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ContainerService>] the list of container services.
       attr_accessor :value
 

@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Fabric definition.
     #
-    class Fabric < MsRestAzure::Resource
+    class Fabric < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FabricProperties] Fabric related data.
       attr_accessor :properties
 

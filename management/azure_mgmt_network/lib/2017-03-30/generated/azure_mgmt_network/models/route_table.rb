@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_03_30
     #
     # Route table resource.
     #
-    class RouteTable < MsRestAzure::Resource
+    class RouteTable < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Route>] Collection of routes contained within a route
       # table.
       attr_accessor :routes

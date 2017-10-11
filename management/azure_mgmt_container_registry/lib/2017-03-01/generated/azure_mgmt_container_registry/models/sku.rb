@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The SKU name of the container registry. Required for
       # registry creation. Allowed value: Basic.
       attr_accessor :name

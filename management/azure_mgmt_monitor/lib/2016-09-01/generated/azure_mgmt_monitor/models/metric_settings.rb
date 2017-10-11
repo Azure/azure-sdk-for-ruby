@@ -13,7 +13,6 @@ module Azure::ARM::Monitor::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Duration] the timegrain of the metric in ISO8601 format.
       attr_accessor :time_grain
 

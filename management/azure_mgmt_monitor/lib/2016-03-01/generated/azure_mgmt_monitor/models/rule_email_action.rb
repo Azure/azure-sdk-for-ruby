@@ -13,21 +13,20 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.RuleEmailAction"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.RuleEmailAction"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [Boolean] Whether the administrators (service and
-      # co-adiminstrators) of the service should be notified when the alert is
+      # co-administrators) of the service should be notified when the alert is
       # activated.
       attr_accessor :send_to_service_owners
 
       # @return [Array<String>] the list of administrator's custom email
-      # addresses notifiy of the activation of the alert.
+      # addresses to notify of the activation of the alert.
       attr_accessor :custom_emails
 
 
@@ -43,7 +42,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
             name: 'Composite',
             class_name: 'RuleEmailAction',
             model_properties: {
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

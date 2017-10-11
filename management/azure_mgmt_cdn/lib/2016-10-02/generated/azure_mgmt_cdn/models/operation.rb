@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2016_10_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}
       attr_accessor :name
 

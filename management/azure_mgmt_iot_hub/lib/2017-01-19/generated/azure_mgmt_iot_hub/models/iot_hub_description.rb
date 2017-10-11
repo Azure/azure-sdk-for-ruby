@@ -8,11 +8,10 @@ module Azure::ARM::IotHub::Api_2017_01_19
     #
     # The description of the IoT hub.
     #
-    class IotHubDescription < MsRestAzure::Resource
+    class IotHubDescription < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The subscription identifier.
       attr_accessor :subscriptionid
 

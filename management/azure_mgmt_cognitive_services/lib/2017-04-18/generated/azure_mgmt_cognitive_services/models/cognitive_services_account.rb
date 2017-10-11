@@ -13,7 +13,6 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Entity Tag
       attr_accessor :etag
 

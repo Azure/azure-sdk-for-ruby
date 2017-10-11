@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the HTTP status code or error code associated with
       # this error
       attr_accessor :code

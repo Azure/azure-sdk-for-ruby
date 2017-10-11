@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Is this certificate used for admin access from the
       # client, if false, it is used or query only access
       attr_accessor :is_admin

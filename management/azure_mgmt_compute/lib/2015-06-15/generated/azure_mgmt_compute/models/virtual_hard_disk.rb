@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The virtual hard disk's URI. Must be a valid URI to a
       # virtual hard disk.
       attr_accessor :uri

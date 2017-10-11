@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ImageOSDisk] Specifies information about the operating system
       # disk used by the virtual machine. <br><br> For more information about
       # disks, see [About disks and VHDs for Azure virtual

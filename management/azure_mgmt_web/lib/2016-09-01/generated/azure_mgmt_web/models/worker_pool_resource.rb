@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_09_01
     #
     # Worker pool of an App Service Environment ARM resource.
     #
-    class WorkerPoolResource < MsRestAzure::ProxyOnlyResource
+    class WorkerPoolResource < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Worker size ID for referencing this worker pool.
       attr_accessor :worker_size_id
 

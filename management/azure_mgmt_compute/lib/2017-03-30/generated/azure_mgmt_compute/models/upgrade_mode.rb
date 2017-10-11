@@ -11,6 +11,7 @@ module Azure::ARM::Compute::Api_2017_03_30
     module UpgradeMode
       Automatic = "Automatic"
       Manual = "Manual"
+      Rolling = "Rolling"
     end
   end
 end

@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_03_30
     #
     # Public IP address resource.
     #
-    class PublicIPAddress < MsRestAzure::Resource
+    class PublicIPAddress < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PublicIPAddressSku] The public IP address SKU.
       attr_accessor :sku
 

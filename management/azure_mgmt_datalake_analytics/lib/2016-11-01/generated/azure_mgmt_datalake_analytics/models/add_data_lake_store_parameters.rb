@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the optional suffix for the Data Lake Store account.
       attr_accessor :suffix
 

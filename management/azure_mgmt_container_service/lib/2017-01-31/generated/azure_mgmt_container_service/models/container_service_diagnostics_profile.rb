@@ -13,7 +13,6 @@ module Azure::ARM::ContainerService::Api_2017_01_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ContainerServiceVMDiagnostics] Profile for the container
       # service VM diagnostic agent.
       attr_accessor :vm_diagnostics

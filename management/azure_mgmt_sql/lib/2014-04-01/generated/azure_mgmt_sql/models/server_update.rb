@@ -8,11 +8,10 @@ module Azure::ARM::SQL::Api_2014_04_01
     #
     # Represents an update to a server.
     #
-    class ServerUpdate < MsRestAzure::Resource
+    class ServerUpdate < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 

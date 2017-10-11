@@ -13,16 +13,15 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.RuleEmailAction"] = "RuleEmailAction"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.RuleWebhookAction"] = "RuleWebhookAction"
 
       def initialize
-        @odata.type = "RuleAction"
+        @odatatype = "RuleAction"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
 
       #

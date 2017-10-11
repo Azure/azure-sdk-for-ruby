@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AuthorizationEligibility] The eligibility status of device for
       # service data encryption key rollover. Possible values include:
       # 'InEligible', 'Eligible'

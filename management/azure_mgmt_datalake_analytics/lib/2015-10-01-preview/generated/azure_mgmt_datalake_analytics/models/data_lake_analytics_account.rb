@@ -13,7 +13,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the account regional location.
       attr_accessor :location
 

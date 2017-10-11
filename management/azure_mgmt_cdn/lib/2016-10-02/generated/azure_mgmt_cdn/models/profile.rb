@@ -11,11 +11,10 @@ module Azure::ARM::CDN::Api_2016_10_02
     # in addition to creating shared configuration settings and selecting
     # pricing tiers and providers.
     #
-    class Profile < MsRestAzure::Resource
+    class Profile < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] The pricing tier (defines a CDN provider, feature list
       # and rate) of the CDN profile.
       attr_accessor :sku

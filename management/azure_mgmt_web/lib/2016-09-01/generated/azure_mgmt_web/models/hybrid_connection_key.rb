@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_09_01
     # Hybrid Connection key contract. This has the send key name and value for
     # a Hybrid Connection.
     #
-    class HybridConnectionKey < MsRestAzure::ProxyOnlyResource
+    class HybridConnectionKey < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the send key.
       attr_accessor :send_key_name
 

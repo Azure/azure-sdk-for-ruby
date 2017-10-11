@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2015_08_01
     #
     # Certificate order action.
     #
-    class CertificateOrderAction < MsRestAzure::Resource
+    class CertificateOrderAction < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CertificateOrderActionType] Action type. Possible values
       # include: 'CertificateIssued', 'CertificateOrderCanceled',
       # 'CertificateOrderCreated', 'CertificateRevoked',

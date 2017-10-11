@@ -34,6 +34,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
     autoload :ApplianceDefinitionListResult,                      '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/appliance_definition_list_result.rb'
     autoload :ApplianceListResult,                                '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/appliance_list_result.rb'
     autoload :ApplianceArtifact,                                  '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/appliance_artifact.rb'
+    autoload :Resource,                                           '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/resource.rb'
     autoload :GenericResource,                                    '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/generic_resource.rb'
     autoload :Appliance,                                          '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/appliance.rb'
     autoload :AppliancePatchable,                                 '2016-09-01-preview/generated/azure_mgmt_managed_applications/models/appliance_patchable.rb'

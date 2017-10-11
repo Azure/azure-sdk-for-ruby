@@ -13,7 +13,6 @@ module Azure::ARM::ContainerRegistry::Api_2016_06_27_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The administrator username.
       attr_accessor :username
 

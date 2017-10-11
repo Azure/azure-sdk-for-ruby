@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Kind of sql server.  This is metadata used for the
       # Azure portal experience.
       attr_accessor :kind

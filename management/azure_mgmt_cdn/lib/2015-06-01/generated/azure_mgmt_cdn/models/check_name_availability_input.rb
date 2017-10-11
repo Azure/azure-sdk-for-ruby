@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource name to validate.
       attr_accessor :name
 

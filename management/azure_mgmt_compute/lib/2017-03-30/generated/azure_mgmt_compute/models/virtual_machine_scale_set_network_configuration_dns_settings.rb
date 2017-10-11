@@ -13,7 +13,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] List of DNS servers IP addresses
       attr_accessor :dns_servers
 

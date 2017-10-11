@@ -6,21 +6,29 @@
 module Azure::ARM::Compute::Api_2017_03_30
   module Models
     #
-    # Describes an upgrade policy - automatic or manual.
+    # Describes an upgrade policy - automatic, manual, or rolling.
     #
     class UpgradePolicy
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpgradeMode] Specifies the mode of an upgrade to virtual
       # machines in the scale set.<br /><br /> Possible values are:<br /><br />
       # **Manual** - You  control the application of updates to virtual
       # machines in the scale set. You do this by using the manualUpgrade
       # action.<br /><br /> **Automatic** - All virtual machines in the scale
       # set are  automatically updated at the same time. Possible values
-      # include: 'Automatic', 'Manual'
+      # include: 'Automatic', 'Manual', 'Rolling'
       attr_accessor :mode
+
+      # @return [RollingUpgradePolicy] The configuration parameters used while
+      # performing a rolling upgrade.
+      attr_accessor :rolling_upgrade_policy
+
+      # @return [Boolean] Whether OS upgrades should automatically be applied
+      # to scale set instances in a rolling fashion when a newer version of the
+      # image becomes available.
+      attr_accessor :automatic_osupgrade
 
 
       #
@@ -41,6 +49,21 @@ module Azure::ARM::Compute::Api_2017_03_30
                 type: {
                   name: 'Enum',
                   module: 'UpgradeMode'
+                }
+              },
+              rolling_upgrade_policy: {
+                required: false,
+                serialized_name: 'rollingUpgradePolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RollingUpgradePolicy'
+                }
+              },
+              automatic_osupgrade: {
+                required: false,
+                serialized_name: 'automaticOSUpgrade',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Describes a Virtual Machine Extension Image.
     #
-    class VirtualMachineExtensionImage < MsRestAzure::Resource
+    class VirtualMachineExtensionImage < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The operating system this extension supports.
       attr_accessor :operating_system
 

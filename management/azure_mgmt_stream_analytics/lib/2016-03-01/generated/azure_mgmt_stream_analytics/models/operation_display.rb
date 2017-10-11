@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The localized friendly form of the resource provider
       # name.
       attr_accessor :provider

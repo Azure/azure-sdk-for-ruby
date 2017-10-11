@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Custom domain analysis.
     #
-    class CustomHostnameAnalysisResult < MsRestAzure::ProxyOnlyResource
+    class CustomHostnameAnalysisResult < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] <code>true</code> if hostname is already verified;
       # otherwise, <code>false</code>.
       attr_accessor :is_hostname_already_verified

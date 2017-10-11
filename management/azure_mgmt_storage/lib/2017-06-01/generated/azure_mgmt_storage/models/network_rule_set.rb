@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Bypass] Specifies whether traffic is bypassed for
       # Logging/Metrics/AzureServices. Possible values are any combination of
       # Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or

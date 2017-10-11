@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Float] The version number of the object.
       attr_accessor :version
 

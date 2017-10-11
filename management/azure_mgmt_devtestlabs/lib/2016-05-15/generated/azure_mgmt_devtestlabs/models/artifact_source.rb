@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     #
     # Properties of an artifact source.
     #
-    class ArtifactSource < MsRestAzure::Resource
+    class ArtifactSource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The artifact source's display name.
       attr_accessor :display_name
 

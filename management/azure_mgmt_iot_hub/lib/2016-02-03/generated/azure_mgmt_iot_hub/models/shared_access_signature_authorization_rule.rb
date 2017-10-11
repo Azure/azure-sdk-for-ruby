@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2016_02_03
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the shared access policy.
       attr_accessor :key_name
 

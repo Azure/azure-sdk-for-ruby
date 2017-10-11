@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The relationship resource format.
     #
-    class RelationshipResourceFormat < MsRestAzure::ProxyResource
+    class RelationshipResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CardinalityTypes] The Relationship Cardinality. Possible
       # values include: 'OneToOne', 'OneToMany', 'ManyToMany'
       attr_accessor :cardinality

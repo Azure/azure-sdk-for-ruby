@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # User crendentials used for publishing activity.
     #
-    class User < MsRestAzure::ProxyOnlyResource
+    class User < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Username
       attr_accessor :user_name
 

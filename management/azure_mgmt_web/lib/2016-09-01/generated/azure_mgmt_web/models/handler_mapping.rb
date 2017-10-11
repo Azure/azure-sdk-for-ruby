@@ -15,7 +15,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Requests with this extension will be handled using the
       # specified FastCGI application.
       attr_accessor :extension

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The oldest backup copy available for this item in
       # the service.
       attr_accessor :oldest_recovery_point

@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageKeyType] The type of the storage key to use. Possible
       # values include: 'StorageAccessKey', 'SharedAccessKey'
       attr_accessor :storage_key_type

@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The version of the user managed encryption key to
       # update through a key rotation.
       attr_accessor :encryption_key_version

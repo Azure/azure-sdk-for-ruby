@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RetryType] Gets or sets the retry strategy to be used.
       # Possible values include: 'None', 'Fixed'
       attr_accessor :retry_type

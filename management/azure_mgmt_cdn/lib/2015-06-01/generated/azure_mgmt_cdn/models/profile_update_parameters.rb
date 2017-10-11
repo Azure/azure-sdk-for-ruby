@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Profile tags
       attr_accessor :tags
 

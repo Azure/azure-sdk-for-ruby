@@ -12,7 +12,6 @@ module Azure::ARM::Policy::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The display name of the policy assignment.
       attr_accessor :display_name
 

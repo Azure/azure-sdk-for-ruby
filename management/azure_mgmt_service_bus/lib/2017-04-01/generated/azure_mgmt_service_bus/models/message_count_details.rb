@@ -12,7 +12,6 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Number of active messages in the queue, topic, or
       # subscription.
       attr_accessor :active_message_count

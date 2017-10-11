@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The connection string of the event hub endpoint.
       attr_accessor :connection_string
 

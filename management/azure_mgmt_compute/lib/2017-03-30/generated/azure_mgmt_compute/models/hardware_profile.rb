@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VirtualMachineSizeTypes] Specifies the size of the virtual
       # machine. For more information about virtual machine sizes, see [Sizes
       # for virtual

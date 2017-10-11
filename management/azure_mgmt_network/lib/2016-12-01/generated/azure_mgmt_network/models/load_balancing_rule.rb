@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_12_01
     #
     # A load balancing rule for a load balancer.
     #
-    class LoadBalancingRule < MsRestAzure::SubResource
+    class LoadBalancingRule < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 

@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The profile resource format.
     #
-    class ProfileResourceFormat < MsRestAzure::ProxyResource
+    class ProfileResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => Array<String>}] The attributes for the Type.
       attr_accessor :attributes
 

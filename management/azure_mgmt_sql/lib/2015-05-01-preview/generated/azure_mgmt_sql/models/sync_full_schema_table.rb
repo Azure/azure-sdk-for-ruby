@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SyncFullSchemaTableColumn>] List of columns in the table
       # of database full schema.
       attr_accessor :columns

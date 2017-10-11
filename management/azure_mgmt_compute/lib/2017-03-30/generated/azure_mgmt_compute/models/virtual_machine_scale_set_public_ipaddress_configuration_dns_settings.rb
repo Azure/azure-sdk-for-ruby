@@ -13,7 +13,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Domain name label.The concatenation of the domain
       # name label and vm index will be the domain name labels of the
       # PublicIPAddress resources that will be created

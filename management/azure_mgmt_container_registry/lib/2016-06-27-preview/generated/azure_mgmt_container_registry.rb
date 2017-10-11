@@ -30,6 +30,7 @@ module Azure::ARM::ContainerRegistry::Api_2016_06_27_preview
     autoload :StorageAccountProperties,                           '2016-06-27-preview/generated/azure_mgmt_container_registry/models/storage_account_properties.rb'
     autoload :RegistryCredentials,                                '2016-06-27-preview/generated/azure_mgmt_container_registry/models/registry_credentials.rb'
     autoload :RegistryNameStatus,                                 '2016-06-27-preview/generated/azure_mgmt_container_registry/models/registry_name_status.rb'
+    autoload :Resource,                                           '2016-06-27-preview/generated/azure_mgmt_container_registry/models/resource.rb'
     autoload :Registry,                                           '2016-06-27-preview/generated/azure_mgmt_container_registry/models/registry.rb'
   end
 end

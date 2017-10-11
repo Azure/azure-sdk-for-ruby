@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     # A class that describes the reason for a validation failure.
     #
-    class VnetValidationFailureDetails < MsRestAzure::ProxyOnlyResource
+    class VnetValidationFailureDetails < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] A flag describing whether or not validation failed.
       attr_accessor :failed
 

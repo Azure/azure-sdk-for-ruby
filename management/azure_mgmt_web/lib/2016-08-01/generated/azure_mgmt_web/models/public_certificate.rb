@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Public certificate object
     #
-    class PublicCertificate < MsRestAzure::ProxyOnlyResource
+    class PublicCertificate < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Public Certificate byte array
       attr_accessor :blob
 

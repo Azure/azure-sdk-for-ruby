@@ -12,7 +12,6 @@ module Azure::ARM::EventHub::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}
       attr_accessor :name
 

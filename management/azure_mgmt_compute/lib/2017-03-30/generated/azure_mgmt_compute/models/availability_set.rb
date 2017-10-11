@@ -18,11 +18,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     # <br><br> Currently, a VM can only be added to availability set at
     # creation time. An existing VM cannot be added to an availability set.
     #
-    class AvailabilitySet < MsRestAzure::Resource
+    class AvailabilitySet < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Update Domain count.
       attr_accessor :platform_update_domain_count
 

@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Triggered Web Job Run Information.
     #
-    class TriggeredJobRun < MsRestAzure::ProxyOnlyResource
+    class TriggeredJobRun < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Job ID.
       attr_accessor :triggered_job_run_id
 

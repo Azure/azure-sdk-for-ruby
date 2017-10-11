@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Search::Api_2015_08_19
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

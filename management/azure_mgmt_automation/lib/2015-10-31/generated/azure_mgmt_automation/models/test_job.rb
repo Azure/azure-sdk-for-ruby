@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Gets or sets the creation time of the test job.
       attr_accessor :creation_time
 

@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the secret, return value will always be
       # empty.
       attr_accessor :secret

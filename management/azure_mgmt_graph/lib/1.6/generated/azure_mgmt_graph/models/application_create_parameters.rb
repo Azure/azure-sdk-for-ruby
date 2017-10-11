@@ -12,7 +12,6 @@ module Azure::ARM::Graph::Api_1_6
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Whether the application is available to other
       # tenants.
       attr_accessor :available_to_other_tenants
@@ -38,6 +37,13 @@ module Azure::ARM::Graph::Api_1_6
 
       # @return [Boolean] Whether to allow implicit grant flow for OAuth2
       attr_accessor :oauth2allow_implicit_flow
+
+      # @return [Array<RequiredResourceAccess>] Specifies resources that this
+      # application requires access to and the set of OAuth permission scopes
+      # and application roles that it needs under each of those resources. This
+      # pre-configuration of required resource access drives the consent
+      # experience.
+      attr_accessor :required_resource_access
 
 
       #
@@ -136,6 +142,21 @@ module Azure::ARM::Graph::Api_1_6
                 serialized_name: 'oauth2AllowImplicitFlow',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              required_resource_access: {
+                required: false,
+                serialized_name: 'requiredResourceAccess',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'RequiredResourceAccessElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'RequiredResourceAccess'
+                      }
+                  }
                 }
               }
             }

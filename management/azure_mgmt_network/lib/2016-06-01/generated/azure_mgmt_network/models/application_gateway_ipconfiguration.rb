@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_06_01
     #
     # IP configuration of application gateway
     #
-    class ApplicationGatewayIPConfiguration < MsRestAzure::SubResource
+    class ApplicationGatewayIPConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Reference of the subnet resource. A subnet from
       # where application gateway gets its private address
       attr_accessor :subnet

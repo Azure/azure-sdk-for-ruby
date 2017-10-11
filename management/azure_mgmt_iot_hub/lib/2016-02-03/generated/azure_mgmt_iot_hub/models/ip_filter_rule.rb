@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2016_02_03
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the IP filter rule.
       attr_accessor :filter_name
 

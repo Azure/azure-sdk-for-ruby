@@ -12,7 +12,6 @@ module Azure::ARM::Subscriptions::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The fully qualified ID of the tenant. For example,
       # /tenants/00000000-0000-0000-0000-000000000000.
       attr_accessor :id

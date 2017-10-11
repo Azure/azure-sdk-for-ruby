@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Logical network data model.
     #
-    class LogicalNetwork < MsRestAzure::Resource
+    class LogicalNetwork < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [LogicalNetworkProperties] The Logical Network Properties.
       attr_accessor :properties
 

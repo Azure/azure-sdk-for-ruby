@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_12_01
     #
     # A network interface in a resource group.
     #
-    class NetworkInterface < MsRestAzure::Resource
+    class NetworkInterface < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] The reference of a virtual machine.
       attr_accessor :virtual_machine
 

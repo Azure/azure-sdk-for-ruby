@@ -9,11 +9,10 @@ module Azure::ARM::CDN::Api_2017_04_02
     # Friendly domain name mapping to the endpoint hostname that the customer
     # provides for branding purposes, e.g. www.consoto.com.
     #
-    class CustomDomain < MsRestAzure::Resource
+    class CustomDomain < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The host name of the custom domain. Must be a domain
       # name.
       attr_accessor :host_name

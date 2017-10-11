@@ -9,11 +9,10 @@ module Azure::ARM::Web::Api_2016_08_01
     # Triggered Web Job History. List of Triggered Web Job Run Information
     # elements.
     #
-    class TriggeredJobHistory < MsRestAzure::ProxyOnlyResource
+    class TriggeredJobHistory < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<TriggeredJobRun>] List of triggered web job runs.
       attr_accessor :triggered_job_runs
 

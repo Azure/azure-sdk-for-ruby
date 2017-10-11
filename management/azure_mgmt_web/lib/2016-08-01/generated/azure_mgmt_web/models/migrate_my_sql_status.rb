@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # MySQL migration status.
     #
-    class MigrateMySqlStatus < MsRestAzure::ProxyOnlyResource
+    class MigrateMySqlStatus < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OperationStatus] Status of the migration task. Possible values
       # include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created'
       attr_accessor :migration_operation_status

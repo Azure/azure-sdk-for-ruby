@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Billing::Api_2017_04_24_preview
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

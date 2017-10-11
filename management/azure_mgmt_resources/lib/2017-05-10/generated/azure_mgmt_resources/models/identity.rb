@@ -12,7 +12,6 @@ module Azure::ARM::Resources::Api_2017_05_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The principal ID of resource identity.
       attr_accessor :principal_id
 

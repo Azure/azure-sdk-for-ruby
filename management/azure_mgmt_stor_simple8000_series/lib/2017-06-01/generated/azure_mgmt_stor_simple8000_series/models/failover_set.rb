@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VolumeContainerFailoverMetadata>] The list of meta data
       # of volume containers, which are part of the failover set.
       attr_accessor :volume_containers

@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Administrator username for the server. Once created it
       # cannot be changed.
       attr_accessor :administrator_login

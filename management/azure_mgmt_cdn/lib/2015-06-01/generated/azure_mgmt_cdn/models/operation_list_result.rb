@@ -13,7 +13,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Operation>] List of CDN operations supported by the CDN
       # resource provider.
       attr_accessor :value
