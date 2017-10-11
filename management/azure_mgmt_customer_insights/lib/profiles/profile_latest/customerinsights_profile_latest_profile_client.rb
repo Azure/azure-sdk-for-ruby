@@ -14,7 +14,7 @@ module Azure::CustomerInsights::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :customerinsights
+    attr_reader  :customer_insights
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::CustomerInsights::Management::Profile_Latest
 
       reset!(options)
 
-      @customerinsights = CustomerInsightsClass.new(self)
+      @customer_insights = CustomerInsightsClass.new(self)
     end
 
     def credentials

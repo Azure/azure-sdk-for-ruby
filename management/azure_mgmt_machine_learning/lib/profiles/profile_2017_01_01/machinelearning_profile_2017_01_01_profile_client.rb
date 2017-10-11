@@ -14,7 +14,7 @@ module Azure::MachineLearning::Management::Profile_2017_01_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :machinelearning
+    attr_reader  :machine_learning
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::MachineLearning::Management::Profile_2017_01_01
 
       reset!(options)
 
-      @machinelearning = MachineLearningClass.new(self)
+      @machine_learning = MachineLearningClass.new(self)
     end
 
     def credentials

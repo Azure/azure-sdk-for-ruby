@@ -14,7 +14,7 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :streamanalytics
+    attr_reader  :stream_analytics
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::StreamAnalytics::Management::Profile_2016_03_01
 
       reset!(options)
 
-      @streamanalytics = StreamAnalyticsClass.new(self)
+      @stream_analytics = StreamAnalyticsClass.new(self)
     end
 
     def credentials

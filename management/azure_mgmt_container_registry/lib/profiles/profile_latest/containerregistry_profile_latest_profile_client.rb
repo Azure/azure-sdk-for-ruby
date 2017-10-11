@@ -14,7 +14,7 @@ module Azure::ContainerRegistry::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :containerregistry
+    attr_reader  :container_registry
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::ContainerRegistry::Management::Profile_Latest
 
       reset!(options)
 
-      @containerregistry = ContainerRegistryClass.new(self)
+      @container_registry = ContainerRegistryClass.new(self)
     end
 
     def credentials

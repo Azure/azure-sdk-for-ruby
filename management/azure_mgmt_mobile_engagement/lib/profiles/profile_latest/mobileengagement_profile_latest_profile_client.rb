@@ -14,7 +14,7 @@ module Azure::MobileEngagement::Management::Profile_Latest
   class Client
     include Azure::ARM::Configurable
 
-    attr_reader  :mobileengagement
+    attr_reader  :mobile_engagement
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,7 +25,7 @@ module Azure::MobileEngagement::Management::Profile_Latest
 
       reset!(options)
 
-      @mobileengagement = MobileEngagementClass.new(self)
+      @mobile_engagement = MobileEngagementClass.new(self)
     end
 
     def credentials
