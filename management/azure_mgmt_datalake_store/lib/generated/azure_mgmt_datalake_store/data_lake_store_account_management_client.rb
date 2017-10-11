@@ -45,6 +45,12 @@ module Azure::ARM::DataLakeStore
     # @return [Account] account
     attr_reader :account
 
+    # @return [Locations] locations
+    attr_reader :locations
+
+    # @return [Operations] operations
+    attr_reader :operations
+
     #
     # Creates initializes a new instance of the DataLakeStoreAccountManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -61,6 +67,8 @@ module Azure::ARM::DataLakeStore
       @firewall_rules = FirewallRules.new(self)
       @trusted_id_providers = TrustedIdProviders.new(self)
       @account = Account.new(self)
+      @locations = Locations.new(self)
+      @operations = Operations.new(self)
       @api_version = '2016-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

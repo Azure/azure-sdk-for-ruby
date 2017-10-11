@@ -6,7 +6,7 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Data Lake Analytics firewall rule update parameters
+    # Data Lake Store firewall rule update parameters
     #
     class UpdateFirewallRuleParameters
 
