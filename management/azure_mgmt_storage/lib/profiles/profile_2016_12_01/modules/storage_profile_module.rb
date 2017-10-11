@@ -22,6 +22,7 @@ module Azure::Storage::Management::Profile_2016_12_01
       StorageAccountKey = Azure::ARM::Storage::Api_2016_12_01::Models::StorageAccountKey
       UsageListResult = Azure::ARM::Storage::Api_2016_12_01::Models::UsageListResult
       Sku = Azure::ARM::Storage::Api_2016_12_01::Models::Sku
+      Resource = Azure::ARM::Storage::Api_2016_12_01::Models::Resource
       Encryption = Azure::ARM::Storage::Api_2016_12_01::Models::Encryption
       AccountSasParameters = Azure::ARM::Storage::Api_2016_12_01::Models::AccountSasParameters
       StorageAccountCheckNameAvailabilityParameters = Azure::ARM::Storage::Api_2016_12_01::Models::StorageAccountCheckNameAvailabilityParameters
@@ -117,6 +118,9 @@ module Azure::Storage::Management::Profile_2016_12_01
         end
         def sku
           Azure::ARM::Storage::Api_2016_12_01::Models::Sku
+        end
+        def resource
+          Azure::ARM::Storage::Api_2016_12_01::Models::Resource
         end
         def encryption
           Azure::ARM::Storage::Api_2016_12_01::Models::Encryption

@@ -194,6 +194,7 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
       ConfigureAlertRequestProperties = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ConfigureAlertRequestProperties
       DiskVolumeDetails = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::DiskVolumeDetails
       FabricCreationInput = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::FabricCreationInput
+      Resource = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::Resource
       JobCollection = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::JobCollection
       A2AVmManagedDiskInputDetails = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::A2AVmManagedDiskInputDetails
       Subnet = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::Subnet
@@ -907,6 +908,9 @@ module Azure::RecoveryServicesSiteRecovery::Management::Profile_2016_08_10
         end
         def fabric_creation_input
           Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::FabricCreationInput
+        end
+        def resource
+          Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::Resource
         end
         def job_collection
           Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::JobCollection

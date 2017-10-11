@@ -8,7 +8,6 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
     Endpoints = Azure::ARM::TrafficManager::Api_2017_05_01::Endpoints
     Profiles = Azure::ARM::TrafficManager::Api_2017_05_01::Profiles
     GeographicHierarchies = Azure::ARM::TrafficManager::Api_2017_05_01::GeographicHierarchies
-    TrafficManagerUserMetricsKeys = Azure::ARM::TrafficManager::Api_2017_05_01::TrafficManagerUserMetricsKeys
 
     module Models
       TrafficManagerNameAvailability = Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerNameAvailability
@@ -37,7 +36,7 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
     # TrafficManager
     #
     class TrafficManagerClass
-      attr_reader :endpoints, :profiles, :geographic_hierarchies, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
+      attr_reader :endpoints, :profiles, :geographic_hierarchies, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -49,7 +48,6 @@ module Azure::TrafficManager::Management::Profile_2017_05_01
         @endpoints = client_0.endpoints
         @profiles = client_0.profiles
         @geographic_hierarchies = client_0.geographic_hierarchies
-        @traffic_manager_user_metrics_keys = client_0.traffic_manager_user_metrics_keys
 
         @model_classes = ModelClasses.new
       end

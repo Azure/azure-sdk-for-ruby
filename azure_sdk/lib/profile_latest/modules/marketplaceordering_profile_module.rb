@@ -15,6 +15,7 @@ module Azure::Profiles::Management::Profile_Latest
       ErrorResponseError = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::ErrorResponseError
       OperationListResult = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::OperationListResult
       ErrorResponse = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::ErrorResponse
+      Resource = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::Resource
       AgreementTerms = Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::AgreementTerms
     end
 
@@ -68,6 +69,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def error_response
           Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::ErrorResponse
+        end
+        def resource
+          Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::Resource
         end
         def agreement_terms
           Azure::ARM::MarketplaceOrdering::Api_2015_06_01::Models::AgreementTerms

@@ -20,6 +20,7 @@ module Azure::IotHub::Management::Profile_2016_02_03
       IotHubCapacity = Azure::ARM::IotHub::Api_2016_02_03::Models::IotHubCapacity
       IotHubSkuInfo = Azure::ARM::IotHub::Api_2016_02_03::Models::IotHubSkuInfo
       IotHubSkuDescription = Azure::ARM::IotHub::Api_2016_02_03::Models::IotHubSkuDescription
+      Resource = Azure::ARM::IotHub::Api_2016_02_03::Models::Resource
       EventHubConsumerGroupsListResult = Azure::ARM::IotHub::Api_2016_02_03::Models::EventHubConsumerGroupsListResult
       ErrorDetails = Azure::ARM::IotHub::Api_2016_02_03::Models::ErrorDetails
       EventHubConsumerGroupInfo = Azure::ARM::IotHub::Api_2016_02_03::Models::EventHubConsumerGroupInfo
@@ -118,6 +119,9 @@ module Azure::IotHub::Management::Profile_2016_02_03
         end
         def iot_hub_sku_description
           Azure::ARM::IotHub::Api_2016_02_03::Models::IotHubSkuDescription
+        end
+        def resource
+          Azure::ARM::IotHub::Api_2016_02_03::Models::Resource
         end
         def event_hub_consumer_groups_list_result
           Azure::ARM::IotHub::Api_2016_02_03::Models::EventHubConsumerGroupsListResult

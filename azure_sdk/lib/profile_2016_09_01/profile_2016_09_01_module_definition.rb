@@ -5,4 +5,4 @@
 module Azure end
 module Azure::Profiles end
 module Azure::Profiles::Management end
-module Azure::Profiles::Management::Profile_Azure_Stack end
+module Azure::Profiles::Management::Profile_2016_09_01 end

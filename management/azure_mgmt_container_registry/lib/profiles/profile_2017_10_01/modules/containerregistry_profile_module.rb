@@ -41,6 +41,7 @@ module Azure::ContainerRegistry::Management::Profile_2017_10_01
       RegistryListCredentialsResult = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::RegistryListCredentialsResult
       EventResponseMessage = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::EventResponseMessage
       EventListResult = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::EventListResult
+      Resource = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::Resource
       Registry = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::Registry
       Replication = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::Replication
       Webhook = Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::Webhook
@@ -181,6 +182,9 @@ module Azure::ContainerRegistry::Management::Profile_2017_10_01
         end
         def event_list_result
           Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::EventListResult
+        end
+        def resource
+          Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::Resource
         end
         def registry
           Azure::ARM::ContainerRegistry::Api_2017_10_01::Models::Registry

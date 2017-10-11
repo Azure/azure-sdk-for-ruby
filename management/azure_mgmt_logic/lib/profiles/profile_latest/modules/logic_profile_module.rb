@@ -21,6 +21,7 @@ module Azure::Logic::Management::Profile_Latest
 
     module Models
       IntegrationAccountPartnerFilter = Azure::ARM::Logic::Api_2016_06_01::Models::IntegrationAccountPartnerFilter
+      Resource = Azure::ARM::Logic::Api_2016_06_01::Models::Resource
       AS2MessageConnectionSettings = Azure::ARM::Logic::Api_2016_06_01::Models::AS2MessageConnectionSettings
       ResourceReference = Azure::ARM::Logic::Api_2016_06_01::Models::ResourceReference
       AS2AcknowledgementConnectionSettings = Azure::ARM::Logic::Api_2016_06_01::Models::AS2AcknowledgementConnectionSettings
@@ -32,6 +33,7 @@ module Azure::Logic::Management::Profile_Latest
       WorkflowVersionListResult = Azure::ARM::Logic::Api_2016_06_01::Models::WorkflowVersionListResult
       IntegrationAccountPartnerListResult = Azure::ARM::Logic::Api_2016_06_01::Models::IntegrationAccountPartnerListResult
       RecurrenceSchedule = Azure::ARM::Logic::Api_2016_06_01::Models::RecurrenceSchedule
+      SubResource = Azure::ARM::Logic::Api_2016_06_01::Models::SubResource
       Sku = Azure::ARM::Logic::Api_2016_06_01::Models::Sku
       WorkflowTriggerListResult = Azure::ARM::Logic::Api_2016_06_01::Models::WorkflowTriggerListResult
       WorkflowTriggerListCallbackUrlQueries = Azure::ARM::Logic::Api_2016_06_01::Models::WorkflowTriggerListCallbackUrlQueries
@@ -205,6 +207,9 @@ module Azure::Logic::Management::Profile_Latest
         def integration_account_partner_filter
           Azure::ARM::Logic::Api_2016_06_01::Models::IntegrationAccountPartnerFilter
         end
+        def resource
+          Azure::ARM::Logic::Api_2016_06_01::Models::Resource
+        end
         def as2_message_connection_settings
           Azure::ARM::Logic::Api_2016_06_01::Models::AS2MessageConnectionSettings
         end
@@ -237,6 +242,9 @@ module Azure::Logic::Management::Profile_Latest
         end
         def recurrence_schedule
           Azure::ARM::Logic::Api_2016_06_01::Models::RecurrenceSchedule
+        end
+        def sub_resource
+          Azure::ARM::Logic::Api_2016_06_01::Models::SubResource
         end
         def sku
           Azure::ARM::Logic::Api_2016_06_01::Models::Sku

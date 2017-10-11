@@ -16,6 +16,7 @@ module Azure::EventHub::Management::Profile_2015_08_01
       Operation = Azure::ARM::EventHub::Api_2015_08_01::Models::Operation
       RegenerateKeysParameters = Azure::ARM::EventHub::Api_2015_08_01::Models::RegenerateKeysParameters
       OperationDisplay = Azure::ARM::EventHub::Api_2015_08_01::Models::OperationDisplay
+      Resource = Azure::ARM::EventHub::Api_2015_08_01::Models::Resource
       OperationListResult = Azure::ARM::EventHub::Api_2015_08_01::Models::OperationListResult
       NamespaceCreateOrUpdateParameters = Azure::ARM::EventHub::Api_2015_08_01::Models::NamespaceCreateOrUpdateParameters
       CheckNameAvailabilityResult = Azure::ARM::EventHub::Api_2015_08_01::Models::CheckNameAvailabilityResult
@@ -94,6 +95,9 @@ module Azure::EventHub::Management::Profile_2015_08_01
         end
         def operation_display
           Azure::ARM::EventHub::Api_2015_08_01::Models::OperationDisplay
+        end
+        def resource
+          Azure::ARM::EventHub::Api_2015_08_01::Models::Resource
         end
         def operation_list_result
           Azure::ARM::EventHub::Api_2015_08_01::Models::OperationListResult

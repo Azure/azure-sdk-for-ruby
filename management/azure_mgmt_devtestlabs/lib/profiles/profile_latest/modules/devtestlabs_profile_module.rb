@@ -113,6 +113,7 @@ module Azure::DevTestLabs::Management::Profile_Latest
       ResponseWithContinuationSchedule = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ResponseWithContinuationSchedule
       PortFragment = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::PortFragment
       ComputeVmInstanceViewStatus = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ComputeVmInstanceViewStatus
+      Resource = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::Resource
       CustomImagePropertiesFromVm = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::CustomImagePropertiesFromVm
       ResponseWithContinuationArmTemplate = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ResponseWithContinuationArmTemplate
       ResponseWithContinuationLabVirtualMachine = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ResponseWithContinuationLabVirtualMachine
@@ -488,6 +489,9 @@ module Azure::DevTestLabs::Management::Profile_Latest
         end
         def compute_vm_instance_view_status
           Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ComputeVmInstanceViewStatus
+        end
+        def resource
+          Azure::ARM::DevTestLabs::Api_2016_05_15::Models::Resource
         end
         def custom_image_properties_from_vm
           Azure::ARM::DevTestLabs::Api_2016_05_15::Models::CustomImagePropertiesFromVm

@@ -27,10 +27,12 @@ module Azure::Network::Management::Profile_2015_06_15
     module Models
       ExpressRouteCircuitsStatsListResult = Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteCircuitsStatsListResult
       ExpressRouteCircuitListResult = Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteCircuitListResult
+      SubResource = Azure::ARM::Network::Api_2015_06_15::Models::SubResource
       ExpressRouteServiceProviderBandwidthsOffered = Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteServiceProviderBandwidthsOffered
       PublicIPAddressListResult = Azure::ARM::Network::Api_2015_06_15::Models::PublicIPAddressListResult
       ApplicationGatewayListResult = Azure::ARM::Network::Api_2015_06_15::Models::ApplicationGatewayListResult
       ApplicationGatewayBackendAddress = Azure::ARM::Network::Api_2015_06_15::Models::ApplicationGatewayBackendAddress
+      Resource = Azure::ARM::Network::Api_2015_06_15::Models::Resource
       ConnectionResetSharedKey = Azure::ARM::Network::Api_2015_06_15::Models::ConnectionResetSharedKey
       DnsNameAvailabilityResult = Azure::ARM::Network::Api_2015_06_15::Models::DnsNameAvailabilityResult
       NetworkInterfaceDnsSettings = Azure::ARM::Network::Api_2015_06_15::Models::NetworkInterfaceDnsSettings
@@ -201,6 +203,9 @@ module Azure::Network::Management::Profile_2015_06_15
         def express_route_circuit_list_result
           Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteCircuitListResult
         end
+        def sub_resource
+          Azure::ARM::Network::Api_2015_06_15::Models::SubResource
+        end
         def express_route_service_provider_bandwidths_offered
           Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteServiceProviderBandwidthsOffered
         end
@@ -212,6 +217,9 @@ module Azure::Network::Management::Profile_2015_06_15
         end
         def application_gateway_backend_address
           Azure::ARM::Network::Api_2015_06_15::Models::ApplicationGatewayBackendAddress
+        end
+        def resource
+          Azure::ARM::Network::Api_2015_06_15::Models::Resource
         end
         def connection_reset_shared_key
           Azure::ARM::Network::Api_2015_06_15::Models::ConnectionResetSharedKey

@@ -68,6 +68,7 @@ module Azure::Monitor::Management::Profile_2017_04_01
       ActivityLogAlertActionGroup = Azure::ARM::Monitor::Api_2017_04_01::Models::ActivityLogAlertActionGroup
       ActionGroupList = Azure::ARM::Monitor::Api_2017_04_01::Models::ActionGroupList
       ActivityLogAlertActionList = Azure::ARM::Monitor::Api_2017_04_01::Models::ActivityLogAlertActionList
+      Resource = Azure::ARM::Monitor::Api_2017_04_01::Models::Resource
       SmsReceiver = Azure::ARM::Monitor::Api_2017_04_01::Models::SmsReceiver
       EnableRequest = Azure::ARM::Monitor::Api_2017_04_01::Models::EnableRequest
       ActivityLogAlertList = Azure::ARM::Monitor::Api_2017_04_01::Models::ActivityLogAlertList
@@ -312,6 +313,9 @@ module Azure::Monitor::Management::Profile_2017_04_01
         end
         def activity_log_alert_action_list
           Azure::ARM::Monitor::Api_2017_04_01::Models::ActivityLogAlertActionList
+        end
+        def resource
+          Azure::ARM::Monitor::Api_2017_04_01::Models::Resource
         end
         def sms_receiver
           Azure::ARM::Monitor::Api_2017_04_01::Models::SmsReceiver

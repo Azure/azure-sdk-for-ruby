@@ -14,6 +14,7 @@ module Azure::Redis::Management::Profile_2015_08_01
       RedisRegenerateKeyParameters = Azure::ARM::Redis::Api_2015_08_01::Models::RedisRegenerateKeyParameters
       Sku = Azure::ARM::Redis::Api_2015_08_01::Models::Sku
       RedisListResult = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListResult
+      Resource = Azure::ARM::Redis::Api_2015_08_01::Models::Resource
       RedisListKeysResult = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListKeysResult
       RedisCreateOrUpdateParameters = Azure::ARM::Redis::Api_2015_08_01::Models::RedisCreateOrUpdateParameters
       RedisResourceWithAccessKey = Azure::ARM::Redis::Api_2015_08_01::Models::RedisResourceWithAccessKey
@@ -76,6 +77,9 @@ module Azure::Redis::Management::Profile_2015_08_01
         end
         def redis_list_result
           Azure::ARM::Redis::Api_2015_08_01::Models::RedisListResult
+        end
+        def resource
+          Azure::ARM::Redis::Api_2015_08_01::Models::Resource
         end
         def redis_list_keys_result
           Azure::ARM::Redis::Api_2015_08_01::Models::RedisListKeysResult

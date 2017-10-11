@@ -63,6 +63,7 @@ module Azure::Profiles::Management::Profile_Latest
       NetworkSettingsPatch = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::NetworkSettingsPatch
       NetworkInterfaceData0Settings = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::NetworkInterfaceData0Settings
       HardwareComponentGroupList = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::HardwareComponentGroupList
+      Resource = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::Resource
       JobErrorItem = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::JobErrorItem
       DeviceDetails = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::DeviceDetails
       JobErrorDetails = Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::JobErrorDetails
@@ -350,6 +351,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def hardware_component_group_list
           Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::HardwareComponentGroupList
+        end
+        def resource
+          Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::Resource
         end
         def job_error_item
           Azure::ARM::StorSimple8000Series::Api_2017_06_01::Models::JobErrorItem

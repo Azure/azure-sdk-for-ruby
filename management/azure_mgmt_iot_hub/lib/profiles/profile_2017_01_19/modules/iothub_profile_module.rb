@@ -8,6 +8,7 @@ module Azure::IotHub::Management::Profile_2017_01_19
     IotHubResource = Azure::ARM::IotHub::Api_2017_01_19::IotHubResource
 
     module Models
+      Resource = Azure::ARM::IotHub::Api_2017_01_19::Models::Resource
       SharedAccessSignatureAuthorizationRule = Azure::ARM::IotHub::Api_2017_01_19::Models::SharedAccessSignatureAuthorizationRule
       SharedAccessSignatureAuthorizationRuleListResult = Azure::ARM::IotHub::Api_2017_01_19::Models::SharedAccessSignatureAuthorizationRuleListResult
       EventHubProperties = Azure::ARM::IotHub::Api_2017_01_19::Models::EventHubProperties
@@ -91,6 +92,9 @@ module Azure::IotHub::Management::Profile_2017_01_19
       end
 
       class ModelClasses
+        def resource
+          Azure::ARM::IotHub::Api_2017_01_19::Models::Resource
+        end
         def shared_access_signature_authorization_rule
           Azure::ARM::IotHub::Api_2017_01_19::Models::SharedAccessSignatureAuthorizationRule
         end

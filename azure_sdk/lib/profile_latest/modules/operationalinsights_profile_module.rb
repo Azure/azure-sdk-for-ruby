@@ -43,6 +43,7 @@ module Azure::Profiles::Management::Profile_Latest
       Sku = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Sku
       MetricName = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::MetricName
       SharedKeys = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::SharedKeys
+      Resource = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Resource
       DataSourceListResult = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::DataSourceListResult
       ProxyResource = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::ProxyResource
       WorkspaceListResult = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::WorkspaceListResult
@@ -191,6 +192,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def shared_keys
           Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::SharedKeys
+        end
+        def resource
+          Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Resource
         end
         def data_source_list_result
           Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::DataSourceListResult

@@ -15,6 +15,7 @@ module Azure::ServiceBus::Management::Profile_2015_08_01
       QueueCreateOrUpdateParameters = Azure::ARM::ServiceBus::Api_2015_08_01::Models::QueueCreateOrUpdateParameters
       MessageCountDetails = Azure::ARM::ServiceBus::Api_2015_08_01::Models::MessageCountDetails
       RegenerateKeysParameters = Azure::ARM::ServiceBus::Api_2015_08_01::Models::RegenerateKeysParameters
+      Resource = Azure::ARM::ServiceBus::Api_2015_08_01::Models::Resource
       NamespaceCreateOrUpdateParameters = Azure::ARM::ServiceBus::Api_2015_08_01::Models::NamespaceCreateOrUpdateParameters
       CheckNameAvailability = Azure::ARM::ServiceBus::Api_2015_08_01::Models::CheckNameAvailability
       NamespaceListResult = Azure::ARM::ServiceBus::Api_2015_08_01::Models::NamespaceListResult
@@ -95,6 +96,9 @@ module Azure::ServiceBus::Management::Profile_2015_08_01
         end
         def regenerate_keys_parameters
           Azure::ARM::ServiceBus::Api_2015_08_01::Models::RegenerateKeysParameters
+        end
+        def resource
+          Azure::ARM::ServiceBus::Api_2015_08_01::Models::Resource
         end
         def namespace_create_or_update_parameters
           Azure::ARM::ServiceBus::Api_2015_08_01::Models::NamespaceCreateOrUpdateParameters

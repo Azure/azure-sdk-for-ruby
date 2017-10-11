@@ -16,6 +16,7 @@ module Azure::KeyVault::Management::Profile_Latest
       Sku = Azure::ARM::KeyVault::Api_2016_10_01::Models::Sku
       DeletedVaultListResult = Azure::ARM::KeyVault::Api_2016_10_01::Models::DeletedVaultListResult
       DeletedVaultProperties = Azure::ARM::KeyVault::Api_2016_10_01::Models::DeletedVaultProperties
+      Resource = Azure::ARM::KeyVault::Api_2016_10_01::Models::Resource
       AccessPolicyEntry = Azure::ARM::KeyVault::Api_2016_10_01::Models::AccessPolicyEntry
       ResourceListResult = Azure::ARM::KeyVault::Api_2016_10_01::Models::ResourceListResult
       Vault = Azure::ARM::KeyVault::Api_2016_10_01::Models::Vault
@@ -85,6 +86,9 @@ module Azure::KeyVault::Management::Profile_Latest
         end
         def deleted_vault_properties
           Azure::ARM::KeyVault::Api_2016_10_01::Models::DeletedVaultProperties
+        end
+        def resource
+          Azure::ARM::KeyVault::Api_2016_10_01::Models::Resource
         end
         def access_policy_entry
           Azure::ARM::KeyVault::Api_2016_10_01::Models::AccessPolicyEntry

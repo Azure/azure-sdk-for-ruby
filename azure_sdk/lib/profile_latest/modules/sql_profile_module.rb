@@ -249,6 +249,8 @@ module Azure::Profiles::Management::Profile_Latest
       SyncGroupState = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncGroupState
       SyncDirection = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncDirection
       SyncMemberState = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMemberState
+      VirtualNetworkRuleState = Azure::ARM::SQL::Api_2015_05_01_preview::Models::VirtualNetworkRuleState
+      Resource = Azure::ARM::SQL::Api_2017_03_01_preview::Models::Resource
       DatabaseOperationListResult = Azure::ARM::SQL::Api_2017_03_01_preview::Models::DatabaseOperationListResult
       ProxyResource = Azure::ARM::SQL::Api_2017_03_01_preview::Models::ProxyResource
       DatabaseOperation = Azure::ARM::SQL::Api_2017_03_01_preview::Models::DatabaseOperation
@@ -937,6 +939,12 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def sync_member_state
           Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMemberState
+        end
+        def virtual_network_rule_state
+          Azure::ARM::SQL::Api_2015_05_01_preview::Models::VirtualNetworkRuleState
+        end
+        def resource
+          Azure::ARM::SQL::Api_2017_03_01_preview::Models::Resource
         end
         def database_operation_list_result
           Azure::ARM::SQL::Api_2017_03_01_preview::Models::DatabaseOperationListResult

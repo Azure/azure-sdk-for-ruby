@@ -21,6 +21,7 @@ module Azure::Compute::Management::Profile_2016_04_30_Preview
     module Models
       ImageOSDisk = Azure::ARM::Compute::Api_2016_04_30_preview::Models::ImageOSDisk
       ImageDataDisk = Azure::ARM::Compute::Api_2016_04_30_preview::Models::ImageDataDisk
+      SubResource = Azure::ARM::Compute::Api_2016_04_30_preview::Models::SubResource
       ImageStorageProfile = Azure::ARM::Compute::Api_2016_04_30_preview::Models::ImageStorageProfile
       VirtualMachineAgentInstanceView = Azure::ARM::Compute::Api_2016_04_30_preview::Models::VirtualMachineAgentInstanceView
       DiskInstanceView = Azure::ARM::Compute::Api_2016_04_30_preview::Models::DiskInstanceView
@@ -72,6 +73,7 @@ module Azure::Compute::Management::Profile_2016_04_30_Preview
       GrantAccessData = Azure::ARM::Compute::Api_2016_04_30_preview::Models::GrantAccessData
       VirtualMachineScaleSetVMProfile = Azure::ARM::Compute::Api_2016_04_30_preview::Models::VirtualMachineScaleSetVMProfile
       VirtualMachineCaptureParameters = Azure::ARM::Compute::Api_2016_04_30_preview::Models::VirtualMachineCaptureParameters
+      Resource = Azure::ARM::Compute::Api_2016_04_30_preview::Models::Resource
       EncryptionSettings = Azure::ARM::Compute::Api_2016_04_30_preview::Models::EncryptionSettings
       VirtualMachineScaleSetVMInstanceIDs = Azure::ARM::Compute::Api_2016_04_30_preview::Models::VirtualMachineScaleSetVMInstanceIDs
       VirtualHardDisk = Azure::ARM::Compute::Api_2016_04_30_preview::Models::VirtualHardDisk
@@ -196,6 +198,9 @@ module Azure::Compute::Management::Profile_2016_04_30_Preview
         end
         def image_data_disk
           Azure::ARM::Compute::Api_2016_04_30_preview::Models::ImageDataDisk
+        end
+        def sub_resource
+          Azure::ARM::Compute::Api_2016_04_30_preview::Models::SubResource
         end
         def image_storage_profile
           Azure::ARM::Compute::Api_2016_04_30_preview::Models::ImageStorageProfile
@@ -349,6 +354,9 @@ module Azure::Compute::Management::Profile_2016_04_30_Preview
         end
         def virtual_machine_capture_parameters
           Azure::ARM::Compute::Api_2016_04_30_preview::Models::VirtualMachineCaptureParameters
+        end
+        def resource
+          Azure::ARM::Compute::Api_2016_04_30_preview::Models::Resource
         end
         def encryption_settings
           Azure::ARM::Compute::Api_2016_04_30_preview::Models::EncryptionSettings

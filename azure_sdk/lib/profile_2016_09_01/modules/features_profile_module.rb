@@ -4,7 +4,7 @@
 
 require 'azure_mgmt_features'
 
-module Azure::Profiles::Management::Profile_Azure_Stack
+module Azure::Profiles::Management::Profile_2016_09_01
   module Features
     Features = Azure::ARM::Features::Api_2015_12_01::Features
 

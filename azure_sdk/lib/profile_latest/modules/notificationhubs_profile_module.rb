@@ -22,6 +22,7 @@ module Azure::Profiles::Management::Profile_Latest
       NamespacePatchParameters = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::NamespacePatchParameters
       Sku = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::Sku
       SharedAccessAuthorizationRuleProperties = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::SharedAccessAuthorizationRuleProperties
+      SubResource = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::SubResource
       BaiduCredential = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::BaiduCredential
       NamespaceListResult = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::NamespaceListResult
       NotificationHubListResult = Azure::ARM::NotificationHubs::Api_2017_04_01::Models::NotificationHubListResult
@@ -110,6 +111,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def shared_access_authorization_rule_properties
           Azure::ARM::NotificationHubs::Api_2017_04_01::Models::SharedAccessAuthorizationRuleProperties
+        end
+        def sub_resource
+          Azure::ARM::NotificationHubs::Api_2017_04_01::Models::SubResource
         end
         def baidu_credential
           Azure::ARM::NotificationHubs::Api_2017_04_01::Models::BaiduCredential

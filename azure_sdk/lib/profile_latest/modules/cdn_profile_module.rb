@@ -36,6 +36,7 @@ module Azure::Profiles::Management::Profile_Latest
       CustomDomainParameters = Azure::ARM::CDN::Api_2017_04_02::Models::CustomDomainParameters
       ProfileUpdateParameters = Azure::ARM::CDN::Api_2017_04_02::Models::ProfileUpdateParameters
       ErrorResponse = Azure::ARM::CDN::Api_2017_04_02::Models::ErrorResponse
+      Resource = Azure::ARM::CDN::Api_2017_04_02::Models::Resource
       OperationDisplay = Azure::ARM::CDN::Api_2017_04_02::Models::OperationDisplay
       PurgeParameters = Azure::ARM::CDN::Api_2017_04_02::Models::PurgeParameters
       Operation = Azure::ARM::CDN::Api_2017_04_02::Models::Operation
@@ -166,6 +167,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def error_response
           Azure::ARM::CDN::Api_2017_04_02::Models::ErrorResponse
+        end
+        def resource
+          Azure::ARM::CDN::Api_2017_04_02::Models::Resource
         end
         def operation_display
           Azure::ARM::CDN::Api_2017_04_02::Models::OperationDisplay

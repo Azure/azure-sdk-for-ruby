@@ -24,6 +24,7 @@ module Azure::Profiles::Management::Profile_Latest
       BatchAccountRegenerateKeyParameters = Azure::ARM::Batch::Api_2017_05_01::Models::BatchAccountRegenerateKeyParameters
       BatchLocationQuota = Azure::ARM::Batch::Api_2017_05_01::Models::BatchLocationQuota
       ActivateApplicationPackageParameters = Azure::ARM::Batch::Api_2017_05_01::Models::ActivateApplicationPackageParameters
+      Resource = Azure::ARM::Batch::Api_2017_05_01::Models::Resource
       AutoStorageBaseProperties = Azure::ARM::Batch::Api_2017_05_01::Models::AutoStorageBaseProperties
       BatchAccountListResult = Azure::ARM::Batch::Api_2017_05_01::Models::BatchAccountListResult
       ApplicationCreateParameters = Azure::ARM::Batch::Api_2017_05_01::Models::ApplicationCreateParameters
@@ -112,6 +113,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def activate_application_package_parameters
           Azure::ARM::Batch::Api_2017_05_01::Models::ActivateApplicationPackageParameters
+        end
+        def resource
+          Azure::ARM::Batch::Api_2017_05_01::Models::Resource
         end
         def auto_storage_base_properties
           Azure::ARM::Batch::Api_2017_05_01::Models::AutoStorageBaseProperties

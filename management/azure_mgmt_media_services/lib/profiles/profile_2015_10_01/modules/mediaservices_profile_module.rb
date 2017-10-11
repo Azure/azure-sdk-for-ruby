@@ -12,6 +12,7 @@ module Azure::MediaServices::Management::Profile_2015_10_01
       RegenerateKeyInput = Azure::ARM::MediaServices::Api_2015_10_01::Models::RegenerateKeyInput
       RegenerateKeyOutput = Azure::ARM::MediaServices::Api_2015_10_01::Models::RegenerateKeyOutput
       ApiError = Azure::ARM::MediaServices::Api_2015_10_01::Models::ApiError
+      Resource = Azure::ARM::MediaServices::Api_2015_10_01::Models::Resource
       CheckNameAvailabilityOutput = Azure::ARM::MediaServices::Api_2015_10_01::Models::CheckNameAvailabilityOutput
       ServiceKeys = Azure::ARM::MediaServices::Api_2015_10_01::Models::ServiceKeys
       MediaServiceCollection = Azure::ARM::MediaServices::Api_2015_10_01::Models::MediaServiceCollection
@@ -72,6 +73,9 @@ module Azure::MediaServices::Management::Profile_2015_10_01
         end
         def api_error
           Azure::ARM::MediaServices::Api_2015_10_01::Models::ApiError
+        end
+        def resource
+          Azure::ARM::MediaServices::Api_2015_10_01::Models::Resource
         end
         def check_name_availability_output
           Azure::ARM::MediaServices::Api_2015_10_01::Models::CheckNameAvailabilityOutput

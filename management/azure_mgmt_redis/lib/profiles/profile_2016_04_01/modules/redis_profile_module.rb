@@ -15,6 +15,7 @@ module Azure::Redis::Management::Profile_2016_04_01
       RedisRegenerateKeyParameters = Azure::ARM::Redis::Api_2016_04_01::Models::RedisRegenerateKeyParameters
       Sku = Azure::ARM::Redis::Api_2016_04_01::Models::Sku
       RedisRebootParameters = Azure::ARM::Redis::Api_2016_04_01::Models::RedisRebootParameters
+      Resource = Azure::ARM::Redis::Api_2016_04_01::Models::Resource
       ExportRDBParameters = Azure::ARM::Redis::Api_2016_04_01::Models::ExportRDBParameters
       RedisUpdateParameters = Azure::ARM::Redis::Api_2016_04_01::Models::RedisUpdateParameters
       ImportRDBParameters = Azure::ARM::Redis::Api_2016_04_01::Models::ImportRDBParameters
@@ -84,6 +85,9 @@ module Azure::Redis::Management::Profile_2016_04_01
         end
         def redis_reboot_parameters
           Azure::ARM::Redis::Api_2016_04_01::Models::RedisRebootParameters
+        end
+        def resource
+          Azure::ARM::Redis::Api_2016_04_01::Models::Resource
         end
         def export_rdbparameters
           Azure::ARM::Redis::Api_2016_04_01::Models::ExportRDBParameters

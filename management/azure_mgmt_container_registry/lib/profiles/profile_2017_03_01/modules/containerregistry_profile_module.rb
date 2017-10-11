@@ -23,6 +23,7 @@ module Azure::ContainerRegistry::Management::Profile_2017_03_01
       Sku = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::Sku
       RegenerateCredentialParameters = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::RegenerateCredentialParameters
       OperationDefinition = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::OperationDefinition
+      Resource = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::Resource
       Registry = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::Registry
       SkuTier = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::SkuTier
       ProvisioningState = Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::ProvisioningState
@@ -106,6 +107,9 @@ module Azure::ContainerRegistry::Management::Profile_2017_03_01
         end
         def operation_definition
           Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::OperationDefinition
+        end
+        def resource
+          Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::Resource
         end
         def registry
           Azure::ARM::ContainerRegistry::Api_2017_03_01::Models::Registry
