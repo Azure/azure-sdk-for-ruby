@@ -19,6 +19,10 @@ module Azure::ARM::Network
       # @return [Array<Subnet>] A collection of references to subnets.
       attr_accessor :subnets
 
+      # @return [Boolean] Gets or sets whether to disable the routes learned by
+      # BGP on that route table. True means disable.
+      attr_accessor :disable_bgproute_propagation
+
       # @return [String] The provisioning state of the resource. Possible
       # values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
@@ -113,6 +117,13 @@ module Azure::ARM::Network
                         class_name: 'Subnet'
                       }
                   }
+                }
+              },
+              disable_bgproute_propagation: {
+                required: false,
+                serialized_name: 'properties.disableBGPRoutePropagation',
+                type: {
+                  name: 'Boolean'
                 }
               },
               provisioning_state: {

@@ -63,7 +63,7 @@ module Azure::ARM::Network
     def list_async(resource_group_name, network_interface_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
-      api_version = '2017-09-01'
+      api_version = '2017-10-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -158,7 +158,7 @@ module Azure::ARM::Network
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'network_interface_name is nil' if network_interface_name.nil?
       fail ArgumentError, 'ip_configuration_name is nil' if ip_configuration_name.nil?
-      api_version = '2017-09-01'
+      api_version = '2017-10-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
