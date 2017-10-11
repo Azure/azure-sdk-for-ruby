@@ -151,28 +151,30 @@ module Azure::Network::Management::Profile_2015_06_15
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Network::Api_2015_06_15::NetworkManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Network::Api_2015_06_15::NetworkManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @application_gateways = client.application_gateways
-        @express_route_circuit_authorizations = client.express_route_circuit_authorizations
-        @express_route_circuit_peerings = client.express_route_circuit_peerings
-        @express_route_circuits = client.express_route_circuits
-        @express_route_service_providers = client.express_route_service_providers
-        @load_balancers = client.load_balancers
-        @network_interfaces = client.network_interfaces
-        @network_security_groups = client.network_security_groups
-        @security_rules = client.security_rules
-        @public_ipaddresses = client.public_ipaddresses
-        @route_tables = client.route_tables
-        @routes = client.routes
-        @usages = client.usages
-        @virtual_networks = client.virtual_networks
-        @subnets = client.subnets
-        @virtual_network_gateways = client.virtual_network_gateways
-        @virtual_network_gateway_connections = client.virtual_network_gateway_connections
-        @local_network_gateways = client.local_network_gateways
+        @application_gateways = client_0.application_gateways
+        @express_route_circuit_authorizations = client_0.express_route_circuit_authorizations
+        @express_route_circuit_peerings = client_0.express_route_circuit_peerings
+        @express_route_circuits = client_0.express_route_circuits
+        @express_route_service_providers = client_0.express_route_service_providers
+        @load_balancers = client_0.load_balancers
+        @network_interfaces = client_0.network_interfaces
+        @network_security_groups = client_0.network_security_groups
+        @security_rules = client_0.security_rules
+        @public_ipaddresses = client_0.public_ipaddresses
+        @route_tables = client_0.route_tables
+        @routes = client_0.routes
+        @usages = client_0.usages
+        @virtual_networks = client_0.virtual_networks
+        @subnets = client_0.subnets
+        @virtual_network_gateways = client_0.virtual_network_gateways
+        @virtual_network_gateway_connections = client_0.virtual_network_gateway_connections
+        @local_network_gateways = client_0.local_network_gateways
+
         @model_classes = ModelClasses.new
       end
 
@@ -181,10 +183,15 @@ module Azure::Network::Management::Profile_2015_06_15
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Network::Api_2015_06_15::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-06-15')
+        case version
+          when '2015-06-15'
+            client = Azure::ARM::Network::Api_2015_06_15::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

@@ -5,12 +5,14 @@
 require 'azure_mgmt_traffic_manager'
 
 module Azure::TrafficManager::Management::Profile_Latest
+    TrafficManagerUserMetricsKeys = Azure::ARM::TrafficManager::Api_2017_05_01::TrafficManagerUserMetricsKeys
     Endpoints = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Endpoints
     Profiles = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Profiles
     GeographicHierarchies = Azure::ARM::TrafficManager::Api_2017_09_01_preview::GeographicHierarchies
     HeatMap = Azure::ARM::TrafficManager::Api_2017_09_01_preview::HeatMap
 
     module Models
+      TrafficManagerUserMetricsKeyModel = Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerUserMetricsKeyModel
       TrafficManagerNameAvailability = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerNameAvailability
       Region = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Region
       DeleteOperationResult = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::DeleteOperationResult
@@ -40,18 +42,26 @@ module Azure::TrafficManager::Management::Profile_Latest
     # TrafficManager
     #
     class TrafficManagerClass
-      attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :configurable, :base_url, :options, :model_classes
+      attr_reader :traffic_manager_user_metrics_keys, :endpoints, :profiles, :geographic_hierarchies, :heat_map, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::TrafficManager::Api_2017_05_01::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @endpoints = client.endpoints
-        @profiles = client.profiles
-        @geographic_hierarchies = client.geographic_hierarchies
-        @heat_map = client.heat_map
+        @traffic_manager_user_metrics_keys = client_0.traffic_manager_user_metrics_keys
+
+        client_1 = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
+        if(client_1.respond_to?(:subscription_id))
+          client_1.subscription_id = configurable.subscription_id
+        end
+        @endpoints = client_1.endpoints
+        @profiles = client_1.profiles
+        @geographic_hierarchies = client_1.geographic_hierarchies
+        @heat_map = client_1.heat_map
+
         @model_classes = ModelClasses.new
       end
 
@@ -60,13 +70,25 @@ module Azure::TrafficManager::Management::Profile_Latest
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-09-01-preview')
+        case version
+          when '2017-05-01'
+            client = Azure::ARM::TrafficManager::Api_2017_05_01::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          when '2017-09-01-preview'
+            client = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses
+        def traffic_manager_user_metrics_key_model
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerUserMetricsKeyModel
+        end
         def traffic_manager_name_availability
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerNameAvailability
         end

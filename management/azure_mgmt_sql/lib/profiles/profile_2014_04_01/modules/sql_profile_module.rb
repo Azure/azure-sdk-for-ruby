@@ -189,45 +189,47 @@ module Azure::SQL::Management::Profile_2014_04_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::SQL::Api_2014_04_01::SqlManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::SQL::Api_2014_04_01::SqlManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @database_advisors = client.database_advisors
-        @backup_long_term_retention_policies = client.backup_long_term_retention_policies
-        @backup_long_term_retention_vaults = client.backup_long_term_retention_vaults
-        @restore_points = client.restore_points
-        @recoverable_databases = client.recoverable_databases
-        @restorable_dropped_databases = client.restorable_dropped_databases
-        @capabilities = client.capabilities
-        @server_connection_policies = client.server_connection_policies
-        @database_threat_detection_policies = client.database_threat_detection_policies
-        @data_masking_policies = client.data_masking_policies
-        @data_masking_rules = client.data_masking_rules
-        @transparent_data_encryption_configurations = client.transparent_data_encryption_configurations
-        @firewall_rules = client.firewall_rules
-        @geo_backup_policies = client.geo_backup_policies
-        @databases = client.databases
-        @elastic_pools = client.elastic_pools
-        @operations = client.operations
-        @queries = client.queries
-        @query_statistics = client.query_statistics
-        @replication_links = client.replication_links
-        @server_azure_adadministrators = client.server_azure_adadministrators
-        @server_communication_links = client.server_communication_links
-        @servers = client.servers
-        @service_objectives = client.service_objectives
-        @elastic_pool_activities = client.elastic_pool_activities
-        @elastic_pool_database_activities = client.elastic_pool_database_activities
-        @recommended_elastic_pools = client.recommended_elastic_pools
-        @service_tier_advisors = client.service_tier_advisors
-        @transparent_data_encryptions = client.transparent_data_encryptions
-        @transparent_data_encryption_activities = client.transparent_data_encryption_activities
-        @server_table_auditing_policies = client.server_table_auditing_policies
-        @database_table_auditing_policies = client.database_table_auditing_policies
-        @database_connection_policies = client.database_connection_policies
-        @server_usages = client.server_usages
-        @database_usages = client.database_usages
+        @database_advisors = client_0.database_advisors
+        @backup_long_term_retention_policies = client_0.backup_long_term_retention_policies
+        @backup_long_term_retention_vaults = client_0.backup_long_term_retention_vaults
+        @restore_points = client_0.restore_points
+        @recoverable_databases = client_0.recoverable_databases
+        @restorable_dropped_databases = client_0.restorable_dropped_databases
+        @capabilities = client_0.capabilities
+        @server_connection_policies = client_0.server_connection_policies
+        @database_threat_detection_policies = client_0.database_threat_detection_policies
+        @data_masking_policies = client_0.data_masking_policies
+        @data_masking_rules = client_0.data_masking_rules
+        @transparent_data_encryption_configurations = client_0.transparent_data_encryption_configurations
+        @firewall_rules = client_0.firewall_rules
+        @geo_backup_policies = client_0.geo_backup_policies
+        @databases = client_0.databases
+        @elastic_pools = client_0.elastic_pools
+        @operations = client_0.operations
+        @queries = client_0.queries
+        @query_statistics = client_0.query_statistics
+        @replication_links = client_0.replication_links
+        @server_azure_adadministrators = client_0.server_azure_adadministrators
+        @server_communication_links = client_0.server_communication_links
+        @servers = client_0.servers
+        @service_objectives = client_0.service_objectives
+        @elastic_pool_activities = client_0.elastic_pool_activities
+        @elastic_pool_database_activities = client_0.elastic_pool_database_activities
+        @recommended_elastic_pools = client_0.recommended_elastic_pools
+        @service_tier_advisors = client_0.service_tier_advisors
+        @transparent_data_encryptions = client_0.transparent_data_encryptions
+        @transparent_data_encryption_activities = client_0.transparent_data_encryption_activities
+        @server_table_auditing_policies = client_0.server_table_auditing_policies
+        @database_table_auditing_policies = client_0.database_table_auditing_policies
+        @database_connection_policies = client_0.database_connection_policies
+        @server_usages = client_0.server_usages
+        @database_usages = client_0.database_usages
+
         @model_classes = ModelClasses.new
       end
 
@@ -236,10 +238,15 @@ module Azure::SQL::Management::Profile_2014_04_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::SQL::Api_2014_04_01::SqlManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2014-04-01')
+        case version
+          when '2014-04-01'
+            client = Azure::ARM::SQL::Api_2014_04_01::SqlManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

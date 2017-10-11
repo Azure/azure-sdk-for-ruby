@@ -69,25 +69,23 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @deployments = client.deployments
-        @providers = client.providers
-        @resources = client.resources
-        @resource_groups = client.resource_groups
-        @tags = client.tags
-        @deployment_operations = client.deployment_operations
+        @deployments = client_0.deployments
+        @providers = client_0.providers
+        @resources = client_0.resources
+        @resource_groups = client_0.resource_groups
+        @tags = client_0.tags
+        @deployment_operations = client_0.deployment_operations
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

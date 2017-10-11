@@ -316,45 +316,47 @@ module Azure::Network::Management::Profile_2017_09_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Network::Api_2017_09_01::NetworkManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Network::Api_2017_09_01::NetworkManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @application_gateways = client.application_gateways
-        @application_security_groups = client.application_security_groups
-        @available_endpoint_services = client.available_endpoint_services
-        @express_route_circuit_authorizations = client.express_route_circuit_authorizations
-        @express_route_circuit_peerings = client.express_route_circuit_peerings
-        @express_route_circuits = client.express_route_circuits
-        @express_route_service_providers = client.express_route_service_providers
-        @load_balancers = client.load_balancers
-        @load_balancer_backend_address_pools = client.load_balancer_backend_address_pools
-        @load_balancer_frontend_ipconfigurations = client.load_balancer_frontend_ipconfigurations
-        @inbound_nat_rules = client.inbound_nat_rules
-        @load_balancer_load_balancing_rules = client.load_balancer_load_balancing_rules
-        @load_balancer_network_interfaces = client.load_balancer_network_interfaces
-        @load_balancer_probes = client.load_balancer_probes
-        @network_interfaces = client.network_interfaces
-        @network_interface_ipconfigurations = client.network_interface_ipconfigurations
-        @network_interface_load_balancers = client.network_interface_load_balancers
-        @network_security_groups = client.network_security_groups
-        @security_rules = client.security_rules
-        @default_security_rules = client.default_security_rules
-        @network_watchers = client.network_watchers
-        @packet_captures = client.packet_captures
-        @public_ipaddresses = client.public_ipaddresses
-        @route_filters = client.route_filters
-        @route_filter_rules = client.route_filter_rules
-        @bgp_service_communities = client.bgp_service_communities
-        @route_tables = client.route_tables
-        @routes = client.routes
-        @usages = client.usages
-        @virtual_networks = client.virtual_networks
-        @subnets = client.subnets
-        @virtual_network_peerings = client.virtual_network_peerings
-        @virtual_network_gateways = client.virtual_network_gateways
-        @virtual_network_gateway_connections = client.virtual_network_gateway_connections
-        @local_network_gateways = client.local_network_gateways
+        @application_gateways = client_0.application_gateways
+        @application_security_groups = client_0.application_security_groups
+        @available_endpoint_services = client_0.available_endpoint_services
+        @express_route_circuit_authorizations = client_0.express_route_circuit_authorizations
+        @express_route_circuit_peerings = client_0.express_route_circuit_peerings
+        @express_route_circuits = client_0.express_route_circuits
+        @express_route_service_providers = client_0.express_route_service_providers
+        @load_balancers = client_0.load_balancers
+        @load_balancer_backend_address_pools = client_0.load_balancer_backend_address_pools
+        @load_balancer_frontend_ipconfigurations = client_0.load_balancer_frontend_ipconfigurations
+        @inbound_nat_rules = client_0.inbound_nat_rules
+        @load_balancer_load_balancing_rules = client_0.load_balancer_load_balancing_rules
+        @load_balancer_network_interfaces = client_0.load_balancer_network_interfaces
+        @load_balancer_probes = client_0.load_balancer_probes
+        @network_interfaces = client_0.network_interfaces
+        @network_interface_ipconfigurations = client_0.network_interface_ipconfigurations
+        @network_interface_load_balancers = client_0.network_interface_load_balancers
+        @network_security_groups = client_0.network_security_groups
+        @security_rules = client_0.security_rules
+        @default_security_rules = client_0.default_security_rules
+        @network_watchers = client_0.network_watchers
+        @packet_captures = client_0.packet_captures
+        @public_ipaddresses = client_0.public_ipaddresses
+        @route_filters = client_0.route_filters
+        @route_filter_rules = client_0.route_filter_rules
+        @bgp_service_communities = client_0.bgp_service_communities
+        @route_tables = client_0.route_tables
+        @routes = client_0.routes
+        @usages = client_0.usages
+        @virtual_networks = client_0.virtual_networks
+        @subnets = client_0.subnets
+        @virtual_network_peerings = client_0.virtual_network_peerings
+        @virtual_network_gateways = client_0.virtual_network_gateways
+        @virtual_network_gateway_connections = client_0.virtual_network_gateway_connections
+        @local_network_gateways = client_0.local_network_gateways
+
         @model_classes = ModelClasses.new
       end
 
@@ -363,10 +365,15 @@ module Azure::Network::Management::Profile_2017_09_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Network::Api_2017_09_01::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-09-01')
+        case version
+          when '2017-09-01'
+            client = Azure::ARM::Network::Api_2017_09_01::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

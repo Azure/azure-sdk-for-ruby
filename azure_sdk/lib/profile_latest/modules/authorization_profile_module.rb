@@ -42,24 +42,22 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Authorization::Api_2015_07_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Authorization::Api_2015_07_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @classic_administrators = client.classic_administrators
-        @permissions = client.permissions
-        @provider_operations_metadata_operations = client.provider_operations_metadata_operations
-        @role_assignments = client.role_assignments
-        @role_definitions = client.role_definitions
+        @classic_administrators = client_0.classic_administrators
+        @permissions = client_0.permissions
+        @provider_operations_metadata_operations = client_0.provider_operations_metadata_operations
+        @role_assignments = client_0.role_assignments
+        @role_definitions = client_0.role_definitions
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

@@ -60,16 +60,18 @@ module Azure::Graph::Management::Profile_1_6
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @objects = client.objects
-        @applications = client.applications
-        @groups = client.groups
-        @service_principals = client.service_principals
-        @users = client.users
-        @domains = client.domains
+        @objects = client_0.objects
+        @applications = client_0.applications
+        @groups = client_0.groups
+        @service_principals = client_0.service_principals
+        @users = client_0.users
+        @domains = client_0.domains
+
         @model_classes = ModelClasses.new
       end
 
@@ -78,10 +80,15 @@ module Azure::Graph::Management::Profile_1_6
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '1.6')
+        case version
+          when '1.6'
+            client = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

@@ -28,21 +28,19 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Consumption::Api_2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Consumption::Api_2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @usage_details = client.usage_details
-        @operations = client.operations
+        @usage_details = client_0.usage_details
+        @operations = client_0.operations
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

@@ -6,11 +6,33 @@ require 'azure_mgmt_operational_insights'
 
 module Azure::Profiles::Management::Profile_Latest
   module OperationalInsights
+    StorageInsights = Azure::ARM::OperationalInsights::Api_2015_03_20::StorageInsights
+    SavedSearches = Azure::ARM::OperationalInsights::Api_2015_03_20::SavedSearches
     LinkedServices = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::LinkedServices
     DataSources = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::DataSources
     Workspaces = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Workspaces
 
     module Models
+      SearchSchemaValue = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchSchemaValue
+      LinkTarget = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::LinkTarget
+      SearchGetSchemaResponse = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchGetSchemaResponse
+      CoreSummary = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::CoreSummary
+      SearchHighlight = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchHighlight
+      SearchMetadataSchema = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchMetadataSchema
+      SearchParameters = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchParameters
+      SavedSearch = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SavedSearch
+      StorageAccount = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageAccount
+      SearchError = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchError
+      StorageInsightStatus = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightStatus
+      Tag = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::Tag
+      SearchSort = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchSort
+      SavedSearchesListResult = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SavedSearchesListResult
+      StorageInsightListResult = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightListResult
+      SearchMetadata = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchMetadata
+      SearchResultsResponse = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchResultsResponse
+      StorageInsight = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsight
+      SearchSortEnum = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchSortEnum
+      StorageInsightState = Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightState
       UsageMetric = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::UsageMetric
       WorkspaceListUsagesResult = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::WorkspaceListUsagesResult
       LinkedServiceListResult = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::LinkedServiceListResult
@@ -36,31 +58,40 @@ module Azure::Profiles::Management::Profile_Latest
     # OperationalInsights
     #
     class OperationalInsightsClass
-      attr_reader :linked_services, :data_sources, :workspaces, :configurable, :base_url, :options, :model_classes
+      attr_reader :storage_insights, :saved_searches, :linked_services, :data_sources, :workspaces, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::OperationalInsights::Api_2015_03_20::OperationalInsightsManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @linked_services = client.linked_services
-        @data_sources = client.data_sources
-        @workspaces = client.workspaces
+        @storage_insights = client_0.storage_insights
+        @saved_searches = client_0.saved_searches
+
+        client_1 = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(configurable.credentials, base_url, options)
+        if(client_1.respond_to?(:subscription_id))
+          client_1.subscription_id = configurable.subscription_id
+        end
+        @linked_services = client_1.linked_services
+        @data_sources = client_1.data_sources
+        @workspaces = client_1.workspaces
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #
       def get_client(version = '2015-11-01-preview')
         case version
+          when '2015-03-20'
+            client = Azure::ARM::OperationalInsights::Api_2015_03_20::OperationalInsightsManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           when '2015-11-01-preview'
             client = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::AzureLogAnalytics.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
@@ -71,6 +102,66 @@ module Azure::Profiles::Management::Profile_Latest
       end
 
       class ModelClasses
+        def search_schema_value
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchSchemaValue
+        end
+        def link_target
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::LinkTarget
+        end
+        def search_get_schema_response
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchGetSchemaResponse
+        end
+        def core_summary
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::CoreSummary
+        end
+        def search_highlight
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchHighlight
+        end
+        def search_metadata_schema
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchMetadataSchema
+        end
+        def search_parameters
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchParameters
+        end
+        def saved_search
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SavedSearch
+        end
+        def storage_account
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageAccount
+        end
+        def search_error
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchError
+        end
+        def storage_insight_status
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightStatus
+        end
+        def tag
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::Tag
+        end
+        def search_sort
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchSort
+        end
+        def saved_searches_list_result
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SavedSearchesListResult
+        end
+        def storage_insight_list_result
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightListResult
+        end
+        def search_metadata
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchMetadata
+        end
+        def search_results_response
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchResultsResponse
+        end
+        def storage_insight
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsight
+        end
+        def search_sort_enum
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::SearchSortEnum
+        end
+        def storage_insight_state
+          Azure::ARM::OperationalInsights::Api_2015_03_20::Models::StorageInsightState
+        end
         def usage_metric
           Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::UsageMetric
         end

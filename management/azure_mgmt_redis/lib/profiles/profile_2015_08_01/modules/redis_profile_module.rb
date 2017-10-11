@@ -32,11 +32,13 @@ module Azure::Redis::Management::Profile_2015_08_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Redis::Api_2015_08_01::RedisManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Redis::Api_2015_08_01::RedisManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @redis = client.redis
+        @redis = client_0.redis
+
         @model_classes = ModelClasses.new
       end
 
@@ -45,10 +47,15 @@ module Azure::Redis::Management::Profile_2015_08_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Redis::Api_2015_08_01::RedisManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-08-01')
+        case version
+          when '2015-08-01'
+            client = Azure::ARM::Redis::Api_2015_08_01::RedisManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

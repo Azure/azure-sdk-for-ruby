@@ -64,11 +64,13 @@ module Azure::IotHub::Management::Profile_2017_01_19
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::IotHub::Api_2017_01_19::IotHubClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::IotHub::Api_2017_01_19::IotHubClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @iot_hub_resource = client.iot_hub_resource
+        @iot_hub_resource = client_0.iot_hub_resource
+
         @model_classes = ModelClasses.new
       end
 
@@ -77,10 +79,15 @@ module Azure::IotHub::Management::Profile_2017_01_19
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::IotHub::Api_2017_01_19::IotHubClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-01-19')
+        case version
+          when '2017-01-19'
+            client = Azure::ARM::IotHub::Api_2017_01_19::IotHubClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

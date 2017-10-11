@@ -35,11 +35,13 @@ module Azure::KeyVault::Management::Profile_2016_10_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::KeyVault::Api_2016_10_01::KeyVaultManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::KeyVault::Api_2016_10_01::KeyVaultManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @vaults = client.vaults
+        @vaults = client_0.vaults
+
         @model_classes = ModelClasses.new
       end
 
@@ -48,10 +50,15 @@ module Azure::KeyVault::Management::Profile_2016_10_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::KeyVault::Api_2016_10_01::KeyVaultManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-10-01')
+        case version
+          when '2016-10-01'
+            client = Azure::ARM::KeyVault::Api_2016_10_01::KeyVaultManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

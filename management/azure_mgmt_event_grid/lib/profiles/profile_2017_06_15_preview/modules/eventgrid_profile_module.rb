@@ -45,14 +45,16 @@ module Azure::EventGrid::Management::Profile_2017_06_15_Preview
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventGridManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @event_subscriptions = client.event_subscriptions
-        @operations = client.operations
-        @topics = client.topics
-        @topic_types = client.topic_types
+        @event_subscriptions = client_0.event_subscriptions
+        @operations = client_0.operations
+        @topics = client_0.topics
+        @topic_types = client_0.topic_types
+
         @model_classes = ModelClasses.new
       end
 
@@ -61,10 +63,15 @@ module Azure::EventGrid::Management::Profile_2017_06_15_Preview
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventGridManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-06-15-preview')
+        case version
+          when '2017-06-15-preview'
+            client = Azure::ARM::EventGrid::Api_2017_06_15_preview::EventGridManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

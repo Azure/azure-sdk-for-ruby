@@ -96,26 +96,24 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::StreamAnalytics::Api_2016_03_01::StreamAnalyticsManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::StreamAnalytics::Api_2016_03_01::StreamAnalyticsManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @operations = client.operations
-        @streaming_jobs = client.streaming_jobs
-        @inputs = client.inputs
-        @outputs = client.outputs
-        @transformations = client.transformations
-        @functions = client.functions
-        @subscriptions = client.subscriptions
+        @operations = client_0.operations
+        @streaming_jobs = client_0.streaming_jobs
+        @inputs = client_0.inputs
+        @outputs = client_0.outputs
+        @transformations = client_0.transformations
+        @functions = client_0.functions
+        @subscriptions = client_0.subscriptions
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

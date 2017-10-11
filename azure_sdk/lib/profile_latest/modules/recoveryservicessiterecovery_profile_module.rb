@@ -362,39 +362,37 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::SiteRecoveryManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::SiteRecoveryManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @replication_vault_health = client.replication_vault_health
-        @replication_protected_items = client.replication_protected_items
-        @replication_network_mappings = client.replication_network_mappings
-        @replication_fabrics = client.replication_fabrics
-        @replicationv_centers = client.replicationv_centers
-        @replication_storage_classification_mappings = client.replication_storage_classification_mappings
-        @replication_storage_classifications = client.replication_storage_classifications
-        @replication_recovery_services_providers = client.replication_recovery_services_providers
-        @recovery_points = client.recovery_points
-        @replication_recovery_plans = client.replication_recovery_plans
-        @replication_protection_containers = client.replication_protection_containers
-        @replication_protection_container_mappings = client.replication_protection_container_mappings
-        @replication_protectable_items = client.replication_protectable_items
-        @replication_policies = client.replication_policies
-        @operations = client.operations
-        @replication_networks = client.replication_networks
-        @replication_logical_networks = client.replication_logical_networks
-        @replication_jobs = client.replication_jobs
-        @replication_events = client.replication_events
-        @replication_alert_settings = client.replication_alert_settings
+        @replication_vault_health = client_0.replication_vault_health
+        @replication_protected_items = client_0.replication_protected_items
+        @replication_network_mappings = client_0.replication_network_mappings
+        @replication_fabrics = client_0.replication_fabrics
+        @replicationv_centers = client_0.replicationv_centers
+        @replication_storage_classification_mappings = client_0.replication_storage_classification_mappings
+        @replication_storage_classifications = client_0.replication_storage_classifications
+        @replication_recovery_services_providers = client_0.replication_recovery_services_providers
+        @recovery_points = client_0.recovery_points
+        @replication_recovery_plans = client_0.replication_recovery_plans
+        @replication_protection_containers = client_0.replication_protection_containers
+        @replication_protection_container_mappings = client_0.replication_protection_container_mappings
+        @replication_protectable_items = client_0.replication_protectable_items
+        @replication_policies = client_0.replication_policies
+        @operations = client_0.operations
+        @replication_networks = client_0.replication_networks
+        @replication_logical_networks = client_0.replication_logical_networks
+        @replication_jobs = client_0.replication_jobs
+        @replication_events = client_0.replication_events
+        @replication_alert_settings = client_0.replication_alert_settings
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

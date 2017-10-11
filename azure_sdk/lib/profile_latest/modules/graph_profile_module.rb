@@ -61,25 +61,23 @@ module Azure::Profiles::Management::Profile_Latest
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Graph::Api_1_6::GraphRbacManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @objects = client.objects
-        @applications = client.applications
-        @groups = client.groups
-        @service_principals = client.service_principals
-        @users = client.users
-        @domains = client.domains
+        @objects = client_0.objects
+        @applications = client_0.applications
+        @groups = client_0.groups
+        @service_principals = client_0.service_principals
+        @users = client_0.users
+        @domains = client_0.domains
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #

@@ -6,10 +6,14 @@ require 'azure_mgmt_policy'
 
 module Azure::Profiles::Management::Profile_Latest
   module Policy
+    PolicyDefinitions = Azure::ARM::Policy::Api_2016_12_01::PolicyDefinitions
     PolicyAssignments = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyAssignments
     PolicySetDefinitions = Azure::ARM::Policy::Api_2017_06_01_preview::PolicySetDefinitions
 
     module Models
+      PolicyDefinition = Azure::ARM::Policy::Api_2016_12_01::Models::PolicyDefinition
+      PolicyDefinitionListResult = Azure::ARM::Policy::Api_2016_12_01::Models::PolicyDefinitionListResult
+      PolicyMode = Azure::ARM::Policy::Api_2016_12_01::Models::PolicyMode
       ErrorResponse = Azure::ARM::Policy::Api_2017_06_01_preview::Models::ErrorResponse
       PolicyDefinitionReference = Azure::ARM::Policy::Api_2017_06_01_preview::Models::PolicyDefinitionReference
       PolicyAssignment = Azure::ARM::Policy::Api_2017_06_01_preview::Models::PolicyAssignment
@@ -24,30 +28,38 @@ module Azure::Profiles::Management::Profile_Latest
     # Policy
     #
     class PolicyClass
-      attr_reader :policy_assignments, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
+      attr_reader :policy_definitions, :policy_assignments, :policy_set_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Policy::Api_2016_12_01::PolicyClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @policy_assignments = client.policy_assignments
-        @policy_set_definitions = client.policy_set_definitions
+        @policy_definitions = client_0.policy_definitions
+
+        client_1 = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
+        if(client_1.respond_to?(:subscription_id))
+          client_1.subscription_id = configurable.subscription_id
+        end
+        @policy_assignments = client_1.policy_assignments
+        @policy_set_definitions = client_1.policy_set_definitions
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #
       def get_client(version = '2017-06-01-preview')
         case version
+          when '2016-12-01'
+            client = Azure::ARM::Policy::Api_2016_12_01::PolicyClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
           when '2017-06-01-preview'
             client = Azure::ARM::Policy::Api_2017_06_01_preview::PolicyClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
@@ -58,6 +70,15 @@ module Azure::Profiles::Management::Profile_Latest
       end
 
       class ModelClasses
+        def policy_definition
+          Azure::ARM::Policy::Api_2016_12_01::Models::PolicyDefinition
+        end
+        def policy_definition_list_result
+          Azure::ARM::Policy::Api_2016_12_01::Models::PolicyDefinitionListResult
+        end
+        def policy_mode
+          Azure::ARM::Policy::Api_2016_12_01::Models::PolicyMode
+        end
         def error_response
           Azure::ARM::Policy::Api_2017_06_01_preview::Models::ErrorResponse
         end

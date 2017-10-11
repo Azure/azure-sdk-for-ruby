@@ -122,19 +122,21 @@ module Azure::Compute::Management::Profile_2016_03_30
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Compute::Api_2016_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Compute::Api_2016_03_30::ComputeManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @availability_sets = client.availability_sets
-        @virtual_machine_extension_images = client.virtual_machine_extension_images
-        @virtual_machine_extensions = client.virtual_machine_extensions
-        @virtual_machine_images = client.virtual_machine_images
-        @usage_operations = client.usage_operations
-        @virtual_machine_sizes = client.virtual_machine_sizes
-        @virtual_machines = client.virtual_machines
-        @virtual_machine_scale_sets = client.virtual_machine_scale_sets
-        @virtual_machine_scale_set_vms = client.virtual_machine_scale_set_vms
+        @availability_sets = client_0.availability_sets
+        @virtual_machine_extension_images = client_0.virtual_machine_extension_images
+        @virtual_machine_extensions = client_0.virtual_machine_extensions
+        @virtual_machine_images = client_0.virtual_machine_images
+        @usage_operations = client_0.usage_operations
+        @virtual_machine_sizes = client_0.virtual_machine_sizes
+        @virtual_machines = client_0.virtual_machines
+        @virtual_machine_scale_sets = client_0.virtual_machine_scale_sets
+        @virtual_machine_scale_set_vms = client_0.virtual_machine_scale_set_vms
+
         @model_classes = ModelClasses.new
       end
 
@@ -143,10 +145,15 @@ module Azure::Compute::Management::Profile_2016_03_30
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Compute::Api_2016_03_30::ComputeManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-03-30')
+        case version
+          when '2016-03-30'
+            client = Azure::ARM::Compute::Api_2016_03_30::ComputeManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

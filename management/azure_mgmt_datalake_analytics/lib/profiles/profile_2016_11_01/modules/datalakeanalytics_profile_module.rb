@@ -53,15 +53,17 @@ module Azure::DataLakeAnalytics::Management::Profile_2016_11_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @compute_policies = client.compute_policies
-        @firewall_rules = client.firewall_rules
-        @storage_accounts = client.storage_accounts
-        @data_lake_store_accounts = client.data_lake_store_accounts
-        @account = client.account
+        @compute_policies = client_0.compute_policies
+        @firewall_rules = client_0.firewall_rules
+        @storage_accounts = client_0.storage_accounts
+        @data_lake_store_accounts = client_0.data_lake_store_accounts
+        @account = client_0.account
+
         @model_classes = ModelClasses.new
       end
 
@@ -70,10 +72,15 @@ module Azure::DataLakeAnalytics::Management::Profile_2016_11_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-11-01')
+        case version
+          when '2016-11-01'
+            client = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

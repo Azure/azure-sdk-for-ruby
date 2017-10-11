@@ -24,27 +24,25 @@ module Azure::Profiles::Management::Profile_Azure_Stack
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Links::Api_2016_09_01::LinksManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @resource_links = client.resource_links
+        @resource_links = client_0.resource_links
+
         @model_classes = ModelClasses.new
       end
 
       #
-      # Method to get the client object based on the version
-      # If the version is invalid, an exception is raised
-      #
-      # @param version [String] The version of the required
-      # client object.
+      # Method to get the client object
       #
       # @return Client object
       #
       def get_client(version = '2016-09-01')
         case version
           when '2016-09-01'
-            client = Azure::ARM::Links::Api_2016_09_01::LinksManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else

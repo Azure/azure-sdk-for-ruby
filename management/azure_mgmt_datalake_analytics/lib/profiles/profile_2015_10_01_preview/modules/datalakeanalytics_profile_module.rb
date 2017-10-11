@@ -41,11 +41,13 @@ module Azure::DataLakeAnalytics::Management::Profile_2015_10_01_Preview
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::DataLakeAnalyticsAccountManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::DataLakeAnalyticsAccountManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @account = client.account
+        @account = client_0.account
+
         @model_classes = ModelClasses.new
       end
 
@@ -54,10 +56,15 @@ module Azure::DataLakeAnalytics::Management::Profile_2015_10_01_Preview
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::DataLakeAnalyticsAccountManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-10-01-preview')
+        case version
+          when '2015-10-01-preview'
+            client = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::DataLakeAnalyticsAccountManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

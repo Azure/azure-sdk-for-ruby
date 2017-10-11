@@ -65,15 +65,17 @@ module Azure::CDN::Management::Profile_2016_10_02
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::CDN::Api_2016_10_02::CdnManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::CDN::Api_2016_10_02::CdnManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @profiles = client.profiles
-        @endpoints = client.endpoints
-        @origins = client.origins
-        @custom_domains = client.custom_domains
-        @edge_nodes = client.edge_nodes
+        @profiles = client_0.profiles
+        @endpoints = client_0.endpoints
+        @origins = client_0.origins
+        @custom_domains = client_0.custom_domains
+        @edge_nodes = client_0.edge_nodes
+
         @model_classes = ModelClasses.new
       end
 
@@ -82,10 +84,15 @@ module Azure::CDN::Management::Profile_2016_10_02
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::CDN::Api_2016_10_02::CdnManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-10-02')
+        case version
+          when '2016-10-02'
+            client = Azure::ARM::CDN::Api_2016_10_02::CdnManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

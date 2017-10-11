@@ -68,16 +68,18 @@ module Azure::Resources::Management::Profile_2017_05_10
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @deployments = client.deployments
-        @providers = client.providers
-        @resources = client.resources
-        @resource_groups = client.resource_groups
-        @tags = client.tags
-        @deployment_operations = client.deployment_operations
+        @deployments = client_0.deployments
+        @providers = client_0.providers
+        @resources = client_0.resources
+        @resource_groups = client_0.resource_groups
+        @tags = client_0.tags
+        @deployment_operations = client_0.deployment_operations
+
         @model_classes = ModelClasses.new
       end
 
@@ -86,10 +88,15 @@ module Azure::Resources::Management::Profile_2017_05_10
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-05-10')
+        case version
+          when '2017-05-10'
+            client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

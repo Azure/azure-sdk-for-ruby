@@ -41,15 +41,17 @@ module Azure::Authorization::Management::Profile_2015_07_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Authorization::Api_2015_07_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Authorization::Api_2015_07_01::AuthorizationManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @classic_administrators = client.classic_administrators
-        @permissions = client.permissions
-        @provider_operations_metadata_operations = client.provider_operations_metadata_operations
-        @role_assignments = client.role_assignments
-        @role_definitions = client.role_definitions
+        @classic_administrators = client_0.classic_administrators
+        @permissions = client_0.permissions
+        @provider_operations_metadata_operations = client_0.provider_operations_metadata_operations
+        @role_assignments = client_0.role_assignments
+        @role_definitions = client_0.role_definitions
+
         @model_classes = ModelClasses.new
       end
 
@@ -58,10 +60,15 @@ module Azure::Authorization::Management::Profile_2015_07_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Authorization::Api_2015_07_01::AuthorizationManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2015-07-01')
+        case version
+          when '2015-07-01'
+            client = Azure::ARM::Authorization::Api_2015_07_01::AuthorizationManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

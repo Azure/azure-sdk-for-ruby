@@ -64,12 +64,14 @@ module Azure::Scheduler::Management::Profile_2016_03_01
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::Scheduler::Api_2016_03_01::SchedulerManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::Scheduler::Api_2016_03_01::SchedulerManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @job_collections = client.job_collections
-        @jobs = client.jobs
+        @job_collections = client_0.job_collections
+        @jobs = client_0.jobs
+
         @model_classes = ModelClasses.new
       end
 
@@ -78,10 +80,15 @@ module Azure::Scheduler::Management::Profile_2016_03_01
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::Scheduler::Api_2016_03_01::SchedulerManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2016-03-01')
+        case version
+          when '2016-03-01'
+            client = Azure::ARM::Scheduler::Api_2016_03_01::SchedulerManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses

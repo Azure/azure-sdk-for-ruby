@@ -62,14 +62,16 @@ module Azure::ContainerRegistry::Management::Profile_2017_06_01_Preview
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
-        client = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::ContainerRegistryManagementClient.new(configurable.credentials, base_url, options)
-        if(client.respond_to?(:subscription_id))
-          client.subscription_id = configurable.subscription_id
+
+        client_0 = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::ContainerRegistryManagementClient.new(configurable.credentials, base_url, options)
+        if(client_0.respond_to?(:subscription_id))
+          client_0.subscription_id = configurable.subscription_id
         end
-        @registries = client.registries
-        @operations = client.operations
-        @replications = client.replications
-        @webhooks = client.webhooks
+        @registries = client_0.registries
+        @operations = client_0.operations
+        @replications = client_0.replications
+        @webhooks = client_0.webhooks
+
         @model_classes = ModelClasses.new
       end
 
@@ -78,10 +80,15 @@ module Azure::ContainerRegistry::Management::Profile_2017_06_01_Preview
       #
       # @return Client object
       #
-      def get_client
-        client = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::ContainerRegistryManagementClient.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
+      def get_client(version = '2017-06-01-preview')
+        case version
+          when '2017-06-01-preview'
+            client = Azure::ARM::ContainerRegistry::Api_2017_06_01_preview::ContainerRegistryManagementClient.new(@configurable.credentials, @base_url, @options)
+            client.subscription_id = configurable.subscription_id
+            return client
+          else
+            raise "No client of version #{version} could be found in this profile."
+        end
       end
 
       class ModelClasses
