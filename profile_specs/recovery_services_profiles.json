@@ -13,6 +13,7 @@
     "name": "Profile_2016_12_01",
     "resourceTypes": {
       "Microsoft.RecoveryServices" : {
+        "2016-06-01": ["*"],
         "2016-12-01": ["*"]
       }
     },
@@ -23,6 +24,7 @@
     "name": "Profile_Latest",
     "resourceTypes": {
       "Microsoft.RecoveryServices" : {
+        "2016-06-01": ["*"],
         "2016-12-01": ["*"]
       }
     },
