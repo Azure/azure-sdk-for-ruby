@@ -21,7 +21,6 @@ describe 'Service Bus Management Client' do
     namespace_parameters = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBNamespace.new
     namespace_parameters.location = 'westus'
     queue_parameters = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBQueue.new
-    queue_parameters.location = 'westus'
 
     # Create new namespace
     namespace = @service_bus_client.namespaces.create_or_update(@resource_group.name, namespace_name, namespace_parameters)
