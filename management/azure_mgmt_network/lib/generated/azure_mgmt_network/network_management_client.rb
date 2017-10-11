@@ -301,7 +301,7 @@ module Azure::ARM::Network
     def check_dns_name_availability_async(location, domain_name_label, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'domain_name_label is nil' if domain_name_label.nil?
-      api_version = '2017-09-01'
+      api_version = '2017-10-01'
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 
