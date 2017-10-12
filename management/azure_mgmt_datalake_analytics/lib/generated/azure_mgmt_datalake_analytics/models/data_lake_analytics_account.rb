@@ -54,7 +54,7 @@ module Azure::ARM::DataLakeAnalytics
 
       # @return [Integer] the system defined maximum supported degree of
       # parallelism for this account, which restricts the maximum value of
-      # parallelism the user can set for the account..
+      # parallelism the user can set for the account.
       attr_accessor :system_max_degree_of_parallelism
 
       # @return [Integer] the system defined maximum supported jobs running
