@@ -5,6 +5,5 @@
 require '2014-04-01/generated/azure_mgmt_sql'
 require '2015-05-01-preview/generated/azure_mgmt_sql'
 require '2017-03-01-preview/generated/azure_mgmt_sql'
-require 'profiles/profile_2014_04_01/sql_profile_2014_04_01_profile_client'
-require 'profiles/profile_2017_03_01_preview/sql_profile_2017_03_01_preview_profile_client'
-require 'profiles/profile_latest/sql_profile_latest_profile_client'
+require 'profiles/latest/sql_latest_profile_client'
+require 'profiles/v2017_03_01_preview/sql_v2017_03_01_preview_profile_client'

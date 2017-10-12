@@ -3,5 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2015-12-01/generated/azure_mgmt_features'
-require 'profiles/profile_2015_12_01/features_profile_2015_12_01_profile_client'
-require 'profiles/profile_latest/features_profile_latest_profile_client'
+require 'profiles/latest/features_latest_profile_client'
+require 'profiles/v2015_12_01/features_v2015_12_01_profile_client'
+require 'profiles/v2017_03_09/features_v2017_03_09_profile_client'
