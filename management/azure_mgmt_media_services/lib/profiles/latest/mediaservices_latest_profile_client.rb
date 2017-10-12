@@ -11,21 +11,12 @@ module Azure::MediaServices::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < MediaServicesClass
     include Azure::ARM::Configurable
 
-    attr_reader  :media_services
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @media_services = MediaServicesClass.new(self)
+      super(options)
     end
 
     def credentials

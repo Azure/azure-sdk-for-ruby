@@ -11,21 +11,12 @@ module Azure::ServiceFabric::Profiles::V2016_09_01::Mgmt
   #
   # Client class for the V2016_09_01 profile SDK.
   #
-  class Client
+  class Client < ServiceFabricClass
     include Azure::ARM::Configurable
 
-    attr_reader  :service_fabric
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @service_fabric = ServiceFabricClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -11,21 +11,12 @@ module Azure::ContainerService::Profiles::V2017_01_31::Mgmt
   #
   # Client class for the V2017_01_31 profile SDK.
   #
-  class Client
+  class Client < ContainerServiceClass
     include Azure::ARM::Configurable
 
-    attr_reader  :container_service
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @container_service = ContainerServiceClass.new(self)
+      super(options)
     end
 
     def credentials

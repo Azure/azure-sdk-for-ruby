@@ -11,21 +11,12 @@ module Azure::ResourcesManagement::Profiles::V2017_08_31_Preview::Mgmt
   #
   # Client class for the V2017_08_31_Preview profile SDK.
   #
-  class Client
+  class Client < ResourcesManagementClass
     include Azure::ARM::Configurable
 
-    attr_reader  :resources_management
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @resources_management = ResourcesManagementClass.new(self)
+      super(options)
     end
 
     def credentials

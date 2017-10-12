@@ -11,21 +11,12 @@ module Azure::RecoveryServices::Profiles::V2016_12_01::Mgmt
   #
   # Client class for the V2016_12_01 profile SDK.
   #
-  class Client
+  class Client < RecoveryServicesClass
     include Azure::ARM::Configurable
 
-    attr_reader  :recovery_services
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @recovery_services = RecoveryServicesClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -151,8 +151,16 @@ module Azure::Network::Profiles::V2017_03_09::Mgmt
     class NetworkClass
       attr_reader :application_gateways, :express_route_circuit_authorizations, :express_route_circuit_peerings, :express_route_circuits, :express_route_service_providers, :load_balancers, :network_interfaces, :network_security_groups, :security_rules, :public_ipaddresses, :route_tables, :routes, :usages, :virtual_networks, :subnets, :virtual_network_gateways, :virtual_network_gateway_connections, :local_network_gateways, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Network::Api_2015_06_15::NetworkManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

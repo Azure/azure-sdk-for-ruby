@@ -11,21 +11,12 @@ module Azure::ServerManagement::Profiles::V2016_07_01_Preview::Mgmt
   #
   # Client class for the V2016_07_01_Preview profile SDK.
   #
-  class Client
+  class Client < ServerManagementClass
     include Azure::ARM::Configurable
 
-    attr_reader  :server_management
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @server_management = ServerManagementClass.new(self)
+      super(options)
     end
 
     def credentials

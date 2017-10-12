@@ -11,21 +11,12 @@ module Azure::Consumption::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < ConsumptionClass
     include Azure::ARM::Configurable
 
-    attr_reader  :consumption
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @consumption = ConsumptionClass.new(self)
+      super(options)
     end
 
     def credentials

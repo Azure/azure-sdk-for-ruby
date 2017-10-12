@@ -40,8 +40,16 @@ module Azure::CognitiveServices::Profiles::V2017_04_18::Mgmt
     class CognitiveServicesClass
       attr_reader :accounts, :operations, :check_sku_availability, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::CognitiveServices::Api_2017_04_18::CognitiveServicesManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

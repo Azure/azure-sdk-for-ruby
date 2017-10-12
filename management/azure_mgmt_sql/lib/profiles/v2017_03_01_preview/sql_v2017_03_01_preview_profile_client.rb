@@ -11,21 +11,12 @@ module Azure::SQL::Profiles::V2017_03_01_Preview::Mgmt
   #
   # Client class for the V2017_03_01_Preview profile SDK.
   #
-  class Client
+  class Client < SQLClass
     include Azure::ARM::Configurable
 
-    attr_reader  :sql
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @sql = SQLClass.new(self)
+      super(options)
     end
 
     def credentials

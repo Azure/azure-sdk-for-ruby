@@ -11,21 +11,12 @@ module Azure::Monitor::Profiles::V2017_05_01_Preview::Mgmt
   #
   # Client class for the V2017_05_01_Preview profile SDK.
   #
-  class Client
+  class Client < MonitorClass
     include Azure::ARM::Configurable
 
-    attr_reader  :monitor
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @monitor = MonitorClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -11,21 +11,12 @@ module Azure::Automation::Profiles::V2015_10_31::Mgmt
   #
   # Client class for the V2015_10_31 profile SDK.
   #
-  class Client
+  class Client < AutomationClass
     include Azure::ARM::Configurable
 
-    attr_reader  :automation
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @automation = AutomationClass.new(self)
+      super(options)
     end
 
     def credentials

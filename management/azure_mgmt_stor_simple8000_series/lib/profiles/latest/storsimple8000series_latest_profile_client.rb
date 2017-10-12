@@ -11,21 +11,12 @@ module Azure::StorSimple8000Series::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < StorSimple8000SeriesClass
     include Azure::ARM::Configurable
 
-    attr_reader  :stor_simple8000_series
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @stor_simple8000_series = StorSimple8000SeriesClass.new(self)
+      super(options)
     end
 
     def credentials

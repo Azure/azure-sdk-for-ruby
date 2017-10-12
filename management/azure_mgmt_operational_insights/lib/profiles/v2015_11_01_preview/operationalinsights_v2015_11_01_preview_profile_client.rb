@@ -11,21 +11,12 @@ module Azure::OperationalInsights::Profiles::V2015_11_01_Preview::Mgmt
   #
   # Client class for the V2015_11_01_Preview profile SDK.
   #
-  class Client
+  class Client < OperationalInsightsClass
     include Azure::ARM::Configurable
 
-    attr_reader  :operational_insights
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @operational_insights = OperationalInsightsClass.new(self)
+      super(options)
     end
 
     def credentials

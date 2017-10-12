@@ -94,8 +94,16 @@ module Azure::Monitor::Profiles::V2017_05_01_Preview::Mgmt
     class MonitorClass
       attr_reader :autoscale_settings, :operations, :alert_rule_incidents, :alert_rules, :log_profiles, :action_groups, :activity_log_alerts, :diagnostic_settings_category_operations, :diagnostic_settings_operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Monitor::Api_2015_04_01::MonitorManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

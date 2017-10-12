@@ -26,8 +26,16 @@ module Azure::Consumption::Profiles::V2017_04_24_Preview::Mgmt
     class ConsumptionClass
       attr_reader :usage_details, :operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Consumption::Api_2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

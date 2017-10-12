@@ -262,8 +262,16 @@ module Azure::SQL::Profiles::V2017_03_01_Preview::Mgmt
     class SQLClass
       attr_reader :backup_long_term_retention_policies, :backup_long_term_retention_vaults, :restore_points, :recoverable_databases, :restorable_dropped_databases, :capabilities, :server_connection_policies, :database_threat_detection_policies, :data_masking_policies, :data_masking_rules, :transparent_data_encryption_configurations, :firewall_rules, :geo_backup_policies, :databases, :elastic_pools, :queries, :query_statistics, :replication_links, :server_azure_adadministrators, :server_communication_links, :service_objectives, :elastic_pool_activities, :elastic_pool_database_activities, :recommended_elastic_pools, :service_tier_advisors, :transparent_data_encryptions, :transparent_data_encryption_activities, :server_table_auditing_policies, :database_table_auditing_policies, :database_connection_policies, :server_usages, :database_usages, :database_advisors, :database_recommended_actions, :server_advisors, :database_blob_auditing_policies, :encryption_protectors, :failover_groups, :operations, :server_keys, :servers, :sync_agents, :sync_groups, :sync_members, :virtual_network_rules, :database_operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::SQL::Api_2014_04_01::SqlManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

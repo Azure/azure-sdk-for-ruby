@@ -11,21 +11,12 @@ module Azure::Compute::Profiles::V2017_03_30::Mgmt
   #
   # Client class for the V2017_03_30 profile SDK.
   #
-  class Client
+  class Client < ComputeClass
     include Azure::ARM::Configurable
 
-    attr_reader  :compute
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @compute = ComputeClass.new(self)
+      super(options)
     end
 
     def credentials

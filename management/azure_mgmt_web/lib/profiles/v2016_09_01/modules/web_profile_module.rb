@@ -297,8 +297,16 @@ module Azure::Web::Profiles::V2016_09_01::Mgmt
     class WebClass
       attr_reader :domains, :top_level_domains, :app_service_certificate_orders, :certificates, :deleted_web_apps, :provider, :recommendations, :web_apps, :app_service_environments, :app_service_plans, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Web::Api_2015_04_01::WebSiteManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

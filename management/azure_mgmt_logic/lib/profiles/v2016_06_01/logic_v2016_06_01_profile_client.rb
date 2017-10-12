@@ -11,21 +11,12 @@ module Azure::Logic::Profiles::V2016_06_01::Mgmt
   #
   # Client class for the V2016_06_01 profile SDK.
   #
-  class Client
+  class Client < LogicClass
     include Azure::ARM::Configurable
 
-    attr_reader  :logic
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @logic = LogicClass.new(self)
+      super(options)
     end
 
     def credentials

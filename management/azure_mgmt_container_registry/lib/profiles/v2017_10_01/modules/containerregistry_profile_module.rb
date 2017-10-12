@@ -61,8 +61,16 @@ module Azure::ContainerRegistry::Profiles::V2017_10_01::Mgmt
     class ContainerRegistryClass
       attr_reader :registries, :operations, :replications, :webhooks, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::ContainerRegistry::Api_2017_10_01::ContainerRegistryManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

@@ -67,8 +67,16 @@ module Azure::Resources::Profiles::V2017_03_09::Mgmt
     class ResourcesClass
       attr_reader :deployments, :providers, :resource_groups, :resources, :tags, :deployment_operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Resources::Api_2016_02_01::ResourceManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

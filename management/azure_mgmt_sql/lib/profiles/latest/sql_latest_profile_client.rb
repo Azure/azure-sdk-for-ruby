@@ -11,21 +11,12 @@ module Azure::SQL::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < SQLClass
     include Azure::ARM::Configurable
 
-    attr_reader  :sql
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @sql = SQLClass.new(self)
+      super(options)
     end
 
     def credentials

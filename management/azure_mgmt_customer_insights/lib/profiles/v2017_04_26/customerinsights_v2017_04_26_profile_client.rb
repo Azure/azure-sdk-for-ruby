@@ -11,21 +11,12 @@ module Azure::CustomerInsights::Profiles::V2017_04_26::Mgmt
   #
   # Client class for the V2017_04_26 profile SDK.
   #
-  class Client
+  class Client < CustomerInsightsClass
     include Azure::ARM::Configurable
 
-    attr_reader  :customer_insights
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @customer_insights = CustomerInsightsClass.new(self)
+      super(options)
     end
 
     def credentials

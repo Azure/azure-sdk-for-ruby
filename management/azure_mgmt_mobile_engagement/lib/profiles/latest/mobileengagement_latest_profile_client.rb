@@ -11,21 +11,12 @@ module Azure::MobileEngagement::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < MobileEngagementClass
     include Azure::ARM::Configurable
 
-    attr_reader  :mobile_engagement
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @mobile_engagement = MobileEngagementClass.new(self)
+      super(options)
     end
 
     def credentials

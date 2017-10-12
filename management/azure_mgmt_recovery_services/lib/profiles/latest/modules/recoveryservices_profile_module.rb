@@ -62,8 +62,16 @@ module Azure::RecoveryServices::Profiles::Latest::Mgmt
     class RecoveryServicesClass
       attr_reader :vault_certificates, :registered_identities, :replication_usages, :vaults, :operations, :vault_extended_info_operations, :usages, :backup_vault_configs, :backup_storage_configs, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::RecoveryServices::Api_2016_06_01::RecoveryServicesClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

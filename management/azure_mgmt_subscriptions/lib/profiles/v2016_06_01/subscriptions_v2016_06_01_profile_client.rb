@@ -11,21 +11,12 @@ module Azure::Subscriptions::Profiles::V2016_06_01::Mgmt
   #
   # Client class for the V2016_06_01 profile SDK.
   #
-  class Client
+  class Client < SubscriptionsClass
     include Azure::ARM::Configurable
 
-    attr_reader  :subscriptions
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @subscriptions = SubscriptionsClass.new(self)
+      super(options)
     end
 
     def credentials

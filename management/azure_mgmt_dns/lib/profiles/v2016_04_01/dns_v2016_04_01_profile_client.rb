@@ -11,21 +11,12 @@ module Azure::Dns::Profiles::V2016_04_01::Mgmt
   #
   # Client class for the V2016_04_01 profile SDK.
   #
-  class Client
+  class Client < DnsClass
     include Azure::ARM::Configurable
 
-    attr_reader  :dns
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @dns = DnsClass.new(self)
+      super(options)
     end
 
     def credentials

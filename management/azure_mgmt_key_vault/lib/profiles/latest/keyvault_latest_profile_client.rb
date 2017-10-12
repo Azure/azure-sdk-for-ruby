@@ -11,21 +11,12 @@ module Azure::KeyVault::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < KeyVaultClass
     include Azure::ARM::Configurable
 
-    attr_reader  :key_vault
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @key_vault = KeyVaultClass.new(self)
+      super(options)
     end
 
     def credentials

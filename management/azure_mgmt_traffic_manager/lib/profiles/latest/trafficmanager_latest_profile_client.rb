@@ -11,21 +11,12 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < TrafficManagerClass
     include Azure::ARM::Configurable
 
-    attr_reader  :traffic_manager
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @traffic_manager = TrafficManagerClass.new(self)
+      super(options)
     end
 
     def credentials

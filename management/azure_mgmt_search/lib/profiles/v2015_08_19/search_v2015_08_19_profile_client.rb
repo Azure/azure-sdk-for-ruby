@@ -11,21 +11,12 @@ module Azure::Search::Profiles::V2015_08_19::Mgmt
   #
   # Client class for the V2015_08_19 profile SDK.
   #
-  class Client
+  class Client < SearchClass
     include Azure::ARM::Configurable
 
-    attr_reader  :search
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @search = SearchClass.new(self)
+      super(options)
     end
 
     def credentials

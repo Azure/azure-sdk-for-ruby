@@ -11,21 +11,12 @@ module Azure::DevTestLabs::Profiles::V2016_05_15::Mgmt
   #
   # Client class for the V2016_05_15 profile SDK.
   #
-  class Client
+  class Client < DevTestLabsClass
     include Azure::ARM::Configurable
 
-    attr_reader  :dev_test_labs
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @dev_test_labs = DevTestLabsClass.new(self)
+      super(options)
     end
 
     def credentials

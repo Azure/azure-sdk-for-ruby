@@ -11,21 +11,12 @@ module Azure::Commerce::Profiles::V2015_06_01_Preview::Mgmt
   #
   # Client class for the V2015_06_01_Preview profile SDK.
   #
-  class Client
+  class Client < CommerceClass
     include Azure::ARM::Configurable
 
-    attr_reader  :commerce
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @commerce = CommerceClass.new(self)
+      super(options)
     end
 
     def credentials

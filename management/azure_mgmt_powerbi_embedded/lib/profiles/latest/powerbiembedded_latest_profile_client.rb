@@ -11,21 +11,12 @@ module Azure::PowerBiEmbedded::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < PowerBiEmbeddedClass
     include Azure::ARM::Configurable
 
-    attr_reader  :power_bi_embedded
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @power_bi_embedded = PowerBiEmbeddedClass.new(self)
+      super(options)
     end
 
     def credentials

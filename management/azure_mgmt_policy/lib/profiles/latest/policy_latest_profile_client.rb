@@ -11,21 +11,12 @@ module Azure::Policy::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < PolicyClass
     include Azure::ARM::Configurable
 
-    attr_reader  :policy
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @policy = PolicyClass.new(self)
+      super(options)
     end
 
     def credentials

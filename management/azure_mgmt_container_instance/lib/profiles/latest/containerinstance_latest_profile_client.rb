@@ -11,21 +11,12 @@ module Azure::ContainerInstance::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < ContainerInstanceClass
     include Azure::ARM::Configurable
 
-    attr_reader  :container_instance
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @container_instance = ContainerInstanceClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -11,21 +11,12 @@ module Azure::IotHub::Profiles::V2017_07_01::Mgmt
   #
   # Client class for the V2017_07_01 profile SDK.
   #
-  class Client
+  class Client < IotHubClass
     include Azure::ARM::Configurable
 
-    attr_reader  :iot_hub
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @iot_hub = IotHubClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -11,21 +11,12 @@ module Azure::Storage::Profiles::V2017_06_01::Mgmt
   #
   # Client class for the V2017_06_01 profile SDK.
   #
-  class Client
+  class Client < StorageClass
     include Azure::ARM::Configurable
 
-    attr_reader  :storage
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @storage = StorageClass.new(self)
+      super(options)
     end
 
     def credentials

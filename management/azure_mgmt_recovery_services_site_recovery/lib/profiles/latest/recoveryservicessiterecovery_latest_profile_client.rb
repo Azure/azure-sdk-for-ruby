@@ -11,21 +11,12 @@ module Azure::RecoveryServicesSiteRecovery::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < RecoveryServicesSiteRecoveryClass
     include Azure::ARM::Configurable
 
-    attr_reader  :recovery_services_site_recovery
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @recovery_services_site_recovery = RecoveryServicesSiteRecoveryClass.new(self)
+      super(options)
     end
 
     def credentials

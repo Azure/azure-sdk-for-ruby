@@ -11,21 +11,12 @@ module Azure::Web::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < WebClass
     include Azure::ARM::Configurable
 
-    attr_reader  :web
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @web = WebClass.new(self)
+      super(options)
     end
 
     def credentials

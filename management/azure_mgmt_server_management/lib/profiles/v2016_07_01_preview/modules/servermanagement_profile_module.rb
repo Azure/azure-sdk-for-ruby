@@ -49,8 +49,16 @@ module Azure::ServerManagement::Profiles::V2016_07_01_Preview::Mgmt
     class ServerManagementClass
       attr_reader :gateway, :node, :session, :power_shell, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::ServerManagement::Api_2016_07_01_preview::ServerManagement.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

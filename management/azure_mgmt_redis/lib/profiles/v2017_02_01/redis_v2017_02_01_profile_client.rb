@@ -11,21 +11,12 @@ module Azure::Redis::Profiles::V2017_02_01::Mgmt
   #
   # Client class for the V2017_02_01 profile SDK.
   #
-  class Client
+  class Client < RedisClass
     include Azure::ARM::Configurable
 
-    attr_reader  :redis
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @redis = RedisClass.new(self)
+      super(options)
     end
 
     def credentials

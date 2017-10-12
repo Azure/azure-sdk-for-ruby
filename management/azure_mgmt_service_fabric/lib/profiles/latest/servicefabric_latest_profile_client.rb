@@ -11,21 +11,12 @@ module Azure::ServiceFabric::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < ServiceFabricClass
     include Azure::ARM::Configurable
 
-    attr_reader  :service_fabric
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @service_fabric = ServiceFabricClass.new(self)
+      super(options)
     end
 
     def credentials

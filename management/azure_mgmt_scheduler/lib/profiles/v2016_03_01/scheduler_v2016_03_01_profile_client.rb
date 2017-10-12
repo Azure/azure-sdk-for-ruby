@@ -11,21 +11,12 @@ module Azure::Scheduler::Profiles::V2016_03_01::Mgmt
   #
   # Client class for the V2016_03_01 profile SDK.
   #
-  class Client
+  class Client < SchedulerClass
     include Azure::ARM::Configurable
 
-    attr_reader  :scheduler
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @scheduler = SchedulerClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -11,21 +11,12 @@ module Azure::AnalysisServices::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < AnalysisServicesClass
     include Azure::ARM::Configurable
 
-    attr_reader  :analysis_services
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @analysis_services = AnalysisServicesClass.new(self)
+      super(options)
     end
 
     def credentials

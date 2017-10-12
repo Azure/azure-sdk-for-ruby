@@ -11,21 +11,12 @@ module Azure::DataLakeStore::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < DataLakeStoreClass
     include Azure::ARM::Configurable
 
-    attr_reader  :data_lake_store
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @data_lake_store = DataLakeStoreClass.new(self)
+      super(options)
     end
 
     def credentials

@@ -76,8 +76,16 @@ module Azure::Storage::Profiles::V2017_06_01::Mgmt
     class StorageClass
       attr_reader :operations, :skus, :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Storage::Api_2017_06_01::StorageManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

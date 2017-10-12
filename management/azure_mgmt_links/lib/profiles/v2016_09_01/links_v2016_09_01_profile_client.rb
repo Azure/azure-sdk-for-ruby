@@ -11,21 +11,12 @@ module Azure::Links::Profiles::V2016_09_01::Mgmt
   #
   # Client class for the V2016_09_01 profile SDK.
   #
-  class Client
+  class Client < LinksClass
     include Azure::ARM::Configurable
 
-    attr_reader  :links
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @links = LinksClass.new(self)
+      super(options)
     end
 
     def credentials

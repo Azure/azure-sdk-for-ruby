@@ -21,8 +21,16 @@ module Azure::Links::Profiles::V2017_03_09::Mgmt
     class LinksClass
       attr_reader :resource_links, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

@@ -190,8 +190,16 @@ module Azure::StorSimple8000Series::Profiles::V2017_06_01::Mgmt
     class StorSimple8000SeriesClass
       attr_reader :operations, :managers, :access_control_records, :alerts, :bandwidth_settings, :cloud_appliances, :devices, :device_settings, :backup_policies, :backup_schedules, :backups, :hardware_component_groups, :jobs, :volume_containers, :volumes, :storage_account_credentials, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::StorSimple8000Series::Api_2017_06_01::StorSimple8000SeriesManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

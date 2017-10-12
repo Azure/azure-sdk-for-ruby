@@ -75,8 +75,16 @@ module Azure::ServiceBus::Profiles::V2017_04_01::Mgmt
     class ServiceBusClass
       attr_reader :operations, :namespaces, :disaster_recovery_configs, :queues, :topics, :subscriptions, :rules, :regions, :premium_messaging_regions_operations, :event_hubs, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::ServiceBus::Api_2017_04_01::ServiceBusManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

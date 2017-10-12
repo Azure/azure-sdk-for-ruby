@@ -11,21 +11,12 @@ module Azure::Features::Profiles::V2015_12_01::Mgmt
   #
   # Client class for the V2015_12_01 profile SDK.
   #
-  class Client
+  class Client < FeaturesClass
     include Azure::ARM::Configurable
 
-    attr_reader  :features
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @features = FeaturesClass.new(self)
+      super(options)
     end
 
     def credentials

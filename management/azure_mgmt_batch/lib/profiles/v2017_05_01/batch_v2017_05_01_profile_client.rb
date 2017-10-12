@@ -11,21 +11,12 @@ module Azure::Batch::Profiles::V2017_05_01::Mgmt
   #
   # Client class for the V2017_05_01 profile SDK.
   #
-  class Client
+  class Client < BatchClass
     include Azure::ARM::Configurable
 
-    attr_reader  :batch
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @batch = BatchClass.new(self)
+      super(options)
     end
 
     def credentials

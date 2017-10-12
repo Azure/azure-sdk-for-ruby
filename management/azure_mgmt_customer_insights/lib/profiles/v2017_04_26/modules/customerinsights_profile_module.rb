@@ -136,8 +136,16 @@ module Azure::CustomerInsights::Profiles::V2017_04_26::Mgmt
     class CustomerInsightsClass
       attr_reader :operations, :hubs, :profiles, :interactions, :relationships, :relationship_links, :authorization_policies, :connectors, :connector_mappings, :kpi, :widget_types, :views, :links, :roles, :role_assignments, :images, :predictions, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::CustomerInsights::Api_2017_04_26::CustomerInsightsManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

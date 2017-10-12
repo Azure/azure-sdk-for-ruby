@@ -69,8 +69,16 @@ module Azure::CDN::Profiles::Latest::Mgmt
     class CDNClass
       attr_reader :profiles, :endpoints, :origins, :custom_domains, :resource_usage_operations, :operations, :edge_nodes, :configurable, :base_url, :options, :model_classes
 
-      def initialize(configurable, base_url=nil, options=nil)
-        @configurable, @base_url, @options = configurable, base_url, options
+      def initialize(options = {})
+        if options.is_a?(Hash) && options.length == 0
+          @options = setup_options
+        else
+          @options = options
+        end
+
+        reset!(options)
+
+        @configurable, @base_url, @options = self, nil, nil
 
         client_0 = Azure::ARM::CDN::Api_2017_04_02::CdnManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))

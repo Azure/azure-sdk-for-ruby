@@ -11,21 +11,12 @@ module Azure::MachineLearning::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < MachineLearningClass
     include Azure::ARM::Configurable
 
-    attr_reader  :machine_learning
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @machine_learning = MachineLearningClass.new(self)
+      super(options)
     end
 
     def credentials

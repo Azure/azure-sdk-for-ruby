@@ -11,21 +11,12 @@ module Azure::Billing::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
-  class Client
+  class Client < BillingClass
     include Azure::ARM::Configurable
 
-    attr_reader  :billing
 
     def initialize(options = {})
-      if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
-      else
-        @options = options
-      end
-
-      reset!(options)
-
-      @billing = BillingClass.new(self)
+      super(options)
     end
 
     def credentials
