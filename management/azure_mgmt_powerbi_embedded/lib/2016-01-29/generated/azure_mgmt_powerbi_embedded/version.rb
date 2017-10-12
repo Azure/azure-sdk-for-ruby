@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
+module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
     VERSION = '0.15.0'
 end

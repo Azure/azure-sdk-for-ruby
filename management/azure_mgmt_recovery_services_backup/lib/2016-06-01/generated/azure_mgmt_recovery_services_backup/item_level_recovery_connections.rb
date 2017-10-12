@@ -7,7 +7,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_06_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
   #
   # Open API 2.0 Specs for Azure RecoveryServices Backup service
   #
@@ -240,7 +240,7 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesBackup::Api_2016_06_01::Models::ILRRequestResource.mapper()
+      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ILRRequestResource.mapper()
       request_content = @client.serialize(request_mapper,  resource_ilrrequest)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerService::Api_2016_09_30
+module Azure::ContainerService::Mgmt::V2016_09_30
     VERSION = '0.15.0'
 end

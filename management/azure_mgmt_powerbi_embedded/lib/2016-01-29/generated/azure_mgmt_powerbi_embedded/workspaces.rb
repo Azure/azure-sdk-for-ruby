@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
+module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
   #
   # Client to manage your Power BI Embedded workspace collections and retrieve
   # workspaces.
@@ -106,7 +106,7 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::Models::WorkspaceList.mapper()
+            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceList.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

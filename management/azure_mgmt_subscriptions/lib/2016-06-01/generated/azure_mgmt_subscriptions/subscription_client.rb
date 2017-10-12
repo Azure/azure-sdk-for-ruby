@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Subscriptions::Api_2016_06_01
+module Azure::Subscriptions::Mgmt::V2016_06_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -121,8 +121,8 @@ module Azure::ARM::Subscriptions::Api_2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_subscriptions'
-        if defined? Azure::ARM::Subscriptions::Api_2016_06_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Subscriptions::Api_2016_06_01::VERSION}"
+        if defined? Azure::Subscriptions::Mgmt::V2016_06_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Subscriptions::Mgmt::V2016_06_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

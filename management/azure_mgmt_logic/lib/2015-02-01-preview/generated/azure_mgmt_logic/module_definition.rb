@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Logic end
-module Azure::ARM::Logic::Api_2015_02_01_preview end
+module Azure::Logic end
+module Azure::Logic::Mgmt end
+module Azure::Logic::Mgmt::V2015_02_01_preview end

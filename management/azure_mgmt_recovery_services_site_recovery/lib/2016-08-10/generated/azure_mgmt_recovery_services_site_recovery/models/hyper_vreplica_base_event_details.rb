@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
     # Abstract model class for event details of a HyperVReplica E2E event.

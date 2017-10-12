@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MachineLearning::Api_2017_01_01
+module Azure::MachineLearning::Mgmt::V2017_01_01
     VERSION = '0.15.0'
 end

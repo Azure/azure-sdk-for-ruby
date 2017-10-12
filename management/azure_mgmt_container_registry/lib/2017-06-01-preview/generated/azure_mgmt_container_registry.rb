@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-06-01-preview/generated/azure_mgmt_container_registry/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
+module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
   autoload :Registries,                                         '2017-06-01-preview/generated/azure_mgmt_container_registry/registries.rb'
   autoload :Operations,                                         '2017-06-01-preview/generated/azure_mgmt_container_registry/operations.rb'
   autoload :Replications,                                       '2017-06-01-preview/generated/azure_mgmt_container_registry/replications.rb'

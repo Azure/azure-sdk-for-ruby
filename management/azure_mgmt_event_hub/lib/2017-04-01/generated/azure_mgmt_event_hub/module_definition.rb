@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::EventHub end
-module Azure::ARM::EventHub::Api_2017_04_01 end
+module Azure::EventHub end
+module Azure::EventHub::Mgmt end
+module Azure::EventHub::Mgmt::V2017_04_01 end

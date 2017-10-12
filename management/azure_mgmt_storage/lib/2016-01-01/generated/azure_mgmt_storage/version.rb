@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Storage::Api_2016_01_01
+module Azure::Storage::Mgmt::V2016_01_01
     VERSION = '0.15.0'
 end

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-08-19/generated/azure_mgmt_search/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Search::Api_2015_08_19
+module Azure::Search::Mgmt::V2015_08_19
   autoload :AdminKeys,                                          '2015-08-19/generated/azure_mgmt_search/admin_keys.rb'
   autoload :QueryKeys,                                          '2015-08-19/generated/azure_mgmt_search/query_keys.rb'
   autoload :Services,                                           '2015-08-19/generated/azure_mgmt_search/services.rb'

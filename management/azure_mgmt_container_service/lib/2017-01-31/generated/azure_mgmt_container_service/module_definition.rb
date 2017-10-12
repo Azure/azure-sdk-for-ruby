@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::ContainerService end
-module Azure::ARM::ContainerService::Api_2017_01_31 end
+module Azure::ContainerService end
+module Azure::ContainerService::Mgmt end
+module Azure::ContainerService::Mgmt::V2017_01_31 end

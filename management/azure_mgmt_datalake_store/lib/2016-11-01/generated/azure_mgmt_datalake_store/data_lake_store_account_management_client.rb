@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeStore::Api_2016_11_01
+module Azure::DataLakeStore::Mgmt::V2016_11_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -130,8 +130,8 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_datalake_store'
-        if defined? Azure::ARM::DataLakeStore::Api_2016_11_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::DataLakeStore::Api_2016_11_01::VERSION}"
+        if defined? Azure::DataLakeStore::Mgmt::V2016_11_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::DataLakeStore::Mgmt::V2016_11_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

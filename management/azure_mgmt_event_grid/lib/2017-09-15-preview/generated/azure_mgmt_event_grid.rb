@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-09-15-preview/generated/azure_mgmt_event_grid/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::EventGrid::Api_2017_09_15_preview
+module Azure::EventGrid::Mgmt::V2017_09_15_preview
   autoload :EventSubscriptions,                                 '2017-09-15-preview/generated/azure_mgmt_event_grid/event_subscriptions.rb'
   autoload :Operations,                                         '2017-09-15-preview/generated/azure_mgmt_event_grid/operations.rb'
   autoload :Topics,                                             '2017-09-15-preview/generated/azure_mgmt_event_grid/topics.rb'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2017_03_30
+module Azure::Compute::Mgmt::V2017_03_30
   module Models
     #
     # The disks and snapshots sku name. Can be Standard_LRS or Premium_LRS.

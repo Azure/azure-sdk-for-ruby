@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Monitor::Api_2016_09_01
+module Azure::Monitor::Mgmt::V2016_09_01
   autoload :ServiceDiagnosticSettingsOperations,                '2016-09-01/generated/azure_mgmt_monitor/service_diagnostic_settings_operations.rb'
   autoload :MonitorClient,                                      '2016-09-01/generated/azure_mgmt_monitor/monitor_client.rb'
 

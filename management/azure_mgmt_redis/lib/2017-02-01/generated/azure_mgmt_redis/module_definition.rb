@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Redis end
-module Azure::ARM::Redis::Api_2017_02_01 end
+module Azure::Redis end
+module Azure::Redis::Mgmt end
+module Azure::Redis::Mgmt::V2017_02_01 end

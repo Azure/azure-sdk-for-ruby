@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Batch::Api_2015_12_01
+module Azure::Batch::Mgmt::V2015_12_01
   #
   # ApplicationOperations
   #
@@ -86,7 +86,7 @@ module Azure::ARM::Batch::Api_2015_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Batch::Api_2015_12_01::Models::AddApplicationParameters.mapper()
+      request_mapper = Azure::Batch::Mgmt::V2015_12_01::Models::AddApplicationParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -118,7 +118,7 @@ module Azure::ARM::Batch::Api_2015_12_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Batch::Api_2015_12_01::Models::Application.mapper()
+            result_mapper = Azure::Batch::Mgmt::V2015_12_01::Models::Application.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -303,7 +303,7 @@ module Azure::ARM::Batch::Api_2015_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Batch::Api_2015_12_01::Models::Application.mapper()
+            result_mapper = Azure::Batch::Mgmt::V2015_12_01::Models::Application.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -384,7 +384,7 @@ module Azure::ARM::Batch::Api_2015_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Batch::Api_2015_12_01::Models::UpdateApplicationParameters.mapper()
+      request_mapper = Azure::Batch::Mgmt::V2015_12_01::Models::UpdateApplicationParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -506,7 +506,7 @@ module Azure::ARM::Batch::Api_2015_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Batch::Api_2015_12_01::Models::ListApplicationsResult.mapper()
+            result_mapper = Azure::Batch::Mgmt::V2015_12_01::Models::ListApplicationsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -593,7 +593,7 @@ module Azure::ARM::Batch::Api_2015_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Batch::Api_2015_12_01::Models::ListApplicationsResult.mapper()
+            result_mapper = Azure::Batch::Mgmt::V2015_12_01::Models::ListApplicationsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

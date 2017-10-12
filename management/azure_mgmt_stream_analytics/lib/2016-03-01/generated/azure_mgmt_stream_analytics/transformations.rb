@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::StreamAnalytics::Api_2016_03_01
+module Azure::StreamAnalytics::Mgmt::V2016_03_01
   #
   # Stream Analytics Client
   #
@@ -119,7 +119,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation.mapper()
+      request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Transformation.mapper()
       request_content = @client.serialize(request_mapper,  transformation)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -151,7 +151,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation.mapper()
+            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Transformation.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -161,7 +161,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation.mapper()
+            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Transformation.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -277,7 +277,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation.mapper()
+      request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Transformation.mapper()
       request_content = @client.serialize(request_mapper,  transformation)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -309,7 +309,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation.mapper()
+            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Transformation.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -410,7 +410,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::StreamAnalytics::Api_2016_03_01::Models::Transformation.mapper()
+            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Transformation.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

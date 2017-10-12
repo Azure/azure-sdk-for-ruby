@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Redis::Api_2017_02_01
+module Azure::Redis::Mgmt::V2017_02_01
     VERSION = '0.15.0'
 end

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CognitiveServices::Api_2017_04_18
+module Azure::CognitiveServices::Mgmt::V2017_04_18
   #
   # A service client - single point of access to the REST API.
   #
@@ -129,8 +129,8 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cognitive_services'
-        if defined? Azure::ARM::CognitiveServices::Api_2017_04_18::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::CognitiveServices::Api_2017_04_18::VERSION}"
+        if defined? Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CognitiveServices::Mgmt::V2017_04_18::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

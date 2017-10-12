@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Relay end
-module Azure::ARM::Relay::Api_2016_07_01 end
+module Azure::Relay end
+module Azure::Relay::Mgmt end
+module Azure::Relay::Mgmt::V2016_07_01 end

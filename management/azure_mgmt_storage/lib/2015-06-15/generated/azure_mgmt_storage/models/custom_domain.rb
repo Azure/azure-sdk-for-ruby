@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Storage::Api_2015_06_15
+module Azure::Storage::Mgmt::V2015_06_15
   module Models
     #
     # The custom domain assigned to this storage account. This can be set via

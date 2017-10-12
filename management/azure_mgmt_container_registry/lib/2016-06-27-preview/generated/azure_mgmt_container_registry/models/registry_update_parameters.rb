@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerRegistry::Api_2016_06_27_preview
+module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
   module Models
     #
     # The parameters for updating a container registry.

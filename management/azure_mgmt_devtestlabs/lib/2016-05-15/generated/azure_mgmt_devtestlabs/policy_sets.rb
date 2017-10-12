@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DevTestLabs::Api_2016_05_15
+module Azure::DevTestLabs::Mgmt::V2016_05_15
   #
   # The DevTest Labs Client.
   #
@@ -87,7 +87,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::EvaluatePoliciesRequest.mapper()
+      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesRequest.mapper()
       request_content = @client.serialize(request_mapper,  evaluate_policies_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -119,7 +119,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::EvaluatePoliciesResponse.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

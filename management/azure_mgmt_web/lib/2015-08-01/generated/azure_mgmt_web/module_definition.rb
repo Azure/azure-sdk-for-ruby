@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Web end
-module Azure::ARM::Web::Api_2015_08_01 end
+module Azure::Web end
+module Azure::Web::Mgmt end
+module Azure::Web::Mgmt::V2015_08_01 end

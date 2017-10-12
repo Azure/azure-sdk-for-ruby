@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-06-01/generated/azure_mgmt_key_vault/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::KeyVault::Api_2015_06_01
+module Azure::KeyVault::Mgmt::V2015_06_01
   autoload :Vaults,                                             '2015-06-01/generated/azure_mgmt_key_vault/vaults.rb'
   autoload :KeyVaultManagementClient,                           '2015-06-01/generated/azure_mgmt_key_vault/key_vault_management_client.rb'
 

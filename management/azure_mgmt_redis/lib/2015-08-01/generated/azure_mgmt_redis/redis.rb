@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Redis::Api_2015_08_01
+module Azure::Redis::Mgmt::V2015_08_01
   #
   # REST API for Azure Redis Cache Service.
   #
@@ -86,7 +86,7 @@ module Azure::ARM::Redis::Api_2015_08_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisCreateOrUpdateParameters.mapper()
+      request_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisCreateOrUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -118,7 +118,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisResourceWithAccessKey.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResourceWithAccessKey.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -128,7 +128,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisResourceWithAccessKey.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResourceWithAccessKey.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -299,7 +299,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisResource.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -386,7 +386,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListResult.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -469,7 +469,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListResult.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -563,7 +563,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListKeysResult.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListKeysResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -641,7 +641,7 @@ module Azure::ARM::Redis::Api_2015_08_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisRegenerateKeyParameters.mapper()
+      request_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisRegenerateKeyParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -673,7 +673,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListKeysResult.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListKeysResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -750,7 +750,7 @@ module Azure::ARM::Redis::Api_2015_08_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisRebootParameters.mapper()
+      request_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisRebootParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -859,7 +859,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListResult.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -946,7 +946,7 @@ module Azure::ARM::Redis::Api_2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Redis::Api_2015_08_01::Models::RedisListResult.mapper()
+            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

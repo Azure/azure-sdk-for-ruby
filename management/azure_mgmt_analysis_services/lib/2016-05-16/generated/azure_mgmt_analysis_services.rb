@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-05-16/generated/azure_mgmt_analysis_services/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::AnalysisServices::Api_2016_05_16
+module Azure::AnalysisServices::Mgmt::V2016_05_16
   autoload :Servers,                                            '2016-05-16/generated/azure_mgmt_analysis_services/servers.rb'
   autoload :AnalysisServicesManagementClient,                   '2016-05-16/generated/azure_mgmt_analysis_services/analysis_services_management_client.rb'
 

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerService::Api_2016_03_30
+module Azure::ContainerService::Mgmt::V2016_03_30
   #
   # A service client - single point of access to the REST API.
   #
@@ -122,8 +122,8 @@ module Azure::ARM::ContainerService::Api_2016_03_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_container_service'
-        if defined? Azure::ARM::ContainerService::Api_2016_03_30::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::ContainerService::Api_2016_03_30::VERSION}"
+        if defined? Azure::ContainerService::Mgmt::V2016_03_30::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ContainerService::Mgmt::V2016_03_30::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

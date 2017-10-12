@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Relay::Api_2017_04_01
+module Azure::Relay::Mgmt::V2017_04_01
   module Models
     #
     # Defines values for SkuTier

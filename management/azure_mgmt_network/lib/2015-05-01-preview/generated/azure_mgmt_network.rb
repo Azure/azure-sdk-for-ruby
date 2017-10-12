@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-05-01-preview/generated/azure_mgmt_network/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Network::Api_2015_05_01_preview
+module Azure::Network::Mgmt::V2015_05_01_preview
   autoload :ApplicationGateways,                                '2015-05-01-preview/generated/azure_mgmt_network/application_gateways.rb'
   autoload :ExpressRouteCircuits,                               '2015-05-01-preview/generated/azure_mgmt_network/express_route_circuits.rb'
   autoload :ExpressRouteServiceProviders,                       '2015-05-01-preview/generated/azure_mgmt_network/express_route_service_providers.rb'

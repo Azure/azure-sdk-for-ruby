@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2017_03_30
+module Azure::Compute::Mgmt::V2017_03_30
   #
   # VirtualMachines
   #
@@ -57,7 +57,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineCaptureResult.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureResult.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -103,7 +103,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachine.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachine.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -145,7 +145,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -243,7 +243,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachine.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -334,7 +334,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineInstanceView.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineInstanceView.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -379,7 +379,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -422,7 +422,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -511,7 +511,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -601,7 +601,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineListResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -687,7 +687,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineListResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -781,7 +781,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineSizeListResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineSizeListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -827,7 +827,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -869,7 +869,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -911,7 +911,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -953,7 +953,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -995,7 +995,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -1041,7 +1041,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::RunCommandResult.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandResult.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -1117,7 +1117,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineCaptureParameters.mapper()
+      request_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1149,7 +1149,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineCaptureResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineCaptureResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1224,7 +1224,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachine.mapper()
+      request_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachine.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1256,7 +1256,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachine.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1266,7 +1266,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachine.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1357,7 +1357,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1451,7 +1451,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1545,7 +1545,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1642,7 +1642,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1733,7 +1733,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1824,7 +1824,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1915,7 +1915,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2006,7 +2006,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2081,7 +2081,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::RunCommandInput.mapper()
+      request_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandInput.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2113,7 +2113,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::RunCommandResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::RunCommandResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2203,7 +2203,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineListResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2293,7 +2293,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::VirtualMachineListResult.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

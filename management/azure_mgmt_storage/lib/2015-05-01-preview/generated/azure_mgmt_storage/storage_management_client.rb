@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Storage::Api_2015_05_01_preview
+module Azure::Storage::Mgmt::V2015_05_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -126,8 +126,8 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_storage'
-        if defined? Azure::ARM::Storage::Api_2015_05_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Storage::Api_2015_05_01_preview::VERSION}"
+        if defined? Azure::Storage::Mgmt::V2015_05_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Storage::Mgmt::V2015_05_01_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

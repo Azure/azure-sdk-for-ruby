@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::IotHub::Api_2017_07_01
+module Azure::IotHub::Mgmt::V2017_07_01
   #
   # Use this API to manage the IoT hubs in your Azure subscription.
   #
@@ -108,7 +108,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -166,7 +166,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+          result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -305,7 +305,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescriptionListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -401,7 +401,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescriptionListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -501,7 +501,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::RegistryStatistics.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::RegistryStatistics.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -601,7 +601,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuDescriptionListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -714,7 +714,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupsListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -831,7 +831,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupInfo.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -942,7 +942,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupInfo.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1148,7 +1148,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponseListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponseListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1258,7 +1258,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponse.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1358,7 +1358,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubQuotaMetricInfoListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubQuotaMetricInfoListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1431,7 +1431,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::OperationInputs.mapper()
+      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs.mapper()
       request_content = @client.serialize(request_mapper,  operation_inputs)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1463,7 +1463,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubNameAvailabilityInfo.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1569,7 +1569,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1679,7 +1679,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRule.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1775,7 +1775,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::ExportDevicesRequest.mapper()
+      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest.mapper()
       request_content = @client.serialize(request_mapper,  export_devices_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1807,7 +1807,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponse.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1903,7 +1903,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::ImportDevicesRequest.mapper()
+      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest.mapper()
       request_content = @client.serialize(request_mapper,  import_devices_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1935,7 +1935,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponse.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2032,7 +2032,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
       request_content = @client.serialize(request_mapper,  iot_hub_description)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2064,7 +2064,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2074,7 +2074,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2174,7 +2174,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2184,7 +2184,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2194,7 +2194,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 404
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::ErrorDetails.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::ErrorDetails.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2287,7 +2287,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescriptionListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2380,7 +2380,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescriptionListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2473,7 +2473,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuDescriptionListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2572,7 +2572,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupsListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2671,7 +2671,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponseListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponseListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2764,7 +2764,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubQuotaMetricInfoListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubQuotaMetricInfoListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2863,7 +2863,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

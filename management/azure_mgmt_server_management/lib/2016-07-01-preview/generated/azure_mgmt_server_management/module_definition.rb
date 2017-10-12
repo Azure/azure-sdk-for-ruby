@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::ServerManagement end
-module Azure::ARM::ServerManagement::Api_2016_07_01_preview end
+module Azure::ServerManagement end
+module Azure::ServerManagement::Mgmt end
+module Azure::ServerManagement::Mgmt::V2016_07_01_preview end

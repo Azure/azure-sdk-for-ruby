@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web::Api_2016_09_01
+module Azure::Web::Mgmt::V2016_09_01
     VERSION = '0.15.0'
 end

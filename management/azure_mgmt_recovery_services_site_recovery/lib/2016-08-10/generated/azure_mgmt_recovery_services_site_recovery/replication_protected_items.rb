@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   #
   # ReplicationProtectedItems
   #
@@ -107,7 +107,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -207,7 +207,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -262,7 +262,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -311,7 +311,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -368,7 +368,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -419,7 +419,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -467,7 +467,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -517,7 +517,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -567,7 +567,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -617,7 +617,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -667,7 +667,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -820,7 +820,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -873,7 +873,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -973,7 +973,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -1064,7 +1064,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ApplyRecoveryPointInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ApplyRecoveryPointInput.mapper()
       request_content = @client.serialize(request_mapper,  apply_recovery_point_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1096,7 +1096,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1205,7 +1205,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1304,7 +1304,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::UpdateMobilityServiceRequest.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::UpdateMobilityServiceRequest.mapper()
       request_content = @client.serialize(request_mapper,  update_mobility_service_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1336,7 +1336,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1426,7 +1426,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReverseReplicationInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReverseReplicationInput.mapper()
       request_content = @client.serialize(request_mapper,  rr_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1458,7 +1458,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1564,7 +1564,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1651,7 +1651,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::TestFailoverCleanupInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::TestFailoverCleanupInput.mapper()
       request_content = @client.serialize(request_mapper,  cleanup_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1683,7 +1683,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1770,7 +1770,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::TestFailoverInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::TestFailoverInput.mapper()
       request_content = @client.serialize(request_mapper,  failover_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1802,7 +1802,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1889,7 +1889,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::UnplannedFailoverInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::UnplannedFailoverInput.mapper()
       request_content = @client.serialize(request_mapper,  failover_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1921,7 +1921,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2008,7 +2008,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::PlannedFailoverInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::PlannedFailoverInput.mapper()
       request_content = @client.serialize(request_mapper,  failover_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2040,7 +2040,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2132,7 +2132,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::DisableProtectionInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::DisableProtectionInput.mapper()
       request_content = @client.serialize(request_mapper,  disable_protection_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2244,7 +2244,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::EnableProtectionInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::EnableProtectionInput.mapper()
       request_content = @client.serialize(request_mapper,  input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2276,7 +2276,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2473,7 +2473,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::UpdateReplicationProtectedItemInput.mapper()
+      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::UpdateReplicationProtectedItemInput.mapper()
       request_content = @client.serialize(request_mapper,  update_protection_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2505,7 +2505,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2598,7 +2598,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2691,7 +2691,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ReplicationProtectedItemCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

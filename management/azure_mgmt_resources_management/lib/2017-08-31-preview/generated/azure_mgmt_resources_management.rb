@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-08-31-preview/generated/azure_mgmt_resources_management/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
+module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
   autoload :ManagementGroups,                                   '2017-08-31-preview/generated/azure_mgmt_resources_management/management_groups.rb'
   autoload :Operations,                                         '2017-08-31-preview/generated/azure_mgmt_resources_management/operations.rb'
   autoload :ManagementGroupsAPI,                                '2017-08-31-preview/generated/azure_mgmt_resources_management/management_groups_api.rb'

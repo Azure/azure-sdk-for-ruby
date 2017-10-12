@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
+module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     VERSION = '0.15.0'
 end

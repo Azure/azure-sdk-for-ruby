@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::TrafficManager end
-module Azure::ARM::TrafficManager::Api_2015_11_01 end
+module Azure::TrafficManager end
+module Azure::TrafficManager::Mgmt end
+module Azure::TrafficManager::Mgmt::V2015_11_01 end

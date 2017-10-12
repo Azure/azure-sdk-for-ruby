@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2017_09_01
+module Azure::Network::Mgmt::V2017_09_01
   module Models
     #
     # Response for ListArpTable associated with the Express Route Circuits API.

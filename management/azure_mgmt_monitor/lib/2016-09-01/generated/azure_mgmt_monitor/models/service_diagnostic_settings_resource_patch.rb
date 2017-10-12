@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Monitor::Api_2016_09_01
+module Azure::Monitor::Mgmt::V2016_09_01
   module Models
     #
     # Service diagnostic setting resource for patch operations

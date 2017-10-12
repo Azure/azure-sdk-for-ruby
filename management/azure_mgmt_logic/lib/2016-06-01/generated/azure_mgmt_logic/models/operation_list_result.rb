@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Logic::Api_2016_06_01
+module Azure::Logic::Mgmt::V2016_06_01
   module Models
     #
     # Result of the request to list Logic operations. It contains a list of

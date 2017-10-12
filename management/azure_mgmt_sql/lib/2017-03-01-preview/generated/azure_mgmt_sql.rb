@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-03-01-preview/generated/azure_mgmt_sql/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::SQL::Api_2017_03_01_preview
+module Azure::SQL::Mgmt::V2017_03_01_preview
   autoload :DatabaseOperations,                                 '2017-03-01-preview/generated/azure_mgmt_sql/database_operations.rb'
   autoload :SqlManagementClient,                                '2017-03-01-preview/generated/azure_mgmt_sql/sql_management_client.rb'
 

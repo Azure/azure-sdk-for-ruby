@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Dns end
-module Azure::ARM::Dns::Api_2016_04_01 end
+module Azure::Dns end
+module Azure::Dns::Mgmt end
+module Azure::Dns::Mgmt::V2016_04_01 end

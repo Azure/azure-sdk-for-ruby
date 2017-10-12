@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web::Api_2016_03_01
+module Azure::Web::Mgmt::V2016_03_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -200,7 +200,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::User.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -269,7 +269,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::User.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
       request_content = self.serialize(request_mapper,  user_details)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -300,7 +300,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::User.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -387,7 +387,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::SourceControlCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -460,7 +460,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::SourceControl.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
       request_content = self.serialize(request_mapper,  request_message)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -492,7 +492,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::SourceControl.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -578,7 +578,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::ResourceNameAvailabilityRequest.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest.mapper()
       request_content = self.serialize(request_mapper,  request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -610,7 +610,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::ResourceNameAvailability.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -714,7 +714,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::GeoRegionCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -803,7 +803,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::PremierAddOnOfferCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -892,7 +892,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::SkuInfos.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SkuInfos.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -965,7 +965,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::VnetParameters.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::VnetParameters.mapper()
       request_content = self.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -997,7 +997,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::VnetValidationFailureDetails.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::VnetValidationFailureDetails.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1076,7 +1076,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
       request_content = self.serialize(request_mapper,  move_resource_envelope)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1178,7 +1178,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::ValidateRequest.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest.mapper()
       request_content = self.serialize(request_mapper,  validate_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1210,7 +1210,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::ValidateResponse.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1289,7 +1289,7 @@ module Azure::ARM::Web::Api_2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Web::Api_2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
+      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
       request_content = self.serialize(request_mapper,  move_resource_envelope)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1404,7 +1404,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::SourceControlCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1497,7 +1497,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::GeoRegionCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1590,7 +1590,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::PremierAddOnOfferCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1671,7 +1671,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::SourceControlCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1768,7 +1768,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::GeoRegionCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1849,7 +1849,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::PremierAddOnOfferCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1869,8 +1869,8 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_web'
-        if defined? Azure::ARM::Web::Api_2016_03_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Web::Api_2016_03_01::VERSION}"
+        if defined? Azure::Web::Mgmt::V2016_03_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Web::Mgmt::V2016_03_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

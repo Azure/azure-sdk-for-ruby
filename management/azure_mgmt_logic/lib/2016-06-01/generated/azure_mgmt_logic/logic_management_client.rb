@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Logic::Api_2016_06_01
+module Azure::Logic::Mgmt::V2016_06_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -229,7 +229,7 @@ module Azure::ARM::Logic::Api_2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Logic::Api_2016_06_01::Models::OperationListResult.mapper()
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -316,7 +316,7 @@ module Azure::ARM::Logic::Api_2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Logic::Api_2016_06_01::Models::OperationListResult.mapper()
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -391,7 +391,7 @@ module Azure::ARM::Logic::Api_2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Logic::Api_2016_06_01::Models::OperationListResult.mapper()
+            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -411,8 +411,8 @@ module Azure::ARM::Logic::Api_2016_06_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_logic'
-        if defined? Azure::ARM::Logic::Api_2016_06_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Logic::Api_2016_06_01::VERSION}"
+        if defined? Azure::Logic::Mgmt::V2016_06_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Logic::Mgmt::V2016_06_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

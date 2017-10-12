@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-08-01/generated/azure_mgmt_redis/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Redis::Api_2015_08_01
+module Azure::Redis::Mgmt::V2015_08_01
   autoload :Redis,                                              '2015-08-01/generated/azure_mgmt_redis/redis.rb'
   autoload :RedisManagementClient,                              '2015-08-01/generated/azure_mgmt_redis/redis_management_client.rb'
 

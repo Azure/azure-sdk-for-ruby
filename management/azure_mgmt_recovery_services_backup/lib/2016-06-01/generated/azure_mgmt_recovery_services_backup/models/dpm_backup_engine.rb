@@ -7,7 +7,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_06_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
   module Models
     #
     # The backup engine type when Data Protection Manager (DPM) is used to

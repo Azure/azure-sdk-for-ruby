@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-08-01/generated/azure_mgmt_event_hub/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::EventHub::Api_2015_08_01
+module Azure::EventHub::Mgmt::V2015_08_01
   autoload :Operations,                                         '2015-08-01/generated/azure_mgmt_event_hub/operations.rb'
   autoload :Namespaces,                                         '2015-08-01/generated/azure_mgmt_event_hub/namespaces.rb'
   autoload :EventHubs,                                          '2015-08-01/generated/azure_mgmt_event_hub/event_hubs.rb'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Storage::Api_2016_12_01
+module Azure::Storage::Mgmt::V2016_12_01
   module Models
     #
     # Defines values for SkuName

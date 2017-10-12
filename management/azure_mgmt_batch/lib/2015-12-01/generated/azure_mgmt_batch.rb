@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-12-01/generated/azure_mgmt_batch/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Batch::Api_2015_12_01
+module Azure::Batch::Mgmt::V2015_12_01
   autoload :BatchAccountOperations,                             '2015-12-01/generated/azure_mgmt_batch/batch_account_operations.rb'
   autoload :ApplicationPackageOperations,                       '2015-12-01/generated/azure_mgmt_batch/application_package_operations.rb'
   autoload :ApplicationOperations,                              '2015-12-01/generated/azure_mgmt_batch/application_operations.rb'

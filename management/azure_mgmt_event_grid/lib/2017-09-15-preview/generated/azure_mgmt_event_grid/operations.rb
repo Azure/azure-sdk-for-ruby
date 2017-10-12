@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventGrid::Api_2017_09_15_preview
+module Azure::EventGrid::Mgmt::V2017_09_15_preview
   #
   # Azure EventGrid Management Client
   #
@@ -98,7 +98,7 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::OperationsListResult.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

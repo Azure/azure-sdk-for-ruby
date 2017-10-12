@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Graph::Api_1_6
+module Azure::Graph::Mgmt::V1_6
   module Models
     #
     # Specifies the set of OAuth 2.0 permission scopes and app roles under the

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-05-01-preview/generated/azure_mgmt_sql/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::SQL::Api_2015_05_01_preview
+module Azure::SQL::Mgmt::V2015_05_01_preview
   autoload :DatabaseAdvisors,                                   '2015-05-01-preview/generated/azure_mgmt_sql/database_advisors.rb'
   autoload :DatabaseRecommendedActions,                         '2015-05-01-preview/generated/azure_mgmt_sql/database_recommended_actions.rb'
   autoload :ServerAdvisors,                                     '2015-05-01-preview/generated/azure_mgmt_sql/server_advisors.rb'

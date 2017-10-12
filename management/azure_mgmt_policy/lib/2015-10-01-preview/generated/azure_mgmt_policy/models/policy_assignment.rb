@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Policy::Api_2015_10_01_preview
+module Azure::Policy::Mgmt::V2015_10_01_preview
   module Models
     #
     # The policy assignment.

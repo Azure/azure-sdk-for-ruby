@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN::Api_2017_04_02
+module Azure::CDN::Mgmt::V2017_04_02
   module Models
     #
     # CDN profile is a logical grouping of endpoints that share the same

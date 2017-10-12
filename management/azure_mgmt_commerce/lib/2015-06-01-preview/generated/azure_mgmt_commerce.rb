@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-06-01-preview/generated/azure_mgmt_commerce/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Commerce::Api_2015_06_01_preview
+module Azure::Commerce::Mgmt::V2015_06_01_preview
   autoload :UsageAggregates,                                    '2015-06-01-preview/generated/azure_mgmt_commerce/usage_aggregates.rb'
   autoload :RateCard,                                           '2015-06-01-preview/generated/azure_mgmt_commerce/rate_card.rb'
   autoload :UsageManagementClient,                              '2015-06-01-preview/generated/azure_mgmt_commerce/usage_management_client.rb'

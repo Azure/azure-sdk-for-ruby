@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::ServiceBus end
-module Azure::ARM::ServiceBus::Api_2015_08_01 end
+module Azure::ServiceBus end
+module Azure::ServiceBus::Mgmt end
+module Azure::ServiceBus::Mgmt::V2015_08_01 end

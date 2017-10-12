@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-01/generated/azure_mgmt_service_bus/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ServiceBus::Api_2017_04_01
+module Azure::ServiceBus::Mgmt::V2017_04_01
   autoload :Operations,                                         '2017-04-01/generated/azure_mgmt_service_bus/operations.rb'
   autoload :Namespaces,                                         '2017-04-01/generated/azure_mgmt_service_bus/namespaces.rb'
   autoload :DisasterRecoveryConfigs,                            '2017-04-01/generated/azure_mgmt_service_bus/disaster_recovery_configs.rb'

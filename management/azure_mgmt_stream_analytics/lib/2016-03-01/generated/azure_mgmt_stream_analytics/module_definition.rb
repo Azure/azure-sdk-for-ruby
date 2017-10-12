@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::StreamAnalytics end
-module Azure::ARM::StreamAnalytics::Api_2016_03_01 end
+module Azure::StreamAnalytics end
+module Azure::StreamAnalytics::Mgmt end
+module Azure::StreamAnalytics::Mgmt::V2016_03_01 end

@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
+module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
     VERSION = '0.15.0'
 end

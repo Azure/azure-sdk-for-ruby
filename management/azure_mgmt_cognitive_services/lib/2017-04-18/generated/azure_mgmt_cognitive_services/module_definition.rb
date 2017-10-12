@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::CognitiveServices end
-module Azure::ARM::CognitiveServices::Api_2017_04_18 end
+module Azure::CognitiveServices end
+module Azure::CognitiveServices::Mgmt end
+module Azure::CognitiveServices::Mgmt::V2017_04_18 end

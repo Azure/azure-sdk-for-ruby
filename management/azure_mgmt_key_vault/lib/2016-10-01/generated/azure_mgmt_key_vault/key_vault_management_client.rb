@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::KeyVault::Api_2016_10_01
+module Azure::KeyVault::Mgmt::V2016_10_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -122,8 +122,8 @@ module Azure::ARM::KeyVault::Api_2016_10_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_key_vault'
-        if defined? Azure::ARM::KeyVault::Api_2016_10_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::KeyVault::Api_2016_10_01::VERSION}"
+        if defined? Azure::KeyVault::Mgmt::V2016_10_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::KeyVault::Mgmt::V2016_10_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

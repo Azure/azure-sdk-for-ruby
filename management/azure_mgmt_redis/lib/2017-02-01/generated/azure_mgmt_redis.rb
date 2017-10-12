@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-02-01/generated/azure_mgmt_redis/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Redis::Api_2017_02_01
+module Azure::Redis::Mgmt::V2017_02_01
   autoload :Operations,                                         '2017-02-01/generated/azure_mgmt_redis/operations.rb'
   autoload :Redis,                                              '2017-02-01/generated/azure_mgmt_redis/redis.rb'
   autoload :FirewallRules,                                      '2017-02-01/generated/azure_mgmt_redis/firewall_rules.rb'

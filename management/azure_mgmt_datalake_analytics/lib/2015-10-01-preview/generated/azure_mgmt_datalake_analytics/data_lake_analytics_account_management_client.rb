@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
+module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -122,8 +122,8 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_datalake_analytics'
-        if defined? Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::VERSION}"
+        if defined? Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

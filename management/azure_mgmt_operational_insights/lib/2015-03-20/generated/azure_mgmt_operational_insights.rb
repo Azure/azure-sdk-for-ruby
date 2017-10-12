@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-03-20/generated/azure_mgmt_operational_insights/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::OperationalInsights::Api_2015_03_20
+module Azure::OperationalInsights::Mgmt::V2015_03_20
   autoload :StorageInsights,                                    '2015-03-20/generated/azure_mgmt_operational_insights/storage_insights.rb'
   autoload :Workspaces,                                         '2015-03-20/generated/azure_mgmt_operational_insights/workspaces.rb'
   autoload :SavedSearches,                                      '2015-03-20/generated/azure_mgmt_operational_insights/saved_searches.rb'

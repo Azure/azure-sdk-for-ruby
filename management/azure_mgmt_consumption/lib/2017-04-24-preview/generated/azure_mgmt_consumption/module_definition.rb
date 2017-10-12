@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Consumption end
-module Azure::ARM::Consumption::Api_2017_04_24_preview end
+module Azure::Consumption end
+module Azure::Consumption::Mgmt end
+module Azure::Consumption::Mgmt::V2017_04_24_preview end

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Subscriptions::Api_2015_11_01
+module Azure::Subscriptions::Mgmt::V2015_11_01
   #
   # Subscriptions
   #
@@ -94,7 +94,7 @@ module Azure::ARM::Subscriptions::Api_2015_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Subscriptions::Api_2015_11_01::Models::LocationListResult.mapper()
+            result_mapper = Azure::Subscriptions::Mgmt::V2015_11_01::Models::LocationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -180,7 +180,7 @@ module Azure::ARM::Subscriptions::Api_2015_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Subscriptions::Api_2015_11_01::Models::Subscription.mapper()
+            result_mapper = Azure::Subscriptions::Mgmt::V2015_11_01::Models::Subscription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -261,7 +261,7 @@ module Azure::ARM::Subscriptions::Api_2015_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Subscriptions::Api_2015_11_01::Models::SubscriptionListResult.mapper()
+            result_mapper = Azure::Subscriptions::Mgmt::V2015_11_01::Models::SubscriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -348,7 +348,7 @@ module Azure::ARM::Subscriptions::Api_2015_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Subscriptions::Api_2015_11_01::Models::SubscriptionListResult.mapper()
+            result_mapper = Azure::Subscriptions::Mgmt::V2015_11_01::Models::SubscriptionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

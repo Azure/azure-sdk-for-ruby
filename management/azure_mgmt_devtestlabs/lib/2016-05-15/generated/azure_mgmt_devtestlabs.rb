@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-05-15/generated/azure_mgmt_devtestlabs/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::DevTestLabs::Api_2016_05_15
+module Azure::DevTestLabs::Mgmt::V2016_05_15
   autoload :Labs,                                               '2016-05-15/generated/azure_mgmt_devtestlabs/labs.rb'
   autoload :GlobalSchedules,                                    '2016-05-15/generated/azure_mgmt_devtestlabs/global_schedules.rb'
   autoload :ArtifactSources,                                    '2016-05-15/generated/azure_mgmt_devtestlabs/artifact_sources.rb'

@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::DevTestLabs end
-module Azure::ARM::DevTestLabs::Api_2016_05_15 end
+module Azure::DevTestLabs end
+module Azure::DevTestLabs::Mgmt end
+module Azure::DevTestLabs::Mgmt::V2016_05_15 end

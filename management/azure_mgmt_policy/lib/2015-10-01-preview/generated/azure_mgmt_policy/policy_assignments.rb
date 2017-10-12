@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Policy::Api_2015_10_01_preview
+module Azure::Policy::Mgmt::V2015_10_01_preview
   #
   # To manage and control access to your resources, you can define customized
   # policies and assign them at a scope.
@@ -103,7 +103,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -186,7 +186,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+      request_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -219,7 +219,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -313,7 +313,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -407,7 +407,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -523,7 +523,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -609,7 +609,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -722,7 +722,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -822,7 +822,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+      request_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -854,7 +854,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -967,7 +967,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1054,7 +1054,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1141,7 +1141,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1228,7 +1228,7 @@ module Azure::ARM::Policy::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
+            result_mapper = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

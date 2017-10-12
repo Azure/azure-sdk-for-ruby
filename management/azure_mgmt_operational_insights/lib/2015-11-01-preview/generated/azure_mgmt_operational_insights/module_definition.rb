@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::OperationalInsights end
-module Azure::ARM::OperationalInsights::Api_2015_11_01_preview end
+module Azure::OperationalInsights end
+module Azure::OperationalInsights::Mgmt end
+module Azure::OperationalInsights::Mgmt::V2015_11_01_preview end

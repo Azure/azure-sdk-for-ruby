@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::OperationalInsights::Api_2015_03_20
+module Azure::OperationalInsights::Mgmt::V2015_03_20
   #
   # A service client - single point of access to the REST API.
   #
@@ -130,8 +130,8 @@ module Azure::ARM::OperationalInsights::Api_2015_03_20
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_operational_insights'
-        if defined? Azure::ARM::OperationalInsights::Api_2015_03_20::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::OperationalInsights::Api_2015_03_20::VERSION}"
+        if defined? Azure::OperationalInsights::Mgmt::V2015_03_20::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::OperationalInsights::Mgmt::V2015_03_20::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

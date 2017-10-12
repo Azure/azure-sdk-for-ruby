@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Monitor::Api_2017_05_01_preview
+module Azure::Monitor::Mgmt::V2017_05_01_preview
   #
   # DiagnosticSettingsOperations
   #
@@ -98,7 +98,7 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Monitor::Api_2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
+            result_mapper = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -172,7 +172,7 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Monitor::Api_2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
+      request_mapper = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -204,7 +204,7 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Monitor::Api_2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
+            result_mapper = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -369,7 +369,7 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Monitor::Api_2017_05_01_preview::Models::DiagnosticSettingsResourceCollection.mapper()
+            result_mapper = Azure::Monitor::Mgmt::V2017_05_01_preview::Models::DiagnosticSettingsResourceCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

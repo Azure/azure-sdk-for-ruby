@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CustomerInsights::Api_2017_04_26
+module Azure::CustomerInsights::Mgmt::V2017_04_26
   #
   # The Azure Customer Insights management API provides a RESTful set of web
   # services that interact with Azure Customer Insights service to manage your
@@ -61,7 +61,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionResourceFormat.mapper()
+          result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -154,7 +154,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionResourceFormat.mapper()
+            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -289,7 +289,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionTrainingResults.mapper()
+            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionTrainingResults.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -384,7 +384,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionModelStatus.mapper()
+            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelStatus.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -462,7 +462,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionModelStatus.mapper()
+      request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionModelStatus.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -575,7 +575,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionListResult.mapper()
+            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -654,7 +654,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionResourceFormat.mapper()
+      request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -686,7 +686,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionResourceFormat.mapper()
+            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionResourceFormat.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -857,7 +857,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CustomerInsights::Api_2017_04_26::Models::PredictionListResult.mapper()
+            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::PredictionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

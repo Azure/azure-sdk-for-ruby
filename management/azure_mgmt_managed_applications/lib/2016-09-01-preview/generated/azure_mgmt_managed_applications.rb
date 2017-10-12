@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01-preview/generated/azure_mgmt_managed_applications/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
+module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
   autoload :Appliances,                                         '2016-09-01-preview/generated/azure_mgmt_managed_applications/appliances.rb'
   autoload :ApplianceDefinitions,                               '2016-09-01-preview/generated/azure_mgmt_managed_applications/appliance_definitions.rb'
   autoload :ManagedApplicationClient,                           '2016-09-01-preview/generated/azure_mgmt_managed_applications/managed_application_client.rb'

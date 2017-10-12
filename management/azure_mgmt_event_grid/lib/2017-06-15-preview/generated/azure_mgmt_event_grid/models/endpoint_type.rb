@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventGrid::Api_2017_06_15_preview
+module Azure::EventGrid::Mgmt::V2017_06_15_preview
   module Models
     #
     # Defines values for EndpointType

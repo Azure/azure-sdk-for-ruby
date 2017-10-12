@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MarketplaceOrdering::Api_2015_06_01
+module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
   module Models
     #
     # Result of the request to list MarketplaceOrdering operations. It contains

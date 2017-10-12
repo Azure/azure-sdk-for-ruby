@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   #
   # ReplicationProtectableItems
   #
@@ -111,7 +111,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ProtectableItem.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItem.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -210,7 +210,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ProtectableItemCollection.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItemCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -303,7 +303,7 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::Models::ProtectableItemCollection.mapper()
+            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ProtectableItemCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

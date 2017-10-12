@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ServiceBus::Api_2017_04_01
+module Azure::ServiceBus::Mgmt::V2017_04_01
   #
   # Azure Service Bus client
   #
@@ -102,7 +102,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBTopicListResult.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopicListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -181,7 +181,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBTopic.mapper()
+      request_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopic.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -213,7 +213,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBTopic.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopic.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -398,7 +398,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBTopic.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopic.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -496,7 +496,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBAuthorizationRuleListResult.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -579,7 +579,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBAuthorizationRule.mapper()
+      request_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRule.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -611,7 +611,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBAuthorizationRule.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -713,7 +713,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBAuthorizationRule.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -906,7 +906,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::AccessKeys.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -992,7 +992,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::RegenerateAccessKeyParameters.mapper()
+      request_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1024,7 +1024,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::AccessKeys.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::AccessKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1111,7 +1111,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBTopicListResult.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBTopicListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1198,7 +1198,7 @@ module Azure::ARM::ServiceBus::Api_2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBAuthorizationRuleListResult.mapper()
+            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBAuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

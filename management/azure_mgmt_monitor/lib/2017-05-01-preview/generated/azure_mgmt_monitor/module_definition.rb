@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Monitor end
-module Azure::ARM::Monitor::Api_2017_05_01_preview end
+module Azure::Monitor end
+module Azure::Monitor::Mgmt end
+module Azure::Monitor::Mgmt::V2017_05_01_preview end

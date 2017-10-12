@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Automation end
-module Azure::ARM::Automation::Api_2015_10_31 end
+module Azure::Automation end
+module Azure::Automation::Mgmt end
+module Azure::Automation::Mgmt::V2015_10_31 end

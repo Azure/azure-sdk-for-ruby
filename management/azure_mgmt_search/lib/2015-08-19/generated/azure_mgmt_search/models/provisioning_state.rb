@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Search::Api_2015_08_19
+module Azure::Search::Mgmt::V2015_08_19
   module Models
     #
     # Defines values for ProvisioningState

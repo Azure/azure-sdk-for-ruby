@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2014-04-01/generated/azure_mgmt_sql/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::SQL::Api_2014_04_01
+module Azure::SQL::Mgmt::V2014_04_01
   autoload :DatabaseAdvisors,                                   '2014-04-01/generated/azure_mgmt_sql/database_advisors.rb'
   autoload :BackupLongTermRetentionPolicies,                    '2014-04-01/generated/azure_mgmt_sql/backup_long_term_retention_policies.rb'
   autoload :BackupLongTermRetentionVaults,                      '2014-04-01/generated/azure_mgmt_sql/backup_long_term_retention_vaults.rb'
