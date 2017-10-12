@@ -6,8 +6,7 @@
 module Azure::ARM::Dns
   module Models
     #
-    # Model object.
-    #
+    # Common properties of an Azure Resource Manager resource
     #
     class Resource
 

@@ -33,6 +33,9 @@ module Azure::ARM::Dns
       # set.
       attr_accessor :ttl
 
+      # @return [String] Fully qualified domain name of the record set.
+      attr_accessor :fqdn
+
       # @return [Array<ARecord>] The list of A records in the record set.
       attr_accessor :arecords
 
@@ -60,6 +63,9 @@ module Azure::ARM::Dns
       # @return [SoaRecord] The SOA record in the record set.
       attr_accessor :soa_record
 
+      # @return [Array<CaaRecord>] The list of CAA records in the record set.
+      attr_accessor :caa_records
+
 
       #
       # Mapper for RecordSet class as Ruby Hash.
@@ -75,6 +81,7 @@ module Azure::ARM::Dns
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -82,6 +89,7 @@ module Azure::ARM::Dns
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -89,6 +97,7 @@ module Azure::ARM::Dns
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -120,6 +129,14 @@ module Azure::ARM::Dns
                 serialized_name: 'properties.TTL',
                 type: {
                   name: 'Number'
+                }
+              },
+              fqdn: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.fqdn',
+                type: {
+                  name: 'String'
                 }
               },
               arecords: {
@@ -241,6 +258,21 @@ module Azure::ARM::Dns
                 type: {
                   name: 'Composite',
                   class_name: 'SoaRecord'
+                }
+              },
+              caa_records: {
+                required: false,
+                serialized_name: 'properties.caaRecords',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'CaaRecordElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'CaaRecord'
+                      }
+                  }
                 }
               }
             }

@@ -30,8 +30,8 @@ module Azure::ARM::Dns
     # @param relative_record_set_name [String] The name of the record set, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
@@ -55,8 +55,8 @@ module Azure::ARM::Dns
     # @param relative_record_set_name [String] The name of the record set, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
@@ -79,8 +79,8 @@ module Azure::ARM::Dns
     # @param relative_record_set_name [String] The name of the record set, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
     # always overwrite the current record set. Specify the last-seen etag value to
@@ -166,8 +166,8 @@ module Azure::ARM::Dns
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Record sets of type SOA can be updated but not created (they are created when
-    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME',
-    # 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CAA',
+    # 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the CreateOrUpdate
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
@@ -196,8 +196,8 @@ module Azure::ARM::Dns
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Record sets of type SOA can be updated but not created (they are created when
-    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME',
-    # 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CAA',
+    # 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the CreateOrUpdate
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
@@ -225,8 +225,8 @@ module Azure::ARM::Dns
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Record sets of type SOA can be updated but not created (they are created when
-    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME',
-    # 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CAA',
+    # 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the CreateOrUpdate
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
@@ -327,8 +327,8 @@ module Azure::ARM::Dns
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Record sets of type SOA cannot be deleted (they are deleted when the DNS zone
-    # is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS',
-    # 'PTR', 'SOA', 'SRV', 'TXT'
+    # is deleted). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX',
+    # 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param if_match [String] The etag of the record set. Omit this value to
     # always delete the current record set. Specify the last-seen etag value to
     # prevent accidentally deleting any concurrent changes.
@@ -351,8 +351,8 @@ module Azure::ARM::Dns
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Record sets of type SOA cannot be deleted (they are deleted when the DNS zone
-    # is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS',
-    # 'PTR', 'SOA', 'SRV', 'TXT'
+    # is deleted). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX',
+    # 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param if_match [String] The etag of the record set. Omit this value to
     # always delete the current record set. Specify the last-seen etag value to
     # prevent accidentally deleting any concurrent changes.
@@ -375,8 +375,8 @@ module Azure::ARM::Dns
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Record sets of type SOA cannot be deleted (they are deleted when the DNS zone
-    # is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS',
-    # 'PTR', 'SOA', 'SRV', 'TXT'
+    # is deleted). Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX',
+    # 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param if_match [String] The etag of the record set. Omit this value to
     # always delete the current record set. Specify the last-seen etag value to
     # prevent accidentally deleting any concurrent changes.
@@ -440,8 +440,8 @@ module Azure::ARM::Dns
     # @param relative_record_set_name [String] The name of the record set, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -461,8 +461,8 @@ module Azure::ARM::Dns
     # @param relative_record_set_name [String] The name of the record set, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -481,8 +481,8 @@ module Azure::ARM::Dns
     # @param relative_record_set_name [String] The name of the record set, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -550,8 +550,8 @@ module Azure::ARM::Dns
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param recordsetnamesuffix [String] The suffix label of the record set name
@@ -575,8 +575,8 @@ module Azure::ARM::Dns
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param recordsetnamesuffix [String] The suffix label of the record set name
@@ -599,8 +599,8 @@ module Azure::ARM::Dns
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param recordsetnamesuffix [String] The suffix label of the record set name
@@ -958,8 +958,8 @@ module Azure::ARM::Dns
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
     # @param record_type [RecordType] The type of record sets to enumerate.
-    # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
-    # 'SRV', 'TXT'
+    # Possible values include: 'A', 'AAAA', 'CAA', 'CNAME', 'MX', 'NS', 'PTR',
+    # 'SOA', 'SRV', 'TXT'
     # @param top [Integer] The maximum number of record sets to return. If not
     # specified, returns up to 100 record sets.
     # @param recordsetnamesuffix [String] The suffix label of the record set name

@@ -56,7 +56,7 @@ module Azure::ARM::Dns
 
       @record_sets = RecordSets.new(self)
       @zones = Zones.new(self)
-      @api_version = '2016-04-01'
+      @api_version = '2017-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
