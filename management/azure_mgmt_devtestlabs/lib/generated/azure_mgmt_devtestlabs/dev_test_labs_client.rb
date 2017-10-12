@@ -23,6 +23,9 @@ module Azure::ARM::DevTestLabs
     # @return [String] The subscription ID.
     attr_accessor :subscription_id
 
+    # @return [String] The name of the location.
+    attr_accessor :location_name
+
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -36,6 +39,9 @@ module Azure::ARM::DevTestLabs
 
     # @return [Labs] labs
     attr_reader :labs
+
+    # @return [Operations] operations
+    attr_reader :operations
 
     # @return [GlobalSchedules] global_schedules
     attr_reader :global_schedules
@@ -111,6 +117,7 @@ module Azure::ARM::DevTestLabs
       @credentials = credentials
 
       @labs = Labs.new(self)
+      @operations = Operations.new(self)
       @global_schedules = GlobalSchedules.new(self)
       @artifact_sources = ArtifactSources.new(self)
       @arm_templates = ArmTemplates.new(self)
