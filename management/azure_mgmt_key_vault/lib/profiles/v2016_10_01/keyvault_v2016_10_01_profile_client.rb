@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2016_10_01/keyvault_v2016_10_01_module_definition.rb'
+require 'profiles/v2016_10_01/keyvault_module_definition.rb'
 require 'profiles/v2016_10_01/modules/keyvault_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2015_08_19/search_v2015_08_19_module_definition.rb'
+require 'profiles/v2015_08_19/search_module_definition.rb'
 require 'profiles/v2015_08_19/modules/search_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

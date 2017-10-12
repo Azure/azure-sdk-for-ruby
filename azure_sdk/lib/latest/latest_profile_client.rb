@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'latest/latest_module_definition.rb'
+require 'latest/module_definition.rb'
 require 'latest/modules/analysisservices_profile_module'
 require 'latest/modules/authorization_profile_module'
 require 'latest/modules/automation_profile_module'

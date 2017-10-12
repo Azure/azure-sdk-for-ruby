@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2015_10_31/automation_v2015_10_31_module_definition.rb'
+require 'profiles/v2015_10_31/automation_module_definition.rb'
 require 'profiles/v2015_10_31/modules/automation_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

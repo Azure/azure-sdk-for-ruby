@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2017_04_24_preview/consumption_v2017_04_24_preview_module_definition.rb'
+require 'profiles/v2017_04_24_preview/consumption_module_definition.rb'
 require 'profiles/v2017_04_24_preview/modules/consumption_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

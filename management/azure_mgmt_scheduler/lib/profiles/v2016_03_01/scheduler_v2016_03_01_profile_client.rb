@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2016_03_01/scheduler_v2016_03_01_module_definition.rb'
+require 'profiles/v2016_03_01/scheduler_module_definition.rb'
 require 'profiles/v2016_03_01/modules/scheduler_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

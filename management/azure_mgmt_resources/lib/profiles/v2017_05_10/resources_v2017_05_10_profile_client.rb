@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2017_05_10/resources_v2017_05_10_module_definition.rb'
+require 'profiles/v2017_05_10/resources_module_definition.rb'
 require 'profiles/v2017_05_10/modules/resources_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

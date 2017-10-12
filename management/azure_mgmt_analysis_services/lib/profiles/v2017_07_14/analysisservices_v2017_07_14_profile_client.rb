@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2017_07_14/analysisservices_v2017_07_14_module_definition.rb'
+require 'profiles/v2017_07_14/analysisservices_module_definition.rb'
 require 'profiles/v2017_07_14/modules/analysisservices_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

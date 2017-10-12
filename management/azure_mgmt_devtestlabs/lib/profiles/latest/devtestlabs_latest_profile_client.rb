@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/latest/devtestlabs_latest_module_definition.rb'
+require 'profiles/latest/devtestlabs_module_definition.rb'
 require 'profiles/latest/modules/devtestlabs_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

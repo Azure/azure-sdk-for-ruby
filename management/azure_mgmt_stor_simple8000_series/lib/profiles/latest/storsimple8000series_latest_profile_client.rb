@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/latest/storsimple8000series_latest_module_definition.rb'
+require 'profiles/latest/storsimple8000series_module_definition.rb'
 require 'profiles/latest/modules/storsimple8000series_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

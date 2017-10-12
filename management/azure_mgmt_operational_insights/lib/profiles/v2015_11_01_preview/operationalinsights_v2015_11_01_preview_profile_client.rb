@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2015_11_01_preview/operationalinsights_v2015_11_01_preview_module_definition.rb'
+require 'profiles/v2015_11_01_preview/operationalinsights_module_definition.rb'
 require 'profiles/v2015_11_01_preview/modules/operationalinsights_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
