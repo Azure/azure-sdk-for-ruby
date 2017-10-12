@@ -37,6 +37,9 @@ module Azure::ARM::DevTestLabs
     # @return [Labs] labs
     attr_reader :labs
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [GlobalSchedules] global_schedules
     attr_reader :global_schedules
 
@@ -111,6 +114,7 @@ module Azure::ARM::DevTestLabs
       @credentials = credentials
 
       @labs = Labs.new(self)
+      @operations = Operations.new(self)
       @global_schedules = GlobalSchedules.new(self)
       @artifact_sources = ArtifactSources.new(self)
       @arm_templates = ArmTemplates.new(self)
