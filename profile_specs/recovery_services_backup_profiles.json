@@ -1,16 +1,6 @@
 [
   {
-    "name": "Profile_2016_06_01",
-    "resourceTypes": {
-      "Microsoft.RecoveryServicesBackup" : {
-        "2016-06-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_recovery_services_backup/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_2017_07_01",
+    "name": "V2017_07_01",
     "resourceTypes": {
       "Microsoft.RecoveryServicesBackup" : {
         "2016-08-10": ["*"],
@@ -22,7 +12,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.RecoveryServicesBackup" : {
         "2016-08-10": ["*"],

@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2016_07_01_Preview",
+    "name": "V2016_07_01_Preview",
     "resourceTypes": {
       "Microsoft.ServerManagement" : {
         "2016-07-01-preview": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.ServerManagement" : {
         "2016-07-01-preview": ["*"]

@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2016_08_10",
+    "name": "V2016_08_10",
     "resourceTypes": {
       "Microsoft.RecoveryServicesSiteRecovery" : {
         "2016-08-10": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.RecoveryServicesSiteRecovery" : {
         "2016-08-10": ["*"]

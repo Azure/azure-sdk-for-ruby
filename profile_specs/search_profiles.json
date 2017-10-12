@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2015_08_19",
+    "name": "V2015_08_19",
     "resourceTypes": {
       "Microsoft.Search" : {
         "2015-08-19": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Search" : {
         "2015-08-19": ["*"]

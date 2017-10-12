@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2017_04_24_Preview",
+    "name": "V2017_04_24_Preview",
     "resourceTypes": {
       "Microsoft.Billing" : {
         "2017-04-24-preview": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Billing" : {
         "2017-04-24-preview": ["*"]

@@ -1,16 +1,6 @@
 [
   {
-    "name": "Profile_2015_10_01_Preview",
-    "resourceTypes": {
-      "Microsoft.DataLakeStore" : {
-        "2015-10-01-preview": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_datalake_store/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_2016_11_01",
+    "name": "V2016_11_01",
     "resourceTypes": {
       "Microsoft.DataLakeStore" : {
         "2016-11-01": ["*"]
@@ -20,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.DataLakeStore" : {
         "2016-11-01": ["*"]

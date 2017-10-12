@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2017_01_01",
+    "name": "V2017_01_01",
     "resourceTypes": {
       "Microsoft.MachineLearning" : {
         "2017-01-01": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.MachineLearning" : {
         "2017-01-01": ["*"]

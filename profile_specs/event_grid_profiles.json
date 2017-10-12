@@ -1,16 +1,6 @@
 [
   {
-    "name": "Profile_2017_06_15_Preview",
-    "resourceTypes": {
-      "Microsoft.EventGrid" : {
-        "2017-06-15-preview": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_event_grid/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_2017_09_15_Preview",
+    "name": "V2017_09_15_Preview",
     "resourceTypes": {
       "Microsoft.EventGrid" : {
         "2017-09-15-preview": ["*"]
@@ -20,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.EventGrid" : {
         "2017-09-15-preview": ["*"]

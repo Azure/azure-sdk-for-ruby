@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2017_08_31_Preview",
+    "name": "V2017_08_31_Preview",
     "resourceTypes": {
       "Microsoft.ResourcesManagement" : {
         "2017-08-31-preview": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.ResourcesManagement" : {
         "2017-08-31-preview": ["*"]

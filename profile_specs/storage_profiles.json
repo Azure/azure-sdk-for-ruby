@@ -1,16 +1,6 @@
 [
   {
-    "name": "Profile_2015_05_01_Preview",
-    "resourceTypes": {
-      "Microsoft.Storage" : {
-        "2015-05-01-preview": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_storage/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_2015_06_15",
+    "name": "V2017_03_09",
     "resourceTypes": {
       "Microsoft.Storage" : {
         "2015-06-15": ["*"]
@@ -20,27 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_2016_01_01",
-    "resourceTypes": {
-      "Microsoft.Storage" : {
-        "2016-01-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_storage/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_2016_12_01",
-    "resourceTypes": {
-      "Microsoft.Storage" : {
-        "2016-12-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_storage/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_2017_06_01",
+    "name": "V2017_06_01",
     "resourceTypes": {
       "Microsoft.Storage" : {
         "2017-06-01": ["*"]
@@ -50,7 +20,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Storage" : {
         "2017-06-01": ["*"]

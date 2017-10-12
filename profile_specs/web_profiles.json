@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2016_09_01",
+    "name": "V2016_09_01",
     "resourceTypes": {
       "Microsoft.Web" : {
         "2015-04-01": ["*"],
@@ -14,7 +14,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Web" : {
         "2015-04-01": ["*"],

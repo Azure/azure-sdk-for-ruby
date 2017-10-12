@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2015_10_31",
+    "name": "V2015_10_31",
     "resourceTypes": {
       "Microsoft.Automation" : {
         "2015-10-31": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Automation" : {
         "2015-10-31": ["*"]

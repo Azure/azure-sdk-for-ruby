@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2015_06_01",
+    "name": "V2015_06_01",
     "resourceTypes": {
       "Microsoft.MarketplaceOrdering" : {
         "2015-06-01": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.MarketplaceOrdering" : {
         "2015-06-01": ["*"]

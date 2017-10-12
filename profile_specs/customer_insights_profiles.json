@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2017_04_26",
+    "name": "V2017_04_26",
     "resourceTypes": {
       "Microsoft.CustomerInsights" : {
         "2017-04-26": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.CustomerInsights" : {
         "2017-04-26": ["*"]

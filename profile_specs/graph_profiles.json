@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_1_6",
+    "name": "V1_6",
     "resourceTypes": {
       "Microsoft.Graph" : {
         "1.6": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Graph" : {
         "1.6": ["*"]

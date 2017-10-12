@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2014_12_01",
+    "name": "V2014_12_01",
     "resourceTypes": {
       "Microsoft.MobileEngagement" : {
         "2014-12-01": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.MobileEngagement" : {
         "2014-12-01": ["*"]

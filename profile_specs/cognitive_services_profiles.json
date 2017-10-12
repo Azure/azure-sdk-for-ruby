@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2017_04_18",
+    "name": "V2017_04_18",
     "resourceTypes": {
       "Microsoft.CognitiveServices" : {
         "2017-04-18": ["*"]
@@ -10,7 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.CognitiveServices" : {
         "2017-04-18": ["*"]
