@@ -245,9 +245,9 @@ class ProfileGenerator
   def get_module_definition_file_name
     @module_definition_file_name = ''
     if @individual_gem_profile == true
-      @module_definition_file_name = "#{@class_name.downcase}_#{@profile_name.downcase}_module_definition.rb"
+      @module_definition_file_name = "#{@class_name.downcase}_module_definition.rb"
     else
-      @module_definition_file_name = "#{@profile_name.downcase}_module_definition.rb"
+      @module_definition_file_name = 'module_definition.rb'
     end
   end
 
