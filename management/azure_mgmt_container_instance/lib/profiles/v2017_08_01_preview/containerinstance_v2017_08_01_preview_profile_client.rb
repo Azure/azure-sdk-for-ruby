@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2017_08_01_preview/containerinstance_module_definition.rb'
+require 'profiles/v2017_08_01_preview/containerinstance_module_definition'
 require 'profiles/v2017_08_01_preview/modules/containerinstance_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

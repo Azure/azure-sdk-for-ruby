@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'v2017_03_09/module_definition.rb'
+require 'v2017_03_09/module_definition'
 require 'v2017_03_09/modules/storage_profile_module'
 require 'v2017_03_09/modules/network_profile_module'
 require 'v2017_03_09/modules/compute_profile_module'

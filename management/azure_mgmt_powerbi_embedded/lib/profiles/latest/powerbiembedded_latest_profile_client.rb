@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/latest/powerbiembedded_module_definition.rb'
+require 'profiles/latest/powerbiembedded_module_definition'
 require 'profiles/latest/modules/powerbiembedded_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'

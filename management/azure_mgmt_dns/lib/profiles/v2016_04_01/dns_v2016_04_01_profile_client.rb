@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-require 'profiles/v2016_04_01/dns_module_definition.rb'
+require 'profiles/v2016_04_01/dns_module_definition'
 require 'profiles/v2016_04_01/modules/dns_profile_module'
 require 'profiles/common/configurable'
 require 'profiles/common/default'
