@@ -18,7 +18,11 @@ require 'common/configurable'
 require 'common/default'
 <%- end -%>
 
-module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @individual_gem_profile -%><%= @class_name %>::<%- end -%>Management::<%= @profile_name %>
+<%- if @individual_gem_profile -%>
+module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
+<%- else -%>
+module Azure::Profiles::<%= @profile_name %>::Mgmt
+<%- end -%>
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #
@@ -40,7 +44,7 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
       <%- if @individual_gem_profile -%>
       @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= "#{class_name}" %>Class.new(self)
       <%- else -%>
-      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self)
+      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = Azure::Profiles::<%= @profile_name %>::<%= "#{class_name}::Mgmt::#{class_name}" %>Class.new(self)
       <%- end -%>
       <%- end -%>
     end

@@ -5,10 +5,15 @@
 module Azure end
 <%- if @individual_gem_profile -%>
 module Azure::<%= @class_name %> end
-module Azure::<%= @class_name %>::Management end
-module Azure::<%= @class_name %>::Management::<%= @profile_name %> end
+module Azure::<%= @class_name %>::Profiles end
+module Azure::<%= @class_name %>::Profiles::<%= @profile_name %> end
+module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt end
 <%- else -%>
 module Azure::Profiles end
-module Azure::Profiles::Management end
-module Azure::Profiles::Management::<%= @profile_name %> end
+module Azure::Profiles::<%= @profile_name %> end
+module Azure::Profiles::<%= @profile_name %>::Mgmt end
+<%- @class_names.each do |class_name| -%>
+module Azure::Profiles::<%= @profile_name %>::<%= class_name %> end
+module Azure::Profiles::<%= @profile_name %>::<%= class_name %>::Mgmt end
+<%- end -%>
 <%- end -%>

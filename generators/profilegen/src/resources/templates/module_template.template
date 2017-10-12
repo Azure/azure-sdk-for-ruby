@@ -4,9 +4,13 @@
 
 require '<%= @module_require %>'
 
-module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @individual_gem_profile -%><%= @class_name %>::<%- end -%>Management::<%= @profile_name %>
+<%- if @individual_gem_profile -%>
+module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
+<%- else -%>
+module Azure::Profiles::<%= @profile_name %>
+<%- end -%>
   <%- if !@individual_gem_profile -%>
-  module <%= @class_name %>
+  module <%= @class_name %>::Mgmt
   <%- end -%>
     <%- @clients_ops_mapper.each do |key, value| -%>
     <%- value.each do |operation_type| -%>
