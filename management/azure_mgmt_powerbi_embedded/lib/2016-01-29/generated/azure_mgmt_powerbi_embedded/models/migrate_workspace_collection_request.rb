@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the resource group the Power BI workspace
       # collections will be migrated to.
       attr_accessor :target_resource_group

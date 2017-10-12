@@ -12,7 +12,6 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] PrimaryConnectionString of the AuthorizationRule.
       attr_accessor :primary_connection_string
 

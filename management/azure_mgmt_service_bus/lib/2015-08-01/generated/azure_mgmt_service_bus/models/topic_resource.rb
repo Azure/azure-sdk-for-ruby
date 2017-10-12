@@ -8,11 +8,10 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
     #
     # Description of topic resource.
     #
-    class TopicResource < MsRestAzure::Resource
+    class TopicResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Last time the message was sent, or a request was
       # received, for this topic.
       attr_accessor :accessed_at

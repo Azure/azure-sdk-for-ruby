@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AuthType] Specifies the authentication type. Possible values
       # include: 'Invalid', 'ACS', 'AAD', 'AccessControlService',
       # 'AzureActiveDirectory'

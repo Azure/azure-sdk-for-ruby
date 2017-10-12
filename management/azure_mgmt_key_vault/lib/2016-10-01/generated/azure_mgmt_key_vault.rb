@@ -32,6 +32,7 @@ module Azure::ARM::KeyVault::Api_2016_10_01
     autoload :Sku,                                                '2016-10-01/generated/azure_mgmt_key_vault/models/sku.rb'
     autoload :DeletedVaultListResult,                             '2016-10-01/generated/azure_mgmt_key_vault/models/deleted_vault_list_result.rb'
     autoload :DeletedVaultProperties,                             '2016-10-01/generated/azure_mgmt_key_vault/models/deleted_vault_properties.rb'
+    autoload :Resource,                                           '2016-10-01/generated/azure_mgmt_key_vault/models/resource.rb'
     autoload :AccessPolicyEntry,                                  '2016-10-01/generated/azure_mgmt_key_vault/models/access_policy_entry.rb'
     autoload :ResourceListResult,                                 '2016-10-01/generated/azure_mgmt_key_vault/models/resource_list_result.rb'
     autoload :Vault,                                              '2016-10-01/generated/azure_mgmt_key_vault/models/vault.rb'

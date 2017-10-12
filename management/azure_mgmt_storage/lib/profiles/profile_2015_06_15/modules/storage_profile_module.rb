@@ -21,6 +21,7 @@ module Azure::Storage::Management::Profile_2015_06_15
       Endpoints = Azure::ARM::Storage::Api_2015_06_15::Models::Endpoints
       UsageListResult = Azure::ARM::Storage::Api_2015_06_15::Models::UsageListResult
       CheckNameAvailabilityResult = Azure::ARM::Storage::Api_2015_06_15::Models::CheckNameAvailabilityResult
+      Resource = Azure::ARM::Storage::Api_2015_06_15::Models::Resource
       StorageAccount = Azure::ARM::Storage::Api_2015_06_15::Models::StorageAccount
       Reason = Azure::ARM::Storage::Api_2015_06_15::Models::Reason
       AccountType = Azure::ARM::Storage::Api_2015_06_15::Models::AccountType
@@ -100,6 +101,9 @@ module Azure::Storage::Management::Profile_2015_06_15
         end
         def check_name_availability_result
           Azure::ARM::Storage::Api_2015_06_15::Models::CheckNameAvailabilityResult
+        end
+        def resource
+          Azure::ARM::Storage::Api_2015_06_15::Models::Resource
         end
         def storage_account
           Azure::ARM::Storage::Api_2015_06_15::Models::StorageAccount

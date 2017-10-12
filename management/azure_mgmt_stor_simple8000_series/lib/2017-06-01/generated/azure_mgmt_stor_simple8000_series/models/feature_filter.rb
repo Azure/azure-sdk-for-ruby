@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the device ID for which the features are
       # required. Only 'Equality' operator is supported for this property.
       attr_accessor :device_id

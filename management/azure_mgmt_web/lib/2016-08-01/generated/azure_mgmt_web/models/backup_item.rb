@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Backup description.
     #
-    class BackupItem < MsRestAzure::ProxyOnlyResource
+    class BackupItem < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Id of the backup.
       attr_accessor :backup_id
 

@@ -12,7 +12,6 @@ module Azure::ARM::Dns::Api_2016_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The PTR target domain name for this PTR record.
       attr_accessor :ptrdname
 

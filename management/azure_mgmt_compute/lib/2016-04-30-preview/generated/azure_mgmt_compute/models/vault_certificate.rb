@@ -13,7 +13,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URL referencing a secret in a Key Vault which
       # contains a properly formatted certificate.
       attr_accessor :certificate_url

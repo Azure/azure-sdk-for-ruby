@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [CompletionOperationTypes] The type of completion operation.
       # Possible values include: 'DoNothing', 'DeleteFile', 'MoveFile'
       attr_accessor :completion_operation_type

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Relay::Api_2016_07_01
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

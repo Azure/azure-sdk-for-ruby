@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_06_01
     #
     # Frontend IP configuration of application gateway
     #
-    class ApplicationGatewayFrontendIPConfiguration < MsRestAzure::SubResource
+    class ApplicationGatewayFrontendIPConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] PrivateIPAddress of the Network Interface IP
       # Configuration
       attr_accessor :private_ipaddress

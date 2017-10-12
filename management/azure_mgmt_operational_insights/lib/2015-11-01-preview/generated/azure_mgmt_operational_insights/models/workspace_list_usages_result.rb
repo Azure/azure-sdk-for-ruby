@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<UsageMetric>] Gets or sets a list of usage metrics for a
       # workspace.
       attr_accessor :value

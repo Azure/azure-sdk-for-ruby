@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ServiceFabric runtime version of the cluster
       attr_accessor :code_version
 

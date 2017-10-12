@@ -26,6 +26,7 @@ module Azure::DataLakeAnalytics::Management::Profile_Latest
       ListStorageContainersResult = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::ListStorageContainersResult
       DataLakeAnalyticsAccountPropertiesBasic = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::DataLakeAnalyticsAccountPropertiesBasic
       DataLakeAnalyticsAccountListStorageAccountsResult = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult
+      Resource = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::Resource
       ComputePolicy = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::ComputePolicy
       UpdateFirewallRuleParameters = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::UpdateFirewallRuleParameters
       SubResource = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::SubResource
@@ -125,6 +126,9 @@ module Azure::DataLakeAnalytics::Management::Profile_Latest
         end
         def data_lake_analytics_account_list_storage_accounts_result
           Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult
+        end
+        def resource
+          Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::Resource
         end
         def compute_policy
           Azure::ARM::DataLakeAnalytics::Api_2016_11_01::Models::ComputePolicy

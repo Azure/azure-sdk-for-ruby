@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2017_04_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The probe URL to validate.
       attr_accessor :probe_url
 

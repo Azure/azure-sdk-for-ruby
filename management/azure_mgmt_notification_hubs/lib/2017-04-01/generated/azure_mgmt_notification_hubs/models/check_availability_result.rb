@@ -8,11 +8,10 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
     #
     # Description of a CheckAvailibility resource.
     #
-    class CheckAvailabilityResult < MsRestAzure::Resource
+    class CheckAvailabilityResult < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] True if the name is available and can be used to
       # create new Namespace/NotificationHub. Otherwise false.
       attr_accessor :is_availiable

@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # Http listener of application gateway
     #
-    class ApplicationGatewayHttpListener < MsRestAzure::SubResource
+    class ApplicationGatewayHttpListener < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Gets or sets frontend IP configuration resource
       # of application gateway
       attr_accessor :frontend_ipconfiguration

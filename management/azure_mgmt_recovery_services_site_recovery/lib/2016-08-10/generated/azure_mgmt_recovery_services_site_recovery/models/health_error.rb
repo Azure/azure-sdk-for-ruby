@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Source of error.
       attr_accessor :error_source
 

@@ -78,6 +78,7 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
     autoload :NetworkSettingsPatch,                               '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/network_settings_patch.rb'
     autoload :NetworkInterfaceData0Settings,                      '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/network_interface_data0settings.rb'
     autoload :HardwareComponentGroupList,                         '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/hardware_component_group_list.rb'
+    autoload :Resource,                                           '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/resource.rb'
     autoload :JobErrorItem,                                       '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/job_error_item.rb'
     autoload :DeviceDetails,                                      '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/device_details.rb'
     autoload :JobErrorDetails,                                    '2017-06-01/generated/azure_mgmt_stor_simple8000_series/models/job_error_details.rb'

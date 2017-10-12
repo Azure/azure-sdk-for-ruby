@@ -42,6 +42,7 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
     autoload :ContainerPropertiesInstanceView,                    '2017-08-01-preview/generated/azure_mgmt_container_instance/models/container_properties_instance_view.rb'
     autoload :Logs,                                               '2017-08-01-preview/generated/azure_mgmt_container_instance/models/logs.rb'
     autoload :VolumeMount,                                        '2017-08-01-preview/generated/azure_mgmt_container_instance/models/volume_mount.rb'
+    autoload :Resource,                                           '2017-08-01-preview/generated/azure_mgmt_container_instance/models/resource.rb'
     autoload :ContainerGroup,                                     '2017-08-01-preview/generated/azure_mgmt_container_instance/models/container_group.rb'
     autoload :ContainerRestartPolicy,                             '2017-08-01-preview/generated/azure_mgmt_container_instance/models/container_restart_policy.rb'
     autoload :ContainerGroupNetworkProtocol,                      '2017-08-01-preview/generated/azure_mgmt_container_instance/models/container_group_network_protocol.rb'

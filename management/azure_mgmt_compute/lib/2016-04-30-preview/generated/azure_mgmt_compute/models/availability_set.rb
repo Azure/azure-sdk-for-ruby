@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     #
     # Create or update availability set parameters.
     #
-    class AvailabilitySet < MsRestAzure::Resource
+    class AvailabilitySet < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Update Domain count.
       attr_accessor :platform_update_domain_count
 

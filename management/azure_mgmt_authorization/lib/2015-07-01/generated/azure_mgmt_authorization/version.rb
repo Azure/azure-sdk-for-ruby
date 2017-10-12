@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Authorization::Api_2015_07_01
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

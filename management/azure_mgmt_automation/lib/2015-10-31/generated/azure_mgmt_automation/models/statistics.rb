@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the property value of the statistic.
       attr_accessor :counter_property
 

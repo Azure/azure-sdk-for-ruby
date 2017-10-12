@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The service URI for the webhook to post notifications.
       attr_accessor :service_uri
 

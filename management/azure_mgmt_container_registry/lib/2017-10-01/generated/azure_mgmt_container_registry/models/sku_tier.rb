@@ -10,7 +10,9 @@ module Azure::ARM::ContainerRegistry::Api_2017_10_01
     #
     module SkuTier
       Classic = "Classic"
-      Managed = "Managed"
+      Basic = "Basic"
+      Standard = "Standard"
+      Premium = "Premium"
     end
   end
 end

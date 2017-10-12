@@ -13,7 +13,6 @@ module Azure::ARM::Web::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] List of applicable legal agreement keys. This
       # list can be retrieved using ListLegalAgreements API under
       # <code>TopLevelDomain</code> resource.

@@ -22,6 +22,7 @@ module Azure::Profiles::Management::Profile_Latest
       AaaaRecord = Azure::ARM::Dns::Api_2016_04_01::Models::AaaaRecord
       ZoneListResult = Azure::ARM::Dns::Api_2016_04_01::Models::ZoneListResult
       TxtRecord = Azure::ARM::Dns::Api_2016_04_01::Models::TxtRecord
+      Resource = Azure::ARM::Dns::Api_2016_04_01::Models::Resource
       NsRecord = Azure::ARM::Dns::Api_2016_04_01::Models::NsRecord
       SoaRecord = Azure::ARM::Dns::Api_2016_04_01::Models::SoaRecord
       Zone = Azure::ARM::Dns::Api_2016_04_01::Models::Zone
@@ -101,6 +102,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def txt_record
           Azure::ARM::Dns::Api_2016_04_01::Models::TxtRecord
+        end
+        def resource
+          Azure::ARM::Dns::Api_2016_04_01::Models::Resource
         end
         def ns_record
           Azure::ARM::Dns::Api_2016_04_01::Models::NsRecord

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name
       attr_accessor :name
 

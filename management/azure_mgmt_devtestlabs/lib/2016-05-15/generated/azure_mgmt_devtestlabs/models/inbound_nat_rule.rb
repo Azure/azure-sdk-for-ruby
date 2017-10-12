@@ -13,7 +13,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [TransportProtocol] The transport protocol for the endpoint.
       # Possible values include: 'Tcp', 'Udp'
       attr_accessor :transport_protocol

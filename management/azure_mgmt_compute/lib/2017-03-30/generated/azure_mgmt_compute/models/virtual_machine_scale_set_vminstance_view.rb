@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The Update Domain count.
       attr_accessor :platform_update_domain
 
@@ -32,6 +31,9 @@ module Azure::ARM::Compute::Api_2017_03_30
       # @return [Array<VirtualMachineExtensionInstanceView>] The extensions
       # information.
       attr_accessor :extensions
+
+      # @return [VirtualMachineHealthStatus] The health status for the VM.
+      attr_accessor :vm_health
 
       # @return [BootDiagnosticsInstanceView] Boot Diagnostics is a debugging
       # feature which allows you to view Console Output and Screenshot to
@@ -118,6 +120,15 @@ module Azure::ARM::Compute::Api_2017_03_30
                         class_name: 'VirtualMachineExtensionInstanceView'
                       }
                   }
+                }
+              },
+              vm_health: {
+                required: false,
+                read_only: true,
+                serialized_name: 'vmHealth',
+                type: {
+                  name: 'Composite',
+                  class_name: 'VirtualMachineHealthStatus'
                 }
               },
               boot_diagnostics: {

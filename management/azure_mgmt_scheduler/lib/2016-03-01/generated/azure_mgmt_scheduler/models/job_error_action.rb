@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobActionType] Gets or sets the job error action type.
       # Possible values include: 'Http', 'Https', 'StorageQueue',
       # 'ServiceBusQueue', 'ServiceBusTopic'

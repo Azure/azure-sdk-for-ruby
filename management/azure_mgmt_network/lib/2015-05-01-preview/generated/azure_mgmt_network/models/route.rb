@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     # Route resource
     #
-    class Route < MsRestAzure::SubResource
+    class Route < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the destination CIDR to which the route
       # applies.
       attr_accessor :address_prefix

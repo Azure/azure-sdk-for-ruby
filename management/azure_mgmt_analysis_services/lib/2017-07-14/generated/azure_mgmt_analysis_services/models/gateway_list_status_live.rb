@@ -12,7 +12,6 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Status] Live message of list gateway. Possible values include:
       # 'Live'
       attr_accessor :status

@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     # Geographical region.
     #
-    class GeoRegion < MsRestAzure::ProxyOnlyResource
+    class GeoRegion < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Region name.
       attr_accessor :geo_region_name
 

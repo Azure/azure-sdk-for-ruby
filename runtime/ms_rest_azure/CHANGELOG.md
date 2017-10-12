@@ -1,3 +1,9 @@
+##2017.09.11 ms_rest_azure version 0.9.0
+* [Breaking Change] Managed Service Identity authentication to acquire token does not require `tenant_id`.[Issue #930](https://github.com/Azure/azure-sdk-for-ruby/issues/930) [PR #931](https://github.com/Azure/azure-sdk-for-ruby/pull/931)
+
+##2017.08.28 ms_rest_azure version 0.8.2
+* Enable Managed Service Identity authentication features into ms_rest_azure runtime for azure_mgmt_* sdks.[Issue #884](https://github.com/Azure/azure-sdk-for-ruby/issues/884) [PR #889](https://github.com/Azure/azure-sdk-for-ruby/pull/889)
+
 ##2017.07.10 ms_rest_azure version 0.8.1
 * [Bug Fix] Fixed the issue with the polling status object to handle the response code and provisioning status correctly.[Issue #817](https://github.com/Azure/azure-sdk-for-ruby/issues/817) [PR #828](https://github.com/Azure/azure-sdk-for-ruby/pull/828)
 
@@ -24,7 +30,7 @@
 * Improved AzureOperationError class to expose error_message and error_code properties [#1450](https://github.com/Azure/autorest/pull/1450)
 
 ##2016.09.15 ms_rest_azure version 0.5.0
-* Updating ms_rest dependecy to version 0.5.0
+* Updating ms_rest dependency to version 0.5.0
 * Adding known Azure Environments in ruby runtime for easy discovery
 * Default Azure active directory url is updated from `https://login.windows.net/` to `https://login.microsoftonline.com/` (Breaking Change)
 * Using bundled default ca-cert from ms_rest

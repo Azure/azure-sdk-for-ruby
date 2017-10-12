@@ -13,7 +13,6 @@ module Azure::ARM::Dns::Api_2016_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the record set.
       attr_accessor :id
 

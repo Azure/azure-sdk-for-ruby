@@ -37,6 +37,7 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
     autoload :NamespacePatchParameters,                           '2017-04-01/generated/azure_mgmt_notification_hubs/models/namespace_patch_parameters.rb'
     autoload :Sku,                                                '2017-04-01/generated/azure_mgmt_notification_hubs/models/sku.rb'
     autoload :SharedAccessAuthorizationRuleProperties,            '2017-04-01/generated/azure_mgmt_notification_hubs/models/shared_access_authorization_rule_properties.rb'
+    autoload :SubResource,                                        '2017-04-01/generated/azure_mgmt_notification_hubs/models/sub_resource.rb'
     autoload :BaiduCredential,                                    '2017-04-01/generated/azure_mgmt_notification_hubs/models/baidu_credential.rb'
     autoload :NamespaceListResult,                                '2017-04-01/generated/azure_mgmt_notification_hubs/models/namespace_list_result.rb'
     autoload :NotificationHubListResult,                          '2017-04-01/generated/azure_mgmt_notification_hubs/models/notification_hub_list_result.rb'

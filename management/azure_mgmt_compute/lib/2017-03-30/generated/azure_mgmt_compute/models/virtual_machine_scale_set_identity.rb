@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The principal id of virtual machine scale set
       # identity.
       attr_accessor :principal_id
@@ -22,7 +21,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       attr_accessor :tenant_id
 
       # @return [ResourceIdentityType] The type of identity used for the
-      # virtual machine. Currently, the only supported type is
+      # virtual machine scale set. Currently, the only supported type is
       # 'SystemAssigned', which implicitly creates an identity. Possible values
       # include: 'SystemAssigned'
       attr_accessor :type

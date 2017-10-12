@@ -13,7 +13,6 @@ module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EncryptionConfigType] The type of encryption configuration
       # being used. Currently the only supported types are 'UserManaged' and
       # 'ServiceManaged'. Possible values include: 'UserManaged',

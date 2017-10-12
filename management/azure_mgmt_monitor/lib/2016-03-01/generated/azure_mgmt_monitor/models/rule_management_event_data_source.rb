@@ -13,13 +13,12 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [String] the event name.
       attr_accessor :event_name
@@ -70,7 +69,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
                   name: 'String'
                 }
               },
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

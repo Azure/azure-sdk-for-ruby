@@ -8,11 +8,10 @@ module Azure::ARM::EventHub::Api_2015_08_01
     #
     # Definition of Resource
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 

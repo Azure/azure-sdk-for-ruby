@@ -41,6 +41,7 @@ module Azure::ARM::Batch::Api_2015_12_01
     autoload :BatchAccountListResult,                             '2015-12-01/generated/azure_mgmt_batch/models/batch_account_list_result.rb'
     autoload :BatchLocationQuota,                                 '2015-12-01/generated/azure_mgmt_batch/models/batch_location_quota.rb'
     autoload :BatchAccountKeys,                                   '2015-12-01/generated/azure_mgmt_batch/models/batch_account_keys.rb'
+    autoload :Resource,                                           '2015-12-01/generated/azure_mgmt_batch/models/resource.rb'
     autoload :BatchAccount,                                       '2015-12-01/generated/azure_mgmt_batch/models/batch_account.rb'
     autoload :ProvisioningState,                                  '2015-12-01/generated/azure_mgmt_batch/models/provisioning_state.rb'
     autoload :AccountKeyType,                                     '2015-12-01/generated/azure_mgmt_batch/models/account_key_type.rb'

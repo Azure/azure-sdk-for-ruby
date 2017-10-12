@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The artifact's identifier.
       attr_accessor :artifact_id
 

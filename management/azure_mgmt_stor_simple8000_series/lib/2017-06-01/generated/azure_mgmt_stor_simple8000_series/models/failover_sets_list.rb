@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<FailoverSet>] The list of failover sets.
       attr_accessor :value
 

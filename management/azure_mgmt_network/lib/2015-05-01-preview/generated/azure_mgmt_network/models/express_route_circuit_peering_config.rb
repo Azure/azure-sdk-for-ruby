@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Gets or sets the reference of
       # AdvertisedPublicPrefixes
       attr_accessor :advertised_public_prefixes

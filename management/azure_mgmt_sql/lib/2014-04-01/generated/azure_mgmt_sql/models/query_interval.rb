@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The start time of the measurement interval (ISO8601
       # format).
       attr_accessor :interval_start_time

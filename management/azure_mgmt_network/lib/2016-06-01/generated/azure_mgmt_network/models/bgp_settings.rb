@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Gets or sets this BGP speaker's ASN
       attr_accessor :asn
 

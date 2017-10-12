@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The unique name of the policy to create
       attr_accessor :name
 

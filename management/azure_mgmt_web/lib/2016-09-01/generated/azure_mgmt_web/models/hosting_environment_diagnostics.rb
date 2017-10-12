@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name/identifier of the diagnostics.
       attr_accessor :name
 

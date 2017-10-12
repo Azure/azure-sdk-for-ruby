@@ -24,6 +24,7 @@ module Azure::ARM::SQL::Api_2017_03_01_preview
   autoload :SqlManagementClient,                                '2017-03-01-preview/generated/azure_mgmt_sql/sql_management_client.rb'
 
   module Models
+    autoload :Resource,                                           '2017-03-01-preview/generated/azure_mgmt_sql/models/resource.rb'
     autoload :DatabaseOperationListResult,                        '2017-03-01-preview/generated/azure_mgmt_sql/models/database_operation_list_result.rb'
     autoload :ProxyResource,                                      '2017-03-01-preview/generated/azure_mgmt_sql/models/proxy_resource.rb'
     autoload :DatabaseOperation,                                  '2017-03-01-preview/generated/azure_mgmt_sql/models/database_operation.rb'

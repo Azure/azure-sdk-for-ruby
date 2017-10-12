@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Recovery plan details.
     #
-    class RecoveryPlan < MsRestAzure::Resource
+    class RecoveryPlan < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPlanProperties] The custom details.
       attr_accessor :properties
 

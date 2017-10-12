@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ServiceObjective>] The list of database service
       # objectives.
       attr_accessor :value

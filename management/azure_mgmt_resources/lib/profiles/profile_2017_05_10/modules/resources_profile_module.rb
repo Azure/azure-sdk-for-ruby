@@ -52,7 +52,9 @@ module Azure::Resources::Management::Profile_2017_05_10
       Dependency = Azure::ARM::Resources::Api_2017_05_10::Models::Dependency
       ResourceProviderOperationDisplayProperties = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceProviderOperationDisplayProperties
       TemplateLink = Azure::ARM::Resources::Api_2017_05_10::Models::TemplateLink
+      Resource = Azure::ARM::Resources::Api_2017_05_10::Models::Resource
       DeploymentListResult = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentListResult
+      SubResource = Azure::ARM::Resources::Api_2017_05_10::Models::SubResource
       AliasType = Azure::ARM::Resources::Api_2017_05_10::Models::AliasType
       ResourceGroupExportResult = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupExportResult
       GenericResource = Azure::ARM::Resources::Api_2017_05_10::Models::GenericResource
@@ -217,8 +219,14 @@ module Azure::Resources::Management::Profile_2017_05_10
         def template_link
           Azure::ARM::Resources::Api_2017_05_10::Models::TemplateLink
         end
+        def resource
+          Azure::ARM::Resources::Api_2017_05_10::Models::Resource
+        end
         def deployment_list_result
           Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentListResult
+        end
+        def sub_resource
+          Azure::ARM::Resources::Api_2017_05_10::Models::SubResource
         end
         def alias_type
           Azure::ARM::Resources::Api_2017_05_10::Models::AliasType

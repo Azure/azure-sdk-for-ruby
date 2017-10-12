@@ -34,6 +34,7 @@ module Azure::ARM::CDN::Api_2015_06_01
     autoload :ErrorResponse,                                      '2015-06-01/generated/azure_mgmt_cdn/models/error_response.rb'
     autoload :Sku,                                                '2015-06-01/generated/azure_mgmt_cdn/models/sku.rb'
     autoload :ProfileCreateParameters,                            '2015-06-01/generated/azure_mgmt_cdn/models/profile_create_parameters.rb'
+    autoload :Resource,                                           '2015-06-01/generated/azure_mgmt_cdn/models/resource.rb'
     autoload :SsoUri,                                             '2015-06-01/generated/azure_mgmt_cdn/models/sso_uri.rb'
     autoload :DeepCreatedOrigin,                                  '2015-06-01/generated/azure_mgmt_cdn/models/deep_created_origin.rb'
     autoload :OperationListResult,                                '2015-06-01/generated/azure_mgmt_cdn/models/operation_list_result.rb'

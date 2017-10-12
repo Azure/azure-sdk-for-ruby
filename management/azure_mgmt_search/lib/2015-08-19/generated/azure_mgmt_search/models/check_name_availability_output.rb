@@ -12,7 +12,6 @@ module Azure::ARM::Search::Api_2015_08_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] A value indicating whether the name is available.
       attr_accessor :is_name_available
 

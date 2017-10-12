@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FrequencyTypes] The frequency to update. Possible values
       # include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
       attr_accessor :frequency

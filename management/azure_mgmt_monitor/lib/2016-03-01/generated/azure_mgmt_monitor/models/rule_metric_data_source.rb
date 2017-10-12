@@ -13,13 +13,12 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [String] the name of the metric that defines what the rule
       # monitors.
@@ -45,7 +44,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
                   name: 'String'
                 }
               },
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

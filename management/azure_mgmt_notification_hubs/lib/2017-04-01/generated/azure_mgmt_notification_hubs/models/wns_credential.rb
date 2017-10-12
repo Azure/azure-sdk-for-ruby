@@ -12,7 +12,6 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The package ID for this credential.
       attr_accessor :package_sid
 

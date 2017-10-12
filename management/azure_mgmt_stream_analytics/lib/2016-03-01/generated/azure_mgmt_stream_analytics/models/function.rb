@@ -9,11 +9,10 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
     # A function object, containing all information associated with the named
     # function. All functions are contained under a streaming job.
     #
-    class Function < MsRestAzure::SubResource
+    class Function < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FunctionProperties] The properties that are associated with a
       # function.
       attr_accessor :properties

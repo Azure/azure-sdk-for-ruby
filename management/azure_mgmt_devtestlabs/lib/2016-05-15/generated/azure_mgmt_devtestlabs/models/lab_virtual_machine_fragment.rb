@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     #
     # A virtual machine.
     #
-    class LabVirtualMachineFragment < MsRestAzure::Resource
+    class LabVirtualMachineFragment < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The notes of the virtual machine.
       attr_accessor :notes
 

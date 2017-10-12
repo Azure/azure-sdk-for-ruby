@@ -13,7 +13,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<FailoverTarget>] The list of all the failover targets.
       attr_accessor :value
 

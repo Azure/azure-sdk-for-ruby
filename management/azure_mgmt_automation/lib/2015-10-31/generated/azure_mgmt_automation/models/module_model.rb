@@ -8,11 +8,10 @@ module Azure::ARM::Automation::Api_2015_10_31
     #
     # Definition of the module type.
     #
-    class ModuleModel < MsRestAzure::Resource
+    class ModuleModel < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Gets or sets the isGlobal flag of the module.
       attr_accessor :is_global
 

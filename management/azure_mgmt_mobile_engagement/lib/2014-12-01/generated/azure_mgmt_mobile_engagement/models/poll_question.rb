@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Unique identifier of the question.
       attr_accessor :id
 

@@ -13,7 +13,6 @@ module Azure::ARM::ContainerService::Api_2016_09_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID for the service principal.
       attr_accessor :client_id
 

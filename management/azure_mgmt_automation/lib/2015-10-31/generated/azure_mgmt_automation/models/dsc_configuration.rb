@@ -8,11 +8,10 @@ module Azure::ARM::Automation::Api_2015_10_31
     #
     # Definition of the configuration type.
     #
-    class DscConfiguration < MsRestAzure::Resource
+    class DscConfiguration < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DscConfigurationProvisioningState] Gets or sets the
       # provisioning state of the configuration. Possible values include:
       # 'Succeeded'

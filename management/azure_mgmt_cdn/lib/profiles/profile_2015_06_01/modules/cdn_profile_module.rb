@@ -18,6 +18,7 @@ module Azure::CDN::Management::Profile_2015_06_01
       ErrorResponse = Azure::ARM::CDN::Api_2015_06_01::Models::ErrorResponse
       Sku = Azure::ARM::CDN::Api_2015_06_01::Models::Sku
       ProfileCreateParameters = Azure::ARM::CDN::Api_2015_06_01::Models::ProfileCreateParameters
+      Resource = Azure::ARM::CDN::Api_2015_06_01::Models::Resource
       SsoUri = Azure::ARM::CDN::Api_2015_06_01::Models::SsoUri
       DeepCreatedOrigin = Azure::ARM::CDN::Api_2015_06_01::Models::DeepCreatedOrigin
       OperationListResult = Azure::ARM::CDN::Api_2015_06_01::Models::OperationListResult
@@ -105,6 +106,9 @@ module Azure::CDN::Management::Profile_2015_06_01
         end
         def profile_create_parameters
           Azure::ARM::CDN::Api_2015_06_01::Models::ProfileCreateParameters
+        end
+        def resource
+          Azure::ARM::CDN::Api_2015_06_01::Models::Resource
         end
         def sso_uri
           Azure::ARM::CDN::Api_2015_06_01::Models::SsoUri

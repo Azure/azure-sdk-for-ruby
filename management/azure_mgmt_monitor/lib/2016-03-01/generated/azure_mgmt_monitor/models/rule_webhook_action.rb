@@ -13,15 +13,14 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.RuleWebhookAction"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.RuleWebhookAction"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
-      # @return [String] the service uri to Post the notitication when the
+      # @return [String] the service uri to Post the notification when the
       # alert activates or resolves.
       attr_accessor :service_uri
 
@@ -43,7 +42,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
             name: 'Composite',
             class_name: 'RuleWebhookAction',
             model_properties: {
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

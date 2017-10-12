@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ResourceRequests] The resource requests of this container
       # instance.
       attr_accessor :requests

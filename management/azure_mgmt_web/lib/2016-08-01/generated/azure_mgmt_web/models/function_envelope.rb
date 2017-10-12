@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Web Job Information.
     #
-    class FunctionEnvelope < MsRestAzure::ProxyOnlyResource
+    class FunctionEnvelope < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Function name.
       attr_accessor :function_envelope_name
 

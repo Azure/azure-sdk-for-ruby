@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     # The required set of inputs to validate a VNET
     #
-    class VnetParameters < MsRestAzure::ProxyOnlyResource
+    class VnetParameters < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Resource Group of the VNET to be validated
       attr_accessor :vnet_resource_group
 

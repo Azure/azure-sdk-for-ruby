@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Full type of the extension handler which includes both
       # publisher and type.
       attr_accessor :type

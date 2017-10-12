@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Process Module Information.
     #
-    class ProcessModuleInfo < MsRestAzure::ProxyOnlyResource
+    class ProcessModuleInfo < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Base address. Used as module identifier in ARM
       # resource URI.
       attr_accessor :base_address

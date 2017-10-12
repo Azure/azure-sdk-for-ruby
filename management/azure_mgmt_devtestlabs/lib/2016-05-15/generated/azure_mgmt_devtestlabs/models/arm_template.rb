@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     #
     # An Azure Resource Manager template.
     #
-    class ArmTemplate < MsRestAzure::Resource
+    class ArmTemplate < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The display name of the ARM template.
       attr_accessor :display_name
 

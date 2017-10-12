@@ -8,11 +8,10 @@ module Azure::ARM::SQL::Api_2014_04_01
     #
     # ARM proxy resource.
     #
-    class ProxyResource < MsRestAzure::Resource
+    class ProxyResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       #
       # Mapper for ProxyResource class as Ruby Hash.

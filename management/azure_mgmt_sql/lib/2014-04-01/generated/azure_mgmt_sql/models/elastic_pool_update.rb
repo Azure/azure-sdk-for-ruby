@@ -8,11 +8,10 @@ module Azure::ARM::SQL::Api_2014_04_01
     #
     # Represents an elastic pool update.
     #
-    class ElasticPoolUpdate < MsRestAzure::Resource
+    class ElasticPoolUpdate < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 

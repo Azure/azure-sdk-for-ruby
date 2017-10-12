@@ -32,6 +32,8 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
   module Models
     autoload :WorkflowTriggerFilter,                              '2015-02-01-preview/generated/azure_mgmt_logic/models/workflow_trigger_filter.rb'
     autoload :WorkflowTriggerListResult,                          '2015-02-01-preview/generated/azure_mgmt_logic/models/workflow_trigger_list_result.rb'
+    autoload :SubResource,                                        '2015-02-01-preview/generated/azure_mgmt_logic/models/sub_resource.rb'
+    autoload :Resource,                                           '2015-02-01-preview/generated/azure_mgmt_logic/models/resource.rb'
     autoload :Sku,                                                '2015-02-01-preview/generated/azure_mgmt_logic/models/sku.rb'
     autoload :ResourceReference,                                  '2015-02-01-preview/generated/azure_mgmt_logic/models/resource_reference.rb'
     autoload :ContentLink,                                        '2015-02-01-preview/generated/azure_mgmt_logic/models/content_link.rb'

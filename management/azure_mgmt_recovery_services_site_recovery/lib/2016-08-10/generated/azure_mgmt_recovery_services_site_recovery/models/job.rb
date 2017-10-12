@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     # Job details.
     #
-    class Job < MsRestAzure::Resource
+    class Job < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [JobProperties] The custom data.
       attr_accessor :properties
 

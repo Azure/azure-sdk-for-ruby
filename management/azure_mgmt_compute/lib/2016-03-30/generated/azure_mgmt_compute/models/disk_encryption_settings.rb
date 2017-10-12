@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [KeyVaultSecretReference] The disk encryption key which is a
       # Key Vault Secret.
       attr_accessor :disk_encryption_key

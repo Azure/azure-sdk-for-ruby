@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Tunnel name.
       attr_accessor :tunnel
 

@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The creation date of the elastic pool (ISO8601
       # format).
       attr_accessor :creation_date

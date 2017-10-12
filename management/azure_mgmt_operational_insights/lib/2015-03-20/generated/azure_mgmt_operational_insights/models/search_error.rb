@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights::Api_2015_03_20
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The error type.
       attr_accessor :type
 

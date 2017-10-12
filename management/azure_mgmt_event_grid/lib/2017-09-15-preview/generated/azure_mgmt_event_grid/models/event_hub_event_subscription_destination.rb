@@ -12,7 +12,6 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
         @endpointType = "EventHub"

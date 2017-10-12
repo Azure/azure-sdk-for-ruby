@@ -12,7 +12,6 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<CognitiveServicesResourceAndSku>] Gets the list of
       # Cognitive Services accounts and their properties.
       attr_accessor :value

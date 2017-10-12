@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RecommendedElasticPoolMetric>] The list of recommended
       # elastic pools metrics.
       attr_accessor :value

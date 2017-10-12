@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Backup copies created after this time.
       attr_accessor :start_date
 

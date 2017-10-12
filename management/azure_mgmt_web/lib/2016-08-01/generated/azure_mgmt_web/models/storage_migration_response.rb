@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Response for a migration of app content request.
     #
-    class StorageMigrationResponse < MsRestAzure::ProxyOnlyResource
+    class StorageMigrationResponse < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] When server starts the migration process, it will
       # return an operation ID identifying that particular migration operation.
       attr_accessor :operation_id

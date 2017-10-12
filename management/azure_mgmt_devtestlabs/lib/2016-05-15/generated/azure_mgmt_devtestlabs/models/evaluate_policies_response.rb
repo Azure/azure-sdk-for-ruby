@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<PolicySetResult>] Results of evaluating a policy set.
       attr_accessor :results
 

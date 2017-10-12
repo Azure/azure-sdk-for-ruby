@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_03_30
     #
     # UrlPathMap of application gateway
     #
-    class ApplicationGatewayUrlPathMap < MsRestAzure::SubResource
+    class ApplicationGatewayUrlPathMap < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] Gets or sets default backend address pool
       # resource of URL path map
       attr_accessor :default_backend_address_pool

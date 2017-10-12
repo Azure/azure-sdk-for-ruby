@@ -40,6 +40,9 @@ module Azure::ARM::IotHub::Api_2017_07_01
     # @return [IotHubResource] iot_hub_resource
     attr_reader :iot_hub_resource
 
+    # @return [Certificates] certificates
+    attr_reader :certificates
+
     #
     # Creates initializes a new instance of the IotHubClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -55,6 +58,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
 
       @operations = Operations.new(self)
       @iot_hub_resource = IotHubResource.new(self)
+      @certificates = Certificates.new(self)
       @api_version = '2017-07-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

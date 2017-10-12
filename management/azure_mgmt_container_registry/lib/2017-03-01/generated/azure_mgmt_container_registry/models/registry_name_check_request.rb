@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the container registry.
       attr_accessor :name
 

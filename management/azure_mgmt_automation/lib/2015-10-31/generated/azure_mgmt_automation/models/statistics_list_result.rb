@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Statistics>] Gets or sets a list of statistics.
       attr_accessor :value
 

@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VirtualNetworkGatewaySkuName] Gateway SKU name. Possible
       # values include: 'Basic', 'HighPerformance', 'Standard',
       # 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3'

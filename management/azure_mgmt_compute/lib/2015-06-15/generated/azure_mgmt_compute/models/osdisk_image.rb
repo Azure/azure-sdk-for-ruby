@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OperatingSystemTypes] The operating system of the osDiskImage.
       # Possible values include: 'Windows', 'Linux'
       attr_accessor :operating_system

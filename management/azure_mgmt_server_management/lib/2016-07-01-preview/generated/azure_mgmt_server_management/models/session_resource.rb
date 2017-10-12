@@ -8,11 +8,10 @@ module Azure::ARM::ServerManagement::Api_2016_07_01_preview
     #
     # The session object.
     #
-    class SessionResource < MsRestAzure::Resource
+    class SessionResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The username connecting to the session.
       attr_accessor :user_name
 

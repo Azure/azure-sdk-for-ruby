@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     #
     # Describes a virtual machine scale set network profile's IP configuration.
     #
-    class VirtualMachineScaleSetIPConfiguration < MsRestAzure::SubResource
+    class VirtualMachineScaleSetIPConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The IP configuration name.
       attr_accessor :name
 

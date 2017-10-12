@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # A setting difference between two deployment slots of an app.
     #
-    class SlotDifference < MsRestAzure::ProxyOnlyResource
+    class SlotDifference < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Type of the difference: Information, Warning or Error.
       attr_accessor :slot_difference_type
 

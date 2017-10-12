@@ -12,7 +12,6 @@ module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Docker image registry server without a protocol
       # such as "http" and "https".
       attr_accessor :server

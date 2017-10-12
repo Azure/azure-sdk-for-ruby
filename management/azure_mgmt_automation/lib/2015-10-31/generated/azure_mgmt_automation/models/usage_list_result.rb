@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Usage>] Gets or sets usage.
       attr_accessor :value
 

@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The logical unit number.
       attr_accessor :lun
 

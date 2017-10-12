@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Address 1.
       attr_accessor :address1
 

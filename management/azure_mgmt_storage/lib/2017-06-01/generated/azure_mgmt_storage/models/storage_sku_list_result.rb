@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Sku>] Get the list result of storage SKUs and their
       # properties.
       attr_accessor :value

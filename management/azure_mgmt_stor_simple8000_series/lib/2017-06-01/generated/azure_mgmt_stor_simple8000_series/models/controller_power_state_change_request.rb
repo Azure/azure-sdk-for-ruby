@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ControllerPowerStateAction] The power state that the request
       # is expecting for the controller of the device. Possible values include:
       # 'Start', 'Restart', 'Shutdown'

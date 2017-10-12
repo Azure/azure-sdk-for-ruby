@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] The tags for the webhook.
       attr_accessor :tags
 

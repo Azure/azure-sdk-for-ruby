@@ -13,7 +13,6 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the algorithm.
       attr_accessor :algorithm
 

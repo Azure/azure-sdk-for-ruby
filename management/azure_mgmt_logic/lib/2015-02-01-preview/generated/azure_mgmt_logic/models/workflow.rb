@@ -9,11 +9,10 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
     # Model object.
     #
     #
-    class Workflow < MsRestAzure::Resource
+    class Workflow < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [WorkflowProvisioningState] Gets the provisioning state.
       # Possible values include: 'NotSpecified', 'Moving', 'Succeeded'
       attr_accessor :provisioning_state

@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EntityTypes] The mapping entity type. Possible values include:
       # 'None', 'Profile', 'Interaction', 'Relationship'
       attr_accessor :entity_type

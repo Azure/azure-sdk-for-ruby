@@ -9,11 +9,10 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
     # Base class for backup policy. Workload-specific backup policies are
     # derived from this class.
     #
-    class ProtectionPolicyResource < MsRestAzure::Resource
+    class ProtectionPolicyResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProtectionPolicy] ProtectionPolicyResource properties
       attr_accessor :properties
 

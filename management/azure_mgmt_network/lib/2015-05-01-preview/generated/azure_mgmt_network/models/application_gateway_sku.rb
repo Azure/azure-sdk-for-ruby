@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplicationGatewaySkuName] Gets or sets name of application
       # gateway SKU. Possible values include: 'Standard_Small',
       # 'Standard_Medium', 'Standard_Large'

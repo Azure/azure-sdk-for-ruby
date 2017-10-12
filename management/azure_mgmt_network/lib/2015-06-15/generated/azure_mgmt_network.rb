@@ -43,10 +43,12 @@ module Azure::ARM::Network::Api_2015_06_15
   module Models
     autoload :ExpressRouteCircuitsStatsListResult,                '2015-06-15/generated/azure_mgmt_network/models/express_route_circuits_stats_list_result.rb'
     autoload :ExpressRouteCircuitListResult,                      '2015-06-15/generated/azure_mgmt_network/models/express_route_circuit_list_result.rb'
+    autoload :SubResource,                                        '2015-06-15/generated/azure_mgmt_network/models/sub_resource.rb'
     autoload :ExpressRouteServiceProviderBandwidthsOffered,       '2015-06-15/generated/azure_mgmt_network/models/express_route_service_provider_bandwidths_offered.rb'
     autoload :PublicIPAddressListResult,                          '2015-06-15/generated/azure_mgmt_network/models/public_ipaddress_list_result.rb'
     autoload :ApplicationGatewayListResult,                       '2015-06-15/generated/azure_mgmt_network/models/application_gateway_list_result.rb'
     autoload :ApplicationGatewayBackendAddress,                   '2015-06-15/generated/azure_mgmt_network/models/application_gateway_backend_address.rb'
+    autoload :Resource,                                           '2015-06-15/generated/azure_mgmt_network/models/resource.rb'
     autoload :ConnectionResetSharedKey,                           '2015-06-15/generated/azure_mgmt_network/models/connection_reset_shared_key.rb'
     autoload :DnsNameAvailabilityResult,                          '2015-06-15/generated/azure_mgmt_network/models/dns_name_availability_result.rb'
     autoload :NetworkInterfaceDnsSettings,                        '2015-06-15/generated/azure_mgmt_network/models/network_interface_dns_settings.rb'

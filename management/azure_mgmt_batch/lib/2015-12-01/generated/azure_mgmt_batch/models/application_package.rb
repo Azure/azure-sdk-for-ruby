@@ -13,7 +13,6 @@ module Azure::ARM::Batch::Api_2015_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the application.
       attr_accessor :id
 

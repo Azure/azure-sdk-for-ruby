@@ -12,9 +12,8 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ResourceSkuRestrictionsType] The type of restrictions.
-      # Possible values include: 'location'
+      # Possible values include: 'Location'
       attr_accessor :type
 
       # @return [Array<String>] The value of restrictions. If the restriction

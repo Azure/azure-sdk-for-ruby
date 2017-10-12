@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Identifier.
     #
-    class Identifier < MsRestAzure::ProxyOnlyResource
+    class Identifier < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] String representation of the identity.
       attr_accessor :identifier_id
 

@@ -13,7 +13,6 @@ module Azure::ARM::Web::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Timestamp when this instance was created.
       attr_accessor :creation_time
 

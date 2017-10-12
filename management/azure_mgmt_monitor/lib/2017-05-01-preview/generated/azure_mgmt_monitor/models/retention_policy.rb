@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2017_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] a value indicating whether the retention policy is
       # enabled.
       attr_accessor :enabled

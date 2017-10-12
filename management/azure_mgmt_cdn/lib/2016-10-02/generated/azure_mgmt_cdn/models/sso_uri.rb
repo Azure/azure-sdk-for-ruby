@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2016_10_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URI used to login to the supplemental portal.
       attr_accessor :sso_uri_value
 

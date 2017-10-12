@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Array value separator for properties with isArray set.
       attr_accessor :array_value_separator
 

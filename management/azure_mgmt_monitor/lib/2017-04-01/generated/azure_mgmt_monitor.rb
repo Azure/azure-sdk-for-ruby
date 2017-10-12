@@ -33,6 +33,7 @@ module Azure::ARM::Monitor::Api_2017_04_01
     autoload :ActivityLogAlertActionGroup,                        '2017-04-01/generated/azure_mgmt_monitor/models/activity_log_alert_action_group.rb'
     autoload :ActionGroupList,                                    '2017-04-01/generated/azure_mgmt_monitor/models/action_group_list.rb'
     autoload :ActivityLogAlertActionList,                         '2017-04-01/generated/azure_mgmt_monitor/models/activity_log_alert_action_list.rb'
+    autoload :Resource,                                           '2017-04-01/generated/azure_mgmt_monitor/models/resource.rb'
     autoload :SmsReceiver,                                        '2017-04-01/generated/azure_mgmt_monitor/models/sms_receiver.rb'
     autoload :EnableRequest,                                      '2017-04-01/generated/azure_mgmt_monitor/models/enable_request.rb'
     autoload :ActivityLogAlertList,                               '2017-04-01/generated/azure_mgmt_monitor/models/activity_log_alert_list.rb'

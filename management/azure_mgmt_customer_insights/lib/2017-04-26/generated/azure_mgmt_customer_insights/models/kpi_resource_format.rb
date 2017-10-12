@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The KPI resource format.
     #
-    class KpiResourceFormat < MsRestAzure::ProxyResource
+    class KpiResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EntityTypes] The mapping entity type. Possible values include:
       # 'None', 'Profile', 'Interaction', 'Relationship'
       attr_accessor :entity_type

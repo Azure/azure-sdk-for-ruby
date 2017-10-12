@@ -12,7 +12,6 @@ module Azure::ARM::Dns::Api_2016_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The IPv4 address of this A record.
       attr_accessor :ipv4address
 

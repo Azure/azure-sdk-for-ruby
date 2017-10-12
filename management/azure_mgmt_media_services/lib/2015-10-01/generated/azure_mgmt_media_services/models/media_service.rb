@@ -8,11 +8,10 @@ module Azure::ARM::MediaServices::Api_2015_10_01
     #
     # The properties of a Media Service resource.
     #
-    class MediaService < MsRestAzure::Resource
+    class MediaService < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ApiEndpoint>] Read-only property that lists the Media
       # Services REST API endpoints for this resource. If supplied on a PUT or
       # PATCH, the value will be ignored.

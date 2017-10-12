@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AgentRegistrationKeyName] Gets or sets the agent registration
       # key name - Primary or Secondary. Possible values include: 'Primary',
       # 'Secondary'

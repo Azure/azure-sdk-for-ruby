@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The interface string name for the nested parameter.
       attr_accessor :interface_string
 

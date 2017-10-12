@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_09_01
     #
     # Details about app recovery operation.
     #
-    class SnapshotRecoveryRequest < MsRestAzure::ProxyOnlyResource
+    class SnapshotRecoveryRequest < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Point in time in which the app recovery should be
       # attempted, formatted as a DateTime string.
       attr_accessor :snapshot_time

@@ -42,6 +42,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
     autoload :ListStorageContainersResult,                        '2016-11-01/generated/azure_mgmt_datalake_analytics/models/list_storage_containers_result.rb'
     autoload :DataLakeAnalyticsAccountPropertiesBasic,            '2016-11-01/generated/azure_mgmt_datalake_analytics/models/data_lake_analytics_account_properties_basic.rb'
     autoload :DataLakeAnalyticsAccountListStorageAccountsResult,  '2016-11-01/generated/azure_mgmt_datalake_analytics/models/data_lake_analytics_account_list_storage_accounts_result.rb'
+    autoload :Resource,                                           '2016-11-01/generated/azure_mgmt_datalake_analytics/models/resource.rb'
     autoload :ComputePolicy,                                      '2016-11-01/generated/azure_mgmt_datalake_analytics/models/compute_policy.rb'
     autoload :UpdateFirewallRuleParameters,                       '2016-11-01/generated/azure_mgmt_datalake_analytics/models/update_firewall_rule_parameters.rb'
     autoload :SubResource,                                        '2016-11-01/generated/azure_mgmt_datalake_analytics/models/sub_resource.rb'

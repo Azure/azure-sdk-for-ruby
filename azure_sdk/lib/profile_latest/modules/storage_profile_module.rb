@@ -39,6 +39,7 @@ module Azure::Profiles::Management::Profile_Latest
       EncryptionService = Azure::ARM::Storage::Api_2017_06_01::Models::EncryptionService
       UsageListResult = Azure::ARM::Storage::Api_2017_06_01::Models::UsageListResult
       VirtualNetworkRule = Azure::ARM::Storage::Api_2017_06_01::Models::VirtualNetworkRule
+      Resource = Azure::ARM::Storage::Api_2017_06_01::Models::Resource
       StorageAccountCheckNameAvailabilityParameters = Azure::ARM::Storage::Api_2017_06_01::Models::StorageAccountCheckNameAvailabilityParameters
       AccountSasParameters = Azure::ARM::Storage::Api_2017_06_01::Models::AccountSasParameters
       KeyVaultProperties = Azure::ARM::Storage::Api_2017_06_01::Models::KeyVaultProperties
@@ -188,6 +189,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def virtual_network_rule
           Azure::ARM::Storage::Api_2017_06_01::Models::VirtualNetworkRule
+        end
+        def resource
+          Azure::ARM::Storage::Api_2017_06_01::Models::Resource
         end
         def storage_account_check_name_availability_parameters
           Azure::ARM::Storage::Api_2017_06_01::Models::StorageAccountCheckNameAvailabilityParameters

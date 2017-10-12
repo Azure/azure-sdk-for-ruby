@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [HttpStatusCode] HTTP Status Code of the operation. Possible
       # values include: 'Continue', 'SwitchingProtocols', 'OK', 'Created',
       # 'Accepted', 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',

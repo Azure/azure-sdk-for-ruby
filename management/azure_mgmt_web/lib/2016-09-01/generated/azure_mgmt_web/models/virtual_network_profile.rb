@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource id of the Virtual Network.
       attr_accessor :id
 

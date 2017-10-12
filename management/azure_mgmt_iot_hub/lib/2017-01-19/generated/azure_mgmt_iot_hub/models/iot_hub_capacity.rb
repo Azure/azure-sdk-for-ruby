@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The minimum number of units.
       attr_accessor :minimum
 

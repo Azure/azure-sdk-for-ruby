@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServicesBackup::Api_2017_07_01
     #
     # Defines workload agnostic properties for a job.
     #
-    class JobResource < MsRestAzure::Resource
+    class JobResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Job] JobResource properties
       attr_accessor :properties
 

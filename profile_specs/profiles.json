@@ -1,15 +1,15 @@
 [
   {
-    "name": "Profile_Azure_Stack",
+    "name": "Profile_2016_09_01",
     "resourceTypes": {
       "Microsoft.Storage": {
-        "2017-06-01": ["*"]
+        "2015-06-15": ["*"]
       },
       "Microsoft.Network" : {
-        "2017-09-01": ["*"]
+        "2015-06-15": ["*"]
       },
       "Microsoft.Compute" : {
-        "2017-03-30": ["*"]
+        "2016-03-30": ["*"]
       },
       "Microsoft.Features" : {
         "2015-12-01": ["*"]
@@ -18,28 +18,27 @@
         "2016-09-01": ["*"]
       },
       "Microsoft.Locks" : {
-        "2016-09-01": ["*"]
+        "2015-01-01": ["*"]
       },
       "Microsoft.Policy" : {
-        "2016-12-01": ["*"],
-        "2017-06-01-preview": ["*"]
+        "2015-10-01-preview": ["*"]
       },
       "Microsoft.Resources" : {
-        "2017-05-10": ["*"]
+        "2016-02-01": ["*"]
       },
       "Microsoft.Subscriptions" : {
         "2016-06-01": ["*"]
       }
     },
     "defaultVersions": {
-      "Microsoft.Storage": "2017-06-01",
-      "Microsoft.Network" : "2017-09-01",
-      "Microsoft.Compute" : "2017-03-30",
+      "Microsoft.Storage": "2015-06-15",
+      "Microsoft.Network" : "2015-06-15",
+      "Microsoft.Compute" : "2016-03-30",
       "Microsoft.Features" : "2015-12-01",
       "Microsoft.Links" : "2016-09-01",
-      "Microsoft.Locks" : "2016-09-01",
-      "Microsoft.Policy" : "2017-06-01-preview",
-      "Microsoft.Resources" : "2017-05-10",
+      "Microsoft.Locks" : "2015-01-01",
+      "Microsoft.Policy" : "2015-10-01-preview",
+      "Microsoft.Resources" : "2016-02-01",
       "Microsoft.Subscriptions" : "2016-06-01"
     },
     "output_dir": "../../../azure_sdk/lib"

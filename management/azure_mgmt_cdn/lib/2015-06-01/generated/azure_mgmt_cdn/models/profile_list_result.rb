@@ -13,7 +13,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Profile>] List of CDN profiles within a resource group.
       attr_accessor :value
 

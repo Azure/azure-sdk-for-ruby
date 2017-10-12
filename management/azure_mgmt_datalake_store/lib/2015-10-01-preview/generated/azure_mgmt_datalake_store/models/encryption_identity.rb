@@ -13,7 +13,6 @@ module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EncryptionIdentityType] The type of encryption being used.
       # Currently the only supported type is 'SystemAssigned'. Possible values
       # include: 'SystemAssigned'

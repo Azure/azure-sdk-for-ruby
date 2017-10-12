@@ -8,11 +8,10 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
     #
     # Definition of a Tracked Resource
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Location of the resource
       attr_accessor :location
 

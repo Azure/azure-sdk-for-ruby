@@ -14,7 +14,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Hostname of a slot to which the traffic will be
       # redirected if decided to. E.g. myapp-stage.azurewebsites.net.
       attr_accessor :action_host_name

@@ -8,11 +8,10 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
     #
     # An object that represents a replication for a container registry.
     #
-    class Replication < MsRestAzure::Resource
+    class Replication < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ProvisioningState] The provisioning state of the replication
       # at the time the operation was called. Possible values include:
       # 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'

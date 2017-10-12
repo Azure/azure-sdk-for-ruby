@@ -65,10 +65,12 @@ module Azure::Network::Management::Profile_2016_03_30
       NetworkInterfaceListResult = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult
       ExpressRouteCircuitListResult = Azure::ARM::Network::Api_2016_03_30::Models::ExpressRouteCircuitListResult
       VirtualNetworkGatewayConnectionListResult = Azure::ARM::Network::Api_2016_03_30::Models::VirtualNetworkGatewayConnectionListResult
+      SubResource = Azure::ARM::Network::Api_2016_03_30::Models::SubResource
       UsagesListResult = Azure::ARM::Network::Api_2016_03_30::Models::UsagesListResult
       PublicIPAddressListResult = Azure::ARM::Network::Api_2016_03_30::Models::PublicIPAddressListResult
       ExpressRouteServiceProviderListResult = Azure::ARM::Network::Api_2016_03_30::Models::ExpressRouteServiceProviderListResult
       ConnectionSharedKey = Azure::ARM::Network::Api_2016_03_30::Models::ConnectionSharedKey
+      Resource = Azure::ARM::Network::Api_2016_03_30::Models::Resource
       DhcpOptions = Azure::ARM::Network::Api_2016_03_30::Models::DhcpOptions
       AzureAsyncOperationResult = Azure::ARM::Network::Api_2016_03_30::Models::AzureAsyncOperationResult
       SubnetListResult = Azure::ARM::Network::Api_2016_03_30::Models::SubnetListResult
@@ -317,6 +319,9 @@ module Azure::Network::Management::Profile_2016_03_30
         def virtual_network_gateway_connection_list_result
           Azure::ARM::Network::Api_2016_03_30::Models::VirtualNetworkGatewayConnectionListResult
         end
+        def sub_resource
+          Azure::ARM::Network::Api_2016_03_30::Models::SubResource
+        end
         def usages_list_result
           Azure::ARM::Network::Api_2016_03_30::Models::UsagesListResult
         end
@@ -328,6 +333,9 @@ module Azure::Network::Management::Profile_2016_03_30
         end
         def connection_shared_key
           Azure::ARM::Network::Api_2016_03_30::Models::ConnectionSharedKey
+        end
+        def resource
+          Azure::ARM::Network::Api_2016_03_30::Models::Resource
         end
         def dhcp_options
           Azure::ARM::Network::Api_2016_03_30::Models::DhcpOptions

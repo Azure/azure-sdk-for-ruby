@@ -13,7 +13,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The retention time for device-to-cloud messages in
       # days. See:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages

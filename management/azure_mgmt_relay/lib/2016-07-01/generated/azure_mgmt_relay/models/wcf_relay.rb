@@ -8,11 +8,10 @@ module Azure::ARM::Relay::Api_2016_07_01
     #
     # Description of WcfRelays Resource.
     #
-    class WcfRelay < MsRestAzure::Resource
+    class WcfRelay < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Relaytype] WCFRelay Type. Possible values include: 'NetTcp',
       # 'Http'
       attr_accessor :relay_type

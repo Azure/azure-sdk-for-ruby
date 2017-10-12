@@ -36,6 +36,7 @@ module Azure::ARM::DataLakeStore::Api_2016_11_01
     autoload :EncryptionIdentity,                                 '2016-11-01/generated/azure_mgmt_datalake_store/models/encryption_identity.rb'
     autoload :EncryptionConfig,                                   '2016-11-01/generated/azure_mgmt_datalake_store/models/encryption_config.rb'
     autoload :SubResource,                                        '2016-11-01/generated/azure_mgmt_datalake_store/models/sub_resource.rb'
+    autoload :Resource,                                           '2016-11-01/generated/azure_mgmt_datalake_store/models/resource.rb'
     autoload :KeyVaultMetaInfo,                                   '2016-11-01/generated/azure_mgmt_datalake_store/models/key_vault_meta_info.rb'
     autoload :DataLakeStoreAccountListResult,                     '2016-11-01/generated/azure_mgmt_datalake_store/models/data_lake_store_account_list_result.rb'
     autoload :ErrorDetails,                                       '2016-11-01/generated/azure_mgmt_datalake_store/models/error_details.rb'

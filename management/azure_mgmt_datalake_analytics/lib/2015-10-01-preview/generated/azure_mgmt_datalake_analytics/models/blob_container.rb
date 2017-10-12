@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the name of the blob container.
       attr_accessor :name
 

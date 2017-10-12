@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] An enum describing the unit of usage measurement.
       # Default value: 'Count' .
       attr_accessor :unit

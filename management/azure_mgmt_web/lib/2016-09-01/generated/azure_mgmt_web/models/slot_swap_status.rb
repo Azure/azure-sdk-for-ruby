@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The time the last successful slot swap completed.
       attr_accessor :timestamp_utc
 

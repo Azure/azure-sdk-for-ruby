@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # String dictionary resource.
     #
-    class StringDictionary < MsRestAzure::ProxyOnlyResource
+    class StringDictionary < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Settings.
       attr_accessor :properties
 

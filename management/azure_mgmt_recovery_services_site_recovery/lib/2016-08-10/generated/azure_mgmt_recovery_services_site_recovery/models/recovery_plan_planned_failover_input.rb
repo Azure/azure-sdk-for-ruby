@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RecoveryPlanPlannedFailoverInputProperties] The recovery plan
       # planned failover input properties.
       attr_accessor :properties

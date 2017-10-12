@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The virtual network connection shared key value.
       attr_accessor :value
 

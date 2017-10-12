@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ActionGroupResource>] The list of action groups.
       attr_accessor :value
 

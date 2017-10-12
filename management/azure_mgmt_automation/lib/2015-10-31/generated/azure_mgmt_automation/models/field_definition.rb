@@ -12,7 +12,6 @@ module Azure::ARM::Automation::Api_2015_10_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Gets or sets the isEncrypted flag of the connection
       # field definition.
       attr_accessor :is_encrypted

@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Specifies the update domain of the virtual machine.
       attr_accessor :platform_update_domain
 

@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The group association assigned code.
       attr_accessor :group_association_assigned_code
 

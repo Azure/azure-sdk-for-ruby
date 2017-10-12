@@ -32,7 +32,9 @@ module Azure::Network::Management::Profile_2016_12_01
 
     module Models
       EffectiveRoute = Azure::ARM::Network::Api_2016_12_01::Models::EffectiveRoute
+      Resource = Azure::ARM::Network::Api_2016_12_01::Models::Resource
       EffectiveRouteListResult = Azure::ARM::Network::Api_2016_12_01::Models::EffectiveRouteListResult
+      SubResource = Azure::ARM::Network::Api_2016_12_01::Models::SubResource
       SecurityRuleListResult = Azure::ARM::Network::Api_2016_12_01::Models::SecurityRuleListResult
       ExpressRouteCircuitRoutesTable = Azure::ARM::Network::Api_2016_12_01::Models::ExpressRouteCircuitRoutesTable
       ExpressRouteCircuitsRoutesTableListResult = Azure::ARM::Network::Api_2016_12_01::Models::ExpressRouteCircuitsRoutesTableListResult
@@ -290,8 +292,14 @@ module Azure::Network::Management::Profile_2016_12_01
         def effective_route
           Azure::ARM::Network::Api_2016_12_01::Models::EffectiveRoute
         end
+        def resource
+          Azure::ARM::Network::Api_2016_12_01::Models::Resource
+        end
         def effective_route_list_result
           Azure::ARM::Network::Api_2016_12_01::Models::EffectiveRouteListResult
+        end
+        def sub_resource
+          Azure::ARM::Network::Api_2016_12_01::Models::SubResource
         end
         def security_rule_list_result
           Azure::ARM::Network::Api_2016_12_01::Models::SecurityRuleListResult

@@ -13,7 +13,6 @@ module Azure::ARM::Resources::Api_2016_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The error code returned from the server.
       attr_accessor :code
 

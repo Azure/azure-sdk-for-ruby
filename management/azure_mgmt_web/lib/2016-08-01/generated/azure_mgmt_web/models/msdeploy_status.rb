@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # MSDeploy ARM response
     #
-    class MSDeployStatus < MsRestAzure::ProxyOnlyResource
+    class MSDeployStatus < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Username of deployer
       attr_accessor :deployer
 

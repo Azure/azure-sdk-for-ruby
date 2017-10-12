@@ -12,7 +12,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The name of the SKU. Required on PUT
       # (CreateOrReplace) requests. Possible values include: 'Standard'
       attr_accessor :name

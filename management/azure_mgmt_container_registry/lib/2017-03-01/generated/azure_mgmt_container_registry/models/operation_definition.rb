@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}.
       attr_accessor :name
 

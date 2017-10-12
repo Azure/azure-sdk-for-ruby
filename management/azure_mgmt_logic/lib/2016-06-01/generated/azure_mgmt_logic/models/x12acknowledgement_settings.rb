@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] The value indicating whether technical
       # acknowledgement is needed.
       attr_accessor :need_technical_acknowledgement

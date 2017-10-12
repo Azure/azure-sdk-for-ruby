@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Usage>] The list Storage Resource Usages.
       attr_accessor :value
 

@@ -19,7 +19,6 @@ module Azure::ARM::Network::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NetworkOperationStatus] Status of the AzureAsuncOperation.
       # Possible values include: 'InProgress', 'Succeeded', 'Failed'
       attr_accessor :status

@@ -8,11 +8,10 @@ module Azure::ARM::CDN::Api_2016_10_02
     #
     # Edge node of CDN service.
     #
-    class EdgeNode < MsRestAzure::Resource
+    class EdgeNode < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<IpAddressGroup>] List of ip address groups.
       attr_accessor :ip_address_groups
 

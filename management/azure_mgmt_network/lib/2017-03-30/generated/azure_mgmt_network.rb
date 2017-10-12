@@ -25,7 +25,9 @@ module Azure::ARM::Network::Api_2017_03_30
   autoload :NetworkManagementClient,                            '2017-03-30/generated/azure_mgmt_network/network_management_client.rb'
 
   module Models
+    autoload :Resource,                                           '2017-03-30/generated/azure_mgmt_network/models/resource.rb'
     autoload :ServiceEndpointPropertiesFormat,                    '2017-03-30/generated/azure_mgmt_network/models/service_endpoint_properties_format.rb'
+    autoload :SubResource,                                        '2017-03-30/generated/azure_mgmt_network/models/sub_resource.rb'
     autoload :NetworkInterfaceListResult,                         '2017-03-30/generated/azure_mgmt_network/models/network_interface_list_result.rb'
     autoload :PublicIPAddressDnsSettings,                         '2017-03-30/generated/azure_mgmt_network/models/public_ipaddress_dns_settings.rb'
     autoload :PublicIPAddressSku,                                 '2017-03-30/generated/azure_mgmt_network/models/public_ipaddress_sku.rb'

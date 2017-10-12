@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Set to 'true' if regular updates are available for
       # the device.
       attr_accessor :regular_updates_available

@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Description of a backup which will be performed.
     #
-    class BackupRequest < MsRestAzure::ProxyOnlyResource
+    class BackupRequest < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the backup.
       attr_accessor :backup_request_name
 

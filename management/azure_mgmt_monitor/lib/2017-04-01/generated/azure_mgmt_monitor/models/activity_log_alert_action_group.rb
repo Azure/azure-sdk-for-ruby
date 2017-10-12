@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2017_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resourceId of the action group. This cannot be
       # null or empty.
       attr_accessor :action_group_id

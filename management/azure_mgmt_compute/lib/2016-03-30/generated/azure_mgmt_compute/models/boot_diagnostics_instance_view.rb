@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The console screenshot blob URI.
       attr_accessor :console_screenshot_blob_uri
 

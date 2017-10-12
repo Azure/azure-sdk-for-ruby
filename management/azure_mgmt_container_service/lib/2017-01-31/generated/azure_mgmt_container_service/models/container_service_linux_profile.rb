@@ -12,7 +12,6 @@ module Azure::ARM::ContainerService::Api_2017_01_31
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The administrator username to use for Linux VMs.
       attr_accessor :admin_username
 

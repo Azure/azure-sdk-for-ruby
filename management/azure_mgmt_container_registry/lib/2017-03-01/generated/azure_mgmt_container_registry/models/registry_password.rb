@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [PasswordName] The password name. Possible values include:
       # 'password', 'password2'
       attr_accessor :name

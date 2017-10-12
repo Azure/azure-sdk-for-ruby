@@ -13,7 +13,6 @@ module Azure::ARM::Network::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Gets or sets List of address blocks reserved
       # for this virtual network in CIDR notation
       attr_accessor :address_prefixes

@@ -12,7 +12,6 @@ module Azure::ARM::Graph::Api_1_6
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Group display name
       attr_accessor :display_name
 

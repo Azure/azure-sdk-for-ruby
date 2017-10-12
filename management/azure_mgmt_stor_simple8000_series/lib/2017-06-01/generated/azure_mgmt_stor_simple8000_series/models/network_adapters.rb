@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [NetInterfaceId] The ID of the network adapter. Possible values
       # include: 'Invalid', 'Data0', 'Data1', 'Data2', 'Data3', 'Data4',
       # 'Data5'

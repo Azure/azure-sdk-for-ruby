@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Duration] The lock duration. See:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
       attr_accessor :lock_duration_as_iso8601

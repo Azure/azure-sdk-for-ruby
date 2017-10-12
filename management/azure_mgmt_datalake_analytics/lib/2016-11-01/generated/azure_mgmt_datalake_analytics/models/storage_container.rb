@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the unique identifier of the blob container.
       attr_accessor :id
 

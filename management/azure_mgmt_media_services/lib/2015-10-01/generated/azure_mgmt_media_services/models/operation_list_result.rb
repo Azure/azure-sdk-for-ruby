@@ -12,7 +12,6 @@ module Azure::ARM::MediaServices::Api_2015_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Operation>] List of Media Services operations supported
       # by the Microsoft.Media resource provider.
       attr_accessor :value

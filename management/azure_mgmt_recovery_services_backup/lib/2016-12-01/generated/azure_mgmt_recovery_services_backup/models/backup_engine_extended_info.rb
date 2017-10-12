@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Database name of backup engine.
       attr_accessor :database_name
 

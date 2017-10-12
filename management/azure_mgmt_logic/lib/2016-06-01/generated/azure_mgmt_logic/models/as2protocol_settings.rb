@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AS2MessageConnectionSettings] The message connection settings.
       attr_accessor :message_connection_settings
 

@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The connector resource format.
     #
-    class ConnectorResourceFormat < MsRestAzure::ProxyResource
+    class ConnectorResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] ID of the connector.
       attr_accessor :connector_id
 

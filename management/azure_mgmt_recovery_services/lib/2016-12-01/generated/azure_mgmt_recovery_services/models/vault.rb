@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServices::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [VaultProperties]
       attr_accessor :properties
 

@@ -12,13 +12,12 @@ module Azure::ARM::Monitor::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
 
       def initialize
-        @odata.type = "Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition"
+        @odatatype = "Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition"
       end
 
-      attr_accessor :odata.type
+      attr_accessor :odatatype
 
       # @return [Duration] the period of time (in ISO 8601 duration format)
       # that is used to monitor alert activity based on the threshold. If
@@ -52,7 +51,7 @@ module Azure::ARM::Monitor::Api_2016_03_01
                   class_name: 'RuleDataSource'
                 }
               },
-              odata.type: {
+              odatatype: {
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {

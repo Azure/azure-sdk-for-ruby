@@ -9,11 +9,10 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
     # Base class for restore request. Workload-specific restore requests are
     # derived from this class.
     #
-    class RestoreRequestResource < MsRestAzure::Resource
+    class RestoreRequestResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RestoreRequest] RestoreRequestResource properties
       attr_accessor :properties
 

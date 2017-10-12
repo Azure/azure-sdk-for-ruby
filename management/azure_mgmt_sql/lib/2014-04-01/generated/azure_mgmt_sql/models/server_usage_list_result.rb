@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2014_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<ServerUsage>] The list of server metrics for the server.
       attr_accessor :value
 

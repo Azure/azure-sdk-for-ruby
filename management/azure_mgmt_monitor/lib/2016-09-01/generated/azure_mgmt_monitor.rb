@@ -25,6 +25,7 @@ module Azure::ARM::Monitor::Api_2016_09_01
 
   module Models
     autoload :LogSettings,                                        '2016-09-01/generated/azure_mgmt_monitor/models/log_settings.rb'
+    autoload :Resource,                                           '2016-09-01/generated/azure_mgmt_monitor/models/resource.rb'
     autoload :MetricSettings,                                     '2016-09-01/generated/azure_mgmt_monitor/models/metric_settings.rb'
     autoload :ServiceDiagnosticSettingsResourcePatch,             '2016-09-01/generated/azure_mgmt_monitor/models/service_diagnostic_settings_resource_patch.rb'
     autoload :RetentionPolicy,                                    '2016-09-01/generated/azure_mgmt_monitor/models/retention_policy.rb'

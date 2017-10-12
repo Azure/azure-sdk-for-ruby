@@ -12,7 +12,6 @@ module Azure::ARM::MediaServices::Api_2015_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The id of the storage account resource.
       attr_accessor :id
 

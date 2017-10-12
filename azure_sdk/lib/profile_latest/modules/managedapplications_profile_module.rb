@@ -19,6 +19,7 @@ module Azure::Profiles::Management::Profile_Latest
       ApplianceDefinitionListResult = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceDefinitionListResult
       ApplianceListResult = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceListResult
       ApplianceArtifact = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceArtifact
+      Resource = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Resource
       GenericResource = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::GenericResource
       Appliance = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance
       AppliancePatchable = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::AppliancePatchable
@@ -91,6 +92,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def appliance_artifact
           Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceArtifact
+        end
+        def resource
+          Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Resource
         end
         def generic_resource
           Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::GenericResource

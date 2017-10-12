@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2017_09_01
     #
     # Response for ApplicationGatewayAvailableSslOptions API service call.
     #
-    class ApplicationGatewayAvailableSslOptions < MsRestAzure::Resource
+    class ApplicationGatewayAvailableSslOptions < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<SubResource>] List of available Ssl predefined policy.
       attr_accessor :predefined_policies
 

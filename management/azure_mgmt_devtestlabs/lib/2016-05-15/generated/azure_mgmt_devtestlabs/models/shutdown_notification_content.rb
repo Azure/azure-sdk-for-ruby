@@ -14,7 +14,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URL to skip auto-shutdown.
       attr_accessor :skip_url
 

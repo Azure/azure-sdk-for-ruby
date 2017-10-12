@@ -12,7 +12,6 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The URI of the user's Key vault.
       attr_accessor :key_vault_uri
 

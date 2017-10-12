@@ -14,6 +14,7 @@ module Azure::Search::Management::Profile_Latest
       CheckNameAvailabilityInput = Azure::ARM::Search::Api_2015_08_19::Models::CheckNameAvailabilityInput
       SearchManagementRequestOptions = Azure::ARM::Search::Api_2015_08_19::Models::SearchManagementRequestOptions
       AdminKeyResult = Azure::ARM::Search::Api_2015_08_19::Models::AdminKeyResult
+      Resource = Azure::ARM::Search::Api_2015_08_19::Models::Resource
       QueryKey = Azure::ARM::Search::Api_2015_08_19::Models::QueryKey
       CheckNameAvailabilityOutput = Azure::ARM::Search::Api_2015_08_19::Models::CheckNameAvailabilityOutput
       SearchService = Azure::ARM::Search::Api_2015_08_19::Models::SearchService
@@ -73,6 +74,9 @@ module Azure::Search::Management::Profile_Latest
         end
         def admin_key_result
           Azure::ARM::Search::Api_2015_08_19::Models::AdminKeyResult
+        end
+        def resource
+          Azure::ARM::Search::Api_2015_08_19::Models::Resource
         end
         def query_key
           Azure::ARM::Search::Api_2015_08_19::Models::QueryKey

@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The key encryption key state for the Vmm.
       attr_accessor :kek_state
 

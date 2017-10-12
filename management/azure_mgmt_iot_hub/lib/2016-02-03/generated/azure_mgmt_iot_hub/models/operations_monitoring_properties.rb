@@ -14,7 +14,6 @@ module Azure::ARM::IotHub::Api_2016_02_03
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => OperationMonitoringLevel}]
       attr_accessor :events
 

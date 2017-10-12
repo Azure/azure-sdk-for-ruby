@@ -43,6 +43,7 @@ module Azure::ARM::Network::Api_2015_05_01_preview
   module Models
     autoload :LoadBalancerListResult,                             '2015-05-01-preview/generated/azure_mgmt_network/models/load_balancer_list_result.rb'
     autoload :AddressSpace,                                       '2015-05-01-preview/generated/azure_mgmt_network/models/address_space.rb'
+    autoload :SubResource,                                        '2015-05-01-preview/generated/azure_mgmt_network/models/sub_resource.rb'
     autoload :ExpressRouteCircuitPeeringListResult,               '2015-05-01-preview/generated/azure_mgmt_network/models/express_route_circuit_peering_list_result.rb'
     autoload :VirtualNetworkGatewayListResult,                    '2015-05-01-preview/generated/azure_mgmt_network/models/virtual_network_gateway_list_result.rb'
     autoload :ExpressRouteServiceProviderBandwidthsOffered,       '2015-05-01-preview/generated/azure_mgmt_network/models/express_route_service_provider_bandwidths_offered.rb'
@@ -79,6 +80,7 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     autoload :AuthorizationListResult,                            '2015-05-01-preview/generated/azure_mgmt_network/models/authorization_list_result.rb'
     autoload :LocalNetworkGatewayListResult,                      '2015-05-01-preview/generated/azure_mgmt_network/models/local_network_gateway_list_result.rb'
     autoload :NetworkSecurityGroupListResult,                     '2015-05-01-preview/generated/azure_mgmt_network/models/network_security_group_list_result.rb'
+    autoload :Resource,                                           '2015-05-01-preview/generated/azure_mgmt_network/models/resource.rb'
     autoload :ExpressRouteCircuitsStatsListResult,                '2015-05-01-preview/generated/azure_mgmt_network/models/express_route_circuits_stats_list_result.rb'
     autoload :NetworkInterfaceDnsSettings,                        '2015-05-01-preview/generated/azure_mgmt_network/models/network_interface_dns_settings.rb'
     autoload :ExpressRouteCircuitArpTable,                        '2015-05-01-preview/generated/azure_mgmt_network/models/express_route_circuit_arp_table.rb'

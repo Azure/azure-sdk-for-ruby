@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServices::Api_2016_12_01
     #
     # The backup storage config.
     #
-    class BackupStorageConfig < MsRestAzure::Resource
+    class BackupStorageConfig < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageModelType] Storage model type. Possible values include:
       # 'Invalid', 'GeoRedundant', 'LocallyRedundant'
       attr_accessor :storage_model_type

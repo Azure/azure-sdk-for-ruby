@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuNameEnum] The name of the SKU. Possible values include:
       # 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'Standalone'
       attr_accessor :name

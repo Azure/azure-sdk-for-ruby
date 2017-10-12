@@ -13,7 +13,6 @@ module Azure::ARM::Web::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ServiceSpecification]
       attr_accessor :service_specification
 

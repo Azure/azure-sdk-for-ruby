@@ -15,7 +15,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [OperatingSystemTypes] This property allows you to specify the
       # type of the OS that is included in the disk if creating a VM from
       # user-image or a specialized VHD. <br><br> Possible values are: <br><br>
@@ -54,7 +53,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       # are using a platform image, you also use the imageReference element
       # described above. If you are using a marketplace image, you  also use
       # the plan element previously described. Possible values include:
-      # 'fromImage', 'empty', 'attach'
+      # 'FromImage', 'Empty', 'Attach'
       attr_accessor :create_option
 
       # @return [Integer] Specifies the size of an empty data disk in

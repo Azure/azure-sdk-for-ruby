@@ -13,7 +13,6 @@ module Azure::ARM::MobileEngagement::Api_2014_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] Device identifiers to push as a JSON array of
       # strings. Note that if you want to push the same campaign several times
       # to the same device, you need to make several API calls.

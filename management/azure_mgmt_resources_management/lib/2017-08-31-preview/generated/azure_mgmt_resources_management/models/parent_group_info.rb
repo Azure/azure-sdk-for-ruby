@@ -12,7 +12,6 @@ module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the parent management group. E.g.
       # /providers/Microsoft.Management/managementGroups/30000000-0000-0000-0000-000000000000
       attr_accessor :parent_id

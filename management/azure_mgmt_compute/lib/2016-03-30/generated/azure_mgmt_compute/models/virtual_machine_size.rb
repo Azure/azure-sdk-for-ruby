@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the virtual machine size.
       attr_accessor :name
 

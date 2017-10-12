@@ -13,6 +13,7 @@ module Azure::Relay::Management::Profile_Latest
     module Models
       RelayNamespaceListResult = Azure::ARM::Relay::Api_2017_04_01::Models::RelayNamespaceListResult
       OperationDisplay = Azure::ARM::Relay::Api_2017_04_01::Models::OperationDisplay
+      Resource = Azure::ARM::Relay::Api_2017_04_01::Models::Resource
       CheckNameAvailability = Azure::ARM::Relay::Api_2017_04_01::Models::CheckNameAvailability
       HybridConnectionListResult = Azure::ARM::Relay::Api_2017_04_01::Models::HybridConnectionListResult
       CheckNameAvailabilityResult = Azure::ARM::Relay::Api_2017_04_01::Models::CheckNameAvailabilityResult
@@ -82,6 +83,9 @@ module Azure::Relay::Management::Profile_Latest
         end
         def operation_display
           Azure::ARM::Relay::Api_2017_04_01::Models::OperationDisplay
+        end
+        def resource
+          Azure::ARM::Relay::Api_2017_04_01::Models::Resource
         end
         def check_name_availability
           Azure::ARM::Relay::Api_2017_04_01::Models::CheckNameAvailability

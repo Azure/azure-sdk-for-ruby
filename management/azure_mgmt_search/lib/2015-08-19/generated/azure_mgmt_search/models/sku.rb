@@ -13,7 +13,6 @@ module Azure::ARM::Search::Api_2015_08_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The SKU of the Search service. Valid values include:
       # 'free': Shared service. 'basic': Dedicated service with up to 3
       # replicas. 'standard': Dedicated service with up to 12 partitions and 12

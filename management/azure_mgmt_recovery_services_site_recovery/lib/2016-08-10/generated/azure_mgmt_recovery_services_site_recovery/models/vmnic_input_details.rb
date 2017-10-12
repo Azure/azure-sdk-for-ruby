@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The nic Id.
       attr_accessor :nic_id
 

@@ -12,7 +12,6 @@ module Azure::ARM::Subscriptions::Api_2015_11_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the subscription location placement Id.
       attr_accessor :location_placement_id
 

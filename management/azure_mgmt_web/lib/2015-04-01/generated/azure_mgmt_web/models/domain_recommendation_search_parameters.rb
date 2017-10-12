@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Keywords to be used for generating domain
       # recommendations.
       attr_accessor :keywords

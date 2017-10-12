@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The error code.
       attr_accessor :code
 

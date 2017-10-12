@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [HttpAuthentication] Gets or sets the authentication method of
       # the request.
       attr_accessor :authentication

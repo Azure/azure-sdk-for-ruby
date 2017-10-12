@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The relationship link resource format.
     #
-    class RelationshipLinkResourceFormat < MsRestAzure::ProxyResource
+    class RelationshipLinkResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Localized display name for the
       # Relationship Link.
       attr_accessor :display_name

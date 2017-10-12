@@ -9,7 +9,9 @@ module Azure::Network::Management::Profile_2017_03_30
     PublicIPAddresses = Azure::ARM::Network::Api_2017_03_30::PublicIPAddresses
 
     module Models
+      Resource = Azure::ARM::Network::Api_2017_03_30::Models::Resource
       ServiceEndpointPropertiesFormat = Azure::ARM::Network::Api_2017_03_30::Models::ServiceEndpointPropertiesFormat
+      SubResource = Azure::ARM::Network::Api_2017_03_30::Models::SubResource
       NetworkInterfaceListResult = Azure::ARM::Network::Api_2017_03_30::Models::NetworkInterfaceListResult
       PublicIPAddressDnsSettings = Azure::ARM::Network::Api_2017_03_30::Models::PublicIPAddressDnsSettings
       PublicIPAddressSku = Azure::ARM::Network::Api_2017_03_30::Models::PublicIPAddressSku
@@ -76,8 +78,14 @@ module Azure::Network::Management::Profile_2017_03_30
       end
 
       class ModelClasses
+        def resource
+          Azure::ARM::Network::Api_2017_03_30::Models::Resource
+        end
         def service_endpoint_properties_format
           Azure::ARM::Network::Api_2017_03_30::Models::ServiceEndpointPropertiesFormat
+        end
+        def sub_resource
+          Azure::ARM::Network::Api_2017_03_30::Models::SubResource
         end
         def network_interface_list_result
           Azure::ARM::Network::Api_2017_03_30::Models::NetworkInterfaceListResult

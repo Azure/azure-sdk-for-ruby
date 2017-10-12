@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Current state of the app.
       attr_accessor :state
 

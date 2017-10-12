@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_03_01
     #
     # A class that describes a test that failed during NSG and UDR validation.
     #
-    class VnetValidationTestFailure < MsRestAzure::ProxyOnlyResource
+    class VnetValidationTestFailure < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the test that failed.
       attr_accessor :test_name
 

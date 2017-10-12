@@ -38,6 +38,7 @@ module Azure::ARM::Storage::Api_2016_12_01
     autoload :StorageAccountKey,                                  '2016-12-01/generated/azure_mgmt_storage/models/storage_account_key.rb'
     autoload :UsageListResult,                                    '2016-12-01/generated/azure_mgmt_storage/models/usage_list_result.rb'
     autoload :Sku,                                                '2016-12-01/generated/azure_mgmt_storage/models/sku.rb'
+    autoload :Resource,                                           '2016-12-01/generated/azure_mgmt_storage/models/resource.rb'
     autoload :Encryption,                                         '2016-12-01/generated/azure_mgmt_storage/models/encryption.rb'
     autoload :AccountSasParameters,                               '2016-12-01/generated/azure_mgmt_storage/models/account_sas_parameters.rb'
     autoload :StorageAccountCheckNameAvailabilityParameters,      '2016-12-01/generated/azure_mgmt_storage/models/storage_account_check_name_availability_parameters.rb'

@@ -12,7 +12,6 @@ module Azure::ARM::Authorization::Api_2015_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The role name.
       attr_accessor :role_name
 

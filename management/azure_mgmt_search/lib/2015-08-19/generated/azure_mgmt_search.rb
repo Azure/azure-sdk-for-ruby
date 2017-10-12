@@ -30,6 +30,7 @@ module Azure::ARM::Search::Api_2015_08_19
     autoload :CheckNameAvailabilityInput,                         '2015-08-19/generated/azure_mgmt_search/models/check_name_availability_input.rb'
     autoload :SearchManagementRequestOptions,                     '2015-08-19/generated/azure_mgmt_search/models/search_management_request_options.rb'
     autoload :AdminKeyResult,                                     '2015-08-19/generated/azure_mgmt_search/models/admin_key_result.rb'
+    autoload :Resource,                                           '2015-08-19/generated/azure_mgmt_search/models/resource.rb'
     autoload :QueryKey,                                           '2015-08-19/generated/azure_mgmt_search/models/query_key.rb'
     autoload :CheckNameAvailabilityOutput,                        '2015-08-19/generated/azure_mgmt_search/models/check_name_availability_output.rb'
     autoload :SearchService,                                      '2015-08-19/generated/azure_mgmt_search/models/search_service.rb'

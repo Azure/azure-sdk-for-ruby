@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2015_06_15
     #
     # Application gateway resource
     #
-    class ApplicationGateway < MsRestAzure::Resource
+    class ApplicationGateway < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [ApplicationGatewaySku] SKU of the application gateway
       # resource.
       attr_accessor :sku

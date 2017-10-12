@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_09_01
     #
     # Authentication certificates of an application gateway.
     #
-    class ApplicationGatewayAuthenticationCertificate < MsRestAzure::SubResource
+    class ApplicationGatewayAuthenticationCertificate < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Certificate public data.
       attr_accessor :data
 

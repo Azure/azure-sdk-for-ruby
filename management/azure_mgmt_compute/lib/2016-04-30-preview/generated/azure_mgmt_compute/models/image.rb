@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     #
     # Describes an Image.
     #
-    class Image < MsRestAzure::Resource
+    class Image < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SubResource] The source virtual machine from which Image is
       # created.
       attr_accessor :source_virtual_machine

@@ -12,7 +12,6 @@ module Azure::ARM::IotHub::Api_2017_01_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The job identifier.
       attr_accessor :job_id
 

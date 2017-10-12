@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Instance of an app.
     #
-    class SiteInstance < MsRestAzure::ProxyOnlyResource
+    class SiteInstance < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of instance.
       attr_accessor :site_instance_name
 

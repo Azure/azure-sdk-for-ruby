@@ -12,7 +12,6 @@ module Azure::ARM::ServerManagement::Api_2016_07_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Location of the resource.
       attr_accessor :location
 

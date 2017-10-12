@@ -12,7 +12,6 @@ module Azure::ARM::Redis::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [RedisKeyType] Which Redis access key to reset. Possible values
       # include: 'Primary', 'Secondary'
       attr_accessor :key_type

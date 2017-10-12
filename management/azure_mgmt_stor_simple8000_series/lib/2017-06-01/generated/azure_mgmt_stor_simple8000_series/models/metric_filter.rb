@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [MetricNameFilter] Specifies the metric name filter specifying
       # the name of the metric to be filtered on. Only 'Equality' operator is
       # supported for this property.

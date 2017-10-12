@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Additional unhealthy nodes percentage
       attr_accessor :max_percent_delta_unhealthy_nodes
 

@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2015_04_01
     #
     # A top level domain object.
     #
-    class TopLevelDomain < MsRestAzure::ProxyOnlyResource
+    class TopLevelDomain < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of the top level domain.
       attr_accessor :domain_name
 

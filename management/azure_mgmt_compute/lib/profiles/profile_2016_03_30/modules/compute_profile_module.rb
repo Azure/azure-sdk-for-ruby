@@ -18,6 +18,7 @@ module Azure::Compute::Management::Profile_2016_03_30
     module Models
       DiagnosticsProfile = Azure::ARM::Compute::Api_2016_03_30::Models::DiagnosticsProfile
       VirtualMachineExtensionHandlerInstanceView = Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
+      SubResource = Azure::ARM::Compute::Api_2016_03_30::Models::SubResource
       VirtualMachineAgentInstanceView = Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineAgentInstanceView
       AvailabilitySetListResult = Azure::ARM::Compute::Api_2016_03_30::Models::AvailabilitySetListResult
       DiskInstanceView = Azure::ARM::Compute::Api_2016_03_30::Models::DiskInstanceView
@@ -34,6 +35,7 @@ module Azure::Compute::Management::Profile_2016_03_30
       VirtualMachineSize = Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineSize
       ListUsagesResult = Azure::ARM::Compute::Api_2016_03_30::Models::ListUsagesResult
       VirtualMachineScaleSetSkuCapacity = Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineScaleSetSkuCapacity
+      Resource = Azure::ARM::Compute::Api_2016_03_30::Models::Resource
       ApiError = Azure::ARM::Compute::Api_2016_03_30::Models::ApiError
       HardwareProfile = Azure::ARM::Compute::Api_2016_03_30::Models::HardwareProfile
       VirtualMachineIdentity = Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineIdentity
@@ -163,6 +165,9 @@ module Azure::Compute::Management::Profile_2016_03_30
         def virtual_machine_extension_handler_instance_view
           Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineExtensionHandlerInstanceView
         end
+        def sub_resource
+          Azure::ARM::Compute::Api_2016_03_30::Models::SubResource
+        end
         def virtual_machine_agent_instance_view
           Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineAgentInstanceView
         end
@@ -210,6 +215,9 @@ module Azure::Compute::Management::Profile_2016_03_30
         end
         def virtual_machine_scale_set_sku_capacity
           Azure::ARM::Compute::Api_2016_03_30::Models::VirtualMachineScaleSetSkuCapacity
+        end
+        def resource
+          Azure::ARM::Compute::Api_2016_03_30::Models::Resource
         end
         def api_error
           Azure::ARM::Compute::Api_2016_03_30::Models::ApiError

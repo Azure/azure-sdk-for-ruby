@@ -12,7 +12,6 @@ module Azure::ARM::MachineLearning::Api_2017_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The source graph node's identifier.
       attr_accessor :source_node_id
 

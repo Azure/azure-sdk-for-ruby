@@ -13,7 +13,6 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the primary secret key.
       attr_accessor :primary_secret_key
 

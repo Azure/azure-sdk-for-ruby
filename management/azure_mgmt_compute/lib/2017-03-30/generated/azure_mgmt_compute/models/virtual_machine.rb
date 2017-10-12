@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2017_03_30
     #
     # Describes a Virtual Machine.
     #
-    class VirtualMachine < MsRestAzure::Resource
+    class VirtualMachine < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Plan] Specifies information about the marketplace image used
       # to create the virtual machine. This element is only used for
       # marketplace images. Before you can use a marketplace image from an API,
@@ -85,6 +84,9 @@ module Azure::ARM::Compute::Api_2017_03_30
       # @return [VirtualMachineIdentity] The identity of the virtual machine,
       # if configured.
       attr_accessor :identity
+
+      # @return [Array<String>] The virtual machine zones.
+      attr_accessor :zones
 
 
       #
@@ -254,6 +256,20 @@ module Azure::ARM::Compute::Api_2017_03_30
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineIdentity'
+                }
+              },
+              zones: {
+                required: false,
+                serialized_name: 'zones',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

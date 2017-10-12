@@ -12,7 +12,6 @@ module Azure::ARM::Resources::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Type of count.
       attr_accessor :type
 

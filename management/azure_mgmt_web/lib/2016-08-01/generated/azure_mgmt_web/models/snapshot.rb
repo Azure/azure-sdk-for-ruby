@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # A snapshot of an app.
     #
-    class Snapshot < MsRestAzure::ProxyOnlyResource
+    class Snapshot < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The time the snapshot was taken.
       attr_accessor :time
 

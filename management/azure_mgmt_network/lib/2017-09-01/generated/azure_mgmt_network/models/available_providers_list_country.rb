@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The country name.
       attr_accessor :country_name
 

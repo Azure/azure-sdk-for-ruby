@@ -12,7 +12,6 @@ module Azure::ARM::KeyVault::Api_2016_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return The Azure Active Directory tenant ID that should be used for
       # authenticating requests to the key vault.
       attr_accessor :tenant_id

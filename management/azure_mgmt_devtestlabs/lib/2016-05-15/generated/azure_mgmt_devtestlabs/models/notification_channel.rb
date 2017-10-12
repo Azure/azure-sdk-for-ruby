@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     #
     # A notification.
     #
-    class NotificationChannel < MsRestAzure::Resource
+    class NotificationChannel < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The webhook URL to send notifications to.
       attr_accessor :web_hook_url
 

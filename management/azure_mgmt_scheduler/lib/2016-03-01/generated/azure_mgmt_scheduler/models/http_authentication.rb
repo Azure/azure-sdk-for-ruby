@@ -13,7 +13,6 @@ module Azure::ARM::Scheduler::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [HttpAuthenticationType] Gets or sets the HTTP authentication
       # type. Possible values include: 'NotSpecified', 'ClientCertificate',
       # 'ActiveDirectoryOAuth', 'Basic'

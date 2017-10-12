@@ -5,44 +5,44 @@
 require 'azure_mgmt_traffic_manager'
 
 module Azure::TrafficManager::Management::Profile_2017_09_01_Preview
-    TrafficManagerUserMetricsKeys = Azure::ARM::TrafficManager::Api_2017_05_01::TrafficManagerUserMetricsKeys
-    Endpoints = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Endpoints
-    Profiles = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Profiles
-    GeographicHierarchies = Azure::ARM::TrafficManager::Api_2017_09_01_preview::GeographicHierarchies
+    Endpoints = Azure::ARM::TrafficManager::Api_2017_05_01::Endpoints
+    Profiles = Azure::ARM::TrafficManager::Api_2017_05_01::Profiles
+    GeographicHierarchies = Azure::ARM::TrafficManager::Api_2017_05_01::GeographicHierarchies
     HeatMap = Azure::ARM::TrafficManager::Api_2017_09_01_preview::HeatMap
+    TrafficManagerUserMetricsKeys = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerUserMetricsKeys
 
     module Models
-      TrafficManagerUserMetricsKeyModel = Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerUserMetricsKeyModel
-      TrafficManagerNameAvailability = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerNameAvailability
-      Region = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Region
+      TrafficManagerNameAvailability = Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerNameAvailability
+      Region = Azure::ARM::TrafficManager::Api_2017_05_01::Models::Region
+      ProfileListResult = Azure::ARM::TrafficManager::Api_2017_05_01::Models::ProfileListResult
+      CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::ARM::TrafficManager::Api_2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+      MonitorConfig = Azure::ARM::TrafficManager::Api_2017_05_01::Models::MonitorConfig
+      DnsConfig = Azure::ARM::TrafficManager::Api_2017_05_01::Models::DnsConfig
+      Endpoint = Azure::ARM::TrafficManager::Api_2017_05_01::Models::Endpoint
+      TrafficManagerGeographicHierarchy = Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerGeographicHierarchy
+      Profile = Azure::ARM::TrafficManager::Api_2017_05_01::Models::Profile
+      EndpointStatus = Azure::ARM::TrafficManager::Api_2017_05_01::Models::EndpointStatus
+      EndpointMonitorStatus = Azure::ARM::TrafficManager::Api_2017_05_01::Models::EndpointMonitorStatus
+      ProfileMonitorStatus = Azure::ARM::TrafficManager::Api_2017_05_01::Models::ProfileMonitorStatus
+      MonitorProtocol = Azure::ARM::TrafficManager::Api_2017_05_01::Models::MonitorProtocol
+      ProfileStatus = Azure::ARM::TrafficManager::Api_2017_05_01::Models::ProfileStatus
+      TrafficRoutingMethod = Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficRoutingMethod
       DeleteOperationResult = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::DeleteOperationResult
-      DnsConfig = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::DnsConfig
-      TrafficFlow = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficFlow
       HeatMapEndpoint = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::HeatMapEndpoint
       Resource = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Resource
-      CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+      TrafficFlow = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficFlow
       QueryExperience = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::QueryExperience
-      ProfileListResult = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProfileListResult
-      MonitorConfig = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::MonitorConfig
-      ProxyResource = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProxyResource
-      Endpoint = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Endpoint
-      Profile = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Profile
-      TrafficManagerGeographicHierarchy = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerGeographicHierarchy
       TrackedResource = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrackedResource
+      ProxyResource = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProxyResource
       HeatMapModel = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::HeatMapModel
-      EndpointStatus = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::EndpointStatus
-      EndpointMonitorStatus = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::EndpointMonitorStatus
-      ProfileMonitorStatus = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProfileMonitorStatus
-      MonitorProtocol = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::MonitorProtocol
-      ProfileStatus = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProfileStatus
-      TrafficRoutingMethod = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficRoutingMethod
+      TrafficManagerUserMetricsKeyModel = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
     end
 
     #
     # TrafficManager
     #
     class TrafficManagerClass
-      attr_reader :traffic_manager_user_metrics_keys, :endpoints, :profiles, :geographic_hierarchies, :heat_map, :configurable, :base_url, :options, :model_classes
+      attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
 
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
@@ -51,16 +51,16 @@ module Azure::TrafficManager::Management::Profile_2017_09_01_Preview
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
-        @traffic_manager_user_metrics_keys = client_0.traffic_manager_user_metrics_keys
+        @endpoints = client_0.endpoints
+        @profiles = client_0.profiles
+        @geographic_hierarchies = client_0.geographic_hierarchies
 
         client_1 = Azure::ARM::TrafficManager::Api_2017_09_01_preview::TrafficManagerManagementClient.new(configurable.credentials, base_url, options)
         if(client_1.respond_to?(:subscription_id))
           client_1.subscription_id = configurable.subscription_id
         end
-        @endpoints = client_1.endpoints
-        @profiles = client_1.profiles
-        @geographic_hierarchies = client_1.geographic_hierarchies
         @heat_map = client_1.heat_map
+        @traffic_manager_user_metrics_keys = client_1.traffic_manager_user_metrics_keys
 
         @model_classes = ModelClasses.new
       end
@@ -86,23 +86,53 @@ module Azure::TrafficManager::Management::Profile_2017_09_01_Preview
       end
 
       class ModelClasses
-        def traffic_manager_user_metrics_key_model
-          Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerUserMetricsKeyModel
-        end
         def traffic_manager_name_availability
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerNameAvailability
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerNameAvailability
         end
         def region
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Region
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::Region
+        end
+        def profile_list_result
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::ProfileListResult
+        end
+        def check_traffic_manager_relative_dns_name_availability_parameters
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+        end
+        def monitor_config
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::MonitorConfig
+        end
+        def dns_config
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::DnsConfig
+        end
+        def endpoint
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::Endpoint
+        end
+        def traffic_manager_geographic_hierarchy
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficManagerGeographicHierarchy
+        end
+        def profile
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::Profile
+        end
+        def endpoint_status
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::EndpointStatus
+        end
+        def endpoint_monitor_status
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::EndpointMonitorStatus
+        end
+        def profile_monitor_status
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::ProfileMonitorStatus
+        end
+        def monitor_protocol
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::MonitorProtocol
+        end
+        def profile_status
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::ProfileStatus
+        end
+        def traffic_routing_method
+          Azure::ARM::TrafficManager::Api_2017_05_01::Models::TrafficRoutingMethod
         end
         def delete_operation_result
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::DeleteOperationResult
-        end
-        def dns_config
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::DnsConfig
-        end
-        def traffic_flow
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficFlow
         end
         def heat_map_endpoint
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::HeatMapEndpoint
@@ -110,53 +140,23 @@ module Azure::TrafficManager::Management::Profile_2017_09_01_Preview
         def resource
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Resource
         end
-        def check_traffic_manager_relative_dns_name_availability_parameters
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+        def traffic_flow
+          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficFlow
         end
         def query_experience
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::QueryExperience
         end
-        def profile_list_result
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProfileListResult
-        end
-        def monitor_config
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::MonitorConfig
+        def tracked_resource
+          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrackedResource
         end
         def proxy_resource
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProxyResource
         end
-        def endpoint
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Endpoint
-        end
-        def profile
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::Profile
-        end
-        def traffic_manager_geographic_hierarchy
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerGeographicHierarchy
-        end
-        def tracked_resource
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrackedResource
-        end
         def heat_map_model
           Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::HeatMapModel
         end
-        def endpoint_status
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::EndpointStatus
-        end
-        def endpoint_monitor_status
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::EndpointMonitorStatus
-        end
-        def profile_monitor_status
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProfileMonitorStatus
-        end
-        def monitor_protocol
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::MonitorProtocol
-        end
-        def profile_status
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::ProfileStatus
-        end
-        def traffic_routing_method
-          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficRoutingMethod
+        def traffic_manager_user_metrics_key_model
+          Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
         end
       end
     end

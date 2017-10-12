@@ -62,6 +62,7 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
     autoload :ServiceBusDataSourceProperties,                     '2016-03-01/generated/azure_mgmt_stream_analytics/models/service_bus_data_source_properties.rb'
     autoload :InputListResult,                                    '2016-03-01/generated/azure_mgmt_stream_analytics/models/input_list_result.rb'
     autoload :SubscriptionQuotasListResult,                       '2016-03-01/generated/azure_mgmt_stream_analytics/models/subscription_quotas_list_result.rb'
+    autoload :Resource,                                           '2016-03-01/generated/azure_mgmt_stream_analytics/models/resource.rb'
     autoload :OAuthBasedDataSourceProperties,                     '2016-03-01/generated/azure_mgmt_stream_analytics/models/oauth_based_data_source_properties.rb'
     autoload :Input,                                              '2016-03-01/generated/azure_mgmt_stream_analytics/models/input.rb'
     autoload :Transformation,                                     '2016-03-01/generated/azure_mgmt_stream_analytics/models/transformation.rb'

@@ -35,6 +35,7 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
     autoload :EventTypesListResult,                               '2017-09-15-preview/generated/azure_mgmt_event_grid/models/event_types_list_result.rb'
     autoload :TopicSharedAccessKeys,                              '2017-09-15-preview/generated/azure_mgmt_event_grid/models/topic_shared_access_keys.rb'
     autoload :EventSubscriptionUpdateParameters,                  '2017-09-15-preview/generated/azure_mgmt_event_grid/models/event_subscription_update_parameters.rb'
+    autoload :Resource,                                           '2017-09-15-preview/generated/azure_mgmt_event_grid/models/resource.rb'
     autoload :EventSubscriptionsListResult,                       '2017-09-15-preview/generated/azure_mgmt_event_grid/models/event_subscriptions_list_result.rb'
     autoload :EventSubscriptionFullUrl,                           '2017-09-15-preview/generated/azure_mgmt_event_grid/models/event_subscription_full_url.rb'
     autoload :TopicTypesListResult,                               '2017-09-15-preview/generated/azure_mgmt_event_grid/models/topic_types_list_result.rb'

@@ -12,7 +12,6 @@ module Azure::ARM::CDN::Api_2017_04_02
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource type for which the usage is provided.
       attr_accessor :resource_type
 

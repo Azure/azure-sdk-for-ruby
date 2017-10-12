@@ -12,7 +12,6 @@ module Azure::ARM::Authorization::Api_2015_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The role definition ID used in the role assignment.
       attr_accessor :role_definition_id
 

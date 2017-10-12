@@ -13,7 +13,6 @@ module Azure::ARM::Search::Api_2015_08_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The primary admin API key of the Search service.
       attr_accessor :primary_key
 

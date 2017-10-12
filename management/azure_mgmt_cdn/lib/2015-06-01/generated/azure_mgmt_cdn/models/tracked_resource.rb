@@ -8,11 +8,10 @@ module Azure::ARM::CDN::Api_2015_06_01
     #
     # ARM tracked resource
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource location
       attr_accessor :location
 

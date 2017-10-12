@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Virtual Network information contract.
     #
-    class VnetInfo < MsRestAzure::ProxyOnlyResource
+    class VnetInfo < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The Virtual Network's resource ID.
       attr_accessor :vnet_resource_id
 

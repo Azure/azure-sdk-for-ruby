@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The prediction resource format.
     #
-    class PredictionResourceFormat < MsRestAzure::ProxyResource
+    class PredictionResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] Description of the prediction.
       attr_accessor :description
 

@@ -8,11 +8,10 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
     #
     # Parameters supplied to the CreateOrUpdate NotificationHub operation.
     #
-    class NotificationHubCreateOrUpdateParameters < MsRestAzure::Resource
+    class NotificationHubCreateOrUpdateParameters < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The NotificationHub name.
       attr_accessor :notification_hub_create_or_update_parameters_name
 

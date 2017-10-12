@@ -13,7 +13,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Endpoint>] List of CDN endpoints within a profile
       attr_accessor :value
 

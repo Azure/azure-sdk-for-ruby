@@ -24,6 +24,7 @@ module Azure::ARM::IotHub::Api_2017_01_19
   autoload :IotHubClient,                                       '2017-01-19/generated/azure_mgmt_iot_hub/iot_hub_client.rb'
 
   module Models
+    autoload :Resource,                                           '2017-01-19/generated/azure_mgmt_iot_hub/models/resource.rb'
     autoload :SharedAccessSignatureAuthorizationRule,             '2017-01-19/generated/azure_mgmt_iot_hub/models/shared_access_signature_authorization_rule.rb'
     autoload :SharedAccessSignatureAuthorizationRuleListResult,   '2017-01-19/generated/azure_mgmt_iot_hub/models/shared_access_signature_authorization_rule_list_result.rb'
     autoload :EventHubProperties,                                 '2017-01-19/generated/azure_mgmt_iot_hub/models/event_hub_properties.rb'

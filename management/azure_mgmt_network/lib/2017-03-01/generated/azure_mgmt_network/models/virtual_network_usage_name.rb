@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Localized subnet size and usage string.
       attr_accessor :localized_value
 

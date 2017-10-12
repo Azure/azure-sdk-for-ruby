@@ -8,11 +8,10 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
     #
     # A schedule.
     #
-    class Schedule < MsRestAzure::Resource
+    class Schedule < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EnableStatus] The status of the schedule (i.e. Enabled,
       # Disabled). Possible values include: 'Enabled', 'Disabled'
       attr_accessor :status

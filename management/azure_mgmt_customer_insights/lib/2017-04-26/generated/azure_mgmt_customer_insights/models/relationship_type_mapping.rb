@@ -13,7 +13,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<RelationshipTypeFieldMapping>] Maps a profile property
       # with the StrongId of related profile. This is an array to support
       # StrongIds that are composite key as well.

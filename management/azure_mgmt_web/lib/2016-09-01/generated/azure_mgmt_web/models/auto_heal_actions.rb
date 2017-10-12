@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AutoHealActionType] Predefined action to be taken. Possible
       # values include: 'Recycle', 'LogEvent', 'CustomAction'
       attr_accessor :action_type

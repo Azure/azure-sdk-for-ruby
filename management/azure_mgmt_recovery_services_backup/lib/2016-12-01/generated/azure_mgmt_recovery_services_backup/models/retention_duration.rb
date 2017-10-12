@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Count of duration types. Retention duration is
       # obtained by the counting the duration type Count times.
       # For example, when Count = 3 and DurationType = Weeks, retention

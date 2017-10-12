@@ -12,7 +12,6 @@ module Azure::ARM::Web::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Correlation ID of cloning operation. This ID ties
       # multiple cloning operations
       # together to use the same snapshot.

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Graph::Api_1_6
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

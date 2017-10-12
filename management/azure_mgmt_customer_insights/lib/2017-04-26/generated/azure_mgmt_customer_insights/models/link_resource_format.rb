@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The link resource format.
     #
-    class LinkResourceFormat < MsRestAzure::ProxyResource
+    class LinkResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The hub name.
       attr_accessor :tenant_id
 

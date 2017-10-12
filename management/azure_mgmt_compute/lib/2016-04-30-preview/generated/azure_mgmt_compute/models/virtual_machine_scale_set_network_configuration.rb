@@ -9,11 +9,10 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     # Describes a virtual machine scale set network profile's network
     # configurations.
     #
-    class VirtualMachineScaleSetNetworkConfiguration < MsRestAzure::SubResource
+    class VirtualMachineScaleSetNetworkConfiguration < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The network configuration name.
       attr_accessor :name
 

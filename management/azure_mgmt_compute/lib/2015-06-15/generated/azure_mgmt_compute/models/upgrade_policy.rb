@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [UpgradeMode] The upgrade mode. Possible values include:
       # 'Automatic', 'Manual'
       attr_accessor :mode

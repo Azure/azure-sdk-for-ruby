@@ -15,7 +15,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Sku] The SKU (pricing tier) of the CDN profile.
       attr_accessor :sku
 

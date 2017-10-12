@@ -12,7 +12,6 @@ module Azure::ARM::Redis::Api_2017_02_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [SkuName] The type of Redis cache to deploy. Valid values:
       # (Basic, Standard, Premium). Possible values include: 'Basic',
       # 'Standard', 'Premium'

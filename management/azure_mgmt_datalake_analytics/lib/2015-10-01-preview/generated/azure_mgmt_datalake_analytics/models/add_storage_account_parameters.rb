@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageAccountProperties] the properties for the Azure Storage
       # account being added.
       attr_accessor :properties

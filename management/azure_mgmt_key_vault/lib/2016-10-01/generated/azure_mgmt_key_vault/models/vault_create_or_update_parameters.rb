@@ -12,7 +12,6 @@ module Azure::ARM::KeyVault::Api_2016_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The supported Azure location where the key vault
       # should be created.
       attr_accessor :location

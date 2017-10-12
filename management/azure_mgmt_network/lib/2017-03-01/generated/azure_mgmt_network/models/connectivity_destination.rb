@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The ID of the resource to which a connection attempt
       # will be made.
       attr_accessor :resource_id

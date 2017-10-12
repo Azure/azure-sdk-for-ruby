@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights::Api_2015_03_20
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] The number to get from the top.
       attr_accessor :top
 

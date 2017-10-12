@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2015_06_15
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<VirtualMachineScaleSetExtension>] The virtual machine
       # scale set child extension resources.
       attr_accessor :extensions

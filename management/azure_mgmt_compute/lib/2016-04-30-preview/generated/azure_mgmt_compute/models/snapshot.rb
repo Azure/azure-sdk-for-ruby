@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     #
     # Snapshot resource.
     #
-    class Snapshot < MsRestAzure::Resource
+    class Snapshot < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [StorageAccountTypes] the storage account type of the disk.
       # Possible values include: 'Standard_LRS', 'Premium_LRS'
       attr_accessor :account_type

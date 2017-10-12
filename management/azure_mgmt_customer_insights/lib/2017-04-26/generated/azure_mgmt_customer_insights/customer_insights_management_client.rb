@@ -36,6 +36,9 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [Operations] operations
+    attr_reader :operations
+
     # @return [Hubs] hubs
     attr_reader :hubs
 
@@ -97,6 +100,7 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
+      @operations = Operations.new(self)
       @hubs = Hubs.new(self)
       @profiles = Profiles.new(self)
       @interactions = Interactions.new(self)

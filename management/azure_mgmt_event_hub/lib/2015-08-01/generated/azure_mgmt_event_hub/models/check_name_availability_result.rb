@@ -12,7 +12,6 @@ module Azure::ARM::EventHub::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Value indicating Namespace is availability, true if
       # the Namespace is available; otherwise, false.
       attr_accessor :name_available

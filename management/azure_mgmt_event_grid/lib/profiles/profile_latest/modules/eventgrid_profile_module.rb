@@ -19,6 +19,7 @@ module Azure::EventGrid::Management::Profile_Latest
       EventTypesListResult = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::EventTypesListResult
       TopicSharedAccessKeys = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::TopicSharedAccessKeys
       EventSubscriptionUpdateParameters = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::EventSubscriptionUpdateParameters
+      Resource = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::Resource
       EventSubscriptionsListResult = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::EventSubscriptionsListResult
       EventSubscriptionFullUrl = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::EventSubscriptionFullUrl
       TopicTypesListResult = Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::TopicTypesListResult
@@ -99,6 +100,9 @@ module Azure::EventGrid::Management::Profile_Latest
         end
         def event_subscription_update_parameters
           Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::EventSubscriptionUpdateParameters
+        end
+        def resource
+          Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::Resource
         end
         def event_subscriptions_list_result
           Azure::ARM::EventGrid::Api_2017_09_15_preview::Models::EventSubscriptionsListResult

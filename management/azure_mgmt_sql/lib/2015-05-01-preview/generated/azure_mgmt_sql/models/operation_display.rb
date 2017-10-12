@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The localized friendly form of the resource provider
       # name.
       attr_accessor :provider

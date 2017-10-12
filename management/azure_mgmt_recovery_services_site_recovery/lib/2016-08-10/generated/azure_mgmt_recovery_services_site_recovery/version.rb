@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

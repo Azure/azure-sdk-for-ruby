@@ -31,6 +31,7 @@ module Azure::MachineLearning::Management::Profile_2017_01_01
       GraphPackage = Azure::ARM::MachineLearning::Api_2017_01_01::Models::GraphPackage
       StorageAccount = Azure::ARM::MachineLearning::Api_2017_01_01::Models::StorageAccount
       AsyncOperationStatus = Azure::ARM::MachineLearning::Api_2017_01_01::Models::AsyncOperationStatus
+      Resource = Azure::ARM::MachineLearning::Api_2017_01_01::Models::Resource
       PaginatedWebServicesList = Azure::ARM::MachineLearning::Api_2017_01_01::Models::PaginatedWebServicesList
       ExampleRequest = Azure::ARM::MachineLearning::Api_2017_01_01::Models::ExampleRequest
       AsyncOperationErrorInfo = Azure::ARM::MachineLearning::Api_2017_01_01::Models::AsyncOperationErrorInfo
@@ -149,6 +150,9 @@ module Azure::MachineLearning::Management::Profile_2017_01_01
         end
         def async_operation_status
           Azure::ARM::MachineLearning::Api_2017_01_01::Models::AsyncOperationStatus
+        end
+        def resource
+          Azure::ARM::MachineLearning::Api_2017_01_01::Models::Resource
         end
         def paginated_web_services_list
           Azure::ARM::MachineLearning::Api_2017_01_01::Models::PaginatedWebServicesList

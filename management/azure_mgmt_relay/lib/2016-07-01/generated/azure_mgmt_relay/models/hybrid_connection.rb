@@ -8,11 +8,10 @@ module Azure::ARM::Relay::Api_2016_07_01
     #
     # Description of HybridConnection Resource.
     #
-    class HybridConnection < MsRestAzure::Resource
+    class HybridConnection < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The time the HybridConnection was created.
       attr_accessor :created_at
 

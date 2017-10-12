@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2017_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [AccessLevel] Possible values include: 'None', 'Read'
       attr_accessor :access
 

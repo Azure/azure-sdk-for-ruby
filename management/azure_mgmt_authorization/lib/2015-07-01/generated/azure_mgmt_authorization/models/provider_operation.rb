@@ -12,7 +12,6 @@ module Azure::ARM::Authorization::Api_2015_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The operation name.
       attr_accessor :name
 

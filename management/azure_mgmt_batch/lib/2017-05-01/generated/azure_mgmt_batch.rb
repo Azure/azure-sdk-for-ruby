@@ -39,6 +39,7 @@ module Azure::ARM::Batch::Api_2017_05_01
     autoload :BatchAccountRegenerateKeyParameters,                '2017-05-01/generated/azure_mgmt_batch/models/batch_account_regenerate_key_parameters.rb'
     autoload :BatchLocationQuota,                                 '2017-05-01/generated/azure_mgmt_batch/models/batch_location_quota.rb'
     autoload :ActivateApplicationPackageParameters,               '2017-05-01/generated/azure_mgmt_batch/models/activate_application_package_parameters.rb'
+    autoload :Resource,                                           '2017-05-01/generated/azure_mgmt_batch/models/resource.rb'
     autoload :AutoStorageBaseProperties,                          '2017-05-01/generated/azure_mgmt_batch/models/auto_storage_base_properties.rb'
     autoload :BatchAccountListResult,                             '2017-05-01/generated/azure_mgmt_batch/models/batch_account_list_result.rb'
     autoload :ApplicationCreateParameters,                        '2017-05-01/generated/azure_mgmt_batch/models/application_create_parameters.rb'

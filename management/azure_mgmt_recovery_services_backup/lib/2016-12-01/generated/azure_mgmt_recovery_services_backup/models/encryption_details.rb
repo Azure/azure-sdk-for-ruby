@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Identifies whether this backup copy represents an
       # encrypted VM at the time of backup.
       attr_accessor :encryption_enabled

@@ -12,7 +12,6 @@ module Azure::ARM::Search::Api_2015_08_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return A client-generated GUID value that identifies this request. If
       # specified, this will be included in response information as a way to
       # track the request.

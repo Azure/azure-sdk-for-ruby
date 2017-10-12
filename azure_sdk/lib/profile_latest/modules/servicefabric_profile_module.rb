@@ -33,6 +33,7 @@ module Azure::Profiles::Management::Profile_Latest
       ClusterHealthPolicy = Azure::ARM::ServiceFabric::Api_2016_09_01::Models::ClusterHealthPolicy
       ErrorModel = Azure::ARM::ServiceFabric::Api_2016_09_01::Models::ErrorModel
       SettingsSectionDescription = Azure::ARM::ServiceFabric::Api_2016_09_01::Models::SettingsSectionDescription
+      Resource = Azure::ARM::ServiceFabric::Api_2016_09_01::Models::Resource
       Cluster = Azure::ARM::ServiceFabric::Api_2016_09_01::Models::Cluster
       ProvisioningState = Azure::ARM::ServiceFabric::Api_2016_09_01::Models::ProvisioningState
     end
@@ -139,6 +140,9 @@ module Azure::Profiles::Management::Profile_Latest
         end
         def settings_section_description
           Azure::ARM::ServiceFabric::Api_2016_09_01::Models::SettingsSectionDescription
+        end
+        def resource
+          Azure::ARM::ServiceFabric::Api_2016_09_01::Models::Resource
         end
         def cluster
           Azure::ARM::ServiceFabric::Api_2016_09_01::Models::Cluster

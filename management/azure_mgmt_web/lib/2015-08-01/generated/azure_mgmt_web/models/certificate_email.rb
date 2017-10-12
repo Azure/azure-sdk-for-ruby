@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2015_08_01
     #
     # SSL certificate email.
     #
-    class CertificateEmail < MsRestAzure::ProxyOnlyResource
+    class CertificateEmail < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Email id.
       attr_accessor :email_id
 

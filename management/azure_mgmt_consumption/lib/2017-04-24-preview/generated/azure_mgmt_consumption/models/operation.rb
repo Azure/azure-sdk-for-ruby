@@ -12,7 +12,6 @@ module Azure::ARM::Consumption::Api_2017_04_24_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}.
       attr_accessor :name
 

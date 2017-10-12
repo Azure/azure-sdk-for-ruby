@@ -13,7 +13,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets the name of the impact dimension. e.g.,
       # CPUChange, DiskSpaceChange, NumberOfQueriesAffected.
       attr_accessor :dimension_name

@@ -41,6 +41,7 @@ module Azure::ARM::Monitor::Api_2015_04_01
     autoload :OperationDisplay,                                   '2015-04-01/generated/azure_mgmt_monitor/models/operation_display.rb'
     autoload :TimeWindow,                                         '2015-04-01/generated/azure_mgmt_monitor/models/time_window.rb'
     autoload :Operation,                                          '2015-04-01/generated/azure_mgmt_monitor/models/operation.rb'
+    autoload :Resource,                                           '2015-04-01/generated/azure_mgmt_monitor/models/resource.rb'
     autoload :OperationListResult,                                '2015-04-01/generated/azure_mgmt_monitor/models/operation_list_result.rb'
     autoload :AutoscaleSettingResource,                           '2015-04-01/generated/azure_mgmt_monitor/models/autoscale_setting_resource.rb'
     autoload :MetricStatisticType,                                '2015-04-01/generated/azure_mgmt_monitor/models/metric_statistic_type.rb'

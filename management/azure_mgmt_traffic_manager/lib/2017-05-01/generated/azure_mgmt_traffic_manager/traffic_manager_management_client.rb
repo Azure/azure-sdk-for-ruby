@@ -45,9 +45,6 @@ module Azure::ARM::TrafficManager::Api_2017_05_01
     # @return [GeographicHierarchies] geographic_hierarchies
     attr_reader :geographic_hierarchies
 
-    # @return [TrafficManagerUserMetricsKeys] traffic_manager_user_metrics_keys
-    attr_reader :traffic_manager_user_metrics_keys
-
     #
     # Creates initializes a new instance of the TrafficManagerManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -64,7 +61,6 @@ module Azure::ARM::TrafficManager::Api_2017_05_01
       @endpoints = Endpoints.new(self)
       @profiles = Profiles.new(self)
       @geographic_hierarchies = GeographicHierarchies.new(self)
-      @traffic_manager_user_metrics_keys = TrafficManagerUserMetricsKeys.new(self)
       @api_version = '2017-05-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30

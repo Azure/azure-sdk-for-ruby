@@ -39,6 +39,7 @@ module Azure::ARM::ContainerRegistry::Api_2017_03_01
     autoload :Sku,                                                '2017-03-01/generated/azure_mgmt_container_registry/models/sku.rb'
     autoload :RegenerateCredentialParameters,                     '2017-03-01/generated/azure_mgmt_container_registry/models/regenerate_credential_parameters.rb'
     autoload :OperationDefinition,                                '2017-03-01/generated/azure_mgmt_container_registry/models/operation_definition.rb'
+    autoload :Resource,                                           '2017-03-01/generated/azure_mgmt_container_registry/models/resource.rb'
     autoload :Registry,                                           '2017-03-01/generated/azure_mgmt_container_registry/models/registry.rb'
     autoload :SkuTier,                                            '2017-03-01/generated/azure_mgmt_container_registry/models/sku_tier.rb'
     autoload :ProvisioningState,                                  '2017-03-01/generated/azure_mgmt_container_registry/models/provisioning_state.rb'

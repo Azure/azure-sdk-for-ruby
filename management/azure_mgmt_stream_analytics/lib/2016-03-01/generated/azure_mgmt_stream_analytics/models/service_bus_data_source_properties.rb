@@ -13,7 +13,6 @@ module Azure::ARM::StreamAnalytics::Api_2016_03_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The namespace that is associated with the desired
       # Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
       # (CreateOrReplace) requests.

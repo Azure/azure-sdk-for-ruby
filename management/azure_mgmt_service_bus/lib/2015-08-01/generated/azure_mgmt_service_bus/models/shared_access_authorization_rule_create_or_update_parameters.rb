@@ -13,7 +13,6 @@ module Azure::ARM::ServiceBus::Api_2015_08_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] data center location.
       attr_accessor :location
 

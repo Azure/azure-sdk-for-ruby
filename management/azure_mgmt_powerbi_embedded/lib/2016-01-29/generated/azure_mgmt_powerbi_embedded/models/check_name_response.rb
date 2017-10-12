@@ -13,7 +13,6 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Specifies a Boolean value that indicates whether the
       # specified Power BI Workspace Collection name is available to use.
       attr_accessor :name_available

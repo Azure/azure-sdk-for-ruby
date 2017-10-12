@@ -12,7 +12,6 @@ module Azure::ARM::ServiceFabric::Api_2016_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Starting port of a range of ports
       attr_accessor :start_port
 

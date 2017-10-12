@@ -12,7 +12,6 @@ module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource provider name:
       # Microsoft.ContainerRegistry.
       attr_accessor :provider

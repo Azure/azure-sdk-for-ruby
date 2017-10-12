@@ -12,7 +12,6 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Integer] Sync interval of the sync group.
       attr_accessor :interval
 

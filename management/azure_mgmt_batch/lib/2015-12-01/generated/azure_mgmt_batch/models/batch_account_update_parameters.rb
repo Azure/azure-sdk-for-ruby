@@ -12,7 +12,6 @@ module Azure::ARM::Batch::Api_2015_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => String}] The user specified tags associated
       # with the account.
       attr_accessor :tags

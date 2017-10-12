@@ -12,7 +12,6 @@ module Azure::ARM::Batch::Api_2017_05_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The format of the application package binary file.
       attr_accessor :format
 

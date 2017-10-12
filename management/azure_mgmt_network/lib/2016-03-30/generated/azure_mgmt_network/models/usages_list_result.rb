@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_03_30
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Usage>] Gets or sets the list Network Resource Usages.
       attr_accessor :value
 

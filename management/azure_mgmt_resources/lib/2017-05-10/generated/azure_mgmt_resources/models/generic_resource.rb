@@ -8,11 +8,10 @@ module Azure::ARM::Resources::Api_2017_05_10
     #
     # Resource information.
     #
-    class GenericResource < MsRestAzure::Resource
+    class GenericResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Plan] The plan of the resource.
       attr_accessor :plan
 

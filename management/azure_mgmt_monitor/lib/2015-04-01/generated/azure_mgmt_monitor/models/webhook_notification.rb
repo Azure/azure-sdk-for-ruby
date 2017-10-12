@@ -12,7 +12,6 @@ module Azure::ARM::Monitor::Api_2015_04_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] the service address to receive the notification.
       attr_accessor :service_uri
 

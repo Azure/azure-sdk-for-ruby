@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2016_08_01
     #
     # Response for an app restore request.
     #
-    class RestoreResponse < MsRestAzure::ProxyOnlyResource
+    class RestoreResponse < ProxyOnlyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] When server starts the restore process, it will return
       # an operation ID identifying that particular restore operation.
       attr_accessor :operation_id

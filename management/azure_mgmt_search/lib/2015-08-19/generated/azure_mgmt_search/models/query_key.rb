@@ -13,7 +13,6 @@ module Azure::ARM::Search::Api_2015_08_19
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the query API key; may be empty.
       attr_accessor :name
 

@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Boolean] Whether the web application firewall is enabled or
       # not.
       attr_accessor :enabled

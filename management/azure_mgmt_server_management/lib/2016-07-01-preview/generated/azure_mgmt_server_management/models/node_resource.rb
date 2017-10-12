@@ -8,11 +8,10 @@ module Azure::ARM::ServerManagement::Api_2016_07_01_preview
     #
     # A Node Resource.
     #
-    class NodeResource < MsRestAzure::Resource
+    class NodeResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] ID of the gateway.
       attr_accessor :gateway_id
 

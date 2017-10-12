@@ -12,7 +12,6 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The field name on the Interaction Type.
       attr_accessor :interaction_field_name
 

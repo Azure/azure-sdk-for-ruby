@@ -8,11 +8,10 @@ module Azure::ARM::Automation::Api_2015_10_31
     #
     # Definition of the dsc node type.
     #
-    class DscNode < MsRestAzure::Resource
+    class DscNode < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] Gets or sets the last seen time of the node.
       attr_accessor :last_seen
 

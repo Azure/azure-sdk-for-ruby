@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

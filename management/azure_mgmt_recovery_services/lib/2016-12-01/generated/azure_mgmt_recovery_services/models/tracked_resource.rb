@@ -8,11 +8,10 @@ module Azure::ARM::RecoveryServices::Api_2016_12_01
     #
     # Tracked resource with location.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class TrackedResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Resource location.
       attr_accessor :location
 

@@ -13,10 +13,12 @@ module Azure::Graph::Management::Profile_Latest
     Domains = Azure::ARM::Graph::Api_1_6::Domains
 
     module Models
-      GroupGetMemberGroupsResult = Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsResult
+      GroupGetMemberGroupsParameters = Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsParameters
       GraphError = Azure::ARM::Graph::Api_1_6::Models::GraphError
-      CheckGroupMembershipParameters = Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipParameters
+      GroupGetMemberGroupsResult = Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsResult
       PasswordCredential = Azure::ARM::Graph::Api_1_6::Models::PasswordCredential
+      CheckGroupMembershipParameters = Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipParameters
+      RequiredResourceAccess = Azure::ARM::Graph::Api_1_6::Models::RequiredResourceAccess
       CheckGroupMembershipResult = Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipResult
       ApplicationUpdateParameters = Azure::ARM::Graph::Api_1_6::Models::ApplicationUpdateParameters
       ServicePrincipalCreateParameters = Azure::ARM::Graph::Api_1_6::Models::ServicePrincipalCreateParameters
@@ -31,14 +33,14 @@ module Azure::Graph::Management::Profile_Latest
       GroupCreateParameters = Azure::ARM::Graph::Api_1_6::Models::GroupCreateParameters
       GroupAddMemberParameters = Azure::ARM::Graph::Api_1_6::Models::GroupAddMemberParameters
       ADGroup = Azure::ARM::Graph::Api_1_6::Models::ADGroup
-      GroupGetMemberGroupsParameters = Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsParameters
+      KeyCredential = Azure::ARM::Graph::Api_1_6::Models::KeyCredential
       ApplicationCreateParameters = Azure::ARM::Graph::Api_1_6::Models::ApplicationCreateParameters
       DomainListResult = Azure::ARM::Graph::Api_1_6::Models::DomainListResult
       KeyCredentialListResult = Azure::ARM::Graph::Api_1_6::Models::KeyCredentialListResult
       SignInName = Azure::ARM::Graph::Api_1_6::Models::SignInName
       AADObject = Azure::ARM::Graph::Api_1_6::Models::AADObject
       Domain = Azure::ARM::Graph::Api_1_6::Models::Domain
-      KeyCredential = Azure::ARM::Graph::Api_1_6::Models::KeyCredential
+      ResourceAccess = Azure::ARM::Graph::Api_1_6::Models::ResourceAccess
       UserGetMemberGroupsParameters = Azure::ARM::Graph::Api_1_6::Models::UserGetMemberGroupsParameters
       PasswordCredentialListResult = Azure::ARM::Graph::Api_1_6::Models::PasswordCredentialListResult
       UserGetMemberGroupsResult = Azure::ARM::Graph::Api_1_6::Models::UserGetMemberGroupsResult
@@ -92,17 +94,23 @@ module Azure::Graph::Management::Profile_Latest
       end
 
       class ModelClasses
-        def group_get_member_groups_result
-          Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsResult
+        def group_get_member_groups_parameters
+          Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsParameters
         end
         def graph_error
           Azure::ARM::Graph::Api_1_6::Models::GraphError
         end
-        def check_group_membership_parameters
-          Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipParameters
+        def group_get_member_groups_result
+          Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsResult
         end
         def password_credential
           Azure::ARM::Graph::Api_1_6::Models::PasswordCredential
+        end
+        def check_group_membership_parameters
+          Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipParameters
+        end
+        def required_resource_access
+          Azure::ARM::Graph::Api_1_6::Models::RequiredResourceAccess
         end
         def check_group_membership_result
           Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipResult
@@ -146,8 +154,8 @@ module Azure::Graph::Management::Profile_Latest
         def adgroup
           Azure::ARM::Graph::Api_1_6::Models::ADGroup
         end
-        def group_get_member_groups_parameters
-          Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsParameters
+        def key_credential
+          Azure::ARM::Graph::Api_1_6::Models::KeyCredential
         end
         def application_create_parameters
           Azure::ARM::Graph::Api_1_6::Models::ApplicationCreateParameters
@@ -167,8 +175,8 @@ module Azure::Graph::Management::Profile_Latest
         def domain
           Azure::ARM::Graph::Api_1_6::Models::Domain
         end
-        def key_credential
-          Azure::ARM::Graph::Api_1_6::Models::KeyCredential
+        def resource_access
+          Azure::ARM::Graph::Api_1_6::Models::ResourceAccess
         end
         def user_get_member_groups_parameters
           Azure::ARM::Graph::Api_1_6::Models::UserGetMemberGroupsParameters

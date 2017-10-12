@@ -12,7 +12,6 @@ module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DataLakeStoreAccountStatus] the status of the Data Lake Store
       # account while being provisioned. Possible values include: 'Failed',
       # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',

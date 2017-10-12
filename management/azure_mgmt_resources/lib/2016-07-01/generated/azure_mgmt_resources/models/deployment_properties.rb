@@ -12,7 +12,6 @@ module Azure::ARM::Resources::Api_2016_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return The template content. It can be a JObject or a well formed JSON
       # string. Use only one of Template or TemplateLink.
       attr_accessor :template

@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2016_12_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String]
       attr_accessor :name
 

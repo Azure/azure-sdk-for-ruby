@@ -12,7 +12,6 @@ module Azure::ARM::Relay::Api_2016_07_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of this Sku. Default value: 'Standard' .
       attr_accessor :name
 

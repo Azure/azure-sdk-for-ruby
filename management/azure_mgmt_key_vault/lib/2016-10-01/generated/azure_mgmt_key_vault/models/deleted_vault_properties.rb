@@ -12,7 +12,6 @@ module Azure::ARM::KeyVault::Api_2016_10_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The resource id of the original vault.
       attr_accessor :vault_id
 

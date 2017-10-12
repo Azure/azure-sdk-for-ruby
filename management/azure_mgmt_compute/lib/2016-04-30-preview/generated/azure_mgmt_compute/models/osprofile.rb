@@ -12,7 +12,6 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Specifies the host OS name of the virtual machine.
       attr_accessor :computer_name
 

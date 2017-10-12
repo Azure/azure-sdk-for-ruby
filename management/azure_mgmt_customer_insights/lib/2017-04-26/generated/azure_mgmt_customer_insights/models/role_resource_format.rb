@@ -8,11 +8,10 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     # The role resource format.
     #
-    class RoleResourceFormat < MsRestAzure::ProxyResource
+    class RoleResourceFormat < ProxyResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The role name.
       attr_accessor :role_name
 

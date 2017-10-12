@@ -39,6 +39,7 @@ module Azure::CDN::Management::Profile_2016_10_02
       ErrorResponse = Azure::ARM::CDN::Api_2016_10_02::Models::ErrorResponse
       GeoFilter = Azure::ARM::CDN::Api_2016_10_02::Models::GeoFilter
       CidrIpAddress = Azure::ARM::CDN::Api_2016_10_02::Models::CidrIpAddress
+      Resource = Azure::ARM::CDN::Api_2016_10_02::Models::Resource
       IpAddressGroup = Azure::ARM::CDN::Api_2016_10_02::Models::IpAddressGroup
       Profile = Azure::ARM::CDN::Api_2016_10_02::Models::Profile
       Endpoint = Azure::ARM::CDN::Api_2016_10_02::Models::Endpoint
@@ -176,6 +177,9 @@ module Azure::CDN::Management::Profile_2016_10_02
         end
         def cidr_ip_address
           Azure::ARM::CDN::Api_2016_10_02::Models::CidrIpAddress
+        end
+        def resource
+          Azure::ARM::CDN::Api_2016_10_02::Models::Resource
         end
         def ip_address_group
           Azure::ARM::CDN::Api_2016_10_02::Models::IpAddressGroup

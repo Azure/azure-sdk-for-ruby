@@ -8,11 +8,10 @@ module Azure::ARM::Network::Api_2016_06_01
     #
     # Pool of backend IP addresses
     #
-    class BackendAddressPool < MsRestAzure::SubResource
+    class BackendAddressPool < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<NetworkInterfaceIPConfiguration>] Gets collection of
       # references to IPs defined in NICs
       attr_accessor :backend_ipconfigurations

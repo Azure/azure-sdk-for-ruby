@@ -12,7 +12,6 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [FabricSpecificCreationInput] Fabric provider specific creation
       # input.
       attr_accessor :custom_details

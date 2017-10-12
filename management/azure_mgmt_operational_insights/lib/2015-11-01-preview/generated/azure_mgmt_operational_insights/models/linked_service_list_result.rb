@@ -12,7 +12,6 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<LinkedService>] Gets or sets a list of linked service
       # instances.
       attr_accessor :value

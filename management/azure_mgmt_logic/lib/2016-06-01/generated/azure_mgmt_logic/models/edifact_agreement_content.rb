@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [EdifactOneWayAgreement] The EDIFACT one-way receive agreement.
       attr_accessor :receive_agreement
 

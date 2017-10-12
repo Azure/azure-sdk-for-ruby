@@ -8,11 +8,10 @@ module Azure::ARM::Web::Api_2015_08_01
     #
     # SSL certificate purchase order.
     #
-    class AppServiceCertificateOrder < MsRestAzure::Resource
+    class AppServiceCertificateOrder < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Hash{String => AppServiceCertificate}] State of the Key Vault
       # secret.
       attr_accessor :certificates

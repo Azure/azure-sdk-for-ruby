@@ -8,11 +8,10 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     #
     # The image reference.
     #
-    class ImageReference < MsRestAzure::SubResource
+    class ImageReference < SubResource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The image publisher.
       attr_accessor :publisher
 

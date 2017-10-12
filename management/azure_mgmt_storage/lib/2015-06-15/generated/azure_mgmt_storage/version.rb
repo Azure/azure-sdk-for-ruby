@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Storage::Api_2015_06_15
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

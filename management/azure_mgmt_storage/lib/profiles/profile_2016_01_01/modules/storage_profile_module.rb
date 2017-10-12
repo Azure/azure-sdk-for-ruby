@@ -26,6 +26,7 @@ module Azure::Storage::Management::Profile_2016_01_01
       EncryptionServices = Azure::ARM::Storage::Api_2016_01_01::Models::EncryptionServices
       UsageListResult = Azure::ARM::Storage::Api_2016_01_01::Models::UsageListResult
       CheckNameAvailabilityResult = Azure::ARM::Storage::Api_2016_01_01::Models::CheckNameAvailabilityResult
+      Resource = Azure::ARM::Storage::Api_2016_01_01::Models::Resource
       StorageAccount = Azure::ARM::Storage::Api_2016_01_01::Models::StorageAccount
       Reason = Azure::ARM::Storage::Api_2016_01_01::Models::Reason
       SkuName = Azure::ARM::Storage::Api_2016_01_01::Models::SkuName
@@ -124,6 +125,9 @@ module Azure::Storage::Management::Profile_2016_01_01
         end
         def check_name_availability_result
           Azure::ARM::Storage::Api_2016_01_01::Models::CheckNameAvailabilityResult
+        end
+        def resource
+          Azure::ARM::Storage::Api_2016_01_01::Models::Resource
         end
         def storage_account
           Azure::ARM::Storage::Api_2016_01_01::Models::StorageAccount

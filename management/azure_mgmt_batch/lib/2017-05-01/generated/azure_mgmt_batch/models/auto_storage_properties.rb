@@ -13,7 +13,6 @@ module Azure::ARM::Batch::Api_2017_05_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [DateTime] The UTC time at which storage keys were last
       # synchronized with the Batch account.
       attr_accessor :last_key_sync

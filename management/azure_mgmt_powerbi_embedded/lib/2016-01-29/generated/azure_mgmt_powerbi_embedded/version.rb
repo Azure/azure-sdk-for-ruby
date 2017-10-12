@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
-    VERSION = '0.11.0'
+    VERSION = '0.15.0'
 end

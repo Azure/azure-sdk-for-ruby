@@ -12,7 +12,6 @@ module Azure::ARM::Locks::Api_2015_01_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [LockLevel] The lock level of the management lock. Possible
       # values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
       attr_accessor :level

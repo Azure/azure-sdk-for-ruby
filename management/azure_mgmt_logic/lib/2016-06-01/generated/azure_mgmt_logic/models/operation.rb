@@ -12,7 +12,6 @@ module Azure::ARM::Logic::Api_2016_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}
       attr_accessor :name
 

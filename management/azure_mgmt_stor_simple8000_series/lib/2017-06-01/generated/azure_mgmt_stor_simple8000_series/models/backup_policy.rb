@@ -12,7 +12,6 @@ module Azure::ARM::StorSimple8000Series::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<String>] The path IDs of the volumes which are part of
       # the backup policy.
       attr_accessor :volume_ids

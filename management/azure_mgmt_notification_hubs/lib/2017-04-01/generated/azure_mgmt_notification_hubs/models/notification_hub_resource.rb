@@ -8,11 +8,10 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
     #
     # Description of a NotificationHub Resource.
     #
-    class NotificationHubResource < MsRestAzure::Resource
+    class NotificationHubResource < Resource
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The NotificationHub name.
       attr_accessor :notification_hub_resource_name
 

@@ -12,7 +12,6 @@ module Azure::ARM::Network::Api_2017_09_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] The name of the rule group that will be disabled.
       attr_accessor :rule_group_name
 

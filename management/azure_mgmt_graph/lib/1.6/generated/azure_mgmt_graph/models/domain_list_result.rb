@@ -12,7 +12,6 @@ module Azure::ARM::Graph::Api_1_6
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Domain>] the list of domains.
       attr_accessor :value
 

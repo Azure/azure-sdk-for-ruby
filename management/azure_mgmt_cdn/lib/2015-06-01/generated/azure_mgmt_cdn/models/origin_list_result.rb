@@ -13,7 +13,6 @@ module Azure::ARM::CDN::Api_2015_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [Array<Origin>] List of CDN origins within an endpoint
       attr_accessor :value
 

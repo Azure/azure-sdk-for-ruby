@@ -13,7 +13,6 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Gets or sets the custom domain name. Name is the CNAME
       # source.
       attr_accessor :name

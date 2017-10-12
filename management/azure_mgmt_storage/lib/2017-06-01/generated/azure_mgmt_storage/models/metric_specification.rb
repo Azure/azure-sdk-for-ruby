@@ -12,7 +12,6 @@ module Azure::ARM::Storage::Api_2017_06_01
 
       include MsRestAzure
 
-      include MsRest::JSONable
       # @return [String] Name of metric specification.
       attr_accessor :name
 
