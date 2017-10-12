@@ -23,9 +23,6 @@ module Azure::ARM::DevTestLabs
     # @return [String] The subscription ID.
     attr_accessor :subscription_id
 
-    # @return [String] The name of the location.
-    attr_accessor :location_name
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 

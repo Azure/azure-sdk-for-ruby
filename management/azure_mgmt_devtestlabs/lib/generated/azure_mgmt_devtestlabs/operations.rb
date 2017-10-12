@@ -24,42 +24,45 @@ module Azure::ARM::DevTestLabs
     #
     # Get operation.
     #
+    # @param location_name [String] The name of the location.
     # @param name [String] The name of the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [OperationResult] operation results.
     #
-    def get(name, custom_headers = nil)
-      response = get_async(name, custom_headers).value!
+    def get(location_name, name, custom_headers = nil)
+      response = get_async(location_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Get operation.
     #
+    # @param location_name [String] The name of the location.
     # @param name [String] The name of the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(name, custom_headers = nil)
-      get_async(name, custom_headers).value!
+    def get_with_http_info(location_name, name, custom_headers = nil)
+      get_async(location_name, name, custom_headers).value!
     end
 
     #
     # Get operation.
     #
+    # @param location_name [String] The name of the location.
     # @param name [String] The name of the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(name, custom_headers = nil)
+    def get_async(location_name, name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.location_name is nil' if @client.location_name.nil?
+      fail ArgumentError, 'location_name is nil' if location_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -75,7 +78,7 @@ module Azure::ARM::DevTestLabs
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'locationName' => @client.location_name,'name' => name},
+          path_params: {'subscriptionId' => @client.subscription_id,'locationName' => location_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
