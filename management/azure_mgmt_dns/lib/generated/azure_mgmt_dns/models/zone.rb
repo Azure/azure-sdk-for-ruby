@@ -96,6 +96,7 @@ module Azure::ARM::Dns
               },
               max_number_of_record_sets: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.maxNumberOfRecordSets',
                 type: {
                   name: 'Number'
@@ -103,6 +104,7 @@ module Azure::ARM::Dns
               },
               number_of_record_sets: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.numberOfRecordSets',
                 type: {
                   name: 'Number'

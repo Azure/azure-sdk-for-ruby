@@ -11,6 +11,7 @@ module Azure::ARM::Dns
     module RecordType
       A = "A"
       AAAA = "AAAA"
+      CAA = "CAA"
       CNAME = "CNAME"
       MX = "MX"
       NS = "NS"

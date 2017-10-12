@@ -81,6 +81,7 @@ module Azure::ARM::Dns
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
