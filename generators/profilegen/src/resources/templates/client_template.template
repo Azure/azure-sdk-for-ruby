@@ -3,14 +3,14 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 <%- if @individual_gem_profile -%>
-require 'profiles/<%= @profile_name.downcase %>/<%= @module_definition_file_name %>'
+require 'profiles/<%= @profile_name.downcase %>/<%= @module_definition_file_name.gsub('.rb','') %>'
 <%- @file_names.each do |file_name| -%>
 require 'profiles/<%= @profile_name.downcase %>/modules/<%= file_name %>'
 <%- end -%>
 require 'profiles/common/configurable'
 require 'profiles/common/default'
 <%- else -%>
-require '<%= @profile_name.downcase %>/<%= @module_definition_file_name %>'
+require '<%= @profile_name.downcase %>/<%= @module_definition_file_name.gsub('.rb','') %>'
 <%- @file_names.each do |file_name| -%>
 require '<%= @profile_name.downcase %>/modules/<%= file_name %>'
 <%- end -%>
@@ -18,16 +18,29 @@ require 'common/configurable'
 require 'common/default'
 <%- end -%>
 
-module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @individual_gem_profile -%><%= @class_name %>::<%- end -%>Management::<%= @profile_name %>
+<%- if @individual_gem_profile -%>
+module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
+<%- else -%>
+module Azure::Profiles::<%= @profile_name %>::Mgmt
+<%- end -%>
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #
+  <%- if @individual_gem_profile -%>
+  class Client < <%= "#{@class_names[0]}" %>Class
+  <%- else -%>
   class Client
+  <%- end -%>
     include Azure::ARM::Configurable
 
+    <%- if !@individual_gem_profile -%>
     attr_reader <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
+    <%- end -%>
 
     def initialize(options = {})
+      <%- if @individual_gem_profile -%>
+      super(options)
+      <%- else -%>
       if options.is_a?(Hash) && options.length == 0
         @options = setup_options
       else
@@ -37,10 +50,7 @@ module Azure::<%- if !@individual_gem_profile -%>Profiles::<%- end -%><%- if @in
       reset!(options)
 
       <%- @class_names.each do |class_name| -%>
-      <%- if @individual_gem_profile -%>
-      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= "#{class_name}" %>Class.new(self)
-      <%- else -%>
-      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= "#{class_name}::#{class_name}" %>Class.new(self)
+      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = Azure::Profiles::<%= @profile_name %>::<%= "#{class_name}::Mgmt::#{class_name}" %>Class.new(self)
       <%- end -%>
       <%- end -%>
     end

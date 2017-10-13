@@ -3,3 +3,4 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '1.6/generated/azure_mgmt_graph'
+require 'profiles/latest/graph_latest_profile_client'

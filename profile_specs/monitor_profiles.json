@@ -1,19 +1,6 @@
 [
   {
-    "name": "Profile_2017_04_01",
-    "resourceTypes": {
-      "Microsoft.Monitor" : {
-        "2015-04-01": ["*"],
-        "2016-03-01": ["*"],
-        "2017-04-01": ["*"],
-        "2017-05-01-preview": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_monitor/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Monitor" : {
         "2015-04-01": ["*"],

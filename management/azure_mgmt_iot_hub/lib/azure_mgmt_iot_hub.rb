@@ -5,3 +5,4 @@
 require '2016-02-03/generated/azure_mgmt_iot_hub'
 require '2017-01-19/generated/azure_mgmt_iot_hub'
 require '2017-07-01/generated/azure_mgmt_iot_hub'
+require 'profiles/latest/iothub_latest_profile_client'

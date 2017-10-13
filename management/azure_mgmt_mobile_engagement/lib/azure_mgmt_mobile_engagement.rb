@@ -3,3 +3,4 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2014-12-01/generated/azure_mgmt_mobile_engagement'
+require 'profiles/latest/mobileengagement_latest_profile_client'

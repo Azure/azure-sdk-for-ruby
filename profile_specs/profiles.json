@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2016_09_01",
+    "name": "V2017_03_09",
     "resourceTypes": {
       "Microsoft.Storage": {
         "2015-06-15": ["*"]
@@ -44,7 +44,7 @@
     "output_dir": "../../../azure_sdk/lib"
   },
   {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.AnalysisServices": {
         "2017-07-14": ["*"]

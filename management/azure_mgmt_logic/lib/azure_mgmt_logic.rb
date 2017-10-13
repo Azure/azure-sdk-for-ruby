@@ -4,3 +4,4 @@
 
 require '2015-02-01-preview/generated/azure_mgmt_logic'
 require '2016-06-01/generated/azure_mgmt_logic'
+require 'profiles/latest/logic_latest_profile_client'

@@ -1,6 +1,6 @@
 [
   {
-    "name": "Profile_2015_01_01",
+    "name": "V2017_03_09",
     "resourceTypes": {
       "Microsoft.Locks" : {
         "2015-01-01": ["*"]
@@ -10,17 +10,7 @@
     "individual_gem_profile": true
   },
   {
-    "name": "Profile_2016_09_01",
-    "resourceTypes": {
-      "Microsoft.Locks" : {
-        "2016-09-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_locks/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Locks" : {
         "2016-09-01": ["*"]

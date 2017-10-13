@@ -3,3 +3,4 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2015-07-01/generated/azure_mgmt_authorization'
+require 'profiles/latest/authorization_latest_profile_client'

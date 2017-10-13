@@ -4,3 +4,4 @@
 
 require '2016-05-16/generated/azure_mgmt_analysis_services'
 require '2017-07-14/generated/azure_mgmt_analysis_services'
+require 'profiles/latest/analysisservices_latest_profile_client'

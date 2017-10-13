@@ -1,20 +1,6 @@
 [
   {
-    "name": "Profile_2016_09_01",
-    "resourceTypes": {
-      "Microsoft.Web" : {
-        "2015-04-01": ["*"],
-        "2015-08-01": ["*"],
-        "2016-03-01": ["*"],
-        "2016-08-01": ["*"],
-        "2016-09-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_web/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
-    "name": "Profile_Latest",
+    "name": "Latest",
     "resourceTypes": {
       "Microsoft.Web" : {
         "2015-04-01": ["*"],

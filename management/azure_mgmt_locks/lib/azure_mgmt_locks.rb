@@ -4,3 +4,5 @@
 
 require '2015-01-01/generated/azure_mgmt_locks'
 require '2016-09-01/generated/azure_mgmt_locks'
+require 'profiles/latest/locks_latest_profile_client'
+require 'profiles/v2017_03_09/locks_v2017_03_09_profile_client'

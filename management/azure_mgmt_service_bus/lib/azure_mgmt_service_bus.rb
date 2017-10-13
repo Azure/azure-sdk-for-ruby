@@ -4,3 +4,4 @@
 
 require '2015-08-01/generated/azure_mgmt_service_bus'
 require '2017-04-01/generated/azure_mgmt_service_bus'
+require 'profiles/latest/servicebus_latest_profile_client'
