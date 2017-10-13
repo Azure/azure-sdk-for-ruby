@@ -3,6 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::CognitiveServices end
+module Azure::CognitiveServices end
+module Azure::CognitiveServices::Mgmt end
 

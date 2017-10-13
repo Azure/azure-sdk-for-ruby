@@ -10,7 +10,7 @@ require '../azure_mgmt_resources/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_resources'
-  spec.version       =  Azure::ARM::Resources::VERSION
+  spec.version       =  Azure::Resources::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Management Client Library for Ruby'

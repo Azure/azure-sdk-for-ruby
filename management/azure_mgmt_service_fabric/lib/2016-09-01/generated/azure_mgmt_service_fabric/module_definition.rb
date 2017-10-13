@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::ServiceFabric end
-module Azure::ARM::ServiceFabric::Api_2016_09_01 end
+module Azure::ServiceFabric end
+module Azure::ServiceFabric::Mgmt end
+module Azure::ServiceFabric::Mgmt::V2016_09_01 end

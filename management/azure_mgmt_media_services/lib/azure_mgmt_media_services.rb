@@ -3,5 +3,3 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '2015-10-01/generated/azure_mgmt_media_services'
-require 'profiles/profile_2015_10_01/mediaservices_profile_2015_10_01_profile_client'
-require 'profiles/profile_latest/mediaservices_profile_latest_profile_client'

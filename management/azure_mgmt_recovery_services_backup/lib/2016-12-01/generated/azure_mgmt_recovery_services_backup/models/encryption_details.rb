@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
     # Details needed if the VM was encrypted at the time of backup.

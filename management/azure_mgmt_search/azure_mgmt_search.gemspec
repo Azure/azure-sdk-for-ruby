@@ -10,7 +10,7 @@ require '../azure_mgmt_search/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_search'
-  spec.version       = Azure::ARM::Search::VERSION
+  spec.version       = Azure::Search::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Search Management Client Library for Ruby'

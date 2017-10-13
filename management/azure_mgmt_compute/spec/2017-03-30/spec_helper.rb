@@ -9,11 +9,11 @@ require 'ms_rest_azure'
 require 'azure_mgmt_storage'
 require 'azure_mgmt_network'
 
-include Azure::ARM::Compute::Api_2017_03_30
-include Azure::ARM::Compute::Api_2017_03_30::Models
-include Azure::ARM::Network::Api_2017_09_01
-include Azure::ARM::Resources::Api_2017_05_10
-include Azure::ARM::Storage::Api_2017_06_01
+include Azure::Compute::Mgmt::V2017_03_30
+include Azure::Compute::Mgmt::V2017_03_30::Models
+include Azure::Network::Mgmt::V2017_09_01
+include Azure::Resources::Mgmt::V2017_05_10
+include Azure::Storage::Mgmt::V2017_06_01
 
 class ResourceHelper
   attr_reader :compute_client, :network_client, :resource_client, :storage_client
@@ -70,7 +70,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_compute'
-    params = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
     params.location = 'westus'
 
     resource_client.resource_groups.create_or_update_async(resource_group_name, params).value!.body

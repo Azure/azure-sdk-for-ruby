@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::SQL end
-module Azure::ARM::SQL::Api_2014_04_01 end
+module Azure::SQL end
+module Azure::SQL::Mgmt end
+module Azure::SQL::Mgmt::V2014_04_01 end

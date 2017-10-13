@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventGrid::Api_2017_09_15_preview
+module Azure::EventGrid::Mgmt::V2017_09_15_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -134,8 +134,8 @@ module Azure::ARM::EventGrid::Api_2017_09_15_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_event_grid'
-        if defined? Azure::ARM::EventGrid::Api_2017_09_15_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::EventGrid::Api_2017_09_15_preview::VERSION}"
+        if defined? Azure::EventGrid::Mgmt::V2017_09_15_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::EventGrid::Mgmt::V2017_09_15_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::ContainerInstance end
-module Azure::ARM::ContainerInstance::Api_2017_08_01_preview end
+module Azure::ContainerInstance end
+module Azure::ContainerInstance::Mgmt end
+module Azure::ContainerInstance::Mgmt::V2017_08_01_preview end

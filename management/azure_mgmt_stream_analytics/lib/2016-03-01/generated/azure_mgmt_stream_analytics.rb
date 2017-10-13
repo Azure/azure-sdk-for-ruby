@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-03-01/generated/azure_mgmt_stream_analytics/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::StreamAnalytics::Api_2016_03_01
+module Azure::StreamAnalytics::Mgmt::V2016_03_01
   autoload :Operations,                                         '2016-03-01/generated/azure_mgmt_stream_analytics/operations.rb'
   autoload :StreamingJobs,                                      '2016-03-01/generated/azure_mgmt_stream_analytics/streaming_jobs.rb'
   autoload :Inputs,                                             '2016-03-01/generated/azure_mgmt_stream_analytics/inputs.rb'

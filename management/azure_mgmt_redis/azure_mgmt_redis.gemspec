@@ -10,7 +10,7 @@ require '../azure_mgmt_redis/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_redis'
-  spec.version       = Azure::ARM::Redis::VERSION
+  spec.version       = Azure::Redis::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Redis Management Client Library for Ruby'

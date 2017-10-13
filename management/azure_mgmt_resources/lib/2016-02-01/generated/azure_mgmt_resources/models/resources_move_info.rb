@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Resources::Api_2016_02_01
+module Azure::Resources::Mgmt::V2016_02_01
   module Models
     #
     # Parameters of move resources.

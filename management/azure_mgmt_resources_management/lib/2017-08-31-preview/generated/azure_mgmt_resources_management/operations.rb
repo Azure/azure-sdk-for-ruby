@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
+module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
   #
   # The Azure Management Groups API enables consolidation of multiple
   # subscriptions/resources into an organizational hierarchy and centrally
@@ -93,7 +93,7 @@ module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Models::OperationListResult.mapper()
+            result_mapper = Azure::ResourcesManagement::Mgmt::V2017_08_31_preview::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -180,7 +180,7 @@ module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::Models::OperationListResult.mapper()
+            result_mapper = Azure::ResourcesManagement::Mgmt::V2017_08_31_preview::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

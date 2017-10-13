@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Storage::Api_2017_06_01
+module Azure::Storage::Mgmt::V2017_06_01
   module Models
     #
     # A list of services that support encryption.

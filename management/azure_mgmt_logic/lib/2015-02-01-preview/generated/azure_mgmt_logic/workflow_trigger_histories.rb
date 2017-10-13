@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Logic::Api_2015_02_01_preview
+module Azure::Logic::Mgmt::V2015_02_01_preview
   #
   # REST API for Azure Logic Apps.
   #
@@ -109,7 +109,7 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Logic::Api_2015_02_01_preview::Models::WorkflowTriggerHistoryListResult.mapper()
+            result_mapper = Azure::Logic::Mgmt::V2015_02_01_preview::Models::WorkflowTriggerHistoryListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -208,7 +208,7 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Logic::Api_2015_02_01_preview::Models::WorkflowTriggerHistory.mapper()
+            result_mapper = Azure::Logic::Mgmt::V2015_02_01_preview::Models::WorkflowTriggerHistory.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -295,7 +295,7 @@ module Azure::ARM::Logic::Api_2015_02_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Logic::Api_2015_02_01_preview::Models::WorkflowTriggerHistoryListResult.mapper()
+            result_mapper = Azure::Logic::Mgmt::V2015_02_01_preview::Models::WorkflowTriggerHistoryListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -25,7 +25,7 @@ class ResourceHelper
 
   def service_bus_client
     if @service_bus_client.nil?
-      @service_bus_client = Azure::ARM::ServiceBus::Api_2017_04_01::ServiceBusManagementClient.new(@credentials)
+      @service_bus_client = Azure::ServiceBus::Mgmt::V2017_04_01::ServiceBusManagementClient.new(@credentials)
       @service_bus_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
       @service_bus_client.subscription_id = @subscription_id
     end
@@ -34,7 +34,7 @@ class ResourceHelper
 
   def resource_client
     if @resource_client.nil?
-      @resource_client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(@credentials)
+      @resource_client = Azure::Resources::Mgmt::V2017_05_10::ResourceManagementClient.new(@credentials)
       @resource_client.subscription_id = @subscription_id
       @resource_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end
@@ -43,7 +43,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_service_bus'
-    params = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
     params.location = 'westus'
 
     resource_client.resource_groups.create_or_update(resource_group_name, params)

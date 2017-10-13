@@ -10,7 +10,7 @@ require '../azure_mgmt_logic/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_logic'
-  spec.version       = Azure::ARM::Logic::VERSION
+  spec.version       = Azure::Logic::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Logic Management Client Library for Ruby'

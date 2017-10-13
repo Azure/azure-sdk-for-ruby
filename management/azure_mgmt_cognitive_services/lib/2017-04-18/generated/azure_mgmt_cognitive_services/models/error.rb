@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CognitiveServices::Api_2017_04_18
+module Azure::CognitiveServices::Mgmt::V2017_04_18
   module Models
     #
     # Cognitive Services error object.

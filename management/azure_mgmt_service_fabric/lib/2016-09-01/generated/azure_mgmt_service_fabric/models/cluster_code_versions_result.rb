@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ServiceFabric::Api_2016_09_01
+module Azure::ServiceFabric::Mgmt::V2016_09_01
   module Models
     #
     # The result of the ServiceFabric runtime versions

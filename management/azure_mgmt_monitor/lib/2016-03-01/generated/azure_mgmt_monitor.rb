@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-03-01/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Monitor::Api_2016_03_01
+module Azure::Monitor::Mgmt::V2016_03_01
   autoload :AlertRuleIncidents,                                 '2016-03-01/generated/azure_mgmt_monitor/alert_rule_incidents.rb'
   autoload :AlertRules,                                         '2016-03-01/generated/azure_mgmt_monitor/alert_rules.rb'
   autoload :LogProfiles,                                        '2016-03-01/generated/azure_mgmt_monitor/log_profiles.rb'

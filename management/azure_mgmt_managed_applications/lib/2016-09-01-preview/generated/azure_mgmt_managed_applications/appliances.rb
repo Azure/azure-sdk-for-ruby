@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
+module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
   #
   # ARM managed applications (appliances)
   #
@@ -102,7 +102,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -192,7 +192,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+          result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -270,7 +270,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+      request_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -302,7 +302,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -392,7 +392,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceListResult.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -475,7 +475,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceListResult.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -567,7 +567,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -657,7 +657,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+          result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -733,7 +733,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+      request_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -765,7 +765,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -926,7 +926,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+      request_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -958,7 +958,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -968,7 +968,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1125,7 +1125,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+      request_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1157,7 +1157,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1167,7 +1167,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::Appliance.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1254,7 +1254,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceListResult.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1341,7 +1341,7 @@ module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::ManagedApplications::Api_2016_09_01_preview::Models::ApplianceListResult.mapper()
+            result_mapper = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

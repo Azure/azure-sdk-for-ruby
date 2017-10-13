@@ -10,7 +10,7 @@ require '../azure_mgmt_network/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_network'
-  spec.version       = Azure::ARM::Network::VERSION
+  spec.version       = Azure::Network::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Network Management Client Library for Ruby'

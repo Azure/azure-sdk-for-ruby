@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MediaServices::Api_2015_10_01
+module Azure::MediaServices::Mgmt::V2015_10_01
     VERSION = '0.15.0'
 end

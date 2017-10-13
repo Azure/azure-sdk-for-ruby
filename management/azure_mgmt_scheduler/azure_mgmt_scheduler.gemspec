@@ -10,7 +10,7 @@ require '../azure_mgmt_scheduler/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_scheduler'
-  spec.version       = Azure::ARM::Scheduler::VERSION
+  spec.version       = Azure::Scheduler::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Scheduler Management Client Library for Ruby'

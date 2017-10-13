@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::ContainerRegistry end
-module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview end
+module Azure::ContainerRegistry end
+module Azure::ContainerRegistry::Mgmt end
+module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview end

@@ -5,8 +5,8 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Resources::Api_2017_05_10
-include Azure::ARM::Network::Api_2017_09_01
+include Azure::Resources::Mgmt::V2017_05_10
+include Azure::Network::Mgmt::V2017_09_01
 
 describe 'Local Network Gateways' do
   before(:each) do

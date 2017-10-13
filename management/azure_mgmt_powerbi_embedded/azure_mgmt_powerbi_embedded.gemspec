@@ -10,7 +10,7 @@ require '../azure_mgmt_powerbi_embedded/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_powerbi_embedded'
-  spec.version       = Azure::ARM::PowerBiEmbedded::VERSION
+  spec.version       = Azure::PowerBiEmbedded::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Power BI Embedded Management Client Library for Ruby'

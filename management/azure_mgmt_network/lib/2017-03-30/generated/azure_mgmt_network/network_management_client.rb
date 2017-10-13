@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2017_03_30
+module Azure::Network::Mgmt::V2017_03_30
   #
   # A service client - single point of access to the REST API.
   #
@@ -122,8 +122,8 @@ module Azure::ARM::Network::Api_2017_03_30
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        if defined? Azure::ARM::Network::Api_2017_03_30::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Network::Api_2017_03_30::VERSION}"
+        if defined? Azure::Network::Mgmt::V2017_03_30::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Network::Mgmt::V2017_03_30::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

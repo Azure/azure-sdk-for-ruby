@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN::Api_2016_10_02
+module Azure::CDN::Mgmt::V2016_10_02
   module Models
     #
     # Rules defining user geo access within a CDN endpoint.

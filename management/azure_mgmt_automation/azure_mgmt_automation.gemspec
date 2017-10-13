@@ -10,7 +10,7 @@ require '../azure_mgmt_automation/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_automation'
-  spec.version       = Azure::ARM::Automation::VERSION
+  spec.version       = Azure::Automation::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Automation Services Library for Ruby'

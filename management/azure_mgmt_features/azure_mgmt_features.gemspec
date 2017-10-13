@@ -10,7 +10,7 @@ require '../azure_mgmt_features/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_features'
-  spec.version       = Azure::ARM::Features::VERSION
+  spec.version       = Azure::Features::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Provider Feature Management Client Library for Ruby'

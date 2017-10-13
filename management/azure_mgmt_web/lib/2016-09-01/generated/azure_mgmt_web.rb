@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01/generated/azure_mgmt_web/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Web::Api_2016_09_01
+module Azure::Web::Mgmt::V2016_09_01
   autoload :AppServiceEnvironments,                             '2016-09-01/generated/azure_mgmt_web/app_service_environments.rb'
   autoload :AppServicePlans,                                    '2016-09-01/generated/azure_mgmt_web/app_service_plans.rb'
   autoload :WebSiteManagementClient,                            '2016-09-01/generated/azure_mgmt_web/web_site_management_client.rb'

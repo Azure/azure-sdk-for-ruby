@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-03-01/generated/azure_mgmt_web/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Web::Api_2016_03_01
+module Azure::Web::Mgmt::V2016_03_01
   autoload :Certificates,                                       '2016-03-01/generated/azure_mgmt_web/certificates.rb'
   autoload :DeletedWebApps,                                     '2016-03-01/generated/azure_mgmt_web/deleted_web_apps.rb'
   autoload :Provider,                                           '2016-03-01/generated/azure_mgmt_web/provider.rb'

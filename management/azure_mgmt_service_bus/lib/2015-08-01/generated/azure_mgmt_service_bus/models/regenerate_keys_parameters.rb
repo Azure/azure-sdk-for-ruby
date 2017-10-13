@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ServiceBus::Api_2015_08_01
+module Azure::ServiceBus::Mgmt::V2015_08_01
   module Models
     #
     # Parameters supplied to the Regenerate Authorization Rule operation.

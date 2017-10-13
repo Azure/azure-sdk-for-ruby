@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CustomerInsights::Api_2017_04_26
+module Azure::CustomerInsights::Mgmt::V2017_04_26
   #
   # A service client - single point of access to the REST API.
   #
@@ -186,8 +186,8 @@ module Azure::ARM::CustomerInsights::Api_2017_04_26
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_customer_insights'
-        if defined? Azure::ARM::CustomerInsights::Api_2017_04_26::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::CustomerInsights::Api_2017_04_26::VERSION}"
+        if defined? Azure::CustomerInsights::Mgmt::V2017_04_26::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CustomerInsights::Mgmt::V2017_04_26::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

@@ -10,7 +10,7 @@ require '../azure_mgmt_relay/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_relay'
-  spec.version       = Azure::ARM::Relay::VERSION
+  spec.version       = Azure::Relay::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Relay Library for Ruby'

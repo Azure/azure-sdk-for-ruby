@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-12-01/generated/azure_mgmt_recovery_services_backup/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   autoload :BackupResourceVaultConfigs,                         '2016-12-01/generated/azure_mgmt_recovery_services_backup/backup_resource_vault_configs.rb'
   autoload :BackupEngines,                                      '2016-12-01/generated/azure_mgmt_recovery_services_backup/backup_engines.rb'
   autoload :ProtectionContainerRefreshOperationResults,         '2016-12-01/generated/azure_mgmt_recovery_services_backup/protection_container_refresh_operation_results.rb'

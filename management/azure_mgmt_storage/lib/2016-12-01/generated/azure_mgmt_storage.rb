@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-12-01/generated/azure_mgmt_storage/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Storage::Api_2016_12_01
+module Azure::Storage::Mgmt::V2016_12_01
   autoload :StorageAccounts,                                    '2016-12-01/generated/azure_mgmt_storage/storage_accounts.rb'
   autoload :UsageOperations,                                    '2016-12-01/generated/azure_mgmt_storage/usage_operations.rb'
   autoload :StorageManagementClient,                            '2016-12-01/generated/azure_mgmt_storage/storage_management_client.rb'

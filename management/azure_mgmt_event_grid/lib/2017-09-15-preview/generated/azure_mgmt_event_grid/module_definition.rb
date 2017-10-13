@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::EventGrid end
-module Azure::ARM::EventGrid::Api_2017_09_15_preview end
+module Azure::EventGrid end
+module Azure::EventGrid::Mgmt end
+module Azure::EventGrid::Mgmt::V2017_09_15_preview end

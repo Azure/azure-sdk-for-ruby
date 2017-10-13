@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web::Api_2016_03_01
+module Azure::Web::Mgmt::V2016_03_01
   #
   # Provider
   #
@@ -160,7 +160,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::CsmOperationCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -320,7 +320,7 @@ module Azure::ARM::Web::Api_2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Web::Api_2016_03_01::Models::CsmOperationCollection.mapper()
+            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmOperationCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -10,7 +10,7 @@ require '../azure_mgmt_commerce/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_commerce'
-  spec.version       = Azure::ARM::Commerce::VERSION
+  spec.version       = Azure::Commerce::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Commerce Management Client Library for Ruby'

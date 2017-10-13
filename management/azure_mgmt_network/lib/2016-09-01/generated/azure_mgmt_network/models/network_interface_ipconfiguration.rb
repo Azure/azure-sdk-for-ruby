@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2016_09_01
+module Azure::Network::Mgmt::V2016_09_01
   module Models
     #
     # IPConfiguration in a network interface.

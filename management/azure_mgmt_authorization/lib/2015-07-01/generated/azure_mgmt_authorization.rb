@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-07-01/generated/azure_mgmt_authorization/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Authorization::Api_2015_07_01
+module Azure::Authorization::Mgmt::V2015_07_01
   autoload :ClassicAdministrators,                              '2015-07-01/generated/azure_mgmt_authorization/classic_administrators.rb'
   autoload :Permissions,                                        '2015-07-01/generated/azure_mgmt_authorization/permissions.rb'
   autoload :ProviderOperationsMetadataOperations,               '2015-07-01/generated/azure_mgmt_authorization/provider_operations_metadata_operations.rb'

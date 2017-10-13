@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2014-12-01/generated/azure_mgmt_mobile_engagement/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::MobileEngagement::Api_2014_12_01
+module Azure::MobileEngagement::Mgmt::V2014_12_01
   autoload :AppCollections,                                     '2014-12-01/generated/azure_mgmt_mobile_engagement/app_collections.rb'
   autoload :Apps,                                               '2014-12-01/generated/azure_mgmt_mobile_engagement/apps.rb'
   autoload :SupportedPlatforms,                                 '2014-12-01/generated/azure_mgmt_mobile_engagement/supported_platforms.rb'

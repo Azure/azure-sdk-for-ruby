@@ -10,7 +10,7 @@ require '../azure_mgmt_notification_hubs/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_notification_hubs'
-  spec.version       = Azure::ARM::NotificationHubs::VERSION
+  spec.version       = Azure::NotificationHubs::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Notification Hubs Management Client Library for Ruby'

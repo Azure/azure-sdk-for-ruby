@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Resources::Api_2017_05_10
+module Azure::Resources::Mgmt::V2017_05_10
     VERSION = '0.15.0'
 end

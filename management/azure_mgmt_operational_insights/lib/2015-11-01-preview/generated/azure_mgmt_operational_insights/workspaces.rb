@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
+module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
   #
   # Azure Log Analytics API reference
   #
@@ -393,7 +393,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::SharedKeys.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -487,7 +487,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::WorkspaceListUsagesResult.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListUsagesResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -581,7 +581,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::WorkspaceListManagementGroupsResult.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -671,7 +671,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::WorkspaceListResult.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -754,7 +754,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::WorkspaceListResult.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -802,7 +802,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Workspace.mapper()
+          result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -971,7 +971,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Workspace.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1046,7 +1046,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Workspace.mapper()
+      request_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1078,7 +1078,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Workspace.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1088,7 +1088,7 @@ module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::OperationalInsights::Api_2015_11_01_preview::Models::Workspace.mapper()
+            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

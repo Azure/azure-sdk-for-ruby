@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::CustomerInsights end
-module Azure::ARM::CustomerInsights::Api_2017_04_26 end
+module Azure::CustomerInsights end
+module Azure::CustomerInsights::Mgmt end
+module Azure::CustomerInsights::Mgmt::V2017_04_26 end

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Storage::Api_2015_05_01_preview
+module Azure::Storage::Mgmt::V2015_05_01_preview
   #
   # The Storage Management Client.
   #
@@ -81,7 +81,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountCheckNameAvailabilityParameters.mapper()
+      request_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountCheckNameAvailabilityParameters.mapper()
       request_content = @client.serialize(request_mapper,  account_name)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -113,7 +113,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::CheckNameAvailabilityResult.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::CheckNameAvailabilityResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -171,7 +171,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccount.mapper()
+          result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccount.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -364,7 +364,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccount.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -475,7 +475,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountUpdateParameters.mapper()
+      request_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -507,7 +507,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccount.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -598,7 +598,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountKeys.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -684,7 +684,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountListResult.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -777,7 +777,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountListResult.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -861,7 +861,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountRegenerateKeyParameters.mapper()
+      request_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountRegenerateKeyParameters.mapper()
       request_content = @client.serialize(request_mapper,  regenerate_key)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -893,7 +893,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountKeys.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -989,7 +989,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountCreateParameters.mapper()
+      request_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1021,7 +1021,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccount.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1111,7 +1111,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountListResult.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1201,7 +1201,7 @@ module Azure::ARM::Storage::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Storage::Api_2015_05_01_preview::Models::StorageAccountListResult.mapper()
+            result_mapper = Azure::Storage::Mgmt::V2015_05_01_preview::Models::StorageAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

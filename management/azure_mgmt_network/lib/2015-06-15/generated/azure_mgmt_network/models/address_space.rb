@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2015_06_15
+module Azure::Network::Mgmt::V2015_06_15
   module Models
     #
     # AddressSpace contains an array of IP address ranges that can be used by

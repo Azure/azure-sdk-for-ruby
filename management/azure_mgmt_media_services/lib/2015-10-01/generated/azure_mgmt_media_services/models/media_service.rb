@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MediaServices::Api_2015_10_01
+module Azure::MediaServices::Mgmt::V2015_10_01
   module Models
     #
     # The properties of a Media Service resource.

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-01-31/generated/azure_mgmt_container_service/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ContainerService::Api_2017_01_31
+module Azure::ContainerService::Mgmt::V2017_01_31
   autoload :ContainerServices,                                  '2017-01-31/generated/azure_mgmt_container_service/container_services.rb'
   autoload :ComputeManagementClient,                            '2017-01-31/generated/azure_mgmt_container_service/compute_management_client.rb'
 

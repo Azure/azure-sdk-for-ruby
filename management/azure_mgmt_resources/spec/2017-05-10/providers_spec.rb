@@ -5,7 +5,7 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Resources::Api_2017_05_10
+include Azure::Resources::Mgmt::V2017_05_10
 
 describe 'Providers' do
 

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-01/generated/azure_mgmt_notification_hubs/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::NotificationHubs::Api_2017_04_01
+module Azure::NotificationHubs::Mgmt::V2017_04_01
   autoload :Namespaces,                                         '2017-04-01/generated/azure_mgmt_notification_hubs/namespaces.rb'
   autoload :Name,                                               '2017-04-01/generated/azure_mgmt_notification_hubs/name.rb'
   autoload :NotificationHubs,                                   '2017-04-01/generated/azure_mgmt_notification_hubs/notification_hubs.rb'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::StorSimple8000Series::Api_2017_06_01
+module Azure::StorSimple8000Series::Mgmt::V2017_06_01
   module Models
     #
     # The monitoring metric definition.

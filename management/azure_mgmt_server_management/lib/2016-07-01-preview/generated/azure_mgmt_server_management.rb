@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-07-01-preview/generated/azure_mgmt_server_management/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ServerManagement::Api_2016_07_01_preview
+module Azure::ServerManagement::Mgmt::V2016_07_01_preview
   autoload :Gateway,                                            '2016-07-01-preview/generated/azure_mgmt_server_management/gateway.rb'
   autoload :Node,                                               '2016-07-01-preview/generated/azure_mgmt_server_management/node.rb'
   autoload :Session,                                            '2016-07-01-preview/generated/azure_mgmt_server_management/session.rb'

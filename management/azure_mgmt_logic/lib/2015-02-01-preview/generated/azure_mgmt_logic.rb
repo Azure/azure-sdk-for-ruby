@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-02-01-preview/generated/azure_mgmt_logic/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Logic::Api_2015_02_01_preview
+module Azure::Logic::Mgmt::V2015_02_01_preview
   autoload :Workflows,                                          '2015-02-01-preview/generated/azure_mgmt_logic/workflows.rb'
   autoload :WorkflowVersions,                                   '2015-02-01-preview/generated/azure_mgmt_logic/workflow_versions.rb'
   autoload :WorkflowAccessKeys,                                 '2015-02-01-preview/generated/azure_mgmt_logic/workflow_access_keys.rb'

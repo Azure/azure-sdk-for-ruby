@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::MediaServices end
-module Azure::ARM::MediaServices::Api_2015_10_01 end
+module Azure::MediaServices end
+module Azure::MediaServices::Mgmt end
+module Azure::MediaServices::Mgmt::V2015_10_01 end

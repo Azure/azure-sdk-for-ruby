@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Features::Api_2015_12_01
+module Azure::Features::Mgmt::V2015_12_01
     VERSION = '0.15.0'
 end

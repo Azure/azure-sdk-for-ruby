@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-06-01/generated/azure_mgmt_storage/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Storage::Api_2017_06_01
+module Azure::Storage::Mgmt::V2017_06_01
   autoload :Operations,                                         '2017-06-01/generated/azure_mgmt_storage/operations.rb'
   autoload :Skus,                                               '2017-06-01/generated/azure_mgmt_storage/skus.rb'
   autoload :StorageAccounts,                                    '2017-06-01/generated/azure_mgmt_storage/storage_accounts.rb'

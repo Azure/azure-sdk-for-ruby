@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Scheduler::Api_2016_03_01
+module Azure::Scheduler::Mgmt::V2016_03_01
   module Models
     #
     # Defines values for JobCollectionState

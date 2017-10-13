@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-02-03/generated/azure_mgmt_iot_hub/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::IotHub::Api_2016_02_03
+module Azure::IotHub::Mgmt::V2016_02_03
   autoload :IotHubResource,                                     '2016-02-03/generated/azure_mgmt_iot_hub/iot_hub_resource.rb'
   autoload :IotHubClient,                                       '2016-02-03/generated/azure_mgmt_iot_hub/iot_hub_client.rb'
 

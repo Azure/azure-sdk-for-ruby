@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-11-01/generated/azure_mgmt_datalake_store/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::DataLakeStore::Api_2016_11_01
+module Azure::DataLakeStore::Mgmt::V2016_11_01
   autoload :FirewallRules,                                      '2016-11-01/generated/azure_mgmt_datalake_store/firewall_rules.rb'
   autoload :TrustedIdProviders,                                 '2016-11-01/generated/azure_mgmt_datalake_store/trusted_id_providers.rb'
   autoload :Account,                                            '2016-11-01/generated/azure_mgmt_datalake_store/account.rb'

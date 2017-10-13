@@ -10,7 +10,7 @@ require '../azure_mgmt_service_fabric/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_service_fabric'
-  spec.version       = Azure::ARM::ServiceFabric::VERSION
+  spec.version       = Azure::ServiceFabric::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Service Fabric Library for Ruby'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Monitor::Api_2016_03_01
+module Azure::Monitor::Mgmt::V2016_03_01
   module Models
     #
     # How the data that is collected should be combined over time.

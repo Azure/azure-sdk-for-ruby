@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::KeyVault::Api_2016_10_01
+module Azure::KeyVault::Mgmt::V2016_10_01
     VERSION = '0.15.0'
 end

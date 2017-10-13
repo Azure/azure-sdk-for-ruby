@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Consumption::Api_2017_04_24_preview
+module Azure::Consumption::Mgmt::V2017_04_24_preview
   module Models
     #
     # An usage detail resource.

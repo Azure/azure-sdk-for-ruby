@@ -10,7 +10,7 @@ require '../azure_mgmt_iot_hub/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_iot_hub'
-  spec.version       = Azure::ARM::IotHub::VERSION
+  spec.version       = Azure::IotHub::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure IoT Hub Management Client Library for Ruby'

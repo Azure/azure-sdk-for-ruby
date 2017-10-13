@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Batch::Api_2017_05_01
+module Azure::Batch::Mgmt::V2017_05_01
   #
   # Location
   #
@@ -101,7 +101,7 @@ module Azure::ARM::Batch::Api_2017_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Batch::Api_2017_05_01::Models::BatchLocationQuota.mapper()
+            result_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::BatchLocationQuota.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -172,7 +172,7 @@ module Azure::ARM::Batch::Api_2017_05_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Batch::Api_2017_05_01::Models::CheckNameAvailabilityParameters.mapper()
+      request_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -204,7 +204,7 @@ module Azure::ARM::Batch::Api_2017_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Batch::Api_2017_05_01::Models::CheckNameAvailabilityResult.mapper()
+            result_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2016_06_01
+module Azure::Network::Mgmt::V2016_06_01
   module Models
     #
     # The arp table associated with the ExpressRouteCircuit

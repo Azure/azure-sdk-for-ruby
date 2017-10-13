@@ -10,7 +10,7 @@ require '../azure_mgmt_storage/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_storage'
-  spec.version       = Azure::ARM::Storage::VERSION
+  spec.version       = Azure::Storage::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Storage Management Client Library for Ruby'

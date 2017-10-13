@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::TrafficManager::Api_2017_09_01_preview
+module Azure::TrafficManager::Mgmt::V2017_09_01_preview
   #
   # HeatMap
   #
@@ -115,7 +115,7 @@ module Azure::ARM::TrafficManager::Api_2017_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::TrafficManager::Api_2017_09_01_preview::Models::HeatMapModel.mapper()
+            result_mapper = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

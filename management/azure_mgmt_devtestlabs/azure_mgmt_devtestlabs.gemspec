@@ -10,7 +10,7 @@ require '../azure_mgmt_devtestlabs/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_devtestlabs'
-  spec.version       = Azure::ARM::DevTestLabs::VERSION
+  spec.version       = Azure::DevTestLabs::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Dev Test Lab Management Client Library for Ruby'

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-01/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Monitor::Api_2017_04_01
+module Azure::Monitor::Mgmt::V2017_04_01
   autoload :ActionGroups,                                       '2017-04-01/generated/azure_mgmt_monitor/action_groups.rb'
   autoload :ActivityLogAlerts,                                  '2017-04-01/generated/azure_mgmt_monitor/activity_log_alerts.rb'
   autoload :MonitorManagementClient,                            '2017-04-01/generated/azure_mgmt_monitor/monitor_management_client.rb'

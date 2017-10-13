@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Graph::Api_1_6
+module Azure::Graph::Mgmt::V1_6
   #
   # The Graph RBAC Management Client
   #
@@ -78,7 +78,7 @@ module Azure::ARM::Graph::Api_1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipParameters.mapper()
+      request_mapper = Azure::Graph::Mgmt::V1_6::Models::CheckGroupMembershipParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -110,7 +110,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::CheckGroupMembershipResult.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::CheckGroupMembershipResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -270,7 +270,7 @@ module Azure::ARM::Graph::Api_1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Graph::Api_1_6::Models::GroupAddMemberParameters.mapper()
+      request_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupAddMemberParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -437,7 +437,7 @@ module Azure::ARM::Graph::Api_1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Graph::Api_1_6::Models::GroupCreateParameters.mapper()
+      request_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -469,7 +469,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::ADGroup.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::ADGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -555,7 +555,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::GroupListResult.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -646,7 +646,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::GetObjectsResult.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GetObjectsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -737,7 +737,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::ADGroup.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::ADGroup.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -814,7 +814,7 @@ module Azure::ARM::Graph::Api_1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsParameters.mapper()
+      request_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupGetMemberGroupsParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -847,7 +847,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::GroupGetMemberGroupsResult.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupGetMemberGroupsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -935,7 +935,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::GroupListResult.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1023,7 +1023,7 @@ module Azure::ARM::Graph::Api_1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Graph::Api_1_6::Models::GetObjectsResult.mapper()
+            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GetObjectsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

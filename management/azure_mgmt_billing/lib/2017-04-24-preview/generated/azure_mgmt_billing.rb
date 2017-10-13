@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-24-preview/generated/azure_mgmt_billing/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Billing::Api_2017_04_24_preview
+module Azure::Billing::Mgmt::V2017_04_24_preview
   autoload :BillingPeriods,                                     '2017-04-24-preview/generated/azure_mgmt_billing/billing_periods.rb'
   autoload :Invoices,                                           '2017-04-24-preview/generated/azure_mgmt_billing/invoices.rb'
   autoload :Operations,                                         '2017-04-24-preview/generated/azure_mgmt_billing/operations.rb'

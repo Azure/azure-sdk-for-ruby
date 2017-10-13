@@ -10,7 +10,7 @@ require '../azure_mgmt_batch/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_batch'
-  spec.version       = Azure::ARM::Batch::VERSION
+  spec.version       = Azure::Batch::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Batch Management Client Library for Ruby'

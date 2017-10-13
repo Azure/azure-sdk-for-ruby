@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CustomerInsights::Api_2017_04_26
+module Azure::CustomerInsights::Mgmt::V2017_04_26
     VERSION = '0.15.0'
 end

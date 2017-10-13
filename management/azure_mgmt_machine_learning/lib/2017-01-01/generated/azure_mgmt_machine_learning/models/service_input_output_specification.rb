@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MachineLearning::Api_2017_01_01
+module Azure::MachineLearning::Mgmt::V2017_01_01
   module Models
     #
     # The swagger 2.0 schema describing the service's inputs or outputs. See

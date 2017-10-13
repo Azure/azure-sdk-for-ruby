@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-10-31/generated/azure_mgmt_automation/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Automation::Api_2015_10_31
+module Azure::Automation::Mgmt::V2015_10_31
   autoload :AutomationAccountOperations,                        '2015-10-31/generated/azure_mgmt_automation/automation_account_operations.rb'
   autoload :Operations,                                         '2015-10-31/generated/azure_mgmt_automation/operations.rb'
   autoload :StatisticsOperations,                               '2015-10-31/generated/azure_mgmt_automation/statistics_operations.rb'

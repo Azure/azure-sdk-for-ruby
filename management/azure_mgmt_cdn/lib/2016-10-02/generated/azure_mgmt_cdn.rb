@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-10-02/generated/azure_mgmt_cdn/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::CDN::Api_2016_10_02
+module Azure::CDN::Mgmt::V2016_10_02
   autoload :Profiles,                                           '2016-10-02/generated/azure_mgmt_cdn/profiles.rb'
   autoload :Endpoints,                                          '2016-10-02/generated/azure_mgmt_cdn/endpoints.rb'
   autoload :Origins,                                            '2016-10-02/generated/azure_mgmt_cdn/origins.rb'

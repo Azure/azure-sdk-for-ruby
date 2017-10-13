@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MobileEngagement::Api_2014_12_01
+module Azure::MobileEngagement::Mgmt::V2014_12_01
     VERSION = '0.15.0'
 end

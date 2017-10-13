@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-06-01-preview/generated/azure_mgmt_policy/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Policy::Api_2017_06_01_preview
+module Azure::Policy::Mgmt::V2017_06_01_preview
   autoload :PolicyAssignments,                                  '2017-06-01-preview/generated/azure_mgmt_policy/policy_assignments.rb'
   autoload :PolicySetDefinitions,                               '2017-06-01-preview/generated/azure_mgmt_policy/policy_set_definitions.rb'
   autoload :PolicyClient,                                       '2017-06-01-preview/generated/azure_mgmt_policy/policy_client.rb'

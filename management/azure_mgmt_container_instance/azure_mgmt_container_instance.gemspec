@@ -10,7 +10,7 @@ require '../azure_mgmt_container_instance/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_container_instance'
-  spec.version       = Azure::ARM::ContainerInstance::VERSION
+  spec.version       = Azure::ContainerInstance::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Container Instance Services Library for Ruby'

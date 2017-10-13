@@ -10,7 +10,7 @@ require '../azure_mgmt_event_hub/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_event_hub'
-  spec.version       = Azure::ARM::EventHub::VERSION
+  spec.version       = Azure::EventHub::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Event Hub Library for Ruby'

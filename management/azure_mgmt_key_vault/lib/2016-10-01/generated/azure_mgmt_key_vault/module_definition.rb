@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::KeyVault end
-module Azure::ARM::KeyVault::Api_2016_10_01 end
+module Azure::KeyVault end
+module Azure::KeyVault::Mgmt end
+module Azure::KeyVault::Mgmt::V2016_10_01 end

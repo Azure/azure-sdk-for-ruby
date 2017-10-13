@@ -10,7 +10,7 @@ require '../azure_mgmt_billing/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_billing'
-  spec.version       = Azure::ARM::Billing::VERSION
+  spec.version       = Azure::Billing::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Billing Services Library for Ruby'

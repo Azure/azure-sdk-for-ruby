@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-09-01/generated/azure_mgmt_network/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Network::Api_2017_09_01
+module Azure::Network::Mgmt::V2017_09_01
   autoload :ApplicationGateways,                                '2017-09-01/generated/azure_mgmt_network/application_gateways.rb'
   autoload :ApplicationSecurityGroups,                          '2017-09-01/generated/azure_mgmt_network/application_security_groups.rb'
   autoload :AvailableEndpointServices,                          '2017-09-01/generated/azure_mgmt_network/available_endpoint_services.rb'

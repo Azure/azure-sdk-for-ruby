@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::CDN end
-module Azure::ARM::CDN::Api_2015_06_01 end
+module Azure::CDN end
+module Azure::CDN::Mgmt end
+module Azure::CDN::Mgmt::V2015_06_01 end

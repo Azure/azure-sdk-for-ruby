@@ -5,7 +5,7 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Network::Api_2017_09_01
+include Azure::Network::Mgmt::V2017_09_01
 
 describe NetworkManagementClient do
   before(:each) do

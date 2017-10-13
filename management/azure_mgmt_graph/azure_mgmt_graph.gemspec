@@ -10,7 +10,7 @@ require '../azure_mgmt_graph/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_graph'
-  spec.version       = Azure::ARM::Graph::VERSION
+  spec.version       = Azure::Graph::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Active Directory Graph Management Client Library for Ruby'

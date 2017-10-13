@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Search::Api_2015_08_19
+module Azure::Search::Mgmt::V2015_08_19
   #
   # Client that can be used to manage Azure Search services and API keys.
   #
@@ -126,7 +126,7 @@ module Azure::ARM::Search::Api_2015_08_19
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Search::Api_2015_08_19::Models::QueryKey.mapper()
+            result_mapper = Azure::Search::Mgmt::V2015_08_19::Models::QueryKey.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -237,7 +237,7 @@ module Azure::ARM::Search::Api_2015_08_19
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Search::Api_2015_08_19::Models::ListQueryKeysResult.mapper()
+            result_mapper = Azure::Search::Mgmt::V2015_08_19::Models::ListQueryKeysResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

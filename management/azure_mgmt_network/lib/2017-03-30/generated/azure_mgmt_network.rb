@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-03-30/generated/azure_mgmt_network/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Network::Api_2017_03_30
+module Azure::Network::Mgmt::V2017_03_30
   autoload :NetworkInterfaces,                                  '2017-03-30/generated/azure_mgmt_network/network_interfaces.rb'
   autoload :PublicIPAddresses,                                  '2017-03-30/generated/azure_mgmt_network/public_ipaddresses.rb'
   autoload :NetworkManagementClient,                            '2017-03-30/generated/azure_mgmt_network/network_management_client.rb'

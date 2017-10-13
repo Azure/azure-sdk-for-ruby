@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   #
   # ItemLevelRecoveryConnections
   #
@@ -116,7 +116,7 @@ module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::RecoveryServicesBackup::Api_2016_12_01::Models::ILRRequestResource.mapper()
+      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_12_01::Models::ILRRequestResource.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

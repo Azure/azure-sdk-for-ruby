@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MobileEngagement::Api_2014_12_01
+module Azure::MobileEngagement::Mgmt::V2014_12_01
   module Models
     #
     # Send only to users whose first app use is less than {threshold} days old.

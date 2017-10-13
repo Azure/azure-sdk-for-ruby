@@ -10,7 +10,7 @@ require '../azure_mgmt_consumption/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_consumption'
-  spec.version       = Azure::ARM::Consumption::VERSION
+  spec.version       = Azure::Consumption::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Consumption Services Library for Ruby'

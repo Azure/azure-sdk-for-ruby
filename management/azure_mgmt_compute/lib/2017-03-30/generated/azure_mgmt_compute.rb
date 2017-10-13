@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-03-30/generated/azure_mgmt_compute/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Compute::Api_2017_03_30
+module Azure::Compute::Mgmt::V2017_03_30
   autoload :AvailabilitySets,                                   '2017-03-30/generated/azure_mgmt_compute/availability_sets.rb'
   autoload :VirtualMachineExtensionImages,                      '2017-03-30/generated/azure_mgmt_compute/virtual_machine_extension_images.rb'
   autoload :VirtualMachineExtensions,                           '2017-03-30/generated/azure_mgmt_compute/virtual_machine_extensions.rb'

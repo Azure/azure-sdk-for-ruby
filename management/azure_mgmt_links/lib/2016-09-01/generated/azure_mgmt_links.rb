@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01/generated/azure_mgmt_links/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Links::Api_2016_09_01
+module Azure::Links::Mgmt::V2016_09_01
   autoload :ResourceLinks,                                      '2016-09-01/generated/azure_mgmt_links/resource_links.rb'
   autoload :ManagementLinkClient,                               '2016-09-01/generated/azure_mgmt_links/management_link_client.rb'
 

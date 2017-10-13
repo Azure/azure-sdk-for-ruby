@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2017_03_01
+module Azure::Network::Mgmt::V2017_03_01
     VERSION = '0.15.0'
 end

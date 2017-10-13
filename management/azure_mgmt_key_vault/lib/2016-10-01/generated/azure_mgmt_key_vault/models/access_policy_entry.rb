@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::KeyVault::Api_2016_10_01
+module Azure::KeyVault::Mgmt::V2016_10_01
   module Models
     #
     # An identity that have access to the key vault. All identities in the

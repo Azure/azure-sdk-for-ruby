@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Web::Api_2016_03_01
+module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
     # Specification for an App Service Environment to use for this resource.

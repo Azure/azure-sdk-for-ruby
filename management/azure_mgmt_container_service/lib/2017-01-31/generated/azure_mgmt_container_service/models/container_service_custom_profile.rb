@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerService::Api_2017_01_31
+module Azure::ContainerService::Mgmt::V2017_01_31
   module Models
     #
     # Properties to configure a custom container service cluster.

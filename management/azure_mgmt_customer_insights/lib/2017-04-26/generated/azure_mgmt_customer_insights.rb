@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-26/generated/azure_mgmt_customer_insights/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::CustomerInsights::Api_2017_04_26
+module Azure::CustomerInsights::Mgmt::V2017_04_26
   autoload :Operations,                                         '2017-04-26/generated/azure_mgmt_customer_insights/operations.rb'
   autoload :Hubs,                                               '2017-04-26/generated/azure_mgmt_customer_insights/hubs.rb'
   autoload :Profiles,                                           '2017-04-26/generated/azure_mgmt_customer_insights/profiles.rb'

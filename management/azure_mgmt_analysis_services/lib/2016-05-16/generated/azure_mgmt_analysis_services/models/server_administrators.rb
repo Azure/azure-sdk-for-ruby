@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::AnalysisServices::Api_2016_05_16
+module Azure::AnalysisServices::Mgmt::V2016_05_16
   module Models
     #
     # An array of administrator user identities

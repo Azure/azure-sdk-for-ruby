@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-06-01/generated/azure_mgmt_marketplace_ordering/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::MarketplaceOrdering::Api_2015_06_01
+module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
   autoload :MarketplaceAgreements,                              '2015-06-01/generated/azure_mgmt_marketplace_ordering/marketplace_agreements.rb'
   autoload :Operations,                                         '2015-06-01/generated/azure_mgmt_marketplace_ordering/operations.rb'
   autoload :MarketplaceOrderingAgreements,                      '2015-06-01/generated/azure_mgmt_marketplace_ordering/marketplace_ordering_agreements.rb'

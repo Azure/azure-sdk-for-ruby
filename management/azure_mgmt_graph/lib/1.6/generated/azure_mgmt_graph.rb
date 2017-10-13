@@ -19,7 +19,7 @@ require 'ms_rest'
 require '1.6/generated/azure_mgmt_graph/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Graph::Api_1_6
+module Azure::Graph::Mgmt::V1_6
   autoload :Objects,                                            '1.6/generated/azure_mgmt_graph/objects.rb'
   autoload :Applications,                                       '1.6/generated/azure_mgmt_graph/applications.rb'
   autoload :Groups,                                             '1.6/generated/azure_mgmt_graph/groups.rb'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN::Api_2017_04_02
+module Azure::CDN::Mgmt::V2017_04_02
   #
   # A service client - single point of access to the REST API.
   #
@@ -194,7 +194,7 @@ module Azure::ARM::CDN::Api_2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CDN::Api_2017_04_02::Models::CheckNameAvailabilityInput.mapper()
+      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::CheckNameAvailabilityInput.mapper()
       request_content = self.serialize(request_mapper,  check_name_availability_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -225,7 +225,7 @@ module Azure::ARM::CDN::Api_2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CDN::Api_2017_04_02::Models::CheckNameAvailabilityOutput.mapper()
+            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::CheckNameAvailabilityOutput.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -298,7 +298,7 @@ module Azure::ARM::CDN::Api_2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CDN::Api_2017_04_02::Models::ValidateProbeInput.mapper()
+      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ValidateProbeInput.mapper()
       request_content = self.serialize(request_mapper,  validate_probe_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -330,7 +330,7 @@ module Azure::ARM::CDN::Api_2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CDN::Api_2017_04_02::Models::ValidateProbeOutput.mapper()
+            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ValidateProbeOutput.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -350,8 +350,8 @@ module Azure::ARM::CDN::Api_2017_04_02
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
-        if defined? Azure::ARM::CDN::Api_2017_04_02::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::CDN::Api_2017_04_02::VERSION}"
+        if defined? Azure::CDN::Mgmt::V2017_04_02::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::CDN::Mgmt::V2017_04_02::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

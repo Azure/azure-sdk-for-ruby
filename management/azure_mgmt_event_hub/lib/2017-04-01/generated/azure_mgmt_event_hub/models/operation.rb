@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventHub::Api_2017_04_01
+module Azure::EventHub::Mgmt::V2017_04_01
   module Models
     #
     # A Event Hub REST API operation

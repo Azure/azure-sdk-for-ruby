@@ -10,7 +10,7 @@ require '../azure_mgmt_locks/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_locks'
-  spec.version       = Azure::ARM::Locks::VERSION
+  spec.version       = Azure::Locks::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Lock Management Client Library for Ruby'

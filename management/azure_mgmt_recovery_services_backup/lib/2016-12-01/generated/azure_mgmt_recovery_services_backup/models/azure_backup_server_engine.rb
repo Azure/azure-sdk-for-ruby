@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
     # Backup engine type when Azure Backup Server is used to manage the

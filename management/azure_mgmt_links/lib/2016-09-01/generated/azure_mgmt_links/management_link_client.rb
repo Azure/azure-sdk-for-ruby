@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Links::Api_2016_09_01
+module Azure::Links::Mgmt::V2016_09_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -120,8 +120,8 @@ module Azure::ARM::Links::Api_2016_09_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_links'
-        if defined? Azure::ARM::Links::Api_2016_09_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Links::Api_2016_09_01::VERSION}"
+        if defined? Azure::Links::Mgmt::V2016_09_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Links::Mgmt::V2016_09_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

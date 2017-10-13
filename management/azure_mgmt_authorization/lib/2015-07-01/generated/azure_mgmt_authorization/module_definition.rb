@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Authorization end
-module Azure::ARM::Authorization::Api_2015_07_01 end
+module Azure::Authorization end
+module Azure::Authorization::Mgmt end
+module Azure::Authorization::Mgmt::V2015_07_01 end

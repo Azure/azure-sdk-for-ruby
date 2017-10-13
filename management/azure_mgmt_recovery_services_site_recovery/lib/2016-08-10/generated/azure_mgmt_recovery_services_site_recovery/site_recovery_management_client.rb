@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   #
   # A service client - single point of access to the REST API.
   #
@@ -208,8 +208,8 @@ module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_recovery_services_site_recovery'
-        if defined? Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10::VERSION}"
+        if defined? Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

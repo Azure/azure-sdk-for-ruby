@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-03-01/generated/azure_mgmt_traffic_manager/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::TrafficManager::Api_2017_03_01
+module Azure::TrafficManager::Mgmt::V2017_03_01
   autoload :Endpoints,                                          '2017-03-01/generated/azure_mgmt_traffic_manager/endpoints.rb'
   autoload :Profiles,                                           '2017-03-01/generated/azure_mgmt_traffic_manager/profiles.rb'
   autoload :GeographicHierarchies,                              '2017-03-01/generated/azure_mgmt_traffic_manager/geographic_hierarchies.rb'

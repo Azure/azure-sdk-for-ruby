@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Policy end
-module Azure::ARM::Policy::Api_2016_12_01 end
+module Azure::Policy end
+module Azure::Policy::Mgmt end
+module Azure::Policy::Mgmt::V2016_12_01 end

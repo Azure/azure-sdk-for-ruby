@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-07-01/generated/azure_mgmt_recovery_services_backup/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::RecoveryServicesBackup::Api_2017_07_01
+module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
   autoload :BackupJobs,                                         '2017-07-01/generated/azure_mgmt_recovery_services_backup/backup_jobs.rb'
   autoload :JobDetails,                                         '2017-07-01/generated/azure_mgmt_recovery_services_backup/job_details.rb'
   autoload :RecoveryServicesBackupClient,                       '2017-07-01/generated/azure_mgmt_recovery_services_backup/recovery_services_backup_client.rb'

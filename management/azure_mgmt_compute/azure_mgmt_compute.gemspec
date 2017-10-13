@@ -10,7 +10,7 @@ require '../azure_mgmt_compute/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_compute'
-  spec.version       = Azure::ARM::Compute::VERSION
+  spec.version       = Azure::Compute::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Compute Management Client Library for Ruby'
