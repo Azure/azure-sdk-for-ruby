@@ -63,36 +63,6 @@ module Azure::Profiles::<%= @profile_name %>
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      <%- if @individual_gem_profile && @versions_clients_mapper.keys.length == 0 -%>
-      def get_client
-        client = <%= @versions_clients_mapper[@versions_clients_mapper.keys[0]] %>.new(@configurable.credentials, @base_url, @options)
-        client.subscription_id = configurable.subscription_id
-        return client
-      end
-      <%- else -%>
-      <%- if @individual_gem_profile -%>
-      def get_client(version = '<%= @versions_clients_mapper.keys[@versions_clients_mapper.keys.length - 1] %>')
-      <%- else -%>
-      def get_client(version = '<%= @default_rp_client_version %>')
-      <%- end -%>
-        case version
-          <%- @versions_clients_mapper.each do |key, value| -%>
-          when '<%= key %>'
-            client = <%= value %>.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          <%- end -%>
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-      <%- end -%>
-
       class ModelClasses
         <%- @model_types.each do |model_type| -%>
         def <%= model_type[:method_name] %>
