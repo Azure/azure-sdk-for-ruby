@@ -44,11 +44,14 @@ To get tenant_id, client_id and secret for your Azure application visit Azure po
 
 ```Ruby
 # Create a client - a point of access to the API and set the subscription id
-client = Azure::ARM::Resources::ResourceManagementClient.new(credentials)
-client.subscription_id = subscription_id
+options = {
+    credentials: credentials,
+    subscription_id: subscription_id
+}
+client = Azure::Resources::Profiles::Latest::Mgmt::Client.new(options)
 
 # Create a model for resource group.
-resource_group = Azure::ARM::Resources::Models::ResourceGroup.new()
+resource_group = Azure::Resources::Profiles::Latest::Mgmt::Models::ResourceGroup.new()
 resource_group.location = 'westus'
 
 promise = client.resource_groups.create_or_update_async('new_test_resource_group', resource_group)

@@ -43,9 +43,13 @@ To get tenant_id, client_id and secret for your Azure application visit Azure po
 ## Creating storage account
 
 ```Ruby
+include Azure::Compute::Storage::Latest::Mgmt
 # Create a client - a point of access to the API and set the subscription id
-client = Azure::ARM::Storage::StorageManagementClient.new(credentials)
-client.subscription_id = subscription_id
+options = {
+    credentials: credentials,
+    subscription_id: subscription_id
+}
+client = Client.new(options)
 
 # Create a model for new storage account.
 params = Models::StorageAccountCreateParameters.new

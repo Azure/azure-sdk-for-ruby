@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
 
-  spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/*"]
+  spec.files         = Dir["LICENSE.txt", "lib/**/*"]
   spec.files.reject! { |fn| fn.include? "build.json" }
   spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }

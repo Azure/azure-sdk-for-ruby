@@ -1,3 +1,62 @@
+## 2017.10.13 - Azure ARM version 0.15.0
+
+* Each gem include multiple api-versions (namespace example: "Azure::Compute::Mgmt::V2017_03_30").
+* Profiles are introduced:
+  - There are 2 profiles defined for 'azure-sdk': "Azure::Profiles::Latest" and "Azure::Profiles::V2017_03_09".
+  - Each gem has minimally a "latest" profile defined, example: "Azure::Compute::Profiles::Latest::Mgmt"
+* All gems are regenerated with @microsoft.azure/autorest.ruby@3.0.20 and  @microsoft.azure/autorest-core@2.0.4147
+* Included changes to Azure specs up to [7aa3a5247895ba34d6cfec73e036bb66dc907d20](https://github.com/Azure/azure-rest-api-specs/tree/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification)
+
+
+## 2017.10.09 - Azure ARM version 0.14.0
+
+* Regened all azure_mgmt_* sdks using [Autorest.2.0.4147](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.2.0.17](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.14.0
+* Added new gems:
+  - [azure_mgmt_automation](https://rubygems.org/gems/azure_mgmt_automation)
+  - [azure_mgmt_billing](https://rubygems.org/gems/azure_mgmt_billing)
+  - [azure_mgmt_consumption](https://rubygems.org/gems/azure_mgmt_consumption)
+  - [azure_mgmt_container_instance](https://rubygems.org/gems/azure_mgmt_container_instance)
+  - [azure_mgmt_customer_insights](https://rubygems.org/gems/azure_mgmt_customer_insights)
+  - [azure_mgmt_event_grid](https://rubygems.org/gems/azure_mgmt_event_grid)
+  - [azure_mgmt_links](https://rubygems.org/gems/azure_mgmt_links)
+  - [azure_mgmt_managed_applications](https://rubygems.org/gems/azure_mgmt_managed_applications)
+  - [azure_mgmt_marketplace_ordering](https://rubygems.org/gems/azure_mgmt_marketplace_ordering)
+  - [azure_mgmt_operational_insights](https://rubygems.org/gems/azure_mgmt_operational_insights)
+  - [azure_mgmt_recovery_services_site_recovery](https://rubygems.org/gems/azure_mgmt_recovery_services_site_recovery)
+  - [azure_mgmt_relay](https://rubygems.org/gems/azure_mgmt_relay)
+  - [azure_mgmt_resources_management](https://rubygems.org/gems/azure_mgmt_resources_management)
+  - [azure_mgmt_service_fabric](https://rubygems.org/gems/azure_mgmt_service_fabric)
+  - [azure_mgmt_stor_simple8000_series](https://rubygems.org/gems/azure_mgmt_stor_simple8000_series)
+
+## 2017.09.28 - Azure Container Registry version 0.13.0
+* Released [azure_mgmt_container_registry](https://rubygems.org/gems/azure_mgmt_container_registry) version 0.13.0. Refer [PR# 1007](https://github.com/Azure/azure-sdk-for-ruby/pull/1007) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/65a45deed027ed8e428b18e7a6da8ea83bc68f21/specification/containerregistry/resource-manager/readme.md) for further details.
+
+## 2017.09.27 - Azure ARM version 0.13.0
+
+* Regened all azure_mgmt_* sdks using [Autorest.2.0.4144](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.2.0.15](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.13.0
+* Updated [azure_mgmt_cognitive_services](https://rubygems.org/gems/azure_mgmt_cognitive_services) operations Update, Delete, GetProperties, ListKeys, RegenerateKey & ListSkus from CognitiveServiceAccounts group to Accounts group. Refer [PR #989](https://github.com/Azure/azure-sdk-for-ruby/pull/989) and [PR #1707](https://github.com/Azure/azure-rest-api-specs/pull/1707) for further details.
+* Updated [azure_mgmt_compute](https://rubygems.org/gems/azure_mgmt_compute) with Availabilty zones, Vmss rolling upgrade, Vmss patch and Vm instance view APIs. Refer [PR #999](https://github.com/Azure/azure-sdk-for-ruby/pull/999) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/0c2a12b50d8598f68d6715b507f7dd53e163407e/specification/compute/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_event_hub](https://rubygems.org/gems/azure_mgmt_event_hub) with new APIs related to disaster recovery. Refer [PR #1000](https://github.com/Azure/azure-sdk-for-ruby/pull/1000) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/acdca6054048e17353095a02989e4567f699b05f/specification/eventhub/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_graph](https://rubygems.org/gems/azure_mgmt_graph) models User, UserUpdateParameters, UserCreateParameters with new attributes. Refer [PR #992](https://github.com/Azure/azure-sdk-for-ruby/pull/992) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/143dbb7c39a63afbb81740f89407a2e4d2f55d0e/specification/graphrbac/data-plane/readme.md) for further details.
+* Updated [azure_mgmt_media_services](https://rubygems.org/gems/azure_mgmt_media_services) model CheckNameAvailabilityOutput, the serialized names: NameAvailable, Reason & Message have been changed to nameAvailable, reason & message respectively. Refer [PR #974](https://github.com/Azure/azure-sdk-for-ruby/pull/974) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/b88ba52c9becb9ad2f7f83d8da6610119327dfc3/specification/mediaservices/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_monitor](https://rubygems.org/gems/azure_mgmt_monitor):
+  * ServiceDiagnosticSettingsOperations has been changed to DiagnosticSettingsOperations
+  * ServiceDiagnosticSettingsResource has been changed to DiagnosticSettingsResource
+  * ServiceDiagnosticSettingsResourcePatch has been removed. Refer [PR #979](https://github.com/Azure/azure-sdk-for-ruby/pull/979) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/97e69db426af23a0cdfde5e5df748565ff1070b8/specification/monitor/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_network](https://rubygems.org/gems/azure_mgmt_network) to latest API version 2017-09-01 and includes Availability zone feature. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/1a88e3f49b78c6ec74f9174115e5233cb6fe20c4/specification/network/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_service_bus](https://rubygems.org/gems/azure_mgmt_service_bus) with new APIs related to disaster recovery. Refer [PR #1001](https://github.com/Azure/azure-sdk-for-ruby/pull/1001) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/072a4331fe088b4ca0d72534ba89078c87ce1000/specification/servicebus/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_storage](https://rubygems.org/gems/azure_mgmt_storage) operation SKU to Sku. Refer [PR #965](https://github.com/Azure/azure-sdk-for-ruby/pull/965) and latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/87c3a2d9559462a39543c7d630b936c521fafbca/specification/storage/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_traffic_manager](https://rubygems.org/gems/azure_mgmt_traffic_manager) with new features related to RealUserMetricsKey and HeatMap.Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/4e092c07e412fb2007ef5cfe4daaaf8a75d95729/specification/trafficmanager/resource-manager/readme.md) for further details.
+* Updated [azure_mgmt_web](https://rubygems.org/gems/azure_mgmt_web) with several new changes. Refer latest [specification](https://github.com/Azure/azure-rest-api-specs/blob/5a2e2ed0fe36ca88c6abd339523b23a6280240e6/specification/web/resource-manager/readme.md) for further details.
+* Updated [azure_sdk](https://rubygems.org/gems/azure_sdk) dependency with [azure-storage](https://rubygems.org/gems/azure-storage) version 0.13.0.preview.
+
+## 2017.09.11 - Azure ARM version 0.12.0
+
+* Regened all azure_mgmt_* sdks using [AutoRest 1.9.3](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.12.0
+* Updated all azure_mgmt_* sdks to use [ms_rest_azure version 0.9.0](https://rubygems.org/gems/ms_rest_azure/versions/0.9.0) to include MSI based authentication
+* **Skipped** generation of `azure_mgmt_traffic_manager` due to https://github.com/Azure/autorest.ruby/pull/7
+* **Skipped** generation of `azure_mgmt_web` due to https://github.com/Azure/azure-sdk-for-ruby/issues/957
+
 ## 2017.07.19 - Azure ARM version 0.11.0
 
 * Regened all azure_mgmt_* sdks using [AutoRest.1.2.2.0](https://github.com/Azure/autorest/tree/v1.2.2) for release of ARM version 0.11.0
