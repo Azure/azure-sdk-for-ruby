@@ -10,9 +10,9 @@ require 'ms_rest_azure'
 
 include MsRest
 include MsRestAzure
-include Azure::ARM::Resources::Api_2017_05_10
-include Azure::ARM::DataLakeStore::Api_2016_11_01
-include Azure::ARM::DataLakeAnalytics::Api_2016_11_01
+include Azure::Resources::Mgmt::V2017_05_10
+include Azure::DataLakeStore::Mgmt::V2016_11_01
+include Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
 class ResourceHelper
   @@resource_group_name = 'RubySDKTest_azure_mgmt_dl_analytics'
@@ -44,7 +44,7 @@ class ResourceHelper
 
   def dls_acc_client
     if @dls_acc_client.nil?
-      @dls_acc_client = Azure::ARM::DataLakeStore::Api_2016_11_01::DataLakeStoreAccountManagementClient.new(@credentials)
+      @dls_acc_client = Azure::DataLakeStore::Mgmt::V2016_11_01::DataLakeStoreAccountManagementClient.new(@credentials)
       @dls_acc_client.subscription_id = @subscription_id
       @dls_acc_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end
@@ -53,7 +53,7 @@ class ResourceHelper
 
   def dla_acc_client
     if @dla_acc_client.nil?
-      @dla_acc_client = Azure::ARM::DataLakeAnalytics::Api_2016_11_01::DataLakeAnalyticsAccountManagementClient.new(@credentials)
+      @dla_acc_client = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::DataLakeAnalyticsAccountManagementClient.new(@credentials)
       @dla_acc_client.subscription_id = @subscription_id
       @dla_acc_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end
@@ -61,7 +61,7 @@ class ResourceHelper
   end
 
   def create_resource_group
-    params = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
     params.location = 'East US 2'
 
     resource_client.resource_groups.create_or_update(@@resource_group_name, params)
@@ -72,7 +72,7 @@ class ResourceHelper
   end
 
   def create_datalake_store_account(name)
-    dsl_acc = Azure::ARM::DataLakeStore::Api_2016_11_01::Models::DataLakeStoreAccount.new
+    dsl_acc = Azure::DataLakeStore::Mgmt::V2016_11_01::Models::DataLakeStoreAccount.new
     dsl_acc.name = name
     dsl_acc.location = 'East US 2'
     dls_acc_client.account.create(@@resource_group_name, name, dsl_acc)

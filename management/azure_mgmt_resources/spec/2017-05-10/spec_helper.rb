@@ -8,7 +8,7 @@ require 'ms_rest_azure'
 
 include MsRest
 include MsRestAzure
-include Azure::ARM::Resources::Api_2017_05_10
+include Azure::Resources::Mgmt::V2017_05_10
 
 class ResourceHelper
   GOOD_TEMPLATE_URI = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json'
@@ -35,7 +35,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_resources'
-    params = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup.new()
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new()
     params.location = 'westus'
 
     @resource_client.resource_groups.create_or_update_async(resource_group_name, params).value!.body
