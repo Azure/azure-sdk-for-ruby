@@ -44,12 +44,16 @@ To get tenant_id, client_id and secret for your Azure application visit Azure po
 
 ```Ruby
 # Include SDK modules to ease access to network classes.
-include Azure::ARM::Network
-include Azure::ARM::Network::Models
+include Azure::Network::Profiles::Latest::Mgmt
+include Azure::Network::Profiles::Latest::Mgmt::Models
 
 # Create a client - a point of access to the API and set the subscription id
-client = NetworkManagementClient.new(credentials)
-client.subscription_id = subscription_id
+options = {
+    credentials: credentials,
+    subscription_id: subscription_id
+}
+
+client = Client.new(options)
 
 # Create a model for new virtual network
 params = VirtualNetwork.new
