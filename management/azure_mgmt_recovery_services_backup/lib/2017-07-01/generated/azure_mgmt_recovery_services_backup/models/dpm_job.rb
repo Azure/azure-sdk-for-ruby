@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2017_07_01
+module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
   module Models
     #
     # DPM workload-specifc job object.

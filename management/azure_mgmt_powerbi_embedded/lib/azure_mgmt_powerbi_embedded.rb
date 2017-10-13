@@ -4,4 +4,3 @@
 
 require '2016-01-29/generated/azure_mgmt_powerbi_embedded'
 require 'profiles/latest/powerbiembedded_latest_profile_client'
-require 'profiles/v2016_01_29/powerbiembedded_v2016_01_29_profile_client'

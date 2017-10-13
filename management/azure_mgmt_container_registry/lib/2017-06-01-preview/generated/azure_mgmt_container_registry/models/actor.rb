@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerRegistry::Api_2017_06_01_preview
+module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
   module Models
     #
     # The agent that initiated the event. For most situations, this could be

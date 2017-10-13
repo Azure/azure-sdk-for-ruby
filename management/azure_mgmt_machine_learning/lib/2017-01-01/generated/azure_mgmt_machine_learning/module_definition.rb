@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::MachineLearning end
-module Azure::ARM::MachineLearning::Api_2017_01_01 end
+module Azure::MachineLearning end
+module Azure::MachineLearning::Mgmt end
+module Azure::MachineLearning::Mgmt::V2017_01_01 end

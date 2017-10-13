@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Automation::Api_2015_10_31
+module Azure::Automation::Mgmt::V2015_10_31
   module Models
     #
     # The connection type property associated with the entity.

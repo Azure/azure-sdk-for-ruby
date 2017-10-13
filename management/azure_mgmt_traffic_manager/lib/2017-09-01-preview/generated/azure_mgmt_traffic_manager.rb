@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-09-01-preview/generated/azure_mgmt_traffic_manager/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::TrafficManager::Api_2017_09_01_preview
+module Azure::TrafficManager::Mgmt::V2017_09_01_preview
   autoload :HeatMap,                                            '2017-09-01-preview/generated/azure_mgmt_traffic_manager/heat_map.rb'
   autoload :TrafficManagerUserMetricsKeys,                      '2017-09-01-preview/generated/azure_mgmt_traffic_manager/traffic_manager_user_metrics_keys.rb'
   autoload :TrafficManagerManagementClient,                     '2017-09-01-preview/generated/azure_mgmt_traffic_manager/traffic_manager_management_client.rb'

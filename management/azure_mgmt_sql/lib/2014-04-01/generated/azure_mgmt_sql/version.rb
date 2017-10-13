@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::SQL::Api_2014_04_01
+module Azure::SQL::Mgmt::V2014_04_01
     VERSION = '0.15.0'
 end

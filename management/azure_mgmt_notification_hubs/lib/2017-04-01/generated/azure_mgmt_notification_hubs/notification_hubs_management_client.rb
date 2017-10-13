@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::NotificationHubs::Api_2017_04_01
+module Azure::NotificationHubs::Mgmt::V2017_04_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -134,8 +134,8 @@ module Azure::ARM::NotificationHubs::Api_2017_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_notification_hubs'
-        if defined? Azure::ARM::NotificationHubs::Api_2017_04_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::NotificationHubs::Api_2017_04_01::VERSION}"
+        if defined? Azure::NotificationHubs::Mgmt::V2017_04_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::NotificationHubs::Mgmt::V2017_04_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

@@ -10,7 +10,7 @@ require '../azure_mgmt_policy/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_policy'
-  spec.version       = Azure::ARM::Policy::VERSION
+  spec.version       = Azure::Policy::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Policy Management Client Library for Ruby'

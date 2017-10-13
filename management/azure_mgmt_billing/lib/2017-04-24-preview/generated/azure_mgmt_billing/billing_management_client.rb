@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Billing::Api_2017_04_24_preview
+module Azure::Billing::Mgmt::V2017_04_24_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -129,8 +129,8 @@ module Azure::ARM::Billing::Api_2017_04_24_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_billing'
-        if defined? Azure::ARM::Billing::Api_2017_04_24_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Billing::Api_2017_04_24_preview::VERSION}"
+        if defined? Azure::Billing::Mgmt::V2017_04_24_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Billing::Mgmt::V2017_04_24_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ManagedApplications::Api_2016_09_01_preview
+module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
   module Models
     #
     # List of appliance definitions.

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-18/generated/azure_mgmt_cognitive_services/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::CognitiveServices::Api_2017_04_18
+module Azure::CognitiveServices::Mgmt::V2017_04_18
   autoload :Accounts,                                           '2017-04-18/generated/azure_mgmt_cognitive_services/accounts.rb'
   autoload :Operations,                                         '2017-04-18/generated/azure_mgmt_cognitive_services/operations.rb'
   autoload :CheckSkuAvailability,                               '2017-04-18/generated/azure_mgmt_cognitive_services/check_sku_availability.rb'

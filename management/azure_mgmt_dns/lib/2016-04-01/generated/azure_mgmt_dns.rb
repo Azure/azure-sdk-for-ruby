@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-04-01/generated/azure_mgmt_dns/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Dns::Api_2016_04_01
+module Azure::Dns::Mgmt::V2016_04_01
   autoload :RecordSets,                                         '2016-04-01/generated/azure_mgmt_dns/record_sets.rb'
   autoload :Zones,                                              '2016-04-01/generated/azure_mgmt_dns/zones.rb'
   autoload :DnsManagementClient,                                '2016-04-01/generated/azure_mgmt_dns/dns_management_client.rb'

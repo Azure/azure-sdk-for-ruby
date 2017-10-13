@@ -5,4 +5,3 @@
 require '2016-06-01/generated/azure_mgmt_recovery_services'
 require '2016-12-01/generated/azure_mgmt_recovery_services'
 require 'profiles/latest/recoveryservices_latest_profile_client'
-require 'profiles/v2016_12_01/recoveryservices_v2016_12_01_profile_client'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::IotHub::Api_2017_07_01
+module Azure::IotHub::Mgmt::V2017_07_01
   module Models
     #
     # The properties of an IoT hub.

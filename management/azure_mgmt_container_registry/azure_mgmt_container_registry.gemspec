@@ -10,7 +10,7 @@ require '../azure_mgmt_container_registry/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_container_registry'
-  spec.version       = Azure::ARM::ContainerRegistry::VERSION
+  spec.version       = Azure::ContainerRegistry::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Container Registry Services Library for Ruby'

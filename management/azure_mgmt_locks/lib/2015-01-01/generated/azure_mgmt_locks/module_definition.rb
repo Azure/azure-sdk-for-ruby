@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Locks end
-module Azure::ARM::Locks::Api_2015_01_01 end
+module Azure::Locks end
+module Azure::Locks::Mgmt end
+module Azure::Locks::Mgmt::V2015_01_01 end

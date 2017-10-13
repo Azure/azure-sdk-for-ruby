@@ -5,4 +5,3 @@
 require '2015-08-01/generated/azure_mgmt_event_hub'
 require '2017-04-01/generated/azure_mgmt_event_hub'
 require 'profiles/latest/eventhub_latest_profile_client'
-require 'profiles/v2017_04_01/eventhub_v2017_04_01_profile_client'

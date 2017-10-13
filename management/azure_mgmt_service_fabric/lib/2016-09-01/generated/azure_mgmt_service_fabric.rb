@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01/generated/azure_mgmt_service_fabric/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ServiceFabric::Api_2016_09_01
+module Azure::ServiceFabric::Mgmt::V2016_09_01
   autoload :Clusters,                                           '2016-09-01/generated/azure_mgmt_service_fabric/clusters.rb'
   autoload :ClusterVersions,                                    '2016-09-01/generated/azure_mgmt_service_fabric/cluster_versions.rb'
   autoload :Operations,                                         '2016-09-01/generated/azure_mgmt_service_fabric/operations.rb'

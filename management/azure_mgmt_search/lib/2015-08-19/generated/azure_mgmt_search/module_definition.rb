@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Search end
-module Azure::ARM::Search::Api_2015_08_19 end
+module Azure::Search end
+module Azure::Search::Mgmt end
+module Azure::Search::Mgmt::V2015_08_19 end

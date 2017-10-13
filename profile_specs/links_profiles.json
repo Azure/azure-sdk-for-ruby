@@ -10,16 +10,6 @@
     "individual_gem_profile": true
   },
   {
-    "name": "V2016_09_01",
-    "resourceTypes": {
-      "Microsoft.Links" : {
-        "2016-09-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_links/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.Links" : {

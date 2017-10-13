@@ -1,15 +1,5 @@
 [
   {
-    "name": "V2016_01_29",
-    "resourceTypes": {
-      "Microsoft.PowerBiEmbedded" : {
-        "2016-01-29": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_powerbi_embedded/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.PowerBiEmbedded" : {

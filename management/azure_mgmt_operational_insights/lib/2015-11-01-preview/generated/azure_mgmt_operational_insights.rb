@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-11-01-preview/generated/azure_mgmt_operational_insights/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
+module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
   autoload :LinkedServices,                                     '2015-11-01-preview/generated/azure_mgmt_operational_insights/linked_services.rb'
   autoload :DataSources,                                        '2015-11-01-preview/generated/azure_mgmt_operational_insights/data_sources.rb'
   autoload :Workspaces,                                         '2015-11-01-preview/generated/azure_mgmt_operational_insights/workspaces.rb'

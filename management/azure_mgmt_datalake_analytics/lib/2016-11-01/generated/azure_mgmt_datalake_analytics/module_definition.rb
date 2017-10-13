@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::DataLakeAnalytics end
-module Azure::ARM::DataLakeAnalytics::Api_2016_11_01 end
+module Azure::DataLakeAnalytics end
+module Azure::DataLakeAnalytics::Mgmt end
+module Azure::DataLakeAnalytics::Mgmt::V2016_11_01 end

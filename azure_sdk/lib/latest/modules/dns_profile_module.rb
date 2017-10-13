@@ -6,29 +6,29 @@ require 'azure_mgmt_dns'
 
 module Azure::Profiles::Latest
   module Dns::Mgmt
-    RecordSets = Azure::ARM::Dns::Api_2016_04_01::RecordSets
-    Zones = Azure::ARM::Dns::Api_2016_04_01::Zones
+    RecordSets = Azure::Dns::Mgmt::V2016_04_01::RecordSets
+    Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
     module Models
-      RecordSet = Azure::ARM::Dns::Api_2016_04_01::Models::RecordSet
-      ARecord = Azure::ARM::Dns::Api_2016_04_01::Models::ARecord
-      RecordSetUpdateParameters = Azure::ARM::Dns::Api_2016_04_01::Models::RecordSetUpdateParameters
-      MxRecord = Azure::ARM::Dns::Api_2016_04_01::Models::MxRecord
-      RecordSetListResult = Azure::ARM::Dns::Api_2016_04_01::Models::RecordSetListResult
-      PtrRecord = Azure::ARM::Dns::Api_2016_04_01::Models::PtrRecord
-      SrvRecord = Azure::ARM::Dns::Api_2016_04_01::Models::SrvRecord
-      CnameRecord = Azure::ARM::Dns::Api_2016_04_01::Models::CnameRecord
-      ZoneDeleteResult = Azure::ARM::Dns::Api_2016_04_01::Models::ZoneDeleteResult
-      AaaaRecord = Azure::ARM::Dns::Api_2016_04_01::Models::AaaaRecord
-      ZoneListResult = Azure::ARM::Dns::Api_2016_04_01::Models::ZoneListResult
-      TxtRecord = Azure::ARM::Dns::Api_2016_04_01::Models::TxtRecord
-      Resource = Azure::ARM::Dns::Api_2016_04_01::Models::Resource
-      NsRecord = Azure::ARM::Dns::Api_2016_04_01::Models::NsRecord
-      SoaRecord = Azure::ARM::Dns::Api_2016_04_01::Models::SoaRecord
-      Zone = Azure::ARM::Dns::Api_2016_04_01::Models::Zone
-      OperationStatus = Azure::ARM::Dns::Api_2016_04_01::Models::OperationStatus
-      HttpStatusCode = Azure::ARM::Dns::Api_2016_04_01::Models::HttpStatusCode
-      RecordType = Azure::ARM::Dns::Api_2016_04_01::Models::RecordType
+      RecordSet = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
+      ARecord = Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
+      RecordSetUpdateParameters = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
+      MxRecord = Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
+      RecordSetListResult = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
+      PtrRecord = Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
+      SrvRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
+      CnameRecord = Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+      ZoneDeleteResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
+      AaaaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
+      ZoneListResult = Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
+      TxtRecord = Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
+      Resource = Azure::Dns::Mgmt::V2016_04_01::Models::Resource
+      NsRecord = Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
+      SoaRecord = Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
+      Zone = Azure::Dns::Mgmt::V2016_04_01::Models::Zone
+      OperationStatus = Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
+      HttpStatusCode = Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
+      RecordType = Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
     end
 
     #
@@ -40,7 +40,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Dns::Api_2016_04_01::DnsManagementClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Dns::Mgmt::V2016_04_01::DnsManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -58,7 +58,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2016-04-01')
         case version
           when '2016-04-01'
-            client = Azure::ARM::Dns::Api_2016_04_01::DnsManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Dns::Mgmt::V2016_04_01::DnsManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -68,61 +68,61 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def record_set
-          Azure::ARM::Dns::Api_2016_04_01::Models::RecordSet
+          Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
         end
         def arecord
-          Azure::ARM::Dns::Api_2016_04_01::Models::ARecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
         end
         def record_set_update_parameters
-          Azure::ARM::Dns::Api_2016_04_01::Models::RecordSetUpdateParameters
+          Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
         end
         def mx_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::MxRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
         end
         def record_set_list_result
-          Azure::ARM::Dns::Api_2016_04_01::Models::RecordSetListResult
+          Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
         end
         def ptr_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::PtrRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
         end
         def srv_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::SrvRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
         end
         def cname_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::CnameRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
         end
         def zone_delete_result
-          Azure::ARM::Dns::Api_2016_04_01::Models::ZoneDeleteResult
+          Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
         end
         def aaaa_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::AaaaRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
         end
         def zone_list_result
-          Azure::ARM::Dns::Api_2016_04_01::Models::ZoneListResult
+          Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
         end
         def txt_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::TxtRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
         end
         def resource
-          Azure::ARM::Dns::Api_2016_04_01::Models::Resource
+          Azure::Dns::Mgmt::V2016_04_01::Models::Resource
         end
         def ns_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::NsRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
         end
         def soa_record
-          Azure::ARM::Dns::Api_2016_04_01::Models::SoaRecord
+          Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
         end
         def zone
-          Azure::ARM::Dns::Api_2016_04_01::Models::Zone
+          Azure::Dns::Mgmt::V2016_04_01::Models::Zone
         end
         def operation_status
-          Azure::ARM::Dns::Api_2016_04_01::Models::OperationStatus
+          Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
         end
         def http_status_code
-          Azure::ARM::Dns::Api_2016_04_01::Models::HttpStatusCode
+          Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
         end
         def record_type
-          Azure::ARM::Dns::Api_2016_04_01::Models::RecordType
+          Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
         end
       end
     end

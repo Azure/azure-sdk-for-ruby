@@ -4,4 +4,3 @@
 
 require '2015-08-19/generated/azure_mgmt_search'
 require 'profiles/latest/search_latest_profile_client'
-require 'profiles/v2015_08_19/search_v2015_08_19_profile_client'

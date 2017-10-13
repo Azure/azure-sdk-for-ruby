@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-06-01/generated/azure_mgmt_recovery_services/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::RecoveryServices::Api_2016_06_01
+module Azure::RecoveryServices::Mgmt::V2016_06_01
   autoload :VaultCertificates,                                  '2016-06-01/generated/azure_mgmt_recovery_services/vault_certificates.rb'
   autoload :RegisteredIdentities,                               '2016-06-01/generated/azure_mgmt_recovery_services/registered_identities.rb'
   autoload :ReplicationUsages,                                  '2016-06-01/generated/azure_mgmt_recovery_services/replication_usages.rb'

@@ -4,4 +4,3 @@
 
 require '2015-10-01/generated/azure_mgmt_media_services'
 require 'profiles/latest/mediaservices_latest_profile_client'
-require 'profiles/v2015_10_01/mediaservices_v2015_10_01_profile_client'

@@ -5,7 +5,7 @@
 require_relative 'spec_helper'
 
 include MsRestAzure
-include Azure::ARM::Compute::Api_2017_03_30
+include Azure::Compute::Mgmt::V2017_03_30
 
 describe UsageOperations do
   before(:each) do

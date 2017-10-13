@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-10-01-preview/generated/azure_mgmt_datalake_analytics/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
+module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
   autoload :Account,                                            '2015-10-01-preview/generated/azure_mgmt_datalake_analytics/account.rb'
   autoload :DataLakeAnalyticsAccountManagementClient,           '2015-10-01-preview/generated/azure_mgmt_datalake_analytics/data_lake_analytics_account_management_client.rb'
 

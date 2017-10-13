@@ -10,7 +10,7 @@ require '../azure_mgmt_traffic_manager/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_traffic_manager'
-  spec.version       = Azure::ARM::TrafficManager::VERSION
+  spec.version       = Azure::TrafficManager::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Traffic Management Client Library for Ruby'

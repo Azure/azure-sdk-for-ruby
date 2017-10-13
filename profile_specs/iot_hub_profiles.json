@@ -1,15 +1,5 @@
 [
   {
-    "name": "V2017_07_01",
-    "resourceTypes": {
-      "Microsoft.IotHub" : {
-        "2017-07-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_iot_hub/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.IotHub" : {

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DevTestLabs::Api_2016_05_15
+module Azure::DevTestLabs::Mgmt::V2016_05_15
   module Models
     #
     # An environment, which is essentially an ARM template deployment.

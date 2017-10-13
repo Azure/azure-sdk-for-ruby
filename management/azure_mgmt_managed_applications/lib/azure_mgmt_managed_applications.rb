@@ -4,4 +4,3 @@
 
 require '2016-09-01-preview/generated/azure_mgmt_managed_applications'
 require 'profiles/latest/managedapplications_latest_profile_client'
-require 'profiles/v2016_09_01_preview/managedapplications_v2016_09_01_preview_profile_client'

@@ -3,6 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::NotificationHubs end
+module Azure::NotificationHubs end
+module Azure::NotificationHubs::Mgmt end
 

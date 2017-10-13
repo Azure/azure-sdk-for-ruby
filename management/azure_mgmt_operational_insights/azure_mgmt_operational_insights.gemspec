@@ -10,7 +10,7 @@ require '../azure_mgmt_operational_insights/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_operational_insights'
-  spec.version       = Azure::ARM::OperationalInsights::VERSION
+  spec.version       = Azure::OperationalInsights::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Operational Insights Library for Ruby'

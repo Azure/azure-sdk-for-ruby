@@ -10,7 +10,7 @@ require '../azure_mgmt_dns/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_dns'
-  spec.version       = Azure::ARM::Dns::VERSION
+  spec.version       = Azure::Dns::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Dns Management Client Library for Ruby'

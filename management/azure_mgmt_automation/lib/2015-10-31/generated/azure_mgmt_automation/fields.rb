@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Automation::Api_2015_10_31
+module Azure::Automation::Mgmt::V2015_10_31
   #
   # Automation Client
   #
@@ -107,7 +107,7 @@ module Azure::ARM::Automation::Api_2015_10_31
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Automation::Api_2015_10_31::Models::TypeFieldListResult.mapper()
+            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::TypeFieldListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

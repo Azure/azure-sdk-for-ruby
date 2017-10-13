@@ -1,15 +1,5 @@
 [
   {
-    "name": "V2017_04_01",
-    "resourceTypes": {
-      "Microsoft.EventHub" : {
-        "2017-04-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_event_hub/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.EventHub" : {

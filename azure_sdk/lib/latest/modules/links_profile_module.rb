@@ -6,14 +6,14 @@ require 'azure_mgmt_links'
 
 module Azure::Profiles::Latest
   module Links::Mgmt
-    ResourceLinks = Azure::ARM::Links::Api_2016_09_01::ResourceLinks
+    ResourceLinks = Azure::Links::Mgmt::V2016_09_01::ResourceLinks
 
     module Models
-      ResourceLink = Azure::ARM::Links::Api_2016_09_01::Models::ResourceLink
-      ResourceLinkFilter = Azure::ARM::Links::Api_2016_09_01::Models::ResourceLinkFilter
-      ResourceLinkResult = Azure::ARM::Links::Api_2016_09_01::Models::ResourceLinkResult
-      ResourceLinkProperties = Azure::ARM::Links::Api_2016_09_01::Models::ResourceLinkProperties
-      Filter = Azure::ARM::Links::Api_2016_09_01::Models::Filter
+      ResourceLink = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
+      ResourceLinkFilter = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
+      ResourceLinkResult = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
+      ResourceLinkProperties = Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
+      Filter = Azure::Links::Mgmt::V2016_09_01::Models::Filter
     end
 
     #
@@ -25,7 +25,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Links::Mgmt::V2016_09_01::ManagementLinkClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -42,7 +42,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2016-09-01')
         case version
           when '2016-09-01'
-            client = Azure::ARM::Links::Api_2016_09_01::ManagementLinkClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Links::Mgmt::V2016_09_01::ManagementLinkClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -52,19 +52,19 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def resource_link
-          Azure::ARM::Links::Api_2016_09_01::Models::ResourceLink
+          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLink
         end
         def resource_link_filter
-          Azure::ARM::Links::Api_2016_09_01::Models::ResourceLinkFilter
+          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkFilter
         end
         def resource_link_result
-          Azure::ARM::Links::Api_2016_09_01::Models::ResourceLinkResult
+          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkResult
         end
         def resource_link_properties
-          Azure::ARM::Links::Api_2016_09_01::Models::ResourceLinkProperties
+          Azure::Links::Mgmt::V2016_09_01::Models::ResourceLinkProperties
         end
         def filter
-          Azure::ARM::Links::Api_2016_09_01::Models::Filter
+          Azure::Links::Mgmt::V2016_09_01::Models::Filter
         end
       end
     end

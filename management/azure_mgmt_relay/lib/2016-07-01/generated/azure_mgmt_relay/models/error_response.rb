@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Relay::Api_2016_07_01
+module Azure::Relay::Mgmt::V2016_07_01
   module Models
     #
     # Error reponse indicates Relay service is not able to process the incoming

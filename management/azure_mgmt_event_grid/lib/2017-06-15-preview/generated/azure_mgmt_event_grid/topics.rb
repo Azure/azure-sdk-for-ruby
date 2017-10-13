@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::EventGrid::Api_2017_06_15_preview
+module Azure::EventGrid::Mgmt::V2017_06_15_preview
   #
   # Azure EventGrid Management Client
   #
@@ -108,7 +108,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::Topic.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::Topic.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -158,7 +158,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::Topic.mapper()
+          result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::Topic.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -287,7 +287,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::TopicsListResult.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::TopicsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -383,7 +383,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::TopicsListResult.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::TopicsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -483,7 +483,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::TopicSharedAccessKeys.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::TopicSharedAccessKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -567,7 +567,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::TopicRegenerateKeyRequest.mapper()
+      request_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::TopicRegenerateKeyRequest.mapper()
       request_content = @client.serialize(request_mapper,  regenerate_key_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -599,7 +599,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::TopicSharedAccessKeys.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::TopicSharedAccessKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -707,7 +707,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::EventTypesListResult.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::EventTypesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -788,7 +788,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::Topic.mapper()
+      request_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::Topic.mapper()
       request_content = @client.serialize(request_mapper,  topic_info)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -820,7 +820,7 @@ module Azure::ARM::EventGrid::Api_2017_06_15_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::EventGrid::Api_2017_06_15_preview::Models::Topic.mapper()
+            result_mapper = Azure::EventGrid::Mgmt::V2017_06_15_preview::Models::Topic.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

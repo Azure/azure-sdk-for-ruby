@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServices::Api_2016_06_01
+module Azure::RecoveryServices::Mgmt::V2016_06_01
   module Models
     #
     # Class to represent shoebox log specification in json client discovery.

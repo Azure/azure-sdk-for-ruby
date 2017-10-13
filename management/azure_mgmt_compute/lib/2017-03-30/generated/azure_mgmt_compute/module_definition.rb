@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Compute end
-module Azure::ARM::Compute::Api_2017_03_30 end
+module Azure::Compute end
+module Azure::Compute::Mgmt end
+module Azure::Compute::Mgmt::V2017_03_30 end

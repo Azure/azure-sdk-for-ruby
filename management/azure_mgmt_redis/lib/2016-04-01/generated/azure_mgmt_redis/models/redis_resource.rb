@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Redis::Api_2016_04_01
+module Azure::Redis::Mgmt::V2016_04_01
   module Models
     #
     # A single Redis item in List or Get Operation.

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-12-01/generated/azure_mgmt_features/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Features::Api_2015_12_01
+module Azure::Features::Mgmt::V2015_12_01
   autoload :Features,                                           '2015-12-01/generated/azure_mgmt_features/features.rb'
   autoload :FeatureClient,                                      '2015-12-01/generated/azure_mgmt_features/feature_client.rb'
 

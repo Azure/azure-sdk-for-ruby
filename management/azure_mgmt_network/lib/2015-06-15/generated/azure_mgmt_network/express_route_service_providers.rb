@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2015_06_15
+module Azure::Network::Mgmt::V2015_06_15
   #
   # Network Client
   #
@@ -91,7 +91,7 @@ module Azure::ARM::Network::Api_2015_06_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteServiceProviderListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProviderListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -178,7 +178,7 @@ module Azure::ARM::Network::Api_2015_06_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2015_06_15::Models::ExpressRouteServiceProviderListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteServiceProviderListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

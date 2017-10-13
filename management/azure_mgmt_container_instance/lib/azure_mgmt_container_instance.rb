@@ -4,4 +4,3 @@
 
 require '2017-08-01-preview/generated/azure_mgmt_container_instance'
 require 'profiles/latest/containerinstance_latest_profile_client'
-require 'profiles/v2017_08_01_preview/containerinstance_v2017_08_01_preview_profile_client'

@@ -4,4 +4,3 @@
 
 require '2016-04-01/generated/azure_mgmt_dns'
 require 'profiles/latest/dns_latest_profile_client'
-require 'profiles/v2016_04_01/dns_v2016_04_01_profile_client'

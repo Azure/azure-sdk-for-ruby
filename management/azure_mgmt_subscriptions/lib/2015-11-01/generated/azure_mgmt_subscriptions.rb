@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-11-01/generated/azure_mgmt_subscriptions/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Subscriptions::Api_2015_11_01
+module Azure::Subscriptions::Mgmt::V2015_11_01
   autoload :Subscriptions,                                      '2015-11-01/generated/azure_mgmt_subscriptions/subscriptions.rb'
   autoload :Tenants,                                            '2015-11-01/generated/azure_mgmt_subscriptions/tenants.rb'
   autoload :SubscriptionClient,                                 '2015-11-01/generated/azure_mgmt_subscriptions/subscription_client.rb'

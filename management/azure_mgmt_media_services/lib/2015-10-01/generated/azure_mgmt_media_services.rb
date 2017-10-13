@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-10-01/generated/azure_mgmt_media_services/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::MediaServices::Api_2015_10_01
+module Azure::MediaServices::Mgmt::V2015_10_01
   autoload :Operations,                                         '2015-10-01/generated/azure_mgmt_media_services/operations.rb'
   autoload :MediaServiceOperations,                             '2015-10-01/generated/azure_mgmt_media_services/media_service_operations.rb'
   autoload :MediaServicesManagementClient,                      '2015-10-01/generated/azure_mgmt_media_services/media_services_management_client.rb'

@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::IotHub::Api_2017_07_01
+module Azure::IotHub::Mgmt::V2017_07_01
   #
   # Use this API to manage the IoT hubs in your Azure subscription.
   #
@@ -108,7 +108,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateListDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateListDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -212,7 +212,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -307,7 +307,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateBodyDescription.mapper()
+      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateBodyDescription.mapper()
       request_content = @client.serialize(request_mapper,  certificate_description)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -339,7 +339,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -349,7 +349,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -559,7 +559,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateWithNonceDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateWithNonceDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -655,7 +655,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateVerificationDescription.mapper()
+      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription.mapper()
       request_content = @client.serialize(request_mapper,  certificate_verification_body)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -687,7 +687,7 @@ module Azure::ARM::IotHub::Api_2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateDescription.mapper()
+            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

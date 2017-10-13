@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::MobileEngagement end
-module Azure::ARM::MobileEngagement::Api_2014_12_01 end
+module Azure::MobileEngagement end
+module Azure::MobileEngagement::Mgmt end
+module Azure::MobileEngagement::Mgmt::V2014_12_01 end

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-11-01/generated/azure_mgmt_traffic_manager/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::TrafficManager::Api_2015_11_01
+module Azure::TrafficManager::Mgmt::V2015_11_01
   autoload :Endpoints,                                          '2015-11-01/generated/azure_mgmt_traffic_manager/endpoints.rb'
   autoload :Profiles,                                           '2015-11-01/generated/azure_mgmt_traffic_manager/profiles.rb'
   autoload :TrafficManagerManagementClient,                     '2015-11-01/generated/azure_mgmt_traffic_manager/traffic_manager_management_client.rb'

@@ -6,61 +6,61 @@ require 'azure_mgmt_resources'
 
 module Azure::Profiles::Latest
   module Resources::Mgmt
-    Deployments = Azure::ARM::Resources::Api_2017_05_10::Deployments
-    Providers = Azure::ARM::Resources::Api_2017_05_10::Providers
-    Resources = Azure::ARM::Resources::Api_2017_05_10::Resources
-    ResourceGroups = Azure::ARM::Resources::Api_2017_05_10::ResourceGroups
-    Tags = Azure::ARM::Resources::Api_2017_05_10::Tags
-    DeploymentOperations = Azure::ARM::Resources::Api_2017_05_10::DeploymentOperations
+    Deployments = Azure::Resources::Mgmt::V2017_05_10::Deployments
+    Providers = Azure::Resources::Mgmt::V2017_05_10::Providers
+    Resources = Azure::Resources::Mgmt::V2017_05_10::Resources
+    ResourceGroups = Azure::Resources::Mgmt::V2017_05_10::ResourceGroups
+    Tags = Azure::Resources::Mgmt::V2017_05_10::Tags
+    DeploymentOperations = Azure::Resources::Mgmt::V2017_05_10::DeploymentOperations
 
     module Models
-      Sku = Azure::ARM::Resources::Api_2017_05_10::Models::Sku
-      Identity = Azure::ARM::Resources::Api_2017_05_10::Models::Identity
-      GenericResourceFilter = Azure::ARM::Resources::Api_2017_05_10::Models::GenericResourceFilter
-      ResourceGroupFilter = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupFilter
-      ParametersLink = Azure::ARM::Resources::Api_2017_05_10::Models::ParametersLink
-      ResourceListResult = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceListResult
-      DeploymentProperties = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentProperties
-      ResourceGroupProperties = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupProperties
-      DeploymentExportResult = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentExportResult
-      ResourceGroup = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup
-      AliasPathType = Azure::ARM::Resources::Api_2017_05_10::Models::AliasPathType
-      ResourceGroupPatchable = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupPatchable
-      ProviderResourceType = Azure::ARM::Resources::Api_2017_05_10::Models::ProviderResourceType
-      ResourceGroupListResult = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupListResult
-      BasicDependency = Azure::ARM::Resources::Api_2017_05_10::Models::BasicDependency
-      ResourcesMoveInfo = Azure::ARM::Resources::Api_2017_05_10::Models::ResourcesMoveInfo
-      DeploymentPropertiesExtended = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentPropertiesExtended
-      ExportTemplateRequest = Azure::ARM::Resources::Api_2017_05_10::Models::ExportTemplateRequest
-      DeploymentExtended = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentExtended
-      TagCount = Azure::ARM::Resources::Api_2017_05_10::Models::TagCount
-      ProviderListResult = Azure::ARM::Resources::Api_2017_05_10::Models::ProviderListResult
-      TagValue = Azure::ARM::Resources::Api_2017_05_10::Models::TagValue
-      DeploymentExtendedFilter = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentExtendedFilter
-      TagDetails = Azure::ARM::Resources::Api_2017_05_10::Models::TagDetails
-      DebugSetting = Azure::ARM::Resources::Api_2017_05_10::Models::DebugSetting
-      TagsListResult = Azure::ARM::Resources::Api_2017_05_10::Models::TagsListResult
-      ResourceManagementErrorWithDetails = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceManagementErrorWithDetails
-      TargetResource = Azure::ARM::Resources::Api_2017_05_10::Models::TargetResource
-      Provider = Azure::ARM::Resources::Api_2017_05_10::Models::Provider
-      HttpMessage = Azure::ARM::Resources::Api_2017_05_10::Models::HttpMessage
-      DeploymentValidateResult = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentValidateResult
-      DeploymentOperationProperties = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentOperationProperties
-      Plan = Azure::ARM::Resources::Api_2017_05_10::Models::Plan
-      DeploymentOperation = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentOperation
-      Deployment = Azure::ARM::Resources::Api_2017_05_10::Models::Deployment
-      DeploymentOperationsListResult = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentOperationsListResult
-      Dependency = Azure::ARM::Resources::Api_2017_05_10::Models::Dependency
-      ResourceProviderOperationDisplayProperties = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceProviderOperationDisplayProperties
-      TemplateLink = Azure::ARM::Resources::Api_2017_05_10::Models::TemplateLink
-      Resource = Azure::ARM::Resources::Api_2017_05_10::Models::Resource
-      DeploymentListResult = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentListResult
-      SubResource = Azure::ARM::Resources::Api_2017_05_10::Models::SubResource
-      AliasType = Azure::ARM::Resources::Api_2017_05_10::Models::AliasType
-      ResourceGroupExportResult = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupExportResult
-      GenericResource = Azure::ARM::Resources::Api_2017_05_10::Models::GenericResource
-      DeploymentMode = Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentMode
-      ResourceIdentityType = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceIdentityType
+      Sku = Azure::Resources::Mgmt::V2017_05_10::Models::Sku
+      Identity = Azure::Resources::Mgmt::V2017_05_10::Models::Identity
+      GenericResourceFilter = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
+      ResourceGroupFilter = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupFilter
+      ParametersLink = Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
+      ResourceListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceListResult
+      DeploymentProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
+      ResourceGroupProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupProperties
+      DeploymentExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
+      ResourceGroup = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup
+      AliasPathType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
+      ResourceGroupPatchable = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
+      ProviderResourceType = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
+      ResourceGroupListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupListResult
+      BasicDependency = Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
+      ResourcesMoveInfo = Azure::Resources::Mgmt::V2017_05_10::Models::ResourcesMoveInfo
+      DeploymentPropertiesExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
+      ExportTemplateRequest = Azure::Resources::Mgmt::V2017_05_10::Models::ExportTemplateRequest
+      DeploymentExtended = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
+      TagCount = Azure::Resources::Mgmt::V2017_05_10::Models::TagCount
+      ProviderListResult = Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
+      TagValue = Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
+      DeploymentExtendedFilter = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtendedFilter
+      TagDetails = Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
+      DebugSetting = Azure::Resources::Mgmt::V2017_05_10::Models::DebugSetting
+      TagsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
+      ResourceManagementErrorWithDetails = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceManagementErrorWithDetails
+      TargetResource = Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
+      Provider = Azure::Resources::Mgmt::V2017_05_10::Models::Provider
+      HttpMessage = Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
+      DeploymentValidateResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
+      DeploymentOperationProperties = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
+      Plan = Azure::Resources::Mgmt::V2017_05_10::Models::Plan
+      DeploymentOperation = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
+      Deployment = Azure::Resources::Mgmt::V2017_05_10::Models::Deployment
+      DeploymentOperationsListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
+      Dependency = Azure::Resources::Mgmt::V2017_05_10::Models::Dependency
+      ResourceProviderOperationDisplayProperties = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
+      TemplateLink = Azure::Resources::Mgmt::V2017_05_10::Models::TemplateLink
+      Resource = Azure::Resources::Mgmt::V2017_05_10::Models::Resource
+      DeploymentListResult = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
+      SubResource = Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
+      AliasType = Azure::Resources::Mgmt::V2017_05_10::Models::AliasType
+      ResourceGroupExportResult = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
+      GenericResource = Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
+      DeploymentMode = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
+      ResourceIdentityType = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
     end
 
     #
@@ -72,7 +72,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Resources::Mgmt::V2017_05_10::ResourceManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -94,7 +94,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2017-05-10')
         case version
           when '2017-05-10'
-            client = Azure::ARM::Resources::Api_2017_05_10::ResourceManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Resources::Mgmt::V2017_05_10::ResourceManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -104,145 +104,145 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def sku
-          Azure::ARM::Resources::Api_2017_05_10::Models::Sku
+          Azure::Resources::Mgmt::V2017_05_10::Models::Sku
         end
         def identity
-          Azure::ARM::Resources::Api_2017_05_10::Models::Identity
+          Azure::Resources::Mgmt::V2017_05_10::Models::Identity
         end
         def generic_resource_filter
-          Azure::ARM::Resources::Api_2017_05_10::Models::GenericResourceFilter
+          Azure::Resources::Mgmt::V2017_05_10::Models::GenericResourceFilter
         end
         def resource_group_filter
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupFilter
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupFilter
         end
         def parameters_link
-          Azure::ARM::Resources::Api_2017_05_10::Models::ParametersLink
+          Azure::Resources::Mgmt::V2017_05_10::Models::ParametersLink
         end
         def resource_list_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceListResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceListResult
         end
         def deployment_properties
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentProperties
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentProperties
         end
         def resource_group_properties
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupProperties
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupProperties
         end
         def deployment_export_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentExportResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult
         end
         def resource_group
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup
         end
         def alias_path_type
-          Azure::ARM::Resources::Api_2017_05_10::Models::AliasPathType
+          Azure::Resources::Mgmt::V2017_05_10::Models::AliasPathType
         end
         def resource_group_patchable
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupPatchable
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupPatchable
         end
         def provider_resource_type
-          Azure::ARM::Resources::Api_2017_05_10::Models::ProviderResourceType
+          Azure::Resources::Mgmt::V2017_05_10::Models::ProviderResourceType
         end
         def resource_group_list_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupListResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupListResult
         end
         def basic_dependency
-          Azure::ARM::Resources::Api_2017_05_10::Models::BasicDependency
+          Azure::Resources::Mgmt::V2017_05_10::Models::BasicDependency
         end
         def resources_move_info
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourcesMoveInfo
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourcesMoveInfo
         end
         def deployment_properties_extended
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentPropertiesExtended
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentPropertiesExtended
         end
         def export_template_request
-          Azure::ARM::Resources::Api_2017_05_10::Models::ExportTemplateRequest
+          Azure::Resources::Mgmt::V2017_05_10::Models::ExportTemplateRequest
         end
         def deployment_extended
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentExtended
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended
         end
         def tag_count
-          Azure::ARM::Resources::Api_2017_05_10::Models::TagCount
+          Azure::Resources::Mgmt::V2017_05_10::Models::TagCount
         end
         def provider_list_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::ProviderListResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::ProviderListResult
         end
         def tag_value
-          Azure::ARM::Resources::Api_2017_05_10::Models::TagValue
+          Azure::Resources::Mgmt::V2017_05_10::Models::TagValue
         end
         def deployment_extended_filter
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentExtendedFilter
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtendedFilter
         end
         def tag_details
-          Azure::ARM::Resources::Api_2017_05_10::Models::TagDetails
+          Azure::Resources::Mgmt::V2017_05_10::Models::TagDetails
         end
         def debug_setting
-          Azure::ARM::Resources::Api_2017_05_10::Models::DebugSetting
+          Azure::Resources::Mgmt::V2017_05_10::Models::DebugSetting
         end
         def tags_list_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::TagsListResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::TagsListResult
         end
         def resource_management_error_with_details
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceManagementErrorWithDetails
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceManagementErrorWithDetails
         end
         def target_resource
-          Azure::ARM::Resources::Api_2017_05_10::Models::TargetResource
+          Azure::Resources::Mgmt::V2017_05_10::Models::TargetResource
         end
         def provider
-          Azure::ARM::Resources::Api_2017_05_10::Models::Provider
+          Azure::Resources::Mgmt::V2017_05_10::Models::Provider
         end
         def http_message
-          Azure::ARM::Resources::Api_2017_05_10::Models::HttpMessage
+          Azure::Resources::Mgmt::V2017_05_10::Models::HttpMessage
         end
         def deployment_validate_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentValidateResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult
         end
         def deployment_operation_properties
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentOperationProperties
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationProperties
         end
         def plan
-          Azure::ARM::Resources::Api_2017_05_10::Models::Plan
+          Azure::Resources::Mgmt::V2017_05_10::Models::Plan
         end
         def deployment_operation
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentOperation
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperation
         end
         def deployment
-          Azure::ARM::Resources::Api_2017_05_10::Models::Deployment
+          Azure::Resources::Mgmt::V2017_05_10::Models::Deployment
         end
         def deployment_operations_list_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentOperationsListResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentOperationsListResult
         end
         def dependency
-          Azure::ARM::Resources::Api_2017_05_10::Models::Dependency
+          Azure::Resources::Mgmt::V2017_05_10::Models::Dependency
         end
         def resource_provider_operation_display_properties
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceProviderOperationDisplayProperties
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceProviderOperationDisplayProperties
         end
         def template_link
-          Azure::ARM::Resources::Api_2017_05_10::Models::TemplateLink
+          Azure::Resources::Mgmt::V2017_05_10::Models::TemplateLink
         end
         def resource
-          Azure::ARM::Resources::Api_2017_05_10::Models::Resource
+          Azure::Resources::Mgmt::V2017_05_10::Models::Resource
         end
         def deployment_list_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentListResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult
         end
         def sub_resource
-          Azure::ARM::Resources::Api_2017_05_10::Models::SubResource
+          Azure::Resources::Mgmt::V2017_05_10::Models::SubResource
         end
         def alias_type
-          Azure::ARM::Resources::Api_2017_05_10::Models::AliasType
+          Azure::Resources::Mgmt::V2017_05_10::Models::AliasType
         end
         def resource_group_export_result
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroupExportResult
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroupExportResult
         end
         def generic_resource
-          Azure::ARM::Resources::Api_2017_05_10::Models::GenericResource
+          Azure::Resources::Mgmt::V2017_05_10::Models::GenericResource
         end
         def deployment_mode
-          Azure::ARM::Resources::Api_2017_05_10::Models::DeploymentMode
+          Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentMode
         end
         def resource_identity_type
-          Azure::ARM::Resources::Api_2017_05_10::Models::ResourceIdentityType
+          Azure::Resources::Mgmt::V2017_05_10::Models::ResourceIdentityType
         end
       end
     end

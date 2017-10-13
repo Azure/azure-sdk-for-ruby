@@ -5,7 +5,7 @@
 require File.join(File.dirname(__FILE__), '../../../../vcr_helper')
 require 'azure_mgmt_graph'
 
-include Azure::ARM::Graph::Api_1_6
+include Azure::Graph::Mgmt::V1_6
 
 class ResourceHelper
   attr_reader :graph_client

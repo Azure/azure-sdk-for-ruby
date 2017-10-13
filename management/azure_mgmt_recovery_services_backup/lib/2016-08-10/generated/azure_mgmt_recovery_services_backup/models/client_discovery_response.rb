@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_08_10
+module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
   module Models
     #
     # Operations List response which contains list of available APIs.

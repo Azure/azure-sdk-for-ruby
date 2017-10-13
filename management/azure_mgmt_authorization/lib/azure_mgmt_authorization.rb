@@ -4,4 +4,3 @@
 
 require '2015-07-01/generated/azure_mgmt_authorization'
 require 'profiles/latest/authorization_latest_profile_client'
-require 'profiles/v2015_07_01/authorization_v2015_07_01_profile_client'

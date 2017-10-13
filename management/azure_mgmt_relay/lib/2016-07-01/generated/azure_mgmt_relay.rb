@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-07-01/generated/azure_mgmt_relay/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Relay::Api_2016_07_01
+module Azure::Relay::Mgmt::V2016_07_01
   autoload :Operations,                                         '2016-07-01/generated/azure_mgmt_relay/operations.rb'
   autoload :Namespaces,                                         '2016-07-01/generated/azure_mgmt_relay/namespaces.rb'
   autoload :HybridConnections,                                  '2016-07-01/generated/azure_mgmt_relay/hybrid_connections.rb'

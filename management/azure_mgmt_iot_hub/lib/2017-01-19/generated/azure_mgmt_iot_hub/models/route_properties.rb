@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::IotHub::Api_2017_01_19
+module Azure::IotHub::Mgmt::V2017_01_19
   module Models
     #
     # The properties of a routing rule that your IoT hub uses to route messages

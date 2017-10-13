@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2015_06_15
+module Azure::Compute::Mgmt::V2015_06_15
   #
   # Compute Client
   #
@@ -111,7 +111,7 @@ module Azure::ARM::Compute::Api_2015_06_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2015_06_15::Models::VirtualMachineImage.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2015_06_15::Models::VirtualMachineImage.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

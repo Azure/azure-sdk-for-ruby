@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Subscriptions end
-module Azure::ARM::Subscriptions::Api_2016_06_01 end
+module Azure::Subscriptions end
+module Azure::Subscriptions::Mgmt end
+module Azure::Subscriptions::Mgmt::V2016_06_01 end

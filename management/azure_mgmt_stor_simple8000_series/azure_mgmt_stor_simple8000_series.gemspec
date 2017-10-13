@@ -10,7 +10,7 @@ require '../azure_mgmt_stor_simple8000_series/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_stor_simple8000_series'
-  spec.version       = Azure::ARM::StorSimple8000Series::VERSION
+  spec.version       = Azure::StorSimple8000Series::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Stor Simple 8000 Series Library for Ruby'

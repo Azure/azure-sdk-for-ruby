@@ -4,4 +4,3 @@
 
 require '2017-01-01/generated/azure_mgmt_machine_learning'
 require 'profiles/latest/machinelearning_latest_profile_client'
-require 'profiles/v2017_01_01/machinelearning_v2017_01_01_profile_client'

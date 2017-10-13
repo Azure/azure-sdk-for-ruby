@@ -10,7 +10,7 @@ require '../azure_mgmt_key_vault/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_key_vault'
-  spec.version       = Azure::ARM::KeyVault::VERSION
+  spec.version       = Azure::KeyVault::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Management Key Vault Client Library for Ruby'

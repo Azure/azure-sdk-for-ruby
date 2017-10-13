@@ -5,13 +5,13 @@
 require 'azure_mgmt_locks'
 
 module Azure::Locks::Profiles::Latest::Mgmt
-    ManagementLocks = Azure::ARM::Locks::Api_2016_09_01::ManagementLocks
+    ManagementLocks = Azure::Locks::Mgmt::V2016_09_01::ManagementLocks
 
     module Models
-      ManagementLockObject = Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockObject
-      ManagementLockListResult = Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockListResult
-      ManagementLockOwner = Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockOwner
-      LockLevel = Azure::ARM::Locks::Api_2016_09_01::Models::LockLevel
+      ManagementLockObject = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
+      ManagementLockListResult = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
+      ManagementLockOwner = Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
+      LockLevel = Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
     end
 
     #
@@ -31,7 +31,7 @@ module Azure::Locks::Profiles::Latest::Mgmt
 
         @configurable, @base_url, @options = self, nil, nil
 
-        client_0 = Azure::ARM::Locks::Api_2016_09_01::ManagementLockClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Locks::Mgmt::V2016_09_01::ManagementLockClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -48,7 +48,7 @@ module Azure::Locks::Profiles::Latest::Mgmt
       def get_client(version = '2016-09-01')
         case version
           when '2016-09-01'
-            client = Azure::ARM::Locks::Api_2016_09_01::ManagementLockClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Locks::Mgmt::V2016_09_01::ManagementLockClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -58,16 +58,16 @@ module Azure::Locks::Profiles::Latest::Mgmt
 
       class ModelClasses
         def management_lock_object
-          Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockObject
+          Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockObject
         end
         def management_lock_list_result
-          Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockListResult
+          Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockListResult
         end
         def management_lock_owner
-          Azure::ARM::Locks::Api_2016_09_01::Models::ManagementLockOwner
+          Azure::Locks::Mgmt::V2016_09_01::Models::ManagementLockOwner
         end
         def lock_level
-          Azure::ARM::Locks::Api_2016_09_01::Models::LockLevel
+          Azure::Locks::Mgmt::V2016_09_01::Models::LockLevel
         end
       end
     end

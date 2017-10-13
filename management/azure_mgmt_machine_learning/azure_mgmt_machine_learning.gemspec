@@ -10,7 +10,7 @@ require '../azure_mgmt_machine_learning/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_machine_learning'
-  spec.version       = Azure::ARM::MachineLearning::VERSION
+  spec.version       = Azure::MachineLearning::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Machine Learning Management Client Library for Ruby'

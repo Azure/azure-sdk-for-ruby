@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Billing::Api_2017_04_24_preview
+module Azure::Billing::Mgmt::V2017_04_24_preview
   module Models
     #
     # The Resource model definition.

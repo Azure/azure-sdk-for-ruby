@@ -10,16 +10,6 @@
     "individual_gem_profile": true
   },
   {
-    "name": "V2017_06_01",
-    "resourceTypes": {
-      "Microsoft.Storage" : {
-        "2017-06-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_storage/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.Storage" : {

@@ -4,4 +4,3 @@
 
 require '2017-04-24-preview/generated/azure_mgmt_billing'
 require 'profiles/latest/billing_latest_profile_client'
-require 'profiles/v2017_04_24_preview/billing_v2017_04_24_preview_profile_client'

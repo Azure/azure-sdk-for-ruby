@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-08-01/generated/azure_mgmt_service_bus/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ServiceBus::Api_2015_08_01
+module Azure::ServiceBus::Mgmt::V2015_08_01
   autoload :Operations,                                         '2015-08-01/generated/azure_mgmt_service_bus/operations.rb'
   autoload :Namespaces,                                         '2015-08-01/generated/azure_mgmt_service_bus/namespaces.rb'
   autoload :Queues,                                             '2015-08-01/generated/azure_mgmt_service_bus/queues.rb'

@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Batch end
-module Azure::ARM::Batch::Api_2015_12_01 end
+module Azure::Batch end
+module Azure::Batch::Mgmt end
+module Azure::Batch::Mgmt::V2015_12_01 end

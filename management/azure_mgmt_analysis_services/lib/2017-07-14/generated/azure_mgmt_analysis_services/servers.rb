@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::AnalysisServices::Api_2017_07_14
+module Azure::AnalysisServices::Mgmt::V2017_07_14
   #
   # The Azure Analysis Services Web API provides a RESTful set of web services
   # that enables users to create, retrieve, update, and delete Analysis
@@ -110,7 +110,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -165,7 +165,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+          result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -261,7 +261,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+          result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -440,7 +440,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServers.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -523,7 +523,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServers.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -606,7 +606,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::SkuEnumerationForNewResourceResult.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForNewResourceResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -706,7 +706,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::SkuEnumerationForExistingResourceResult.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForExistingResourceResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -806,7 +806,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::GatewayListStatusLive.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusLive.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -982,7 +982,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+      request_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
       request_content = @client.serialize(request_mapper,  server_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1014,7 +1014,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1024,7 +1024,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1197,7 +1197,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServerUpdateParameters.mapper()
+      request_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServerUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  server_update_parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1229,7 +1229,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1239,7 +1239,7 @@ module Azure::ARM::AnalysisServices::Api_2017_07_14
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::AnalysisServices::Api_2017_07_14::Models::AnalysisServicesServer.mapper()
+            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

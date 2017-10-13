@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Relay::Api_2016_07_01
+module Azure::Relay::Mgmt::V2016_07_01
   #
   # A service client - single point of access to the REST API.
   #
@@ -134,8 +134,8 @@ module Azure::ARM::Relay::Api_2016_07_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_relay'
-        if defined? Azure::ARM::Relay::Api_2016_07_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Relay::Api_2016_07_01::VERSION}"
+        if defined? Azure::Relay::Mgmt::V2016_07_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Relay::Mgmt::V2016_07_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

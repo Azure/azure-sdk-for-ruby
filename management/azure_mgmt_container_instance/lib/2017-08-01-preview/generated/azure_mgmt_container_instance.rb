@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-08-01-preview/generated/azure_mgmt_container_instance/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::ContainerInstance::Api_2017_08_01_preview
+module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
   autoload :ContainerGroups,                                    '2017-08-01-preview/generated/azure_mgmt_container_instance/container_groups.rb'
   autoload :ContainerLogs,                                      '2017-08-01-preview/generated/azure_mgmt_container_instance/container_logs.rb'
   autoload :ContainerInstanceManagementClient,                  '2017-08-01-preview/generated/azure_mgmt_container_instance/container_instance_management_client.rb'

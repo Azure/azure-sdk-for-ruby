@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Dns::Api_2016_04_01
+module Azure::Dns::Mgmt::V2016_04_01
   module Models
     #
     # Describes a DNS record set (a collection of DNS records with the same

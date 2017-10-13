@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DevTestLabs::Api_2016_05_15
+module Azure::DevTestLabs::Mgmt::V2016_05_15
   #
   # The DevTest Labs Client.
   #
@@ -120,7 +120,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ResponseWithContinuationLabVirtualMachine.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -221,7 +221,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachine.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -270,7 +270,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachine.mapper()
+          result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -384,7 +384,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachineFragment.mapper()
+      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachineFragment.mapper()
       request_content = @client.serialize(request_mapper,  lab_virtual_machine)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -416,7 +416,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachine.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -687,7 +687,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ApplicableSchedule.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ApplicableSchedule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -846,7 +846,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachine.mapper()
+      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine.mapper()
       request_content = @client.serialize(request_mapper,  lab_virtual_machine)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -878,7 +878,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachine.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -888,7 +888,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::LabVirtualMachine.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::LabVirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1053,7 +1053,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::DataDiskProperties.mapper()
+      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DataDiskProperties.mapper()
       request_content = @client.serialize(request_mapper,  data_disk_properties)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1156,7 +1156,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ApplyArtifactsRequest.mapper()
+      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ApplyArtifactsRequest.mapper()
       request_content = @client.serialize(request_mapper,  apply_artifacts_request)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1346,7 +1346,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::DetachDataDiskProperties.mapper()
+      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::DetachDataDiskProperties.mapper()
       request_content = @client.serialize(request_mapper,  detach_data_disk_properties)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1623,7 +1623,7 @@ module Azure::ARM::DevTestLabs::Api_2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DevTestLabs::Api_2016_05_15::Models::ResponseWithContinuationLabVirtualMachine.mapper()
+            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationLabVirtualMachine.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

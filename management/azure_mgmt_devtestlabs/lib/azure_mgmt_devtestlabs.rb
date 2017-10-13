@@ -4,4 +4,3 @@
 
 require '2016-05-15/generated/azure_mgmt_devtestlabs'
 require 'profiles/latest/devtestlabs_latest_profile_client'
-require 'profiles/v2016_05_15/devtestlabs_v2016_05_15_profile_client'

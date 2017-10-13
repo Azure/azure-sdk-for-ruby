@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   module Models
     #
     # This class represents a task which is actually a workflow so that one can

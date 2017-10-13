@@ -6,19 +6,19 @@ require 'azure_mgmt_consumption'
 
 module Azure::Profiles::Latest
   module Consumption::Mgmt
-    UsageDetails = Azure::ARM::Consumption::Api_2017_04_24_preview::UsageDetails
-    Operations = Azure::ARM::Consumption::Api_2017_04_24_preview::Operations
+    UsageDetails = Azure::Consumption::Mgmt::V2017_04_24_preview::UsageDetails
+    Operations = Azure::Consumption::Mgmt::V2017_04_24_preview::Operations
 
     module Models
-      ErrorResponse = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::ErrorResponse
-      OperationDisplay = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationDisplay
-      UsageDetailsListResult = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::UsageDetailsListResult
-      Operation = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::Operation
-      MeterDetails = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::MeterDetails
-      OperationListResult = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationListResult
-      ErrorDetails = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::ErrorDetails
-      Resource = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::Resource
-      UsageDetail = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::UsageDetail
+      ErrorResponse = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::ErrorResponse
+      OperationDisplay = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::OperationDisplay
+      UsageDetailsListResult = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetailsListResult
+      Operation = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::Operation
+      MeterDetails = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::MeterDetails
+      OperationListResult = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::OperationListResult
+      ErrorDetails = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::ErrorDetails
+      Resource = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::Resource
+      UsageDetail = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetail
     end
 
     #
@@ -30,7 +30,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Consumption::Api_2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Consumption::Mgmt::V2017_04_24_preview::ConsumptionManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -48,7 +48,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2017-04-24-preview')
         case version
           when '2017-04-24-preview'
-            client = Azure::ARM::Consumption::Api_2017_04_24_preview::ConsumptionManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Consumption::Mgmt::V2017_04_24_preview::ConsumptionManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -58,31 +58,31 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def error_response
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::ErrorResponse
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::ErrorResponse
         end
         def operation_display
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationDisplay
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::OperationDisplay
         end
         def usage_details_list_result
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::UsageDetailsListResult
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetailsListResult
         end
         def operation
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::Operation
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::Operation
         end
         def meter_details
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::MeterDetails
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::MeterDetails
         end
         def operation_list_result
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationListResult
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::OperationListResult
         end
         def error_details
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::ErrorDetails
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::ErrorDetails
         end
         def resource
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::Resource
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::Resource
         end
         def usage_detail
-          Azure::ARM::Consumption::Api_2017_04_24_preview::Models::UsageDetail
+          Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetail
         end
       end
     end

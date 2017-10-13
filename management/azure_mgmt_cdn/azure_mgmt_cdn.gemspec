@@ -10,7 +10,7 @@ require '../azure_mgmt_cdn/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_cdn'
-  spec.version       = Azure::ARM::CDN::VERSION
+  spec.version       = Azure::CDN::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure CDN Management Client Library for Ruby'

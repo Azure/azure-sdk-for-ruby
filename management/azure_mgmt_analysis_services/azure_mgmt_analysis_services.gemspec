@@ -10,7 +10,7 @@ require '../azure_mgmt_analysis_services/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_analysis_services'
-  spec.version       = Azure::ARM::AnalysisServices::VERSION
+  spec.version       = Azure::AnalysisServices::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Analysis Services Library for Ruby'

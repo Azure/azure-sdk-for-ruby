@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::SQL::Api_2015_05_01_preview
+module Azure::SQL::Mgmt::V2015_05_01_preview
   #
   # The Azure SQL Database management API provides a RESTful set of web
   # services that interact with Azure SQL Database services to manage your
@@ -126,7 +126,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -186,7 +186,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+          result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -296,7 +296,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+          result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -402,7 +402,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMemberListResult.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -517,7 +517,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncFullSchemaPropertiesListResult.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncFullSchemaPropertiesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -665,7 +665,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+      request_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -697,7 +697,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -707,7 +707,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -907,7 +907,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+      request_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -939,7 +939,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMember.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMember.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1130,7 +1130,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncMemberListResult.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncMemberListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1217,7 +1217,7 @@ module Azure::ARM::SQL::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::SQL::Api_2015_05_01_preview::Models::SyncFullSchemaPropertiesListResult.mapper()
+            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::SyncFullSchemaPropertiesListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

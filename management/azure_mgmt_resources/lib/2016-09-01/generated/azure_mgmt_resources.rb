@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01/generated/azure_mgmt_resources/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Resources::Api_2016_09_01
+module Azure::Resources::Mgmt::V2016_09_01
   autoload :Deployments,                                        '2016-09-01/generated/azure_mgmt_resources/deployments.rb'
   autoload :Providers,                                          '2016-09-01/generated/azure_mgmt_resources/providers.rb'
   autoload :ResourceGroups,                                     '2016-09-01/generated/azure_mgmt_resources/resource_groups.rb'

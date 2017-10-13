@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::MarketplaceOrdering end
-module Azure::ARM::MarketplaceOrdering::Api_2015_06_01 end
+module Azure::MarketplaceOrdering end
+module Azure::MarketplaceOrdering::Mgmt end
+module Azure::MarketplaceOrdering::Mgmt::V2015_06_01 end

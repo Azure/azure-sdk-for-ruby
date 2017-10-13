@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-01-29/generated/azure_mgmt_powerbi_embedded/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
+module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
   autoload :WorkspaceCollections,                               '2016-01-29/generated/azure_mgmt_powerbi_embedded/workspace_collections.rb'
   autoload :Workspaces,                                         '2016-01-29/generated/azure_mgmt_powerbi_embedded/workspaces.rb'
   autoload :PowerBIEmbeddedManagementClient,                    '2016-01-29/generated/azure_mgmt_powerbi_embedded/power_biembedded_management_client.rb'

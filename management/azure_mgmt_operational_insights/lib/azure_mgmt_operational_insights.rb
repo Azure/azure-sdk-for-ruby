@@ -5,4 +5,3 @@
 require '2015-03-20/generated/azure_mgmt_operational_insights'
 require '2015-11-01-preview/generated/azure_mgmt_operational_insights'
 require 'profiles/latest/operationalinsights_latest_profile_client'
-require 'profiles/v2015_11_01_preview/operationalinsights_v2015_11_01_preview_profile_client'

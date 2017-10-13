@@ -4,4 +4,3 @@
 
 require '2014-12-01/generated/azure_mgmt_mobile_engagement'
 require 'profiles/latest/mobileengagement_latest_profile_client'
-require 'profiles/v2014_12_01/mobileengagement_v2014_12_01_profile_client'

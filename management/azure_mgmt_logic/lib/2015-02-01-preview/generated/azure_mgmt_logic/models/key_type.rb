@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Logic::Api_2015_02_01_preview
+module Azure::Logic::Mgmt::V2015_02_01_preview
   module Models
     #
     # Defines values for KeyType

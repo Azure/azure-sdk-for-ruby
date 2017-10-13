@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-06-01/generated/azure_mgmt_logic/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Logic::Api_2016_06_01
+module Azure::Logic::Mgmt::V2016_06_01
   autoload :Workflows,                                          '2016-06-01/generated/azure_mgmt_logic/workflows.rb'
   autoload :WorkflowVersions,                                   '2016-06-01/generated/azure_mgmt_logic/workflow_versions.rb'
   autoload :WorkflowTriggers,                                   '2016-06-01/generated/azure_mgmt_logic/workflow_triggers.rb'

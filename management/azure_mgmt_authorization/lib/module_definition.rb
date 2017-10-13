@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Authorization end
+module Azure::Authorization end
+module Azure::Authorization::Mgmt end

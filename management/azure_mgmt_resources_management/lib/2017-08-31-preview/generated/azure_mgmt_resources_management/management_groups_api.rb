@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
+module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -125,8 +125,8 @@ module Azure::ARM::ResourcesManagement::Api_2017_08_31_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_resources_management'
-        if defined? Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::ResourcesManagement::Api_2017_08_31_preview::VERSION}"
+        if defined? Azure::ResourcesManagement::Mgmt::V2017_08_31_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ResourcesManagement::Mgmt::V2017_08_31_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

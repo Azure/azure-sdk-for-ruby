@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Consumption::Api_2017_04_24_preview
+module Azure::Consumption::Mgmt::V2017_04_24_preview
   #
   # Consumption management client provides access to consumption resources for
   # Azure Web-Direct subscriptions. Other subscription types which were not
@@ -92,7 +92,7 @@ module Azure::ARM::Consumption::Api_2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationListResult.mapper()
+            result_mapper = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -179,7 +179,7 @@ module Azure::ARM::Consumption::Api_2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Consumption::Api_2017_04_24_preview::Models::OperationListResult.mapper()
+            result_mapper = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::OperationListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

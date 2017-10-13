@@ -5,69 +5,69 @@
 require 'azure_mgmt_iot_hub'
 
 module Azure::IotHub::Profiles::Latest::Mgmt
-    Operations = Azure::ARM::IotHub::Api_2017_07_01::Operations
-    IotHubResource = Azure::ARM::IotHub::Api_2017_07_01::IotHubResource
-    Certificates = Azure::ARM::IotHub::Api_2017_07_01::Certificates
+    Operations = Azure::IotHub::Mgmt::V2017_07_01::Operations
+    IotHubResource = Azure::IotHub::Mgmt::V2017_07_01::IotHubResource
+    Certificates = Azure::IotHub::Mgmt::V2017_07_01::Certificates
 
     module Models
-      IotHubProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubProperties
-      IotHubSkuInfo = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuInfo
-      CertificateBodyDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateBodyDescription
-      CertificateProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateProperties
-      CertificateListDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateListDescription
-      Resource = Azure::ARM::IotHub::Api_2017_07_01::Models::Resource
-      CertificateWithNonceDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateWithNonceDescription
-      SharedAccessSignatureAuthorizationRuleListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult
-      IpFilterRule = Azure::ARM::IotHub::Api_2017_07_01::Models::IpFilterRule
-      OperationDisplay = Azure::ARM::IotHub::Api_2017_07_01::Models::OperationDisplay
-      RoutingServiceBusQueueEndpointProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingServiceBusQueueEndpointProperties
-      Operation = Azure::ARM::IotHub::Api_2017_07_01::Models::Operation
-      RoutingEventHubProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingEventHubProperties
-      OperationListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::OperationListResult
-      RoutingEndpoints = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingEndpoints
-      ErrorDetails = Azure::ARM::IotHub::Api_2017_07_01::Models::ErrorDetails
-      FallbackRouteProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::FallbackRouteProperties
-      IotHubQuotaMetricInfo = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubQuotaMetricInfo
-      StorageEndpointProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::StorageEndpointProperties
-      IotHubQuotaMetricInfoListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubQuotaMetricInfoListResult
-      FeedbackProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::FeedbackProperties
-      RegistryStatistics = Azure::ARM::IotHub::Api_2017_07_01::Models::RegistryStatistics
-      OperationsMonitoringProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::OperationsMonitoringProperties
-      JobResponse = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponse
-      CertificateDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateDescription
-      JobResponseListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponseListResult
-      SharedAccessSignatureAuthorizationRule = Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRule
-      IotHubCapacity = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubCapacity
-      RoutingServiceBusTopicEndpointProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingServiceBusTopicEndpointProperties
-      IotHubSkuDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuDescription
-      RouteProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::RouteProperties
-      EventHubConsumerGroupsListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupsListResult
-      MessagingEndpointProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::MessagingEndpointProperties
-      EventHubConsumerGroupInfo = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupInfo
-      CertificateVerificationDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateVerificationDescription
-      IotHubSkuDescriptionListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuDescriptionListResult
-      EventHubProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubProperties
-      IotHubDescriptionListResult = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescriptionListResult
-      RoutingProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingProperties
-      OperationInputs = Azure::ARM::IotHub::Api_2017_07_01::Models::OperationInputs
-      CertificatePropertiesWithNonce = Azure::ARM::IotHub::Api_2017_07_01::Models::CertificatePropertiesWithNonce
-      IotHubNameAvailabilityInfo = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubNameAvailabilityInfo
-      CloudToDeviceProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::CloudToDeviceProperties
-      ExportDevicesRequest = Azure::ARM::IotHub::Api_2017_07_01::Models::ExportDevicesRequest
-      RoutingStorageContainerProperties = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingStorageContainerProperties
-      ImportDevicesRequest = Azure::ARM::IotHub::Api_2017_07_01::Models::ImportDevicesRequest
-      IotHubDescription = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription
-      AccessRights = Azure::ARM::IotHub::Api_2017_07_01::Models::AccessRights
-      IpFilterActionType = Azure::ARM::IotHub::Api_2017_07_01::Models::IpFilterActionType
-      RoutingSource = Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingSource
-      OperationMonitoringLevel = Azure::ARM::IotHub::Api_2017_07_01::Models::OperationMonitoringLevel
-      Capabilities = Azure::ARM::IotHub::Api_2017_07_01::Models::Capabilities
-      IotHubSku = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSku
-      IotHubSkuTier = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuTier
-      JobType = Azure::ARM::IotHub::Api_2017_07_01::Models::JobType
-      JobStatus = Azure::ARM::IotHub::Api_2017_07_01::Models::JobStatus
-      IotHubScaleType = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubScaleType
-      IotHubNameUnavailabilityReason = Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubNameUnavailabilityReason
+      IotHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
+      IotHubSkuInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuInfo
+      CertificateBodyDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateBodyDescription
+      CertificateProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateProperties
+      CertificateListDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateListDescription
+      Resource = Azure::IotHub::Mgmt::V2017_07_01::Models::Resource
+      CertificateWithNonceDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateWithNonceDescription
+      SharedAccessSignatureAuthorizationRuleListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult
+      IpFilterRule = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterRule
+      OperationDisplay = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationDisplay
+      RoutingServiceBusQueueEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingServiceBusQueueEndpointProperties
+      Operation = Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
+      RoutingEventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingEventHubProperties
+      OperationListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationListResult
+      RoutingEndpoints = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingEndpoints
+      ErrorDetails = Azure::IotHub::Mgmt::V2017_07_01::Models::ErrorDetails
+      FallbackRouteProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::FallbackRouteProperties
+      IotHubQuotaMetricInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubQuotaMetricInfo
+      StorageEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::StorageEndpointProperties
+      IotHubQuotaMetricInfoListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubQuotaMetricInfoListResult
+      FeedbackProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::FeedbackProperties
+      RegistryStatistics = Azure::IotHub::Mgmt::V2017_07_01::Models::RegistryStatistics
+      OperationsMonitoringProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationsMonitoringProperties
+      JobResponse = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponse
+      CertificateDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription
+      JobResponseListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponseListResult
+      SharedAccessSignatureAuthorizationRule = Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRule
+      IotHubCapacity = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubCapacity
+      RoutingServiceBusTopicEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingServiceBusTopicEndpointProperties
+      IotHubSkuDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescription
+      RouteProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RouteProperties
+      EventHubConsumerGroupsListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupsListResult
+      MessagingEndpointProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
+      EventHubConsumerGroupInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo
+      CertificateVerificationDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
+      IotHubSkuDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
+      EventHubProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
+      IotHubDescriptionListResult = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
+      RoutingProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
+      OperationInputs = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
+      CertificatePropertiesWithNonce = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
+      IotHubNameAvailabilityInfo = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
+      CloudToDeviceProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
+      ExportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
+      RoutingStorageContainerProperties = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
+      ImportDevicesRequest = Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
+      IotHubDescription = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
+      AccessRights = Azure::IotHub::Mgmt::V2017_07_01::Models::AccessRights
+      IpFilterActionType = Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
+      RoutingSource = Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
+      OperationMonitoringLevel = Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
+      Capabilities = Azure::IotHub::Mgmt::V2017_07_01::Models::Capabilities
+      IotHubSku = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
+      IotHubSkuTier = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
+      JobType = Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
+      JobStatus = Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
+      IotHubScaleType = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
+      IotHubNameUnavailabilityReason = Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
     end
 
     #
@@ -87,7 +87,7 @@ module Azure::IotHub::Profiles::Latest::Mgmt
 
         @configurable, @base_url, @options = self, nil, nil
 
-        client_0 = Azure::ARM::IotHub::Api_2017_07_01::IotHubClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::IotHub::Mgmt::V2017_07_01::IotHubClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -106,7 +106,7 @@ module Azure::IotHub::Profiles::Latest::Mgmt
       def get_client(version = '2017-07-01')
         case version
           when '2017-07-01'
-            client = Azure::ARM::IotHub::Api_2017_07_01::IotHubClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::IotHub::Mgmt::V2017_07_01::IotHubClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -116,178 +116,178 @@ module Azure::IotHub::Profiles::Latest::Mgmt
 
       class ModelClasses
         def iot_hub_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubProperties
         end
         def iot_hub_sku_info
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuInfo
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuInfo
         end
         def certificate_body_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateBodyDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateBodyDescription
         end
         def certificate_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateProperties
         end
         def certificate_list_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateListDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateListDescription
         end
         def resource
-          Azure::ARM::IotHub::Api_2017_07_01::Models::Resource
+          Azure::IotHub::Mgmt::V2017_07_01::Models::Resource
         end
         def certificate_with_nonce_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateWithNonceDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateWithNonceDescription
         end
         def shared_access_signature_authorization_rule_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRuleListResult
         end
         def ip_filter_rule
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IpFilterRule
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterRule
         end
         def operation_display
-          Azure::ARM::IotHub::Api_2017_07_01::Models::OperationDisplay
+          Azure::IotHub::Mgmt::V2017_07_01::Models::OperationDisplay
         end
         def routing_service_bus_queue_endpoint_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingServiceBusQueueEndpointProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingServiceBusQueueEndpointProperties
         end
         def operation
-          Azure::ARM::IotHub::Api_2017_07_01::Models::Operation
+          Azure::IotHub::Mgmt::V2017_07_01::Models::Operation
         end
         def routing_event_hub_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingEventHubProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingEventHubProperties
         end
         def operation_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::OperationListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::OperationListResult
         end
         def routing_endpoints
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingEndpoints
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingEndpoints
         end
         def error_details
-          Azure::ARM::IotHub::Api_2017_07_01::Models::ErrorDetails
+          Azure::IotHub::Mgmt::V2017_07_01::Models::ErrorDetails
         end
         def fallback_route_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::FallbackRouteProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::FallbackRouteProperties
         end
         def iot_hub_quota_metric_info
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubQuotaMetricInfo
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubQuotaMetricInfo
         end
         def storage_endpoint_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::StorageEndpointProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::StorageEndpointProperties
         end
         def iot_hub_quota_metric_info_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubQuotaMetricInfoListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubQuotaMetricInfoListResult
         end
         def feedback_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::FeedbackProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::FeedbackProperties
         end
         def registry_statistics
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RegistryStatistics
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RegistryStatistics
         end
         def operations_monitoring_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::OperationsMonitoringProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::OperationsMonitoringProperties
         end
         def job_response
-          Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponse
+          Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponse
         end
         def certificate_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription
         end
         def job_response_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::JobResponseListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::JobResponseListResult
         end
         def shared_access_signature_authorization_rule
-          Azure::ARM::IotHub::Api_2017_07_01::Models::SharedAccessSignatureAuthorizationRule
+          Azure::IotHub::Mgmt::V2017_07_01::Models::SharedAccessSignatureAuthorizationRule
         end
         def iot_hub_capacity
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubCapacity
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubCapacity
         end
         def routing_service_bus_topic_endpoint_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingServiceBusTopicEndpointProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingServiceBusTopicEndpointProperties
         end
         def iot_hub_sku_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescription
         end
         def route_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RouteProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RouteProperties
         end
         def event_hub_consumer_groups_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupsListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupsListResult
         end
         def messaging_endpoint_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::MessagingEndpointProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::MessagingEndpointProperties
         end
         def event_hub_consumer_group_info
-          Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubConsumerGroupInfo
+          Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubConsumerGroupInfo
         end
         def certificate_verification_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificateVerificationDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription
         end
         def iot_hub_sku_description_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuDescriptionListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuDescriptionListResult
         end
         def event_hub_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::EventHubProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::EventHubProperties
         end
         def iot_hub_description_list_result
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescriptionListResult
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescriptionListResult
         end
         def routing_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingProperties
         end
         def operation_inputs
-          Azure::ARM::IotHub::Api_2017_07_01::Models::OperationInputs
+          Azure::IotHub::Mgmt::V2017_07_01::Models::OperationInputs
         end
         def certificate_properties_with_nonce
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CertificatePropertiesWithNonce
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CertificatePropertiesWithNonce
         end
         def iot_hub_name_availability_info
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubNameAvailabilityInfo
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameAvailabilityInfo
         end
         def cloud_to_device_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::CloudToDeviceProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::CloudToDeviceProperties
         end
         def export_devices_request
-          Azure::ARM::IotHub::Api_2017_07_01::Models::ExportDevicesRequest
+          Azure::IotHub::Mgmt::V2017_07_01::Models::ExportDevicesRequest
         end
         def routing_storage_container_properties
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingStorageContainerProperties
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingStorageContainerProperties
         end
         def import_devices_request
-          Azure::ARM::IotHub::Api_2017_07_01::Models::ImportDevicesRequest
+          Azure::IotHub::Mgmt::V2017_07_01::Models::ImportDevicesRequest
         end
         def iot_hub_description
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubDescription
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubDescription
         end
         def access_rights
-          Azure::ARM::IotHub::Api_2017_07_01::Models::AccessRights
+          Azure::IotHub::Mgmt::V2017_07_01::Models::AccessRights
         end
         def ip_filter_action_type
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IpFilterActionType
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IpFilterActionType
         end
         def routing_source
-          Azure::ARM::IotHub::Api_2017_07_01::Models::RoutingSource
+          Azure::IotHub::Mgmt::V2017_07_01::Models::RoutingSource
         end
         def operation_monitoring_level
-          Azure::ARM::IotHub::Api_2017_07_01::Models::OperationMonitoringLevel
+          Azure::IotHub::Mgmt::V2017_07_01::Models::OperationMonitoringLevel
         end
         def capabilities
-          Azure::ARM::IotHub::Api_2017_07_01::Models::Capabilities
+          Azure::IotHub::Mgmt::V2017_07_01::Models::Capabilities
         end
         def iot_hub_sku
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSku
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSku
         end
         def iot_hub_sku_tier
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubSkuTier
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubSkuTier
         end
         def job_type
-          Azure::ARM::IotHub::Api_2017_07_01::Models::JobType
+          Azure::IotHub::Mgmt::V2017_07_01::Models::JobType
         end
         def job_status
-          Azure::ARM::IotHub::Api_2017_07_01::Models::JobStatus
+          Azure::IotHub::Mgmt::V2017_07_01::Models::JobStatus
         end
         def iot_hub_scale_type
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubScaleType
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubScaleType
         end
         def iot_hub_name_unavailability_reason
-          Azure::ARM::IotHub::Api_2017_07_01::Models::IotHubNameUnavailabilityReason
+          Azure::IotHub::Mgmt::V2017_07_01::Models::IotHubNameUnavailabilityReason
         end
       end
     end

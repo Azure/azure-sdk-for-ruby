@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-04-01/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Monitor::Api_2015_04_01
+module Azure::Monitor::Mgmt::V2015_04_01
   autoload :AutoscaleSettings,                                  '2015-04-01/generated/azure_mgmt_monitor/autoscale_settings.rb'
   autoload :Operations,                                         '2015-04-01/generated/azure_mgmt_monitor/operations.rb'
   autoload :MonitorManagementClient,                            '2015-04-01/generated/azure_mgmt_monitor/monitor_management_client.rb'

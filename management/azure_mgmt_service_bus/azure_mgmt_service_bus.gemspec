@@ -10,7 +10,7 @@ require '../azure_mgmt_service_bus/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_service_bus'
-  spec.version       = Azure::ARM::ServiceBus::VERSION
+  spec.version       = Azure::ServiceBus::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Service Bus Management Client Library for Ruby'

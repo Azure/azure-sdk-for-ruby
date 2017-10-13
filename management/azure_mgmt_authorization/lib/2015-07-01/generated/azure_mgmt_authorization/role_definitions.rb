@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Authorization::Api_2015_07_01
+module Azure::Authorization::Mgmt::V2015_07_01
   #
   # Role based access control provides you a way to apply granular level policy
   # administration down to individual resources or resource groups. These
@@ -103,7 +103,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinition.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -194,7 +194,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinition.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -265,7 +265,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinition.mapper()
+      request_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
       request_content = @client.serialize(request_mapper,  role_definition)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -298,7 +298,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinition.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -387,7 +387,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinition.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinition.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -479,7 +479,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinitionListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -566,7 +566,7 @@ module Azure::ARM::Authorization::Api_2015_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Authorization::Api_2015_07_01::Models::RoleDefinitionListResult.mapper()
+            result_mapper = Azure::Authorization::Mgmt::V2015_07_01::Models::RoleDefinitionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

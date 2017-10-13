@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::TrafficManager::Api_2017_09_01_preview
+module Azure::TrafficManager::Mgmt::V2017_09_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -126,8 +126,8 @@ module Azure::ARM::TrafficManager::Api_2017_09_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_traffic_manager'
-        if defined? Azure::ARM::TrafficManager::Api_2017_09_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::TrafficManager::Api_2017_09_01_preview::VERSION}"
+        if defined? Azure::TrafficManager::Mgmt::V2017_09_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::TrafficManager::Mgmt::V2017_09_01_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

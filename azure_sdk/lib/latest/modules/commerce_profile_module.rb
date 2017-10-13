@@ -6,22 +6,22 @@ require 'azure_mgmt_commerce'
 
 module Azure::Profiles::Latest
   module Commerce::Mgmt
-    UsageAggregates = Azure::ARM::Commerce::Api_2015_06_01_preview::UsageAggregates
-    RateCard = Azure::ARM::Commerce::Api_2015_06_01_preview::RateCard
+    UsageAggregates = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageAggregates
+    RateCard = Azure::Commerce::Mgmt::V2015_06_01_preview::RateCard
 
     module Models
-      MeterInfo = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::MeterInfo
-      ResourceRateCardInfo = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::ResourceRateCardInfo
-      UsageAggregation = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::UsageAggregation
-      InfoField = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::InfoField
-      UsageAggregationListResult = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::UsageAggregationListResult
-      OfferTermInfo = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::OfferTermInfo
-      RateCardQueryParameters = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::RateCardQueryParameters
-      ErrorResponse = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::ErrorResponse
-      MonetaryCredit = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::MonetaryCredit
-      MonetaryCommitment = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::MonetaryCommitment
-      RecurringCharge = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::RecurringCharge
-      AggregationGranularity = Azure::ARM::Commerce::Api_2015_06_01_preview::Models::AggregationGranularity
+      MeterInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
+      ResourceRateCardInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
+      UsageAggregation = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
+      InfoField = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
+      UsageAggregationListResult = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
+      OfferTermInfo = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
+      RateCardQueryParameters = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
+      ErrorResponse = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
+      MonetaryCredit = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
+      MonetaryCommitment = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
+      RecurringCharge = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
+      AggregationGranularity = Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
     end
 
     #
@@ -33,7 +33,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Commerce::Api_2015_06_01_preview::UsageManagementClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -51,7 +51,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2015-06-01-preview')
         case version
           when '2015-06-01-preview'
-            client = Azure::ARM::Commerce::Api_2015_06_01_preview::UsageManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Commerce::Mgmt::V2015_06_01_preview::UsageManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -61,40 +61,40 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def meter_info
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::MeterInfo
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MeterInfo
         end
         def resource_rate_card_info
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::ResourceRateCardInfo
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ResourceRateCardInfo
         end
         def usage_aggregation
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::UsageAggregation
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregation
         end
         def info_field
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::InfoField
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::InfoField
         end
         def usage_aggregation_list_result
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::UsageAggregationListResult
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::UsageAggregationListResult
         end
         def offer_term_info
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::OfferTermInfo
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::OfferTermInfo
         end
         def rate_card_query_parameters
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::RateCardQueryParameters
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RateCardQueryParameters
         end
         def error_response
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::ErrorResponse
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::ErrorResponse
         end
         def monetary_credit
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::MonetaryCredit
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCredit
         end
         def monetary_commitment
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::MonetaryCommitment
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::MonetaryCommitment
         end
         def recurring_charge
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::RecurringCharge
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::RecurringCharge
         end
         def aggregation_granularity
-          Azure::ARM::Commerce::Api_2015_06_01_preview::Models::AggregationGranularity
+          Azure::Commerce::Mgmt::V2015_06_01_preview::Models::AggregationGranularity
         end
       end
     end

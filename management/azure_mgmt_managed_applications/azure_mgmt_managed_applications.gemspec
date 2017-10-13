@@ -10,7 +10,7 @@ require '../azure_mgmt_managed_applications/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_managed_applications'
-  spec.version       = Azure::ARM::ManagedApplications::VERSION
+  spec.version       = Azure::ManagedApplications::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Managed Applications Library for Ruby'

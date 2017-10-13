@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2016_03_30
+module Azure::Network::Mgmt::V2016_03_30
   #
   # Network Client
   #
@@ -143,7 +143,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterface.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterface.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -191,7 +191,7 @@ module Azure::ARM::Network::Api_2016_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterface.mapper()
+          result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterface.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -290,7 +290,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -387,7 +387,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -495,7 +495,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterface.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterface.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -581,7 +581,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -671,7 +671,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -826,7 +826,7 @@ module Azure::ARM::Network::Api_2016_03_30
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterface.mapper()
+      request_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterface.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -858,7 +858,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterface.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterface.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -868,7 +868,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterface.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterface.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -958,7 +958,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1048,7 +1048,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1138,7 +1138,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1228,7 +1228,7 @@ module Azure::ARM::Network::Api_2016_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2016_03_30::Models::NetworkInterfaceListResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2016_03_30::Models::NetworkInterfaceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

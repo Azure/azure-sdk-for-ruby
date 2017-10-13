@@ -1,16 +1,5 @@
 [
   {
-    "name": "V2015_11_01_Preview",
-    "resourceTypes": {
-      "Microsoft.OperationalInsights" : {
-        "2015-03-20": ["*"],
-        "2015-11-01-preview": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_operational_insights/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.OperationalInsights" : {

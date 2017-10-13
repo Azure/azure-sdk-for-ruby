@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-01/generated/azure_mgmt_event_hub/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::EventHub::Api_2017_04_01
+module Azure::EventHub::Mgmt::V2017_04_01
   autoload :Operations,                                         '2017-04-01/generated/azure_mgmt_event_hub/operations.rb'
   autoload :Namespaces,                                         '2017-04-01/generated/azure_mgmt_event_hub/namespaces.rb'
   autoload :DisasterRecoveryConfigs,                            '2017-04-01/generated/azure_mgmt_event_hub/disaster_recovery_configs.rb'

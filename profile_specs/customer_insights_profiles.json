@@ -1,15 +1,5 @@
 [
   {
-    "name": "V2017_04_26",
-    "resourceTypes": {
-      "Microsoft.CustomerInsights" : {
-        "2017-04-26": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_customer_insights/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.CustomerInsights" : {

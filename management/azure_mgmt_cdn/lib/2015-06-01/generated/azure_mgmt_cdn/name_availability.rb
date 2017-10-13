@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN::Api_2015_06_01
+module Azure::CDN::Mgmt::V2015_06_01
   #
   # Use these APIs to manage Azure CDN resources through the Azure Resource
   # Manager. You must make sure that requests made to these resources are
@@ -83,7 +83,7 @@ module Azure::ARM::CDN::Api_2015_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CDN::Api_2015_06_01::Models::CheckNameAvailabilityInput.mapper()
+      request_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::CheckNameAvailabilityInput.mapper()
       request_content = @client.serialize(request_mapper,  check_name_availability_input)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -114,7 +114,7 @@ module Azure::ARM::CDN::Api_2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CDN::Api_2015_06_01::Models::CheckNameAvailabilityOutput.mapper()
+            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::CheckNameAvailabilityOutput.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

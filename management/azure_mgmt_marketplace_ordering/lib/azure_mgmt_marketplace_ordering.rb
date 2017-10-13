@@ -4,4 +4,3 @@
 
 require '2015-06-01/generated/azure_mgmt_marketplace_ordering'
 require 'profiles/latest/marketplaceordering_latest_profile_client'
-require 'profiles/v2015_06_01/marketplaceordering_v2015_06_01_profile_client'

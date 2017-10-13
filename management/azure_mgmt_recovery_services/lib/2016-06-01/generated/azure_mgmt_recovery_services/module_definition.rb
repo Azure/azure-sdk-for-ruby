@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::RecoveryServices end
-module Azure::ARM::RecoveryServices::Api_2016_06_01 end
+module Azure::RecoveryServices end
+module Azure::RecoveryServices::Mgmt end
+module Azure::RecoveryServices::Mgmt::V2016_06_01 end

@@ -5,22 +5,22 @@
 require 'azure_mgmt_billing'
 
 module Azure::Billing::Profiles::Latest::Mgmt
-    BillingPeriods = Azure::ARM::Billing::Api_2017_04_24_preview::BillingPeriods
-    Invoices = Azure::ARM::Billing::Api_2017_04_24_preview::Invoices
-    Operations = Azure::ARM::Billing::Api_2017_04_24_preview::Operations
+    BillingPeriods = Azure::Billing::Mgmt::V2017_04_24_preview::BillingPeriods
+    Invoices = Azure::Billing::Mgmt::V2017_04_24_preview::Invoices
+    Operations = Azure::Billing::Mgmt::V2017_04_24_preview::Operations
 
     module Models
-      Resource = Azure::ARM::Billing::Api_2017_04_24_preview::Models::Resource
-      BillingPeriodsListResult = Azure::ARM::Billing::Api_2017_04_24_preview::Models::BillingPeriodsListResult
-      InvoicesListResult = Azure::ARM::Billing::Api_2017_04_24_preview::Models::InvoicesListResult
-      ErrorDetails = Azure::ARM::Billing::Api_2017_04_24_preview::Models::ErrorDetails
-      OperationDisplay = Azure::ARM::Billing::Api_2017_04_24_preview::Models::OperationDisplay
-      DownloadUrl = Azure::ARM::Billing::Api_2017_04_24_preview::Models::DownloadUrl
-      Operation = Azure::ARM::Billing::Api_2017_04_24_preview::Models::Operation
-      ErrorResponse = Azure::ARM::Billing::Api_2017_04_24_preview::Models::ErrorResponse
-      OperationListResult = Azure::ARM::Billing::Api_2017_04_24_preview::Models::OperationListResult
-      BillingPeriod = Azure::ARM::Billing::Api_2017_04_24_preview::Models::BillingPeriod
-      Invoice = Azure::ARM::Billing::Api_2017_04_24_preview::Models::Invoice
+      Resource = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Resource
+      BillingPeriodsListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult
+      InvoicesListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::InvoicesListResult
+      ErrorDetails = Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorDetails
+      OperationDisplay = Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationDisplay
+      DownloadUrl = Azure::Billing::Mgmt::V2017_04_24_preview::Models::DownloadUrl
+      Operation = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Operation
+      ErrorResponse = Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
+      OperationListResult = Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
+      BillingPeriod = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
+      Invoice = Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
     end
 
     #
@@ -40,7 +40,7 @@ module Azure::Billing::Profiles::Latest::Mgmt
 
         @configurable, @base_url, @options = self, nil, nil
 
-        client_0 = Azure::ARM::Billing::Api_2017_04_24_preview::BillingManagementClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Billing::Mgmt::V2017_04_24_preview::BillingManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -59,7 +59,7 @@ module Azure::Billing::Profiles::Latest::Mgmt
       def get_client(version = '2017-04-24-preview')
         case version
           when '2017-04-24-preview'
-            client = Azure::ARM::Billing::Api_2017_04_24_preview::BillingManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Billing::Mgmt::V2017_04_24_preview::BillingManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -69,37 +69,37 @@ module Azure::Billing::Profiles::Latest::Mgmt
 
       class ModelClasses
         def resource
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::Resource
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::Resource
         end
         def billing_periods_list_result
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::BillingPeriodsListResult
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult
         end
         def invoices_list_result
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::InvoicesListResult
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::InvoicesListResult
         end
         def error_details
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::ErrorDetails
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorDetails
         end
         def operation_display
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::OperationDisplay
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationDisplay
         end
         def download_url
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::DownloadUrl
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::DownloadUrl
         end
         def operation
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::Operation
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::Operation
         end
         def error_response
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::ErrorResponse
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::ErrorResponse
         end
         def operation_list_result
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::OperationListResult
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::OperationListResult
         end
         def billing_period
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::BillingPeriod
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod
         end
         def invoice
-          Azure::ARM::Billing::Api_2017_04_24_preview::Models::Invoice
+          Azure::Billing::Mgmt::V2017_04_24_preview::Models::Invoice
         end
       end
     end

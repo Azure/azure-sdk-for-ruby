@@ -4,4 +4,3 @@
 
 require '2017-04-18/generated/azure_mgmt_cognitive_services'
 require 'profiles/latest/cognitiveservices_latest_profile_client'
-require 'profiles/v2017_04_18/cognitiveservices_v2017_04_18_profile_client'

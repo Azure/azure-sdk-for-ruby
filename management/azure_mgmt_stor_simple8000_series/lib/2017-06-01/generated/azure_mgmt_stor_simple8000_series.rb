@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-06-01/generated/azure_mgmt_stor_simple8000_series/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::StorSimple8000Series::Api_2017_06_01
+module Azure::StorSimple8000Series::Mgmt::V2017_06_01
   autoload :Operations,                                         '2017-06-01/generated/azure_mgmt_stor_simple8000_series/operations.rb'
   autoload :Managers,                                           '2017-06-01/generated/azure_mgmt_stor_simple8000_series/managers.rb'
   autoload :AccessControlRecords,                               '2017-06-01/generated/azure_mgmt_stor_simple8000_series/access_control_records.rb'

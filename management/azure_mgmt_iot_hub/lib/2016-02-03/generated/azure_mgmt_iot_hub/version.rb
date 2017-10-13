@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::IotHub::Api_2016_02_03
+module Azure::IotHub::Mgmt::V2016_02_03
     VERSION = '0.15.0'
 end

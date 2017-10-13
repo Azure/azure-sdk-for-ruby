@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Search end
+module Azure::Search end
+module Azure::Search::Mgmt end

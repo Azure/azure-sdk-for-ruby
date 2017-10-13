@@ -10,16 +10,6 @@
     "individual_gem_profile": true
   },
   {
-    "name": "V2017_03_30",
-    "resourceTypes": {
-      "Microsoft.Compute" : {
-        "2017-03-30": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_compute/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.Compute" : {

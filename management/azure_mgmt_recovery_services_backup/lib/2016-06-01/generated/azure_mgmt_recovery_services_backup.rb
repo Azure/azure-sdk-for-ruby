@@ -23,7 +23,7 @@ require 'ms_rest'
 require '2016-06-01/generated/azure_mgmt_recovery_services_backup/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_06_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
   autoload :ItemLevelRecoveryConnections,                       '2016-06-01/generated/azure_mgmt_recovery_services_backup/item_level_recovery_connections.rb'
   autoload :Restores,                                           '2016-06-01/generated/azure_mgmt_recovery_services_backup/restores.rb'
   autoload :ProtectionPolicyOperationStatuses,                  '2016-06-01/generated/azure_mgmt_recovery_services_backup/protection_policy_operation_statuses.rb'

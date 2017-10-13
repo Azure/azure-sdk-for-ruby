@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_04_30_preview
+module Azure::Compute::Mgmt::V2016_04_30_preview
   module Models
     #
     # Instance view statuses summary for virtual machines of a virtual machine

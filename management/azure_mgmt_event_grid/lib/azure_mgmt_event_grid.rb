@@ -5,4 +5,3 @@
 require '2017-06-15-preview/generated/azure_mgmt_event_grid'
 require '2017-09-15-preview/generated/azure_mgmt_event_grid'
 require 'profiles/latest/eventgrid_latest_profile_client'
-require 'profiles/v2017_09_15_preview/eventgrid_v2017_09_15_preview_profile_client'

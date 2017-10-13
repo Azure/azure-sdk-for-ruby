@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network::Api_2015_05_01_preview
+module Azure::Network::Mgmt::V2015_05_01_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -265,7 +265,7 @@ module Azure::ARM::Network::Api_2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Network::Api_2015_05_01_preview::Models::DnsNameAvailabilityResult.mapper()
+            result_mapper = Azure::Network::Mgmt::V2015_05_01_preview::Models::DnsNameAvailabilityResult.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -285,8 +285,8 @@ module Azure::ARM::Network::Api_2015_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
-        if defined? Azure::ARM::Network::Api_2015_05_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Network::Api_2015_05_01_preview::VERSION}"
+        if defined? Azure::Network::Mgmt::V2015_05_01_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Network::Mgmt::V2015_05_01_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

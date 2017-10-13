@@ -18,21 +18,21 @@ describe 'Service Bus Management Client' do
   it 'should create list and delete queues' do
     namespace_name = "smaple34566"
     queue_name = 'queue97832'
-    namespace_parameters = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBNamespace.new
+    namespace_parameters = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespace.new
     namespace_parameters.location = 'westus'
-    queue_parameters = Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBQueue.new
+    queue_parameters = Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueue.new
 
     # Create new namespace
     namespace = @service_bus_client.namespaces.create_or_update(@resource_group.name, namespace_name, namespace_parameters)
     expect(namespace).not_to be_nil
-    expect(namespace).to be_a(Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBNamespace)
+    expect(namespace).to be_a(Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBNamespace)
     expect(namespace.name).to eq(namespace_name)
     expect(namespace.provisioning_state).to eq("Succeeded")
 
     # Create a queue
     queue = @service_bus_client.queues.create_or_update(@resource_group.name, namespace_name, queue_name, queue_parameters)
     expect(queue).not_to be_nil
-    expect(queue).to be_a(Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBQueue)
+    expect(queue).to be_a(Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueue)
     expect(queue.name).to eq(queue_name)
     expect(queue.status).to eq("Active")
 
@@ -41,7 +41,7 @@ describe 'Service Bus Management Client' do
     expect(array_of_queues).not_to be_nil
     queue = array_of_queues[0]
     expect(queue).not_to be_nil
-    expect(queue).to be_a(Azure::ARM::ServiceBus::Api_2017_04_01::Models::SBQueue)
+    expect(queue).to be_a(Azure::ServiceBus::Mgmt::V2017_04_01::Models::SBQueue)
     expect(queue.name).to eq(queue_name)
     expect(queue.status).to eq("Active")
 

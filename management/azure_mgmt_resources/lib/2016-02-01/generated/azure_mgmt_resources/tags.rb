@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Resources::Api_2016_02_01
+module Azure::Resources::Mgmt::V2016_02_01
   #
   # Tags
   #
@@ -179,7 +179,7 @@ module Azure::ARM::Resources::Api_2016_02_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Resources::Api_2016_02_01::Models::TagValue.mapper()
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TagValue.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -189,7 +189,7 @@ module Azure::ARM::Resources::Api_2016_02_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Resources::Api_2016_02_01::Models::TagValue.mapper()
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TagValue.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -276,7 +276,7 @@ module Azure::ARM::Resources::Api_2016_02_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Resources::Api_2016_02_01::Models::TagDetails.mapper()
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TagDetails.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -286,7 +286,7 @@ module Azure::ARM::Resources::Api_2016_02_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Resources::Api_2016_02_01::Models::TagDetails.mapper()
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TagDetails.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -445,7 +445,7 @@ module Azure::ARM::Resources::Api_2016_02_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Resources::Api_2016_02_01::Models::TagsListResult.mapper()
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TagsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -532,7 +532,7 @@ module Azure::ARM::Resources::Api_2016_02_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Resources::Api_2016_02_01::Models::TagsListResult.mapper()
+            result_mapper = Azure::Resources::Mgmt::V2016_02_01::Models::TagsListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

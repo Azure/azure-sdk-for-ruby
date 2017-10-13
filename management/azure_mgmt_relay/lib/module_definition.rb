@@ -3,5 +3,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Relay end
+module Azure::Relay end
+module Azure::Relay::Mgmt end

@@ -4,5 +4,4 @@
 
 require '2016-09-01/generated/azure_mgmt_links'
 require 'profiles/latest/links_latest_profile_client'
-require 'profiles/v2016_09_01/links_v2016_09_01_profile_client'
 require 'profiles/v2017_03_09/links_v2017_03_09_profile_client'

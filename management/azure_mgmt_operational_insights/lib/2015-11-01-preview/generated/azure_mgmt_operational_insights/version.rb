@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::OperationalInsights::Api_2015_11_01_preview
+module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     VERSION = '0.15.0'
 end

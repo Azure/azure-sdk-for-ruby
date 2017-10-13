@@ -6,19 +6,19 @@ require 'azure_mgmt_subscriptions'
 
 module Azure::Profiles::Latest
   module Subscriptions::Mgmt
-    Subscriptions = Azure::ARM::Subscriptions::Api_2016_06_01::Subscriptions
-    Tenants = Azure::ARM::Subscriptions::Api_2016_06_01::Tenants
+    Subscriptions = Azure::Subscriptions::Mgmt::V2016_06_01::Subscriptions
+    Tenants = Azure::Subscriptions::Mgmt::V2016_06_01::Tenants
 
     module Models
-      Subscription = Azure::ARM::Subscriptions::Api_2016_06_01::Models::Subscription
-      SubscriptionListResult = Azure::ARM::Subscriptions::Api_2016_06_01::Models::SubscriptionListResult
-      LocationListResult = Azure::ARM::Subscriptions::Api_2016_06_01::Models::LocationListResult
-      TenantIdDescription = Azure::ARM::Subscriptions::Api_2016_06_01::Models::TenantIdDescription
-      Location = Azure::ARM::Subscriptions::Api_2016_06_01::Models::Location
-      TenantListResult = Azure::ARM::Subscriptions::Api_2016_06_01::Models::TenantListResult
-      SubscriptionPolicies = Azure::ARM::Subscriptions::Api_2016_06_01::Models::SubscriptionPolicies
-      SubscriptionState = Azure::ARM::Subscriptions::Api_2016_06_01::Models::SubscriptionState
-      SpendingLimit = Azure::ARM::Subscriptions::Api_2016_06_01::Models::SpendingLimit
+      Subscription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
+      SubscriptionListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
+      LocationListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
+      TenantIdDescription = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
+      Location = Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
+      TenantListResult = Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
+      SubscriptionPolicies = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
+      SubscriptionState = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
+      SpendingLimit = Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
     end
 
     #
@@ -30,7 +30,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Subscriptions::Api_2016_06_01::SubscriptionClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Subscriptions::Mgmt::V2016_06_01::SubscriptionClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -48,7 +48,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2016-06-01')
         case version
           when '2016-06-01'
-            client = Azure::ARM::Subscriptions::Api_2016_06_01::SubscriptionClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Subscriptions::Mgmt::V2016_06_01::SubscriptionClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -58,31 +58,31 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def subscription
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::Subscription
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription
         end
         def subscription_list_result
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::SubscriptionListResult
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionListResult
         end
         def location_list_result
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::LocationListResult
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::LocationListResult
         end
         def tenant_id_description
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::TenantIdDescription
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantIdDescription
         end
         def location
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::Location
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::Location
         end
         def tenant_list_result
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::TenantListResult
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::TenantListResult
         end
         def subscription_policies
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::SubscriptionPolicies
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionPolicies
         end
         def subscription_state
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::SubscriptionState
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::SubscriptionState
         end
         def spending_limit
-          Azure::ARM::Subscriptions::Api_2016_06_01::Models::SpendingLimit
+          Azure::Subscriptions::Mgmt::V2016_06_01::Models::SpendingLimit
         end
       end
     end

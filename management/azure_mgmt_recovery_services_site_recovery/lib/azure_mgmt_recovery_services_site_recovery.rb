@@ -4,4 +4,3 @@
 
 require '2016-08-10/generated/azure_mgmt_recovery_services_site_recovery'
 require 'profiles/latest/recoveryservicessiterecovery_latest_profile_client'
-require 'profiles/v2016_08_10/recoveryservicessiterecovery_v2016_08_10_profile_client'

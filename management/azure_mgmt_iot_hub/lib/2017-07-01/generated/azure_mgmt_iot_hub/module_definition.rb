@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::IotHub end
-module Azure::ARM::IotHub::Api_2017_07_01 end
+module Azure::IotHub end
+module Azure::IotHub::Mgmt end
+module Azure::IotHub::Mgmt::V2017_07_01 end

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-10-01-preview/generated/azure_mgmt_datalake_store/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::DataLakeStore::Api_2015_10_01_preview
+module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
   autoload :Account,                                            '2015-10-01-preview/generated/azure_mgmt_datalake_store/account.rb'
   autoload :DataLakeStoreAccountManagementClient,               '2015-10-01-preview/generated/azure_mgmt_datalake_store/data_lake_store_account_management_client.rb'
 

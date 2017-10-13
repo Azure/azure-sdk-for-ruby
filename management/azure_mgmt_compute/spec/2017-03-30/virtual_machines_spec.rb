@@ -4,14 +4,14 @@
 
 require_relative 'spec_helper'
 
-include Azure::ARM::Resources::Api_2017_05_10
-include Azure::ARM::Resources::Api_2017_05_10::Models
+include Azure::Resources::Mgmt::V2017_05_10
+include Azure::Resources::Mgmt::V2017_05_10::Models
 
-include Azure::ARM::Compute::Api_2017_03_30
-include Azure::ARM::Compute::Api_2017_03_30::Models
+include Azure::Compute::Mgmt::V2017_03_30
+include Azure::Compute::Mgmt::V2017_03_30::Models
 
-include Azure::ARM::Network::Api_2017_09_01
-include Azure::ARM::Network::Api_2017_09_01::Models
+include Azure::Network::Mgmt::V2017_09_01
+include Azure::Network::Mgmt::V2017_09_01::Models
 
 describe 'Virtual machine and vm extension creation' do
   before(:each) do
@@ -136,7 +136,7 @@ describe 'Virtual machine api' do
     result = @resource_helper.network_client.network_interfaces.list_all
     result.each do |network_interface|
       #Refer specification: https://github.com/Azure/azure-rest-api-specs/blob/ec9a03762fc8fd58fbee71cdbd18d1f4b28f168f/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkInterface.json#L624
-      expect(network_interface.virtual_machine).to be_an_instance_of(Azure::ARM::Network::Api_2017_09_01::Models::SubResource)
+      expect(network_interface.virtual_machine).to be_an_instance_of(Azure::Network::Mgmt::V2017_09_01::Models::SubResource)
     end
   end
 
@@ -262,13 +262,13 @@ end
 
 # Storage helpers
 def build_storage_account_create_parameters(name)
-  sku = Azure::ARM::Storage::Api_2017_06_01::Models::Sku.new
+  sku = Azure::Storage::Mgmt::V2017_06_01::Models::Sku.new
   sku.name = 'Standard_GRS'
 
-  params = Azure::ARM::Storage::Api_2017_06_01::Models::StorageAccountCreateParameters.new
+  params = Azure::Storage::Mgmt::V2017_06_01::Models::StorageAccountCreateParameters.new
   params.location = @location
   params.sku = sku
-  params.kind = Azure::ARM::Storage::Api_2017_06_01::Models::Kind::Storage
+  params.kind = Azure::Storage::Mgmt::V2017_06_01::Models::Kind::Storage
 
   params
 end

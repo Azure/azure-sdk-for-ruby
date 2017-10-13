@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-08-10/generated/azure_mgmt_recovery_services_site_recovery/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::RecoveryServicesSiteRecovery::Api_2016_08_10
+module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
   autoload :ReplicationVaultHealth,                             '2016-08-10/generated/azure_mgmt_recovery_services_site_recovery/replication_vault_health.rb'
   autoload :ReplicationProtectedItems,                          '2016-08-10/generated/azure_mgmt_recovery_services_site_recovery/replication_protected_items.rb'
   autoload :ReplicationNetworkMappings,                         '2016-08-10/generated/azure_mgmt_recovery_services_site_recovery/replication_network_mappings.rb'

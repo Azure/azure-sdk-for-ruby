@@ -6,15 +6,15 @@ require 'azure_mgmt_policy'
 
 module Azure::Profiles::V2017_03_09
   module Policy::Mgmt
-    PolicyAssignments = Azure::ARM::Policy::Api_2015_10_01_preview::PolicyAssignments
-    PolicyDefinitions = Azure::ARM::Policy::Api_2015_10_01_preview::PolicyDefinitions
+    PolicyAssignments = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyAssignments
+    PolicyDefinitions = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyDefinitions
 
     module Models
-      PolicyAssignment = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment
-      PolicyDefinition = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyDefinition
-      PolicyAssignmentListResult = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult
-      PolicyDefinitionListResult = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyDefinitionListResult
-      PolicyType = Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyType
+      PolicyAssignment = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
+      PolicyDefinition = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
+      PolicyAssignmentListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
+      PolicyDefinitionListResult = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
+      PolicyType = Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
     end
 
     #
@@ -26,7 +26,7 @@ module Azure::Profiles::V2017_03_09
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::Policy::Api_2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -44,7 +44,7 @@ module Azure::Profiles::V2017_03_09
       def get_client(version = '2015-10-01-preview')
         case version
           when '2015-10-01-preview'
-            client = Azure::ARM::Policy::Api_2015_10_01_preview::PolicyClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::Policy::Mgmt::V2015_10_01_preview::PolicyClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -54,19 +54,19 @@ module Azure::Profiles::V2017_03_09
 
       class ModelClasses
         def policy_assignment
-          Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignment
+          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignment
         end
         def policy_definition
-          Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyDefinition
+          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinition
         end
         def policy_assignment_list_result
-          Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyAssignmentListResult
+          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyAssignmentListResult
         end
         def policy_definition_list_result
-          Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyDefinitionListResult
+          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyDefinitionListResult
         end
         def policy_type
-          Azure::ARM::Policy::Api_2015_10_01_preview::Models::PolicyType
+          Azure::Policy::Mgmt::V2015_10_01_preview::Models::PolicyType
         end
       end
     end

@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-09-01/generated/azure_mgmt_locks/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Locks::Api_2016_09_01
+module Azure::Locks::Mgmt::V2016_09_01
   autoload :ManagementLocks,                                    '2016-09-01/generated/azure_mgmt_locks/management_locks.rb'
   autoload :ManagementLockClient,                               '2016-09-01/generated/azure_mgmt_locks/management_lock_client.rb'
 

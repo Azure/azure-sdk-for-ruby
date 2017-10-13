@@ -1,15 +1,5 @@
 [
   {
-    "name": "V2016_11_01",
-    "resourceTypes": {
-      "Microsoft.DataLakeAnalytics" : {
-        "2016-11-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_datalake_analytics/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.DataLakeAnalytics" : {

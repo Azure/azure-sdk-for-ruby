@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2016-11-01/generated/azure_mgmt_datalake_analytics/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::DataLakeAnalytics::Api_2016_11_01
+module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
   autoload :ComputePolicies,                                    '2016-11-01/generated/azure_mgmt_datalake_analytics/compute_policies.rb'
   autoload :FirewallRules,                                      '2016-11-01/generated/azure_mgmt_datalake_analytics/firewall_rules.rb'
   autoload :StorageAccounts,                                    '2016-11-01/generated/azure_mgmt_datalake_analytics/storage_accounts.rb'

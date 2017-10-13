@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
+module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
   #
   # Creates an Azure Data Lake Analytics account management client.
   #
@@ -115,7 +115,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::StorageAccountInfo.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::StorageAccountInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -298,7 +298,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::AddStorageAccountParameters.mapper()
+      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::AddStorageAccountParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -410,7 +410,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::AddStorageAccountParameters.mapper()
+      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::AddStorageAccountParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -546,7 +546,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::BlobContainer.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::BlobContainer.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -656,7 +656,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::ListBlobContainersResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::ListBlobContainersResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -770,7 +770,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::ListSasTokensResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::ListSasTokensResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -877,7 +877,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeStoreAccountInfo.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeStoreAccountInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1063,7 +1063,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::AddDataLakeStoreParameters.mapper()
+      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::AddDataLakeStoreParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1257,7 +1257,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1429,7 +1429,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListDataLakeStoreResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListDataLakeStoreResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1591,7 +1591,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1746,7 +1746,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1843,7 +1843,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1937,7 +1937,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+          result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -1986,7 +1986,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+          result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -2154,7 +2154,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2186,7 +2186,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2196,7 +2196,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2277,7 +2277,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -2309,7 +2309,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2319,7 +2319,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2412,7 +2412,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::ListBlobContainersResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::ListBlobContainersResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2502,7 +2502,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::ListSasTokensResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::ListSasTokensResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2596,7 +2596,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2689,7 +2689,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListDataLakeStoreResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListDataLakeStoreResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2779,7 +2779,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -2869,7 +2869,7 @@ module Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::DataLakeAnalytics::Api_2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
+            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview::Models::DataLakeAnalyticsAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

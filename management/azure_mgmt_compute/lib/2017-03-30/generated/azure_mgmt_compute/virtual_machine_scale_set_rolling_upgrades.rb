@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2017_03_30
+module Azure::Compute::Mgmt::V2017_03_30
   #
   # VirtualMachineScaleSetRollingUpgrades
   #
@@ -52,7 +52,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -96,7 +96,7 @@ module Azure::ARM::Compute::Api_2017_03_30
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+          result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response)
         end
 
@@ -185,7 +185,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::RollingUpgradeStatusInfo.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::RollingUpgradeStatusInfo.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -276,7 +276,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -373,7 +373,7 @@ module Azure::ARM::Compute::Api_2017_03_30
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Compute::Api_2017_03_30::Models::OperationStatusResponse.mapper()
+            result_mapper = Azure::Compute::Mgmt::V2017_03_30::Models::OperationStatusResponse.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

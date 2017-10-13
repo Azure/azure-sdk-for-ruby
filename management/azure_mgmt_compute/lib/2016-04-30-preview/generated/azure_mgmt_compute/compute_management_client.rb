@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Compute::Api_2016_04_30_preview
+module Azure::Compute::Mgmt::V2016_04_30_preview
   #
   # A service client - single point of access to the REST API.
   #
@@ -166,8 +166,8 @@ module Azure::ARM::Compute::Api_2016_04_30_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
-        if defined? Azure::ARM::Compute::Api_2016_04_30_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Compute::Api_2016_04_30_preview::VERSION}"
+        if defined? Azure::Compute::Mgmt::V2016_04_30_preview::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Compute::Mgmt::V2016_04_30_preview::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

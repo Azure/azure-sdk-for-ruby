@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
+module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
   #
   # A service client - single point of access to the REST API.
   #
@@ -190,7 +190,7 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::PowerBiEmbedded::Api_2016_01_29::Models::OperationList.mapper()
+            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::OperationList.mapper()
             result.body = self.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -210,8 +210,8 @@ module Azure::ARM::PowerBiEmbedded::Api_2016_01_29
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_powerbi_embedded'
-        if defined? Azure::ARM::PowerBiEmbedded::Api_2016_01_29::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::PowerBiEmbedded::Api_2016_01_29::VERSION}"
+        if defined? Azure::PowerBiEmbedded::Mgmt::V2016_01_29::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::PowerBiEmbedded::Mgmt::V2016_01_29::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

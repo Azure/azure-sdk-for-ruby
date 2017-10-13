@@ -4,4 +4,3 @@
 
 require '2016-09-01/generated/azure_mgmt_service_fabric'
 require 'profiles/latest/servicefabric_latest_profile_client'
-require 'profiles/v2016_09_01/servicefabric_v2016_09_01_profile_client'

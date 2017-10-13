@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-08-01/generated/azure_mgmt_web/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Web::Api_2015_08_01
+module Azure::Web::Mgmt::V2015_08_01
   autoload :AppServiceCertificateOrders,                        '2015-08-01/generated/azure_mgmt_web/app_service_certificate_orders.rb'
   autoload :WebSiteManagementClient,                            '2015-08-01/generated/azure_mgmt_web/web_site_management_client.rb'
 

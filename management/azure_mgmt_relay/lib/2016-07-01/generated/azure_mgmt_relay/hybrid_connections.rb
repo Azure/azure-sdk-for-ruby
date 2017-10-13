@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Relay::Api_2016_07_01
+module Azure::Relay::Mgmt::V2016_07_01
   #
   # Use these API to manage Azure Relay resources through Azure Resources
   # Manager.
@@ -103,7 +103,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::HybridConnectionListResult.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::HybridConnectionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -185,7 +185,7 @@ module Azure::ARM::Relay::Api_2016_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::HybridConnection.mapper()
+      request_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::HybridConnection.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -217,7 +217,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::HybridConnection.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::HybridConnection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -402,7 +402,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::HybridConnection.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::HybridConnection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -500,7 +500,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRuleListResult.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -583,7 +583,7 @@ module Azure::ARM::Relay::Api_2016_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRule.mapper()
+      request_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRule.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -615,7 +615,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRule.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -808,7 +808,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRule.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -910,7 +910,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRuleKeys.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRuleKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -999,7 +999,7 @@ module Azure::ARM::Relay::Api_2016_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::RegenerateKeysParameters.mapper()
+      request_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::RegenerateKeysParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -1031,7 +1031,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRuleKeys.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRuleKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1118,7 +1118,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::HybridConnectionListResult.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::HybridConnectionListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1205,7 +1205,7 @@ module Azure::ARM::Relay::Api_2016_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::Relay::Api_2016_07_01::Models::AuthorizationRuleListResult.mapper()
+            result_mapper = Azure::Relay::Mgmt::V2016_07_01::Models::AuthorizationRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

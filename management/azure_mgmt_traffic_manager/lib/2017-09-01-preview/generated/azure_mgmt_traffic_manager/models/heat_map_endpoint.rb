@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::TrafficManager::Api_2017_09_01_preview
+module Azure::TrafficManager::Mgmt::V2017_09_01_preview
   module Models
     #
     # Class which is a sparse representation of a Traffic Manager endpoint.

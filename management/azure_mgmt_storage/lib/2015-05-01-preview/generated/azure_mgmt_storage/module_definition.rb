@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Storage end
-module Azure::ARM::Storage::Api_2015_05_01_preview end
+module Azure::Storage end
+module Azure::Storage::Mgmt end
+module Azure::Storage::Mgmt::V2015_05_01_preview end

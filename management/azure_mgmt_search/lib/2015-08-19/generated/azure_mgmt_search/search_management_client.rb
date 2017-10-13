@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Search::Api_2015_08_19
+module Azure::Search::Mgmt::V2015_08_19
   #
   # A service client - single point of access to the REST API.
   #
@@ -131,8 +131,8 @@ module Azure::ARM::Search::Api_2015_08_19
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_search'
-        if defined? Azure::ARM::Search::Api_2015_08_19::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Search::Api_2015_08_19::VERSION}"
+        if defined? Azure::Search::Mgmt::V2015_08_19::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Search::Mgmt::V2015_08_19::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

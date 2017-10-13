@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Monitor::Api_2017_05_01_preview
+module Azure::Monitor::Mgmt::V2017_05_01_preview
   module Models
     #
     # Describes the format of Error response.

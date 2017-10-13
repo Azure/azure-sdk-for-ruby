@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::NotificationHubs::Api_2017_04_01
+module Azure::NotificationHubs::Mgmt::V2017_04_01
   module Models
     #
     # Parameters supplied to the Patch Namespace operation.

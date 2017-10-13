@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2015-04-01/generated/azure_mgmt_web/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Web::Api_2015_04_01
+module Azure::Web::Mgmt::V2015_04_01
   autoload :Domains,                                            '2015-04-01/generated/azure_mgmt_web/domains.rb'
   autoload :TopLevelDomains,                                    '2015-04-01/generated/azure_mgmt_web/top_level_domains.rb'
   autoload :WebSiteManagementClient,                            '2015-04-01/generated/azure_mgmt_web/web_site_management_client.rb'

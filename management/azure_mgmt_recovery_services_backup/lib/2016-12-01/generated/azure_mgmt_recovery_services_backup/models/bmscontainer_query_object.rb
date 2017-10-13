@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::RecoveryServicesBackup::Api_2016_12_01
+module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
   module Models
     #
     # The query filters that can be used with the list containers API.

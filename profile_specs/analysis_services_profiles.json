@@ -1,15 +1,5 @@
 [
   {
-    "name": "V2017_07_14",
-    "resourceTypes": {
-      "Microsoft.AnalysisServices" : {
-        "2017-07-14": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_analysis_services/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.AnalysisServices" : {

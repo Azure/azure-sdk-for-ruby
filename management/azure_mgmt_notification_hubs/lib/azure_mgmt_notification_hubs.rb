@@ -4,4 +4,3 @@
 
 require '2017-04-01/generated/azure_mgmt_notification_hubs'
 require 'profiles/latest/notificationhubs_latest_profile_client'
-require 'profiles/v2017_04_01/notificationhubs_v2017_04_01_profile_client'

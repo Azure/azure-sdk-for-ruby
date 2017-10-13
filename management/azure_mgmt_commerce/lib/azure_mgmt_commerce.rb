@@ -4,4 +4,3 @@
 
 require '2015-06-01-preview/generated/azure_mgmt_commerce'
 require 'profiles/latest/commerce_latest_profile_client'
-require 'profiles/v2015_06_01_preview/commerce_v2015_06_01_preview_profile_client'

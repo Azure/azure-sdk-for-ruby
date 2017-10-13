@@ -1,17 +1,5 @@
 [
   {
-    "name": "V2017_03_01_Preview",
-    "resourceTypes": {
-      "Microsoft.SQL" : {
-        "2014-04-01": ["*"],
-        "2015-05-01-preview": ["*"],
-        "2017-03-01-preview": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_sql/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.SQL" : {

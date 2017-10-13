@@ -4,4 +4,3 @@
 
 require '2015-10-31/generated/azure_mgmt_automation'
 require 'profiles/latest/automation_latest_profile_client'
-require 'profiles/v2015_10_31/automation_v2015_10_31_profile_client'

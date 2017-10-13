@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::TrafficManager::Api_2015_11_01
+module Azure::TrafficManager::Mgmt::V2015_11_01
   module Models
     #
     # Parameters supplied to check Traffic Manager name operation.

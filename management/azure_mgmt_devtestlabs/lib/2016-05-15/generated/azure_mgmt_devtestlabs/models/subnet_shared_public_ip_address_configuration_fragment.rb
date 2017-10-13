@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DevTestLabs::Api_2016_05_15
+module Azure::DevTestLabs::Mgmt::V2016_05_15
   module Models
     #
     # Configuration for public IP address sharing.

@@ -3,6 +3,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CDN::Api_2017_04_02
+module Azure::CDN::Mgmt::V2017_04_02
     VERSION = '0.15.0'
 end

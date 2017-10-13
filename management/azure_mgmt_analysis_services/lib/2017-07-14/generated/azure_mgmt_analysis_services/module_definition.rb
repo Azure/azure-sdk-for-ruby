@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::AnalysisServices end
-module Azure::ARM::AnalysisServices::Api_2017_07_14 end
+module Azure::AnalysisServices end
+module Azure::AnalysisServices::Mgmt end
+module Azure::AnalysisServices::Mgmt::V2017_07_14 end

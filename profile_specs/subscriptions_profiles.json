@@ -10,16 +10,6 @@
     "individual_gem_profile": true
   },
   {
-    "name": "V2016_06_01",
-    "resourceTypes": {
-      "Microsoft.Subscriptions" : {
-        "2016-06-01": ["*"]
-      }
-    },
-    "output_dir": "../../../management/azure_mgmt_subscriptions/lib/profiles",
-    "individual_gem_profile": true
-  },
-  {
     "name": "Latest",
     "resourceTypes": {
       "Microsoft.Subscriptions" : {

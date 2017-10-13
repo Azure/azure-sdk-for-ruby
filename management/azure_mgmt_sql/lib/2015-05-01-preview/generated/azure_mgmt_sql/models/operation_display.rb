@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::SQL::Api_2015_05_01_preview
+module Azure::SQL::Mgmt::V2015_05_01_preview
   module Models
     #
     # Display metadata associated with the operation.

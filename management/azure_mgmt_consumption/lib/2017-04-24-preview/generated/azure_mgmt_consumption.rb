@@ -19,7 +19,7 @@ require 'ms_rest'
 require '2017-04-24-preview/generated/azure_mgmt_consumption/module_definition'
 require 'ms_rest_azure'
 
-module Azure::ARM::Consumption::Api_2017_04_24_preview
+module Azure::Consumption::Mgmt::V2017_04_24_preview
   autoload :UsageDetails,                                       '2017-04-24-preview/generated/azure_mgmt_consumption/usage_details.rb'
   autoload :Operations,                                         '2017-04-24-preview/generated/azure_mgmt_consumption/operations.rb'
   autoload :ConsumptionManagementClient,                        '2017-04-24-preview/generated/azure_mgmt_consumption/consumption_management_client.rb'

@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Resources end
-module Azure::ARM::Resources::Api_2016_02_01 end
+module Azure::Resources end
+module Azure::Resources::Mgmt end
+module Azure::Resources::Mgmt::V2016_02_01 end

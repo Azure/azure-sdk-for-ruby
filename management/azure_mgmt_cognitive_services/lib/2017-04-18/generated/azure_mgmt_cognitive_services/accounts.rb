@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CognitiveServices::Api_2017_04_18
+module Azure::CognitiveServices::Mgmt::V2017_04_18
   #
   # Cognitive Services Management Client
   #
@@ -92,7 +92,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountCreateParameters.mapper()
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -124,7 +124,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccount.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -134,7 +134,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccount.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -228,7 +228,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountUpdateParameters.mapper()
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountUpdateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -260,7 +260,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccount.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -437,7 +437,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccount.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -527,7 +527,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -610,7 +610,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -704,7 +704,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountKeys.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -789,7 +789,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::RegenerateKeyParameters.mapper()
+      request_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::RegenerateKeyParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters)
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -821,7 +821,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountKeys.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -915,7 +915,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountEnumerateSkusResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1002,7 +1002,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1089,7 +1089,7 @@ module Azure::ARM::CognitiveServices::Api_2017_04_18
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ARM::CognitiveServices::Api_2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
+            result_mapper = Azure::CognitiveServices::Mgmt::V2017_04_18::Models::CognitiveServicesAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

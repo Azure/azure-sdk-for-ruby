@@ -4,4 +4,3 @@
 
 require '2016-03-01/generated/azure_mgmt_scheduler'
 require 'profiles/latest/scheduler_latest_profile_client'
-require 'profiles/v2016_03_01/scheduler_v2016_03_01_profile_client'

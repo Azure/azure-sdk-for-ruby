@@ -3,7 +3,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ContainerRegistry::Api_2017_03_01
+module Azure::ContainerRegistry::Mgmt::V2017_03_01
   module Models
     #
     # The parameters for creating a container registry.

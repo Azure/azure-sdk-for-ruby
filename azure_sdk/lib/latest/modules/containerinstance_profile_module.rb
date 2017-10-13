@@ -6,32 +6,32 @@ require 'azure_mgmt_container_instance'
 
 module Azure::Profiles::Latest
   module ContainerInstance::Mgmt
-    ContainerGroups = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerGroups
-    ContainerLogs = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerLogs
+    ContainerGroups = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerGroups
+    ContainerLogs = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerLogs
 
     module Models
-      Container = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Container
-      AzureFileVolume = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::AzureFileVolume
-      EnvironmentVariable = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::EnvironmentVariable
-      Volume = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Volume
-      ContainerEvent = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerEvent
-      ImageRegistryCredential = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ImageRegistryCredential
-      ResourceRequests = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ResourceRequests
-      Port = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Port
-      ResourceRequirements = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ResourceRequirements
-      IpAddress = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::IpAddress
-      ContainerPort = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerPort
-      ContainerState = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerState
-      ResourceLimits = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ResourceLimits
-      ContainerGroupListResult = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroupListResult
-      ContainerPropertiesInstanceView = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerPropertiesInstanceView
-      Logs = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Logs
-      VolumeMount = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::VolumeMount
-      Resource = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Resource
-      ContainerGroup = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroup
-      ContainerRestartPolicy = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerRestartPolicy
-      ContainerGroupNetworkProtocol = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroupNetworkProtocol
-      OperatingSystemTypes = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::OperatingSystemTypes
+      Container = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Container
+      AzureFileVolume = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::AzureFileVolume
+      EnvironmentVariable = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::EnvironmentVariable
+      Volume = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Volume
+      ContainerEvent = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerEvent
+      ImageRegistryCredential = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ImageRegistryCredential
+      ResourceRequests = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequests
+      Port = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Port
+      ResourceRequirements = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequirements
+      IpAddress = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::IpAddress
+      ContainerPort = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPort
+      ContainerState = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerState
+      ResourceLimits = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceLimits
+      ContainerGroupListResult = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult
+      ContainerPropertiesInstanceView = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPropertiesInstanceView
+      Logs = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Logs
+      VolumeMount = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::VolumeMount
+      Resource = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Resource
+      ContainerGroup = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup
+      ContainerRestartPolicy = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerRestartPolicy
+      ContainerGroupNetworkProtocol = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupNetworkProtocol
+      OperatingSystemTypes = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::OperatingSystemTypes
     end
 
     #
@@ -43,7 +43,7 @@ module Azure::Profiles::Latest
       def initialize(configurable, base_url=nil, options=nil)
         @configurable, @base_url, @options = configurable, base_url, options
 
-        client_0 = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerInstanceManagementClient.new(configurable.credentials, base_url, options)
+        client_0 = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerInstanceManagementClient.new(configurable.credentials, base_url, options)
         if(client_0.respond_to?(:subscription_id))
           client_0.subscription_id = configurable.subscription_id
         end
@@ -61,7 +61,7 @@ module Azure::Profiles::Latest
       def get_client(version = '2017-08-01-preview')
         case version
           when '2017-08-01-preview'
-            client = Azure::ARM::ContainerInstance::Api_2017_08_01_preview::ContainerInstanceManagementClient.new(@configurable.credentials, @base_url, @options)
+            client = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerInstanceManagementClient.new(@configurable.credentials, @base_url, @options)
             client.subscription_id = configurable.subscription_id
             return client
           else
@@ -71,70 +71,70 @@ module Azure::Profiles::Latest
 
       class ModelClasses
         def container
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Container
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Container
         end
         def azure_file_volume
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::AzureFileVolume
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::AzureFileVolume
         end
         def environment_variable
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::EnvironmentVariable
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::EnvironmentVariable
         end
         def volume
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Volume
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Volume
         end
         def container_event
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerEvent
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerEvent
         end
         def image_registry_credential
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ImageRegistryCredential
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ImageRegistryCredential
         end
         def resource_requests
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ResourceRequests
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequests
         end
         def port
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Port
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Port
         end
         def resource_requirements
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ResourceRequirements
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceRequirements
         end
         def ip_address
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::IpAddress
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::IpAddress
         end
         def container_port
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerPort
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPort
         end
         def container_state
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerState
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerState
         end
         def resource_limits
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ResourceLimits
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ResourceLimits
         end
         def container_group_list_result
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroupListResult
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult
         end
         def container_properties_instance_view
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerPropertiesInstanceView
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerPropertiesInstanceView
         end
         def logs
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Logs
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Logs
         end
         def volume_mount
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::VolumeMount
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::VolumeMount
         end
         def resource
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::Resource
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Resource
         end
         def container_group
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroup
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup
         end
         def container_restart_policy
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerRestartPolicy
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerRestartPolicy
         end
         def container_group_network_protocol
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::ContainerGroupNetworkProtocol
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupNetworkProtocol
         end
         def operating_system_types
-          Azure::ARM::ContainerInstance::Api_2017_08_01_preview::Models::OperatingSystemTypes
+          Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::OperatingSystemTypes
         end
       end
     end

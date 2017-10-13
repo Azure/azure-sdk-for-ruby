@@ -9,8 +9,8 @@ require 'ms_rest_azure'
 
 include MsRest
 include MsRestAzure
-include Azure::ARM::Resources::Api_2017_05_10
-include Azure::ARM::Storage::Api_2017_06_01
+include Azure::Resources::Mgmt::V2017_05_10
+include Azure::Storage::Mgmt::V2017_06_01
 
 class ResourceHelper
   attr_accessor :storage_client
@@ -40,7 +40,7 @@ class ResourceHelper
 
   def create_resource_group
     resource_group_name = 'RubySDKTest_azure_mgmt_storage'
-    params = Azure::ARM::Resources::Api_2017_05_10::Models::ResourceGroup.new
+    params = Azure::Resources::Mgmt::V2017_05_10::Models::ResourceGroup.new
     params.location = 'westus'
 
     @resource_client.resource_groups.create_or_update(resource_group_name, params)
