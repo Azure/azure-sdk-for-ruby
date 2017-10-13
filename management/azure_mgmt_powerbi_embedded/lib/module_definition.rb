@@ -3,6 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::PowerBiEmbedded end
+module Azure::PowerBiEmbedded end
+module Azure::PowerBiEmbedded::Mgmt end
 

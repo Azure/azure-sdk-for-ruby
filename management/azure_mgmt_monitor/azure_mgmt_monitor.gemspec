@@ -10,7 +10,7 @@ require '../azure_mgmt_monitor/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_monitor'
-  spec.version       = Azure::ARM::Monitor::VERSION
+  spec.version       = Azure::Monitor::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Monitor Library for Ruby'

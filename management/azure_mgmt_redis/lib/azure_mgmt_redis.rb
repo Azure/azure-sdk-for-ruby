@@ -5,7 +5,3 @@
 require '2015-08-01/generated/azure_mgmt_redis'
 require '2016-04-01/generated/azure_mgmt_redis'
 require '2017-02-01/generated/azure_mgmt_redis'
-require 'profiles/profile_2015_08_01/redis_profile_2015_08_01_profile_client'
-require 'profiles/profile_2016_04_01/redis_profile_2016_04_01_profile_client'
-require 'profiles/profile_2017_02_01/redis_profile_2017_02_01_profile_client'
-require 'profiles/profile_latest/redis_profile_latest_profile_client'

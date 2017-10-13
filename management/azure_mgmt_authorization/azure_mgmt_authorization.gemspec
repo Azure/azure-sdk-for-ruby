@@ -10,7 +10,7 @@ require '../azure_mgmt_authorization/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_authorization'
-  spec.version       = Azure::ARM::Authorization::VERSION
+  spec.version       = Azure::Authorization::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Role Based Authorization Management Client Library for Ruby'

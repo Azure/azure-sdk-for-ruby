@@ -10,7 +10,7 @@ require '../azure_mgmt_marketplace_ordering/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_marketplace_ordering'
-  spec.version       = Azure::ARM::MarketplaceOrdering::VERSION
+  spec.version       = Azure::MarketplaceOrdering::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Marketplace Ordering Library for Ruby'

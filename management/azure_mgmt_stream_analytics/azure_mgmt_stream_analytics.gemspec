@@ -10,7 +10,7 @@ require '../azure_mgmt_stream_analytics/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_stream_analytics'
-  spec.version       = Azure::ARM::StreamAnalytics::VERSION
+  spec.version       = Azure::StreamAnalytics::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Stream Analytics Client Library for Ruby'

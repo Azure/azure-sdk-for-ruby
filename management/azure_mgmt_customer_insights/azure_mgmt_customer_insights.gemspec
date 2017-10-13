@@ -10,7 +10,7 @@ require '../azure_mgmt_customer_insights/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_customer_insights'
-  spec.version       = Azure::ARM::CustomerInsights::VERSION
+  spec.version       = Azure::CustomerInsights::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Customer Insights Services Library for Ruby'

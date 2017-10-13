@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::TrafficManager end
+module Azure::TrafficManager end
+module Azure::TrafficManager::Mgmt end
 
 

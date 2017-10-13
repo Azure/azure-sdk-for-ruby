@@ -10,7 +10,7 @@ require '../azure_mgmt_links/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_links'
-  spec.version       = Azure::ARM::Links::VERSION
+  spec.version       = Azure::Links::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Links Library for Ruby'

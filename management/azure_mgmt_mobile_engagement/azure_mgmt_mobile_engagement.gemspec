@@ -10,7 +10,7 @@ require '../azure_mgmt_mobile_engagement/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_mobile_engagement'
-  spec.version       = Azure::ARM::MobileEngagement::VERSION
+  spec.version       = Azure::MobileEngagement::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Mobile Engagement Management Client Library for Ruby'

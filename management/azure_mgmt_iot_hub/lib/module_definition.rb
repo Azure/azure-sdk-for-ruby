@@ -3,6 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::IotHub end
+module Azure::IotHub end
+module Azure::IotHub::Mgmt end
 

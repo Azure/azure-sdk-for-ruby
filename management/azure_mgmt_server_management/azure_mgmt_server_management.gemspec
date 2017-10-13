@@ -10,7 +10,7 @@ require '../azure_mgmt_server_management/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_server_management'
-  spec.version       = Azure::ARM::ServerManagement::VERSION
+  spec.version       = Azure::ServerManagement::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Server Management Client Library for Ruby'

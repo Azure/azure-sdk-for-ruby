@@ -10,7 +10,7 @@ require '../azure_mgmt_event_grid/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_event_grid'
-  spec.version       = Azure::ARM::EventGrid::VERSION
+  spec.version       = Azure::EventGrid::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Event Grid Services Library for Ruby'

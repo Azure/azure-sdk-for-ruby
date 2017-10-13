@@ -10,7 +10,7 @@ require '../azure_mgmt_cognitive_services/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_cognitive_services'
-  spec.version       = Azure::ARM::CognitiveServices::VERSION
+  spec.version       = Azure::CognitiveServices::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Cognitive Services Management Client Library for Ruby'

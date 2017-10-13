@@ -10,7 +10,7 @@ require '../azure_mgmt_subscriptions/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_subscriptions'
-  spec.version       = Azure::ARM::Subscriptions::VERSION
+  spec.version       = Azure::Subscriptions::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Subscription Management Client Library for Ruby'

@@ -10,7 +10,7 @@ require '../azure_mgmt_web/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_web'
-  spec.version       = Azure::ARM::Web::VERSION
+  spec.version       = Azure::Web::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Web Apps Management Client Library for Ruby'

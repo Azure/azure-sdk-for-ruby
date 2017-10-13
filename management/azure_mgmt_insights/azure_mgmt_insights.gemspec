@@ -10,7 +10,7 @@ require 'generated/azure_mgmt_insights/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_insights'
-  spec.version       = Azure::ARM::Insights::VERSION
+  spec.version       = Azure::Insights::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Insights Library for Ruby. Starting July 2017, this gem will no longer be updated. For latest updates, use azure_mgmt_monitor gem.'

@@ -10,7 +10,7 @@ require '../azure_mgmt_recovery_services_site_recovery/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_recovery_services_site_recovery'
-  spec.version       = Azure::ARM::RecoveryServicesSiteRecovery::VERSION
+  spec.version       = Azure::RecoveryServicesSiteRecovery::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Recovery Services Site Recovery Services Library for Ruby'

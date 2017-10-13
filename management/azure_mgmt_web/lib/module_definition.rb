@@ -3,8 +3,8 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::ARM end
-module Azure::ARM::Web end
+module Azure::Web end
+module Azure::Web::Mgmt end
 
 
 

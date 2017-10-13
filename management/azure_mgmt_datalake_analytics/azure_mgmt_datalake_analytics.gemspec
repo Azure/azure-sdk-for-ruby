@@ -10,7 +10,7 @@ require '../azure_mgmt_datalake_analytics/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_datalake_analytics'
-  spec.version       = Azure::ARM::DataLakeAnalytics::VERSION
+  spec.version       = Azure::DataLakeAnalytics::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Provider DataLake Analytics Client Library for Ruby'

@@ -10,7 +10,7 @@ require '../azure_mgmt_datalake_store/lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_datalake_store'
-  spec.version       = Azure::ARM::DataLakeStore::VERSION
+  spec.version       = Azure::DataLakeStore::Mgmt::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Provider DataLake Store Client Library for Ruby'
