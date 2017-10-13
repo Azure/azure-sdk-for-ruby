@@ -136,7 +136,7 @@ describe 'Virtual machine api' do
     result = @resource_helper.network_client.network_interfaces.list_all
     result.each do |network_interface|
       #Refer specification: https://github.com/Azure/azure-rest-api-specs/blob/ec9a03762fc8fd58fbee71cdbd18d1f4b28f168f/specification/network/resource-manager/Microsoft.Network/2017-09-01/networkInterface.json#L624
-      expect(network_interface.virtual_machine).to be_an_instance_of(Azure::ARM::Network::Api_2017_09_01::Models::SubResource)
+      expect(network_interface.virtual_machine).to be_an_instance_of(Azure::Network::Mgmt::V2017_09_01::Models::SubResource)
     end
   end
 
