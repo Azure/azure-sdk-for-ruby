@@ -77,22 +77,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-10-01')
-        case version
-          when '2017-10-01'
-            client = Azure::ContainerRegistry::Mgmt::V2017_10_01::ContainerRegistryManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def replication_update_parameters
           Azure::ContainerRegistry::Mgmt::V2017_10_01::Models::ReplicationUpdateParameters

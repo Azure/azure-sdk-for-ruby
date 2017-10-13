@@ -337,30 +337,6 @@ module Azure::SQL::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-03-01-preview')
-        case version
-          when '2014-04-01'
-            client = Azure::SQL::Mgmt::V2014_04_01::SqlManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2015-05-01-preview'
-            client = Azure::SQL::Mgmt::V2015_05_01_preview::SqlManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2017-03-01-preview'
-            client = Azure::SQL::Mgmt::V2017_03_01_preview::SqlManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def firewall_rule_list_result
           Azure::SQL::Mgmt::V2014_04_01::Models::FirewallRuleListResult

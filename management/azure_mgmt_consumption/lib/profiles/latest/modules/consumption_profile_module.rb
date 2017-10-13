@@ -47,22 +47,6 @@ module Azure::Consumption::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-04-24-preview')
-        case version
-          when '2017-04-24-preview'
-            client = Azure::Consumption::Mgmt::V2017_04_24_preview::ConsumptionManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def error_response
           Azure::Consumption::Mgmt::V2017_04_24_preview::Models::ErrorResponse

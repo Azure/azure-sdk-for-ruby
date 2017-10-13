@@ -143,22 +143,6 @@ module Azure::Profiles::V2017_03_09
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-03-30')
-        case version
-          when '2016-03-30'
-            client = Azure::Compute::Mgmt::V2016_03_30::ComputeManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def diagnostics_profile
           Azure::Compute::Mgmt::V2016_03_30::Models::DiagnosticsProfile

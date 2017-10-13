@@ -57,22 +57,6 @@ module Azure::Dns::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-04-01')
-        case version
-          when '2016-04-01'
-            client = Azure::Dns::Mgmt::V2016_04_01::DnsManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def record_set
           Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet

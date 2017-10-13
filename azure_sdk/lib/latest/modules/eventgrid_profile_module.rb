@@ -61,22 +61,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-09-15-preview')
-        case version
-          when '2017-09-15-preview'
-            client = Azure::EventGrid::Mgmt::V2017_09_15_preview::EventGridManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def operation
           Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Operation

@@ -92,22 +92,6 @@ module Azure::Resources::Profiles::V2017_03_09::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-02-01')
-        case version
-          when '2016-02-01'
-            client = Azure::Resources::Mgmt::V2016_02_01::ResourceManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def sku
           Azure::Resources::Mgmt::V2016_02_01::Models::Sku

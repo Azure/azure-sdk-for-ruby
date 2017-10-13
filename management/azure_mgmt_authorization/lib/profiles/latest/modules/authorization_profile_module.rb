@@ -63,22 +63,6 @@ module Azure::Authorization::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2015-07-01')
-        case version
-          when '2015-07-01'
-            client = Azure::Authorization::Mgmt::V2015_07_01::AuthorizationManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def provider_operations_metadata
           Azure::Authorization::Mgmt::V2015_07_01::Models::ProviderOperationsMetadata

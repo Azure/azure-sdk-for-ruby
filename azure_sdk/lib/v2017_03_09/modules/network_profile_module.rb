@@ -181,22 +181,6 @@ module Azure::Profiles::V2017_03_09
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2015-06-15')
-        case version
-          when '2015-06-15'
-            client = Azure::Network::Mgmt::V2015_06_15::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def express_route_circuits_stats_list_result
           Azure::Network::Mgmt::V2015_06_15::Models::ExpressRouteCircuitsStatsListResult

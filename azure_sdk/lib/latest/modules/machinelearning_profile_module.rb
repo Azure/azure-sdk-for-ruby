@@ -66,22 +66,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-01-01')
-        case version
-          when '2017-01-01'
-            client = Azure::MachineLearning::Mgmt::V2017_01_01::AzureMLWebServicesManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def mode_value_info
           Azure::MachineLearning::Mgmt::V2017_01_01::Models::ModeValueInfo

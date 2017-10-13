@@ -40,22 +40,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-06-01')
-        case version
-          when '2016-06-01'
-            client = Azure::Subscriptions::Mgmt::V2016_06_01::SubscriptionClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def subscription
           Azure::Subscriptions::Mgmt::V2016_06_01::Models::Subscription

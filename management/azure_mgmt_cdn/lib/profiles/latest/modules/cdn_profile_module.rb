@@ -95,22 +95,6 @@ module Azure::CDN::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-04-02')
-        case version
-          when '2017-04-02'
-            client = Azure::CDN::Mgmt::V2017_04_02::CdnManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def custom_domain_list_result
           Azure::CDN::Mgmt::V2017_04_02::Models::CustomDomainListResult

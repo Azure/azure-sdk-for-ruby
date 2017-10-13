@@ -219,22 +219,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-05-15')
-        case version
-          when '2016-05-15'
-            client = Azure::DevTestLabs::Mgmt::V2016_05_15::DevTestLabsClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def formula_properties_from_vm
           Azure::DevTestLabs::Mgmt::V2016_05_15::Models::FormulaPropertiesFromVm

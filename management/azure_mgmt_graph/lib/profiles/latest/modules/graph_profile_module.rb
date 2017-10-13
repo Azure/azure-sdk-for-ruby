@@ -85,22 +85,6 @@ module Azure::Graph::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '1.6')
-        case version
-          when '1.6'
-            client = Azure::Graph::Mgmt::V1_6::GraphRbacManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def group_get_member_groups_parameters
           Azure::Graph::Mgmt::V1_6::Models::GroupGetMemberGroupsParameters

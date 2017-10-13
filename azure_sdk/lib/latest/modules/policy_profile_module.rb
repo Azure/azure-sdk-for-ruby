@@ -49,26 +49,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-06-01-preview')
-        case version
-          when '2016-12-01'
-            client = Azure::Policy::Mgmt::V2016_12_01::PolicyClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2017-06-01-preview'
-            client = Azure::Policy::Mgmt::V2017_06_01_preview::PolicyClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def policy_definition
           Azure::Policy::Mgmt::V2016_12_01::Models::PolicyDefinition

@@ -165,22 +165,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-04-26')
-        case version
-          when '2017-04-26'
-            client = Azure::CustomerInsights::Mgmt::V2017_04_26::CustomerInsightsManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def kpi_list_result
           Azure::CustomerInsights::Mgmt::V2017_04_26::Models::KpiListResult

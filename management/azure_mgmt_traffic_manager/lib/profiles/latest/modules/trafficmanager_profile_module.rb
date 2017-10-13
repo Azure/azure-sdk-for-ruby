@@ -73,26 +73,6 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-09-01-preview')
-        case version
-          when '2017-05-01'
-            client = Azure::TrafficManager::Mgmt::V2017_05_01::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2017-09-01-preview'
-            client = Azure::TrafficManager::Mgmt::V2017_09_01_preview::TrafficManagerManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def traffic_manager_name_availability
           Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerNameAvailability

@@ -137,22 +137,6 @@ module Azure::MobileEngagement::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2014-12-01')
-        case version
-          when '2014-12-01'
-            client = Azure::MobileEngagement::Mgmt::V2014_12_01::EngagementManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def campaign_state
           Azure::MobileEngagement::Mgmt::V2014_12_01::Models::CampaignState

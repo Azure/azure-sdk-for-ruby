@@ -370,22 +370,6 @@ module Azure::Network::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-09-01')
-        case version
-          when '2017-09-01'
-            client = Azure::Network::Mgmt::V2017_09_01::NetworkManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def effective_network_security_group_list_result
           Azure::Network::Mgmt::V2017_09_01::Models::EffectiveNetworkSecurityGroupListResult

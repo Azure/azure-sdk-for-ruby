@@ -57,22 +57,6 @@ module Azure::Storage::Profiles::V2017_03_09::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2015-06-15')
-        case version
-          when '2015-06-15'
-            client = Azure::Storage::Mgmt::V2015_06_15::StorageManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def storage_account_list_result
           Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountListResult

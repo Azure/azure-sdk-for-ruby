@@ -60,22 +60,6 @@ module Azure::ContainerInstance::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-08-01-preview')
-        case version
-          when '2017-08-01-preview'
-            client = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::ContainerInstanceManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def container
           Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::Container

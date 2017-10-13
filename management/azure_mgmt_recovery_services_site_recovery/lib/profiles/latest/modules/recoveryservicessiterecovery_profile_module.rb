@@ -399,22 +399,6 @@ module Azure::RecoveryServicesSiteRecovery::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-08-10')
-        case version
-          when '2016-08-10'
-            client = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::SiteRecoveryManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def storage_classification_properties
           Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::StorageClassificationProperties

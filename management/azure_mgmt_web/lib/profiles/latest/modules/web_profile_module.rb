@@ -346,38 +346,6 @@ module Azure::Web::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2016-09-01')
-        case version
-          when '2015-04-01'
-            client = Azure::Web::Mgmt::V2015_04_01::WebSiteManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2015-08-01'
-            client = Azure::Web::Mgmt::V2015_08_01::WebSiteManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2016-03-01'
-            client = Azure::Web::Mgmt::V2016_03_01::WebSiteManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2016-08-01'
-            client = Azure::Web::Mgmt::V2016_08_01::WebSiteManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2016-09-01'
-            client = Azure::Web::Mgmt::V2016_09_01::WebSiteManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def domain_recommendation_search_parameters
           Azure::Web::Mgmt::V2015_04_01::Models::DomainRecommendationSearchParameters

@@ -137,34 +137,6 @@ module Azure::Monitor::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-05-01-preview')
-        case version
-          when '2015-04-01'
-            client = Azure::Monitor::Mgmt::V2015_04_01::MonitorManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2016-03-01'
-            client = Azure::Monitor::Mgmt::V2016_03_01::MonitorManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2017-04-01'
-            client = Azure::Monitor::Mgmt::V2017_04_01::MonitorManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2017-05-01-preview'
-            client = Azure::Monitor::Mgmt::V2017_05_01_preview::MonitorClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def email_notification
           Azure::Monitor::Mgmt::V2015_04_01::Models::EmailNotification

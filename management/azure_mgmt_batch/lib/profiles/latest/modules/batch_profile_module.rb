@@ -71,22 +71,6 @@ module Azure::Batch::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-05-01')
-        case version
-          when '2017-05-01'
-            client = Azure::Batch::Mgmt::V2017_05_01::BatchManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def application_package
           Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage

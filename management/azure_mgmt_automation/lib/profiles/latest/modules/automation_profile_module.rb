@@ -219,22 +219,6 @@ module Azure::Automation::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2015-10-31')
-        case version
-          when '2015-10-31'
-            client = Azure::Automation::Mgmt::V2015_10_31::AutomationClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def dsc_compilation_job
           Azure::Automation::Mgmt::V2015_10_31::Models::DscCompilationJob

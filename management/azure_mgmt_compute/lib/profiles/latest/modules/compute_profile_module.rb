@@ -233,22 +233,6 @@ module Azure::Compute::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-03-30')
-        case version
-          when '2017-03-30'
-            client = Azure::Compute::Mgmt::V2017_03_30::ComputeManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def virtual_machine_scale_set_osdisk
           Azure::Compute::Mgmt::V2017_03_30::Models::VirtualMachineScaleSetOSDisk

@@ -53,22 +53,6 @@ module Azure::AnalysisServices::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-07-14')
-        case version
-          when '2017-07-14'
-            client = Azure::AnalysisServices::Mgmt::V2017_07_14::AnalysisServicesManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def analysis_services_server_update_parameters
           Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServerUpdateParameters

@@ -47,22 +47,6 @@ module Azure::Profiles::Latest
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2015-08-19')
-        case version
-          when '2015-08-19'
-            client = Azure::Search::Mgmt::V2015_08_19::SearchManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def sku
           Azure::Search::Mgmt::V2015_08_19::Models::Sku

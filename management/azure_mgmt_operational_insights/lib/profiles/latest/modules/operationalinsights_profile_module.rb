@@ -89,26 +89,6 @@ module Azure::OperationalInsights::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2015-11-01-preview')
-        case version
-          when '2015-03-20'
-            client = Azure::OperationalInsights::Mgmt::V2015_03_20::OperationalInsightsManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          when '2015-11-01-preview'
-            client = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::AzureLogAnalytics.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def search_schema_value
           Azure::OperationalInsights::Mgmt::V2015_03_20::Models::SearchSchemaValue

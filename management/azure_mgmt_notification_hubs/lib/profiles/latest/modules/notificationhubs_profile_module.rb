@@ -72,22 +72,6 @@ module Azure::NotificationHubs::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-04-01')
-        case version
-          when '2017-04-01'
-            client = Azure::NotificationHubs::Mgmt::V2017_04_01::NotificationHubsManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def resource_list_keys
           Azure::NotificationHubs::Mgmt::V2017_04_01::Models::ResourceListKeys

@@ -225,22 +225,6 @@ module Azure::StorSimple8000Series::Profiles::Latest::Mgmt
         @model_classes = ModelClasses.new
       end
 
-      #
-      # Method to get the client object
-      #
-      # @return Client object
-      #
-      def get_client(version = '2017-06-01')
-        case version
-          when '2017-06-01'
-            client = Azure::StorSimple8000Series::Mgmt::V2017_06_01::StorSimple8000SeriesManagementClient.new(@configurable.credentials, @base_url, @options)
-            client.subscription_id = configurable.subscription_id
-            return client
-          else
-            raise "No client of version #{version} could be found in this profile."
-        end
-      end
-
       class ModelClasses
         def target_eligibility_result
           Azure::StorSimple8000Series::Mgmt::V2017_06_01::Models::TargetEligibilityResult
