@@ -7,7 +7,7 @@ require 'json'
 require_relative 'require_file_generator_options_parser'
 
 class RequireFileGenerator
-  BLACKLIST_GEMS = ['azure_mgmt_insights']
+  EXCLUDE_GEMS = ['azure_mgmt_insights']
 
   attr_accessor :requires
 
@@ -61,7 +61,7 @@ class RequireFileGenerator
       # azure_mgmt_insights is a special case gem which we have stopped
       # supporting. But the folder is present and should be ignored in this
       # process
-      if(BLACKLIST_GEMS.include?gem)
+      if(EXCLUDE_GEMS.include?gem)
         next
       end
 
