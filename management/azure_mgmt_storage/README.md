@@ -50,7 +50,6 @@ options = {
     subscription_id: subscription_id
 }
 client = Client.new(options)
-client.subscription_id = subscription_id
 
 # Create a model for new storage account.
 params = Models::StorageAccountCreateParameters.new

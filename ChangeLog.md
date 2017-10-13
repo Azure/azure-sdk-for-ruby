@@ -5,7 +5,7 @@
   - There are 2 profiles defined for 'azure-sdk': "Azure::Profiles::Latest" and "Azure::Profiles::V2017_03_09".
   - Each gem has minimally a "latest" profile defined, example: "Azure::Compute::Profiles::Latest::Mgmt"
 * All gems are regenerated with @microsoft.azure/autorest.ruby@3.0.20 and  @microsoft.azure/autorest-core@2.0.4147
-* Included changes to service specs up to https://github.com/Azure/azure-rest-api-specs/tree/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification
+* Included changes to Azure specs up to [7aa3a5247895ba34d6cfec73e036bb66dc907d20](https://github.com/Azure/azure-rest-api-specs/tree/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification)
 
 
 ## 2017.10.09 - Azure ARM version 0.14.0
