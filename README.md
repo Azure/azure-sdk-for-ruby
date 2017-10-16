@@ -100,6 +100,17 @@ With 0.15.0 of Azure SDK, multiple API versions and profiles are introduced. Wit
 consists of several versions and several profiles. The rollup gem also consists of several profiles. The following 
 section provides details on the usage of multiple API versions and profiles.
 
+## Why Multiple API versions?
+
+With the previous Azure SDK, you will have access to the latest (at the time of release) versions of our services. With 
+each new release, the versions may get updated. But, if you would like to continue using the old versions of some 
+services, such option was not available. But, with the multiple API versions, you could use any version of service. 
+
+## Why Profiles?
+
+A profile is a combination of different resource types with different versions from different services. Using a profile,
+will help you mix and match between various resource types.
+
 ## Usage of Rollup gem
 
 ### Install
