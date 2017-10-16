@@ -244,6 +244,17 @@ purchase_plan_obj = Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan.new
 
 ```
 
+## Samples using Profiles
+
+The following samples could be used as a reference for Profiles:
+
+* [Compute MSI VM](https://github.com/Azure-Samples/compute-ruby-msi-vm)
+* [Resource Manager & Groups](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups)
+* [Compute Manage VM](https://github.com/Azure-Samples/compute-ruby-manage-vm)
+* [Template Deployment](https://github.com/Azure-Samples/resource-manager-ruby-template-deployment)
+* [Traffic Manager Profiles](https://github.com/Azure-Samples/traffic-manager-ruby-manage-profiles)
+
+
 ### Getting Started Samples
 The tests for the libraries should provide a good example of how to get started with the clients. You can also see the
 readme for each of the libraries [Compute](management/azure_mgmt_compute),
