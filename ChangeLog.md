@@ -1,4 +1,4 @@
-## 2017.10.13 - Azure ARM version 0.15.0
+## 2017.10.17 - Azure ARM version 0.15.0
 
 * Each gem include multiple api-versions (namespace example: "Azure::Compute::Mgmt::V2017_03_30").
 * Profiles are introduced:

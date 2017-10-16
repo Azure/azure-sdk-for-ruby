@@ -94,6 +94,145 @@ see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/
 After creating the service principal, you should have three pieces of information, a client id (GUID), client secret
 (string) and tenant id (GUID) or domain name (string).
 
+# Azure Multiple API versions & Profiles
+
+With 0.15.0 of Azure SDK, multiple API versions and profiles are introduced. With these changes, each individual gem
+consists of several versions and several profiles. The rollup gem also consists of several profiles. The following 
+section provides details on the usage of multiple API versions and profiles.
+
+## Usage of Rollup gem
+
+### Install
+
+You can install the rollup gem with the following command:
+
+```ruby
+gem 'azure_sdk'
+```
+
+### Profiles
+
+Currently, the azure_sdk rollup gem has two profiles.
+  1. v2017_03_09
+  2. latest
+
+### Usage
+
+The following lines should be used to instantiate a profile client:
+
+```ruby
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  credentials: credentials,
+  subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
+}
+
+profile_client = Azure::Profiles::V2017_03_09::Mgmt::Client.new(options)
+```
+
+The profile client could be used to access individual RPs:
+
+ ```ruby
+# To access the operations associated with Compute
+profile_client.compute.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME'
+
+# Option 1: To access the models associated with Compute
+purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
+
+# Option 2: To access the models associated with Compute
+purchase_plan_obj = Azure::Profiles::V2017_03_09::Compute::Mgmt::Models::PurchasePlan.new
+
+```
+
+## Usage of Individual gem using Profiles
+
+### Install
+
+You can install the individual gems using gem install. For eg, to install azure_mgmt_compute, use the following command:
+
+```ruby
+gem 'azure_mgmt_compute'
+```
+### Usage
+
+The following lines should be used to instantiate a profile client:
+
+```ruby
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  credentials: credentials,
+  subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
+}
+
+profile_client = Azure::Compute::Profiles::Latest::Mgmt::Client.new(options)
+```
+The profile client could be used to access operations and models:
+
+ ```ruby
+# To access the operations associated with Compute
+profile_client.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME'
+
+# Option 1: To access the models associated with Compute
+purchase_plan_obj = profile_client.model_classes.purchase_plan.new
+
+# Option 2: To access the models associated with Compute
+purchase_plan_obj = Azure::Compute::Profiles::Latest::Mgmt::Models::PurchasePlan.new
+
+```
+
+## Usage of Individual gem using Versions
+
+In the previous approach, we used the profile associated with individual gem. In the current approach, we could use the
+version directly.
+
+### Install
+
+You can install the individual gems using gem install. For eg, to install azure_mgmt_compute, use the following command:
+
+```ruby
+gem 'azure_mgmt_compute'
+```
+### Usage
+
+The following lines should be used to instantiate a profile client:
+
+```ruby
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  credentials: credentials,
+  subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
+}
+
+compute_client = Azure::Compute::Mgmt::V2016_03_30::ComputeManagementClient.new(credentials)
+compute_client.subscription_id = subscription_id
+```
+
+The compute client could be used to access operations and models:
+
+ ```ruby
+# To access the operations associated with Compute
+compute_client.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME'
+
+# To access the models associated with Compute
+purchase_plan_obj = Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan.new
+
+```
+
 ### Getting Started Samples
 The tests for the libraries should provide a good example of how to get started with the clients. You can also see the
 readme for each of the libraries [Compute](management/azure_mgmt_compute),
