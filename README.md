@@ -1,4 +1,7 @@
 
+**NOTE**: With 0.15.0 version of Azure SDK, significant changes (Multiple API versions & Profiles) have been introduced.
+The details are available [here](#azure-multiple-api-versions--profiles)
+
 # Microsoft Azure SDK for Ruby - Resource Management (preview)
 [![Build Status](https://api.travis-ci.org/Azure/azure-sdk-for-ruby.svg?branch=master)](https://api.travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
 
@@ -97,8 +100,7 @@ After creating the service principal, you should have three pieces of informatio
 # Azure Multiple API versions & Profiles
 
 With 0.15.0 of Azure SDK, multiple API versions and profiles are introduced. With these changes, each individual gem
-consists of several versions and several profiles. The rollup gem also consists of several profiles. The following 
-section provides details on the usage of multiple API versions and profiles.
+has multiple versions of the services and several profiles. The azure sdk rollup gem also consists of several profiles. The following section provides details on the usage of multiple API versions and profiles.
 
 ## Why Multiple API versions?
 
@@ -106,26 +108,43 @@ With the previous Azure SDK, you will have access to the latest (at the time of 
 each new release, the versions may get updated. But, if you would like to continue using the old versions of some 
 services, such option was not available. But, with the multiple API versions, you could use any version of service. 
 
-## Why Profiles?
+## What is a  Profile?
 
 A profile is a combination of different resource types with different versions from different services. Using a profile,
 will help you mix and match between various resource types.
 
-## Usage of Rollup gem
+## What to use?
+* If you would like to use the latest versions of **all** the services, then the recommendation is to use the **latest** profile of the Azure SDK rollup gem.
+
+* If you would like to use the services compatible with the **azure stack**, then the recommendation is to use the **v2017_03_09** profile of the Azure SDK rollup gem.
+
+* If you would like to use the latest version of **some** services, then the recommendation is to use the **latest** profile of those specific gems.
+
+* If you would like to use **specific** versions, then the recommendation is to use the **multiple API** versions defined inside each gem.
+
+**Note** All the above options could be combined within the same application.
+
+## Usage of Azure SDK gem
+
+Azure SDK gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **latest** profile which supports the latest version of all services. In addition, this also has a **v2017_03_09** profile which is built for azure stack.
 
 ### Install
 
 You can install the rollup gem with the following command:
 
 ```ruby
-gem 'azure_sdk'
+gem install 'azure_sdk'
 ```
 
-### Profiles
+### Existing Profiles
 
 Currently, the azure_sdk rollup gem has two profiles.
-  1. v2017_03_09
-  2. latest
+  1. v2017_03_09 (Profile built for azure stack)
+  2. latest (Profile consists of Latest versions of all services)
+
+You could choose the profile that you would like to use. If you would like to use the latest versions of **all** the services, then the recommendation is to use the **latest** profile of the Azure SDK rollup gem.
+
+If you would like to use the services compatible with the **azure stack**, then the recommendation is to use the **v2017_03_09** profile of the Azure SDK rollup gem. 
 
 ### Usage
 
@@ -167,7 +186,7 @@ purchase_plan_obj = Azure::Profiles::V2017_03_09::Compute::Mgmt::Models::Purchas
 You can install the individual gems using gem install. For eg, to install azure_mgmt_compute, use the following command:
 
 ```ruby
-gem 'azure_mgmt_compute'
+gem install 'azure_mgmt_compute'
 ```
 ### Usage
 
@@ -211,7 +230,7 @@ version directly.
 You can install the individual gems using gem install. For eg, to install azure_mgmt_compute, use the following command:
 
 ```ruby
-gem 'azure_mgmt_compute'
+gem install 'azure_mgmt_compute'
 ```
 ### Usage
 
