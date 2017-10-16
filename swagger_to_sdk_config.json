@@ -5,7 +5,8 @@
     "autorest": "latest",
     "autorest_options": {
       "ruby": "",
-      "azure-arm": true
+      "azure-arm": true,
+      "use": "@microsoft.azure/autorest.ruby@3.0.20"
     }
   },
   "projects": {
