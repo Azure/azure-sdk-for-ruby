@@ -19,95 +19,71 @@ describe 'Azure Sdk' do
           :subscription_id => @subscription_id,
           :active_directory_settings => @active_directory_settings
       }
-    end
-
-    after(:each) do
-      Azure::ARM.client.reset!
+      @credentials = MsRest::TokenCredentials.new(
+        MsRestAzure::ApplicationTokenProvider.new(
+          @tenant_id, @client_id, @client_secret, @active_directory_settings))
+      @options = {
+        credentials: @credentials,
+        subscription_id: @subscription_id
+      }
     end
 
     it 'should initialize with client constructor' do
-      arm_client = Azure::ARM.client(@minimum_valid_options)
+      arm_client = Azure::Profiles::Latest::Mgmt::Client.new(@options)
       verify_client_defaults(arm_client)
       verify_management_clients(arm_client)
     end
 
     it 'should initialize by defaulting to ENV' do
-      arm_client = Azure::ARM.client()
+      arm_client = Azure::Profiles::Latest::Mgmt::Client.new
       expect(arm_client).not_to be_nil
-      expect(arm_client).to be_instance_of(Azure::ARM::Client)
-      expect(arm_client.tenant_id).to eq(ENV['AZURE_TENANT_ID'])
-      expect(arm_client.client_id).to eq(ENV['AZURE_CLIENT_ID'])
-      expect(arm_client.client_secret).to eq(ENV['AZURE_CLIENT_SECRET'])
-      expect(arm_client.subscription_id).to eq(ENV['AZURE_SUBSCRIPTION_ID'])
+      expect(arm_client).to be_instance_of(Azure::Profiles::Latest::Mgmt::Client)
       expect(arm_client.credentials).to  be_kind_of(MsRest::ServiceClientCredentials)
       verify_management_clients(arm_client)
     end
 
-    it 'should initialize with credentials and subscription id' do
-      Azure::ARM.credentials = MsRest::TokenCredentials.new(MsRestAzure::ApplicationTokenProvider.new(
-          @tenant_id, @client_id, @client_secret, @active_directory_settings))
-      Azure::ARM.subscription_id = @subscription_id
-
-      verify_management_clients(Azure::ARM)
-      expect(Azure::ARM.credentials).to eq(Azure::ARM.credentials)
-    end
-
-    it 'should return same client when options are same' do
-      arm_client = Azure::ARM.client(@minimum_valid_options)
-      arm_client_again = Azure::ARM.client(@minimum_valid_options)
-      expect(arm_client).to eq(arm_client_again)
-      expect(arm_client.options).to eq(arm_client_again.options)
-      expect(arm_client.compute).to eq(arm_client_again.compute)
-    end
-
     def verify_client_defaults(arm_client)
       expect(arm_client).not_to be_nil
-      expect(arm_client).to be_instance_of(Azure::ARM::Client)
-      expect(arm_client.tenant_id).to eq(@tenant_id)
-      expect(arm_client.client_id).to eq(@client_id)
-      expect(arm_client.client_secret).to eq(@client_secret)
-      expect(arm_client.subscription_id).to eq(@subscription_id)
+      expect(arm_client).to be_instance_of(Azure::Profiles::Latest::Mgmt::Client)
       expect(arm_client.credentials).to  be_kind_of(MsRest::ServiceClientCredentials)
     end
 
     def verify_management_clients(arm_client)
       expect(arm_client).not_to be_nil
-      expect(arm_client.authorization).to be_instance_of(Azure::ARM::Authorization::AuthorizationManagementClient)
-      expect(arm_client.authorization.subscription_id).not_to be_nil
-      expect(arm_client.batch).to be_instance_of(Azure::ARM::Batch::BatchManagementClient)
-      expect(arm_client.cdn).to be_instance_of(Azure::ARM::CDN::CdnManagementClient)
-      expect(arm_client.cognitive_services).to be_instance_of(Azure::ARM::CognitiveServices::CognitiveServicesManagementClient)
-      expect(arm_client.commerce).to be_instance_of(Azure::ARM::Commerce::UsageManagementClient)
-      expect(arm_client.compute).to be_instance_of(Azure::ARM::Compute::ComputeManagementClient)
-      expect(arm_client.datalake_analytics).to be_instance_of(Azure::ARM::DataLakeAnalytics::DataLakeAnalyticsAccountManagementClient)
-      expect(arm_client.datalake_store).to be_instance_of(Azure::ARM::DataLakeStore::DataLakeStoreAccountManagementClient)
-      expect(arm_client.devtestlabs).to be_instance_of(Azure::ARM::DevTestLabs::DevTestLabsClient)
-      expect(arm_client.dns).to be_instance_of(Azure::ARM::Dns::DnsManagementClient)
-      expect(arm_client.features).to be_instance_of(Azure::ARM::Features::FeatureClient)
-      expect(arm_client.graph_rbac).to be_instance_of(Azure::ARM::Graph::GraphRbacManagementClient)
-      expect(arm_client.graph_rbac.tenant_id).not_to be_nil
-      expect(arm_client.iot_hub).to be_instance_of(Azure::ARM::IotHub::IotHubClient)
-      expect(arm_client.key_vault).to be_instance_of(Azure::ARM::KeyVault::KeyVaultManagementClient)
-      expect(arm_client.locks).to be_instance_of(Azure::ARM::Locks::ManagementLockClient)
-      expect(arm_client.logic).to be_instance_of(Azure::ARM::Logic::LogicManagementClient)
-      expect(arm_client.machine_learning).to be_instance_of(Azure::ARM::MachineLearning::AzureMLWebServicesManagementClient)
-      expect(arm_client.media_services).to be_instance_of(Azure::ARM::MediaServices::MediaServicesManagementClient)
-      expect(arm_client.mobile_engagement).to be_instance_of(Azure::ARM::MobileEngagement::EngagementManagementClient)
-      expect(arm_client.network).to be_instance_of(Azure::ARM::Network::NetworkManagementClient)
-      expect(arm_client.notification_hubs).to be_instance_of(Azure::ARM::NotificationHubs::NotificationHubsManagementClient)
-      expect(arm_client.policy).to be_instance_of(Azure::ARM::Policy::PolicyClient)
-      expect(arm_client.powerbi_embedded).to be_instance_of(Azure::ARM::PowerBiEmbedded::PowerBIEmbeddedManagementClient)
-      expect(arm_client.redis).to be_instance_of(Azure::ARM::Redis::RedisManagementClient)
-      expect(arm_client.resources).to be_instance_of(Azure::ARM::Resources::ResourceManagementClient)
-      expect(arm_client.scheduler).to be_instance_of(Azure::ARM::Scheduler::SchedulerManagementClient)
-      expect(arm_client.search).to be_instance_of(Azure::ARM::Search::SearchManagementClient)
-      expect(arm_client.server_management).to be_instance_of(Azure::ARM::ServerManagement::ServerManagement)
-      expect(arm_client.service_bus).to be_instance_of(Azure::ARM::ServiceBus::ServiceBusManagementClient)
-      expect(arm_client.sql).to be_instance_of(Azure::ARM::SQL::SqlManagementClient)
-      expect(arm_client.storage).to be_instance_of(Azure::ARM::Storage::StorageManagementClient)
-      expect(arm_client.subscription).to be_instance_of(Azure::ARM::Subscriptions::SubscriptionClient)
-      expect(arm_client.traffic_manager).to be_instance_of(Azure::ARM::TrafficManager::TrafficManagerManagementClient)
-      expect(arm_client.web).to be_instance_of(Azure::ARM::Web::WebSiteManagementClient)
+      expect(arm_client.authorization).to be_instance_of(Azure::Profiles::Latest::Authorization::Mgmt::AuthorizationClass)
+      expect(arm_client.batch).to be_instance_of(Azure::Profiles::Latest::Batch::Mgmt::BatchClass)
+      expect(arm_client.cdn).to be_instance_of(Azure::Profiles::Latest::CDN::Mgmt::CDNClass)
+      expect(arm_client.cognitive_services).to be_instance_of(Azure::Profiles::Latest::CognitiveServices::Mgmt::CognitiveServicesClass)
+      expect(arm_client.commerce).to be_instance_of(Azure::Profiles::Latest::Commerce::Mgmt::CommerceClass)
+      expect(arm_client.compute).to be_instance_of(Azure::Profiles::Latest::Compute::Mgmt::ComputeClass)
+      expect(arm_client.data_lake_analytics).to be_instance_of(Azure::Profiles::Latest::DataLakeAnalytics::Mgmt::DataLakeAnalyticsClass)
+      expect(arm_client.data_lake_store).to be_instance_of(Azure::Profiles::Latest::DataLakeStore::Mgmt::DataLakeStoreClass)
+      expect(arm_client.dev_test_labs).to be_instance_of(Azure::Profiles::Latest::DevTestLabs::Mgmt::DevTestLabsClass)
+      expect(arm_client.dns).to be_instance_of(Azure::Profiles::Latest::Dns::Mgmt::DnsClass)
+      expect(arm_client.features).to be_instance_of(Azure::Profiles::Latest::Features::Mgmt::FeaturesClass)
+      expect(arm_client.graph).to be_instance_of(Azure::Profiles::Latest::Graph::Mgmt::GraphClass)
+      expect(arm_client.iot_hub).to be_instance_of(Azure::Profiles::Latest::IotHub::Mgmt::IotHubClass)
+      expect(arm_client.key_vault).to be_instance_of(Azure::Profiles::Latest::KeyVault::Mgmt::KeyVaultClass)
+      expect(arm_client.locks).to be_instance_of(Azure::Profiles::Latest::Locks::Mgmt::LocksClass)
+      expect(arm_client.logic).to be_instance_of(Azure::Profiles::Latest::Logic::Mgmt::LogicClass)
+      expect(arm_client.machine_learning).to be_instance_of(Azure::Profiles::Latest::MachineLearning::Mgmt::MachineLearningClass)
+      expect(arm_client.media_services).to be_instance_of(Azure::Profiles::Latest::MediaServices::Mgmt::MediaServicesClass)
+      expect(arm_client.mobile_engagement).to be_instance_of(Azure::Profiles::Latest::MobileEngagement::Mgmt::MobileEngagementClass)
+      expect(arm_client.network).to be_instance_of(Azure::Profiles::Latest::Network::Mgmt::NetworkClass)
+      expect(arm_client.notification_hubs).to be_instance_of(Azure::Profiles::Latest::NotificationHubs::Mgmt::NotificationHubsClass)
+      expect(arm_client.policy).to be_instance_of(Azure::Profiles::Latest::Policy::Mgmt::PolicyClass)
+      expect(arm_client.power_bi_embedded).to be_instance_of(Azure::Profiles::Latest::PowerBiEmbedded::Mgmt::PowerBiEmbeddedClass)
+      expect(arm_client.redis).to be_instance_of(Azure::Profiles::Latest::Redis::Mgmt::RedisClass)
+      expect(arm_client.resources).to be_instance_of(Azure::Profiles::Latest::Resources::Mgmt::ResourcesClass)
+      expect(arm_client.scheduler).to be_instance_of(Azure::Profiles::Latest::Scheduler::Mgmt::SchedulerClass)
+      expect(arm_client.search).to be_instance_of(Azure::Profiles::Latest::Search::Mgmt::SearchClass)
+      expect(arm_client.server_management).to be_instance_of(Azure::Profiles::Latest::ServerManagement::Mgmt::ServerManagementClass)
+      expect(arm_client.service_bus).to be_instance_of(Azure::Profiles::Latest::ServiceBus::Mgmt::ServiceBusClass)
+      expect(arm_client.sql).to be_instance_of(Azure::Profiles::Latest::SQL::Mgmt::SQLClass)
+      expect(arm_client.storage).to be_instance_of(Azure::Profiles::Latest::Storage::Mgmt::StorageClass)
+      expect(arm_client.subscriptions).to be_instance_of(Azure::Profiles::Latest::Subscriptions::Mgmt::SubscriptionsClass)
+      expect(arm_client.traffic_manager).to be_instance_of(Azure::Profiles::Latest::TrafficManager::Mgmt::TrafficManagerClass)
+      expect(arm_client.web).to be_instance_of(Azure::Profiles::Latest::Web::Mgmt::WebClass)
     end
   end
 

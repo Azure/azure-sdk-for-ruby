@@ -1,291 +1,291 @@
 {
   "Microsoft.AnalysisServices": {
-    "path": "../../../management/azure_mgmt_analysis_services",
+    "path": "management/azure_mgmt_analysis_services",
     "namespace": "Azure::AnalysisServices::Mgmt",
     "module_require": "azure_mgmt_analysis_services"
   },
   "Microsoft.Authorization": {
-    "path": "../../../management/azure_mgmt_authorization",
+    "path": "management/azure_mgmt_authorization",
     "namespace": "Azure::Authorization::Mgmt",
     "module_require": "azure_mgmt_authorization"
   },
   "Microsoft.Automation": {
-    "path": "../../../management/azure_mgmt_automation",
+    "path": "management/azure_mgmt_automation",
     "namespace": "Azure::Automation::Mgmt",
     "module_require": "azure_mgmt_automation"
   },
   "Microsoft.Batch": {
-    "path": "../../../management/azure_mgmt_batch",
+    "path": "management/azure_mgmt_batch",
     "namespace": "Azure::Batch::Mgmt",
     "module_require": "azure_mgmt_batch"
   },
   "Microsoft.Billing": {
-    "path": "../../../management/azure_mgmt_billing",
+    "path": "management/azure_mgmt_billing",
     "namespace": "Azure::Billing::Mgmt",
     "module_require": "azure_mgmt_billing"
   },
   "Microsoft.CDN": {
-    "path": "../../../management/azure_mgmt_cdn",
+    "path": "management/azure_mgmt_cdn",
     "namespace": "Azure::CDN::Mgmt",
     "module_require": "azure_mgmt_cdn"
   },
   "Microsoft.CognitiveServices": {
-    "path": "../../../management/azure_mgmt_cognitive_services",
+    "path": "management/azure_mgmt_cognitive_services",
     "namespace": "Azure::CognitiveServices::Mgmt",
     "module_require": "azure_mgmt_cognitive_services"
   },
   "Microsoft.Commerce": {
-    "path": "../../../management/azure_mgmt_commerce",
+    "path": "management/azure_mgmt_commerce",
     "namespace": "Azure::Commerce::Mgmt",
     "module_require": "azure_mgmt_commerce"
   },
   "Microsoft.Compute": {
-    "path": "../../../management/azure_mgmt_compute",
+    "path": "management/azure_mgmt_compute",
     "namespace": "Azure::Compute::Mgmt",
     "module_require": "azure_mgmt_compute"
   },
   "Microsoft.Consumption": {
-    "path": "../../../management/azure_mgmt_consumption",
+    "path": "management/azure_mgmt_consumption",
     "namespace": "Azure::Consumption::Mgmt",
     "module_require": "azure_mgmt_consumption"
   },
   "Microsoft.ContainerInstance": {
-    "path": "../../../management/azure_mgmt_container_instance",
+    "path": "management/azure_mgmt_container_instance",
     "namespace": "Azure::ContainerInstance::Mgmt",
     "module_require": "azure_mgmt_container_instance"
   },
   "Microsoft.ContainerRegistry": {
-    "path": "../../../management/azure_mgmt_container_registry",
+    "path": "management/azure_mgmt_container_registry",
     "namespace": "Azure::ContainerRegistry::Mgmt",
     "module_require": "azure_mgmt_container_registry"
   },
   "Microsoft.ContainerService": {
-    "path": "../../../management/azure_mgmt_container_service",
+    "path": "management/azure_mgmt_container_service",
     "namespace": "Azure::ContainerService::Mgmt",
     "module_require": "azure_mgmt_container_service"
   },
   "Microsoft.CustomerInsights": {
-    "path": "../../../management/azure_mgmt_customer_insights",
+    "path": "management/azure_mgmt_customer_insights",
     "namespace": "Azure::CustomerInsights::Mgmt",
     "module_require": "azure_mgmt_customer_insights"
   },
   "Microsoft.DataLakeAnalytics": {
-    "path": "../../../management/azure_mgmt_datalake_analytics",
+    "path": "management/azure_mgmt_datalake_analytics",
     "namespace": "Azure::DataLakeAnalytics::Mgmt",
     "module_require": "azure_mgmt_datalake_analytics"
   },
   "Microsoft.DataLakeStore": {
-    "path": "../../../management/azure_mgmt_datalake_store",
+    "path": "management/azure_mgmt_datalake_store",
     "namespace": "Azure::DataLakeStore::Mgmt",
     "module_require": "azure_mgmt_datalake_store"
   },
   "Microsoft.DevTestLabs": {
-    "path": "../../../management/azure_mgmt_devtestlabs",
+    "path": "management/azure_mgmt_devtestlabs",
     "namespace": "Azure::DevTestLabs::Mgmt",
     "module_require": "azure_mgmt_devtestlabs"
   },
   "Microsoft.Dns": {
-    "path": "../../../management/azure_mgmt_dns",
+    "path": "management/azure_mgmt_dns",
     "namespace": "Azure::Dns::Mgmt",
     "module_require": "azure_mgmt_dns"
   },
   "Microsoft.EventGrid": {
-    "path": "../../../management/azure_mgmt_event_grid",
+    "path": "management/azure_mgmt_event_grid",
     "namespace": "Azure::EventGrid::Mgmt",
     "module_require": "azure_mgmt_event_grid"
   },
   "Microsoft.EventHub": {
-    "path": "../../../management/azure_mgmt_event_hub",
+    "path": "management/azure_mgmt_event_hub",
     "namespace": "Azure::EventHub::Mgmt",
     "module_require": "azure_mgmt_event_hub"
   },
   "Microsoft.Features": {
-    "path": "../../../management/azure_mgmt_features",
+    "path": "management/azure_mgmt_features",
     "namespace": "Azure::Features::Mgmt",
     "module_require": "azure_mgmt_features"
   },
   "Microsoft.Graph": {
-    "path": "../../../management/azure_mgmt_graph",
+    "path": "management/azure_mgmt_graph",
     "namespace": "Azure::Graph::Mgmt",
     "module_require": "azure_mgmt_graph"
   },
   "Microsoft.Insights": {
-    "path": "../../../management/azure_mgmt_insights",
+    "path": "management/azure_mgmt_insights",
     "namespace": "Azure::Insights::Mgmt",
     "module_require": "azure_mgmt_insights"
   },
   "Microsoft.IotHub": {
-    "path": "../../../management/azure_mgmt_iot_hub",
+    "path": "management/azure_mgmt_iot_hub",
     "namespace": "Azure::IotHub::Mgmt",
     "module_require": "azure_mgmt_iot_hub"
   },
   "Microsoft.KeyVault": {
-    "path": "../../../management/azure_mgmt_key_vault",
+    "path": "management/azure_mgmt_key_vault",
     "namespace": "Azure::KeyVault::Mgmt",
     "module_require": "azure_mgmt_key_vault"
   },
   "Microsoft.Links": {
-    "path": "../../../management/azure_mgmt_links",
+    "path": "management/azure_mgmt_links",
     "namespace": "Azure::Links::Mgmt",
     "module_require": "azure_mgmt_links"
   },
   "Microsoft.Locks": {
-    "path": "../../../management/azure_mgmt_locks",
+    "path": "management/azure_mgmt_locks",
     "namespace": "Azure::Locks::Mgmt",
     "module_require": "azure_mgmt_locks"
   },
   "Microsoft.Logic": {
-    "path": "../../../management/azure_mgmt_logic",
+    "path": "management/azure_mgmt_logic",
     "namespace": "Azure::Logic::Mgmt",
     "module_require": "azure_mgmt_logic"
   },
   "Microsoft.MachineLearning": {
-    "path": "../../../management/azure_mgmt_machine_learning",
+    "path": "management/azure_mgmt_machine_learning",
     "namespace": "Azure::MachineLearning::Mgmt",
     "module_require": "azure_mgmt_machine_learning"
   },
   "Microsoft.ManagedApplications": {
-    "path": "../../../management/azure_mgmt_managed_applications",
+    "path": "management/azure_mgmt_managed_applications",
     "namespace": "Azure::ManagedApplications::Mgmt",
     "module_require": "azure_mgmt_managed_applications"
   },
   "Microsoft.MarketplaceOrdering": {
-    "path": "../../../management/azure_mgmt_marketplace_ordering",
+    "path": "management/azure_mgmt_marketplace_ordering",
     "namespace": "Azure::MarketplaceOrdering::Mgmt",
     "module_require": "azure_mgmt_marketplace_ordering"
   },
   "Microsoft.MediaServices": {
-    "path": "../../../management/azure_mgmt_media_services",
+    "path": "management/azure_mgmt_media_services",
     "namespace": "Azure::MediaServices::Mgmt",
     "module_require": "azure_mgmt_media_services"
   },
   "Microsoft.MobileEngagement": {
-    "path": "../../../management/azure_mgmt_mobile_engagement",
+    "path": "management/azure_mgmt_mobile_engagement",
     "namespace": "Azure::MobileEngagement::Mgmt",
     "module_require": "azure_mgmt_mobile_engagement"
   },
   "Microsoft.Monitor": {
-    "path": "../../../management/azure_mgmt_monitor",
+    "path": "management/azure_mgmt_monitor",
     "namespace": "Azure::Monitor::Mgmt",
     "module_require": "azure_mgmt_monitor"
   },
   "Microsoft.Network": {
-    "path": "../../../management/azure_mgmt_network",
+    "path": "management/azure_mgmt_network",
     "namespace": "Azure::Network::Mgmt",
     "module_require": "azure_mgmt_network"
   },
   "Microsoft.NotificationHubs": {
-    "path": "../../../management/azure_mgmt_notification_hubs",
+    "path": "management/azure_mgmt_notification_hubs",
     "namespace": "Azure::NotificationHubs::Mgmt",
     "module_require": "azure_mgmt_notification_hubs"
   },
   "Microsoft.OperationalInsights": {
-    "path": "../../../management/azure_mgmt_operational_insights",
+    "path": "management/azure_mgmt_operational_insights",
     "namespace": "Azure::OperationalInsights::Mgmt",
     "module_require": "azure_mgmt_operational_insights"
   },
   "Microsoft.Policy": {
-    "path": "../../../management/azure_mgmt_policy",
+    "path": "management/azure_mgmt_policy",
     "namespace": "Azure::Policy::Mgmt",
     "module_require": "azure_mgmt_policy"
   },
   "Microsoft.PowerBiEmbedded": {
-    "path": "../../../management/azure_mgmt_powerbi_embedded",
+    "path": "management/azure_mgmt_powerbi_embedded",
     "namespace": "Azure::PowerBiEmbedded::Mgmt",
     "module_require": "azure_mgmt_powerbi_embedded"
   },
   "Microsoft.RecoveryServices": {
-    "path": "../../../management/azure_mgmt_recovery_services",
+    "path": "management/azure_mgmt_recovery_services",
     "namespace": "Azure::RecoveryServices::Mgmt",
     "module_require": "azure_mgmt_recovery_services"
   },
   "Microsoft.RecoveryServicesBackup": {
-    "path": "../../../management/azure_mgmt_recovery_services_backup",
+    "path": "management/azure_mgmt_recovery_services_backup",
     "namespace": "Azure::RecoveryServicesBackup::Mgmt",
     "module_require": "azure_mgmt_recovery_services_backup"
   },
   "Microsoft.RecoveryServicesSiteRecovery": {
-    "path": "../../../management/azure_mgmt_recovery_services_site_recovery",
+    "path": "management/azure_mgmt_recovery_services_site_recovery",
     "namespace": "Azure::RecoveryServicesSiteRecovery::Mgmt",
     "module_require": "azure_mgmt_recovery_services_site_recovery"
   },
   "Microsoft.Redis": {
-    "path": "../../../management/azure_mgmt_redis",
+    "path": "management/azure_mgmt_redis",
     "namespace": "Azure::Redis::Mgmt",
     "module_require": "azure_mgmt_redis"
   },
   "Microsoft.Relay": {
-    "path": "../../../management/azure_mgmt_relay",
+    "path": "management/azure_mgmt_relay",
     "namespace": "Azure::Relay::Mgmt",
     "module_require": "azure_mgmt_relay"
   },
   "Microsoft.Resources": {
-    "path": "../../../management/azure_mgmt_resources",
+    "path": "management/azure_mgmt_resources",
     "namespace": "Azure::Resources::Mgmt",
     "module_require": "azure_mgmt_resources"
   },
   "Microsoft.ResourcesManagement": {
-    "path": "../../../management/azure_mgmt_resources_management",
+    "path": "management/azure_mgmt_resources_management",
     "namespace": "Azure::ResourcesManagement::Mgmt",
     "module_require": "azure_mgmt_resources_management"
   },
   "Microsoft.Scheduler": {
-    "path": "../../../management/azure_mgmt_scheduler",
+    "path": "management/azure_mgmt_scheduler",
     "namespace": "Azure::Scheduler::Mgmt",
     "module_require": "azure_mgmt_scheduler"
   },
   "Microsoft.Search": {
-    "path": "../../../management/azure_mgmt_search",
+    "path": "management/azure_mgmt_search",
     "namespace": "Azure::Search::Mgmt",
     "module_require": "azure_mgmt_search"
   },
   "Microsoft.ServerManagement": {
-    "path": "../../../management/azure_mgmt_server_management",
+    "path": "management/azure_mgmt_server_management",
     "namespace": "Azure::ServerManagement::Mgmt",
     "module_require": "azure_mgmt_server_management"
   },
   "Microsoft.ServiceBus": {
-    "path": "../../../management/azure_mgmt_service_bus",
+    "path": "management/azure_mgmt_service_bus",
     "namespace": "Azure::ServiceBus::Mgmt",
     "module_require": "azure_mgmt_service_bus"
   },
   "Microsoft.ServiceFabric": {
-    "path": "../../../management/azure_mgmt_service_fabric",
+    "path": "management/azure_mgmt_service_fabric",
     "namespace": "Azure::ServiceFabric::Mgmt",
     "module_require": "azure_mgmt_service_fabric"
   },
   "Microsoft.SQL": {
-    "path": "../../../management/azure_mgmt_sql",
+    "path": "management/azure_mgmt_sql",
     "namespace": "Azure::SQL::Mgmt",
     "module_require": "azure_mgmt_sql"
   },
   "Microsoft.StorSimple8000Series": {
-    "path": "../../../management/azure_mgmt_stor_simple8000_series",
+    "path": "management/azure_mgmt_stor_simple8000_series",
     "namespace": "Azure::StorSimple8000Series::Mgmt",
     "module_require": "azure_mgmt_stor_simple8000_series"
   },
   "Microsoft.Storage": {
-    "path": "../../../management/azure_mgmt_storage",
+    "path": "management/azure_mgmt_storage",
     "namespace": "Azure::Storage::Mgmt",
     "module_require": "azure_mgmt_storage"
   },
   "Microsoft.StreamAnalytics": {
-    "path": "../../../management/azure_mgmt_stream_analytics",
+    "path": "management/azure_mgmt_stream_analytics",
     "namespace": "Azure::StreamAnalytics::Mgmt",
     "module_require": "azure_mgmt_stream_analytics"
   },
   "Microsoft.Subscriptions": {
-    "path": "../../../management/azure_mgmt_subscriptions",
+    "path": "management/azure_mgmt_subscriptions",
     "namespace": "Azure::Subscriptions::Mgmt",
     "module_require": "azure_mgmt_subscriptions"
   },
   "Microsoft.TrafficManager": {
-    "path": "../../../management/azure_mgmt_traffic_manager",
+    "path": "management/azure_mgmt_traffic_manager",
     "namespace": "Azure::TrafficManager::Mgmt",
     "module_require": "azure_mgmt_traffic_manager"
   },
   "Microsoft.Web": {
-    "path": "../../../management/azure_mgmt_web",
+    "path": "management/azure_mgmt_web",
     "namespace": "Azure::Web::Mgmt",
     "module_require": "azure_mgmt_web"
   }

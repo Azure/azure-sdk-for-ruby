@@ -20,6 +20,8 @@ require 'json'
 require 'fileutils'
 
 version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
+GEMS_TO_IGNORE = ['azure_mgmt_insights']
+REGEN_EXCLUDES = ['azure_sdk']
 
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
 namespace :arm do
@@ -72,7 +74,6 @@ namespace :arm do
   desc 'Regen code for each sdk with all its api versions'
   task :regen => :clean_generated do
     json = get_config_file
-    REGEN_EXCLUDES = ['azure_sdk']
     each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
       unless REGEN_EXCLUDES.include?(dir.to_s)
         puts "\nGenerating #{dir}\n"
@@ -145,14 +146,16 @@ namespace :arm do
 
   desc 'Clean Individual Profiles'
   task :clean_individual_profiles do
-    Dir.chdir(File.expand_path('../management', __FILE__))
-    gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
-    gem_folders.each do |gem|
-      Dir.chdir(File.expand_path("../management/#{gem}/lib/profiles", __FILE__))
+    each_gem_dir do |gem|
+      if REGEN_EXCLUDES.include?gem
+        next
+      end
+
+      Dir.chdir("#{__dir__}/management/#{gem}/lib/profiles")
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|
         if subdir.to_s != 'common'
-          folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/profiles/#{subdir}", __FILE__)
+          folder_to_be_cleaned = "#{__dir__}/management/#{gem}/lib/profiles/#{subdir}"
           puts "Cleaning folder - #{folder_to_be_cleaned}"
           FileUtils.rm_rf(folder_to_be_cleaned)
         end
@@ -167,37 +170,36 @@ namespace :arm do
 
   desc 'Regen rollup profiles'
   task :regen_rollup_profile => :clean_rollup_profiles do
-    Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
+    Dir.chdir(__dir__)
     # Sample Command
-    # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json
-    command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{PROFILE_METADATA[:azure_sdk]}"
+    # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json --mode=rollup --key=azure_sdk
+    command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=rollup --key=azure_sdk --sdk_path=#{__dir__}"
     execute_and_stream(command)
   end
 
   desc 'Regen individual profiles'
   task :regen_individual_profiles => :clean_individual_profiles do
-    Dir.chdir(File.expand_path('../generators/profilegen/src', __FILE__))
-    PROFILE_METADATA.each do |sdk, profile_spec_file|
-      if(sdk.to_s != 'azure_sdk')
-        # Sample Command
-        # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json
-        command = "#{get_base_profile_generation_cmd}#{get_profile_spec_files_folder}/#{profile_spec_file}"
-        execute_and_stream(command)
+    each_gem_dir do |gem|
+      if REGEN_EXCLUDES.include?gem
+        next
       end
+
+      # Sample Command
+      # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json --mode=management --key=azure_mgmt_authorization
+      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=management --key=#{gem} --sdk_path=#{__dir__}"
+      execute_and_stream(command)
     end
   end
 
   desc 'Generate individual require files'
   task :regen_individual_require_files do
-    Dir.chdir(File.expand_path('../generators/requirefilegen/src', __FILE__))
-    command = 'bundle exec ruby require_file_generator.rb --mode=individual'
+    command = "bundle exec ruby #{__dir__}/generators/requirefilegen/src/require_file_generator.rb --mode=individual --sdk_path=#{__dir__}"
     execute_and_stream(command)
   end
 
   desc 'Generate rollup require files'
   task :regen_rollup_require_files do
-    Dir.chdir(File.expand_path('../generators/requirefilegen/src', __FILE__))
-    command = 'bundle exec ruby require_file_generator.rb --mode=rollup'
+    command = "bundle exec ruby #{__dir__}/generators/requirefilegen/src/require_file_generator.rb --mode=rollup --sdk_path=#{__dir__}"
     execute_and_stream(command)
   end
 
@@ -223,13 +225,11 @@ end
 task :default => :spec
 
 def get_base_profile_generation_cmd
-  cmd = 'bundle exec ruby profile_generator_client.rb'
-  dir_metadata = "--dir_metadata=#{File.expand_path('../generators/profilegen/src/resources/dir_metadata.json', __FILE__)}"
-  "#{cmd} #{dir_metadata} --profile="
+  "bundle exec ruby #{__dir__}/generators/profilegen/src/profile_generator_client.rb"
 end
 
 def get_profile_spec_files_folder
-  File.expand_path('../profile_specs', __FILE__)
+  "#{__dir__}/profile_specs"
 end
 
 def execute_and_stream(cmd)
@@ -255,90 +255,37 @@ def get_config_file
   JSON.parse(config_file)
 end
 
+def each_gem_dir
+  Dir.chdir("#{__dir__}/management")
+  subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+  subdir_list.each do |subdir|
+    if GEMS_TO_IGNORE.include?subdir
+      next
+    end
+
+    yield subdir
+  end
+end
+
 def each_child
-  top_level_dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
-  management_level_dirs = Dir.entries('management/.').select { |f| File.directory?("management/#{f}") and !(f =='.' || f == '..') }
-  management_level_dirs.map! {|management_level_dir| "management/#{management_level_dir}"}
-  dirs = top_level_dirs.concat(management_level_dirs)
-  dirs.each do |dir|
+  Dir.chdir(File.expand_path('../management', __FILE__))
+  management_level_dirs = Dir['*'].reject{|o| not File.directory?(o)}
+  management_level_dirs.each do |dir|
+    if GEMS_TO_IGNORE.include?dir
+      next
+    end
     Dir.chdir(dir) do
       yield(dir)
     end
   end
+
+  Dir.chdir(File.expand_path('../azure_sdk', __FILE__))
+  yield('azure_sdk')
 end
 
 def each_gem
   each_child do |dir|
     gem_dir = dir.split('/').last
-    if get_config_file.has_key?(gem_dir)
-      yield gem_dir
-    end
+    yield gem_dir
   end
 end
-
-REGEN_METADATA = {
-    azure_sdk: {
-        version: version
-    }
-}
-
-PROFILE_METADATA = {
-    azure_sdk: 'profiles.json',
-    azure_mgmt_analysis_services: 'analysis_services_profiles.json',
-    azure_mgmt_authorization: 'authorization_profiles.json',
-    azure_mgmt_automation: 'automation_profiles.json',
-    azure_mgmt_batch: 'batch_profiles.json',
-    azure_mgmt_billing: 'billing_profiles.json',
-    azure_mgmt_cdn: 'cdn_profiles.json',
-    azure_mgmt_cognitive_services: 'cognitive_services_profiles.json',
-    azure_mgmt_commerce: 'commerce_profiles.json',
-    azure_mgmt_compute: 'compute_profiles.json',
-    azure_mgmt_consumption: 'consumption_profiles.json',
-    azure_mgmt_container_instance: 'container_instance_profiles.json',
-    azure_mgmt_container_registry: 'container_registry_profiles.json',
-    azure_mgmt_container_service: 'container_service_profiles.json',
-    azure_mgmt_customer_insights: 'customer_insights_profiles.json',
-    azure_mgmt_datalake_analytics: 'datalake_analytics_profiles.json',
-    azure_mgmt_datalake_store: 'datalake_store_profiles.json',
-    azure_mgmt_devtestlabs: 'devtestlabs_profiles.json',
-    azure_mgmt_dns: 'dns_profiles.json',
-    azure_mgmt_event_grid: 'event_grid_profiles.json',
-    azure_mgmt_event_hub: 'event_hub_profiles.json',
-    azure_mgmt_features: 'features_profiles.json',
-    azure_mgmt_graph: 'graph_profiles.json',
-    azure_mgmt_iot_hub: 'iot_hub_profiles.json',
-    azure_mgmt_key_vault: 'key_vault_profiles.json',
-    azure_mgmt_links: 'links_profiles.json',
-    azure_mgmt_locks: 'locks_profiles.json',
-    azure_mgmt_logic: 'logic_profiles.json',
-    azure_mgmt_machine_learning: 'machine_learning_profiles.json',
-    azure_mgmt_managed_applications: 'managed_applications_profiles.json',
-    azure_mgmt_marketplace_ordering: 'marketplace_ordering_profiles.json',
-    azure_mgmt_media_services: 'media_services_profiles.json',
-    azure_mgmt_mobile_engagement: 'mobile_engagement_profiles.json',
-    azure_mgmt_monitor: 'monitor_profiles.json',
-    azure_mgmt_network: 'network_profiles.json',
-    azure_mgmt_notification_hubs: 'notification_hubs_profiles.json',
-    azure_mgmt_operational_insights: 'operational_insights_profiles.json',
-    azure_mgmt_policy: 'policy_profiles.json',
-    azure_mgmt_powerbi_embedded: 'powerbi_embedded_profiles.json',
-    azure_mgmt_recovery_services: 'recovery_services_profiles.json',
-    azure_mgmt_recovery_services_backup: 'recovery_services_backup_profiles.json',
-    azure_mgmt_recovery_services_site_recovery: 'recovery_services_site_recovery_profiles.json',
-    azure_mgmt_redis: 'redis_profiles.json',
-    azure_mgmt_relay: 'relay_profiles.json',
-    azure_mgmt_resources: 'resources_profiles.json',
-    azure_mgmt_resources_management: 'resources_management_profiles.json',
-    azure_mgmt_scheduler: 'scheduler_profiles.json',
-    azure_mgmt_search: 'search_profiles.json',
-    azure_mgmt_server_management: 'server_management_profiles.json',
-    azure_mgmt_service_bus: 'service_bus_profiles.json',
-    azure_mgmt_service_fabric: 'service_fabric_profiles.json',
-    azure_mgmt_sql: 'sql_profiles.json',
-    azure_mgmt_stor_simple8000_series: 'stor_simple8000_series_profiles.json',
-    azure_mgmt_storage: 'storage_profiles.json',
-    azure_mgmt_stream_analytics: 'stream_analytics_profiles.json',
-    azure_mgmt_subscriptions: 'subscriptions_profiles.json',
-    azure_mgmt_traffic_manager: 'traffic_manager_profiles.json',
-    azure_mgmt_web: 'web_profiles.json'
-}

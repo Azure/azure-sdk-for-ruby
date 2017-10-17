@@ -13,19 +13,18 @@ require_relative 'profile_templates'
 
 class ProfileGenerator
   attr_accessor :file_names, :profile_name, :class_names, :individual_gem_profile
-  attr_accessor :module_require, :class_name, :operation_types, :default_rp_client_version
+  attr_accessor :module_require, :class_name, :operation_types
   attr_accessor :management_client, :model_types, :versions_clients_mapper
   attr_accessor :profile_version, :spec_includes, :module_definition_file_name, :clients_ops_mapper
 
-  def initialize(profile, dir_metadata)
+  def initialize(profile, dir_metadata, sdk_path)
     @profile_name = profile['name']
     @resource_provider_types = profile['resourceTypes']
-    @default_versions = profile['defaultVersions']
-    @output_dir = profile['output_dir']
+    @sdk_path = sdk_path
+    @output_dir = "#{@sdk_path}/#{profile['output_dir']}"
     @individual_gem_profile = profile['individual_gem_profile'].nil?? false: true
     @dir_metadata = dir_metadata
     @module_definition_file_name = ''
-    @default_rp_client_version = ''
     @file_names, @model_types, @operation_types = [], [], []
     @spec_includes, @class_names = [], []
     @versions_clients_mapper, @clients_ops_mapper= {}, {}
@@ -69,12 +68,9 @@ class ProfileGenerator
       @spec_includes << @module_require
       @class_name     = get_ruby_specific_resource_type_name(resource_provider)
       @class_names   << @class_name
-      if(!@individual_gem_profile)
-        @default_rp_client_version = @default_versions[resource_provider]
-      end
 
       resource_types_obj.each do |resource_type_version, resource_types|
-        base_file_path =  "#{@dir_metadata[resource_provider]['path']}/lib/#{resource_type_version}/generated/#{@module_require}.rb"
+        base_file_path =  "#{@sdk_path}/#{@dir_metadata[resource_provider]['path']}/lib/#{resource_type_version}/generated/#{@module_require}.rb"
         require base_file_path
 
         resource_types.each do |resource_type|
@@ -96,11 +92,10 @@ class ProfileGenerator
       end
 
       file = get_module_file resource_provider
-      file.write(get_renderer(ProfileTemplates.module_template))
+      file.write(get_renderer(ProfileTemplates.module_template(@sdk_path, @individual_gem_profile)))
       @model_types, @operation_types, @versions_clients_mapper = [], [], {}
       @clients_ops_mapper = {}
       @management_client = ''
-      @default_rp_client_version = ''
     end
   end
 
@@ -126,7 +121,7 @@ class ProfileGenerator
   #
   def generate_client
     file = get_client_file
-    file.write(get_renderer(ProfileTemplates.client_template))
+    file.write(get_renderer(ProfileTemplates.client_template(@sdk_path, @individual_gem_profile)))
   end
 
   #
@@ -135,7 +130,7 @@ class ProfileGenerator
   def generate_module_definition
     get_module_definition_file_name
     file = get_module_definition_file
-    file.write(get_renderer(ProfileTemplates.module_definition_template))
+    file.write(get_renderer(ProfileTemplates.module_definition_template(@sdk_path, @individual_gem_profile)))
   end
 
   def generate_operation_types(resource_provider, resource_type, resource_type_version)

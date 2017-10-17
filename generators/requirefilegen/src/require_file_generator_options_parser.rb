@@ -13,6 +13,7 @@ require 'ostruct'
 #    -h, --help : Displays help for the require files generator
 #    -m, --mode : Mode for which the require files are to be generated.
 #                 ['rollup', 'individual']
+#    -s, --sdk_path : Path to Azure Ruby SDK
 #
 
 class RequireFileGeneratorOptionsParser
@@ -27,6 +28,10 @@ class RequireFileGeneratorOptionsParser
           raise OptionParser::InvalidOption.new("mode can be only 'rollup'/'individual'")
         end
         options.mode = mode
+      end
+
+      opts.on('-sSDK_PATH', '--sdk_path=SDK_PATH', 'SDK Path') do |sdk_path|
+        options.sdk_path = sdk_path
       end
 
       opts.on('-h', '--help', 'Prints this help') do
@@ -45,7 +50,7 @@ class RequireFileGeneratorOptionsParser
   def self.options(args)
     args << '-h' if args.empty?
     options = self.parse(args)
-    mandatory_params = [:mode]
+    mandatory_params = [:mode, :sdk_path]
     missing_params = mandatory_params.select{|param| options[param].nil?}
     raise OptionParser::MissingArgument.new(missing_params.join(', ')) unless missing_params.empty?
     options
