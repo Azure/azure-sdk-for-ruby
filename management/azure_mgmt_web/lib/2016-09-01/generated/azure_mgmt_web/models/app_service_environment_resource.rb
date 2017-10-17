@@ -211,6 +211,14 @@ module Azure::Web::Mgmt::V2016_09_01
                   }
                 }
               },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceIdentity'
+                }
+              },
               app_service_environment_resource_name: {
                 required: true,
                 serialized_name: 'properties.name',
