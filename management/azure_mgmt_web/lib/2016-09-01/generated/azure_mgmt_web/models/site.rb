@@ -210,14 +210,6 @@ module Azure::Web::Mgmt::V2016_09_01
                   }
                 }
               },
-              identity: {
-                required: false,
-                serialized_name: 'identity',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ResourceIdentity'
-                }
-              },
               state: {
                 required: false,
                 read_only: true,

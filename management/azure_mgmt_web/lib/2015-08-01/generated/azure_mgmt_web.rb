@@ -24,16 +24,15 @@ module Azure::Web::Mgmt::V2015_08_01
   autoload :WebSiteManagementClient,                            '2015-08-01/generated/azure_mgmt_web/web_site_management_client.rb'
 
   module Models
-    autoload :NameIdentifier,                                     '2015-08-01/generated/azure_mgmt_web/models/name_identifier.rb'
-    autoload :AppServiceCertificate,                              '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate.rb'
-    autoload :ProxyOnlyResource,                                  '2015-08-01/generated/azure_mgmt_web/models/proxy_only_resource.rb'
-    autoload :AppServiceCertificateCollection,                    '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate_collection.rb'
-    autoload :CertificateDetails,                                 '2015-08-01/generated/azure_mgmt_web/models/certificate_details.rb'
-    autoload :Resource,                                           '2015-08-01/generated/azure_mgmt_web/models/resource.rb'
-    autoload :SiteSealRequest,                                    '2015-08-01/generated/azure_mgmt_web/models/site_seal_request.rb'
-    autoload :SiteSeal,                                           '2015-08-01/generated/azure_mgmt_web/models/site_seal.rb'
-    autoload :ResourceIdentity,                                   '2015-08-01/generated/azure_mgmt_web/models/resource_identity.rb'
     autoload :AppServiceCertificateOrderCollection,               '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate_order_collection.rb'
+    autoload :Resource,                                           '2015-08-01/generated/azure_mgmt_web/models/resource.rb'
+    autoload :AppServiceCertificate,                              '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate.rb'
+    autoload :SiteSealRequest,                                    '2015-08-01/generated/azure_mgmt_web/models/site_seal_request.rb'
+    autoload :CertificateDetails,                                 '2015-08-01/generated/azure_mgmt_web/models/certificate_details.rb'
+    autoload :AppServiceCertificateCollection,                    '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate_collection.rb'
+    autoload :NameIdentifier,                                     '2015-08-01/generated/azure_mgmt_web/models/name_identifier.rb'
+    autoload :SiteSeal,                                           '2015-08-01/generated/azure_mgmt_web/models/site_seal.rb'
+    autoload :ProxyOnlyResource,                                  '2015-08-01/generated/azure_mgmt_web/models/proxy_only_resource.rb'
     autoload :AppServiceCertificateResource,                      '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate_resource.rb'
     autoload :AppServiceCertificateOrder,                         '2015-08-01/generated/azure_mgmt_web/models/app_service_certificate_order.rb'
     autoload :CertificateEmail,                                   '2015-08-01/generated/azure_mgmt_web/models/certificate_email.rb'
@@ -45,6 +44,5 @@ module Azure::Web::Mgmt::V2015_08_01
     autoload :ProvisioningState,                                  '2015-08-01/generated/azure_mgmt_web/models/provisioning_state.rb'
     autoload :CertificateOrderStatus,                             '2015-08-01/generated/azure_mgmt_web/models/certificate_order_status.rb'
     autoload :CertificateOrderActionType,                         '2015-08-01/generated/azure_mgmt_web/models/certificate_order_action_type.rb'
-    autoload :ManagedServiceIdentityType,                         '2015-08-01/generated/azure_mgmt_web/models/managed_service_identity_type.rb'
   end
 end

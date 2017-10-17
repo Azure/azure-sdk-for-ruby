@@ -80,14 +80,6 @@ module Azure::Web::Mgmt::V2015_04_01
                   }
                 }
               },
-              identity: {
-                required: false,
-                serialized_name: 'identity',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ResourceIdentity'
-                }
-              },
               ownership_id: {
                 required: false,
                 serialized_name: 'properties.ownershipId',
