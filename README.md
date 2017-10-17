@@ -100,13 +100,11 @@ After creating the service principal, you should have three pieces of informatio
 # Azure Multiple API versions & Profiles
 
 With 0.15.0 of Azure SDK, multiple API versions and profiles are introduced. With these changes, each individual gem
-has multiple versions of the services and several profiles. The azure sdk rollup gem also consists of several profiles. The following section provides details on the usage of multiple API versions and profiles.
+has multiple versions of the services and several profiles. The azure_sdk rollup gem also consists of several profiles. The following section provides details on the usage of multiple API versions and profiles.
 
 ## Why Multiple API versions?
 
-With the previous Azure SDK, you will have access to the latest (at the time of release) versions of our services. With 
-each new release, the versions may get updated. But, if you would like to continue using the old versions of some 
-services, such option was not available. But, with the multiple API versions, you could use any version of service. 
+Versions 0.14.0 and older, would have access to the latest versions of Azure services at the time of release. Each release up to 0.14.0, would include the latest available api-version of the services. There wasn't an option to use an older api-version of the service (except for using an older version of the sdk gem). With the introduction of multiple API versions per gem, any api-version available for the service can be explicitly targeted.
 
 ## What is a  Profile?
 
@@ -114,23 +112,23 @@ A profile is a combination of different resource types with different versions f
 will help you mix and match between various resource types.
 
 ## What to use?
-* If you would like to use the latest versions of **all** the services, then the recommendation is to use the **latest** profile of the Azure SDK rollup gem.
+* If you would like to use the latest versions of **all** the services, then the recommendation is to use the **Latest** profile of the Azure SDK rollup gem.
 
-* If you would like to use the services compatible with the **azure stack**, then the recommendation is to use the **v2017_03_09** profile of the Azure SDK rollup gem.
+* If you would like to use the services compatible with the **Azure Stack**, then the recommendation is to use the **V2017_03_09** profile of the Azure SDK rollup gem.
 
-* If you would like to use the latest version of **some** services, then the recommendation is to use the **latest** profile of those specific gems.
+* If you would like to use the **latest** api-version of a service, then the recommendation is to use the **Latest** profile of the specific gem. For example, if you would like to use the latest api-version of compute service alone, use the Latest profile of compute gem.
 
-* If you would like to use **specific** versions, then the recommendation is to use the **multiple API** versions defined inside each gem.
+* If you would like to use **specific** api-version of a service, then the recommendation is to use the **specific API** versions defined inside that gem.
 
-**Note** All the above options could be combined within the same application.
+Note: All the above options could be combined within the same application.
 
-## Usage of Azure SDK gem
+## Usage of azure_sdk gem
 
-Azure SDK gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **latest** profile which supports the latest version of all services. In addition, this also has a **v2017_03_09** profile which is built for azure stack.
+azure_sdk gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile which supports the latest version of all services. it introduces a versioned profile **V2017_03_09** profile which is built for Azure Stack.
 
 ### Install
 
-You can install the rollup gem with the following command:
+You can install the azure_sdk rollup gem with the following command:
 
 ```ruby
 gem install 'azure_sdk'
@@ -138,19 +136,20 @@ gem install 'azure_sdk'
 
 ### Existing Profiles
 
-Currently, the azure_sdk rollup gem has two profiles.
-  1. v2017_03_09 (Profile built for azure stack)
-  2. latest (Profile consists of Latest versions of all services)
+To start with, the azure_sdk rollup gem has two profiles.
+  1. V2017_03_09 (Profile built for Azure Stack)
+  2. Latest (Profile consists of Latest versions of all services)
 
-You could choose the profile that you would like to use. If you would like to use the latest versions of **all** the services, then the recommendation is to use the **latest** profile of the Azure SDK rollup gem.
+You could choose the profile that you would like to use. If you would like to use the latest versions of **all** the services, then the recommendation is to use the **Latest** profile of the azure_sdk rollup gem.
 
-If you would like to use the services compatible with the **azure stack**, then the recommendation is to use the **v2017_03_09** profile of the Azure SDK rollup gem. 
+If you would like to use the services compatible with the **Azure Stack**, then the recommendation is to use the **V2017_03_09** profile of the Azure SDK rollup gem. 
 
 ### Usage
 
 The following lines should be used to instantiate a profile client:
 
 ```ruby
+# Provide credentials
 provider = MsRestAzure::ApplicationTokenProvider.new(
        ENV['AZURE_TENANT_ID'],
        ENV['AZURE_CLIENT_ID'],
@@ -162,6 +161,7 @@ options = {
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
+# Target profile built for Azure Stack
 profile_client = Azure::Profiles::V2017_03_09::Mgmt::Client.new(options)
 ```
 
@@ -175,6 +175,7 @@ profile_client.compute.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACH
 purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 
 # Option 2: To access the models associated with Compute
+# Notice Namespace: Azure::Profiles::<Profile Name>::<Service Name>::Mgmt::Models::<Model Name>
 purchase_plan_obj = Azure::Profiles::V2017_03_09::Compute::Mgmt::Models::PurchasePlan.new
 
 ```
@@ -193,6 +194,7 @@ gem install 'azure_mgmt_compute'
 The following lines should be used to instantiate a profile client:
 
 ```ruby
+# Provide credentials
 provider = MsRestAzure::ApplicationTokenProvider.new(
        ENV['AZURE_TENANT_ID'],
        ENV['AZURE_CLIENT_ID'],
@@ -204,6 +206,7 @@ options = {
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
+# Target profile built for Latest Compute
 profile_client = Azure::Compute::Profiles::Latest::Mgmt::Client.new(options)
 ```
 The profile client could be used to access operations and models:
@@ -216,13 +219,14 @@ profile_client.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME
 purchase_plan_obj = profile_client.model_classes.purchase_plan.new
 
 # Option 2: To access the models associated with Compute
+# Notice Namespace: Azure::<Service Name>::Profiles::<Profile Name>::Mgmt::Models::<Model Name>
 purchase_plan_obj = Azure::Compute::Profiles::Latest::Mgmt::Models::PurchasePlan.new
 
 ```
 
-## Usage of Individual gem using Versions
+## Usage of Individual gem using using specific api-version
 
-In the previous approach, we used the profile associated with individual gem. In the current approach, we could use the
+In the previous section, we used the profile associated with individual gem. In the current section, we could use the
 version directly.
 
 ### Install
@@ -237,6 +241,7 @@ gem install 'azure_mgmt_compute'
 The following lines should be used to instantiate a profile client:
 
 ```ruby
+# Provide credentials
 provider = MsRestAzure::ApplicationTokenProvider.new(
        ENV['AZURE_TENANT_ID'],
        ENV['AZURE_CLIENT_ID'],
@@ -248,6 +253,7 @@ options = {
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
+# Target client for 2016_03_30 version of Compute
 compute_client = Azure::Compute::Mgmt::V2016_03_30::ComputeManagementClient.new(credentials)
 compute_client.subscription_id = subscription_id
 ```
@@ -259,13 +265,14 @@ The compute client could be used to access operations and models:
 compute_client.virtual_machines.get 'RESOURCE_GROUP_NAME', 'VIRTUAL_MACHINE_NAME'
 
 # To access the models associated with Compute
+# Notice Namespace: Azure::<Service Name>::Mgmt::<Version Name>::Models::<Model Name>
 purchase_plan_obj = Azure::Compute::Mgmt::V2016_03_30::Models::PurchasePlan.new
 
 ```
 
 ## Samples using Profiles
 
-The following samples could be used as a reference for Profiles:
+The following samples could be used as a reference for Profiles usage::
 
 * [Compute MSI VM](https://github.com/Azure-Samples/compute-ruby-msi-vm)
 * [Resource Manager & Groups](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups)
