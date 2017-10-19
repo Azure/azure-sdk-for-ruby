@@ -19,7 +19,8 @@ require 'os'
 require 'json'
 require 'fileutils'
 
-version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
+gem_versions = JSON.parse(File.read(File.expand_path('../GEM_VERSIONS', __FILE__)).strip)
+gems_to_release = JSON.parse(File.read(File.expand_path('../GEMS_TO_RELEASE', __FILE__)).strip)
 GEMS_TO_IGNORE = ['azure_mgmt_insights']
 REGEN_EXCLUDES = ['azure_sdk']
 
@@ -28,7 +29,7 @@ namespace :arm do
   desc 'Delete ./pkg for each of the Azure Resource Manager projects'
   task :clean do
     each_gem do
-      execute_and_stream(OS.windows? ? 'del /S /Q pkg 2>nul' : 'rm -rf ./pkg')
+      FileUtils.rm_rf('pkg')
     end
   end
 
@@ -59,15 +60,24 @@ namespace :arm do
     end
   end
 
-  desc 'Push gem for each of the Azure Resource Manager projects'
+  desc 'Push gem for each of the Azure projects'
   task :release, [:key] => :build do |_, args|
-    each_gem do |dir|
-      # Delay for 10 seconds before publishing gem
-      puts "Going to sleep for 10 seconds before publishing #{dir} ..."
-      sleep(10)
+    gems_to_release.each do |key, gems|
+      gems.each do |gem|
+        if(key == 'rollup')
+          Dir.chdir("#{__dir__}/azure_sdk")
+          version = gem_versions['rollup'][gem]
+        elsif(key == 'management')
+          Dir.chdir("#{__dir__}/management/#{gem}")
+          version = gem_versions['management'][gem]
+        end
 
-      # Using execute method so that keys are not logged onto console
-      execute("gem push ./pkg/#{dir}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+        # Delay for 10 seconds before publishing gem
+        puts "Going to sleep for 10 seconds before publishing #{gem} ..."
+        sleep(10)
+
+        execute("gem push ./pkg/#{gem}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+      end
     end
   end
 
@@ -75,40 +85,44 @@ namespace :arm do
   task :regen => :clean_generated do
     json = get_config_file
     each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
-      unless REGEN_EXCLUDES.include?(dir.to_s)
-        puts "\nGenerating #{dir}\n"
-        ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}"
-        ar_base_command = "#{ar_base_command} --use=#{ENV.fetch('AUTOREST_RUBY_LOC')}" unless ENV.fetch('AUTOREST_RUBY_LOC', nil).nil?
-        puts "ar_base_command #{ar_base_command}"
-        md = json[dir] # there should be an entry in the metadata for each of the api versions to generate
-        package_name = dir
-        md.each do |api_version_pkg, api_version_value|
-         ar_arguments = ''
-         output_folder = ''
-         api_version_value.each do |argument_name, argument_value|
-           if argument_name.casecmp("output-folder") == 0
-             output_folder = argument_value
-           else
-             if argument_name.casecmp("package-name") == 0
-               package_name = argument_value
-             else
-               if argument_name.casecmp("markdown") == 0
-                 ar_arguments = ar_arguments + " #{argument_value}"
-               else
-                 if argument_name.casecmp("input-file") == 0
-                   input_files = argument_value.map {|file| "--input-file=#{file}"}
-                   ar_arguments = ar_arguments + input_files.join(" ")
-                 else
-                   ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
-                 end
-               end
-             end
-           end
-         end
-         command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
-         execute_and_stream(command)
-        end
+      if REGEN_EXCLUDES.include?(dir.to_s)
+        update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
+        next
       end
+      
+      puts "\nGenerating #{dir}\n"
+      ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}"
+      ar_base_command = "#{ar_base_command} --use=#{ENV.fetch('AUTOREST_RUBY_LOC')}" unless ENV.fetch('AUTOREST_RUBY_LOC', nil).nil?
+      puts "ar_base_command #{ar_base_command}"
+      md = json[dir] # there should be an entry in the metadata for each of the api versions to generate
+      package_name = dir
+      md.each do |api_version_pkg, api_version_value|
+        ar_arguments = ''
+        output_folder = ''
+        api_version_value.each do |argument_name, argument_value|
+          if argument_name.casecmp("output-folder") == 0
+            output_folder = argument_value
+          else
+            if argument_name.casecmp("package-name") == 0
+              package_name = argument_value
+            else
+              if argument_name.casecmp("markdown") == 0
+                ar_arguments = ar_arguments + " #{argument_value}"
+              else
+                if argument_name.casecmp("input-file") == 0
+                  input_files = argument_value.map {|file| "--input-file=#{file}"}
+                  ar_arguments = ar_arguments + input_files.join(" ")
+                else
+                  ar_arguments = ar_arguments + " --#{argument_name}=#{argument_value}"
+                end
+              end
+            end
+          end
+        end
+        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions['management'][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
+        execute_and_stream(command)
+      end
+      update_gem_version('lib/version.rb', gem_versions['management'][dir])
     end
   end
 
@@ -222,6 +236,10 @@ Rake::Task['arm:regen_individual_profiles'].enhance do
   Rake::Task['arm:regen_individual_require_files'].invoke
 end
 
+Rake::Task['arm:regen'].enhance do
+  Rake::Task['arm:regen_individual_require_files'].invoke
+end
+
 task :default => :spec
 
 def get_base_profile_generation_cmd
@@ -288,4 +306,10 @@ def each_gem
     gem_dir = dir.split('/').last
     yield gem_dir
   end
+end
+
+def update_gem_version(version_file, new_version)
+  existing_contents =  File.read(version_file)
+  content_to_replace = existing_contents.gsub(/VERSION = '.*'/, "VERSION = '#{new_version}'")
+  File.open(version_file, 'w') { |file| file.puts content_to_replace }
 end
