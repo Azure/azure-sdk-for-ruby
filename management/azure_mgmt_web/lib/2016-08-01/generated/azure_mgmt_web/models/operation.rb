@@ -35,7 +35,7 @@ module Azure::Web::Mgmt::V2016_08_01
       # @return [DateTime] Time when operation will expire.
       attr_accessor :expiration_time
 
-      # @return [String] Applicable only for stamp operation ids.
+      # @return Applicable only for stamp operation ids.
       attr_accessor :geo_master_operation_id
 
 
