@@ -48,7 +48,7 @@ module Azure::Web::Mgmt::V2016_03_01
       # @return [Boolean] Is the certificate valid?.
       attr_accessor :valid
 
-      # @return [String] Raw bytes of .cer file
+      # @return [Array<Integer>] Raw bytes of .cer file
       attr_accessor :cer_blob
 
       # @return [String] Public key hash.
@@ -75,9 +75,6 @@ module Azure::Web::Mgmt::V2016_03_01
 
       # @return [String] Region of the certificate.
       attr_accessor :geo_region
-
-      # @return [String] Resource name of the certificate.
-      attr_accessor :certificate_name
 
       # @return [String] Resource ID of the associated App Service plan,
       # formatted as:
@@ -254,7 +251,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 read_only: true,
                 serialized_name: 'properties.cerBlob',
                 type: {
-                  name: 'String'
+                  name: 'ByteArray'
                 }
               },
               public_key_hash: {
@@ -301,14 +298,6 @@ module Azure::Web::Mgmt::V2016_03_01
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.geoRegion',
-                type: {
-                  name: 'String'
-                }
-              },
-              certificate_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.name',
                 type: {
                   name: 'String'
                 }

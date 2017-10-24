@@ -13,6 +13,9 @@ module Azure::Web::Mgmt::V2016_09_01
       Small = "Small"
       Medium = "Medium"
       Large = "Large"
+      D1 = "D1"
+      D2 = "D2"
+      D3 = "D3"
     end
   end
 end

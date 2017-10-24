@@ -11,6 +11,7 @@ module Azure::Web::Mgmt::V2016_09_01
     module StatusOptions
       Ready = "Ready"
       Pending = "Pending"
+      Creating = "Creating"
     end
   end
 end
