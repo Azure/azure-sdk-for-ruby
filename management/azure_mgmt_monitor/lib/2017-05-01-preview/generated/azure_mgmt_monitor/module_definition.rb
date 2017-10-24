@@ -4,6 +4,6 @@
 # regenerated.
 
 module Azure end
-module Azure::Monitor end
-module Azure::Monitor::Mgmt end
-module Azure::Monitor::Mgmt::V2017_05_01_preview end
+module Azure::MobileEngagement end
+module Azure::MobileEngagement::Mgmt end
+module Azure::MobileEngagement::Mgmt::V2014_12_01 end
