@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Monitor::Mgmt::V2017_05_01_preview
+module Azure::MobileEngagement::Mgmt::V2014_12_01
   #
   # A service client - single point of access to the REST API.
   #
-  class MonitorClient < MsRestAzure::AzureServiceClient
+  class MonitorManagementClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -39,7 +39,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     attr_reader :diagnostic_settings_operations
 
     #
-    # Creates initializes a new instance of the MonitorClient class.
+    # Creates initializes a new instance of the MonitorManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -122,8 +122,8 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        if defined? Azure::Monitor::Mgmt::V2017_05_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Monitor::Mgmt::V2017_05_01_preview::VERSION}"
+        if defined? Azure::MobileEngagement::Mgmt::V2014_12_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::MobileEngagement::Mgmt::V2014_12_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end
