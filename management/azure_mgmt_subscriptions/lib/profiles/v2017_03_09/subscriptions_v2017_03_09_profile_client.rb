@@ -12,7 +12,7 @@ module Azure::Subscriptions::Profiles::V2017_03_09::Mgmt
   # Client class for the V2017_03_09 profile SDK.
   #
   class Client < SubscriptionsClass
-    include Azure::ARM::Configurable
+    include Azure::Common::Configurable
 
 
     def initialize(options = {})
@@ -21,7 +21,7 @@ module Azure::Subscriptions::Profiles::V2017_03_09::Mgmt
 
     def credentials
       if @credentials.nil?
-        self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
+        self.active_directory_settings ||= Azure::Common::Default.active_directory_settings
 
         @credentials = MsRest::TokenCredentials.new(
                     MsRestAzure::ApplicationTokenProvider.new(

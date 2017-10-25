@@ -2,8 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::ARM
-  # The Azure::ARM::Configurable module provides basic configuration for Azure ARM activities.
+module Azure::Common
+  # The Azure::Common::Configurable module provides basic configuration for Azure activities.
   module Configurable
     # @return [String] Azure tenant id (also known as domain).
     attr_accessor :tenant_id
@@ -25,11 +25,11 @@ module Azure::ARM
 
     class << self
       #
-      # List of configurable keys for {Azure::ARM::Client}.
+      # List of configurable keys for {Azure::Common::Client}.
       # @return [Array] of option keys.
       #
       def keys
-        @keys ||= [:tenant_id, :client_id, :client_secret, :subscription_id, :active_directory_settings, :credentials]
+        @keys ||= [:tenant_id, :client_id, :client_secret, :subscription_id, :active_directory_settings]
       end
     end
 
@@ -45,10 +45,13 @@ module Azure::ARM
     # This will also creates MsRest::TokenCredentials to be used for subsequent Azure Resource Manager clients.
     #
     def reset!(options = {})
-      Azure::ARM::Configurable.keys.each do |key|
-        default_value = Azure::ARM::Default.options[key]
+      Azure::Common::Configurable.keys.each do |key|
+        default_value = Azure::Common::Default.options[key]
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
+
+      default_value = get_credentials(self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings)
+      instance_variable_set(:"@credentials", options.fetch(:credentials, default_value))
 
       self
     end
@@ -64,10 +67,18 @@ module Azure::ARM
     #
     def setup_options
       opts = {}
-      Azure::ARM::Configurable.keys.map do |key|
-        opts[key] = Azure::ARM::Default.options[key]
+      Azure::Common::Configurable.keys.map do |key|
+        opts[key] = Azure::Common::Default.options[key]
       end
+      opts[:credentials] = get_credentials(opts[:tenant_id], opts[:client_id], opts[:client_secret], opts[:active_directory_settings])
       opts
     end
+
+    def get_credentials(tenant_id, client_id, client_secret, active_directory_settings)
+      MsRest::TokenCredentials.new(
+        MsRestAzure::ApplicationTokenProvider.new(
+          tenant_id, client_id, client_secret, active_directory_settings))
+    end
+
   end
 end

@@ -12,7 +12,7 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
   # Client class for the Latest profile SDK.
   #
   class Client < TrafficManagerClass
-    include Azure::ARM::Configurable
+    include Azure::Common::Configurable
 
 
     def initialize(options = {})
@@ -21,7 +21,7 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
 
     def credentials
       if @credentials.nil?
-        self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
+        self.active_directory_settings ||= Azure::Common::Default.active_directory_settings
 
         @credentials = MsRest::TokenCredentials.new(
                     MsRestAzure::ApplicationTokenProvider.new(
