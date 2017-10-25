@@ -31,7 +31,7 @@ module Azure::Profiles::<%= @profile_name %>::Mgmt
   <%- else -%>
   class Client
   <%- end -%>
-    include Azure::ARM::Configurable
+    include Azure::Common::Configurable
 
     <%- if !@individual_gem_profile -%>
     attr_reader <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
@@ -57,7 +57,7 @@ module Azure::Profiles::<%= @profile_name %>::Mgmt
 
     def credentials
       if @credentials.nil?
-        self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
+        self.active_directory_settings ||= Azure::Common::Default.active_directory_settings
 
         @credentials = MsRest::TokenCredentials.new(
                     MsRestAzure::ApplicationTokenProvider.new(

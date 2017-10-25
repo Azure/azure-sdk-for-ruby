@@ -150,14 +150,10 @@ The following lines should be used to instantiate a profile client:
 
 ```ruby
 # Provide credentials
-provider = MsRestAzure::ApplicationTokenProvider.new(
-       ENV['AZURE_TENANT_ID'],
-       ENV['AZURE_CLIENT_ID'],
-       ENV['AZURE_CLIENT_SECRET'])
-credentials = MsRest::TokenCredentials.new(provider)
-
 options = {
-  credentials: credentials,
+  tenant_id: ENV['AZURE_TENANT_ID'],
+  client_id: ENV['AZURE_CLIENT_ID'],
+  client_secret: ENV['AZURE_CLIENT_SECRET'],
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
@@ -195,14 +191,10 @@ The following lines should be used to instantiate a profile client:
 
 ```ruby
 # Provide credentials
-provider = MsRestAzure::ApplicationTokenProvider.new(
-       ENV['AZURE_TENANT_ID'],
-       ENV['AZURE_CLIENT_ID'],
-       ENV['AZURE_CLIENT_SECRET'])
-credentials = MsRest::TokenCredentials.new(provider)
-
 options = {
-  credentials: credentials,
+  tenant_id: ENV['AZURE_TENANT_ID'],
+  client_id: ENV['AZURE_CLIENT_ID'],
+  client_secret: ENV['AZURE_CLIENT_SECRET'],
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
@@ -242,14 +234,10 @@ The following lines should be used to instantiate a profile client:
 
 ```ruby
 # Provide credentials
-provider = MsRestAzure::ApplicationTokenProvider.new(
-       ENV['AZURE_TENANT_ID'],
-       ENV['AZURE_CLIENT_ID'],
-       ENV['AZURE_CLIENT_SECRET'])
-credentials = MsRest::TokenCredentials.new(provider)
-
 options = {
-  credentials: credentials,
+  tenant_id: ENV['AZURE_TENANT_ID'],
+  client_id: ENV['AZURE_CLIENT_ID'],
+  client_secret: ENV['AZURE_CLIENT_SECRET'],
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
