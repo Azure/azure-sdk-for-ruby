@@ -65,7 +65,7 @@ module Azure::Common
     #
     # configures configurable options to default values
     #
-    def setup_options
+    def setup_default_options
       opts = {}
       Azure::Common::Configurable.keys.map do |key|
         opts[key] = Azure::Common::Default.options[key]
