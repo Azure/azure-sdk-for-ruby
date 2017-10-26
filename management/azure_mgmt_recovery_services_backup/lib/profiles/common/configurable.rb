@@ -50,7 +50,16 @@ module Azure::Common
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
 
-      default_value = get_credentials(self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings)
+      fail ArgumentError, 'tenant_id is nil' if self.tenant_id.nil?
+      fail ArgumentError, 'client_id is nil' if self.client_id.nil?
+      fail ArgumentError, 'client_secret is nil' if self.client_secret.nil?
+      fail ArgumentError, 'subscription_id is nil' if self.subscription_id.nil?
+      fail ArgumentError, 'active_directory_settings is nil' if self.active_directory_settings.nil?
+
+      default_value = MsRest::TokenCredentials.new(
+        MsRestAzure::ApplicationTokenProvider.new(
+          self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
+
       instance_variable_set(:"@credentials", options.fetch(:credentials, default_value))
 
       self
@@ -70,15 +79,8 @@ module Azure::Common
       Azure::Common::Configurable.keys.map do |key|
         opts[key] = Azure::Common::Default.options[key]
       end
-      opts[:credentials] = get_credentials(opts[:tenant_id], opts[:client_id], opts[:client_secret], opts[:active_directory_settings])
+
       opts
     end
-
-    def get_credentials(tenant_id, client_id, client_secret, active_directory_settings)
-      MsRest::TokenCredentials.new(
-        MsRestAzure::ApplicationTokenProvider.new(
-          tenant_id, client_id, client_secret, active_directory_settings))
-    end
-
   end
 end
