@@ -2,8 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::ARM
-  # The Azure::ARM::Configurable module provides basic configuration for Azure ARM activities.
+module Azure::Common
+  # The Azure::Common::Configurable module provides basic configuration for Azure activities.
   module Configurable
     # @return [String] Azure tenant id (also known as domain).
     attr_accessor :tenant_id
@@ -25,11 +25,11 @@ module Azure::ARM
 
     class << self
       #
-      # List of configurable keys for {Azure::ARM::Client}.
+      # List of configurable keys for {Azure::Common::Client}.
       # @return [Array] of option keys.
       #
       def keys
-        @keys ||= [:tenant_id, :client_id, :client_secret, :subscription_id, :active_directory_settings, :credentials]
+        @keys ||= [:tenant_id, :client_id, :client_secret, :subscription_id, :active_directory_settings]
       end
     end
 
@@ -45,10 +45,22 @@ module Azure::ARM
     # This will also creates MsRest::TokenCredentials to be used for subsequent Azure Resource Manager clients.
     #
     def reset!(options = {})
-      Azure::ARM::Configurable.keys.each do |key|
-        default_value = Azure::ARM::Default.options[key]
+      Azure::Common::Configurable.keys.each do |key|
+        default_value = Azure::Common::Default.options[key]
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
+
+      fail ArgumentError, 'tenant_id is nil' if self.tenant_id.nil?
+      fail ArgumentError, 'client_id is nil' if self.client_id.nil?
+      fail ArgumentError, 'client_secret is nil' if self.client_secret.nil?
+      fail ArgumentError, 'subscription_id is nil' if self.subscription_id.nil?
+      fail ArgumentError, 'active_directory_settings is nil' if self.active_directory_settings.nil?
+
+      default_value = MsRest::TokenCredentials.new(
+        MsRestAzure::ApplicationTokenProvider.new(
+          self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
+
+      instance_variable_set(:"@credentials", options.fetch(:credentials, default_value))
 
       self
     end
@@ -62,11 +74,12 @@ module Azure::ARM
     #
     # configures configurable options to default values
     #
-    def setup_options
+    def setup_default_options
       opts = {}
-      Azure::ARM::Configurable.keys.map do |key|
-        opts[key] = Azure::ARM::Default.options[key]
+      Azure::Common::Configurable.keys.map do |key|
+        opts[key] = Azure::Common::Default.options[key]
       end
+
       opts
     end
   end

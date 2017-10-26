@@ -35,7 +35,7 @@ module Azure::Profiles::<%= @profile_name %>
       <%- if @individual_gem_profile -%>
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
-          @options = setup_options
+          @options = setup_default_options
         else
           @options = options
         end

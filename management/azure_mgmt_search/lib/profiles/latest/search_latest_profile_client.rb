@@ -12,22 +12,12 @@ module Azure::Search::Profiles::Latest::Mgmt
   # Client class for the Latest profile SDK.
   #
   class Client < SearchClass
-    include Azure::ARM::Configurable
+    include Azure::Common::Configurable
 
 
     def initialize(options = {})
       super(options)
     end
 
-    def credentials
-      if @credentials.nil?
-        self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
-
-        @credentials = MsRest::TokenCredentials.new(
-                    MsRestAzure::ApplicationTokenProvider.new(
-                        self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
-      end
-      @credentials
-    end
   end
 end
