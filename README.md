@@ -62,6 +62,39 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 Note: x64 Ruby for Windows is known to have some compatibility issues.
 
 # Getting Started with Azure Resource Manager Usage (Preview)
+## Install the rubygem packages
+
+You can install the azure rubygem packages directly.
+
+```bash
+gem install azure_mgmt_compute
+gem install azure_mgmt_storage
+gem install azure_mgmt_resources
+gem install azure_mgmt_network
+```
+
+Or use them in your Gemfile.
+
+```Ruby
+gem 'azure_mgmt_storage'
+gem 'azure_mgmt_compute'
+gem 'azure_mgmt_resources'
+gem 'azure_mgmt_network'
+```
+
+Be aware the Azure Resource Manager Ruby SDK is in preview and will likely have breaking interface changes in upcoming
+releases. An increased number in Minor version may indicate breaking changes. 
+
+### Authentication
+
+The first step to using the SDK is authentication and permissions. For people unfamilar with Azure this may be one of
+the more difficult concepts. For a reference on setting up a service principal from the command line see
+[Authenticating a service principal with Azure Resource Manager](http://aka.ms/cli-service-principal) or
+[Unattended Authentication](http://aka.ms/auth-unattended). For a more robust explanation of authentication in Azure,
+see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/arm-auth-dev-guide).
+
+After creating the service principal, you should have three pieces of information, a client id (GUID), client secret
+(string) and tenant id (GUID) or domain name (string).
 
 ## Prerequisite
 
@@ -112,9 +145,9 @@ If you would like to pass in the credentials object, you could use the the follo
 
 ```ruby
 provider = MsRestAzure::ApplicationTokenProvider.new(
-       ENV['AZURE_TENANT_ID'],
-       ENV['AZURE_CLIENT_ID'],
-       ENV['AZURE_CLIENT_SECRET'])
+       'YOUR TENANT ID',
+       'YOUR CLIENT ID',
+       'YOUR CLIENT SECRET')
 credentials = MsRest::TokenCredentials.new(provider)
 
 options = {
@@ -128,41 +161,6 @@ options = {
 
 ### Option 3 - Combination of Environment Variables & Options Hash
 You can set the (above) values using a combination of environment variables and options hash. The values mentioned in the options hash will take precedence over the environment variables.
-
-
-## Install the rubygem packages
-
-You can install the azure rubygem packages directly.
-
-```bash
-gem install azure_mgmt_compute
-gem install azure_mgmt_storage
-gem install azure_mgmt_resources
-gem install azure_mgmt_network
-```
-
-Or use them in your Gemfile.
-
-```Ruby
-gem 'azure_mgmt_storage'
-gem 'azure_mgmt_compute'
-gem 'azure_mgmt_resources'
-gem 'azure_mgmt_network'
-```
-
-Be aware the Azure Resource Manager Ruby SDK is in preview and will likely have breaking interface changes in upcoming
-releases. An increased number in Minor version may indicate breaking changes. 
-
-### Authentication
-
-The first step to using the SDK is authentication and permissions. For people unfamilar with Azure this may be one of
-the more difficult concepts. For a reference on setting up a service principal from the command line see
-[Authenticating a service principal with Azure Resource Manager](http://aka.ms/cli-service-principal) or
-[Unattended Authentication](http://aka.ms/auth-unattended). For a more robust explanation of authentication in Azure,
-see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/arm-auth-dev-guide).
-
-After creating the service principal, you should have three pieces of information, a client id (GUID), client secret
-(string) and tenant id (GUID) or domain name (string).
 
 # Azure Multiple API versions & Profiles
 
