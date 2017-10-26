@@ -267,6 +267,8 @@ gem install 'azure_mgmt_compute'
 The following lines should be used to instantiate a profile client:
 
 ```ruby
+# To use this scenario, you must specify the tenant id, client id, subscription id
+# and client secret using the environment variables.
 # Provide credentials
 provider = MsRestAzure::ApplicationTokenProvider.new(
        ENV['AZURE_TENANT_ID'],
