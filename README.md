@@ -82,7 +82,21 @@ You can set the (above) values using the following environment variables:
 * AZURE_SUBSCRIPTION_ID
 * AZURE_CLIENT_SECRET
 
+To set the environment variables, in Windows, you could use the command such as:
+
+```
+set AZURE_TENANT_ID=<YOUR_TENANT_ID>
+```
+
+In Unix based systems, you could use the command such as:
+
+```
+export AZURE_TENANT_ID=<YOUR_TENANT_ID>
+```
+
 ### Option 2 - Options Hash
+The initialization of profile clients take an options hash as a parameter. This options hash consists of tenant_id, client_id, client_secret, subscription_id, active_directory_settings and credentials. Among these, the active_directory_settings and credentials are optional.
+
 You can set the (above) values using the options hash:
 
 ```ruby
@@ -91,6 +105,24 @@ options = {
   client_id: 'YOUR CLIENT ID',
   client_secret: 'YOUR CLIENT SECRET',
   subscription_id: 'YOUR SUBSCRIPTION ID'
+}
+```
+
+If you would like to pass in the credentials object, you could use the the following code:
+
+```ruby
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  tenant_id: 'YOUR TENANT ID',
+  client_id: 'YOUR CLIENT ID',
+  client_secret: 'YOUR CLIENT SECRET',
+  subscription_id: 'YOUR SUBSCRIPTION ID',
+  credentials: credentials
 }
 ```
 
