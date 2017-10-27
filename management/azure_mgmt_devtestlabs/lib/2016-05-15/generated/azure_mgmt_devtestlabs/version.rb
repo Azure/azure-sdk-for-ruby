@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::DevTestLabs::Mgmt::V2016_05_15
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

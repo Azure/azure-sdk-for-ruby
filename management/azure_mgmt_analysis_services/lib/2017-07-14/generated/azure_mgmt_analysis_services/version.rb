@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::AnalysisServices::Mgmt::V2017_07_14
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

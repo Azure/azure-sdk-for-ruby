@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

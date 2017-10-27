@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Policy::Mgmt::V2017_06_01_preview
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Monitor::Mgmt::V2016_09_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

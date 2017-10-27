@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ContainerService::Mgmt::V2017_01_31
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

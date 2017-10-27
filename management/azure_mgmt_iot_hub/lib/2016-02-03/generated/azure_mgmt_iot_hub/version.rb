@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::IotHub::Mgmt::V2016_02_03
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

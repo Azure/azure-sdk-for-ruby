@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::SQL::Mgmt::V2014_04_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

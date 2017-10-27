@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Web::Mgmt::V2015_04_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end
