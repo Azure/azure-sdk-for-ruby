@@ -1,3 +1,9 @@
+## 2017.10.30 - Azure ARM version 0.15.1
+
+* Regened all azure_mgmt_* sdks using [Autorest.2.0.4168](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.15.1
+* Fixed the [Issue #1092](https://github.com/Azure/azure-sdk-for-ruby/issues/1092) of passing tenant id, client id, client secret etc. Refer [PR #1090](https://github.com/Azure/azure-sdk-for-ruby/pull/1090) for further details.
+* Moved Azure::ARM::Configurable to Azure::Common::Configurable and Azure::ARM::Default to Azure::Common::Default.Refer [PR #1090](https://github.com/Azure/azure-sdk-for-ruby/pull/1090) for further details.
+
 ## 2017.10.17 - Azure ARM version 0.15.0
 
 * Each gem include multiple api-versions (namespace example: "Azure::Compute::Mgmt::V2017_03_30").
