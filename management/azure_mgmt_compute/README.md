@@ -30,31 +30,57 @@ require 'azure_mgmt_compute'
 
 After that you should be ready to start using SDK!
 
-## Authentication
+## Creating a Client
+### Option 1 - Using the Compute Profiles
+You can create a new Virtual Machine using the Compute profile.
 
-```Ruby
-# Create authentication objects
-token_provider = MsRestAzure::ApplicationTokenProvider.new(tenant_id, client_id, secret)
-credentials = MsRest::TokenCredentials.new(token_provider)
-```
-
-To get tenant_id, client_id and secret for your Azure application visit Azure portal or copy them from the powershell script from the article mentioned above.
-
-## Creating new virtual machine
-
-```Ruby
+```ruby
 # Include SDK modules to ease access to compute classes.
 include Azure::Compute::Profiles::Latest::Mgmt
 include Azure::Compute::Profiles::Latest::Mgmt::Models
 
-# Create a client - a point of access to the API and set the subscription id
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       'YOUR TENANT ID',
+       'YOUR CLIENT ID',
+       'YOUR CLIENT SECRET')
+credentials = MsRest::TokenCredentials.new(provider)
+
 options = {
-    credentials: credentials,
-    subscription_id: subscription_id
+  tenant_id: 'YOUR TENANT ID',
+  client_id: 'YOUR CLIENT ID',
+  client_secret: 'YOUR CLIENT SECRET',
+  subscription_id: 'YOUR SUBSCRIPTION ID',
+  credentials: credentials
 }
 
 client = Client.new(options)
+```
 
+### Option 2 - Using a specific version of Compute
+You can create a new Virtual Machine using a specific version of Compute, say 2017-03-30.
+
+```ruby
+# Include SDK modules to ease access to compute classes.
+include Azure::Compute::Mgmt::V2017_03_30
+include Azure::Compute::Mgmt::V2017_03_30::Models
+
+# Note: The tenant_id, client_id, client_secret and subscription_id
+# must be set using the env variables.
+
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+client = ComputeManagementClient.new(credentials)
+client.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+```
+
+## Using the client
+Once the client is initialized, we could create the virtual machine.
+
+```ruby
 windows_config = WindowsConfiguration.new
 windows_config.provision_vmagent = true
 windows_config.enable_automatic_updates = true
@@ -69,6 +95,7 @@ os_profile.secrets = []
 hardware_profile = HardwareProfile.new
 hardware_profile.vm_size = 'Standard_A0'
 
+params = VirtualMachine.new
 # create_storage_profile is hypothetical helper method which creates storage
 # profile by means of ARM Storage SDK.
 params.storage_profile = create_storage_profile

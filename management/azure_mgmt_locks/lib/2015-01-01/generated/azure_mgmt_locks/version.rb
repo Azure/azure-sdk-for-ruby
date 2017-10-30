@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Locks::Mgmt::V2015_01_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

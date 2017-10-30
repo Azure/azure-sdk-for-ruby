@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::OperationalInsights::Mgmt::V2015_03_20
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

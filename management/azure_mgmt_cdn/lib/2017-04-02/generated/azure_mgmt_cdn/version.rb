@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::CDN::Mgmt::V2017_04_02
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

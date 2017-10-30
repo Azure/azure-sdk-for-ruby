@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Search::Mgmt::V2015_08_19
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

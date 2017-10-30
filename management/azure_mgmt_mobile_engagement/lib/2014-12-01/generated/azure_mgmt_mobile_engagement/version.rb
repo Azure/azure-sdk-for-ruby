@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::MobileEngagement::Mgmt::V2014_12_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

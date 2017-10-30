@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::CognitiveServices::Mgmt::V2017_04_18
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end
