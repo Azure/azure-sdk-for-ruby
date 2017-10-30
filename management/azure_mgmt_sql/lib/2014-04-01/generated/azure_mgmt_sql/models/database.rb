@@ -192,6 +192,11 @@ module Azure::SQL::Mgmt::V2014_04_01
       # include: 'AdventureWorksLT'
       attr_accessor :sample_name
 
+      # @return [Boolean] Whether or not this database is zone redundant, which
+      # means the replicas of this database will be spread across multiple
+      # availability zones.
+      attr_accessor :zone_redundant
+
 
       #
       # Mapper for Database class as Ruby Hash.
@@ -468,6 +473,13 @@ module Azure::SQL::Mgmt::V2014_04_01
                 serialized_name: 'properties.sampleName',
                 type: {
                   name: 'String'
+                }
+              },
+              zone_redundant: {
+                required: false,
+                serialized_name: 'properties.zoneRedundant',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }
