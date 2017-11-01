@@ -3,11 +3,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::Monitor::Mgmt::V2015_04_01
+module Azure::Monitor::Mgmt::V2016_03_01
   #
   # A service client - single point of access to the REST API.
   #
-  class MonitorManagementClient < MsRestAzure::AzureServiceClient
+  class MonitorClient < MsRestAzure::AzureServiceClient
     include MsRestAzure
     include MsRestAzure::Serialization
 
@@ -34,14 +34,17 @@ module Azure::Monitor::Mgmt::V2015_04_01
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [AutoscaleSettings] autoscale_settings
-    attr_reader :autoscale_settings
+    # @return [AlertRuleIncidents] alert_rule_incidents
+    attr_reader :alert_rule_incidents
 
-    # @return [Operations] operations
-    attr_reader :operations
+    # @return [AlertRules] alert_rules
+    attr_reader :alert_rules
+
+    # @return [LogProfiles] log_profiles
+    attr_reader :log_profiles
 
     #
-    # Creates initializes a new instance of the MonitorManagementClient class.
+    # Creates initializes a new instance of the MonitorClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
@@ -53,9 +56,10 @@ module Azure::Monitor::Mgmt::V2015_04_01
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
-      @autoscale_settings = AutoscaleSettings.new(self)
-      @operations = Operations.new(self)
-      @api_version = '2015-04-01'
+      @alert_rule_incidents = AlertRuleIncidents.new(self)
+      @alert_rules = AlertRules.new(self)
+      @log_profiles = LogProfiles.new(self)
+      @api_version = '2016-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -124,8 +128,8 @@ module Azure::Monitor::Mgmt::V2015_04_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_monitor'
-        if defined? Azure::Monitor::Mgmt::V2015_04_01::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Monitor::Mgmt::V2015_04_01::VERSION}"
+        if defined? Azure::Monitor::Mgmt::V2016_03_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Monitor::Mgmt::V2016_03_01::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

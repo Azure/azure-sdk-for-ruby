@@ -30,6 +30,9 @@ module Azure::Web::Mgmt::V2015_04_01
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
+      # @return [ResourceIdentity] Identity for the resource.
+      attr_accessor :identity
+
 
       #
       # Mapper for Resource class as Ruby Hash.
@@ -93,6 +96,14 @@ module Azure::Web::Mgmt::V2015_04_01
                         name: 'String'
                       }
                   }
+                }
+              },
+              identity: {
+                required: false,
+                serialized_name: 'identity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ResourceIdentity'
                 }
               }
             }

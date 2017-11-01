@@ -18,7 +18,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       @client = client
     end
 
-    # @return [MonitorManagementClient] reference to the MonitorManagementClient
+    # @return [MonitorClient] reference to the MonitorClient
     attr_reader :client
 
     #
