@@ -86,7 +86,7 @@ module MsRestAzure
 
     AzureCloud = AzureEnvironments::AzureEnvironment.new({
                                                         :name => 'AzureCloud',
-                                                        :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=254433',
+                                                        :portal_url => 'https://portal.azure.com',
                                                         :publishing_profile_url => 'http://go.microsoft.com/fwlink/?LinkId=254432',
                                                         :management_endpoint_url => 'https://management.core.windows.net',
                                                         :resource_manager_endpoint_url => 'https://management.azure.com/',
@@ -104,7 +104,7 @@ module MsRestAzure
                                                     })
     AzureChinaCloud = AzureEnvironments::AzureEnvironment.new({
                                                         :name => 'AzureChinaCloud',
-                                                        :portal_url => 'http://go.microsoft.com/fwlink/?LinkId=301902',
+                                                        :portal_url => 'https://portal.azure.cn',
                                                         :publishing_profile_url => 'http://go.microsoft.com/fwlink/?LinkID=301774',
                                                         :management_endpoint_url => 'https://management.core.chinacloudapi.cn',
                                                         :resource_manager_endpoint_url => 'https://management.chinacloudapi.cn',
@@ -123,14 +123,14 @@ module MsRestAzure
                                                     })
     AzureUSGovernment = AzureEnvironments::AzureEnvironment.new({
                                                         :name => 'AzureUSGovernment',
-                                                        :portal_url => 'https://manage.windowsazure.us',
+                                                        :portal_url => 'https://portal.azure.us',
                                                         :publishing_profile_url => 'https://manage.windowsazure.us/publishsettings/index',
                                                         :management_endpoint_url => 'https://management.core.usgovcloudapi.net',
                                                         :resource_manager_endpoint_url => 'https://management.usgovcloudapi.net',
                                                         :sql_management_endpoint_url => 'https://management.core.usgovcloudapi.net:8443/',
                                                         :sql_server_hostname_suffix => '.database.usgovcloudapi.net',
                                                         :gallery_endpoint_url => 'https://gallery.usgovcloudapi.net/',
-                                                        :active_directory_endpoint_url => 'https://login.microsoftonline.com/',
+                                                        :active_directory_endpoint_url => 'https://login-us.microsoftonline.com/',
                                                         :active_directory_resource_id => 'https://management.core.usgovcloudapi.net/',
                                                         :active_directory_graph_resource_id => 'https://graph.windows.net/',
                                                         :active_directory_graph_api_version => '2013-04-05',
