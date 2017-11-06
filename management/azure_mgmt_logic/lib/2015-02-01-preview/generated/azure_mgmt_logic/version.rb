@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Logic::Mgmt::V2015_02_01_preview
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

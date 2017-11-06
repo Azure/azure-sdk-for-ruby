@@ -30,34 +30,63 @@ require 'azure_mgmt_storage'
 
 After that you should be ready to start using SDK!
 
-## Authentication
+## Creating a Client
+### Option 1 - Using the Storage Profiles
+You can create a new storage accounts using the Storage profile.
 
-```Ruby
-# Create authentication objects
-token_provider = MsRestAzure::ApplicationTokenProvider.new(tenant_id, client_id, secret)
-credentials = MsRest::TokenCredentials.new(token_provider)
+```ruby
+# Include SDK modules to ease access to Storage classes.
+include Azure::Storage::Profiles::Latest::Mgmt
+include Azure::Storage::Profiles::Latest::Mgmt::Models
+
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       'YOUR TENANT ID',
+       'YOUR CLIENT ID',
+       'YOUR CLIENT SECRET')
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  tenant_id: 'YOUR TENANT ID',
+  client_id: 'YOUR CLIENT ID',
+  client_secret: 'YOUR CLIENT SECRET',
+  subscription_id: 'YOUR SUBSCRIPTION ID',
+  credentials: credentials
+}
+
+client = Client.new(options)
 ```
 
-To get tenant_id, client_id and secret for your Azure application visit Azure portal or copy them from the powershell script from the article mentioned above.
+### Option 2 - Using a specific version of Storage
+You can create a new storage account using a specific version of Storage, say 2017-06-01.
 
-## Creating storage account
+```ruby
+# Include SDK modules to ease access to resources classes.
+include Azure::Storage::Mgmt::V2017_06_01
+include Azure::Storage::Mgmt::V2017_06_01::Models
 
-```Ruby
-include Azure::Compute::Storage::Latest::Mgmt
-# Create a client - a point of access to the API and set the subscription id
-options = {
-    credentials: credentials,
-    subscription_id: subscription_id
-}
-client = Client.new(options)
+# Note: The tenant_id, client_id, client_secret and subscription_id
+# must be set using the env variables.
 
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+client = ResourceManagementClient.new(credentials)
+client.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+```
+## Using the client
+Once the client is initialized, we could create the storage account.
+
+```ruby
 # Create a model for new storage account.
-params = Models::StorageAccountCreateParameters.new
+params = StorageAccountCreateParameters.new
 params.location = 'westus'
-sku = Models::Sku.new
+sku = Sku.new
 sku.name = 'Standard_LRS'
 params.sku = sku
-params.kind = Models::Kind::Storage
+params.kind = Kind::Storage
 
 promise = client.storage_accounts.create_async('some_existing_resource_group', 'newstorageaccount', params)
 ```

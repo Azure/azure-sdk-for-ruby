@@ -49,7 +49,7 @@ module Azure::Batch::Profiles::Latest::Mgmt
 
       def initialize(options = {})
         if options.is_a?(Hash) && options.length == 0
-          @options = setup_options
+          @options = setup_default_options
         else
           @options = options
         end

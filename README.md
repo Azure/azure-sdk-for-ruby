@@ -62,7 +62,6 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 Note: x64 Ruby for Windows is known to have some compatibility issues.
 
 # Getting Started with Azure Resource Manager Usage (Preview)
-
 ## Install the rubygem packages
 
 You can install the azure rubygem packages directly.
@@ -96,6 +95,72 @@ see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/
 
 After creating the service principal, you should have three pieces of information, a client id (GUID), client secret
 (string) and tenant id (GUID) or domain name (string).
+
+## Prerequisite
+
+In order to use the Azure SDK, you must supply the following values to the Azure SDK:
+
+* Tenant Id
+* Client Id
+* Subscription Id
+* Client Secret
+
+You could pass the above values in the following ways:
+
+### Option 1 - Environment Variables
+You can set the (above) values using the following environment variables:
+
+* AZURE_TENANT_ID
+* AZURE_CLIENT_ID
+* AZURE_SUBSCRIPTION_ID
+* AZURE_CLIENT_SECRET
+
+To set the environment variables, in Windows, you could use the command such as:
+
+```
+set AZURE_TENANT_ID=<YOUR_TENANT_ID>
+```
+
+In Unix based systems, you could use the command such as:
+
+```
+export AZURE_TENANT_ID=<YOUR_TENANT_ID>
+```
+
+### Option 2 - Options Hash
+The initialization of profile clients take an options hash as a parameter. This options hash consists of tenant_id, client_id, client_secret, subscription_id, active_directory_settings and credentials. Among these, the active_directory_settings and credentials are optional.
+
+You can set the (above) values using the options hash:
+
+```ruby
+options = {
+  tenant_id: 'YOUR TENANT ID',
+  client_id: 'YOUR CLIENT ID',
+  client_secret: 'YOUR CLIENT SECRET',
+  subscription_id: 'YOUR SUBSCRIPTION ID'
+}
+```
+
+If you would like to pass in the credentials object, you could use the the following code:
+
+```ruby
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       'YOUR TENANT ID',
+       'YOUR CLIENT ID',
+       'YOUR CLIENT SECRET')
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  tenant_id: 'YOUR TENANT ID',
+  client_id: 'YOUR CLIENT ID',
+  client_secret: 'YOUR CLIENT SECRET',
+  subscription_id: 'YOUR SUBSCRIPTION ID',
+  credentials: credentials
+}
+```
+
+### Option 3 - Combination of Environment Variables & Options Hash
+You can set the (above) values using a combination of environment variables and options hash. The values mentioned in the options hash will take precedence over the environment variables.
 
 # Azure Multiple API versions & Profiles
 
@@ -150,14 +215,10 @@ The following lines should be used to instantiate a profile client:
 
 ```ruby
 # Provide credentials
-provider = MsRestAzure::ApplicationTokenProvider.new(
-       ENV['AZURE_TENANT_ID'],
-       ENV['AZURE_CLIENT_ID'],
-       ENV['AZURE_CLIENT_SECRET'])
-credentials = MsRest::TokenCredentials.new(provider)
-
 options = {
-  credentials: credentials,
+  tenant_id: ENV['AZURE_TENANT_ID'],
+  client_id: ENV['AZURE_CLIENT_ID'],
+  client_secret: ENV['AZURE_CLIENT_SECRET'],
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
@@ -195,14 +256,10 @@ The following lines should be used to instantiate a profile client:
 
 ```ruby
 # Provide credentials
-provider = MsRestAzure::ApplicationTokenProvider.new(
-       ENV['AZURE_TENANT_ID'],
-       ENV['AZURE_CLIENT_ID'],
-       ENV['AZURE_CLIENT_SECRET'])
-credentials = MsRest::TokenCredentials.new(provider)
-
 options = {
-  credentials: credentials,
+  tenant_id: ENV['AZURE_TENANT_ID'],
+  client_id: ENV['AZURE_CLIENT_ID'],
+  client_secret: ENV['AZURE_CLIENT_SECRET'],
   subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
 }
 
@@ -226,8 +283,7 @@ purchase_plan_obj = Azure::Compute::Profiles::Latest::Mgmt::Models::PurchasePlan
 
 ## Usage of Individual gem using using specific api-version
 
-In the previous section, we used the profile associated with individual gem. In the current section, we could use the
-version directly.
+In the previous section, we used the profile associated with individual gem. In the current section, we could use the version directly.
 
 ### Install
 
@@ -241,6 +297,8 @@ gem install 'azure_mgmt_compute'
 The following lines should be used to instantiate a profile client:
 
 ```ruby
+# To use this scenario, you must specify the tenant id, client id, subscription id
+# and client secret using the environment variables.
 # Provide credentials
 provider = MsRestAzure::ApplicationTokenProvider.new(
        ENV['AZURE_TENANT_ID'],
@@ -248,14 +306,9 @@ provider = MsRestAzure::ApplicationTokenProvider.new(
        ENV['AZURE_CLIENT_SECRET'])
 credentials = MsRest::TokenCredentials.new(provider)
 
-options = {
-  credentials: credentials,
-  subscription_id: ENV['AZURE_SUBSCRIPTION_ID']
-}
-
 # Target client for 2016_03_30 version of Compute
 compute_client = Azure::Compute::Mgmt::V2016_03_30::ComputeManagementClient.new(credentials)
-compute_client.subscription_id = subscription_id
+compute_client.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 ```
 
 The compute client could be used to access operations and models:

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

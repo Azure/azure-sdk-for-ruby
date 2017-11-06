@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Subscriptions::Mgmt::V2016_06_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::DataLakeStore::Mgmt::V2016_11_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

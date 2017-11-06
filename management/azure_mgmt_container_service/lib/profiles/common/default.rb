@@ -2,8 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::ARM
-  # Default configuration options for {Azure::ARM.Client}
+module Azure::Common
   module Default
     class << self
       #
@@ -39,16 +38,6 @@ module Azure::ARM
       end
 
       #
-      # Default Azure credentials to authorize HTTP requests made by the service client.
-      # @return [MsRest::ServiceClientCredentials] Azure credentials to authorize HTTP requests made by the service client.
-      #
-      def credentials
-        MsRest::TokenCredentials.new(
-            MsRestAzure::ApplicationTokenProvider.new(
-                self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
-      end
-
-      #
       # Default Azure Active Directory Service Settings.
       # @return [MsRestAzure::ActiveDirectoryServiceSettings] Azure Active Directory Service Settings.
       #
@@ -61,7 +50,7 @@ module Azure::ARM
       # @return [Hash] Configuration options.
       #
       def options
-        Hash[Azure::ARM::Configurable.keys.map{|key| [key, send(key)]}]
+        Hash[Azure::Common::Configurable.keys.map { |key| [key, send(key)]}]
       end
     end
   end

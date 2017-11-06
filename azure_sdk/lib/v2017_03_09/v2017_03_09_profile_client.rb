@@ -20,13 +20,13 @@ module Azure::Profiles::V2017_03_09::Mgmt
   # Client class for the V2017_03_09 profile SDK.
   #
   class Client
-    include Azure::ARM::Configurable
+    include Azure::Common::Configurable
 
     attr_reader  :storage, :network, :compute, :features, :links, :locks, :policy, :resources, :subscriptions
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
-        @options = setup_options
+        @options = setup_default_options
       else
         @options = options
       end
@@ -44,15 +44,5 @@ module Azure::Profiles::V2017_03_09::Mgmt
       @subscriptions = Azure::Profiles::V2017_03_09::Subscriptions::Mgmt::SubscriptionsClass.new(self)
     end
 
-    def credentials
-      if @credentials.nil?
-        self.active_directory_settings ||= Azure::ARM::Default.active_directory_settings
-
-        @credentials = MsRest::TokenCredentials.new(
-                    MsRestAzure::ApplicationTokenProvider.new(
-                        self.tenant_id, self.client_id, self.client_secret, self.active_directory_settings))
-      end
-      @credentials
-    end
   end
 end

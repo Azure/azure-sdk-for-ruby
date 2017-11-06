@@ -189,6 +189,9 @@ namespace :arm do
     # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json --mode=rollup --key=azure_sdk
     command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=rollup --key=azure_sdk --sdk_path=#{__dir__}"
     execute_and_stream(command)
+
+    FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/configurable.rb", "#{__dir__}/azure_sdk/lib/common/configurable.rb")
+    FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/default.rb", "#{__dir__}/azure_sdk/lib/common/default.rb")
   end
 
   desc 'Regen individual profiles'
@@ -202,6 +205,9 @@ namespace :arm do
       # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json --mode=management --key=azure_mgmt_authorization
       command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=management --key=#{gem} --sdk_path=#{__dir__}"
       execute_and_stream(command)
+
+      FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/configurable.rb", "#{__dir__}/management/#{gem}/lib/profiles/common/configurable.rb")
+      FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/default.rb", "#{__dir__}/management/#{gem}/lib/profiles/common/default.rb")
     end
   end
 

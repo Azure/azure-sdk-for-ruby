@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Scheduler::Mgmt::V2016_03_01
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

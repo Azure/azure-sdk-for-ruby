@@ -30,28 +30,59 @@ require 'azure_mgmt_resources'
 
 After that you should be ready to start using SDK!
 
-## Authentication
+## Creating a Client
+### Option 1 - Using the Resources Profiles
+You can create a new resources group using the Resources profile.
 
-```Ruby
-# Create authentication objects
-token_provider = MsRestAzure::ApplicationTokenProvider.new(tenant_id, client_id, secret)
-credentials = MsRest::TokenCredentials.new(token_provider)
+```ruby
+# Include SDK modules to ease access to resources classes.
+include Azure::Resources::Profiles::Latest::Mgmt
+include Azure::Resources::Profiles::Latest::Mgmt::Models
+
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       'YOUR TENANT ID',
+       'YOUR CLIENT ID',
+       'YOUR CLIENT SECRET')
+credentials = MsRest::TokenCredentials.new(provider)
+
+options = {
+  tenant_id: 'YOUR TENANT ID',
+  client_id: 'YOUR CLIENT ID',
+  client_secret: 'YOUR CLIENT SECRET',
+  subscription_id: 'YOUR SUBSCRIPTION ID',
+  credentials: credentials
+}
+
+client = Client.new(options)
 ```
 
-To get tenant_id, client_id and secret for your Azure application visit Azure portal or copy them from the powershell script from the article mentioned above.
+### Option 2 - Using a specific version of Resources
+You can create a new resources group using a specific version of Resources, say 2017-05-10.
 
-## Creating resource group
+```ruby
+# Include SDK modules to ease access to resources classes.
+include Azure::Resources::Mgmt::V2017_05_10
+include Azure::Resources::Mgmt::V2017_05_10::Models
 
-```Ruby
-# Create a client - a point of access to the API and set the subscription id
-options = {
-    credentials: credentials,
-    subscription_id: subscription_id
-}
-client = Azure::Resources::Profiles::Latest::Mgmt::Client.new(options)
+# Note: The tenant_id, client_id, client_secret and subscription_id
+# must be set using the env variables.
 
+provider = MsRestAzure::ApplicationTokenProvider.new(
+       ENV['AZURE_TENANT_ID'],
+       ENV['AZURE_CLIENT_ID'],
+       ENV['AZURE_CLIENT_SECRET'])
+credentials = MsRest::TokenCredentials.new(provider)
+
+client = ResourceManagementClient.new(credentials)
+client.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+```
+
+## Using the client
+Once the client is initialized, we could create the resource group.
+
+```ruby
 # Create a model for resource group.
-resource_group = Azure::Resources::Profiles::Latest::Mgmt::Models::ResourceGroup.new()
+resource_group = ResourceGroup.new()
 resource_group.location = 'westus'
 
 promise = client.resource_groups.create_or_update_async('new_test_resource_group', resource_group)

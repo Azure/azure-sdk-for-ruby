@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::Resources::Mgmt::V2017_05_10
-    VERSION = '0.15.0'
+    VERSION = '0.15.1'
 end

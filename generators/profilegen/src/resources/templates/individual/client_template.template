@@ -14,7 +14,7 @@ module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
   # Client class for the <%= @profile_name %> profile SDK.
   #
   class Client < <%= "#{@class_names[0]}" %>Class
-    include Azure::ARM::Configurable
+    include Azure::Common::Configurable
 
 
     def initialize(options = {})
