@@ -82,7 +82,7 @@ namespace :arm do
   end
 
   desc 'Regen code for each sdk with all its api versions'
-  task :regen => :clean_generated do
+  task :regen_sdk_versions => :clean_generated do
     json = get_config_file
     each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
       if REGEN_EXCLUDES.include?(dir.to_s)
@@ -232,6 +232,11 @@ namespace :arm do
   task :regen_all_profiles => [:regen_rollup_profile, :regen_individual_profiles] do
     puts 'Regenerated all profiles'
   end
+
+  desc 'Regen all versions of sdk and profiles'
+  task :regen => [:regen_sdk_versions, :regen_all_profiles] do
+    puts 'Regenerated all versions of sdk and profiles'
+  end
 end
 
 Rake::Task['arm:regen_rollup_profile'].enhance do
@@ -242,7 +247,7 @@ Rake::Task['arm:regen_individual_profiles'].enhance do
   Rake::Task['arm:regen_individual_require_files'].invoke
 end
 
-Rake::Task['arm:regen'].enhance do
+Rake::Task['arm:regen_sdk_versions'].enhance do
   Rake::Task['arm:regen_individual_require_files'].invoke
 end
 
