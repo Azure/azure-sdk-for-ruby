@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::Common
+module MsRestAzure::Common
   # The Azure::Common::Configurable module provides basic configuration for Azure activities.
   module Configurable
     # @return [String] Azure tenant id (also known as domain).
@@ -45,8 +45,8 @@ module Azure::Common
     # This will also creates MsRest::TokenCredentials to be used for subsequent Azure Resource Manager clients.
     #
     def reset!(options = {})
-      Azure::Common::Configurable.keys.each do |key|
-        default_value = Azure::Common::Default.options[key]
+      MsRestAzure::Common::Configurable.keys.each do |key|
+        default_value = MsRestAzure::Common::Default.options[key]
         instance_variable_set(:"@#{key}", options.fetch(key, default_value))
       end
 
@@ -76,8 +76,8 @@ module Azure::Common
     #
     def setup_default_options
       opts = {}
-      Azure::Common::Configurable.keys.map do |key|
-        opts[key] = Azure::Common::Default.options[key]
+      MsRestAzure::Common::Configurable.keys.map do |key|
+        opts[key] = MsRestAzure::Common::Default.options[key]
       end
 
       opts

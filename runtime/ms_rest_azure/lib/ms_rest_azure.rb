@@ -15,7 +15,12 @@ require 'ms_rest_azure/credentials/msi_token_provider.rb'
 require 'ms_rest_azure/polling_state.rb'
 require 'ms_rest_azure/serialization.rb'
 require 'ms_rest_azure/version'
+require 'ms_rest_azure/common/configurable'
+require 'ms_rest_azure/common/default'
 
 module MsRestAzure end
 module MsRestAzure::Serialization end
 module MsRestAzure::AzureEnvironments end
+module MsRestAzure::Common end
+module MsRestAzure::Common::Configurable end
+module MsRestAzure::Common::Default end
