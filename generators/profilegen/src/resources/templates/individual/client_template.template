@@ -1,0 +1,25 @@
+# encoding: utf-8
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+
+require 'profiles/<%= @profile_name.downcase %>/<%= @module_definition_file_name.gsub('.rb','') %>'
+<%- @file_names.each do |file_name| -%>
+require 'profiles/<%= @profile_name.downcase %>/modules/<%= file_name %>'
+<%- end -%>
+require 'profiles/common/configurable'
+require 'profiles/common/default'
+
+module Azure::<%= @class_name %>::Profiles::<%= @profile_name %>::Mgmt
+  #
+  # Client class for the <%= @profile_name %> profile SDK.
+  #
+  class Client < <%= "#{@class_names[0]}" %>Class
+    include Azure::Common::Configurable
+
+
+    def initialize(options = {})
+      super(options)
+    end
+
+  end
+end
