@@ -4,15 +4,13 @@
 
 require 'profiles/latest/resources_module_definition'
 require 'profiles/latest/modules/resources_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Resources::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < ResourcesClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

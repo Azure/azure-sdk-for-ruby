@@ -4,15 +4,13 @@
 
 require 'profiles/latest/redis_module_definition'
 require 'profiles/latest/modules/redis_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Redis::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < RedisClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

@@ -4,15 +4,13 @@
 
 require 'profiles/latest/subscriptions_module_definition'
 require 'profiles/latest/modules/subscriptions_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Subscriptions::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < SubscriptionsClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

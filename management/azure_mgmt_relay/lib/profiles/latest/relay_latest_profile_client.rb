@@ -4,15 +4,13 @@
 
 require 'profiles/latest/relay_module_definition'
 require 'profiles/latest/modules/relay_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Relay::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < RelayClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

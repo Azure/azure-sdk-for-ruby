@@ -4,15 +4,13 @@
 
 require 'profiles/v2017_03_09/policy_module_definition'
 require 'profiles/v2017_03_09/modules/policy_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Policy::Profiles::V2017_03_09::Mgmt
   #
   # Client class for the V2017_03_09 profile SDK.
   #
   class Client < PolicyClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

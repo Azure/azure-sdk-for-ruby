@@ -4,15 +4,13 @@
 
 require 'profiles/latest/graph_module_definition'
 require 'profiles/latest/modules/graph_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Graph::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < GraphClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

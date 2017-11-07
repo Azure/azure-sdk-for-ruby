@@ -4,15 +4,13 @@
 
 require 'profiles/latest/servicebus_module_definition'
 require 'profiles/latest/modules/servicebus_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::ServiceBus::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < ServiceBusClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

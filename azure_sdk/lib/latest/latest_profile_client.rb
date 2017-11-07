@@ -60,15 +60,13 @@ require 'latest/modules/streamanalytics_profile_module'
 require 'latest/modules/subscriptions_profile_module'
 require 'latest/modules/trafficmanager_profile_module'
 require 'latest/modules/web_profile_module'
-require 'common/configurable'
-require 'common/default'
 
 module Azure::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
     attr_reader  :analysis_services, :authorization, :automation, :batch, :billing, :cdn, :cognitive_services, :commerce, :compute, :consumption, :container_instance, :container_registry, :container_service, :customer_insights, :data_lake_analytics, :data_lake_store, :dev_test_labs, :dns, :event_grid, :event_hub, :features, :graph, :iot_hub, :key_vault, :links, :locks, :logic, :machine_learning, :managed_applications, :marketplace_ordering, :media_services, :mobile_engagement, :monitor, :network, :notification_hubs, :operational_insights, :policy, :power_bi_embedded, :recovery_services, :recovery_services_backup, :recovery_services_site_recovery, :redis, :relay, :resources, :resources_management, :scheduler, :search, :server_management, :service_bus, :service_fabric, :sql, :stor_simple8000_series, :storage, :stream_analytics, :subscriptions, :traffic_manager, :web
 

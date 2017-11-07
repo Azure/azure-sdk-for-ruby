@@ -4,15 +4,13 @@
 
 require 'profiles/latest/marketplaceordering_module_definition'
 require 'profiles/latest/modules/marketplaceordering_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::MarketplaceOrdering::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < MarketplaceOrderingClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

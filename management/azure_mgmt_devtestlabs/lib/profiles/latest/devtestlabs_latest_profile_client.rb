@@ -4,15 +4,13 @@
 
 require 'profiles/latest/devtestlabs_module_definition'
 require 'profiles/latest/modules/devtestlabs_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::DevTestLabs::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < DevTestLabsClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})
