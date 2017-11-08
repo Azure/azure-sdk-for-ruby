@@ -4,15 +4,13 @@
 
 require 'profiles/latest/datalakeanalytics_module_definition'
 require 'profiles/latest/modules/datalakeanalytics_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::DataLakeAnalytics::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < DataLakeAnalyticsClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

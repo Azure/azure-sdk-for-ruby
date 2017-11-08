@@ -4,15 +4,13 @@
 
 require 'profiles/latest/cdn_module_definition'
 require 'profiles/latest/modules/cdn_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::CDN::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < CDNClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

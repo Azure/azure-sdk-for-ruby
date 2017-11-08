@@ -4,15 +4,13 @@
 
 require 'profiles/v2017_03_09/links_module_definition'
 require 'profiles/v2017_03_09/modules/links_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Links::Profiles::V2017_03_09::Mgmt
   #
   # Client class for the V2017_03_09 profile SDK.
   #
   class Client < LinksClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

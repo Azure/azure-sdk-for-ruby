@@ -4,15 +4,13 @@
 
 require 'profiles/latest/customerinsights_module_definition'
 require 'profiles/latest/modules/customerinsights_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::CustomerInsights::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < CustomerInsightsClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

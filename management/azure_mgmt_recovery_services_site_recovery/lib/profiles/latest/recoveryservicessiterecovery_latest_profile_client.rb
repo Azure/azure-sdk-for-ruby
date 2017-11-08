@@ -4,15 +4,13 @@
 
 require 'profiles/latest/recoveryservicessiterecovery_module_definition'
 require 'profiles/latest/modules/recoveryservicessiterecovery_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::RecoveryServicesSiteRecovery::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < RecoveryServicesSiteRecoveryClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

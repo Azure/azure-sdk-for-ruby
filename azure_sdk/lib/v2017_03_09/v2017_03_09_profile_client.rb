@@ -12,15 +12,13 @@ require 'v2017_03_09/modules/locks_profile_module'
 require 'v2017_03_09/modules/policy_profile_module'
 require 'v2017_03_09/modules/resources_profile_module'
 require 'v2017_03_09/modules/subscriptions_profile_module'
-require 'common/configurable'
-require 'common/default'
 
 module Azure::Profiles::V2017_03_09::Mgmt
   #
   # Client class for the V2017_03_09 profile SDK.
   #
   class Client
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
     attr_reader  :storage, :network, :compute, :features, :links, :locks, :policy, :resources, :subscriptions
 

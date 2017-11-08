@@ -2,7 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure::Common
+module MsRestAzure::Common
   module Default
     class << self
       #
@@ -50,7 +50,7 @@ module Azure::Common
       # @return [Hash] Configuration options.
       #
       def options
-        Hash[Azure::Common::Configurable.keys.map { |key| [key, send(key)]}]
+        Hash[MsRestAzure::Common::Configurable.keys.map { |key| [key, send(key)]}]
       end
     end
   end

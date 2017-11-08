@@ -4,15 +4,13 @@
 
 require 'profiles/latest/authorization_module_definition'
 require 'profiles/latest/modules/authorization_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Authorization::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < AuthorizationClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

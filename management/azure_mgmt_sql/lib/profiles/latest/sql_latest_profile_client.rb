@@ -4,15 +4,13 @@
 
 require 'profiles/latest/sql_module_definition'
 require 'profiles/latest/modules/sql_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::SQL::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < SQLClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

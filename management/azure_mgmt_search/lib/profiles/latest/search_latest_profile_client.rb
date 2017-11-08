@@ -4,15 +4,13 @@
 
 require 'profiles/latest/search_module_definition'
 require 'profiles/latest/modules/search_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Search::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < SearchClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})
