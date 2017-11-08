@@ -221,10 +221,7 @@ module MsRest
         end
         object = mapper[:default_value] if mapper[:is_constant]
 
-        # Throw if required & non-constant object is nil
-        if mapper[:required] && object.nil? && !mapper[:is_constant]
-          fail ValidationError, "#{object_name} is required and cannot be nil"
-        end
+        validate_constraints(mapper, object, object_name)
 
         if !mapper[:required] && object.nil?
           return object
@@ -242,6 +239,44 @@ module MsRest
           payload = serialize_sequence_type(mapper, object, object_name)
         end
         payload
+      end
+
+      def validate_constraints(mapper, object, object_name)
+        if(mapper[:client_side_validation])
+          # Throw if required & non-constant object is nil
+          if mapper[:required] && object.nil? && !mapper[:is_constant]
+            fail ValidationError, "#{object_name} is required and cannot be nil"
+          end
+
+          if(mapper[:constraints])
+            mapper[:constraints].each do |constraint_name, constraint_value|
+              case constraint_name.to_s.downcase
+                when 'exclusivemaximum'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'ExclusiveMaximum': '#{constraint_value}'" if !object.nil? && object >= constraint_value
+                when 'exclusiveminimum'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'ExclusiveMinimum': '#{constraint_value}'" if !object.nil? && object <= constraint_value
+                when 'inclusivemaximum'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'InclusiveMaximum': '#{constraint_value}'" if !object.nil? && object > constraint_value
+                when 'inclusiveminimum'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'InclusiveMinimum': '#{constraint_value}'" if !object.nil? && object < constraint_value
+                when 'maxitems'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MaxItems': '#{constraint_value}'" if !object.nil? && object.length > constraint_value
+                when 'minitems'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MinItems': '#{constraint_value}'" if !object.nil? && object.length < constraint_value
+                when 'maxlength'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MaxLength': '#{constraint_value}'" if !object.nil? && object.length > constraint_value
+                when 'minlength'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MinLength': '#{constraint_value}'" if !object.nil? && object.length < constraint_value
+                when 'multipleof'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MultipleOf': '#{constraint_value}'" if !object.nil? && object % constraint_value != 0
+                when 'pattern'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'Pattern': '#{constraint_value}'" if !object.nil? && object.match(Regexp.new constraint_value).nil?
+                when 'uniqueitems'
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'UniqueItems': '#{constraint_value}'" if !object.nil? && object.length != object.uniq.length
+              end
+            end
+          end
+        end
       end
 
       #
