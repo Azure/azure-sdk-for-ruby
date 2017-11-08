@@ -11,10 +11,10 @@ class RequireFileGenerator
 
   attr_accessor :requires
 
-  def initialize(azure_sdk_location, mgmt_sdks_location)
-    @azure_sdk_location = azure_sdk_location
-    @mgmt_sdks_location = mgmt_sdks_location
-    @current_location = Dir.pwd
+  def initialize(azure_sdk_for_ruby_location)
+    @azure_sdk_location = "#{azure_sdk_for_ruby_location}/azure_sdk"
+    @mgmt_sdks_location = "#{azure_sdk_for_ruby_location}/management"
+    @azure_sdk_for_ruby_location = azure_sdk_for_ruby_location
     @file_to_be_written = ''
     @requires = []
   end
@@ -55,7 +55,7 @@ class RequireFileGenerator
   #
   def generate_require_files_for_individual_gems
     puts 'Generating require files for individual gems'
-    Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}")
+    Dir.chdir("#{@mgmt_sdks_location}")
     gems = Dir['*'].reject{|o| not File.directory?(o)}
     gems.each do |gem|
       # azure_mgmt_insights is a special case gem which we have stopped
@@ -70,19 +70,19 @@ class RequireFileGenerator
 
       puts "Generating require files for #{gem}"
 
-      Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib")
+      Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib")
       sub_files_list = Dir['*'].reject{|o| File.directory?(o)}
       sub_files_list.each do |file|
         # Ignore the module definition and version files.
         if(!(file.end_with?'module_definition.rb') && (!file.end_with?'version.rb'))
-          @file_to_be_written = "#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib/#{file}"
+          @file_to_be_written = "#{@mgmt_sdks_location}/#{gem}/lib/#{file}"
         end
       end
 
       sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
       sub_dirs.each do |sub_dir|
         if(sub_dir == 'profiles')
-          Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib/profiles")
+          Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib/profiles")
           profiles_folders = Dir['*'].reject{|o| not File.directory?(o)}
           profiles_folders.each do |profile_folder|
             # Ignore the common folder
@@ -90,7 +90,7 @@ class RequireFileGenerator
               next
             end
 
-            Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib/profiles/#{profile_folder}")
+            Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib/profiles/#{profile_folder}")
             files_list = Dir['*'].reject{|o| File.directory?(o)}
             files_list.each do |file|
               # Ignore the module definition file
@@ -103,7 +103,7 @@ class RequireFileGenerator
 
           end
         else
-          Dir.chdir("#{@current_location}/#{@mgmt_sdks_location}/#{gem}/lib/#{sub_dir}/generated")
+          Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib/#{sub_dir}/generated")
           files_list = Dir['*'].reject{|o| File.directory?(o)}
           @requires << "#{sub_dir}/generated/#{files_list[0]}"
         end
@@ -147,8 +147,8 @@ class RequireFileGenerator
   def generate_require_files_for_rollup_gem
     puts 'Generating require files for rollup gem'
     @requires = []
-    @file_to_be_written = "#{@current_location}/#{@azure_sdk_location}/lib/azure_sdk.rb"
-    Dir.chdir("#{@current_location}/#{@azure_sdk_location}/lib")
+    @file_to_be_written = "#{@azure_sdk_location}/lib/azure_sdk.rb"
+    Dir.chdir("#{@azure_sdk_location}/lib")
     sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
     sub_dirs.each do |sub_dir|
       # Ignore the 'common' & 'azure_sdk' folders.
@@ -156,7 +156,7 @@ class RequireFileGenerator
         next
       end
 
-      Dir.chdir("#{@current_location}/#{@azure_sdk_location}/lib/#{sub_dir}")
+      Dir.chdir("#{@azure_sdk_location}/lib/#{sub_dir}")
       sub_files_list = Dir['*'].reject{|o| File.directory?(o)}
       sub_files_list.each do |file|
         # Ignore the module definition file
@@ -202,7 +202,7 @@ class RequireFileGenerator
   # and returns the object.
   #
   def get_renderer_template
-    File.read("#{@current_location}/resources/templates/require_file_template.template")
+    File.read("#{@azure_sdk_for_ruby_location}/generators/requirefilegen/src/resources/templates/require_file_template.template")
   end
 
   #
@@ -226,7 +226,7 @@ class RequireFileGenerator
 end
 
 options = RequireFileGeneratorOptionsParser.options ARGV
-obj = RequireFileGenerator.new('../../../azure_sdk', '../../../management')
+obj = RequireFileGenerator.new(options.sdk_path)
 if options.mode == 'rollup'
   obj.generate_require_files_for_rollup_gem
 else

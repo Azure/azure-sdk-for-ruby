@@ -7,8 +7,9 @@ require_relative 'profile_generator'
 
 options = ProfileGeneratorOptionsParser.options ARGV
 dir_metadata  = JSON.parse(File.read(options.dir_metadata))
-profiles      = JSON.parse(File.read(options.profile))
+profiles_file = JSON.parse(File.read(options.profile))
+profiles = profiles_file[options.mode][options.key]
 
 profiles.each do |profile|
-  ProfileGenerator.new(profile, dir_metadata).generate
+  ProfileGenerator.new(profile, dir_metadata, options.sdk_path).generate
 end
