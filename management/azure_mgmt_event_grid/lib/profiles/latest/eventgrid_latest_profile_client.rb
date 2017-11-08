@@ -4,15 +4,13 @@
 
 require 'profiles/latest/eventgrid_module_definition'
 require 'profiles/latest/modules/eventgrid_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::EventGrid::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < EventGridClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

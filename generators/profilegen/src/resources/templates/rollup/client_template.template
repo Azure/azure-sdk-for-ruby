@@ -6,15 +6,13 @@ require '<%= @profile_name.downcase %>/<%= @module_definition_file_name.gsub('.r
 <%- @file_names.each do |file_name| -%>
 require '<%= @profile_name.downcase %>/modules/<%= file_name %>'
 <%- end -%>
-require 'common/configurable'
-require 'common/default'
 
 module Azure::Profiles::<%= @profile_name %>::Mgmt
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #
   class Client
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
     attr_reader <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
 

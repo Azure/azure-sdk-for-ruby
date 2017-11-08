@@ -4,15 +4,13 @@
 
 require 'profiles/latest/servicefabric_module_definition'
 require 'profiles/latest/modules/servicefabric_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::ServiceFabric::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < ServiceFabricClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

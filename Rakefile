@@ -150,7 +150,7 @@ namespace :arm do
     Dir.chdir(File.expand_path('../azure_sdk/lib', __FILE__))
     subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
     subdir_list.each do |subdir|
-      if subdir != 'common' && subdir != 'azure_sdk'
+      if subdir != 'azure_sdk'
         folder_to_be_cleaned = File.expand_path("../azure_sdk/lib/#{subdir}", __FILE__)
         puts "Cleaning folder - #{folder_to_be_cleaned}"
         FileUtils.rm_rf(folder_to_be_cleaned)
@@ -168,11 +168,9 @@ namespace :arm do
       Dir.chdir("#{__dir__}/management/#{gem}/lib/profiles")
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|
-        if subdir.to_s != 'common'
-          folder_to_be_cleaned = "#{__dir__}/management/#{gem}/lib/profiles/#{subdir}"
-          puts "Cleaning folder - #{folder_to_be_cleaned}"
-          FileUtils.rm_rf(folder_to_be_cleaned)
-        end
+        folder_to_be_cleaned = "#{__dir__}/management/#{gem}/lib/profiles/#{subdir}"
+        puts "Cleaning folder - #{folder_to_be_cleaned}"
+        FileUtils.rm_rf(folder_to_be_cleaned)
       end
     end
   end
@@ -189,9 +187,6 @@ namespace :arm do
     # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=profiles.json --mode=rollup --key=azure_sdk
     command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=rollup --key=azure_sdk --sdk_path=#{__dir__}"
     execute_and_stream(command)
-
-    FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/configurable.rb", "#{__dir__}/azure_sdk/lib/common/configurable.rb")
-    FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/default.rb", "#{__dir__}/azure_sdk/lib/common/default.rb")
   end
 
   desc 'Regen individual profiles'
@@ -205,9 +200,6 @@ namespace :arm do
       # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json --mode=management --key=azure_mgmt_authorization
       command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=management --key=#{gem} --sdk_path=#{__dir__}"
       execute_and_stream(command)
-
-      FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/configurable.rb", "#{__dir__}/management/#{gem}/lib/profiles/common/configurable.rb")
-      FileUtils.cp("#{__dir__}/generators/profilegen/src/resources/common/default.rb", "#{__dir__}/management/#{gem}/lib/profiles/common/default.rb")
     end
   end
 

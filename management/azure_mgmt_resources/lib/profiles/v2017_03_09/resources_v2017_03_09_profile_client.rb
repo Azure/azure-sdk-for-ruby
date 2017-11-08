@@ -4,15 +4,13 @@
 
 require 'profiles/v2017_03_09/resources_module_definition'
 require 'profiles/v2017_03_09/modules/resources_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Resources::Profiles::V2017_03_09::Mgmt
   #
   # Client class for the V2017_03_09 profile SDK.
   #
   class Client < ResourcesClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

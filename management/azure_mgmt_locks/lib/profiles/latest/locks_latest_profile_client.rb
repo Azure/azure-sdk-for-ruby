@@ -4,15 +4,13 @@
 
 require 'profiles/latest/locks_module_definition'
 require 'profiles/latest/modules/locks_profile_module'
-require 'profiles/common/configurable'
-require 'profiles/common/default'
 
 module Azure::Locks::Profiles::Latest::Mgmt
   #
   # Client class for the Latest profile SDK.
   #
   class Client < LocksClass
-    include Azure::Common::Configurable
+    include MsRestAzure::Common::Configurable
 
 
     def initialize(options = {})

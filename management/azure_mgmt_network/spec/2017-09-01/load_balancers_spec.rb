@@ -70,7 +70,7 @@ describe 'Load balancers' do
 
     load_balancing_rule = LoadBalancingRule.new
     load_balancing_rule.name = load_balancing_rule_name
-    frontend_ip_configuration_sub_resource = MsRestAzure::SubResource.new
+    frontend_ip_configuration_sub_resource = SubResource.new
     frontend_ip_configuration_sub_resource.id =
         get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
                                  lb_name, 'FrontendIPConfigurations', frontend_ip_config_name)
@@ -80,12 +80,12 @@ describe 'Load balancers' do
     load_balancing_rule.backend_port = 80
     load_balancing_rule.enable_floating_ip = false
     load_balancing_rule.idle_timeout_in_minutes = 15
-    backend_address_pool_sub_resource = MsRestAzure::SubResource.new
+    backend_address_pool_sub_resource = SubResource.new
     backend_address_pool_sub_resource.id =
         get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
                                  lb_name, 'backendAddressPools', backend_address_pool_name)
     load_balancing_rule.backend_address_pool = backend_address_pool_sub_resource
-    probe_sub_resource = MsRestAzure::SubResource.new
+    probe_sub_resource = SubResource.new
     probe_sub_resource.id =
         get_child_lb_resource_id(@resource_helper.network_client.subscription_id, @resource_group.name,
                                  lb_name, 'probes', probe_name)
