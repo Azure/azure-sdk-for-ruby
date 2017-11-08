@@ -9,7 +9,7 @@ module MsRest
   describe 'Serialization' do
     it "should fail for a 'nil' object" do
       mapper = {
-      	required: true,
+        required: true,
         serialized_name: 'AvailabilitySet',
         client_side_validation: true
       }
@@ -20,15 +20,15 @@ module MsRest
 
     it "should fail for an 'ExclusiveMaximum' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'Number'
-      	},
-      	constraints: {
-      		ExclusiveMaximum: 100
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'Number'
+        },
+        constraints: {
+        ExclusiveMaximum: 100
+        }
       }
 
       object = 100
@@ -38,15 +38,15 @@ module MsRest
 
     it "should fail for an 'ExclusiveMinimum' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'Number'
-      	},
-      	constraints: {
-      		ExclusiveMinimum: 5
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'Number'
+        },
+        constraints: {
+        ExclusiveMinimum: 5
+        }
       }
 
       object = 5
@@ -56,15 +56,15 @@ module MsRest
 
     it "should fail for an 'InclusiveMaximum' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'Number'
-      	},
-      	constraints: {
-      		InclusiveMaximum: 100
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'Number'
+        },
+        constraints: {
+        InclusiveMaximum: 100
+        }
       }
 
       object = 101
@@ -74,15 +74,15 @@ module MsRest
 
     it "should fail for an 'InclusiveMinimum' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'Number'
-      	},
-      	constraints: {
-      		InclusiveMinimum: 5
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'Number'
+        },
+        constraints: {
+        InclusiveMinimum: 5
+        }
       }
 
       object = 4
@@ -92,23 +92,23 @@ module MsRest
 
     it "should fail for a 'maxitems' violation" do
       mapper = {
-      	required: true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	constraints: {
-      	  MaxItems: 2,
-      	},
-      	type: {
-      	  name: 'Sequence',
-      	  element: {
+        required: true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        constraints: {
+          MaxItems: 2,
+        },
+        type: {
+          name: 'Sequence',
+          element: {
             client_side_validation: true,
-      	    required: false,
-      	    serialized_name: 'StringElementType',
-      	    type: {
-      	      name: 'String'
-      	    }
-      	  }
-      	}
+            required: false,
+            serialized_name: 'StringElementType',
+            type: {
+              name: 'String'
+            }
+          }
+        }
       }
 
       object = ['One', 'Two', 'Three']
@@ -118,23 +118,23 @@ module MsRest
 
     it "should fail for a 'minitems' violation" do
       mapper = {
-      	required: true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	constraints: {
-      	  MinItems: 4,
-      	},
-      	type: {
-      	  name: 'Sequence',
-      	  element: {
+        required: true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        constraints: {
+          MinItems: 4,
+        },
+        type: {
+          name: 'Sequence',
+          element: {
             client_side_validation: true,
-      	    required: false,
-      	    serialized_name: 'StringElementType',
-      	    type: {
-      	      name: 'String'
-      	    }
-      	  }
-      	}
+            required: false,
+            serialized_name: 'StringElementType',
+            type: {
+              name: 'String'
+            }
+          }
+        }
       }
 
       object = ['One', 'Two', 'Three']
@@ -144,15 +144,15 @@ module MsRest
 
     it "should fail for a 'maxlength' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'String'
-      	},
-      	constraints: {
-      	  MaxLength: 3
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'String'
+        },
+        constraints: {
+          MaxLength: 3
+        }
       }
 
       object = 'sample'
@@ -162,15 +162,15 @@ module MsRest
 
     it "should fail for a 'minlength' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'String'
-      	},
-      	constraints: {
-      	  MinLength: 7
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'String'
+        },
+        constraints: {
+          MinLength: 7
+        }
       }
 
       object = 'sample'
@@ -180,15 +180,15 @@ module MsRest
 
     it "should fail for a 'multipleof' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'Number'
-      	},
-      	constraints: {
-      	  MultipleOf: 3
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'Number'
+        },
+        constraints: {
+          MultipleOf: 3
+        }
       }
 
       object = 16
@@ -198,15 +198,15 @@ module MsRest
 
     it "should fail for a 'pattern' violation" do
       mapper = {
-      	required:true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	type: {
-      	  name: 'String'
-      	},
-      	constraints: {
-      	  Pattern: '\d{4}-\d{2}-\d{2}'
-      	}
+        required:true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        type: {
+          name: 'String'
+        },
+        constraints: {
+          Pattern: '\d{4}-\d{2}-\d{2}'
+        }
       }
 
       object = 'dummy'
@@ -216,23 +216,23 @@ module MsRest
 
     it "should fail for a 'uniqueitems' violation" do
       mapper = {
-      	required: true,
-      	serialized_name: 'AvailabilitySet',
-      	client_side_validation: true,
-      	constraints: {
-      	  UniqueItems: true,
-      	},
-      	type: {
-      	  name: 'Sequence',
-      	  element: {
+        required: true,
+        serialized_name: 'AvailabilitySet',
+        client_side_validation: true,
+        constraints: {
+          UniqueItems: true,
+        },
+        type: {
+          name: 'Sequence',
+          element: {
             client_side_validation: true,
-      	    required: false,
-      	    serialized_name: 'StringElementType',
-      	    type: {
-      	      name: 'String'
-      	    }
-      	  }
-      	}
+            required: false,
+            serialized_name: 'StringElementType',
+            type: {
+              name: 'String'
+            }
+          }
+        }
       }
 
       object = ['One', 'Two', 'Three', 'One']
