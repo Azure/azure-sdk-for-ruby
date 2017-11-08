@@ -270,7 +270,7 @@ module MsRest
                 when 'multipleof'
                   fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'MultipleOf': '#{constraint_value}'" if !object.nil? && object % constraint_value != 0
                 when 'pattern'
-                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'Pattern': '#{constraint_value}'" if !object.nil? && object.match(Regexp.new constraint_value).nil?
+                  fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'Pattern': '#{constraint_value}'" if !object.nil? && object.match(Regexp.new "^#{constraint_value}$").nil?
                 when 'uniqueitems'
                   fail ValidationError, "#{object_name} with value '#{object}' should satisfy the constraint 'UniqueItems': '#{constraint_value}'" if !object.nil? && object.length != object.uniq.length
               end
