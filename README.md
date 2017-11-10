@@ -1,4 +1,4 @@
-
+DUMMY.....
 **NOTE**: With 0.15.0 version of Azure SDK, significant changes (Multiple API versions & Profiles) have been introduced.
 The details are available [here](#azure-multiple-api-versions--profiles)
 
@@ -27,10 +27,10 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [IoTHub](https://rubygems.org/gems/azure_mgmt_iot_hub) Azure IoTHub's Resource Management
 * [Key Vault](https://rubygems.org/gems/azure_mgmt_key_vault) Azure Key Vault's vault management
 * [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
-* [Logic](https://rubygems.org/gems/azure_mgmt_logic) Integration Accounts, AccountSchemas, AccountMaps, AccountPartners etc... 
+* [Logic](https://rubygems.org/gems/azure_mgmt_logic) Integration Accounts, AccountSchemas, AccountMaps, AccountPartners etc...
 * [Machine Learning](https://rubygems.org/gems/azure_mgmt_machine_learning) Azure Machine Learning web services management
 * [Media Services](https://rubygems.org/gems/azure_mgmt_media_services) Media Services resource management APIs
-* [Mobile Engagement](https://rubygems.org/gems/azure_mgmt_mobile_engagement) Azure Mobile Engagement's Apps, App Collections, Devices management APIs  
+* [Mobile Engagement](https://rubygems.org/gems/azure_mgmt_mobile_engagement) Azure Mobile Engagement's Apps, App Collections, Devices management APIs
 * [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
 * [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
 * [Policy](https://rubygems.org/gems/azure_mgmt_policy) Policy Assignment & Policy definition operations
@@ -83,7 +83,7 @@ gem 'azure_mgmt_network'
 ```
 
 Be aware the Azure Resource Manager Ruby SDK is in preview and will likely have breaking interface changes in upcoming
-releases. An increased number in Minor version may indicate breaking changes. 
+releases. An increased number in Minor version may indicate breaking changes.
 
 ### Authentication
 
@@ -207,7 +207,7 @@ To start with, the azure_sdk rollup gem has two profiles.
 
 You could choose the profile that you would like to use. If you would like to use the latest versions of **all** the services, then the recommendation is to use the **Latest** profile of the azure_sdk rollup gem.
 
-If you would like to use the services compatible with the **Azure Stack**, then the recommendation is to use the **V2017_03_09** profile of the Azure SDK rollup gem. 
+If you would like to use the services compatible with the **Azure Stack**, then the recommendation is to use the **V2017_03_09** profile of the Azure SDK rollup gem.
 
 ### Usage
 
