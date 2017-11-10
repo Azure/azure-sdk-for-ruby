@@ -31,5 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'dotenv', '~> 2'
 
-  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.9.0'
+  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.10.0'
 end
