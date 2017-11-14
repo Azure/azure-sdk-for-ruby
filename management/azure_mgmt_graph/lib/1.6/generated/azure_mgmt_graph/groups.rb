@@ -78,8 +78,7 @@ module Azure::Graph::Mgmt::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Graph::Mgmt::V1_6::Models::CheckGroupMembershipParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/isMemberOf'
@@ -110,8 +109,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::CheckGroupMembershipResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::CheckGroupMembershipResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -270,8 +268,7 @@ module Azure::Graph::Mgmt::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupAddMemberParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/groups/{groupObjectId}/$links/members'
@@ -437,8 +434,7 @@ module Azure::Graph::Mgmt::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/groups'
@@ -469,8 +465,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::ADGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::ADGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -555,8 +550,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::GroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -646,8 +640,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GetObjectsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::GetObjectsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -737,8 +730,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::ADGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::ADGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -814,8 +806,7 @@ module Azure::Graph::Mgmt::V1_6
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupGetMemberGroupsParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{tenantID}/groups/{objectId}/getMemberGroups'
@@ -847,8 +838,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupGetMemberGroupsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::GroupGetMemberGroupsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -935,8 +925,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::GroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1023,8 +1012,7 @@ module Azure::Graph::Mgmt::V1_6
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Graph::Mgmt::V1_6::Models::GetObjectsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Graph::Mgmt::V1_6::Models::GetObjectsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

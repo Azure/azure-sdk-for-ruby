@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<BasicDependency>] The list of dependencies.
       attr_accessor :depends_on
 
@@ -31,6 +32,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Dependency',
           type: {
@@ -38,11 +40,13 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'Dependency',
             model_properties: {
               depends_on: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dependsOn',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BasicDependencyElementType',
                       type: {
@@ -53,6 +57,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +65,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -67,6 +73,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               resource_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceName',
                 type: {

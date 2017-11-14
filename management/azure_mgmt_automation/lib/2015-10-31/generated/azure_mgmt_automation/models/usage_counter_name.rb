@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the usage counter name.
       attr_accessor :value
 
@@ -25,6 +26,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageCounterName',
           type: {
@@ -32,6 +34,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'UsageCounterName',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               localized_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

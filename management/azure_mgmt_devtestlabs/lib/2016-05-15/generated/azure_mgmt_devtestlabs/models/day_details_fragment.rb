@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The time of day the schedule will occur.
       attr_accessor :time
 
@@ -22,6 +23,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DayDetailsFragment',
           type: {
@@ -29,6 +31,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'DayDetailsFragment',
             model_properties: {
               time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'time',
                 type: {

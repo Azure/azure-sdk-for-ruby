@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name server name for this NS record.
       attr_accessor :nsdname
 
@@ -22,6 +23,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NsRecord',
           type: {
@@ -29,6 +31,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'NsRecord',
             model_properties: {
               nsdname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nsdname',
                 type: {

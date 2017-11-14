@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The object ID.
       attr_accessor :object_id
 
@@ -50,6 +51,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Application',
           type: {
@@ -57,6 +59,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'Application',
             model_properties: {
               object_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectId',
                 type: {
@@ -64,6 +67,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               object_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectType',
                 type: {
@@ -71,6 +75,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               app_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {
@@ -78,11 +83,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               app_permissions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appPermissions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -92,6 +99,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               available_to_other_tenants: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableToOtherTenants',
                 type: {
@@ -99,6 +107,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -106,11 +115,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               identifier_uris: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identifierUris',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -120,11 +131,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               reply_urls: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replyUrls',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -134,6 +147,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               homepage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'homepage',
                 type: {
@@ -141,6 +155,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               oauth2allow_implicit_flow: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'oauth2AllowImplicitFlow',
                 type: {

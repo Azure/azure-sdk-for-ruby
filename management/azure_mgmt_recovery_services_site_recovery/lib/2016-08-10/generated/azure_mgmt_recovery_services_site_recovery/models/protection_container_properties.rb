@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Fabric friendly name.
       attr_accessor :fabric_friendly_name
 
@@ -41,6 +42,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectionContainerProperties',
           type: {
@@ -48,6 +50,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProtectionContainerProperties',
             model_properties: {
               fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricFriendlyName',
                 type: {
@@ -55,6 +58,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -62,6 +66,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricType',
                 type: {
@@ -69,6 +74,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protected_item_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemCount',
                 type: {
@@ -76,6 +82,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               pairing_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pairingStatus',
                 type: {
@@ -83,6 +90,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               role: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'role',
                 type: {
@@ -90,6 +98,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricSpecificDetails',
                 type: {

@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the certificate password, return value
       # will always be empty.
       attr_accessor :password
@@ -37,6 +38,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientCertAuthentication',
           type: {
@@ -44,6 +46,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'ClientCertAuthentication',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               pfx: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pfx',
                 type: {
@@ -66,6 +71,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               certificate_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateThumbprint',
                 type: {
@@ -73,6 +79,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               certificate_expiration_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateExpirationDate',
                 type: {
@@ -80,6 +87,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               certificate_subject_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateSubjectName',
                 type: {

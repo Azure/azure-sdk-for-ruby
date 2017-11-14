@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TopicProvisioningState] Provisioning state of the topic.
       # Possible values include: 'Creating', 'Updating', 'Deleting',
       # 'Succeeded', 'Canceled', 'Failed'
@@ -27,6 +28,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Topic',
           type: {
@@ -34,6 +36,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
             class_name: 'Topic',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,6 +45,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -50,6 +54,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -58,6 +63,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -65,11 +71,13 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -79,6 +87,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -87,6 +96,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endpoint',

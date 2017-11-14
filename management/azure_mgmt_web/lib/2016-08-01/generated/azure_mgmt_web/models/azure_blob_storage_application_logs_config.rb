@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LogLevel] Log level. Possible values include: 'Off',
       # 'Verbose', 'Information', 'Warning', 'Error'
       attr_accessor :level
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureBlobStorageApplicationLogsConfig',
           type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AzureBlobStorageApplicationLogsConfig',
             model_properties: {
               level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               sas_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sasUrl',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               retention_in_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionInDays',
                 type: {

@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]  Property name on the source Entity Type.
       attr_accessor :source_property_name
 
@@ -29,6 +30,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TypePropertiesMapping',
           type: {
@@ -36,6 +38,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'TypePropertiesMapping',
             model_properties: {
               source_property_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourcePropertyName',
                 type: {
@@ -43,6 +46,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               target_property_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetPropertyName',
                 type: {
@@ -50,6 +54,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               link_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'linkType',
                 type: {

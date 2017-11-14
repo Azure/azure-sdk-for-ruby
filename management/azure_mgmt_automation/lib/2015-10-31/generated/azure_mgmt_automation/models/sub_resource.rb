@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 
@@ -22,6 +23,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubResource',
           type: {
@@ -29,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'SubResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

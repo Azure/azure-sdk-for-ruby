@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AttachNewDataDiskOptions] Specifies options to attach a new
       # disk to the virtual machine.
       attr_accessor :attach_new_data_disk_options
@@ -32,6 +33,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataDiskProperties',
           type: {
@@ -39,6 +41,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'DataDiskProperties',
             model_properties: {
               attach_new_data_disk_options: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'attachNewDataDiskOptions',
                 type: {
@@ -47,6 +50,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               existing_lab_disk_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'existingLabDiskId',
                 type: {
@@ -54,6 +58,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               host_caching: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostCaching',
                 type: {

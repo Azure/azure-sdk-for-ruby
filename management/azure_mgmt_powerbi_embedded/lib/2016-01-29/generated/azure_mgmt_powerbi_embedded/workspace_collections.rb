@@ -103,8 +103,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -187,8 +186,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CreateWorkspaceCollectionRequest.mapper()
-      request_content = @client.serialize(request_mapper,  body)
+      request_content = body.nil? ? nil: body.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}'
@@ -219,8 +217,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -300,8 +297,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::UpdateWorkspaceCollectionRequest.mapper()
-      request_content = @client.serialize(request_mapper,  body)
+      request_content = body.nil? ? nil: body.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}'
@@ -332,8 +328,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -443,8 +438,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameRequest.mapper()
-      request_content = @client.serialize(request_mapper,  body)
+      request_content = body.nil? ? nil: body.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/locations/{location}/checkNameAvailability'
@@ -475,8 +469,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::CheckNameResponse.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -565,8 +558,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -651,8 +643,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -748,8 +739,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -826,8 +816,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKey.mapper()
-      request_content = @client.serialize(request_mapper,  body)
+      request_content = body.nil? ? nil: body.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}/regenerateKey'
@@ -858,8 +847,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::WorkspaceCollectionAccessKeys.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -928,8 +916,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::PowerBiEmbedded::Mgmt::V2016_01_29::Models::MigrateWorkspaceCollectionRequest.mapper()
-      request_content = @client.serialize(request_mapper,  body)
+      request_content = body.nil? ? nil: body.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources'

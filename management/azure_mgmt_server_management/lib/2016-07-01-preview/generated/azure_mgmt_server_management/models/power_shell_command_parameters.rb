@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Script to execute.
       attr_accessor :command
 
@@ -22,6 +23,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PowerShellCommandParameters',
           type: {
@@ -29,6 +31,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PowerShellCommandParameters',
             model_properties: {
               command: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.command',
                 type: {

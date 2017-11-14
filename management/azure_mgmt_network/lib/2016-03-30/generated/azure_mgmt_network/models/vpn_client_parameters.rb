@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProcessorArchitecture] VPN client Processor Architecture
       # -Amd64/X86. Possible values include: 'Amd64', 'X86'
       attr_accessor :processor_architecture
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VpnClientParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'VpnClientParameters',
             model_properties: {
               processor_architecture: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ProcessorArchitecture',
                 type: {

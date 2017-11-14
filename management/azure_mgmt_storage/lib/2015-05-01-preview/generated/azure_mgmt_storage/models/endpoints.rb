@@ -13,6 +13,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the blob endpoint.
       attr_accessor :blob
 
@@ -29,6 +30,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Endpoints',
           type: {
@@ -36,6 +38,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'Endpoints',
             model_properties: {
               blob: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blob',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               queue: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'queue',
                 type: {
@@ -50,6 +54,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               table: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'table',
                 type: {

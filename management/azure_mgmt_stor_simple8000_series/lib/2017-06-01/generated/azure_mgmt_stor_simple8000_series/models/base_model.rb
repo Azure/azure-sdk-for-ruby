@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The path ID that uniquely identifies the object.
       attr_accessor :id
 
@@ -32,6 +33,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BaseModel',
           type: {
@@ -39,6 +41,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BaseModel',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -47,6 +50,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +59,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {

@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the full path on the created VM where ssh
       # public key is stored. If the file already exists, the specified key is
       # appended to the file. Example: /home/user/.ssh/authorized_keys
@@ -32,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SshPublicKey',
           type: {
@@ -39,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'SshPublicKey',
             model_properties: {
               path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               key_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyData',
                 type: {

@@ -12,6 +12,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [GatewayError] Error of the list gateway status.
       attr_accessor :error
 
@@ -22,6 +23,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayListStatusError',
           type: {
@@ -29,6 +31,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'GatewayListStatusError',
             model_properties: {
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

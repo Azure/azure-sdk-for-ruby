@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The VM Agent full version.
       attr_accessor :vm_agent_version
 
@@ -29,6 +30,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineAgentInstanceView',
           type: {
@@ -36,6 +38,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineAgentInstanceView',
             model_properties: {
               vm_agent_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmAgentVersion',
                 type: {
@@ -43,11 +46,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               extension_handlers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensionHandlers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineExtensionHandlerInstanceViewElementType',
                       type: {
@@ -58,11 +63,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               statuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

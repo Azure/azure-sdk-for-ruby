@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the instance type.
       attr_accessor :instance_type
 
@@ -26,6 +27,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMageAzureV2RecoveryPointDetails',
           type: {
@@ -33,6 +35,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageAzureV2RecoveryPointDetails',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Type',
@@ -41,6 +44,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               instance_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'instanceType',
@@ -49,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               is_multi_vm_sync_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isMultiVmSyncPoint',
                 type: {

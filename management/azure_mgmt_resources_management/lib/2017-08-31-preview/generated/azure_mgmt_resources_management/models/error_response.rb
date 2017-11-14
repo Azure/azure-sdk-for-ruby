@@ -12,6 +12,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ErrorDetails] Error.
       attr_accessor :error
 
@@ -22,6 +23,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -29,6 +31,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] Gets or sets a reference to frontend IP Addresses
       attr_accessor :frontend_ipconfiguration
 
@@ -73,6 +74,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatRule',
           type: {
@@ -80,6 +82,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'InboundNatRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -87,6 +90,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               frontend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -95,6 +99,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               backend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendIPConfiguration',
                 type: {
@@ -103,6 +108,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -110,6 +116,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               frontend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -117,6 +124,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               backend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -124,6 +132,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               idle_timeout_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -131,6 +140,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               enable_floating_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
                 type: {
@@ -138,6 +148,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -145,6 +156,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -152,6 +164,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

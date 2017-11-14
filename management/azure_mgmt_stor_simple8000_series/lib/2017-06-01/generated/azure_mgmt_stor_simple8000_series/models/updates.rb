@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Set to 'true' if regular updates are available for
       # the device.
       attr_accessor :regular_updates_available
@@ -32,6 +33,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Updates',
           type: {
@@ -39,6 +41,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Updates',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -47,6 +50,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +59,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -71,6 +77,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               regular_updates_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.regularUpdatesAvailable',
                 type: {
@@ -78,6 +85,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               maintenance_mode_updates_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maintenanceModeUpdatesAvailable',
                 type: {
@@ -85,6 +93,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               is_update_in_progress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isUpdateInProgress',
                 type: {
@@ -92,6 +101,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               last_updated_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastUpdatedTime',
                 type: {

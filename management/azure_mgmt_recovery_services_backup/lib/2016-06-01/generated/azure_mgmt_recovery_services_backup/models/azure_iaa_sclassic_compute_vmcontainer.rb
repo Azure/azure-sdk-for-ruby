@@ -17,6 +17,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @protectableObjectType = "Microsoft.ClassicCompute/virtualMachines"
@@ -31,6 +32,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.ClassicCompute/virtualMachines',
           type: {
@@ -38,6 +40,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'AzureIaaSClassicComputeVMContainer',
             model_properties: {
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -45,6 +48,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -53,6 +57,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               registration_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationStatus',
                 type: {
@@ -60,6 +65,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               health_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthStatus',
                 type: {
@@ -67,6 +73,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               container_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'containerType',
@@ -75,6 +82,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               protectableObjectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectableObjectType',
                 type: {
@@ -82,6 +90,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               virtual_machine_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineId',
                 type: {
@@ -89,6 +98,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               virtual_machine_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineVersion',
                 type: {
@@ -96,6 +106,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               resource_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroup',
                 type: {

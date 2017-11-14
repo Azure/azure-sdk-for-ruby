@@ -13,6 +13,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PcProtocol] Protocol to be filtered on. Possible values
       # include: 'TCP', 'UDP', 'Any'. Default value: 'Any' .
       attr_accessor :protocol
@@ -50,6 +51,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCaptureFilter',
           type: {
@@ -57,6 +59,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'PacketCaptureFilter',
             model_properties: {
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 default_value: 'Any',
@@ -65,6 +68,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               local_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localIPAddress',
                 type: {
@@ -72,6 +76,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               remote_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteIPAddress',
                 type: {
@@ -79,6 +84,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               local_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localPort',
                 type: {
@@ -86,6 +92,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               remote_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'remotePort',
                 type: {

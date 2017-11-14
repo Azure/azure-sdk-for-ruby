@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Indicates whether virtual machine agent should be
       # provisioned on the virtual machine. <br><br> When this property is not
       # specified in the request body, default behavior is to set it to true.
@@ -43,6 +44,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WindowsConfiguration',
           type: {
@@ -50,6 +52,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'WindowsConfiguration',
             model_properties: {
               provision_vmagent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisionVMAgent',
                 type: {
@@ -57,6 +60,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               enable_automatic_updates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableAutomaticUpdates',
                 type: {
@@ -64,6 +68,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -71,11 +76,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               additional_unattend_content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'additionalUnattendContent',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AdditionalUnattendContentElementType',
                       type: {
@@ -86,6 +93,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               win_rm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'winRM',
                 type: {

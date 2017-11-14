@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RecoveryPlanGroup>] The recovery plan groups.
       attr_accessor :groups
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateRecoveryPlanInputProperties',
           type: {
@@ -29,11 +31,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'UpdateRecoveryPlanInputProperties',
             model_properties: {
               groups: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groups',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanGroupElementType',
                       type: {

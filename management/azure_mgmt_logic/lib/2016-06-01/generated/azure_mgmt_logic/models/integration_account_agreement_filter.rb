@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AgreementType] The agreement type of integration account
       # agreement. Possible values include: 'NotSpecified', 'AS2', 'X12',
       # 'Edifact'
@@ -24,6 +25,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountAgreementFilter',
           type: {
@@ -31,6 +33,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountAgreementFilter',
             model_properties: {
               agreement_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'agreementType',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :entity_name
 
@@ -40,6 +41,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RelayServiceConnectionEntity',
           type: {
@@ -47,6 +49,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'RelayServiceConnectionEntity',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +67,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,6 +84,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               entity_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.entityName',
                 type: {
@@ -85,6 +92,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               entity_connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.entityConnectionString',
                 type: {
@@ -92,6 +100,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceType',
                 type: {
@@ -99,6 +108,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               resource_connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceConnectionString',
                 type: {
@@ -106,6 +116,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               hostname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostname',
                 type: {
@@ -113,6 +124,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.port',
                 type: {
@@ -120,6 +132,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               biztalk_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.biztalkUri',
                 type: {

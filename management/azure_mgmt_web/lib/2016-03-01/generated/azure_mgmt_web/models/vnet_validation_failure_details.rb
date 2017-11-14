@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] A flag describing whether or not validation failed.
       attr_accessor :failed
 
@@ -26,6 +27,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VnetValidationFailureDetails',
           type: {
@@ -33,6 +35,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'VnetValidationFailureDetails',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +44,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +53,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -56,6 +61,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +70,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               failed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.failed',
                 type: {
@@ -71,11 +78,13 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               failed_tests: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.failedTests',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VnetValidationTestFailureElementType',
                       type: {

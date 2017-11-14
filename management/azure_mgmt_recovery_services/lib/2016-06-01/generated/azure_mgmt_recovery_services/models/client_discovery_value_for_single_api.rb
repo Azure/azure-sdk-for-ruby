@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of the operation
       attr_accessor :name
 
@@ -33,6 +34,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryValueForSingleApi',
           type: {
@@ -40,6 +42,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'ClientDiscoveryValueForSingleApi',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Name',
                 type: {
@@ -47,6 +50,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Display',
                 type: {
@@ -55,6 +59,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Origin',
                 type: {
@@ -62,6 +67,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Properties',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SecurityGroupNetworkInterface>] List of network
       # interfaces on the specified VM.
       attr_accessor :network_interfaces
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SecurityGroupViewResult',
           type: {
@@ -30,11 +32,13 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'SecurityGroupViewResult',
             model_properties: {
               network_interfaces: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaces',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SecurityGroupNetworkInterfaceElementType',
                       type: {

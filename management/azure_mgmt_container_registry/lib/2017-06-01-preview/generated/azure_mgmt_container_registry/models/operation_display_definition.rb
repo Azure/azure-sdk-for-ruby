@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource provider name:
       # Microsoft.ContainerRegistry.
       attr_accessor :provider
@@ -32,6 +33,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDisplayDefinition',
           type: {
@@ -39,6 +41,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'OperationDisplayDefinition',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -46,6 +49,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -53,6 +57,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -60,6 +65,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

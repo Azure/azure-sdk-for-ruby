@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ApplicationGatewaySslProtocol>] Ssl protocols to be
       # disabled on application gateway.
       attr_accessor :disabled_ssl_protocols
@@ -41,6 +42,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySslPolicy',
           type: {
@@ -48,11 +50,13 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ApplicationGatewaySslPolicy',
             model_properties: {
               disabled_ssl_protocols: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'disabledSslProtocols',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslProtocolElementType',
                       type: {
@@ -62,6 +66,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               policy_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyType',
                 type: {
@@ -69,6 +74,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               policy_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyName',
                 type: {
@@ -76,11 +82,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               cipher_suites: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cipherSuites',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslCipherSuiteElementType',
                       type: {
@@ -90,6 +98,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               min_protocol_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minProtocolVersion',
                 type: {

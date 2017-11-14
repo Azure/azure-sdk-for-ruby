@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Workspace collection name
       attr_accessor :name
 
@@ -27,6 +28,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameRequest',
           type: {
@@ -34,6 +36,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'CheckNameRequest',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +44,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'Microsoft.PowerBI/workspaceCollections',

@@ -12,6 +12,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Gets a boolean value that indicates whether the name
       # is available for you to use. If true, the name is available. If false,
       # the name has already been taken or invalid and cannot be used.
@@ -34,6 +35,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -41,6 +43,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nameAvailable',
@@ -49,6 +52,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',
@@ -58,6 +62,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

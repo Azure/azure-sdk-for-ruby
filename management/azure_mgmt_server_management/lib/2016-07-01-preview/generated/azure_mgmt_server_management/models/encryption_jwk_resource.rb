@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :kty
 
@@ -31,6 +32,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionJwkResource',
           type: {
@@ -38,6 +40,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'EncryptionJwkResource',
             model_properties: {
               kty: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kty',
                 type: {
@@ -45,6 +48,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               alg: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'alg',
                 type: {
@@ -52,6 +56,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               e: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'e',
                 type: {
@@ -59,6 +64,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               n: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'n',
                 type: {

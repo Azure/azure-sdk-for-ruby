@@ -13,6 +13,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ContainerServiceVMDiagnostics] Profile for the container
       # service VM diagnostic agent.
       attr_accessor :vm_diagnostics
@@ -24,6 +25,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceDiagnosticsProfile',
           type: {
@@ -31,6 +33,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
             class_name: 'ContainerServiceDiagnosticsProfile',
             model_properties: {
               vm_diagnostics: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'vmDiagnostics',
                 type: {

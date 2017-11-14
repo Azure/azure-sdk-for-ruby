@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A member object URL, such as
       # "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
       # where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
@@ -26,6 +27,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GroupAddMemberParameters',
           type: {
@@ -33,6 +35,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'GroupAddMemberParameters',
             model_properties: {
               url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'url',
                 type: {

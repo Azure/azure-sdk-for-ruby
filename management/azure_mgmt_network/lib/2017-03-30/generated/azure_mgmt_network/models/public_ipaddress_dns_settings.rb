@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the Domain name label.The concatenation
       # of the domain name label and the regionalized DNS zone make up the
       # fully qualified domain name associated with the public IP address. If a
@@ -37,6 +38,7 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PublicIPAddressDnsSettings',
           type: {
@@ -44,6 +46,7 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'PublicIPAddressDnsSettings',
             model_properties: {
               domain_name_label: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'domainNameLabel',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fqdn',
                 type: {
@@ -58,6 +62,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               reverse_fqdn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reverseFqdn',
                 type: {

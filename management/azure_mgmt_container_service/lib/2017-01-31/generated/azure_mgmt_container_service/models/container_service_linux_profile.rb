@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The administrator username to use for Linux VMs.
       attr_accessor :admin_username
 
@@ -26,6 +27,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceLinuxProfile',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
             class_name: 'ContainerServiceLinuxProfile',
             model_properties: {
               admin_username: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'adminUsername',
                 constraints: {
@@ -43,6 +46,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
                 }
               },
               ssh: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ssh',
                 type: {

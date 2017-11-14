@@ -107,8 +107,7 @@ module Azure::Compute::Mgmt::V2015_06_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2015_06_15::Models::VirtualMachineExtensionImage.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Compute::Mgmt::V2015_06_15::Models::VirtualMachineExtensionImage.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -199,11 +198,13 @@ module Azure::Compute::Mgmt::V2015_06_15
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VirtualMachineExtensionImageElementType',
                     type: {
@@ -213,7 +214,10 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -317,11 +321,13 @@ module Azure::Compute::Mgmt::V2015_06_15
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VirtualMachineExtensionImageElementType',
                     type: {
@@ -331,7 +337,10 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

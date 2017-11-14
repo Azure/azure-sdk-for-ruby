@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the primary key.
       attr_accessor :primary
 
@@ -25,6 +26,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AgentRegistrationKeys',
           type: {
@@ -32,6 +34,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AgentRegistrationKeys',
             model_properties: {
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primary',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               secondary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondary',
                 type: {

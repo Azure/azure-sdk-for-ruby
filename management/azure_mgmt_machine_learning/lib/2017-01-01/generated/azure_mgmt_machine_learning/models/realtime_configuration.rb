@@ -13,6 +13,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Specifies the maximum concurrent calls that can be
       # made to the web service. Minimum value: 4, Maximum value: 200.
       attr_accessor :max_concurrent_calls
@@ -24,6 +25,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RealtimeConfiguration',
           type: {
@@ -31,6 +33,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'RealtimeConfiguration',
             model_properties: {
               max_concurrent_calls: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxConcurrentCalls',
                 constraints: {

@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The localized friendly form of the resource provider
       # name. This form is also expected to include the publisher/company
       # responsible. Use Title Casing. Begin with “Microsoft” for 1st party
@@ -48,6 +49,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Display',
           type: {
@@ -55,6 +57,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'Display',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -62,6 +65,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -69,6 +73,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -76,6 +81,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -83,6 +89,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {

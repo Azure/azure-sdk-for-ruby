@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MetricTrigger] the trigger that results in a scaling action.
       attr_accessor :metric_trigger
 
@@ -25,6 +26,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ScaleRule',
           type: {
@@ -32,6 +34,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'ScaleRule',
             model_properties: {
               metric_trigger: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'metricTrigger',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               scale_action: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'scaleAction',
                 type: {

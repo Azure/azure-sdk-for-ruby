@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<DiagnosticSettingsResource>] The collection of
       # diagnostic settings resources;.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticSettingsResourceCollection',
           type: {
@@ -30,11 +32,13 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'DiagnosticSettingsResourceCollection',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiagnosticSettingsResourceElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL that represents the endpoint of the
       # destination of an event subscription.
       attr_accessor :endpoint_url
@@ -23,6 +24,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionFullUrl',
           type: {
@@ -30,6 +32,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'EventSubscriptionFullUrl',
             model_properties: {
               endpoint_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpointUrl',
                 type: {

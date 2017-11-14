@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SKU.
       attr_accessor :sku
 
@@ -43,6 +44,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PremierAddOn',
           type: {
@@ -50,6 +52,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'PremierAddOn',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -58,6 +61,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,6 +70,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -73,6 +78,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -80,6 +86,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,11 +95,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -102,6 +111,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -109,6 +119,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               product: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.product',
                 type: {
@@ -116,6 +127,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               vendor: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vendor',
                 type: {
@@ -123,6 +135,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               premier_add_on_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -130,6 +143,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               premier_add_on_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.location',
                 type: {
@@ -137,11 +151,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               premier_add_on_tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -151,6 +167,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               marketplace_publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.marketplacePublisher',
                 type: {
@@ -158,6 +175,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               marketplace_offer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.marketplaceOffer',
                 type: {

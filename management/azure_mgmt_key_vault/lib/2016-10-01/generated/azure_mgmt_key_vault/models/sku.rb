@@ -12,6 +12,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SKU family name. Default value: 'A' .
       attr_accessor :family
 
@@ -27,6 +28,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -34,6 +36,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'Sku',
             model_properties: {
               family: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'family',
@@ -43,6 +46,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

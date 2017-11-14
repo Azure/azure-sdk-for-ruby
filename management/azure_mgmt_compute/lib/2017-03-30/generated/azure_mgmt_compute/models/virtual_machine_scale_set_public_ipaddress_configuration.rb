@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The publicIP address configuration name.
       attr_accessor :name
 
@@ -31,6 +32,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetPublicIPAddressConfiguration',
           type: {
@@ -38,6 +40,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetPublicIPAddressConfiguration',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               idle_timeout_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               dns_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {

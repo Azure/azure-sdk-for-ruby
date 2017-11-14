@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the extension.
       attr_accessor :name
 
@@ -50,6 +51,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImportExtensionRequest',
           type: {
@@ -57,6 +59,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ImportExtensionRequest',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -64,6 +67,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -71,6 +75,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_key_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageKeyType',
                 type: {
@@ -79,6 +84,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageKey',
                 type: {
@@ -86,6 +92,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageUri',
                 type: {
@@ -93,6 +100,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.administratorLogin',
                 type: {
@@ -100,6 +108,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login_password: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.administratorLoginPassword',
                 type: {
@@ -107,6 +116,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               authentication_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authenticationType',
                 default_value: 'SQL',
@@ -116,6 +126,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               operation_mode: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'properties.operationMode',

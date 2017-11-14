@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SkuName] The SKU name of the container registry. Required for
       # registry creation. Possible values include: 'Classic', 'Basic',
       # 'Standard', 'Premium'
@@ -28,6 +29,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -35,6 +37,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -42,6 +45,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',

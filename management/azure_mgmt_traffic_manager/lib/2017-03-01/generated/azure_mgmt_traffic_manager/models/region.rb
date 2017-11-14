@@ -13,6 +13,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The code of the region
       attr_accessor :code
 
@@ -30,6 +31,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Region',
           type: {
@@ -37,6 +39,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'Region',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -44,6 +47,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -51,11 +55,13 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               regions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'regions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegionElementType',
                       type: {

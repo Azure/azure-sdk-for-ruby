@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The primary access key.
       attr_accessor :primary
 
@@ -25,6 +26,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebServiceKeys',
           type: {
@@ -32,6 +34,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'WebServiceKeys',
             model_properties: {
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primary',
                 type: {
@@ -39,6 +42,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               secondary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondary',
                 type: {

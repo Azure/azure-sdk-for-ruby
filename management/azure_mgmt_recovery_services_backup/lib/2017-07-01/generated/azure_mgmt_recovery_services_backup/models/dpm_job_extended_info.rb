@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<DpmJobTaskDetails>] List of tasks associated with this
       # job.
       attr_accessor :tasks_list
@@ -29,6 +30,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DpmJobExtendedInfo',
           type: {
@@ -36,11 +38,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
             class_name: 'DpmJobExtendedInfo',
             model_properties: {
               tasks_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tasksList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DpmJobTaskDetailsElementType',
                       type: {
@@ -51,11 +55,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               property_bag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'propertyBag',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -65,6 +71,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               dynamic_error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dynamicErrorMessage',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TriggeredJobRun] Latest job run information.
       attr_accessor :latest_run
 
@@ -53,6 +54,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TriggeredWebJob',
           type: {
@@ -60,6 +62,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'TriggeredWebJob',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,6 +71,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,6 +80,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -83,6 +88,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,6 +97,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               latest_run: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.latestRun',
                 type: {
@@ -99,6 +106,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               history_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.historyUrl',
                 type: {
@@ -106,6 +114,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               scheduler_logs_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.schedulerLogsUrl',
                 type: {
@@ -113,6 +122,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               triggered_web_job_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -121,6 +131,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               run_command: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runCommand',
                 type: {
@@ -128,6 +139,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.url',
                 type: {
@@ -135,6 +147,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               extra_info_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.extraInfoUrl',
                 type: {
@@ -142,6 +155,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               job_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobType',
                 type: {
@@ -150,6 +164,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.error',
                 type: {
@@ -157,6 +172,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               using_sdk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.usingSdk',
                 type: {
@@ -164,6 +180,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.settings',
                 type: {

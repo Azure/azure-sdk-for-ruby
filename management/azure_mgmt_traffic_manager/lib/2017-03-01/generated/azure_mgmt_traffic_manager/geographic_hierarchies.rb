@@ -92,8 +92,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::TrafficManager::Mgmt::V2017_03_01::Models::TrafficManagerGeographicHierarchy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::TrafficManager::Mgmt::V2017_03_01::Models::TrafficManagerGeographicHierarchy.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @retentionPolicyType = "SimpleRetentionPolicy"
@@ -30,6 +31,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SimpleRetentionPolicy',
           type: {
@@ -37,6 +39,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'SimpleRetentionPolicy',
             model_properties: {
               retentionPolicyType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'retentionPolicyType',
                 type: {
@@ -44,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionDuration',
                 type: {

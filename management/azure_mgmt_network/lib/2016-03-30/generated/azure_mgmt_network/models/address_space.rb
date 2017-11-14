@@ -13,6 +13,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Gets or sets List of address blocks reserved
       # for this virtual network in CIDR notation
       attr_accessor :address_prefixes
@@ -24,6 +25,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AddressSpace',
           type: {
@@ -31,11 +33,13 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'AddressSpace',
             model_properties: {
               address_prefixes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'addressPrefixes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

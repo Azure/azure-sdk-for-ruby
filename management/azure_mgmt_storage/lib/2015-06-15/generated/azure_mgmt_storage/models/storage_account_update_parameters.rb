@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
@@ -35,6 +36,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountUpdateParameters',
           type: {
@@ -42,11 +44,13 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'StorageAccountUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -56,6 +60,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               account_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountType',
                 type: {
@@ -64,6 +69,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               custom_domain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customDomain',
                 type: {

@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] An optional string to filter events for an event
       # subscription based on a resource path prefix.
       # The format of this depends on the publisher of the events.
@@ -41,6 +42,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionFilter',
           type: {
@@ -48,6 +50,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'EventSubscriptionFilter',
             model_properties: {
               subject_begins_with: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subjectBeginsWith',
                 type: {
@@ -55,6 +58,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               subject_ends_with: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subjectEndsWith',
                 type: {
@@ -62,11 +66,13 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               included_event_types: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'includedEventTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -76,6 +82,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               is_subject_case_sensitive: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isSubjectCaseSensitive',
                 default_value: false,

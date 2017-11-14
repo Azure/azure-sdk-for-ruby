@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the ID of the resource to navigate to.
       attr_accessor :resource_id
 
@@ -22,6 +23,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscReportResourceNavigation',
           type: {
@@ -29,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscReportResourceNavigation',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {

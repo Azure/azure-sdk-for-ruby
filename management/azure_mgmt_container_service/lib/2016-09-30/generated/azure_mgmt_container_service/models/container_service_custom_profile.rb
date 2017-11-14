@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the custom orchestrator to use.
       attr_accessor :orchestrator
 
@@ -22,6 +23,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceCustomProfile',
           type: {
@@ -29,6 +31,7 @@ module Azure::ContainerService::Mgmt::V2016_09_30
             class_name: 'ContainerServiceCustomProfile',
             model_properties: {
               orchestrator: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'orchestrator',
                 type: {

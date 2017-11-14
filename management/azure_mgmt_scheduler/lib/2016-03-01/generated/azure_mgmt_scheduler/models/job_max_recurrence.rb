@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecurrenceFrequency] Gets or sets the frequency of recurrence
       # (second, minute, hour, day, week, month). Possible values include:
       # 'Minute', 'Hour', 'Day', 'Week', 'Month'
@@ -28,6 +29,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobMaxRecurrence',
           type: {
@@ -35,6 +37,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobMaxRecurrence',
             model_properties: {
               frequency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'frequency',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {

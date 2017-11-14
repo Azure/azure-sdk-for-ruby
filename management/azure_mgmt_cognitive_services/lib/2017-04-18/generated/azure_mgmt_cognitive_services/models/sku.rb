@@ -12,6 +12,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SkuName] Gets or sets the sku name. Required for account
       # creation, optional for update. Possible values include: 'F0', 'P0',
       # 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
@@ -28,6 +29,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -35,6 +37,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -42,6 +45,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',

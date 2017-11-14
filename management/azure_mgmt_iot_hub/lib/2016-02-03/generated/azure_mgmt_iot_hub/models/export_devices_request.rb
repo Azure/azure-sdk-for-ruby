@@ -13,6 +13,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The export blob container URI.
       attr_accessor :export_blob_container_uri
 
@@ -27,6 +28,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExportDevicesRequest',
           type: {
@@ -34,6 +36,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'ExportDevicesRequest',
             model_properties: {
               export_blob_container_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ExportBlobContainerUri',
                 type: {
@@ -41,6 +44,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               exclude_keys: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ExcludeKeys',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ExpressRouteCircuitSku] Gets or sets sku
       attr_accessor :sku
 
@@ -64,6 +65,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuit',
           type: {
@@ -71,6 +73,7 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'ExpressRouteCircuit',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -78,6 +81,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -86,6 +90,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -94,6 +99,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -101,11 +107,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -115,6 +123,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -123,6 +132,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               allow_classic_operations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowClassicOperations',
                 type: {
@@ -130,6 +140,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               circuit_provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.circuitProvisioningState',
                 type: {
@@ -137,6 +148,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               service_provider_provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceProviderProvisioningState',
                 type: {
@@ -144,11 +156,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               authorizations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorizations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitAuthorizationElementType',
                       type: {
@@ -159,11 +173,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               peerings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peerings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitPeeringElementType',
                       type: {
@@ -174,6 +190,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               service_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceKey',
                 type: {
@@ -181,6 +198,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               service_provider_notes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceProviderNotes',
                 type: {
@@ -188,6 +206,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               service_provider_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceProviderProperties',
                 type: {
@@ -196,6 +215,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -203,6 +223,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               gateway_manager_etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayManagerEtag',
                 type: {
@@ -210,6 +231,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

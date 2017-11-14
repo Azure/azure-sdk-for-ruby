@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The maximum DTUs per database.
       attr_accessor :limit
 
@@ -26,6 +27,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ElasticPoolPerDatabaseMinDtuCapability',
           type: {
@@ -33,6 +35,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ElasticPoolPerDatabaseMinDtuCapability',
             model_properties: {
               limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -41,6 +44,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',

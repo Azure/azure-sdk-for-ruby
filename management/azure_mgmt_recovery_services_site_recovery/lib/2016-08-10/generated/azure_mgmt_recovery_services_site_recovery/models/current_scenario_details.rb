@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Scenario name.
       attr_accessor :scenario_name
 
@@ -28,6 +29,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CurrentScenarioDetails',
           type: {
@@ -35,6 +37,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'CurrentScenarioDetails',
             model_properties: {
               scenario_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scenarioName',
                 type: {
@@ -42,6 +45,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobId',
                 type: {
@@ -49,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {

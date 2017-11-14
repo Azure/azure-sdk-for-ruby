@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of the policy.
       attr_accessor :policy_name
 
@@ -32,6 +33,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AuthorizationPolicy',
           type: {
@@ -39,6 +41,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'AuthorizationPolicy',
             model_properties: {
               policy_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'policyName',
@@ -47,6 +50,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               permissions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'permissions',
                 constraints: {
@@ -55,6 +59,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PermissionTypesElementType',
                       type: {
@@ -65,6 +70,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               primary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -72,6 +78,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               secondary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {

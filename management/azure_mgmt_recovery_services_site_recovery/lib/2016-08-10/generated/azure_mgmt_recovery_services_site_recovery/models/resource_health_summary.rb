@@ -13,6 +13,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The count of total resources umder the container.
       attr_accessor :resource_count
 
@@ -27,6 +28,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceHealthSummary',
           type: {
@@ -34,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ResourceHealthSummary',
             model_properties: {
               resource_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceCount',
                 type: {
@@ -41,11 +44,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               issues: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'issues',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorSummaryElementType',
                       type: {

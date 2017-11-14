@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["WebHook"] = "WebHookEventSubscriptionDestination"
       @@discriminatorMap["EventHub"] = "EventHubEventSubscriptionDestination"
@@ -29,6 +30,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventSubscriptionDestination',
           type: {

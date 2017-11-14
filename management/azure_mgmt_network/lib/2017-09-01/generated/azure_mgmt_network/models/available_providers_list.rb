@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<AvailableProvidersListCountry>] List of available
       # countries.
       attr_accessor :countries
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AvailableProvidersList',
           type: {
@@ -30,11 +32,13 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AvailableProvidersList',
             model_properties: {
               countries: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'countries',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AvailableProvidersListCountryElementType',
                       type: {

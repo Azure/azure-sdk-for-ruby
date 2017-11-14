@@ -103,8 +103,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -179,8 +178,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
-      request_content = @client.serialize(request_mapper,  job)
+      request_content = job.nil? ? nil: job.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}'
@@ -211,8 +209,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -221,8 +218,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -297,8 +293,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
-      request_content = @client.serialize(request_mapper,  job)
+      request_content = job.nil? ? nil: job.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}'
@@ -329,8 +324,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobDefinition.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -569,6 +563,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
@@ -603,8 +599,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -679,6 +674,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
       fail ArgumentError, 'job_name is nil' if job_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
@@ -713,8 +710,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -800,8 +796,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -887,8 +882,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Scheduler::Mgmt::V2016_03_01::Models::JobHistoryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

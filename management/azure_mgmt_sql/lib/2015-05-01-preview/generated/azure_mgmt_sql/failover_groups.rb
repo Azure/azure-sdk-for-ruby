@@ -115,8 +115,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -169,8 +168,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -267,8 +265,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -365,8 +362,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -417,8 +413,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -468,8 +463,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -551,8 +545,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}'
@@ -583,8 +576,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -593,8 +585,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -771,8 +762,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupUpdate.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}'
@@ -803,8 +793,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -907,8 +896,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1014,8 +1002,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1101,8 +1088,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::FailoverGroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

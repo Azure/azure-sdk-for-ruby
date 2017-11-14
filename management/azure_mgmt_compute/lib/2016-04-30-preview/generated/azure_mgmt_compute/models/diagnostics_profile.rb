@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BootDiagnostics] Boot Diagnostics is a debugging feature which
       # allows the user to view console output and/or a screenshot of the
       # virtual machine from the hypervisor.
@@ -24,6 +25,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsProfile',
           type: {
@@ -31,6 +33,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'DiagnosticsProfile',
             model_properties: {
               boot_diagnostics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bootDiagnostics',
                 type: {

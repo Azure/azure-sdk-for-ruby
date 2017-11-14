@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The symbolic name of data store.
       attr_accessor :symbolic_name
 
@@ -34,6 +35,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataStore',
           type: {
@@ -41,6 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'DataStore',
             model_properties: {
               symbolic_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'symbolicName',
                 type: {
@@ -48,6 +51,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               uuid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uuid',
                 type: {
@@ -55,6 +59,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {
@@ -62,6 +67,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               free_space: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'freeSpace',
                 type: {
@@ -69,6 +75,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

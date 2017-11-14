@@ -116,8 +116,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-      request_content = @client.serialize(request_mapper,  function)
+      request_content = function.nil? ? nil: function.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}'
@@ -148,8 +147,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -158,8 +156,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -268,8 +265,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-      request_content = @client.serialize(request_mapper,  function)
+      request_content = function.nil? ? nil: function.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}'
@@ -300,8 +296,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -491,8 +486,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -600,8 +594,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -666,8 +659,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ResourceTestStatus.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ResourceTestStatus.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -754,8 +746,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionRetrieveDefaultDefinitionParameters.mapper()
-      request_content = @client.serialize(request_mapper,  function_retrieve_default_definition_parameters)
+      request_content = function_retrieve_default_definition_parameters.nil? ? nil: function_retrieve_default_definition_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}/RetrieveDefaultDefinition'
@@ -786,8 +777,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -891,8 +881,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::Function.mapper()
-      request_content = @client.serialize(request_mapper,  function)
+      request_content = function.nil? ? nil: function.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}/test'
@@ -923,8 +912,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ResourceTestStatus.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::ResourceTestStatus.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1010,8 +998,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::StreamAnalytics::Mgmt::V2016_03_01::Models::FunctionListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

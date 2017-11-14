@@ -13,6 +13,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ExpressRouteCircuitRoutesTable>] Gets List of
       # RoutesTable
       attr_accessor :value
@@ -28,6 +29,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitsRoutesTableListResult',
           type: {
@@ -35,11 +37,13 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ExpressRouteCircuitsRoutesTableListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitRoutesTableElementType',
                       type: {
@@ -50,6 +54,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

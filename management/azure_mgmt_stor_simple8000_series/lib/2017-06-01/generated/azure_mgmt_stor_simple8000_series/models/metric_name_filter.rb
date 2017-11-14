@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the metric name to be filtered on. E.g.,
       # CloudStorageUsed. Valid values are the ones returned in the field
       # "name" in the ListMetricDefinitions call. Only 'Equality' operator is
@@ -26,6 +27,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricNameFilter',
           type: {
@@ -33,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'MetricNameFilter',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

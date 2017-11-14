@@ -13,6 +13,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @odatatype = "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"
@@ -31,6 +32,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource',
           type: {
@@ -38,6 +40,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleMetricDataSource',
             model_properties: {
               resource_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceUri',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               odatatype: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               metric_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricName',
                 type: {

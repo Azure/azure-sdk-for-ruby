@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The script to be executed.
       attr_accessor :script
 
@@ -26,6 +27,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunCommandDocument',
           type: {
@@ -33,6 +35,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RunCommandDocument',
             model_properties: {
               schema: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: '$schema',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -47,6 +51,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'osType',
                 type: {
@@ -55,6 +60,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               label: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'label',
                 type: {
@@ -62,6 +68,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               description: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'description',
                 type: {
@@ -69,11 +76,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               script: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'script',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -83,11 +92,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RunCommandParameterDefinitionElementType',
                       type: {

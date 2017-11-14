@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The geo-location where the resource lives
       attr_accessor :location
 
@@ -65,6 +66,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DatabaseSecurityAlertPolicy',
           type: {
@@ -72,6 +74,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'DatabaseSecurityAlertPolicy',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -80,6 +83,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -88,6 +92,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -96,6 +101,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -103,6 +109,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -111,6 +118,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -119,6 +127,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               disabled_alerts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.disabledAlerts',
                 type: {
@@ -126,6 +135,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               email_addresses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.emailAddresses',
                 type: {
@@ -133,6 +143,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               email_account_admins: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.emailAccountAdmins',
                 type: {
@@ -141,6 +152,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageEndpoint',
                 type: {
@@ -148,6 +160,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_account_access_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountAccessKey',
                 type: {
@@ -155,6 +168,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               retention_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionDays',
                 type: {
@@ -162,6 +176,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               use_server_default: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.useServerDefault',
                 type: {

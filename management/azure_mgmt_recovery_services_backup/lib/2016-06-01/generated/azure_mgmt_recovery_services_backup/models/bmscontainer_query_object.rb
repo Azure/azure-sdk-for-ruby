@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BackupManagementType] The backup management type for this
       # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql'
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BMSContainerQueryObject',
           type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'BMSContainerQueryObject',
             model_properties: {
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -50,6 +53,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -57,6 +61,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {

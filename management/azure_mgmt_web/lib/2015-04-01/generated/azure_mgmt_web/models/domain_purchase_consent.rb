@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] List of applicable legal agreement keys. This
       # list can be retrieved using ListLegalAgreements API under
       # <code>TopLevelDomain</code> resource.
@@ -31,6 +32,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DomainPurchaseConsent',
           type: {
@@ -38,11 +40,13 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'DomainPurchaseConsent',
             model_properties: {
               agreement_keys: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'agreementKeys',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -52,6 +56,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               agreed_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'agreedBy',
                 type: {
@@ -59,6 +64,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               agreed_at: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'agreedAt',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the resource to which a connection attempt
       # will be made.
       attr_accessor :resource_id
@@ -30,6 +31,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityDestination',
           type: {
@@ -37,6 +39,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ConnectivityDestination',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -44,6 +47,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'address',
                 type: {
@@ -51,6 +55,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {

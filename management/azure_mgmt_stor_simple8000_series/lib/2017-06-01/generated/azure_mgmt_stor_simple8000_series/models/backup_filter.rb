@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the backupPolicyId of the backups to be
       # filtered. Only 'Equality' operator is supported for this property.
       attr_accessor :backup_policy_id
@@ -32,6 +33,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupFilter',
           type: {
@@ -39,6 +41,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BackupFilter',
             model_properties: {
               backup_policy_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupPolicyId',
                 type: {
@@ -46,6 +49,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeId',
                 type: {
@@ -53,6 +57,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               created_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'createdTime',
                 type: {

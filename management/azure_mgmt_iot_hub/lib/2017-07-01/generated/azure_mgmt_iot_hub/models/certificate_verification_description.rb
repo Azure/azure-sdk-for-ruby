@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] base-64 representation of X509 certificate .cer file
       # or just .pem file content.
       attr_accessor :certificate
@@ -23,6 +24,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateVerificationDescription',
           type: {
@@ -30,6 +32,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CertificateVerificationDescription',
             model_properties: {
               certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificate',
                 type: {

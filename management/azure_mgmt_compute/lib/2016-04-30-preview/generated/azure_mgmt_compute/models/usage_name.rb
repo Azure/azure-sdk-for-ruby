@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the resource.
       attr_accessor :value
 
@@ -25,6 +26,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageName',
           type: {
@@ -32,6 +34,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'UsageName',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               localized_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

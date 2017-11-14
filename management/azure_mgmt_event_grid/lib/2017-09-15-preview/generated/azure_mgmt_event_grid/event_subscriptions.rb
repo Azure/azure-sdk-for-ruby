@@ -132,8 +132,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -208,8 +207,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -334,8 +332,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -456,8 +453,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFullUrl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFullUrl.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -551,8 +547,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -647,8 +642,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -749,8 +743,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -852,8 +845,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -948,8 +940,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1054,8 +1045,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1157,8 +1147,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1267,8 +1256,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1375,8 +1363,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1497,8 +1484,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.mapper()
-      request_content = @client.serialize(request_mapper,  event_subscription_info)
+      request_content = event_subscription_info.nil? ? nil: event_subscription_info.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}'
@@ -1530,8 +1516,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1753,8 +1738,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  event_subscription_update_parameters)
+      request_content = event_subscription_update_parameters.nil? ? nil: event_subscription_update_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}'
@@ -1786,8 +1770,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SkuDefinition] Gets or set the SKU. Possible values include:
       # 'Standard', 'Free', 'P10Premium', 'P20Premium'
       attr_accessor :name
@@ -24,6 +25,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -31,6 +33,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

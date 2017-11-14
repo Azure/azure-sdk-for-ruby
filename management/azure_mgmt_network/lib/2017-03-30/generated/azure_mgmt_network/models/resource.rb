@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource ID.
       attr_accessor :id
 
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'Resource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +69,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,11 +77,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

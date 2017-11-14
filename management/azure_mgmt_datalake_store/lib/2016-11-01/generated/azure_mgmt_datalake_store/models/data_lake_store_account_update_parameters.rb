@@ -12,6 +12,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
@@ -56,6 +57,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeStoreAccountUpdateParameters',
           type: {
@@ -63,11 +65,13 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'DataLakeStoreAccountUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -77,6 +81,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               firewall_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallState',
                 type: {
@@ -85,6 +90,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               trusted_id_provider_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.trustedIdProviderState',
                 type: {
@@ -93,6 +99,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               default_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultGroup',
                 type: {
@@ -100,6 +107,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               new_tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.newTier',
                 type: {
@@ -108,6 +116,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               firewall_allow_azure_ips: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.firewallAllowAzureIps',
                 type: {
@@ -116,6 +125,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               encryption_config: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionConfig',
                 type: {

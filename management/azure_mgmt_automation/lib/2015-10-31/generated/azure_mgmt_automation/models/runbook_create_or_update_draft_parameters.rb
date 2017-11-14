@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Content of the Runbook.
       attr_accessor :runbook_content
 
@@ -22,6 +23,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunbookCreateOrUpdateDraftParameters',
           type: {
@@ -29,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'RunbookCreateOrUpdateDraftParameters',
             model_properties: {
               runbook_content: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'runbookContent',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PolicyProviderSpecificInput] The ReplicationProviderSettings.
       attr_accessor :replication_provider_settings
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdatePolicyInputProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'UpdatePolicyInputProperties',
             model_properties: {
               replication_provider_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationProviderSettings',
                 type: {

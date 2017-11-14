@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The Error code.
       attr_accessor :error_code
 
@@ -34,6 +35,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderError',
           type: {
@@ -41,6 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProviderError',
             model_properties: {
               error_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {
@@ -48,6 +51,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorMessage',
                 type: {
@@ -55,6 +59,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorId',
                 type: {
@@ -62,6 +67,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               possible_causes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'possibleCauses',
                 type: {
@@ -69,6 +75,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recommended_action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendedAction',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LoadBalancerSkuName] Name of a load balancer SKU. Possible
       # values include: 'Basic', 'Standard'
       attr_accessor :name
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LoadBalancerSku',
           type: {
@@ -30,6 +32,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'LoadBalancerSku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

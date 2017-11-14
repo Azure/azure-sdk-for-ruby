@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the SAS key.
       attr_accessor :sas_key
 
@@ -30,6 +31,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceBusAuthentication',
           type: {
@@ -37,6 +39,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'ServiceBusAuthentication',
             model_properties: {
               sas_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sasKey',
                 type: {
@@ -44,6 +47,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               sas_key_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sasKeyName',
                 type: {
@@ -51,6 +55,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

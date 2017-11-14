@@ -12,6 +12,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] An array of administrator user identities.
       attr_accessor :members
 
@@ -22,6 +23,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServerAdministrators',
           type: {
@@ -29,11 +31,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'ServerAdministrators',
             model_properties: {
               members: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'members',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

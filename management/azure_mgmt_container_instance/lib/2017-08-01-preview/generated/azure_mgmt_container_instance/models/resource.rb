@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource id.
       attr_accessor :id
 
@@ -34,6 +35,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -41,6 +43,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'Resource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,6 +52,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,6 +61,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -65,6 +70,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -72,11 +78,13 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

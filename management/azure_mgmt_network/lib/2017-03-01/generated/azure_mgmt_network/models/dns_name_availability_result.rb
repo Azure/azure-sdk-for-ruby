@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Domain availability (True/False).
       attr_accessor :available
 
@@ -22,6 +23,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DnsNameAvailabilityResult',
           type: {
@@ -29,6 +31,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'DnsNameAvailabilityResult',
             model_properties: {
               available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'available',
                 type: {

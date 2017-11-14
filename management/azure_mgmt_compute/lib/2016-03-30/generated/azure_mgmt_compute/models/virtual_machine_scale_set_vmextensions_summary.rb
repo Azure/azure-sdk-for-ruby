@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The extension name.
       attr_accessor :name
 
@@ -27,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetVMExtensionsSummary',
           type: {
@@ -34,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSetVMExtensionsSummary',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -42,12 +45,14 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               statuses_summary: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'statusesSummary',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineStatusCodeCountElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Job name. Used as job identifier in ARM resource URI.
       attr_accessor :web_job_name
 
@@ -44,6 +45,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebJob',
           type: {
@@ -51,6 +53,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'WebJob',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,6 +62,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -67,6 +71,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -74,6 +79,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,6 +88,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               web_job_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -90,6 +97,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               run_command: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runCommand',
                 type: {
@@ -97,6 +105,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.url',
                 type: {
@@ -104,6 +113,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               extra_info_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.extraInfoUrl',
                 type: {
@@ -111,6 +121,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               job_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobType',
                 type: {
@@ -119,6 +130,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.error',
                 type: {
@@ -126,6 +138,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               using_sdk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.usingSdk',
                 type: {
@@ -133,6 +146,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.settings',
                 type: {

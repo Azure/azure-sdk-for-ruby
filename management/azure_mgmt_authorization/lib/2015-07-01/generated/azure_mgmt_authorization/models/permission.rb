@@ -12,6 +12,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Allowed actions.
       attr_accessor :actions
 
@@ -25,6 +26,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Permission',
           type: {
@@ -32,11 +34,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'Permission',
             model_properties: {
               actions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -46,11 +50,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               not_actions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'notActions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

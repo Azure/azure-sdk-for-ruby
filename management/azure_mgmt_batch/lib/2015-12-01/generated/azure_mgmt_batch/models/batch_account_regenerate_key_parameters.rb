@@ -12,6 +12,7 @@ module Azure::Batch::Mgmt::V2015_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AccountKeyType] The type of account key to regenerate.
       # Possible values include: 'Primary', 'Secondary'
       attr_accessor :key_name
@@ -23,6 +24,7 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BatchAccountRegenerateKeyParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'BatchAccountRegenerateKeyParameters',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {

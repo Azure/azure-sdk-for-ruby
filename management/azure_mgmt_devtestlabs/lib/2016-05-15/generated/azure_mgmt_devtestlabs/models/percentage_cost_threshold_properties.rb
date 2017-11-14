@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Float] The cost threshold value.
       attr_accessor :threshold_value
 
@@ -22,6 +23,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PercentageCostThresholdProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'PercentageCostThresholdProperties',
             model_properties: {
               threshold_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'thresholdValue',
                 type: {

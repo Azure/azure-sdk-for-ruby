@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name.
       attr_accessor :name
 
@@ -29,6 +30,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AppCollectionNameAvailability',
           type: {
@@ -36,6 +38,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'AppCollectionNameAvailability',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -43,6 +46,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'available',
                 type: {
@@ -50,6 +54,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               unavailability_reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unavailabilityReason',
                 type: {

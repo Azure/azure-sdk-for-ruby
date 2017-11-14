@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageInsightState] The state of the storage insight
       # connection to the workspace. Possible values include: 'OK', 'ERROR'
       attr_accessor :state
@@ -26,6 +27,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageInsightStatus',
           type: {
@@ -33,6 +35,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'StorageInsightStatus',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'state',
                 type: {
@@ -40,6 +43,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

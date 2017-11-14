@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The provisioning state.
       attr_accessor :provisioning_state
 
@@ -22,6 +23,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentExtendedFilter',
           type: {
@@ -29,6 +31,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'DeploymentExtendedFilter',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisioningState',
                 type: {

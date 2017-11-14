@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Executable to be run.
       attr_accessor :exe
 
@@ -26,6 +27,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoHealCustomAction',
           type: {
@@ -33,6 +35,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'AutoHealCustomAction',
             model_properties: {
               exe: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exe',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {

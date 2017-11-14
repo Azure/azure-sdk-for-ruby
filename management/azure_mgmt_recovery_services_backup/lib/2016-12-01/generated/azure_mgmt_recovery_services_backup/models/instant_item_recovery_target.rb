@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ClientScriptForConnect>] List of client scripts.
       attr_accessor :client_scripts
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InstantItemRecoveryTarget',
           type: {
@@ -29,11 +31,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'InstantItemRecoveryTarget',
             model_properties: {
               client_scripts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientScripts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientScriptForConnectElementType',
                       type: {

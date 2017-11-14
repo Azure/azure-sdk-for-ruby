@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Age.
       attr_accessor :age
 
@@ -31,6 +32,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitArpTable',
           type: {
@@ -38,6 +40,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ExpressRouteCircuitArpTable',
             model_properties: {
               age: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'age',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               interface: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interface',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {
@@ -59,6 +64,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               mac_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'macAddress',
                 type: {

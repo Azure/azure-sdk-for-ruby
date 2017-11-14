@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Internet service provider.
       attr_accessor :provider
 
@@ -29,6 +30,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureReachabilityReportItem',
           type: {
@@ -36,6 +38,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AzureReachabilityReportItem',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               azure_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureLocation',
                 type: {
@@ -50,11 +54,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               latencies: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'latencies',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureReachabilityReportLatencyInfoElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [EncryptionService] The encryption function of the blob storage
       # service.
       attr_accessor :blob
@@ -35,6 +36,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionServices',
           type: {
@@ -42,6 +44,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'EncryptionServices',
             model_properties: {
               blob: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blob',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               file: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'file',
                 type: {
@@ -58,6 +62,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               table: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'table',
@@ -67,6 +72,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               queue: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queue',

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The pairing state for network mapping.
       attr_accessor :state
 
@@ -47,6 +48,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkMappingProperties',
           type: {
@@ -54,6 +56,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'NetworkMappingProperties',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -61,6 +64,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_network_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryNetworkFriendlyName',
                 type: {
@@ -68,6 +72,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_network_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryNetworkId',
                 type: {
@@ -75,6 +80,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryFabricFriendlyName',
                 type: {
@@ -82,6 +88,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_network_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryNetworkFriendlyName',
                 type: {
@@ -89,6 +96,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_network_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryNetworkId',
                 type: {
@@ -96,6 +104,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_arm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricArmId',
                 type: {
@@ -103,6 +112,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricFriendlyName',
                 type: {
@@ -110,6 +120,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_specific_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricSpecificSettings',
                 type: {

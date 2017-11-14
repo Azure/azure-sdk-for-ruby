@@ -12,6 +12,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] error code
       attr_accessor :code
 
@@ -25,6 +26,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorBody',
           type: {
@@ -32,6 +34,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'ErrorBody',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -39,6 +42,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               message: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {

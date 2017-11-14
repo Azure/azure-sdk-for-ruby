@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to send or request a
       # MDN.
       attr_accessor :need_mdn
@@ -53,6 +54,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AS2MdnSettings',
           type: {
@@ -60,6 +62,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2MdnSettings',
             model_properties: {
               need_mdn: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'needMdn',
                 type: {
@@ -67,6 +70,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sign_mdn: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signMdn',
                 type: {
@@ -74,6 +78,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               send_mdn_asynchronously: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sendMdnAsynchronously',
                 type: {
@@ -81,6 +86,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receipt_delivery_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiptDeliveryUrl',
                 type: {
@@ -88,6 +94,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               disposition_notification_to: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dispositionNotificationTo',
                 type: {
@@ -95,6 +102,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sign_outbound_mdn_if_optional: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signOutboundMdnIfOptional',
                 type: {
@@ -102,6 +110,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               mdn_text: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mdnText',
                 type: {
@@ -109,6 +118,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               send_inbound_mdn_to_message_box: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sendInboundMdnToMessageBox',
                 type: {
@@ -116,6 +126,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               mic_hashing_algorithm: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'micHashingAlgorithm',
                 type: {

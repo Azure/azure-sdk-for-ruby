@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] Gets or sets the reference of the subnet
       # resource.A subnet from where appliation gateway gets its private
       # address
@@ -36,6 +37,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayIPConfiguration',
           type: {
@@ -43,6 +45,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ApplicationGatewayIPConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               subnet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -58,6 +62,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -65,6 +70,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -72,6 +78,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

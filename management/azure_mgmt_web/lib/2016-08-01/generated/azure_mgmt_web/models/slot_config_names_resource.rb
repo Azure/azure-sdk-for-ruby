@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] List of connection string names.
       attr_accessor :connection_string_names
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SlotConfigNamesResource',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SlotConfigNamesResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +43,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +52,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -55,6 +60,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,11 +69,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               connection_string_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionStringNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -77,11 +85,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               app_setting_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.appSettingNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

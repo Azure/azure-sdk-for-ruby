@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Certificate public data.
       attr_accessor :data
 
@@ -38,6 +39,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayAuthenticationCertificate',
           type: {
@@ -45,6 +47,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ApplicationGatewayAuthenticationCertificate',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.data',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -66,6 +71,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -73,6 +79,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -80,6 +87,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

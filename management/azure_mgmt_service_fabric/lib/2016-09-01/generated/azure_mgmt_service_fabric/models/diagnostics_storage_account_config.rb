@@ -12,6 +12,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Diagnostics storage account name
       attr_accessor :storage_account_name
 
@@ -34,6 +35,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsStorageAccountConfig',
           type: {
@@ -41,6 +43,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'DiagnosticsStorageAccountConfig',
             model_properties: {
               storage_account_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageAccountName',
                 type: {
@@ -48,6 +51,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               protected_account_key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectedAccountKeyName',
                 type: {
@@ -55,6 +59,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               blob_endpoint: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'blobEndpoint',
                 type: {
@@ -62,6 +67,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               queue_endpoint: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'queueEndpoint',
                 type: {
@@ -69,6 +75,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               table_endpoint: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tableEndpoint',
                 type: {

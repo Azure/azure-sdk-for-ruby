@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [FileSystemApplicationLogsConfig] Application logs to file
       # system configuration.
       attr_accessor :file_system
@@ -31,6 +32,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationLogsConfig',
           type: {
@@ -38,6 +40,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ApplicationLogsConfig',
             model_properties: {
               file_system: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileSystem',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               azure_table_storage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureTableStorage',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               azure_blob_storage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureBlobStorage',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the targeted resource, only VM is currently
       # supported.
       attr_accessor :target
@@ -41,6 +42,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCapture',
           type: {
@@ -48,6 +50,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'PacketCapture',
             model_properties: {
               target: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.target',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               bytes_to_capture_per_packet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bytesToCapturePerPacket',
                 default_value: 0,
@@ -63,6 +67,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               total_bytes_per_session: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.totalBytesPerSession',
                 default_value: 1073741824,
@@ -71,6 +76,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               time_limit_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeLimitInSeconds',
                 default_value: 18000,
@@ -79,6 +85,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               storage_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageLocation',
                 type: {
@@ -87,11 +94,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               filters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PacketCaptureFilterElementType',
                       type: {

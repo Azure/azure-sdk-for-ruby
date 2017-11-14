@@ -12,6 +12,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the subscription location placement Id.
       attr_accessor :location_placement_id
 
@@ -25,6 +26,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionPolicies',
           type: {
@@ -32,6 +34,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
             class_name: 'SubscriptionPolicies',
             model_properties: {
               location_placement_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locationPlacementId',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
                 }
               },
               quota_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'quotaId',
                 type: {

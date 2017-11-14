@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Route>] Gets or sets Routes in a Route Table
       attr_accessor :routes
 
@@ -33,6 +34,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RouteTable',
           type: {
@@ -40,6 +42,7 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'RouteTable',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +59,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -70,11 +76,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -84,11 +92,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               routes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RouteElementType',
                       type: {
@@ -99,12 +109,14 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               subnets: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subnets',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubnetElementType',
                       type: {
@@ -115,6 +127,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -122,6 +135,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

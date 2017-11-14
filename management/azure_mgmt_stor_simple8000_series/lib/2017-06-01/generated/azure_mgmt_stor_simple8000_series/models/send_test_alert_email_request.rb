@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The list of email IDs to send the test alert
       # email
       attr_accessor :email_list
@@ -23,6 +24,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SendTestAlertEmailRequest',
           type: {
@@ -30,11 +32,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'SendTestAlertEmailRequest',
             model_properties: {
               email_list: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'emailList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

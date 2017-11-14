@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Password
       attr_accessor :password
 
@@ -25,6 +26,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PasswordProfile',
           type: {
@@ -32,6 +34,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'PasswordProfile',
             model_properties: {
               password: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'password',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               force_change_password_next_login: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'forceChangePasswordNextLogin',
                 type: {

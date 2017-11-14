@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of metric specification.
       attr_accessor :name
 
@@ -48,6 +49,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricSpecification',
           type: {
@@ -55,6 +57,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'MetricSpecification',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -62,6 +65,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -69,6 +73,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               display_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayDescription',
                 type: {
@@ -76,6 +81,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -83,11 +89,13 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               dimensions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DimensionElementType',
                       type: {
@@ -98,6 +106,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               aggregation_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'aggregationType',
                 type: {
@@ -105,6 +114,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               fill_gap_with_zero: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fillGapWithZero',
                 type: {
@@ -112,6 +122,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
@@ -119,6 +130,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               resource_id_dimension_name_override: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceIdDimensionNameOverride',
                 type: {

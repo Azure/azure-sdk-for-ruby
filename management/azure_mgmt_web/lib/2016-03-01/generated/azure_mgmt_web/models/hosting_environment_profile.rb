@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource ID of the App Service Environment.
       attr_accessor :id
 
@@ -28,6 +29,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HostingEnvironmentProfile',
           type: {
@@ -35,6 +37,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'HostingEnvironmentProfile',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -50,6 +54,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

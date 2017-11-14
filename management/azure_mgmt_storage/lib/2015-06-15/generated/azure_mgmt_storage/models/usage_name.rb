@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A string describing the resource name.
       attr_accessor :value
 
@@ -25,6 +26,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageName',
           type: {
@@ -32,6 +34,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'UsageName',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               localized_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ContentLink] Gets or sets the module content link.
       attr_accessor :content_link
 
@@ -32,6 +33,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ModuleUpdateParameters',
           type: {
@@ -39,6 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ModuleUpdateParameters',
             model_properties: {
               content_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contentLink',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -61,11 +66,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

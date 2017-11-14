@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The interface string name for the nested parameter.
       attr_accessor :interface_string
 
@@ -25,6 +26,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ModeValueInfo',
           type: {
@@ -32,6 +34,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'ModeValueInfo',
             model_properties: {
               interface_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interfaceString',
                 type: {
@@ -39,11 +42,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ModuleAssetParameterElementType',
                       type: {

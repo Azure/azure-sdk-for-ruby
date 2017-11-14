@@ -13,6 +13,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A string value that can be used to classify user
       # sign-in types in your directory, such as 'emailAddress' or 'userName'.
       attr_accessor :type
@@ -28,6 +29,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SignInName',
           type: {
@@ -35,6 +37,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'SignInName',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

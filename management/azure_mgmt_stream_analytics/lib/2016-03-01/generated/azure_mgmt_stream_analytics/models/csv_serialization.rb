@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "Csv"
@@ -42,6 +43,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Csv',
           type: {
@@ -49,6 +51,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'CsvSerialization',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -56,6 +59,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               field_delimiter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fieldDelimiter',
                 type: {
@@ -63,6 +67,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               encoding: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encoding',
                 type: {

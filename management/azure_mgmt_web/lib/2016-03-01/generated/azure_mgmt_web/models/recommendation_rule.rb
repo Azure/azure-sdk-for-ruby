@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Unique name of the rule.
       attr_accessor :name
 
@@ -71,6 +72,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendationRule',
           type: {
@@ -78,6 +80,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'RecommendationRule',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -85,6 +88,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -92,6 +96,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -99,6 +104,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               recommendation_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendationId',
                 type: {
@@ -106,6 +112,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -113,6 +120,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               action_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionName',
                 type: {
@@ -120,6 +128,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -128,6 +137,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               channels: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'channels',
                 type: {
@@ -136,11 +146,13 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -150,6 +162,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               is_dynamic: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isDynamic',
                 type: {
@@ -157,6 +170,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               extension_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensionName',
                 type: {
@@ -164,6 +178,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               blade_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bladeName',
                 type: {
@@ -171,6 +186,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               forward_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'forwardLink',
                 type: {

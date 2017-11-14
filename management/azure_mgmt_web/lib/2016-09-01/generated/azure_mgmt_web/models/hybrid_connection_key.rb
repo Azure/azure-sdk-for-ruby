@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the send key.
       attr_accessor :send_key_name
 
@@ -26,6 +27,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HybridConnectionKey',
           type: {
@@ -33,6 +35,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'HybridConnectionKey',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +44,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +53,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -56,6 +61,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +70,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               send_key_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.sendKeyName',
@@ -72,6 +79,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               send_key_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.sendKeyValue',

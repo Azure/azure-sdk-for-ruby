@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the content link URI.
       attr_accessor :uri
 
@@ -35,6 +36,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContentLink',
           type: {
@@ -42,6 +44,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'ContentLink',
             model_properties: {
               uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               content_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentVersion',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               content_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentSize',
                 type: {
@@ -63,6 +68,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               content_hash: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentHash',
                 type: {
@@ -71,6 +77,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {

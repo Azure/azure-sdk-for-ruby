@@ -108,8 +108,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateListDescription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateListDescription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -178,6 +177,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
 
 
       request_headers = {}
@@ -212,8 +212,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -294,6 +293,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'certificate_description is nil' if certificate_description.nil?
 
 
@@ -307,8 +307,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateBodyDescription.mapper()
-      request_content = @client.serialize(request_mapper,  certificate_description)
+      request_content = certificate_description.nil? ? nil: certificate_description.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}'
@@ -339,8 +338,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -349,8 +347,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -421,6 +418,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
@@ -523,6 +521,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
 
@@ -559,8 +558,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateWithNonceDescription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateWithNonceDescription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -641,6 +639,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'resource_name is nil' if resource_name.nil?
       fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      fail ArgumentError, "'certificate_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9-._]{1,64}$'" if !certificate_name.nil? && certificate_name.match(Regexp.new('^^[A-Za-z0-9-._]{1,64}$$')).nil?
       fail ArgumentError, 'certificate_verification_body is nil' if certificate_verification_body.nil?
       fail ArgumentError, 'if_match is nil' if if_match.nil?
 
@@ -655,8 +654,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateVerificationDescription.mapper()
-      request_content = @client.serialize(request_mapper,  certificate_verification_body)
+      request_content = certificate_verification_body.nil? ? nil: certificate_verification_body.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/certificates/{certificateName}/verify'
@@ -687,8 +685,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::IotHub::Mgmt::V2017_07_01::Models::CertificateDescription.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

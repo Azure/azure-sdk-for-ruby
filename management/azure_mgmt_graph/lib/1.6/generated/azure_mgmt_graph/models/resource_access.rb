@@ -14,6 +14,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The unique identifier for one of the OAuth2Permission
       # or AppRole instances that the resource application exposes.
       attr_accessor :id
@@ -29,6 +30,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceAccess',
           type: {
@@ -36,6 +38,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'ResourceAccess',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

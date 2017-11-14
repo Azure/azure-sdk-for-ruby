@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.DataLake/Accounts"] = "AzureDataLakeStoreOutputDataSource"
       @@discriminatorMap["PowerBI"] = "PowerBIOutputDataSource"
@@ -36,6 +37,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OutputDataSource',
           type: {

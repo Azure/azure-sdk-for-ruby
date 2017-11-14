@@ -12,6 +12,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Is this certificate used for admin access from the
       # client, if false , it is used or query only access
       attr_accessor :is_admin
@@ -30,6 +31,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientCertificateCommonName',
           type: {
@@ -37,6 +39,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ClientCertificateCommonName',
             model_properties: {
               is_admin: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'isAdmin',
                 type: {
@@ -44,6 +47,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               certificate_common_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'certificateCommonName',
                 type: {
@@ -51,6 +55,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               certificate_issuer_thumbprint: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'certificateIssuerThumbprint',
                 type: {

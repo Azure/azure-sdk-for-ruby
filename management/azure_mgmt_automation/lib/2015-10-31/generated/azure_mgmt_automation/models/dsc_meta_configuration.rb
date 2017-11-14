@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Gets or sets the ConfigurationModeFrequencyMins value
       # of the meta configuration.
       attr_accessor :configuration_mode_frequency_mins
@@ -47,6 +48,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscMetaConfiguration',
           type: {
@@ -54,6 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscMetaConfiguration',
             model_properties: {
               configuration_mode_frequency_mins: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'configurationModeFrequencyMins',
                 type: {
@@ -61,6 +64,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               reboot_node_if_needed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rebootNodeIfNeeded',
                 type: {
@@ -68,6 +72,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               configuration_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'configurationMode',
                 type: {
@@ -75,6 +80,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               action_after_reboot: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionAfterReboot',
                 type: {
@@ -82,6 +88,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               certificate_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateId',
                 type: {
@@ -89,6 +96,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               refresh_frequency_mins: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'refreshFrequencyMins',
                 type: {
@@ -96,6 +104,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               allow_module_overwrite: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowModuleOverwrite',
                 type: {

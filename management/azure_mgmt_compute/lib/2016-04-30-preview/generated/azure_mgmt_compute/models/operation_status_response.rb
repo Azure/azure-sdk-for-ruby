@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation ID
       attr_accessor :name
 
@@ -34,6 +35,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatusResponse',
           type: {
@@ -41,6 +43,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'OperationStatusResponse',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +52,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -57,6 +61,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -65,6 +70,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -73,6 +79,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',

@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the volume.
       attr_accessor :name
 
@@ -25,6 +26,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Volume',
           type: {
@@ -32,6 +34,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'Volume',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -39,6 +42,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               azure_file: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'azureFile',
                 type: {

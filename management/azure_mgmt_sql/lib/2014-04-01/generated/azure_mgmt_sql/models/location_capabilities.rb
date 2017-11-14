@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The location name.
       attr_accessor :name
 
@@ -31,6 +32,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LocationCapabilities',
           type: {
@@ -38,6 +40,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'LocationCapabilities',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -46,6 +49,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -55,12 +59,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               supported_server_versions: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedServerVersions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ServerVersionCapabilityElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the status Code.
       attr_accessor :code
 
@@ -28,6 +29,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeVmInstanceViewStatusFragment',
           type: {
@@ -35,6 +37,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ComputeVmInstanceViewStatusFragment',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -42,6 +45,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               display_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayStatus',
                 type: {
@@ -49,6 +53,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

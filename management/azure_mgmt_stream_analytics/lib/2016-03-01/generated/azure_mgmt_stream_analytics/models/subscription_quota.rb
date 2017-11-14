@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The max permitted usage of this resource.
       attr_accessor :max_count
 
@@ -25,6 +26,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionQuota',
           type: {
@@ -32,6 +34,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'SubscriptionQuota',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +43,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -47,6 +51,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -55,6 +60,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               max_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxCount',
@@ -63,6 +69,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               current_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentCount',

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AzureReachabilityReportLocation]
       attr_accessor :provider_location
 
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureReachabilityReportParameters',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AzureReachabilityReportParameters',
             model_properties: {
               provider_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'providerLocation',
                 type: {
@@ -49,11 +52,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               providers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -63,11 +68,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               azure_locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureLocations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -77,6 +84,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'startTime',
                 type: {
@@ -84,6 +92,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'endTime',
                 type: {

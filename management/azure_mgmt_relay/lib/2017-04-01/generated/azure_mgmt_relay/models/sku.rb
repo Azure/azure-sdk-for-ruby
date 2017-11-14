@@ -12,6 +12,7 @@ module Azure::Relay::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of this SKU. Default value: 'Standard' .
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -33,6 +35,7 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'name',
@@ -42,6 +45,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {

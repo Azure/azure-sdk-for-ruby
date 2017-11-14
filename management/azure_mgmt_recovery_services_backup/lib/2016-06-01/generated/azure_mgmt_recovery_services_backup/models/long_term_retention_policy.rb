@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @retentionPolicyType = "LongTermRetentionPolicy"
@@ -46,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LongTermRetentionPolicy',
           type: {
@@ -53,6 +55,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'LongTermRetentionPolicy',
             model_properties: {
               retentionPolicyType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'retentionPolicyType',
                 type: {
@@ -60,6 +63,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               daily_schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dailySchedule',
                 type: {
@@ -68,6 +72,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               weekly_schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'weeklySchedule',
                 type: {
@@ -76,6 +81,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               monthly_schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'monthlySchedule',
                 type: {
@@ -84,6 +90,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               yearly_schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'yearlySchedule',
                 type: {

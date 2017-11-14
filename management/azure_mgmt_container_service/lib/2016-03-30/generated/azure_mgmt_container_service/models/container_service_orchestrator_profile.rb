@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ContainerServiceOchestratorTypes] The orchestrator to use to
       # manage container service cluster resources. Valid values are Swarm,
       # DCOS, and Custom. Possible values include: 'Swarm', 'DCOS'
@@ -24,6 +25,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceOrchestratorProfile',
           type: {
@@ -31,6 +33,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceOrchestratorProfile',
             model_properties: {
               orchestrator_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'orchestratorType',
                 type: {

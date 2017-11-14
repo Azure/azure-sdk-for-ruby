@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] The relative URL of the Key Vault containing all
       # of the certificates in VaultCertificates.
       attr_accessor :source_vault
@@ -27,6 +28,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultSecretGroup',
           type: {
@@ -34,6 +36,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VaultSecretGroup',
             model_properties: {
               source_vault: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceVault',
                 type: {
@@ -42,11 +45,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               vault_certificates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vaultCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultCertificateElementType',
                       type: {

@@ -16,6 +16,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => OperationMonitoringLevel}]
       attr_accessor :events
 
@@ -26,6 +27,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationsMonitoringProperties',
           type: {
@@ -33,11 +35,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'OperationsMonitoringProperties',
             model_properties: {
               events: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'events',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationMonitoringLevelElementType',
                       type: {

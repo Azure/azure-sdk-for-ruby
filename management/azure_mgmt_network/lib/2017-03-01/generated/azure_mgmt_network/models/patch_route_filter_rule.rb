@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Access] The access type of the rule. Valid values are:
       # 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
       attr_accessor :access
@@ -46,6 +47,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PatchRouteFilterRule',
           type: {
@@ -53,6 +55,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'PatchRouteFilterRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               access: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.access',
                 type: {
@@ -67,6 +71,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               route_filter_rule_type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'properties.routeFilterRuleType',
@@ -76,11 +81,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               communities: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.communities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -90,6 +97,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -98,6 +106,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -106,6 +115,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -114,11 +124,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

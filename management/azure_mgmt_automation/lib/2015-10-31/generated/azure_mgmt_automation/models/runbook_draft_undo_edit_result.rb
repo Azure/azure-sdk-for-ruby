@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [HttpStatusCode] Possible values include: 'Continue',
       # 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
       # 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
@@ -38,6 +39,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunbookDraftUndoEditResult',
           type: {
@@ -45,6 +47,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'RunbookDraftUndoEditResult',
             model_properties: {
               status_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               request_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestId',
                 type: {

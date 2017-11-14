@@ -13,6 +13,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the reason why the recommended action was put to
       # error state. e.g., DatabaseHasQdsOff, IndexAlreadyExists
       attr_accessor :error_code
@@ -29,6 +30,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedActionErrorInfo',
           type: {
@@ -36,6 +38,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'RecommendedActionErrorInfo',
             model_properties: {
               error_code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'errorCode',
@@ -44,6 +47,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               is_retryable: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isRetryable',

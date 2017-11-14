@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Gets or sets verbose log option.
       attr_accessor :log_verbose
 
@@ -45,6 +46,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscConfigurationCreateOrUpdateParameters',
           type: {
@@ -52,6 +54,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscConfigurationCreateOrUpdateParameters',
             model_properties: {
               log_verbose: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logVerbose',
                 type: {
@@ -59,6 +62,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_progress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logProgress',
                 type: {
@@ -66,6 +70,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               source: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.source',
                 type: {
@@ -74,11 +79,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DscConfigurationParameterElementType',
                       type: {
@@ -89,6 +96,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -96,6 +104,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -103,6 +112,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -110,11 +120,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

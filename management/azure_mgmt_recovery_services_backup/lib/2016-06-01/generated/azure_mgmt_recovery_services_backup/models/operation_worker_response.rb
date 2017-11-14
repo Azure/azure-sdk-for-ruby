@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [HttpStatusCode] The HTTP status code of the operation.
       # Possible values include: 'Continue', 'SwitchingProtocols', 'OK',
       # 'Created', 'Accepted', 'NonAuthoritativeInformation', 'NoContent',
@@ -43,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationWorkerResponse',
           type: {
@@ -50,6 +52,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'OperationWorkerResponse',
             model_properties: {
               status_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCode',
                 type: {
@@ -58,16 +61,19 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               headers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Headers',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
+                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {

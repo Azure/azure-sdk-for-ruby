@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ApplicationGatewaySslProtocol>] SSL protocols to be
       # disabled on application gateway. Possible values are: 'TLSv1_0',
       # 'TLSv1_1', and 'TLSv1_2'.
@@ -24,6 +25,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySslPolicy',
           type: {
@@ -31,11 +33,13 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ApplicationGatewaySslPolicy',
             model_properties: {
               disabled_ssl_protocols: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'disabledSslProtocols',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslProtocolElementType',
                       type: {

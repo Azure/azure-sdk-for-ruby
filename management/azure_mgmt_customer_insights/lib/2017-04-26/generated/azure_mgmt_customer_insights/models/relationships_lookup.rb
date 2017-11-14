@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The relationship profile.
       attr_accessor :profile_name
 
@@ -36,6 +37,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipsLookup',
           type: {
@@ -43,6 +45,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'RelationshipsLookup',
             model_properties: {
               profile_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'profileName',
@@ -51,12 +54,14 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               profile_property_references: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'profilePropertyReferences',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParticipantProfilePropertyReferenceElementType',
                       type: {
@@ -67,6 +72,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               related_profile_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'relatedProfileName',
@@ -75,12 +81,14 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               related_profile_property_references: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'relatedProfilePropertyReferences',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ParticipantProfilePropertyReferenceElementType',
                       type: {
@@ -91,6 +99,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               existing_relationship_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'existingRelationshipName',

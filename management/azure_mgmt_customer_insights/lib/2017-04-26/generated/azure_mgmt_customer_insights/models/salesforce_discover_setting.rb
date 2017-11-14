@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The salesforce connection string secret URL.
       attr_accessor :salesforce_connection_string_secret_url
 
@@ -22,6 +23,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SalesforceDiscoverSetting',
           type: {
@@ -29,6 +31,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'SalesforceDiscoverSetting',
             model_properties: {
               salesforce_connection_string_secret_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'salesforceConnectionStringSecretUrl',
                 type: {

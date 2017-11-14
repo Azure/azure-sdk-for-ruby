@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ServerAzureADAdministrator>] The list of server Active
       # Directory Administrators for the server.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServerAdministratorListResult',
           type: {
@@ -30,11 +32,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServerAdministratorListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ServerAzureADAdministratorElementType',
                       type: {

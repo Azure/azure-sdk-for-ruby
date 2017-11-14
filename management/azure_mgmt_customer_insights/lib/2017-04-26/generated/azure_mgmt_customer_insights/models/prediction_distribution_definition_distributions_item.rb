@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Score threshold.
       attr_accessor :score_threshold
 
@@ -35,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PredictionDistributionDefinition_distributionsItem',
           type: {
@@ -42,6 +44,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionDistributionDefinitionDistributionsItem',
             model_properties: {
               score_threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scoreThreshold',
                 type: {
@@ -49,6 +52,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               positives: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'positives',
                 type: {
@@ -56,6 +60,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               negatives: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'negatives',
                 type: {
@@ -63,6 +68,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               positives_above_threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'positivesAboveThreshold',
                 type: {
@@ -70,6 +76,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               negatives_above_threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'negativesAboveThreshold',
                 type: {

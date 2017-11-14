@@ -13,6 +13,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Region] The region at the root of the hierarchy from all the
       # regions in the hierarchy can be retrieved.
       attr_accessor :geographic_hierarchy
@@ -24,6 +25,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TrafficManagerGeographicHierarchy',
           type: {
@@ -31,6 +33,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'TrafficManagerGeographicHierarchy',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -39,6 +42,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -47,6 +51,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -55,6 +60,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -62,11 +68,13 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -76,6 +84,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               geographic_hierarchy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.geographicHierarchy',
                 type: {

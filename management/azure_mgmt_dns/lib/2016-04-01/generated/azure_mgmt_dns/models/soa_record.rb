@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The domain name of the authoritative name server for
       # this SOA record.
       attr_accessor :host
@@ -42,6 +43,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SoaRecord',
           type: {
@@ -49,6 +51,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'SoaRecord',
             model_properties: {
               host: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'host',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               email: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'email',
                 type: {
@@ -63,6 +67,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               serial_number: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serialNumber',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               refresh_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'refreshTime',
                 type: {
@@ -77,6 +83,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               retry_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryTime',
                 type: {
@@ -84,6 +91,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               expire_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expireTime',
                 type: {
@@ -91,6 +99,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               minimum_ttl: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minimumTTL',
                 type: {

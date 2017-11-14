@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The provisioning state of the web application firewall
       # rule set.
       attr_accessor :provisioning_state
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayFirewallRuleSet',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'ApplicationGatewayFirewallRuleSet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +69,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,11 +77,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,6 +93,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -92,6 +101,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               rule_set_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.ruleSetType',
                 type: {
@@ -99,6 +109,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               rule_set_version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.ruleSetVersion',
                 type: {
@@ -106,11 +117,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               rule_groups: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.ruleGroups',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayFirewallRuleGroupElementType',
                       type: {

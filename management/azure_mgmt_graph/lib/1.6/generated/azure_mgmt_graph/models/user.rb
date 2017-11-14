@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Whether the account is enabled.
       attr_accessor :account_enabled
 
@@ -43,6 +44,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'User',
           type: {
@@ -50,6 +52,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'User',
             model_properties: {
               immutable_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'immutableId',
                 type: {
@@ -57,6 +60,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               usage_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'usageLocation',
                 type: {
@@ -64,6 +68,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               given_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'givenName',
                 type: {
@@ -71,6 +76,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               surname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'surname',
                 type: {
@@ -78,6 +84,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'userType',
                 type: {
@@ -85,6 +92,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               account_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountEnabled',
                 type: {
@@ -92,6 +100,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -99,6 +108,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_principal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'userPrincipalName',
                 type: {
@@ -106,6 +116,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_nickname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mailNickname',
                 type: {
@@ -113,6 +124,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mail',
                 type: {
@@ -120,6 +132,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               object_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectId',
                 type: {
@@ -127,6 +140,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               object_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectType',
                 type: {
@@ -134,11 +148,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               sign_in_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signInNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SignInNameElementType',
                       type: {

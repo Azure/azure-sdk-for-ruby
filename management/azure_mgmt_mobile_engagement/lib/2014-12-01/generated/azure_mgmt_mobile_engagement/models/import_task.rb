@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A shared Access Signature (SAS) Storage URI where the
       # job results will be retrieved from.
       attr_accessor :storage_url
@@ -24,6 +25,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'importTask',
           type: {
@@ -31,6 +33,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ImportTask',
             model_properties: {
               storage_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUrl',
                 type: {

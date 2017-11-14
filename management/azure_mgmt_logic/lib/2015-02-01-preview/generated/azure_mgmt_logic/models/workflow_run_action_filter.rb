@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkflowStatus] Gets or sets the status of workflow run
       # action. Possible values include: 'NotSpecified', 'Paused', 'Running',
       # 'Waiting', 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed',
@@ -26,6 +27,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowRunActionFilter',
           type: {
@@ -33,6 +35,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowRunActionFilter',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

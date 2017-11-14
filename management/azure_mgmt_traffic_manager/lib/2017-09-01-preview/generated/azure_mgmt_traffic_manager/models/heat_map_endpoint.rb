@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ARM Resource ID of this Traffic Manager endpoint.
       attr_accessor :resource_id
 
@@ -26,6 +27,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HeatMapEndpoint',
           type: {
@@ -33,6 +35,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
             class_name: 'HeatMapEndpoint',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -40,6 +43,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               endpoint_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpointId',
                 type: {

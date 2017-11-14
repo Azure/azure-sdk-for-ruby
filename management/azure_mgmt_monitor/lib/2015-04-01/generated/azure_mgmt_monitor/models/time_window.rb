@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the timezone of the start and end times for the
       # profile. Some examples of valid timezones are: Dateline Standard Time,
       # UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard
@@ -67,6 +68,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TimeWindow',
           type: {
@@ -74,6 +76,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'TimeWindow',
             model_properties: {
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -81,6 +84,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               start: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'start',
                 type: {
@@ -88,6 +92,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               end_property: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'end',
                 type: {

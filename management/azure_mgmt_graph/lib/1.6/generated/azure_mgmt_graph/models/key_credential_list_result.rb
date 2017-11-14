@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<KeyCredential>] A collection of KeyCredentials.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyCredentialListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'KeyCredentialListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyCredentialElementType',
                       type: {

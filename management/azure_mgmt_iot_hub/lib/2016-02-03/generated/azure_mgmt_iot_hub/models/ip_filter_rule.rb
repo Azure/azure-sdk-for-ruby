@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the IP filter rule.
       attr_accessor :filter_name
 
@@ -30,6 +31,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IpFilterRule',
           type: {
@@ -37,6 +39,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'IpFilterRule',
             model_properties: {
               filter_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'filterName',
                 type: {
@@ -44,6 +47,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               action: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'action',
                 type: {
@@ -52,6 +56,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               ip_mask: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ipMask',
                 type: {

@@ -19,6 +19,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NetworkOperationStatus] Status of the AzureAsuncOperation.
       # Possible values include: 'InProgress', 'Succeeded', 'Failed'
       attr_accessor :status
@@ -33,6 +34,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureAsyncOperationResult',
           type: {
@@ -40,6 +42,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'AzureAsyncOperationResult',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

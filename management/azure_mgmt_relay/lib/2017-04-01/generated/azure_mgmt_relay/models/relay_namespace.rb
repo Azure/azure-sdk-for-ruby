@@ -12,6 +12,7 @@ module Azure::Relay::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] SKU of the namespace.
       attr_accessor :sku
 
@@ -39,6 +40,7 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RelayNamespace',
           type: {
@@ -46,6 +48,7 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'RelayNamespace',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,6 +57,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,6 +66,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -70,6 +75,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -77,11 +83,13 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,6 +99,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -99,6 +108,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -108,6 +118,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               created_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -116,6 +127,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               updated_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -124,6 +136,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               service_bus_endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceBusEndpoint',
@@ -132,6 +145,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               metric_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.metricId',

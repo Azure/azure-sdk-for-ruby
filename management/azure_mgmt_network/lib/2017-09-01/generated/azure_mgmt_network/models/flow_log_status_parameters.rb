@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The target resource where getting the flow logging
       # status.
       attr_accessor :target_resource_id
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FlowLogStatusParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'FlowLogStatusParameters',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {

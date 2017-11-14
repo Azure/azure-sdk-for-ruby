@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The relative DNS name provided by this Traffic Manager
       # profile. This value is combined with the DNS domain name used by Azure
       # Traffic Manager to form the fully-qualified domain name (FQDN) of the
@@ -35,6 +36,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DnsConfig',
           type: {
@@ -42,6 +44,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
             class_name: 'DnsConfig',
             model_properties: {
               relative_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativeName',
                 type: {
@@ -49,6 +52,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'fqdn',
@@ -57,6 +61,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               ttl: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ttl',
                 type: {

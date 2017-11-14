@@ -64,6 +64,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def delete_async(resource_group_name, automation_account_name, configuration_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'configuration_name is nil' if configuration_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -149,6 +150,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def get_async(resource_group_name, automation_account_name, configuration_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'configuration_name is nil' if configuration_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -187,8 +189,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -253,6 +254,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def create_or_update_async(resource_group_name, automation_account_name, configuration_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'configuration_name is nil' if configuration_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -269,8 +271,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationCreateOrUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}'
@@ -301,8 +302,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -311,8 +311,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfiguration.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -368,6 +367,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def get_content_async(resource_group_name, automation_account_name, configuration_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, 'configuration_name is nil' if configuration_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -407,13 +407,17 @@ module Azure::Automation::Mgmt::V2015_10_31
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Stream'
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -466,6 +470,7 @@ module Azure::Automation::Mgmt::V2015_10_31
     #
     def list_by_automation_account_async(resource_group_name, automation_account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'automation_account_name is nil' if automation_account_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -503,8 +508,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -590,8 +594,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Automation::Mgmt::V2015_10_31::Models::DscConfigurationListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

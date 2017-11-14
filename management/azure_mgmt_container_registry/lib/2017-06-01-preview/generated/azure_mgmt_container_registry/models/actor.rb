@@ -13,6 +13,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The subject or username associated with the request
       # context that generated the event.
       attr_accessor :name
@@ -24,6 +25,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Actor',
           type: {
@@ -31,6 +33,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'Actor',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

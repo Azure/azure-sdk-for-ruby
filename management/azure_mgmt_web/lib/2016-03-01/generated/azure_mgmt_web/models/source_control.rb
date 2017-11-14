@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name or source control type.
       attr_accessor :source_control_name
 
@@ -34,6 +35,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SourceControl',
           type: {
@@ -41,6 +43,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'SourceControl',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,6 +52,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,6 +61,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -64,6 +69,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,6 +78,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               source_control_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -79,6 +86,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.token',
                 type: {
@@ -86,6 +94,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               token_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenSecret',
                 type: {
@@ -93,6 +102,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               refresh_token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.refreshToken',
                 type: {
@@ -100,6 +110,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               expiration_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expirationTime',
                 type: {

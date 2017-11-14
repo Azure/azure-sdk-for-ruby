@@ -58,6 +58,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowRunActionListResult',
           type: {
@@ -65,11 +66,13 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowRunActionListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WorkflowRunActionElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

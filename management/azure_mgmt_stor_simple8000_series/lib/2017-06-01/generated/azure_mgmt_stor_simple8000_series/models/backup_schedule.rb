@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ScheduleRecurrence] The schedule recurrence.
       attr_accessor :schedule_recurrence
 
@@ -40,6 +41,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupSchedule',
           type: {
@@ -47,6 +49,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BackupSchedule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +58,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +67,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,6 +76,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -79,6 +85,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               schedule_recurrence: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.scheduleRecurrence',
                 type: {
@@ -87,6 +94,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.backupType',
                 type: {
@@ -95,6 +103,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               retention_count: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.retentionCount',
                 type: {
@@ -102,6 +111,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -109,6 +119,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               schedule_status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.scheduleStatus',
                 type: {
@@ -117,6 +128,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               last_successful_run: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastSuccessfulRun',

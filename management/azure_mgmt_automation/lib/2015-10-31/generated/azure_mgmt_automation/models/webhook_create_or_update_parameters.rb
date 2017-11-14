@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the name of the webhook.
       attr_accessor :name
 
@@ -43,6 +44,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebhookCreateOrUpdateParameters',
           type: {
@@ -50,6 +52,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'WebhookCreateOrUpdateParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -57,6 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isEnabled',
                 type: {
@@ -64,6 +68,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uri',
                 type: {
@@ -71,6 +76,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               expiry_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiryTime',
                 type: {
@@ -78,11 +84,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -92,6 +100,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               runbook: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runbook',
                 type: {
@@ -100,6 +109,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               run_on: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runOn',
                 type: {

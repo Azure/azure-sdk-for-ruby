@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Indicating whether this instance is profile.
       attr_accessor :is_profile
 
@@ -34,6 +35,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SalesforceTable',
           type: {
@@ -41,6 +43,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'SalesforceTable',
             model_properties: {
               is_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isProfile',
                 type: {
@@ -48,6 +51,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               table_category: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tableCategory',
                 type: {
@@ -55,6 +59,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               table_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tableName',
                 type: {
@@ -62,6 +67,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               table_remarks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tableRemarks',
                 type: {
@@ -69,6 +75,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               table_schema: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tableSchema',
                 type: {

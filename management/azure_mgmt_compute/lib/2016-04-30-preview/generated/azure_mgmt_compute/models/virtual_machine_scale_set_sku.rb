@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The type of resource the sku applies to.
       attr_accessor :resource_type
 
@@ -29,6 +30,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetSku',
           type: {
@@ -36,6 +38,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSetSku',
             model_properties: {
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -44,6 +47,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'sku',
@@ -53,6 +57,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'capacity',

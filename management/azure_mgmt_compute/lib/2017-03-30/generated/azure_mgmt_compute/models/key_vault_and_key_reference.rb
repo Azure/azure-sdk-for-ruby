@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SourceVault] Resource id of the KeyVault containing the key or
       # secret
       attr_accessor :source_vault
@@ -27,6 +28,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultAndKeyReference',
           type: {
@@ -34,6 +36,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'KeyVaultAndKeyReference',
             model_properties: {
               source_vault: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceVault',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               key_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyUrl',
                 type: {

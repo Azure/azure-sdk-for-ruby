@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageKeyType] The type of the storage key to use. Possible
       # values include: 'StorageAccessKey', 'SharedAccessKey'
       attr_accessor :storage_key_type
@@ -40,6 +41,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExportRequest',
           type: {
@@ -47,6 +49,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ExportRequest',
             model_properties: {
               storage_key_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageKeyType',
                 type: {
@@ -55,6 +58,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageKey',
                 type: {
@@ -62,6 +66,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageUri',
                 type: {
@@ -69,6 +74,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'administratorLogin',
                 type: {
@@ -76,6 +82,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               administrator_login_password: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'administratorLoginPassword',
                 type: {
@@ -83,6 +90,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               authentication_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authenticationType',
                 default_value: 'SQL',

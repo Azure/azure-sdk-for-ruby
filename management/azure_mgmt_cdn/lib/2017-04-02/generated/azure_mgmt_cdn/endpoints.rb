@@ -70,6 +70,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def list_by_profile_async(resource_group_name, profile_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -107,8 +110,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::EndpointListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::EndpointListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -176,6 +178,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def get_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -214,8 +219,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -269,8 +273,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -327,8 +330,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -424,8 +426,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -474,8 +475,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -653,6 +653,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def validate_custom_domain_async(resource_group_name, profile_name, endpoint_name, custom_domain_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'custom_domain_properties is nil' if custom_domain_properties.nil?
@@ -669,8 +672,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainInput.mapper()
-      request_content = @client.serialize(request_mapper,  custom_domain_properties)
+      request_content = custom_domain_properties.nil? ? nil: custom_domain_properties.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain'
@@ -701,8 +703,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainOutput.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::ValidateCustomDomainOutput.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -770,6 +771,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def list_resource_usage_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -808,8 +812,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsageListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsageListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -880,6 +883,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_create_async(resource_group_name, profile_name, endpoint_name, endpoint, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'endpoint is nil' if endpoint.nil?
@@ -896,8 +902,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-      request_content = @client.serialize(request_mapper,  endpoint)
+      request_content = endpoint.nil? ? nil: endpoint.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}'
@@ -928,8 +933,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -938,8 +942,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -948,8 +951,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1032,6 +1034,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_update_async(resource_group_name, profile_name, endpoint_name, endpoint_update_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'endpoint_update_properties is nil' if endpoint_update_properties.nil?
@@ -1048,8 +1053,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::EndpointUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  endpoint_update_properties)
+      request_content = endpoint_update_properties.nil? ? nil: endpoint_update_properties.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}'
@@ -1080,8 +1084,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1090,8 +1093,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1158,6 +1160,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_delete_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1252,6 +1257,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_start_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1290,8 +1298,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1356,6 +1363,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_stop_async(resource_group_name, profile_name, endpoint_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1394,8 +1404,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1471,6 +1480,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_purge_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'content_file_paths is nil' if content_file_paths.nil?
@@ -1487,8 +1499,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::PurgeParameters.mapper()
-      request_content = @client.serialize(request_mapper,  content_file_paths)
+      request_content = content_file_paths.nil? ? nil: content_file_paths.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge'
@@ -1583,6 +1594,9 @@ module Azure::CDN::Mgmt::V2017_04_02
     #
     def begin_load_content_async(resource_group_name, profile_name, endpoint_name, content_file_paths, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'content_file_paths is nil' if content_file_paths.nil?
@@ -1599,8 +1613,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::LoadParameters.mapper()
-      request_content = @client.serialize(request_mapper,  content_file_paths)
+      request_content = content_file_paths.nil? ? nil: content_file_paths.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load'
@@ -1708,8 +1721,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::EndpointListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::EndpointListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1798,8 +1810,7 @@ module Azure::CDN::Mgmt::V2017_04_02
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsageListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2017_04_02::Models::ResourceUsageListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

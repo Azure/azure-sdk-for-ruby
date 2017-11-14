@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The localized friendly form of the resource provider
       # name.
       attr_accessor :provider
@@ -34,6 +35,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -41,6 +43,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -49,6 +52,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -57,6 +61,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',
@@ -65,6 +70,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',

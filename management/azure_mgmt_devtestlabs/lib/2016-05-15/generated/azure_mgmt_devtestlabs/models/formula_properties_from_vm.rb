@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The identifier of the VM from which a formula is to be
       # created.
       attr_accessor :lab_vm_id
@@ -23,6 +24,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FormulaPropertiesFromVm',
           type: {
@@ -30,6 +32,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'FormulaPropertiesFromVm',
             model_properties: {
               lab_vm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'labVmId',
                 type: {

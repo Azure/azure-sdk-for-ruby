@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Parameter name.
       attr_accessor :name
 
@@ -29,6 +30,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ModuleAssetParameter',
           type: {
@@ -36,6 +38,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'ModuleAssetParameter',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -43,6 +46,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               parameter_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameterType',
                 type: {
@@ -50,11 +54,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               mode_values_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'modeValuesInfo',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ModeValueInfoElementType',
                       type: {

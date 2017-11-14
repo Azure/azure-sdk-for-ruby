@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Enum] The signed services accessible with the account SAS.
       # Possible values include: Blob (b), Queue (q), Table (t), File (f).
       # Possible values include: 'b', 'q', 't', 'f'
@@ -55,6 +56,7 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AccountSasParameters',
           type: {
@@ -62,6 +64,7 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'AccountSasParameters',
             model_properties: {
               services: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signedServices',
                 type: {
@@ -69,6 +72,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               resource_types: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signedResourceTypes',
                 type: {
@@ -76,6 +80,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               permissions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signedPermission',
                 type: {
@@ -83,6 +88,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               ipaddress_or_range: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedIp',
                 type: {
@@ -90,6 +96,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               protocols: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedProtocol',
                 type: {
@@ -98,6 +105,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               shared_access_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedStart',
                 type: {
@@ -105,6 +113,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               shared_access_expiry_time: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signedExpiry',
                 type: {
@@ -112,6 +121,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               key_to_sign: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyToSign',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Frontend port
       attr_accessor :port
 
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayFrontendPort',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ApplicationGatewayFrontendPort',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.port',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -69,6 +75,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

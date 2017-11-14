@@ -12,6 +12,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageAccountProperties] the properties for the Azure Storage
       # account being added.
       attr_accessor :properties
@@ -23,6 +24,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AddStorageAccountParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'AddStorageAccountParameters',
             model_properties: {
               properties: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {

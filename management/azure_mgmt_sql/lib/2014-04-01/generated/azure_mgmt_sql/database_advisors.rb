@@ -112,8 +112,7 @@ module Azure::SQL::Mgmt::V2014_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::AdvisorListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2014_04_01::Models::AdvisorListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -217,8 +216,7 @@ module Azure::SQL::Mgmt::V2014_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::Advisor.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2014_04_01::Models::Advisor.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -303,8 +301,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::Advisor.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advisors/{advisorName}'
@@ -335,8 +332,7 @@ module Azure::SQL::Mgmt::V2014_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2014_04_01::Models::Advisor.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2014_04_01::Models::Advisor.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

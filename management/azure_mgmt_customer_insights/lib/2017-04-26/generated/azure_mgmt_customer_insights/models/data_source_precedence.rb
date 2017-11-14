@@ -13,6 +13,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The data source name
       attr_accessor :name
 
@@ -40,6 +41,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataSourcePrecedence',
           type: {
@@ -47,6 +49,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'DataSourcePrecedence',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSource.name',
@@ -55,6 +58,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               data_source_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSource.dataSourceType',
@@ -63,6 +67,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSource.status',
@@ -71,6 +76,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSource.id',
@@ -79,6 +85,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               data_source_reference_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSource.dataSourceReferenceId',
@@ -87,6 +94,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               precedence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'precedence',
                 type: {

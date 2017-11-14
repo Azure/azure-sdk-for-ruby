@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The disk id.
       attr_accessor :disk_id
 
@@ -65,6 +66,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMageProtectedDiskDetails',
           type: {
@@ -72,6 +74,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageProtectedDiskDetails',
             model_properties: {
               disk_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskId',
                 type: {
@@ -79,6 +82,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskName',
                 type: {
@@ -86,6 +90,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protection_stage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionStage',
                 type: {
@@ -93,6 +98,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               health_error_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthErrorCode',
                 type: {
@@ -100,6 +106,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               rpo_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rpoInSeconds',
                 type: {
@@ -107,6 +114,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resync_required: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resyncRequired',
                 type: {
@@ -114,6 +122,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resync_progress_percentage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resyncProgressPercentage',
                 type: {
@@ -121,6 +130,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resync_duration_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resyncDurationInSeconds',
                 type: {
@@ -128,6 +138,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_capacity_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskCapacityInBytes',
                 type: {
@@ -135,6 +146,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               file_system_capacity_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileSystemCapacityInBytes',
                 type: {
@@ -142,6 +154,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_data_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceDataInMB',
                 type: {
@@ -149,6 +162,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ps_data_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'psDataInMB',
                 type: {
@@ -156,6 +170,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_data_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetDataInMB',
                 type: {
@@ -163,6 +178,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_resized: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskResized',
                 type: {
@@ -170,6 +186,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_rpo_calculated_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRpoCalculatedTime',
                 type: {

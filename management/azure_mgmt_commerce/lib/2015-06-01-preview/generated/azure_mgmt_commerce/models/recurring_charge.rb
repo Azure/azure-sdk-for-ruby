@@ -12,6 +12,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @Name = "Recurring Charge"
@@ -29,6 +30,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Recurring Charge',
           type: {
@@ -36,6 +38,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'RecurringCharge',
             model_properties: {
               effective_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'EffectiveDate',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               Name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Name',
                 type: {
@@ -50,6 +54,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               recurring_charge: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'RecurringCharge',
                 type: {

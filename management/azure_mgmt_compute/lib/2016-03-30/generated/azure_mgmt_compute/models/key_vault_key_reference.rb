@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL referencing a key in a Key Vault.
       attr_accessor :key_url
 
@@ -26,6 +27,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultKeyReference',
           type: {
@@ -33,6 +35,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'KeyVaultKeyReference',
             model_properties: {
               key_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyUrl',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               source_vault: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceVault',
                 type: {

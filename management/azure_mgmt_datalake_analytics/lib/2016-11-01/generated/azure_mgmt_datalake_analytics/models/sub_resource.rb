@@ -12,6 +12,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource Id
       attr_accessor :id
 
@@ -28,6 +29,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubResource',
           type: {
@@ -35,6 +37,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'SubResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,6 +46,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -50,6 +54,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Tunnel name.
       attr_accessor :tunnel
 
@@ -37,6 +38,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TunnelConnectionHealth',
           type: {
@@ -44,6 +46,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'TunnelConnectionHealth',
             model_properties: {
               tunnel: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tunnel',
@@ -52,6 +55,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               connection_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'connectionStatus',
@@ -60,6 +64,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               ingress_bytes_transferred: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'ingressBytesTransferred',
@@ -68,6 +73,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               egress_bytes_transferred: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'egressBytesTransferred',
@@ -76,6 +82,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               last_connection_established_utc_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastConnectionEstablishedUtcTime',

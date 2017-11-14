@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BackupManagementType] Backup management type for the backup
       # policy. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql'
@@ -24,6 +25,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectionPolicyQueryObject',
           type: {
@@ -31,6 +33,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'ProtectionPolicyQueryObject',
             model_properties: {
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {

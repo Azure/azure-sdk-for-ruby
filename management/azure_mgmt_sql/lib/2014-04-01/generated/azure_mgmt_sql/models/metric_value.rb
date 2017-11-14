@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Float] The number of values for the metric.
       attr_accessor :count
 
@@ -37,6 +38,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricValue',
           type: {
@@ -44,6 +46,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'MetricValue',
             model_properties: {
               count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'count',
@@ -52,6 +55,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               average: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'average',
@@ -60,6 +64,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               maximum: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maximum',
@@ -68,6 +73,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               minimum: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'minimum',
@@ -76,6 +82,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -84,6 +91,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               total: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'total',

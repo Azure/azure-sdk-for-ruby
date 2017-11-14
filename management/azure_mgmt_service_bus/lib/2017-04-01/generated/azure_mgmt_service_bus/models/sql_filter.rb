@@ -13,6 +13,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The SQL expression. e.g. MyProperty='ABC'
       attr_accessor :sql_expression
 
@@ -32,6 +33,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SqlFilter',
           type: {
@@ -39,6 +41,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'SqlFilter',
             model_properties: {
               sql_expression: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sqlExpression',
                 type: {
@@ -46,6 +49,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               compatibility_level: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'compatibilityLevel',
@@ -55,6 +59,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               requires_preprocessing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'requiresPreprocessing',
                 default_value: true,

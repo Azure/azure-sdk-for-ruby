@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageAccountTypes] the storage account type of the disk.
       # Possible values include: 'Standard_LRS', 'Premium_LRS'
       attr_accessor :account_type
@@ -51,6 +52,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Disk',
           type: {
@@ -58,6 +60,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'Disk',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -66,6 +69,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -74,6 +78,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,6 +87,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -89,11 +95,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -103,6 +111,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               account_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountType',
                 type: {
@@ -111,6 +120,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               time_created: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.timeCreated',
@@ -119,6 +129,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -127,6 +138,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               creation_data: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.creationData',
                 type: {
@@ -135,6 +147,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               disk_size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskSizeGB',
                 type: {
@@ -142,6 +155,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               encryption_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionSettings',
                 type: {
@@ -150,6 +164,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               owner_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.ownerId',
@@ -158,6 +173,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

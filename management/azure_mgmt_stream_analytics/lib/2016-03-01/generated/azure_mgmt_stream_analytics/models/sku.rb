@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SkuName] The name of the SKU. Required on PUT
       # (CreateOrReplace) requests. Possible values include: 'Standard'
       attr_accessor :name
@@ -23,6 +24,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -30,6 +32,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

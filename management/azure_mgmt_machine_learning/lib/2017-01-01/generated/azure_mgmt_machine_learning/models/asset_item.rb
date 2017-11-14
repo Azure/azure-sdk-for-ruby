@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Asset's friendly name.
       attr_accessor :name
 
@@ -48,6 +49,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AssetItem',
           type: {
@@ -55,6 +57,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'AssetItem',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -62,6 +65,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -69,6 +73,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -76,6 +81,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               location_info: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'locationInfo',
                 type: {
@@ -84,11 +90,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               input_ports: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputPorts',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InputPortElementType',
                       type: {
@@ -99,11 +107,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               output_ports: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputPorts',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OutputPortElementType',
                       type: {
@@ -114,11 +124,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -128,11 +140,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ModuleAssetParameterElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The state of the provisioning.
       attr_accessor :provisioning_state
 
@@ -43,6 +44,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentOperationProperties',
           type: {
@@ -50,6 +52,7 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'DeploymentOperationProperties',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -58,6 +61,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -66,6 +70,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               service_request_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serviceRequestId',
@@ -74,6 +79,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               status_code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'statusCode',
@@ -82,6 +88,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               status_message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'statusMessage',
@@ -90,6 +97,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               target_resource: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'targetResource',
@@ -99,6 +107,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               request: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'request',
@@ -108,6 +117,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               response: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'response',

@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] If true, only membership in security-enabled groups
       # should be checked. Otherwise, membership in all groups should be
       # checked.
@@ -24,6 +25,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UserGetMemberGroupsParameters',
           type: {
@@ -31,6 +33,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'UserGetMemberGroupsParameters',
             model_properties: {
               security_enabled_only: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'securityEnabledOnly',
                 type: {

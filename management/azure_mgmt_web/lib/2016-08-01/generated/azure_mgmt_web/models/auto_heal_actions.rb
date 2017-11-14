@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AutoHealActionType] Predefined action to be taken. Possible
       # values include: 'Recycle', 'LogEvent', 'CustomAction'
       attr_accessor :action_type
@@ -30,6 +31,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoHealActions',
           type: {
@@ -37,6 +39,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AutoHealActions',
             model_properties: {
               action_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionType',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               custom_action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customAction',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               min_process_execution_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minProcessExecutionTime',
                 type: {

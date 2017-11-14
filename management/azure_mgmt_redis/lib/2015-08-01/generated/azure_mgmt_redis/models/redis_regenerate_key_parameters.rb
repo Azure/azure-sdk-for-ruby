@@ -12,6 +12,7 @@ module Azure::Redis::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RedisKeyType] Which Redis access key to reset. Possible values
       # include: 'Primary', 'Secondary'
       attr_accessor :key_type
@@ -23,6 +24,7 @@ module Azure::Redis::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisRegenerateKeyParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Redis::Mgmt::V2015_08_01
             class_name: 'RedisRegenerateKeyParameters',
             model_properties: {
               key_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {

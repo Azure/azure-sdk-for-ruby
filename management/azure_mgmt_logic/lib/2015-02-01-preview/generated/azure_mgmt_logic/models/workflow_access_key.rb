@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Gets or sets the not-before time.
       attr_accessor :not_before
 
@@ -32,6 +33,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowAccessKey',
           type: {
@@ -39,6 +41,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowAccessKey',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               not_before: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notBefore',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               not_after: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notAfter',
                 type: {
@@ -60,6 +65,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,6 +74,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

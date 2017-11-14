@@ -13,6 +13,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The input blob container URI.
       attr_accessor :input_blob_container_uri
 
@@ -26,6 +27,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImportDevicesRequest',
           type: {
@@ -33,6 +35,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'ImportDevicesRequest',
             model_properties: {
               input_blob_container_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'InputBlobContainerUri',
                 type: {
@@ -40,6 +43,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               output_blob_container_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'OutputBlobContainerUri',
                 type: {

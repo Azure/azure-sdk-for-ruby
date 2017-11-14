@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The max delivery count for cloud-to-device messages
       # in the device queue. See:
       # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
@@ -32,6 +33,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CloudToDeviceProperties',
           type: {
@@ -39,6 +41,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CloudToDeviceProperties',
             model_properties: {
               max_delivery_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDeliveryCount',
                 constraints: {
@@ -50,6 +53,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               default_ttl_as_iso8601: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultTtlAsIso8601',
                 type: {
@@ -57,6 +61,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               feedback: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'feedback',
                 type: {

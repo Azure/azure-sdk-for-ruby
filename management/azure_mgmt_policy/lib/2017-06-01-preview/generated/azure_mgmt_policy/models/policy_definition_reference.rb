@@ -12,6 +12,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the policy definition or policy set
       # definition.
       attr_accessor :policy_definition_id
@@ -26,6 +27,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyDefinitionReference',
           type: {
@@ -33,6 +35,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
             class_name: 'PolicyDefinitionReference',
             model_properties: {
               policy_definition_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyDefinitionId',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {

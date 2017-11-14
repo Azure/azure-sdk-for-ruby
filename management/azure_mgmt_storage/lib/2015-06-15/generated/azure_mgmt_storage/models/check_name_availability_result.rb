@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Boolean value that indicates whether the name is
       # available for you to use. If true, the name is available. If false, the
       # name has already been taken or is invalid and cannot be used.
@@ -33,6 +34,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -40,6 +42,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

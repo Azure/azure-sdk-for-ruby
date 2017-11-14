@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The user-provided name of the container instance.
       attr_accessor :name
 
@@ -50,6 +51,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Container',
           type: {
@@ -57,6 +59,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'Container',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -64,6 +67,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               image: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.image',
                 type: {
@@ -71,11 +75,13 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               command: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.command',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,11 +91,13 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               ports: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ports',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerPortElementType',
                       type: {
@@ -100,11 +108,13 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               environment_variables: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.environmentVariables',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EnvironmentVariableElementType',
                       type: {
@@ -115,6 +125,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               instance_view: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceView',
@@ -124,6 +135,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               resources: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.resources',
                 type: {
@@ -132,11 +144,13 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               volume_mounts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.volumeMounts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VolumeMountElementType',
                       type: {

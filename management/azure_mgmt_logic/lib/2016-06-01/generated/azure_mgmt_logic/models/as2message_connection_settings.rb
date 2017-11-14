@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to ignore mismatch in
       # certificate name.
       attr_accessor :ignore_certificate_name_mismatch
@@ -35,6 +36,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AS2MessageConnectionSettings',
           type: {
@@ -42,6 +44,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2MessageConnectionSettings',
             model_properties: {
               ignore_certificate_name_mismatch: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ignoreCertificateNameMismatch',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               support_http_status_code_continue: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'supportHttpStatusCodeContinue',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               keep_http_connection_alive: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keepHttpConnectionAlive',
                 type: {
@@ -63,6 +68,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               unfold_http_headers: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'unfoldHttpHeaders',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] PrivateIPAddress of the network interface IP
       # Configuration.
       attr_accessor :private_ipaddress
@@ -47,6 +48,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayFrontendIPConfiguration',
           type: {
@@ -54,6 +56,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ApplicationGatewayFrontendIPConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -61,6 +64,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               private_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAddress',
                 type: {
@@ -68,6 +72,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               private_ipallocation_method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAllocationMethod',
                 type: {
@@ -75,6 +80,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               subnet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -83,6 +89,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               public_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAddress',
                 type: {
@@ -91,6 +98,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -98,6 +106,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -105,6 +114,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

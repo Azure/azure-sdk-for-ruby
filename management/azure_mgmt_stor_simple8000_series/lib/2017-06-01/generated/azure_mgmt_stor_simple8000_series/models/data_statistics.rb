@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The total bytes of data to be processed, as part of
       # the job.
       attr_accessor :total_data
@@ -36,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataStatistics',
           type: {
@@ -43,6 +45,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DataStatistics',
             model_properties: {
               total_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalData',
                 type: {
@@ -50,6 +53,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               processed_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'processedData',
                 type: {
@@ -57,6 +61,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               cloud_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudData',
                 type: {
@@ -64,6 +69,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               throughput: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'throughput',
                 type: {

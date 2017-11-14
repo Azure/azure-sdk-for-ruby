@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApiEntityReference] A reference to a load balancer probe used
       # to determine the health of an instance in the virtual machine scale
       # set. The reference will be in the form:
@@ -29,6 +30,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetNetworkProfile',
           type: {
@@ -36,6 +38,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetNetworkProfile',
             model_properties: {
               health_probe: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthProbe',
                 type: {
@@ -44,11 +47,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               network_interface_configurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaceConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetNetworkConfigurationElementType',
                       type: {

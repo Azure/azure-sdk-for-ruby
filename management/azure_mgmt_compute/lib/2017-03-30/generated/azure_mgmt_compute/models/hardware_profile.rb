@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [VirtualMachineSizeTypes] Specifies the size of the virtual
       # machine. For more information about virtual machine sizes, see [Sizes
       # for virtual
@@ -58,6 +59,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HardwareProfile',
           type: {
@@ -65,6 +67,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'HardwareProfile',
             model_properties: {
               vm_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmSize',
                 type: {

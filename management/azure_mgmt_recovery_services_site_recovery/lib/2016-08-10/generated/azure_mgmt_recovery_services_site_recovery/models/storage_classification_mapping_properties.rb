@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Target storage object Id.
       attr_accessor :target_storage_classification_id
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageClassificationMappingProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'StorageClassificationMappingProperties',
             model_properties: {
               target_storage_classification_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetStorageClassificationId',
                 type: {

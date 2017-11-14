@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<WinRMListener>] The list of Windows Remote Management
       # listeners
       attr_accessor :listeners
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WinRMConfiguration',
           type: {
@@ -30,11 +32,13 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'WinRMConfiguration',
             model_properties: {
               listeners: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'listeners',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WinRMListenerElementType',
                       type: {

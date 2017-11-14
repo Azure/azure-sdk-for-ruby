@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "Microsoft.DataLake/Accounts"
@@ -67,6 +68,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.DataLake/Accounts',
           type: {
@@ -74,6 +76,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureDataLakeStoreOutputDataSource',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -81,6 +84,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               refresh_token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.refreshToken',
                 type: {
@@ -88,6 +92,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               token_user_principal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenUserPrincipalName',
                 type: {
@@ -95,6 +100,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               token_user_display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tokenUserDisplayName',
                 type: {
@@ -102,6 +108,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               account_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountName',
                 type: {
@@ -109,6 +116,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tenantId',
                 type: {
@@ -116,6 +124,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               file_path_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filePathPrefix',
                 type: {
@@ -123,6 +132,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               date_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dateFormat',
                 type: {
@@ -130,6 +140,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               time_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeFormat',
                 type: {

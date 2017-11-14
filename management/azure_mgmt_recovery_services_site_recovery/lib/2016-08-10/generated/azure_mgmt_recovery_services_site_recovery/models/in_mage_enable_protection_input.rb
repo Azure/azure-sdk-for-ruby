@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "InMage"
@@ -56,6 +57,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMage',
           type: {
@@ -63,6 +65,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageEnableProtectionInput',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -70,6 +73,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmFriendlyName',
                 type: {
@@ -77,6 +81,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               master_target_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'masterTargetId',
                 type: {
@@ -84,6 +89,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               process_server_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'processServerId',
                 type: {
@@ -91,6 +97,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               retention_drive: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'retentionDrive',
                 type: {
@@ -98,6 +105,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               run_as_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'runAsAccountId',
                 type: {
@@ -105,6 +113,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               multi_vm_group_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'multiVmGroupId',
                 type: {
@@ -112,6 +121,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               multi_vm_group_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'multiVmGroupName',
                 type: {
@@ -119,6 +129,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               datastore_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'datastoreName',
                 type: {
@@ -126,6 +137,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_exclusion_input: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskExclusionInput',
                 type: {
@@ -134,11 +146,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disks_to_include: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'disksToInclude',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

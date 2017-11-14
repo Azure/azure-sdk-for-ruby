@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A relative uri containing either a Platform Imgage
       # Repository or user image reference.
       attr_accessor :id
@@ -28,6 +29,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImageDiskReference',
           type: {
@@ -35,6 +37,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ImageDiskReference',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               lun: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lun',
                 type: {

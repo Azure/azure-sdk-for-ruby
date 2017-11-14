@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] List SAS credentials of storage account.
       attr_accessor :account_sas_token
 
@@ -22,6 +23,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ListAccountSasResponse',
           type: {
@@ -29,6 +31,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'ListAccountSasResponse',
             model_properties: {
               account_sas_token: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'accountSasToken',

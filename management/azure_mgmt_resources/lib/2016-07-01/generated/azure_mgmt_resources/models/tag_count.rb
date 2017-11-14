@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Type of count.
       attr_accessor :type
 
@@ -25,6 +26,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TagCount',
           type: {
@@ -32,6 +34,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'TagCount',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

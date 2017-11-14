@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ResourceManagementErrorWithDetails] Validation error.
       attr_accessor :error
 
@@ -26,6 +27,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentValidateResult',
           type: {
@@ -33,6 +35,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'DeploymentValidateResult',
             model_properties: {
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

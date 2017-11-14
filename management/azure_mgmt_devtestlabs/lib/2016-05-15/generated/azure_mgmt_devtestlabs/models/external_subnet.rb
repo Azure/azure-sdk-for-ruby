@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the identifier.
       attr_accessor :id
 
@@ -25,6 +26,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExternalSubnet',
           type: {
@@ -32,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ExternalSubnet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -39,6 +42,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

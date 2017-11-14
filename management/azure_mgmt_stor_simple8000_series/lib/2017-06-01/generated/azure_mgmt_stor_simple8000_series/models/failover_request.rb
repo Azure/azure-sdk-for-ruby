@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ARM path ID of the device which will act as the
       # failover target.
       attr_accessor :target_device_id
@@ -28,6 +29,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverRequest',
           type: {
@@ -35,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'FailoverRequest',
             model_properties: {
               target_device_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetDeviceId',
                 type: {
@@ -42,11 +45,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_containers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeContainers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

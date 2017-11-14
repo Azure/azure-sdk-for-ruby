@@ -109,8 +109,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -169,6 +168,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -205,8 +207,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -268,6 +269,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def get_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -305,8 +309,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -355,8 +358,7 @@ module Azure::Web::Mgmt::V2016_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -415,6 +417,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def delete_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -505,6 +510,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_capabilities_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -543,11 +551,13 @@ module Azure::Web::Mgmt::V2016_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'CapabilityElementType',
                     type: {
@@ -557,7 +567,10 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -625,6 +638,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def get_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -664,8 +680,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -732,6 +747,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -830,6 +848,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -869,8 +890,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionKey.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -938,6 +958,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'relay_name is nil' if relay_name.nil?
@@ -977,8 +1000,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1040,6 +1062,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1077,8 +1102,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionLimits.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionLimits.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1140,6 +1164,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_hybrid_connections_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1177,8 +1204,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1246,6 +1272,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_metric_defintions_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1283,8 +1312,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricDefinitionCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricDefinitionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1364,6 +1392,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_metrics_async(resource_group_name, name, details = nil, filter = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1402,8 +1433,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1476,6 +1506,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def restart_web_apps_async(resource_group_name, name, soft_restart = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1587,6 +1620,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_web_apps_async(resource_group_name, name, skip_token = nil, filter = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1625,8 +1661,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WebAppCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::WebAppCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1688,6 +1723,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_vnets_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1726,11 +1764,13 @@ module Azure::Web::Mgmt::V2016_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VnetInfoElementType',
                     type: {
@@ -1740,7 +1780,10 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1805,6 +1848,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def get_vnet_from_server_farm_async(resource_group_name, name, vnet_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1843,8 +1889,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetInfo.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::VnetInfo.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1915,6 +1960,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def get_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -1954,8 +2002,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::VnetGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2029,6 +2076,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def update_vnet_gateway_async(resource_group_name, name, vnet_name, gateway_name, connection_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
@@ -2046,8 +2096,7 @@ module Azure::Web::Mgmt::V2016_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetGateway.mapper()
-      request_content = @client.serialize(request_mapper,  connection_envelope)
+      request_content = connection_envelope.nil? ? nil: connection_envelope.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}'
@@ -2078,8 +2127,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::VnetGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2150,6 +2198,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2189,11 +2240,13 @@ module Azure::Web::Mgmt::V2016_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VnetRouteElementType',
                     type: {
@@ -2203,7 +2256,10 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2271,6 +2327,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def get_route_for_vnet_async(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
@@ -2311,11 +2370,13 @@ module Azure::Web::Mgmt::V2016_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'VnetRouteElementType',
                     type: {
@@ -2325,7 +2386,10 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2396,6 +2460,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def create_or_update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
@@ -2413,8 +2480,7 @@ module Azure::Web::Mgmt::V2016_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetRoute.mapper()
-      request_content = @client.serialize(request_mapper,  route)
+      request_content = route.nil? ? nil: route.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}'
@@ -2445,8 +2511,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetRoute.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::VnetRoute.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2513,6 +2578,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
@@ -2614,6 +2682,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def update_vnet_route_async(resource_group_name, name, vnet_name, route_name, route, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
       fail ArgumentError, 'route_name is nil' if route_name.nil?
@@ -2631,8 +2702,7 @@ module Azure::Web::Mgmt::V2016_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetRoute.mapper()
-      request_content = @client.serialize(request_mapper,  route)
+      request_content = route.nil? ? nil: route.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}'
@@ -2663,8 +2733,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::VnetRoute.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::VnetRoute.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2731,6 +2800,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def reboot_worker_async(resource_group_name, name, worker_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'worker_name is nil' if worker_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2825,6 +2897,9 @@ module Azure::Web::Mgmt::V2016_09_01
     #
     def begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'app_service_plan is nil' if app_service_plan.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -2840,8 +2915,7 @@ module Azure::Web::Mgmt::V2016_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.mapper()
-      request_content = @client.serialize(request_mapper,  app_service_plan)
+      request_content = app_service_plan.nil? ? nil: app_service_plan.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}'
@@ -2872,8 +2946,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2882,8 +2955,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlan.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2975,8 +3047,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -3068,8 +3139,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::AppServicePlanCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -3161,8 +3231,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::ResourceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -3254,8 +3323,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::HybridConnectionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -3353,8 +3421,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricDefinitionCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricDefinitionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -3446,8 +3513,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::ResourceMetricCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -3539,8 +3605,7 @@ module Azure::Web::Mgmt::V2016_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_09_01::Models::WebAppCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_09_01::Models::WebAppCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

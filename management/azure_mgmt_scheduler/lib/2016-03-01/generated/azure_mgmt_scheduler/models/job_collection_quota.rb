@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Gets or set the maximum job count.
       attr_accessor :max_job_count
 
@@ -29,6 +30,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobCollectionQuota',
           type: {
@@ -36,6 +38,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobCollectionQuota',
             model_properties: {
               max_job_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxJobCount',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               max_job_occurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxJobOccurrence',
                 type: {
@@ -50,6 +54,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               max_recurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxRecurrence',
                 type: {

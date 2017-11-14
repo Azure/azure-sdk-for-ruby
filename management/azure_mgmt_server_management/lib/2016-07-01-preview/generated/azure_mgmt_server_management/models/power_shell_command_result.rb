@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The type of message.
       attr_accessor :message_type
 
@@ -53,6 +54,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PowerShellCommandResult',
           type: {
@@ -60,6 +62,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PowerShellCommandResult',
             model_properties: {
               message_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageType',
                 type: {
@@ -67,6 +70,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               foreground_color: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'foregroundColor',
                 type: {
@@ -74,6 +78,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               background_color: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backgroundColor',
                 type: {
@@ -81,6 +86,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -88,6 +94,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               prompt: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'prompt',
                 type: {
@@ -95,6 +102,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               exit_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exitCode',
                 type: {
@@ -102,6 +110,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -109,6 +118,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               caption: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'caption',
                 type: {
@@ -116,6 +126,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -123,11 +134,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               descriptions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'descriptions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PromptFieldDescriptionElementType',
                       type: {

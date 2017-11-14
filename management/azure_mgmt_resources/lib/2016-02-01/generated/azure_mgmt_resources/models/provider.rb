@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The provider id.
       attr_accessor :id
 
@@ -32,6 +33,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Provider',
           type: {
@@ -39,6 +41,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'Provider',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'namespace',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               registration_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationState',
                 type: {
@@ -60,11 +65,13 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               resource_types: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderResourceTypeElementType',
                       type: {

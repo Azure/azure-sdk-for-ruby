@@ -12,6 +12,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the unique identifier of the blob container.
       attr_accessor :id
 
@@ -31,6 +32,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageContainer',
           type: {
@@ -38,6 +40,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'StorageContainer',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +49,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +58,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,6 +67,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               last_modified_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModifiedTime',

@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] The tags for the container registry.
       attr_accessor :tags
 
@@ -38,6 +39,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryCreateParameters',
           type: {
@@ -45,11 +47,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
             class_name: 'RegistryCreateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -59,6 +63,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -66,6 +71,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -74,6 +80,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
                 }
               },
               admin_user_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adminUserEnabled',
                 default_value: false,
@@ -82,6 +89,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
                 }
               },
               storage_account: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageAccount',
                 type: {

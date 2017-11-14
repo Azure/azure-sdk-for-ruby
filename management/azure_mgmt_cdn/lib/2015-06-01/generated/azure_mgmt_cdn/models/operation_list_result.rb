@@ -13,6 +13,7 @@ module Azure::CDN::Mgmt::V2015_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Operation>] List of CDN operations supported by the CDN
       # resource provider.
       attr_accessor :value
@@ -24,6 +25,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationListResult',
           type: {
@@ -31,11 +33,13 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'OperationListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationElementType',
                       type: {

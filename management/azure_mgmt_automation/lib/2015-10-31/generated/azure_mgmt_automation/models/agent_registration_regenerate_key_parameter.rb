@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AgentRegistrationKeyName] Gets or sets the agent registration
       # key name - Primary or Secondary. Possible values include: 'Primary',
       # 'Secondary'
@@ -34,6 +35,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AgentRegistrationRegenerateKeyParameter',
           type: {
@@ -41,6 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AgentRegistrationRegenerateKeyParameter',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -62,11 +67,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

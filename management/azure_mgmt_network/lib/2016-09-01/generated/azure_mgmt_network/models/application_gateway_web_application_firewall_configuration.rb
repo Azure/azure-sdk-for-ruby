@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Whether the web application firewall is enabled.
       attr_accessor :enabled
 
@@ -28,6 +29,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayWebApplicationFirewallConfiguration',
           type: {
@@ -35,6 +37,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ApplicationGatewayWebApplicationFirewallConfiguration',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               firewall_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'firewallMode',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name
       attr_accessor :name
 
@@ -28,6 +29,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryForLogSpecification',
           type: {
@@ -35,6 +37,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
             class_name: 'ClientDiscoveryForLogSpecification',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,6 +45,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -49,6 +53,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_08_10
                 }
               },
               blob_duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobDuration',
                 type: {

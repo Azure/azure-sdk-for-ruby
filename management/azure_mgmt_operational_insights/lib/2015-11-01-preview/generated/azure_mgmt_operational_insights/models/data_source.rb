@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The data source properties in raw json format, each kind of
       # data source have it's own schema.
       attr_accessor :properties
@@ -34,6 +35,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataSource',
           type: {
@@ -41,6 +43,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'DataSource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,6 +52,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,6 +61,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -65,11 +70,13 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -79,6 +86,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {
@@ -86,6 +94,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               e_tag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {
@@ -93,6 +102,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'kind',
                 type: {

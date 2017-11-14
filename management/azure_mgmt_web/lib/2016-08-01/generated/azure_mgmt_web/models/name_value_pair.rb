@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Pair name.
       attr_accessor :name
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NameValuePair',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'NameValuePair',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

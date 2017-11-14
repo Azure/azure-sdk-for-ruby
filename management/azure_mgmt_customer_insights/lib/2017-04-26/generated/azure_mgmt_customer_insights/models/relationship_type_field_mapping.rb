@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the fieldName in profile.
       attr_accessor :profile_field_name
 
@@ -26,6 +27,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipTypeFieldMapping',
           type: {
@@ -33,6 +35,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'RelationshipTypeFieldMapping',
             model_properties: {
               profile_field_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'profileFieldName',
                 type: {
@@ -40,6 +43,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               related_profile_key_property: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'relatedProfileKeyProperty',
                 type: {

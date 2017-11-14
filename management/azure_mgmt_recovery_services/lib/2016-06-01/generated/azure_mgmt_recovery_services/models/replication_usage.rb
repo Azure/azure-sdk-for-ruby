@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MonitoringSummary] Summary of the replication monitoring data
       # for this vault.
       attr_accessor :monitoring_summary
@@ -40,6 +41,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationUsage',
           type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'ReplicationUsage',
             model_properties: {
               monitoring_summary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'monitoringSummary',
                 type: {
@@ -55,6 +58,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               jobs_summary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobsSummary',
                 type: {
@@ -63,6 +67,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               protected_item_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemCount',
                 type: {
@@ -70,6 +75,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               recovery_plan_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPlanCount',
                 type: {
@@ -77,6 +83,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               registered_servers_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'registeredServersCount',
                 type: {
@@ -84,6 +91,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               recovery_services_provider_auth_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryServicesProviderAuthType',
                 type: {

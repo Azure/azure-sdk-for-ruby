@@ -12,6 +12,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<CognitiveServicesResourceAndSku>] Gets the list of
       # Cognitive Services accounts and their properties.
       attr_accessor :value
@@ -24,6 +25,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccountEnumerateSkusResult',
           type: {
@@ -31,12 +33,14 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccountEnumerateSkusResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CognitiveServicesResourceAndSkuElementType',
                       type: {

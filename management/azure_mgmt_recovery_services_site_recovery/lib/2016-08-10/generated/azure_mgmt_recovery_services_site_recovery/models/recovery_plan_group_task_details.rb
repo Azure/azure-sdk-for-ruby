@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "RecoveryPlanGroupTaskDetails"
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanGroupTaskDetails',
           type: {
@@ -42,11 +44,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanGroupTaskDetails',
             model_properties: {
               child_tasks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'childTasks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ASRTaskElementType',
                       type: {
@@ -57,6 +61,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -64,6 +69,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -71,6 +77,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupId',
                 type: {
@@ -78,6 +85,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               rp_group_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rpGroupType',
                 type: {

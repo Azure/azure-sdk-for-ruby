@@ -81,8 +81,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryNameCheckRequest.mapper()
-      request_content = @client.serialize(request_mapper,  registry_name_check_request)
+      request_content = registry_name_check_request.nil? ? nil: registry_name_check_request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/checkNameAvailability'
@@ -113,8 +112,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryNameStatus.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryNameStatus.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -207,8 +205,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -285,8 +282,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.mapper()
-      request_content = @client.serialize(request_mapper,  registry)
+      request_content = registry.nil? ? nil: registry.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}'
@@ -317,8 +313,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -478,8 +473,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  registry_update_parameters)
+      request_content = registry_update_parameters.nil? ? nil: registry_update_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}'
@@ -510,8 +504,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::Registry.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -603,8 +596,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -689,8 +681,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -786,8 +777,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryCredentials.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryCredentials.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -883,8 +873,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryCredentials.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryCredentials.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -973,8 +962,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1063,8 +1051,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2016_06_27_preview::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

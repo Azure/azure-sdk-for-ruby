@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PasswordName] The password name. Possible values include:
       # 'password', 'password2'
       attr_accessor :name
@@ -26,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryPassword',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryPassword',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +44,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

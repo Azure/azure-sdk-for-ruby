@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Time grain .
       attr_accessor :time_grain
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceMetricAvailability',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ResourceMetricAvailability',
             model_properties: {
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timeGrain',
@@ -40,6 +43,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               retention: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'retention',

@@ -12,6 +12,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Value indicating Namespace is availability, true if
       # the Namespace is available; otherwise, false.
       attr_accessor :name_available
@@ -33,6 +34,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -40,6 +42,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -47,6 +50,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -55,6 +59,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

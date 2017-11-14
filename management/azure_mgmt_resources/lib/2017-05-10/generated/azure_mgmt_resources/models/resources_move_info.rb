@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The IDs of the resources.
       attr_accessor :resources
 
@@ -25,6 +26,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourcesMoveInfo',
           type: {
@@ -32,11 +34,13 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ResourcesMoveInfo',
             model_properties: {
               resources: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resources',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -46,6 +50,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               target_resource_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetResourceGroup',
                 type: {

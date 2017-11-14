@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The id of the saved search.
       attr_accessor :id
 
@@ -44,6 +45,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SavedSearch',
           type: {
@@ -51,6 +53,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SavedSearch',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,6 +62,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -66,6 +70,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               category: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.Category',
                 type: {
@@ -73,6 +78,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.DisplayName',
                 type: {
@@ -80,6 +86,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               query: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.Query',
                 type: {
@@ -87,6 +94,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.Version',
                 constraints: {
@@ -98,11 +106,13 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.Tags',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TagElementType',
                       type: {

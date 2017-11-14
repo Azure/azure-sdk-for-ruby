@@ -18,6 +18,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Boolean expression made of criteria (variables)
       # operators (`not`, `and` or `or`) and parenthesis. Criterion names in
       # the audience expression must start with a capital letter and can only
@@ -38,6 +39,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Campaign_audience',
           type: {
@@ -45,6 +47,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignAudience',
             model_properties: {
               expression: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expression',
                 type: {
@@ -52,11 +55,13 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               criteria: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'criteria',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CriterionElementType',
                       type: {
@@ -69,11 +74,13 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               filters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'filters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FilterElementType',
                       type: {

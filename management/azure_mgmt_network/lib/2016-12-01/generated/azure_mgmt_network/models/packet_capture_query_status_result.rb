@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the packet capture resource.
       attr_accessor :name
 
@@ -39,6 +40,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCaptureQueryStatusResult',
           type: {
@@ -46,6 +48,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'PacketCaptureQueryStatusResult',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +64,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               capture_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'captureStartTime',
                 type: {
@@ -67,6 +72,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               packet_capture_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'packetCaptureStatus',
                 type: {
@@ -74,6 +80,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               stop_reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'stopReason',
                 type: {
@@ -81,11 +88,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               packet_capture_error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'packetCaptureError',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PcErrorElementType',
                       type: {

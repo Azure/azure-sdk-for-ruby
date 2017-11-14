@@ -12,6 +12,7 @@ module Azure::Links::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The fully qualified ID of the resource link.
       attr_accessor :id
 
@@ -28,6 +29,7 @@ module Azure::Links::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceLink',
           type: {
@@ -35,6 +37,7 @@ module Azure::Links::Mgmt::V2016_09_01
             class_name: 'ResourceLink',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,6 +46,7 @@ module Azure::Links::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,6 +55,7 @@ module Azure::Links::Mgmt::V2016_09_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

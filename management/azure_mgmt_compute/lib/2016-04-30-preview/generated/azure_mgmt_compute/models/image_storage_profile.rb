@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ImageOSDisk] The OS disk.
       attr_accessor :os_disk
 
@@ -25,6 +26,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImageStorageProfile',
           type: {
@@ -32,6 +34,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'ImageStorageProfile',
             model_properties: {
               os_disk: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'osDisk',
                 type: {
@@ -40,11 +43,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               data_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ImageDataDiskElementType',
                       type: {

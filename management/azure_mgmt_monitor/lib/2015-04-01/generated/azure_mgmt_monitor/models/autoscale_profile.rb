@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the name of the profile.
       attr_accessor :name
 
@@ -39,6 +40,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoscaleProfile',
           type: {
@@ -46,6 +48,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'AutoscaleProfile',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'capacity',
                 type: {
@@ -61,11 +65,13 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               rules: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ScaleRuleElementType',
                       type: {
@@ -76,6 +82,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               fixed_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fixedDate',
                 type: {
@@ -84,6 +91,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               recurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recurrence',
                 type: {

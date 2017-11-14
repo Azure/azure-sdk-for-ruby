@@ -12,6 +12,7 @@ module Azure::Locks::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LockLevel] The level of the lock. Possible values are:
       # NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized
       # users are able to read and modify the resources, but not delete.
@@ -43,6 +44,7 @@ module Azure::Locks::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementLockObject',
           type: {
@@ -50,6 +52,7 @@ module Azure::Locks::Mgmt::V2016_09_01
             class_name: 'ManagementLockObject',
             model_properties: {
               level: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.level',
                 type: {
@@ -57,6 +60,7 @@ module Azure::Locks::Mgmt::V2016_09_01
                 }
               },
               notes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notes',
                 type: {
@@ -64,11 +68,13 @@ module Azure::Locks::Mgmt::V2016_09_01
                 }
               },
               owners: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.owners',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ManagementLockOwnerElementType',
                       type: {
@@ -79,6 +85,7 @@ module Azure::Locks::Mgmt::V2016_09_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -87,6 +94,7 @@ module Azure::Locks::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -95,6 +103,7 @@ module Azure::Locks::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

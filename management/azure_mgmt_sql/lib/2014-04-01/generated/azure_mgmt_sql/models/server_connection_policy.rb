@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Metadata used for the Azure portal experience.
       attr_accessor :kind
 
@@ -29,6 +30,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServerConnectionPolicy',
           type: {
@@ -36,6 +38,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServerConnectionPolicy',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,6 +47,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -52,6 +56,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,6 +65,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -68,6 +74,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -76,6 +83,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               connection_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.connectionType',
                 type: {

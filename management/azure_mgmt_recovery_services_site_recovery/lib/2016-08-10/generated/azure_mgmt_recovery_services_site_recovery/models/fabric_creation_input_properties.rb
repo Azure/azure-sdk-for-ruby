@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [FabricSpecificCreationInput] Fabric provider specific creation
       # input.
       attr_accessor :custom_details
@@ -23,6 +24,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FabricCreationInputProperties',
           type: {
@@ -30,6 +32,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'FabricCreationInputProperties',
             model_properties: {
               custom_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customDetails',
                 type: {

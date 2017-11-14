@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The state of the provisioning.
       attr_accessor :provisioning_state
 
@@ -61,6 +62,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentPropertiesExtended',
           type: {
@@ -68,6 +70,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'DeploymentPropertiesExtended',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -76,6 +79,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               correlation_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'correlationId',
@@ -84,6 +88,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -92,6 +97,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               outputs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputs',
                 type: {
@@ -99,11 +105,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               providers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderElementType',
                       type: {
@@ -114,11 +122,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               dependencies: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dependencies',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DependencyElementType',
                       type: {
@@ -129,6 +139,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               template: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {
@@ -136,6 +147,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               template_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'templateLink',
                 type: {
@@ -144,6 +156,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
@@ -151,6 +164,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               parameters_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parametersLink',
                 type: {
@@ -159,6 +173,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {
@@ -167,6 +182,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               debug_setting: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'debugSetting',
                 type: {

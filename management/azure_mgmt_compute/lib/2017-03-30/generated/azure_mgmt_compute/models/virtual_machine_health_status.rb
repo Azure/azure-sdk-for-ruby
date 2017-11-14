@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [InstanceViewStatus] The health status information for the VM.
       attr_accessor :status
 
@@ -22,6 +23,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineHealthStatus',
           type: {
@@ -29,6 +31,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineHealthStatus',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',

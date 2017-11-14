@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The source fabric name filter.
       attr_accessor :source_fabric_name
 
@@ -28,6 +29,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectedItemsQueryParameter',
           type: {
@@ -35,6 +37,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProtectedItemsQueryParameter',
             model_properties: {
               source_fabric_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceFabricName',
                 type: {
@@ -42,6 +45,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_plan_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPlanName',
                 type: {
@@ -49,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               v_center_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vCenterName',
                 type: {

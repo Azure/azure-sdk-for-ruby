@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The template's contents.
       attr_accessor :template
 
@@ -25,6 +26,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ArmTemplateInfo',
           type: {
@@ -32,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ArmTemplateInfo',
             model_properties: {
               template: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {
@@ -39,6 +42,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {

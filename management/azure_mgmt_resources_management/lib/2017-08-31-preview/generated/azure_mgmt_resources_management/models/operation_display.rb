@@ -12,6 +12,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.Management.
       attr_accessor :provider
 
@@ -29,6 +30,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -36,6 +38,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -44,6 +47,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -52,6 +56,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',

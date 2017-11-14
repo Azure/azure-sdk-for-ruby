@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the content hash algorithm used to hash
       # the content.
       attr_accessor :algorithm
@@ -26,6 +27,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContentHash',
           type: {
@@ -33,6 +35,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ContentHash',
             model_properties: {
               algorithm: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'algorithm',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {

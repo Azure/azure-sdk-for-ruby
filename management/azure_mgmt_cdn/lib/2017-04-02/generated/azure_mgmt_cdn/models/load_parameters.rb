@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The path to the content to be loaded. Path
       # should be a relative file URL of the origin.
       attr_accessor :content_paths
@@ -23,6 +24,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LoadParameters',
           type: {
@@ -30,11 +32,13 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'LoadParameters',
             model_properties: {
               content_paths: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'contentPaths',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

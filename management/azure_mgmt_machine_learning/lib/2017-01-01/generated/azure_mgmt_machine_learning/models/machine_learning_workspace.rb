@@ -13,6 +13,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the workspace ID of the machine learning
       # workspace associated with the web service
       attr_accessor :id
@@ -24,6 +25,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MachineLearningWorkspace',
           type: {
@@ -31,6 +33,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'MachineLearningWorkspace',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {

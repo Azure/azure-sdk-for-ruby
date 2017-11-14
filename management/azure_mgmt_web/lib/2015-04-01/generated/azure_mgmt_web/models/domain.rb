@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Contact] Administrative contact.
       attr_accessor :contact_admin
 
@@ -93,6 +94,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Domain',
           type: {
@@ -100,6 +102,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'Domain',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -108,6 +111,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -116,6 +120,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -123,6 +128,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -130,6 +136,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -138,11 +145,13 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -152,6 +161,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               contact_admin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contactAdmin',
                 type: {
@@ -160,6 +170,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               contact_billing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contactBilling',
                 type: {
@@ -168,6 +179,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               contact_registrant: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contactRegistrant',
                 type: {
@@ -176,6 +188,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               contact_tech: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contactTech',
                 type: {
@@ -184,6 +197,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               registration_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.registrationStatus',
@@ -193,6 +207,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -202,12 +217,14 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name_servers: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nameServers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -217,6 +234,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               privacy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privacy',
                 type: {
@@ -224,6 +242,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               created_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -232,6 +251,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               expiration_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.expirationTime',
@@ -240,6 +260,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               last_renewed_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastRenewedTime',
@@ -248,6 +269,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               auto_renew: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoRenew',
                 default_value: true,
@@ -256,6 +278,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               ready_for_dns_record_management: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.readyForDnsRecordManagement',
@@ -264,12 +287,14 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               managed_host_names: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.managedHostNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HostNameElementType',
                       type: {
@@ -280,6 +305,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               consent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.consent',
                 type: {
@@ -288,12 +314,14 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               domain_not_renewable_reasons: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.domainNotRenewableReasons',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'enumElementType',
                       type: {
@@ -303,6 +331,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               dns_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsType',
                 type: {
@@ -311,6 +340,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               dns_zone_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsZoneId',
                 type: {
@@ -318,6 +348,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               target_dns_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetDnsType',
                 type: {
@@ -326,6 +357,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               auth_code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.authCode',

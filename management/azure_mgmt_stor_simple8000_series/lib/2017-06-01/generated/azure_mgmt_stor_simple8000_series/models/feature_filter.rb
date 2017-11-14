@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the device ID for which the features are
       # required. Only 'Equality' operator is supported for this property.
       attr_accessor :device_id
@@ -23,6 +24,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FeatureFilter',
           type: {
@@ -30,6 +32,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'FeatureFilter',
             model_properties: {
               device_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceId',
                 type: {

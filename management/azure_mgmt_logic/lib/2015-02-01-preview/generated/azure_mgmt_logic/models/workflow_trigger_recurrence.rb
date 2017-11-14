@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecurrenceFrequency] Gets or sets the frequency. Possible
       # values include: 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
       # 'Year'
@@ -34,6 +35,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerRecurrence',
           type: {
@@ -41,6 +43,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowTriggerRecurrence',
             model_properties: {
               frequency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'frequency',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -63,6 +68,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {

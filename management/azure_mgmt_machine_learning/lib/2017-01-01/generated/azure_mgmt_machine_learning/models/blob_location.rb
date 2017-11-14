@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URI from which the blob is accessible from. For
       # example, aml://abc for system assets or https://xyz for user assets or
       # payload.
@@ -28,6 +29,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BlobLocation',
           type: {
@@ -35,6 +37,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'BlobLocation',
             model_properties: {
               uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'uri',
                 type: {
@@ -42,6 +45,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               credentials: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'credentials',
                 type: {

@@ -97,8 +97,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -190,8 +189,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -281,8 +279,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -353,8 +350,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-      request_content = @client.serialize(request_mapper,  workflow)
+      request_content = workflow.nil? ? nil: workflow.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}'
@@ -385,8 +381,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -395,8 +390,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -467,8 +461,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-      request_content = @client.serialize(request_mapper,  workflow)
+      request_content = workflow.nil? ? nil: workflow.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}'
@@ -499,8 +492,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -814,8 +806,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::GenerateUpgradedDefinitionParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/generateUpgradedDefinition'
@@ -988,8 +979,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::RegenerateActionParameter.mapper()
-      request_content = @client.serialize(request_mapper,  key_type)
+      request_content = key_type.nil? ? nil: key_type.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/regenerateAccessKey'
@@ -1085,8 +1075,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::Workflow.mapper()
-      request_content = @client.serialize(request_mapper,  workflow)
+      request_content = workflow.nil? ? nil: workflow.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/locations/{location}/workflows/{workflowName}/validate'
@@ -1194,8 +1183,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1281,8 +1269,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::WorkflowListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

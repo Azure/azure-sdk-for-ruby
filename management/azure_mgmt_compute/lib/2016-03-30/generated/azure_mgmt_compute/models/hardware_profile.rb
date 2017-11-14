@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [VirtualMachineSizeTypes] The virtual machine size name.
       # Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
       # 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
@@ -39,6 +40,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HardwareProfile',
           type: {
@@ -46,6 +48,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'HardwareProfile',
             model_properties: {
               vm_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmSize',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] <code>true</code> indicates name is valid and
       # available. <code>false</code> indicates the name is invalid,
       # unavailable, or both.
@@ -38,6 +39,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceNameAvailability',
           type: {
@@ -45,6 +47,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ResourceNameAvailability',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AccountType] Gets or sets the account type. Note that
       # StandardZRS and PremiumLRS accounts cannot be changed to other account
       # types, and other account types cannot be changed to StandardZRS or
@@ -32,6 +33,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountUpdateParameters',
           type: {
@@ -39,6 +41,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'StorageAccountUpdateParameters',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -47,6 +50,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +59,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -70,11 +76,13 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -84,6 +92,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               account_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountType',
                 type: {
@@ -92,6 +101,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
                 }
               },
               custom_domain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customDomain',
                 type: {

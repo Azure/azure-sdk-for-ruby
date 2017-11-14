@@ -12,6 +12,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of settings section
       attr_accessor :name
 
@@ -27,6 +28,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SettingsSectionDescription',
           type: {
@@ -34,6 +36,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'SettingsSectionDescription',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,11 +44,13 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SettingsParameterDescriptionElementType',
                       type: {

@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualMachineStatusCodeCount>] The extensions
       # information.
       attr_accessor :statuses_summary
@@ -25,6 +26,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetInstanceViewStatusesSummary',
           type: {
@@ -32,12 +34,14 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSetInstanceViewStatusesSummary',
             model_properties: {
               statuses_summary: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'statusesSummary',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineStatusCodeCountElementType',
                       type: {

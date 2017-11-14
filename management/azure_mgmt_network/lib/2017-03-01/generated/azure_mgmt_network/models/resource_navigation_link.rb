@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource type of the linked resource.
       attr_accessor :linked_resource_type
 
@@ -37,6 +38,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceNavigationLink',
           type: {
@@ -44,6 +46,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'ResourceNavigationLink',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               linked_resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.linkedResourceType',
                 type: {
@@ -58,6 +62,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.link',
                 type: {
@@ -65,6 +70,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -73,6 +79,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -80,6 +87,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',

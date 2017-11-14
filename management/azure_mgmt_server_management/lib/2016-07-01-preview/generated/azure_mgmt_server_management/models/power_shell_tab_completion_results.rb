@@ -13,6 +13,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>]
       attr_accessor :results
 
@@ -23,6 +24,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PowerShellTabCompletionResults',
           type: {
@@ -30,11 +32,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PowerShellTabCompletionResults',
             model_properties: {
               results: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'results',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

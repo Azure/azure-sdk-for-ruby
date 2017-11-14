@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The virtual machine scale set instance ids.
       attr_accessor :instance_ids
 
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetVMInstanceRequiredIDs',
           type: {
@@ -30,11 +32,13 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSetVMInstanceRequiredIDs',
             model_properties: {
               instance_ids: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

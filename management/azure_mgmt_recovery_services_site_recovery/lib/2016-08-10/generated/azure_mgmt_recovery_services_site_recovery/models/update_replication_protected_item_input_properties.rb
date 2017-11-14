@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Target azure VM name given by the user.
       attr_accessor :recovery_azure_vmname
 
@@ -48,6 +49,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateReplicationProtectedItemInputProperties',
           type: {
@@ -55,6 +57,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'UpdateReplicationProtectedItemInputProperties',
             model_properties: {
               recovery_azure_vmname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAzureVMName',
                 type: {
@@ -62,6 +65,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_azure_vmsize: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAzureVMSize',
                 type: {
@@ -69,6 +73,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               selected_recovery_azure_network_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'selectedRecoveryAzureNetworkId',
                 type: {
@@ -76,6 +81,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               enable_rdpon_target_option: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableRDPOnTargetOption',
                 type: {
@@ -83,11 +89,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_nics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmNics',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VMNicInputDetailsElementType',
                       type: {
@@ -98,6 +106,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               license_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'licenseType',
                 type: {
@@ -106,6 +115,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_availability_set_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAvailabilitySetId',
                 type: {
@@ -113,6 +123,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {

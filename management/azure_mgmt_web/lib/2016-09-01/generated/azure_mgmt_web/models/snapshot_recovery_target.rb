@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Geographical location of the target web app, e.g.
       # SouthEastAsia, SouthCentralUS
       attr_accessor :location
@@ -30,6 +31,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SnapshotRecoveryTarget',
           type: {
@@ -37,6 +39,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'SnapshotRecoveryTarget',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -44,6 +47,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

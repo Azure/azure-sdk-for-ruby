@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "VmNicUpdatesTaskDetails"
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VmNicUpdatesTaskDetails',
           type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VmNicUpdatesTaskDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -49,6 +52,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmId',
                 type: {
@@ -56,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               nic_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nicId',
                 type: {
@@ -63,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

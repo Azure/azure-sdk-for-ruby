@@ -101,8 +101,7 @@ module Azure::Batch::Mgmt::V2017_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::BatchLocationQuota.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Batch::Mgmt::V2017_05_01::Models::BatchLocationQuota.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -172,8 +171,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/checkNameAvailability'
@@ -204,8 +202,7 @@ module Azure::Batch::Mgmt::V2017_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

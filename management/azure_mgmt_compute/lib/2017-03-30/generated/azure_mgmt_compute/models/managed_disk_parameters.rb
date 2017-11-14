@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageAccountTypes] Specifies the storage account type for
       # the managed disk. Possible values are: Standard_LRS or Premium_LRS.
       # Possible values include: 'Standard_LRS', 'Premium_LRS'
@@ -24,6 +25,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagedDiskParameters',
           type: {
@@ -31,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ManagedDiskParameters',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -38,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_account_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountType',
                 type: {

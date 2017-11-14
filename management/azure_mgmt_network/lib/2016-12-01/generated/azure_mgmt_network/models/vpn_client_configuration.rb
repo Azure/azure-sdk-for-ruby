@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AddressSpace] The reference of the address space resource
       # which represents Address space for P2S VpnClient.
       attr_accessor :vpn_client_address_pool
@@ -31,6 +32,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VpnClientConfiguration',
           type: {
@@ -38,6 +40,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'VpnClientConfiguration',
             model_properties: {
               vpn_client_address_pool: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vpnClientAddressPool',
                 type: {
@@ -46,11 +49,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               vpn_client_root_certificates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vpnClientRootCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VpnClientRootCertificateElementType',
                       type: {
@@ -61,11 +66,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               vpn_client_revoked_certificates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vpnClientRevokedCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VpnClientRevokedCertificateElementType',
                       type: {

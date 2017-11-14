@@ -116,7 +116,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def check_existence_async(resource_group_name, deployment_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -199,8 +205,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -254,7 +259,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def get_async(resource_group_name, deployment_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -291,8 +302,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -362,7 +372,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def cancel_async(resource_group_name, deployment_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -452,7 +468,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def validate_async(resource_group_name, deployment_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -467,8 +489,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::Deployment.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate'
@@ -499,8 +520,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -509,8 +529,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 400
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentValidateResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -569,7 +588,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def export_template_async(resource_group_name, deployment_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -606,8 +631,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExportResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -672,6 +696,9 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def list_by_resource_group_async(resource_group_name, filter = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -708,8 +735,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -797,7 +823,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def begin_delete_async(resource_group_name, deployment_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -899,7 +931,13 @@ module Azure::Resources::Mgmt::V2017_05_10
     #
     def begin_create_or_update_async(resource_group_name, deployment_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MaxLength': '64'" if !deployment_name.nil? && deployment_name.length > 64
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'MinLength': '1'" if !deployment_name.nil? && deployment_name.length < 1
+      fail ArgumentError, "'deployment_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !deployment_name.nil? && deployment_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -914,8 +952,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::Deployment.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}'
@@ -946,8 +983,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -956,8 +992,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentExtended.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1043,8 +1078,7 @@ module Azure::Resources::Mgmt::V2017_05_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Resources::Mgmt::V2017_05_10::Models::DeploymentListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

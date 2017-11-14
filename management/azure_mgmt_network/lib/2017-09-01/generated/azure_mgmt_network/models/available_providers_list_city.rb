@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The city or town name.
       attr_accessor :city_name
 
@@ -25,6 +26,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AvailableProvidersListCity',
           type: {
@@ -32,6 +34,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AvailableProvidersListCity',
             model_properties: {
               city_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cityName',
                 type: {
@@ -39,11 +42,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               providers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

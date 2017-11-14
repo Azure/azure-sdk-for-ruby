@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :name
 
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Dimension',
           type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'Dimension',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               internal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalName',
                 type: {
@@ -60,6 +65,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               to_be_exported_for_shoebox: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'toBeExportedForShoebox',
                 type: {

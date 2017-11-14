@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The preference value for this MX record.
       attr_accessor :preference
 
@@ -25,6 +26,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MxRecord',
           type: {
@@ -32,6 +34,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'MxRecord',
             model_properties: {
               preference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'preference',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               exchange: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exchange',
                 type: {

@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NetInterfaceId] The ID of the network adapter. Possible values
       # include: 'Invalid', 'Data0', 'Data1', 'Data2', 'Data3', 'Data4',
       # 'Data5'
@@ -49,6 +50,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkAdapters',
           type: {
@@ -56,6 +58,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NetworkAdapters',
             model_properties: {
               interface_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'interfaceId',
                 type: {
@@ -64,6 +67,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               net_interface_status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'netInterfaceStatus',
                 type: {
@@ -72,6 +76,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               is_default: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isDefault',
                 type: {
@@ -79,6 +84,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               iscsi_and_cloud_status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'iscsiAndCloudStatus',
                 type: {
@@ -87,6 +93,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               speed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'speed',
                 type: {
@@ -94,6 +101,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               mode: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'mode',
                 type: {
@@ -102,6 +110,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               nic_ipv4settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nicIpv4Settings',
                 type: {
@@ -110,6 +119,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               nic_ipv6settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nicIpv6Settings',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Count.
       attr_accessor :count
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RequestsBasedTrigger',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'RequestsBasedTrigger',
             model_properties: {
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               time_interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInterval',
                 type: {

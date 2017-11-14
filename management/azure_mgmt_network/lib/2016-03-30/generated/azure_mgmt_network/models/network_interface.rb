@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] Gets or sets the reference of a VirtualMachine
       attr_accessor :virtual_machine
 
@@ -57,6 +58,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterface',
           type: {
@@ -64,6 +66,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'NetworkInterface',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -71,6 +74,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -79,6 +83,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -87,6 +92,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -94,11 +100,13 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,6 +116,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               virtual_machine: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachine',
                 type: {
@@ -116,6 +125,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               network_security_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkSecurityGroup',
                 type: {
@@ -124,11 +134,13 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               ip_configurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceIPConfigurationElementType',
                       type: {
@@ -139,6 +151,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               dns_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -147,6 +160,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               mac_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.macAddress',
                 type: {
@@ -154,6 +168,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {
@@ -161,6 +176,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               enable_ipforwarding: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableIPForwarding',
                 type: {
@@ -168,6 +184,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -175,6 +192,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -182,6 +200,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

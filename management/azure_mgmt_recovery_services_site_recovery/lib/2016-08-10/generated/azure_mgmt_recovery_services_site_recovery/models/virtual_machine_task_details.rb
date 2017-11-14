@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "VirtualMachineTaskDetails"
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineTaskDetails',
           type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VirtualMachineTaskDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -49,6 +52,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               skipped_reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'skippedReason',
                 type: {
@@ -56,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               skipped_reason_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'skippedReasonString',
                 type: {
@@ -63,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_task: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobTask',
                 type: {

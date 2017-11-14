@@ -12,6 +12,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The subscription location placement ID. The ID
       # indicates which regions are visible for a subscription. For example, a
       # subscription with a location placement Id of Public_2014-09-01 has
@@ -32,6 +33,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionPolicies',
           type: {
@@ -39,6 +41,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
             class_name: 'SubscriptionPolicies',
             model_properties: {
               location_placement_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'locationPlacementId',
@@ -47,6 +50,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               quota_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quotaId',
@@ -55,6 +59,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               spending_limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'spendingLimit',

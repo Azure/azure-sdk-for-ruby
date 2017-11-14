@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubnetFragment>] The allowed subnets of the virtual
       # network.
       attr_accessor :allowed_subnets
@@ -43,6 +44,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkFragment',
           type: {
@@ -50,6 +52,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'VirtualNetworkFragment',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -58,6 +61,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,6 +70,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -74,6 +79,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -81,11 +87,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -95,11 +103,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               allowed_subnets: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowedSubnets',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubnetFragmentElementType',
                       type: {
@@ -110,6 +120,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -117,6 +128,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               external_provider_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.externalProviderResourceId',
                 type: {
@@ -124,11 +136,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               external_subnets: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.externalSubnets',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExternalSubnetFragmentElementType',
                       type: {
@@ -139,11 +153,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               subnet_overrides: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnetOverrides',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubnetOverrideFragmentElementType',
                       type: {
@@ -154,6 +170,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -161,6 +178,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<FirewallRule>] The list of server firewall rules.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FirewallRuleListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'FirewallRuleListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FirewallRuleElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The canonical path to the signed resource.
       attr_accessor :canonicalized_resource
 
@@ -83,6 +84,7 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceSasParameters',
           type: {
@@ -90,6 +92,7 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'ServiceSasParameters',
             model_properties: {
               canonicalized_resource: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'canonicalizedResource',
                 type: {
@@ -97,6 +100,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signedResource',
                 type: {
@@ -104,6 +108,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               permissions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedPermission',
                 type: {
@@ -111,6 +116,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               ipaddress_or_range: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedIp',
                 type: {
@@ -118,6 +124,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               protocols: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedProtocol',
                 type: {
@@ -126,6 +133,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               shared_access_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedStart',
                 type: {
@@ -133,6 +141,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               shared_access_expiry_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedExpiry',
                 type: {
@@ -140,6 +149,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signedIdentifier',
                 constraints: {
@@ -150,6 +160,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               partition_key_start: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startPk',
                 type: {
@@ -157,6 +168,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               partition_key_end: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endPk',
                 type: {
@@ -164,6 +176,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               row_key_start: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startRk',
                 type: {
@@ -171,6 +184,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               row_key_end: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endRk',
                 type: {
@@ -178,6 +192,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               key_to_sign: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyToSign',
                 type: {
@@ -185,6 +200,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               cache_control: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rscc',
                 type: {
@@ -192,6 +208,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               content_disposition: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rscd',
                 type: {
@@ -199,6 +216,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               content_encoding: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rsce',
                 type: {
@@ -206,6 +224,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               content_language: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rscl',
                 type: {
@@ -213,6 +232,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               content_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rsct',
                 type: {

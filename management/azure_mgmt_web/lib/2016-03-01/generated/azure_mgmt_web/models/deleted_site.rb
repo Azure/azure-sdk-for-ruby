@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Numeric id for the deleted site
       attr_accessor :id
 
@@ -34,6 +35,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeletedSite',
           type: {
@@ -41,6 +43,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'DeletedSite',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               deleted_timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletedTimestamp',
@@ -56,6 +60,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               subscription: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subscription',
@@ -64,6 +69,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               resource_group: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceGroup',
@@ -72,6 +78,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',

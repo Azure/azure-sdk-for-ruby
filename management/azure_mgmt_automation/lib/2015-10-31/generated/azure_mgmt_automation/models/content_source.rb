@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ContentHash] Gets or sets the hash.
       attr_accessor :hash
 
@@ -33,6 +34,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContentSource',
           type: {
@@ -40,6 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ContentSource',
             model_properties: {
               hash: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'hash',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

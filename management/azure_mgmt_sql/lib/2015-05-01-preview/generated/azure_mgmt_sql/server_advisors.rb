@@ -109,11 +109,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'AdvisorElementType',
                     type: {
@@ -123,7 +125,10 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -223,8 +228,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -305,8 +309,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advisors/{advisorName}'
@@ -337,8 +340,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::SQL::Mgmt::V2015_05_01_preview::Models::Advisor.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

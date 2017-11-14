@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the dsc meta configuration.
       attr_accessor :dsc_meta_configuration
 
@@ -32,6 +33,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AgentRegistration',
           type: {
@@ -39,6 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AgentRegistration',
             model_properties: {
               dsc_meta_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dscMetaConfiguration',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoint',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               keys: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keys',
                 type: {
@@ -61,6 +66,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

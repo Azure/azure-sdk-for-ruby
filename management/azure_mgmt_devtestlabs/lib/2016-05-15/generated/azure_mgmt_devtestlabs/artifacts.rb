@@ -124,8 +124,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -229,8 +228,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Artifact.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::Artifact.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -315,8 +313,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::GenerateArmTemplateRequest.mapper()
-      request_content = @client.serialize(request_mapper,  generate_arm_template_request)
+      request_content = generate_arm_template_request.nil? ? nil: generate_arm_template_request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}/generateArmTemplate'
@@ -347,8 +344,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateInfo.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ArmTemplateInfo.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -434,8 +430,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationArtifact.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

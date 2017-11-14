@@ -13,6 +13,7 @@ module Azure::Search::Mgmt::V2015_08_19
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the query API key; may be empty.
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryKey',
           type: {
@@ -33,6 +35,7 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'QueryKey',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -41,6 +44,7 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'key',

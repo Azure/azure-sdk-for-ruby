@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Virtual Network's resource ID.
       attr_accessor :vnet_resource_id
 
@@ -42,6 +43,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VnetInfo',
           type: {
@@ -49,6 +51,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'VnetInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,6 +60,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -65,6 +69,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -72,6 +77,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -80,6 +86,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vnet_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetResourceId',
                 type: {
@@ -87,6 +94,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               cert_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.certThumbprint',
@@ -95,6 +103,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               cert_blob: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.certBlob',
                 type: {
@@ -102,12 +111,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               routes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.routes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VnetRouteElementType',
                       type: {
@@ -118,6 +129,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               resync_required: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resyncRequired',
@@ -126,6 +138,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               dns_servers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsServers',
                 type: {

@@ -78,8 +78,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityInput.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Media/CheckNameAvailability'
@@ -110,8 +109,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityOutput.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::CheckNameAvailabilityOutput.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -200,8 +198,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaServiceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaServiceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -260,6 +257,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
 
 
       request_headers = {}
@@ -294,8 +294,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -360,6 +359,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -372,8 +374,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
@@ -404,8 +405,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -463,6 +463,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
 
 
       request_headers = {}
@@ -550,6 +553,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -562,8 +568,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
@@ -594,8 +599,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::MediaService.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -660,6 +664,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -672,8 +679,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyInput.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/regenerateKey'
@@ -704,8 +710,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyOutput.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::RegenerateKeyOutput.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -764,6 +769,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
 
 
       request_headers = {}
@@ -798,8 +806,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::ServiceKeys.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MediaServices::Mgmt::V2015_10_01::Models::ServiceKeys.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -866,6 +873,9 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MaxLength': '24'" if !media_service_name.nil? && media_service_name.length > 24
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'MinLength': '3'" if !media_service_name.nil? && media_service_name.length < 3
+      fail ArgumentError, "'media_service_name' should satisfy the constraint - 'Pattern': '^[a-z0-9]{3,24}$'" if !media_service_name.nil? && media_service_name.match(Regexp.new('^^[a-z0-9]{3,24}$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
@@ -878,8 +888,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MediaServices::Mgmt::V2015_10_01::Models::SyncStorageKeysInput.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/syncStorageKeys'

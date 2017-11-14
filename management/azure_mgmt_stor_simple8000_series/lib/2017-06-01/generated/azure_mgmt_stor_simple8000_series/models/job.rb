@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [JobStatus] The current status of the job. Possible values
       # include: 'Running', 'Succeeded', 'Failed', 'Canceled'
       attr_accessor :status
@@ -71,6 +72,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Job',
           type: {
@@ -78,6 +80,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Job',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -86,6 +89,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -94,6 +98,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -102,6 +107,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -110,6 +116,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {
@@ -118,6 +125,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -125,6 +133,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -132,6 +141,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               percent_complete: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'percentComplete',
                 type: {
@@ -139,6 +149,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -147,6 +158,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               job_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.jobType',
                 type: {
@@ -155,6 +167,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               data_stats: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataStats',
                 type: {
@@ -163,6 +176,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               entity_label: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.entityLabel',
                 type: {
@@ -170,6 +184,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               entity_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.entityType',
                 type: {
@@ -177,11 +192,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               job_stages: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobStages',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'JobStageElementType',
                       type: {
@@ -192,6 +209,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               device_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deviceId',
                 type: {
@@ -199,6 +217,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               is_cancellable: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isCancellable',
                 type: {
@@ -206,6 +225,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backupType',
                 type: {
@@ -214,6 +234,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               source_device_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceDeviceId',
                 type: {
@@ -221,6 +242,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_point_in_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backupPointInTime',
                 type: {

@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RetryType] Gets or sets the retry strategy to be used.
       # Possible values include: 'None', 'Fixed'
       attr_accessor :retry_type
@@ -32,6 +33,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RetryPolicy',
           type: {
@@ -39,6 +41,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'RetryPolicy',
             model_properties: {
               retry_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryType',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               retry_interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryInterval',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               retry_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryCount',
                 type: {

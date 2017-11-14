@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The geo-location where the resource lives
       attr_accessor :location
 
@@ -31,6 +32,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupLongTermRetentionPolicy',
           type: {
@@ -38,6 +40,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'BackupLongTermRetentionPolicy',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +49,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +58,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,6 +67,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -70,6 +76,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -78,6 +85,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               recovery_services_backup_policy_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.recoveryServicesBackupPolicyResourceId',
                 type: {

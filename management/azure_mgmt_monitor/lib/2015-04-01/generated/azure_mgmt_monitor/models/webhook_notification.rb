@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the service address to receive the notification.
       attr_accessor :service_uri
 
@@ -26,6 +27,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebhookNotification',
           type: {
@@ -33,6 +35,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'WebhookNotification',
             model_properties: {
               service_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceUri',
                 type: {
@@ -40,11 +43,13 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

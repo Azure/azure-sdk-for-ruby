@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SAS url to a azure blob container with
       # read/write/list/delete permissions.
       attr_accessor :sas_url
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureBlobStorageHttpLogsConfig',
           type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AzureBlobStorageHttpLogsConfig',
             model_properties: {
               sas_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sasUrl',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               retention_in_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionInDays',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {

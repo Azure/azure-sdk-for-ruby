@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Gets the start time for this job.
       attr_accessor :start_time
 
@@ -46,6 +47,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobHistoryDefinitionProperties',
           type: {
@@ -53,6 +55,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobHistoryDefinitionProperties',
             model_properties: {
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -61,6 +64,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -69,6 +73,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               expected_execution_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'expectedExecutionTime',
@@ -77,6 +82,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               action_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'actionName',
@@ -86,6 +92,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -95,6 +102,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -103,6 +111,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               retry_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'retryCount',
@@ -111,6 +120,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               repeat_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'repeatCount',

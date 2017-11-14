@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<EvaluatePoliciesProperties>] Policies to evaluate.
       attr_accessor :policies
 
@@ -22,6 +23,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EvaluatePoliciesRequest',
           type: {
@@ -29,11 +31,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'EvaluatePoliciesRequest',
             model_properties: {
               policies: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policies',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EvaluatePoliciesPropertiesElementType',
                       type: {

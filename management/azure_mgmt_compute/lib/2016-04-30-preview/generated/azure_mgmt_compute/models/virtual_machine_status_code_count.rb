@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The instance view status code.
       attr_accessor :code
 
@@ -27,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineStatusCodeCount',
           type: {
@@ -34,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineStatusCodeCount',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -42,6 +45,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'count',

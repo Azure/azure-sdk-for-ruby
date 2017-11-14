@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<TypeField>] Gets or sets a list of fields.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TypeFieldListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'TypeFieldListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TypeFieldElementType',
                       type: {

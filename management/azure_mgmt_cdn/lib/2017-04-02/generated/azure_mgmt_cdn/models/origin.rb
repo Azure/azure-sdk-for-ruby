@@ -15,6 +15,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The address of the origin. Domain names, IPv4
       # addresses, and IPv6 addresses are supported.
       attr_accessor :host_name
@@ -41,6 +42,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Origin',
           type: {
@@ -48,6 +50,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'Origin',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -56,6 +59,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,6 +68,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,6 +77,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -79,11 +85,13 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -93,6 +101,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               host_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.hostName',
                 type: {
@@ -100,6 +109,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               http_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpPort',
                 constraints: {
@@ -111,6 +121,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               https_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpsPort',
                 constraints: {
@@ -122,6 +133,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               resource_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',
@@ -130,6 +142,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

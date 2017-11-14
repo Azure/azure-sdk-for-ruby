@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The edition of the database
       attr_accessor :edition
 
@@ -32,6 +33,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoverableDatabase',
           type: {
@@ -39,6 +41,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RecoverableDatabase',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -47,6 +50,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +59,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               edition: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.edition',
@@ -71,6 +77,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceLevelObjective',
@@ -79,6 +86,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               elastic_pool_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.elasticPoolName',
@@ -87,6 +95,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               last_available_backup_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastAvailableBackupDate',

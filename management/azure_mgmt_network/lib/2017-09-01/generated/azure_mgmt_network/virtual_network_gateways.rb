@@ -61,8 +61,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -153,8 +152,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -280,8 +278,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -374,8 +371,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListConnectionsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListConnectionsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -425,8 +421,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -475,13 +470,17 @@ module Azure::Network::Mgmt::V2017_09_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
+            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
               name: 'String'
             }
           }
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+          a_new_class = Class.new { include MsRest::JSONable }
+          current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+          parsed_response = a_new_class.new.from_json(parsed_response, result_mapper)
         end
 
         # Waiting for response.
@@ -530,13 +529,17 @@ module Azure::Network::Mgmt::V2017_09_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
+            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
               name: 'String'
             }
           }
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+          a_new_class = Class.new { include MsRest::JSONable }
+          current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+          parsed_response = a_new_class.new.from_json(parsed_response, result_mapper)
         end
 
         # Waiting for response.
@@ -582,13 +585,17 @@ module Azure::Network::Mgmt::V2017_09_01
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
           result_mapper = {
+            client_side_validation: true,
             required: false,
             serialized_name: 'parsed_response',
             type: {
               name: 'String'
             }
           }
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+          a_new_class = Class.new { include MsRest::JSONable }
+          current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+          parsed_response = a_new_class.new.from_json(parsed_response, result_mapper)
         end
 
         # Waiting for response.
@@ -633,8 +640,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::BgpPeerStatusListResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::BgpPeerStatusListResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -726,13 +732,17 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'String'
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -778,8 +788,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -825,8 +834,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -904,8 +912,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VpnDeviceScriptParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript'
@@ -937,13 +944,17 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'String'
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1020,8 +1031,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}'
@@ -1052,8 +1062,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1062,8 +1071,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1248,8 +1256,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGateway.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1329,8 +1336,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VpnClientParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage'
@@ -1362,13 +1368,17 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'String'
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1448,8 +1458,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VpnClientParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile'
@@ -1481,13 +1490,17 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'String'
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1587,13 +1600,17 @@ module Azure::Network::Mgmt::V2017_09_01
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'String'
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1689,8 +1706,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::BgpPeerStatusListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::BgpPeerStatusListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1786,8 +1802,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1887,8 +1902,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::GatewayRouteListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1974,8 +1988,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2061,8 +2074,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListConnectionsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VirtualNetworkGatewayListConnectionsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

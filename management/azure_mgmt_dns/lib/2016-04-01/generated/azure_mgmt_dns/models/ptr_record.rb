@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The PTR target domain name for this PTR record.
       attr_accessor :ptrdname
 
@@ -22,6 +23,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PtrRecord',
           type: {
@@ -29,6 +31,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'PtrRecord',
             model_properties: {
               ptrdname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ptrdname',
                 type: {

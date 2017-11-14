@@ -12,6 +12,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The role name.
       attr_accessor :role_name
 
@@ -34,6 +35,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoleDefinitionProperties',
           type: {
@@ -41,6 +43,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleDefinitionProperties',
             model_properties: {
               role_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'roleName',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -62,11 +67,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               permissions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'permissions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PermissionElementType',
                       type: {
@@ -77,11 +84,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               assignable_scopes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'assignableScopes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

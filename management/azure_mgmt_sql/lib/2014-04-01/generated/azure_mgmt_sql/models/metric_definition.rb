@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MetricName] The name information for the metric.
       attr_accessor :name
 
@@ -39,6 +40,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricDefinition',
           type: {
@@ -46,6 +48,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'MetricDefinition',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +58,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               primary_aggregation_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryAggregationType',
@@ -63,6 +67,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               resource_uri: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceUri',
@@ -71,6 +76,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -79,12 +85,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               metric_availabilities: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metricAvailabilities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricAvailabilityElementType',
                       type: {

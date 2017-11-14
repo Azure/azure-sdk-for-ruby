@@ -80,6 +80,10 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       heat_map_type = 'default'
+      fail ArgumentError, "'top_left' should satisfy the constraint - 'MaxItems': '2'" if !top_left.nil? && top_left.length > 2
+      fail ArgumentError, "'top_left' should satisfy the constraint - 'MinItems': '2'" if !top_left.nil? && top_left.length < 2
+      fail ArgumentError, "'bot_right' should satisfy the constraint - 'MaxItems': '2'" if !bot_right.nil? && bot_right.length > 2
+      fail ArgumentError, "'bot_right' should satisfy the constraint - 'MinItems': '2'" if !bot_right.nil? && bot_right.length < 2
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -115,8 +119,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

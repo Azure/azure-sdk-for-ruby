@@ -12,6 +12,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Publisher identifier string of image being deployed.
       attr_accessor :publisher
 
@@ -45,6 +46,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AgreementTerms',
           type: {
@@ -52,6 +54,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
             class_name: 'AgreementTerms',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,6 +63,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,6 +72,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,6 +81,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publisher',
                 type: {
@@ -83,6 +89,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               product: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.product',
                 type: {
@@ -90,6 +97,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.plan',
                 type: {
@@ -97,6 +105,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               license_text_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.licenseTextLink',
                 type: {
@@ -104,6 +113,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               privacy_policy_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privacyPolicyLink',
                 type: {
@@ -111,6 +121,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               retrieve_datetime: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retrieveDatetime',
                 type: {
@@ -118,6 +129,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               signature: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.signature',
                 type: {
@@ -125,6 +137,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
                 }
               },
               accepted: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accepted',
                 type: {

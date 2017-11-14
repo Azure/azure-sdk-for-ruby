@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The artifact's identifier.
       attr_accessor :artifact_id
 
@@ -39,6 +40,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ArtifactInstallPropertiesFragment',
           type: {
@@ -46,6 +48,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ArtifactInstallPropertiesFragment',
             model_properties: {
               artifact_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'artifactId',
                 type: {
@@ -53,11 +56,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArtifactParameterPropertiesFragmentElementType',
                       type: {
@@ -68,6 +73,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -75,6 +81,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               deployment_status_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deploymentStatusMessage',
                 type: {
@@ -82,6 +89,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               vm_extension_status_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmExtensionStatusMessage',
                 type: {
@@ -89,6 +97,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               install_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'installTime',
                 type: {

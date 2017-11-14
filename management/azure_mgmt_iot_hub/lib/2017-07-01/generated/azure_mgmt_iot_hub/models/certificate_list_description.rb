@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<CertificateDescription>] The array of Certificate
       # objects.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateListDescription',
           type: {
@@ -30,11 +32,13 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CertificateListDescription',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CertificateDescriptionElementType',
                       type: {

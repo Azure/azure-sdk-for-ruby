@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ContainerService>] the list of container services.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerServiceElementType',
                       type: {

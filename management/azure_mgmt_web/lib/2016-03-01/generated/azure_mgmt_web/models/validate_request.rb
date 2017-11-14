@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource name to verify.
       attr_accessor :name
 
@@ -48,6 +49,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ValidateRequest',
           type: {
@@ -55,6 +57,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ValidateRequest',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -62,6 +65,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -69,6 +73,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -76,6 +81,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               server_farm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serverFarmId',
                 type: {
@@ -83,6 +89,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               sku_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.skuName',
                 type: {
@@ -90,6 +97,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               need_linux_workers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.needLinuxWorkers',
                 type: {
@@ -97,6 +105,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.capacity',
                 constraints: {
@@ -107,6 +116,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               hosting_environment: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostingEnvironment',
                 type: {

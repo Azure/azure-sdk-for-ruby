@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource type.
       attr_accessor :resource_type
 
@@ -28,6 +29,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GenericResourceFilter',
           type: {
@@ -35,6 +37,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'GenericResourceFilter',
             model_properties: {
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tagname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagname',
                 type: {
@@ -49,6 +53,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tagvalue: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagvalue',
                 type: {

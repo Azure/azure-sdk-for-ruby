@@ -106,8 +106,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -214,8 +213,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -323,8 +321,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -410,8 +407,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.mapper()
-      request_content = @client.serialize(request_mapper,  container_group)
+      request_content = container_group.nil? ? nil: container_group.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}'
@@ -442,8 +438,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -452,8 +447,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -561,8 +555,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroup.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -663,8 +656,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -768,8 +760,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerInstance::Mgmt::V2017_08_01_preview::Models::ContainerGroupListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

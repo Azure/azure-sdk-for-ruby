@@ -12,6 +12,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the firewall rule's name.
       attr_accessor :name
 
@@ -34,6 +35,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FirewallRule',
           type: {
@@ -41,6 +43,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
             class_name: 'FirewallRule',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,6 +51,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -56,6 +60,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -63,6 +68,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -70,6 +76,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The interaction name.
       attr_accessor :interaction_name
 
@@ -26,6 +27,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SuggestRelationshipLinksResponse',
           type: {
@@ -33,6 +35,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'SuggestRelationshipLinksResponse',
             model_properties: {
               interaction_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'interactionName',
@@ -41,12 +44,14 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               suggested_relationships: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'suggestedRelationships',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RelationshipsLookupElementType',
                       type: {

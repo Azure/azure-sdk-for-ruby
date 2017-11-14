@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecommendedIndexAction] The proposed index action. You can
       # create a missing index, drop an unused index, or rebuild an existing
       # index to improve its performance. Possible values include: 'Create',
@@ -69,6 +70,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedIndex',
           type: {
@@ -76,6 +78,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RecommendedIndex',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -84,6 +87,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -92,6 +96,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -100,6 +105,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               action: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.action',
@@ -109,6 +115,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -118,6 +125,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               created: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -126,6 +134,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               last_modified: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModified',
@@ -134,6 +143,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               index_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.indexType',
@@ -143,6 +153,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               schema: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.schema',
@@ -151,6 +162,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               table: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.table',
@@ -159,12 +171,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               columns: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.columns',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -174,12 +188,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               included_columns: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.includedColumns',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -189,6 +205,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               index_script: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.indexScript',
@@ -197,12 +214,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               estimated_impact: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.estimatedImpact',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationImpactElementType',
                       type: {
@@ -213,12 +232,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               reported_impact: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.reportedImpact',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationImpactElementType',
                       type: {

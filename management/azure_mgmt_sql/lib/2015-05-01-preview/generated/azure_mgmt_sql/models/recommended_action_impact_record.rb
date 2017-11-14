@@ -13,6 +13,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the name of the impact dimension. e.g.,
       # CPUChange, DiskSpaceChange, NumberOfQueriesAffected.
       attr_accessor :dimension_name
@@ -40,6 +41,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedActionImpactRecord',
           type: {
@@ -47,6 +49,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'RecommendedActionImpactRecord',
             model_properties: {
               dimension_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dimensionName',
@@ -55,6 +58,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -63,6 +67,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               absolute_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'absoluteValue',
@@ -71,6 +76,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               change_value_absolute: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'changeValueAbsolute',
@@ -79,6 +85,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               change_value_relative: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'changeValueRelative',

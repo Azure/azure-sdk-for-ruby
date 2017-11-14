@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<MabJobTaskDetails>] List of tasks for this job.
       attr_accessor :tasks_list
 
@@ -32,6 +33,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MabJobExtendedInfo',
           type: {
@@ -39,11 +41,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'MabJobExtendedInfo',
             model_properties: {
               tasks_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tasksList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MabJobTaskDetailsElementType',
                       type: {
@@ -54,11 +58,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               property_bag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'propertyBag',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -68,6 +74,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               dynamic_error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dynamicErrorMessage',
                 type: {

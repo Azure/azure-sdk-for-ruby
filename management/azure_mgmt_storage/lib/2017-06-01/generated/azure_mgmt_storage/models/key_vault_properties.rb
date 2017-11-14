@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of KeyVault key.
       attr_accessor :key_name
 
@@ -28,6 +29,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultProperties',
           type: {
@@ -35,6 +37,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'KeyVaultProperties',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyname',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               key_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyversion',
                 type: {
@@ -49,6 +53,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               key_vault_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyvaulturi',
                 type: {

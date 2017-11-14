@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KeyType] Gets or sets the key type. Possible values include:
       # 'NotSpecified', 'Primary', 'Secondary'
       attr_accessor :key_type
@@ -24,6 +25,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateSecretKeyParameters',
           type: {
@@ -31,6 +33,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'RegenerateSecretKeyParameters',
             model_properties: {
               key_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyType',
                 type: {

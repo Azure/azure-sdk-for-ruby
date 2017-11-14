@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SkuNameEnum] Gets or sets the SKU name of the account.
       # Possible values include: 'Free', 'Basic'
       attr_accessor :name
@@ -29,6 +30,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -36,6 +38,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               family: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {
@@ -50,6 +54,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

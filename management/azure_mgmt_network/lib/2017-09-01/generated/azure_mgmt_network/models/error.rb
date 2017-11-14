@@ -13,6 +13,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :code
 
@@ -35,6 +36,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Error',
           type: {
@@ -42,6 +44,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'Error',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -63,11 +68,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ErrorDetailsElementType',
                       type: {
@@ -78,6 +85,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               inner_error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'innerError',
                 type: {

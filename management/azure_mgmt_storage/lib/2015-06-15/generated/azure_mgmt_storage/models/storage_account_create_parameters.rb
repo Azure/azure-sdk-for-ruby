@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The location of the resource. This will be one of the
       # supported and registered Azure Geo Regions (e.g. West US, East US,
       # Southeast Asia, etc.). The geo region of a resource cannot be changed
@@ -40,6 +41,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountCreateParameters',
           type: {
@@ -47,6 +49,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'StorageAccountCreateParameters',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -54,11 +57,13 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -68,6 +73,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               account_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.accountType',
                 type: {

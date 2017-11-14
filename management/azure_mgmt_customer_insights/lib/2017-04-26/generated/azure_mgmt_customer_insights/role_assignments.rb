@@ -102,8 +102,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -152,8 +151,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -245,8 +243,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -394,6 +391,9 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'assignment_name is nil' if assignment_name.nil?
+      fail ArgumentError, "'assignment_name' should satisfy the constraint - 'MaxLength': '128'" if !assignment_name.nil? && assignment_name.length > 128
+      fail ArgumentError, "'assignment_name' should satisfy the constraint - 'MinLength': '1'" if !assignment_name.nil? && assignment_name.length < 1
+      fail ArgumentError, "'assignment_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z][a-zA-Z0-9_]+$'" if !assignment_name.nil? && assignment_name.match(Regexp.new('^^[a-zA-Z][a-zA-Z0-9_]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -408,8 +408,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}'
@@ -440,8 +439,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentResourceFormat.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -527,8 +525,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::RoleAssignmentListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

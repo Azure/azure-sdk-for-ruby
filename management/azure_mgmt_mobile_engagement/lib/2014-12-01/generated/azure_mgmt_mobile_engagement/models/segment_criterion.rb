@@ -12,6 +12,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "segment"
@@ -33,6 +34,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'segment',
           type: {
@@ -40,6 +42,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'SegmentCriterion',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -47,6 +50,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -54,6 +58,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               exclude: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exclude',
                 type: {

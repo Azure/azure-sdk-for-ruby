@@ -72,6 +72,9 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
     def create_or_update_async(resource_group_name, hub_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
+      fail ArgumentError, "'hub_name' should satisfy the constraint - 'MaxLength': '64'" if !hub_name.nil? && hub_name.length > 64
+      fail ArgumentError, "'hub_name' should satisfy the constraint - 'MinLength': '1'" if !hub_name.nil? && hub_name.length < 1
+      fail ArgumentError, "'hub_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z][a-zA-Z0-9]+$'" if !hub_name.nil? && hub_name.match(Regexp.new('^^[a-zA-Z][a-zA-Z0-9]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -86,8 +89,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}'
@@ -118,8 +120,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -128,8 +129,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -200,8 +200,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}'
@@ -232,8 +231,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -361,8 +359,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::Hub.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -448,8 +445,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -531,8 +527,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -698,8 +693,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -785,8 +779,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CustomerInsights::Mgmt::V2017_04_26::Models::HubListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

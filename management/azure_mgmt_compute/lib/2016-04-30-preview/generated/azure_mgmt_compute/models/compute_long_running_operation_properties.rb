@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return Operation output data (raw JSON)
       attr_accessor :output
 
@@ -22,6 +23,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeLongRunningOperationProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'ComputeLongRunningOperationProperties',
             model_properties: {
               output: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'output',
                 type: {

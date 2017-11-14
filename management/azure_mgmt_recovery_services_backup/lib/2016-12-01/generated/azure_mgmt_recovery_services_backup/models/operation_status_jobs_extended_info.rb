@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @objectType = "OperationStatusJobsExtendedInfo"
@@ -33,6 +34,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatusJobsExtendedInfo',
           type: {
@@ -40,6 +42,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'OperationStatusJobsExtendedInfo',
             model_properties: {
               objectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -47,11 +50,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               job_ids: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -61,11 +66,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               failed_jobs_error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'failedJobsError',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

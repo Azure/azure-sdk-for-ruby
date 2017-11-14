@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Set this flag to true and provide DiskEncryptionKey
       # and optional KeyEncryptionKey to enable encryption. Set this flag to
       # false and remove DiskEncryptionKey and KeyEncryptionKey to disable
@@ -34,6 +35,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionSettings',
           type: {
@@ -41,6 +43,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'EncryptionSettings',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               disk_encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskEncryptionKey',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               key_encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyEncryptionKey',
                 type: {

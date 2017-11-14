@@ -12,6 +12,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DownloadUrl] A secure link to download the PDF version of an
       # invoice. The link will cease to work after its expiry time is reached.
       attr_accessor :download_url
@@ -33,6 +34,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Invoice',
           type: {
@@ -40,6 +42,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
             class_name: 'Invoice',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,6 +51,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,6 +60,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +69,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               download_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.downloadUrl',
                 type: {
@@ -72,6 +78,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               invoice_period_start_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.invoicePeriodStartDate',
@@ -80,6 +87,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               invoice_period_end_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.invoicePeriodEndDate',
@@ -88,12 +96,14 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               billing_period_ids: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.billingPeriodIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

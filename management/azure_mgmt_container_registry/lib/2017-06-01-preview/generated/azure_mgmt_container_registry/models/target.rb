@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The MIME type of the referenced object.
       attr_accessor :media_type
 
@@ -43,6 +44,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Target',
           type: {
@@ -50,6 +52,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'Target',
             model_properties: {
               media_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mediaType',
                 type: {
@@ -57,6 +60,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -64,6 +68,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               digest: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'digest',
                 type: {
@@ -71,6 +76,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'length',
                 type: {
@@ -78,6 +84,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               repository: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'repository',
                 type: {
@@ -85,6 +92,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {
@@ -92,6 +100,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               tag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tag',
                 type: {

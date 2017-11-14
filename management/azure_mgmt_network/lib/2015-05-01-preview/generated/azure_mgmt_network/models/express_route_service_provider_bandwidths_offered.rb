@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the OfferName
       attr_accessor :offer_name
 
@@ -26,6 +27,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteServiceProviderBandwidthsOffered',
           type: {
@@ -33,6 +35,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ExpressRouteServiceProviderBandwidthsOffered',
             model_properties: {
               offer_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'offerName',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               value_in_mbps: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueInMbps',
                 type: {

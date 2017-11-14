@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TargetCostProperties] The target cost properties
       attr_accessor :target_cost
 
@@ -52,6 +53,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LabCost',
           type: {
@@ -59,6 +61,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LabCost',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -67,6 +70,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -75,6 +79,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -83,6 +88,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -90,11 +96,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -104,6 +112,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               target_cost: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetCost',
                 type: {
@@ -112,6 +121,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_cost_summary: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.labCostSummary',
@@ -121,12 +131,14 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_cost_details: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.labCostDetails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LabCostDetailsPropertiesElementType',
                       type: {
@@ -137,12 +149,14 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_costs: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceCosts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LabResourceCostPropertiesElementType',
                       type: {
@@ -153,6 +167,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               currency_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.currencyCode',
                 type: {
@@ -160,6 +175,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               start_date_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startDateTime',
                 type: {
@@ -167,6 +183,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               end_date_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endDateTime',
                 type: {
@@ -174,6 +191,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdDate',
                 type: {
@@ -181,6 +199,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -188,6 +207,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

@@ -97,8 +97,7 @@ module Azure::Web::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -190,8 +189,7 @@ module Azure::Web::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomain.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomain.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -273,8 +271,7 @@ module Azure::Web::Mgmt::V2015_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainAgreementOption.mapper()
-      request_content = @client.serialize(request_mapper,  agreement_option)
+      request_content = agreement_option.nil? ? nil: agreement_option.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements'
@@ -305,8 +302,7 @@ module Azure::Web::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -398,8 +394,7 @@ module Azure::Web::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2015_04_01::Models::TopLevelDomainCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -497,8 +492,7 @@ module Azure::Web::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2015_04_01::Models::TldLegalAgreementCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

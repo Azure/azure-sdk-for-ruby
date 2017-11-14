@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Use backup copies created after this time.
       attr_accessor :start_date
 
@@ -29,6 +30,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BMSRPQueryObject',
           type: {
@@ -36,6 +38,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'BMSRPQueryObject',
             model_properties: {
               start_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startDate',
                 type: {
@@ -43,6 +46,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               end_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endDate',
                 type: {

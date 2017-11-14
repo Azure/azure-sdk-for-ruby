@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource Id.
       attr_accessor :id
 
@@ -37,6 +38,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -44,6 +46,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'Resource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,6 +55,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,6 +64,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -67,6 +72,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -74,6 +80,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,11 +89,13 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

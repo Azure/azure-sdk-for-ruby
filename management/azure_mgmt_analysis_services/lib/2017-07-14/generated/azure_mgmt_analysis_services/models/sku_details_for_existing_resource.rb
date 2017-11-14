@@ -12,6 +12,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ResourceSku] The SKU in SKU details for existing resources.
       attr_accessor :sku
 
@@ -22,6 +23,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SkuDetailsForExistingResource',
           type: {
@@ -29,6 +31,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'SkuDetailsForExistingResource',
             model_properties: {
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A string that uniquely identifies the application
       # within the account.
       attr_accessor :id
@@ -38,6 +39,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Application',
           type: {
@@ -45,6 +47,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'Application',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -59,11 +63,13 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               packages: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'packages',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationPackageElementType',
                       type: {
@@ -74,6 +80,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               allow_updates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowUpdates',
                 type: {
@@ -81,6 +88,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               default_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultVersion',
                 type: {

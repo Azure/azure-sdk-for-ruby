@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the type of the parameter.
       attr_accessor :type
 
@@ -32,6 +33,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscConfigurationParameter',
           type: {
@@ -39,6 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscConfigurationParameter',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_mandatory: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isMandatory',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               position: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'position',
                 type: {
@@ -60,6 +65,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               default_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultValue',
                 type: {

@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2016_10_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Ip adress itself.
       attr_accessor :base_ip_address
 
@@ -25,6 +26,7 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'cidrIpAddress',
           type: {
@@ -32,6 +34,7 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'CidrIpAddress',
             model_properties: {
               base_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'baseIpAddress',
                 type: {
@@ -39,6 +42,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               prefix_length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'prefixLength',
                 type: {

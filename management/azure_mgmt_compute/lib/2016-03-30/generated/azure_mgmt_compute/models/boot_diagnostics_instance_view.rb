@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The console screenshot blob URI.
       attr_accessor :console_screenshot_blob_uri
 
@@ -25,6 +26,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BootDiagnosticsInstanceView',
           type: {
@@ -32,6 +34,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'BootDiagnosticsInstanceView',
             model_properties: {
               console_screenshot_blob_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'consoleScreenshotBlobUri',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               serial_console_log_blob_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serialConsoleLogBlobUri',
                 type: {

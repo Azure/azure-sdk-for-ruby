@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The disk name.
       attr_accessor :name
 
@@ -41,6 +42,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetDataDisk',
           type: {
@@ -48,6 +50,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSetDataDisk',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               lun: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'lun',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               caching: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               create_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -78,6 +84,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               disk_size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
@@ -85,6 +92,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               managed_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {

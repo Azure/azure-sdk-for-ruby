@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LinuxOsState] The state of the Linux OS (i.e.
       # NonDeprovisioned, DeprovisionRequested, DeprovisionApplied). Possible
       # values include: 'NonDeprovisioned', 'DeprovisionRequested',
@@ -25,6 +26,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LinuxOsInfo',
           type: {
@@ -32,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LinuxOsInfo',
             model_properties: {
               linux_os_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'linuxOsState',
                 type: {

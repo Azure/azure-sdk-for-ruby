@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The length of retention for the database metric.
       attr_accessor :retention
 
@@ -25,6 +26,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricAvailability',
           type: {
@@ -32,6 +34,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'MetricAvailability',
             model_properties: {
               retention: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'retention',
@@ -40,6 +43,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timeGrain',

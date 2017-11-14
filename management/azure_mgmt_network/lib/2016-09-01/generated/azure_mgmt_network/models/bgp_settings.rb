@@ -13,6 +13,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The BGP speaker's ASN.
       attr_accessor :asn
 
@@ -31,6 +32,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BgpSettings',
           type: {
@@ -38,6 +40,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'BgpSettings',
             model_properties: {
               asn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'asn',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               bgp_peering_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bgpPeeringAddress',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               peer_weight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'peerWeight',
                 type: {

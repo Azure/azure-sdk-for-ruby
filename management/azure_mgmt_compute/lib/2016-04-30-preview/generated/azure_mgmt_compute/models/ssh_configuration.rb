@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SshPublicKey>] The list of SSH public keys used to
       # authenticate with linux based VMs.
       attr_accessor :public_keys
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SshConfiguration',
           type: {
@@ -30,11 +32,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'SshConfiguration',
             model_properties: {
               public_keys: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publicKeys',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SshPublicKeyElementType',
                       type: {

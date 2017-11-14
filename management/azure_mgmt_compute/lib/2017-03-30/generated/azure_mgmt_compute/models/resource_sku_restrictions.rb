@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ResourceSkuRestrictionsType] The type of restrictions.
       # Possible values include: 'Location'
       attr_accessor :type
@@ -32,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuRestrictions',
           type: {
@@ -39,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ResourceSkuRestrictions',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -48,12 +51,14 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               values: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -63,6 +68,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               reason_code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reasonCode',

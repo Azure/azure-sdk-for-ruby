@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Feature>] The value.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FeatureList',
           type: {
@@ -29,11 +31,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'FeatureList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FeatureElementType',
                       type: {

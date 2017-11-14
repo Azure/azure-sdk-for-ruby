@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 
@@ -73,6 +74,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LoadBalancingRule',
           type: {
@@ -80,6 +82,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'LoadBalancingRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -87,6 +90,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               frontend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -95,6 +99,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               backend_address_pool: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendAddressPool',
                 type: {
@@ -103,6 +108,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               probe: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.probe',
                 type: {
@@ -111,6 +117,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -118,6 +125,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               load_distribution: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadDistribution',
                 type: {
@@ -125,6 +133,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               frontend_port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -132,6 +141,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               backend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -139,6 +149,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               idle_timeout_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -146,6 +157,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               enable_floating_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
                 type: {
@@ -153,6 +165,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -160,6 +173,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -167,6 +181,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

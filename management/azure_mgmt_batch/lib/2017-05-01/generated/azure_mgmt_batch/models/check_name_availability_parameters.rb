@@ -12,6 +12,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name to check for availability
       attr_accessor :name
 
@@ -27,6 +28,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityParameters',
           type: {
@@ -34,6 +36,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'CheckNameAvailabilityParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

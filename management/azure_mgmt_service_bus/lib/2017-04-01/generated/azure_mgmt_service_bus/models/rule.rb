@@ -12,6 +12,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Action] Represents the filter actions which are allowed for
       # the transformation of a message that have been matched by a filter
       # expression.
@@ -35,6 +36,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Rule',
           type: {
@@ -42,6 +44,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'Rule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -50,6 +53,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -58,6 +62,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,6 +71,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.action',
                 type: {
@@ -74,6 +80,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               filter_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.filterType',
                 type: {
@@ -82,6 +89,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               sql_filter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sqlFilter',
                 type: {
@@ -90,6 +98,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               correlation_filter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.correlationFilter',
                 type: {

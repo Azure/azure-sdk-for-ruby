@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [OutputPortType] Port data type. Possible values include:
       # 'Dataset'. Default value: 'Dataset' .
       attr_accessor :type
@@ -23,6 +24,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OutputPort',
           type: {
@@ -30,6 +32,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'OutputPort',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 default_value: 'Dataset',

@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the SQL server containing the Azure SQL
       # database. Required on PUT (CreateOrReplace) requests.
       attr_accessor :server
@@ -40,6 +41,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureSqlDatabaseDataSourceProperties',
           type: {
@@ -47,6 +49,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureSqlDatabaseDataSourceProperties',
             model_properties: {
               server: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'server',
                 type: {
@@ -54,6 +57,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               database: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'database',
                 type: {
@@ -61,6 +65,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               user: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'user',
                 type: {
@@ -68,6 +73,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {
@@ -75,6 +81,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               table: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'table',
                 type: {

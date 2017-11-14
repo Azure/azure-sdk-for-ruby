@@ -95,8 +95,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -170,8 +169,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/autoscalesettings/{autoscaleSettingName}'
@@ -202,8 +200,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -212,8 +209,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -383,8 +379,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -461,8 +456,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourcePatch.mapper()
-      request_content = @client.serialize(request_mapper,  autoscale_setting_resource)
+      request_content = autoscale_setting_resource.nil? ? nil: autoscale_setting_resource.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/autoscalesettings/{autoscaleSettingName}'
@@ -493,8 +487,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -580,8 +573,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourceCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2015_04_01::Models::AutoscaleSettingResourceCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

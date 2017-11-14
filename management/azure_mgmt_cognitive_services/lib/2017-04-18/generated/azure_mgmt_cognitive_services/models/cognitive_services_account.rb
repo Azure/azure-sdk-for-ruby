@@ -13,6 +13,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Entity Tag
       attr_accessor :etag
 
@@ -59,6 +60,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccount',
           type: {
@@ -66,6 +68,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccount',
             model_properties: {
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -73,6 +76,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -81,6 +85,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -88,6 +93,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -95,6 +101,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -103,6 +110,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -112,6 +120,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoint',
                 type: {
@@ -119,6 +128,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               internal_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.internalId',
                 type: {
@@ -126,6 +136,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -134,11 +145,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -148,6 +161,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

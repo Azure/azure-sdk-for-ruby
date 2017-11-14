@@ -14,6 +14,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The list of DNS servers IP addresses.
       attr_accessor :dns_servers
 
@@ -24,6 +25,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DhcpOptions',
           type: {
@@ -31,11 +33,13 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'DhcpOptions',
             model_properties: {
               dns_servers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ClientDiscoveryForServiceSpecification] Operation properties.
       attr_accessor :service_specification
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryForProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'ClientDiscoveryForProperties',
             model_properties: {
               service_specification: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceSpecification',
                 type: {

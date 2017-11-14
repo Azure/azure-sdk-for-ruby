@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Campaign identifier.
       attr_accessor :id
 
@@ -23,6 +24,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignStateResult',
           type: {
@@ -30,6 +32,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignStateResult',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -37,6 +40,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {

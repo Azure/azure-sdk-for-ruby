@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Provisioning State.
       attr_accessor :provisioning_state
 
@@ -25,6 +26,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultProperties',
           type: {
@@ -32,6 +34,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
             class_name: 'VaultProperties',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -40,6 +43,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               upgrade_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'upgradeDetails',
                 type: {

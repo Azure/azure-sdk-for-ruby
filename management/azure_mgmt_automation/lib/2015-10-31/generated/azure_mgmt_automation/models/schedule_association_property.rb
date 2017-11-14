@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the name of the schedule.
       attr_accessor :name
 
@@ -22,6 +23,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ScheduleAssociationProperty',
           type: {
@@ -29,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ScheduleAssociationProperty',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

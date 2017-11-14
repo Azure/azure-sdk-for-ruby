@@ -13,6 +13,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RecommendedElasticPoolMetric>] The list of recommended
       # elastic pools metrics.
       attr_accessor :value
@@ -24,6 +25,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedElasticPoolListMetricsResult',
           type: {
@@ -31,11 +33,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RecommendedElasticPoolListMetricsResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedElasticPoolMetricElementType',
                       type: {

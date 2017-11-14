@@ -12,6 +12,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The role assignment ID.
       attr_accessor :id
 
@@ -31,6 +32,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoleAssignment',
           type: {
@@ -38,6 +40,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleAssignment',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -59,6 +64,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

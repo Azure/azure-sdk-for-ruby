@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Keywords to be used for generating domain
       # recommendations.
       attr_accessor :keywords
@@ -26,6 +27,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DomainRecommendationSearchParameters',
           type: {
@@ -33,6 +35,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'DomainRecommendationSearchParameters',
             model_properties: {
               keywords: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keywords',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               max_domain_recommendations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDomainRecommendations',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource location.
       attr_accessor :location
 
@@ -25,6 +26,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TrackedResource',
           type: {
@@ -32,6 +34,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
             class_name: 'TrackedResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +43,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +52,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -56,6 +61,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               e_tag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {
@@ -63,6 +69,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -70,11 +77,13 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

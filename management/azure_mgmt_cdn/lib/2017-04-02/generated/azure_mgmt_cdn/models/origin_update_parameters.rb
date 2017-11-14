@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The address of the origin. Domain names, IPv4
       # addresses, and IPv6 addresses are supported.
       attr_accessor :host_name
@@ -31,6 +32,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OriginUpdateParameters',
           type: {
@@ -38,6 +40,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'OriginUpdateParameters',
             model_properties: {
               host_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostName',
                 type: {
@@ -45,6 +48,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               http_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpPort',
                 constraints: {
@@ -56,6 +60,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               https_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpsPort',
                 constraints: {

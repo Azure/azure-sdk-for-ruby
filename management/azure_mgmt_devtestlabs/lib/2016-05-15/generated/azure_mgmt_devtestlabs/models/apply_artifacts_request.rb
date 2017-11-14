@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ArtifactInstallProperties>] The list of artifacts to
       # apply.
       attr_accessor :artifacts
@@ -23,6 +24,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplyArtifactsRequest',
           type: {
@@ -30,11 +32,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ApplyArtifactsRequest',
             model_properties: {
               artifacts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'artifacts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArtifactInstallPropertiesElementType',
                       type: {

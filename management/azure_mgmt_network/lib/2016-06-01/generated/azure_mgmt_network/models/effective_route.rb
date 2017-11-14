@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the name of the user defined route. This is
       # optional.
       attr_accessor :name
@@ -45,6 +46,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EffectiveRoute',
           type: {
@@ -52,6 +54,7 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'EffectiveRoute',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -59,6 +62,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               source: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'source',
                 type: {
@@ -66,6 +70,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -73,11 +78,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               address_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'addressPrefix',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -87,11 +94,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               next_hop_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextHopIpAddress',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -101,6 +110,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               next_hop_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextHopType',
                 type: {

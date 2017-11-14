@@ -13,6 +13,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ClientDiscoveryForLogSpecification>] List of log
       # specifications of this operation.
       attr_accessor :log_specifications
@@ -24,6 +25,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryForServiceSpecification',
           type: {
@@ -31,11 +33,13 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'ClientDiscoveryForServiceSpecification',
             model_properties: {
               log_specifications: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'logSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientDiscoveryForLogSpecificationElementType',
                       type: {

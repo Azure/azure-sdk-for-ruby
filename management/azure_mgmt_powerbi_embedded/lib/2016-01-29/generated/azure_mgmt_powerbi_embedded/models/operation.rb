@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the operation being performed on this
       # particular object. This name should match the action name that appears
       # in RBAC / the event service.
@@ -28,6 +29,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -35,6 +37,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'Operation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,6 +45,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

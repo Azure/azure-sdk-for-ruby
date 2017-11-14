@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Secret key.
       attr_accessor :key
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionSecrets',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'FunctionSecrets',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +43,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +52,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -55,6 +60,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +69,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.key',
                 type: {
@@ -70,6 +77,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               trigger_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.triggerUrl',
                 type: {

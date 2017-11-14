@@ -12,6 +12,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the resource. A name must be globally
       # unique.
       attr_accessor :name
@@ -27,6 +28,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityInput',
           type: {
@@ -34,6 +36,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'CheckNameAvailabilityInput',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -46,6 +49,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

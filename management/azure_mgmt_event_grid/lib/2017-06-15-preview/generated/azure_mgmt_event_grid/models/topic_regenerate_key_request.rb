@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Key name to regenerate key1 or key2
       attr_accessor :key_name
 
@@ -22,6 +23,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopicRegenerateKeyRequest',
           type: {
@@ -29,6 +31,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
             class_name: 'TopicRegenerateKeyRequest',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {

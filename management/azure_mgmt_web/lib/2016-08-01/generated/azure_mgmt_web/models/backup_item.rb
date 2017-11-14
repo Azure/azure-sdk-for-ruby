@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Id of the backup.
       attr_accessor :backup_id
 
@@ -70,6 +71,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupItem',
           type: {
@@ -77,6 +79,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'BackupItem',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -85,6 +88,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -93,6 +97,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -100,6 +105,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -108,6 +114,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               backup_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.id',
@@ -116,6 +123,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               storage_account_url: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.storageAccountUrl',
@@ -124,6 +132,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               blob_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.blobName',
@@ -132,6 +141,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               backup_item_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -140,6 +150,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -149,6 +160,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               size_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.sizeInBytes',
@@ -157,6 +169,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               created: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.created',
@@ -165,6 +178,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               log: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.log',
@@ -173,12 +187,14 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               databases: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databases',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DatabaseBackupSettingElementType',
                       type: {
@@ -189,6 +205,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               scheduled: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.scheduled',
@@ -197,6 +214,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               last_restore_time_stamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastRestoreTimeStamp',
@@ -205,6 +223,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               finished_time_stamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.finishedTimeStamp',
@@ -213,6 +232,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               correlation_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.correlationId',
@@ -221,6 +241,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               website_size_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.websiteSizeInBytes',

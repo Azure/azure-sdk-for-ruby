@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [BootDiagnostics] Boot Diagnostics is a debugging feature which
       # allows you to view Console Output and Screenshot to diagnose VM status.
       # <br><br> For Linux Virtual Machines, you can easily view the output of
@@ -28,6 +29,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsProfile',
           type: {
@@ -35,6 +37,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'DiagnosticsProfile',
             model_properties: {
               boot_diagnostics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bootDiagnostics',
                 type: {

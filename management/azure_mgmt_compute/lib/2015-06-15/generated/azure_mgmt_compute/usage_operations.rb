@@ -65,6 +65,7 @@ module Azure::Compute::Mgmt::V2015_06_15
     #
     def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, "'location' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !location.nil? && location.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -101,8 +102,7 @@ module Azure::Compute::Mgmt::V2015_06_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2015_06_15::Models::ListUsagesResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Compute::Mgmt::V2015_06_15::Models::ListUsagesResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -194,8 +194,7 @@ module Azure::Compute::Mgmt::V2015_06_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Compute::Mgmt::V2015_06_15::Models::ListUsagesResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Compute::Mgmt::V2015_06_15::Models::ListUsagesResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

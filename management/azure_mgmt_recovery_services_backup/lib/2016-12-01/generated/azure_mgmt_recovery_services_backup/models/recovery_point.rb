@@ -13,6 +13,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["GenericRecoveryPoint"] = "GenericRecoveryPoint"
       @@discriminatorMap["IaasVMRecoveryPoint"] = "IaasVMRecoveryPoint"
@@ -30,6 +31,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPoint',
           type: {

@@ -92,8 +92,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -141,8 +140,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -183,8 +181,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -314,8 +311,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -360,8 +356,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -487,8 +482,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -647,8 +641,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::RenewCertificateInput.mapper()
-      request_content = @client.serialize(request_mapper,  renew_certificate)
+      request_content = renew_certificate.nil? ? nil: renew_certificate.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/renewCertificate'
@@ -679,8 +672,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -764,8 +756,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FailoverProcessServerRequest.mapper()
-      request_content = @client.serialize(request_mapper,  failover_process_server_request)
+      request_content = failover_process_server_request.nil? ? nil: failover_process_server_request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/reassociateGateway'
@@ -796,8 +787,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -891,8 +881,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1051,8 +1040,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricCreationInput.mapper()
-      request_content = @client.serialize(request_mapper,  input)
+      request_content = input.nil? ? nil: input.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}'
@@ -1083,8 +1071,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Fabric.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1260,8 +1247,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::FabricCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

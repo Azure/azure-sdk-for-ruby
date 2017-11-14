@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RecoveryPointTierType] Recovery point tier type. Possible
       # values include: 'Invalid', 'InstantRP', 'HardenedRP'
       attr_accessor :type
@@ -27,6 +28,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPointTierInformation',
           type: {
@@ -34,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'RecoveryPointTierInformation',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -42,6 +45,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

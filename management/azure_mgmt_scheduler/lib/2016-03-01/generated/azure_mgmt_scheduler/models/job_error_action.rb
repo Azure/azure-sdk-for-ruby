@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [JobActionType] Gets or sets the job error action type.
       # Possible values include: 'Http', 'Https', 'StorageQueue',
       # 'ServiceBusQueue', 'ServiceBusTopic'
@@ -42,6 +43,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobErrorAction',
           type: {
@@ -49,6 +51,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobErrorAction',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -57,6 +60,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               request: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'request',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               queue_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'queueMessage',
                 type: {
@@ -73,6 +78,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               service_bus_queue_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusQueueMessage',
                 type: {
@@ -81,6 +87,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               service_bus_topic_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusTopicMessage',
                 type: {
@@ -89,6 +96,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               retry_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retryPolicy',
                 type: {

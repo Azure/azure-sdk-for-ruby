@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewayRequestRoutingRuleType] Rule type. Possible
       # values are: 'Basic' and 'PathBasedRouting'. Possible values include:
       # 'Basic', 'PathBasedRouting'
@@ -51,6 +52,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayRequestRoutingRule',
           type: {
@@ -58,6 +60,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ApplicationGatewayRequestRoutingRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -65,6 +68,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               rule_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ruleType',
                 type: {
@@ -72,6 +76,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               backend_address_pool: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendAddressPool',
                 type: {
@@ -80,6 +85,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               backend_http_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendHttpSettings',
                 type: {
@@ -88,6 +94,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               http_listener: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpListener',
                 type: {
@@ -96,6 +103,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               url_path_map: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.urlPathMap',
                 type: {
@@ -104,6 +112,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -111,6 +120,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -118,6 +128,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

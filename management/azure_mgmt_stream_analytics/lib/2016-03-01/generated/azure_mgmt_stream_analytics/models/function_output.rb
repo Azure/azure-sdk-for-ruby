@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The (Azure Stream Analytics supported) data type of
       # the function output. A list of valid Azure Stream Analytics data types
       # are described at
@@ -25,6 +26,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionOutput',
           type: {
@@ -32,6 +34,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'FunctionOutput',
             model_properties: {
               data_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {

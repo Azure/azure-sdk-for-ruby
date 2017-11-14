@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the request that initiated the event.
       attr_accessor :id
 
@@ -37,6 +38,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Request',
           type: {
@@ -44,6 +46,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'Request',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -51,6 +54,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               addr: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'addr',
                 type: {
@@ -58,6 +62,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               host: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'host',
                 type: {
@@ -65,6 +70,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
@@ -72,6 +78,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               useragent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'useragent',
                 type: {

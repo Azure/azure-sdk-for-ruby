@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Point in time in which the app recovery should be
       # attempted, formatted as a DateTime string.
       attr_accessor :snapshot_time
@@ -40,6 +41,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SnapshotRecoveryRequest',
           type: {
@@ -47,6 +49,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'SnapshotRecoveryRequest',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +58,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +67,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,6 +84,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               snapshot_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.snapshotTime',
                 type: {
@@ -85,6 +92,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               recovery_target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.recoveryTarget',
                 type: {
@@ -93,6 +101,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               overwrite: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.overwrite',
                 type: {
@@ -100,6 +109,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               recover_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.recoverConfiguration',
                 type: {
@@ -107,6 +117,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               ignore_conflicting_host_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ignoreConflictingHostNames',
                 type: {

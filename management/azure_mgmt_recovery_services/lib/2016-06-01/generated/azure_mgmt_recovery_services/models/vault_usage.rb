@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [UsagesUnit] Unit of the usage. Possible values include:
       # 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond',
       # 'BytesPerSecond'
@@ -39,6 +40,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultUsage',
           type: {
@@ -46,6 +48,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'VaultUsage',
             model_properties: {
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -53,6 +56,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               quota_period: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'quotaPeriod',
                 type: {
@@ -60,6 +64,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               next_reset_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextResetTime',
                 type: {
@@ -67,6 +72,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -74,6 +80,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               limit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -81,6 +88,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

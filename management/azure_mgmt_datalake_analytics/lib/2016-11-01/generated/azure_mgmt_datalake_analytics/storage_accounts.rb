@@ -98,8 +98,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::AddStorageAccountParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}'
@@ -209,8 +208,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::UpdateStorageAccountParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/StorageAccounts/{storageAccountName}'
@@ -434,8 +432,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageAccountInfo.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageAccountInfo.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -548,8 +545,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageContainer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::StorageContainer.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -658,8 +654,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListStorageContainersResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListStorageContainersResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -772,8 +767,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListSasTokensResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListSasTokensResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -881,6 +875,8 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
     def list_by_account_async(resource_group_name, account_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '1'" if !skip.nil? && skip < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -917,8 +913,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1010,8 +1005,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListStorageContainersResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListStorageContainersResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1100,8 +1094,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListSasTokensResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ListSasTokensResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1194,8 +1187,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::DataLakeAnalyticsAccountListStorageAccountsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -12,6 +12,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "poll-feedback"
@@ -33,6 +34,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'poll-feedback',
           type: {
@@ -40,6 +42,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'PollFeedbackCriterion',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -47,6 +50,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               content_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'content-id',
                 type: {
@@ -54,6 +58,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 type: {

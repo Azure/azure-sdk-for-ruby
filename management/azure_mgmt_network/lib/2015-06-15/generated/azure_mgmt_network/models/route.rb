@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The destination CIDR to which the route applies.
       attr_accessor :address_prefix
 
@@ -46,6 +47,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Route',
           type: {
@@ -53,6 +55,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'Route',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               address_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.addressPrefix',
                 type: {
@@ -67,6 +71,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               next_hop_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.nextHopType',
                 type: {
@@ -74,6 +79,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               next_hop_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.nextHopIpAddress',
                 type: {
@@ -81,6 +87,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -88,6 +95,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -95,6 +103,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

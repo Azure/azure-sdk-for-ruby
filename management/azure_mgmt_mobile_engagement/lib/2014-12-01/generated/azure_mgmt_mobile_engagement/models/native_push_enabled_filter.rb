@@ -12,6 +12,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "native-push-enabled"
@@ -26,6 +27,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'native-push-enabled',
           type: {
@@ -33,6 +35,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'NativePushEnabledFilter',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {

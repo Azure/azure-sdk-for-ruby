@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the webhook receiver. Names must be unique
       # across all receivers within an action group.
       attr_accessor :name
@@ -26,6 +27,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebhookReceiver',
           type: {
@@ -33,6 +35,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'WebhookReceiver',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               service_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'serviceUri',
                 type: {

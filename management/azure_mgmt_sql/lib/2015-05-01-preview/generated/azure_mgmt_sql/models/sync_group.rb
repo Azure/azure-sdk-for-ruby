@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Sync interval of the sync group.
       attr_accessor :interval
 
@@ -46,6 +47,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SyncGroup',
           type: {
@@ -53,6 +55,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncGroup',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -61,6 +64,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -69,6 +73,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,6 +82,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.interval',
                 type: {
@@ -84,6 +90,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               last_sync_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastSyncTime',
@@ -92,6 +99,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               conflict_resolution_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.conflictResolutionPolicy',
                 type: {
@@ -99,6 +107,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_database_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.syncDatabaseId',
                 type: {
@@ -106,6 +115,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               hub_database_user_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hubDatabaseUserName',
                 type: {
@@ -113,6 +123,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               hub_database_password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hubDatabasePassword',
                 type: {
@@ -120,6 +131,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               sync_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.syncState',
@@ -128,6 +140,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               schema: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.schema',
                 type: {

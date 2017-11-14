@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ConnectivitySource]
       attr_accessor :source
 
@@ -25,6 +26,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityParameters',
           type: {
@@ -32,6 +34,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ConnectivityParameters',
             model_properties: {
               source: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               destination: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'destination',
                 type: {

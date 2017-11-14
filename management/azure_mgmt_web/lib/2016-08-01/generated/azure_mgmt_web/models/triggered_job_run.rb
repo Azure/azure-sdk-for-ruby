@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Job ID.
       attr_accessor :triggered_job_run_id
 
@@ -53,6 +54,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TriggeredJobRun',
           type: {
@@ -60,6 +62,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'TriggeredJobRun',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,6 +71,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -76,6 +80,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -83,6 +88,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,6 +97,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               triggered_job_run_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -98,6 +105,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               triggered_job_run_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -106,6 +114,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -114,6 +123,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -121,6 +131,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endTime',
                 type: {
@@ -128,6 +139,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.duration',
                 type: {
@@ -135,6 +147,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               output_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputUrl',
                 type: {
@@ -142,6 +155,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               error_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.errorUrl',
                 type: {
@@ -149,6 +163,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.url',
                 type: {
@@ -156,6 +171,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               job_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.jobName',
                 type: {
@@ -163,6 +179,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               trigger: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.trigger',
                 type: {

@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource kind.
       attr_accessor :kind
 
@@ -61,6 +62,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Advisor',
           type: {
@@ -68,6 +70,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'Advisor',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -76,6 +79,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -84,6 +88,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -92,6 +97,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -100,6 +106,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -108,6 +115,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               advisor_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.advisorStatus',
@@ -117,6 +125,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               auto_execute_status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.autoExecuteStatus',
                 type: {
@@ -125,6 +134,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               auto_execute_status_inherited_from: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.autoExecuteStatusInheritedFrom',
@@ -134,6 +144,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               recommendations_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.recommendationsStatus',
@@ -142,6 +153,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               last_checked: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastChecked',
@@ -150,12 +162,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               recommended_actions: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.recommendedActions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedActionElementType',
                       type: {

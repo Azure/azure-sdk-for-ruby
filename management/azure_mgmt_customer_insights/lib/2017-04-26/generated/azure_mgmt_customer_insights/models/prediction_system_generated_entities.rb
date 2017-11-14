@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Generated interaction types.
       attr_accessor :generated_interaction_types
 
@@ -28,6 +29,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Prediction_systemGeneratedEntities',
           type: {
@@ -35,11 +37,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionSystemGeneratedEntities',
             model_properties: {
               generated_interaction_types: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'generatedInteractionTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -49,11 +53,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               generated_links: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'generatedLinks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -63,11 +69,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               generated_kpis: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'generatedKpis',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

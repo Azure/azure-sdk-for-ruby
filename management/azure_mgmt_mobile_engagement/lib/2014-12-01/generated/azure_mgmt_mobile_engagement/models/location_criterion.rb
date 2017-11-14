@@ -12,6 +12,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "location"
@@ -38,6 +39,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'location',
           type: {
@@ -45,6 +47,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'LocationCriterion',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -52,6 +55,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               country: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'country',
                 type: {
@@ -59,6 +63,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               region: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'region',
                 type: {
@@ -66,6 +71,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               locality: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locality',
                 type: {

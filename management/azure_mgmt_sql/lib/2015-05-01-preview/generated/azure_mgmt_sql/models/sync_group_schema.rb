@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SyncGroupSchemaTable>] List of tables in sync group
       # schema.
       attr_accessor :tables
@@ -26,6 +27,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SyncGroupSchema',
           type: {
@@ -33,11 +35,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncGroupSchema',
             model_properties: {
               tables: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tables',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SyncGroupSchemaTableElementType',
                       type: {
@@ -48,6 +52,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               master_sync_member_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'masterSyncMemberName',
                 type: {

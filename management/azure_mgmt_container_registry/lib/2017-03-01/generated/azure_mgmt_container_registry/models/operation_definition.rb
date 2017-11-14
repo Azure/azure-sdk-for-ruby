@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}.
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDefinition',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
             class_name: 'OperationDefinition',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +43,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

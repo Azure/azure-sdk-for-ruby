@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Gets or sets list of DNS servers IP addresses
       attr_accessor :dns_servers
 
@@ -35,6 +36,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceDnsSettings',
           type: {
@@ -42,11 +44,13 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'NetworkInterfaceDnsSettings',
             model_properties: {
               dns_servers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -56,11 +60,13 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               applied_dns_servers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appliedDnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -70,6 +76,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               internal_dns_name_label: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalDnsNameLabel',
                 type: {
@@ -77,6 +84,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               internal_fqdn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalFqdn',
                 type: {
@@ -84,6 +92,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               internal_domain_name_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalDomainNameSuffix',
                 type: {

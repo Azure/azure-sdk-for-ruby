@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the primary secret key.
       attr_accessor :primary_secret_key
 
@@ -26,6 +27,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowSecretKeys',
           type: {
@@ -33,6 +35,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowSecretKeys',
             model_properties: {
               primary_secret_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primarySecretKey',
@@ -41,6 +44,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               secondary_secret_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondarySecretKey',

@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] Gets or sets the SKU.
       attr_accessor :sku
 
@@ -30,6 +31,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobCollectionProperties',
           type: {
@@ -37,6 +39,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobCollectionProperties',
             model_properties: {
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               quota: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'quota',
                 type: {

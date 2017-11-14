@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<DayOfWeek>] List of days of the week.
       attr_accessor :days_of_the_week
 
@@ -25,6 +26,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WeeklyRetentionFormat',
           type: {
@@ -32,11 +34,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'WeeklyRetentionFormat',
             model_properties: {
               days_of_the_week: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'daysOfTheWeek',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DayOfWeekElementType',
                       type: {
@@ -47,11 +51,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               weeks_of_the_month: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'weeksOfTheMonth',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WeekOfMonthElementType',
                       type: {

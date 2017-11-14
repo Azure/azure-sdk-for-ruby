@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The (Azure Stream Analytics supported) data type of
       # the function input parameter. A list of valid Azure Stream Analytics
       # data types are described at
@@ -30,6 +31,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionInput',
           type: {
@@ -37,6 +39,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'FunctionInput',
             model_properties: {
               data_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {
@@ -44,6 +47,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               is_configuration_parameter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isConfigurationParameter',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The class type.
       attr_accessor :instance_type
 
@@ -23,6 +24,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationProviderSpecificContainerMappingInput',
           type: {
@@ -30,6 +32,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ReplicationProviderSpecificContainerMappingInput',
             model_properties: {
               instance_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceType',
                 type: {
