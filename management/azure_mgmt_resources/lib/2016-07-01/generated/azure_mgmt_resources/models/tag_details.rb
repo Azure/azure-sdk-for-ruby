@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The tag ID.
       attr_accessor :id
 
@@ -31,6 +32,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TagDetails',
           type: {
@@ -38,6 +40,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'TagDetails',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               tag_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagName',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -60,11 +65,13 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               values: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TagValueElementType',
                       type: {

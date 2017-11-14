@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource ID of the virtual network.
       attr_accessor :virtual_network_id
 
@@ -50,6 +51,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfacePropertiesFragment',
           type: {
@@ -57,6 +59,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'NetworkInterfacePropertiesFragment',
             model_properties: {
               virtual_network_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualNetworkId',
                 type: {
@@ -64,6 +67,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               subnet_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnetId',
                 type: {
@@ -71,6 +75,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               public_ip_address_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publicIpAddressId',
                 type: {
@@ -78,6 +83,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               public_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publicIpAddress',
                 type: {
@@ -85,6 +91,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               private_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'privateIpAddress',
                 type: {
@@ -92,6 +99,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               dns_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dnsName',
                 type: {
@@ -99,6 +107,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               rdp_authority: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rdpAuthority',
                 type: {
@@ -106,6 +115,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               ssh_authority: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sshAuthority',
                 type: {
@@ -113,6 +123,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               shared_public_ip_address_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sharedPublicIpAddressConfiguration',
                 type: {

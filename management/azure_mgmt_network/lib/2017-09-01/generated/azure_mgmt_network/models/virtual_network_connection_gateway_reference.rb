@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of VirtualNetworkGateway or LocalNetworkGateway
       # resource.
       attr_accessor :id
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'virtualNetworkConnectionGatewayReference',
           type: {
@@ -30,6 +32,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'VirtualNetworkConnectionGatewayReference',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {

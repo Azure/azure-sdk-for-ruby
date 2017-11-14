@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [StorageType] Type of storage used by the lab. It can be either
       # Premium or Standard. Default is Premium. Possible values include:
       # 'Standard', 'Premium'
@@ -38,6 +39,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LabFragment',
           type: {
@@ -45,6 +47,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LabFragment',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,6 +56,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,6 +65,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,6 +74,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -76,11 +82,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -90,6 +98,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_storage_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labStorageType',
                 type: {
@@ -97,6 +106,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               premium_data_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.premiumDataDisks',
                 type: {
@@ -104,6 +114,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -111,6 +122,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

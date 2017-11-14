@@ -110,8 +110,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
@@ -143,8 +142,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -261,8 +259,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}'
@@ -294,8 +291,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -304,8 +300,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -530,8 +525,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -652,8 +646,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -764,8 +757,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -851,8 +843,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -938,8 +929,7 @@ module Azure::Dns::Mgmt::V2016_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

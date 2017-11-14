@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The id of the get troubleshoot operation.
       attr_accessor :id
 
@@ -35,6 +36,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TroubleshootingDetails',
           type: {
@@ -42,6 +44,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'TroubleshootingDetails',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               reason_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reasonType',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               summary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'summary',
                 type: {
@@ -63,6 +68,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               detail: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'detail',
                 type: {
@@ -70,11 +76,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               recommended_actions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendedActions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TroubleshootingRecommendedActionsElementType',
                       type: {

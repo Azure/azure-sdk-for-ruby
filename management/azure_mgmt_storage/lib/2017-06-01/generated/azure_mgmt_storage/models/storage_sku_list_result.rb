@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Sku>] Get the list result of storage SKUs and their
       # properties.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageSkuListResult',
           type: {
@@ -30,12 +32,14 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'StorageSkuListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SkuElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The code of the policy violation.
       attr_accessor :code
 
@@ -25,6 +26,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyViolation',
           type: {
@@ -32,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'PolicyViolation',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -39,6 +42,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

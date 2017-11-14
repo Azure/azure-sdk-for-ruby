@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the target resource group to perform
       # topology on.
       attr_accessor :target_resource_group_name
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopologyParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'TopologyParameters',
             model_properties: {
               target_resource_group_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceGroupName',
                 type: {

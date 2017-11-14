@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkflowState] The state of workflows. Possible values
       # include: 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted',
       # 'Suspended'
@@ -24,6 +25,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowFilter',
           type: {
@@ -31,6 +33,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowFilter',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

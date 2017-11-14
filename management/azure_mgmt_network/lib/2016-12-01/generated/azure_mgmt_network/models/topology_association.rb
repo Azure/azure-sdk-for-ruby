@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the resource that is associated with the
       # parent resource.
       attr_accessor :name
@@ -31,6 +32,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopologyAssociation',
           type: {
@@ -38,6 +40,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'TopologyAssociation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               association_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'associationType',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RedisLinkedServer>] List of linked server Ids of a Redis
       # cache.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisLinkedServerList',
           type: {
@@ -30,11 +32,13 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisLinkedServerList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RedisLinkedServerElementType',
                       type: {

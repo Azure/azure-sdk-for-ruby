@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The connection KeyVault URL.
       attr_accessor :connection_key_vault_url
 
@@ -22,6 +23,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureBlobConnectorProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'AzureBlobConnectorProperties',
             model_properties: {
               connection_key_vault_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectionKeyVaultUrl',
                 type: {

@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @endpointType = "WebHook"
@@ -34,6 +35,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebHook',
           type: {
@@ -41,6 +43,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'WebHookEventSubscriptionDestination',
             model_properties: {
               endpointType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointType',
                 type: {
@@ -48,6 +51,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               endpoint_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpointUrl',
                 type: {
@@ -55,6 +59,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               endpoint_base_url: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endpointBaseUrl',

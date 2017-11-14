@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code.
       attr_accessor :code
 
@@ -26,6 +27,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorProperties',
           type: {
@@ -33,6 +35,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ErrorProperties',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

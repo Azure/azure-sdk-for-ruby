@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DeploymentProperties] The deployment properties.
       attr_accessor :properties
 
@@ -22,6 +23,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Deployment',
           type: {
@@ -29,6 +31,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'Deployment',
             model_properties: {
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource ID of the subnet.
       attr_accessor :resource_id
 
@@ -30,6 +31,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Subnet',
           type: {
@@ -37,6 +39,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'Subnet',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -44,6 +47,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_subnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'labSubnetName',
                 type: {
@@ -51,6 +55,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               allow_public_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowPublicIp',
                 type: {

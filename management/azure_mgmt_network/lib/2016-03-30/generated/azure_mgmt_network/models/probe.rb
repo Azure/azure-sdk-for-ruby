@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SubResource>] Gets Load balancer rules that use this
       # probe
       attr_accessor :load_balancing_rules
@@ -64,6 +65,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Probe',
           type: {
@@ -71,6 +73,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'Probe',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -78,11 +81,13 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               load_balancing_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancingRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -93,6 +98,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -100,6 +106,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.port',
                 type: {
@@ -107,6 +114,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               interval_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.intervalInSeconds',
                 type: {
@@ -114,6 +122,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               number_of_probes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.numberOfProbes',
                 type: {
@@ -121,6 +130,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               request_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestPath',
                 type: {
@@ -128,6 +138,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -135,6 +146,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -142,6 +154,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

@@ -12,6 +12,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
@@ -25,6 +26,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NamespaceUpdateParameter',
           type: {
@@ -32,11 +34,13 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'NamespaceUpdateParameter',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -46,6 +50,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

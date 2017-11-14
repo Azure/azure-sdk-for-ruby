@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ContainerGroupNetworkProtocol] The protocol associated with
       # the port. Possible values include: 'TCP', 'UDP'
       attr_accessor :protocol
@@ -26,6 +27,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Port',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'Port',
             model_properties: {
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -40,6 +43,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'port',
                 type: {

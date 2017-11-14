@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The friendly name for the device.
       attr_accessor :friendly_name
 
@@ -36,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConfigureDeviceRequest',
           type: {
@@ -43,6 +45,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ConfigureDeviceRequest',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,6 +54,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -59,6 +63,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,6 +72,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -75,6 +81,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.friendlyName',
                 type: {
@@ -82,6 +89,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               current_device_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.currentDeviceName',
                 type: {
@@ -89,6 +97,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.timeZone',
                 type: {
@@ -96,6 +105,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               dns_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -104,6 +114,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               network_interface_data0settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkInterfaceData0Settings',
                 type: {

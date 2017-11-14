@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<HardwareComponentGroup>] The value.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HardwareComponentGroupList',
           type: {
@@ -29,11 +31,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'HardwareComponentGroupList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HardwareComponentGroupElementType',
                       type: {

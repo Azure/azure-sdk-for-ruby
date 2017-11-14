@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @type = "Microsoft.StreamAnalytics/JavascriptUdf"
@@ -30,6 +31,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.StreamAnalytics/JavascriptUdf',
           type: {
@@ -37,6 +39,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'JavaScriptFunctionBinding',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -44,6 +47,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               script: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.script',
                 type: {

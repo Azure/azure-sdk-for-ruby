@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewaySkuName] Name of an application gateway SKU.
       # Possible values are: 'Standard_Small', 'Standard_Medium',
       # 'Standard_Large', 'WAF_Medium', and 'WAF_Large'. Possible values
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySku',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ApplicationGatewaySku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

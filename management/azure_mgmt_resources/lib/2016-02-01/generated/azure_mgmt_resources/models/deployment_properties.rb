@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The template content. It can be a JObject or a well formed JSON
       # string. Use only one of Template or TemplateLink.
       attr_accessor :template
@@ -42,6 +43,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentProperties',
           type: {
@@ -49,6 +51,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'DeploymentProperties',
             model_properties: {
               template: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               template_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'templateLink',
                 type: {
@@ -64,6 +68,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
@@ -71,6 +76,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               parameters_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parametersLink',
                 type: {
@@ -79,6 +85,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               mode: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'mode',
                 type: {
@@ -87,6 +94,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               debug_setting: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'debugSetting',
                 type: {

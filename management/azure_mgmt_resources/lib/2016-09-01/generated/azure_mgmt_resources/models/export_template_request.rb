@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The IDs of the resources. The only supported
       # string currently is '*' (all resources). Future updates will support
       # exporting specific resources.
@@ -29,6 +30,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExportTemplateRequest',
           type: {
@@ -36,11 +38,13 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'ExportTemplateRequest',
             model_properties: {
               resources: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resources',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -50,6 +54,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               options: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'options',
                 type: {

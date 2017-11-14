@@ -12,6 +12,7 @@ module Azure::Redis::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Status message
       attr_accessor :message
 
@@ -22,6 +23,7 @@ module Azure::Redis::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisForceRebootResponse',
           type: {
@@ -29,6 +31,7 @@ module Azure::Redis::Mgmt::V2016_04_01
             class_name: 'RedisForceRebootResponse',
             model_properties: {
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Message',

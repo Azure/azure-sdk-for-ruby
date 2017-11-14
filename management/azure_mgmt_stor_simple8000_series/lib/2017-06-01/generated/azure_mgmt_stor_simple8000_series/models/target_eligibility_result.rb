@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TargetEligibilityStatus] The eligibility status of device, as
       # a failover target device. Possible values include: 'NotEligible',
       # 'Eligible'
@@ -28,6 +29,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TargetEligibilityResult',
           type: {
@@ -35,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'TargetEligibilityResult',
             model_properties: {
               eligibility_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eligibilityStatus',
                 type: {
@@ -43,11 +46,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               messages: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messages',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TargetEligibilityErrorMessageElementType',
                       type: {

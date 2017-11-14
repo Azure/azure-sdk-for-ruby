@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Occurrence of the week within the month. Must be
       # between 1 and 5
       attr_accessor :occurrence
@@ -29,6 +30,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AdvancedScheduleMonthlyOccurrence',
           type: {
@@ -36,6 +38,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AdvancedScheduleMonthlyOccurrence',
             model_properties: {
               occurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'occurrence',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               day: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'day',
                 type: {

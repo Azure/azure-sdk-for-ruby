@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code.
       attr_accessor :code
 
@@ -25,6 +26,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GraphError',
           type: {
@@ -32,6 +34,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'GraphError',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'odata\\.error.code',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'odata\\.error.message.value',
                 type: {

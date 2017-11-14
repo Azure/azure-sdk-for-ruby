@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets data disk name.
       attr_accessor :name
 
@@ -32,6 +33,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ComputeDataDisk',
           type: {
@@ -39,6 +41,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ComputeDataDisk',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +49,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskUri',
                 type: {
@@ -53,6 +57,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               managed_disk_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDiskId',
                 type: {
@@ -60,6 +65,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disk_size_gi_b: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeGiB',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Full type of the extension handler which includes both
       # publisher and type.
       attr_accessor :type
@@ -30,6 +31,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionHandlerInstanceView',
           type: {
@@ -37,6 +39,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineExtensionHandlerInstanceView',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -44,6 +47,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               type_handler_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'typeHandlerVersion',
                 type: {
@@ -51,6 +55,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ReplicationLink>] The list of database replication links
       # housed in the database.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationLinkListResult',
           type: {
@@ -30,11 +32,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ReplicationLinkListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ReplicationLinkElementType',
                       type: {

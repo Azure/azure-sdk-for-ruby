@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Database name of backup engine.
       attr_accessor :database_name
 
@@ -43,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupEngineExtendedInfo',
           type: {
@@ -50,6 +52,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'BackupEngineExtendedInfo',
             model_properties: {
               database_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'databaseName',
                 type: {
@@ -57,6 +60,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protected_items_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemsCount',
                 type: {
@@ -64,6 +68,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protected_servers_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedServersCount',
                 type: {
@@ -71,6 +76,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               disk_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskCount',
                 type: {
@@ -78,6 +84,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               used_disk_space: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'usedDiskSpace',
                 type: {
@@ -85,6 +92,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               available_disk_space: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableDiskSpace',
                 type: {
@@ -92,6 +100,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               refreshed_at: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'refreshedAt',
                 type: {
@@ -99,6 +108,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               azure_protected_instances: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureProtectedInstances',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of storage keys that want to be regenerated,
       # possible vaules are key1, key2.
       attr_accessor :key_name
@@ -23,6 +24,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountRegenerateKeyParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'StorageAccountRegenerateKeyParameters',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {

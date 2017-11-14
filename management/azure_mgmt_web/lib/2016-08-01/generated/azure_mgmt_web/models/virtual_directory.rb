@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Path to virtual application.
       attr_accessor :virtual_path
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualDirectory',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'VirtualDirectory',
             model_properties: {
               virtual_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualPath',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               physical_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'physicalPath',
                 type: {

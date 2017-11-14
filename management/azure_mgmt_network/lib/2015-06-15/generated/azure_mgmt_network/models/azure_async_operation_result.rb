@@ -19,6 +19,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NetworkOperationStatus] Status of the Azure async operation.
       # Possible values are: 'InProgress', 'Succeeded', and 'Failed'. Possible
       # values include: 'InProgress', 'Succeeded', 'Failed'
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureAsyncOperationResult',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'AzureAsyncOperationResult',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

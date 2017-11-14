@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] ID of the network interface.
       attr_accessor :id
 
@@ -25,6 +26,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SecurityGroupNetworkInterface',
           type: {
@@ -32,6 +34,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'SecurityGroupNetworkInterface',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               security_rule_associations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityRuleAssociations',
                 type: {

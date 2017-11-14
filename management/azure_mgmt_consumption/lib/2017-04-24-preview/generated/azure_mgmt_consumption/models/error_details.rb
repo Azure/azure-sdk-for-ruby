@@ -12,6 +12,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code.
       attr_accessor :code
 
@@ -28,6 +29,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -35,6 +37,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -43,6 +46,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -51,6 +55,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'target',

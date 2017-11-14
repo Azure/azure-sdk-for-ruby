@@ -12,6 +12,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The managed resource group Id.
       attr_accessor :managed_resource_group_id
 
@@ -47,6 +48,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Appliance',
           type: {
@@ -54,6 +56,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'Appliance',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,6 +65,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -70,6 +74,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,6 +83,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -85,11 +91,13 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -99,6 +107,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               managed_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedBy',
                 type: {
@@ -106,6 +115,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -114,6 +124,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {
@@ -122,6 +133,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               managed_resource_group_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.managedResourceGroupId',
                 type: {
@@ -129,6 +141,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               appliance_definition_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applianceDefinitionId',
                 type: {
@@ -136,6 +149,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
@@ -143,6 +157,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               outputs: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.outputs',
@@ -151,6 +166,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -159,6 +175,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               ui_definition_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uiDefinitionUri',
                 type: {
@@ -166,6 +183,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -174,6 +192,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'kind',
                 constraints: {

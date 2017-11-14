@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Workspace id
       attr_accessor :id
 
@@ -32,6 +33,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Workspace',
           type: {
@@ -39,6 +41,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'Workspace',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -46,6 +49,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -53,6 +57,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -60,6 +65,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

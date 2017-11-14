@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NotificationStatus] If notifications are enabled for this
       # schedule (i.e. Enabled, Disabled). Possible values include: 'Disabled',
       # 'Enabled'
@@ -32,6 +33,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NotificationSettingsFragment',
           type: {
@@ -39,6 +41,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'NotificationSettingsFragment',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -46,6 +49,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               time_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeInMinutes',
                 type: {
@@ -53,6 +57,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               webhook_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'webhookUrl',
                 type: {

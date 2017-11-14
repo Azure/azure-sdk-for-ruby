@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags.
       attr_accessor :tags
 
@@ -25,6 +26,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TrackedResource',
           type: {
@@ -32,6 +34,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
             class_name: 'TrackedResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +43,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +52,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -56,11 +61,13 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -70,6 +77,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {

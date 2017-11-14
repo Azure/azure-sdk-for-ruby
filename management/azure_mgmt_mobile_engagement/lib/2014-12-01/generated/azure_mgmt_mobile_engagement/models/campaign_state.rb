@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [CampaignStates] State of the campaign, or 'queued' when
       # testing a campaign. Possible values include: 'draft', 'scheduled',
       # 'in-progress', 'finished', 'queued'
@@ -25,6 +26,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignState',
           type: {
@@ -32,6 +34,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignState',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

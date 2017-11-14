@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The recovery point time.
       attr_accessor :recovery_point_time
 
@@ -30,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPointProperties',
           type: {
@@ -37,6 +39,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPointProperties',
             model_properties: {
               recovery_point_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointTime',
                 type: {
@@ -44,6 +47,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointType',
                 type: {
@@ -51,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {

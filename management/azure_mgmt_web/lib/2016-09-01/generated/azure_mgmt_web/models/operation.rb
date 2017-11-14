@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation ID.
       attr_accessor :id
 
@@ -45,6 +46,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -52,6 +54,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'Operation',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -59,6 +62,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -66,6 +70,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -74,11 +79,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errors',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ErrorEntityElementType',
                       type: {
@@ -89,6 +96,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               created_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'createdTime',
                 type: {
@@ -96,6 +104,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               modified_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'modifiedTime',
                 type: {
@@ -103,6 +112,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               expiration_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expirationTime',
                 type: {
@@ -110,6 +120,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               geo_master_operation_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'geoMasterOperationId',
                 type: {

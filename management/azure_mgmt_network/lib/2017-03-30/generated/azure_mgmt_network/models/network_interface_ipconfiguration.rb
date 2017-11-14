@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ApplicationGatewayBackendAddressPool>] The reference of
       # ApplicationGatewayBackendAddressPool resource.
       attr_accessor :application_gateway_backend_address_pools
@@ -73,6 +74,7 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceIPConfiguration',
           type: {
@@ -80,6 +82,7 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'NetworkInterfaceIPConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -87,11 +90,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               application_gateway_backend_address_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicationGatewayBackendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayBackendAddressPoolElementType',
                       type: {
@@ -102,11 +107,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               load_balancer_backend_address_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerBackendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BackendAddressPoolElementType',
                       type: {
@@ -117,11 +124,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               load_balancer_inbound_nat_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerInboundNatRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InboundNatRuleElementType',
                       type: {
@@ -132,6 +141,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               private_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAddress',
                 type: {
@@ -139,6 +149,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               private_ipallocation_method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAllocationMethod',
                 type: {
@@ -146,6 +157,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               private_ipaddress_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAddressVersion',
                 type: {
@@ -153,6 +165,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               subnet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -161,6 +174,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {
@@ -168,6 +182,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               public_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAddress',
                 type: {
@@ -176,11 +191,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               application_security_groups: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicationSecurityGroups',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationSecurityGroupElementType',
                       type: {
@@ -191,6 +208,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -198,6 +216,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -205,6 +224,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

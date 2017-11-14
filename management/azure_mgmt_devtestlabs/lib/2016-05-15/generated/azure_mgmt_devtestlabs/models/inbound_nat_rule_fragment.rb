@@ -13,6 +13,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [TransportProtocol] The transport protocol for the endpoint.
       # Possible values include: 'Tcp', 'Udp'
       attr_accessor :transport_protocol
@@ -33,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatRuleFragment',
           type: {
@@ -40,6 +42,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'InboundNatRuleFragment',
             model_properties: {
               transport_protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'transportProtocol',
                 type: {
@@ -47,6 +50,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               frontend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'frontendPort',
                 type: {
@@ -54,6 +58,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               backend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backendPort',
                 type: {

@@ -12,6 +12,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of the key that has to be regenerated for the
       # Namespace/Notification Hub Authorization Rule. The value can be Primary
       # Key/Secondary Key.
@@ -24,6 +25,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicykeyResource',
           type: {
@@ -31,6 +33,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'PolicykeyResource',
             model_properties: {
               policy_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyKey',
                 type: {

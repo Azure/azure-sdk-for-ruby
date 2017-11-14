@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The namespace that is associated with the desired
       # Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
       # (CreateOrReplace) requests.
@@ -34,6 +35,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceBusDataSourceProperties',
           type: {
@@ -41,6 +43,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'ServiceBusDataSourceProperties',
             model_properties: {
               service_bus_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusNamespace',
                 type: {
@@ -48,6 +51,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               shared_access_policy_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sharedAccessPolicyName',
                 type: {
@@ -55,6 +59,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               shared_access_policy_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sharedAccessPolicyKey',
                 type: {

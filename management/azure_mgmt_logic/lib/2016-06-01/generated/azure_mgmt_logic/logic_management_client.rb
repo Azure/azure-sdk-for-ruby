@@ -229,8 +229,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -316,8 +315,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -391,8 +389,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::OperationListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

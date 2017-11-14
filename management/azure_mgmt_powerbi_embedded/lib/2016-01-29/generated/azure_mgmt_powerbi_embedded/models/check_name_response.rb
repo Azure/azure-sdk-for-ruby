@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Specifies a Boolean value that indicates whether the
       # specified Power BI Workspace Collection name is available to use.
       attr_accessor :name_available
@@ -32,6 +33,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameResponse',
           type: {
@@ -39,6 +41,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'CheckNameResponse',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -46,6 +49,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -53,6 +57,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

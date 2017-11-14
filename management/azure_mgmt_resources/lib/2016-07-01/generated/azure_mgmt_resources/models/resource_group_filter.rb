@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The tag name.
       attr_accessor :tag_name
 
@@ -25,6 +26,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroupFilter',
           type: {
@@ -32,6 +34,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'ResourceGroupFilter',
             model_properties: {
               tag_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagName',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               tag_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagValue',
                 type: {

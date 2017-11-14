@@ -73,7 +73,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def get_details_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -110,8 +116,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -165,8 +170,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -261,8 +265,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -404,6 +407,9 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -440,8 +446,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -523,8 +528,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServers.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -606,8 +610,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForNewResourceResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForNewResourceResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -669,7 +672,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def list_skus_for_existing_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -706,8 +715,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForExistingResourceResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::SkuEnumerationForExistingResourceResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -769,7 +777,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def list_gateway_status_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -806,8 +820,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusLive.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::GatewayListStatusLive.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -868,7 +881,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def dissociate_gateway_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -967,7 +986,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_create_async(resource_group_name, server_name, server_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, 'server_parameters is nil' if server_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -982,8 +1007,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-      request_content = @client.serialize(request_mapper,  server_parameters)
+      request_content = server_parameters.nil? ? nil: server_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
@@ -1014,8 +1038,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1024,8 +1047,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1086,7 +1108,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_delete_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -1182,7 +1210,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_update_async(resource_group_name, server_name, server_update_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, 'server_update_parameters is nil' if server_update_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1197,8 +1231,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServerUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  server_update_parameters)
+      request_content = server_update_parameters.nil? ? nil: server_update_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}'
@@ -1229,8 +1262,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1239,8 +1271,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::AnalysisServices::Mgmt::V2017_07_14::Models::AnalysisServicesServer.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1301,7 +1332,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_suspend_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -1390,7 +1427,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
     #
     def begin_resume_async(resource_group_name, server_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MaxLength': '63'" if !server_name.nil? && server_name.length > 63
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'MinLength': '3'" if !server_name.nil? && server_name.length < 3
+      fail ArgumentError, "'server_name' should satisfy the constraint - 'Pattern': '^[a-z][a-z0-9]*$'" if !server_name.nil? && server_name.match(Regexp.new('^^[a-z][a-z0-9]*$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

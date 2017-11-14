@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Resource Group of the VNET to be validated
       attr_accessor :vnet_resource_group
 
@@ -28,6 +29,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VnetParameters',
           type: {
@@ -35,6 +37,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'VnetParameters',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,6 +46,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,6 +55,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -58,6 +63,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -66,6 +72,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vnet_resource_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetResourceGroup',
                 type: {
@@ -73,6 +80,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetName',
                 type: {
@@ -80,6 +88,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               vnet_subnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetSubnetName',
                 type: {

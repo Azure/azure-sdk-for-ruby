@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Specifies the primary network interface in case the
       # virtual machine has more than 1 network interface.
       attr_accessor :primary
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceReference',
           type: {
@@ -30,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'NetworkInterfaceReference',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -37,6 +40,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {

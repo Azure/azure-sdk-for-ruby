@@ -12,6 +12,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name to check the namespace name availability
       attr_accessor :name
 
@@ -22,6 +23,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityParameter',
           type: {
@@ -29,6 +31,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'CheckNameAvailabilityParameter',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

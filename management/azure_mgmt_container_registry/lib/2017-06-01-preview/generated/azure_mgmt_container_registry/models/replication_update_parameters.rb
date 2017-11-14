@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] The tags for the replication.
       attr_accessor :tags
 
@@ -22,6 +23,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationUpdateParameters',
           type: {
@@ -29,11 +31,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'ReplicationUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

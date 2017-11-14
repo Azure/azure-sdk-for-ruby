@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The exception type.
       attr_accessor :exceptiontype
 
@@ -25,6 +26,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InnerError',
           type: {
@@ -32,6 +34,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'InnerError',
             model_properties: {
               exceptiontype: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exceptiontype',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               errordetail: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errordetail',
                 type: {

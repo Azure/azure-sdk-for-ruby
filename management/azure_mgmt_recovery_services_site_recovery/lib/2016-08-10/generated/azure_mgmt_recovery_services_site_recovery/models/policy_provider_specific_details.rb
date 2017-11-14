@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["HyperVReplicaAzure"] = "HyperVReplicaAzurePolicyDetails"
       @@discriminatorMap["HyperVReplicaBasePolicyDetails"] = "HyperVReplicaBasePolicyDetails"
@@ -37,6 +38,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyProviderSpecificDetails',
           type: {

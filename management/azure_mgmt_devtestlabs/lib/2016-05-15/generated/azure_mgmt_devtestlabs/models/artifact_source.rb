@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The artifact source's display name.
       attr_accessor :display_name
 
@@ -57,6 +58,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ArtifactSource',
           type: {
@@ -64,6 +66,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ArtifactSource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -72,6 +75,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -80,6 +84,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,6 +93,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -95,11 +101,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -109,6 +117,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -116,6 +125,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uri',
                 type: {
@@ -123,6 +133,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               source_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceType',
                 type: {
@@ -130,6 +141,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               folder_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.folderPath',
                 type: {
@@ -137,6 +149,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               arm_template_folder_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.armTemplateFolderPath',
                 type: {
@@ -144,6 +157,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               branch_ref: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.branchRef',
                 type: {
@@ -151,6 +165,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               security_token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.securityToken',
                 type: {
@@ -158,6 +173,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -165,6 +181,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdDate',
@@ -173,6 +190,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -180,6 +198,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

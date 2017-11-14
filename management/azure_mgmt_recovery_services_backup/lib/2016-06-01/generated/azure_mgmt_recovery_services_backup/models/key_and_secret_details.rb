@@ -22,6 +22,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KEKDetails] The Key Encryption Key (KEK) is the encryption key
       # for the Bitlocker Encryption Key (BEK).
       attr_accessor :kek_details
@@ -36,6 +37,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyAndSecretDetails',
           type: {
@@ -43,6 +45,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'KeyAndSecretDetails',
             model_properties: {
               kek_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekDetails',
                 type: {
@@ -51,6 +54,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               bek_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bekDetails',
                 type: {

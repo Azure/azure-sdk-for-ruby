@@ -12,6 +12,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The description of the operation.
       attr_accessor :description
 
@@ -32,6 +33,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDisplayInfo',
           type: {
@@ -39,6 +41,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'OperationDisplayInfo',
             model_properties: {
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -46,6 +49,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -53,6 +57,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -60,6 +65,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {

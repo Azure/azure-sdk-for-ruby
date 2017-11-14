@@ -12,6 +12,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The error code
       attr_accessor :code
 
@@ -25,6 +26,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorModel_error',
           type: {
@@ -32,6 +34,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ErrorModelError',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -39,6 +42,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

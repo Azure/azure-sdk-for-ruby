@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the algorithm.
       attr_accessor :algorithm
 
@@ -26,6 +27,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContentHash',
           type: {
@@ -33,6 +35,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'ContentHash',
             model_properties: {
               algorithm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'algorithm',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

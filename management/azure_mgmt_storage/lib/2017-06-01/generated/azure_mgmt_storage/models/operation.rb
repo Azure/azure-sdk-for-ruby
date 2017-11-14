@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}
       attr_accessor :name
 
@@ -33,6 +34,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -40,6 +42,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'Operation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               service_specification: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceSpecification',
                 type: {

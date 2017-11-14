@@ -12,6 +12,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the optional suffix for the Data Lake Store account.
       attr_accessor :suffix
 
@@ -22,6 +23,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AddDataLakeStoreParameters',
           type: {
@@ -29,6 +31,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'AddDataLakeStoreParameters',
             model_properties: {
               suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.suffix',
                 type: {

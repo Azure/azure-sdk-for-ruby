@@ -71,9 +71,16 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     def list_by_subscriptions_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -110,8 +117,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -179,10 +185,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     def create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, rule_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
+      fail ArgumentError, "'rule_name' should satisfy the constraint - 'MaxLength': '50'" if !rule_name.nil? && rule_name.length > 50
+      fail ArgumentError, "'rule_name' should satisfy the constraint - 'MinLength': '1'" if !rule_name.nil? && rule_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -197,8 +212,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}'
@@ -229,8 +243,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -294,10 +307,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     def delete_async(resource_group_name, namespace_name, topic_name, subscription_name, rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
+      fail ArgumentError, "'rule_name' should satisfy the constraint - 'MaxLength': '50'" if !rule_name.nil? && rule_name.length > 50
+      fail ArgumentError, "'rule_name' should satisfy the constraint - 'MinLength': '1'" if !rule_name.nil? && rule_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -390,10 +412,19 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
     #
     def get_async(resource_group_name, namespace_name, topic_name, subscription_name, rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, 'rule_name is nil' if rule_name.nil?
+      fail ArgumentError, "'rule_name' should satisfy the constraint - 'MaxLength': '50'" if !rule_name.nil? && rule_name.length > 50
+      fail ArgumentError, "'rule_name' should satisfy the constraint - 'MinLength': '1'" if !rule_name.nil? && rule_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -430,8 +461,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ServiceBus::Mgmt::V2017_04_01::Models::Rule.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -517,8 +547,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ServiceBus::Mgmt::V2017_04_01::Models::RuleListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

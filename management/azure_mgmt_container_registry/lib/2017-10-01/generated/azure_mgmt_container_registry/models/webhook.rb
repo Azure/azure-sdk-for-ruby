@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WebhookStatus] The status of the webhook at the time the
       # operation was called. Possible values include: 'enabled', 'disabled'
       attr_accessor :status
@@ -38,6 +39,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Webhook',
           type: {
@@ -45,6 +47,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Webhook',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,6 +56,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,6 +65,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,6 +74,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -76,11 +82,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -90,6 +98,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -97,6 +106,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               scope: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scope',
                 type: {
@@ -104,11 +114,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               actions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.actions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WebhookActionElementType',
                       type: {
@@ -118,6 +130,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

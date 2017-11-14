@@ -13,6 +13,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of a Diagnostic Log category for a resource type
       # this setting is applied to. To obtain the list of Diagnostic Log
       # categories for a resource, first perform a GET diagnostic settings
@@ -32,6 +33,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LogSettings',
           type: {
@@ -39,6 +41,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'LogSettings',
             model_properties: {
               category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               retention_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionPolicy',
                 type: {

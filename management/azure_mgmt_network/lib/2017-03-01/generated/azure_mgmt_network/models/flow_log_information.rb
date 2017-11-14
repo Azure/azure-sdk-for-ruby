@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the resource to configure for flow logging.
       attr_accessor :target_resource_id
 
@@ -32,6 +33,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FlowLogInformation',
           type: {
@@ -39,6 +41,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'FlowLogInformation',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               storage_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageId',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.enabled',
                 type: {
@@ -60,6 +65,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               retention_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionPolicy',
                 type: {

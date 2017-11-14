@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The username for a container registry.
       attr_accessor :username
 
@@ -26,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryListCredentialsResult',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'RegistryListCredentialsResult',
             model_properties: {
               username: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -40,11 +43,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               passwords: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegistryPasswordElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [EncryptionConfigType] The type of encryption configuration
       # being used. Currently the only supported types are 'UserManaged' and
       # 'ServiceManaged'. Possible values include: 'UserManaged',
@@ -29,6 +30,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionConfig',
           type: {
@@ -36,6 +38,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'EncryptionConfig',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -44,6 +47,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               key_vault_meta_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultMetaInfo',
                 type: {

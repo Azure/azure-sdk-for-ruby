@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Hostname.
       attr_accessor :host_name_binding_name
 
@@ -54,6 +55,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HostNameBinding',
           type: {
@@ -61,6 +63,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'HostNameBinding',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -69,6 +72,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,6 +81,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -84,6 +89,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -92,6 +98,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               host_name_binding_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -99,6 +106,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               site_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.siteName',
                 type: {
@@ -106,6 +114,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               domain_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.domainId',
                 type: {
@@ -113,6 +122,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               azure_resource_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.azureResourceName',
                 type: {
@@ -120,6 +130,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               azure_resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.azureResourceType',
                 type: {
@@ -128,6 +139,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               custom_host_name_dns_record_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customHostNameDnsRecordType',
                 type: {
@@ -136,6 +148,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               host_name_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostNameType',
                 type: {
@@ -144,6 +157,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               ssl_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sslState',
                 type: {
@@ -152,6 +166,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.thumbprint',
                 type: {
@@ -159,6 +174,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               virtual_ip: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.virtualIP',

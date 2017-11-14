@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2015_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the name of the resource.
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::TrafficManager::Mgmt::V2015_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckTrafficManagerRelativeDnsNameAvailabilityParameters',
           type: {
@@ -33,6 +35,7 @@ module Azure::TrafficManager::Mgmt::V2015_11_01
             class_name: 'CheckTrafficManagerRelativeDnsNameAvailabilityParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +43,7 @@ module Azure::TrafficManager::Mgmt::V2015_11_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

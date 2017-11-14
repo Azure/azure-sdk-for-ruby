@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Gets BytesIn of the peering.
       attr_accessor :primarybytes_in
 
@@ -31,6 +32,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitStats',
           type: {
@@ -38,6 +40,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ExpressRouteCircuitStats',
             model_properties: {
               primarybytes_in: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primarybytesIn',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               primarybytes_out: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primarybytesOut',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               secondarybytes_in: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondarybytesIn',
                 type: {
@@ -59,6 +64,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               secondarybytes_out: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondarybytesOut',
                 type: {

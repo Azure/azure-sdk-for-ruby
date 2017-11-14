@@ -14,6 +14,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] The source virtual machine from which Image is
       # created.
       attr_accessor :source_virtual_machine
@@ -32,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Image',
           type: {
@@ -39,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'Image',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -47,6 +50,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +59,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -70,11 +76,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -84,6 +92,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               source_virtual_machine: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceVirtualMachine',
                 type: {
@@ -92,6 +101,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageProfile',
                 type: {
@@ -100,6 +110,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

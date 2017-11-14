@@ -13,6 +13,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Offer ID parameter consists of the 'MS-AZR-'
       # prefix, plus the Offer ID number (e.g., MS-AZR-0026P). See
       # https://azure.microsoft.com/en-us/support/legal/offer-details/ for more
@@ -37,6 +38,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RateCardQueryParameters',
           type: {
@@ -44,6 +46,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'RateCardQueryParameters',
             model_properties: {
               offer_durable_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'OfferDurableId',
                 constraints: {
@@ -54,6 +57,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               currency: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Currency',
                 type: {
@@ -61,6 +65,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               locale: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Locale',
                 type: {
@@ -68,6 +73,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               region_info: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'RegionInfo',
                 type: {

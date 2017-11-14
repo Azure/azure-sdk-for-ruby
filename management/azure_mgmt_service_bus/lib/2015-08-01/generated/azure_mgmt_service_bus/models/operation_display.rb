@@ -12,6 +12,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Service provider: Microsoft.ServiceBus
       attr_accessor :provider
 
@@ -29,6 +30,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -36,6 +38,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -44,6 +47,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -52,6 +56,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The target resource ID to query the troubleshooting
       # result.
       attr_accessor :target_resource_id
@@ -23,6 +24,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryTroubleshootingParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'QueryTroubleshootingParameters',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {

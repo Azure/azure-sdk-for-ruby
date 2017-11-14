@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the resource.
       attr_accessor :resourcename
 
@@ -48,6 +49,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LabResourceCostProperties',
           type: {
@@ -55,6 +57,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LabResourceCostProperties',
             model_properties: {
               resourcename: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourcename',
                 type: {
@@ -62,6 +65,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_uid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceUId',
                 type: {
@@ -69,6 +73,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_cost: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceCost',
                 type: {
@@ -76,6 +81,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -83,6 +89,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_owner: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceOwner',
                 type: {
@@ -90,6 +97,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_pricing_tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourcePricingTier',
                 type: {
@@ -97,6 +105,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceStatus',
                 type: {
@@ -104,6 +113,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -111,6 +121,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               external_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'externalResourceId',
                 type: {

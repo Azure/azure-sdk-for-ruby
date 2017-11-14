@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The path ID of the volume.
       attr_accessor :volume_id
 
@@ -44,6 +45,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VolumeFailoverMetadata',
           type: {
@@ -51,6 +53,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'VolumeFailoverMetadata',
             model_properties: {
               volume_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeId',
                 type: {
@@ -58,6 +61,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeType',
                 type: {
@@ -66,6 +70,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               size_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sizeInBytes',
                 type: {
@@ -73,6 +78,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_created_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupCreatedDate',
                 type: {
@@ -80,6 +86,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_element_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupElementId',
                 type: {
@@ -87,6 +94,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupId',
                 type: {
@@ -94,6 +102,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_policy_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupPolicyId',
                 type: {

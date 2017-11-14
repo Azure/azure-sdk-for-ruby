@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies the dimension name. E.g., NetworkInterface.
       # Valid values are the ones specified in the field "dimensions" in the
       # ListMetricDefinitions call. Only 'Equality' operator is supported for
@@ -31,6 +32,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DimensionFilter',
           type: {
@@ -38,6 +40,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DimensionFilter',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +48,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               values: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {

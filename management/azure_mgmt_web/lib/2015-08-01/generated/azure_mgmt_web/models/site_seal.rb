@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] HTML snippet
       attr_accessor :html
 
@@ -22,6 +23,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteSeal',
           type: {
@@ -29,6 +31,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'SiteSeal',
             model_properties: {
               html: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'html',
                 type: {

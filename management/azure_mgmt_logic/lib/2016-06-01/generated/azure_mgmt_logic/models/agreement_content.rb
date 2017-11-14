@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AS2AgreementContent] The AS2 agreement content.
       attr_accessor :a_s2
 
@@ -28,6 +29,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AgreementContent',
           type: {
@@ -35,6 +37,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AgreementContent',
             model_properties: {
               a_s2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'aS2',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               x12: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'x12',
                 type: {
@@ -51,6 +55,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               edifact: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'edifact',
                 type: {

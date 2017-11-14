@@ -13,6 +13,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The custom domain name. Name is the CNAME source.
       attr_accessor :name
 
@@ -27,6 +28,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CustomDomain',
           type: {
@@ -34,6 +36,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'CustomDomain',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               use_sub_domain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'useSubDomain',
                 type: {

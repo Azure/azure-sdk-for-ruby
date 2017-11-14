@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return Operation output data (raw JSON)
       attr_accessor :output
 
@@ -22,6 +23,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineCaptureResult',
           type: {
@@ -29,6 +31,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineCaptureResult',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -36,6 +39,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               output: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.output',
                 type: {

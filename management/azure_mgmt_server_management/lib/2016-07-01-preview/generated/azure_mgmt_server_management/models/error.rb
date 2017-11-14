@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer]
       attr_accessor :code
 
@@ -28,6 +29,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Error',
           type: {
@@ -35,6 +37,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'Error',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -42,6 +45,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -49,6 +53,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               fields: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fields',
                 type: {

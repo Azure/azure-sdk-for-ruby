@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource id of the Virtual Network.
       attr_accessor :id
 
@@ -31,6 +32,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkProfile',
           type: {
@@ -38,6 +40,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'VirtualNetworkProfile',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -53,6 +57,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -61,6 +66,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               subnet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnet',
                 type: {

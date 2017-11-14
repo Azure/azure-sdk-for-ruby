@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the field the search query is sorted on.
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SearchSort',
           type: {
@@ -33,6 +35,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchSort',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +43,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               order: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'order',
                 type: {

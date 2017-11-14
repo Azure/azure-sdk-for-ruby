@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Location of the resource.
       attr_accessor :location
 
@@ -37,6 +38,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NodeParameters',
           type: {
@@ -44,6 +46,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'NodeParameters',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -51,6 +54,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
@@ -58,6 +62,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               gateway_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayId',
                 type: {
@@ -65,6 +70,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               connection_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionName',
                 type: {
@@ -72,6 +78,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               user_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userName',
                 type: {
@@ -79,6 +86,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<NetworkInterfaceReference>] Specifies the list of
       # resource IDs for the network interfaces associated with the virtual
       # machine.
@@ -24,6 +25,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkProfile',
           type: {
@@ -31,11 +33,13 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'NetworkProfile',
             model_properties: {
               network_interfaces: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaces',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceReferenceElementType',
                       type: {

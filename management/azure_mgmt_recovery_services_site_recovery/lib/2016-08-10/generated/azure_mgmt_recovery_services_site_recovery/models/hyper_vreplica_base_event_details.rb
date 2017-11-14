@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "HyperVReplicaBaseEventDetails"
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVReplicaBaseEventDetails',
           type: {
@@ -45,6 +47,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HyperVReplicaBaseEventDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -52,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerName',
                 type: {
@@ -59,6 +63,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricName',
                 type: {
@@ -66,6 +71,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               remote_container_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteContainerName',
                 type: {
@@ -73,6 +79,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               remote_fabric_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteFabricName',
                 type: {

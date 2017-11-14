@@ -12,6 +12,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource id of the original vault.
       attr_accessor :vault_id
 
@@ -34,6 +35,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeletedVaultProperties',
           type: {
@@ -41,6 +43,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
             class_name: 'DeletedVaultProperties',
             model_properties: {
               vault_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'vaultId',
@@ -49,6 +52,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -57,6 +61,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               deletion_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'deletionDate',
@@ -65,6 +70,7 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               scheduled_purge_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scheduledPurgeDate',
@@ -73,12 +79,14 @@ module Azure::KeyVault::Mgmt::V2016_10_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

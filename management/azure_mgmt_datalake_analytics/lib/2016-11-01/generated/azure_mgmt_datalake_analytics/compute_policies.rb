@@ -105,8 +105,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyCreateOrUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}'
@@ -137,8 +136,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -221,8 +219,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies/{computePolicyName}'
@@ -253,8 +250,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -450,8 +446,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicy.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -550,8 +545,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -640,8 +634,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DataLakeAnalytics::Mgmt::V2016_11_01::Models::ComputePolicyListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

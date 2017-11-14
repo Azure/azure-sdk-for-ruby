@@ -12,6 +12,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ClusterVersionDetails>] The available cluster code
       # version which the cluster can upgrade to, note that you must choose
       # upgradeMode to manual to upgrade to
@@ -100,6 +101,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Cluster',
           type: {
@@ -107,6 +109,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'Cluster',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -115,6 +118,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -123,6 +127,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -131,6 +136,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -138,11 +144,13 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -152,12 +160,14 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               available_cluster_versions: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.availableClusterVersions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClusterVersionDetailsElementType',
                       type: {
@@ -168,6 +178,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               cluster_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.clusterId',
@@ -176,6 +187,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               cluster_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.clusterState',
@@ -184,6 +196,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               cluster_endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.clusterEndpoint',
@@ -192,6 +205,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               cluster_code_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clusterCodeVersion',
                 type: {
@@ -199,6 +213,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.certificate',
                 type: {
@@ -207,6 +222,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               reliability_level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.reliabilityLevel',
                 type: {
@@ -214,6 +230,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               upgrade_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradeMode',
                 type: {
@@ -221,11 +238,13 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               client_certificate_thumbprints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clientCertificateThumbprints',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientCertificateThumbprintElementType',
                       type: {
@@ -236,11 +255,13 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               client_certificate_common_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clientCertificateCommonNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ClientCertificateCommonNameElementType',
                       type: {
@@ -251,11 +272,13 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               fabric_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fabricSettings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SettingsSectionDescriptionElementType',
                       type: {
@@ -266,6 +289,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               reverse_proxy_certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.reverseProxyCertificate',
                 type: {
@@ -274,6 +298,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               management_endpoint: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.managementEndpoint',
                 type: {
@@ -281,11 +306,13 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               node_types: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.nodeTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NodeTypeDescriptionElementType',
                       type: {
@@ -296,6 +323,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               azure_active_directory: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.azureActiveDirectory',
                 type: {
@@ -304,6 +332,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -312,6 +341,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               vm_image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vmImage',
                 type: {
@@ -319,6 +349,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               diagnostics_storage_account_config: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diagnosticsStorageAccountConfig',
                 type: {
@@ -327,6 +358,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               upgrade_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradeDescription',
                 type: {

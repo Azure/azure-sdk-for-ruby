@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The path ID of the device which will act as the clone
       # target.
       attr_accessor :target_device_id
@@ -34,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CloneRequest',
           type: {
@@ -41,6 +43,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'CloneRequest',
             model_properties: {
               target_device_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetDeviceId',
                 type: {
@@ -48,6 +51,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               target_volume_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetVolumeName',
                 type: {
@@ -55,11 +59,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               target_access_control_record_ids: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetAccessControlRecordIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -69,6 +75,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               backup_element: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'backupElement',
                 type: {

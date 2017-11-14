@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] ARM resource id of sync database.
       attr_accessor :id
 
@@ -22,6 +23,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SyncDatabaseIdProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncDatabaseIdProperties',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',

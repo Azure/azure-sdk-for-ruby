@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Azure resource Id
       attr_accessor :id
 
@@ -28,6 +29,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProxyOnlyResource',
           type: {
@@ -35,6 +37,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'ProxyOnlyResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,6 +46,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,6 +55,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

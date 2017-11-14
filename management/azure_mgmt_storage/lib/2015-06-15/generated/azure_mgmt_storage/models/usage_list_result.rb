@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Usage>] The list Storage Resource Usages.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'UsageListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageElementType',
                       type: {

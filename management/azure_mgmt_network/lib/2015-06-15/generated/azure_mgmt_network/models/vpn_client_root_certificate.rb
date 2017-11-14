@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the certificate public data
       attr_accessor :public_cert_data
 
@@ -35,6 +36,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VpnClientRootCertificate',
           type: {
@@ -42,6 +44,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'VpnClientRootCertificate',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               public_cert_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicCertData',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -63,6 +68,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -70,6 +76,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

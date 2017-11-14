@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SubResource] The ID of the subnet if assigned.
       attr_accessor :subnet
 
@@ -25,6 +26,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EffectiveNetworkSecurityGroupAssociation',
           type: {
@@ -32,6 +34,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'EffectiveNetworkSecurityGroupAssociation',
             model_properties: {
               subnet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnet',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               network_interface: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterface',
                 type: {

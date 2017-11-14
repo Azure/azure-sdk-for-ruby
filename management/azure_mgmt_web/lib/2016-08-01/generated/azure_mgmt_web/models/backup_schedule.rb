@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] How often the backup should be executed (e.g. for
       # weekly backup, this should be set to 7 and FrequencyUnit should be set
       # to Day). Default value: 7 .
@@ -46,6 +47,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BackupSchedule',
           type: {
@@ -53,6 +55,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'BackupSchedule',
             model_properties: {
               frequency_interval: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'frequencyInterval',
                 default_value: 7,
@@ -61,6 +64,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               frequency_unit: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'frequencyUnit',
                 default_value: 'Day',
@@ -70,6 +74,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               keep_at_least_one_backup: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keepAtLeastOneBackup',
                 default_value: true,
@@ -78,6 +83,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               retention_period_in_days: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'retentionPeriodInDays',
                 default_value: 30,
@@ -86,6 +92,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -93,6 +100,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               last_execution_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastExecutionTime',

@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Float] The memory limit in GB of this container instance.
       attr_accessor :memory_in_gb
 
@@ -25,6 +26,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceLimits',
           type: {
@@ -32,6 +34,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'ResourceLimits',
             model_properties: {
               memory_in_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'memoryInGB',
                 type: {
@@ -39,6 +42,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               cpu: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cpu',
                 type: {

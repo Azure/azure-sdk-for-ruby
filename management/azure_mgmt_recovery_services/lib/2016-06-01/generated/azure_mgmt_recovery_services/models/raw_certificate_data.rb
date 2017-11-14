@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AuthType] Specifies the authentication type. Possible values
       # include: 'Invalid', 'ACS', 'AAD', 'AccessControlService',
       # 'AzureActiveDirectory'
@@ -27,6 +28,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RawCertificateData',
           type: {
@@ -34,6 +36,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'RawCertificateData',
             model_properties: {
               auth_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authType',
                 type: {
@@ -41,6 +44,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificate',
                 type: {

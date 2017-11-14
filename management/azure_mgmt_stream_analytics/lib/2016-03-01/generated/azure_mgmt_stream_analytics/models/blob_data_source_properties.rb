@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<StorageAccount>] A list of one or more Azure Storage
       # accounts. Required on PUT (CreateOrReplace) requests.
       attr_accessor :storage_accounts
@@ -48,6 +49,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BlobDataSourceProperties',
           type: {
@@ -55,11 +57,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'BlobDataSourceProperties',
             model_properties: {
               storage_accounts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccounts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageAccountElementType',
                       type: {
@@ -70,6 +74,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               container: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'container',
                 type: {
@@ -77,6 +82,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               path_pattern: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pathPattern',
                 type: {
@@ -84,6 +90,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               date_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dateFormat',
                 type: {
@@ -91,6 +98,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               time_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeFormat',
                 type: {

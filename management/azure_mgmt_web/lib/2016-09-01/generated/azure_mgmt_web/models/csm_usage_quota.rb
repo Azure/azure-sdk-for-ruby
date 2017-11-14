@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Units of measurement for the quota resourse.
       attr_accessor :unit
 
@@ -34,6 +35,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CsmUsageQuota',
           type: {
@@ -41,6 +43,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'CsmUsageQuota',
             model_properties: {
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               next_reset_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextResetTime',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               limit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -69,6 +75,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

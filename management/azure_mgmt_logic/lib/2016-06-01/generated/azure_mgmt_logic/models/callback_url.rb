@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL value.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CallbackUrl',
           type: {
@@ -29,6 +31,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'CallbackUrl',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationGatewaySku] Gets or sets sku of application gateway
       # resource
       attr_accessor :sku
@@ -72,6 +73,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGateway',
           type: {
@@ -79,6 +81,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ApplicationGateway',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -87,6 +90,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -95,6 +99,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -103,6 +108,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -110,11 +116,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -124,6 +132,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -132,6 +141,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               operational_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.operationalState',
@@ -140,11 +150,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               gateway_ipconfigurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayIPConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayIPConfigurationElementType',
                       type: {
@@ -155,11 +167,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               ssl_certificates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sslCertificates',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewaySslCertificateElementType',
                       type: {
@@ -170,11 +184,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_ipconfigurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayFrontendIPConfigurationElementType',
                       type: {
@@ -185,11 +201,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               frontend_ports: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendPorts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayFrontendPortElementType',
                       type: {
@@ -200,11 +218,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               backend_address_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayBackendAddressPoolElementType',
                       type: {
@@ -215,11 +235,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               backend_http_settings_collection: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendHttpSettingsCollection',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayBackendHttpSettingsElementType',
                       type: {
@@ -230,11 +252,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               http_listeners: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpListeners',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayHttpListenerElementType',
                       type: {
@@ -245,11 +269,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               request_routing_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestRoutingRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApplicationGatewayRequestRoutingRuleElementType',
                       type: {
@@ -260,6 +286,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -267,6 +294,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -274,6 +302,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

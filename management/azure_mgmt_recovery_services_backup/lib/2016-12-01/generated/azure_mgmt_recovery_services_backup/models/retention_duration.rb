@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Count of duration types. Retention duration is
       # obtained by the counting the duration type Count times.
       # For example, when Count = 3 and DurationType = Weeks, retention
@@ -30,6 +31,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RetentionDuration',
           type: {
@@ -37,6 +39,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'RetentionDuration',
             model_properties: {
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -44,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               duration_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'durationType',
                 type: {

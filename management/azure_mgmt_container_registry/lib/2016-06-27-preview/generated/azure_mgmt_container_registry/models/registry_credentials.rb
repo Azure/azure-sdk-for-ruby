@@ -13,6 +13,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The administrator username.
       attr_accessor :username
 
@@ -26,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryCredentials',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
             class_name: 'RegistryCredentials',
             model_properties: {
               username: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -40,6 +43,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'password',
                 type: {

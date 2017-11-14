@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The connection string of the service bus topic
       # endpoint.
       attr_accessor :connection_string
@@ -39,6 +40,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoutingServiceBusTopicEndpointProperties',
           type: {
@@ -46,6 +48,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'RoutingServiceBusTopicEndpointProperties',
             model_properties: {
               connection_string: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'connectionString',
                 type: {
@@ -53,6 +56,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -63,6 +67,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               subscription_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -70,6 +75,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               resource_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroup',
                 type: {

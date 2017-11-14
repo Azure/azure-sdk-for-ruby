@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The status of the test operation.
       attr_accessor :status
 
@@ -26,6 +27,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceTestStatus',
           type: {
@@ -33,6 +35,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'ResourceTestStatus',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -41,6 +44,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',

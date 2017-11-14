@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApiErrorError]
       attr_accessor :error
 
@@ -23,6 +24,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApiError',
           type: {
@@ -30,6 +32,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ApiError',
             model_properties: {
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

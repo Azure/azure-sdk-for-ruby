@@ -12,6 +12,7 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] File format.
       attr_accessor :format
 
@@ -28,6 +29,7 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExportRDBParameters',
           type: {
@@ -35,6 +37,7 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'ExportRDBParameters',
             model_properties: {
               format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               prefix: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'prefix',
                 type: {
@@ -49,6 +53,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               container: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'container',
                 type: {

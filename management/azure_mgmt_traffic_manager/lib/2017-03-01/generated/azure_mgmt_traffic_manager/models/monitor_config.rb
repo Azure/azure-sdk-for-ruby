@@ -13,6 +13,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the profile-level monitoring status of
       # the Traffic Manager profile.
       attr_accessor :profile_monitor_status
@@ -36,6 +37,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MonitorConfig',
           type: {
@@ -43,6 +45,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'MonitorConfig',
             model_properties: {
               profile_monitor_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'profileMonitorStatus',
                 type: {
@@ -50,6 +53,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -57,6 +61,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {
@@ -64,6 +69,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {

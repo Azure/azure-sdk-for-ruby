@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RequestsBasedTrigger] A rule based on total requests.
       attr_accessor :requests
 
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoHealTriggers',
           type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AutoHealTriggers',
             model_properties: {
               requests: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'requests',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               private_bytes_in_kb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'privateBytesInKB',
                 type: {
@@ -54,11 +58,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               status_codes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCodes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StatusCodesBasedTriggerElementType',
                       type: {
@@ -69,6 +75,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               slow_requests: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'slowRequests',
                 type: {

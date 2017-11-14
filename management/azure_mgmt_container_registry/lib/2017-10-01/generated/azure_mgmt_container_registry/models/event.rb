@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [EventRequestMessage] The event request message sent to the
       # service URI.
       attr_accessor :event_request_message
@@ -27,6 +28,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Event',
           type: {
@@ -34,6 +36,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Event',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -41,6 +44,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               event_request_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventRequestMessage',
                 type: {
@@ -49,6 +53,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               event_response_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventResponseMessage',
                 type: {

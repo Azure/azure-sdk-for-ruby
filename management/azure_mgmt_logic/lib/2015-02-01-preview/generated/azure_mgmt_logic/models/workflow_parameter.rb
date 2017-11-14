@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ParameterType] Gets or sets the type. Possible values include:
       # 'NotSpecified', 'String', 'SecureString', 'Int', 'Float', 'Bool',
       # 'Array', 'Object', 'SecureObject'
@@ -31,6 +32,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowParameter',
           type: {
@@ -38,6 +40,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowParameter',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {

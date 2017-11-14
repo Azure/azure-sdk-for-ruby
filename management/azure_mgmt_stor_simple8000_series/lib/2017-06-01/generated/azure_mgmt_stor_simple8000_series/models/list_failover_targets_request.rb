@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The list of path IDs of the volume containers
       # that needs to be failed-over, for which we want to fetch the eligible
       # targets.
@@ -25,6 +26,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ListFailoverTargetsRequest',
           type: {
@@ -32,11 +34,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'ListFailoverTargetsRequest',
             model_properties: {
               volume_containers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeContainers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The provider's principal identifier. This is the
       # identity that the provider will use to call ARM to manage the appliance
       # resources.
@@ -30,6 +31,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplianceProviderAuthorization',
           type: {
@@ -37,6 +39,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'ApplianceProviderAuthorization',
             model_properties: {
               principal_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'principalId',
                 type: {
@@ -44,6 +47,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               role_definition_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'roleDefinitionId',
                 type: {

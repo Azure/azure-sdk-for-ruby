@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The authorization qualifier.
       attr_accessor :authorization_qualifier
 
@@ -31,6 +32,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12SecuritySettings',
           type: {
@@ -38,6 +40,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12SecuritySettings',
             model_properties: {
               authorization_qualifier: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'authorizationQualifier',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               authorization_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationValue',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               security_qualifier: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'securityQualifier',
                 type: {
@@ -59,6 +64,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               password_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordValue',
                 type: {

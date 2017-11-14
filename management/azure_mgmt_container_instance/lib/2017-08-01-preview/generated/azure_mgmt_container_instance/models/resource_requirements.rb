@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ResourceRequests] The resource requests of this container
       # instance.
       attr_accessor :requests
@@ -27,6 +28,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceRequirements',
           type: {
@@ -34,6 +36,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'ResourceRequirements',
             model_properties: {
               requests: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'requests',
                 type: {
@@ -42,6 +45,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               limits: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'limits',
                 type: {

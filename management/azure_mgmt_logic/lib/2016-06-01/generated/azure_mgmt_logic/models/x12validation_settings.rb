@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to validate character
       # set in the message.
       attr_accessor :validate_character_set
@@ -59,6 +60,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12ValidationSettings',
           type: {
@@ -66,6 +68,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12ValidationSettings',
             model_properties: {
               validate_character_set: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'validateCharacterSet',
                 type: {
@@ -73,6 +76,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               check_duplicate_interchange_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateInterchangeControlNumber',
                 type: {
@@ -80,6 +84,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interchange_control_number_validity_days: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'interchangeControlNumberValidityDays',
                 type: {
@@ -87,6 +92,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               check_duplicate_group_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateGroupControlNumber',
                 type: {
@@ -94,6 +100,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               check_duplicate_transaction_set_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateTransactionSetControlNumber',
                 type: {
@@ -101,6 +108,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               validate_edi_types: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'validateEdiTypes',
                 type: {
@@ -108,6 +116,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               validate_xsd_types: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'validateXsdTypes',
                 type: {
@@ -115,6 +124,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               allow_leading_and_trailing_spaces_and_zeroes: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'allowLeadingAndTrailingSpacesAndZeroes',
                 type: {
@@ -122,6 +132,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               trim_leading_and_trailing_spaces_and_zeroes: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'trimLeadingAndTrailingSpacesAndZeroes',
                 type: {
@@ -129,6 +140,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               trailing_separator_policy: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'trailingSeparatorPolicy',
                 type: {

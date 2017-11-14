@@ -12,6 +12,7 @@ module Azure::Policy::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PolicyType] The type of policy definition. Possible values are
       # NotSpecified, BuiltIn, and Custom. Possible values include:
       # 'NotSpecified', 'BuiltIn', 'Custom'
@@ -50,6 +51,7 @@ module Azure::Policy::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyDefinition',
           type: {
@@ -57,6 +59,7 @@ module Azure::Policy::Mgmt::V2016_12_01
             class_name: 'PolicyDefinition',
             model_properties: {
               policy_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.policyType',
                 type: {
@@ -64,6 +67,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.mode',
                 type: {
@@ -71,6 +75,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -78,6 +83,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -85,6 +91,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               policy_rule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.policyRule',
                 type: {
@@ -92,6 +99,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
@@ -99,6 +107,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
@@ -106,6 +115,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -114,6 +124,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',

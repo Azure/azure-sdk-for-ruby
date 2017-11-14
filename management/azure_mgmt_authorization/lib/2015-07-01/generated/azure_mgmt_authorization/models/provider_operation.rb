@@ -12,6 +12,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The operation name.
       attr_accessor :name
 
@@ -34,6 +35,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderOperation',
           type: {
@@ -41,6 +43,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'ProviderOperation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -69,6 +75,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

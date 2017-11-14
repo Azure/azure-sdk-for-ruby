@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The VM run command schema.
       attr_accessor :schema
 
@@ -35,6 +36,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunCommandDocumentBase',
           type: {
@@ -42,6 +44,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RunCommandDocumentBase',
             model_properties: {
               schema: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: '$schema',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'osType',
                 type: {
@@ -64,6 +69,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               label: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'label',
                 type: {
@@ -71,6 +77,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               description: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'description',
                 type: {

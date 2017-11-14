@@ -12,6 +12,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The new value of either the primary or secondary key.
       attr_accessor :key
 
@@ -22,6 +23,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeyOutput',
           type: {
@@ -29,6 +31,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'RegenerateKeyOutput',
             model_properties: {
               key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {

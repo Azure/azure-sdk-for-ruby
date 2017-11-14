@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The task display name.
       attr_accessor :task_id
 
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaaSVMJobTaskDetails',
           type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
             class_name: 'AzureIaaSVMJobTaskDetails',
             model_properties: {
               task_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'taskId',
                 type: {
@@ -54,6 +57,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -61,6 +65,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -68,6 +73,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               instance_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceId',
                 type: {
@@ -75,6 +81,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'duration',
                 type: {
@@ -82,6 +89,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -89,6 +97,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               progress_percentage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'progressPercentage',
                 type: {

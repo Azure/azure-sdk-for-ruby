@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the resource from which a connectivity check
       # will be initiated.
       attr_accessor :resource_id
@@ -27,6 +28,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivitySource',
           type: {
@@ -34,6 +36,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'ConnectivitySource',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'resourceId',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {

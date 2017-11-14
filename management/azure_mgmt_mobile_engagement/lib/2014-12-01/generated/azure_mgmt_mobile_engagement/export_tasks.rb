@@ -120,6 +120,9 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       fail ArgumentError, 'app_collection is nil' if app_collection.nil?
       fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '0'" if !skip.nil? && skip < 0
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '40'" if !top.nil? && top > 40
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
@@ -154,8 +157,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -253,8 +255,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -329,8 +330,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/activities'
@@ -361,8 +361,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -437,8 +436,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/crashes'
@@ -469,8 +467,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -545,8 +542,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/errors'
@@ -577,8 +573,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -653,8 +648,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/events'
@@ -685,8 +679,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -761,8 +754,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/jobs'
@@ -793,8 +785,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -869,8 +860,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::DateRangeExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/sessions'
@@ -901,8 +891,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -977,8 +966,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/tags'
@@ -1009,8 +997,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1085,8 +1072,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/tokens'
@@ -1117,8 +1103,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1193,8 +1178,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByDateRangeParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/feedbackByDate'
@@ -1225,8 +1209,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1301,8 +1284,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::FeedbackByCampaignParameter.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/feedbackByCampaign'
@@ -1333,8 +1315,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1420,8 +1401,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::MobileEngagement::Mgmt::V2014_12_01::Models::ExportTaskListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

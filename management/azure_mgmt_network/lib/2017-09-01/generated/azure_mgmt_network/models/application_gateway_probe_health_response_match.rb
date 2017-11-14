@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Body that must be contained in the health response.
       # Default value is empty.
       attr_accessor :body
@@ -28,6 +29,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayProbeHealthResponseMatch',
           type: {
@@ -35,6 +37,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ApplicationGatewayProbeHealthResponseMatch',
             model_properties: {
               body: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'body',
                 type: {
@@ -42,11 +45,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               status_codes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusCodes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

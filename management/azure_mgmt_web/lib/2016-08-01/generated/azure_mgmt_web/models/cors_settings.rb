@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Gets or sets the list of origins that should be
       # allowed to make cross-origin
       # calls (for example: http://example.com:12345). Use "*" to allow all.
@@ -24,6 +25,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CorsSettings',
           type: {
@@ -31,11 +33,13 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'CorsSettings',
             model_properties: {
               allowed_origins: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedOrigins',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The serviceProviderName.
       attr_accessor :service_provider_name
 
@@ -29,6 +30,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitServiceProviderProperties',
           type: {
@@ -36,6 +38,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ExpressRouteCircuitServiceProviderProperties',
             model_properties: {
               service_provider_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceProviderName',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               peering_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'peeringLocation',
                 type: {
@@ -50,6 +54,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               bandwidth_in_mbps: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bandwidthInMbps',
                 type: {

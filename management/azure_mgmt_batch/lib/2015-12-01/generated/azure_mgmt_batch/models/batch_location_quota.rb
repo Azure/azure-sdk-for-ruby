@@ -12,6 +12,7 @@ module Azure::Batch::Mgmt::V2015_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The number of Batch accounts that may be created
       # under the subscription in the specified region.
       attr_accessor :account_quota
@@ -23,6 +24,7 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BatchLocationQuota',
           type: {
@@ -30,6 +32,7 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'BatchLocationQuota',
             model_properties: {
               account_quota: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountQuota',
                 type: {

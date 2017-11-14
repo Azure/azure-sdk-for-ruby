@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Whether boot diagnostics should be enabled on the
       # Virtual Machine.
       attr_accessor :enabled
@@ -27,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BootDiagnostics',
           type: {
@@ -34,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'BootDiagnostics',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               storage_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUri',
                 type: {

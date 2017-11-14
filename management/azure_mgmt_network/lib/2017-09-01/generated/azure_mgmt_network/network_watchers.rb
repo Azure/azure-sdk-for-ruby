@@ -86,8 +86,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}'
@@ -118,8 +117,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -128,8 +126,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -219,8 +216,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcher.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -344,8 +340,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcherListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcherListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -427,8 +422,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcherListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NetworkWatcherListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -502,8 +496,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TopologyParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/topology'
@@ -534,8 +527,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::Topology.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::Topology.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -583,8 +575,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -629,8 +620,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NextHopResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::NextHopResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -675,8 +665,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -723,8 +712,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -771,8 +759,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -821,8 +808,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -871,8 +857,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -923,8 +908,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityInformation.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityInformation.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -974,8 +958,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReport.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReport.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -1024,8 +1007,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersList.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersList.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -1180,8 +1162,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify'
@@ -1212,8 +1193,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1222,8 +1202,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::VerificationIPFlowResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1297,8 +1276,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NextHopParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/nextHop'
@@ -1329,8 +1307,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NextHopResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NextHopResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1339,8 +1316,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::NextHopResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::NextHopResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1414,8 +1390,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView'
@@ -1446,8 +1421,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1456,8 +1430,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::SecurityGroupViewResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1534,8 +1507,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/troubleshoot'
@@ -1566,8 +1538,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1576,8 +1547,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1654,8 +1624,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::QueryTroubleshootingParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryTroubleshootResult'
@@ -1686,8 +1655,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1696,8 +1664,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::TroubleshootingResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1777,8 +1744,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog'
@@ -1809,8 +1775,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1819,8 +1784,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1900,8 +1864,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogStatusParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus'
@@ -1932,8 +1895,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1942,8 +1904,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::FlowLogInformation.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2029,8 +1990,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectivityCheck'
@@ -2061,8 +2021,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityInformation.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2071,8 +2030,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityInformation.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::ConnectivityInformation.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2155,8 +2113,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReportParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/azureReachabilityReport'
@@ -2187,8 +2144,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReport.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReport.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2197,8 +2153,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReport.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::AzureReachabilityReport.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2278,8 +2233,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersListParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/availableProvidersList'
@@ -2310,8 +2264,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -2320,8 +2273,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::AvailableProvidersList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

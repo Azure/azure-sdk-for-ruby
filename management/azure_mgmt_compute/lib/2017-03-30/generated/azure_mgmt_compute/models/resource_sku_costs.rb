@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Used for querying price from commerce.
       attr_accessor :meter_id
 
@@ -29,6 +30,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuCosts',
           type: {
@@ -36,6 +38,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ResourceSkuCosts',
             model_properties: {
               meter_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'meterID',
@@ -44,6 +47,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               quantity: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quantity',
@@ -52,6 +56,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               extended_unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'extendedUnit',

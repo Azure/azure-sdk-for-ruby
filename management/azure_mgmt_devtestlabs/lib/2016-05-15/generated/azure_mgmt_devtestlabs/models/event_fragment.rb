@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NotificationChannelEventType] The event type for which this
       # notification is enabled (i.e. AutoShutdown, Cost). Possible values
       # include: 'AutoShutdown', 'Cost'
@@ -24,6 +25,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventFragment',
           type: {
@@ -31,6 +33,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'EventFragment',
             model_properties: {
               event_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventName',
                 type: {

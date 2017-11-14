@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL that can be used to log into the container
       # registry.
       attr_accessor :login_server
@@ -36,6 +37,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Registry',
           type: {
@@ -43,6 +45,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
             class_name: 'Registry',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,6 +54,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -59,6 +63,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,6 +72,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -74,11 +80,13 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,6 +96,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               login_server: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.loginServer',
@@ -96,6 +105,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               creation_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -104,6 +114,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               admin_user_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adminUserEnabled',
                 default_value: false,
@@ -112,6 +123,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               storage_account: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageAccount',
                 type: {

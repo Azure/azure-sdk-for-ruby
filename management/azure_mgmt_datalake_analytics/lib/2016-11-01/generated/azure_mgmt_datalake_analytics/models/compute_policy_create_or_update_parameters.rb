@@ -12,6 +12,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The AAD object identifier for the entity to create a policy
       # for.
       attr_accessor :object_id
@@ -37,6 +38,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ComputePolicyCreateOrUpdateParameters',
           type: {
@@ -44,6 +46,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'ComputePolicyCreateOrUpdateParameters',
             model_properties: {
               object_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.objectId',
                 type: {
@@ -51,6 +54,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               object_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.objectType',
                 type: {
@@ -58,6 +62,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               max_degree_of_parallelism_per_job: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxDegreeOfParallelismPerJob',
                 constraints: {
@@ -68,6 +73,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               min_priority_per_job: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.minPriorityPerJob',
                 constraints: {

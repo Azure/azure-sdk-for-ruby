@@ -12,6 +12,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The region in which to create the account.
       attr_accessor :location
 
@@ -43,6 +44,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BatchAccountCreateParameters',
           type: {
@@ -50,6 +52,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'BatchAccountCreateParameters',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -57,11 +60,13 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,6 +76,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               auto_storage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoStorage',
                 type: {
@@ -79,6 +85,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               pool_allocation_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.poolAllocationMode',
                 type: {
@@ -87,6 +94,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               key_vault_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.keyVaultReference',
                 type: {

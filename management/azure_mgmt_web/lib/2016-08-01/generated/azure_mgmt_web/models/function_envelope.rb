@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Function name.
       attr_accessor :function_envelope_name
 
@@ -49,6 +50,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FunctionEnvelope',
           type: {
@@ -56,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'FunctionEnvelope',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,6 +67,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -72,6 +76,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -79,6 +84,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -87,6 +93,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               function_envelope_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -95,6 +102,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               function_app_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.functionAppId',
@@ -103,6 +111,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               script_root_path_href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scriptRootPathHref',
                 type: {
@@ -110,6 +119,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               script_href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scriptHref',
                 type: {
@@ -117,6 +127,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               config_href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.configHref',
                 type: {
@@ -124,6 +135,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               secrets_file_href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secretsFileHref',
                 type: {
@@ -131,6 +143,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.href',
                 type: {
@@ -138,6 +151,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               config: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.config',
                 type: {
@@ -145,11 +159,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               files: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.files',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -159,6 +175,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               test_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.testData',
                 type: {

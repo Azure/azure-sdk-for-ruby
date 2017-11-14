@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the resource group.
       attr_accessor :id
 
@@ -41,6 +42,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroup',
           type: {
@@ -48,6 +50,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ResourceGroup',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -56,6 +59,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -63,6 +67,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -71,6 +76,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -78,6 +84,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               managed_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedBy',
                 type: {
@@ -85,11 +92,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

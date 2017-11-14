@@ -13,6 +13,7 @@ module Azure::Batch::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the application.
       attr_accessor :id
 
@@ -45,6 +46,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationPackage',
           type: {
@@ -52,6 +54,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'ApplicationPackage',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,6 +63,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'version',
@@ -68,6 +72,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -77,6 +82,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               format: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'format',
@@ -85,6 +91,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               storage_url: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'storageUrl',
@@ -93,6 +100,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               storage_url_expiry: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'storageUrlExpiry',
@@ -101,6 +109,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               last_activation_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastActivationTime',

@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkflowStatus] The status of workflow trigger history.
       # Possible values include: 'NotSpecified', 'Paused', 'Running',
       # 'Waiting', 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed',
@@ -25,6 +26,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerHistoryFilter',
           type: {
@@ -32,6 +34,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowTriggerHistoryFilter',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

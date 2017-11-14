@@ -13,6 +13,7 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The path of an alias.
       attr_accessor :path
 
@@ -26,6 +27,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AliasPathType',
           type: {
@@ -33,6 +35,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'AliasPathType',
             model_properties: {
               path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -40,11 +43,13 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               api_versions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiVersions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

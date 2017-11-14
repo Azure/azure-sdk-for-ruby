@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Gets or list of peering locations
       attr_accessor :peering_locations
 
@@ -30,6 +31,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteServiceProviderPropertiesFormat',
           type: {
@@ -37,11 +39,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ExpressRouteServiceProviderPropertiesFormat',
             model_properties: {
               peering_locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'peeringLocations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -51,11 +55,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               bandwidths_offered: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bandwidthsOffered',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteServiceProviderBandwidthsOfferedElementType',
                       type: {
@@ -66,6 +72,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisioningState',
                 type: {

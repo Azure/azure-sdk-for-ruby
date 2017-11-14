@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The event ID.
       attr_accessor :id
 
@@ -22,6 +23,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventInfo',
           type: {
@@ -29,6 +31,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'EventInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

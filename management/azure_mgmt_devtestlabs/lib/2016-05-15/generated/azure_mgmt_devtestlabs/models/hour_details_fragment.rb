@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Minutes of the hour the schedule will run.
       attr_accessor :minute
 
@@ -22,6 +23,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HourDetailsFragment',
           type: {
@@ -29,6 +31,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'HourDetailsFragment',
             model_properties: {
               minute: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minute',
                 type: {

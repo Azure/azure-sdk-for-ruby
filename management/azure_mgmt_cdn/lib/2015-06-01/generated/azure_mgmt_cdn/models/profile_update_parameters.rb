@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2015_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Profile tags
       attr_accessor :tags
 
@@ -22,6 +23,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileUpdateParameters',
           type: {
@@ -29,11 +31,13 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'ProfileUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

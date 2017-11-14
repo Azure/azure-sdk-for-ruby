@@ -12,6 +12,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name for capture destination
       attr_accessor :name
 
@@ -35,6 +36,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Destination',
           type: {
@@ -42,6 +44,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'Destination',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +52,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               storage_account_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountResourceId',
                 type: {
@@ -56,6 +60,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               blob_container: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.blobContainer',
                 type: {
@@ -63,6 +68,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               archive_name_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.archiveNameFormat',
                 type: {

@@ -13,6 +13,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProfileMonitorStatus] The profile-level monitoring status of
       # the Traffic Manager profile. Possible values include:
       # 'CheckingEndpoints', 'Online', 'Degraded', 'Disabled', 'Inactive'
@@ -52,6 +53,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MonitorConfig',
           type: {
@@ -59,6 +61,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
             class_name: 'MonitorConfig',
             model_properties: {
               profile_monitor_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'profileMonitorStatus',
                 type: {
@@ -66,6 +69,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -73,6 +77,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {
@@ -80,6 +85,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {
@@ -87,6 +93,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               interval_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'intervalInSeconds',
                 type: {
@@ -94,6 +101,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               timeout_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeoutInSeconds',
                 type: {
@@ -101,6 +109,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
                 }
               },
               tolerated_number_of_failures: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'toleratedNumberOfFailures',
                 type: {

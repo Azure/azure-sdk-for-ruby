@@ -12,6 +12,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The package ID for this credential.
       attr_accessor :package_sid
 
@@ -28,6 +29,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WnsCredential',
           type: {
@@ -35,6 +37,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'WnsCredential',
             model_properties: {
               package_sid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.packageSid',
                 type: {
@@ -42,6 +45,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               secret_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secretKey',
                 type: {
@@ -49,6 +53,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               windows_live_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.windowsLiveEndpoint',
                 type: {

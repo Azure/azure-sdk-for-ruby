@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [UpgradeMode] The upgrade mode. Possible values include:
       # 'Automatic', 'Manual'
       attr_accessor :mode
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradePolicy',
           type: {
@@ -30,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'UpgradePolicy',
             model_properties: {
               mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {

@@ -95,8 +95,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypesListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypesListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -187,8 +186,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypeInfo.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypeInfo.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -279,8 +277,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventTypesListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventTypesListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

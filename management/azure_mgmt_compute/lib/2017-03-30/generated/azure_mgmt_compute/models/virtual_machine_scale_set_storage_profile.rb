@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ImageReference] Specifies information about the image to use.
       # You can specify information about platform images, marketplace images,
       # or virtual machine images. This element is required when you want to
@@ -40,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetStorageProfile',
           type: {
@@ -47,6 +49,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetStorageProfile',
             model_properties: {
               image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               os_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDisk',
                 type: {
@@ -63,11 +67,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               data_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetDataDiskElementType',
                       type: {

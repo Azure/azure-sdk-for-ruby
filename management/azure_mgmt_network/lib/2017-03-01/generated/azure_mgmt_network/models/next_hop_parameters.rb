@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource identifier of the target resource against
       # which the action is to be performed.
       attr_accessor :target_resource_id
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NextHopParameters',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'NextHopParameters',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               source_ipaddress: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceIPAddress',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               destination_ipaddress: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'destinationIPAddress',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               target_nic_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNicResourceId',
                 type: {

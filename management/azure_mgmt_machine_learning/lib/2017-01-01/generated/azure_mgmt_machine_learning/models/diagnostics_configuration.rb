@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DiagnosticsLevel] Specifies the verbosity of the diagnostic
       # output. Valid values are: None - disables tracing; Error - collects
       # only error (stderr) traces; All - collects all traces (stdout and
@@ -29,6 +30,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsConfiguration',
           type: {
@@ -36,6 +38,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'DiagnosticsConfiguration',
             model_properties: {
               level: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'level',
                 type: {
@@ -43,6 +46,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               expiry: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expiry',
                 type: {

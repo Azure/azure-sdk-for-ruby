@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualNetworkGatewayIPConfiguration>] IP configurations
       # for virtual network gateway.
       attr_accessor :ip_configurations
@@ -70,6 +71,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkGateway',
           type: {
@@ -77,6 +79,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'VirtualNetworkGateway',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -84,6 +87,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -92,6 +96,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -100,6 +105,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -107,11 +113,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -121,11 +129,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               ip_configurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualNetworkGatewayIPConfigurationElementType',
                       type: {
@@ -136,6 +146,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               gateway_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayType',
                 type: {
@@ -143,6 +154,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               vpn_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vpnType',
                 type: {
@@ -150,6 +162,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               enable_bgp: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableBgp',
                 type: {
@@ -157,6 +170,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               active_active: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.activeActive',
                 type: {
@@ -164,6 +178,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               gateway_default_site: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayDefaultSite',
                 type: {
@@ -172,6 +187,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -180,6 +196,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               vpn_client_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vpnClientConfiguration',
                 type: {
@@ -188,6 +205,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               bgp_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bgpSettings',
                 type: {
@@ -196,6 +214,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -203,6 +222,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -211,6 +231,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

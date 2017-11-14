@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<StorageAccountKey>] Gets the list of storage account
       # keys and their properties for the specified storage account.
       attr_accessor :keys
@@ -23,6 +24,7 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountListKeysResult',
           type: {
@@ -30,12 +32,14 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'StorageAccountListKeysResult',
             model_properties: {
               keys: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'keys',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageAccountKeyElementType',
                       type: {

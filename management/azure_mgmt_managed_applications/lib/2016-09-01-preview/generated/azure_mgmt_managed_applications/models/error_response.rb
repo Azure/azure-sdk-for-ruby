@@ -13,6 +13,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Http status code.
       attr_accessor :http_status
 
@@ -29,6 +30,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -36,6 +38,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'ErrorResponse',
             model_properties: {
               http_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'httpStatus',
                 type: {
@@ -43,6 +46,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               error_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {
@@ -50,6 +54,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorMessage',
                 type: {

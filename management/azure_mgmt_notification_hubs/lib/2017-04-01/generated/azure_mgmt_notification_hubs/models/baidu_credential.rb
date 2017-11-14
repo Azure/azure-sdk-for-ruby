@@ -12,6 +12,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Baidu Api Key.
       attr_accessor :baidu_api_key
 
@@ -28,6 +29,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BaiduCredential',
           type: {
@@ -35,6 +37,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'BaiduCredential',
             model_properties: {
               baidu_api_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.baiduApiKey',
                 type: {
@@ -42,6 +45,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               baidu_end_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.baiduEndPoint',
                 type: {
@@ -49,6 +53,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               baidu_secret_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.baiduSecretKey',
                 type: {

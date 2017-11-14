@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<RegistryUsage>] The list of container registry quota
       # usages.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryUsageListResult',
           type: {
@@ -30,11 +32,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'RegistryUsageListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegistryUsageElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The property name of the mapping entity.
       attr_accessor :property_name
 
@@ -31,6 +32,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingStructure',
           type: {
@@ -38,6 +40,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ConnectorMappingStructure',
             model_properties: {
               property_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'propertyName',
                 type: {
@@ -45,6 +48,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               column_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'columnName',
                 type: {
@@ -52,6 +56,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               custom_format_specifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customFormatSpecifier',
                 type: {
@@ -59,6 +64,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_encrypted: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isEncrypted',
                 type: {

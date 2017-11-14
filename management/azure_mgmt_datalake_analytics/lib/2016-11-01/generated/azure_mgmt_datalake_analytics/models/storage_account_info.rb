@@ -12,6 +12,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the access key associated with this Azure Storage
       # account that will be used to connect to it.
       attr_accessor :access_key
@@ -26,6 +27,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountInfo',
           type: {
@@ -33,6 +35,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
             class_name: 'StorageAccountInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +44,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -48,6 +52,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -56,6 +61,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               access_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.accessKey',
                 type: {
@@ -63,6 +69,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2016_11_01
                 }
               },
               suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.suffix',
                 type: {

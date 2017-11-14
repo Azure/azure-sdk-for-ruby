@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] ID of the recommended action.
       attr_accessor :action_id
 
@@ -33,6 +34,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TroubleshootingRecommendedActions',
           type: {
@@ -40,6 +42,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'TroubleshootingRecommendedActions',
             model_properties: {
               action_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionId',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               action_text: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionText',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               action_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionUri',
                 type: {
@@ -61,6 +66,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               action_uri_text: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionUriText',
                 type: {

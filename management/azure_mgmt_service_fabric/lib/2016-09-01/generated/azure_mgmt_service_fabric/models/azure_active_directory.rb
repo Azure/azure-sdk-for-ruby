@@ -12,6 +12,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Azure active directory tenant id
       attr_accessor :tenant_id
 
@@ -28,6 +29,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureActiveDirectory',
           type: {
@@ -35,6 +37,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'AzureActiveDirectory',
             model_properties: {
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {
@@ -42,6 +45,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               cluster_application: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'clusterApplication',
                 type: {
@@ -49,6 +53,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               client_application: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientApplication',
                 type: {

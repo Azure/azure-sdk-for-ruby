@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] URL where the single sign-on request is to be made.
       attr_accessor :url
 
@@ -29,6 +30,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DomainControlCenterSsoRequest',
           type: {
@@ -36,6 +38,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'DomainControlCenterSsoRequest',
             model_properties: {
               url: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',
@@ -44,6 +47,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               post_parameter_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'postParameterKey',
@@ -52,6 +56,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               post_parameter_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'postParameterValue',

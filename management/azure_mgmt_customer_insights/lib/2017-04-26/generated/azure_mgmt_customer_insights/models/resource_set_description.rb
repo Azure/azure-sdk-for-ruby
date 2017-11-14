@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] The elements included in the set.
       attr_accessor :elements
 
@@ -26,6 +27,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSetDescription',
           type: {
@@ -33,11 +35,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ResourceSetDescription',
             model_properties: {
               elements: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'elements',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -47,11 +51,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               exceptions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exceptions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

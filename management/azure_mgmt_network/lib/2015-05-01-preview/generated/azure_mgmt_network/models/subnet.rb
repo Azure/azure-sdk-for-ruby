@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets Address prefix for the subnet.
       attr_accessor :address_prefix
 
@@ -46,6 +47,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Subnet',
           type: {
@@ -53,6 +55,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'Subnet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               address_prefix: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.addressPrefix',
                 type: {
@@ -67,6 +71,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               network_security_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkSecurityGroup',
                 type: {
@@ -75,6 +80,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               route_table: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routeTable',
                 type: {
@@ -83,11 +89,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               ip_configurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -98,6 +106,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -105,6 +114,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -112,6 +122,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ReplicationProviderContainerUnmappingInput] Provider specific
       # input for unpairing.
       attr_accessor :provider_specific_input
@@ -24,6 +25,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RemoveProtectionContainerMappingInputProperties',
           type: {
@@ -31,6 +33,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RemoveProtectionContainerMappingInputProperties',
             model_properties: {
               provider_specific_input: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificInput',
                 type: {

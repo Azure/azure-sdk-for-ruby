@@ -89,8 +89,7 @@ module Azure::Automation::Mgmt::V2015_10_31
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Automation::Mgmt::V2015_10_31::Models::OperationListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

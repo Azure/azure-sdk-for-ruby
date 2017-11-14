@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Id of the monitoring event.
       attr_accessor :event_code
 
@@ -52,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventProperties',
           type: {
@@ -59,6 +61,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'EventProperties',
             model_properties: {
               event_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventCode',
                 type: {
@@ -66,6 +69,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -73,6 +77,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               event_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventType',
                 type: {
@@ -80,6 +85,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_object_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedObjectFriendlyName',
                 type: {
@@ -87,6 +93,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               severity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'severity',
                 type: {
@@ -94,6 +101,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               time_of_occurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeOfOccurrence',
                 type: {
@@ -101,6 +109,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricId',
                 type: {
@@ -108,6 +117,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {
@@ -118,6 +128,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               event_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventSpecificDetails',
                 type: {
@@ -128,11 +139,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               health_errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthErrors',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {

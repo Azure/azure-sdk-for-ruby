@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [LogLevel] Log level. Possible values include: 'Off',
       # 'Verbose', 'Information', 'Warning', 'Error'. Default value: 'Off' .
       attr_accessor :level
@@ -23,6 +24,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FileSystemApplicationLogsConfig',
           type: {
@@ -30,6 +32,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'FileSystemApplicationLogsConfig',
             model_properties: {
               level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 default_value: 'Off',

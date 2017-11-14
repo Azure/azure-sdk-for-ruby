@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The LUN number for a data disk. This value is used to
       # identify data disk image inside the VMImage and therefore it must be
       # unique for each data disk.
@@ -24,6 +25,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataDiskImage',
           type: {
@@ -31,6 +33,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'DataDiskImage',
             model_properties: {
               lun: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lun',

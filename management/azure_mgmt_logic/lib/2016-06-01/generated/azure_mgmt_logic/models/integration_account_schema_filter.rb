@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SchemaType] The schema type of integration account schema.
       # Possible values include: 'NotSpecified', 'Xml'
       attr_accessor :schema_type
@@ -23,6 +24,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountSchemaFilter',
           type: {
@@ -30,6 +32,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountSchemaFilter',
             model_properties: {
               schema_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'schemaType',
                 type: {

@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A refresh token that can be used to obtain a valid
       # access token that can then be used to authenticate with the data
       # source. A valid refresh token is currently only obtainable via the
@@ -39,6 +40,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OAuthBasedDataSourceProperties',
           type: {
@@ -46,6 +48,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'OAuthBasedDataSourceProperties',
             model_properties: {
               refresh_token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'refreshToken',
                 type: {
@@ -53,6 +56,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               token_user_principal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tokenUserPrincipalName',
                 type: {
@@ -60,6 +64,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               token_user_display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tokenUserDisplayName',
                 type: {

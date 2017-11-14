@@ -12,6 +12,7 @@ module Azure::Redis::Mgmt::V2017_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Linked server Id.
       attr_accessor :id
 
@@ -22,6 +23,7 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisLinkedServer',
           type: {
@@ -29,6 +31,7 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisLinkedServer',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',

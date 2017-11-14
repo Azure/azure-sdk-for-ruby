@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The GUID that uniquely identifies the workspace.
       attr_accessor :customer_id
 
@@ -31,6 +32,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LinkTarget',
           type: {
@@ -38,6 +40,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'LinkTarget',
             model_properties: {
               customer_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customerId',
                 type: {
@@ -45,6 +48,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountName',
                 type: {
@@ -52,6 +56,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               workspace_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workspaceName',
                 type: {
@@ -59,6 +64,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {

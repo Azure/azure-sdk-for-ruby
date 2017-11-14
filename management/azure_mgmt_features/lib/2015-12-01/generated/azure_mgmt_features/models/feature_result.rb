@@ -12,6 +12,7 @@ module Azure::Features::Mgmt::V2015_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the feature.
       attr_accessor :name
 
@@ -31,6 +32,7 @@ module Azure::Features::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FeatureResult',
           type: {
@@ -38,6 +40,7 @@ module Azure::Features::Mgmt::V2015_12_01
             class_name: 'FeatureResult',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Features::Mgmt::V2015_12_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Features::Mgmt::V2015_12_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +65,7 @@ module Azure::Features::Mgmt::V2015_12_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

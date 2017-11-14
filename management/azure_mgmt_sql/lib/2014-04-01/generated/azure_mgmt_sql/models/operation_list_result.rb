@@ -13,6 +13,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Operation>] List of SQL operations supported by the SQL
       # resource provider.
       attr_accessor :value
@@ -28,6 +29,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationListResult',
           type: {
@@ -35,11 +37,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'OperationListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationElementType',
                       type: {
@@ -50,6 +54,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

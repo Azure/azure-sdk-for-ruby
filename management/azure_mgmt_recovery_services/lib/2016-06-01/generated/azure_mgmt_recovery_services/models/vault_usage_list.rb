@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VaultUsage>] The list of usages for the given vault.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultUsageList',
           type: {
@@ -29,11 +31,13 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'VaultUsageList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VaultUsageElementType',
                       type: {

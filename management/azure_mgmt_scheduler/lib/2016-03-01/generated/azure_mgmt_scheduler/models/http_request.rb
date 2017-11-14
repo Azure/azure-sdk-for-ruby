@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [HttpAuthentication] Gets or sets the authentication method of
       # the request.
       attr_accessor :authentication
@@ -36,6 +37,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HttpRequest',
           type: {
@@ -43,6 +45,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'HttpRequest',
             model_properties: {
               authentication: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authentication',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {
@@ -58,6 +62,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
@@ -65,6 +70,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               body: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'body',
                 type: {
@@ -72,11 +78,13 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               headers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'headers',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

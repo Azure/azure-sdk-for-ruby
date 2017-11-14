@@ -12,6 +12,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @Name = "Monetary Credit"
@@ -34,6 +35,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Monetary Credit',
           type: {
@@ -41,6 +43,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'MonetaryCredit',
             model_properties: {
               effective_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'EffectiveDate',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               Name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Name',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               credit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Credit',
                 type: {
@@ -62,11 +67,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               excluded_meter_ids: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ExcludedMeterIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UuidElementType',
                       type: {

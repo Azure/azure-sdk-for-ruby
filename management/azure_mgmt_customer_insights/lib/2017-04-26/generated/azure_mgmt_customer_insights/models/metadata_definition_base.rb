@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => Array<String>}] The attributes for the Type.
       attr_accessor :attributes
 
@@ -46,6 +47,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetadataDefinitionBase',
           type: {
@@ -53,16 +55,19 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'MetadataDefinitionBase',
             model_properties: {
               attributes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'attributes',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
+                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -74,11 +79,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,11 +95,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -102,16 +111,19 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               localized_attributes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedAttributes',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HashElementType',
                       type: {
                         name: 'Dictionary',
                         value: {
+                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {
@@ -123,6 +135,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               small_image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'smallImage',
                 type: {
@@ -130,6 +143,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               medium_image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mediumImage',
                 type: {
@@ -137,6 +151,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               large_image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'largeImage',
                 type: {

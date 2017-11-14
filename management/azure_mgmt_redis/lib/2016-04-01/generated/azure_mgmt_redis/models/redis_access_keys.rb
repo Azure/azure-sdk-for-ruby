@@ -12,6 +12,7 @@ module Azure::Redis::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The current primary key that clients can use to
       # authenticate with Redis cache.
       attr_accessor :primary_key
@@ -27,6 +28,7 @@ module Azure::Redis::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisAccessKeys',
           type: {
@@ -34,6 +36,7 @@ module Azure::Redis::Mgmt::V2016_04_01
             class_name: 'RedisAccessKeys',
             model_properties: {
               primary_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'primaryKey',
@@ -42,6 +45,7 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               secondary_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'secondaryKey',

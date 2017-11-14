@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return Sample input data for the web service's input(s) given as an
       # input name to sample input values matrix map.
       attr_accessor :inputs
@@ -26,6 +27,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExampleRequest',
           type: {
@@ -33,21 +35,25 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'ExampleRequest',
             model_properties: {
               inputs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'inputs',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
+                            client_side_validation: true,
                             required: false,
                             serialized_name: 'ArrayElementType',
                             type: {
                               name: 'Sequence',
                               element: {
+                                  client_side_validation: true,
                                   required: false,
                                   serialized_name: 'ObjectElementType',
                                   type: {
@@ -61,11 +67,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               global_parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'globalParameters',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {

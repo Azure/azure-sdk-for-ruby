@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [HttpAuthenticationType] Gets or sets the HTTP authentication
       # type. Possible values include: 'NotSpecified', 'ClientCertificate',
       # 'ActiveDirectoryOAuth', 'Basic'
@@ -25,6 +26,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HttpAuthentication',
           type: {
@@ -32,6 +34,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'HttpAuthentication',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

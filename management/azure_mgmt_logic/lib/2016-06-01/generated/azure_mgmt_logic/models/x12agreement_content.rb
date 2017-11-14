@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [X12OneWayAgreement] The X12 one-way receive agreement.
       attr_accessor :receive_agreement
 
@@ -25,6 +26,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12AgreementContent',
           type: {
@@ -32,6 +34,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12AgreementContent',
             model_properties: {
               receive_agreement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiveAgreement',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               send_agreement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sendAgreement',
                 type: {

@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the shared access policy.
       attr_accessor :key_name
 
@@ -40,6 +41,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SharedAccessSignatureAuthorizationRule',
           type: {
@@ -47,6 +49,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'SharedAccessSignatureAuthorizationRule',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {
@@ -54,6 +57,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               primary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -61,6 +65,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               secondary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {
@@ -68,6 +73,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               rights: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rights',
                 type: {

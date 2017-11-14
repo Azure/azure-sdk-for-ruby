@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["OperationResultInfo"] = "OperationResultInfo"
       @@discriminatorMap["ExportJobsOperationResultInfo"] = "ExportJobsOperationResultInfo"
@@ -33,6 +34,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationResultInfoBase',
           type: {

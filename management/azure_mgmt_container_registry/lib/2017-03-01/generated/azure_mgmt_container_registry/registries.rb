@@ -81,8 +81,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryNameCheckRequest.mapper()
-      request_content = @client.serialize(request_mapper,  registry_name_check_request)
+      request_content = registry_name_check_request.nil? ? nil: registry_name_check_request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/checkNameAvailability'
@@ -113,8 +112,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryNameStatus.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryNameStatus.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -173,6 +171,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
 
 
       request_headers = {}
@@ -207,8 +208,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -257,8 +257,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -314,6 +313,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
 
 
       request_headers = {}
@@ -404,6 +406,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, 'registry_update_parameters is nil' if registry_update_parameters.nil?
 
 
@@ -416,8 +421,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  registry_update_parameters)
+      request_content = registry_update_parameters.nil? ? nil: registry_update_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}'
@@ -448,8 +452,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -538,8 +541,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -621,8 +623,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -681,6 +682,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
 
 
       request_headers = {}
@@ -715,8 +719,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListCredentialsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListCredentialsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -787,6 +790,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, 'regenerate_credential_parameters is nil' if regenerate_credential_parameters.nil?
 
 
@@ -799,8 +805,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegenerateCredentialParameters.mapper()
-      request_content = @client.serialize(request_mapper,  regenerate_credential_parameters)
+      request_content = regenerate_credential_parameters.nil? ? nil: regenerate_credential_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/regenerateCredential'
@@ -831,8 +836,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListCredentialsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListCredentialsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -897,6 +901,9 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'registry_name is nil' if registry_name.nil?
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MaxLength': '50'" if !registry_name.nil? && registry_name.length > 50
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'MinLength': '5'" if !registry_name.nil? && registry_name.length < 5
+      fail ArgumentError, "'registry_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z0-9]*$'" if !registry_name.nil? && registry_name.match(Regexp.new('^^[a-zA-Z0-9]*$$')).nil?
       fail ArgumentError, 'registry_create_parameters is nil' if registry_create_parameters.nil?
 
 
@@ -909,8 +916,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  registry_create_parameters)
+      request_content = registry_create_parameters.nil? ? nil: registry_create_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}'
@@ -941,8 +947,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::Registry.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1028,8 +1033,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1115,8 +1119,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ContainerRegistry::Mgmt::V2017_03_01::Models::RegistryListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

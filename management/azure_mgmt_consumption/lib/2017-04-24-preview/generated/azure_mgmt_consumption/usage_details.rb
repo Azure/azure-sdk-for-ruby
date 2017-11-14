@@ -119,6 +119,8 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
     #
     def list_async(scope, expand = nil, filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
       fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '1000'" if !top.nil? && top > 1000
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -154,8 +156,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetailsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetailsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -247,8 +248,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetailsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Consumption::Mgmt::V2017_04_24_preview::Models::UsageDetailsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

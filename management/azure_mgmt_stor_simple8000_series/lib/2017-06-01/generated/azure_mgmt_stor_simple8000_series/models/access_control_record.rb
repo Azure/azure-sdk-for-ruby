@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The iSCSI initiator name (IQN).
       attr_accessor :initiator_name
 
@@ -26,6 +27,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AccessControlRecord',
           type: {
@@ -33,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AccessControlRecord',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +44,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +53,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -57,6 +62,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -65,6 +71,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               initiator_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.initiatorName',
                 type: {
@@ -72,6 +79,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.volumeCount',

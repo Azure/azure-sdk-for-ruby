@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ExpressRouteCircuitSku] Gets or sets sku
       attr_accessor :sku
 
@@ -58,6 +59,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuit',
           type: {
@@ -65,6 +67,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ExpressRouteCircuit',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -73,6 +76,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -81,6 +85,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -89,6 +94,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -96,11 +102,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -110,6 +118,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -118,6 +127,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               circuit_provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.circuitProvisioningState',
                 type: {
@@ -125,6 +135,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               service_provider_provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceProviderProvisioningState',
                 type: {
@@ -132,11 +143,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               authorizations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorizations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitAuthorizationElementType',
                       type: {
@@ -147,11 +160,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               peerings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peerings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitPeeringElementType',
                       type: {
@@ -162,6 +177,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               service_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceKey',
                 type: {
@@ -169,6 +185,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               service_provider_notes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceProviderNotes',
                 type: {
@@ -176,6 +193,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               service_provider_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceProviderProperties',
                 type: {
@@ -184,6 +202,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -191,6 +210,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

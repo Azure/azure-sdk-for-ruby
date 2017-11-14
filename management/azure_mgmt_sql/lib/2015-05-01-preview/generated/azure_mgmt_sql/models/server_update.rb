@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Administrator username for the server. Once created it
       # cannot be changed.
       attr_accessor :administrator_login
@@ -39,6 +40,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServerUpdate',
           type: {
@@ -46,6 +48,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'ServerUpdate',
             model_properties: {
               administrator_login: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.administratorLogin',
                 type: {
@@ -53,6 +56,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               administrator_login_password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.administratorLoginPassword',
                 type: {
@@ -60,6 +64,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -67,6 +72,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -75,6 +81,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               fully_qualified_domain_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.fullyQualifiedDomainName',
@@ -83,11 +90,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

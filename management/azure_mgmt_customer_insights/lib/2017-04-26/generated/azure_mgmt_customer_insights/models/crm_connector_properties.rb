@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The connection string.
       attr_accessor :connection_string
 
@@ -35,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CrmConnectorProperties',
           type: {
@@ -42,6 +44,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'CrmConnectorProperties',
             model_properties: {
               connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionString',
                 type: {
@@ -49,6 +52,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               organization_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'organizationId',
                 type: {
@@ -56,6 +60,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               organization_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'organizationUrl',
                 type: {
@@ -63,11 +68,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               entities: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'entities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CrmConnectorEntitiesElementType',
                       type: {
@@ -78,6 +85,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               access_token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accessToken',
                 type: {

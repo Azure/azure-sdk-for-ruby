@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] True if the specified user, group, contact, or
       # service principal has either direct or transitive membership in the
       # specified group; otherwise, false.
@@ -24,6 +25,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckGroupMembershipResult',
           type: {
@@ -31,6 +33,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'CheckGroupMembershipResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "HyperVReplica2012"
@@ -59,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVReplica2012',
           type: {
@@ -66,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HyperVReplicaPolicyDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -73,6 +76,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_points: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPoints',
                 type: {
@@ -80,6 +84,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               application_consistent_snapshot_frequency_in_hours: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationConsistentSnapshotFrequencyInHours',
                 type: {
@@ -87,6 +92,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               compression: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'compression',
                 type: {
@@ -94,6 +100,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               initial_replication_method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'initialReplicationMethod',
                 type: {
@@ -101,6 +108,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               online_replication_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'onlineReplicationStartTime',
                 type: {
@@ -108,6 +116,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               offline_replication_import_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'offlineReplicationImportPath',
                 type: {
@@ -115,6 +124,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               offline_replication_export_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'offlineReplicationExportPath',
                 type: {
@@ -122,6 +132,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationPort',
                 type: {
@@ -129,6 +140,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               allowed_authentication_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedAuthenticationType',
                 type: {
@@ -136,6 +148,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replica_deletion_option: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicaDeletionOption',
                 type: {

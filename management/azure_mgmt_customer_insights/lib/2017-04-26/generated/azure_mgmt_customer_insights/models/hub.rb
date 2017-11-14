@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] API endpoint URL of the hub.
       attr_accessor :api_endpoint
 
@@ -36,6 +37,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Hub',
           type: {
@@ -43,6 +45,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'Hub',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,6 +54,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -59,6 +63,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,6 +72,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -74,11 +80,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,6 +96,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               api_endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.apiEndpoint',
@@ -96,6 +105,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               web_endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.webEndpoint',
@@ -104,6 +114,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -112,6 +123,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               tenant_features: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tenantFeatures',
                 type: {
@@ -119,6 +131,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               hub_billing_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hubBillingInfo',
                 type: {

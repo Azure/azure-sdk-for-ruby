@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The reference name.
       attr_accessor :ref
 
@@ -23,6 +24,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountMapProperties_parametersSchema',
           type: {
@@ -30,6 +32,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountMapPropertiesParametersSchema',
             model_properties: {
               ref: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ref',
                 type: {

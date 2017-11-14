@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @backupManagementType = "AzureIaasVM"
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaasVM',
           type: {
@@ -45,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'AzureIaaSVMProtectionPolicy',
             model_properties: {
               protected_items_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemsCount',
                 type: {
@@ -52,6 +55,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               backupManagementType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -59,6 +63,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               schedule_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'schedulePolicy',
                 type: {
@@ -69,6 +74,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               retention_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionPolicy',
                 type: {

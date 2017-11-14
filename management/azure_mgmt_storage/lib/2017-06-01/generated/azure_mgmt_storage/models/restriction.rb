@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The type of restrictions. As of now only possible
       # value for this is location.
       attr_accessor :type
@@ -35,6 +36,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Restriction',
           type: {
@@ -42,6 +44,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'Restriction',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -50,12 +53,14 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               values: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -65,6 +70,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               reason_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reasonCode',
                 type: {

@@ -61,6 +61,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'sku is nil' if sku.nil?
+      fail ArgumentError, "'sku' should satisfy the constraint - 'MaxLength': '50'" if !sku.nil? && sku.length > 50
+      fail ArgumentError, "'sku' should satisfy the constraint - 'MinLength': '1'" if !sku.nil? && sku.length < 1
 
 
       request_headers = {}
@@ -95,8 +97,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -182,8 +183,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::ServiceBus::Mgmt::V2017_04_01::Models::PremiumMessagingRegionsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

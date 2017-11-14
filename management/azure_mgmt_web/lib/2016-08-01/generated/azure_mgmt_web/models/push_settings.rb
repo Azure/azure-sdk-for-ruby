@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Gets or sets a flag indicating whether the Push
       # endpoint is enabled.
       attr_accessor :is_push_enabled
@@ -40,6 +41,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PushSettings',
           type: {
@@ -47,6 +49,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'PushSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +67,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,6 +84,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_push_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isPushEnabled',
                 type: {
@@ -85,6 +92,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               tag_whitelist_json: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tagWhitelistJson',
                 type: {
@@ -92,6 +100,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               tags_requiring_auth: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tagsRequiringAuth',
                 type: {
@@ -99,6 +108,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               dynamic_tags_json: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dynamicTagsJson',
                 type: {

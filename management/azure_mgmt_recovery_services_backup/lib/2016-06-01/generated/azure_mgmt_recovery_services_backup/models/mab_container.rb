@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @protectableObjectType = "MABWindowsContainer"
@@ -46,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MABWindowsContainer',
           type: {
@@ -53,6 +55,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'MabContainer',
             model_properties: {
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -60,6 +63,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -68,6 +72,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               registration_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationStatus',
                 type: {
@@ -75,6 +80,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               health_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthStatus',
                 type: {
@@ -82,6 +88,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               container_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'containerType',
@@ -90,6 +97,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               protectableObjectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectableObjectType',
                 type: {
@@ -97,6 +105,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               can_re_register: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'canReRegister',
                 type: {
@@ -104,6 +113,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               container_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerId',
                 type: {
@@ -111,6 +121,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               protected_item_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemCount',
                 type: {
@@ -118,6 +129,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               agent_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentVersion',
                 type: {
@@ -125,6 +137,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               extended_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extendedInfo',
                 type: {

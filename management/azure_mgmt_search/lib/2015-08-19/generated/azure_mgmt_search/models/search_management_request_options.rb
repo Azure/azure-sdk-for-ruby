@@ -12,6 +12,7 @@ module Azure::Search::Mgmt::V2015_08_19
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return A client-generated GUID value that identifies this request. If
       # specified, this will be included in response information as a way to
       # track the request.
@@ -24,12 +25,14 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           type: {
             name: 'Composite',
             class_name: 'SearchManagementRequestOptions',
             model_properties: {
               client_request_id: {
+                client_side_validation: true,
                 required: false,
                 type: {
                   name: 'String'

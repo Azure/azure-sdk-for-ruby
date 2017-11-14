@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SAS URL to the container.
       attr_accessor :storage_account_url
 
@@ -65,6 +66,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RestoreRequest',
           type: {
@@ -72,6 +74,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'RestoreRequest',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -80,6 +83,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -88,6 +92,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -95,6 +100,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -103,6 +109,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               storage_account_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccountUrl',
                 type: {
@@ -110,6 +117,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               blob_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.blobName',
                 type: {
@@ -117,6 +125,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               overwrite: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.overwrite',
                 type: {
@@ -124,6 +133,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               site_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.siteName',
                 type: {
@@ -131,11 +141,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               databases: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databases',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DatabaseBackupSettingElementType',
                       type: {
@@ -146,6 +158,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               ignore_conflicting_host_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ignoreConflictingHostNames',
                 default_value: false,
@@ -154,6 +167,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               ignore_databases: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ignoreDatabases',
                 default_value: false,
@@ -162,6 +176,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               app_service_plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.appServicePlan',
                 type: {
@@ -169,6 +184,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               operation_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.operationType',
                 default_value: 'Default',
@@ -178,6 +194,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               adjust_connection_strings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adjustConnectionStrings',
                 type: {
@@ -185,6 +202,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               hosting_environment: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostingEnvironment',
                 type: {

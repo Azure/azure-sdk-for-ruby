@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Health Code
       attr_accessor :code
 
@@ -31,6 +32,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaaSVMHealthDetails',
           type: {
@@ -38,6 +40,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'AzureIaaSVMHealthDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -45,6 +48,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               title: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 type: {
@@ -52,6 +56,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -59,11 +64,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recommendations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

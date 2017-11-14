@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DatabaseType] Database type (e.g. SqlAzure / MySql). Possible
       # values include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
       attr_accessor :database_type
@@ -36,6 +37,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DatabaseBackupSetting',
           type: {
@@ -43,6 +45,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'DatabaseBackupSetting',
             model_properties: {
               database_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'databaseType',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -57,6 +61,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               connection_string_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionStringName',
                 type: {
@@ -64,6 +69,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionString',
                 type: {

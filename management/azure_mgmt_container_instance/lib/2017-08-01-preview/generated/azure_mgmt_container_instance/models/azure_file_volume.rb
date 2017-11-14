@@ -13,6 +13,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the Azure File share to be mounted as a
       # volume.
       attr_accessor :share_name
@@ -36,6 +37,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureFileVolume',
           type: {
@@ -43,6 +45,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'AzureFileVolume',
             model_properties: {
               share_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'shareName',
                 type: {
@@ -50,6 +53,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               read_only: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'readOnly',
                 type: {
@@ -57,6 +61,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               storage_account_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageAccountName',
                 type: {
@@ -64,6 +69,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
                 }
               },
               storage_account_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountKey',
                 type: {

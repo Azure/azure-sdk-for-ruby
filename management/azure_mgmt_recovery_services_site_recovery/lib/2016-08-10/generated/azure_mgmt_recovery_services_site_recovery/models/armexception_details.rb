@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets service error code.
       attr_accessor :code
 
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ARMExceptionDetails',
           type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ARMExceptionDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -54,6 +57,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -61,6 +65,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               possible_causes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'possibleCauses',
                 type: {
@@ -68,6 +73,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recommended_action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendedAction',
                 type: {
@@ -75,6 +81,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               client_request_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'clientRequestId',
                 type: {
@@ -82,6 +89,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               activity_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'activityId',
                 type: {
@@ -89,6 +97,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {

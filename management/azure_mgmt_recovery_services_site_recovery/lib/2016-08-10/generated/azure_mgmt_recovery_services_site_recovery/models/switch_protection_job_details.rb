@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "SwitchProtectionJobDetails"
@@ -29,6 +30,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SwitchProtectionJobDetails',
           type: {
@@ -36,11 +38,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'SwitchProtectionJobDetails',
             model_properties: {
               affected_object_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedObjectDetails',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -50,6 +54,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -57,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               new_replication_protected_item_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'newReplicationProtectedItemId',
                 type: {

@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkflowState] Gets or sets the state of workflow trigger.
       # Possible values include: 'NotSpecified', 'Enabled', 'Disabled',
       # 'Deleted', 'Suspended'
@@ -25,6 +26,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerFilter',
           type: {
@@ -32,6 +34,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowTriggerFilter',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

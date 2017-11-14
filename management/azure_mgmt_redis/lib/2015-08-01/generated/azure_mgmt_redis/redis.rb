@@ -86,8 +86,7 @@ module Azure::Redis::Mgmt::V2015_08_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisCreateOrUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}'
@@ -118,8 +117,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResourceWithAccessKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResourceWithAccessKey.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -128,8 +126,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResourceWithAccessKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResourceWithAccessKey.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -299,8 +296,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -386,8 +382,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -469,8 +464,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -563,8 +557,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListKeysResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListKeysResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -641,8 +634,7 @@ module Azure::Redis::Mgmt::V2015_08_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisRegenerateKeyParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/regenerateKey'
@@ -673,8 +665,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListKeysResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListKeysResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -750,8 +741,7 @@ module Azure::Redis::Mgmt::V2015_08_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisRebootParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/forceReboot'
@@ -859,8 +849,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -946,8 +935,7 @@ module Azure::Redis::Mgmt::V2015_08_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Redis::Mgmt::V2015_08_01::Models::RedisListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

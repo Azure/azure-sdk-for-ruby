@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Renew certificate type.
       attr_accessor :renew_certificate_type
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RenewCertificateInputProperties',
           type: {
@@ -29,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RenewCertificateInputProperties',
             model_properties: {
               renew_certificate_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'renewCertificateType',
                 type: {

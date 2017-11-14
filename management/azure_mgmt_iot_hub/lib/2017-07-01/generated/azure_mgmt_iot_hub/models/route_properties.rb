@@ -13,6 +13,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the route. The name can only include
       # alphanumeric characters, periods, underscores, hyphens, has a maximum
       # length of 64 characters, and must be unique.
@@ -45,6 +46,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RouteProperties',
           type: {
@@ -52,6 +54,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'RouteProperties',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 constraints: {
@@ -62,6 +65,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               source: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -69,6 +73,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               condition: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'condition',
                 type: {
@@ -76,6 +81,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               endpoint_names: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointNames',
                 constraints: {
@@ -85,6 +91,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -94,6 +101,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               is_enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'isEnabled',
                 type: {

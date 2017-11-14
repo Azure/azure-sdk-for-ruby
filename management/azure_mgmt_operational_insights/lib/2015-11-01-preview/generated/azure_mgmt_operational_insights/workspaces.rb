@@ -70,6 +70,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def disable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, 'intelligence_pack_name is nil' if intelligence_pack_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -160,6 +163,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def enable_intelligence_pack_async(resource_group_name, workspace_name, intelligence_pack_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, 'intelligence_pack_name is nil' if intelligence_pack_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -248,6 +254,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def list_intelligence_packs_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -286,11 +295,13 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'IntelligencePackElementType',
                     type: {
@@ -300,7 +311,10 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               }
             }
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            current_module = Object.const_get(self.class.to_s.split( '::' )[0, self.class.to_s.split( '::' ).length-1].join('::'))
+            a_new_class = Class.new { include MsRest::JSONable }
+            current_module.const_set("ANewClass_#{Random.new(Random.new.rand 1000).rand(1000)}", a_new_class)
+            result.body = a_new_class.new.from_json(parsed_response, result_mapper)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -356,6 +370,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def get_shared_keys_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -393,8 +410,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::SharedKeys.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -450,6 +466,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def list_usages_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -487,8 +506,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListUsagesResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListUsagesResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -544,6 +562,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def list_management_groups_async(resource_group_name, workspace_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -581,8 +602,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListManagementGroupsResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -635,6 +655,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+$$')).nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -671,8 +694,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -754,8 +776,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::WorkspaceListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -802,8 +823,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -971,8 +991,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1032,6 +1051,9 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     def begin_create_or_update_async(resource_group_name, workspace_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workspace_name is nil' if workspace_name.nil?
+      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MaxLength': '63'" if !workspace_name.nil? && workspace_name.length > 63
+      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'MinLength': '4'" if !workspace_name.nil? && workspace_name.length < 4
+      fail ArgumentError, "'workspace_name' should satisfy the constraint - 'Pattern': '^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$'" if !workspace_name.nil? && workspace_name.match(Regexp.new('^^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1046,8 +1068,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}'
@@ -1078,8 +1099,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1088,8 +1108,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::OperationalInsights::Mgmt::V2015_11_01_preview::Models::Workspace.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

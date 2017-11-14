@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The short label for the status.
       attr_accessor :display_status
 
@@ -30,6 +31,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Status',
           type: {
@@ -37,6 +39,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'Status',
             model_properties: {
               display_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayStatus',
@@ -45,6 +48,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -53,6 +57,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
                 }
               },
               timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',

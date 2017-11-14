@@ -12,6 +12,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
 
@@ -22,6 +23,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SharedAccessAuthorizationRuleResource',
           type: {
@@ -29,6 +31,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'SharedAccessAuthorizationRuleResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -37,6 +40,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -45,6 +49,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -52,6 +57,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,11 +66,13 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               rights: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.rights',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AccessRightsElementType',
                       type: {

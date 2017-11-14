@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource GUID property of the application security
       # group resource. It uniquely identifies a resource, even if the user
       # changes its name or migrate the resource across subscriptions or
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationSecurityGroup',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'ApplicationSecurityGroup',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +69,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -71,11 +77,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,6 +93,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceGuid',
@@ -93,6 +102,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -101,6 +111,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',

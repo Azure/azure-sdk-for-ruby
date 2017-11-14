@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Version.
       attr_accessor :version
 
@@ -46,6 +47,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateDetails',
           type: {
@@ -53,6 +55,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'CertificateDetails',
             model_properties: {
               version: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'version',
@@ -61,6 +64,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               serial_number: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serialNumber',
@@ -69,6 +73,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'thumbprint',
@@ -77,6 +82,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               subject: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subject',
@@ -85,6 +91,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               not_before: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'notBefore',
@@ -93,6 +100,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               not_after: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'notAfter',
@@ -101,6 +109,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               signature_algorithm: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'signatureAlgorithm',
@@ -109,6 +118,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               issuer: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'issuer',
@@ -117,6 +127,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               raw_data: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'rawData',

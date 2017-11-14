@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [OperatingSystemTypes] The operating system of the osDiskImage.
       # Possible values include: 'Windows', 'Linux'
       attr_accessor :operating_system
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OSDiskImage',
           type: {
@@ -30,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'OSDiskImage',
             model_properties: {
               operating_system: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'operatingSystem',
                 type: {

@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the quota metric.
       attr_accessor :name
 
@@ -28,6 +29,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubQuotaMetricInfo',
           type: {
@@ -35,6 +37,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'IotHubQuotaMetricInfo',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Name',
@@ -43,6 +46,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'CurrentValue',
@@ -51,6 +55,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               max_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'MaxValue',

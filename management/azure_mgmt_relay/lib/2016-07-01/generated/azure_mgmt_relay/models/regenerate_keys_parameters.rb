@@ -12,6 +12,7 @@ module Azure::Relay::Mgmt::V2016_07_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PolicyKey] Key that needs to be regenerated. Possible values
       # include: 'PrimaryKey', 'SecondaryKey'
       attr_accessor :policy_key
@@ -23,6 +24,7 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeysParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'RegenerateKeysParameters',
             model_properties: {
               policy_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyKey',
                 type: {

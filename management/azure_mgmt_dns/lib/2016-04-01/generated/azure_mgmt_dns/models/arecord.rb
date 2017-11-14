@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The IPv4 address of this A record.
       attr_accessor :ipv4address
 
@@ -22,6 +23,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ARecord',
           type: {
@@ -29,6 +31,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'ARecord',
             model_properties: {
               ipv4address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv4Address',
                 type: {

@@ -12,6 +12,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Status] Live message of list gateway. Possible values include:
       # 'Live'
       attr_accessor :status
@@ -23,6 +24,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayListStatusLive',
           type: {
@@ -30,6 +32,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'GatewayListStatusLive',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

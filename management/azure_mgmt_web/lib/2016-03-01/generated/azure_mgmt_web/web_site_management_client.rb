@@ -200,8 +200,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::User.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -269,8 +268,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
-      request_content = self.serialize(request_mapper,  user_details)
+      request_content = user_details.nil? ? nil: user_details.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'providers/Microsoft.Web/publishingUsers/web'
@@ -300,8 +298,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::User.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::User.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -387,8 +384,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -460,8 +456,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
-      request_content = self.serialize(request_mapper,  request_message)
+      request_content = request_message.nil? ? nil: request_message.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'providers/Microsoft.Web/sourcecontrols/{sourceControlType}'
@@ -492,8 +487,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::SourceControl.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -578,8 +572,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailabilityRequest.mapper()
-      request_content = self.serialize(request_mapper,  request)
+      request_content = request.nil? ? nil: request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability'
@@ -610,8 +603,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::ResourceNameAvailability.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -714,8 +706,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -803,8 +794,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -892,8 +882,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SkuInfos.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::SkuInfos.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -965,8 +954,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::VnetParameters.mapper()
-      request_content = self.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/providers/Microsoft.Web/verifyHostingEnvironmentVnet'
@@ -997,8 +985,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::VnetValidationFailureDetails.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::VnetValidationFailureDetails.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1062,6 +1049,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1076,8 +1066,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
-      request_content = self.serialize(request_mapper,  move_resource_envelope)
+      request_content = move_resource_envelope.nil? ? nil: move_resource_envelope.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources'
@@ -1164,6 +1153,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def validate_async(resource_group_name, validate_request, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'validate_request is nil' if validate_request.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1178,8 +1170,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ValidateRequest.mapper()
-      request_content = self.serialize(request_mapper,  validate_request)
+      request_content = validate_request.nil? ? nil: validate_request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate'
@@ -1210,8 +1201,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::ValidateResponse.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1275,6 +1265,9 @@ module Azure::Web::Mgmt::V2016_03_01
     #
     def validate_move_async(resource_group_name, move_resource_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
@@ -1289,8 +1282,7 @@ module Azure::Web::Mgmt::V2016_03_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Web::Mgmt::V2016_03_01::Models::CsmMoveResourceEnvelope.mapper()
-      request_content = self.serialize(request_mapper,  move_resource_envelope)
+      request_content = move_resource_envelope.nil? ? nil: move_resource_envelope.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources'
@@ -1404,8 +1396,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1497,8 +1488,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1590,8 +1580,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1671,8 +1660,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::SourceControlCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1768,8 +1756,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::GeoRegionCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1849,8 +1836,7 @@ module Azure::Web::Mgmt::V2016_03_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.mapper()
-            result.body = self.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Web::Mgmt::V2016_03_01::Models::PremierAddOnOfferCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

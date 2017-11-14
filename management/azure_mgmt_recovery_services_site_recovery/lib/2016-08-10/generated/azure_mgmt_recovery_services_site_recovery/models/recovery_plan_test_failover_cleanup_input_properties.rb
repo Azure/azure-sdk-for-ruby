@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The test failover cleanup comments.
       attr_accessor :comments
 
@@ -23,6 +24,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanTestFailoverCleanupInputProperties',
           type: {
@@ -30,6 +32,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanTestFailoverCleanupInputProperties',
             model_properties: {
               comments: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'comments',
                 type: {

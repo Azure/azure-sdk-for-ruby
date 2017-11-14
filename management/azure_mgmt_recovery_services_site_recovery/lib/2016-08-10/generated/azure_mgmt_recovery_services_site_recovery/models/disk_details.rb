@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The hard disk max size in MB.
       attr_accessor :max_size_mb
 
@@ -31,6 +32,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiskDetails',
           type: {
@@ -38,6 +40,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'DiskDetails',
             model_properties: {
               max_size_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxSizeMB',
                 type: {
@@ -45,6 +48,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vhd_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdType',
                 type: {
@@ -52,6 +56,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vhd_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdId',
                 type: {
@@ -59,6 +64,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vhd_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdName',
                 type: {

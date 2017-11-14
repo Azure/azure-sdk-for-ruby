@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The disk Id.
       attr_accessor :disk_id
 
@@ -37,6 +38,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMageDiskDetails',
           type: {
@@ -44,6 +46,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageDiskDetails',
             model_properties: {
               disk_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskId',
                 type: {
@@ -51,6 +54,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskName',
                 type: {
@@ -58,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_size_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSizeInMB',
                 type: {
@@ -65,6 +70,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskType',
                 type: {
@@ -72,6 +78,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskConfiguration',
                 type: {
@@ -79,11 +86,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               volume_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiskVolumeDetailsElementType',
                       type: {

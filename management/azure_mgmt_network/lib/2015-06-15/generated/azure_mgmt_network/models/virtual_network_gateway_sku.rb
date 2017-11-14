@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [VirtualNetworkGatewaySkuName] Gateway sku name
       # -Basic/HighPerformance/Standard. Possible values include: 'Basic',
       # 'HighPerformance', 'Standard'
@@ -32,6 +33,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkGatewaySku',
           type: {
@@ -39,6 +41,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'VirtualNetworkGatewaySku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

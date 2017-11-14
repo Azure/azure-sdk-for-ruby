@@ -83,8 +83,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.mapper()
-      request_content = @client.serialize(request_mapper,  activity_log_alert)
+      request_content = activity_log_alert.nil? ? nil: activity_log_alert.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/activityLogAlerts/{activityLogAlertName}'
@@ -115,8 +114,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -125,8 +123,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -216,8 +213,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -374,8 +370,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertPatchBody.mapper()
-      request_content = @client.serialize(request_mapper,  activity_log_alert_patch)
+      request_content = activity_log_alert_patch.nil? ? nil: activity_log_alert_patch.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/activityLogAlerts/{activityLogAlertName}'
@@ -406,8 +401,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -489,8 +483,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -576,8 +569,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Monitor::Mgmt::V2017_04_01::Models::ActivityLogAlertList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The IPv6 address of this AAAA record.
       attr_accessor :ipv6address
 
@@ -22,6 +23,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AaaaRecord',
           type: {
@@ -29,6 +31,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'AaaaRecord',
             model_properties: {
               ipv6address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipv6Address',
                 type: {

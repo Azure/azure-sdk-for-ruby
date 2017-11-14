@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL of the API definition.
       attr_accessor :url
 
@@ -22,6 +23,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApiDefinitionInfo',
           type: {
@@ -29,6 +31,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'ApiDefinitionInfo',
             model_properties: {
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {

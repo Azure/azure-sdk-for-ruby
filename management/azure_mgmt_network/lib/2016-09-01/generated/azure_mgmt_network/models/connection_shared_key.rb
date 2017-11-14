@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The virtual network connection shared key value.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionSharedKey',
           type: {
@@ -29,6 +31,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ConnectionSharedKey',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {

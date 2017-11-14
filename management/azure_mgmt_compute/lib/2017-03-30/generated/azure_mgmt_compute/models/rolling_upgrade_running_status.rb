@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [RollingUpgradeStatusCode] Code indicating the current status
       # of the upgrade. Possible values include: 'RollingForward', 'Cancelled',
       # 'Completed', 'Faulted'
@@ -34,6 +35,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RollingUpgradeRunningStatus',
           type: {
@@ -41,6 +43,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RollingUpgradeRunningStatus',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -50,6 +53,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -58,6 +62,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               last_action: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastAction',
@@ -67,6 +72,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               last_action_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastActionTime',

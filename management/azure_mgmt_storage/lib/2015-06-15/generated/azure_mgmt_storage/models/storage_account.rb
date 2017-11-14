@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProvisioningState] The status of the storage account at the
       # time the operation was called. Possible values include: 'Creating',
       # 'ResolvingDNS', 'Succeeded'
@@ -74,6 +75,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccount',
           type: {
@@ -81,6 +83,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'StorageAccount',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -89,6 +92,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -97,6 +101,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -105,6 +110,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -112,11 +118,13 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -126,6 +134,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -134,6 +143,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               account_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accountType',
                 type: {
@@ -142,6 +152,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               primary_endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryEndpoints',
                 type: {
@@ -150,6 +161,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               primary_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryLocation',
                 type: {
@@ -157,6 +169,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               status_of_primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.statusOfPrimary',
                 type: {
@@ -165,6 +178,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               last_geo_failover_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lastGeoFailoverTime',
                 type: {
@@ -172,6 +186,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               secondary_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secondaryLocation',
                 type: {
@@ -179,6 +194,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               status_of_secondary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.statusOfSecondary',
                 type: {
@@ -187,6 +203,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               creation_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.creationTime',
                 type: {
@@ -194,6 +211,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               custom_domain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customDomain',
                 type: {
@@ -202,6 +220,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               secondary_endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secondaryEndpoints',
                 type: {

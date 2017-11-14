@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Location of the resource
       attr_accessor :location
 
@@ -25,6 +26,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TrackedResource',
           type: {
@@ -32,6 +34,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
             class_name: 'TrackedResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +43,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +52,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -56,6 +61,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -63,11 +69,13 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

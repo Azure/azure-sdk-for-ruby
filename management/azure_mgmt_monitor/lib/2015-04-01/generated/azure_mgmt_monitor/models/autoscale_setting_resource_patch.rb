@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
@@ -42,6 +43,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoscaleSettingResourcePatch',
           type: {
@@ -49,11 +51,13 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'AutoscaleSettingResourcePatch',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -63,6 +67,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               profiles: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.profiles',
                 constraints: {
@@ -71,6 +76,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AutoscaleProfileElementType',
                       type: {
@@ -81,11 +87,13 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               notifications: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notifications',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AutoscaleNotificationElementType',
                       type: {
@@ -96,6 +104,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enabled',
                 default_value: true,
@@ -104,6 +113,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -111,6 +121,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               target_resource_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetResourceUri',
                 type: {

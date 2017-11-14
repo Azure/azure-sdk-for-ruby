@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URI of the template to deploy.
       attr_accessor :uri
 
@@ -26,6 +27,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TemplateLink',
           type: {
@@ -33,6 +35,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'TemplateLink',
             model_properties: {
               uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'uri',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               content_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentVersion',
                 type: {

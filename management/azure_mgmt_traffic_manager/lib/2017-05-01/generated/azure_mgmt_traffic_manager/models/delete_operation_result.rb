@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The result of the operation or request.
       attr_accessor :operation_result
 
@@ -22,6 +23,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeleteOperationResult',
           type: {
@@ -29,6 +31,7 @@ module Azure::TrafficManager::Mgmt::V2017_05_01
             class_name: 'DeleteOperationResult',
             model_properties: {
               operation_result: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'boolean',

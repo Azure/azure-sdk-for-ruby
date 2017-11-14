@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The changed time of integration account sessions.
       attr_accessor :changed_time
 
@@ -22,6 +23,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountSessionFilter',
           type: {
@@ -29,6 +31,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountSessionFilter',
             model_properties: {
               changed_time: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'changedTime',
                 type: {

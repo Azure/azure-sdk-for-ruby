@@ -12,6 +12,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SharedAccessAuthorizationRuleProperties] Properties of the
       # Namespace AuthorizationRules.
       attr_accessor :properties
@@ -24,6 +25,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SharedAccessAuthorizationRuleCreateOrUpdateParameters',
           type: {
@@ -31,6 +33,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'SharedAccessAuthorizationRuleCreateOrUpdateParameters',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -39,6 +42,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -47,6 +51,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -55,6 +60,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -62,11 +68,13 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -76,6 +84,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -84,6 +93,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {

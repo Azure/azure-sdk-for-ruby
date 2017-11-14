@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Friendly name of the fabric.
       attr_accessor :friendly_name
 
@@ -43,6 +44,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FabricProperties',
           type: {
@@ -50,6 +52,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'FabricProperties',
             model_properties: {
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -57,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               encryption_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionDetails',
                 type: {
@@ -65,6 +69,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               rollover_encryption_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rolloverEncryptionDetails',
                 type: {
@@ -73,6 +78,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               internal_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalIdentifier',
                 type: {
@@ -80,6 +86,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               bcdr_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bcdrState',
                 type: {
@@ -87,6 +94,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customDetails',
                 type: {
@@ -97,11 +105,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               health_error_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthErrorDetails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {
@@ -112,6 +122,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               health: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'health',
                 type: {

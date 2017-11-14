@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Count of unhealthy VMs.
       attr_accessor :un_healthy_vm_count
 
@@ -39,6 +40,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MonitoringSummary',
           type: {
@@ -46,6 +48,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'MonitoringSummary',
             model_properties: {
               un_healthy_vm_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unHealthyVmCount',
                 type: {
@@ -53,6 +56,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               un_healthy_provider_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unHealthyProviderCount',
                 type: {
@@ -60,6 +64,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               events_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventsCount',
                 type: {
@@ -67,6 +72,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               deprecated_provider_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deprecatedProviderCount',
                 type: {
@@ -74,6 +80,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               supported_provider_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'supportedProviderCount',
                 type: {
@@ -81,6 +88,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               unsupported_provider_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unsupportedProviderCount',
                 type: {

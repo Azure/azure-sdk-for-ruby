@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["OperationStatusJobExtendedInfo"] = "OperationStatusJobExtendedInfo"
       @@discriminatorMap["OperationStatusJobsExtendedInfo"] = "OperationStatusJobsExtendedInfo"
@@ -30,6 +31,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatusExtendedInfo',
           type: {

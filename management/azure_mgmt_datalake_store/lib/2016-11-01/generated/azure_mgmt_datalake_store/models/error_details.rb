@@ -12,6 +12,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] the HTTP status code or error code associated with
       # this error
       attr_accessor :code
@@ -30,6 +31,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -37,6 +39,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'code',
@@ -45,6 +48,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -53,6 +57,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'target',

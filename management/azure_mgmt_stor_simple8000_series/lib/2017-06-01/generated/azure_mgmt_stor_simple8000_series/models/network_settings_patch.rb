@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DNSSettings] The DNS (Domain Name System) settings of device.
       attr_accessor :dns_settings
 
@@ -25,6 +26,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkSettingsPatch',
           type: {
@@ -32,6 +34,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NetworkSettingsPatch',
             model_properties: {
               dns_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -40,6 +43,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               network_adapters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkAdapters',
                 type: {

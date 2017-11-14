@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The service URI for the webhook to post notifications.
       attr_accessor :service_uri
 
@@ -26,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CallbackConfig',
           type: {
@@ -33,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'CallbackConfig',
             model_properties: {
               service_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'serviceUri',
                 type: {
@@ -40,11 +43,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               custom_headers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customHeaders',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

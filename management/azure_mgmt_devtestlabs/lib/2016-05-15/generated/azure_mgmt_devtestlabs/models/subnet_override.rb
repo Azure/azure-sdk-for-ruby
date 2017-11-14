@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The resource ID of the subnet.
       attr_accessor :resource_id
 
@@ -42,6 +43,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubnetOverride',
           type: {
@@ -49,6 +51,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'SubnetOverride',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -56,6 +59,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_subnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'labSubnetName',
                 type: {
@@ -63,6 +67,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               use_in_vm_creation_permission: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'useInVmCreationPermission',
                 type: {
@@ -70,6 +75,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               use_public_ip_address_permission: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'usePublicIpAddressPermission',
                 type: {
@@ -77,6 +83,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               shared_public_ip_address_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sharedPublicIpAddressConfiguration',
                 type: {
@@ -85,6 +92,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               virtual_network_pool_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualNetworkPoolName',
                 type: {

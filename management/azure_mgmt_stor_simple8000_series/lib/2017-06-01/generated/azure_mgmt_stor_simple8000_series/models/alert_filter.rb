@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AlertStatus] Specifies the status of the alerts to be
       # filtered. Only 'Equality' operator is supported for this property.
       # Possible values include: 'Active', 'Cleared'
@@ -43,6 +44,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AlertFilter',
           type: {
@@ -50,6 +52,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AlertFilter',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -58,6 +61,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               severity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'severity',
                 type: {
@@ -66,6 +70,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               source_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceType',
                 type: {
@@ -74,6 +79,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               source_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceName',
                 type: {
@@ -81,6 +87,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               appeared_on_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appearedOnTime',
                 type: {

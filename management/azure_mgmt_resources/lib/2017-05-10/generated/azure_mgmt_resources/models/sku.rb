@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2017_05_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The SKU name.
       attr_accessor :name
 
@@ -37,6 +38,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -44,6 +46,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -58,6 +62,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -65,6 +70,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               family: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {
@@ -72,6 +78,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               model: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'model',
                 type: {
@@ -79,6 +86,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

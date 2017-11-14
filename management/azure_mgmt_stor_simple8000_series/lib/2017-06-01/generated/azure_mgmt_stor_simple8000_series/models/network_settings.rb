@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DNSSettings] The DNS (Domain Name System) settings of device.
       attr_accessor :dns_settings
 
@@ -28,6 +29,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkSettings',
           type: {
@@ -35,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'NetworkSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,6 +46,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,6 +55,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -59,6 +64,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -67,6 +73,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               dns_settings: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -75,6 +82,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               network_adapters: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.networkAdapters',
                 type: {
@@ -83,6 +91,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               webproxy_settings: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.webproxySettings',
                 type: {

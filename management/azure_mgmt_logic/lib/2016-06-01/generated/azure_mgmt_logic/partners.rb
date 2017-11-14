@@ -105,8 +105,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartnerListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartnerListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -200,8 +199,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -276,8 +274,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.mapper()
-      request_content = @client.serialize(request_mapper,  partner)
+      request_content = partner.nil? ? nil: partner.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners/{partnerName}'
@@ -308,8 +305,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -318,8 +314,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartner.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -489,8 +484,7 @@ module Azure::Logic::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartnerListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Logic::Mgmt::V2016_06_01::Models::IntegrationAccountPartnerListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

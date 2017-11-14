@@ -12,6 +12,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource Id.
       attr_accessor :id
 
@@ -31,6 +32,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -38,6 +40,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
             class_name: 'Resource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +49,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +58,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,12 +67,14 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

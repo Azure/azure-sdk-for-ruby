@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The blob name of the upload URI.
       attr_accessor :blob_name
 
@@ -22,6 +23,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GenerateUploadUriParameter',
           type: {
@@ -29,6 +31,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'GenerateUploadUriParameter',
             model_properties: {
               blob_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobName',
                 type: {

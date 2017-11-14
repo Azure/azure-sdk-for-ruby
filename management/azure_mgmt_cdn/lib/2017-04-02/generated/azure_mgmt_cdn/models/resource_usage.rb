@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource type for which the usage is provided.
       attr_accessor :resource_type
 
@@ -31,6 +32,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceUsage',
           type: {
@@ -38,6 +40,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'ResourceUsage',
             model_properties: {
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -46,6 +49,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -54,6 +58,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'currentValue',
@@ -62,6 +67,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',

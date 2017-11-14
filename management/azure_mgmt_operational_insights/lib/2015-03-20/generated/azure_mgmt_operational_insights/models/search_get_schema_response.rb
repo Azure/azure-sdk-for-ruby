@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SearchMetadata] The metadata from search results.
       attr_accessor :metadata
 
@@ -25,6 +26,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SearchGetSchemaResponse',
           type: {
@@ -32,6 +34,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchGetSchemaResponse',
             model_properties: {
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: '__metadata',
                 type: {
@@ -40,11 +43,13 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SearchSchemaValueElementType',
                       type: {

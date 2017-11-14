@@ -12,6 +12,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [PasswordName] Specifies name of the password which should be
       # regenerated -- password or password2. Possible values include:
       # 'password', 'password2'
@@ -24,6 +25,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateCredentialParameters',
           type: {
@@ -31,6 +33,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_06_01_preview
             class_name: 'RegenerateCredentialParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

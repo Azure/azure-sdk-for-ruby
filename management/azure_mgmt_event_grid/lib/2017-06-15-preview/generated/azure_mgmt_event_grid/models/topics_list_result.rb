@@ -12,6 +12,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Topic>] A collection of Topics
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopicsListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::EventGrid::Mgmt::V2017_06_15_preview
             class_name: 'TopicsListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TopicElementType',
                       type: {

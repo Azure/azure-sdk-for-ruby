@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] UTC date and time when gateway was first added to
       # management service.
       attr_accessor :created
@@ -53,6 +54,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayResource',
           type: {
@@ -60,6 +62,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'GatewayResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -68,6 +71,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,6 +80,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -84,6 +89,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -92,11 +98,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -106,6 +114,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -113,6 +122,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               created: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.created',
                 type: {
@@ -120,6 +130,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               updated: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.updated',
                 type: {
@@ -127,6 +138,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               upgrade_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradeMode',
                 type: {
@@ -135,6 +147,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               desired_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.desiredVersion',
                 type: {
@@ -142,11 +155,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               instances: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.instances',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GatewayStatusElementType',
                       type: {
@@ -157,6 +172,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               active_message_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.activeMessageCount',
                 type: {
@@ -164,6 +180,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               latest_published_msi_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.latestPublishedMsiVersion',
                 type: {
@@ -171,6 +188,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               published_time_utc: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publishedTimeUtc',
                 type: {
@@ -178,6 +196,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               installer_download: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.installerDownload',
@@ -186,6 +205,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               minimum_version: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.minimumVersion',

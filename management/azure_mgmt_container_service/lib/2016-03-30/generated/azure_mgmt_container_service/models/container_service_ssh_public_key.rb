@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Certificate public key used to authenticate with VMs
       # through SSH. The certificate must be in PEM format with or without
       # headers.
@@ -24,6 +25,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceSshPublicKey',
           type: {
@@ -31,6 +33,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceSshPublicKey',
             model_properties: {
               key_data: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyData',
                 type: {

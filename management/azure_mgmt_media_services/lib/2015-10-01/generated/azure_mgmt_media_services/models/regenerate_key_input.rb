@@ -12,6 +12,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KeyType] The keyType indicating which key you want to
       # regenerate, Primary or Secondary. Possible values include: 'Primary',
       # 'Secondary'
@@ -24,6 +25,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeyInput',
           type: {
@@ -31,6 +33,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'RegenerateKeyInput',
             model_properties: {
               key_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {

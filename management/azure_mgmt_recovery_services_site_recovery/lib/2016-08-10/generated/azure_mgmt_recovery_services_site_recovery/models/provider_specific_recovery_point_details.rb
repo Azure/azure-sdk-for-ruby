@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets the provider type.
       attr_accessor :type
 
@@ -22,6 +23,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderSpecificRecoveryPointDetails',
           type: {
@@ -29,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProviderSpecificRecoveryPointDetails',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Type',

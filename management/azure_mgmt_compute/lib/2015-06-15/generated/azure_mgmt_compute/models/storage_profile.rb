@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ImageReference] The image reference.
       attr_accessor :image_reference
 
@@ -28,6 +29,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageProfile',
           type: {
@@ -35,6 +37,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'StorageProfile',
             model_properties: {
               image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               os_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDisk',
                 type: {
@@ -51,11 +55,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               data_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataDiskElementType',
                       type: {

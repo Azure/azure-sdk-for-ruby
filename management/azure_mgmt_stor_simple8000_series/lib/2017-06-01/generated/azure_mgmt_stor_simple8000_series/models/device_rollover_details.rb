@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AuthorizationEligibility] The eligibility status of device for
       # service data encryption key rollover. Possible values include:
       # 'InEligible', 'Eligible'
@@ -36,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceRolloverDetails',
           type: {
@@ -43,6 +45,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DeviceRolloverDetails',
             model_properties: {
               authorization_eligibility: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationEligibility',
                 type: {
@@ -51,6 +54,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               authorization_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationStatus',
                 type: {
@@ -59,6 +63,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               in_eligibility_reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'inEligibilityReason',
                 type: {

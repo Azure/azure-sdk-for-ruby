@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The maximum percent of total virtual machine
       # instances that will be upgraded simultaneously by the rolling upgrade
       # in one batch. As this is a maximum, unhealthy instances in previous or
@@ -48,6 +49,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RollingUpgradePolicy',
           type: {
@@ -55,6 +57,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RollingUpgradePolicy',
             model_properties: {
               max_batch_instance_percent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxBatchInstancePercent',
                 constraints: {
@@ -66,6 +69,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               max_unhealthy_instance_percent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxUnhealthyInstancePercent',
                 constraints: {
@@ -77,6 +81,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               max_unhealthy_upgraded_instance_percent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxUnhealthyUpgradedInstancePercent',
                 constraints: {
@@ -88,6 +93,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               pause_time_between_batches: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pauseTimeBetweenBatches',
                 type: {

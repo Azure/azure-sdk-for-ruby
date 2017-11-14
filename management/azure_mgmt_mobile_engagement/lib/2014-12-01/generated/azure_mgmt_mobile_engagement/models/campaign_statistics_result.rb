@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] Number of times the campaign was registered to be
       # pushed.
       attr_accessor :queued
@@ -93,6 +94,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CampaignStatisticsResult',
           type: {
@@ -100,6 +102,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'CampaignStatisticsResult',
             model_properties: {
               queued: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'queued',
                 type: {
@@ -107,6 +110,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               pushed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pushed',
                 type: {
@@ -114,6 +118,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               pushed_native: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pushed-native',
                 type: {
@@ -121,6 +126,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               pushed_native_google: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pushed-native-google',
                 type: {
@@ -128,6 +134,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               pushed_native_adm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'pushed-native-adm',
                 type: {
@@ -135,6 +142,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               delivered: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'delivered',
                 type: {
@@ -142,6 +150,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               dropped: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dropped',
                 type: {
@@ -149,6 +158,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               system_notification_displayed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'system-notification-displayed',
                 type: {
@@ -156,6 +166,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               in_app_notification_displayed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'in-app-notification-displayed',
                 type: {
@@ -163,6 +174,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               content_displayed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'content-displayed',
                 type: {
@@ -170,6 +182,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               system_notification_actioned: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'system-notification-actioned',
                 type: {
@@ -177,6 +190,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               system_notification_exited: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'system-notification-exited',
                 type: {
@@ -184,6 +198,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               in_app_notification_actioned: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'in-app-notification-actioned',
                 type: {
@@ -191,6 +206,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               in_app_notification_exited: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'in-app-notification-exited',
                 type: {
@@ -198,6 +214,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               content_actioned: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'content-actioned',
                 type: {
@@ -205,6 +222,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               content_exited: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'content-exited',
                 type: {
@@ -212,11 +230,13 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               answers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'answers',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {

@@ -13,6 +13,7 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return The template content.
       attr_accessor :template
 
@@ -23,6 +24,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentExportResult',
           type: {
@@ -30,6 +32,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'DeploymentExportResult',
             model_properties: {
               template: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {

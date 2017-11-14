@@ -12,6 +12,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SkuName>] The SKU of the resource.
       attr_accessor :skus
 
@@ -33,6 +34,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckSkuAvailabilityParameter',
           type: {
@@ -40,11 +42,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CheckSkuAvailabilityParameter',
             model_properties: {
               skus: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'skus',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SkuNameElementType',
                       type: {
@@ -54,6 +58,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'kind',
                 type: {
@@ -61,6 +66,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {

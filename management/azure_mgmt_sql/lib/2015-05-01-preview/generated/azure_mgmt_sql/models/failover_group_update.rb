@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [FailoverGroupReadWriteEndpoint] Read-write endpoint of the
       # failover group instance.
       attr_accessor :read_write_endpoint
@@ -33,6 +34,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverGroupUpdate',
           type: {
@@ -40,6 +42,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'FailoverGroupUpdate',
             model_properties: {
               read_write_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.readWriteEndpoint',
                 type: {
@@ -48,6 +51,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               read_only_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.readOnlyEndpoint',
                 type: {
@@ -56,11 +60,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               databases: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.databases',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -70,11 +76,13 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

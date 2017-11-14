@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The vendor for the vpn device.
       attr_accessor :vendor
 
@@ -28,6 +29,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VpnDeviceScriptParameters',
           type: {
@@ -35,6 +37,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'VpnDeviceScriptParameters',
             model_properties: {
               vendor: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vendor',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               device_family: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'deviceFamily',
                 type: {
@@ -49,6 +53,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               firmware_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'firmwareVersion',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ActionGroupResource>] The list of action groups.
       attr_accessor :value
 
@@ -26,6 +27,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ActionGroupList',
           type: {
@@ -33,11 +35,13 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActionGroupList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ActionGroupResourceElementType',
                       type: {
@@ -48,6 +52,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] A value indicating whether to send email to
       # subscription administrator.
       attr_accessor :send_to_owners
@@ -29,6 +30,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AlertProperties',
           type: {
@@ -36,6 +38,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'AlertProperties',
             model_properties: {
               send_to_owners: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sendToOwners',
                 type: {
@@ -43,11 +46,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_email_addresses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customEmailAddresses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -57,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               locale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locale',
                 type: {

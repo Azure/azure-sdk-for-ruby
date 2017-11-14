@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [VirtualNetworkGateway]
       attr_accessor :virtual_network_gateway1
 
@@ -65,6 +66,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkGatewayConnection',
           type: {
@@ -72,6 +74,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'VirtualNetworkGatewayConnection',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -80,6 +83,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -88,6 +92,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -96,6 +101,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -103,11 +109,13 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -117,6 +125,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               virtual_network_gateway1: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetworkGateway1',
                 type: {
@@ -125,6 +134,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               virtual_network_gateway2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetworkGateway2',
                 type: {
@@ -133,6 +143,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               local_network_gateway2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localNetworkGateway2',
                 type: {
@@ -141,6 +152,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               connection_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionType',
                 type: {
@@ -148,6 +160,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               routing_weight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routingWeight',
                 type: {
@@ -155,6 +168,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               shared_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sharedKey',
                 type: {
@@ -162,6 +176,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               connection_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionStatus',
                 type: {
@@ -169,6 +184,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               egress_bytes_transferred: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.egressBytesTransferred',
                 type: {
@@ -176,6 +192,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               ingress_bytes_transferred: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ingressBytesTransferred',
                 type: {
@@ -183,6 +200,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               peer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peer',
                 type: {
@@ -191,6 +209,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -198,6 +217,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -205,6 +225,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

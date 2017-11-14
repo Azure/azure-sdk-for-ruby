@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [JobExecutionStatus] Gets or sets the job execution status.
       # Possible values include: 'Completed', 'Failed', 'Postponed'
       attr_accessor :status
@@ -24,6 +25,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobHistoryFilter',
           type: {
@@ -31,6 +33,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobHistoryFilter',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

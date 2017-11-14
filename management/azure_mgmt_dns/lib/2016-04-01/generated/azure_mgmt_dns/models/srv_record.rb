@@ -12,6 +12,7 @@ module Azure::Dns::Mgmt::V2016_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The priority value for this SRV record.
       attr_accessor :priority
 
@@ -31,6 +32,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SrvRecord',
           type: {
@@ -38,6 +40,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'SrvRecord',
             model_properties: {
               priority: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'priority',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               weight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'weight',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {
@@ -59,6 +64,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {

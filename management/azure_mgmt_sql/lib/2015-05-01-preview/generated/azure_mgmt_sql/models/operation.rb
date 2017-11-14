@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the operation being performed on this
       # particular object.
       attr_accessor :name
@@ -34,6 +35,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -41,6 +43,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'Operation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +52,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'display',
@@ -58,6 +62,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'origin',
@@ -66,12 +71,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {

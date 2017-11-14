@@ -12,6 +12,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ServerAdministrators] A collection of AS server administrators
       attr_accessor :as_administrators
 
@@ -46,6 +47,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AnalysisServicesServer',
           type: {
@@ -53,6 +55,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
             class_name: 'AnalysisServicesServer',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -61,6 +64,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -69,6 +73,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,6 +82,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -84,6 +90,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -92,11 +99,13 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -106,6 +115,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               as_administrators: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.asAdministrators',
                 type: {
@@ -114,6 +124,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               backup_blob_container_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backupBlobContainerUri',
                 type: {
@@ -121,6 +132,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               gateway_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayDetails',
                 type: {
@@ -129,6 +141,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.state',
@@ -137,6 +150,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -145,6 +159,7 @@ module Azure::AnalysisServices::Mgmt::V2017_07_14
                 }
               },
               server_full_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serverFullName',

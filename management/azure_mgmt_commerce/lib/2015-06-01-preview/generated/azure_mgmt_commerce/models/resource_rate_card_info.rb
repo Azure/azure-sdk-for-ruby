@@ -12,6 +12,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The currency in which the rates are provided.
       attr_accessor :currency
 
@@ -36,6 +37,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceRateCardInfo',
           type: {
@@ -43,6 +45,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'ResourceRateCardInfo',
             model_properties: {
               currency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Currency',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               locale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Locale',
                 type: {
@@ -57,6 +61,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               is_tax_included: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'IsTaxIncluded',
                 type: {
@@ -64,11 +69,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               offer_terms: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'OfferTerms',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OfferTermInfoElementType',
                       type: {
@@ -81,11 +88,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Meters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MeterInfoElementType',
                       type: {

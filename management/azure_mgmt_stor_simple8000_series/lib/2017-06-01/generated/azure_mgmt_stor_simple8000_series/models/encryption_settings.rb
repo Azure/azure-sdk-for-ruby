@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [EncryptionStatus] The encryption status to indicates if
       # encryption is enabled or not. Possible values include: 'Enabled',
       # 'Disabled'
@@ -30,6 +31,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionSettings',
           type: {
@@ -37,6 +39,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'EncryptionSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -45,6 +48,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -53,6 +57,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -61,6 +66,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -69,6 +75,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               encryption_status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.encryptionStatus',
                 type: {
@@ -77,6 +84,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               key_rollover_status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.keyRolloverStatus',
                 type: {

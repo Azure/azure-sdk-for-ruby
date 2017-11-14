@@ -149,8 +149,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -199,8 +198,7 @@ module Azure::Network::Mgmt::V2017_09_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -288,8 +286,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::SubnetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::SubnetListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -451,8 +448,7 @@ module Azure::Network::Mgmt::V2017_09_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.mapper()
-      request_content = @client.serialize(request_mapper,  subnet_parameters)
+      request_content = subnet_parameters.nil? ? nil: subnet_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}'
@@ -483,8 +479,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -493,8 +488,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::Subnet.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -580,8 +574,7 @@ module Azure::Network::Mgmt::V2017_09_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Network::Mgmt::V2017_09_01::Models::SubnetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Network::Mgmt::V2017_09_01::Models::SubnetListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

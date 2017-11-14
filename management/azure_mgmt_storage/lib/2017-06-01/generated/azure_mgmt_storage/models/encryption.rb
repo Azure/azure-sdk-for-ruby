@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [EncryptionServices] List of services which support encryption.
       attr_accessor :services
 
@@ -31,6 +32,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Encryption',
           type: {
@@ -38,6 +40,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'Encryption',
             model_properties: {
               services: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'services',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               key_source: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keySource',
                 default_value: 'Microsoft.Storage',
@@ -54,6 +58,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               key_vault_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyvaultproperties',
                 type: {

@@ -120,8 +120,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ProtectionContainerResource.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ProtectionContainerResource.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -229,8 +228,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ProtectionContainerResourceList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ProtectionContainerResourceList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -496,8 +494,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ProtectionContainerResourceList.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ProtectionContainerResourceList.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

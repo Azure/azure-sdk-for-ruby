@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource identifier of the partner server.
       attr_accessor :id
 
@@ -29,6 +30,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PartnerInfo',
           type: {
@@ -36,6 +38,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'PartnerInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -43,6 +46,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -51,6 +55,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               replication_role: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'replicationRole',

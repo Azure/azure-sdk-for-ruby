@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ContainerServiceSshPublicKey>] the list of SSH public
       # keys used to authenticate with Linux-based VMs.
       attr_accessor :public_keys
@@ -23,6 +24,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceSshConfiguration',
           type: {
@@ -30,11 +32,13 @@ module Azure::ContainerService::Mgmt::V2017_01_31
             class_name: 'ContainerServiceSshConfiguration',
             model_properties: {
               public_keys: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'publicKeys',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ContainerServiceSshPublicKeyElementType',
                       type: {

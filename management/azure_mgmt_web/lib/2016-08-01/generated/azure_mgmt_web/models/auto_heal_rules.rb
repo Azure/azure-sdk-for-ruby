@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AutoHealTriggers] Conditions that describe when to execute the
       # auto-heal actions.
       attr_accessor :triggers
@@ -27,6 +28,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoHealRules',
           type: {
@@ -34,6 +36,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'AutoHealRules',
             model_properties: {
               triggers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'triggers',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               actions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actions',
                 type: {

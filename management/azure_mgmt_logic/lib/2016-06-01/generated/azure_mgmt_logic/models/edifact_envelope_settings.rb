@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The group association assigned code.
       attr_accessor :group_association_assigned_code
 
@@ -150,6 +151,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactEnvelopeSettings',
           type: {
@@ -157,6 +159,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactEnvelopeSettings',
             model_properties: {
               group_association_assigned_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupAssociationAssignedCode',
                 type: {
@@ -164,6 +167,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               communication_agreement_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'communicationAgreementId',
                 type: {
@@ -171,6 +175,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               apply_delimiter_string_advice: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'applyDelimiterStringAdvice',
                 type: {
@@ -178,6 +183,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               create_grouping_segments: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createGroupingSegments',
                 type: {
@@ -185,6 +191,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_default_group_headers: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableDefaultGroupHeaders',
                 type: {
@@ -192,6 +199,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               recipient_reference_password_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recipientReferencePasswordValue',
                 type: {
@@ -199,6 +207,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               recipient_reference_password_qualifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recipientReferencePasswordQualifier',
                 type: {
@@ -206,6 +215,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               application_reference_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationReferenceId',
                 type: {
@@ -213,6 +223,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               processing_priority_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'processingPriorityCode',
                 type: {
@@ -220,6 +231,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interchange_control_number_lower_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'interchangeControlNumberLowerBound',
                 type: {
@@ -227,6 +239,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interchange_control_number_upper_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'interchangeControlNumberUpperBound',
                 type: {
@@ -234,6 +247,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               rollover_interchange_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rolloverInterchangeControlNumber',
                 type: {
@@ -241,6 +255,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interchange_control_number_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interchangeControlNumberPrefix',
                 type: {
@@ -248,6 +263,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interchange_control_number_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interchangeControlNumberSuffix',
                 type: {
@@ -255,6 +271,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_reverse_routing_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderReverseRoutingAddress',
                 type: {
@@ -262,6 +279,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_reverse_routing_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiverReverseRoutingAddress',
                 type: {
@@ -269,6 +287,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               functional_group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'functionalGroupId',
                 type: {
@@ -276,6 +295,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_controlling_agency_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupControllingAgencyCode',
                 type: {
@@ -283,6 +303,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_message_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupMessageVersion',
                 type: {
@@ -290,6 +311,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_message_release: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupMessageRelease',
                 type: {
@@ -297,6 +319,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_control_number_lower_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'groupControlNumberLowerBound',
                 type: {
@@ -304,6 +327,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_control_number_upper_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'groupControlNumberUpperBound',
                 type: {
@@ -311,6 +335,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               rollover_group_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rolloverGroupControlNumber',
                 type: {
@@ -318,6 +343,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_control_number_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupControlNumberPrefix',
                 type: {
@@ -325,6 +351,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_control_number_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupControlNumberSuffix',
                 type: {
@@ -332,6 +359,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_application_receiver_qualifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupApplicationReceiverQualifier',
                 type: {
@@ -339,6 +367,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_application_receiver_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupApplicationReceiverId',
                 type: {
@@ -346,6 +375,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_application_sender_qualifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupApplicationSenderQualifier',
                 type: {
@@ -353,6 +383,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_application_sender_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupApplicationSenderId',
                 type: {
@@ -360,6 +391,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_application_password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupApplicationPassword',
                 type: {
@@ -367,6 +399,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               overwrite_existing_transaction_set_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'overwriteExistingTransactionSetControlNumber',
                 type: {
@@ -374,6 +407,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               transaction_set_control_number_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'transactionSetControlNumberPrefix',
                 type: {
@@ -381,6 +415,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               transaction_set_control_number_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'transactionSetControlNumberSuffix',
                 type: {
@@ -388,6 +423,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               transaction_set_control_number_lower_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'transactionSetControlNumberLowerBound',
                 type: {
@@ -395,6 +431,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               transaction_set_control_number_upper_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'transactionSetControlNumberUpperBound',
                 type: {
@@ -402,6 +439,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               rollover_transaction_set_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rolloverTransactionSetControlNumber',
                 type: {
@@ -409,6 +447,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               is_test_interchange: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'isTestInterchange',
                 type: {
@@ -416,6 +455,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_internal_identification: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderInternalIdentification',
                 type: {
@@ -423,6 +463,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_internal_sub_identification: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderInternalSubIdentification',
                 type: {
@@ -430,6 +471,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_internal_identification: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiverInternalIdentification',
                 type: {
@@ -437,6 +479,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_internal_sub_identification: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiverInternalSubIdentification',
                 type: {

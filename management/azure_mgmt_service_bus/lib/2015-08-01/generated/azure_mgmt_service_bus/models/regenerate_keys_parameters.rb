@@ -12,6 +12,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Policykey] Key that needs to be regenerated. Possible values
       # include: 'PrimaryKey', 'SecondaryKey'
       attr_accessor :policykey
@@ -23,6 +24,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeysParameters',
           type: {
@@ -30,6 +32,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'RegenerateKeysParameters',
             model_properties: {
               policykey: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Policykey',
                 type: {

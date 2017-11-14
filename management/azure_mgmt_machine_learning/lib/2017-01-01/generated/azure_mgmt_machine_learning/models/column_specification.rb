@@ -14,6 +14,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ColumnType] Data type of the column. Possible values include:
       # 'Boolean', 'Integer', 'Number', 'String'
       attr_accessor :type
@@ -43,6 +44,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ColumnSpecification',
           type: {
@@ -50,6 +52,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'ColumnSpecification',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -57,6 +60,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {
@@ -64,11 +68,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               enum: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enum',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {
@@ -78,6 +84,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               x_ms_isnullable: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'x-ms-isnullable',
                 type: {
@@ -85,6 +92,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               x_ms_isordered: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'x-ms-isordered',
                 type: {

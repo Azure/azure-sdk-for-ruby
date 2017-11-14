@@ -12,6 +12,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the management group. E.g.
       # /providers/Microsoft.Management/managementGroups/20000000-0000-0000-0000-000000000000
       attr_accessor :id
@@ -41,6 +42,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementGroup',
           type: {
@@ -48,6 +50,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ManagementGroup',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -56,6 +59,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +68,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -72,6 +77,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.tenantId',
                 type: {
@@ -79,6 +85,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -86,6 +93,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.details',
                 type: {

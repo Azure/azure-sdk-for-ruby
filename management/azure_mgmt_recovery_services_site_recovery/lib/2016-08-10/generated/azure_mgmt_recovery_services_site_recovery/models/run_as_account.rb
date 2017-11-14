@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The CS RunAs account Id.
       attr_accessor :account_id
 
@@ -25,6 +26,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunAsAccount',
           type: {
@@ -32,6 +34,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RunAsAccount',
             model_properties: {
               account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountId',
                 type: {
@@ -39,6 +42,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               account_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountName',
                 type: {

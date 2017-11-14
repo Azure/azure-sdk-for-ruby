@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] How the extension handler should be forced to update
       # even if the extension configuration has not changed.
       attr_accessor :force_update_tag
@@ -54,6 +55,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtension',
           type: {
@@ -61,6 +63,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineExtension',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -69,6 +72,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -77,6 +81,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -85,6 +90,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -92,11 +98,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -106,6 +114,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               force_update_tag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.forceUpdateTag',
                 type: {
@@ -113,6 +122,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publisher',
                 type: {
@@ -120,6 +130,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               virtual_machine_extension_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.type',
                 type: {
@@ -127,6 +138,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               type_handler_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.typeHandlerVersion',
                 type: {
@@ -134,6 +146,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               auto_upgrade_minor_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoUpgradeMinorVersion',
                 type: {
@@ -141,6 +154,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.settings',
                 type: {
@@ -148,6 +162,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               protected_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protectedSettings',
                 type: {
@@ -155,6 +170,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -163,6 +179,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               instance_view: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.instanceView',
                 type: {

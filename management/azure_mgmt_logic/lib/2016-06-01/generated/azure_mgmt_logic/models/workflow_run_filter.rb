@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [WorkflowStatus] The status of workflow run. Possible values
       # include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
       # 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
@@ -25,6 +26,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowRunFilter',
           type: {
@@ -32,6 +34,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowRunFilter',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

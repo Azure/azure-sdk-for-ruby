@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :name
 
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CsmOperationDescription',
           type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'CsmOperationDescription',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -61,6 +66,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<OptimizationType>] Supported optimization types for a
       # profile.
       attr_accessor :supported_optimization_types
@@ -23,6 +24,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SupportedOptimizationTypesListResult',
           type: {
@@ -30,12 +32,14 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'SupportedOptimizationTypesListResult',
             model_properties: {
               supported_optimization_types: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedOptimizationTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OptimizationTypeElementType',
                       type: {

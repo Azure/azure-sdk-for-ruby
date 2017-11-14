@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The minimum capacity.
       attr_accessor :minimum
 
@@ -32,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceSkuCapacity',
           type: {
@@ -39,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'ResourceSkuCapacity',
             model_properties: {
               minimum: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'minimum',
@@ -47,6 +50,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               maximum: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maximum',
@@ -55,6 +59,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               default: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'default',
@@ -63,6 +68,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               scale_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'scaleType',

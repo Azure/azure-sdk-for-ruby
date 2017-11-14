@@ -12,6 +12,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Encrypted User name to be used to connect to node.
       attr_accessor :user_name
 
@@ -36,6 +37,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SessionParameters',
           type: {
@@ -43,6 +45,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'SessionParameters',
             model_properties: {
               user_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userName',
                 type: {
@@ -50,6 +53,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -57,6 +61,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               retention_period: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionPeriod',
                 type: {
@@ -65,6 +70,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               credential_data_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.credentialDataFormat',
                 type: {
@@ -73,6 +79,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               encryption_certificate_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.EncryptionCertificateThumbprint',
                 type: {

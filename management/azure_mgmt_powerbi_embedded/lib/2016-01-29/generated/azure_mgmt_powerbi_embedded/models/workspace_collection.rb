@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource id
       attr_accessor :id
 
@@ -41,6 +42,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspaceCollection',
           type: {
@@ -48,6 +50,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'WorkspaceCollection',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -55,6 +58,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -62,6 +66,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -69,6 +74,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -76,11 +82,13 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -90,6 +98,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 is_constant: true,
                 serialized_name: 'sku',
@@ -100,6 +109,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AccessLevel] Possible values include: 'None', 'Read'
       attr_accessor :access
 
@@ -26,6 +27,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GrantAccessData',
           type: {
@@ -33,6 +35,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'GrantAccessData',
             model_properties: {
               access: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'access',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               duration_in_seconds: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'durationInSeconds',
                 type: {

@@ -18,6 +18,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Specifies whether password authentication should be
       # disabled.
       attr_accessor :disable_password_authentication
@@ -33,6 +34,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LinuxConfiguration',
           type: {
@@ -40,6 +42,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'LinuxConfiguration',
             model_properties: {
               disable_password_authentication: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'disablePasswordAuthentication',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               ssh: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ssh',
                 type: {

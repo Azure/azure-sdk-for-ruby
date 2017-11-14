@@ -76,7 +76,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -93,8 +97,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::ActivateApplicationPackageParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters)
+      request_content = parameters.nil? ? nil: parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationId}/versions/{version}/activate'
@@ -178,7 +181,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def create_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -217,8 +224,7 @@ module Azure::Batch::Mgmt::V2017_05_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -279,7 +285,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def delete_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -371,7 +381,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def get_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -410,8 +424,7 @@ module Azure::Batch::Mgmt::V2017_05_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

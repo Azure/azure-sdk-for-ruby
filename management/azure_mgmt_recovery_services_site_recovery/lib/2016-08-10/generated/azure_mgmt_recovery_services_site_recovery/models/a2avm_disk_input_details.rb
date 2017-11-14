@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The disk Uri.
       attr_accessor :disk_uri
 
@@ -28,6 +29,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'A2AVmDiskInputDetails',
           type: {
@@ -35,6 +37,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'A2AVmDiskInputDetails',
             model_properties: {
               disk_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskUri',
                 type: {
@@ -42,6 +45,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_azure_storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAzureStorageAccountId',
                 type: {
@@ -49,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_staging_azure_storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryStagingAzureStorageAccountId',
                 type: {

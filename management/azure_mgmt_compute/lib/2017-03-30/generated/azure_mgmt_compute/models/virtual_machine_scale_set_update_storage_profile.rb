@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ImageReference] The image reference.
       attr_accessor :image_reference
 
@@ -29,6 +30,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateStorageProfile',
           type: {
@@ -36,6 +38,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdateStorageProfile',
             model_properties: {
               image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -44,6 +47,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               os_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDisk',
                 type: {
@@ -52,11 +56,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               data_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetDataDiskElementType',
                       type: {

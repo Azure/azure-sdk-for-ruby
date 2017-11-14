@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The system name of the metric.
       attr_accessor :value
 
@@ -25,6 +26,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricName',
           type: {
@@ -32,6 +34,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'MetricName',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -39,6 +42,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               localized_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localizedValue',
                 type: {

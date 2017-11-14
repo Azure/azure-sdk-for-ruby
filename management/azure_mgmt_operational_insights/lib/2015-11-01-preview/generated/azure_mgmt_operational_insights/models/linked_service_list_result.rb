@@ -12,6 +12,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<LinkedService>] Gets or sets a list of linked service
       # instances.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LinkedServiceListResult',
           type: {
@@ -30,11 +32,13 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'LinkedServiceListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LinkedServiceElementType',
                       type: {

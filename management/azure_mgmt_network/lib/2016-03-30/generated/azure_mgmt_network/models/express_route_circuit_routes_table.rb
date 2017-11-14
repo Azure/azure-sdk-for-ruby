@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] network.
       attr_accessor :network
 
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitRoutesTable',
           type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ExpressRouteCircuitRoutesTable',
             model_properties: {
               network: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'network',
                 type: {
@@ -48,6 +51,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               next_hop: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextHop',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               loc_prf: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locPrf',
                 type: {
@@ -62,6 +67,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               weight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'weight',
                 type: {
@@ -69,6 +75,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'path',
                 type: {

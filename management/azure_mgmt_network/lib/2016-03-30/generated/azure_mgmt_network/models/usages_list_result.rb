@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Usage>] Gets or sets the list Network Resource Usages.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsagesListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'UsagesListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageElementType',
                       type: {

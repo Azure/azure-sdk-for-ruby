@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [MapType] The map type. Possible values include:
       # 'NotSpecified', 'Xslt'
       attr_accessor :map_type
@@ -45,6 +46,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountMap',
           type: {
@@ -52,6 +54,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountMap',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,6 +63,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,6 +72,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,6 +81,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -83,11 +89,13 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -97,6 +105,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               map_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.mapType',
                 type: {
@@ -105,6 +114,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               parameters_schema: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parametersSchema',
                 type: {
@@ -113,6 +123,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               created_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -121,6 +132,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.changedTime',
@@ -129,6 +141,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.content',
                 type: {
@@ -136,6 +149,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.contentType',
                 type: {
@@ -143,6 +157,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_link: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.contentLink',
@@ -152,6 +167,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {

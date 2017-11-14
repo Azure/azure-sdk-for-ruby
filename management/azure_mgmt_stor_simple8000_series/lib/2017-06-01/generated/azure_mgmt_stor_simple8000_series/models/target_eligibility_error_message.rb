@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The localized error message stating the reason why the
       # device is not eligible as a target device.
       attr_accessor :message
@@ -37,6 +38,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TargetEligibilityErrorMessage',
           type: {
@@ -44,6 +46,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'TargetEligibilityErrorMessage',
             model_properties: {
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -51,6 +54,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               resolution: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resolution',
                 type: {
@@ -58,6 +62,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               result_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resultCode',
                 type: {

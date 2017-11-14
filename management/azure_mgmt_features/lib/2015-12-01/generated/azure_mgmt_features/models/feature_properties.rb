@@ -12,6 +12,7 @@ module Azure::Features::Mgmt::V2015_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The registration state of the feature for the
       # subscription.
       attr_accessor :state
@@ -23,6 +24,7 @@ module Azure::Features::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FeatureProperties',
           type: {
@@ -30,6 +32,7 @@ module Azure::Features::Mgmt::V2015_12_01
             class_name: 'FeatureProperties',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

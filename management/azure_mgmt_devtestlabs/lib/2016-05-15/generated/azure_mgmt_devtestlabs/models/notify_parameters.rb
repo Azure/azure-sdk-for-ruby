@@ -12,6 +12,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [NotificationChannelEventType] The type of event (i.e.
       # AutoShutdown, Cost). Possible values include: 'AutoShutdown', 'Cost'
       attr_accessor :event_name
@@ -26,6 +27,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NotifyParameters',
           type: {
@@ -33,6 +35,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'NotifyParameters',
             model_properties: {
               event_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventName',
                 type: {
@@ -40,6 +43,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               json_payload: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jsonPayload',
                 type: {

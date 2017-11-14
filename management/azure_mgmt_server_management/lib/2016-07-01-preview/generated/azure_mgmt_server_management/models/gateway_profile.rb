@@ -13,6 +13,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Dataplane connection URL.
       attr_accessor :data_plane_service_base_address
 
@@ -51,6 +52,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayProfile',
           type: {
@@ -58,6 +60,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'GatewayProfile',
             model_properties: {
               data_plane_service_base_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataPlaneServiceBaseAddress',
                 type: {
@@ -65,6 +68,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               gateway_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'gatewayId',
                 type: {
@@ -72,6 +76,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               environment: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'environment',
                 type: {
@@ -79,6 +84,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               upgrade_manifest_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'upgradeManifestUrl',
                 type: {
@@ -86,6 +92,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               messaging_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messagingNamespace',
                 type: {
@@ -93,6 +100,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               messaging_account: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messagingAccount',
                 type: {
@@ -100,6 +108,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               messaging_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messagingKey',
                 type: {
@@ -107,6 +116,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               request_queue: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestQueue',
                 type: {
@@ -114,6 +124,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               response_topic: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'responseTopic',
                 type: {
@@ -121,6 +132,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               status_blob_signature: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statusBlobSignature',
                 type: {

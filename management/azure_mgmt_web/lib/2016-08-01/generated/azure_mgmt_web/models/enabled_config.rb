@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] True if configuration is enabled, false if it is
       # disabled and null if configuration is not set.
       attr_accessor :enabled
@@ -23,6 +24,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EnabledConfig',
           type: {
@@ -30,6 +32,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'EnabledConfig',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {

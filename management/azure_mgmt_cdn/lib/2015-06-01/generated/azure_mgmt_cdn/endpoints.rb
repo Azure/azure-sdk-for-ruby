@@ -108,8 +108,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::EndpointListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::EndpointListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -209,8 +208,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -261,8 +259,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -314,8 +311,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -406,8 +402,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -454,8 +449,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -636,8 +630,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::ValidateCustomDomainInput.mapper()
-      request_content = @client.serialize(request_mapper,  custom_domain_properties)
+      request_content = custom_domain_properties.nil? ? nil: custom_domain_properties.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain'
@@ -668,8 +661,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::ValidateCustomDomainOutput.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::ValidateCustomDomainOutput.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -750,8 +742,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::EndpointCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  endpoint_properties)
+      request_content = endpoint_properties.nil? ? nil: endpoint_properties.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}'
@@ -782,8 +773,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -792,8 +782,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -802,8 +791,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -893,8 +881,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::EndpointUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  endpoint_properties)
+      request_content = endpoint_properties.nil? ? nil: endpoint_properties.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}'
@@ -925,8 +912,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -935,8 +921,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1126,8 +1111,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1227,8 +1211,7 @@ module Azure::CDN::Mgmt::V2015_06_01
         if status_code == 202
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::CDN::Mgmt::V2015_06_01::Models::Endpoint.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -1311,8 +1294,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::PurgeParameters.mapper()
-      request_content = @client.serialize(request_mapper,  content_file_paths)
+      request_content = content_file_paths.nil? ? nil: content_file_paths.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge'
@@ -1417,8 +1399,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::CDN::Mgmt::V2015_06_01::Models::LoadParameters.mapper()
-      request_content = @client.serialize(request_mapper,  content_file_paths)
+      request_content = content_file_paths.nil? ? nil: content_file_paths.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load'

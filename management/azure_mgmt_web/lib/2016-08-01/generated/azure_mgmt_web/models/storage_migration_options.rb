@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] AzureFiles connection string.
       attr_accessor :azurefiles_connection_string
 
@@ -34,6 +35,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageMigrationOptions',
           type: {
@@ -41,6 +43,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'StorageMigrationOptions',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,6 +52,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,6 +61,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -64,6 +69,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,6 +78,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               azurefiles_connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.azurefilesConnectionString',
                 type: {
@@ -79,6 +86,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               azurefiles_share: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.azurefilesShare',
                 type: {
@@ -86,6 +94,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               switch_site_after_migration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.switchSiteAfterMigration',
                 default_value: false,
@@ -94,6 +103,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               block_write_access_to_site: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.blockWriteAccessToSite',
                 default_value: false,

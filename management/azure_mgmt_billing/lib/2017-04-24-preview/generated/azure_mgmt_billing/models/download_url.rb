@@ -13,6 +13,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The time in UTC at which this download URL will
       # expire.
       attr_accessor :expiry_time
@@ -27,6 +28,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DownloadUrl',
           type: {
@@ -34,6 +36,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
             class_name: 'DownloadUrl',
             model_properties: {
               expiry_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'expiryTime',
@@ -42,6 +45,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'url',

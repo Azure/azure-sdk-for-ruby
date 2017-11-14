@@ -13,6 +13,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The maximum allowed percentage of unhealthy nodes
       # before reporting an error. For example, to allow 10% of nodes to be
       # unhealthy, this value would be 10.
@@ -30,6 +31,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClusterHealthPolicy',
           type: {
@@ -37,6 +39,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'ClusterHealthPolicy',
             model_properties: {
               max_percent_unhealthy_nodes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxPercentUnhealthyNodes',
                 constraints: {
@@ -48,6 +51,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               max_percent_unhealthy_applications: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxPercentUnhealthyApplications',
                 constraints: {

@@ -12,6 +12,7 @@ module Azure::Automation::Mgmt::V2015_10_31
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Gets or sets the isEncrypted flag of the connection
       # field definition.
       attr_accessor :is_encrypted
@@ -31,6 +32,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FieldDefinition',
           type: {
@@ -38,6 +40,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'FieldDefinition',
             model_properties: {
               is_encrypted: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isEncrypted',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_optional: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isOptional',
                 type: {
@@ -52,6 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DiskCreateOption] This enumerates the possible sources of a
       # disk's creation. Possible values include: 'Empty', 'Attach',
       # 'FromImage', 'Import', 'Copy'
@@ -40,6 +41,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CreationData',
           type: {
@@ -47,6 +49,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'CreationData',
             model_properties: {
               create_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               source_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceUri',
                 type: {
@@ -77,6 +83,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               source_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {

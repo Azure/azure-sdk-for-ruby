@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Error code
       attr_accessor :code
 
@@ -25,6 +26,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -32,6 +34,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'ErrorResponse',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

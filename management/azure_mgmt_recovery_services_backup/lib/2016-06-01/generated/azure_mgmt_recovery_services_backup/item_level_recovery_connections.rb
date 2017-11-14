@@ -240,8 +240,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesBackup::Mgmt::V2016_06_01::Models::ILRRequestResource.mapper()
-      request_content = @client.serialize(request_mapper,  resource_ilrrequest)
+      request_content = resource_ilrrequest.nil? ? nil: resource_ilrrequest.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery'

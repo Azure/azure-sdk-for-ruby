@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the ID of the Traffic Manager endpoint.
       attr_accessor :id
 
@@ -75,6 +76,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Endpoint',
           type: {
@@ -82,6 +84,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'Endpoint',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -89,6 +92,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -96,6 +100,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -103,6 +108,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               target_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetResourceId',
                 type: {
@@ -110,6 +116,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.target',
                 type: {
@@ -117,6 +124,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               endpoint_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpointStatus',
                 type: {
@@ -124,6 +132,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               weight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.weight',
                 type: {
@@ -131,6 +140,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               priority: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.priority',
                 type: {
@@ -138,6 +148,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               endpoint_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpointLocation',
                 type: {
@@ -145,6 +156,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               endpoint_monitor_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpointMonitorStatus',
                 type: {
@@ -152,6 +164,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               min_child_endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.minChildEndpoints',
                 type: {
@@ -159,11 +172,13 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
                 }
               },
               geo_mapping: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.geoMapping',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

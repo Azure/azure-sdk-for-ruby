@@ -13,6 +13,7 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The error code returned from the server.
       attr_accessor :code
 
@@ -32,6 +33,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceManagementErrorWithDetails',
           type: {
@@ -39,6 +41,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'ResourceManagementErrorWithDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'code',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'message',
                 type: {
@@ -53,6 +57,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -60,11 +65,13 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceManagementErrorWithDetailsElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The score of the link mapping.
       attr_accessor :score
 
@@ -28,6 +29,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Prediction_mappings',
           type: {
@@ -35,6 +37,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionMappings',
             model_properties: {
               score: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'score',
                 type: {
@@ -42,6 +45,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               grade: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'grade',
                 type: {
@@ -49,6 +53,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [SkuName] The Sku name. Possible values include: 'Standard',
       # 'RS0'
       attr_accessor :name
@@ -23,6 +24,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -30,6 +32,7 @@ module Azure::RecoveryServices::Mgmt::V2016_12_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

@@ -12,6 +12,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Operation name: {provider}/{resource}/{operation}.
       attr_accessor :name
 
@@ -32,6 +33,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationEntity',
           type: {
@@ -39,6 +41,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'OperationEntity',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +49,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -54,6 +58,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -61,6 +66,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

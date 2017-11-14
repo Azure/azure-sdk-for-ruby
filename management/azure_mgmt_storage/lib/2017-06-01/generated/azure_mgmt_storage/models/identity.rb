@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The principal ID of resource identity.
       attr_accessor :principal_id
 
@@ -28,6 +29,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Identity',
           type: {
@@ -35,6 +37,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'Identity',
             model_properties: {
               principal_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -43,6 +46,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -51,6 +55,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

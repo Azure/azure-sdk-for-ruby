@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [UpgradeMode] Specifies the mode of an upgrade to virtual
       # machines in the scale set.<br /><br /> Possible values are:<br /><br />
       # **Manual** - You  control the application of updates to virtual
@@ -37,6 +38,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpgradePolicy',
           type: {
@@ -44,6 +46,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'UpgradePolicy',
             model_properties: {
               mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mode',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               rolling_upgrade_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rollingUpgradePolicy',
                 type: {
@@ -60,6 +64,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               automatic_osupgrade: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'automaticOSUpgrade',
                 type: {

@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] File content of the client script for file or folder
       # restore.
       attr_accessor :script_content
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientScriptForConnect',
           type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'ClientScriptForConnect',
             model_properties: {
               script_content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scriptContent',
                 type: {
@@ -49,6 +52,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               script_extension: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scriptExtension',
                 type: {
@@ -56,6 +60,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {

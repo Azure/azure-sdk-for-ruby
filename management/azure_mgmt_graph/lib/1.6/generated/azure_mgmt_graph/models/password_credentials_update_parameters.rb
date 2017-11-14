@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<PasswordCredential>] A collection of
       # PasswordCredentials.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PasswordCredentialsUpdateParameters',
           type: {
@@ -30,11 +32,13 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'PasswordCredentialsUpdateParameters',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PasswordCredentialElementType',
                       type: {

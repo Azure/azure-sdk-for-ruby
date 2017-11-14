@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The expiry time.
       attr_accessor :not_after
 
@@ -26,6 +27,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GetCallbackUrlParameters',
           type: {
@@ -33,6 +35,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'GetCallbackUrlParameters',
             model_properties: {
               not_after: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'notAfter',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               key_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyType',
                 type: {

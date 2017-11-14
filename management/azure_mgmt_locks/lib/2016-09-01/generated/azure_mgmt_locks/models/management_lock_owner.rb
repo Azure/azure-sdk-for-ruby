@@ -12,6 +12,7 @@ module Azure::Locks::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The application ID of the lock owner.
       attr_accessor :application_id
 
@@ -22,6 +23,7 @@ module Azure::Locks::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementLockOwner',
           type: {
@@ -29,6 +31,7 @@ module Azure::Locks::Mgmt::V2016_09_01
             class_name: 'ManagementLockOwner',
             model_properties: {
               application_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationId',
                 type: {

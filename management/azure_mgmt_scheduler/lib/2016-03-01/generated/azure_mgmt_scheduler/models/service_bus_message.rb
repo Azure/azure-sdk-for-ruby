@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ServiceBusAuthentication] Gets or sets the Service Bus
       # authentication.
       attr_accessor :authentication
@@ -42,6 +43,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceBusMessage',
           type: {
@@ -49,6 +51,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'ServiceBusMessage',
             model_properties: {
               authentication: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authentication',
                 type: {
@@ -57,6 +60,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               brokered_message_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'brokeredMessageProperties',
                 type: {
@@ -65,11 +69,13 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               custom_message_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customMessageProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -79,6 +85,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -86,6 +93,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'namespace',
                 type: {
@@ -93,6 +101,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               transport_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'transportType',
                 type: {

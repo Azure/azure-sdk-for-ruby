@@ -12,6 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The id of the endpoint from the 'endpoints' array
       # which these queries were routed to.
       attr_accessor :endpoint_id
@@ -30,6 +31,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryExperience',
           type: {
@@ -37,6 +39,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
             class_name: 'QueryExperience',
             model_properties: {
               endpoint_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointId',
                 type: {
@@ -44,6 +47,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               query_count: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'queryCount',
                 type: {
@@ -51,6 +55,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
                 }
               },
               latency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'latency',
                 type: {

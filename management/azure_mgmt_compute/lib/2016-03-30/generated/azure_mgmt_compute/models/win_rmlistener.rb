@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ProtocolTypes] The Protocol used by the WinRM listener. Http
       # and Https are supported. Possible values include: 'Http', 'Https'
       attr_accessor :protocol
@@ -27,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WinRMListener',
           type: {
@@ -34,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'WinRMListener',
             model_properties: {
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               certificate_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {

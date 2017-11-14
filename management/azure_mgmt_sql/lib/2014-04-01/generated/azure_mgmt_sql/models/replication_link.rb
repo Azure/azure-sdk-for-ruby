@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Location of the server that contains this firewall
       # rule.
       attr_accessor :location
@@ -61,6 +62,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ReplicationLink',
           type: {
@@ -68,6 +70,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ReplicationLink',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -76,6 +79,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -84,6 +88,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -92,6 +97,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -100,6 +106,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               is_termination_allowed: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isTerminationAllowed',
@@ -108,6 +115,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               replication_mode: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.replicationMode',
@@ -116,6 +124,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               partner_server: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.partnerServer',
@@ -124,6 +133,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               partner_database: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.partnerDatabase',
@@ -132,6 +142,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               partner_location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.partnerLocation',
@@ -140,6 +151,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               role: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.role',
@@ -149,6 +161,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               partner_role: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.partnerRole',
@@ -158,6 +171,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -166,6 +180,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               percent_complete: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.percentComplete',
@@ -174,6 +189,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               replication_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.replicationState',

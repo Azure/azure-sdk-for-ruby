@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The value of key 1.
       attr_accessor :key1
 
@@ -25,6 +26,7 @@ module Azure::Storage::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountKeys',
           type: {
@@ -32,6 +34,7 @@ module Azure::Storage::Mgmt::V2015_06_15
             class_name: 'StorageAccountKeys',
             model_properties: {
               key1: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'key1',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Storage::Mgmt::V2015_06_15
                 }
               },
               key2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'key2',
                 type: {

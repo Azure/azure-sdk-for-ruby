@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the country.
       attr_accessor :country
 
@@ -28,6 +29,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureReachabilityReportLocation',
           type: {
@@ -35,6 +37,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'AzureReachabilityReportLocation',
             model_properties: {
               country: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'country',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -49,6 +53,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               city: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'city',
                 type: {

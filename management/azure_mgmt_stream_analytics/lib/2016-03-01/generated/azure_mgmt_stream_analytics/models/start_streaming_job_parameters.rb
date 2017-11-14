@@ -12,6 +12,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [OutputStartMode] Value may be JobStartTime, CustomTime, or
       # LastOutputEventTime to indicate whether the starting point of the
       # output event stream should start whenever the job is started, start at
@@ -34,6 +35,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StartStreamingJobParameters',
           type: {
@@ -41,6 +43,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'StartStreamingJobParameters',
             model_properties: {
               output_start_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputStartMode',
                 type: {
@@ -48,6 +51,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               output_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'outputStartTime',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] A boolean indicating whether or not the service
       # encrypts the data as it is stored.
       attr_accessor :enabled
@@ -29,6 +30,7 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionService',
           type: {
@@ -36,6 +38,7 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'EncryptionService',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Storage::Mgmt::V2016_12_01
                 }
               },
               last_enabled_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastEnabledTime',

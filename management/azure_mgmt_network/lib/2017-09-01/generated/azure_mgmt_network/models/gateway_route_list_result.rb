@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<GatewayRoute>] List of gateway routes
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GatewayRouteListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'GatewayRouteListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GatewayRouteElementType',
                       type: {

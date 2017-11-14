@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<Day>] List of days of the month.
       attr_accessor :days_of_the_month
 
@@ -26,6 +27,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DailyRetentionFormat',
           type: {
@@ -33,11 +35,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'DailyRetentionFormat',
             model_properties: {
               days_of_the_month: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'daysOfTheMonth',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DayElementType',
                       type: {

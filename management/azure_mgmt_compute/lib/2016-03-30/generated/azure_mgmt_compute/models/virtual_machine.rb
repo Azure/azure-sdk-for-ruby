@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Plan] The purchase plan when deploying virtual machine from VM
       # Marketplace images.
       attr_accessor :plan
@@ -67,6 +68,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachine',
           type: {
@@ -74,6 +76,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachine',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -82,6 +85,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -90,6 +94,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -98,6 +103,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -105,11 +111,13 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -119,6 +127,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -127,6 +136,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               hardware_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hardwareProfile',
                 type: {
@@ -135,6 +145,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               storage_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageProfile',
                 type: {
@@ -143,6 +154,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               os_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osProfile',
                 type: {
@@ -151,6 +163,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               network_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkProfile',
                 type: {
@@ -159,6 +172,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               diagnostics_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diagnosticsProfile',
                 type: {
@@ -167,6 +181,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               availability_set: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.availabilitySet',
                 type: {
@@ -175,6 +190,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -183,6 +199,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               instance_view: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceView',
@@ -192,6 +209,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               license_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.licenseType',
                 type: {
@@ -199,6 +217,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               vm_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.vmId',
@@ -207,12 +226,14 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               resources: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resources',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineExtensionElementType',
                       type: {
@@ -223,6 +244,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {

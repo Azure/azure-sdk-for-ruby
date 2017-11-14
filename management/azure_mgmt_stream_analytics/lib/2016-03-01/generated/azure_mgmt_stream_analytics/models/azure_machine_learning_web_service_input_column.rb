@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the input column.
       attr_accessor :name
 
@@ -34,6 +35,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureMachineLearningWebServiceInputColumn',
           type: {
@@ -41,6 +43,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureMachineLearningWebServiceInputColumn',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -48,6 +51,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               data_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {
@@ -55,6 +59,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               map_to: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mapTo',
                 type: {

@@ -120,8 +120,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -221,8 +220,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -297,8 +295,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.mapper()
-      request_content = @client.serialize(request_mapper,  notification_channel)
+      request_content = notification_channel.nil? ? nil: notification_channel.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}'
@@ -329,8 +326,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -339,8 +335,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -499,8 +494,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannelFragment.mapper()
-      request_content = @client.serialize(request_mapper,  notification_channel)
+      request_content = notification_channel.nil? ? nil: notification_channel.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}'
@@ -531,8 +525,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotificationChannel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -609,8 +602,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::NotifyParameters.mapper()
-      request_content = @client.serialize(request_mapper,  notify_parameters)
+      request_content = notify_parameters.nil? ? nil: notify_parameters.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}/notify'
@@ -718,8 +710,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::ResponseWithContinuationNotificationChannel.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :time_grain
 
@@ -26,6 +27,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricAvailability',
           type: {
@@ -33,6 +35,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'MetricAvailability',
             model_properties: {
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               blob_duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobDuration',
                 type: {

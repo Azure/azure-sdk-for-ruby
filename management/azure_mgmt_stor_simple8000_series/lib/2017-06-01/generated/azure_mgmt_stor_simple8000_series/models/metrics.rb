@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of metric source.
       attr_accessor :resource_id
 
@@ -53,6 +54,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Metrics',
           type: {
@@ -60,6 +62,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Metrics',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -67,6 +70,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -74,6 +78,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -81,6 +86,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               time_grain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeGrain',
                 type: {
@@ -88,6 +94,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               primary_aggregation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryAggregation',
                 type: {
@@ -96,6 +103,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -104,11 +112,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               dimensions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dimensions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricDimensionElementType',
                       type: {
@@ -119,6 +129,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -127,6 +138,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -134,11 +146,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               values: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'values',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricDataElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @objectType = "IaasVMILRRegistrationRequest"
@@ -41,6 +42,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IaasVMILRRegistrationRequest',
           type: {
@@ -48,6 +50,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'IaasVMILRRegistrationRequest',
             model_properties: {
               objectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -55,6 +58,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               recovery_point_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointId',
                 type: {
@@ -62,6 +66,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               virtual_machine_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineId',
                 type: {
@@ -69,6 +74,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               initiator_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'initiatorName',
                 type: {
@@ -76,6 +82,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               renew_existing_registration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'renewExistingRegistration',
                 type: {

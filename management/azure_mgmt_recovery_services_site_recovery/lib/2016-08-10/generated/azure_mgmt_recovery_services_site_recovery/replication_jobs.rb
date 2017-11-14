@@ -54,8 +54,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -96,8 +95,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -138,8 +136,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -231,8 +228,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -276,8 +272,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response)
+          parsed_response = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
         end
 
         # Waiting for response.
@@ -368,8 +363,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -444,8 +438,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::ResumeJobParams.mapper()
-      request_content = @client.serialize(request_mapper,  resume_job_params)
+      request_content = resume_job_params.nil? ? nil: resume_job_params.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume'
@@ -476,8 +469,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -571,8 +563,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -666,8 +657,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -741,8 +731,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobQueryParameter.mapper()
-      request_content = @client.serialize(request_mapper,  job_query_parameter)
+      request_content = job_query_parameter.nil? ? nil: job_query_parameter.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export'
@@ -773,8 +762,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::Job.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -866,8 +854,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10::Models::JobCollection.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

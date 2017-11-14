@@ -13,6 +13,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The total number of endpoints that are currently on
       # the device ( i.e. number of volumes).
       attr_accessor :endpoint_count
@@ -27,6 +28,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceDetails',
           type: {
@@ -34,6 +36,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DeviceDetails',
             model_properties: {
               endpoint_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpointCount',
                 type: {
@@ -41,6 +44,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_container_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeContainerCount',
                 type: {

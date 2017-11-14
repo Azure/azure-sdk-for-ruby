@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] The time of metric (ISO8601 format).
       attr_accessor :date_time
 
@@ -29,6 +30,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedElasticPoolMetric',
           type: {
@@ -36,6 +38,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'RecommendedElasticPoolMetric',
             model_properties: {
               date_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dateTime',
                 type: {
@@ -43,6 +46,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               dtu: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dtu',
                 type: {
@@ -50,6 +54,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sizeGB',
                 type: {

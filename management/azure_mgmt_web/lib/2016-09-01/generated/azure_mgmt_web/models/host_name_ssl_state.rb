@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Hostname.
       attr_accessor :name
 
@@ -40,6 +41,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HostNameSslState',
           type: {
@@ -47,6 +49,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'HostNameSslState',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -54,6 +57,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               ssl_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sslState',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               virtual_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualIP',
                 type: {
@@ -69,6 +74,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'thumbprint',
                 type: {
@@ -76,6 +82,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               to_update: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'toUpdate',
                 type: {
@@ -83,6 +90,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               host_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostType',
                 type: {

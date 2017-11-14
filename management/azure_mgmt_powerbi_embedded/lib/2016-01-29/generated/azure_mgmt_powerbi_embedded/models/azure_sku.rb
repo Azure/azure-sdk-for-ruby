@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] SKU name. Default value: 'S1' .
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureSku',
           type: {
@@ -33,6 +35,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'AzureSku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'name',
@@ -42,6 +45,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'tier',

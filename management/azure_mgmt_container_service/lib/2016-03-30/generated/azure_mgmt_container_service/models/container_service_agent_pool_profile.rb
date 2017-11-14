@@ -12,6 +12,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Unique name of the agent pool profile in the context
       # of the subscription and resource group.
       attr_accessor :name
@@ -51,6 +52,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceAgentPoolProfile',
           type: {
@@ -58,6 +60,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceAgentPoolProfile',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -65,6 +68,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 constraints: {
@@ -76,6 +80,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
                 }
               },
               vm_size: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'vmSize',
                 type: {
@@ -83,6 +88,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
                 }
               },
               dns_prefix: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dnsPrefix',
                 type: {
@@ -90,6 +96,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
                 }
               },
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'fqdn',

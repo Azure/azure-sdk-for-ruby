@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<SecurityRule>] A collection of security rules of the
       # network security group.
       attr_accessor :security_rules
@@ -46,6 +47,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkSecurityGroup',
           type: {
@@ -53,6 +55,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'NetworkSecurityGroup',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -68,6 +72,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -76,6 +81,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -83,11 +89,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -97,11 +105,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               security_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.securityRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SecurityRuleElementType',
                       type: {
@@ -112,11 +122,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               default_security_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.defaultSecurityRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SecurityRuleElementType',
                       type: {
@@ -127,12 +139,14 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               network_interfaces: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.networkInterfaces',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkInterfaceElementType',
                       type: {
@@ -143,12 +157,14 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               subnets: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subnets',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubnetElementType',
                       type: {
@@ -159,6 +175,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -166,6 +183,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -173,6 +191,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

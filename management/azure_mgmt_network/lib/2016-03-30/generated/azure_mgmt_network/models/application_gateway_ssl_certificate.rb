@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the certificate data
       attr_accessor :data
 
@@ -40,6 +41,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewaySslCertificate',
           type: {
@@ -47,6 +49,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ApplicationGatewaySslCertificate',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -54,6 +57,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.data',
                 type: {
@@ -61,6 +65,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -68,6 +73,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               public_cert_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicCertData',
                 type: {
@@ -75,6 +81,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -82,6 +89,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -89,6 +97,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualMachineScaleSetExtension>] The virtual machine
       # scale set child extension resources.
       attr_accessor :extensions
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetExtensionProfile',
           type: {
@@ -30,11 +32,13 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineScaleSetExtensionProfile',
             model_properties: {
               extensions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetExtensionElementType',
                       type: {

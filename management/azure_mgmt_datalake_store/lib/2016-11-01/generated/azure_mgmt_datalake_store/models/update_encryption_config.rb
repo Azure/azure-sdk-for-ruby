@@ -12,6 +12,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [UpdateKeyVaultMetaInfo] The updated Key Vault key to use in
       # user managed key rotation.
       attr_accessor :key_vault_meta_info
@@ -23,6 +24,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateEncryptionConfig',
           type: {
@@ -30,6 +32,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'UpdateEncryptionConfig',
             model_properties: {
               key_vault_meta_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultMetaInfo',
                 type: {

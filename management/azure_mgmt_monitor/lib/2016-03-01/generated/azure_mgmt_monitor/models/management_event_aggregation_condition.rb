@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ConditionOperator] the condition operator. Possible values
       # include: 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
       # 'LessThanOrEqual'
@@ -32,6 +33,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementEventAggregationCondition',
           type: {
@@ -39,6 +41,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'ManagementEventAggregationCondition',
             model_properties: {
               operator: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operator',
                 type: {
@@ -47,6 +50,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'threshold',
                 type: {
@@ -54,6 +58,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               window_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'windowSize',
                 type: {

@@ -12,6 +12,7 @@ module Azure::CDN::Mgmt::V2015_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URI used to login to third party web portal.
       attr_accessor :sso_uri_value
 
@@ -22,6 +23,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SsoUri',
           type: {
@@ -29,6 +31,7 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'SsoUri',
             model_properties: {
               sso_uri_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ssoUriValue',
                 type: {

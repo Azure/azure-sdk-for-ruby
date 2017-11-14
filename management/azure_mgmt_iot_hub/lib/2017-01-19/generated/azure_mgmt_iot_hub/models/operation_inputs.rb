@@ -12,6 +12,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the IoT hub to check.
       attr_accessor :name
 
@@ -22,6 +23,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationInputs',
           type: {
@@ -29,6 +31,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'OperationInputs',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Name',
                 type: {

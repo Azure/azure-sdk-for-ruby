@@ -12,6 +12,7 @@ module Azure::Graph::Mgmt::V1_6
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] application Id
       attr_accessor :app_id
 
@@ -32,6 +33,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServicePrincipalCreateParameters',
           type: {
@@ -39,6 +41,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'ServicePrincipalCreateParameters',
             model_properties: {
               app_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'appId',
                 type: {
@@ -46,6 +49,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               account_enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'accountEnabled',
                 type: {
@@ -53,11 +57,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               key_credentials: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KeyCredentialElementType',
                       type: {
@@ -68,11 +74,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               password_credentials: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwordCredentials',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PasswordCredentialElementType',
                       type: {

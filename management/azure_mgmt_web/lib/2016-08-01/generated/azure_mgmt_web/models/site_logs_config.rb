@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ApplicationLogsConfig] Application logs configuration.
       attr_accessor :application_logs
 
@@ -31,6 +32,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteLogsConfig',
           type: {
@@ -38,6 +40,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SiteLogsConfig',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +49,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -61,6 +66,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,6 +75,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               application_logs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicationLogs',
                 type: {
@@ -77,6 +84,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               http_logs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.httpLogs',
                 type: {
@@ -85,6 +93,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               failed_requests_tracing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.failedRequestsTracing',
                 type: {
@@ -93,6 +102,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               detailed_error_messages: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.detailedErrorMessages',
                 type: {

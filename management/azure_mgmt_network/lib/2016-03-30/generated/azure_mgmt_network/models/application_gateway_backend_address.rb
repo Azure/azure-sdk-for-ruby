@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Gets or sets the dns name
       attr_accessor :fqdn
 
@@ -25,6 +26,7 @@ module Azure::Network::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendAddress',
           type: {
@@ -32,6 +34,7 @@ module Azure::Network::Mgmt::V2016_03_30
             class_name: 'ApplicationGatewayBackendAddress',
             model_properties: {
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fqdn',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Network::Mgmt::V2016_03_30
                 }
               },
               ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {

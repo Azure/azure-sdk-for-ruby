@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualMachineScaleSetNetworkConfiguration>] The list of
       # network configurations.
       attr_accessor :network_interface_configurations
@@ -23,6 +24,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetNetworkProfile',
           type: {
@@ -30,11 +32,13 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineScaleSetNetworkProfile',
             model_properties: {
               network_interface_configurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkInterfaceConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetNetworkConfigurationElementType',
                       type: {

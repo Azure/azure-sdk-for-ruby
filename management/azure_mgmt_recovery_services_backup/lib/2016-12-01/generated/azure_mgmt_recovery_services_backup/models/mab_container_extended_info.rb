@@ -12,6 +12,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Time stamp when this container was refreshed.
       attr_accessor :last_refreshed_at
 
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MabContainerExtendedInfo',
           type: {
@@ -45,6 +47,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'MabContainerExtendedInfo',
             model_properties: {
               last_refreshed_at: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRefreshedAt',
                 type: {
@@ -52,6 +55,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_item_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupItemType',
                 type: {
@@ -59,11 +63,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_items: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupItems',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -73,6 +79,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               policy_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyName',
                 type: {
@@ -80,6 +87,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_backup_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastBackupStatus',
                 type: {

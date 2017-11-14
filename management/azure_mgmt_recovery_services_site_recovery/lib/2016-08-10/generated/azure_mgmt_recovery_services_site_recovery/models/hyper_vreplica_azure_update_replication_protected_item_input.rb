@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "HyperVReplicaAzure"
@@ -39,6 +40,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVReplicaAzure',
           type: {
@@ -46,6 +48,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HyperVReplicaAzureUpdateReplicationProtectedItemInput',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -53,6 +56,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_azure_v1resource_group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAzureV1ResourceGroupId',
                 type: {
@@ -60,6 +64,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_azure_v2resource_group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAzureV2ResourceGroupId',
                 type: {
@@ -67,6 +72,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               use_managed_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'useManagedDisks',
                 type: {

@@ -13,6 +13,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return Gets the error.
       attr_accessor :error
 
@@ -23,6 +24,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowOutputParameter',
           type: {
@@ -30,6 +32,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
             class_name: 'WorkflowOutputParameter',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -38,6 +41,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -45,6 +49,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
@@ -52,6 +57,7 @@ module Azure::Logic::Mgmt::V2015_02_01_preview
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',

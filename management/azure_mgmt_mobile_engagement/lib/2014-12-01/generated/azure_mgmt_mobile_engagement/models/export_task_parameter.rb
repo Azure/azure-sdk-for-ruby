@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :container_url
 
@@ -30,6 +31,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'exportTaskParameter',
           type: {
@@ -37,6 +39,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ExportTaskParameter',
             model_properties: {
               container_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'containerUrl',
                 type: {
@@ -44,6 +47,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -51,6 +55,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               export_format: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'exportFormat',
                 type: {

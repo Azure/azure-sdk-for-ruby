@@ -12,6 +12,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the parent management group. E.g.
       # /providers/Microsoft.Management/managementGroups/30000000-0000-0000-0000-000000000000
       attr_accessor :parent_id
@@ -26,6 +27,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ParentGroupInfo',
           type: {
@@ -33,6 +35,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ParentGroupInfo',
             model_properties: {
               parent_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parentId',
                 type: {
@@ -40,6 +43,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {

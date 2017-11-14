@@ -13,6 +13,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Title of the question.
       attr_accessor :title
 
@@ -23,6 +24,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PollQuestionLocalization',
           type: {
@@ -30,6 +32,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'PollQuestionLocalization',
             model_properties: {
               title: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'title',
                 constraints: {

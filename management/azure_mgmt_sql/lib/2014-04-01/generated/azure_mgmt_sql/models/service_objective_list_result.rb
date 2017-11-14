@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<ServiceObjective>] The list of database service
       # objectives.
       attr_accessor :value
@@ -23,6 +24,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceObjectiveListResult',
           type: {
@@ -30,11 +32,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServiceObjectiveListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ServiceObjectiveElementType',
                       type: {

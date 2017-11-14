@@ -13,6 +13,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String]
       attr_accessor :code
 
@@ -29,6 +30,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -36,6 +38,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -50,6 +54,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

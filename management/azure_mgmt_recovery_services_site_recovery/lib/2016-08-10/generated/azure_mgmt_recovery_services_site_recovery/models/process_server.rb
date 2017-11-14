@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The Process Server's friendly name.
       attr_accessor :friendly_name
 
@@ -96,6 +97,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProcessServer',
           type: {
@@ -103,6 +105,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProcessServer',
             model_properties: {
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -110,6 +113,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -117,6 +121,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {
@@ -124,6 +129,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -131,6 +137,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               agent_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentVersion',
                 type: {
@@ -138,6 +145,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_heartbeat: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastHeartbeat',
                 type: {
@@ -145,6 +153,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               version_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'versionStatus',
                 type: {
@@ -152,11 +161,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               mobility_service_updates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mobilityServiceUpdates',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MobilityServiceUpdateElementType',
                       type: {
@@ -167,6 +178,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               host_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostId',
                 type: {
@@ -174,6 +186,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               machine_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'machineCount',
                 type: {
@@ -181,6 +194,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_pair_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationPairCount',
                 type: {
@@ -188,6 +202,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               system_load: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'systemLoad',
                 type: {
@@ -195,6 +210,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               system_load_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'systemLoadStatus',
                 type: {
@@ -202,6 +218,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               cpu_load: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cpuLoad',
                 type: {
@@ -209,6 +226,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               cpu_load_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cpuLoadStatus',
                 type: {
@@ -216,6 +234,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               total_memory_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalMemoryInBytes',
                 type: {
@@ -223,6 +242,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               available_memory_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableMemoryInBytes',
                 type: {
@@ -230,6 +250,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               memory_usage_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'memoryUsageStatus',
                 type: {
@@ -237,6 +258,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               total_space_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalSpaceInBytes',
                 type: {
@@ -244,6 +266,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               available_space_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableSpaceInBytes',
                 type: {
@@ -251,6 +274,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               space_usage_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'spaceUsageStatus',
                 type: {
@@ -258,6 +282,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ps_service_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'psServiceStatus',
                 type: {
@@ -265,6 +290,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ssl_cert_expiry_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sslCertExpiryDate',
                 type: {
@@ -272,6 +298,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ssl_cert_expiry_remaining_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sslCertExpiryRemainingDays',
                 type: {
@@ -279,6 +306,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osVersion',
                 type: {

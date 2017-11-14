@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 
@@ -60,6 +61,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSet',
           type: {
@@ -67,6 +69,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -75,6 +78,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -83,6 +87,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -91,6 +96,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -98,11 +104,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -112,6 +120,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -120,6 +129,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -128,6 +138,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               upgrade_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradePolicy',
                 type: {
@@ -136,6 +147,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               virtual_machine_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachineProfile',
                 type: {
@@ -144,6 +156,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -152,6 +165,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               overprovision: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.overprovision',
                 type: {
@@ -159,6 +173,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               unique_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.uniqueId',
@@ -167,6 +182,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               single_placement_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.singlePlacementGroup',
                 type: {
@@ -174,6 +190,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {
@@ -182,11 +199,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               zones: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'zones',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

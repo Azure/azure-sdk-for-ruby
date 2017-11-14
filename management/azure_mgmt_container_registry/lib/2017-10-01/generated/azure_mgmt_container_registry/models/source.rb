@@ -13,6 +13,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The IP or hostname and the port of the registry node
       # that generated the event. Generally, this will be resolved by
       # os.Hostname() along with the running port.
@@ -29,6 +30,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Source',
           type: {
@@ -36,6 +38,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Source',
             model_properties: {
               addr: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'addr',
                 type: {
@@ -43,6 +46,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               instance_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'instanceID',
                 type: {

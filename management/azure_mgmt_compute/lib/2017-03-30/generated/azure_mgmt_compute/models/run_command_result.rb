@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return Operation output data (raw JSON)
       attr_accessor :output
 
@@ -22,6 +23,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunCommandResult',
           type: {
@@ -29,6 +31,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RunCommandResult',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -37,6 +40,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -45,6 +49,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -53,6 +58,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -61,6 +67,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',
@@ -70,6 +77,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               output: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.output',
                 type: {

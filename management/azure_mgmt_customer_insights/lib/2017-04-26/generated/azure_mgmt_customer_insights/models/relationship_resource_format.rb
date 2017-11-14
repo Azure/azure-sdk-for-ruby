@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [CardinalityTypes] The Relationship Cardinality. Possible
       # values include: 'OneToOne', 'OneToMany', 'ManyToMany'
       attr_accessor :cardinality
@@ -61,6 +62,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RelationshipResourceFormat',
           type: {
@@ -68,6 +70,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'RelationshipResourceFormat',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -76,6 +79,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -84,6 +88,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -92,6 +97,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               cardinality: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cardinality',
                 type: {
@@ -100,11 +106,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -114,11 +122,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -128,6 +138,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               expiry_date_time_utc: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiryDateTimeUtc',
                 type: {
@@ -135,11 +146,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               fields: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fields',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PropertyDefinitionElementType',
                       type: {
@@ -150,11 +163,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               lookup_mappings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.lookupMappings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RelationshipTypeMappingElementType',
                       type: {
@@ -165,6 +180,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               profile_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.profileType',
                 type: {
@@ -172,6 +188,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -180,6 +197,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               relationship_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.relationshipName',
@@ -188,6 +206,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               related_profile_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.relatedProfileType',
                 type: {
@@ -195,6 +214,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               relationship_guid_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.relationshipGuidId',
@@ -203,6 +223,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.tenantId',

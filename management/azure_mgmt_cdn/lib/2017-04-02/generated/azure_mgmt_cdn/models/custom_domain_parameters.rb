@@ -13,6 +13,7 @@ module Azure::CDN::Mgmt::V2017_04_02
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The host name of the custom domain. Must be a domain
       # name.
       attr_accessor :host_name
@@ -24,6 +25,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CustomDomainParameters',
           type: {
@@ -31,6 +33,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'CustomDomainParameters',
             model_properties: {
               host_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.hostName',
                 type: {

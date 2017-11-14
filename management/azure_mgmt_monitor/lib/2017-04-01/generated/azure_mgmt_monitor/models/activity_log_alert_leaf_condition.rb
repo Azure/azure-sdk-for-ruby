@@ -13,6 +13,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the field that this condition will
       # examine. The possible values for this field are (case-insensitive):
       # 'resourceId', 'category', 'caller', 'level', 'operationName',
@@ -31,6 +32,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertLeafCondition',
           type: {
@@ -38,6 +40,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertLeafCondition',
             model_properties: {
               field: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'field',
                 type: {
@@ -45,6 +48,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               equals: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'equals',
                 type: {

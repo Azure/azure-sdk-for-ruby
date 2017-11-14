@@ -13,6 +13,7 @@ module Azure::Web::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<MetricSpecification>]
       attr_accessor :metric_specifications
 
@@ -23,6 +24,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceSpecification',
           type: {
@@ -30,11 +32,13 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'ServiceSpecification',
             model_properties: {
               metric_specifications: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metricSpecifications',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MetricSpecificationElementType',
                       type: {

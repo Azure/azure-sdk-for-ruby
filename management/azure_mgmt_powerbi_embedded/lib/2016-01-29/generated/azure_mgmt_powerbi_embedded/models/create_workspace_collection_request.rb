@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Azure location
       attr_accessor :location
 
@@ -29,6 +30,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CreateWorkspaceCollectionRequest',
           type: {
@@ -36,6 +38,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'CreateWorkspaceCollectionRequest',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -43,11 +46,13 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -57,6 +62,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 is_constant: true,
                 serialized_name: 'sku',

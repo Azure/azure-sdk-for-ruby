@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [DateTime] Timestamp of log entry
       attr_accessor :time
 
@@ -29,6 +30,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MSDeployLogEntry',
           type: {
@@ -36,6 +38,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'MSDeployLogEntry',
             model_properties: {
               time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'time',
@@ -44,6 +47,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -53,6 +57,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

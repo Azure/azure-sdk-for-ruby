@@ -13,6 +13,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<InMageVolumeExclusionOptions>] The volume label based
       # option for disk exclusion.
       attr_accessor :volume_options
@@ -28,6 +29,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMageDiskExclusionInput',
           type: {
@@ -35,11 +37,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageDiskExclusionInput',
             model_properties: {
               volume_options: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeOptions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InMageVolumeExclusionOptionsElementType',
                       type: {
@@ -50,11 +54,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_signature_options: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskSignatureOptions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InMageDiskSignatureExclusionOptionsElementType',
                       type: {

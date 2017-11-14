@@ -13,6 +13,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [AccessKeyName] Key name. Possible values include: 'key1',
       # 'key2'
       attr_accessor :key_name
@@ -24,6 +25,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspaceCollectionAccessKey',
           type: {
@@ -31,6 +33,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'WorkspaceCollectionAccessKey',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyName',
                 type: {

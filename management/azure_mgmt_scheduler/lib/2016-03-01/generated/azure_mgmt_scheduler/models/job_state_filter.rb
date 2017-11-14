@@ -13,6 +13,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [JobState] Gets or sets the job state. Possible values include:
       # 'Enabled', 'Disabled', 'Faulted', 'Completed'
       attr_accessor :state
@@ -24,6 +25,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobStateFilter',
           type: {
@@ -31,6 +33,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobStateFilter',
             model_properties: {
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {

@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<String>] Get a list of peering locations.
       attr_accessor :peering_locations
 
@@ -29,6 +30,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteServiceProvider',
           type: {
@@ -36,6 +38,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ExpressRouteServiceProvider',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -43,6 +46,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -51,6 +55,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -59,6 +64,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -66,11 +72,13 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -80,11 +88,13 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               peering_locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peeringLocations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -94,11 +104,13 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               bandwidths_offered: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bandwidthsOffered',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteServiceProviderBandwidthsOfferedElementType',
                       type: {
@@ -109,6 +121,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {

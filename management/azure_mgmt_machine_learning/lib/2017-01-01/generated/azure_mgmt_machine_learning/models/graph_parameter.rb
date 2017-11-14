@@ -12,6 +12,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Description of this graph parameter.
       attr_accessor :description
 
@@ -32,6 +33,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GraphParameter',
           type: {
@@ -39,6 +41,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'GraphParameter',
             model_properties: {
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -46,6 +49,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -53,11 +57,13 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               links: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'links',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GraphParameterLinkElementType',
                       type: {

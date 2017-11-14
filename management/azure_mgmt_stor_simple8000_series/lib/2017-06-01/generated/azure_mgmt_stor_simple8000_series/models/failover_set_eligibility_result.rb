@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] Represents if this failover set is eligible for
       # failover or not.
       attr_accessor :is_eligible_for_failover
@@ -27,6 +28,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverSetEligibilityResult',
           type: {
@@ -34,6 +36,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'FailoverSetEligibilityResult',
             model_properties: {
               is_eligible_for_failover: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isEligibleForFailover',
                 type: {
@@ -41,6 +44,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorMessage',
                 type: {

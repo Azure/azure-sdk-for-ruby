@@ -12,6 +12,7 @@ module Azure::Storage::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] List service SAS credentials of speicific resource.
       attr_accessor :service_sas_token
 
@@ -22,6 +23,7 @@ module Azure::Storage::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ListServiceSasResponse',
           type: {
@@ -29,6 +31,7 @@ module Azure::Storage::Mgmt::V2016_12_01
             class_name: 'ListServiceSasResponse',
             model_properties: {
               service_sas_token: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serviceSasToken',

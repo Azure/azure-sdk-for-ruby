@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2017_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<NetworkWatcher>]
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkWatcherListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'NetworkWatcherListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkWatcherElementType',
                       type: {

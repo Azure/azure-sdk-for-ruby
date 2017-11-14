@@ -17,6 +17,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [KEKDetails] KEK is encryption key for BEK.
       attr_accessor :kek_details
 
@@ -30,6 +31,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyAndSecretDetails',
           type: {
@@ -37,6 +39,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'KeyAndSecretDetails',
             model_properties: {
               kek_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekDetails',
                 type: {
@@ -45,6 +48,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               bek_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bekDetails',
                 type: {

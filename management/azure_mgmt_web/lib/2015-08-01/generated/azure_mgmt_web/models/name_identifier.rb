@@ -12,6 +12,7 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Name of the object.
       attr_accessor :name
 
@@ -22,6 +23,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NameIdentifier',
           type: {
@@ -29,6 +31,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'NameIdentifier',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

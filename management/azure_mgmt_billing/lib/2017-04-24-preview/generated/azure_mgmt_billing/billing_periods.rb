@@ -89,6 +89,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     def list_async(filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
@@ -123,8 +125,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -210,8 +211,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriod.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
@@ -300,8 +300,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::Billing::Mgmt::V2017_04_24_preview::Models::BillingPeriodsListResult.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

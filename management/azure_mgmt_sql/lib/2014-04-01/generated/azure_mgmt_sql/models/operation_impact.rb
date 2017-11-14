@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the impact dimension.
       attr_accessor :name
 
@@ -33,6 +34,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationImpact',
           type: {
@@ -40,6 +42,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'OperationImpact',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +51,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -56,6 +60,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               change_value_absolute: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'changeValueAbsolute',
@@ -64,6 +69,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               change_value_relative: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'changeValueRelative',

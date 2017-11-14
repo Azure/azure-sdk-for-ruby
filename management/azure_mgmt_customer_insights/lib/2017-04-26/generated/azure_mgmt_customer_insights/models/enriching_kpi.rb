@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       #
       # Mapper for EnrichingKpi class as Ruby Hash.
@@ -19,6 +20,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EnrichingKpi',
           type: {
@@ -26,6 +28,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'EnrichingKpi',
             model_properties: {
               entity_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'entityType',
                 type: {
@@ -34,6 +37,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               entity_type_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'entityTypeName',
                 type: {
@@ -41,6 +45,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -49,6 +54,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               kpi_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kpiName',
@@ -57,11 +63,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -71,11 +79,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,6 +95,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               calculation_window: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'calculationWindow',
                 type: {
@@ -93,6 +104,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               calculation_window_field_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'calculationWindowFieldName',
                 type: {
@@ -100,6 +112,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               function: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'function',
                 type: {
@@ -108,6 +121,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               expression: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'expression',
                 type: {
@@ -115,6 +129,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -122,6 +137,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               filter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'filter',
                 type: {
@@ -129,11 +145,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               group_by: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupBy',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -143,12 +161,14 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               group_by_metadata: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'groupByMetadata',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KpiGroupByMetadataElementType',
                       type: {
@@ -159,12 +179,14 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               participant_profiles_metadata: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'participantProfilesMetadata',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KpiParticipantProfilesMetadataElementType',
                       type: {
@@ -175,6 +197,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -183,6 +206,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               thres_holds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'thresHolds',
                 type: {
@@ -191,11 +215,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               aliases: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'aliases',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KpiAliasElementType',
                       type: {
@@ -206,11 +232,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               extracts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extracts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'KpiExtractElementType',
                       type: {

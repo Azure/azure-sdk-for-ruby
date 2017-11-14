@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL referencing a secret in a Key Vault.
       attr_accessor :secret_url
 
@@ -26,6 +27,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultSecretReference',
           type: {
@@ -33,6 +35,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'KeyVaultSecretReference',
             model_properties: {
               secret_url: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'secretUrl',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               source_vault: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceVault',
                 type: {

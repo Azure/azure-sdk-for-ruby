@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] VHD type.
       attr_accessor :vhd_type
 
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureVmDiskDetails',
           type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'AzureVmDiskDetails',
             model_properties: {
               vhd_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdType',
                 type: {
@@ -54,6 +57,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vhd_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdId',
                 type: {
@@ -61,6 +65,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vhd_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdName',
                 type: {
@@ -68,6 +73,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               max_size_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxSizeMB',
                 type: {
@@ -75,6 +81,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_disk_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetDiskLocation',
                 type: {
@@ -82,6 +89,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_disk_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetDiskName',
                 type: {
@@ -89,6 +97,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               lun_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lunId',
                 type: {

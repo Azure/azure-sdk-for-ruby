@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
 
       def initialize
         @instanceType = "InMageAzureV2"
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMageAzureV2',
           type: {
@@ -45,6 +47,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanInMageAzureV2FailoverInput',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -52,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vault_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'vaultLocation',
                 type: {
@@ -59,6 +63,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_point_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'recoveryPointType',
                 type: {
@@ -67,6 +72,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               use_multi_vm_sync_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'useMultiVmSyncPoint',
                 type: {

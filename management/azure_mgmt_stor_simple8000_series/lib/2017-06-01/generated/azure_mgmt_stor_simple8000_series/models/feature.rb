@@ -12,6 +12,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The name of the feature.
       attr_accessor :name
 
@@ -26,6 +27,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Feature',
           type: {
@@ -33,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Feature',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +43,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {

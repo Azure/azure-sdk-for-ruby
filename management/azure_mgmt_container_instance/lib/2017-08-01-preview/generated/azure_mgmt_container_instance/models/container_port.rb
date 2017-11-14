@@ -12,6 +12,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Integer] The port number exposed within the container group.
       attr_accessor :port
 
@@ -22,6 +23,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerPort',
           type: {
@@ -29,6 +31,7 @@ module Azure::ContainerInstance::Mgmt::V2017_08_01_preview
             class_name: 'ContainerPort',
             model_properties: {
               port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'port',
                 type: {

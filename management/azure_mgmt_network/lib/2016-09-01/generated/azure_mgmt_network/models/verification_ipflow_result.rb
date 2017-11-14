@@ -12,6 +12,7 @@ module Azure::Network::Mgmt::V2016_09_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Access] Indicates whether the traffic is allowed or denied.
       # Possible values include: 'Allow', 'Deny'
       attr_accessor :access
@@ -27,6 +28,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VerificationIPFlowResult',
           type: {
@@ -34,6 +36,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'VerificationIPFlowResult',
             model_properties: {
               access: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'access',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               rule_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ruleName',
                 type: {

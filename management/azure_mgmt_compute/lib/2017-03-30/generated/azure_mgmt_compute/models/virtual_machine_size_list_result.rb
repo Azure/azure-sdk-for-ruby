@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2017_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<VirtualMachineSize>] The list of virtual machine sizes.
       attr_accessor :value
 
@@ -22,6 +23,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineSizeListResult',
           type: {
@@ -29,11 +31,13 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineSizeListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineSizeElementType',
                       type: {

@@ -12,6 +12,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Resource kind.
       attr_accessor :kind
 
@@ -123,6 +124,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecommendedAction',
           type: {
@@ -130,6 +132,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'RecommendedAction',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -138,6 +141,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -146,6 +150,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -154,6 +159,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -162,6 +168,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -170,6 +177,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               recommendation_reason: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.recommendationReason',
@@ -178,6 +186,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               valid_since: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.validSince',
@@ -186,6 +195,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               last_refresh: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastRefresh',
@@ -194,6 +204,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -202,6 +213,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               is_executable_action: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isExecutableAction',
@@ -210,6 +222,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               is_revertable_action: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isRevertableAction',
@@ -218,6 +231,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               is_archived_action: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isArchivedAction',
@@ -226,6 +240,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               execute_action_start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.executeActionStartTime',
@@ -234,6 +249,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               execute_action_duration: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.executeActionDuration',
@@ -242,6 +258,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               revert_action_start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.revertActionStartTime',
@@ -250,6 +267,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               revert_action_duration: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.revertActionDuration',
@@ -258,6 +276,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               execute_action_initiated_by: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.executeActionInitiatedBy',
@@ -267,6 +286,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               execute_action_initiated_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.executeActionInitiatedTime',
@@ -275,6 +295,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               revert_action_initiated_by: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.revertActionInitiatedBy',
@@ -284,6 +305,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               revert_action_initiated_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.revertActionInitiatedTime',
@@ -292,6 +314,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               score: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.score',
@@ -300,6 +323,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               implementation_details: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.implementationDetails',
@@ -309,6 +333,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               error_details: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.errorDetails',
@@ -318,12 +343,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               estimated_impact: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.estimatedImpact',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedActionImpactRecordElementType',
                       type: {
@@ -334,12 +361,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               observed_impact: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.observedImpact',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedActionImpactRecordElementType',
                       type: {
@@ -350,12 +379,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               time_series: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.timeSeries',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedActionMetricInfoElementType',
                       type: {
@@ -366,12 +397,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               linked_objects: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.linkedObjects',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -381,12 +414,14 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.details',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ObjectElementType',
                       type: {

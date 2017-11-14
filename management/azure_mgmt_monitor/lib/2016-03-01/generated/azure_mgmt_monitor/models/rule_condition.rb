@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       @@discriminatorMap = Hash.new
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"] = "ThresholdRuleCondition"
       @@discriminatorMap["Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition"] = "LocationThresholdRuleCondition"
@@ -35,6 +36,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RuleCondition',
           type: {
@@ -44,6 +46,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleCondition',
             model_properties: {
               data_source: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataSource',
                 type: {

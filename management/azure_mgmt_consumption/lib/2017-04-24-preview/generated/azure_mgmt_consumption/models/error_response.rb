@@ -13,6 +13,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ErrorDetails] The details of the error.
       attr_accessor :error
 
@@ -23,6 +24,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -30,6 +32,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

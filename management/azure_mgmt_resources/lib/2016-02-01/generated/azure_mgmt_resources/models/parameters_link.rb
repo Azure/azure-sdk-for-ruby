@@ -12,6 +12,7 @@ module Azure::Resources::Mgmt::V2016_02_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] URI referencing the template.
       attr_accessor :uri
 
@@ -26,6 +27,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ParametersLink',
           type: {
@@ -33,6 +35,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'ParametersLink',
             model_properties: {
               uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'uri',
                 type: {
@@ -40,6 +43,7 @@ module Azure::Resources::Mgmt::V2016_02_01
                 }
               },
               content_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentVersion',
                 type: {

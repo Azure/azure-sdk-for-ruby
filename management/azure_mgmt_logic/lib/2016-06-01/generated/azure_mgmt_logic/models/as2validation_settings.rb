@@ -12,6 +12,7 @@ module Azure::Logic::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] The value indicating whether to override incoming
       # message properties with those in agreement.
       attr_accessor :override_message_properties
@@ -61,6 +62,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AS2ValidationSettings',
           type: {
@@ -68,6 +70,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2ValidationSettings',
             model_properties: {
               override_message_properties: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'overrideMessageProperties',
                 type: {
@@ -75,6 +78,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               encrypt_message: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptMessage',
                 type: {
@@ -82,6 +86,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sign_message: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'signMessage',
                 type: {
@@ -89,6 +94,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               compress_message: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'compressMessage',
                 type: {
@@ -96,6 +102,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               check_duplicate_message: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkDuplicateMessage',
                 type: {
@@ -103,6 +110,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interchange_duplicates_validity_days: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'interchangeDuplicatesValidityDays',
                 type: {
@@ -110,6 +118,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               check_certificate_revocation_list_on_send: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkCertificateRevocationListOnSend',
                 type: {
@@ -117,6 +126,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               check_certificate_revocation_list_on_receive: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'checkCertificateRevocationListOnReceive',
                 type: {
@@ -124,6 +134,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               encryption_algorithm: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptionAlgorithm',
                 type: {
@@ -132,6 +143,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               signing_algorithm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signingAlgorithm',
                 type: {

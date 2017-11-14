@@ -87,8 +87,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesRequest.mapper()
-      request_content = @client.serialize(request_mapper,  evaluate_policies_request)
+      request_content = evaluate_policies_request.nil? ? nil: evaluate_policies_request.to_json
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{name}/evaluatePolicies'
@@ -119,8 +118,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesResponse.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response)
+            result.body = Azure::DevTestLabs::Mgmt::V2016_05_15::Models::EvaluatePoliciesResponse.new.from_json(parsed_response)
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end

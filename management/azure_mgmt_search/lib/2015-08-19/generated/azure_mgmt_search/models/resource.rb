@@ -12,6 +12,7 @@ module Azure::Search::Mgmt::V2015_08_19
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The ID of the resource. This can be used with the
       # Azure Resource Manager to link resources together.
       attr_accessor :id
@@ -38,6 +39,7 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Resource',
           type: {
@@ -45,6 +47,7 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'Resource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,6 +56,7 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -61,6 +65,7 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,6 +74,7 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -76,11 +82,13 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

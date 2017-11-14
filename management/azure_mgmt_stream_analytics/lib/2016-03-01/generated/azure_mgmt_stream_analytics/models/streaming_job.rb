@@ -13,6 +13,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Sku] Describes the SKU of the streaming job. Required on PUT
       # (CreateOrReplace) requests.
       attr_accessor :sku
@@ -127,6 +128,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StreamingJob',
           type: {
@@ -134,6 +136,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'StreamingJob',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -142,6 +145,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -150,6 +154,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -158,6 +163,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -165,11 +171,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -179,6 +187,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -187,6 +196,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               job_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.jobId',
@@ -195,6 +205,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -203,6 +214,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               job_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.jobState',
@@ -211,6 +223,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               output_start_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputStartMode',
                 type: {
@@ -218,6 +231,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               output_start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputStartTime',
                 type: {
@@ -225,6 +239,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               last_output_event_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastOutputEventTime',
@@ -233,6 +248,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               events_out_of_order_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventsOutOfOrderPolicy',
                 type: {
@@ -240,6 +256,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               output_error_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputErrorPolicy',
                 type: {
@@ -247,6 +264,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               events_out_of_order_max_delay_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventsOutOfOrderMaxDelayInSeconds',
                 type: {
@@ -254,6 +272,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               events_late_arrival_max_delay_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.eventsLateArrivalMaxDelayInSeconds',
                 type: {
@@ -261,6 +280,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               data_locale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataLocale',
                 type: {
@@ -268,6 +288,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               compatibility_level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.compatibilityLevel',
                 type: {
@@ -275,6 +296,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               created_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdDate',
@@ -283,11 +305,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               inputs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.inputs',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InputElementType',
                       type: {
@@ -298,6 +322,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               transformation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.transformation',
                 type: {
@@ -306,11 +331,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               outputs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputs',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OutputElementType',
                       type: {
@@ -321,11 +348,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               functions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.functions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FunctionElementType',
                       type: {
@@ -336,6 +365,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.etag',

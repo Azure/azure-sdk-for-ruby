@@ -16,6 +16,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Specifies if the additional information should be
       # provided for this item.
       attr_accessor :expand
@@ -27,6 +28,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GetProtectedItemQueryObject',
           type: {
@@ -34,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'GetProtectedItemQueryObject',
             model_properties: {
               expand: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expand',
                 type: {

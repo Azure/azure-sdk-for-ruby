@@ -12,6 +12,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The managed disk Arm id.
       attr_accessor :disk_id
 
@@ -59,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'A2AProtectedManagedDiskDetails',
           type: {
@@ -66,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'A2AProtectedManagedDiskDetails',
             model_properties: {
               disk_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskId',
                 type: {
@@ -73,6 +76,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_azure_resource_group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryAzureResourceGroupId',
                 type: {
@@ -80,6 +84,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_disk_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryDiskId',
                 type: {
@@ -87,6 +92,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskName',
                 type: {
@@ -94,6 +100,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_capacity_in_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskCapacityInBytes',
                 type: {
@@ -101,6 +108,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_staging_azure_storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryStagingAzureStorageAccountId',
                 type: {
@@ -108,6 +116,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskType',
                 type: {
@@ -115,6 +124,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resync_required: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resyncRequired',
                 type: {
@@ -122,6 +132,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               monitoring_percentage_completion: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'monitoringPercentageCompletion',
                 type: {
@@ -129,6 +140,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               monitoring_job_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'monitoringJobType',
                 type: {
@@ -136,6 +148,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               data_pending_in_staging_storage_account_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataPendingInStagingStorageAccountInMB',
                 type: {
@@ -143,6 +156,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               data_pending_at_source_agent_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataPendingAtSourceAgentInMB',
                 type: {

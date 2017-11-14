@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] KPI extract name.
       attr_accessor :extract_name
 
@@ -25,6 +26,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KpiExtract',
           type: {
@@ -32,6 +34,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'KpiExtract',
             model_properties: {
               extract_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'extractName',
                 type: {
@@ -39,6 +42,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               expression: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'expression',
                 type: {

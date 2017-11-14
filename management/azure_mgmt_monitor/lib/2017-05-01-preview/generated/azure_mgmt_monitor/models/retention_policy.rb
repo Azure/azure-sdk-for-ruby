@@ -12,6 +12,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Boolean] a value indicating whether the retention policy is
       # enabled.
       attr_accessor :enabled
@@ -27,6 +28,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RetentionPolicy',
           type: {
@@ -34,6 +36,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
             class_name: 'RetentionPolicy',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enabled',
                 type: {
@@ -41,6 +44,7 @@ module Azure::Monitor::Mgmt::V2017_05_01_preview
                 }
               },
               days: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'days',
                 constraints: {

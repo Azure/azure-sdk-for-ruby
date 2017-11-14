@@ -12,6 +12,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] Integrity key.
       attr_accessor :integrity_key
 
@@ -31,6 +32,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultExtendedInfoResource',
           type: {
@@ -38,6 +40,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'VaultExtendedInfoResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +49,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +58,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,6 +67,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               e_tag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eTag',
                 type: {
@@ -69,6 +75,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               integrity_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.integrityKey',
                 type: {
@@ -76,6 +83,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionKey',
                 type: {
@@ -83,6 +91,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               encryption_key_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionKeyThumbprint',
                 type: {
@@ -90,6 +99,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               algorithm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.algorithm',
                 type: {

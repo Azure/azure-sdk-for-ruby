@@ -13,6 +13,7 @@ module Azure::SQL::Mgmt::V2014_04_01
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [Array<TransparentDataEncryption>] The list of transparent data
       # encryption configurations.
       attr_accessor :value
@@ -24,6 +25,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TransparentDataEncryptionListResult',
           type: {
@@ -31,11 +33,13 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'TransparentDataEncryptionListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TransparentDataEncryptionElementType',
                       type: {

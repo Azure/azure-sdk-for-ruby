@@ -12,6 +12,7 @@ module Azure::Compute::Mgmt::V2016_03_30
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The virtual machine extension name.
       attr_accessor :name
 
@@ -35,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionInstanceView',
           type: {
@@ -42,6 +44,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'VirtualMachineExtensionInstanceView',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -56,6 +60,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               type_handler_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'typeHandlerVersion',
                 type: {
@@ -63,11 +68,13 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               substatuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'substatuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {
@@ -78,11 +85,13 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               statuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

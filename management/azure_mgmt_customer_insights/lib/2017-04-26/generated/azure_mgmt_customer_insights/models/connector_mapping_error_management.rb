@@ -12,6 +12,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [ErrorManagementTypes] The type of error management to use for
       # the mapping. Possible values include: 'RejectAndContinue',
       # 'StopImport', 'RejectUntilLimit'
@@ -27,6 +28,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingErrorManagement',
           type: {
@@ -34,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ConnectorMappingErrorManagement',
             model_properties: {
               error_management_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'errorManagementType',
                 type: {
@@ -42,6 +45,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               error_limit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorLimit',
                 type: {

@@ -13,6 +13,7 @@ module Azure::Compute::Mgmt::V2015_06_15
 
       include MsRestAzure
 
+      include MsRest::JSONable
       # @return [String] The URL referencing a secret in a Key Vault which
       # contains a properly formatted certificate.
       attr_accessor :certificate_url
@@ -28,6 +29,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultCertificate',
           type: {
@@ -35,6 +37,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VaultCertificate',
             model_properties: {
               certificate_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {
@@ -42,6 +45,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               certificate_store: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateStore',
                 type: {
