@@ -6,14 +6,14 @@
 module Azure::Web::Mgmt::V2016_09_01
   module Models
     #
-    # Description of an App Service Environment.
+    # ARM resource for a app service enviroment.
     #
-    class AppServiceEnvironment
+    class AppServiceEnvironmentPatchResource < ProxyOnlyResource
 
       include MsRestAzure
 
       # @return [String] Name of the App Service Environment.
-      attr_accessor :name
+      attr_accessor :app_service_environment_patch_resource_name
 
       # @return [String] Location of the App Service Environment, e.g. "West
       # US".
@@ -146,29 +146,63 @@ module Azure::Web::Mgmt::V2016_09_01
       # behavior of the App Service Environment.
       attr_accessor :cluster_settings
 
+      # @return [Array<String>] User added ip ranges to whitelist on ASE db
+      attr_accessor :user_whitelisted_ip_ranges
+
 
       #
-      # Mapper for AppServiceEnvironment class as Ruby Hash.
+      # Mapper for AppServiceEnvironmentPatchResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AppServiceEnvironment',
+          serialized_name: 'AppServiceEnvironmentPatchResource',
           type: {
             name: 'Composite',
-            class_name: 'AppServiceEnvironment',
+            class_name: 'AppServiceEnvironmentPatchResource',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              kind: {
+                required: false,
+                serialized_name: 'kind',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_service_environment_patch_resource_name: {
+                required: true,
+                serialized_name: 'properties.name',
                 type: {
                   name: 'String'
                 }
               },
               location: {
                 required: true,
-                serialized_name: 'location',
+                serialized_name: 'properties.location',
                 type: {
                   name: 'String'
                 }
@@ -176,7 +210,7 @@ module Azure::Web::Mgmt::V2016_09_01
               provisioning_state: {
                 required: false,
                 read_only: true,
-                serialized_name: 'provisioningState',
+                serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',
                   module: 'ProvisioningState'
@@ -185,7 +219,7 @@ module Azure::Web::Mgmt::V2016_09_01
               status: {
                 required: false,
                 read_only: true,
-                serialized_name: 'status',
+                serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
                   module: 'HostingEnvironmentStatus'
@@ -193,28 +227,28 @@ module Azure::Web::Mgmt::V2016_09_01
               },
               vnet_name: {
                 required: false,
-                serialized_name: 'vnetName',
+                serialized_name: 'properties.vnetName',
                 type: {
                   name: 'String'
                 }
               },
               vnet_resource_group_name: {
                 required: false,
-                serialized_name: 'vnetResourceGroupName',
+                serialized_name: 'properties.vnetResourceGroupName',
                 type: {
                   name: 'String'
                 }
               },
               vnet_subnet_name: {
                 required: false,
-                serialized_name: 'vnetSubnetName',
+                serialized_name: 'properties.vnetSubnetName',
                 type: {
                   name: 'String'
                 }
               },
               virtual_network: {
                 required: true,
-                serialized_name: 'virtualNetwork',
+                serialized_name: 'properties.virtualNetwork',
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualNetworkProfile'
@@ -222,7 +256,7 @@ module Azure::Web::Mgmt::V2016_09_01
               },
               internal_load_balancing_mode: {
                 required: false,
-                serialized_name: 'internalLoadBalancingMode',
+                serialized_name: 'properties.internalLoadBalancingMode',
                 type: {
                   name: 'Enum',
                   module: 'InternalLoadBalancingMode'
@@ -230,21 +264,21 @@ module Azure::Web::Mgmt::V2016_09_01
               },
               multi_size: {
                 required: false,
-                serialized_name: 'multiSize',
+                serialized_name: 'properties.multiSize',
                 type: {
                   name: 'String'
                 }
               },
               multi_role_count: {
                 required: false,
-                serialized_name: 'multiRoleCount',
+                serialized_name: 'properties.multiRoleCount',
                 type: {
                   name: 'Number'
                 }
               },
               worker_pools: {
                 required: true,
-                serialized_name: 'workerPools',
+                serialized_name: 'properties.workerPools',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -259,7 +293,7 @@ module Azure::Web::Mgmt::V2016_09_01
               },
               ipssl_address_count: {
                 required: false,
-                serialized_name: 'ipsslAddressCount',
+                serialized_name: 'properties.ipsslAddressCount',
                 type: {
                   name: 'Number'
                 }
@@ -267,7 +301,7 @@ module Azure::Web::Mgmt::V2016_09_01
               database_edition: {
                 required: false,
                 read_only: true,
-                serialized_name: 'databaseEdition',
+                serialized_name: 'properties.databaseEdition',
                 type: {
                   name: 'String'
                 }
@@ -275,7 +309,7 @@ module Azure::Web::Mgmt::V2016_09_01
               database_service_objective: {
                 required: false,
                 read_only: true,
-                serialized_name: 'databaseServiceObjective',
+                serialized_name: 'properties.databaseServiceObjective',
                 type: {
                   name: 'String'
                 }
@@ -283,7 +317,7 @@ module Azure::Web::Mgmt::V2016_09_01
               upgrade_domains: {
                 required: false,
                 read_only: true,
-                serialized_name: 'upgradeDomains',
+                serialized_name: 'properties.upgradeDomains',
                 type: {
                   name: 'Number'
                 }
@@ -291,14 +325,14 @@ module Azure::Web::Mgmt::V2016_09_01
               subscription_id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'subscriptionId',
+                serialized_name: 'properties.subscriptionId',
                 type: {
                   name: 'String'
                 }
               },
               dns_suffix: {
                 required: false,
-                serialized_name: 'dnsSuffix',
+                serialized_name: 'properties.dnsSuffix',
                 type: {
                   name: 'String'
                 }
@@ -306,7 +340,7 @@ module Azure::Web::Mgmt::V2016_09_01
               last_action: {
                 required: false,
                 read_only: true,
-                serialized_name: 'lastAction',
+                serialized_name: 'properties.lastAction',
                 type: {
                   name: 'String'
                 }
@@ -314,7 +348,7 @@ module Azure::Web::Mgmt::V2016_09_01
               last_action_result: {
                 required: false,
                 read_only: true,
-                serialized_name: 'lastActionResult',
+                serialized_name: 'properties.lastActionResult',
                 type: {
                   name: 'String'
                 }
@@ -322,7 +356,7 @@ module Azure::Web::Mgmt::V2016_09_01
               allowed_multi_sizes: {
                 required: false,
                 read_only: true,
-                serialized_name: 'allowedMultiSizes',
+                serialized_name: 'properties.allowedMultiSizes',
                 type: {
                   name: 'String'
                 }
@@ -330,7 +364,7 @@ module Azure::Web::Mgmt::V2016_09_01
               allowed_worker_sizes: {
                 required: false,
                 read_only: true,
-                serialized_name: 'allowedWorkerSizes',
+                serialized_name: 'properties.allowedWorkerSizes',
                 type: {
                   name: 'String'
                 }
@@ -338,7 +372,7 @@ module Azure::Web::Mgmt::V2016_09_01
               maximum_number_of_machines: {
                 required: false,
                 read_only: true,
-                serialized_name: 'maximumNumberOfMachines',
+                serialized_name: 'properties.maximumNumberOfMachines',
                 type: {
                   name: 'Number'
                 }
@@ -346,7 +380,7 @@ module Azure::Web::Mgmt::V2016_09_01
               vip_mappings: {
                 required: false,
                 read_only: true,
-                serialized_name: 'vipMappings',
+                serialized_name: 'properties.vipMappings',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -362,7 +396,7 @@ module Azure::Web::Mgmt::V2016_09_01
               environment_capacities: {
                 required: false,
                 read_only: true,
-                serialized_name: 'environmentCapacities',
+                serialized_name: 'properties.environmentCapacities',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -377,7 +411,7 @@ module Azure::Web::Mgmt::V2016_09_01
               },
               network_access_control_list: {
                 required: false,
-                serialized_name: 'networkAccessControlList',
+                serialized_name: 'properties.networkAccessControlList',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -393,7 +427,7 @@ module Azure::Web::Mgmt::V2016_09_01
               environment_is_healthy: {
                 required: false,
                 read_only: true,
-                serialized_name: 'environmentIsHealthy',
+                serialized_name: 'properties.environmentIsHealthy',
                 type: {
                   name: 'Boolean'
                 }
@@ -401,7 +435,7 @@ module Azure::Web::Mgmt::V2016_09_01
               environment_status: {
                 required: false,
                 read_only: true,
-                serialized_name: 'environmentStatus',
+                serialized_name: 'properties.environmentStatus',
                 type: {
                   name: 'String'
                 }
@@ -409,14 +443,14 @@ module Azure::Web::Mgmt::V2016_09_01
               resource_group: {
                 required: false,
                 read_only: true,
-                serialized_name: 'resourceGroup',
+                serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
                 }
               },
               front_end_scale_factor: {
                 required: false,
-                serialized_name: 'frontEndScaleFactor',
+                serialized_name: 'properties.frontEndScaleFactor',
                 type: {
                   name: 'Number'
                 }
@@ -424,35 +458,35 @@ module Azure::Web::Mgmt::V2016_09_01
               default_front_end_scale_factor: {
                 required: false,
                 read_only: true,
-                serialized_name: 'defaultFrontEndScaleFactor',
+                serialized_name: 'properties.defaultFrontEndScaleFactor',
                 type: {
                   name: 'Number'
                 }
               },
               api_management_account_id: {
                 required: false,
-                serialized_name: 'apiManagementAccountId',
+                serialized_name: 'properties.apiManagementAccountId',
                 type: {
                   name: 'String'
                 }
               },
               suspended: {
                 required: false,
-                serialized_name: 'suspended',
+                serialized_name: 'properties.suspended',
                 type: {
                   name: 'Boolean'
                 }
               },
               dynamic_cache_enabled: {
                 required: false,
-                serialized_name: 'dynamicCacheEnabled',
+                serialized_name: 'properties.dynamicCacheEnabled',
                 type: {
                   name: 'Boolean'
                 }
               },
               cluster_settings: {
                 required: false,
-                serialized_name: 'clusterSettings',
+                serialized_name: 'properties.clusterSettings',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -461,6 +495,20 @@ module Azure::Web::Mgmt::V2016_09_01
                       type: {
                         name: 'Composite',
                         class_name: 'NameValuePair'
+                      }
+                  }
+                }
+              },
+              user_whitelisted_ip_ranges: {
+                required: false,
+                serialized_name: 'properties.userWhitelistedIpRanges',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }
