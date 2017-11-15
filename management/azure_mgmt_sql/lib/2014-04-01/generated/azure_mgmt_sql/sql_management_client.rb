@@ -74,6 +74,9 @@ module Azure::SQL::Mgmt::V2014_04_01
     # transparent_data_encryption_configurations
     attr_reader :transparent_data_encryption_configurations
 
+    # @return [Extensions] extensions
+    attr_reader :extensions
+
     # @return [FirewallRules] firewall_rules
     attr_reader :firewall_rules
 
@@ -169,6 +172,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       @data_masking_policies = DataMaskingPolicies.new(self)
       @data_masking_rules = DataMaskingRules.new(self)
       @transparent_data_encryption_configurations = TransparentDataEncryptionConfigurations.new(self)
+      @extensions = Extensions.new(self)
       @firewall_rules = FirewallRules.new(self)
       @geo_backup_policies = GeoBackupPolicies.new(self)
       @databases = Databases.new(self)
