@@ -12,6 +12,102 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+
+#
+# This rakefile consists of several tasks. This section will provide an overview of the
+# tasks and their dependencies.
+#
+# -------------------------------------------------------------------------------------------------------------------------------------------
+# | No |             Task                | Description                                                                                      |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 1  | regen                           | Regenerates all the SDK versions for all the services and all the profiles for all the services. |
+# |    |                                 | This task has regen_sdk_versions and regen_all_profiles as prereqs.                              |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 2  | regen_sdk_versions              | Regenerates all the SDK versions for all the services. At the end, this task calls               |
+# |    |                                 | regen_individual_require_files as an enhancement. This task has clean_generated as prereq.       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 3  | regen_all_profiles              | Regenerates all the profiles for all the services. This task has regen_rollup_profile and        |
+# |    |                                 | regen_individual_profiles as prereqs.                                                            |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 4  | clean_generated                 | Cleans all the generated folders in multiple SDK versions.                                       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 5  | regen_rollup_profile            | Regenerates all profiles within the rollup gem. At the end, this task calls                      |
+# |    |                                 | regen_rollup_require_files as an enhancement. This task has clean_rollup_profiles as prereq.     |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 6  | regen_individual_profiles       | Regenerates all profiles with all the services. At the end, this task calls                      |
+# |    |                                 | regen_individual_require_files as an enhancement. This task calls clean_individual_profiles      |
+# |    |                                 | as prereq.                                                                                       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 7  | clean_all_profiles              | Cleans all profiles inside the rollup gem and individual gems.This task has clean_rollup_profiles|
+# |    |                                 | and clean_individual_profiles as prereqs.                                                        |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 8  | clean_rollup_profiles           | Cleans all profiles inside the rollup gem.                                                       |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 9  | clean_individual_profiles       | Cleans all profiles inside individual gems.                                                      |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 10 | regen_all_require_files         | Regenerates the require files for the rollup gem and individual gems. This task has              |
+# |    |                                 | regen_rollup_require_files and regen_individual_require_files as prereqs.                        |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 11 | regen_rollup_require_files      | Regenerates the require files for the rollup gem                                                 |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 12 | regen_individual_require_files  | Regenerates the require files for the individual gems                                            |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 13 | release                         | Release gems. This task has build as a prereq.                                                   |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 14 | build                           | Builds all gems. This task has clean as a prereq.                                                |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 15 | clean                           | Cleans the pks folder inside  all the gems.                                                      |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 16 | bundle:update                   | Performs bundle update for all gems.                                                             |
+# |----|---------------------------------|--------------------------------------------------------------------------------------------------|
+# | 17 | spec                            | Executes tests for all gems.                                                                     |
+# -------------------------------------------------------------------------------------------------------------------------------------------
+#
+#                                                       regen
+#                                                         |
+#           -----------------------------------------------------------------------------------------------------
+#           |                                                                                                   |
+#      regen_sdk_versions -->enhancement--> regen_individual_require_files                                      |
+#           |                                                                                            regen_all_profiles
+#           |                                                                                                   |
+#      clean_generated                   ------------------------------------------------------------------------------------------------------------------------------
+#                                        |                                                                                                                            |
+#                                        |                                                                                                                            |
+#                                        |                                                                                                                            |
+#                                        |                                                                                                                            |
+#                                        |                                                     regen_all_require_files                                                |
+#                                        |                                                              |                                                             |
+#                                        |                                          -----------------------------------------                                         |
+#                                        |                                          |                                       |                                         |
+#                                        |                                          |                                       |                                         |
+#                                        |                                          |                                       |                                         |
+#                                 regen_rollup_profile -->enhancement--> regen_rollup_require_files                         |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                                  |                                         |
+#                                        |                                                                 regen_individual_require_files<--enhancement<--regen_individual_profiles
+#                                        |                                                                                                                            |
+#                                        |                                                             clean_all_profiles                                             |
+#                                        |                                                                    |                                                       |
+#                                        |       ---------------------------------------------------------------------------------------------------------------      |
+#                                        |       |                                                                                                             |      |
+#                                        |       |                                                                                                             |      |
+#                                 clean_rollup_profiles                                                                                                    clean_individual_profiles
+#
+#                                                release
+#                                                   |
+#                                                 build
+#                                                   |
+#                                                 clean
+#
+#                                               bundle:update
+#
+#                                                  spec
+#
+
 require 'dotenv/tasks'
 require 'rspec/core/rake_task'
 require 'open3'
