@@ -24,19 +24,23 @@
 # |    |                                 | This task has regen_sdk_versions and regen_all_profiles as prereqs.                              |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 2  | regen_sdk_versions              | Regenerates all the SDK versions for all the services. At the end, this task calls               |
-# |    |                                 | regen_individual_require_files as an enhancement. This task has clean_generated as prereq.       |
+# |    |                                 | regen_individual_require_files as an enhancement. This task has clean_generated as prereq. This  |
+# |.   |.                                | task is focused on code generation using autorest and will generate api versions as indicated in |
+# |    |                                 |.in the config.json file.                                                                         |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 3  | regen_all_profiles              | Regenerates all the profiles for all the services. This task has regen_rollup_profile and        |
-# |    |                                 | regen_individual_profiles as prereqs.                                                            |
+# |    |                                 | regen_individual_profiles as prereqs. This task uses the profile_generator to generate the       |
+# |    |                                 | with inputs from profiles.json and dir_metadata.json.                                            |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 4  | clean_generated                 | Cleans all the generated folders in multiple SDK versions.                                       |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 5  | regen_rollup_profile            | Regenerates all profiles within the rollup gem. At the end, this task calls                      |
-# |    |                                 | regen_rollup_require_files as an enhancement. This task has clean_rollup_profiles as prereq.     |
+# |    |                                 | regen_rollup_require_files as an enhancement. This task has clean_rollup_profiles as prereq. This|
+#.|.   |                                 | task requires correct definition of rollup profiles in profiles.json file.                       |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 6  | regen_individual_profiles       | Regenerates all profiles with all the services. At the end, this task calls                      |
 # |    |                                 | regen_individual_require_files as an enhancement. This task calls clean_individual_profiles      |
-# |    |                                 | as prereq.                                                                                       |
+# |    |                                 | as prereq. This task requires correct definition of individual profiles in profiles.json file.   |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 7  | clean_all_profiles              | Cleans all profiles inside the rollup gem and individual gems.This task has clean_rollup_profiles|
 # |    |                                 | and clean_individual_profiles as prereqs.                                                        |
@@ -46,13 +50,16 @@
 # | 9  | clean_individual_profiles       | Cleans all profiles inside individual gems.                                                      |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 10 | regen_all_require_files         | Regenerates the require files for the rollup gem and individual gems. This task has              |
-# |    |                                 | regen_rollup_require_files and regen_individual_require_files as prereqs.                        |
+# |    |                                 | regen_rollup_require_files and regen_individual_require_files as prereqs. A require file is the  |
+# |    |                                 | base file for a gem which includes other file. A sample could be found here:                     |
+# |.   |                                 | https://github.com/Azure/azure-sdk-for-ruby/blob/master/azure_sdk/lib/azure_sdk.rb               |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 11 | regen_rollup_require_files      | Regenerates the require files for the rollup gem                                                 |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 12 | regen_individual_require_files  | Regenerates the require files for the individual gems                                            |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
-# | 13 | release                         | Release gems. This task has build as a prereq.                                                   |
+# | 13 | release                         | Release gems. This task has build as a prereq. The gems to be released must be indicated in the  |
+# |.   |                                 | GEMS_TO_RELEASE file.                                                                            |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
 # | 14 | build                           | Builds all gems. This task has clean as a prereq.                                                |
 # |----|---------------------------------|--------------------------------------------------------------------------------------------------|
