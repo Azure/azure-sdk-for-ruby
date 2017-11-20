@@ -3,6 +3,4 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure end
-module Azure::<%= @module_name %> end
-module Azure::<%= @module_name %>::Profiles end
-module Azure::<%= @module_name %>::Profiles::<%= @profile_name %> end
+module Azure::Graph end

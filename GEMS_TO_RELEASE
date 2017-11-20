@@ -1,5 +1,8 @@
 {
     "rollup": ["azure_sdk"],
+    "data": [
+        "azure_graph"
+    ],
     "management": [
         "azure_mgmt_analysis_services",
         "azure_mgmt_authorization",
@@ -22,7 +25,6 @@
         "azure_mgmt_event_grid",
         "azure_mgmt_event_hub",
         "azure_mgmt_features",
-        "azure_mgmt_graph",
         "azure_mgmt_iot_hub",
         "azure_mgmt_key_vault",
         "azure_mgmt_links",

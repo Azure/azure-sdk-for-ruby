@@ -2,7 +2,6 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-module Azure end
-module Azure::<%= @module_name %> end
-module Azure::<%= @module_name %>::Profiles end
-module Azure::<%= @module_name %>::Profiles::<%= @profile_name %> end
+module Azure::Graph
+    VERSION = '0.15.1'
+end

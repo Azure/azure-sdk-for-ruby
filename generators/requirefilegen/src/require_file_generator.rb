@@ -14,6 +14,7 @@ class RequireFileGenerator
   def initialize(azure_sdk_for_ruby_location)
     @azure_sdk_location = "#{azure_sdk_for_ruby_location}/azure_sdk"
     @mgmt_sdks_location = "#{azure_sdk_for_ruby_location}/management"
+    @data_sdks_location = "#{azure_sdk_for_ruby_location}/data"
     @azure_sdk_for_ruby_location = azure_sdk_for_ruby_location
     @file_to_be_written = ''
     @requires = []
@@ -55,7 +56,12 @@ class RequireFileGenerator
   #
   def generate_require_files_for_individual_gems
     puts 'Generating require files for individual gems'
-    Dir.chdir("#{@mgmt_sdks_location}")
+    generate_require_files_for_gem(@mgmt_sdks_location)
+    generate_require_files_for_gem(@data_sdks_location)
+  end
+
+  def generate_require_files_for_gem(location)
+    Dir.chdir("#{location}")
     gems = Dir['*'].reject{|o| not File.directory?(o)}
     gems.each do |gem|
       # azure_mgmt_insights is a special case gem which we have stopped
@@ -70,19 +76,19 @@ class RequireFileGenerator
 
       puts "Generating require files for #{gem}"
 
-      Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib")
+      Dir.chdir("#{location}/#{gem}/lib")
       sub_files_list = Dir['*'].reject{|o| File.directory?(o)}
       sub_files_list.each do |file|
         # Ignore the module definition and version files.
         if(!(file.end_with?'module_definition.rb') && (!file.end_with?'version.rb'))
-          @file_to_be_written = "#{@mgmt_sdks_location}/#{gem}/lib/#{file}"
+          @file_to_be_written = "#{location}/#{gem}/lib/#{file}"
         end
       end
 
       sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
       sub_dirs.each do |sub_dir|
         if(sub_dir == 'profiles')
-          Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib/profiles")
+          Dir.chdir("#{location}/#{gem}/lib/profiles")
           profiles_folders = Dir['*'].reject{|o| not File.directory?(o)}
           profiles_folders.each do |profile_folder|
             # Ignore the common folder
@@ -90,7 +96,7 @@ class RequireFileGenerator
               next
             end
 
-            Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib/profiles/#{profile_folder}")
+            Dir.chdir("#{location}/#{gem}/lib/profiles/#{profile_folder}")
             files_list = Dir['*'].reject{|o| File.directory?(o)}
             files_list.each do |file|
               # Ignore the module definition file
@@ -103,7 +109,7 @@ class RequireFileGenerator
 
           end
         else
-          Dir.chdir("#{@mgmt_sdks_location}/#{gem}/lib/#{sub_dir}/generated")
+          Dir.chdir("#{location}/#{gem}/lib/#{sub_dir}/generated")
           files_list = Dir['*'].reject{|o| File.directory?(o)}
           @requires << "#{sub_dir}/generated/#{files_list[0]}"
         end
