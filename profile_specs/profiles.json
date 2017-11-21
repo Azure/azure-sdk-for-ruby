@@ -5,7 +5,7 @@
             "name": "V2017_03_09",
             "resourceTypes": {
                 "Microsoft.Storage": {
-                    "2015-06-15": ["*"]
+                    "2016-01-01": ["*"]
                 },
                 "Microsoft.Network" : {
                     "2015-06-15": ["*"]
