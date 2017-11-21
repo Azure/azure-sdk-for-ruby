@@ -6,8 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Model object.
-    #
+    # Properties available for a Microsoft.Web resource provider operation.
     #
     class CsmOperationDescriptionProperties
 
