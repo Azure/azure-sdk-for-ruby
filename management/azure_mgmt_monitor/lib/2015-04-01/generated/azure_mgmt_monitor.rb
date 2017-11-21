@@ -22,7 +22,7 @@ require 'ms_rest_azure'
 module Azure::Monitor::Mgmt::V2015_04_01
   autoload :AutoscaleSettings,                                  '2015-04-01/generated/azure_mgmt_monitor/autoscale_settings.rb'
   autoload :Operations,                                         '2015-04-01/generated/azure_mgmt_monitor/operations.rb'
-  autoload :MonitorManagementClient,                            '2015-04-01/generated/azure_mgmt_monitor/monitor_management_client.rb'
+  autoload :MonitorClient,                                      '2015-04-01/generated/azure_mgmt_monitor/monitor_client.rb'
 
   module Models
     autoload :EmailNotification,                                  '2015-04-01/generated/azure_mgmt_monitor/models/email_notification.rb'

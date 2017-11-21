@@ -23,7 +23,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
   autoload :AlertRuleIncidents,                                 '2016-03-01/generated/azure_mgmt_monitor/alert_rule_incidents.rb'
   autoload :AlertRules,                                         '2016-03-01/generated/azure_mgmt_monitor/alert_rules.rb'
   autoload :LogProfiles,                                        '2016-03-01/generated/azure_mgmt_monitor/log_profiles.rb'
-  autoload :MonitorManagementClient,                            '2016-03-01/generated/azure_mgmt_monitor/monitor_management_client.rb'
+  autoload :MonitorClient,                                      '2016-03-01/generated/azure_mgmt_monitor/monitor_client.rb'
 
   module Models
     autoload :AlertRuleResourcePatch,                             '2016-03-01/generated/azure_mgmt_monitor/models/alert_rule_resource_patch.rb'

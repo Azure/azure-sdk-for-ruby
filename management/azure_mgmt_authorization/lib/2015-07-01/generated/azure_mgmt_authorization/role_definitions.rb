@@ -314,8 +314,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Gets a role definition by ID.
     #
-    # @param role_definition_id [String] The fully qualified role definition ID to
-    # get.
+    # @param role_definition_id [String] The fully qualified role definition ID.
+    # Use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+    # for subscription level role definitions, or
+    # /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+    # tenant level role definitions.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -329,8 +333,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Gets a role definition by ID.
     #
-    # @param role_definition_id [String] The fully qualified role definition ID to
-    # get.
+    # @param role_definition_id [String] The fully qualified role definition ID.
+    # Use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+    # for subscription level role definitions, or
+    # /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+    # tenant level role definitions.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -343,8 +351,12 @@ module Azure::Authorization::Mgmt::V2015_07_01
     #
     # Gets a role definition by ID.
     #
-    # @param role_definition_id [String] The fully qualified role definition ID to
-    # get.
+    # @param role_definition_id [String] The fully qualified role definition ID.
+    # Use the format,
+    # /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+    # for subscription level role definitions, or
+    # /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+    # tenant level role definitions.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
