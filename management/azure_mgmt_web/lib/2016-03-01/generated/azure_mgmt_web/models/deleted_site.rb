@@ -27,6 +27,9 @@ module Azure::Web::Mgmt::V2016_03_01
       # @return [String] Name of the deleted site
       attr_accessor :name
 
+      # @return [String] Slot of the deleted site
+      attr_accessor :slot
+
 
       #
       # Mapper for DeletedSite class as Ruby Hash.
@@ -75,6 +78,14 @@ module Azure::Web::Mgmt::V2016_03_01
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              slot: {
+                required: false,
+                read_only: true,
+                serialized_name: 'slot',
                 type: {
                   name: 'String'
                 }
