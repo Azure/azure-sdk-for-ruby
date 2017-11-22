@@ -12,28 +12,28 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
-      # @return [Integer] Version.
+      # @return [Integer] Certificate Version.
       attr_accessor :version
 
-      # @return [String] Serial Number.
+      # @return [String] Certificate Serial Number.
       attr_accessor :serial_number
 
-      # @return [String] Thumbprint.
+      # @return [String] Certificate Thumbprint.
       attr_accessor :thumbprint
 
-      # @return [String] Subject.
+      # @return [String] Certificate Subject.
       attr_accessor :subject
 
-      # @return [DateTime] Valid from.
+      # @return [DateTime] Date Certificate is valid from.
       attr_accessor :not_before
 
-      # @return [DateTime] Valid to.
+      # @return [DateTime] Date Certificate is valid to.
       attr_accessor :not_after
 
-      # @return [String] Signature algorithm.
+      # @return [String] Certificate Signature algorithm.
       attr_accessor :signature_algorithm
 
-      # @return [String] Issuer.
+      # @return [String] Certificate Issuer.
       attr_accessor :issuer
 
       # @return [String] Raw certificate data.
