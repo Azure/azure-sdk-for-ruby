@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     # Domain ownership Identifier.
     #
-    class DomainOwnershipIdentifier < Resource
+    class DomainOwnershipIdentifier < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -51,33 +51,12 @@ module Azure::Web::Mgmt::V2015_04_01
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               ownership_id: {

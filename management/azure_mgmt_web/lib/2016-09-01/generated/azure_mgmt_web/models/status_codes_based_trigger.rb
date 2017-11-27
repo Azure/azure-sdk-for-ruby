@@ -15,13 +15,13 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [Integer] HTTP status code.
       attr_accessor :status
 
-      # @return [Integer] SubStatus.
+      # @return [Integer] Request Sub Status.
       attr_accessor :sub_status
 
       # @return [Integer] Win32 error code.
       attr_accessor :win32status
 
-      # @return [Integer] Count.
+      # @return [Integer] Request Count.
       attr_accessor :count
 
       # @return [String] Time interval.
