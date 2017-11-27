@@ -12,22 +12,22 @@ module Azure::Web::Mgmt::V2015_04_01
 
       include MsRestAzure
 
-      # @return [String] Address 1.
+      # @return [String] First line of an Address.
       attr_accessor :address1
 
-      # @return [String] Address 2.
+      # @return [String] The second line of the Address. Optional.
       attr_accessor :address2
 
-      # @return [String] City.
+      # @return [String] The city for the address.
       attr_accessor :city
 
-      # @return [String] Country.
+      # @return [String] The country for the address.
       attr_accessor :country
 
-      # @return [String] Postal code.
+      # @return [String] The postal code for the address.
       attr_accessor :postal_code
 
-      # @return [String] State.
+      # @return [String] The state or province for the address.
       attr_accessor :state
 
 

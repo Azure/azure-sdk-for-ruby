@@ -31,7 +31,7 @@ module Azure::Web::Mgmt::V2016_09_01
       attr_accessor :compute_mode
 
       # @return [WorkerSizeOptions] Size of the machines. Possible values
-      # include: 'Default', 'Small', 'Medium', 'Large'
+      # include: 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3'
       attr_accessor :worker_size
 
       # @return [Integer] Size ID of machines:
