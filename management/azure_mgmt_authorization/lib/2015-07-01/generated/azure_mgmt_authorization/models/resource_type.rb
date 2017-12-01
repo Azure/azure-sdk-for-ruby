@@ -28,6 +28,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceType',
           type: {
@@ -35,6 +36,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'ResourceType',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -49,11 +52,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               operations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProviderOperationElementType',
                       type: {

@@ -6,4 +6,3 @@ module Azure end
 module Azure::Network end
 module Azure::Network::Profiles end
 module Azure::Network::Profiles::Latest end
-module Azure::Network::Profiles::Latest::Mgmt end

@@ -41,6 +41,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkloadProtectableItem',
           type: {
@@ -50,6 +51,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'WorkloadProtectableItem',
             model_properties: {
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -57,6 +59,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -64,6 +67,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protection_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionState',
                 type: {

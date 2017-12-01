@@ -41,6 +41,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertResource',
           type: {
@@ -48,6 +49,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -56,6 +58,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -64,6 +67,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -72,6 +76,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -79,11 +84,13 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -93,11 +100,13 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               scopes: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.scopes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,6 +116,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enabled',
                 default_value: true,
@@ -115,6 +125,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               condition: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.condition',
                 type: {
@@ -123,6 +134,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               actions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.actions',
                 type: {
@@ -131,6 +143,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

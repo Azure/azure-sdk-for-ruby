@@ -12,6 +12,11 @@ module Azure::Web::Mgmt::V2016_03_01
       Site = "Site"
       Slot = "Slot"
       HostingEnvironment = "HostingEnvironment"
+      PublishingUser = "PublishingUser"
+      MicrosoftWebsites = "Microsoft.Web/sites"
+      MicrosoftWebsitesslots = "Microsoft.Web/sites/slots"
+      MicrosoftWebhostingEnvironments = "Microsoft.Web/hostingEnvironments"
+      MicrosoftWebpublishingUsers = "Microsoft.Web/publishingUsers"
     end
   end
 end

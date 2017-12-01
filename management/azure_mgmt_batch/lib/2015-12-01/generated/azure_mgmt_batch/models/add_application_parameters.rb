@@ -26,6 +26,7 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AddApplicationParameters',
           type: {
@@ -33,6 +34,7 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'AddApplicationParameters',
             model_properties: {
               allow_updates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowUpdates',
                 type: {
@@ -40,6 +42,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {

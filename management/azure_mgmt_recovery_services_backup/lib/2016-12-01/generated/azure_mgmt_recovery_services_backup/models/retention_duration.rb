@@ -30,6 +30,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RetentionDuration',
           type: {
@@ -37,6 +38,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'RetentionDuration',
             model_properties: {
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -44,6 +46,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               duration_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'durationType',
                 type: {

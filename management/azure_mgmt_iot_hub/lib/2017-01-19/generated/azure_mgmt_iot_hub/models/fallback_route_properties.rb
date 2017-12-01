@@ -39,6 +39,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FallbackRouteProperties',
           type: {
@@ -46,6 +47,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'FallbackRouteProperties',
             model_properties: {
               source: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'source',
@@ -55,6 +57,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               condition: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'condition',
                 type: {
@@ -62,6 +65,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               endpoint_names: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'endpointNames',
                 constraints: {
@@ -71,6 +75,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -80,6 +85,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               is_enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'isEnabled',
                 type: {

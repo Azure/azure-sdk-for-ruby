@@ -34,6 +34,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobErrorDetails',
           type: {
@@ -41,6 +42,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'JobErrorDetails',
             model_properties: {
               service_error_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceErrorDetails',
                 type: {
@@ -49,6 +51,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_error_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerErrorDetails',
                 type: {
@@ -57,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorLevel',
                 type: {
@@ -64,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               creation_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'creationTime',
                 type: {
@@ -71,6 +76,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               task_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'taskId',
                 type: {

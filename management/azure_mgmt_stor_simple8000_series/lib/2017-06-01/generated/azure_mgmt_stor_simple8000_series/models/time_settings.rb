@@ -31,6 +31,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TimeSettings',
           type: {
@@ -38,6 +39,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'TimeSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +48,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +57,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -62,6 +66,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -70,6 +75,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.timeZone',
                 type: {
@@ -77,6 +83,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               primary_time_server: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryTimeServer',
                 type: {
@@ -84,11 +91,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               secondary_time_server: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secondaryTimeServer',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

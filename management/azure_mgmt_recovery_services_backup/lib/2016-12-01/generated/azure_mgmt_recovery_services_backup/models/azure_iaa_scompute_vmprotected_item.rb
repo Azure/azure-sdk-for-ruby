@@ -27,6 +27,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Compute/virtualMachines',
           type: {
@@ -34,6 +35,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'AzureIaaSComputeVMProtectedItem',
             model_properties: {
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -41,6 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               workload_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workloadType',
                 type: {
@@ -48,6 +51,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerName',
                 type: {
@@ -55,6 +59,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               source_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {
@@ -62,6 +67,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               policy_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {
@@ -69,6 +75,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRecoveryPoint',
                 type: {
@@ -76,6 +83,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protectedItemType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectedItemType',
                 type: {
@@ -83,6 +91,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -90,6 +99,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               virtual_machine_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'virtualMachineId',
                 type: {
@@ -97,6 +107,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protection_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionStatus',
                 type: {
@@ -104,6 +115,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protection_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionState',
                 type: {
@@ -111,6 +123,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               health_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthStatus',
                 type: {
@@ -118,11 +131,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               health_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthDetails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureIaaSVMHealthDetailsElementType',
                       type: {
@@ -133,6 +148,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_backup_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastBackupStatus',
                 type: {
@@ -140,6 +156,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_backup_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastBackupTime',
                 type: {
@@ -147,6 +164,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protected_item_data_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedItemDataId',
                 type: {
@@ -154,6 +172,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               extended_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extendedInfo',
                 type: {

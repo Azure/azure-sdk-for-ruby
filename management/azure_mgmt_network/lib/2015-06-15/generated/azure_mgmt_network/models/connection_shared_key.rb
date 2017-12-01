@@ -22,6 +22,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectionSharedKey',
           type: {
@@ -29,6 +30,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ConnectionSharedKey',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

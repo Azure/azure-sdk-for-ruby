@@ -24,6 +24,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Input',
           type: {
@@ -31,6 +32,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'Input',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -39,6 +41,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -46,6 +49,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -54,6 +58,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

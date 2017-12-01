@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_managed_applications'
 
-module Azure::ManagedApplications::Profiles::Latest::Mgmt
+module Azure::ManagedApplications::Profiles::Latest
+  module Mgmt
     Appliances = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Appliances
     ApplianceDefinitions = Azure::ManagedApplications::Mgmt::V2016_09_01_preview::ApplianceDefinitions
 
@@ -30,9 +31,9 @@ module Azure::ManagedApplications::Profiles::Latest::Mgmt
     end
 
     #
-    # ManagedApplications
+    # ManagedApplicationsManagementClass
     #
-    class ManagedApplicationsClass
+    class ManagedApplicationsManagementClass
       attr_reader :appliances, :appliance_definitions, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -55,62 +56,63 @@ module Azure::ManagedApplications::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def sku
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Sku
-        end
-        def plan
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Plan
-        end
-        def identity
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Identity
-        end
-        def plan_patchable
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::PlanPatchable
-        end
-        def error_response
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ErrorResponse
-        end
-        def appliance_provider_authorization
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceProviderAuthorization
-        end
-        def appliance_definition_list_result
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceDefinitionListResult
-        end
-        def appliance_list_result
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceListResult
-        end
-        def appliance_artifact
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceArtifact
-        end
-        def resource
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Resource
-        end
-        def generic_resource
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::GenericResource
-        end
-        def appliance
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance
-        end
-        def appliance_patchable
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::AppliancePatchable
-        end
-        def appliance_definition
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceDefinition
-        end
-        def provisioning_state
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ProvisioningState
-        end
-        def appliance_lock_level
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceLockLevel
-        end
-        def appliance_artifact_type
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceArtifactType
-        end
-        def resource_identity_type
-          Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ResourceIdentityType
-        end
+    class ModelClasses
+      def sku
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Sku
+      end
+      def plan
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Plan
+      end
+      def identity
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Identity
+      end
+      def plan_patchable
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::PlanPatchable
+      end
+      def error_response
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ErrorResponse
+      end
+      def appliance_provider_authorization
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceProviderAuthorization
+      end
+      def appliance_definition_list_result
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceDefinitionListResult
+      end
+      def appliance_list_result
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceListResult
+      end
+      def appliance_artifact
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceArtifact
+      end
+      def resource
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Resource
+      end
+      def generic_resource
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::GenericResource
+      end
+      def appliance
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::Appliance
+      end
+      def appliance_patchable
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::AppliancePatchable
+      end
+      def appliance_definition
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceDefinition
+      end
+      def provisioning_state
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ProvisioningState
+      end
+      def appliance_lock_level
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceLockLevel
+      end
+      def appliance_artifact_type
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ApplianceArtifactType
+      end
+      def resource_identity_type
+        Azure::ManagedApplications::Mgmt::V2016_09_01_preview::Models::ResourceIdentityType
       end
     end
+  end
 end

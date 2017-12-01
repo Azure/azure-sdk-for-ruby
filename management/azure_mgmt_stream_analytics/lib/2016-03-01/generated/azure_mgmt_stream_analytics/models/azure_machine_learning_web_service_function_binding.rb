@@ -48,6 +48,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.MachineLearning/WebService',
           type: {
@@ -55,6 +56,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureMachineLearningWebServiceFunctionBinding',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -62,6 +64,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoint',
                 type: {
@@ -69,6 +72,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               api_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.apiKey',
                 type: {
@@ -76,6 +80,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               inputs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.inputs',
                 type: {
@@ -84,11 +89,13 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               outputs: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.outputs',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureMachineLearningWebServiceOutputColumnElementType',
                       type: {
@@ -99,6 +106,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               batch_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.batchSize',
                 type: {

@@ -57,6 +57,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ResourceListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'GenericResourceElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

@@ -30,6 +30,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceMasterProfile',
           type: {
@@ -37,6 +38,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
             class_name: 'ContainerServiceMasterProfile',
             model_properties: {
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 default_value: 1,
@@ -45,6 +47,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
                 }
               },
               dns_prefix: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dnsPrefix',
                 type: {
@@ -52,6 +55,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
                 }
               },
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'fqdn',

@@ -22,6 +22,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EvaluatePoliciesResponse',
           type: {
@@ -29,11 +30,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'EvaluatePoliciesResponse',
             model_properties: {
               results: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'results',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PolicySetResultElementType',
                       type: {

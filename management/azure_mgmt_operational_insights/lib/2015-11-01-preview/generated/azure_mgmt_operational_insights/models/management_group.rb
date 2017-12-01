@@ -48,6 +48,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementGroup',
           type: {
@@ -55,6 +56,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'ManagementGroup',
             model_properties: {
               server_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serverCount',
                 type: {
@@ -62,6 +64,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               is_gateway: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isGateway',
                 type: {
@@ -69,6 +72,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -76,6 +80,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -83,6 +88,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               created: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.created',
                 type: {
@@ -90,6 +96,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               data_received: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataReceived',
                 type: {
@@ -97,6 +104,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -104,6 +112,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {

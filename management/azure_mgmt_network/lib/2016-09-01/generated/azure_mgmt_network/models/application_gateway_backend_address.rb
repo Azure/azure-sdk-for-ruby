@@ -25,6 +25,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendAddress',
           type: {
@@ -32,6 +33,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'ApplicationGatewayBackendAddress',
             model_properties: {
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fqdn',
                 type: {
@@ -39,6 +41,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {

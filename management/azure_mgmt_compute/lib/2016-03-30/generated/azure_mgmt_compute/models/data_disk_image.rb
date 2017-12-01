@@ -24,6 +24,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataDiskImage',
           type: {
@@ -31,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'DataDiskImage',
             model_properties: {
               lun: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lun',

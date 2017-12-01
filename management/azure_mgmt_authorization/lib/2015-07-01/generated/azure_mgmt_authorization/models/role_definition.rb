@@ -31,6 +31,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoleDefinition',
           type: {
@@ -38,27 +39,34 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'RoleDefinition',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

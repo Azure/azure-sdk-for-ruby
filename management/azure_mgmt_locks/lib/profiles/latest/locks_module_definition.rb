@@ -6,4 +6,3 @@ module Azure end
 module Azure::Locks end
 module Azure::Locks::Profiles end
 module Azure::Locks::Profiles::Latest end
-module Azure::Locks::Profiles::Latest::Mgmt end

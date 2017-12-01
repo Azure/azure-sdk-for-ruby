@@ -63,6 +63,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscCompilationJob',
           type: {
@@ -70,6 +71,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscCompilationJob',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -78,6 +80,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.configuration',
                 type: {
@@ -86,6 +89,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               started_by: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startedBy',
@@ -94,6 +98,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               job_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.jobId',
@@ -102,6 +107,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationTime',
@@ -110,6 +116,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -117,6 +124,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               status_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.statusDetails',
                 type: {
@@ -124,6 +132,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.startTime',
@@ -132,6 +141,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.endTime',
@@ -140,6 +150,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               exception: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.exception',
@@ -148,6 +159,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModifiedTime',
@@ -156,6 +168,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_status_modified_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastStatusModifiedTime',
@@ -164,11 +177,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

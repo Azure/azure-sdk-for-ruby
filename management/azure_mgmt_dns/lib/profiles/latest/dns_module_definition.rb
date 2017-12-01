@@ -6,4 +6,3 @@ module Azure end
 module Azure::Dns end
 module Azure::Dns::Profiles end
 module Azure::Dns::Profiles::Latest end
-module Azure::Dns::Profiles::Latest::Mgmt end

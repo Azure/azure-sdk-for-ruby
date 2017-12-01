@@ -25,6 +25,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayFirewallRule',
           type: {
@@ -32,6 +33,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'ApplicationGatewayFirewallRule',
             model_properties: {
               rule_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ruleId',
                 type: {
@@ -39,6 +41,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

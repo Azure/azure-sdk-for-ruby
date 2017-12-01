@@ -5,17 +5,18 @@
 require 'profiles/latest/features_module_definition'
 require 'profiles/latest/modules/features_profile_module'
 
-module Azure::Features::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < FeaturesClass
-    include MsRestAzure::Common::Configurable
+module Azure::Features::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < FeaturesManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

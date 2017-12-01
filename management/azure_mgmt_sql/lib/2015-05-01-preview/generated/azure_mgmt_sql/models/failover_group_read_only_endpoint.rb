@@ -24,6 +24,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverGroupReadOnlyEndpoint',
           type: {
@@ -31,6 +32,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'FailoverGroupReadOnlyEndpoint',
             model_properties: {
               failover_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverPolicy',
                 type: {

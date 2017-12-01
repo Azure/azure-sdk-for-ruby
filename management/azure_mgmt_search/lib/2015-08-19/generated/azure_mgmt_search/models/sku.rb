@@ -31,6 +31,7 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -38,6 +39,7 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

@@ -34,6 +34,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NextHopParameters',
           type: {
@@ -41,6 +42,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'NextHopParameters',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -48,6 +50,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               source_ipaddress: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceIPAddress',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               destination_ipaddress: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'destinationIPAddress',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               target_nic_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNicResourceId',
                 type: {

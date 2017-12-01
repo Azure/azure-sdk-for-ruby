@@ -6,4 +6,3 @@ module Azure end
 module Azure::Storage end
 module Azure::Storage::Profiles end
 module Azure::Storage::Profiles::Latest end
-module Azure::Storage::Profiles::Latest::Mgmt end

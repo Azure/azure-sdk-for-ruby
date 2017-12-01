@@ -150,6 +150,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InMage',
           type: {
@@ -157,6 +158,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InMageReplicationDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -164,6 +166,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               active_site_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'activeSiteType',
                 type: {
@@ -171,6 +174,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_vm_cpucount: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceVmCPUCount',
                 type: {
@@ -178,6 +182,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_vm_ramsize_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceVmRAMSizeInMB',
                 type: {
@@ -185,6 +190,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDetails',
                 type: {
@@ -193,6 +199,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protection_stage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionStage',
                 type: {
@@ -200,6 +207,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmId',
                 type: {
@@ -207,6 +215,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_protection_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmProtectionState',
                 type: {
@@ -214,6 +223,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_protection_state_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmProtectionStateDescription',
                 type: {
@@ -221,6 +231,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               resync_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resyncDetails',
                 type: {
@@ -229,6 +240,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               retention_window_start: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionWindowStart',
                 type: {
@@ -236,6 +248,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               retention_window_end: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionWindowEnd',
                 type: {
@@ -243,6 +256,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               compressed_data_rate_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'compressedDataRateInMB',
                 type: {
@@ -250,6 +264,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               uncompressed_data_rate_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uncompressedDataRateInMB',
                 type: {
@@ -257,6 +272,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               rpo_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rpoInSeconds',
                 type: {
@@ -264,11 +280,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protected_disks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectedDisks',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InMageProtectedDiskDetailsElementType',
                       type: {
@@ -279,6 +297,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipAddress',
                 type: {
@@ -286,6 +305,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_heartbeat: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastHeartbeat',
                 type: {
@@ -293,6 +313,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               process_server_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'processServerId',
                 type: {
@@ -300,6 +321,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               master_target_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'masterTargetId',
                 type: {
@@ -307,11 +329,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               consistency_points: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'consistencyPoints',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DateTimeElementType',
                       type: {
@@ -321,6 +345,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_resized: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskResized',
                 type: {
@@ -328,6 +353,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               reboot_after_update_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rebootAfterUpdateStatus',
                 type: {
@@ -335,6 +361,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               multi_vm_group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'multiVmGroupId',
                 type: {
@@ -342,6 +369,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               multi_vm_group_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'multiVmGroupName',
                 type: {
@@ -349,6 +377,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               multi_vm_sync_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'multiVmSyncStatus',
                 type: {
@@ -356,6 +385,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               agent_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'agentDetails',
                 type: {
@@ -364,6 +394,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               v_center_infrastructure_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vCenterInfrastructureId',
                 type: {
@@ -371,6 +402,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               infrastructure_vm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'infrastructureVmId',
                 type: {
@@ -378,11 +410,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               vm_nics: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmNics',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VMNicDetailsElementType',
                       type: {
@@ -393,6 +427,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               discovery_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'discoveryType',
                 type: {
@@ -400,6 +435,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               azure_storage_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'azureStorageAccountId',
                 type: {
@@ -407,11 +443,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               datastores: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'datastores',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -421,11 +459,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               validation_errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'validationErrors',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {
@@ -436,6 +476,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_rpo_calculated_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRpoCalculatedTime',
                 type: {
@@ -443,6 +484,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_update_received_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastUpdateReceivedTime',
                 type: {
@@ -450,6 +492,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replica_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicaId',
                 type: {
@@ -457,6 +500,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osVersion',
                 type: {

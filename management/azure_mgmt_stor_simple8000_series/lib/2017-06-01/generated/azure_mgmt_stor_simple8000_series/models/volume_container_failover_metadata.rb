@@ -27,6 +27,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VolumeContainerFailoverMetadata',
           type: {
@@ -34,6 +35,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'VolumeContainerFailoverMetadata',
             model_properties: {
               volume_container_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumeContainerId',
                 type: {
@@ -41,11 +43,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volumes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'volumes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VolumeFailoverMetadataElementType',
                       type: {

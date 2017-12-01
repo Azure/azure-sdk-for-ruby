@@ -22,6 +22,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowOutputParameter',
           type: {
@@ -29,6 +30,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowOutputParameter',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -37,6 +39,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
@@ -44,6 +47,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {
@@ -51,6 +55,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -58,6 +63,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',

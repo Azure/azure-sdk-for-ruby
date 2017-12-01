@@ -12,10 +12,11 @@ module Azure::Web::Mgmt::V2015_08_01
 
       include MsRestAzure
 
-      # @return [Boolean] Theme
+      # @return [Boolean] If <code>true</code> use the light color theme for
+      # site seal; otherwise, use the default color theme.
       attr_accessor :light_theme
 
-      # @return [String] Locale
+      # @return [String] Locale of site seal.
       attr_accessor :locale
 
 
@@ -25,6 +26,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteSealRequest',
           type: {
@@ -32,6 +34,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'SiteSealRequest',
             model_properties: {
               light_theme: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lightTheme',
                 type: {
@@ -39,6 +42,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               locale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locale',
                 type: {

@@ -34,6 +34,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Plan',
           type: {
@@ -41,6 +42,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'Plan',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -48,6 +50,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'publisher',
                 type: {
@@ -55,6 +58,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               product: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'product',
                 type: {
@@ -62,6 +66,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               promotion_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'promotionCode',
                 type: {
@@ -69,6 +74,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'version',
                 type: {

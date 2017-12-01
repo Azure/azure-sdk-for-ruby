@@ -5,17 +5,18 @@
 require 'profiles/v2017_03_09/features_module_definition'
 require 'profiles/v2017_03_09/modules/features_profile_module'
 
-module Azure::Features::Profiles::V2017_03_09::Mgmt
-  #
-  # Client class for the V2017_03_09 profile SDK.
-  #
-  class Client < FeaturesClass
-    include MsRestAzure::Common::Configurable
+module Azure::Features::Profiles::V2017_03_09
+  module Mgmt
+    #
+    # Client class for the V2017_03_09 profile SDK.
+    #
+    class Client < FeaturesManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

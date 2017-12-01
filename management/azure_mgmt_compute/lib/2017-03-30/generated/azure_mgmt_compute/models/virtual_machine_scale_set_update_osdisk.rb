@@ -37,6 +37,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateOSDisk',
           type: {
@@ -44,6 +45,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdateOSDisk',
             model_properties: {
               caching: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'caching',
                 type: {
@@ -52,6 +54,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'image',
                 type: {
@@ -60,11 +63,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               vhd_containers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vhdContainers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -74,6 +79,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               managed_disk: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'managedDisk',
                 type: {

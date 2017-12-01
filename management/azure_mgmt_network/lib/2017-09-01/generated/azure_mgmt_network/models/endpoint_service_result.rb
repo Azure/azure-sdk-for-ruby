@@ -25,6 +25,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EndpointServiceResult',
           type: {
@@ -32,6 +33,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'EndpointServiceResult',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -39,6 +41,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -47,6 +50,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

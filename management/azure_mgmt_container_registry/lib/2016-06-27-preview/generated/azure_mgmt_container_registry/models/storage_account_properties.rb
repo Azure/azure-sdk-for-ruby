@@ -25,6 +25,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountProperties',
           type: {
@@ -32,6 +33,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
             class_name: 'StorageAccountProperties',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -39,6 +41,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               access_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'accessKey',
                 type: {

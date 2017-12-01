@@ -30,6 +30,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnStringInfo',
           type: {
@@ -37,6 +38,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ConnStringInfo',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -44,6 +46,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               connection_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionString',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

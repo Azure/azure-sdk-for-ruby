@@ -32,6 +32,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AuthorizationPolicyResourceFormat',
           type: {
@@ -39,6 +40,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'AuthorizationPolicyResourceFormat',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -47,6 +49,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -55,6 +58,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +67,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               policy_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.policyName',
@@ -71,6 +76,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               permissions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.permissions',
                 constraints: {
@@ -79,6 +85,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PermissionTypesElementType',
                       type: {
@@ -89,6 +96,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               primary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primaryKey',
                 type: {
@@ -96,6 +104,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               secondary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.secondaryKey',
                 type: {

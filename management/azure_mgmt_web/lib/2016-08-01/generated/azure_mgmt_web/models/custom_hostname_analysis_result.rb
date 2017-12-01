@@ -62,6 +62,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CustomHostnameAnalysisResult',
           type: {
@@ -69,6 +70,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'CustomHostnameAnalysisResult',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -77,6 +79,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -85,6 +88,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -92,6 +96,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -100,6 +105,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_hostname_already_verified: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isHostnameAlreadyVerified',
@@ -108,6 +114,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               custom_domain_verification_test: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.customDomainVerificationTest',
@@ -117,6 +124,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               custom_domain_verification_failure_info: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.customDomainVerificationFailureInfo',
@@ -126,6 +134,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               has_conflict_on_scale_unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hasConflictOnScaleUnit',
@@ -134,6 +143,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               has_conflict_across_subscription: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.hasConflictAcrossSubscription',
@@ -142,6 +152,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               conflicting_app_resource_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.conflictingAppResourceId',
@@ -150,11 +161,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               c_name_records: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cNameRecords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -164,11 +177,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               txt_records: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.txtRecords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -178,11 +193,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               a_records: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.aRecords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -192,11 +209,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               alternate_cname_records: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.alternateCNameRecords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -206,11 +225,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               alternate_txt_records: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.alternateTxtRecords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

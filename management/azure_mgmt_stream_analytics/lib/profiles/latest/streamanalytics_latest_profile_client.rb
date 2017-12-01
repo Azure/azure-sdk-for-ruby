@@ -5,17 +5,18 @@
 require 'profiles/latest/streamanalytics_module_definition'
 require 'profiles/latest/modules/streamanalytics_profile_module'
 
-module Azure::StreamAnalytics::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < StreamAnalyticsClass
-    include MsRestAzure::Common::Configurable
+module Azure::StreamAnalytics::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < StreamAnalyticsManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

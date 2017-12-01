@@ -22,6 +22,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopicRegenerateKeyRequest',
           type: {
@@ -29,6 +30,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'TopicRegenerateKeyRequest',
             model_properties: {
               key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyName',
                 type: {

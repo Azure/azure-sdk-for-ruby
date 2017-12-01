@@ -41,6 +41,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCaptureParameters',
           type: {
@@ -48,6 +49,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'PacketCaptureParameters',
             model_properties: {
               target: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'target',
                 type: {
@@ -55,6 +57,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               bytes_to_capture_per_packet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bytesToCapturePerPacket',
                 default_value: 0,
@@ -63,6 +66,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               total_bytes_per_session: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalBytesPerSession',
                 default_value: 1073741824,
@@ -71,6 +75,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               time_limit_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeLimitInSeconds',
                 default_value: 18000,
@@ -79,6 +84,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               storage_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageLocation',
                 type: {
@@ -87,11 +93,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               filters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'filters',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PacketCaptureFilterElementType',
                       type: {

@@ -57,6 +57,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationEntityListResult',
           type: {
@@ -64,6 +65,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'OperationEntityListResult',
             model_properties: {
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
@@ -71,11 +73,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'OperationEntityElementType',
                       type: {

@@ -44,6 +44,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SkuDescription',
           type: {
@@ -51,6 +52,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'SkuDescription',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -58,6 +60,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -65,6 +68,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -72,6 +76,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               family: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {
@@ -79,6 +84,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {
@@ -86,6 +92,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               sku_capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'skuCapacity',
                 type: {
@@ -94,11 +101,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -108,11 +117,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               capabilities: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capabilities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CapabilityElementType',
                       type: {

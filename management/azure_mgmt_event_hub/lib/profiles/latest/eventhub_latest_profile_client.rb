@@ -5,17 +5,18 @@
 require 'profiles/latest/eventhub_module_definition'
 require 'profiles/latest/modules/eventhub_profile_module'
 
-module Azure::EventHub::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < EventHubClass
-    include MsRestAzure::Common::Configurable
+module Azure::EventHub::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < EventHubManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

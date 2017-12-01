@@ -19,7 +19,7 @@ module Azure::Web::Mgmt::V2016_09_01
       attr_accessor :worker_tier_name
 
       # @return [StatusOptions] App Service plan status. Possible values
-      # include: 'Ready', 'Pending'
+      # include: 'Ready', 'Pending', 'Creating'
       attr_accessor :status
 
       # @return [String] App Service plan subscription.
@@ -48,10 +48,19 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [Integer] Number of apps assigned to this App Service plan.
       attr_accessor :number_of_sites
 
+      # @return [Boolean] If <code>true</code>, this App Service Plan owns spot
+      # instances.
+      attr_accessor :is_spot
+
+      # @return [DateTime] The time when the server farm expires. Valid only if
+      # it is a spot server farm.
+      attr_accessor :spot_expiration_time
+
       # @return [String] Resource group of the App Service plan.
       attr_accessor :resource_group
 
-      # @return [Boolean] Reserved. Default value: false .
+      # @return [Boolean] If Linux app service plan <code>true</code>,
+      # <code>false</code> otherwise. Default value: false .
       attr_accessor :reserved
 
       # @return [Integer] Scaling worker count.
@@ -75,6 +84,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AppServicePlan',
           type: {
@@ -82,6 +92,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'AppServicePlan',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -90,6 +101,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -98,6 +110,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -105,6 +118,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -112,6 +126,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -120,11 +135,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -134,6 +151,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               app_service_plan_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -141,6 +159,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_tier_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.workerTierName',
                 type: {
@@ -148,6 +167,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -157,6 +177,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               subscription: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subscription',
@@ -165,6 +186,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               admin_site_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adminSiteName',
                 type: {
@@ -172,6 +194,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               hosting_environment_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostingEnvironmentProfile',
                 type: {
@@ -180,6 +203,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               maximum_number_of_workers: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maximumNumberOfWorkers',
@@ -188,6 +212,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               geo_region: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.geoRegion',
@@ -196,6 +221,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               per_site_scaling: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.perSiteScaling',
                 default_value: false,
@@ -204,6 +230,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               number_of_sites: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.numberOfSites',
@@ -211,7 +238,24 @@ module Azure::Web::Mgmt::V2016_09_01
                   name: 'Number'
                 }
               },
+              is_spot: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.isSpot',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              spot_expiration_time: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.spotExpirationTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
               resource_group: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceGroup',
@@ -220,6 +264,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               reserved: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.reserved',
                 default_value: false,
@@ -228,6 +273,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               target_worker_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetWorkerCount',
                 type: {
@@ -235,6 +281,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               target_worker_size_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetWorkerSizeId',
                 type: {
@@ -242,6 +289,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -251,6 +299,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

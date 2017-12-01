@@ -31,7 +31,7 @@ module Azure::Web::Mgmt::V2016_09_01
       attr_accessor :compute_mode
 
       # @return [WorkerSizeOptions] Size of the machines. Possible values
-      # include: 'Default', 'Small', 'Medium', 'Large'
+      # include: 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3'
       attr_accessor :worker_size
 
       # @return [Integer] Size ID of machines:
@@ -58,6 +58,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StampCapacity',
           type: {
@@ -65,6 +66,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'StampCapacity',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -72,6 +74,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               available_capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'availableCapacity',
                 type: {
@@ -79,6 +82,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               total_capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalCapacity',
                 type: {
@@ -86,6 +90,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -93,6 +98,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               compute_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'computeMode',
                 type: {
@@ -101,6 +107,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workerSize',
                 type: {
@@ -109,6 +116,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_size_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workerSizeId',
                 type: {
@@ -116,6 +124,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               exclude_from_capacity_allocation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'excludeFromCapacityAllocation',
                 type: {
@@ -123,6 +132,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               is_applicable_for_all_compute_modes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isApplicableForAllComputeModes',
                 type: {
@@ -130,6 +140,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               site_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'siteMode',
                 type: {

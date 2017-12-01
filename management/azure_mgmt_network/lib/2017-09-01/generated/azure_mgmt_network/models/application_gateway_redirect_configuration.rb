@@ -60,6 +60,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayRedirectConfiguration',
           type: {
@@ -67,6 +68,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ApplicationGatewayRedirectConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -74,6 +76,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               redirect_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.redirectType',
                 type: {
@@ -81,6 +84,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               target_listener: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetListener',
                 type: {
@@ -89,6 +93,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               target_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.targetUrl',
                 type: {
@@ -96,6 +101,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               include_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.includePath',
                 type: {
@@ -103,6 +109,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               include_query_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.includeQueryString',
                 type: {
@@ -110,11 +117,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               request_routing_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestRoutingRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -125,11 +134,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               url_path_maps: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.urlPathMaps',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -140,11 +151,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               path_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.pathRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -155,6 +168,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -162,6 +176,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -169,6 +184,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

@@ -36,6 +36,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RollingUpgradeProgressInfo',
           type: {
@@ -43,6 +44,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'RollingUpgradeProgressInfo',
             model_properties: {
               successful_instance_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'successfulInstanceCount',
@@ -51,6 +53,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               failed_instance_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'failedInstanceCount',
@@ -59,6 +62,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               in_progress_instance_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inProgressInstanceCount',
@@ -67,6 +71,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               pending_instance_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'pendingInstanceCount',

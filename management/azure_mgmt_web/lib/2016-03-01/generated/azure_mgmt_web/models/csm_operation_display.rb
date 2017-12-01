@@ -6,8 +6,7 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Model object.
-    #
+    # Meta data about operation used for display in portal.
     #
     class CsmOperationDisplay
 
@@ -32,6 +31,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CsmOperationDisplay',
           type: {
@@ -39,6 +39,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'CsmOperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -46,6 +47,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -53,6 +55,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

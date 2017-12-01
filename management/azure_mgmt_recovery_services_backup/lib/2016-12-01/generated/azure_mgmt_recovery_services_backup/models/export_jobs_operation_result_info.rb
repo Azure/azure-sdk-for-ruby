@@ -33,6 +33,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExportJobsOperationResultInfo',
           type: {
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'ExportJobsOperationResultInfo',
             model_properties: {
               objectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               blob_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobUrl',
                 type: {
@@ -54,6 +57,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               blob_sas_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobSasKey',
                 type: {

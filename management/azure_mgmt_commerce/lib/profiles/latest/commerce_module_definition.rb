@@ -6,4 +6,3 @@ module Azure end
 module Azure::Commerce end
 module Azure::Commerce::Profiles end
 module Azure::Commerce::Profiles::Latest end
-module Azure::Commerce::Profiles::Latest::Mgmt end

@@ -28,6 +28,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ClientDiscoveryForLogSpecification',
           type: {
@@ -35,6 +36,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'ClientDiscoveryForLogSpecification',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -49,6 +52,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               blob_duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'blobDuration',
                 type: {

@@ -36,7 +36,7 @@ module Azure::Web::Mgmt::V2015_04_01
       # @return [String] Middle name.
       attr_accessor :name_middle
 
-      # @return [String] Organization.
+      # @return [String] Organization contact belongs to.
       attr_accessor :organization
 
       # @return [String] Phone number.
@@ -49,6 +49,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Contact',
           type: {
@@ -56,6 +57,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'Contact',
             model_properties: {
               address_mailing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'addressMailing',
                 type: {
@@ -64,6 +66,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               email: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'email',
                 type: {
@@ -71,6 +74,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               fax: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fax',
                 type: {
@@ -78,6 +82,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               job_title: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobTitle',
                 type: {
@@ -85,6 +90,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name_first: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'nameFirst',
                 type: {
@@ -92,6 +98,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name_last: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'nameLast',
                 type: {
@@ -99,6 +106,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               name_middle: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameMiddle',
                 type: {
@@ -106,6 +114,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               organization: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'organization',
                 type: {
@@ -113,6 +122,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               phone: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'phone',
                 type: {

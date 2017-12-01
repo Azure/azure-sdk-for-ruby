@@ -45,6 +45,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ElasticPoolDtuCapability',
           type: {
@@ -52,6 +53,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ElasticPoolDtuCapability',
             model_properties: {
               limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -60,6 +62,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_database_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maxDatabaseCount',
@@ -68,6 +71,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -77,12 +81,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               supported_max_sizes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedMaxSizes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MaxSizeCapabilityElementType',
                       type: {
@@ -93,6 +99,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               included_max_size: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'includedMaxSize',
@@ -102,12 +109,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               supported_per_database_max_sizes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedPerDatabaseMaxSizes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MaxSizeCapabilityElementType',
                       type: {
@@ -118,12 +127,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               supported_per_database_max_dtus: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'supportedPerDatabaseMaxDtus',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ElasticPoolPerDatabaseMaxDtuCapabilityElementType',
                       type: {

@@ -25,6 +25,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Tag',
           type: {
@@ -32,6 +33,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'Tag',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Name',
                 type: {
@@ -39,6 +41,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Value',
                 type: {

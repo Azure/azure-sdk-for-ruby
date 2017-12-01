@@ -25,6 +25,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NamespaceUpdateParameters',
           type: {
@@ -32,11 +33,13 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'NamespaceUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -46,6 +49,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

@@ -39,6 +39,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobRecurrence',
           type: {
@@ -46,6 +47,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobRecurrence',
             model_properties: {
               frequency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'frequency',
                 type: {
@@ -54,6 +56,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {
@@ -61,6 +64,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'count',
                 type: {
@@ -68,6 +72,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -75,6 +80,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'schedule',
                 type: {

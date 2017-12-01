@@ -5,17 +5,18 @@
 require 'profiles/latest/automation_module_definition'
 require 'profiles/latest/modules/automation_profile_module'
 
-module Azure::Automation::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < AutomationClass
-    include MsRestAzure::Common::Configurable
+module Azure::Automation::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < AutomationManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

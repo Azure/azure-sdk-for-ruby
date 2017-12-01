@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_storage'
 
-module Azure::Storage::Profiles::V2017_03_09::Mgmt
+module Azure::Storage::Profiles::V2017_03_09
+  module Mgmt
     StorageAccounts = Azure::Storage::Mgmt::V2015_06_15::StorageAccounts
     UsageOperations = Azure::Storage::Mgmt::V2015_06_15::UsageOperations
 
@@ -31,9 +32,9 @@ module Azure::Storage::Profiles::V2017_03_09::Mgmt
     end
 
     #
-    # Storage
+    # StorageManagementClass
     #
-    class StorageClass
+    class StorageManagementClass
       attr_reader :storage_accounts, :usage_operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -56,65 +57,66 @@ module Azure::Storage::Profiles::V2017_03_09::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def storage_account_list_result
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountListResult
-        end
-        def storage_account_check_name_availability_parameters
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountCheckNameAvailabilityParameters
-        end
-        def storage_account_update_parameters
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountUpdateParameters
-        end
-        def storage_account_create_parameters
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountCreateParameters
-        end
-        def storage_account_regenerate_key_parameters
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountRegenerateKeyParameters
-        end
-        def custom_domain
-          Azure::Storage::Mgmt::V2015_06_15::Models::CustomDomain
-        end
-        def usage_name
-          Azure::Storage::Mgmt::V2015_06_15::Models::UsageName
-        end
-        def storage_account_keys
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountKeys
-        end
-        def usage
-          Azure::Storage::Mgmt::V2015_06_15::Models::Usage
-        end
-        def endpoints
-          Azure::Storage::Mgmt::V2015_06_15::Models::Endpoints
-        end
-        def usage_list_result
-          Azure::Storage::Mgmt::V2015_06_15::Models::UsageListResult
-        end
-        def check_name_availability_result
-          Azure::Storage::Mgmt::V2015_06_15::Models::CheckNameAvailabilityResult
-        end
-        def resource
-          Azure::Storage::Mgmt::V2015_06_15::Models::Resource
-        end
-        def storage_account
-          Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccount
-        end
-        def reason
-          Azure::Storage::Mgmt::V2015_06_15::Models::Reason
-        end
-        def account_type
-          Azure::Storage::Mgmt::V2015_06_15::Models::AccountType
-        end
-        def provisioning_state
-          Azure::Storage::Mgmt::V2015_06_15::Models::ProvisioningState
-        end
-        def account_status
-          Azure::Storage::Mgmt::V2015_06_15::Models::AccountStatus
-        end
-        def usage_unit
-          Azure::Storage::Mgmt::V2015_06_15::Models::UsageUnit
-        end
+    class ModelClasses
+      def storage_account_list_result
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountListResult
+      end
+      def storage_account_check_name_availability_parameters
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountCheckNameAvailabilityParameters
+      end
+      def storage_account_update_parameters
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountUpdateParameters
+      end
+      def storage_account_create_parameters
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountCreateParameters
+      end
+      def storage_account_regenerate_key_parameters
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountRegenerateKeyParameters
+      end
+      def custom_domain
+        Azure::Storage::Mgmt::V2015_06_15::Models::CustomDomain
+      end
+      def usage_name
+        Azure::Storage::Mgmt::V2015_06_15::Models::UsageName
+      end
+      def storage_account_keys
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccountKeys
+      end
+      def usage
+        Azure::Storage::Mgmt::V2015_06_15::Models::Usage
+      end
+      def endpoints
+        Azure::Storage::Mgmt::V2015_06_15::Models::Endpoints
+      end
+      def usage_list_result
+        Azure::Storage::Mgmt::V2015_06_15::Models::UsageListResult
+      end
+      def check_name_availability_result
+        Azure::Storage::Mgmt::V2015_06_15::Models::CheckNameAvailabilityResult
+      end
+      def resource
+        Azure::Storage::Mgmt::V2015_06_15::Models::Resource
+      end
+      def storage_account
+        Azure::Storage::Mgmt::V2015_06_15::Models::StorageAccount
+      end
+      def reason
+        Azure::Storage::Mgmt::V2015_06_15::Models::Reason
+      end
+      def account_type
+        Azure::Storage::Mgmt::V2015_06_15::Models::AccountType
+      end
+      def provisioning_state
+        Azure::Storage::Mgmt::V2015_06_15::Models::ProvisioningState
+      end
+      def account_status
+        Azure::Storage::Mgmt::V2015_06_15::Models::AccountStatus
+      end
+      def usage_unit
+        Azure::Storage::Mgmt::V2015_06_15::Models::UsageUnit
       end
     end
+  end
 end

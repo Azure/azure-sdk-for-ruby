@@ -26,6 +26,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SwitchProtectionInputProperties',
           type: {
@@ -33,6 +34,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'SwitchProtectionInputProperties',
             model_properties: {
               replication_protected_item_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationProtectedItemName',
                 type: {
@@ -40,6 +42,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {

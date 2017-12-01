@@ -28,6 +28,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionDetails',
           type: {
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'EncryptionDetails',
             model_properties: {
               kek_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekState',
                 type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               kek_cert_thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekCertThumbprint',
                 type: {
@@ -49,6 +52,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               kek_cert_expiry_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekCertExpiryDate',
                 type: {

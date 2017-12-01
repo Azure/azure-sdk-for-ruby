@@ -59,6 +59,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AuthorizationListResult',
           type: {
@@ -66,11 +67,13 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'AuthorizationListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ExpressRouteCircuitAuthorizationElementType',
                       type: {
@@ -81,6 +84,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -6,4 +6,3 @@ module Azure end
 module Azure::ContainerInstance end
 module Azure::ContainerInstance::Profiles end
 module Azure::ContainerInstance::Profiles::Latest end
-module Azure::ContainerInstance::Profiles::Latest::Mgmt end

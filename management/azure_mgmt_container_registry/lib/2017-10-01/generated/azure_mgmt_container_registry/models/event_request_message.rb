@@ -36,6 +36,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventRequestMessage',
           type: {
@@ -43,6 +44,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'EventRequestMessage',
             model_properties: {
               content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {
@@ -51,11 +53,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               headers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'headers',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -65,6 +69,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               method: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'method',
                 type: {
@@ -72,6 +77,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               request_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'requestUri',
                 type: {
@@ -79,6 +85,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

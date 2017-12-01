@@ -125,9 +125,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_consumption'
-        if defined? Azure::Consumption::Mgmt::V2017_04_24_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Consumption::Mgmt::V2017_04_24_preview::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.1"
         add_user_agent_information(sdk_information)
     end
   end

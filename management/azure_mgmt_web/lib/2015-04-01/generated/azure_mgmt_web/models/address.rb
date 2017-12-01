@@ -12,22 +12,22 @@ module Azure::Web::Mgmt::V2015_04_01
 
       include MsRestAzure
 
-      # @return [String] Address 1.
+      # @return [String] First line of an Address.
       attr_accessor :address1
 
-      # @return [String] Address 2.
+      # @return [String] The second line of the Address. Optional.
       attr_accessor :address2
 
-      # @return [String] City.
+      # @return [String] The city for the address.
       attr_accessor :city
 
-      # @return [String] Country.
+      # @return [String] The country for the address.
       attr_accessor :country
 
-      # @return [String] Postal code.
+      # @return [String] The postal code for the address.
       attr_accessor :postal_code
 
-      # @return [String] State.
+      # @return [String] The state or province for the address.
       attr_accessor :state
 
 
@@ -37,6 +37,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Address',
           type: {
@@ -44,6 +45,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'Address',
             model_properties: {
               address1: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'address1',
                 type: {
@@ -51,6 +53,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               address2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'address2',
                 type: {
@@ -58,6 +61,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               city: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'city',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               country: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'country',
                 type: {
@@ -72,6 +77,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               postal_code: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'postalCode',
                 type: {
@@ -79,6 +85,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'state',
                 type: {

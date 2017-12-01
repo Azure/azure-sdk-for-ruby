@@ -70,6 +70,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubProperties',
           type: {
@@ -77,11 +78,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'IotHubProperties',
             model_properties: {
               authorization_policies: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'authorizationPolicies',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SharedAccessSignatureAuthorizationRuleElementType',
                       type: {
@@ -92,11 +95,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               ip_filter_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipFilterRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IpFilterRuleElementType',
                       type: {
@@ -107,6 +112,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -115,6 +121,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               host_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hostName',
@@ -123,11 +130,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               event_hub_endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventHubEndpoints',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EventHubPropertiesElementType',
                       type: {
@@ -138,6 +147,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               routing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'routing',
                 type: {
@@ -146,11 +156,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               storage_endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageEndpoints',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StorageEndpointPropertiesElementType',
                       type: {
@@ -161,11 +173,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               messaging_endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messagingEndpoints',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MessagingEndpointPropertiesElementType',
                       type: {
@@ -176,6 +190,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               enable_file_upload_notifications: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableFileUploadNotifications',
                 type: {
@@ -183,6 +198,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               cloud_to_device: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudToDevice',
                 type: {
@@ -191,6 +207,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               comments: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'comments',
                 type: {
@@ -198,6 +215,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               operations_monitoring_properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationsMonitoringProperties',
                 type: {
@@ -206,6 +224,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               features: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'features',
                 type: {

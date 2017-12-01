@@ -46,6 +46,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApnsCredential',
           type: {
@@ -53,6 +54,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'ApnsCredential',
             model_properties: {
               apns_certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.apnsCertificate',
                 type: {
@@ -60,6 +62,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               certificate_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.certificateKey',
                 type: {
@@ -67,6 +70,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoint',
                 type: {
@@ -74,6 +78,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.thumbprint',
                 type: {
@@ -81,6 +86,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               key_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.keyId',
                 type: {
@@ -88,6 +94,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               app_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.appName',
                 type: {
@@ -95,6 +102,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               app_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.appId',
                 type: {
@@ -102,6 +110,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.token',
                 type: {

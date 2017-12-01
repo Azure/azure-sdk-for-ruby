@@ -23,6 +23,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventHubDataSourceProperties',
           type: {
@@ -30,6 +31,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'EventHubDataSourceProperties',
             model_properties: {
               service_bus_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceBusNamespace',
                 type: {
@@ -37,6 +39,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               shared_access_policy_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sharedAccessPolicyName',
                 type: {
@@ -44,6 +47,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               shared_access_policy_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sharedAccessPolicyKey',
                 type: {
@@ -51,6 +55,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               event_hub_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventHubName',
                 type: {

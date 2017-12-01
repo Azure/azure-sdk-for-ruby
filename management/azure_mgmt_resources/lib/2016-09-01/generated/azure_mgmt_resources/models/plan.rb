@@ -31,6 +31,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Plan',
           type: {
@@ -38,6 +39,7 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'Plan',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               product: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'product',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               promotion_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'promotionCode',
                 type: {

@@ -39,6 +39,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkerPoolResource',
           type: {
@@ -46,6 +47,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'WorkerPoolResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,6 +56,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,6 +65,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -69,6 +73,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,6 +82,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_size_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.workerSizeId',
                 type: {
@@ -84,6 +90,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               compute_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.computeMode',
                 type: {
@@ -92,6 +99,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.workerSize',
                 type: {
@@ -99,6 +107,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.workerCount',
                 type: {
@@ -106,12 +115,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               instance_names: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -121,6 +132,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {

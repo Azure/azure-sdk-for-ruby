@@ -40,6 +40,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UserIdentityFragment',
           type: {
@@ -47,6 +48,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'UserIdentityFragment',
             model_properties: {
               principal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'principalName',
                 type: {
@@ -54,6 +56,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               principal_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'principalId',
                 type: {
@@ -61,6 +64,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {
@@ -68,6 +72,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               object_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectId',
                 type: {
@@ -75,6 +80,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               app_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appId',
                 type: {

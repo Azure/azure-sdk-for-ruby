@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # Class representing certificate reissue request.
     #
-    class ReissueCertificateOrderRequest < Resource
+    class ReissueCertificateOrderRequest < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -33,6 +33,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ReissueCertificateOrderRequest',
           type: {
@@ -40,6 +41,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'ReissueCertificateOrderRequest',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,6 +50,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,20 +59,15 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -77,21 +75,8 @@ module Azure::Web::Mgmt::V2015_08_01
                   name: 'String'
                 }
               },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               key_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.keySize',
                 type: {
@@ -99,6 +84,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               delay_existing_revoke_in_hours: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.delayExistingRevokeInHours',
                 type: {
@@ -106,6 +92,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               csr: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.csr',
                 type: {
@@ -113,6 +100,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               is_private_key_external: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isPrivateKeyExternal',
                 type: {

@@ -23,6 +23,7 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeysParameters',
           type: {
@@ -30,6 +31,7 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'RegenerateKeysParameters',
             model_properties: {
               policy_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyKey',
                 type: {

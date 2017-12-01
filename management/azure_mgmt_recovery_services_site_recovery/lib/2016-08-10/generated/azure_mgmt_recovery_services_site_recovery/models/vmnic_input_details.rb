@@ -31,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VMNicInputDetails',
           type: {
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VMNicInputDetails',
             model_properties: {
               nic_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nicId',
                 type: {
@@ -45,6 +47,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_vmsubnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryVMSubnetName',
                 type: {
@@ -52,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replica_nic_static_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicaNicStaticIPAddress',
                 type: {
@@ -59,6 +63,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               selection_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'selectionType',
                 type: {

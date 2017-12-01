@@ -30,6 +30,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DpmErrorInfo',
           type: {
@@ -37,6 +38,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'DpmErrorInfo',
             model_properties: {
               error_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorString',
                 type: {
@@ -44,11 +46,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recommendations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

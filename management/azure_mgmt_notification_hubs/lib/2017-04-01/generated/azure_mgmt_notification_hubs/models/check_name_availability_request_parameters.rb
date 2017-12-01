@@ -26,6 +26,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityRequestParameters',
           type: {
@@ -33,6 +34,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'CheckNameAvailabilityRequestParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'Name',
                 type: {
@@ -40,6 +42,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Type',

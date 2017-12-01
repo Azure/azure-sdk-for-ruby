@@ -31,6 +31,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationResult',
           type: {
@@ -38,6 +39,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'OperationResult',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -53,6 +56,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -60,6 +64,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -23,6 +23,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SshConfiguration',
           type: {
@@ -30,11 +31,13 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'SshConfiguration',
             model_properties: {
               public_keys: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publicKeys',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SshPublicKeyElementType',
                       type: {

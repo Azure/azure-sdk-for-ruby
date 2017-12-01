@@ -29,6 +29,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PredictionDistributionDefinition',
           type: {
@@ -36,6 +37,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionDistributionDefinition',
             model_properties: {
               total_positives: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalPositives',
                 type: {
@@ -43,6 +45,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               total_negatives: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'totalNegatives',
                 type: {
@@ -50,11 +53,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               distributions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'distributions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PredictionDistributionDefinitionDistributionsItemElementType',
                       type: {

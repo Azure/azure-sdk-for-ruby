@@ -54,6 +54,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceCertificateDetails',
           type: {
@@ -63,6 +64,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
             class_name: 'ResourceCertificateDetails',
             model_properties: {
               certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificate',
                 type: {
@@ -70,6 +72,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -77,6 +80,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               issuer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'issuer',
                 type: {
@@ -84,6 +88,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -91,6 +96,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               subject: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subject',
                 type: {
@@ -98,6 +104,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'thumbprint',
                 type: {
@@ -105,6 +112,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               valid_from: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'validFrom',
                 type: {
@@ -112,6 +120,7 @@ module Azure::RecoveryServices::Mgmt::V2016_06_01
                 }
               },
               valid_to: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'validTo',
                 type: {

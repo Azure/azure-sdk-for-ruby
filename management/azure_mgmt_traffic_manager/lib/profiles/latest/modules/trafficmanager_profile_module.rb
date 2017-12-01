@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_traffic_manager'
 
-module Azure::TrafficManager::Profiles::Latest::Mgmt
+module Azure::TrafficManager::Profiles::Latest
+  module Mgmt
     Endpoints = Azure::TrafficManager::Mgmt::V2017_05_01::Endpoints
     Profiles = Azure::TrafficManager::Mgmt::V2017_05_01::Profiles
     GeographicHierarchies = Azure::TrafficManager::Mgmt::V2017_05_01::GeographicHierarchies
@@ -14,13 +15,13 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
     module Models
       TrafficManagerNameAvailability = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerNameAvailability
       Region = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
-      ProfileListResult = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
       CheckTrafficManagerRelativeDnsNameAvailabilityParameters = Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-      MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
       DnsConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
+      MonitorConfig = Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+      ProfileListResult = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
       Endpoint = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Endpoint
-      TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
       Profile = Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
+      TrafficManagerGeographicHierarchy = Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
       EndpointStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
       EndpointMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
       ProfileMonitorStatus = Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileMonitorStatus
@@ -39,9 +40,9 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
     end
 
     #
-    # TrafficManager
+    # TrafficManagerManagementClass
     #
-    class TrafficManagerClass
+    class TrafficManagerManagementClass
       attr_reader :endpoints, :profiles, :geographic_hierarchies, :heat_map, :traffic_manager_user_metrics_keys, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -72,80 +73,81 @@ module Azure::TrafficManager::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def traffic_manager_name_availability
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerNameAvailability
-        end
-        def region
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
-        end
-        def profile_list_result
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
-        end
-        def check_traffic_manager_relative_dns_name_availability_parameters
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
-        end
-        def monitor_config
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
-        end
-        def dns_config
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
-        end
-        def endpoint
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::Endpoint
-        end
-        def traffic_manager_geographic_hierarchy
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
-        end
-        def profile
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
-        end
-        def endpoint_status
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
-        end
-        def endpoint_monitor_status
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
-        end
-        def profile_monitor_status
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileMonitorStatus
-        end
-        def monitor_protocol
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorProtocol
-        end
-        def profile_status
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileStatus
-        end
-        def traffic_routing_method
-          Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficRoutingMethod
-        end
-        def delete_operation_result
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::DeleteOperationResult
-        end
-        def heat_map_endpoint
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapEndpoint
-        end
-        def resource
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::Resource
-        end
-        def traffic_flow
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficFlow
-        end
-        def query_experience
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::QueryExperience
-        end
-        def tracked_resource
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
-        end
-        def proxy_resource
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::ProxyResource
-        end
-        def heat_map_model
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel
-        end
-        def traffic_manager_user_metrics_key_model
-          Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
-        end
+    class ModelClasses
+      def traffic_manager_name_availability
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerNameAvailability
+      end
+      def region
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::Region
+      end
+      def check_traffic_manager_relative_dns_name_availability_parameters
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::CheckTrafficManagerRelativeDnsNameAvailabilityParameters
+      end
+      def dns_config
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::DnsConfig
+      end
+      def monitor_config
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorConfig
+      end
+      def profile_list_result
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileListResult
+      end
+      def endpoint
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::Endpoint
+      end
+      def profile
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::Profile
+      end
+      def traffic_manager_geographic_hierarchy
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficManagerGeographicHierarchy
+      end
+      def endpoint_status
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointStatus
+      end
+      def endpoint_monitor_status
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::EndpointMonitorStatus
+      end
+      def profile_monitor_status
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileMonitorStatus
+      end
+      def monitor_protocol
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::MonitorProtocol
+      end
+      def profile_status
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::ProfileStatus
+      end
+      def traffic_routing_method
+        Azure::TrafficManager::Mgmt::V2017_05_01::Models::TrafficRoutingMethod
+      end
+      def delete_operation_result
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::DeleteOperationResult
+      end
+      def heat_map_endpoint
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapEndpoint
+      end
+      def resource
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::Resource
+      end
+      def traffic_flow
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficFlow
+      end
+      def query_experience
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::QueryExperience
+      end
+      def tracked_resource
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrackedResource
+      end
+      def proxy_resource
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::ProxyResource
+      end
+      def heat_map_model
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::HeatMapModel
+      end
+      def traffic_manager_user_metrics_key_model
+        Azure::TrafficManager::Mgmt::V2017_09_01_preview::Models::TrafficManagerUserMetricsKeyModel
       end
     end
+  end
 end

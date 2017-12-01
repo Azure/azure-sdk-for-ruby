@@ -33,6 +33,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -40,6 +41,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'Operation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -47,6 +49,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               origin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'origin',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

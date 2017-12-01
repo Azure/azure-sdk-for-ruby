@@ -25,6 +25,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EndpointRangeDescription',
           type: {
@@ -32,6 +33,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'EndpointRangeDescription',
             model_properties: {
               start_port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'startPort',
                 type: {
@@ -39,6 +41,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               end_port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'endPort',
                 type: {

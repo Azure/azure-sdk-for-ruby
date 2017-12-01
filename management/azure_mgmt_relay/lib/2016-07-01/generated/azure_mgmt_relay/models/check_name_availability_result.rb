@@ -33,6 +33,7 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -40,6 +41,7 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nameAvailable',
                 type: {
@@ -47,6 +49,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reason',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

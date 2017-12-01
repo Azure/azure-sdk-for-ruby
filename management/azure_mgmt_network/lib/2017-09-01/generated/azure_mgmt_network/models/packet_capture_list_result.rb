@@ -23,6 +23,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCaptureListResult',
           type: {
@@ -30,11 +31,13 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'PacketCaptureListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PacketCaptureResultElementType',
                       type: {

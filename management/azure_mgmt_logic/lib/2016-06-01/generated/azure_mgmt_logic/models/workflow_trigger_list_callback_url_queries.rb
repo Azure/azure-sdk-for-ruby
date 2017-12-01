@@ -31,6 +31,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerListCallbackUrlQueries',
           type: {
@@ -38,6 +39,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowTriggerListCallbackUrlQueries',
             model_properties: {
               api_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'api-version',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sp: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sp',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sv: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sv',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sig: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sig',
                 type: {

@@ -31,6 +31,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Action',
           type: {
@@ -38,6 +39,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'Action',
             model_properties: {
               sql_expression: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sqlExpression',
                 type: {
@@ -45,6 +47,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               compatibility_level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'compatibilityLevel',
                 type: {
@@ -52,6 +55,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               requires_preprocessing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'requiresPreprocessing',
                 default_value: true,

@@ -6,4 +6,3 @@ module Azure end
 module Azure::MobileEngagement end
 module Azure::MobileEngagement::Profiles end
 module Azure::MobileEngagement::Profiles::Latest end
-module Azure::MobileEngagement::Profiles::Latest::Mgmt end

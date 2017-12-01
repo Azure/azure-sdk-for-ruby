@@ -68,6 +68,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactEnvelopeOverride',
           type: {
@@ -75,6 +76,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactEnvelopeOverride',
             model_properties: {
               message_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageId',
                 type: {
@@ -82,6 +84,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageVersion',
                 type: {
@@ -89,6 +92,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_release: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageRelease',
                 type: {
@@ -96,6 +100,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_association_assigned_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageAssociationAssignedCode',
                 type: {
@@ -103,6 +108,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               target_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNamespace',
                 type: {
@@ -110,6 +116,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               functional_group_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'functionalGroupId',
                 type: {
@@ -117,6 +124,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_application_qualifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderApplicationQualifier',
                 type: {
@@ -124,6 +132,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sender_application_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'senderApplicationId',
                 type: {
@@ -131,6 +140,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_application_qualifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiverApplicationQualifier',
                 type: {
@@ -138,6 +148,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_application_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'receiverApplicationId',
                 type: {
@@ -145,6 +156,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               controlling_agency_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'controllingAgencyCode',
                 type: {
@@ -152,6 +164,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_header_message_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupHeaderMessageVersion',
                 type: {
@@ -159,6 +172,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               group_header_message_release: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groupHeaderMessageRelease',
                 type: {
@@ -166,6 +180,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               association_assigned_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'associationAssignedCode',
                 type: {
@@ -173,6 +188,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               application_password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationPassword',
                 type: {

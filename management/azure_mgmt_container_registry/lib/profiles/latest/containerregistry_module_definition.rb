@@ -6,4 +6,3 @@ module Azure end
 module Azure::ContainerRegistry end
 module Azure::ContainerRegistry::Profiles end
 module Azure::ContainerRegistry::Profiles::Latest end
-module Azure::ContainerRegistry::Profiles::Latest::Mgmt end

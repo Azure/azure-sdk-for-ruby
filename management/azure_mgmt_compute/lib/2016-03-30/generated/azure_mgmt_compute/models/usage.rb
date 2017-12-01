@@ -32,6 +32,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Usage',
           type: {
@@ -39,6 +40,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'Usage',
             model_properties: {
               unit: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'unit',
@@ -48,6 +50,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'currentValue',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               limit: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'limit',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

@@ -39,6 +39,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ExpressRouteCircuitAuthorization',
           type: {
@@ -46,6 +47,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ExpressRouteCircuitAuthorization',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -53,6 +55,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               authorization_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorizationKey',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               authorization_use_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorizationUseStatus',
                 type: {
@@ -67,6 +71,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -74,6 +79,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -81,6 +87,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

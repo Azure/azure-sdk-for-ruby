@@ -26,6 +26,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateWorkspaceCollectionRequest',
           type: {
@@ -33,11 +34,13 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'UpdateWorkspaceCollectionRequest',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -47,6 +50,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 is_constant: true,
                 serialized_name: 'sku',

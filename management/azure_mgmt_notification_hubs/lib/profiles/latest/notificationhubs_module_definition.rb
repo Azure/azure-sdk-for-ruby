@@ -6,4 +6,3 @@ module Azure end
 module Azure::NotificationHubs end
 module Azure::NotificationHubs::Profiles end
 module Azure::NotificationHubs::Profiles::Latest end
-module Azure::NotificationHubs::Profiles::Latest::Mgmt end

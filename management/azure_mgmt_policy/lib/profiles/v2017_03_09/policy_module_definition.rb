@@ -6,4 +6,3 @@ module Azure end
 module Azure::Policy end
 module Azure::Policy::Profiles end
 module Azure::Policy::Profiles::V2017_03_09 end
-module Azure::Policy::Profiles::V2017_03_09::Mgmt end

@@ -22,6 +22,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileUpdateParameters',
           type: {
@@ -29,11 +30,13 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'ProfileUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

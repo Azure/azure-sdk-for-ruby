@@ -29,6 +29,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AlertSource',
           type: {
@@ -36,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'AlertSource',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -43,6 +45,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -50,6 +53,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               alert_source_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'alertSourceType',
                 type: {
