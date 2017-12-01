@@ -19,7 +19,7 @@ module Azure::Web::Mgmt::V2016_09_01
       attr_accessor :worker_tier_name
 
       # @return [StatusOptions] App Service plan status. Possible values
-      # include: 'Ready', 'Pending'
+      # include: 'Ready', 'Pending', 'Creating'
       attr_accessor :status
 
       # @return [String] App Service plan subscription.
@@ -48,10 +48,19 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [Integer] Number of apps assigned to this App Service plan.
       attr_accessor :number_of_sites
 
+      # @return [Boolean] If <code>true</code>, this App Service Plan owns spot
+      # instances.
+      attr_accessor :is_spot
+
+      # @return [DateTime] The time when the server farm expires. Valid only if
+      # it is a spot server farm.
+      attr_accessor :spot_expiration_time
+
       # @return [String] Resource group of the App Service plan.
       attr_accessor :resource_group
 
-      # @return [Boolean] Reserved. Default value: false .
+      # @return [Boolean] If Linux app service plan <code>true</code>,
+      # <code>false</code> otherwise. Default value: false .
       attr_accessor :reserved
 
       # @return [Integer] Scaling worker count.
@@ -209,6 +218,20 @@ module Azure::Web::Mgmt::V2016_09_01
                 serialized_name: 'properties.numberOfSites',
                 type: {
                   name: 'Number'
+                }
+              },
+              is_spot: {
+                required: false,
+                serialized_name: 'properties.isSpot',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              spot_expiration_time: {
+                required: false,
+                serialized_name: 'properties.spotExpirationTime',
+                type: {
+                  name: 'DateTime'
                 }
               },
               resource_group: {

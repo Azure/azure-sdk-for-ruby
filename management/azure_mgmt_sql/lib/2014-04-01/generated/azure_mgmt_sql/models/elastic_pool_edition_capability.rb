@@ -23,6 +23,10 @@ module Azure::SQL::Mgmt::V2014_04_01
       # pool DTU levels for the edition.
       attr_accessor :supported_elastic_pool_dtus
 
+      # @return [Boolean] Whether or not zone redundancy is supported for the
+      # edition.
+      attr_accessor :zone_redundant
+
 
       #
       # Mapper for ElasticPoolEditionCapability class as Ruby Hash.
@@ -67,6 +71,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                         class_name: 'ElasticPoolDtuCapability'
                       }
                   }
+                }
+              },
+              zone_redundant: {
+                required: false,
+                read_only: true,
+                serialized_name: 'zoneRedundant',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

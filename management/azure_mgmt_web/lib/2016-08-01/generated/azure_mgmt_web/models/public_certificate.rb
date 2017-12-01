@@ -12,7 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
-      # @return [String] Public Certificate byte array
+      # @return [Array<Integer>] Public Certificate byte array
       attr_accessor :blob
 
       # @return [PublicCertificateLocation] Public Certificate Location.
@@ -70,7 +70,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 required: false,
                 serialized_name: 'properties.blob',
                 type: {
-                  name: 'String'
+                  name: 'ByteArray'
                 }
               },
               public_certificate_location: {

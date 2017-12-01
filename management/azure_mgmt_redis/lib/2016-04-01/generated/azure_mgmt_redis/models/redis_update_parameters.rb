@@ -128,7 +128,7 @@ module Azure::Redis::Mgmt::V2016_04_01
               },
               tags: {
                 required: false,
-                serialized_name: 'properties.tags',
+                serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {

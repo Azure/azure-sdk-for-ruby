@@ -8,7 +8,7 @@ module Azure::Web::Mgmt::V2015_08_01
     #
     # Class representing certificate renew request.
     #
-    class RenewCertificateOrderRequest < Resource
+    class RenewCertificateOrderRequest < ProxyOnlyResource
 
       include MsRestAzure
 
@@ -58,33 +58,12 @@ module Azure::Web::Mgmt::V2015_08_01
                   name: 'String'
                 }
               },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
               type: {
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
                 }
               },
               key_size: {

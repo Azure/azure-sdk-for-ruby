@@ -37,6 +37,10 @@ module Azure::Network::Mgmt::V2017_09_01
       # (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
       attr_accessor :remote_virtual_network
 
+      # @return [AddressSpace] The reference of the remote virtual network
+      # address space.
+      attr_accessor :remote_address_space
+
       # @return [VirtualNetworkPeeringState] The status of the virtual network
       # peering. Possible values are 'Initiated', 'Connected', and
       # 'Disconnected'. Possible values include: 'Initiated', 'Connected',
@@ -108,6 +112,14 @@ module Azure::Network::Mgmt::V2017_09_01
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'
+                }
+              },
+              remote_address_space: {
+                required: false,
+                serialized_name: 'properties.remoteAddressSpace',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AddressSpace'
                 }
               },
               peering_state: {

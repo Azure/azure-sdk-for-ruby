@@ -16,11 +16,12 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       attr_accessor :skus
 
       # @return [Kind] The Kind of the resource. Possible values include:
-      # 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
-      # 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator',
-      # 'CustomSpeech', 'Emotion', 'Face', 'LUIS', 'Recommendations',
-      # 'SpeakerRecognition', 'Speech', 'SpeechTranslation', 'TextAnalytics',
-      # 'TextTranslation', 'WebLM'
+      # 'Academic', 'Bing.Autosuggest', 'Bing.Autosuggest.v7',
+      # 'Bing.CustomSearch', 'Bing.Search', 'Bing.Search.v7', 'Bing.Speech',
+      # 'Bing.SpellCheck', 'Bing.SpellCheck.v7', 'ComputerVision',
+      # 'ContentModerator', 'CustomSpeech', 'Emotion', 'Face', 'LUIS',
+      # 'Recommendations', 'SpeakerRecognition', 'Speech', 'SpeechTranslation',
+      # 'TextAnalytics', 'TextTranslation', 'WebLM'
       attr_accessor :kind
 
       # @return [String] The Type of the resource.

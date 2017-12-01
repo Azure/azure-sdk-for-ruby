@@ -39,6 +39,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -46,6 +47,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -53,6 +55,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'

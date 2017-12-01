@@ -11,9 +11,13 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
     module Kind
       Academic = "Academic"
       BingAutosuggest = "Bing.Autosuggest"
+      BingAutosuggestv7 = "Bing.Autosuggest.v7"
+      BingCustomSearch = "Bing.CustomSearch"
       BingSearch = "Bing.Search"
+      BingSearchv7 = "Bing.Search.v7"
       BingSpeech = "Bing.Speech"
       BingSpellCheck = "Bing.SpellCheck"
+      BingSpellCheckv7 = "Bing.SpellCheck.v7"
       ComputerVision = "ComputerVision"
       ContentModerator = "ContentModerator"
       CustomSpeech = "CustomSpeech"
