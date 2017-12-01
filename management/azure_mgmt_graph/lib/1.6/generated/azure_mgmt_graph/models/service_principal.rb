@@ -8,15 +8,16 @@ module Azure::Graph::Mgmt::V1_6
     #
     # Active Directory service principal information.
     #
-    class ServicePrincipal
+    class ServicePrincipal < DirectoryObject
 
       include MsRestAzure
 
-      # @return [String] The object ID.
-      attr_accessor :object_id
 
-      # @return [String] The object type.
-      attr_accessor :object_type
+      def initialize
+        @objectType = "ServicePrincipal"
+      end
+
+      attr_accessor :objectType
 
       # @return [String] The display name of the service principal.
       attr_accessor :display_name
@@ -42,13 +43,22 @@ module Azure::Graph::Mgmt::V1_6
             model_properties: {
               object_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'objectId',
                 type: {
                   name: 'String'
                 }
               },
-              object_type: {
+              deletion_timestamp: {
                 required: false,
+                read_only: true,
+                serialized_name: 'deletionTimestamp',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              objectType: {
+                required: true,
                 serialized_name: 'objectType',
                 type: {
                   name: 'String'

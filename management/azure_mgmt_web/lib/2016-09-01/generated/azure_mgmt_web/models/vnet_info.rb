@@ -18,8 +18,8 @@ module Azure::Web::Mgmt::V2016_09_01
       # @return [String] The client certificate thumbprint.
       attr_accessor :cert_thumbprint
 
-      # @return [String] A certificate file (.cer) blob containing the public
-      # key of the private key used to authenticate a
+      # @return [Array<Integer>] A certificate file (.cer) blob containing the
+      # public key of the private key used to authenticate a
       # Point-To-Site VPN connection.
       attr_accessor :cert_blob
 
@@ -98,7 +98,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 required: false,
                 serialized_name: 'properties.certBlob',
                 type: {
-                  name: 'String'
+                  name: 'ByteArray'
                 }
               },
               routes: {

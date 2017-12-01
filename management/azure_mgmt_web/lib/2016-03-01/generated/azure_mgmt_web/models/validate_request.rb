@@ -33,6 +33,10 @@ module Azure::Web::Mgmt::V2016_03_01
       # workers; otherwise, <code>false</code>.
       attr_accessor :need_linux_workers
 
+      # @return [Boolean] <code>true</code> if App Service plan is for Spot
+      # instances; otherwise, <code>false</code>.
+      attr_accessor :is_spot
+
       # @return [Integer] Target capacity of the App Service plan (number of
       # VM's).
       attr_accessor :capacity
@@ -92,6 +96,13 @@ module Azure::Web::Mgmt::V2016_03_01
               need_linux_workers: {
                 required: false,
                 serialized_name: 'properties.needLinuxWorkers',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_spot: {
+                required: false,
+                serialized_name: 'properties.isSpot',
                 type: {
                   name: 'Boolean'
                 }

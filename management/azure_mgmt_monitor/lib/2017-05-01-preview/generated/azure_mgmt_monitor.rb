@@ -19,10 +19,10 @@ require 'ms_rest'
 require '2017-05-01-preview/generated/azure_mgmt_monitor/module_definition'
 require 'ms_rest_azure'
 
-module Azure::Monitor::Mgmt::V2017_05_01_preview
+module Azure::MobileEngagement::Mgmt::V2014_12_01
   autoload :DiagnosticSettingsCategoryOperations,               '2017-05-01-preview/generated/azure_mgmt_monitor/diagnostic_settings_category_operations.rb'
   autoload :DiagnosticSettingsOperations,                       '2017-05-01-preview/generated/azure_mgmt_monitor/diagnostic_settings_operations.rb'
-  autoload :MonitorClient,                                      '2017-05-01-preview/generated/azure_mgmt_monitor/monitor_client.rb'
+  autoload :MonitorManagementClient,                            '2017-05-01-preview/generated/azure_mgmt_monitor/monitor_management_client.rb'
 
   module Models
     autoload :RetentionPolicy,                                    '2017-05-01-preview/generated/azure_mgmt_monitor/models/retention_policy.rb'

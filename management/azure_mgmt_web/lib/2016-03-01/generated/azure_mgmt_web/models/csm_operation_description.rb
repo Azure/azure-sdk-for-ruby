@@ -6,8 +6,8 @@
 module Azure::Web::Mgmt::V2016_03_01
   module Models
     #
-    # Model object.
-    #
+    # Description of an operation available for Microsoft.Web resource
+    # provider.
     #
     class CsmOperationDescription
 

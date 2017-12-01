@@ -12,8 +12,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
 
       include MsRestAzure
 
-      # @return [String] The key returned by the Realtime User Metrics
-      # operation.
+      # @return [String] The key returned by the Real User Metrics operation.
       attr_accessor :key
 
 
@@ -55,7 +54,7 @@ module Azure::TrafficManager::Mgmt::V2017_09_01_preview
               },
               key: {
                 required: false,
-                serialized_name: 'properties.key',
+                serialized_name: 'key',
                 type: {
                   name: 'String'
                 }
