@@ -20,7 +20,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       attr_accessor :size
 
       # @return [String] The digest of the content, as defined by the Registry
-      # V2 HTTP API Specificiation.
+      # V2 HTTP API Specification.
       attr_accessor :digest
 
       # @return [Integer] The number of bytes of the content. Same as Size
