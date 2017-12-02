@@ -124,7 +124,7 @@ require 'fileutils'
 
 gem_versions = JSON.parse(File.read(File.expand_path('../GEM_VERSIONS', __FILE__)).strip)
 gems_to_release = JSON.parse(File.read(File.expand_path('../GEMS_TO_RELEASE', __FILE__)).strip)
-GEMS_TO_IGNORE = ['azure_mgmt_insights']
+GEMS_TO_IGNORE = ['azure_mgmt_insights', 'azure_mgmt_graph']
 REGEN_EXCLUDES = ['azure_sdk']
 
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'

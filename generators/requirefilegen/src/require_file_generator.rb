@@ -7,7 +7,7 @@ require 'json'
 require_relative 'require_file_generator_options_parser'
 
 class RequireFileGenerator
-  EXCLUDE_GEMS = ['azure_mgmt_insights']
+  EXCLUDE_GEMS = ['azure_mgmt_insights', 'azure_mgmt_graph']
 
   attr_accessor :requires
 
