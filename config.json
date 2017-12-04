@@ -552,7 +552,7 @@
   },
   "azure_mgmt_recovery_services_site_recovery": {
     "azure_mgmt_recovery_services_site_recovery_2016_08_10": {
-      "markdown": "https://github.com/Azure/azure-rest-api-specs/blob/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/recoveryservicessiterecovery/resource-manager/readme.md",
+      "markdown": "https://github.com/Azure/azure-rest-api-specs/blob/e2c0788e30810af0afaeace73b6b7c86a182432a/specification/recoveryservicessiterecovery/resource-manager/readme.md",
       "namespace": "Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10",
       "tag": "package-2016-08"
     }
