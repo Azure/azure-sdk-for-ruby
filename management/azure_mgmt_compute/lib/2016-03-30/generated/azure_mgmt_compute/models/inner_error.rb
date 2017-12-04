@@ -25,6 +25,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InnerError',
           type: {
@@ -32,6 +33,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'InnerError',
             model_properties: {
               exceptiontype: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'exceptiontype',
                 type: {
@@ -39,6 +41,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               errordetail: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errordetail',
                 type: {

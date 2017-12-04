@@ -25,6 +25,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -32,6 +33,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

@@ -30,6 +30,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubnetFragment',
           type: {
@@ -37,6 +38,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'SubnetFragment',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -44,6 +46,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_subnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'labSubnetName',
                 type: {
@@ -51,6 +54,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               allow_public_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowPublicIp',
                 type: {

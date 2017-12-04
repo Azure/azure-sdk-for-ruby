@@ -24,6 +24,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckGroupMembershipResult',
           type: {
@@ -31,6 +32,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'CheckGroupMembershipResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

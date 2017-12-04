@@ -47,6 +47,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EHNamespace',
           type: {
@@ -54,6 +55,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
             class_name: 'EHNamespace',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,6 +64,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -70,6 +73,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -78,6 +82,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -85,11 +90,13 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -99,6 +106,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -107,6 +115,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -115,6 +124,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               created_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -123,6 +133,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               updated_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -131,6 +142,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               service_bus_endpoint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceBusEndpoint',
@@ -139,6 +151,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               metric_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.metricId',
@@ -147,6 +160,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               is_auto_inflate_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isAutoInflateEnabled',
                 type: {
@@ -154,6 +168,7 @@ module Azure::EventHub::Mgmt::V2017_04_01
                 }
               },
               maximum_throughput_units: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maximumThroughputUnits',
                 constraints: {

@@ -26,6 +26,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -33,6 +34,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'Operation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -40,6 +42,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

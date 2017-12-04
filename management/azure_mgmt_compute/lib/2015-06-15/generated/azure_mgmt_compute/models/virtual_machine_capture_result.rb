@@ -22,6 +22,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineCaptureResult',
           type: {
@@ -29,6 +30,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineCaptureResult',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -36,6 +38,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               output: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.output',
                 type: {

@@ -35,6 +35,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManualActionTaskDetails',
           type: {
@@ -42,6 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ManualActionTaskDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -49,6 +51,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,6 +59,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               instructions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'instructions',
                 type: {
@@ -63,6 +67,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               observation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'observation',
                 type: {

@@ -23,6 +23,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubResource',
           type: {
@@ -30,6 +31,7 @@ module Azure::Storage::Mgmt::V2015_05_01_preview
             class_name: 'SubResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

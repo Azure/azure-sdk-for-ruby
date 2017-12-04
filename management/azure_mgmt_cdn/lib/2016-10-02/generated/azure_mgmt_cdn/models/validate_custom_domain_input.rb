@@ -23,6 +23,7 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ValidateCustomDomainInput',
           type: {
@@ -30,6 +31,7 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'ValidateCustomDomainInput',
             model_properties: {
               host_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'hostName',
                 type: {

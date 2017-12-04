@@ -50,6 +50,7 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WcfRelay',
           type: {
@@ -57,6 +58,7 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'WcfRelay',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,6 +67,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,6 +76,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -81,6 +85,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               relay_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.relayType',
                 type: {
@@ -88,6 +93,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               created_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -96,6 +102,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               updated_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -104,6 +111,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               listener_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.listenerCount',
@@ -112,6 +120,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               requires_client_authorization: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requiresClientAuthorization',
                 type: {
@@ -119,6 +128,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               requires_transport_security: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requiresTransportSecurity',
                 type: {
@@ -126,6 +136,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               is_dynamic: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isDynamic',
@@ -134,6 +145,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               user_metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userMetadata',
                 type: {

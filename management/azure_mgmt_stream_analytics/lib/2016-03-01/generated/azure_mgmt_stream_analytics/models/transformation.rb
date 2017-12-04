@@ -37,6 +37,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Transformation',
           type: {
@@ -44,6 +45,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'Transformation',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -52,6 +54,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -59,6 +62,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,6 +71,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               streaming_units: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.streamingUnits',
                 type: {
@@ -74,6 +79,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               query: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.query',
                 type: {
@@ -81,6 +87,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.etag',

@@ -34,6 +34,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EffectiveNetworkSecurityGroup',
           type: {
@@ -41,6 +42,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'EffectiveNetworkSecurityGroup',
             model_properties: {
               network_security_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkSecurityGroup',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               association: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'association',
                 type: {
@@ -57,11 +60,13 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               effective_security_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'effectiveSecurityRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EffectiveNetworkSecurityRuleElementType',
                       type: {
@@ -72,16 +77,19 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               tag_map: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tagMap',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArrayElementType',
                       type: {
                         name: 'Sequence',
                         element: {
+                            client_side_validation: true,
                             required: false,
                             serialized_name: 'StringElementType',
                             type: {

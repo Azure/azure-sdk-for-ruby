@@ -32,6 +32,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CreateRecoveryPlanInputProperties',
           type: {
@@ -39,6 +40,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'CreateRecoveryPlanInputProperties',
             model_properties: {
               primary_fabric_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'primaryFabricId',
                 type: {
@@ -46,6 +48,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'recoveryFabricId',
                 type: {
@@ -53,6 +56,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_deployment_model: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverDeploymentModel',
                 type: {
@@ -61,11 +65,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               groups: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'groups',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanGroupElementType',
                       type: {

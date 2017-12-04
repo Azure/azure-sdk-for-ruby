@@ -59,6 +59,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MetricTrigger',
           type: {
@@ -66,6 +67,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'MetricTrigger',
             model_properties: {
               metric_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'metricName',
                 type: {
@@ -73,6 +75,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               metric_resource_uri: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'metricResourceUri',
                 type: {
@@ -80,6 +83,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               time_grain: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeGrain',
                 type: {
@@ -87,6 +91,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               statistic: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'statistic',
                 type: {
@@ -95,6 +100,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               time_window: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeWindow',
                 type: {
@@ -102,6 +108,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               time_aggregation: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'timeAggregation',
                 type: {
@@ -110,6 +117,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               operator: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'operator',
                 type: {
@@ -118,6 +126,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               threshold: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'threshold',
                 type: {

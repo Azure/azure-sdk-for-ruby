@@ -42,6 +42,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PowerShellSessionResource',
           type: {
@@ -49,6 +50,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PowerShellSessionResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,6 +59,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -65,6 +68,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,6 +77,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -81,11 +86,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -95,6 +102,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -102,6 +110,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               session_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sessionId',
                 type: {
@@ -109,6 +118,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.state',
                 type: {
@@ -116,6 +126,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               runspace_availability: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.runspaceAvailability',
                 type: {
@@ -123,6 +134,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               disconnected_on: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.disconnectedOn',
                 type: {
@@ -130,6 +142,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               expires_on: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expiresOn',
                 type: {
@@ -137,6 +150,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.version',
                 type: {
@@ -145,6 +159,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               power_shell_session_resource_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {

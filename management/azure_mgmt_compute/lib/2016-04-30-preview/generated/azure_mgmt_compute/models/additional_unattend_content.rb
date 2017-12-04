@@ -41,6 +41,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AdditionalUnattendContent',
           type: {
@@ -48,6 +49,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'AdditionalUnattendContent',
             model_properties: {
               pass_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'passName',
                 type: {
@@ -56,6 +58,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               component_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'componentName',
                 type: {
@@ -64,6 +67,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               setting_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'settingName',
                 type: {
@@ -72,6 +76,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'content',
                 type: {

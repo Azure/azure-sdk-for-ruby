@@ -30,6 +30,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DebugSetting',
           type: {
@@ -37,6 +38,7 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'DebugSetting',
             model_properties: {
               detail_level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'detailLevel',
                 type: {

@@ -27,6 +27,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IPRule',
           type: {
@@ -34,6 +35,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'IPRule',
             model_properties: {
               ipaddress_or_range: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
@@ -41,6 +43,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 default_value: 'Allow',

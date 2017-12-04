@@ -26,6 +26,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApiError_error',
           type: {
@@ -33,6 +34,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ApiErrorError',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -40,6 +42,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

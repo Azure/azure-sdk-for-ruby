@@ -41,6 +41,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionDetails',
           type: {
@@ -48,6 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'EncryptionDetails',
             model_properties: {
               encryption_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionEnabled',
                 type: {
@@ -55,6 +57,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               kek_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekUrl',
                 type: {
@@ -62,6 +65,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               secret_key_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secretKeyUrl',
                 type: {
@@ -69,6 +73,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               kek_vault_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekVaultId',
                 type: {
@@ -76,6 +81,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               secret_key_vault_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secretKeyVaultId',
                 type: {

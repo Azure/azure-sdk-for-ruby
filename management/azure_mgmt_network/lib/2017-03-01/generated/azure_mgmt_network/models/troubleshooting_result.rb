@@ -32,6 +32,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TroubleshootingResult',
           type: {
@@ -39,6 +40,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'TroubleshootingResult',
             model_properties: {
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -60,11 +64,13 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               results: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'results',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TroubleshootingDetailsElementType',
                       type: {

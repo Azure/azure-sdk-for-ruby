@@ -23,6 +23,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SourceVault',
           type: {
@@ -30,6 +31,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'SourceVault',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {

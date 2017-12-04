@@ -24,6 +24,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorResponse',
           type: {
@@ -31,6 +32,7 @@ module Azure::MarketplaceOrdering::Mgmt::V2015_06_01
             class_name: 'ErrorResponse',
             model_properties: {
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {

@@ -140,9 +140,7 @@ module Azure::Graph::Mgmt::V1_6
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_graph'
-        if defined? Azure::Graph::Mgmt::V1_6::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::Graph::Mgmt::V1_6::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.1"
         add_user_agent_information(sdk_information)
     end
   end

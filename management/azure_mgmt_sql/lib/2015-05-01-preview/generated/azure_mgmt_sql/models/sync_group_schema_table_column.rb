@@ -28,6 +28,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SyncGroupSchemaTableColumn',
           type: {
@@ -35,6 +36,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncGroupSchemaTableColumn',
             model_properties: {
               quoted_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'quotedName',
                 type: {
@@ -42,6 +44,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               data_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataSize',
                 type: {
@@ -49,6 +52,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               data_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dataType',
                 type: {

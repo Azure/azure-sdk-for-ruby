@@ -395,11 +395,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = {
+              client_side_validation: true,
               required: false,
               serialized_name: 'parsed_response',
               type: {
                 name: 'Sequence',
                 element: {
+                    client_side_validation: true,
                     required: false,
                     serialized_name: 'KpiDefinitionElementType',
                     type: {
@@ -473,6 +475,9 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+      fail ArgumentError, "'profile_name' should satisfy the constraint - 'MaxLength': '128'" if !profile_name.nil? && profile_name.length > 128
+      fail ArgumentError, "'profile_name' should satisfy the constraint - 'MinLength': '1'" if !profile_name.nil? && profile_name.length < 1
+      fail ArgumentError, "'profile_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z][a-zA-Z0-9_]+$'" if !profile_name.nil? && profile_name.match(Regexp.new('^^[a-zA-Z][a-zA-Z0-9_]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

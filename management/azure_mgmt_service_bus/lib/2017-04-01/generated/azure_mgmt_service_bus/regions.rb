@@ -61,6 +61,8 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'sku is nil' if sku.nil?
+      fail ArgumentError, "'sku' should satisfy the constraint - 'MaxLength': '50'" if !sku.nil? && sku.length > 50
+      fail ArgumentError, "'sku' should satisfy the constraint - 'MinLength': '1'" if !sku.nil? && sku.length < 1
 
 
       request_headers = {}

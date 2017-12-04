@@ -58,6 +58,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CognitiveServicesAccountListResult',
           type: {
@@ -65,6 +66,7 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
             class_name: 'CognitiveServicesAccountListResult',
             model_properties: {
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {
@@ -72,12 +74,14 @@ module Azure::CognitiveServices::Mgmt::V2017_04_18
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CognitiveServicesAccountElementType',
                       type: {

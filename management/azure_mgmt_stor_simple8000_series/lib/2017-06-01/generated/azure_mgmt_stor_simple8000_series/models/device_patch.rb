@@ -22,6 +22,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DevicePatch',
           type: {
@@ -29,6 +30,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'DevicePatch',
             model_properties: {
               device_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deviceDescription',
                 type: {

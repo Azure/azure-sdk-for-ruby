@@ -33,6 +33,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GeoBackupPolicy',
           type: {
@@ -40,6 +41,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'GeoBackupPolicy',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,6 +50,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,6 +59,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +68,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.state',
                 type: {
@@ -72,6 +77,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               storage_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.storageType',
@@ -80,6 +86,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -88,6 +95,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',

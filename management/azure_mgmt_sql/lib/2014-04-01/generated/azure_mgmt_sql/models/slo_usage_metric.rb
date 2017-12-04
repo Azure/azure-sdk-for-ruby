@@ -31,6 +31,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SloUsageMetric',
           type: {
@@ -38,6 +39,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'SloUsageMetric',
             model_properties: {
               service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serviceLevelObjective',
@@ -46,6 +48,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_level_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'serviceLevelObjectiveId',
@@ -54,6 +57,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               in_range_time_ratio: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'inRangeTimeRatio',

@@ -26,6 +26,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BusinessIdentity',
           type: {
@@ -33,6 +34,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'BusinessIdentity',
             model_properties: {
               qualifier: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'qualifier',
                 type: {
@@ -40,6 +42,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {

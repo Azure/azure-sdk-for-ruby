@@ -32,6 +32,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AddressResponse',
           type: {
@@ -39,6 +40,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'AddressResponse',
             model_properties: {
               service_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceIpAddress',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               internal_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'internalIpAddress',
                 type: {
@@ -53,11 +56,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               outbound_ip_addresses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'outboundIpAddresses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -67,11 +72,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vip_mappings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vipMappings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualIPMappingElementType',
                       type: {

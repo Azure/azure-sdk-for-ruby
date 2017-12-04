@@ -31,6 +31,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryInterval',
           type: {
@@ -38,6 +39,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'QueryInterval',
             model_properties: {
               interval_start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'intervalStartTime',
@@ -46,6 +48,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               execution_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'executionCount',
@@ -54,12 +57,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               metrics: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'metrics',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryMetricElementType',
                       type: {

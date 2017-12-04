@@ -27,6 +27,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountInfo',
           type: {
@@ -34,6 +35,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'StorageAccountInfo',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +43,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties',
                 type: {

@@ -57,6 +57,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryServicesProviderCollection',
           type: {
@@ -64,11 +65,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryServicesProviderCollection',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryServicesProviderElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

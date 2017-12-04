@@ -28,6 +28,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineImage',
           type: {
@@ -35,6 +36,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineImage',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -56,11 +60,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -70,6 +76,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.plan',
                 type: {
@@ -78,6 +85,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               os_disk_image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osDiskImage',
                 type: {
@@ -86,11 +94,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               data_disk_images: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dataDiskImages',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataDiskImageElementType',
                       type: {

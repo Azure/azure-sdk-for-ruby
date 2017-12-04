@@ -30,6 +30,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceIdentity',
           type: {
@@ -37,6 +38,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'ResourceIdentity',
             model_properties: {
               principal_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -45,6 +47,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -52,6 +55,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',

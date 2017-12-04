@@ -30,6 +30,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryStatistics',
           type: {
@@ -37,6 +38,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'RegistryStatistics',
             model_properties: {
               total_device_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'totalDeviceCount',
@@ -45,6 +47,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               enabled_device_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'enabledDeviceCount',
@@ -53,6 +56,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               disabled_device_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'disabledDeviceCount',

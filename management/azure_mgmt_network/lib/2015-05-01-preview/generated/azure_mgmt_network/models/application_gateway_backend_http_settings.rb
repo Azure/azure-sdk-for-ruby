@@ -42,6 +42,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendHttpSettings',
           type: {
@@ -49,6 +50,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
             class_name: 'ApplicationGatewayBackendHttpSettings',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -56,6 +58,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.port',
                 type: {
@@ -63,6 +66,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -70,6 +74,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               cookie_based_affinity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cookieBasedAffinity',
                 type: {
@@ -77,6 +82,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -84,6 +90,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -91,6 +98,7 @@ module Azure::Network::Mgmt::V2015_05_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

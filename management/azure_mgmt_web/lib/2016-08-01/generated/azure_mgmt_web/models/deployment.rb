@@ -50,6 +50,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Deployment',
           type: {
@@ -57,6 +58,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'Deployment',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -65,6 +67,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -73,6 +76,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -80,6 +84,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -88,6 +93,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               deployment_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -95,6 +101,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.status',
                 type: {
@@ -102,6 +109,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.message',
                 type: {
@@ -109,6 +117,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               author: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.author',
                 type: {
@@ -116,6 +125,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               deployer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.deployer',
                 type: {
@@ -123,6 +133,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               author_email: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorEmail',
                 type: {
@@ -130,6 +141,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -137,6 +149,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endTime',
                 type: {
@@ -144,6 +157,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               active: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.active',
                 type: {
@@ -151,6 +165,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.details',
                 type: {

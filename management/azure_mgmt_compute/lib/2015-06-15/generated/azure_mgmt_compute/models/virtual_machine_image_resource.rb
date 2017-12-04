@@ -28,6 +28,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineImageResource',
           type: {
@@ -35,6 +36,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineImageResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -56,11 +60,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

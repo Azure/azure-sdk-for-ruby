@@ -22,6 +22,7 @@ module Azure::Locks::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementLockOwner',
           type: {
@@ -29,6 +30,7 @@ module Azure::Locks::Mgmt::V2016_09_01
             class_name: 'ManagementLockOwner',
             model_properties: {
               application_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationId',
                 type: {

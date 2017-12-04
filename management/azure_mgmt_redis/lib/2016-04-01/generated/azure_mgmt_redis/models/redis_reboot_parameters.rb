@@ -28,6 +28,7 @@ module Azure::Redis::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisRebootParameters',
           type: {
@@ -35,6 +36,7 @@ module Azure::Redis::Mgmt::V2016_04_01
             class_name: 'RedisRebootParameters',
             model_properties: {
               reboot_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rebootType',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Redis::Mgmt::V2016_04_01
                 }
               },
               shard_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'shardId',
                 type: {

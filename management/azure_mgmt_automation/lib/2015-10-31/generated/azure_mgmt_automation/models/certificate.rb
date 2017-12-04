@@ -43,6 +43,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Certificate',
           type: {
@@ -50,6 +51,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Certificate',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -58,6 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,6 +69,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.thumbprint',
@@ -74,6 +78,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               expiry_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.expiryTime',
@@ -82,6 +87,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_exportable: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isExportable',
@@ -90,6 +96,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               creation_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationTime',
@@ -98,6 +105,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               last_modified_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastModifiedTime',
@@ -106,6 +114,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

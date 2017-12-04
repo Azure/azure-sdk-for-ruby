@@ -29,6 +29,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiagnosticsConfiguration',
           type: {
@@ -36,6 +37,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'DiagnosticsConfiguration',
             model_properties: {
               level: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'level',
                 type: {
@@ -43,6 +45,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               expiry: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expiry',
                 type: {

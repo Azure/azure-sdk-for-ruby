@@ -29,6 +29,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateNetworkMappingInputProperties',
           type: {
@@ -36,6 +37,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'UpdateNetworkMappingInputProperties',
             model_properties: {
               recovery_fabric_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricName',
                 type: {
@@ -43,6 +45,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_network_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryNetworkId',
                 type: {
@@ -50,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricSpecificDetails',
                 type: {

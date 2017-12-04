@@ -36,6 +36,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Azure.Management.Insights.Models.RuleEmailAction',
           type: {
@@ -43,6 +44,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleEmailAction',
             model_properties: {
               odatatype: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {
@@ -50,6 +52,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               send_to_service_owners: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sendToServiceOwners',
                 type: {
@@ -57,11 +60,13 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               custom_emails: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customEmails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -453,6 +453,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -552,6 +555,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def get_async(resource_group_name, domain_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -708,6 +714,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def delete_async(resource_group_name, domain_name, force_hard_delete_domain = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -798,6 +807,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def list_ownership_identifiers_async(resource_group_name, domain_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -901,6 +913,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def get_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1017,6 +1032,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def create_or_update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
@@ -1130,6 +1148,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def delete_ownership_identifier_async(resource_group_name, domain_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1236,6 +1257,9 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def update_ownership_identifier_async(resource_group_name, domain_name, name, domain_ownership_identifier, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
@@ -1350,7 +1374,11 @@ module Azure::Web::Mgmt::V2015_04_01
     #
     def begin_create_or_update_async(resource_group_name, domain_name, domain, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._\(\)]+[^\.]$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._\(\)]+[^\.]$$')).nil?
       fail ArgumentError, 'domain_name is nil' if domain_name.nil?
+      fail ArgumentError, "'domain_name' should satisfy the constraint - 'Pattern': '[a-zA-Z0-9][a-zA-Z0-9\.-]+'" if !domain_name.nil? && domain_name.match(Regexp.new('^[a-zA-Z0-9][a-zA-Z0-9\.-]+$')).nil?
       fail ArgumentError, 'domain is nil' if domain.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?

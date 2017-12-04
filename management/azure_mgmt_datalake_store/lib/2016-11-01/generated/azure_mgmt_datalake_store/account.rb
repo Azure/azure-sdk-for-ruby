@@ -426,6 +426,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     #
     def list_by_resource_group_async(resource_group_name, filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '1'" if !skip.nil? && skip < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -554,6 +556,8 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(filter = nil, top = nil, skip = nil, select = nil, orderby = nil, count = nil, custom_headers = nil)
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
+      fail ArgumentError, "'skip' should satisfy the constraint - 'InclusiveMinimum': '1'" if !skip.nil? && skip < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

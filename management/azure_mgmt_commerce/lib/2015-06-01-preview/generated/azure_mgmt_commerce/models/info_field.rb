@@ -23,6 +23,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InfoField',
           type: {
@@ -30,6 +31,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'InfoField',
             model_properties: {
               project: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'project',
                 type: {

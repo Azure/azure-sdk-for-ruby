@@ -34,6 +34,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ADGroup',
           type: {
@@ -41,6 +42,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'ADGroup',
             model_properties: {
               object_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectId',
                 type: {
@@ -48,6 +50,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               object_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectType',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               security_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityEnabled',
                 type: {
@@ -69,6 +74,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mail',
                 type: {

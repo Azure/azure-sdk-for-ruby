@@ -83,6 +83,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataMaskingRule',
           type: {
@@ -90,6 +91,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'DataMaskingRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -98,6 +100,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -106,6 +109,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -114,6 +118,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               data_masking_rule_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.id',
@@ -122,6 +127,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               alias_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.aliasName',
                 type: {
@@ -129,6 +135,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               rule_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ruleState',
                 type: {
@@ -137,6 +144,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               schema_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.schemaName',
                 type: {
@@ -144,6 +152,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               table_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.tableName',
                 type: {
@@ -151,6 +160,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               column_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.columnName',
                 type: {
@@ -158,6 +168,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               masking_function: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.maskingFunction',
                 type: {
@@ -166,6 +177,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               number_from: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.numberFrom',
                 type: {
@@ -173,6 +185,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               number_to: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.numberTo',
                 type: {
@@ -180,6 +193,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               prefix_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.prefixSize',
                 type: {
@@ -187,6 +201,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               suffix_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.suffixSize',
                 type: {
@@ -194,6 +209,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               replacement_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.replacementString',
                 type: {
@@ -201,6 +217,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -209,6 +226,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',

@@ -28,6 +28,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TargetResource',
           type: {
@@ -35,6 +36,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'TargetResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               resource_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceName',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {

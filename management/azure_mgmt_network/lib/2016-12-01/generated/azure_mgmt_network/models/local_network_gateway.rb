@@ -40,6 +40,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LocalNetworkGateway',
           type: {
@@ -47,6 +48,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'LocalNetworkGateway',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -54,6 +56,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,6 +65,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -70,6 +74,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -77,11 +82,13 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,6 +98,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               local_network_address_space: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localNetworkAddressSpace',
                 type: {
@@ -99,6 +107,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               gateway_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gatewayIpAddress',
                 type: {
@@ -106,6 +115,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               bgp_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.bgpSettings',
                 type: {
@@ -114,6 +124,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -121,6 +132,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -129,6 +141,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

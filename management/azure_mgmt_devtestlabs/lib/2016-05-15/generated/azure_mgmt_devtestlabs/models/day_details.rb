@@ -22,6 +22,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DayDetails',
           type: {
@@ -29,6 +30,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'DayDetails',
             model_properties: {
               time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'time',
                 type: {

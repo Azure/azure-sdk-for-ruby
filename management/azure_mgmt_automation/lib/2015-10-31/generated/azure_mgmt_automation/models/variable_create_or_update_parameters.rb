@@ -31,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VariableCreateOrUpdateParameters',
           type: {
@@ -38,6 +39,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'VariableCreateOrUpdateParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.value',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               is_encrypted: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isEncrypted',
                 type: {

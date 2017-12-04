@@ -34,6 +34,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContentLink',
           type: {
@@ -41,6 +42,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'ContentLink',
             model_properties: {
               uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {
@@ -48,6 +50,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentVersion',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentSize',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content_hash: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentHash',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'metadata',
                 type: {

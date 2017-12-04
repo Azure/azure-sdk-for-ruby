@@ -57,6 +57,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ZoneListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'ZoneListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ZoneElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

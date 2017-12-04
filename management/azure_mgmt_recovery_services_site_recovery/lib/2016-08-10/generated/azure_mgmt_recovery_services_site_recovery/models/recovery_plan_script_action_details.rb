@@ -36,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ScriptActionDetails',
           type: {
@@ -43,6 +44,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanScriptActionDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -50,6 +52,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               path: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'path',
                 type: {
@@ -57,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               timeout: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeout',
                 type: {
@@ -64,6 +68,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'fabricLocation',
                 type: {

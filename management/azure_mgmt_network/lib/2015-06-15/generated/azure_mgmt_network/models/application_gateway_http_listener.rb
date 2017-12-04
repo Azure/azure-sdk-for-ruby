@@ -53,6 +53,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayHttpListener',
           type: {
@@ -60,6 +61,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'ApplicationGatewayHttpListener',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -67,6 +69,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               frontend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -75,6 +78,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               frontend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -83,6 +87,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -90,6 +95,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               host_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostName',
                 type: {
@@ -97,6 +103,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               ssl_certificate: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sslCertificate',
                 type: {
@@ -105,6 +112,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               require_server_name_indication: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requireServerNameIndication',
                 type: {
@@ -112,6 +120,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -119,6 +128,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -126,6 +136,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

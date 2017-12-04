@@ -28,6 +28,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Prediction_gradesItem',
           type: {
@@ -35,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionGradesItem',
             model_properties: {
               grade_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'gradeName',
                 type: {
@@ -42,6 +44,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               min_score_threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minScoreThreshold',
                 type: {
@@ -49,6 +52,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               max_score_threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxScoreThreshold',
                 type: {

@@ -26,6 +26,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WeekDetails',
           type: {
@@ -33,11 +34,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'WeekDetails',
             model_properties: {
               weekdays: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'weekdays',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -47,6 +50,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'time',
                 type: {

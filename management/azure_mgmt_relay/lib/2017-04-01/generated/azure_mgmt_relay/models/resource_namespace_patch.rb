@@ -22,6 +22,7 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceNamespacePatch',
           type: {
@@ -29,6 +30,7 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'ResourceNamespacePatch',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -37,6 +39,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -45,6 +48,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -53,11 +57,13 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

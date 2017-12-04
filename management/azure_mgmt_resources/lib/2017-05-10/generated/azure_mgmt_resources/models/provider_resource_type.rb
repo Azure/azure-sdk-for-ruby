@@ -36,6 +36,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProviderResourceType',
           type: {
@@ -43,6 +44,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'ProviderResourceType',
             model_properties: {
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -50,11 +52,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -64,11 +68,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               aliases: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'aliases',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AliasTypeElementType',
                       type: {
@@ -79,11 +85,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               api_versions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'apiVersions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -93,11 +101,13 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

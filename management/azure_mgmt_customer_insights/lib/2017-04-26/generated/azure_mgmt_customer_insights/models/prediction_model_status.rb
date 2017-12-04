@@ -59,6 +59,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PredictionModelStatus',
           type: {
@@ -66,6 +67,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PredictionModelStatus',
             model_properties: {
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -74,6 +76,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               prediction_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'predictionName',
@@ -82,6 +85,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               prediction_guid_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'predictionGuidId',
@@ -90,6 +94,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               status: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'status',
                 type: {
@@ -97,6 +102,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -105,6 +111,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               training_set_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'trainingSetCount',
@@ -113,6 +120,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               test_set_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'testSetCount',
@@ -121,6 +129,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               validation_set_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'validationSetCount',
@@ -129,6 +138,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               training_accuracy: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'trainingAccuracy',
@@ -137,6 +147,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               signals_used: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'signalsUsed',
@@ -145,6 +156,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               model_version: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'modelVersion',

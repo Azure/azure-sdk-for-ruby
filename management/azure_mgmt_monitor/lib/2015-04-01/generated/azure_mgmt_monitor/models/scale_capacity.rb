@@ -32,6 +32,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ScaleCapacity',
           type: {
@@ -39,6 +40,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'ScaleCapacity',
             model_properties: {
               minimum: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'minimum',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               maximum: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'maximum',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               default: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'default',
                 type: {

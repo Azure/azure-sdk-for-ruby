@@ -31,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscNodeConfigurationCreateOrUpdateParameters',
           type: {
@@ -38,6 +39,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscNodeConfigurationCreateOrUpdateParameters',
             model_properties: {
               source: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'source',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               configuration: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'configuration',
                 type: {

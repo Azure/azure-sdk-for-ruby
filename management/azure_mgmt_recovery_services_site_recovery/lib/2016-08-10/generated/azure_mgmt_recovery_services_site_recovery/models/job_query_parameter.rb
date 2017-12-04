@@ -34,6 +34,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobQueryParameter',
           type: {
@@ -41,6 +42,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'JobQueryParameter',
             model_properties: {
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -48,6 +50,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -55,6 +58,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               fabric_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricId',
                 type: {
@@ -62,11 +66,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_object_types: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedObjectTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -76,11 +82,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobStatus',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

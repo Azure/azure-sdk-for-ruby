@@ -71,6 +71,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkGatewayConnection',
           type: {
@@ -78,6 +79,7 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'VirtualNetworkGatewayConnection',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -85,6 +87,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -93,6 +96,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -101,6 +105,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -108,11 +113,13 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -122,6 +129,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               authorization_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.authorizationKey',
                 type: {
@@ -129,6 +137,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               virtual_network_gateway1: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetworkGateway1',
                 type: {
@@ -137,6 +146,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               virtual_network_gateway2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualNetworkGateway2',
                 type: {
@@ -145,6 +155,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               local_network_gateway2: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localNetworkGateway2',
                 type: {
@@ -153,6 +164,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               connection_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionType',
                 type: {
@@ -160,6 +172,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               routing_weight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routingWeight',
                 type: {
@@ -167,6 +180,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               shared_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sharedKey',
                 type: {
@@ -174,6 +188,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               connection_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.connectionStatus',
                 type: {
@@ -181,6 +196,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               egress_bytes_transferred: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.egressBytesTransferred',
                 type: {
@@ -188,6 +204,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               ingress_bytes_transferred: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ingressBytesTransferred',
                 type: {
@@ -195,6 +212,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               peer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peer',
                 type: {
@@ -203,6 +221,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               enable_bgp: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableBgp',
                 type: {
@@ -210,6 +229,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               resource_guid: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceGuid',
                 type: {
@@ -217,6 +237,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -224,6 +245,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

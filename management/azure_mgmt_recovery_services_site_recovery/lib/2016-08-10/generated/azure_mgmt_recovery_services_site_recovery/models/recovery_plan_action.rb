@@ -33,6 +33,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanAction',
           type: {
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanAction',
             model_properties: {
               action_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'actionName',
                 type: {
@@ -47,11 +49,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_types: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'failoverTypes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ReplicationProtectedItemOperationElementType',
                       type: {
@@ -62,11 +66,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_directions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'failoverDirections',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PossibleOperationsDirectionsElementType',
                       type: {
@@ -77,6 +83,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               custom_details: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'customDetails',
                 type: {

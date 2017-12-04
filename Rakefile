@@ -141,6 +141,9 @@ namespace :arm do
     Dir.chdir(File.expand_path('../management', __FILE__))
     gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
     gem_folders.each do |gem|
+      if gem_folders.include?gem
+        next
+      end
       Dir.chdir(File.expand_path("../management/#{gem}/lib", __FILE__))
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|

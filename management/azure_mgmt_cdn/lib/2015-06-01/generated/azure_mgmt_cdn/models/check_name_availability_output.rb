@@ -29,6 +29,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityOutput',
           type: {
@@ -36,6 +37,7 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'CheckNameAvailabilityOutput',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'NameAvailable',
                 type: {
@@ -43,6 +45,7 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Reason',
                 type: {
@@ -50,6 +53,7 @@ module Azure::CDN::Mgmt::V2015_06_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Message',
                 type: {

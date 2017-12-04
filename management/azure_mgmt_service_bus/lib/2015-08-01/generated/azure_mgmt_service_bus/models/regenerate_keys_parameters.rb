@@ -23,6 +23,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeysParameters',
           type: {
@@ -30,6 +31,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'RegenerateKeysParameters',
             model_properties: {
               policykey: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Policykey',
                 type: {

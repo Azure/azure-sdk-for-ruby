@@ -80,6 +80,7 @@ module Azure::Network::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LoadBalancingRule',
           type: {
@@ -87,6 +88,7 @@ module Azure::Network::Mgmt::V2016_06_01
             class_name: 'LoadBalancingRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -94,6 +96,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               frontend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -102,6 +105,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               backend_address_pool: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendAddressPool',
                 type: {
@@ -110,6 +114,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               probe: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.probe',
                 type: {
@@ -118,6 +123,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -125,6 +131,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               load_distribution: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadDistribution',
                 type: {
@@ -132,6 +139,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               frontend_port: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -139,6 +147,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               backend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -146,6 +155,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               idle_timeout_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -153,6 +163,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               enable_floating_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
                 type: {
@@ -160,6 +171,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -167,6 +179,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -174,6 +187,7 @@ module Azure::Network::Mgmt::V2016_06_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

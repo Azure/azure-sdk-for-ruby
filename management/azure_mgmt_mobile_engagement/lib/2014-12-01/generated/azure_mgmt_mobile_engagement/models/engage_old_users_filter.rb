@@ -30,6 +30,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'engage-old-users',
           type: {
@@ -37,6 +38,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'EngageOldUsersFilter',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -44,6 +46,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               threshold: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'threshold',
                 type: {

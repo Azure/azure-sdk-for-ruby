@@ -22,6 +22,7 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LocationListResult',
           type: {
@@ -29,11 +30,13 @@ module Azure::Subscriptions::Mgmt::V2015_11_01
             class_name: 'LocationListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'LocationElementType',
                       type: {
