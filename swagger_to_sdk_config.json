@@ -206,17 +206,17 @@
       "generated_relative_base_directory": "2015-06-15",
       "build_dir": "management/azure_mgmt_compute/lib/2015-06-15"
     },
-    "azure_mgmt_consumption_2017_04_24_preview": {
+    "azure_mgmt_consumption_2017_11_30": {
       "markdown": "specification/consumption/resource-manager/readme.md",
       "autorest_options": {
-        "namespace": "Azure::Consumption::Mgmt::V2017_04_24_preview",
-        "package-version": "0.15.1",
+        "namespace": "Azure::Consumption::Mgmt::V2017_11_30",
+        "package-version": "0.16.0",
         "package-name": "azure_mgmt_consumption",
-        "tag": "package-2017-04-preview"
+        "tag": "package-2017-11"
       },
-      "output_dir": "management/azure_mgmt_consumption/lib/2017-04-24-preview",
-      "generated_relative_base_directory": "2017-04-24-preview",
-      "build_dir": "management/azure_mgmt_consumption/lib/2017-04-24-preview"
+      "output_dir": "management/azure_mgmt_consumption/lib/2017-11-30",
+      "generated_relative_base_directory": "2017-11-30",
+      "build_dir": "management/azure_mgmt_consumption/lib/2017-11-30"
     },
     "azure_mgmt_container_instance_2017_08_01_preview": {
       "markdown": "specification/containerinstance/resource-manager/readme.md",
