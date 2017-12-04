@@ -29,6 +29,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyVaultMetaInfo',
           type: {
@@ -36,6 +37,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'KeyVaultMetaInfo',
             model_properties: {
               key_vault_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyVaultResourceId',
                 type: {
@@ -43,6 +45,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               encryption_key_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptionKeyName',
                 type: {
@@ -50,6 +53,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
                 }
               },
               encryption_key_version: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'encryptionKeyVersion',
                 type: {

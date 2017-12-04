@@ -50,6 +50,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCaptureFilter',
           type: {
@@ -57,6 +58,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'PacketCaptureFilter',
             model_properties: {
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 default_value: 'Any',
@@ -65,6 +67,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               local_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localIPAddress',
                 type: {
@@ -72,6 +75,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               remote_ipaddress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'remoteIPAddress',
                 type: {
@@ -79,6 +83,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               local_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'localPort',
                 type: {
@@ -86,6 +91,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               remote_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'remotePort',
                 type: {

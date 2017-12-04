@@ -56,6 +56,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IaasVMRecoveryPoint',
           type: {
@@ -63,6 +64,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'IaasVMRecoveryPoint',
             model_properties: {
               objectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'objectType',
                 type: {
@@ -70,6 +72,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_point_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointType',
                 type: {
@@ -77,6 +80,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_point_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointTime',
                 type: {
@@ -84,6 +88,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_point_additional_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointAdditionalInfo',
                 type: {
@@ -91,6 +96,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               source_vmstorage_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceVMStorageType',
                 type: {
@@ -98,6 +104,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               is_source_vmencrypted: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isSourceVMEncrypted',
                 type: {
@@ -105,6 +112,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               key_and_secret: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyAndSecret',
                 type: {
@@ -113,6 +121,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               is_instant_ilrsession_active: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isInstantILRSessionActive',
                 type: {

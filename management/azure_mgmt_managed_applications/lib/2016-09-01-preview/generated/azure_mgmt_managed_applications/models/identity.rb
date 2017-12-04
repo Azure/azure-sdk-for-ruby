@@ -29,6 +29,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Identity',
           type: {
@@ -36,6 +37,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
             class_name: 'Identity',
             model_properties: {
               principal_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'principalId',
@@ -44,6 +46,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',
@@ -52,6 +55,7 @@ module Azure::ManagedApplications::Mgmt::V2016_09_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {

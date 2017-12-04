@@ -28,6 +28,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CrmConnectorEntities',
           type: {
@@ -35,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'CrmConnectorEntities',
             model_properties: {
               logical_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'logicalName',
                 type: {
@@ -42,6 +44,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -49,6 +52,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isProfile',
                 type: {

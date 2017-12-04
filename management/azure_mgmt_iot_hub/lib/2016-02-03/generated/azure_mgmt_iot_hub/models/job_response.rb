@@ -48,6 +48,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobResponse',
           type: {
@@ -55,6 +56,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'JobResponse',
             model_properties: {
               job_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'jobId',
@@ -63,6 +65,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               start_time_utc: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTimeUtc',
@@ -71,6 +74,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               end_time_utc: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTimeUtc',
@@ -79,6 +83,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -87,6 +92,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -96,6 +102,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               failure_reason: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'failureReason',
@@ -104,6 +111,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               status_message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'statusMessage',
@@ -112,6 +120,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               parent_job_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'parentJobId',

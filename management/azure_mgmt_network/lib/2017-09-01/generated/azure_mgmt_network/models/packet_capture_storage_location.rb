@@ -34,6 +34,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PacketCaptureStorageLocation',
           type: {
@@ -41,6 +42,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'PacketCaptureStorageLocation',
             model_properties: {
               storage_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageId',
                 type: {
@@ -48,6 +50,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               storage_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storagePath',
                 type: {
@@ -55,6 +58,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               file_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'filePath',
                 type: {

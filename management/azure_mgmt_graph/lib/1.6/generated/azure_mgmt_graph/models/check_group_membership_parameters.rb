@@ -26,6 +26,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckGroupMembershipParameters',
           type: {
@@ -33,6 +34,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'CheckGroupMembershipParameters',
             model_properties: {
               group_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'groupId',
                 type: {
@@ -40,6 +42,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               member_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'memberId',
                 type: {

@@ -30,6 +30,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TroubleshootingParameters',
           type: {
@@ -37,6 +38,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'TroubleshootingParameters',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -44,6 +46,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               storage_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageId',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               storage_path: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storagePath',
                 type: {

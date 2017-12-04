@@ -57,6 +57,7 @@ module Azure::Storage::Mgmt::V2016_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccountCreateParameters',
           type: {
@@ -64,6 +65,7 @@ module Azure::Storage::Mgmt::V2016_01_01
             class_name: 'StorageAccountCreateParameters',
             model_properties: {
               sku: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -72,6 +74,7 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'kind',
                 type: {
@@ -80,6 +83,7 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -87,11 +91,13 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -101,6 +107,7 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               custom_domain: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customDomain',
                 type: {
@@ -109,6 +116,7 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               encryption: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryption',
                 type: {
@@ -117,6 +125,7 @@ module Azure::Storage::Mgmt::V2016_01_01
                 }
               },
               access_tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.accessTier',
                 type: {

@@ -43,6 +43,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetNetworkConfiguration',
           type: {
@@ -50,6 +51,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetNetworkConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -57,6 +59,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -64,6 +67,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {
@@ -71,6 +75,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               enable_accelerated_networking: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableAcceleratedNetworking',
                 type: {
@@ -78,6 +83,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               network_security_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkSecurityGroup',
                 type: {
@@ -86,6 +92,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               dns_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSettings',
                 type: {
@@ -94,11 +101,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               ip_configurations: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetIPConfigurationElementType',
                       type: {

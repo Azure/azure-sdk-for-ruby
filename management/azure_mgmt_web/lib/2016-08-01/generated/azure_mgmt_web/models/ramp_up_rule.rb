@@ -61,6 +61,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RampUpRule',
           type: {
@@ -68,6 +69,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'RampUpRule',
             model_properties: {
               action_host_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'actionHostName',
                 type: {
@@ -75,6 +77,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               reroute_percentage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'reroutePercentage',
                 type: {
@@ -82,6 +85,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               change_step: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'changeStep',
                 type: {
@@ -89,6 +93,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               change_interval_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'changeIntervalInMinutes',
                 type: {
@@ -96,6 +101,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               min_reroute_percentage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minReroutePercentage',
                 type: {
@@ -103,6 +109,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               max_reroute_percentage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxReroutePercentage',
                 type: {
@@ -110,6 +117,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               change_decision_callback_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'changeDecisionCallbackUrl',
                 type: {
@@ -117,6 +125,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

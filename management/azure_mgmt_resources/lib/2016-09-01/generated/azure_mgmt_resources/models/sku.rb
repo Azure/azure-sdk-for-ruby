@@ -37,6 +37,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -44,6 +45,7 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -51,6 +53,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -58,6 +61,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               family: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'family',
                 type: {
@@ -72,6 +77,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               model: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'model',
                 type: {
@@ -79,6 +85,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

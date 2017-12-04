@@ -36,6 +36,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PromptFieldDescription',
           type: {
@@ -43,6 +44,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PromptFieldDescription',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -50,6 +52,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               label: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'label',
                 type: {
@@ -57,6 +60,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               help_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'helpMessage',
                 type: {
@@ -64,6 +68,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               prompt_field_type_is_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'promptFieldTypeIsList',
                 type: {
@@ -71,6 +76,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               prompt_field_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'promptFieldType',
                 type: {

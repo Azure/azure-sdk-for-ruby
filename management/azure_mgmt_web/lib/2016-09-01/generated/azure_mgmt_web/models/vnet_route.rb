@@ -44,6 +44,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VnetRoute',
           type: {
@@ -51,6 +52,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'VnetRoute',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -59,6 +61,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -67,6 +70,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -74,6 +78,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -82,6 +87,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vnet_route_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -89,6 +95,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               start_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startAddress',
                 type: {
@@ -96,6 +103,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               end_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endAddress',
                 type: {
@@ -103,6 +111,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               route_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routeType',
                 type: {

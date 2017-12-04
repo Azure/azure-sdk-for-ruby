@@ -31,6 +31,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -38,6 +39,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

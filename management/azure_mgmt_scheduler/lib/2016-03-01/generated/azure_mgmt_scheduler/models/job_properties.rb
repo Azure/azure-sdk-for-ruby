@@ -36,6 +36,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'JobProperties',
           type: {
@@ -43,6 +44,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
             class_name: 'JobProperties',
             model_properties: {
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -50,6 +52,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               action: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'action',
                 type: {
@@ -58,6 +61,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               recurrence: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recurrence',
                 type: {
@@ -66,6 +70,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -74,6 +79,7 @@ module Azure::Scheduler::Mgmt::V2016_03_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',

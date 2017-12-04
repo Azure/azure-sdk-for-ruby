@@ -32,6 +32,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FlowLogInformation',
           type: {
@@ -39,6 +40,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'FlowLogInformation',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               storage_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.storageId',
                 type: {
@@ -53,6 +56,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.enabled',
                 type: {
@@ -60,6 +64,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               retention_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.retentionPolicy',
                 type: {

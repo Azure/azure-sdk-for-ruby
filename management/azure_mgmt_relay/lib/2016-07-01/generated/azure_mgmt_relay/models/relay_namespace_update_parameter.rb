@@ -25,6 +25,7 @@ module Azure::Relay::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RelayNamespaceUpdateParameter',
           type: {
@@ -32,11 +33,13 @@ module Azure::Relay::Mgmt::V2016_07_01
             class_name: 'RelayNamespaceUpdateParameter',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -46,6 +49,7 @@ module Azure::Relay::Mgmt::V2016_07_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 is_constant: true,
                 serialized_name: 'sku',

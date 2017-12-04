@@ -33,6 +33,7 @@ module Azure::CDN::Mgmt::V2016_10_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Profile',
           type: {
@@ -40,6 +41,7 @@ module Azure::CDN::Mgmt::V2016_10_02
             class_name: 'Profile',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -48,6 +50,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -56,6 +59,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -64,6 +68,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -71,11 +76,13 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -85,6 +92,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sku',
                 type: {
@@ -93,6 +101,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               resource_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceState',
@@ -101,6 +110,7 @@ module Azure::CDN::Mgmt::V2016_10_02
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

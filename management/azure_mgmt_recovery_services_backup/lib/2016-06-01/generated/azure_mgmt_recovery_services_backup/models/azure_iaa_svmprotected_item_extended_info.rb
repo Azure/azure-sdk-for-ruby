@@ -36,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaaSVMProtectedItemExtendedInfo',
           type: {
@@ -43,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'AzureIaaSVMProtectedItemExtendedInfo',
             model_properties: {
               oldest_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'oldestRecoveryPoint',
                 type: {
@@ -50,6 +52,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               recovery_point_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryPointCount',
                 type: {
@@ -57,6 +60,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               policy_inconsistent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyInconsistent',
                 type: {

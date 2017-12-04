@@ -26,6 +26,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LongTermSchedulePolicy',
           type: {
@@ -33,6 +34,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'LongTermSchedulePolicy',
             model_properties: {
               schedulePolicyType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'schedulePolicyType',
                 type: {

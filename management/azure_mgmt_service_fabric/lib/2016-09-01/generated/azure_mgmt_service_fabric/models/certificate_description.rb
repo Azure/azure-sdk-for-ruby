@@ -30,6 +30,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateDescription',
           type: {
@@ -37,6 +38,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'CertificateDescription',
             model_properties: {
               thumbprint: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'thumbprint',
                 type: {
@@ -44,6 +46,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               thumbprint_secondary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'thumbprintSecondary',
                 type: {
@@ -51,6 +54,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               x509store_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'x509StoreName',
                 type: {

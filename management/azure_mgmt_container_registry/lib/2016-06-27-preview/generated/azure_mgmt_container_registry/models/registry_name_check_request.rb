@@ -27,6 +27,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryNameCheckRequest',
           type: {
@@ -34,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
             class_name: 'RegistryNameCheckRequest',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +43,7 @@ module Azure::ContainerRegistry::Mgmt::V2016_06_27_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

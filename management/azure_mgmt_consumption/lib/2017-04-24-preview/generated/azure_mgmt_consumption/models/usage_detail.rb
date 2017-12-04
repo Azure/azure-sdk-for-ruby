@@ -76,6 +76,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageDetail',
           type: {
@@ -83,6 +84,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
             class_name: 'UsageDetail',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -91,6 +93,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -99,6 +102,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -107,12 +111,14 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -122,6 +128,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               billing_period_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.billingPeriodId',
@@ -130,6 +137,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               invoice_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.invoiceId',
@@ -138,6 +146,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               usage_start: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usageStart',
@@ -146,6 +155,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               usage_end: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usageEnd',
@@ -154,6 +164,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               instance_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceName',
@@ -162,6 +173,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               instance_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceId',
@@ -170,6 +182,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               instance_location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.instanceLocation',
@@ -178,6 +191,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               currency: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currency',
@@ -186,6 +200,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               usage_quantity: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usageQuantity',
@@ -194,6 +209,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               billable_quantity: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.billableQuantity',
@@ -202,6 +218,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               pretax_cost: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.pretaxCost',
@@ -210,6 +227,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               is_estimated: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isEstimated',
@@ -218,6 +236,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               meter_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.meterId',
@@ -226,6 +245,7 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               meter_details: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.meterDetails',
@@ -235,12 +255,14 @@ module Azure::Consumption::Mgmt::V2017_04_24_preview
                 }
               },
               additional_properties: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.additionalProperties',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -47,6 +47,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Usage',
           type: {
@@ -54,6 +55,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'Usage',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -62,6 +64,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -70,6 +73,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -77,6 +81,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -85,6 +90,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.displayName',
@@ -93,6 +99,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               usage_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.name',
@@ -101,6 +108,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               resource_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceName',
@@ -109,6 +117,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.unit',
@@ -117,6 +126,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentValue',
@@ -125,6 +135,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.limit',
@@ -133,6 +144,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               next_reset_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nextResetTime',
@@ -141,6 +153,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               compute_mode: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.computeMode',
@@ -150,6 +163,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               site_mode: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.siteMode',

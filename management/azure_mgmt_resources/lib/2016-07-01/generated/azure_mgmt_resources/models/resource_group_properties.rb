@@ -22,6 +22,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroupProperties',
           type: {
@@ -29,6 +30,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'ResourceGroupProperties',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',

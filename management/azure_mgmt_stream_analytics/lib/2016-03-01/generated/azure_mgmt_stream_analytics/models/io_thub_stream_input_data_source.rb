@@ -48,6 +48,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Devices/IotHubs',
           type: {
@@ -55,6 +56,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'IoTHubStreamInputDataSource',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'type',
                 type: {
@@ -62,6 +64,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               iot_hub_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.iotHubNamespace',
                 type: {
@@ -69,6 +72,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               shared_access_policy_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sharedAccessPolicyName',
                 type: {
@@ -76,6 +80,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               shared_access_policy_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sharedAccessPolicyKey',
                 type: {
@@ -83,6 +88,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               consumer_group_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.consumerGroupName',
                 type: {
@@ -90,6 +96,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.endpoint',
                 type: {

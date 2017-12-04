@@ -28,6 +28,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KpiThresholds',
           type: {
@@ -35,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'KpiThresholds',
             model_properties: {
               lower_limit: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'lowerLimit',
                 type: {
@@ -42,6 +44,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               upper_limit: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'upperLimit',
                 type: {
@@ -49,6 +52,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               increasing_kpi: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'increasingKpi',
                 type: {

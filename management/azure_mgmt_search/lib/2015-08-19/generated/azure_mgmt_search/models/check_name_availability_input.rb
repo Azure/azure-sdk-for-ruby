@@ -30,6 +30,7 @@ module Azure::Search::Mgmt::V2015_08_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityInput',
           type: {
@@ -37,6 +38,7 @@ module Azure::Search::Mgmt::V2015_08_19
             class_name: 'CheckNameAvailabilityInput',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -44,6 +46,7 @@ module Azure::Search::Mgmt::V2015_08_19
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

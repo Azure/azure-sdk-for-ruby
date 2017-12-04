@@ -31,6 +31,7 @@ module Azure::Network::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopologyAssociation',
           type: {
@@ -38,6 +39,7 @@ module Azure::Network::Mgmt::V2016_09_01
             class_name: 'TopologyAssociation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Network::Mgmt::V2016_09_01
                 }
               },
               association_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'associationType',
                 type: {

@@ -35,6 +35,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryUpdateParameters',
           type: {
@@ -42,11 +43,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryUpdateParameters',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -56,6 +59,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -64,6 +68,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               admin_user_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.adminUserEnabled',
                 type: {
@@ -71,6 +76,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               storage_account: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageAccount',
                 type: {

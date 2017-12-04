@@ -49,6 +49,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12DelimiterOverrides',
           type: {
@@ -56,6 +57,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12DelimiterOverrides',
             model_properties: {
               protocol_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocolVersion',
                 type: {
@@ -63,6 +65,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               message_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'messageId',
                 type: {
@@ -70,6 +73,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               data_element_separator: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataElementSeparator',
                 type: {
@@ -77,6 +81,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               component_separator: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'componentSeparator',
                 type: {
@@ -84,6 +89,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminator',
                 type: {
@@ -91,6 +97,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               segment_terminator_suffix: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'segmentTerminatorSuffix',
                 type: {
@@ -99,6 +106,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               replace_character: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'replaceCharacter',
                 type: {
@@ -106,6 +114,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               replace_separators_in_payload: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'replaceSeparatorsInPayload',
                 type: {
@@ -113,6 +122,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               target_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetNamespace',
                 type: {

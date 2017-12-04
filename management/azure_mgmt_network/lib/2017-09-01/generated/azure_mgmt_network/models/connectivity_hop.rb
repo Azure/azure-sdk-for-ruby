@@ -37,6 +37,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityHop',
           type: {
@@ -44,6 +45,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ConnectivityHop',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -52,6 +54,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -60,6 +63,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               address: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'address',
@@ -68,6 +72,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceId',
@@ -76,12 +81,14 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               next_hop_ids: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextHopIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,12 +98,14 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               issues: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'issues',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ConnectivityIssueElementType',
                       type: {

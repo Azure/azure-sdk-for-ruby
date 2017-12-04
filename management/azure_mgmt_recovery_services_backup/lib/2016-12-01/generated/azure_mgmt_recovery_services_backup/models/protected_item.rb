@@ -58,6 +58,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectedItem',
           type: {
@@ -67,6 +68,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'ProtectedItem',
             model_properties: {
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -74,6 +76,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               workload_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workloadType',
                 type: {
@@ -81,6 +84,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerName',
                 type: {
@@ -88,6 +92,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               source_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {
@@ -95,6 +100,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               policy_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {
@@ -102,6 +108,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRecoveryPoint',
                 type: {

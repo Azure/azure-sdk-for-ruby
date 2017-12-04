@@ -27,6 +27,7 @@ module Azure::Compute::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BootDiagnostics',
           type: {
@@ -34,6 +35,7 @@ module Azure::Compute::Mgmt::V2016_03_30
             class_name: 'BootDiagnostics',
             model_properties: {
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {
@@ -41,6 +43,7 @@ module Azure::Compute::Mgmt::V2016_03_30
                 }
               },
               storage_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageUri',
                 type: {

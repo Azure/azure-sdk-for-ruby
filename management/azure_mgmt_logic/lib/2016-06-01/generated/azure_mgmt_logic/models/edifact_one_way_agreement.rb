@@ -28,6 +28,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EdifactOneWayAgreement',
           type: {
@@ -35,6 +36,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'EdifactOneWayAgreement',
             model_properties: {
               sender_business_identity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'senderBusinessIdentity',
                 type: {
@@ -43,6 +45,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               receiver_business_identity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiverBusinessIdentity',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               protocol_settings: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protocolSettings',
                 type: {

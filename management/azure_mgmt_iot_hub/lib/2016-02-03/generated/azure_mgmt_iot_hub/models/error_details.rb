@@ -31,6 +31,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ErrorDetails',
           type: {
@@ -38,6 +39,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
             class_name: 'ErrorDetails',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Code',
@@ -46,6 +48,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               http_status_code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'HttpStatusCode',
@@ -54,6 +57,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Message',
@@ -62,6 +66,7 @@ module Azure::IotHub::Mgmt::V2016_02_03
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'Details',

@@ -24,6 +24,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateKeyInput',
           type: {
@@ -31,6 +32,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'RegenerateKeyInput',
             model_properties: {
               key_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {

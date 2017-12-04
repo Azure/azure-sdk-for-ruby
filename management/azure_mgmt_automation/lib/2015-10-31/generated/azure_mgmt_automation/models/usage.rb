@@ -37,6 +37,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Usage',
           type: {
@@ -44,6 +45,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Usage',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -51,6 +53,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -59,6 +62,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'unit',
                 type: {
@@ -66,6 +70,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               current_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentValue',
                 type: {
@@ -73,6 +78,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               limit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'limit',
                 type: {
@@ -80,6 +86,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               throttle_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'throttleStatus',
                 type: {

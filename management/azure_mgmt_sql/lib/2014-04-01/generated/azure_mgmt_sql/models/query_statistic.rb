@@ -25,6 +25,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryStatistic',
           type: {
@@ -32,6 +33,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'QueryStatistic',
             model_properties: {
               query_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'queryId',
@@ -40,12 +42,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               intervals: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'intervals',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'QueryIntervalElementType',
                       type: {

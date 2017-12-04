@@ -50,6 +50,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateIPConfiguration',
           type: {
@@ -57,6 +58,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdateIPConfiguration',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -64,6 +66,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -71,6 +74,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               subnet: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.subnet',
                 type: {
@@ -79,6 +83,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {
@@ -86,6 +91,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               public_ipaddress_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicIPAddressConfiguration',
                 type: {
@@ -94,6 +100,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               private_ipaddress_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateIPAddressVersion',
                 type: {
@@ -101,11 +108,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               application_gateway_backend_address_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicationGatewayBackendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -116,11 +125,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               load_balancer_backend_address_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerBackendAddressPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {
@@ -131,11 +142,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               load_balancer_inbound_nat_pools: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.loadBalancerInboundNatPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubResourceElementType',
                       type: {

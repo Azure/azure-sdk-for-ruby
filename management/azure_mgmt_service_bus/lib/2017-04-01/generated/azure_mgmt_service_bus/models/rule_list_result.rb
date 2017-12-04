@@ -58,6 +58,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RuleListResult',
           type: {
@@ -65,11 +66,13 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
             class_name: 'RuleListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RuleElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::ServiceBus::Mgmt::V2017_04_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

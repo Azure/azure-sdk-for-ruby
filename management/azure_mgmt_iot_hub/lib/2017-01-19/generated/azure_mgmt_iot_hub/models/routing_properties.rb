@@ -37,6 +37,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RoutingProperties',
           type: {
@@ -44,6 +45,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
             class_name: 'RoutingProperties',
             model_properties: {
               endpoints: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoints',
                 type: {
@@ -52,11 +54,13 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               routes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'routes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RoutePropertiesElementType',
                       type: {
@@ -67,6 +71,7 @@ module Azure::IotHub::Mgmt::V2017_01_19
                 }
               },
               fallback_route: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fallbackRoute',
                 type: {

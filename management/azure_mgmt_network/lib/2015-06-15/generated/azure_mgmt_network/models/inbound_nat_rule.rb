@@ -66,6 +66,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InboundNatRule',
           type: {
@@ -73,6 +74,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'InboundNatRule',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -80,6 +82,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               frontend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendIPConfiguration',
                 type: {
@@ -88,6 +91,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               backend_ipconfiguration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendIPConfiguration',
                 type: {
@@ -96,6 +100,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.protocol',
                 type: {
@@ -103,6 +108,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               frontend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontendPort',
                 type: {
@@ -110,6 +116,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               backend_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.backendPort',
                 type: {
@@ -117,6 +124,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               idle_timeout_in_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idleTimeoutInMinutes',
                 type: {
@@ -124,6 +132,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               enable_floating_ip: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enableFloatingIP',
                 type: {
@@ -131,6 +140,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -138,6 +148,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -145,6 +156,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

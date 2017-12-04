@@ -73,6 +73,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12AcknowledgementSettings',
           type: {
@@ -80,6 +81,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12AcknowledgementSettings',
             model_properties: {
               need_technical_acknowledgement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'needTechnicalAcknowledgement',
                 type: {
@@ -87,6 +89,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               batch_technical_acknowledgements: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'batchTechnicalAcknowledgements',
                 type: {
@@ -94,6 +97,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               need_functional_acknowledgement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'needFunctionalAcknowledgement',
                 type: {
@@ -101,6 +105,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               functional_acknowledgement_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'functionalAcknowledgementVersion',
                 type: {
@@ -108,6 +113,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               batch_functional_acknowledgements: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'batchFunctionalAcknowledgements',
                 type: {
@@ -115,6 +121,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               need_implementation_acknowledgement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'needImplementationAcknowledgement',
                 type: {
@@ -122,6 +129,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               implementation_acknowledgement_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'implementationAcknowledgementVersion',
                 type: {
@@ -129,6 +137,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               batch_implementation_acknowledgements: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'batchImplementationAcknowledgements',
                 type: {
@@ -136,6 +145,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               need_loop_for_valid_messages: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'needLoopForValidMessages',
                 type: {
@@ -143,6 +153,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               send_synchronous_acknowledgement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sendSynchronousAcknowledgement',
                 type: {
@@ -150,6 +161,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               acknowledgement_control_number_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'acknowledgementControlNumberPrefix',
                 type: {
@@ -157,6 +169,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               acknowledgement_control_number_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'acknowledgementControlNumberSuffix',
                 type: {
@@ -164,6 +177,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               acknowledgement_control_number_lower_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'acknowledgementControlNumberLowerBound',
                 type: {
@@ -171,6 +185,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               acknowledgement_control_number_upper_bound: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'acknowledgementControlNumberUpperBound',
                 type: {
@@ -178,6 +193,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               rollover_acknowledgement_control_number: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'rolloverAcknowledgementControlNumber',
                 type: {

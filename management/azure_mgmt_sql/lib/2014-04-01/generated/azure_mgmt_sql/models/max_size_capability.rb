@@ -32,6 +32,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MaxSizeCapability',
           type: {
@@ -39,6 +40,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'MaxSizeCapability',
             model_properties: {
               limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'limit',
@@ -47,6 +49,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -56,6 +59,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',

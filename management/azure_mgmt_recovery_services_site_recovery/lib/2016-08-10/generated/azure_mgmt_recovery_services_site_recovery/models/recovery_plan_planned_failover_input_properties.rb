@@ -28,6 +28,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanPlannedFailoverInputProperties',
           type: {
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanPlannedFailoverInputProperties',
             model_properties: {
               failover_direction: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'failoverDirection',
                 type: {
@@ -43,11 +45,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanProviderSpecificFailoverInputElementType',
                       type: {

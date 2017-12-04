@@ -126,6 +126,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LabVirtualMachineFragment',
           type: {
@@ -133,6 +134,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LabVirtualMachineFragment',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -141,6 +143,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -149,6 +152,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -157,6 +161,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -164,11 +169,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -178,6 +185,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               notes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.notes',
                 type: {
@@ -185,6 +193,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               owner_object_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ownerObjectId',
                 type: {
@@ -192,6 +201,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               owner_user_principal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ownerUserPrincipalName',
                 type: {
@@ -199,6 +209,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_by_user_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdByUserId',
                 type: {
@@ -206,6 +217,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_by_user: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdByUser',
                 type: {
@@ -213,6 +225,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               created_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createdDate',
                 type: {
@@ -220,6 +233,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               custom_image_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.customImageId',
                 type: {
@@ -227,6 +241,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -234,6 +249,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.size',
                 type: {
@@ -241,6 +257,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               user_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userName',
                 type: {
@@ -248,6 +265,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               password: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.password',
                 type: {
@@ -255,6 +273,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               ssh_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sshKey',
                 type: {
@@ -262,6 +281,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               is_authentication_with_ssh_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isAuthenticationWithSshKey',
                 type: {
@@ -269,6 +289,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               fqdn: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fqdn',
                 type: {
@@ -276,6 +297,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_subnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labSubnetName',
                 type: {
@@ -283,6 +305,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               lab_virtual_network_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.labVirtualNetworkId',
                 type: {
@@ -290,6 +313,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               disallow_public_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.disallowPublicIpAddress',
                 type: {
@@ -297,11 +321,13 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               artifacts: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.artifacts',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ArtifactInstallPropertiesFragmentElementType',
                       type: {
@@ -312,6 +338,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               artifact_deployment_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.artifactDeploymentStatus',
                 type: {
@@ -320,6 +347,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               gallery_image_reference: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.galleryImageReference',
                 type: {
@@ -328,6 +356,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               compute_vm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.computeVm',
                 type: {
@@ -336,6 +365,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               network_interface: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkInterface',
                 type: {
@@ -344,6 +374,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               applicable_schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.applicableSchedule',
                 type: {
@@ -352,6 +383,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               expiration_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.expirationDate',
                 type: {
@@ -359,6 +391,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               allow_claim: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.allowClaim',
                 type: {
@@ -366,6 +399,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               storage_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.storageType',
                 type: {
@@ -373,6 +407,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               virtual_machine_creation_source: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachineCreationSource',
                 type: {
@@ -380,6 +415,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               environment_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.environmentId',
                 type: {
@@ -387,6 +423,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -394,6 +431,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               unique_identifier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.uniqueIdentifier',
                 type: {

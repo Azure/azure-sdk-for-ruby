@@ -40,6 +40,7 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HybridConnection',
           type: {
@@ -47,6 +48,7 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'HybridConnection',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +57,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +66,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,6 +75,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               created_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdAt',
@@ -79,6 +84,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               updated_at: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.updatedAt',
@@ -87,6 +93,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               listener_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.listenerCount',
@@ -99,6 +106,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               requires_client_authorization: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requiresClientAuthorization',
                 type: {
@@ -106,6 +114,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               user_metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userMetadata',
                 type: {

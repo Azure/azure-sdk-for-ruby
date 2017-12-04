@@ -37,6 +37,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.MachineLearning/WebService',
           type: {
@@ -44,6 +45,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters',
             model_properties: {
               bindingType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'bindingType',
                 type: {
@@ -51,6 +53,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               execute_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bindingRetrievalProperties.executeEndpoint',
                 type: {
@@ -58,6 +61,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               udf_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bindingRetrievalProperties.udfType',
                 type: {

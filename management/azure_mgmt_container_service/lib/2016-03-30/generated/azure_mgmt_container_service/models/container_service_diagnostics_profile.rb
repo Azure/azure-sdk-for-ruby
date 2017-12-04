@@ -24,6 +24,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceDiagnosticsProfile',
           type: {
@@ -31,6 +32,7 @@ module Azure::ContainerService::Mgmt::V2016_03_30
             class_name: 'ContainerServiceDiagnosticsProfile',
             model_properties: {
               vm_diagnostics: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'vmDiagnostics',
                 type: {

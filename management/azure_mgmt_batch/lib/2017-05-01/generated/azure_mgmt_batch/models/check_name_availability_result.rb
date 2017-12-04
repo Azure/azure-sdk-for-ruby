@@ -34,6 +34,7 @@ module Azure::Batch::Mgmt::V2017_05_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResult',
           type: {
@@ -41,6 +42,7 @@ module Azure::Batch::Mgmt::V2017_05_01
             class_name: 'CheckNameAvailabilityResult',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nameAvailable',
@@ -49,6 +51,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',
@@ -58,6 +61,7 @@ module Azure::Batch::Mgmt::V2017_05_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',

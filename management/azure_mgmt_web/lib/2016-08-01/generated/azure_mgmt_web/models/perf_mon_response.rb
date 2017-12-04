@@ -28,6 +28,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PerfMonResponse',
           type: {
@@ -35,6 +36,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'PerfMonResponse',
             model_properties: {
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'data',
                 type: {

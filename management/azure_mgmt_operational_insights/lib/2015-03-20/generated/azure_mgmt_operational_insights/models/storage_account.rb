@@ -26,6 +26,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'StorageAccount',
           type: {
@@ -33,6 +34,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'StorageAccount',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -40,6 +42,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'key',
                 type: {

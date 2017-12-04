@@ -34,6 +34,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApiError',
           type: {
@@ -41,11 +42,13 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'ApiError',
             model_properties: {
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ApiErrorBaseElementType',
                       type: {
@@ -56,6 +59,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               innererror: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'innererror',
                 type: {
@@ -64,6 +68,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'code',
                 type: {
@@ -71,6 +76,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               target: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'target',
                 type: {
@@ -78,6 +84,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

@@ -53,6 +53,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProtectionContainerMappingProperties',
           type: {
@@ -60,6 +61,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'ProtectionContainerMappingProperties',
             model_properties: {
               target_protection_container_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetProtectionContainerId',
                 type: {
@@ -67,6 +69,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_protection_container_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetProtectionContainerFriendlyName',
                 type: {
@@ -74,6 +77,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               provider_specific_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'providerSpecificDetails',
                 type: {
@@ -82,6 +86,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               health: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'health',
                 type: {
@@ -89,11 +94,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               health_error_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthErrorDetails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'HealthErrorElementType',
                       type: {
@@ -104,6 +111,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {
@@ -111,6 +119,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'state',
                 type: {
@@ -118,6 +127,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_protection_container_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceProtectionContainerFriendlyName',
                 type: {
@@ -125,6 +135,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceFabricFriendlyName',
                 type: {
@@ -132,6 +143,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               target_fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetFabricFriendlyName',
                 type: {
@@ -139,6 +151,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               policy_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyFriendlyName',
                 type: {

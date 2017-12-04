@@ -22,6 +22,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EnableRequest',
           type: {
@@ -29,6 +30,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'EnableRequest',
             model_properties: {
               receiver_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiverName',
                 type: {

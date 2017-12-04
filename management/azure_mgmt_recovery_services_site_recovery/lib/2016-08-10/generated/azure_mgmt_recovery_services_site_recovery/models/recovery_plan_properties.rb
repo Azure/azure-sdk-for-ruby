@@ -64,6 +64,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPlanProperties',
           type: {
@@ -71,6 +72,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanProperties',
             model_properties: {
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -78,6 +80,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_fabric_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryFabricId',
                 type: {
@@ -85,6 +88,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               primary_fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryFabricFriendlyName',
                 type: {
@@ -92,6 +96,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricId',
                 type: {
@@ -99,6 +104,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_fabric_friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recoveryFabricFriendlyName',
                 type: {
@@ -106,6 +112,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               failover_deployment_model: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverDeploymentModel',
                 type: {
@@ -113,11 +120,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               replication_providers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'replicationProviders',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -127,11 +136,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               allowed_operations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'allowedOperations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -141,6 +152,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_planned_failover_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastPlannedFailoverTime',
                 type: {
@@ -148,6 +160,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_unplanned_failover_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastUnplannedFailoverTime',
                 type: {
@@ -155,6 +168,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               last_test_failover_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastTestFailoverTime',
                 type: {
@@ -162,6 +176,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               current_scenario: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentScenario',
                 type: {
@@ -170,6 +185,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               current_scenario_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentScenarioStatus',
                 type: {
@@ -177,6 +193,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               current_scenario_status_description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'currentScenarioStatusDescription',
                 type: {
@@ -184,11 +201,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               groups: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'groups',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecoveryPlanGroupElementType',
                       type: {

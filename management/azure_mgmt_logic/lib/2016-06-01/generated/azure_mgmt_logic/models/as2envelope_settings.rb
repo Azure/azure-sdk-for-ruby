@@ -37,6 +37,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AS2EnvelopeSettings',
           type: {
@@ -44,6 +45,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2EnvelopeSettings',
             model_properties: {
               message_content_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageContentType',
                 type: {
@@ -51,6 +53,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               transmit_file_name_in_mime_header: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'transmitFileNameInMimeHeader',
                 type: {
@@ -58,6 +61,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               file_name_template: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'fileNameTemplate',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               suspend_message_on_file_name_generation_error: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'suspendMessageOnFileNameGenerationError',
                 type: {
@@ -72,6 +77,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               autogenerate_file_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'autogenerateFileName',
                 type: {

@@ -57,6 +57,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PermissionGetResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::Authorization::Mgmt::V2015_07_01
             class_name: 'PermissionGetResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PermissionElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::Authorization::Mgmt::V2015_07_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

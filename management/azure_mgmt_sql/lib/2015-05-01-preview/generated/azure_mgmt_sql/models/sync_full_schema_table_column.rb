@@ -40,6 +40,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SyncFullSchemaTableColumn',
           type: {
@@ -47,6 +48,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'SyncFullSchemaTableColumn',
             model_properties: {
               data_size: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSize',
@@ -55,6 +57,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               data_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataType',
@@ -63,6 +66,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               error_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'errorId',
@@ -71,6 +75,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               has_error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'hasError',
@@ -79,6 +84,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               is_primary_key: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isPrimaryKey',
@@ -87,6 +93,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -95,6 +102,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               quoted_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quotedName',

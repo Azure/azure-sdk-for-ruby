@@ -27,6 +27,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TenantIdDescription',
           type: {
@@ -34,6 +35,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
             class_name: 'TenantIdDescription',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -42,6 +44,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tenantId',

@@ -23,6 +23,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryUsageListResult',
           type: {
@@ -30,11 +31,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryUsageListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegistryUsageElementType',
                       type: {

@@ -68,8 +68,14 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     #
     def list_all_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MaxLength': '50'" if !topic_name.nil? && topic_name.length > 50
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -175,9 +181,17 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     #
     def create_or_update_async(resource_group_name, namespace_name, topic_name, subscription_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MaxLength': '50'" if !topic_name.nil? && topic_name.length > 50
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -286,9 +300,17 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     #
     def delete_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MaxLength': '50'" if !topic_name.nil? && topic_name.length > 50
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -378,9 +400,17 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
     #
     def get_async(resource_group_name, namespace_name, topic_name, subscription_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MaxLength': '90'" if !resource_group_name.nil? && resource_group_name.length > 90
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'MinLength': '1'" if !resource_group_name.nil? && resource_group_name.length < 1
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MaxLength': '50'" if !namespace_name.nil? && namespace_name.length > 50
+      fail ArgumentError, "'namespace_name' should satisfy the constraint - 'MinLength': '6'" if !namespace_name.nil? && namespace_name.length < 6
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MaxLength': '50'" if !topic_name.nil? && topic_name.length > 50
+      fail ArgumentError, "'topic_name' should satisfy the constraint - 'MinLength': '1'" if !topic_name.nil? && topic_name.length < 1
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MaxLength': '50'" if !subscription_name.nil? && subscription_name.length > 50
+      fail ArgumentError, "'subscription_name' should satisfy the constraint - 'MinLength': '1'" if !subscription_name.nil? && subscription_name.length < 1
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 

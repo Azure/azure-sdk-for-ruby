@@ -40,6 +40,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceMetricValue',
           type: {
@@ -47,6 +48,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'ResourceMetricValue',
             model_properties: {
               timestamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'timestamp',
@@ -55,6 +57,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               average: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'average',
@@ -63,6 +66,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               minimum: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'minimum',
@@ -71,6 +75,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               maximum: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'maximum',
@@ -79,6 +84,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               total: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'total',
@@ -87,6 +93,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'count',
@@ -95,12 +102,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ResourceMetricPropertyElementType',
                       type: {

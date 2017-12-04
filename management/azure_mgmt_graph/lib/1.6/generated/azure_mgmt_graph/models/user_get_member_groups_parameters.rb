@@ -24,6 +24,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UserGetMemberGroupsParameters',
           type: {
@@ -31,6 +32,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'UserGetMemberGroupsParameters',
             model_properties: {
               security_enabled_only: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'securityEnabledOnly',
                 type: {

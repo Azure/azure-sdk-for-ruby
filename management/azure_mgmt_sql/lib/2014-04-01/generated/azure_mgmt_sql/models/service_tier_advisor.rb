@@ -91,6 +91,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceTierAdvisor',
           type: {
@@ -98,6 +99,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'ServiceTierAdvisor',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -106,6 +108,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -114,6 +117,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -122,6 +126,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observation_period_start: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.observationPeriodStart',
@@ -130,6 +135,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               observation_period_end: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.observationPeriodEnd',
@@ -138,6 +144,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               active_time_ratio: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.activeTimeRatio',
@@ -146,6 +153,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               min_dtu: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.minDtu',
@@ -154,6 +162,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               avg_dtu: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.avgDtu',
@@ -162,6 +171,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_dtu: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxDtu',
@@ -170,6 +180,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_size_in_gb: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maxSizeInGB',
@@ -178,12 +189,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_level_objective_usage_metrics: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceLevelObjectiveUsageMetrics',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SloUsageMetricElementType',
                       type: {
@@ -194,6 +207,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               current_service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentServiceLevelObjective',
@@ -202,6 +216,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               current_service_level_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentServiceLevelObjectiveId',
@@ -210,6 +225,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               usage_based_recommendation_service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usageBasedRecommendationServiceLevelObjective',
@@ -218,6 +234,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               usage_based_recommendation_service_level_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.usageBasedRecommendationServiceLevelObjectiveId',
@@ -226,6 +243,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_size_based_recommendation_service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseSizeBasedRecommendationServiceLevelObjective',
@@ -234,6 +252,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_size_based_recommendation_service_level_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseSizeBasedRecommendationServiceLevelObjectiveId',
@@ -242,6 +261,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               disaster_plan_based_recommendation_service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.disasterPlanBasedRecommendationServiceLevelObjective',
@@ -250,6 +270,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               disaster_plan_based_recommendation_service_level_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.disasterPlanBasedRecommendationServiceLevelObjectiveId',
@@ -258,6 +279,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               overall_recommendation_service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.overallRecommendationServiceLevelObjective',
@@ -266,6 +288,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               overall_recommendation_service_level_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.overallRecommendationServiceLevelObjectiveId',
@@ -274,6 +297,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               confidence: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.confidence',

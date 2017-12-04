@@ -25,6 +25,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InnerError',
           type: {
@@ -32,6 +33,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'InnerError',
             model_properties: {
               trace: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'trace',
@@ -40,6 +42,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               context: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'context',

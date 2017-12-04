@@ -44,6 +44,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'exportTaskResult',
           type: {
@@ -51,6 +52,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'ExportTaskResult',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'id',
                 type: {
@@ -58,6 +60,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {
@@ -65,6 +68,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'state',
                 type: {
@@ -73,6 +77,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               date_created: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dateCreated',
                 type: {
@@ -80,6 +85,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               date_completed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dateCompleted',
                 type: {
@@ -87,6 +93,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               export_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'exportType',
                 type: {
@@ -95,6 +102,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               error_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorDetails',
                 type: {

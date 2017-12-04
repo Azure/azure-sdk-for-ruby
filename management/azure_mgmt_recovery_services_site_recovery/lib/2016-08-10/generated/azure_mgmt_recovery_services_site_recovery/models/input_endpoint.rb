@@ -31,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InputEndpoint',
           type: {
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InputEndpoint',
             model_properties: {
               endpoint_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpointName',
                 type: {
@@ -45,6 +47,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               private_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'privatePort',
                 type: {
@@ -52,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               public_port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publicPort',
                 type: {
@@ -59,6 +63,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               protocol: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protocol',
                 type: {

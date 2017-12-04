@@ -31,6 +31,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkProperties',
           type: {
@@ -38,6 +39,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'NetworkProperties',
             model_properties: {
               fabric_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fabricType',
                 type: {
@@ -45,11 +47,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               subnets: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subnets',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubnetElementType',
                       type: {
@@ -60,6 +64,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -67,6 +72,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               network_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkType',
                 type: {

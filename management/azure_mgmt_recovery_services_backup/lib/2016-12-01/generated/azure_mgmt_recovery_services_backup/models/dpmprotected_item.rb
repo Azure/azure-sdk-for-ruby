@@ -45,6 +45,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DPMProtectedItem',
           type: {
@@ -52,6 +53,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'DPMProtectedItem',
             model_properties: {
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -59,6 +61,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               workload_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'workloadType',
                 type: {
@@ -66,6 +69,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               container_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'containerName',
                 type: {
@@ -73,6 +77,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               source_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {
@@ -80,6 +85,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               policy_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'policyId',
                 type: {
@@ -87,6 +93,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               last_recovery_point: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'lastRecoveryPoint',
                 type: {
@@ -94,6 +101,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protectedItemType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectedItemType',
                 type: {
@@ -101,6 +109,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -108,6 +117,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_engine_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupEngineName',
                 type: {
@@ -115,6 +125,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protection_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'protectionState',
                 type: {
@@ -122,6 +133,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               is_scheduled_for_deferred_delete: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isScheduledForDeferredDelete',
                 type: {
@@ -129,6 +141,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               extended_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extendedInfo',
                 type: {

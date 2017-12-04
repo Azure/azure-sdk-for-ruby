@@ -51,6 +51,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -58,6 +59,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'Sku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -66,6 +68,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'tier',
@@ -75,6 +78,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resourceType',
@@ -83,6 +87,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -92,12 +97,14 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               locations: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -107,12 +114,14 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               capabilities: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'capabilities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SKUCapabilityElementType',
                       type: {
@@ -123,11 +132,13 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               restrictions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'restrictions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RestrictionElementType',
                       type: {

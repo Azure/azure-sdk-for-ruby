@@ -31,6 +31,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SitePhpErrorLogFlag',
           type: {
@@ -38,6 +39,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SitePhpErrorLogFlag',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +48,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -54,6 +57,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -61,6 +65,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -69,6 +74,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               local_log_errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localLogErrors',
                 type: {
@@ -76,6 +82,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               master_log_errors: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.masterLogErrors',
                 type: {
@@ -83,6 +90,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               local_log_errors_max_length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.localLogErrorsMaxLength',
                 type: {
@@ -90,6 +98,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               master_log_errors_max_length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.masterLogErrorsMaxLength',
                 type: {
