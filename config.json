@@ -107,6 +107,11 @@
       "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/7aa3a5247895ba34d6cfec73e036bb66dc907d20/specification/consumption/resource-manager/readme.md",
       "namespace": "Azure::Consumption::Mgmt::V2017_04_24_preview",
       "tag": "package-2017-04-preview"
+    },
+    "azure_mgmt_consumption_2017_11_30": {
+      "markdown": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/a04ce89dc9cddb921d09c575b7238403e0fb5b43/specification/consumption/resource-manager/readme.md",
+      "namespace": "Azure::Consumption::Mgmt::V2017_11_30",
+      "tag": "package-2017-11"
     }
   },
   "azure_mgmt_container_instance": {

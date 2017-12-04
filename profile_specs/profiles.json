@@ -65,7 +65,7 @@
                     "2017-03-30": ["*"]
                 },
                 "Microsoft.Consumption": {
-                    "2017-04-24-preview": ["*"]
+                    "2017-11-30": ["*"]
                 },
                 "Microsoft.ContainerInstance": {
                     "2017-08-01-preview": ["*"]
@@ -352,7 +352,7 @@
             "name": "Latest",
             "resourceTypes": {
                 "Microsoft.Consumption" : {
-                    "2017-04-24-preview": ["*"]
+                    "2017-11-30": ["*"]
                 }
             },
             "output_dir": "management/azure_mgmt_consumption/lib/profiles",

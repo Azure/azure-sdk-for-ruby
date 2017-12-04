@@ -1,6 +1,6 @@
 {
     "rollup": {
-        "azure_sdk": "0.15.1"
+        "azure_sdk": "0.16.0"
     },
     "management" : {
         "azure_mgmt_analysis_services": "0.15.1",
@@ -12,7 +12,7 @@
         "azure_mgmt_cognitive_services": "0.15.1",
         "azure_mgmt_commerce": "0.15.1",
         "azure_mgmt_compute": "0.15.1",
-        "azure_mgmt_consumption": "0.15.1",
+        "azure_mgmt_consumption": "0.16.0",
         "azure_mgmt_container_instance": "0.15.1",
         "azure_mgmt_container_registry": "0.15.1",
         "azure_mgmt_container_service": "0.15.1",
