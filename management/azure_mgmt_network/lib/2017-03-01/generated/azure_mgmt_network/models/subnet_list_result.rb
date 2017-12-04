@@ -58,6 +58,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubnetListResult',
           type: {
@@ -65,11 +66,13 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'SubnetListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SubnetElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

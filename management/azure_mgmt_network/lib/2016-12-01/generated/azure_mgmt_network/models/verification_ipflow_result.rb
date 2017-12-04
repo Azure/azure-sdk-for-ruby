@@ -27,6 +27,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VerificationIPFlowResult',
           type: {
@@ -34,6 +35,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'VerificationIPFlowResult',
             model_properties: {
               access: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'access',
                 type: {
@@ -41,6 +43,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               rule_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ruleName',
                 type: {

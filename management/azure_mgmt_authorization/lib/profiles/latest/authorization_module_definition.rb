@@ -6,4 +6,3 @@ module Azure end
 module Azure::Authorization end
 module Azure::Authorization::Profiles end
 module Azure::Authorization::Profiles::Latest end
-module Azure::Authorization::Profiles::Latest::Mgmt end

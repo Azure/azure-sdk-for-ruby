@@ -4,26 +4,28 @@
 
 require 'azure_mgmt_event_grid'
 
-module Azure::EventGrid::Profiles::Latest::Mgmt
+module Azure::EventGrid::Profiles::Latest
+  module Mgmt
     EventSubscriptions = Azure::EventGrid::Mgmt::V2017_09_15_preview::EventSubscriptions
     Operations = Azure::EventGrid::Mgmt::V2017_09_15_preview::Operations
     Topics = Azure::EventGrid::Mgmt::V2017_09_15_preview::Topics
     TopicTypes = Azure::EventGrid::Mgmt::V2017_09_15_preview::TopicTypes
 
     module Models
-      Operation = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Operation
       OperationsListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationsListResult
-      EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFilter
       EventSubscriptionDestination = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionDestination
-      OperationInfo = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationInfo
-      EventTypesListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventTypesListResult
-      TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicSharedAccessKeys
-      EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionUpdateParameters
+      Operation = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Operation
       Resource = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Resource
-      EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult
-      EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFullUrl
-      TopicTypesListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypesListResult
+      EventSubscriptionFilter = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFilter
+      TopicSharedAccessKeys = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicSharedAccessKeys
+      EventTypesListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventTypesListResult
       TopicRegenerateKeyRequest = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicRegenerateKeyRequest
+      EventSubscriptionFullUrl = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFullUrl
+      OperationInfo = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationInfo
+      TopicTypesListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypesListResult
+      EventSubscriptionsListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult
+      TopicUpdateParameters = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicUpdateParameters
+      EventSubscriptionUpdateParameters = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionUpdateParameters
       TopicsListResult = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicsListResult
       WebHookEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::WebHookEventSubscriptionDestination
       EventHubEventSubscriptionDestination = Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventHubEventSubscriptionDestination
@@ -40,9 +42,9 @@ module Azure::EventGrid::Profiles::Latest::Mgmt
     end
 
     #
-    # EventGrid
+    # EventGridManagementClass
     #
-    class EventGridClass
+    class EventGridManagementClass
       attr_reader :event_subscriptions, :operations, :topics, :topic_types, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -67,86 +69,90 @@ module Azure::EventGrid::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def operation
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Operation
-        end
-        def operations_list_result
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationsListResult
-        end
-        def event_subscription_filter
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFilter
-        end
-        def event_subscription_destination
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionDestination
-        end
-        def operation_info
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationInfo
-        end
-        def event_types_list_result
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventTypesListResult
-        end
-        def topic_shared_access_keys
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicSharedAccessKeys
-        end
-        def event_subscription_update_parameters
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionUpdateParameters
-        end
-        def resource
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Resource
-        end
-        def event_subscriptions_list_result
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult
-        end
-        def event_subscription_full_url
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFullUrl
-        end
-        def topic_types_list_result
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypesListResult
-        end
-        def topic_regenerate_key_request
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicRegenerateKeyRequest
-        end
-        def topics_list_result
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicsListResult
-        end
-        def web_hook_event_subscription_destination
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::WebHookEventSubscriptionDestination
-        end
-        def event_hub_event_subscription_destination
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventHubEventSubscriptionDestination
-        end
-        def event_subscription
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription
-        end
-        def tracked_resource
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TrackedResource
-        end
-        def topic
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Topic
-        end
-        def event_type
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventType
-        end
-        def topic_type_info
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypeInfo
-        end
-        def event_subscription_provisioning_state
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionProvisioningState
-        end
-        def operation_origin
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationOrigin
-        end
-        def topic_provisioning_state
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicProvisioningState
-        end
-        def resource_region_type
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::ResourceRegionType
-        end
-        def topic_type_provisioning_state
-          Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypeProvisioningState
-        end
+    class ModelClasses
+      def operations_list_result
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationsListResult
+      end
+      def event_subscription_destination
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionDestination
+      end
+      def operation
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Operation
+      end
+      def resource
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Resource
+      end
+      def event_subscription_filter
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFilter
+      end
+      def topic_shared_access_keys
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicSharedAccessKeys
+      end
+      def event_types_list_result
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventTypesListResult
+      end
+      def topic_regenerate_key_request
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicRegenerateKeyRequest
+      end
+      def event_subscription_full_url
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionFullUrl
+      end
+      def operation_info
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationInfo
+      end
+      def topic_types_list_result
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypesListResult
+      end
+      def event_subscriptions_list_result
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionsListResult
+      end
+      def topic_update_parameters
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicUpdateParameters
+      end
+      def event_subscription_update_parameters
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionUpdateParameters
+      end
+      def topics_list_result
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicsListResult
+      end
+      def web_hook_event_subscription_destination
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::WebHookEventSubscriptionDestination
+      end
+      def event_hub_event_subscription_destination
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventHubEventSubscriptionDestination
+      end
+      def event_subscription
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscription
+      end
+      def tracked_resource
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TrackedResource
+      end
+      def topic
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::Topic
+      end
+      def event_type
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventType
+      end
+      def topic_type_info
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypeInfo
+      end
+      def event_subscription_provisioning_state
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::EventSubscriptionProvisioningState
+      end
+      def operation_origin
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::OperationOrigin
+      end
+      def topic_provisioning_state
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicProvisioningState
+      end
+      def resource_region_type
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::ResourceRegionType
+      end
+      def topic_type_provisioning_state
+        Azure::EventGrid::Mgmt::V2017_09_15_preview::Models::TopicTypeProvisioningState
       end
     end
+  end
 end

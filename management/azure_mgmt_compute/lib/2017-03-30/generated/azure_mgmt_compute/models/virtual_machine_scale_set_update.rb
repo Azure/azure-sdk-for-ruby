@@ -45,6 +45,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdate',
           type: {
@@ -52,11 +53,13 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdate',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -66,6 +69,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -74,6 +78,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               plan: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'plan',
                 type: {
@@ -82,6 +87,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               upgrade_policy: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.upgradePolicy',
                 type: {
@@ -90,6 +96,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               virtual_machine_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMachineProfile',
                 type: {
@@ -98,6 +105,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               overprovision: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.overprovision',
                 type: {
@@ -105,6 +113,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               single_placement_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.singlePlacementGroup',
                 type: {
@@ -112,6 +121,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               identity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'identity',
                 type: {

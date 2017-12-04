@@ -20,7 +20,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       attr_accessor :size
 
       # @return [String] The digest of the content, as defined by the Registry
-      # V2 HTTP API Specificiation.
+      # V2 HTTP API Specification.
       attr_accessor :digest
 
       # @return [Integer] The number of bytes of the content. Same as Size
@@ -43,6 +43,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Target',
           type: {
@@ -50,6 +51,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'Target',
             model_properties: {
               media_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mediaType',
                 type: {
@@ -57,6 +59,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'size',
                 type: {
@@ -64,6 +67,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               digest: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'digest',
                 type: {
@@ -71,6 +75,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'length',
                 type: {
@@ -78,6 +83,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               repository: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'repository',
                 type: {
@@ -85,6 +91,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {
@@ -92,6 +99,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               tag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tag',
                 type: {

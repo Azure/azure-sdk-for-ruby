@@ -39,6 +39,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementGroupRecursiveChildInfo',
           type: {
@@ -46,6 +47,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ManagementGroupRecursiveChildInfo',
             model_properties: {
               child_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'childType',
                 type: {
@@ -53,6 +55,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               child_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'childId',
                 type: {
@@ -60,6 +63,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -67,6 +71,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {
@@ -74,11 +79,13 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               children: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'children',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ManagementGroupRecursiveChildInfoElementType',
                       type: {

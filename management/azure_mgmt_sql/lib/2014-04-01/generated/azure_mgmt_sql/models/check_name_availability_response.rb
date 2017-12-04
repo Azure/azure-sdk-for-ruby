@@ -35,6 +35,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityResponse',
           type: {
@@ -42,6 +43,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'CheckNameAvailabilityResponse',
             model_properties: {
               available: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'available',
@@ -50,6 +52,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'message',
@@ -58,6 +61,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -66,6 +70,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',

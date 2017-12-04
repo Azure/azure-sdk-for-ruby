@@ -30,6 +30,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EncryptionConfig',
           type: {
@@ -37,6 +38,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
             class_name: 'EncryptionConfig',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -45,6 +47,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               key_vault_meta_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyVaultMetaInfo',
                 type: {

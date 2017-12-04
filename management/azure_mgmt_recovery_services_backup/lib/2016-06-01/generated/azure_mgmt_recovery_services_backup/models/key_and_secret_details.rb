@@ -36,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'KeyAndSecretDetails',
           type: {
@@ -43,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'KeyAndSecretDetails',
             model_properties: {
               kek_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kekDetails',
                 type: {
@@ -51,6 +53,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               bek_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'bekDetails',
                 type: {

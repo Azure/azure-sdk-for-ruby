@@ -38,6 +38,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectorMappingFormat',
           type: {
@@ -45,6 +46,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ConnectorMappingFormat',
             model_properties: {
               format_type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'formatType',
@@ -54,6 +56,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               column_delimiter: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'columnDelimiter',
                 type: {
@@ -61,6 +64,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               accept_language: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'acceptLanguage',
                 type: {
@@ -68,6 +72,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               quote_character: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'quoteCharacter',
                 type: {
@@ -75,6 +80,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               quote_escape_character: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'quoteEscapeCharacter',
                 type: {
@@ -82,6 +88,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               array_separator: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'arraySeparator',
                 type: {

@@ -31,6 +31,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AvailableOperationDisplay',
           type: {
@@ -38,6 +39,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
             class_name: 'AvailableOperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -45,6 +47,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -52,6 +55,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {
@@ -59,6 +63,7 @@ module Azure::ServiceFabric::Mgmt::V2016_09_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'description',
                 type: {

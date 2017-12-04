@@ -42,6 +42,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificatePropertiesWithNonce',
           type: {
@@ -49,6 +50,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CertificatePropertiesWithNonce',
             model_properties: {
               subject: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'subject',
@@ -57,6 +59,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               expiry: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'expiry',
@@ -65,6 +68,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'thumbprint',
@@ -73,6 +77,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               is_verified: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'isVerified',
@@ -81,6 +86,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               created: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'created',
@@ -89,6 +95,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               updated: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'updated',
@@ -97,6 +104,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               verification_code: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'verificationCode',

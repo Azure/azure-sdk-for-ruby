@@ -13,7 +13,7 @@ module Azure::Web::Mgmt::V2016_09_01
       include MsRestAzure
 
       include MsRest::JSONable
-      # @return [Array<AppServiceEnvironment>] Collection of resources.
+      # @return [Array<AppServiceEnvironmentResource>] Collection of resources.
       attr_accessor :value
 
       # @return [String] Link to next page of resources.
@@ -25,7 +25,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<AppServiceEnvironment>] operation results.
+      # @return [Array<AppServiceEnvironmentResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -57,6 +57,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AppServiceEnvironmentCollection',
           type: {
@@ -64,21 +65,24 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'AppServiceEnvironmentCollection',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
-                      serialized_name: 'AppServiceEnvironmentElementType',
+                      serialized_name: 'AppServiceEnvironmentResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'AppServiceEnvironment'
+                        class_name: 'AppServiceEnvironmentResource'
                       }
                   }
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

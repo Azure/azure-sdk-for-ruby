@@ -25,6 +25,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SearchMetadataSchema',
           type: {
@@ -32,6 +33,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchMetadataSchema',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -39,6 +41,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

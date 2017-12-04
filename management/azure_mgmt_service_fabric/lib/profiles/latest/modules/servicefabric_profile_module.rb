@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_service_fabric'
 
-module Azure::ServiceFabric::Profiles::Latest::Mgmt
+module Azure::ServiceFabric::Profiles::Latest
+  module Mgmt
     Clusters = Azure::ServiceFabric::Mgmt::V2016_09_01::Clusters
     ClusterVersions = Azure::ServiceFabric::Mgmt::V2016_09_01::ClusterVersions
     Operations = Azure::ServiceFabric::Mgmt::V2016_09_01::Operations
@@ -38,9 +39,9 @@ module Azure::ServiceFabric::Profiles::Latest::Mgmt
     end
 
     #
-    # ServiceFabric
+    # ServiceFabricManagementClass
     #
-    class ServiceFabricClass
+    class ServiceFabricManagementClass
       attr_reader :clusters, :cluster_versions, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -64,83 +65,84 @@ module Azure::ServiceFabric::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def cluster_upgrade_policy
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterUpgradePolicy
-        end
-        def cluster_version_details
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterVersionDetails
-        end
-        def diagnostics_storage_account_config
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::DiagnosticsStorageAccountConfig
-        end
-        def cluster_code_versions_list_result
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterCodeVersionsListResult
-        end
-        def azure_active_directory
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::AzureActiveDirectory
-        end
-        def settings_parameter_description
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::SettingsParameterDescription
-        end
-        def cluster_update_parameters
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterUpdateParameters
-        end
-        def endpoint_range_description
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::EndpointRangeDescription
-        end
-        def node_type_description
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::NodeTypeDescription
-        end
-        def client_certificate_common_name
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClientCertificateCommonName
-        end
-        def cluster_list_result
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterListResult
-        end
-        def cluster_upgrade_delta_health_policy
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterUpgradeDeltaHealthPolicy
-        end
-        def available_operation_display
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::AvailableOperationDisplay
-        end
-        def certificate_description
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::CertificateDescription
-        end
-        def operation_result
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::OperationResult
-        end
-        def client_certificate_thumbprint
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClientCertificateThumbprint
-        end
-        def operation_list_result
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::OperationListResult
-        end
-        def cluster_code_versions_result
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterCodeVersionsResult
-        end
-        def error_model_error
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ErrorModelError
-        end
-        def cluster_health_policy
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterHealthPolicy
-        end
-        def error_model
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ErrorModel
-        end
-        def settings_section_description
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::SettingsSectionDescription
-        end
-        def resource
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::Resource
-        end
-        def cluster
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::Cluster
-        end
-        def provisioning_state
-          Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ProvisioningState
-        end
+    class ModelClasses
+      def cluster_upgrade_policy
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterUpgradePolicy
+      end
+      def cluster_version_details
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterVersionDetails
+      end
+      def diagnostics_storage_account_config
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::DiagnosticsStorageAccountConfig
+      end
+      def cluster_code_versions_list_result
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterCodeVersionsListResult
+      end
+      def azure_active_directory
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::AzureActiveDirectory
+      end
+      def settings_parameter_description
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::SettingsParameterDescription
+      end
+      def cluster_update_parameters
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterUpdateParameters
+      end
+      def endpoint_range_description
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::EndpointRangeDescription
+      end
+      def node_type_description
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::NodeTypeDescription
+      end
+      def client_certificate_common_name
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClientCertificateCommonName
+      end
+      def cluster_list_result
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterListResult
+      end
+      def cluster_upgrade_delta_health_policy
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterUpgradeDeltaHealthPolicy
+      end
+      def available_operation_display
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::AvailableOperationDisplay
+      end
+      def certificate_description
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::CertificateDescription
+      end
+      def operation_result
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::OperationResult
+      end
+      def client_certificate_thumbprint
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClientCertificateThumbprint
+      end
+      def operation_list_result
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::OperationListResult
+      end
+      def cluster_code_versions_result
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterCodeVersionsResult
+      end
+      def error_model_error
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ErrorModelError
+      end
+      def cluster_health_policy
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ClusterHealthPolicy
+      end
+      def error_model
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ErrorModel
+      end
+      def settings_section_description
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::SettingsSectionDescription
+      end
+      def resource
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::Resource
+      end
+      def cluster
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::Cluster
+      end
+      def provisioning_state
+        Azure::ServiceFabric::Mgmt::V2016_09_01::Models::ProvisioningState
       end
     end
+  end
 end

@@ -6,4 +6,3 @@ module Azure end
 module Azure::ServiceFabric end
 module Azure::ServiceFabric::Profiles end
 module Azure::ServiceFabric::Profiles::Latest end
-module Azure::ServiceFabric::Profiles::Latest::Mgmt end

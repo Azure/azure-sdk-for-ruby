@@ -43,6 +43,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SearchSchemaValue',
           type: {
@@ -50,6 +51,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchSchemaValue',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -57,6 +59,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -64,6 +67,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -71,6 +75,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               indexed: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'indexed',
                 type: {
@@ -78,6 +83,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               stored: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'stored',
                 type: {
@@ -85,6 +91,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               facet: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'facet',
                 type: {
@@ -92,11 +99,13 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               owner_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ownerType',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

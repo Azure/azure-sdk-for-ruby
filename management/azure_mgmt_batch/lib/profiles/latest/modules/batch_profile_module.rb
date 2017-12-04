@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_batch'
 
-module Azure::Batch::Profiles::Latest::Mgmt
+module Azure::Batch::Profiles::Latest
+  module Mgmt
     BatchAccountOperations = Azure::Batch::Mgmt::V2017_05_01::BatchAccountOperations
     ApplicationPackageOperations = Azure::Batch::Mgmt::V2017_05_01::ApplicationPackageOperations
     ApplicationOperations = Azure::Batch::Mgmt::V2017_05_01::ApplicationOperations
@@ -42,9 +43,9 @@ module Azure::Batch::Profiles::Latest::Mgmt
     end
 
     #
-    # Batch
+    # BatchManagementClass
     #
-    class BatchClass
+    class BatchManagementClass
       attr_reader :batch_account_operations, :application_package_operations, :application_operations, :location, :operations, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -70,89 +71,90 @@ module Azure::Batch::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def application_package
-          Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage
-        end
-        def application
-          Azure::Batch::Mgmt::V2017_05_01::Models::Application
-        end
-        def key_vault_reference
-          Azure::Batch::Mgmt::V2017_05_01::Models::KeyVaultReference
-        end
-        def list_applications_result
-          Azure::Batch::Mgmt::V2017_05_01::Models::ListApplicationsResult
-        end
-        def batch_account_create_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountCreateParameters
-        end
-        def check_name_availability_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityParameters
-        end
-        def batch_account_update_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountUpdateParameters
-        end
-        def application_update_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationUpdateParameters
-        end
-        def batch_account_regenerate_key_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountRegenerateKeyParameters
-        end
-        def batch_location_quota
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchLocationQuota
-        end
-        def activate_application_package_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::ActivateApplicationPackageParameters
-        end
-        def resource
-          Azure::Batch::Mgmt::V2017_05_01::Models::Resource
-        end
-        def auto_storage_base_properties
-          Azure::Batch::Mgmt::V2017_05_01::Models::AutoStorageBaseProperties
-        end
-        def batch_account_list_result
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountListResult
-        end
-        def application_create_parameters
-          Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationCreateParameters
-        end
-        def operation_display
-          Azure::Batch::Mgmt::V2017_05_01::Models::OperationDisplay
-        end
-        def batch_account_keys
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountKeys
-        end
-        def operation
-          Azure::Batch::Mgmt::V2017_05_01::Models::Operation
-        end
-        def check_name_availability_result
-          Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityResult
-        end
-        def operation_list_result
-          Azure::Batch::Mgmt::V2017_05_01::Models::OperationListResult
-        end
-        def auto_storage_properties
-          Azure::Batch::Mgmt::V2017_05_01::Models::AutoStorageProperties
-        end
-        def batch_account
-          Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccount
-        end
-        def pool_allocation_mode
-          Azure::Batch::Mgmt::V2017_05_01::Models::PoolAllocationMode
-        end
-        def provisioning_state
-          Azure::Batch::Mgmt::V2017_05_01::Models::ProvisioningState
-        end
-        def account_key_type
-          Azure::Batch::Mgmt::V2017_05_01::Models::AccountKeyType
-        end
-        def package_state
-          Azure::Batch::Mgmt::V2017_05_01::Models::PackageState
-        end
-        def name_availability_reason
-          Azure::Batch::Mgmt::V2017_05_01::Models::NameAvailabilityReason
-        end
+    class ModelClasses
+      def application_package
+        Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationPackage
+      end
+      def application
+        Azure::Batch::Mgmt::V2017_05_01::Models::Application
+      end
+      def key_vault_reference
+        Azure::Batch::Mgmt::V2017_05_01::Models::KeyVaultReference
+      end
+      def list_applications_result
+        Azure::Batch::Mgmt::V2017_05_01::Models::ListApplicationsResult
+      end
+      def batch_account_create_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountCreateParameters
+      end
+      def check_name_availability_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityParameters
+      end
+      def batch_account_update_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountUpdateParameters
+      end
+      def application_update_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationUpdateParameters
+      end
+      def batch_account_regenerate_key_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountRegenerateKeyParameters
+      end
+      def batch_location_quota
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchLocationQuota
+      end
+      def activate_application_package_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::ActivateApplicationPackageParameters
+      end
+      def resource
+        Azure::Batch::Mgmt::V2017_05_01::Models::Resource
+      end
+      def auto_storage_base_properties
+        Azure::Batch::Mgmt::V2017_05_01::Models::AutoStorageBaseProperties
+      end
+      def batch_account_list_result
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountListResult
+      end
+      def application_create_parameters
+        Azure::Batch::Mgmt::V2017_05_01::Models::ApplicationCreateParameters
+      end
+      def operation_display
+        Azure::Batch::Mgmt::V2017_05_01::Models::OperationDisplay
+      end
+      def batch_account_keys
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccountKeys
+      end
+      def operation
+        Azure::Batch::Mgmt::V2017_05_01::Models::Operation
+      end
+      def check_name_availability_result
+        Azure::Batch::Mgmt::V2017_05_01::Models::CheckNameAvailabilityResult
+      end
+      def operation_list_result
+        Azure::Batch::Mgmt::V2017_05_01::Models::OperationListResult
+      end
+      def auto_storage_properties
+        Azure::Batch::Mgmt::V2017_05_01::Models::AutoStorageProperties
+      end
+      def batch_account
+        Azure::Batch::Mgmt::V2017_05_01::Models::BatchAccount
+      end
+      def pool_allocation_mode
+        Azure::Batch::Mgmt::V2017_05_01::Models::PoolAllocationMode
+      end
+      def provisioning_state
+        Azure::Batch::Mgmt::V2017_05_01::Models::ProvisioningState
+      end
+      def account_key_type
+        Azure::Batch::Mgmt::V2017_05_01::Models::AccountKeyType
+      end
+      def package_state
+        Azure::Batch::Mgmt::V2017_05_01::Models::PackageState
+      end
+      def name_availability_reason
+        Azure::Batch::Mgmt::V2017_05_01::Models::NameAvailabilityReason
       end
     end
+  end
 end

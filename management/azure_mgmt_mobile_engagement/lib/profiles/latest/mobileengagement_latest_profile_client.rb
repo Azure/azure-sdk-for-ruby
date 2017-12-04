@@ -5,17 +5,18 @@
 require 'profiles/latest/mobileengagement_module_definition'
 require 'profiles/latest/modules/mobileengagement_profile_module'
 
-module Azure::MobileEngagement::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < MobileEngagementClass
-    include MsRestAzure::Common::Configurable
+module Azure::MobileEngagement::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < MobileEngagementManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

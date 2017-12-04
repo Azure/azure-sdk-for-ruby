@@ -32,6 +32,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VMwareV2',
           type: {
@@ -39,6 +40,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'VMwareV2FabricSpecificDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -46,6 +48,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               srs_service_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'srsServiceEndpoint',
                 type: {
@@ -53,6 +56,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               rcm_service_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rcmServiceEndpoint',
                 type: {

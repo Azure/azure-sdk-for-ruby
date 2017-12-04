@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_event_hub'
 
-module Azure::EventHub::Profiles::Latest::Mgmt
+module Azure::EventHub::Profiles::Latest
+  module Mgmt
     Operations = Azure::EventHub::Mgmt::V2017_04_01::Operations
     Namespaces = Azure::EventHub::Mgmt::V2017_04_01::Namespaces
     DisasterRecoveryConfigs = Azure::EventHub::Mgmt::V2017_04_01::DisasterRecoveryConfigs
@@ -47,9 +48,9 @@ module Azure::EventHub::Profiles::Latest::Mgmt
     end
 
     #
-    # EventHub
+    # EventHubManagementClass
     #
-    class EventHubClass
+    class EventHubManagementClass
       attr_reader :operations, :namespaces, :disaster_recovery_configs, :event_hubs, :consumer_groups, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -75,104 +76,105 @@ module Azure::EventHub::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def capture_description
-          Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
-        end
-        def destination
-          Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
-        end
-        def resource
-          Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
-        end
-        def operation
-          Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
-        end
-        def error_response
-          Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
-        end
-        def operation_list_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
-        end
-        def event_hub_list_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
-        end
-        def access_keys
-          Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
-        end
-        def arm_disaster_recovery_list_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
-        end
-        def sku
-          Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
-        end
-        def consumer_group_list_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
-        end
-        def authorization_rule_list_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
-        end
-        def check_name_availability_parameter
-          Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
-        end
-        def ehnamespace_list_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
-        end
-        def check_name_availability_result
-          Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
-        end
-        def regenerate_access_key_parameters
-          Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
-        end
-        def operation_display
-          Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
-        end
-        def tracked_resource
-          Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
-        end
-        def ehnamespace
-          Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
-        end
-        def authorization_rule
-          Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
-        end
-        def eventhub
-          Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
-        end
-        def consumer_group
-          Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
-        end
-        def arm_disaster_recovery
-          Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
-        end
-        def sku_name
-          Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
-        end
-        def sku_tier
-          Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
-        end
-        def access_rights
-          Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
-        end
-        def key_type
-          Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
-        end
-        def entity_status
-          Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
-        end
-        def encoding_capture_description
-          Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
-        end
-        def unavailable_reason
-          Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
-        end
-        def provisioning_state_dr
-          Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
-        end
-        def role_disaster_recovery
-          Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
-        end
+    class ModelClasses
+      def capture_description
+        Azure::EventHub::Mgmt::V2017_04_01::Models::CaptureDescription
+      end
+      def destination
+        Azure::EventHub::Mgmt::V2017_04_01::Models::Destination
+      end
+      def resource
+        Azure::EventHub::Mgmt::V2017_04_01::Models::Resource
+      end
+      def operation
+        Azure::EventHub::Mgmt::V2017_04_01::Models::Operation
+      end
+      def error_response
+        Azure::EventHub::Mgmt::V2017_04_01::Models::ErrorResponse
+      end
+      def operation_list_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::OperationListResult
+      end
+      def event_hub_list_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::EventHubListResult
+      end
+      def access_keys
+        Azure::EventHub::Mgmt::V2017_04_01::Models::AccessKeys
+      end
+      def arm_disaster_recovery_list_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecoveryListResult
+      end
+      def sku
+        Azure::EventHub::Mgmt::V2017_04_01::Models::Sku
+      end
+      def consumer_group_list_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroupListResult
+      end
+      def authorization_rule_list_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRuleListResult
+      end
+      def check_name_availability_parameter
+        Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityParameter
+      end
+      def ehnamespace_list_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespaceListResult
+      end
+      def check_name_availability_result
+        Azure::EventHub::Mgmt::V2017_04_01::Models::CheckNameAvailabilityResult
+      end
+      def regenerate_access_key_parameters
+        Azure::EventHub::Mgmt::V2017_04_01::Models::RegenerateAccessKeyParameters
+      end
+      def operation_display
+        Azure::EventHub::Mgmt::V2017_04_01::Models::OperationDisplay
+      end
+      def tracked_resource
+        Azure::EventHub::Mgmt::V2017_04_01::Models::TrackedResource
+      end
+      def ehnamespace
+        Azure::EventHub::Mgmt::V2017_04_01::Models::EHNamespace
+      end
+      def authorization_rule
+        Azure::EventHub::Mgmt::V2017_04_01::Models::AuthorizationRule
+      end
+      def eventhub
+        Azure::EventHub::Mgmt::V2017_04_01::Models::Eventhub
+      end
+      def consumer_group
+        Azure::EventHub::Mgmt::V2017_04_01::Models::ConsumerGroup
+      end
+      def arm_disaster_recovery
+        Azure::EventHub::Mgmt::V2017_04_01::Models::ArmDisasterRecovery
+      end
+      def sku_name
+        Azure::EventHub::Mgmt::V2017_04_01::Models::SkuName
+      end
+      def sku_tier
+        Azure::EventHub::Mgmt::V2017_04_01::Models::SkuTier
+      end
+      def access_rights
+        Azure::EventHub::Mgmt::V2017_04_01::Models::AccessRights
+      end
+      def key_type
+        Azure::EventHub::Mgmt::V2017_04_01::Models::KeyType
+      end
+      def entity_status
+        Azure::EventHub::Mgmt::V2017_04_01::Models::EntityStatus
+      end
+      def encoding_capture_description
+        Azure::EventHub::Mgmt::V2017_04_01::Models::EncodingCaptureDescription
+      end
+      def unavailable_reason
+        Azure::EventHub::Mgmt::V2017_04_01::Models::UnavailableReason
+      end
+      def provisioning_state_dr
+        Azure::EventHub::Mgmt::V2017_04_01::Models::ProvisioningStateDR
+      end
+      def role_disaster_recovery
+        Azure::EventHub::Mgmt::V2017_04_01::Models::RoleDisasterRecovery
       end
     end
+  end
 end

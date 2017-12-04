@@ -3,18 +3,19 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require '<%= @profile_name.downcase %>/<%= @module_definition_file_name.gsub('.rb','') %>'
-<%- @file_names.each do |file_name| -%>
-require '<%= @profile_name.downcase %>/modules/<%= file_name %>'
+<%- @module_objs.each do |module_obj| -%>
+require '<%= @profile_name.downcase %>/modules/<%= module_obj.file_name %>'
 <%- end -%>
 
-module Azure::Profiles::<%= @profile_name %>::Mgmt
+module Azure::Profiles::<%= @profile_name %>
   #
   # Client class for the <%= @profile_name %> profile SDK.
   #
   class Client
     include MsRestAzure::Common::Configurable
 
-    attr_reader <% @class_names.each_with_index do |class_name, index| %> :<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %><% if index != @class_names.length - 1 %>,<% end %><% end %>
+    attr_reader <%- @module_objs.each_with_index do |module_obj, index| -%> :<%= module_obj.module_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %><% if index != @module_objs.length - 1 %>,<% end %><%- end -%>
+
 
     def initialize(options = {})
       if options.is_a?(Hash) && options.length == 0
@@ -25,10 +26,35 @@ module Azure::Profiles::<%= @profile_name %>::Mgmt
 
       reset!(options)
 
-      <%- @class_names.each do |class_name| -%>
-      @<%= class_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = Azure::Profiles::<%= @profile_name %>::<%= "#{class_name}::Mgmt::#{class_name}" %>Class.new(self)
+      <%- @module_objs.each do |module_obj| -%>
+      @<%= module_obj.module_name.gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase %> = <%= module_obj.module_name %>Adapter.new(self)
       <%- end -%>
     end
 
+    <%- @module_objs.each do |module_obj| -%>
+    <%- if module_obj.data_mode -%>
+    class <%= module_obj.module_name %>Adapter < <%= module_obj.get_full_class_name %>
+      <%- if module_obj.management_mode -%>
+      attr_accessor :mgmt
+      <%- end -%>
+
+      def initialize(context)
+        super(context)
+        <%- if module_obj.management_mode -%>
+        @mgmt = <%= module_obj.get_full_class_name(true) %>.new(context)
+        <%- end -%>
+      end
+    end
+    <%- else -%>
+    class <%= module_obj.module_name %>Adapter
+      attr_accessor :mgmt
+
+      def initialize(context)
+        @mgmt = <%= module_obj.get_full_class_name(true) %>.new(context)
+      end
+    end
+    <%- end -%>
+
+    <%- end -%>
   end
 end

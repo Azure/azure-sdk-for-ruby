@@ -5,17 +5,18 @@
 require 'profiles/latest/compute_module_definition'
 require 'profiles/latest/modules/compute_profile_module'
 
-module Azure::Compute::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < ComputeClass
-    include MsRestAzure::Common::Configurable
+module Azure::Compute::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < ComputeManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

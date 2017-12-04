@@ -29,6 +29,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BillingPeriod',
           type: {
@@ -36,6 +37,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
             class_name: 'BillingPeriod',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,6 +46,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -52,6 +55,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -60,6 +64,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               billing_period_start_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.billingPeriodStartDate',
@@ -68,6 +73,7 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               billing_period_end_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.billingPeriodEndDate',
@@ -76,12 +82,14 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
                 }
               },
               invoice_ids: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.invoiceIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

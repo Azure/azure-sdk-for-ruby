@@ -18,6 +18,12 @@ module Azure::Web::Mgmt::V2016_03_01
       # @return [String] Service Tier of the resource SKU.
       attr_accessor :tier
 
+      # @return [String] Size specifier of the resource SKU.
+      attr_accessor :size
+
+      # @return [String] Family code of the resource SKU.
+      attr_accessor :family
+
       # @return [SkuCapacity] Min, max, and default scale values of the SKU.
       attr_accessor :capacity
 
@@ -35,6 +41,7 @@ module Azure::Web::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GlobalCsmSkuDescription',
           type: {
@@ -42,6 +49,7 @@ module Azure::Web::Mgmt::V2016_03_01
             class_name: 'GlobalCsmSkuDescription',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -49,13 +57,31 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               tier: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tier',
                 type: {
                   name: 'String'
                 }
               },
+              size: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'size',
+                type: {
+                  name: 'String'
+                }
+              },
+              family: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'family',
+                type: {
+                  name: 'String'
+                }
+              },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {
@@ -64,11 +90,13 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -78,11 +106,13 @@ module Azure::Web::Mgmt::V2016_03_01
                 }
               },
               capabilities: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capabilities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CapabilityElementType',
                       type: {

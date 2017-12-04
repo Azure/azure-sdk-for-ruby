@@ -30,6 +30,7 @@ module Azure::Network::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ApplicationGatewayBackendHealthServer',
           type: {
@@ -37,6 +38,7 @@ module Azure::Network::Mgmt::V2016_12_01
             class_name: 'ApplicationGatewayBackendHealthServer',
             model_properties: {
               address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'address',
                 type: {
@@ -44,6 +46,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               ip_configuration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ipConfiguration',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Network::Mgmt::V2016_12_01
                 }
               },
               health: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'health',
                 type: {

@@ -28,6 +28,7 @@ module Azure::Resources::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentExtended',
           type: {
@@ -35,6 +36,7 @@ module Azure::Resources::Mgmt::V2016_09_01
             class_name: 'DeploymentExtended',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Resources::Mgmt::V2016_09_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

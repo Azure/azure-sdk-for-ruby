@@ -48,6 +48,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HybridConnection',
           type: {
@@ -55,6 +56,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'HybridConnection',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -63,6 +65,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -71,6 +74,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -78,6 +82,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -86,6 +91,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               service_bus_namespace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceBusNamespace',
                 type: {
@@ -93,6 +99,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               relay_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.relayName',
                 type: {
@@ -100,6 +107,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               relay_arm_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.relayArmUri',
                 type: {
@@ -107,6 +115,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               hostname: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.hostname',
                 type: {
@@ -114,6 +123,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.port',
                 type: {
@@ -121,6 +131,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               send_key_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sendKeyName',
                 type: {
@@ -128,6 +139,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               send_key_value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sendKeyValue',
                 type: {
@@ -135,6 +147,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               service_bus_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.serviceBusSuffix',
                 type: {

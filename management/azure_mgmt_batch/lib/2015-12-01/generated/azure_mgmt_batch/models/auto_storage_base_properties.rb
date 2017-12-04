@@ -23,6 +23,7 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutoStorageBaseProperties',
           type: {
@@ -30,6 +31,7 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'AutoStorageBaseProperties',
             model_properties: {
               storage_account_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'storageAccountId',
                 type: {

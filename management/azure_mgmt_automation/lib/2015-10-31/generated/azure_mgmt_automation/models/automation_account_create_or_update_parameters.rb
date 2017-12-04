@@ -34,6 +34,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutomationAccountCreateOrUpdateParameters',
           type: {
@@ -41,6 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'AutomationAccountCreateOrUpdateParameters',
             model_properties: {
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sku',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -63,11 +67,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

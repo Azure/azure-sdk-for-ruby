@@ -37,6 +37,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaaSVMJobExtendedInfo',
           type: {
@@ -44,11 +45,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'AzureIaaSVMJobExtendedInfo',
             model_properties: {
               tasks_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tasksList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AzureIaaSVMJobTaskDetailsElementType',
                       type: {
@@ -59,11 +62,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               property_bag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'propertyBag',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -73,6 +78,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               progress_percentage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'progressPercentage',
                 type: {
@@ -80,6 +86,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               dynamic_error_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'dynamicErrorMessage',
                 type: {

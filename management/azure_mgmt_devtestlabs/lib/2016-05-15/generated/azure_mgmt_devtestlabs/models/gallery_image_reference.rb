@@ -34,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GalleryImageReference',
           type: {
@@ -41,6 +42,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'GalleryImageReference',
             model_properties: {
               offer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'offer',
                 type: {
@@ -48,6 +50,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               publisher: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'publisher',
                 type: {
@@ -55,6 +58,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -62,6 +66,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osType',
                 type: {
@@ -69,6 +74,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

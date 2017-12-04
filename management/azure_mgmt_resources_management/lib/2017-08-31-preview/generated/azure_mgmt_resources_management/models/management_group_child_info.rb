@@ -35,6 +35,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ManagementGroupChildInfo',
           type: {
@@ -42,6 +43,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
             class_name: 'ManagementGroupChildInfo',
             model_properties: {
               child_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'childType',
                 type: {
@@ -49,6 +51,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               child_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'childId',
                 type: {
@@ -56,6 +59,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -63,6 +67,7 @@ module Azure::ResourcesManagement::Mgmt::V2017_08_31_preview
                 }
               },
               tenant_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tenantId',
                 type: {

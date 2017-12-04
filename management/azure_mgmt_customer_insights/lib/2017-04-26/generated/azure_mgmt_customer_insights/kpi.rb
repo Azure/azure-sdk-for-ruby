@@ -434,6 +434,9 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'kpi_name is nil' if kpi_name.nil?
+      fail ArgumentError, "'kpi_name' should satisfy the constraint - 'MaxLength': '512'" if !kpi_name.nil? && kpi_name.length > 512
+      fail ArgumentError, "'kpi_name' should satisfy the constraint - 'MinLength': '1'" if !kpi_name.nil? && kpi_name.length < 1
+      fail ArgumentError, "'kpi_name' should satisfy the constraint - 'Pattern': '^[a-zA-Z][a-zA-Z0-9_]+$'" if !kpi_name.nil? && kpi_name.match(Regexp.new('^^[a-zA-Z][a-zA-Z0-9_]+$$')).nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

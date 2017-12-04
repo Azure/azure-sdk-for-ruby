@@ -23,6 +23,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NetworkInterfaceReference',
           type: {
@@ -30,6 +31,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'NetworkInterfaceReference',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -37,6 +39,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               primary: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {

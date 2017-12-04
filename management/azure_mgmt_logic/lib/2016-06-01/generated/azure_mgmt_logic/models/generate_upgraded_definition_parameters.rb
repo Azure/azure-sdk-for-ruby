@@ -22,6 +22,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GenerateUpgradedDefinitionParameters',
           type: {
@@ -29,6 +30,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'GenerateUpgradedDefinitionParameters',
             model_properties: {
               target_schema_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'targetSchemaVersion',
                 type: {

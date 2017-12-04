@@ -22,6 +22,7 @@ module Azure::Resources::Mgmt::V2016_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentExtendedFilter',
           type: {
@@ -29,6 +30,7 @@ module Azure::Resources::Mgmt::V2016_02_01
             class_name: 'DeploymentExtendedFilter',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisioningState',
                 type: {

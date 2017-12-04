@@ -55,6 +55,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IpsecPolicy',
           type: {
@@ -62,6 +63,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'IpsecPolicy',
             model_properties: {
               sa_life_time_seconds: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'saLifeTimeSeconds',
                 type: {
@@ -69,6 +71,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               sa_data_size_kilobytes: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'saDataSizeKilobytes',
                 type: {
@@ -76,6 +79,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               ipsec_encryption: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ipsecEncryption',
                 type: {
@@ -83,6 +87,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               ipsec_integrity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ipsecIntegrity',
                 type: {
@@ -90,6 +95,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               ike_encryption: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ikeEncryption',
                 type: {
@@ -97,6 +103,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               ike_integrity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'ikeIntegrity',
                 type: {
@@ -104,6 +111,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               dh_group: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dhGroup',
                 type: {
@@ -111,6 +119,7 @@ module Azure::Network::Mgmt::V2017_03_01
                 }
               },
               pfs_group: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'pfsGroup',
                 type: {

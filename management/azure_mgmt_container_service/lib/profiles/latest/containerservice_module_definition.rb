@@ -6,4 +6,3 @@ module Azure end
 module Azure::ContainerService end
 module Azure::ContainerService::Profiles end
 module Azure::ContainerService::Profiles::Latest end
-module Azure::ContainerService::Profiles::Latest::Mgmt end

@@ -58,6 +58,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopicListResult',
           type: {
@@ -65,11 +66,13 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
             class_name: 'TopicListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TopicResourceElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::ServiceBus::Mgmt::V2015_08_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

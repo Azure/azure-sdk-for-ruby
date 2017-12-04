@@ -25,6 +25,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DailyRetentionSchedule',
           type: {
@@ -32,11 +33,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'DailyRetentionSchedule',
             model_properties: {
               retention_times: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionTimes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DateTimeElementType',
                       type: {
@@ -46,6 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionDuration',
                 type: {

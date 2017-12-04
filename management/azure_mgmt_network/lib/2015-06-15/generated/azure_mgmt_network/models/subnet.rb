@@ -44,6 +44,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Subnet',
           type: {
@@ -51,6 +52,7 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'Subnet',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -58,6 +60,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               address_prefix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.addressPrefix',
                 type: {
@@ -65,6 +68,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               network_security_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkSecurityGroup',
                 type: {
@@ -73,6 +77,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               route_table: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.routeTable',
                 type: {
@@ -81,11 +86,13 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               ip_configurations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'IPConfigurationElementType',
                       type: {
@@ -96,6 +103,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -103,6 +111,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -110,6 +119,7 @@ module Azure::Network::Mgmt::V2015_06_15
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

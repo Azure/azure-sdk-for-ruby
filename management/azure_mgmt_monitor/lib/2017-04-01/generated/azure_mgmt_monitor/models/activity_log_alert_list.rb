@@ -27,6 +27,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertList',
           type: {
@@ -34,11 +35,13 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ActivityLogAlertResourceElementType',
                       type: {
@@ -49,6 +52,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -28,6 +28,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubResource',
           type: {
@@ -35,6 +36,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
             class_name: 'SubResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -43,6 +45,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -50,6 +53,7 @@ module Azure::StreamAnalytics::Mgmt::V2016_03_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

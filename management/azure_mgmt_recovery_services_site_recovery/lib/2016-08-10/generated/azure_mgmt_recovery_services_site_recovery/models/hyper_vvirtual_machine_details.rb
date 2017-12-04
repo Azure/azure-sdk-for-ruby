@@ -38,6 +38,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVVirtualMachine',
           type: {
@@ -45,6 +46,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HyperVVirtualMachineDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -52,6 +54,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               source_item_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceItemId',
                 type: {
@@ -59,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               generation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'generation',
                 type: {
@@ -66,6 +70,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               os_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDetails',
                 type: {
@@ -74,11 +79,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               disk_details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diskDetails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiskDetailsElementType',
                       type: {

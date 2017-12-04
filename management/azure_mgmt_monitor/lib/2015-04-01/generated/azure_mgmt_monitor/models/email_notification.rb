@@ -31,6 +31,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EmailNotification',
           type: {
@@ -38,6 +39,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
             class_name: 'EmailNotification',
             model_properties: {
               send_to_subscription_administrator: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sendToSubscriptionAdministrator',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               send_to_subscription_co_administrators: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sendToSubscriptionCoAdministrators',
                 type: {
@@ -52,11 +55,13 @@ module Azure::Monitor::Mgmt::V2015_04_01
                 }
               },
               custom_emails: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'customEmails',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

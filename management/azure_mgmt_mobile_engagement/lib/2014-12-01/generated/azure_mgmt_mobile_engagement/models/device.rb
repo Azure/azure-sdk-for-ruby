@@ -37,6 +37,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Device',
           type: {
@@ -44,6 +45,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'Device',
             model_properties: {
               device_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'deviceId',
                 type: {
@@ -51,6 +53,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               meta: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'meta',
                 type: {
@@ -59,6 +62,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'info',
                 type: {
@@ -67,6 +71,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -75,11 +80,13 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               app_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appInfo',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -22,6 +22,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TxtRecord',
           type: {
@@ -29,11 +30,13 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'TxtRecord',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

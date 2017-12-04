@@ -28,6 +28,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SkuInfo',
           type: {
@@ -35,6 +36,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'SkuInfo',
             model_properties: {
               resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceType',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               capacity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'capacity',
                 type: {

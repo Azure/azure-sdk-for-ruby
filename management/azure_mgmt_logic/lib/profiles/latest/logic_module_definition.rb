@@ -6,4 +6,3 @@ module Azure end
 module Azure::Logic end
 module Azure::Logic::Profiles end
 module Azure::Logic::Profiles::Latest end
-module Azure::Logic::Profiles::Latest::Mgmt end

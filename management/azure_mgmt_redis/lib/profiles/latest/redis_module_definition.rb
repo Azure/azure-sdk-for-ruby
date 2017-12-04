@@ -6,4 +6,3 @@ module Azure end
 module Azure::Redis end
 module Azure::Redis::Profiles end
 module Azure::Redis::Profiles::Latest end
-module Azure::Redis::Profiles::Latest::Mgmt end

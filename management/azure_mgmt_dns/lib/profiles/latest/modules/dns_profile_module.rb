@@ -4,7 +4,8 @@
 
 require 'azure_mgmt_dns'
 
-module Azure::Dns::Profiles::Latest::Mgmt
+module Azure::Dns::Profiles::Latest
+  module Mgmt
     RecordSets = Azure::Dns::Mgmt::V2016_04_01::RecordSets
     Zones = Azure::Dns::Mgmt::V2016_04_01::Zones
 
@@ -31,9 +32,9 @@ module Azure::Dns::Profiles::Latest::Mgmt
     end
 
     #
-    # Dns
+    # DnsManagementClass
     #
-    class DnsClass
+    class DnsManagementClass
       attr_reader :record_sets, :zones, :configurable, :base_url, :options, :model_classes
 
       def initialize(options = {})
@@ -56,65 +57,66 @@ module Azure::Dns::Profiles::Latest::Mgmt
 
         @model_classes = ModelClasses.new
       end
+    end
 
-      class ModelClasses
-        def record_set
-          Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
-        end
-        def arecord
-          Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
-        end
-        def record_set_update_parameters
-          Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
-        end
-        def mx_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
-        end
-        def record_set_list_result
-          Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
-        end
-        def ptr_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
-        end
-        def srv_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
-        end
-        def cname_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
-        end
-        def zone_delete_result
-          Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
-        end
-        def aaaa_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
-        end
-        def zone_list_result
-          Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
-        end
-        def txt_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
-        end
-        def resource
-          Azure::Dns::Mgmt::V2016_04_01::Models::Resource
-        end
-        def ns_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
-        end
-        def soa_record
-          Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
-        end
-        def zone
-          Azure::Dns::Mgmt::V2016_04_01::Models::Zone
-        end
-        def operation_status
-          Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
-        end
-        def http_status_code
-          Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
-        end
-        def record_type
-          Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
-        end
+    class ModelClasses
+      def record_set
+        Azure::Dns::Mgmt::V2016_04_01::Models::RecordSet
+      end
+      def arecord
+        Azure::Dns::Mgmt::V2016_04_01::Models::ARecord
+      end
+      def record_set_update_parameters
+        Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetUpdateParameters
+      end
+      def mx_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::MxRecord
+      end
+      def record_set_list_result
+        Azure::Dns::Mgmt::V2016_04_01::Models::RecordSetListResult
+      end
+      def ptr_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::PtrRecord
+      end
+      def srv_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::SrvRecord
+      end
+      def cname_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::CnameRecord
+      end
+      def zone_delete_result
+        Azure::Dns::Mgmt::V2016_04_01::Models::ZoneDeleteResult
+      end
+      def aaaa_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::AaaaRecord
+      end
+      def zone_list_result
+        Azure::Dns::Mgmt::V2016_04_01::Models::ZoneListResult
+      end
+      def txt_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::TxtRecord
+      end
+      def resource
+        Azure::Dns::Mgmt::V2016_04_01::Models::Resource
+      end
+      def ns_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::NsRecord
+      end
+      def soa_record
+        Azure::Dns::Mgmt::V2016_04_01::Models::SoaRecord
+      end
+      def zone
+        Azure::Dns::Mgmt::V2016_04_01::Models::Zone
+      end
+      def operation_status
+        Azure::Dns::Mgmt::V2016_04_01::Models::OperationStatus
+      end
+      def http_status_code
+        Azure::Dns::Mgmt::V2016_04_01::Models::HttpStatusCode
+      end
+      def record_type
+        Azure::Dns::Mgmt::V2016_04_01::Models::RecordType
       end
     end
+  end
 end

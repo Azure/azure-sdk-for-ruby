@@ -31,6 +31,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CredentialCreateOrUpdateParameters',
           type: {
@@ -38,6 +39,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'CredentialCreateOrUpdateParameters',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               user_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.userName',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               password: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.password',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

@@ -6,4 +6,3 @@ module Azure end
 module Azure::CDN end
 module Azure::CDN::Profiles end
 module Azure::CDN::Profiles::Latest end
-module Azure::CDN::Profiles::Latest::Mgmt end

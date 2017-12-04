@@ -26,6 +26,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BandwidthSetting',
           type: {
@@ -33,6 +34,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'BandwidthSetting',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -41,6 +43,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -49,6 +52,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -57,6 +61,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -65,11 +70,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               schedules: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.schedules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'BandwidthScheduleElementType',
                       type: {
@@ -80,6 +87,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               volume_count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.volumeCount',

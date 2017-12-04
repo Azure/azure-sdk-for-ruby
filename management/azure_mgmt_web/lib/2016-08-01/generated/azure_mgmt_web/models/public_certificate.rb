@@ -12,7 +12,7 @@ module Azure::Web::Mgmt::V2016_08_01
 
       include MsRestAzure
 
-      # @return [String] Public Certificate byte array
+      # @return [Array<Integer>] Public Certificate byte array
       attr_accessor :blob
 
       # @return [PublicCertificateLocation] Public Certificate Location.
@@ -29,6 +29,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PublicCertificate',
           type: {
@@ -36,6 +37,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'PublicCertificate',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,6 +46,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -52,6 +55,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,13 +72,15 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               blob: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.blob',
                 type: {
-                  name: 'String'
+                  name: 'ByteArray'
                 }
               },
               public_certificate_location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.publicCertificateLocation',
                 type: {
@@ -82,6 +89,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               thumbprint: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.thumbprint',

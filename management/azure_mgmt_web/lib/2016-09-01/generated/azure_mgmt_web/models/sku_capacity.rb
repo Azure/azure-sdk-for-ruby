@@ -35,6 +35,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SkuCapacity',
           type: {
@@ -42,6 +43,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'SkuCapacity',
             model_properties: {
               minimum: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'minimum',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               maximum: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maximum',
                 type: {
@@ -56,6 +59,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               default: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'default',
                 type: {
@@ -63,6 +67,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               scale_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scaleType',
                 type: {

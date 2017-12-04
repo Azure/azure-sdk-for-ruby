@@ -28,6 +28,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EvaluatePoliciesProperties',
           type: {
@@ -35,6 +36,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'EvaluatePoliciesProperties',
             model_properties: {
               fact_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'factName',
                 type: {
@@ -42,6 +44,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               fact_data: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'factData',
                 type: {
@@ -49,6 +52,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               value_offset: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'valueOffset',
                 type: {

@@ -27,6 +27,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RecoveryPointTierInformation',
           type: {
@@ -34,6 +35,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'RecoveryPointTierInformation',
             model_properties: {
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {

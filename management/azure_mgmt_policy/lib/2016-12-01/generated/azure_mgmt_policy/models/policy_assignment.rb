@@ -44,6 +44,7 @@ module Azure::Policy::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicyAssignment',
           type: {
@@ -51,6 +52,7 @@ module Azure::Policy::Mgmt::V2016_12_01
             class_name: 'PolicyAssignment',
             model_properties: {
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -58,6 +60,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               policy_definition_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.policyDefinitionId',
                 type: {
@@ -65,6 +68,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               scope: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.scope',
                 type: {
@@ -72,6 +76,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
@@ -79,6 +84,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -86,6 +92,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -94,6 +101,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'type',
                 type: {
@@ -101,6 +109,7 @@ module Azure::Policy::Mgmt::V2016_12_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

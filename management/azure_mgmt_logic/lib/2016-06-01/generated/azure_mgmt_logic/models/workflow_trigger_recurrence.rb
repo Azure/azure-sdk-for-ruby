@@ -39,6 +39,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkflowTriggerRecurrence',
           type: {
@@ -46,6 +47,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'WorkflowTriggerRecurrence',
             model_properties: {
               frequency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'frequency',
                 type: {
@@ -54,6 +56,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               interval: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'interval',
                 type: {
@@ -61,6 +64,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -68,6 +72,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -75,6 +80,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -82,6 +88,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               schedule: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'schedule',
                 type: {

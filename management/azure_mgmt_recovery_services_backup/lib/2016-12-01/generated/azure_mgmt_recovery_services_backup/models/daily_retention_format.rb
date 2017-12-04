@@ -22,6 +22,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DailyRetentionFormat',
           type: {
@@ -29,11 +30,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'DailyRetentionFormat',
             model_properties: {
               days_of_the_month: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'daysOfTheMonth',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DayElementType',
                       type: {

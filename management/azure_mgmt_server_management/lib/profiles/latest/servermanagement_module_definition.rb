@@ -6,4 +6,3 @@ module Azure end
 module Azure::ServerManagement end
 module Azure::ServerManagement::Profiles end
 module Azure::ServerManagement::Profiles::Latest end
-module Azure::ServerManagement::Profiles::Latest::Mgmt end

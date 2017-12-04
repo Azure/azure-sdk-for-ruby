@@ -38,6 +38,7 @@ module Azure::Resources::Mgmt::V2016_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceGroup',
           type: {
@@ -45,6 +46,7 @@ module Azure::Resources::Mgmt::V2016_07_01
             class_name: 'ResourceGroup',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -53,6 +55,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -60,6 +63,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -68,6 +72,7 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -75,11 +80,13 @@ module Azure::Resources::Mgmt::V2016_07_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

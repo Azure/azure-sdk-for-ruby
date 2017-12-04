@@ -57,6 +57,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ViewListResult',
           type: {
@@ -64,11 +65,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ViewListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ViewResourceFormatElementType',
                       type: {
@@ -79,6 +82,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

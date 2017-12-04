@@ -25,6 +25,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SharedKeys',
           type: {
@@ -32,6 +33,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
             class_name: 'SharedKeys',
             model_properties: {
               primary_shared_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primarySharedKey',
                 type: {
@@ -39,6 +41,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
                 }
               },
               secondary_shared_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondarySharedKey',
                 type: {

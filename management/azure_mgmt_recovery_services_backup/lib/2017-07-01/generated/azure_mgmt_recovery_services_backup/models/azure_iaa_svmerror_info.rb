@@ -33,6 +33,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureIaaSVMErrorInfo',
           type: {
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
             class_name: 'AzureIaaSVMErrorInfo',
             model_properties: {
               error_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorCode',
                 type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               error_title: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorTitle',
                 type: {
@@ -54,6 +57,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               error_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorString',
                 type: {
@@ -61,11 +65,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2017_07_01
                 }
               },
               recommendations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'recommendations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

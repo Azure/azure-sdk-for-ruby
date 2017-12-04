@@ -23,6 +23,7 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WorkspaceList',
           type: {
@@ -30,11 +31,13 @@ module Azure::PowerBiEmbedded::Mgmt::V2016_01_29
             class_name: 'WorkspaceList',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WorkspaceElementType',
                       type: {

@@ -59,6 +59,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EdgenodeResult',
           type: {
@@ -66,12 +67,14 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'EdgenodeResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EdgeNodeElementType',
                       type: {
@@ -82,6 +85,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

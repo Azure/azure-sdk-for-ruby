@@ -41,6 +41,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'YearlyRetentionSchedule',
           type: {
@@ -48,6 +49,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'YearlyRetentionSchedule',
             model_properties: {
               retention_schedule_format_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionScheduleFormatType',
                 type: {
@@ -55,11 +57,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               months_of_year: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'monthsOfYear',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'MonthOfYearElementType',
                       type: {
@@ -70,6 +74,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_schedule_daily: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionScheduleDaily',
                 type: {
@@ -78,6 +83,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_schedule_weekly: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionScheduleWeekly',
                 type: {
@@ -86,11 +92,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_times: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionTimes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DateTimeElementType',
                       type: {
@@ -100,6 +108,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               retention_duration: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'retentionDuration',
                 type: {

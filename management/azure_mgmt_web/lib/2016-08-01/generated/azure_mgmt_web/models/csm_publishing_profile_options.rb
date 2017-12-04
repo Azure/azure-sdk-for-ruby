@@ -25,6 +25,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CsmPublishingProfileOptions',
           type: {
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'CsmPublishingProfileOptions',
             model_properties: {
               format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'format',
                 type: {

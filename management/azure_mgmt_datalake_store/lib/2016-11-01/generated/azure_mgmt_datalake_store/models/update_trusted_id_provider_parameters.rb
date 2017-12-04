@@ -22,6 +22,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UpdateTrustedIdProviderParameters',
           type: {
@@ -29,6 +30,7 @@ module Azure::DataLakeStore::Mgmt::V2016_11_01
             class_name: 'UpdateTrustedIdProviderParameters',
             model_properties: {
               id_provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.idProvider',
                 type: {

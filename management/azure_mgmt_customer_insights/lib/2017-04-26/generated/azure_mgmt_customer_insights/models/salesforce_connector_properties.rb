@@ -25,6 +25,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SalesforceConnectorProperties',
           type: {
@@ -32,6 +33,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'SalesforceConnectorProperties',
             model_properties: {
               usersetting: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'usersetting',
                 type: {
@@ -40,11 +42,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               salesforcetables: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'salesforcetables',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'SalesforceTableElementType',
                       type: {

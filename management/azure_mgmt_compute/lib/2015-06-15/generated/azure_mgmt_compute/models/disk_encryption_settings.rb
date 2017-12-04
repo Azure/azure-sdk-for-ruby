@@ -31,6 +31,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiskEncryptionSettings',
           type: {
@@ -38,6 +39,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'DiskEncryptionSettings',
             model_properties: {
               disk_encryption_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'diskEncryptionKey',
                 type: {
@@ -46,6 +48,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               key_encryption_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'keyEncryptionKey',
                 type: {
@@ -54,6 +57,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enabled',
                 type: {

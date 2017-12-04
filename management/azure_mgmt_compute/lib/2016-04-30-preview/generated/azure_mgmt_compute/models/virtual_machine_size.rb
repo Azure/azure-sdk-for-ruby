@@ -42,6 +42,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineSize',
           type: {
@@ -49,6 +50,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineSize',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -56,6 +58,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               number_of_cores: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'numberOfCores',
                 type: {
@@ -63,6 +66,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               os_disk_size_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osDiskSizeInMB',
                 type: {
@@ -70,6 +74,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               resource_disk_size_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceDiskSizeInMB',
                 type: {
@@ -77,6 +82,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               memory_in_mb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'memoryInMB',
                 type: {
@@ -84,6 +90,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               max_data_disk_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxDataDiskCount',
                 type: {

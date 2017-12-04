@@ -26,6 +26,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GraphParameterLink',
           type: {
@@ -33,6 +34,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
             class_name: 'GraphParameterLink',
             model_properties: {
               node_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'nodeId',
                 type: {
@@ -40,6 +42,7 @@ module Azure::MachineLearning::Mgmt::V2017_01_01
                 }
               },
               parameter_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'parameterKey',
                 type: {

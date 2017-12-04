@@ -192,6 +192,11 @@ module Azure::SQL::Mgmt::V2014_04_01
       # include: 'AdventureWorksLT'
       attr_accessor :sample_name
 
+      # @return [Boolean] Whether or not this database is zone redundant, which
+      # means the replicas of this database will be spread across multiple
+      # availability zones.
+      attr_accessor :zone_redundant
+
 
       #
       # Mapper for Database class as Ruby Hash.
@@ -199,6 +204,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Database',
           type: {
@@ -206,6 +212,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'Database',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -214,6 +221,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -222,6 +230,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -230,11 +239,13 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -244,6 +255,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -251,6 +263,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'kind',
@@ -259,6 +272,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               collation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.collation',
                 type: {
@@ -266,6 +280,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               creation_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.creationDate',
@@ -274,6 +289,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               containment_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.containmentState',
@@ -282,6 +298,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               current_service_objective_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.currentServiceObjectiveId',
@@ -290,6 +307,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               database_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseId',
@@ -298,6 +316,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               earliest_restore_date: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.earliestRestoreDate',
@@ -306,6 +325,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               create_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.createMode',
                 type: {
@@ -313,6 +333,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               source_database_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceDatabaseId',
                 type: {
@@ -320,6 +341,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               source_database_deletion_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sourceDatabaseDeletionDate',
                 type: {
@@ -327,6 +349,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               restore_point_in_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.restorePointInTime',
                 type: {
@@ -334,6 +357,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               recovery_services_recovery_point_resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.recoveryServicesRecoveryPointResourceId',
                 type: {
@@ -341,6 +365,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               edition: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.edition',
                 type: {
@@ -348,6 +373,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               max_size_bytes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxSizeBytes',
                 type: {
@@ -355,6 +381,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_service_objective_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestedServiceObjectiveId',
                 type: {
@@ -362,6 +389,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               requested_service_objective_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.requestedServiceObjectiveName',
                 type: {
@@ -369,6 +397,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_level_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceLevelObjective',
@@ -377,6 +406,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -385,6 +415,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               elastic_pool_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.elasticPoolName',
                 type: {
@@ -392,6 +423,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               default_secondary_location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultSecondaryLocation',
@@ -400,12 +432,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               service_tier_advisors: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serviceTierAdvisors',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ServiceTierAdvisorElementType',
                       type: {
@@ -416,12 +450,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               transparent_data_encryption: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.transparentDataEncryption',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'TransparentDataEncryptionElementType',
                       type: {
@@ -432,12 +468,14 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               recommended_index: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.recommendedIndex',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RecommendedIndexElementType',
                       type: {
@@ -448,6 +486,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               failover_group_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.failoverGroupId',
@@ -456,6 +495,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               read_scale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.readScale',
                 type: {
@@ -464,10 +504,19 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               sample_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.sampleName',
                 type: {
                   name: 'String'
+                }
+              },
+              zone_redundant: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.zoneRedundant',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

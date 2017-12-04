@@ -20,6 +20,10 @@ module Azure::Automation::Mgmt::V2015_10_31
       # job.
       attr_accessor :parameters
 
+      # @return [Boolean] If a new build version of NodeConfiguration is
+      # required.
+      attr_accessor :new_node_configuration_build_version_required
+
       # @return [String] Gets or sets name of the resource.
       attr_accessor :name
 
@@ -37,6 +41,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DscCompilationJobCreateParameters',
           type: {
@@ -44,6 +49,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'DscCompilationJobCreateParameters',
             model_properties: {
               configuration: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.configuration',
                 type: {
@@ -52,11 +58,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -65,7 +73,16 @@ module Azure::Automation::Mgmt::V2015_10_31
                   }
                 }
               },
+              new_node_configuration_build_version_required: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.newNodeConfigurationBuildVersionRequired',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -73,6 +90,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -80,11 +98,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

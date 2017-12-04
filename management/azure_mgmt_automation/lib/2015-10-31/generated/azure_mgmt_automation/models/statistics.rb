@@ -34,6 +34,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Statistics',
           type: {
@@ -41,6 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'Statistics',
             model_properties: {
               counter_property: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'counterProperty',
@@ -49,6 +51,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               counter_value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'counterValue',
@@ -57,6 +60,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'startTime',
@@ -65,6 +69,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'endTime',
@@ -73,6 +78,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',

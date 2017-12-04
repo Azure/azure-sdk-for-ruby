@@ -33,6 +33,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureAsyncOperationResult',
           type: {
@@ -40,6 +41,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
             class_name: 'AzureAsyncOperationResult',
             model_properties: {
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'status',
@@ -49,6 +51,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'error',

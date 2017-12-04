@@ -146,6 +146,9 @@ module Azure::Web::Mgmt::V2016_09_01
       # behavior of the App Service Environment.
       attr_accessor :cluster_settings
 
+      # @return [Array<String>] User added ip ranges to whitelist on ASE db
+      attr_accessor :user_whitelisted_ip_ranges
+
 
       #
       # Mapper for AppServiceEnvironmentResource class as Ruby Hash.
@@ -153,6 +156,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AppServiceEnvironmentResource',
           type: {
@@ -160,6 +164,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'AppServiceEnvironmentResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -168,6 +173,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -176,6 +182,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -183,6 +190,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -190,6 +198,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -198,11 +207,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -212,6 +223,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               app_service_environment_resource_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.name',
                 type: {
@@ -219,6 +231,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               app_service_environment_resource_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.location',
                 type: {
@@ -226,6 +239,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -235,6 +249,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -244,6 +259,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetName',
                 type: {
@@ -251,6 +267,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vnet_resource_group_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetResourceGroupName',
                 type: {
@@ -258,6 +275,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vnet_subnet_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vnetSubnetName',
                 type: {
@@ -265,6 +283,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               virtual_network: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.virtualNetwork',
                 type: {
@@ -273,6 +292,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               internal_load_balancing_mode: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.internalLoadBalancingMode',
                 type: {
@@ -281,6 +301,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               multi_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.multiSize',
                 type: {
@@ -288,6 +309,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               multi_role_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.multiRoleCount',
                 type: {
@@ -295,11 +317,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               worker_pools: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.workerPools',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'WorkerPoolElementType',
                       type: {
@@ -310,6 +334,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               ipssl_address_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.ipsslAddressCount',
                 type: {
@@ -317,6 +342,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               database_edition: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseEdition',
@@ -325,6 +351,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               database_service_objective: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databaseServiceObjective',
@@ -333,6 +360,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               upgrade_domains: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.upgradeDomains',
@@ -341,6 +369,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               subscription_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.subscriptionId',
@@ -349,6 +378,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               dns_suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dnsSuffix',
                 type: {
@@ -356,6 +386,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               last_action: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastAction',
@@ -364,6 +395,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               last_action_result: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastActionResult',
@@ -372,6 +404,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               allowed_multi_sizes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.allowedMultiSizes',
@@ -380,6 +413,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               allowed_worker_sizes: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.allowedWorkerSizes',
@@ -388,6 +422,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               maximum_number_of_machines: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.maximumNumberOfMachines',
@@ -396,12 +431,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               vip_mappings: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.vipMappings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualIPMappingElementType',
                       type: {
@@ -412,12 +449,14 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               environment_capacities: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.environmentCapacities',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StampCapacityElementType',
                       type: {
@@ -428,11 +467,13 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               network_access_control_list: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.networkAccessControlList',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NetworkAccessControlEntryElementType',
                       type: {
@@ -443,6 +484,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               environment_is_healthy: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.environmentIsHealthy',
@@ -451,6 +493,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               environment_status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.environmentStatus',
@@ -459,6 +502,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               resource_group: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.resourceGroup',
@@ -467,6 +511,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               front_end_scale_factor: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.frontEndScaleFactor',
                 type: {
@@ -474,6 +519,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               default_front_end_scale_factor: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.defaultFrontEndScaleFactor',
@@ -482,6 +528,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               api_management_account_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.apiManagementAccountId',
                 type: {
@@ -489,6 +536,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               suspended: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.suspended',
                 type: {
@@ -496,6 +544,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               dynamic_cache_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.dynamicCacheEnabled',
                 type: {
@@ -503,16 +552,34 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               cluster_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.clusterSettings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'NameValuePairElementType',
                       type: {
                         name: 'Composite',
                         class_name: 'NameValuePair'
+                      }
+                  }
+                }
+              },
+              user_whitelisted_ip_ranges: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'properties.userWhitelistedIpRanges',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      client_side_validation: true,
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
                       }
                   }
                 }

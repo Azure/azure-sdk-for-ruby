@@ -5,17 +5,18 @@
 require 'profiles/latest/keyvault_module_definition'
 require 'profiles/latest/modules/keyvault_profile_module'
 
-module Azure::KeyVault::Profiles::Latest::Mgmt
-  #
-  # Client class for the Latest profile SDK.
-  #
-  class Client < KeyVaultClass
-    include MsRestAzure::Common::Configurable
+module Azure::KeyVault::Profiles::Latest
+  module Mgmt
+    #
+    # Client class for the Latest profile SDK.
+    #
+    class Client < KeyVaultManagementClass
+      include MsRestAzure::Common::Configurable
 
+      def initialize(options = {})
+        super(options)
+      end
 
-    def initialize(options = {})
-      super(options)
     end
-
   end
 end

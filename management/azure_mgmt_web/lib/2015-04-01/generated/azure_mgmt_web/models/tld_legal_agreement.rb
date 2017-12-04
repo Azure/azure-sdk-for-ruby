@@ -31,6 +31,7 @@ module Azure::Web::Mgmt::V2015_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TldLegalAgreement',
           type: {
@@ -38,6 +39,7 @@ module Azure::Web::Mgmt::V2015_04_01
             class_name: 'TldLegalAgreement',
             model_properties: {
               agreement_key: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'agreementKey',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               title: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'title',
                 type: {
@@ -52,6 +55,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               content: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'content',
                 type: {
@@ -59,6 +63,7 @@ module Azure::Web::Mgmt::V2015_04_01
                 }
               },
               url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'url',
                 type: {

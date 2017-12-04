@@ -42,6 +42,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RunbookUpdateParameters',
           type: {
@@ -49,6 +50,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'RunbookUpdateParameters',
             model_properties: {
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -56,6 +58,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_verbose: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logVerbose',
                 type: {
@@ -63,6 +66,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_progress: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logProgress',
                 type: {
@@ -70,6 +74,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               log_activity_trace: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.logActivityTrace',
                 type: {
@@ -77,6 +82,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -84,6 +90,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -91,11 +98,13 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

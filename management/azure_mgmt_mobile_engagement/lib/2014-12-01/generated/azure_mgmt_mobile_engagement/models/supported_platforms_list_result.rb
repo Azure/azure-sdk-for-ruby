@@ -23,6 +23,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SupportedPlatformsListResult',
           type: {
@@ -30,11 +31,13 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'SupportedPlatformsListResult',
             model_properties: {
               platforms: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'platforms',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

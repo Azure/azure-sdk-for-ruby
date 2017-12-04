@@ -57,6 +57,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AS2SecuritySettings',
           type: {
@@ -64,6 +65,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2SecuritySettings',
             model_properties: {
               override_group_signing_certificate: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'overrideGroupSigningCertificate',
                 type: {
@@ -71,6 +73,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               signing_certificate_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signingCertificateName',
                 type: {
@@ -78,6 +81,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               encryption_certificate_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionCertificateName',
                 type: {
@@ -85,6 +89,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_nrr_for_inbound_encoded_messages: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableNrrForInboundEncodedMessages',
                 type: {
@@ -92,6 +97,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_nrr_for_inbound_decoded_messages: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableNrrForInboundDecodedMessages',
                 type: {
@@ -99,6 +105,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_nrr_for_outbound_mdn: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableNrrForOutboundMdn',
                 type: {
@@ -106,6 +113,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_nrr_for_outbound_encoded_messages: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableNrrForOutboundEncodedMessages',
                 type: {
@@ -113,6 +121,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_nrr_for_outbound_decoded_messages: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableNrrForOutboundDecodedMessages',
                 type: {
@@ -120,6 +129,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               enable_nrr_for_inbound_mdn: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'enableNrrForInboundMdn',
                 type: {
@@ -127,6 +137,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               sha2algorithm_format: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sha2AlgorithmFormat',
                 type: {

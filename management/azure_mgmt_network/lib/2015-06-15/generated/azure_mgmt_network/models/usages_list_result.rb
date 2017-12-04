@@ -16,6 +16,9 @@ module Azure::Network::Mgmt::V2015_06_15
       # @return [Array<Usage>] The list network resource usages.
       attr_accessor :value
 
+      # @return [String] URL to get the next set of results.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -54,6 +57,7 @@ module Azure::Network::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsagesListResult',
           type: {
@@ -61,11 +65,13 @@ module Azure::Network::Mgmt::V2015_06_15
             class_name: 'UsagesListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageElementType',
                       type: {
@@ -73,6 +79,14 @@ module Azure::Network::Mgmt::V2015_06_15
                         class_name: 'Usage'
                       }
                   }
+                }
+              },
+              next_link: {
+                client_side_validation: true,
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

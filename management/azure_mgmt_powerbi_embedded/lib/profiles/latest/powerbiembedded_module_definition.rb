@@ -6,4 +6,3 @@ module Azure end
 module Azure::PowerBiEmbedded end
 module Azure::PowerBiEmbedded::Profiles end
 module Azure::PowerBiEmbedded::Profiles::Latest end
-module Azure::PowerBiEmbedded::Profiles::Latest::Mgmt end

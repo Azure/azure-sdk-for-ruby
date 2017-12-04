@@ -23,6 +23,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateListDescription',
           type: {
@@ -30,11 +31,13 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CertificateListDescription',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'CertificateDescriptionElementType',
                       type: {

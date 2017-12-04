@@ -39,6 +39,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineExtensionImage',
           type: {
@@ -46,6 +47,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'VirtualMachineExtensionImage',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -54,6 +56,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,6 +65,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -70,6 +74,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -77,11 +82,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -91,6 +98,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               operating_system: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.operatingSystem',
                 type: {
@@ -98,6 +106,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               compute_role: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.computeRole',
                 type: {
@@ -105,6 +114,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               handler_schema: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.handlerSchema',
                 type: {
@@ -112,6 +122,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               vm_scale_set_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.vmScaleSetEnabled',
                 type: {
@@ -119,6 +130,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               supports_multiple_extensions: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportsMultipleExtensions',
                 type: {

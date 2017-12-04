@@ -25,6 +25,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation',
           type: {
@@ -32,6 +33,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'Operation',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -40,6 +42,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               display: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'display',
                 type: {

@@ -55,6 +55,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeStoreAccountProperties',
           type: {
@@ -62,6 +63,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
             class_name: 'DataLakeStoreAccountProperties',
             model_properties: {
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provisioningState',
@@ -71,6 +73,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -80,6 +83,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               creation_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'creationTime',
@@ -88,6 +92,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               encryption_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionState',
                 type: {
@@ -96,6 +101,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               encryption_provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'encryptionProvisioningState',
@@ -105,6 +111,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               encryption_config: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionConfig',
                 type: {
@@ -113,6 +120,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               last_modified_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'lastModifiedTime',
@@ -121,6 +129,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endpoint',
                 type: {
@@ -128,6 +137,7 @@ module Azure::DataLakeStore::Mgmt::V2015_10_01_preview
                 }
               },
               default_group: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'defaultGroup',
                 type: {

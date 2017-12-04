@@ -25,6 +25,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SiteConfigurationSnapshotInfo',
           type: {
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'SiteConfigurationSnapshotInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -40,6 +42,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -48,6 +51,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -55,6 +59,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -63,6 +68,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.time',
@@ -71,6 +77,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               site_configuration_snapshot_info_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.id',

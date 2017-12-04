@@ -25,6 +25,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AS2AgreementContent',
           type: {
@@ -32,6 +33,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'AS2AgreementContent',
             model_properties: {
               receive_agreement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'receiveAgreement',
                 type: {
@@ -40,6 +42,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               send_agreement: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sendAgreement',
                 type: {

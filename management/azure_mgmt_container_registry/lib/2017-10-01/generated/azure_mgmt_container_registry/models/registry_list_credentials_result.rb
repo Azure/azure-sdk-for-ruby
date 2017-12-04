@@ -26,6 +26,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegistryListCredentialsResult',
           type: {
@@ -33,6 +34,7 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
             class_name: 'RegistryListCredentialsResult',
             model_properties: {
               username: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'username',
                 type: {
@@ -40,11 +42,13 @@ module Azure::ContainerRegistry::Mgmt::V2017_10_01
                 }
               },
               passwords: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'passwords',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RegistryPasswordElementType',
                       type: {

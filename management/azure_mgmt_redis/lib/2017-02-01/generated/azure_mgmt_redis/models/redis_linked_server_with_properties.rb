@@ -42,6 +42,7 @@ module Azure::Redis::Mgmt::V2017_02_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RedisLinkedServerWithProperties',
           type: {
@@ -49,6 +50,7 @@ module Azure::Redis::Mgmt::V2017_02_01
             class_name: 'RedisLinkedServerWithProperties',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,6 +59,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -65,6 +68,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -73,6 +77,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               linked_redis_cache_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.linkedRedisCacheId',
                 type: {
@@ -80,6 +85,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               linked_redis_cache_location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.linkedRedisCacheLocation',
                 type: {
@@ -87,6 +93,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               server_role: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.serverRole',
                 type: {
@@ -95,6 +102,7 @@ module Azure::Redis::Mgmt::V2017_02_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',

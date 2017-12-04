@@ -33,6 +33,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'InconsistentVmDetails',
           type: {
@@ -40,6 +41,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'InconsistentVmDetails',
             model_properties: {
               vm_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'vmName',
                 type: {
@@ -47,6 +49,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               cloud_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudName',
                 type: {
@@ -54,11 +57,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               details: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -68,11 +73,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               error_ids: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'errorIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

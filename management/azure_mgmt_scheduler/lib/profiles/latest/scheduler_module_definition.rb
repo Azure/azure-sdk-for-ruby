@@ -6,4 +6,3 @@ module Azure end
 module Azure::Scheduler end
 module Azure::Scheduler::Profiles end
 module Azure::Scheduler::Profiles::Latest end
-module Azure::Scheduler::Profiles::Latest::Mgmt end
