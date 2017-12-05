@@ -28,6 +28,7 @@ module Azure::Relay::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'RegenerateAccessKeyParameters',
           type: {
@@ -35,6 +36,7 @@ module Azure::Relay::Mgmt::V2017_04_01
             class_name: 'RegenerateAccessKeyParameters',
             model_properties: {
               key_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'keyType',
                 type: {
@@ -43,6 +45,7 @@ module Azure::Relay::Mgmt::V2017_04_01
                 }
               },
               key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {

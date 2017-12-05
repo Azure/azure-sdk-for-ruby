@@ -58,6 +58,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'UsageAggregationListResult',
           type: {
@@ -65,11 +66,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'UsageAggregationListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'UsageAggregationElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

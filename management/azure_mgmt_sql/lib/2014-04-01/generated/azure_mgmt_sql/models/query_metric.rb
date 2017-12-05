@@ -32,6 +32,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryMetric',
           type: {
@@ -39,6 +40,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'QueryMetric',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -47,6 +49,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'displayName',
@@ -55,6 +58,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'unit',
@@ -64,6 +68,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',

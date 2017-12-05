@@ -30,6 +30,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IotHubNameAvailabilityInfo',
           type: {
@@ -37,6 +38,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'IotHubNameAvailabilityInfo',
             model_properties: {
               name_available: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nameAvailable',
@@ -45,6 +47,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               reason: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'reason',
@@ -54,6 +57,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'message',
                 type: {

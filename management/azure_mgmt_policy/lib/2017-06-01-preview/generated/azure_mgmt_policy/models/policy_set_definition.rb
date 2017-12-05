@@ -51,6 +51,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PolicySetDefinition',
           type: {
@@ -58,6 +59,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
             class_name: 'PolicySetDefinition',
             model_properties: {
               policy_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.policyType',
                 type: {
@@ -65,6 +67,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -72,6 +75,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -79,6 +83,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
@@ -86,6 +91,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parameters',
                 type: {
@@ -93,11 +99,13 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               policy_definitions: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.policyDefinitions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PolicyDefinitionReferenceElementType',
                       type: {
@@ -108,6 +116,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -116,6 +125,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -124,6 +134,7 @@ module Azure::Policy::Mgmt::V2017_06_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

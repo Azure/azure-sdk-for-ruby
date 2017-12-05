@@ -22,6 +22,7 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileListResult',
           type: {
@@ -29,11 +30,13 @@ module Azure::TrafficManager::Mgmt::V2017_03_01
             class_name: 'ProfileListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProfileElementType',
                       type: {

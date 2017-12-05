@@ -54,6 +54,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AutomationRunbookTaskDetails',
           type: {
@@ -61,6 +62,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'AutomationRunbookTaskDetails',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -68,6 +70,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -75,6 +78,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               cloud_service_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloudServiceName',
                 type: {
@@ -82,6 +86,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               subscription_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subscriptionId',
                 type: {
@@ -89,6 +94,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               account_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'accountName',
                 type: {
@@ -96,6 +102,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               runbook_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'runbookId',
                 type: {
@@ -103,6 +110,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               runbook_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'runbookName',
                 type: {
@@ -110,6 +118,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobId',
                 type: {
@@ -117,6 +126,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               job_output: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jobOutput',
                 type: {
@@ -124,6 +134,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               is_primary_side_script: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isPrimarySideScript',
                 type: {

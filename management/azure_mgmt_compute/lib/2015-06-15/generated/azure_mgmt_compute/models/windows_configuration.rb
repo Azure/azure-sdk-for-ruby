@@ -40,6 +40,7 @@ module Azure::Compute::Mgmt::V2015_06_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WindowsConfiguration',
           type: {
@@ -47,6 +48,7 @@ module Azure::Compute::Mgmt::V2015_06_15
             class_name: 'WindowsConfiguration',
             model_properties: {
               provision_vmagent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisionVMAgent',
                 type: {
@@ -54,6 +56,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               enable_automatic_updates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enableAutomaticUpdates',
                 type: {
@@ -61,6 +64,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               time_zone: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZone',
                 type: {
@@ -68,11 +72,13 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               additional_unattend_content: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'additionalUnattendContent',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AdditionalUnattendContentElementType',
                       type: {
@@ -83,6 +89,7 @@ module Azure::Compute::Mgmt::V2015_06_15
                 }
               },
               win_rm: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'winRM',
                 type: {

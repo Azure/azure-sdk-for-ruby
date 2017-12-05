@@ -28,6 +28,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ImageDefinition',
           type: {
@@ -35,6 +36,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'ImageDefinition',
             model_properties: {
               image_exists: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageExists',
                 type: {
@@ -42,6 +44,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               content_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentUrl',
                 type: {
@@ -49,6 +52,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               relative_path: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'relativePath',
                 type: {

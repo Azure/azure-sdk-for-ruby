@@ -30,6 +30,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'FailoverGroupReadWriteEndpoint',
           type: {
@@ -37,6 +38,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'FailoverGroupReadWriteEndpoint',
             model_properties: {
               failover_policy: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'failoverPolicy',
                 type: {
@@ -44,6 +46,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               failover_with_data_loss_grace_period_minutes: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'failoverWithDataLossGracePeriodMinutes',
                 type: {

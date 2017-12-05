@@ -130,9 +130,7 @@ module Azure::OperationalInsights::Mgmt::V2015_11_01_preview
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_operational_insights'
-        if defined? Azure::OperationalInsights::Mgmt::V2015_11_01_preview::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::OperationalInsights::Mgmt::V2015_11_01_preview::VERSION}"
-        end
+        sdk_information = "#{sdk_information}/0.15.1"
         add_user_agent_information(sdk_information)
     end
   end

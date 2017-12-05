@@ -56,6 +56,7 @@ module Azure::Resources::Mgmt::V2017_05_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeploymentProperties',
           type: {
@@ -63,6 +64,7 @@ module Azure::Resources::Mgmt::V2017_05_10
             class_name: 'DeploymentProperties',
             model_properties: {
               template: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'template',
                 type: {
@@ -70,6 +72,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               template_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'templateLink',
                 type: {
@@ -78,6 +81,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               parameters: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parameters',
                 type: {
@@ -85,6 +89,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               parameters_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parametersLink',
                 type: {
@@ -93,6 +98,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               mode: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'mode',
                 type: {
@@ -101,6 +107,7 @@ module Azure::Resources::Mgmt::V2017_05_10
                 }
               },
               debug_setting: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'debugSetting',
                 type: {

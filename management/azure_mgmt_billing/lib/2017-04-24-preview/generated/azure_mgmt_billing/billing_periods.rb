@@ -89,6 +89,8 @@ module Azure::Billing::Mgmt::V2017_04_24_preview
     def list_async(filter = nil, skiptoken = nil, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}

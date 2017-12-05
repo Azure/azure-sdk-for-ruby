@@ -28,6 +28,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VaultCertificate',
           type: {
@@ -35,6 +36,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VaultCertificate',
             model_properties: {
               certificate_url: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateUrl',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               certificate_store: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'certificateStore',
                 type: {

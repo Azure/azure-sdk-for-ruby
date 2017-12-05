@@ -37,6 +37,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SearchParameters',
           type: {
@@ -44,6 +45,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
             class_name: 'SearchParameters',
             model_properties: {
               top: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'top',
                 type: {
@@ -51,6 +53,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               highlight: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'highlight',
                 type: {
@@ -59,6 +62,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               query: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'query',
                 type: {
@@ -66,6 +70,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               start: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'start',
                 type: {
@@ -73,6 +78,7 @@ module Azure::OperationalInsights::Mgmt::V2015_03_20
                 }
               },
               end_property: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'end',
                 type: {

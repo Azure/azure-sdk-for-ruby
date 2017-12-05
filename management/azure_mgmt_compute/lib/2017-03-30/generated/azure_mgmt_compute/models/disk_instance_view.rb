@@ -29,6 +29,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DiskInstanceView',
           type: {
@@ -36,6 +37,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'DiskInstanceView',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -43,11 +45,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               encryption_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'encryptionSettings',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DiskEncryptionSettingsElementType',
                       type: {
@@ -58,11 +62,13 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               statuses: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'statuses',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'InstanceViewStatusElementType',
                       type: {

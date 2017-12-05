@@ -23,6 +23,7 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PublicIPAddressSku',
           type: {
@@ -30,6 +31,7 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'PublicIPAddressSku',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {

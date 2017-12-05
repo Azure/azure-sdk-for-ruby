@@ -28,6 +28,7 @@ module Azure::Storage::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Operation_display',
           type: {
@@ -35,6 +36,7 @@ module Azure::Storage::Mgmt::V2017_06_01
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provider',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resource',
                 type: {
@@ -49,6 +52,7 @@ module Azure::Storage::Mgmt::V2017_06_01
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operation',
                 type: {

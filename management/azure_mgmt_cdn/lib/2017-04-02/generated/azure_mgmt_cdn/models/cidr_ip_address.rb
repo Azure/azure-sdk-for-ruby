@@ -25,6 +25,7 @@ module Azure::CDN::Mgmt::V2017_04_02
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'cidrIpAddress',
           type: {
@@ -32,6 +33,7 @@ module Azure::CDN::Mgmt::V2017_04_02
             class_name: 'CidrIpAddress',
             model_properties: {
               base_ip_address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'baseIpAddress',
                 type: {
@@ -39,6 +41,7 @@ module Azure::CDN::Mgmt::V2017_04_02
                 }
               },
               prefix_length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'prefixLength',
                 type: {

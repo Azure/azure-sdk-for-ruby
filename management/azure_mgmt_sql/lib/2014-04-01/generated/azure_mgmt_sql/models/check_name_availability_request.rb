@@ -27,6 +27,7 @@ module Azure::SQL::Mgmt::V2014_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CheckNameAvailabilityRequest',
           type: {
@@ -34,6 +35,7 @@ module Azure::SQL::Mgmt::V2014_04_01
             class_name: 'CheckNameAvailabilityRequest',
             model_properties: {
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -41,6 +43,7 @@ module Azure::SQL::Mgmt::V2014_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'type',

@@ -44,6 +44,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BgpPeerStatus',
           type: {
@@ -51,6 +52,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'BgpPeerStatus',
             model_properties: {
               local_address: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'localAddress',
@@ -59,6 +61,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               neighbor: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'neighbor',
@@ -67,6 +70,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               asn: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'asn',
@@ -75,6 +79,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'state',
@@ -83,6 +88,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               connected_duration: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'connectedDuration',
@@ -91,6 +97,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               routes_received: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'routesReceived',
@@ -99,6 +106,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               messages_sent: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'messagesSent',
@@ -107,6 +115,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               messages_received: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'messagesReceived',

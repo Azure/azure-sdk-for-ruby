@@ -25,6 +25,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ResourceMetricProperty',
           type: {
@@ -32,6 +33,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ResourceMetricProperty',
             model_properties: {
               key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'key',
                 type: {
@@ -39,6 +41,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {

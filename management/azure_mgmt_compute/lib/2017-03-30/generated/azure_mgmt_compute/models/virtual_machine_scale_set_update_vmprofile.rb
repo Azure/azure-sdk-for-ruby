@@ -43,6 +43,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetUpdateVMProfile',
           type: {
@@ -50,6 +51,7 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'VirtualMachineScaleSetUpdateVMProfile',
             model_properties: {
               os_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'osProfile',
                 type: {
@@ -58,6 +60,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               storage_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageProfile',
                 type: {
@@ -66,6 +69,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               network_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkProfile',
                 type: {
@@ -74,6 +78,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               diagnostics_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'diagnosticsProfile',
                 type: {
@@ -82,6 +87,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               extension_profile: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extensionProfile',
                 type: {
@@ -90,6 +96,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               license_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'licenseType',
                 type: {

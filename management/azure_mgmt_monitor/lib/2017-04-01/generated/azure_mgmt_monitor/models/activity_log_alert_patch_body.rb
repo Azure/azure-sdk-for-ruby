@@ -27,6 +27,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertPatchBody',
           type: {
@@ -34,11 +35,13 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertPatchBody',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -48,6 +51,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.enabled',
                 default_value: true,

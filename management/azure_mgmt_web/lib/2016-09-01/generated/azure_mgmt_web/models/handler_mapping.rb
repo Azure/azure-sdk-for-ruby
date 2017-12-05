@@ -33,6 +33,7 @@ module Azure::Web::Mgmt::V2016_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HandlerMapping',
           type: {
@@ -40,6 +41,7 @@ module Azure::Web::Mgmt::V2016_09_01
             class_name: 'HandlerMapping',
             model_properties: {
               extension: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'extension',
                 type: {
@@ -47,6 +49,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               script_processor: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scriptProcessor',
                 type: {
@@ -54,6 +57,7 @@ module Azure::Web::Mgmt::V2016_09_01
                 }
               },
               arguments: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'arguments',
                 type: {

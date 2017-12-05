@@ -63,6 +63,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DeviceInfo',
           type: {
@@ -70,6 +71,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
             class_name: 'DeviceInfo',
             model_properties: {
               phone_model: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'phoneModel',
                 type: {
@@ -77,6 +79,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               phone_manufacturer: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'phoneManufacturer',
                 type: {
@@ -84,6 +87,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               firmware_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'firmwareVersion',
                 type: {
@@ -91,6 +95,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               firmware_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'firmwareName',
                 type: {
@@ -98,6 +103,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               android_apilevel: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'androidAPILevel',
                 type: {
@@ -105,6 +111,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               carrier_country: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'carrierCountry',
                 type: {
@@ -112,6 +119,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               locale: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locale',
                 type: {
@@ -119,6 +127,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               carrier_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'carrierName',
                 type: {
@@ -126,6 +135,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               network_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkType',
                 type: {
@@ -133,6 +143,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               network_subtype: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'networkSubtype',
                 type: {
@@ -140,6 +151,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               application_version_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationVersionName',
                 type: {
@@ -147,6 +159,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               application_version_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'applicationVersionCode',
                 type: {
@@ -154,6 +167,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               time_zone_offset: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'timeZoneOffset',
                 type: {
@@ -161,6 +175,7 @@ module Azure::MobileEngagement::Mgmt::V2014_12_01
                 }
               },
               service_version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'serviceVersion',
                 type: {

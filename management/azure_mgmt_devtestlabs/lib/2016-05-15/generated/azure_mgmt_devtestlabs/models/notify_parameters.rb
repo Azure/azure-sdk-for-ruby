@@ -26,6 +26,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'NotifyParameters',
           type: {
@@ -33,6 +34,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'NotifyParameters',
             model_properties: {
               event_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventName',
                 type: {
@@ -40,6 +42,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               json_payload: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'jsonPayload',
                 type: {

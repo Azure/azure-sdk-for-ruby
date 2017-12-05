@@ -640,6 +640,8 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'hub_name is nil' if hub_name.nil?
       fail ArgumentError, 'prediction_name is nil' if prediction_name.nil?
+      fail ArgumentError, "'prediction_name' should satisfy the constraint - 'MaxLength': '512'" if !prediction_name.nil? && prediction_name.length > 512
+      fail ArgumentError, "'prediction_name' should satisfy the constraint - 'MinLength': '1'" if !prediction_name.nil? && prediction_name.length < 1
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

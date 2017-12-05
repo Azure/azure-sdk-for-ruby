@@ -26,6 +26,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AzureSqlContainer',
           type: {
@@ -33,6 +34,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'AzureSqlContainer',
             model_properties: {
               friendly_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'friendlyName',
                 type: {
@@ -40,6 +42,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               backup_management_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
@@ -47,6 +50,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               registration_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'registrationStatus',
                 type: {
@@ -54,6 +58,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               health_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'healthStatus',
                 type: {
@@ -61,6 +66,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               container_type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'containerType',
@@ -69,6 +75,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               protectableObjectType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'protectableObjectType',
                 type: {

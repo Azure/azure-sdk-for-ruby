@@ -30,6 +30,7 @@ module Azure::Batch::Mgmt::V2015_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'BatchAccountCreateParameters',
           type: {
@@ -37,6 +38,7 @@ module Azure::Batch::Mgmt::V2015_12_01
             class_name: 'BatchAccountCreateParameters',
             model_properties: {
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -44,11 +46,13 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -58,6 +62,7 @@ module Azure::Batch::Mgmt::V2015_12_01
                 }
               },
               auto_storage: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoStorage',
                 type: {

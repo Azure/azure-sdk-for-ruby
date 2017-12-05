@@ -31,6 +31,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PowerShellCommandStatus',
           type: {
@@ -38,6 +39,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'PowerShellCommandStatus',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -46,6 +48,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -54,6 +57,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -62,6 +66,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -70,11 +75,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -84,6 +91,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -91,11 +99,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               results: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.results',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'PowerShellCommandResultElementType',
                       type: {
@@ -106,6 +116,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               pssession: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.pssession',
                 type: {
@@ -113,6 +124,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               command: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.command',
                 type: {
@@ -120,6 +132,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               completed: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.completed',
                 type: {

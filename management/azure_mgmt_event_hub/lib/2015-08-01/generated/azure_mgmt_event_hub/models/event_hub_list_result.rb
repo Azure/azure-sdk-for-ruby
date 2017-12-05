@@ -59,6 +59,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'EventHubListResult',
           type: {
@@ -66,11 +67,13 @@ module Azure::EventHub::Mgmt::V2015_08_01
             class_name: 'EventHubListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'EventHubResourceElementType',
                       type: {
@@ -81,6 +84,7 @@ module Azure::EventHub::Mgmt::V2015_08_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

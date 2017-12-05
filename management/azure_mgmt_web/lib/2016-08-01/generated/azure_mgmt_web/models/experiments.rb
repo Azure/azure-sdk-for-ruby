@@ -22,6 +22,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Experiments',
           type: {
@@ -29,11 +30,13 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'Experiments',
             model_properties: {
               ramp_up_rules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'rampUpRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'RampUpRuleElementType',
                       type: {

@@ -33,6 +33,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationDisplay',
           type: {
@@ -40,6 +41,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
             class_name: 'OperationDisplay',
             model_properties: {
               provider: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'provider',
@@ -48,6 +50,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               resource: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'resource',
@@ -56,6 +59,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               operation: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'operation',
@@ -64,6 +68,7 @@ module Azure::SQL::Mgmt::V2015_05_01_preview
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'description',

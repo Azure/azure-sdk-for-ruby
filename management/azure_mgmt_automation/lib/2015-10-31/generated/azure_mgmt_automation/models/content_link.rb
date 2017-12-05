@@ -28,6 +28,7 @@ module Azure::Automation::Mgmt::V2015_10_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContentLink',
           type: {
@@ -35,6 +36,7 @@ module Azure::Automation::Mgmt::V2015_10_31
             class_name: 'ContentLink',
             model_properties: {
               uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uri',
                 type: {
@@ -42,6 +44,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               content_hash: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'contentHash',
                 type: {
@@ -50,6 +53,7 @@ module Azure::Automation::Mgmt::V2015_10_31
                 }
               },
               version: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'version',
                 type: {

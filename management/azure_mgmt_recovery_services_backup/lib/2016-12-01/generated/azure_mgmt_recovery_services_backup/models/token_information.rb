@@ -28,6 +28,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TokenInformation',
           type: {
@@ -35,6 +36,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'TokenInformation',
             model_properties: {
               token: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'token',
                 type: {
@@ -42,6 +44,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               expiry_time_in_utc_ticks: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'expiryTimeInUtcTicks',
                 type: {
@@ -49,6 +52,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               security_pin: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityPIN',
                 type: {

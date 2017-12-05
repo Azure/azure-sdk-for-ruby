@@ -47,6 +47,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HealthErrorSummary',
           type: {
@@ -54,6 +55,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'HealthErrorSummary',
             model_properties: {
               summary_code: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'summaryCode',
                 type: {
@@ -61,6 +63,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'category',
                 type: {
@@ -69,6 +72,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               severity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'severity',
                 type: {
@@ -77,6 +81,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               summary_message: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'summaryMessage',
                 type: {
@@ -84,6 +89,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_resource_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedResourceType',
                 type: {
@@ -91,6 +97,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_resource_subtype: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedResourceSubtype',
                 type: {
@@ -98,11 +105,13 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               affected_resource_correlation_ids: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'affectedResourceCorrelationIds',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

@@ -22,6 +22,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LabCostSummaryProperties',
           type: {
@@ -29,6 +30,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LabCostSummaryProperties',
             model_properties: {
               estimated_lab_cost: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'estimatedLabCost',
                 type: {

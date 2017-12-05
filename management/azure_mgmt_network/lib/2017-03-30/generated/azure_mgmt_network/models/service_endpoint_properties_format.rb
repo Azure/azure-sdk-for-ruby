@@ -28,6 +28,7 @@ module Azure::Network::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceEndpointPropertiesFormat',
           type: {
@@ -35,6 +36,7 @@ module Azure::Network::Mgmt::V2017_03_30
             class_name: 'ServiceEndpointPropertiesFormat',
             model_properties: {
               service: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'service',
                 type: {
@@ -42,11 +44,13 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -56,6 +60,7 @@ module Azure::Network::Mgmt::V2017_03_30
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'provisioningState',
                 type: {

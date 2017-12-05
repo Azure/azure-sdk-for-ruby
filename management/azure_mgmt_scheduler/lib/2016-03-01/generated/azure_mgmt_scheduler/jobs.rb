@@ -569,6 +569,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}
@@ -679,6 +681,8 @@ module Azure::Scheduler::Mgmt::V2016_03_01
       fail ArgumentError, 'job_collection_name is nil' if job_collection_name.nil?
       fail ArgumentError, 'job_name is nil' if job_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMaximum': '100'" if !top.nil? && top > 100
+      fail ArgumentError, "'top' should satisfy the constraint - 'InclusiveMinimum': '1'" if !top.nil? && top < 1
 
 
       request_headers = {}

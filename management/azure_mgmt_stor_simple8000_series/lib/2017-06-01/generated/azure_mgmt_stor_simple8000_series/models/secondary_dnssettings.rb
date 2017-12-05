@@ -22,6 +22,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SecondaryDNSSettings',
           type: {
@@ -29,11 +30,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'SecondaryDNSSettings',
             model_properties: {
               secondary_dns_servers: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryDnsServers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

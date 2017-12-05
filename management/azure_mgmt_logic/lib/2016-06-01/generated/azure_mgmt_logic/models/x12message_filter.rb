@@ -23,6 +23,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'X12MessageFilter',
           type: {
@@ -30,6 +31,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'X12MessageFilter',
             model_properties: {
               message_filter_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'messageFilterType',
                 type: {

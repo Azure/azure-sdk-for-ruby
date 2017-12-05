@@ -34,6 +34,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CertificateWithNonceDescription',
           type: {
@@ -41,6 +42,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
             class_name: 'CertificateWithNonceDescription',
             model_properties: {
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {
@@ -49,6 +51,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -57,6 +60,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -65,6 +69,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'etag',
@@ -73,6 +78,7 @@ module Azure::IotHub::Mgmt::V2017_07_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',

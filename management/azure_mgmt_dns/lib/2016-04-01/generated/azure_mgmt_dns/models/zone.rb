@@ -36,6 +36,7 @@ module Azure::Dns::Mgmt::V2016_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Zone',
           type: {
@@ -43,6 +44,7 @@ module Azure::Dns::Mgmt::V2016_04_01
             class_name: 'Zone',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -51,6 +53,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -59,6 +62,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -67,6 +71,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -74,11 +79,13 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -88,6 +95,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -95,6 +103,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               max_number_of_record_sets: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.maxNumberOfRecordSets',
                 type: {
@@ -102,6 +111,7 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               number_of_record_sets: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.numberOfRecordSets',
                 type: {
@@ -109,12 +119,14 @@ module Azure::Dns::Mgmt::V2016_04_01
                 }
               },
               name_servers: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nameServers',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

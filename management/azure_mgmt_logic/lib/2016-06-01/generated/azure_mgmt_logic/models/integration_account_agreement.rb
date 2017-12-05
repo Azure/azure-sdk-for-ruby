@@ -49,6 +49,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountAgreement',
           type: {
@@ -56,6 +57,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountAgreement',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -64,6 +66,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -72,6 +75,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -80,6 +84,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'location',
                 type: {
@@ -87,11 +92,13 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -101,6 +108,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               created_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.createdTime',
@@ -109,6 +117,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               changed_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.changedTime',
@@ -117,6 +126,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               metadata: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.metadata',
                 type: {
@@ -124,6 +134,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               agreement_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.agreementType',
                 type: {
@@ -132,6 +143,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               host_partner: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.hostPartner',
                 type: {
@@ -139,6 +151,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               guest_partner: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.guestPartner',
                 type: {
@@ -146,6 +159,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               host_identity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.hostIdentity',
                 type: {
@@ -154,6 +168,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               guest_identity: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.guestIdentity',
                 type: {
@@ -162,6 +177,7 @@ module Azure::Logic::Mgmt::V2016_06_01
                 }
               },
               content: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.content',
                 type: {

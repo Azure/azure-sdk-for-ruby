@@ -74,6 +74,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'PropertyDefinition',
           type: {
@@ -81,6 +82,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
             class_name: 'PropertyDefinition',
             model_properties: {
               array_value_separator: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'arrayValueSeparator',
                 type: {
@@ -88,11 +90,13 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               enum_valid_values: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'enumValidValues',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProfileEnumValidValuesFormatElementType',
                       type: {
@@ -103,6 +107,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               field_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'fieldName',
                 type: {
@@ -110,6 +115,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               field_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'fieldType',
                 type: {
@@ -117,6 +123,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_array: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isArray',
                 type: {
@@ -124,6 +131,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_enum: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isEnum',
                 type: {
@@ -131,6 +139,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_flag_enum: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isFlagEnum',
                 type: {
@@ -138,6 +147,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_image: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isImage',
                 type: {
@@ -145,6 +155,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_localized_string: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isLocalizedString',
                 type: {
@@ -152,6 +163,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isName',
                 type: {
@@ -159,6 +171,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_required: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isRequired',
                 type: {
@@ -166,6 +179,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               property_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'propertyId',
                 type: {
@@ -173,6 +187,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               schema_item_prop_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'schemaItemPropLink',
                 type: {
@@ -180,6 +195,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               max_length: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'maxLength',
                 type: {
@@ -187,6 +203,7 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               is_available_in_graph: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'isAvailableInGraph',
                 type: {
@@ -194,12 +211,14 @@ module Azure::CustomerInsights::Mgmt::V2017_04_26
                 }
               },
               data_source_precedence_rules: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'dataSourcePrecedenceRules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataSourcePrecedenceElementType',
                       type: {

@@ -29,6 +29,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'LabCostDetailsProperties',
           type: {
@@ -36,6 +37,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'LabCostDetailsProperties',
             model_properties: {
               date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'date',
                 type: {
@@ -43,6 +45,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               cost: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cost',
                 type: {
@@ -50,6 +53,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               cost_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'costType',
                 type: {

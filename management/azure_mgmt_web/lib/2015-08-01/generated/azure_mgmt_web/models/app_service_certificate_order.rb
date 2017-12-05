@@ -90,6 +90,7 @@ module Azure::Web::Mgmt::V2015_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AppServiceCertificateOrder',
           type: {
@@ -97,6 +98,7 @@ module Azure::Web::Mgmt::V2015_08_01
             class_name: 'AppServiceCertificateOrder',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -105,6 +107,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -113,6 +116,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -120,6 +124,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -127,6 +132,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -135,11 +141,13 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -149,11 +157,13 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               certificates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.certificates',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'AppServiceCertificateElementType',
                       type: {
@@ -164,6 +174,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               distinguished_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.distinguishedName',
                 type: {
@@ -171,6 +182,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               domain_verification_token: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.domainVerificationToken',
@@ -179,6 +191,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               validity_in_years: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.validityInYears',
                 default_value: 1,
@@ -191,6 +204,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               key_size: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.keySize',
                 default_value: 2048,
@@ -199,6 +213,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               product_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.productType',
                 type: {
@@ -207,6 +222,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               auto_renew: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.autoRenew',
                 default_value: true,
@@ -215,6 +231,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.provisioningState',
@@ -224,6 +241,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.status',
@@ -233,6 +251,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               signed_certificate: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.signedCertificate',
@@ -242,6 +261,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               csr: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.csr',
                 type: {
@@ -249,6 +269,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               intermediate: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.intermediate',
@@ -258,6 +279,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               root: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.root',
@@ -267,6 +289,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               serial_number: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.serialNumber',
@@ -275,6 +298,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               last_certificate_issuance_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.lastCertificateIssuanceTime',
@@ -283,6 +307,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               expiration_time: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.expirationTime',
@@ -291,6 +316,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               is_private_key_external: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.isPrivateKeyExternal',
@@ -299,12 +325,14 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               app_service_certificate_not_renewable_reasons: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.appServiceCertificateNotRenewableReasons',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'enumElementType',
                       type: {
@@ -314,6 +342,7 @@ module Azure::Web::Mgmt::V2015_08_01
                 }
               },
               next_auto_renewal_time_stamp: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.nextAutoRenewalTimeStamp',

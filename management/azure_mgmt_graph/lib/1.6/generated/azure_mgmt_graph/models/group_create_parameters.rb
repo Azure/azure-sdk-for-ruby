@@ -35,6 +35,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GroupCreateParameters',
           type: {
@@ -42,6 +43,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'GroupCreateParameters',
             model_properties: {
               display_name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'displayName',
                 type: {
@@ -49,6 +51,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_enabled: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'mailEnabled',
@@ -58,6 +61,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_nickname: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'mailNickname',
                 type: {
@@ -65,6 +69,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               security_enabled: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'securityEnabled',

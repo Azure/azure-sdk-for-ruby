@@ -31,6 +31,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ActivityLogAlertLeafCondition',
           type: {
@@ -38,6 +39,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
             class_name: 'ActivityLogAlertLeafCondition',
             model_properties: {
               field: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'field',
                 type: {
@@ -45,6 +47,7 @@ module Azure::Monitor::Mgmt::V2017_04_01
                 }
               },
               equals: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'equals',
                 type: {

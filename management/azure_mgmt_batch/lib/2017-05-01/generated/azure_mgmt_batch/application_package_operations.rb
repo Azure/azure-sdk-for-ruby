@@ -76,7 +76,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def activate_async(resource_group_name, account_name, application_id, version, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -178,7 +182,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def create_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -279,7 +287,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def delete_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -371,7 +383,11 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def get_async(resource_group_name, account_name, application_id, version, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, "'resource_group_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !resource_group_name.nil? && resource_group_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MaxLength': '24'" if !account_name.nil? && account_name.length > 24
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'MinLength': '3'" if !account_name.nil? && account_name.length < 3
+      fail ArgumentError, "'account_name' should satisfy the constraint - 'Pattern': '^[-\w\._]+$'" if !account_name.nil? && account_name.match(Regexp.new('^^[-\w\._]+$$')).nil?
       fail ArgumentError, 'application_id is nil' if application_id.nil?
       fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?

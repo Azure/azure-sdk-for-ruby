@@ -22,6 +22,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GenerateUploadUriResponse',
           type: {
@@ -29,6 +30,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'GenerateUploadUriResponse',
             model_properties: {
               upload_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'uploadUri',
                 type: {

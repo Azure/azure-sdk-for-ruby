@@ -33,6 +33,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SnapshotUpdate',
           type: {
@@ -40,11 +41,13 @@ module Azure::Compute::Mgmt::V2017_03_30
             class_name: 'SnapshotUpdate',
             model_properties: {
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -54,6 +57,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'sku',
                 type: {
@@ -62,6 +66,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               os_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.osType',
                 type: {
@@ -70,6 +75,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               disk_size_gb: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.diskSizeGB',
                 type: {
@@ -77,6 +83,7 @@ module Azure::Compute::Mgmt::V2017_03_30
                 }
               },
               encryption_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.encryptionSettings',
                 type: {

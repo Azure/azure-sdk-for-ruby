@@ -23,6 +23,7 @@ module Azure::Network::Mgmt::V2017_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'QueryTroubleshootingParameters',
           type: {
@@ -30,6 +31,7 @@ module Azure::Network::Mgmt::V2017_03_01
             class_name: 'QueryTroubleshootingParameters',
             model_properties: {
               target_resource_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'targetResourceId',
                 type: {

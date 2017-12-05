@@ -35,6 +35,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'HyperVReplicaAzureFailback',
           type: {
@@ -42,6 +43,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
             class_name: 'RecoveryPlanHyperVReplicaAzureFailbackInput',
             model_properties: {
               instanceType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'instanceType',
                 type: {
@@ -49,6 +51,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               data_sync_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'dataSyncOption',
                 type: {
@@ -57,6 +60,7 @@ module Azure::RecoveryServicesSiteRecovery::Mgmt::V2016_08_10
                 }
               },
               recovery_vm_creation_option: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'recoveryVmCreationOption',
                 type: {

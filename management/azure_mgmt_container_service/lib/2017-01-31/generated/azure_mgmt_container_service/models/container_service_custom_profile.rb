@@ -22,6 +22,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ContainerServiceCustomProfile',
           type: {
@@ -29,6 +30,7 @@ module Azure::ContainerService::Mgmt::V2017_01_31
             class_name: 'ContainerServiceCustomProfile',
             model_properties: {
               orchestrator: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'orchestrator',
                 type: {

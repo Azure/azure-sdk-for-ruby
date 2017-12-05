@@ -78,6 +78,7 @@ module Azure::Graph::Mgmt::V1_6
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AADObject',
           type: {
@@ -85,6 +86,7 @@ module Azure::Graph::Mgmt::V1_6
             class_name: 'AADObject',
             model_properties: {
               object_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectId',
                 type: {
@@ -92,6 +94,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               object_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'objectType',
                 type: {
@@ -99,6 +102,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'displayName',
                 type: {
@@ -106,6 +110,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_principal_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'userPrincipalName',
                 type: {
@@ -113,6 +118,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mail',
                 type: {
@@ -120,6 +126,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'mailEnabled',
                 type: {
@@ -127,6 +134,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               mail_nickname: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'mailNickname',
@@ -135,6 +143,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               security_enabled: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'securityEnabled',
                 type: {
@@ -142,6 +151,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               sign_in_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'signInName',
                 type: {
@@ -149,11 +159,13 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               service_principal_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'servicePrincipalNames',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -163,6 +175,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               user_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'userType',
                 type: {
@@ -170,6 +183,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               usage_location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'usageLocation',
@@ -178,6 +192,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               app_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'appId',
@@ -186,12 +201,14 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               app_permissions: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'appPermissions',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -201,6 +218,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               available_to_other_tenants: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'availableToOtherTenants',
@@ -209,12 +227,14 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               identifier_uris: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'identifierUris',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -224,12 +244,14 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               reply_urls: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'replyUrls',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -239,6 +261,7 @@ module Azure::Graph::Mgmt::V1_6
                 }
               },
               homepage: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'homepage',

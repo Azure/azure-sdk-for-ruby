@@ -127,6 +127,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProcessInfo',
           type: {
@@ -134,6 +135,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'ProcessInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -142,6 +144,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -150,6 +153,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               kind: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'kind',
                 type: {
@@ -157,6 +161,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -165,6 +170,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               process_info_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.id',
                 type: {
@@ -172,6 +178,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               process_info_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.name',
                 type: {
@@ -179,6 +186,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               href: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.href',
                 type: {
@@ -186,6 +194,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               mini_dump: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.miniDump',
                 type: {
@@ -193,6 +202,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_profile_running: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isProfileRunning',
                 type: {
@@ -200,6 +210,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_iis_profile_running: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isIisProfileRunning',
                 type: {
@@ -207,6 +218,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               iis_profile_timeout_in_seconds: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.iisProfileTimeoutInSeconds',
                 type: {
@@ -214,6 +226,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               parent: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.parent',
                 type: {
@@ -221,11 +234,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               children: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.children',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -235,11 +250,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               threads: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.threads',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProcessThreadInfoElementType',
                       type: {
@@ -250,11 +267,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               open_file_handles: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.openFileHandles',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -264,11 +283,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               modules: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.modules',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProcessModuleInfoElementType',
                       type: {
@@ -279,6 +300,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               file_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.fileName',
                 type: {
@@ -286,6 +308,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               command_line: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.commandLine',
                 type: {
@@ -293,6 +316,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               user_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userName',
                 type: {
@@ -300,6 +324,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               handle_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.handleCount',
                 type: {
@@ -307,6 +332,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               module_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.moduleCount',
                 type: {
@@ -314,6 +340,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               thread_count: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.threadCount',
                 type: {
@@ -321,6 +348,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.startTime',
                 type: {
@@ -328,6 +356,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               total_processor_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.totalProcessorTime',
                 type: {
@@ -335,6 +364,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               user_processor_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userProcessorTime',
                 type: {
@@ -342,6 +372,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               privileged_processor_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privilegedProcessorTime',
                 type: {
@@ -349,6 +380,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               working_set64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.workingSet64',
                 type: {
@@ -356,6 +388,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               peak_working_set64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peakWorkingSet64',
                 type: {
@@ -363,6 +396,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               private_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.privateMemorySize64',
                 type: {
@@ -370,6 +404,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               virtual_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.virtualMemorySize64',
                 type: {
@@ -377,6 +412,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               peak_virtual_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peakVirtualMemorySize64',
                 type: {
@@ -384,6 +420,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               paged_system_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.pagedSystemMemorySize64',
                 type: {
@@ -391,6 +428,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               nonpaged_system_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.nonpagedSystemMemorySize64',
                 type: {
@@ -398,6 +436,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               paged_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.pagedMemorySize64',
                 type: {
@@ -405,6 +444,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               peak_paged_memory_size64: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.peakPagedMemorySize64',
                 type: {
@@ -412,6 +452,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               time_stamp: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.timeStamp',
                 type: {
@@ -419,11 +460,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               environment_variables: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.environmentVariables',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -433,6 +476,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_scm_site: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isScmSite',
                 type: {
@@ -440,6 +484,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               is_web_job: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.isWebJob',
                 type: {
@@ -447,6 +492,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {

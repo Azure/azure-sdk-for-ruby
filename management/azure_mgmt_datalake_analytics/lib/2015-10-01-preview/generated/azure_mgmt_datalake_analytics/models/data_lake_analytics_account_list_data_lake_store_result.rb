@@ -63,6 +63,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeAnalyticsAccountListDataLakeStoreResult',
           type: {
@@ -70,12 +71,14 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'DataLakeAnalyticsAccountListDataLakeStoreResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DataLakeStoreAccountInfoElementType',
                       type: {
@@ -86,6 +89,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               count: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'count',
@@ -94,6 +98,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'nextLink',

@@ -23,6 +23,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'AttachDiskProperties',
           type: {
@@ -30,6 +31,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'AttachDiskProperties',
             model_properties: {
               leased_by_lab_vm_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'leasedByLabVmId',
                 type: {

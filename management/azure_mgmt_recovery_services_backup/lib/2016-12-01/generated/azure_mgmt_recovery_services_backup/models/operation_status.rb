@@ -43,6 +43,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'OperationStatus',
           type: {
@@ -50,6 +51,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
             class_name: 'OperationStatus',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -57,6 +59,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'name',
                 type: {
@@ -64,6 +67,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -71,6 +75,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               start_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'startTime',
                 type: {
@@ -78,6 +83,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               end_time: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'endTime',
                 type: {
@@ -85,6 +91,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               error: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'error',
                 type: {
@@ -93,6 +100,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_12_01
                 }
               },
               properties: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties',
                 type: {

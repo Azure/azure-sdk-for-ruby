@@ -70,6 +70,7 @@ module Azure::Web::Mgmt::V2016_08_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'CloningInfo',
           type: {
@@ -77,6 +78,7 @@ module Azure::Web::Mgmt::V2016_08_01
             class_name: 'CloningInfo',
             model_properties: {
               correlation_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'correlationId',
                 type: {
@@ -84,6 +86,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               overwrite: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'overwrite',
                 type: {
@@ -91,6 +94,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               clone_custom_host_names: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloneCustomHostNames',
                 type: {
@@ -98,6 +102,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               clone_source_control: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'cloneSourceControl',
                 type: {
@@ -105,6 +110,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               source_web_app_id: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'sourceWebAppId',
                 type: {
@@ -112,6 +118,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               hosting_environment: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'hostingEnvironment',
                 type: {
@@ -119,11 +126,13 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               app_settings_overrides: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'appSettingsOverrides',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -133,6 +142,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               configure_load_balancing: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'configureLoadBalancing',
                 type: {
@@ -140,6 +150,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               traffic_manager_profile_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'trafficManagerProfileId',
                 type: {
@@ -147,6 +158,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               traffic_manager_profile_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'trafficManagerProfileName',
                 type: {
@@ -154,6 +166,7 @@ module Azure::Web::Mgmt::V2016_08_01
                 }
               },
               ignore_quotas: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'ignoreQuotas',
                 type: {

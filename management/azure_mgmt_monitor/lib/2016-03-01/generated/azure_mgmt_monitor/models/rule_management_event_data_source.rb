@@ -56,6 +56,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource',
           type: {
@@ -63,6 +64,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
             class_name: 'RuleManagementEventDataSource',
             model_properties: {
               resource_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceUri',
                 type: {
@@ -70,6 +72,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               odatatype: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'odata\\.type',
                 type: {
@@ -77,6 +80,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               event_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventName',
                 type: {
@@ -84,6 +88,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               event_source: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'eventSource',
                 type: {
@@ -91,6 +96,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               level: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'level',
                 type: {
@@ -98,6 +104,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               operation_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'operationName',
                 type: {
@@ -105,6 +112,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               resource_group_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceGroupName',
                 type: {
@@ -112,6 +120,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               resource_provider_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceProviderName',
                 type: {
@@ -119,6 +128,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'status',
                 type: {
@@ -126,6 +136,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               sub_status: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'subStatus',
                 type: {
@@ -133,6 +144,7 @@ module Azure::Monitor::Mgmt::V2016_03_01
                 }
               },
               claims: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'claims',
                 type: {

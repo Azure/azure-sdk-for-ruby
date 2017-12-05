@@ -22,6 +22,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'DataLakeStoreAccountInfoProperties',
           type: {
@@ -29,6 +30,7 @@ module Azure::DataLakeAnalytics::Mgmt::V2015_10_01_preview
             class_name: 'DataLakeStoreAccountInfoProperties',
             model_properties: {
               suffix: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'suffix',
                 type: {

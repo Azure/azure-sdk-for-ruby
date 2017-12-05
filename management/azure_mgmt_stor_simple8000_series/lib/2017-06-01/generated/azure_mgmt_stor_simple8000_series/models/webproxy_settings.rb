@@ -29,6 +29,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'WebproxySettings',
           type: {
@@ -36,6 +37,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'WebproxySettings',
             model_properties: {
               connection_uri: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'connectionUri',
                 type: {
@@ -43,6 +45,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               authentication: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'authentication',
                 type: {
@@ -51,6 +54,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               username: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'username',
                 type: {

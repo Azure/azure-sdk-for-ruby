@@ -57,6 +57,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'MeterInfo',
           type: {
@@ -64,6 +65,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
             class_name: 'MeterInfo',
             model_properties: {
               meter_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterId',
                 type: {
@@ -71,6 +73,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterName',
                 type: {
@@ -78,6 +81,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterCategory',
                 type: {
@@ -85,6 +89,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_sub_category: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterSubCategory',
                 type: {
@@ -92,6 +97,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               unit: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'Unit',
                 type: {
@@ -99,11 +105,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterTags',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -113,6 +121,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_region: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterRegion',
                 type: {
@@ -120,11 +129,13 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               meter_rates: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'MeterRates',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'FloatElementType',
                       type: {
@@ -134,6 +145,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               effective_date: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'EffectiveDate',
                 type: {
@@ -141,6 +153,7 @@ module Azure::Commerce::Mgmt::V2015_06_01_preview
                 }
               },
               included_quantity: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'IncludedQuantity',
                 type: {

@@ -34,6 +34,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Manager',
           type: {
@@ -41,6 +42,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
             class_name: 'Manager',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -49,6 +51,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -57,6 +60,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -65,6 +69,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               location: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'location',
                 type: {
@@ -72,11 +77,13 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -86,6 +93,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               cis_intrinsic_settings: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.cisIntrinsicSettings',
                 type: {
@@ -94,6 +102,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               sku: {
+                client_side_validation: true,
                 required: false,
                 is_constant: true,
                 serialized_name: 'properties.sku',
@@ -104,6 +113,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -111,6 +121,7 @@ module Azure::StorSimple8000Series::Mgmt::V2017_06_01
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {

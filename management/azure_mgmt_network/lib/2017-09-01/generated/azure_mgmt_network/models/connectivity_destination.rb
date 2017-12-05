@@ -30,6 +30,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ConnectivityDestination',
           type: {
@@ -37,6 +38,7 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'ConnectivityDestination',
             model_properties: {
               resource_id: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'resourceId',
                 type: {
@@ -44,6 +46,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               address: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'address',
                 type: {
@@ -51,6 +54,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               port: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'port',
                 type: {

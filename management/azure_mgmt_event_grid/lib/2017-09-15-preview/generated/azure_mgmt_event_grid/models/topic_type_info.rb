@@ -40,6 +40,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'TopicTypeInfo',
           type: {
@@ -47,6 +48,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
             class_name: 'TopicTypeInfo',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -55,6 +57,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -63,6 +66,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -71,6 +75,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               provider: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provider',
                 type: {
@@ -78,6 +83,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               display_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.displayName',
                 type: {
@@ -85,6 +91,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               description: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.description',
                 type: {
@@ -92,6 +99,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               resource_region_type: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.resourceRegionType',
                 type: {
@@ -99,6 +107,7 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               provisioning_state: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.provisioningState',
                 type: {
@@ -106,11 +115,13 @@ module Azure::EventGrid::Mgmt::V2017_09_15_preview
                 }
               },
               supported_locations: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.supportedLocations',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {

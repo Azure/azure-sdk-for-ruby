@@ -25,6 +25,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ParametersValueFileInfo',
           type: {
@@ -32,6 +33,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
             class_name: 'ParametersValueFileInfo',
             model_properties: {
               file_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'fileName',
                 type: {
@@ -39,6 +41,7 @@ module Azure::DevTestLabs::Mgmt::V2016_05_15
                 }
               },
               parameters_value_info: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'parametersValueInfo',
                 type: {

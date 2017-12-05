@@ -57,6 +57,7 @@ module Azure::Network::Mgmt::V2017_09_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualNetworkListUsageResult',
           type: {
@@ -64,12 +65,14 @@ module Azure::Network::Mgmt::V2017_09_01
             class_name: 'VirtualNetworkListUsageResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualNetworkUsageElementType',
                       type: {
@@ -80,6 +83,7 @@ module Azure::Network::Mgmt::V2017_09_01
                 }
               },
               next_link: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'nextLink',
                 type: {

@@ -29,6 +29,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SessionResource',
           type: {
@@ -36,6 +37,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
             class_name: 'SessionResource',
             model_properties: {
               id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
@@ -44,6 +46,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               type: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'type',
@@ -52,6 +55,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               name: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
@@ -60,6 +64,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               location: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'location',
@@ -68,11 +73,13 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               tags: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
                   value: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'StringElementType',
                       type: {
@@ -82,6 +89,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               etag: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'etag',
                 type: {
@@ -89,6 +97,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               user_name: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.userName',
                 type: {
@@ -96,6 +105,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               created: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.created',
                 type: {
@@ -103,6 +113,7 @@ module Azure::ServerManagement::Mgmt::V2016_07_01_preview
                 }
               },
               updated: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.updated',
                 type: {

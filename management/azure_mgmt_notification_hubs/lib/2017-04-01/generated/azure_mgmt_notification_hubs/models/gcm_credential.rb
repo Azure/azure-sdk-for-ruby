@@ -25,6 +25,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'GcmCredential',
           type: {
@@ -32,6 +33,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
             class_name: 'GcmCredential',
             model_properties: {
               gcm_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.gcmEndpoint',
                 type: {
@@ -39,6 +41,7 @@ module Azure::NotificationHubs::Mgmt::V2017_04_01
                 }
               },
               google_api_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.googleApiKey',
                 type: {

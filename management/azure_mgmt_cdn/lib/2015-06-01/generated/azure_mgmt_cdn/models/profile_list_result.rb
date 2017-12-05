@@ -23,6 +23,7 @@ module Azure::CDN::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ProfileListResult',
           type: {
@@ -30,11 +31,13 @@ module Azure::CDN::Mgmt::V2015_06_01
             class_name: 'ProfileListResult',
             model_properties: {
               value: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'ProfileElementType',
                       type: {

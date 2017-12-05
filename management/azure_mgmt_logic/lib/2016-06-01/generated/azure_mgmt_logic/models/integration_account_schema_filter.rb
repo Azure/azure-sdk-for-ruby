@@ -23,6 +23,7 @@ module Azure::Logic::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'IntegrationAccountSchemaFilter',
           type: {
@@ -30,6 +31,7 @@ module Azure::Logic::Mgmt::V2016_06_01
             class_name: 'IntegrationAccountSchemaFilter',
             model_properties: {
               schema_type: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'schemaType',
                 type: {

@@ -32,6 +32,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SubscriptionPolicies',
           type: {
@@ -39,6 +40,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
             class_name: 'SubscriptionPolicies',
             model_properties: {
               location_placement_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'locationPlacementId',
@@ -47,6 +49,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               quota_id: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'quotaId',
@@ -55,6 +58,7 @@ module Azure::Subscriptions::Mgmt::V2016_06_01
                 }
               },
               spending_limit: {
+                client_side_validation: true,
                 required: false,
                 read_only: true,
                 serialized_name: 'spendingLimit',

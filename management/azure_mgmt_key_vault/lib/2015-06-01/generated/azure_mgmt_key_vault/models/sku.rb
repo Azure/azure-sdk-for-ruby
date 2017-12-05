@@ -27,6 +27,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'Sku',
           type: {
@@ -34,6 +35,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
             class_name: 'Sku',
             model_properties: {
               family: {
+                client_side_validation: true,
                 required: true,
                 is_constant: true,
                 serialized_name: 'family',
@@ -43,6 +45,7 @@ module Azure::KeyVault::Mgmt::V2015_06_01
                 }
               },
               name: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {

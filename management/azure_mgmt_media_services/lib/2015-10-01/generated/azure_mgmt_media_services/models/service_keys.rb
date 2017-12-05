@@ -34,6 +34,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'ServiceKeys',
           type: {
@@ -41,6 +42,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
             class_name: 'ServiceKeys',
             model_properties: {
               primary_auth_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryAuthEndpoint',
                 type: {
@@ -48,6 +50,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               secondary_auth_endpoint: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryAuthEndpoint',
                 type: {
@@ -55,6 +58,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               primary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'primaryKey',
                 type: {
@@ -62,6 +66,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               secondary_key: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'secondaryKey',
                 type: {
@@ -69,6 +74,7 @@ module Azure::MediaServices::Mgmt::V2015_10_01
                 }
               },
               scope: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scope',
                 type: {

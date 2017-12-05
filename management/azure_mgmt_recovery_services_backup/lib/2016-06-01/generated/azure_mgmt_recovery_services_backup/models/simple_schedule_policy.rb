@@ -46,6 +46,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
       #
       def self.mapper()
         {
+          client_side_validation: true,
           required: false,
           serialized_name: 'SimpleSchedulePolicy',
           type: {
@@ -53,6 +54,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
             class_name: 'SimpleSchedulePolicy',
             model_properties: {
               schedulePolicyType: {
+                client_side_validation: true,
                 required: true,
                 serialized_name: 'schedulePolicyType',
                 type: {
@@ -60,6 +62,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               schedule_run_frequency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scheduleRunFrequency',
                 type: {
@@ -68,11 +71,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               schedule_run_days: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scheduleRunDays',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DayOfWeekElementType',
                       type: {
@@ -83,11 +88,13 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               schedule_run_times: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scheduleRunTimes',
                 type: {
                   name: 'Sequence',
                   element: {
+                      client_side_validation: true,
                       required: false,
                       serialized_name: 'DateTimeElementType',
                       type: {
@@ -97,6 +104,7 @@ module Azure::RecoveryServicesBackup::Mgmt::V2016_06_01
                 }
               },
               schedule_weekly_frequency: {
+                client_side_validation: true,
                 required: false,
                 serialized_name: 'scheduleWeeklyFrequency',
                 type: {
