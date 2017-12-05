@@ -25,7 +25,7 @@ module Azure::Compute::Mgmt::V2017_03_30
       # @return [ImageDiskReference] Disk source information.
       attr_accessor :image_reference
 
-      # @return [String] If creationOption is Import, this is the URI of a blob
+      # @return [String] If createOption is Import, this is the URI of a blob
       # to be imported into a managed disk.
       attr_accessor :source_uri
 
