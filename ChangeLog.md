@@ -1,3 +1,7 @@
+## 2017.12.06
+
+* Regened azure_mgmt_consumption, version 0.15.2, sdk using [Autorest.2.0.4215](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby). The azure_mgmt_consumption sdk includes the new version of 2017-11-30.
+
 ## 2017.10.30 - Azure ARM version 0.15.1
 
 * Regened all azure_mgmt_* sdks using [Autorest.2.0.4168](https://www.npmjs.com/package/autorest)(core) and [Autorest.Ruby.3.0.20](https://www.npmjs.com/package/@microsoft.azure/autorest.ruby) for release of ARM version 0.15.1
