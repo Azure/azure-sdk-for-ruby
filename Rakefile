@@ -124,7 +124,7 @@ require 'fileutils'
 
 gem_versions = JSON.parse(File.read(File.expand_path('../GEM_VERSIONS', __FILE__)).strip)
 gems_to_release = JSON.parse(File.read(File.expand_path('../GEMS_TO_RELEASE', __FILE__)).strip)
-GEMS_TO_IGNORE = ['azure_mgmt_insights']
+GEMS_TO_IGNORE = %w{azure_mgmt_graph}
 REGEN_EXCLUDES = ['azure_sdk']
 
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
@@ -138,25 +138,8 @@ namespace :arm do
 
   desc 'Delete multiple version folders for each sdk'
   task :clean_generated do
-    Dir.chdir(File.expand_path('../management', __FILE__))
-    gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
-    gem_folders.each do |gem|
-      if GEMS_TO_IGNORE.include?gem
-        next
-      end
-
-      Dir.chdir(File.expand_path("../management/#{gem}/lib", __FILE__))
-      subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
-      subdir_list.each do |subdir|
-        if subdir.to_s == 'profiles'
-          next
-        end
-
-        folder_to_be_cleaned = File.expand_path("../management/#{gem}/lib/#{subdir}", __FILE__)
-        puts "Cleaning folder - #{folder_to_be_cleaned}"
-        FileUtils.rm_rf(folder_to_be_cleaned)
-      end
-    end
+    clean_generated('management')
+    clean_generated('data')
     Dir.chdir(File.expand_path('..', __FILE__))
   end
 
@@ -177,6 +160,9 @@ namespace :arm do
         elsif(key == 'management')
           Dir.chdir("#{__dir__}/management/#{gem}")
           version = gem_versions['management'][gem]
+        elsif(key == 'data')
+          Dir.chdir("#{__dir__}/data/#{gem}")
+          version = gem_versions['data'][gem]
         end
 
         # Delay for 10 seconds before publishing gem
@@ -191,11 +177,13 @@ namespace :arm do
   desc 'Regen code for each sdk with all its api versions'
   task :regen_sdk_versions => :clean_generated do
     json = get_config_file
-    each_gem do |dir| # dir corresponds to each azure_mgmt_* folder
+    each_gem do |dir| # dir corresponds to each azure_* folder
       if REGEN_EXCLUDES.include?(dir.to_s)
         update_gem_version('lib/azure_sdk/version.rb', gem_versions['rollup'][dir])
         next
       end
+
+      mode = get_mode(dir)
       
       puts "\nGenerating #{dir}\n"
       ar_base_command = "#{ENV.fetch('AUTOREST_LOC', 'autorest')}"
@@ -226,10 +214,10 @@ namespace :arm do
             end
           end
         end
-        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions['management'][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
+        command = "#{ar_base_command} --package-name=#{package_name} #{ar_arguments} --package-version=#{gem_versions[mode][dir]} --output-folder=#{File.join(Dir.pwd, 'lib', output_folder)} --ruby --azure-arm"
         execute_and_stream(command)
       end
-      update_gem_version('lib/version.rb', gem_versions['management'][dir])
+      update_gem_version('lib/version.rb', gem_versions[mode][dir])
     end
   end
 
@@ -271,11 +259,12 @@ namespace :arm do
       if REGEN_EXCLUDES.include?gem
         next
       end
+      mode = get_mode(gem)
+      Dir.chdir("#{__dir__}/#{mode}/#{gem}/lib/profiles")
 
-      Dir.chdir("#{__dir__}/management/#{gem}/lib/profiles")
       subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
       subdir_list.each do |subdir|
-        folder_to_be_cleaned = "#{__dir__}/management/#{gem}/lib/profiles/#{subdir}"
+        folder_to_be_cleaned = "#{__dir__}/#{mode}/#{gem}/lib/profiles/#{subdir}"
         puts "Cleaning folder - #{folder_to_be_cleaned}"
         FileUtils.rm_rf(folder_to_be_cleaned)
       end
@@ -302,10 +291,11 @@ namespace :arm do
       if REGEN_EXCLUDES.include?gem
         next
       end
+      mode = get_mode(gem)
 
       # Sample Command
       # bundle exec ruby profile_generator_client.rb --dir_metadata=dir_metadata.json --profile=authorization_profiles.json --mode=management --key=azure_mgmt_authorization
-      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=management --key=#{gem} --sdk_path=#{__dir__}"
+      command = "#{get_base_profile_generation_cmd} --dir_metadata=#{__dir__}/generators/profilegen/src/resources/dir_metadata.json --profile=#{get_profile_spec_files_folder}/profiles.json --mode=#{mode} --key=#{gem} --sdk_path=#{__dir__}"
       execute_and_stream(command)
     end
   end
@@ -352,6 +342,38 @@ end
 
 task :default => :spec
 
+def get_mode(dir)
+  mode = ''
+  if (dir.include? '_mgmt_')
+    mode = 'management'
+  else
+    mode = 'data'
+  end
+  mode
+end
+
+def clean_generated(parent_dir)
+  Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
+  gem_folders = Dir['*'].reject{|o| not File.directory?(o)}
+  gem_folders.each do |gem|
+    if GEMS_TO_IGNORE.include?gem
+      next
+    end
+
+    Dir.chdir(File.expand_path("../#{parent_dir}/#{gem}/lib", __FILE__))
+    subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
+    subdir_list.each do |subdir|
+      if subdir.to_s == 'profiles'
+        next
+      end
+
+      folder_to_be_cleaned = File.expand_path("../#{parent_dir}/#{gem}/lib/#{subdir}", __FILE__)
+      puts "Cleaning folder - #{folder_to_be_cleaned}"
+      FileUtils.rm_rf(folder_to_be_cleaned)
+    end
+  end
+end
+
 def get_base_profile_generation_cmd
   "bundle exec ruby #{__dir__}/generators/profilegen/src/profile_generator_client.rb"
 end
@@ -383,32 +405,30 @@ def get_config_file
   JSON.parse(config_file)
 end
 
-def each_gem_dir
-  Dir.chdir("#{__dir__}/management")
-  subdir_list = Dir['*'].reject{|o| not File.directory?(o)}
-  subdir_list.each do |subdir|
-    if GEMS_TO_IGNORE.include?subdir
-      next
-    end
-
-    yield subdir
-  end
-end
-
 def each_child
-  Dir.chdir(File.expand_path('../management', __FILE__))
-  management_level_dirs = Dir['*'].reject{|o| not File.directory?(o)}
-  management_level_dirs.each do |dir|
-    if GEMS_TO_IGNORE.include?dir
-      next
-    end
-    Dir.chdir(dir) do
-      yield(dir)
-    end
-  end
+  each_child_mode_specific('management') {|dir| yield dir }
+  each_child_mode_specific('data') {|dir| yield dir }
 
   Dir.chdir(File.expand_path('../azure_sdk', __FILE__))
   yield('azure_sdk')
+end
+
+def each_child_mode_specific(parent_dir, change_dir = true)
+  Dir.chdir(File.expand_path("../#{parent_dir}", __FILE__))
+  sub_dirs = Dir['*'].reject{|o| not File.directory?(o)}
+  sub_dirs.each do |dir|
+    if GEMS_TO_IGNORE.include?dir
+      next
+    end
+
+    if (change_dir)
+      Dir.chdir(dir) do
+        yield(dir)
+      end
+    else
+      yield dir
+    end
+  end
 end
 
 def each_gem
@@ -416,6 +436,11 @@ def each_gem
     gem_dir = dir.split('/').last
     yield gem_dir
   end
+end
+
+def each_gem_dir
+  each_child_mode_specific('management', false) {|dir| yield dir }
+  each_child_mode_specific('data', false)  {|dir| yield dir }
 end
 
 def update_gem_version(version_file, new_version)
