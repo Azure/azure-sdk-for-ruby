@@ -24,14 +24,14 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       # @return [ImageDiskReference] Disk source information.
       attr_accessor :image_reference
 
-      # @return [String] If creationOption is Import, this is a SAS URI to a
-      # blob to be imported into a managed disk. If creationOption is Copy,
-      # this is a relative Uri containing the id of the source snapshot to be
-      # copied into a managed disk.
+      # @return [String] If createOption is Import, this is a SAS URI to a blob
+      # to be imported into a managed disk. If createOption is Copy, this is a
+      # relative Uri containing the id of the source snapshot to be copied into
+      # a managed disk.
       attr_accessor :source_uri
 
       # @return [String] If createOption is Copy, this is the ARM id of the
-      # source snapshot or disk. If creationOption is Restore, this is the
+      # source snapshot or disk. If createOption is Restore, this is the
       # ARM-like id of the source disk restore point.
       attr_accessor :source_resource_id
 
@@ -42,7 +42,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'CreationData',
           type: {
@@ -50,7 +49,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'CreationData',
             model_properties: {
               create_option: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'createOption',
                 type: {
@@ -59,7 +57,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               storage_account_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'storageAccountId',
                 type: {
@@ -67,7 +64,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               image_reference: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'imageReference',
                 type: {
@@ -76,7 +72,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               source_uri: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceUri',
                 type: {
@@ -84,7 +79,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               source_resource_id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'sourceResourceId',
                 type: {

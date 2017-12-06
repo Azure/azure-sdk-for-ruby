@@ -31,7 +31,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
       #
       def self.mapper()
         {
-          client_side_validation: true,
           required: false,
           serialized_name: 'VirtualMachineScaleSetNetworkConfiguration',
           type: {
@@ -39,7 +38,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
             class_name: 'VirtualMachineScaleSetNetworkConfiguration',
             model_properties: {
               id: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'id',
                 type: {
@@ -47,7 +45,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               name: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'name',
                 type: {
@@ -55,7 +52,6 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               primary: {
-                client_side_validation: true,
                 required: false,
                 serialized_name: 'properties.primary',
                 type: {
@@ -63,13 +59,11 @@ module Azure::Compute::Mgmt::V2016_04_30_preview
                 }
               },
               ip_configurations: {
-                client_side_validation: true,
                 required: true,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
                   element: {
-                      client_side_validation: true,
                       required: false,
                       serialized_name: 'VirtualMachineScaleSetIPConfigurationElementType',
                       type: {
