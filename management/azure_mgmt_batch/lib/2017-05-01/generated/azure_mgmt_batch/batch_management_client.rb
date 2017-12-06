@@ -137,7 +137,9 @@ module Azure::Batch::Mgmt::V2017_05_01
     #
     def add_telemetry
         sdk_information = 'azure_mgmt_batch'
-        sdk_information = "#{sdk_information}/0.15.1"
+        if defined? Azure::Batch::Mgmt::V2017_05_01::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::Batch::Mgmt::V2017_05_01::VERSION}"
+        end
         add_user_agent_information(sdk_information)
     end
   end
